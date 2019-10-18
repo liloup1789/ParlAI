@@ -5,7 +5,8 @@
 # LICENSE file in the root directory of this source tree.
 
 from parlai.core.teachers import DialogTeacher
-from .build import build, buildImage
+from .build import build
+from parlai.tasks.coco_caption.build_2014 import buildImage
 
 from PIL import Image
 import json
