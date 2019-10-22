@@ -34,20 +34,19 @@ def _path(opt):
         opt['datapath'], 'VisDial-v0.9', 'visdial_0.9_' + suffix + '.json'
     )
 
-    image_path = os.path.join(opt['datapath'], 'COCO-IMG', img_suffix)
+    image_path = os.path.join(opt['datapath'], 'COCO-IMG-2014', img_suffix)
 
     return data_path, image_path
 
 
 def _image_loader(path):
-    """
-    Loads the appropriate image from the image_id and returns PIL Image format.
-    """
+    """Load the appropriate image from the image_id and returns PIL Image format."""
     return Image.open(path).convert('RGB')
 
 
 class DefaultTeacher(DialogTeacher):
     """
+    VisDial Teacher.
     This version of VisDial inherits from the core Dialog Teacher, which just
     requires it to define an iterator over its data `setup_data` in order to
     inherit basic metrics, a `act` function, and enables
@@ -63,7 +62,7 @@ class DefaultTeacher(DialogTeacher):
 
         super().__init__(opt, shared)
 
-    def setup_data(self, path):
+    def _setup_data(self, path):
         print('loading: ' + path)
         with open(path) as data_file:
             self.visdial = json.load(data_file)
