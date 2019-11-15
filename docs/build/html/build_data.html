@@ -1,0 +1,385 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>core.build_data &mdash; ParlAI  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/parlai_theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="core.dict" href="dict.html" />
+    <link rel="prev" title="core.torch_agent" href="torch_agent.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ParlAI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_quick.html">ParlAI Quick-start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_basic.html">Intro to ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_task.html">Tasks and Datasets in ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_worlds.html">Data Handling, Batching, and Hogwild</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_seq2seq.html">Creating an Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_torch_ranker_agent.html">Using Torch Ranker Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tipsntricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_mturk.html">Using Mechanical Turk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_messenger.html">Using Facebook Messenger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tensorboard.html">Using tensorboard for metric tracking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tasks &amp; Model Zoo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zoo.html">Model Zoo</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Core Library</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="observations.html">observations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents.html">core.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="torch_agent.html">core.torch_agent</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">core.build_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dict.html">core.dict</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metrics.html">core.metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="params.html">core.params</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teachers.html">core.teachers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">core.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thread_utils.html">core.thread_utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worlds.html">core.worlds</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="repeat_label.html">agents.repeat_label</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unigram_agent.html">agents.unigram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_seq2seq.html">agents.example_seq2seq</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Scripts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cli_usage.html">Command Line Usage</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ParlAI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>core.build_data</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/build_data.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-parlai.core.build_data">
+<span id="core-build-data"></span><h1>core.build_data<a class="headerlink" href="#module-parlai.core.build_data" title="Permalink to this headline">¶</a></h1>
+<p>Utilities for downloading and building data.</p>
+<p>These can be replaced if your particular file system does not support them.</p>
+<dl class="function">
+<dt id="parlai.core.build_data.built">
+<code class="sig-prename descclassname">parlai.core.build_data.</code><code class="sig-name descname">built</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">version_string=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.build_data.built" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if ‘.built’ flag has been set for that task.</p>
+<p>If a version_string is provided, this has to match, or the version
+is regarded as not built.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.build_data.mark_done">
+<code class="sig-prename descclassname">parlai.core.build_data.</code><code class="sig-name descname">mark_done</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">version_string=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.build_data.mark_done" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mark this path as prebuilt.</p>
+<p>Marks the path as done by adding a ‘.built’ file with the current timestamp
+plus a version description string if specified.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – The file path to mark as built.</p></li>
+<li><p><strong>version_string</strong> (<em>str</em>) – The version of this dataset.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.build_data.download">
+<code class="sig-prename descclassname">parlai.core.build_data.</code><code class="sig-name descname">download</code><span class="sig-paren">(</span><em class="sig-param">url</em>, <em class="sig-param">path</em>, <em class="sig-param">fname</em>, <em class="sig-param">redownload=False</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.build_data.download" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download file using <cite>requests</cite>.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">redownload</span></code> is set to false, then
+will not download tar file again if it is present (default <code class="docutils literal notranslate"><span class="pre">True</span></code>).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.build_data.make_dir">
+<code class="sig-prename descclassname">parlai.core.build_data.</code><code class="sig-name descname">make_dir</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.build_data.make_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make the directory and any nonexistent parent directories (<cite>mkdir -p</cite>).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.build_data.move">
+<code class="sig-prename descclassname">parlai.core.build_data.</code><code class="sig-name descname">move</code><span class="sig-paren">(</span><em class="sig-param">path1</em>, <em class="sig-param">path2</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.build_data.move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rename the given file.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.build_data.remove_dir">
+<code class="sig-prename descclassname">parlai.core.build_data.</code><code class="sig-name descname">remove_dir</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.build_data.remove_dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove the given directory, if it exists.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.build_data.untar">
+<code class="sig-prename descclassname">parlai.core.build_data.</code><code class="sig-name descname">untar</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">fname</em>, <em class="sig-param">deleteTar=True</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.build_data.untar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unpack the given archive file to the same directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – The folder containing the archive. Will contain the contents.</p></li>
+<li><p><strong>fname</strong> (<em>str</em>) – The filename of the archive file.</p></li>
+<li><p><strong>deleteTar</strong> (<em>bool</em>) – If true, the archive will be deleted after extraction.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.build_data.unzip">
+<code class="sig-prename descclassname">parlai.core.build_data.</code><code class="sig-name descname">unzip</code><span class="sig-paren">(</span><em class="sig-param">path</em>, <em class="sig-param">fname</em>, <em class="sig-param">deleteZip=True</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.build_data.unzip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unzip the given archive file to the same directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>str</em>) – The folder containing the archive. Will contain the contents.</p></li>
+<li><p><strong>fname</strong> (<em>str</em>) – The filename of the archive file.</p></li>
+<li><p><strong>deleteZip</strong> (<em>bool</em>) – If true, the archive will be deleted after extraction.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.build_data.cat">
+<code class="sig-prename descclassname">parlai.core.build_data.</code><code class="sig-name descname">cat</code><span class="sig-paren">(</span><em class="sig-param">file1</em>, <em class="sig-param">file2</em>, <em class="sig-param">outfile</em>, <em class="sig-param">deleteFiles=True</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.build_data.cat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Concatenate two files to an outfile, possibly deleting the originals.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.build_data.download_from_google_drive">
+<code class="sig-prename descclassname">parlai.core.build_data.</code><code class="sig-name descname">download_from_google_drive</code><span class="sig-paren">(</span><em class="sig-param">gd_id</em>, <em class="sig-param">destination</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.build_data.download_from_google_drive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use the requests package to download a file from Google Drive.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.build_data.download_models">
+<code class="sig-prename descclassname">parlai.core.build_data.</code><code class="sig-name descname">download_models</code><span class="sig-paren">(</span><em class="sig-param">opt</em>, <em class="sig-param">fnames</em>, <em class="sig-param">model_folder</em>, <em class="sig-param">version='v1.0'</em>, <em class="sig-param">path='aws'</em>, <em class="sig-param">use_model_type=False</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.build_data.download_models" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download models into the ParlAI model zoo from a url.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fnames</strong> – list of filenames to download</p></li>
+<li><p><strong>model_folder</strong> – models will be downloaded into models/model_folder/model_type</p></li>
+<li><p><strong>path</strong> – url for downloading models; defaults to downloading from AWS</p></li>
+<li><p><strong>use_model_type</strong> – whether models are categorized by type in AWS</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.build_data.modelzoo_path">
+<code class="sig-prename descclassname">parlai.core.build_data.</code><code class="sig-name descname">modelzoo_path</code><span class="sig-paren">(</span><em class="sig-param">datapath</em>, <em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.build_data.modelzoo_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Map pretrain models filenames to their path on disk.</p>
+<p>If path starts with ‘models:’, then we remap it to the model zoo path
+within the data directory (default is ParlAI/data/models).
+We download models from the model zoo if they are not here yet.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.build_data.download_multiprocess">
+<code class="sig-prename descclassname">parlai.core.build_data.</code><code class="sig-name descname">download_multiprocess</code><span class="sig-paren">(</span><em class="sig-param">urls</em>, <em class="sig-param">path</em>, <em class="sig-param">num_processes=32</em>, <em class="sig-param">chunk_size=100</em>, <em class="sig-param">dest_filenames=None</em>, <em class="sig-param">error_path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.build_data.download_multiprocess" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download items in parallel (e.g. for an image + dialogue task)</p>
+<p>Note: “of threading, multiprocess and pytorch.multiprocessing pick two”.
+These three don’t all play well together. On OS X, may hang upon successful finish.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>urls</strong> – Array of urls to download</p></li>
+<li><p><strong>path</strong> – directory to save items in</p></li>
+<li><p><strong>num_processes</strong> – number of processes to use</p></li>
+<li><p><strong>chunk_size</strong> – chunk size to use</p></li>
+<li><p><strong>dest_filenames</strong> – optional array of same length as url with filenames.
+Images will be saved as path + dest_filename</p></li>
+<li><p><strong>error_path</strong> – where to save error logs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>array of tuples of (destination filename, http status code, error</p>
+</dd>
+</dl>
+<p>message if any). Note that upon failure, file may not actually be created.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="dict.html" class="btn btn-neutral float-right" title="core.dict" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="torch_agent.html" class="btn btn-neutral float-left" title="core.torch_agent" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Facebook AI Research
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

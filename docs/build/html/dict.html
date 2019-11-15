@@ -1,0 +1,510 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>core.dict &mdash; ParlAI  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/parlai_theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="core.metrics" href="metrics.html" />
+    <link rel="prev" title="core.build_data" href="build_data.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ParlAI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_quick.html">ParlAI Quick-start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_basic.html">Intro to ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_task.html">Tasks and Datasets in ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_worlds.html">Data Handling, Batching, and Hogwild</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_seq2seq.html">Creating an Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_torch_ranker_agent.html">Using Torch Ranker Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tipsntricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_mturk.html">Using Mechanical Turk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_messenger.html">Using Facebook Messenger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tensorboard.html">Using tensorboard for metric tracking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tasks &amp; Model Zoo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zoo.html">Model Zoo</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Core Library</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="observations.html">observations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents.html">core.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="torch_agent.html">core.torch_agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_data.html">core.build_data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">core.dict</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metrics.html">core.metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="params.html">core.params</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teachers.html">core.teachers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">core.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thread_utils.html">core.thread_utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worlds.html">core.worlds</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="repeat_label.html">agents.repeat_label</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unigram_agent.html">agents.unigram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_seq2seq.html">agents.example_seq2seq</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Scripts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cli_usage.html">Command Line Usage</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ParlAI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>core.dict</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/dict.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-parlai.core.dict">
+<span id="core-dict"></span><h1>core.dict<a class="headerlink" href="#module-parlai.core.dict" title="Permalink to this headline">¶</a></h1>
+<p>Contains code for parsing and building a dictionary from text.</p>
+<dl class="function">
+<dt id="parlai.core.dict.escape">
+<code class="sig-prename descclassname">parlai.core.dict.</code><code class="sig-name descname">escape</code><span class="sig-paren">(</span><em class="sig-param">s</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.escape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace potential special characters with escaped version.</p>
+<p>For example, n =&gt; \n and t =&gt; \t</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>s</strong> – string to escape</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.dict.unescape">
+<code class="sig-prename descclassname">parlai.core.dict.</code><code class="sig-name descname">unescape</code><span class="sig-paren">(</span><em class="sig-param">s</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.unescape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Revert escaped characters back to their special version.</p>
+<p>For example, \n =&gt; n and \t =&gt; t</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>s</strong> – string to unescape</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.dict.find_ngrams">
+<code class="sig-prename descclassname">parlai.core.dict.</code><code class="sig-name descname">find_ngrams</code><span class="sig-paren">(</span><em class="sig-param">token_dict</em>, <em class="sig-param">text</em>, <em class="sig-param">n</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.find_ngrams" title="Permalink to this definition">¶</a></dt>
+<dd><p>Break text into ngrams that appear in <code class="docutils literal notranslate"><span class="pre">token_dict</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>token_dict</strong> – <code class="docutils literal notranslate"><span class="pre">dict</span></code> to check for ngrams</p></li>
+<li><p><strong>text</strong> – <code class="docutils literal notranslate"><span class="pre">str</span></code> to look for ngrams in</p></li>
+<li><p><strong>n</strong> – <code class="docutils literal notranslate"><span class="pre">int</span></code> max size of ngrams</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="parlai.core.dict.DictionaryAgent">
+<em class="property">class </em><code class="sig-prename descclassname">parlai.core.dict.</code><code class="sig-name descname">DictionaryAgent</code><span class="sig-paren">(</span><em class="sig-param">opt</em>, <em class="sig-param">shared=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="agents.html#parlai.core.agents.Agent" title="parlai.core.agents.Agent"><code class="xref py py-class docutils literal notranslate"><span class="pre">parlai.core.agents.Agent</span></code></a></p>
+<p>Builds and/or loads a dictionary.</p>
+<p>The dictionary provides access to the frequency of each token, functions
+to translate sentences from tokens to their vectors (list of ints, each
+int is the index of a token in the dictionary) and back from vectors to
+tokenized text.</p>
+<dl class="method">
+<dt id="parlai.core.dict.DictionaryAgent.add_cmdline_args">
+<em class="property">static </em><code class="sig-name descname">add_cmdline_args</code><span class="sig-paren">(</span><em class="sig-param">argparser</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent.add_cmdline_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add commandline arguments related to the dictionary.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.dict.DictionaryAgent.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">opt</em>, <em class="sig-param">shared=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize DictionaryAgent.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.dict.DictionaryAgent.add_token">
+<code class="sig-name descname">add_token</code><span class="sig-paren">(</span><em class="sig-param">word</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent.add_token" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a single token to the dictionary.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.dict.DictionaryAgent.keys">
+<code class="sig-name descname">keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent.keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return all the words in the dictionary.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.dict.DictionaryAgent.copy_dict">
+<code class="sig-name descname">copy_dict</code><span class="sig-paren">(</span><em class="sig-param">dictionary</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent.copy_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overwrite own state with any state in the other dictionary.</p>
+<p>This allows loading of the contents of another dictionary while keeping
+the current dictionary version.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.dict.DictionaryAgent.max_freq">
+<code class="sig-name descname">max_freq</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent.max_freq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the largest frequency of any nonspecial token.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.dict.DictionaryAgent.freqs">
+<code class="sig-name descname">freqs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent.freqs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the frequency dictionary.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.dict.DictionaryAgent.spacy_tokenize">
+<code class="sig-name descname">spacy_tokenize</code><span class="sig-paren">(</span><em class="sig-param">text</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent.spacy_tokenize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tokenize using spaCy.</p>
+<p>Does whatever spaCy does. See <a class="reference external" href="https://spacy.io/">https://spacy.io/</a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.dict.DictionaryAgent.spacy_span_tokenize">
+<code class="sig-name descname">spacy_span_tokenize</code><span class="sig-paren">(</span><em class="sig-param">text</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent.spacy_span_tokenize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return tuple of tokens, spans.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.dict.DictionaryAgent.nltk_tokenize">
+<code class="sig-name descname">nltk_tokenize</code><span class="sig-paren">(</span><em class="sig-param">text</em>, <em class="sig-param">building=False</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent.nltk_tokenize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tokenize using NLTK PunktTokenizer.</p>
+<p>Uses nltk-trained PunktTokenizer for sentence tokenization and
+Treebank Word Tokenizer for tokenizing words within sentences.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.dict.DictionaryAgent.gpt2_tokenize">
+<code class="sig-name descname">gpt2_tokenize</code><span class="sig-paren">(</span><em class="sig-param">text</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent.gpt2_tokenize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tokenize using Gpt2 BPE tokenizer.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.dict.DictionaryAgent.re_tokenize">
+<em class="property">static </em><code class="sig-name descname">re_tokenize</code><span class="sig-paren">(</span><em class="sig-param">text</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent.re_tokenize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tokenize using a liberal regular expression.</p>
+<p>Find boundaries between word characters, newlines, and non-word
+non-whitespace tokens <code class="docutils literal notranslate"><span class="pre">(r'[\\w\\n]+</span> <span class="pre">|</span> <span class="pre">[^\\w\\s]</span> <span class="pre">|</span> <span class="pre">\\n')</span></code>.</p>
+<p>This splits along whitespace and punctuation and keeps the newline as
+a token in the returned list.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.dict.DictionaryAgent.split_tokenize">
+<em class="property">static </em><code class="sig-name descname">split_tokenize</code><span class="sig-paren">(</span><em class="sig-param">text</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent.split_tokenize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tokenize on whitespace and some limited punctuation.</p>
+<p>Splits tokens based on whitespace after adding whitespace around
+punctuation.</p>
+<p>Use re_tokenize if you want more robust handling of punctuation.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.dict.DictionaryAgent.space_tokenize">
+<em class="property">static </em><code class="sig-name descname">space_tokenize</code><span class="sig-paren">(</span><em class="sig-param">text</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent.space_tokenize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tokenize exactly on spaces. Useful when text is pre-tokenized.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.dict.DictionaryAgent.span_tokenize">
+<code class="sig-name descname">span_tokenize</code><span class="sig-paren">(</span><em class="sig-param">text</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent.span_tokenize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tokenize and find  starting index of each token in the original string.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.dict.DictionaryAgent.tokenize">
+<code class="sig-name descname">tokenize</code><span class="sig-paren">(</span><em class="sig-param">text</em>, <em class="sig-param">building=False</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent.tokenize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a sequence of tokens from the iterable.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.dict.DictionaryAgent.bpe_tokenize">
+<code class="sig-name descname">bpe_tokenize</code><span class="sig-paren">(</span><em class="sig-param">text</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent.bpe_tokenize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a sequence of BPE-tokens from the text.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.dict.DictionaryAgent.add_to_dict">
+<code class="sig-name descname">add_to_dict</code><span class="sig-paren">(</span><em class="sig-param">tokens</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent.add_to_dict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Build dictionary from the list of provided tokens.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.dict.DictionaryAgent.remove_tail">
+<code class="sig-name descname">remove_tail</code><span class="sig-paren">(</span><em class="sig-param">min_freq</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent.remove_tail" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove elements below the frequency cutoff from the dictionary.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.dict.DictionaryAgent.resize_to_max">
+<code class="sig-name descname">resize_to_max</code><span class="sig-paren">(</span><em class="sig-param">maxtokens</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent.resize_to_max" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trims the dictionary to the maximum number of tokens.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.dict.DictionaryAgent.load">
+<code class="sig-name descname">load</code><span class="sig-paren">(</span><em class="sig-param">filename</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load pre-existing dictionary in ‘token[&lt;TAB&gt;count]’ format.</p>
+<p>Initialize counts from other dictionary, or 0 if they aren’t included.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.dict.DictionaryAgent.save">
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param">filename=None</em>, <em class="sig-param">append=False</em>, <em class="sig-param">sort=True</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save dictionary to file.</p>
+<p>Format is ‘token&lt;TAB&gt;count’ for every token in the dictionary, sorted
+by count with the most frequent words first.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">append</span></code> (default <code class="docutils literal notranslate"><span class="pre">False</span></code>) is set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, appends instead of
+overwriting.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">sort</span></code> (default <code class="docutils literal notranslate"><span class="pre">True</span></code>), then first sort the dictionary before saving.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.dict.DictionaryAgent.sort">
+<code class="sig-name descname">sort</code><span class="sig-paren">(</span><em class="sig-param">trim=True</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent.sort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sort the dictionary.</p>
+<p>Inline operation. Rearranges the dictionary so that the elements with
+the lowest index have the highest counts. This reindexes the dictionary
+according to the sorted frequencies, breaking ties alphabetically by
+token.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>trim</strong> (<em>bool</em>) – If True, truncate the dictionary based on minfreq and maxtokens.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.dict.DictionaryAgent.parse">
+<code class="sig-name descname">parse</code><span class="sig-paren">(</span><em class="sig-param">txt_or_vec</em>, <em class="sig-param">vec_type=&lt;class 'list'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent.parse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse either text or a vector of indices.</p>
+<p>Calls <cite>~txt2vec</cite> if <cite>txt_or_vec is a string, or `~vec2txt</cite> otherwise.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>vec_type</strong> – type of the returned vector if the input is a string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.dict.DictionaryAgent.txt2vec">
+<code class="sig-name descname">txt2vec</code><span class="sig-paren">(</span><em class="sig-param">text</em>, <em class="sig-param">vec_type=&lt;class 'list'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent.txt2vec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a string to a vector (list of ints).</p>
+<p>First runs a sentence tokenizer, then a word tokenizer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>vec_type</strong> (<em>type</em>) – The type of the returned vector if the input is a string. Suggested
+<code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">tuple</span></code>, <code class="docutils literal notranslate"><span class="pre">set</span></code>, or <code class="docutils literal notranslate"><span class="pre">np.ndarray</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.dict.DictionaryAgent.vec2txt">
+<code class="sig-name descname">vec2txt</code><span class="sig-paren">(</span><em class="sig-param">vector</em>, <em class="sig-param">delimiter=' '</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent.vec2txt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a vector of IDs to a string.</p>
+<p>Converts a vector (iterable of ints) into a string, with each token
+separated by the delimiter (default <code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">'</span></code>).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.dict.DictionaryAgent.act">
+<code class="sig-name descname">act</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent.act" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add words in the last observation to the dictionary.</p>
+<p>This checks any fields in the message present in the –dict-textfields
+argument (e.g. “text,labels”).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.dict.DictionaryAgent.share">
+<code class="sig-name descname">share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent.share" title="Permalink to this definition">¶</a></dt>
+<dd><p>Share internal dicts.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.dict.DictionaryAgent.shutdown">
+<code class="sig-name descname">shutdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.dict.DictionaryAgent.shutdown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save on shutdown if <code class="docutils literal notranslate"><span class="pre">save_path</span></code> is set.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="metrics.html" class="btn btn-neutral float-right" title="core.metrics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="build_data.html" class="btn btn-neutral float-left" title="core.build_data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Facebook AI Research
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

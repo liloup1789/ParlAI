@@ -1,0 +1,689 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>core.agents &mdash; ParlAI  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/parlai_theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="core.torch_agent" href="torch_agent.html" />
+    <link rel="prev" title="observations" href="observations.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ParlAI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_quick.html">ParlAI Quick-start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_basic.html">Intro to ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_task.html">Tasks and Datasets in ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_worlds.html">Data Handling, Batching, and Hogwild</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_seq2seq.html">Creating an Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_torch_ranker_agent.html">Using Torch Ranker Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tipsntricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_mturk.html">Using Mechanical Turk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_messenger.html">Using Facebook Messenger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tensorboard.html">Using tensorboard for metric tracking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tasks &amp; Model Zoo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zoo.html">Model Zoo</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Core Library</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="observations.html">observations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">core.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="torch_agent.html">core.torch_agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_data.html">core.build_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dict.html">core.dict</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metrics.html">core.metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="params.html">core.params</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teachers.html">core.teachers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">core.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thread_utils.html">core.thread_utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worlds.html">core.worlds</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="repeat_label.html">agents.repeat_label</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unigram_agent.html">agents.unigram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_seq2seq.html">agents.example_seq2seq</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Scripts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cli_usage.html">Command Line Usage</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ParlAI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>core.agents</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/agents.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-parlai.core.agents">
+<span id="core-agents"></span><h1>core.agents<a class="headerlink" href="#module-parlai.core.agents" title="Permalink to this headline">¶</a></h1>
+<p>Common Abstract classes for many agents.</p>
+<p>This module provides a set of basic agents:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">Agent(object)</span></code>
+base class for all other agents, implements the <code class="docutils literal notranslate"><span class="pre">observe()</span></code> method
+which receives an observation/action dict and the <code class="docutils literal notranslate"><span class="pre">act()</span></code> method which
+returns a dict in response.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Teacher(Agent)</span></code>
+also implements the <code class="docutils literal notranslate"><span class="pre">report()</span></code> method for returning metrics. All ParlAI
+tasks implement the <code class="docutils literal notranslate"><span class="pre">Teacher</span></code> class.</p>
+<p><code class="docutils literal notranslate"><span class="pre">MultiTaskTeacher(Teacher)</span></code>
+creates a set of teachers based on a task string passed to the <code class="docutils literal notranslate"><span class="pre">Teacher</span></code>,
+creating multiple teachers within it and alternating between them.</p>
+</div></blockquote>
+<p>All agents are initialized with the following parameters:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">opt</span></code> – contains any options needed to set up the agent. This generally contains
+all command-line arguments recognized from <code class="docutils literal notranslate"><span class="pre">core.params</span></code>, as well as other
+options that might be set through the framework to enable certain modes.</p>
+<p><code class="docutils literal notranslate"><span class="pre">shared</span></code> (optional) – if not <code class="docutils literal notranslate"><span class="pre">None</span></code>, contains any shared data used to construct
+this particular instantiation of the agent. This data might have been
+initialized by another agent, so that different agents can share the same
+data (possibly in different Processes).</p>
+</div></blockquote>
+<p>This module also provides a utility method:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">create_task_agents(str)</span></code>: instantiate task-specific agents (e.g. a teacher)
+from a given task string (e.g. ‘babi:task1k:1’ or ‘squad’). Used by
+<code class="docutils literal notranslate"><span class="pre">MultiTaskTeacher</span></code>.</p>
+</div></blockquote>
+<dl class="class">
+<dt id="parlai.core.agents.Agent">
+<em class="property">class </em><code class="sig-prename descclassname">parlai.core.agents.</code><code class="sig-name descname">Agent</code><span class="sig-paren">(</span><em class="sig-param">opt</em>, <em class="sig-param">shared=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.Agent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class for all other agents.</p>
+<dl class="method">
+<dt id="parlai.core.agents.Agent.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">opt</em>, <em class="sig-param">shared=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.Agent.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.agents.Agent.observe">
+<code class="sig-name descname">observe</code><span class="sig-paren">(</span><em class="sig-param">observation</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.Agent.observe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receive an observation/action dict.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.agents.Agent.act">
+<code class="sig-name descname">act</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.Agent.act" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an observation/action dict based upon given observation.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.agents.Agent.getID">
+<code class="sig-name descname">getID</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.Agent.getID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the agent ID.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.agents.Agent.epoch_done">
+<code class="sig-name descname">epoch_done</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.Agent.epoch_done" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether the epoch is done or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>boolean</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.agents.Agent.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.Agent.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the agent, clearing its observation.</p>
+<p>Many subclasses implement additional reset logic.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.agents.Agent.reset_metrics">
+<code class="sig-name descname">reset_metrics</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.Agent.reset_metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset any metrics reported by this agent.</p>
+<p>This is called to indicate metrics should start fresh, and is typically
+called between loggings or after a <cite>report()</cite>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.agents.Agent.save">
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><em class="sig-param">path=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.Agent.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save any parameters needed to recreate this agent from loaded parameters.</p>
+<p>Default implementation is no-op, but many subagents implement this logic.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.agents.Agent.share">
+<code class="sig-name descname">share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.Agent.share" title="Permalink to this definition">¶</a></dt>
+<dd><p>Share any parameters needed to create a shared version of this agent.</p>
+<p>Default implementation shares the class and the opt, but most agents will
+want to also add model weights, teacher data, etc. This especially useful
+for avoiding providing pointers to large objects to all agents in a batch.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.agents.Agent.shutdown">
+<code class="sig-name descname">shutdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.Agent.shutdown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform any final cleanup if needed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.agents.Agent.upgrade_opt">
+<em class="property">classmethod </em><code class="sig-name descname">upgrade_opt</code><span class="sig-paren">(</span><em class="sig-param">opt_from_disk</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.Agent.upgrade_opt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Upgrade legacy options when loading an opt file from disk.</p>
+<p>This is primarily made available to provide a safe space to handle
+backwards-compatible behavior. For example, perhaps we introduce a
+new option today, which wasn’t previously available. We can have the
+argument have a new default, but fall back to the “legacy” compatibility
+behavior if the option doesn’t exist.</p>
+<p><code class="docutils literal notranslate"><span class="pre">upgrade_opt</span></code> provides an opportunity for such checks for backwards
+compatibility. It is called shortly after loading the opt file from
+disk, and is called before the Agent is initialized.</p>
+<p>Other possible examples include:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Renaming an option,</p></li>
+<li><p>Deprecating an old option,</p></li>
+<li><p>Splitting coupled behavior, etc.</p></li>
+</ol>
+</div></blockquote>
+<p>Implementations of <code class="docutils literal notranslate"><span class="pre">upgrade_opt</span></code> should conform to high standards,
+due to the risk of these methods becoming complicated and difficult to
+reason about. We recommend the following behaviors:</p>
+<blockquote>
+<div><p>1. <code class="docutils literal notranslate"><span class="pre">upgrade_opt</span></code> should only be used to provide backwards
+compatibility.  Other behavior should find a different location.
+2. Children should always call the parent’s <code class="docutils literal notranslate"><span class="pre">upgrade_opt</span></code> first.
+3. <code class="docutils literal notranslate"><span class="pre">upgrade_opt</span></code> should always warn when an option was overwritten.
+4. Include comments annotating the date and purpose of each upgrade.
+5. Add an integration test which ensures your old work behaves
+appropriately.</p>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>opt_from_disk</strong> (<a class="reference internal" href="utils.html#parlai.utils.misc.Opt" title="parlai.utils.misc.Opt"><em>Opt</em></a>) – The opt file, as loaded from the <code class="docutils literal notranslate"><span class="pre">.opt</span></code> file on disk.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The modified options</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="utils.html#parlai.utils.misc.Opt" title="parlai.utils.misc.Opt">Opt</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="parlai.core.agents.Teacher">
+<em class="property">class </em><code class="sig-prename descclassname">parlai.core.agents.</code><code class="sig-name descname">Teacher</code><span class="sig-paren">(</span><em class="sig-param">opt</em>, <em class="sig-param">shared=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.Teacher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#parlai.core.agents.Agent" title="parlai.core.agents.Agent"><code class="xref py py-class docutils literal notranslate"><span class="pre">parlai.core.agents.Agent</span></code></a></p>
+<p>Basic Teacher agent that keeps track of how many times it’s received messages.</p>
+<p>Teachers provide the <code class="docutils literal notranslate"><span class="pre">report()</span></code> method to get back metrics.</p>
+<dl class="method">
+<dt id="parlai.core.agents.Teacher.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">opt</em>, <em class="sig-param">shared=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.Teacher.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.agents.Teacher.act">
+<code class="sig-name descname">act</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.Teacher.act" title="Permalink to this definition">¶</a></dt>
+<dd><p>Act upon the previous observation.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.agents.Teacher.epoch_done">
+<code class="sig-name descname">epoch_done</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.Teacher.epoch_done" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether the epoch is done.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.agents.Teacher.num_examples">
+<code class="sig-name descname">num_examples</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.Teacher.num_examples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of examples (e.g. individual utterances) in the dataset.</p>
+<p>Default implementation returns <cite>None</cite>, indicating an unknown number.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.agents.Teacher.num_episodes">
+<code class="sig-name descname">num_episodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.Teacher.num_episodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of episodes (e.g. conversations) in the dataset.</p>
+<p>Default implementation returns <cite>None</cite>, indicating an unknown number.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.agents.Teacher.report">
+<code class="sig-name descname">report</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.Teacher.report" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return metrics showing total examples and accuracy if available.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.agents.Teacher.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.Teacher.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the teacher.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.agents.Teacher.reset_metrics">
+<code class="sig-name descname">reset_metrics</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.Teacher.reset_metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset metrics.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.agents.Teacher.share">
+<code class="sig-name descname">share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.Teacher.share" title="Permalink to this definition">¶</a></dt>
+<dd><p>In addition to default Agent shared parameters, share metrics.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="parlai.core.agents.MultiTaskTeacher">
+<em class="property">class </em><code class="sig-prename descclassname">parlai.core.agents.</code><code class="sig-name descname">MultiTaskTeacher</code><span class="sig-paren">(</span><em class="sig-param">opt</em>, <em class="sig-param">shared=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.MultiTaskTeacher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#parlai.core.agents.Teacher" title="parlai.core.agents.Teacher"><code class="xref py py-class docutils literal notranslate"><span class="pre">parlai.core.agents.Teacher</span></code></a></p>
+<p>MultiTaskTeacher which teaches multiple tasks.</p>
+<p>Creates a teacher that is actually a set of teachers each based on a task
+string – each of these teachers will get called in turn,
+either randomly or in order.  They are all in the same world (they are the
+same agent switching tasks).</p>
+<p>The task string format is described for the <code class="docutils literal notranslate"><span class="pre">create_task_agents()</span></code>
+function above.</p>
+<dl class="method">
+<dt id="parlai.core.agents.MultiTaskTeacher.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">opt</em>, <em class="sig-param">shared=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.MultiTaskTeacher.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.agents.MultiTaskTeacher.num_examples">
+<code class="sig-name descname">num_examples</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.MultiTaskTeacher.num_examples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of examples.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.agents.MultiTaskTeacher.num_episodes">
+<code class="sig-name descname">num_episodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.MultiTaskTeacher.num_episodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of episodes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.agents.MultiTaskTeacher.observe">
+<code class="sig-name descname">observe</code><span class="sig-paren">(</span><em class="sig-param">observation</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.MultiTaskTeacher.observe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make an observation.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.agents.MultiTaskTeacher.act">
+<code class="sig-name descname">act</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.MultiTaskTeacher.act" title="Permalink to this definition">¶</a></dt>
+<dd><p>Act on the previous observation.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.agents.MultiTaskTeacher.epoch_done">
+<code class="sig-name descname">epoch_done</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.MultiTaskTeacher.epoch_done" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return whether all subtasks are completed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.agents.MultiTaskTeacher.report">
+<code class="sig-name descname">report</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.MultiTaskTeacher.report" title="Permalink to this definition">¶</a></dt>
+<dd><p>Report aggregated metrics across all subtasks.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.agents.MultiTaskTeacher.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.MultiTaskTeacher.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset all subtasks.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.agents.MultiTaskTeacher.reset_metrics">
+<code class="sig-name descname">reset_metrics</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.MultiTaskTeacher.reset_metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset metrics for each subtask.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.agents.MultiTaskTeacher.save">
+<code class="sig-name descname">save</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.MultiTaskTeacher.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save each subtask.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.agents.MultiTaskTeacher.share">
+<code class="sig-name descname">share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.MultiTaskTeacher.share" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shares this teacher by sharing each subtask.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.agents.MultiTaskTeacher.shutdown">
+<code class="sig-name descname">shutdown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.MultiTaskTeacher.shutdown" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shutdown each agent.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.agents.name_to_agent_class">
+<code class="sig-prename descclassname">parlai.core.agents.</code><code class="sig-name descname">name_to_agent_class</code><span class="sig-paren">(</span><em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.name_to_agent_class" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert agent name to class.</p>
+<p>This adds “Agent” to the end of the name and uppercases the first letter
+and the first letter appearing after each underscore (underscores are
+removed).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> – name of agent, e.g. local_human</p>
+</dd>
+</dl>
+<p>Returns class of agent, e.g. LocalHumanAgent.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.agents.compare_init_model_opts">
+<code class="sig-prename descclassname">parlai.core.agents.</code><code class="sig-name descname">compare_init_model_opts</code><span class="sig-paren">(</span><em class="sig-param">opt</em>, <em class="sig-param">curr_opt</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.compare_init_model_opts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print loud warning when <cite>init_model</cite> opts differ from previous configuration.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.agents.load_agent_module">
+<code class="sig-prename descclassname">parlai.core.agents.</code><code class="sig-name descname">load_agent_module</code><span class="sig-paren">(</span><em class="sig-param">opt</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.load_agent_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load agent options and module from file if opt file exists.</p>
+<p>Checks to see if file exists opt[‘model_file’] + “.opt”; if so, load up the
+options from the file and use that to create an agent, loading the model
+type from that file and overriding any options specified in that file when
+instantiating the agent.</p>
+<p>If that file does not exist, return None.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.agents.get_agent_module">
+<code class="sig-prename descclassname">parlai.core.agents.</code><code class="sig-name descname">get_agent_module</code><span class="sig-paren">(</span><em class="sig-param">dir_name</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.get_agent_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the module for an agent specified by <code class="docutils literal notranslate"><span class="pre">--model</span></code>.</p>
+<p>Can be formatted in several different ways:</p>
+<ul class="simple">
+<li><p>full: <cite>-m parlai.agents.seq2seq.seq2seq:Seq2seqAgent</cite></p></li>
+<li><p>shorthand: -m seq2seq, which will check both paths
+<code class="docutils literal notranslate"><span class="pre">parlai.agents.seq2seq.seq2seq:Seq2seqAgent</span></code> and
+<code class="docutils literal notranslate"><span class="pre">parlai.agents.seq2seq.agents:Seq2seqAgent</span></code></p></li>
+<li><p>half-shorthand: <code class="docutils literal notranslate"><span class="pre">-m</span> <span class="pre">seq2seq/variant</span></code>, which will check the path
+<cite>parlai.agents.seq2seq.variant:VariantAgent</cite></p></li>
+<li><p>legacy models: <code class="docutils literal notranslate"><span class="pre">-m</span> <span class="pre">legacy:seq2seq:0</span></code>, which will look for the deprecated
+model at <code class="docutils literal notranslate"><span class="pre">parlai.agents.legacy_agents.seq2seq.seq2seq_v0:Seq2seqAgent</span></code></p></li>
+</ul>
+<p>The base path to search when using shorthand formats can be changed from
+“parlai” to “parlai_internal” by prepending “internal:” to the path, e.g.
+“internal:seq2seq”.</p>
+<p>To use legacy agent versions, you can prepend “legacy:” to model arguments,
+e.g. “legacy:seq2seq:0” will translate to <code class="docutils literal notranslate"><span class="pre">legacy_agents/seq2seq/seq2seq_v0</span></code>.</p>
+<p>To use agents in projects, you can prepend “projects:” and the name of the
+project folder to model arguments, e.g. “projects:personachat:kvmemnn”
+will translate to <code class="docutils literal notranslate"><span class="pre">projects/personachat/kvmemnn</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dir_name</strong> – path to model class in one of the above formats.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.agents.create_agent">
+<code class="sig-prename descclassname">parlai.core.agents.</code><code class="sig-name descname">create_agent</code><span class="sig-paren">(</span><em class="sig-param">opt</em>, <em class="sig-param">requireModelExists=False</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.create_agent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create an agent from the options <code class="docutils literal notranslate"><span class="pre">model</span></code>, <code class="docutils literal notranslate"><span class="pre">model_params</span></code> and <code class="docutils literal notranslate"><span class="pre">model_file</span></code>.</p>
+<p>The input is either of the form
+<code class="docutils literal notranslate"><span class="pre">parlai.agents.ir_baseline.agents:IrBaselineAgent</span></code> (i.e. the path
+followed by the class name) or else just <code class="docutils literal notranslate"><span class="pre">ir_baseline</span></code> which
+assumes the path above, and a class name suffixed with ‘Agent’.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">model-file</span></code> is available in the options this function can also
+attempt to load the model from that location instead. This avoids having to
+specify all the other options necessary to set up the model including its
+name as they are all loaded from the options file if it exists (the file
+opt[‘model_file’] + ‘.opt’ must exist and contain a pickled or json dict
+containing the model’s options).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.agents.create_agent_from_shared">
+<code class="sig-prename descclassname">parlai.core.agents.</code><code class="sig-name descname">create_agent_from_shared</code><span class="sig-paren">(</span><em class="sig-param">shared_agent</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.create_agent_from_shared" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate an agent from the default <cite>shared</cite> params.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>shared_agent</strong> – should include an <cite>opt</cite> dictionary and agent <cite>class</cite>, along with
+whatever other parameters the agent needs to instantiate.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.agents.create_agents_from_shared">
+<code class="sig-prename descclassname">parlai.core.agents.</code><code class="sig-name descname">create_agents_from_shared</code><span class="sig-paren">(</span><em class="sig-param">shared</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.create_agents_from_shared" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create agents based on shared data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>shared</strong> – <cite>list</cite> of <cite>dict</cite> objects created by calling e.g.
+[a.share() for a in agents].</p>
+</dd>
+</dl>
+<p>Returns a list of instantiated agents.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.agents.get_task_module">
+<code class="sig-prename descclassname">parlai.core.agents.</code><code class="sig-name descname">get_task_module</code><span class="sig-paren">(</span><em class="sig-param">taskname</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.get_task_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the module of the task agent specified by <cite>–task</cite>.</p>
+<p>Can be formatted in several different ways:</p>
+<ul class="simple">
+<li><p>full: <code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">parlai.tasks.babi.agents:DefaultTeacher</span></code></p></li>
+<li><dl class="simple">
+<dt>shorthand: <code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">babi</span></code>, which will check</dt><dd><p><code class="docutils literal notranslate"><span class="pre">parlai.tasks.babi.agents:DefaultTeacher</span></code></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>shorthand specific: <code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">babi:task10k</span></code>, which will check</dt><dd><p><code class="docutils literal notranslate"><span class="pre">parlai.tasks.babi.agents:Task10kTeacher</span></code></p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>The base path to search when using shorthand formats can be changed from
+“parlai” to “parlai_internal” by prepending “internal:” to the path, e.g.
+“internal:babi”.</p>
+<p>Options can be sent to the teacher by adding an additional colon,
+for example <code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">babi:task10k:1</span></code> directs the babi Task10kTeacher to use
+task number 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>taskname</strong> – path to task class in one of the above formats.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.agents.create_task_agent_from_taskname">
+<code class="sig-prename descclassname">parlai.core.agents.</code><code class="sig-name descname">create_task_agent_from_taskname</code><span class="sig-paren">(</span><em class="sig-param">opt</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.agents.create_task_agent_from_taskname" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create task agent(s) assuming the input <code class="docutils literal notranslate"><span class="pre">task_dir:teacher_class</span></code>.</p>
+<p>e.g. def_string is a shorthand path like <code class="docutils literal notranslate"><span class="pre">babi:Task1k:1</span></code> or <code class="docutils literal notranslate"><span class="pre">#babi</span></code>
+or a complete path like <code class="docutils literal notranslate"><span class="pre">parlai.tasks.babi.agents:Task1kTeacher:1</span></code>,
+which essentially performs <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">parlai.tasks.babi</span> <span class="pre">import</span> <span class="pre">Task1kTeacher</span></code>
+with the parameter <code class="docutils literal notranslate"><span class="pre">1</span></code> in <code class="docutils literal notranslate"><span class="pre">opt['task']</span></code> to be used by the class
+<code class="docutils literal notranslate"><span class="pre">Task1kTeacher</span></code>.</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="torch_agent.html" class="btn btn-neutral float-right" title="core.torch_agent" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="observations.html" class="btn btn-neutral float-left" title="observations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Facebook AI Research
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

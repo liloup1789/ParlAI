@@ -1,0 +1,1520 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Command Line Usage &mdash; ParlAI  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/parlai_theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="agents.example_seq2seq" href="example_seq2seq.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ParlAI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_quick.html">ParlAI Quick-start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_basic.html">Intro to ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_task.html">Tasks and Datasets in ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_worlds.html">Data Handling, Batching, and Hogwild</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_seq2seq.html">Creating an Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_torch_ranker_agent.html">Using Torch Ranker Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tipsntricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_mturk.html">Using Mechanical Turk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_messenger.html">Using Facebook Messenger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tensorboard.html">Using tensorboard for metric tracking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tasks &amp; Model Zoo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zoo.html">Model Zoo</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Core Library</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="observations.html">observations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents.html">core.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="torch_agent.html">core.torch_agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_data.html">core.build_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dict.html">core.dict</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metrics.html">core.metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="params.html">core.params</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teachers.html">core.teachers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">core.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thread_utils.html">core.thread_utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worlds.html">core.worlds</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="repeat_label.html">agents.repeat_label</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unigram_agent.html">agents.unigram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_seq2seq.html">agents.example_seq2seq</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Scripts</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Command Line Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-parlai.scripts.display_data">display_data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cli-help">CLI help</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-parlai.scripts.train_model">train_model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">CLI help</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-parlai.scripts.interactive_rank">interactive_rank</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">CLI help</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-parlai.scripts.display_model">display_model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">CLI help</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-parlai.scripts.build_dict">build_dict</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">CLI help</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-parlai.scripts.extract_image_feature">extract_image_feature</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">CLI help</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-parlai.scripts.eval_ppl">eval_ppl</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id11">CLI help</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-parlai.scripts.eval_wordstat">eval_wordstat</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id12">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">CLI help</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-parlai.scripts.interactive">interactive</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id14">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id15">CLI help</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-parlai.scripts.detect_offensive_language">detect_offensive_language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id16">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">CLI help</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-parlai.scripts.verify_data">verify_data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id18">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">CLI help</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-parlai.scripts.multiprocessing_train">multiprocessing_train</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id20">CLI help</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-parlai.scripts.interactive_web">interactive_web</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id21">CLI help</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-parlai.scripts.eval_model">eval_model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id22">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">CLI help</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-parlai.scripts.build_pytorch_data">build_pytorch_data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id24">CLI help</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-parlai.scripts.profile_train">profile_train</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id25">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id26">CLI help</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-parlai.scripts.data_stats">data_stats</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id27">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id28">CLI help</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ParlAI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Command Line Usage</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/cli_usage.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="command-line-usage">
+<h1>Command Line Usage<a class="headerlink" href="#command-line-usage" title="Permalink to this headline">¶</a></h1>
+<p>This contains the command line usage for each of the standard scripts we
+release. These are each included in <code class="docutils literal notranslate"><span class="pre">parlai/scripts</span></code>.</p>
+<div class="section" id="module-parlai.scripts.display_data">
+<span id="display-data"></span><h2>display_data<a class="headerlink" href="#module-parlai.scripts.display_data" title="Permalink to this headline">¶</a></h2>
+<p>Basic example which iterates through the tasks specified and prints them out.
+Used for verification of data loading and iteration.</p>
+<p>For example, to make sure that bAbI task 1 (1k exs) loads one can run and to
+see a few of them:</p>
+<div class="section" id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python display_data.py -t babi:task1k:1
+</pre></div>
+</div>
+</div>
+<div class="section" id="cli-help">
+<h3>CLI help<a class="headerlink" href="#cli-help" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: python -m parlai.scripts.display_data [-h] [-o INIT_OPT] [-v] [-t TASK]
+                                             [-dt {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}]
+                                             [-nt NUMTHREADS] [-bs BATCHSIZE] [-dp DATAPATH] [-m MODEL] [-mf MODEL_FILE]
+                                             [-im INIT_MODEL] [-pyt PYTORCH_TEACHER_TASK] [-pytd PYTORCH_TEACHER_DATASET]
+                                             [-n NUM_EXAMPLES] [-mdl MAX_DISPLAY_LEN]
+                                             [--display-ignore-fields DISPLAY_IGNORE_FIELDS]
+
+Display data from a task
+
+optional arguments:
+  -h, --help
+        show this help message and exit
+  -n, -ne, --num-examples NUM_EXAMPLES
+  -mdl, --max-display-len MAX_DISPLAY_LEN
+  --display-ignore-fields DISPLAY_IGNORE_FIELDS
+
+Main ParlAI Arguments:
+  -o, --init-opt INIT_OPT
+        Path to json file of options. Note: Further Command-line arguments override file-based options. (default: None)
+  -v, --show-advanced-args
+        Show hidden command line options (advanced users only) (default: False)
+  -t, --task TASK
+        ParlAI task(s), e.g. &quot;babi:Task1&quot; or &quot;babi,cbt&quot; (default: None)
+  -dt, --datatype {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}
+        choose from: train, train:ordered, valid, test. to stream data add &quot;:stream&quot; to any option (e.g., train:stream). by
+        default: train is random with replacement, valid is ordered, test is ordered. (default: train:stream)
+  -nt, --numthreads NUMTHREADS
+        number of threads. Used for hogwild if batchsize is 1, else for number of threads in threadpool loading, (default: 1)
+  -bs, --batchsize BATCHSIZE
+        batch size for minibatch training schemes (default: 1)
+  -dp, --datapath DATAPATH
+        path to datasets, defaults to {parlai_dir}/data (default: None)
+
+ParlAI Model Arguments:
+  -m, --model MODEL
+        the model class name. can match parlai/agents/&lt;model&gt; for agents in that directory, or can provide a fully specified
+        module for `from X import Y` via `-m X:Y` (e.g. `-m parlai.agents.seq2seq.seq2seq:Seq2SeqAgent`) (default: None)
+  -mf, --model-file MODEL_FILE
+        model file name for loading and saving models (default: None)
+  -im, --init-model INIT_MODEL
+        load model weights and dict from this file (default: None)
+
+PytorchData Arguments:
+  -pyt, --pytorch-teacher-task PYTORCH_TEACHER_TASK
+        Use the PytorchDataTeacher for multiprocessed data loading with a standard ParlAI task, e.g. &quot;babi:Task1k&quot; (default: None)
+  -pytd, --pytorch-teacher-dataset PYTORCH_TEACHER_DATASET
+        Use the PytorchDataTeacher for multiprocessed data loading with a pytorch Dataset, e.g. &quot;vqa_1&quot; or &quot;flickr30k&quot; (default:
+        None)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="module-parlai.scripts.train_model">
+<span id="train-model"></span><h2>train_model<a class="headerlink" href="#module-parlai.scripts.train_model" title="Permalink to this headline">¶</a></h2>
+<p>Training script for ParlAI.</p>
+<p>The standard way to train a model. After training, also computes validation
+and test error.</p>
+<p>The user must provide a model (with <code class="docutils literal notranslate"><span class="pre">--model</span></code>) and a task (with <code class="docutils literal notranslate"><span class="pre">--task</span></code> or
+<code class="docutils literal notranslate"><span class="pre">--pytorch-teacher-task</span></code>).</p>
+<div class="section" id="id1">
+<h3>Examples<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python -m parlai.scripts.train -m ir_baseline -t dialog_babi:Task:1 -mf /tmp/model
+python -m parlai.scripts.train -m seq2seq -t babi:Task10k:1 -mf <span class="s1">&#39;/tmp/model&#39;</span> -bs <span class="m">32</span> -lr <span class="m">0</span>.5 -hs <span class="m">128</span>
+python -m parlai.scripts.train -m drqa -t babi:Task10k:1 -mf /tmp/model -bs <span class="m">10</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>CLI help<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: python -m parlai.scripts.train_model [-h] [-o INIT_OPT] [-v] [-t TASK]
+                                            [-dt {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}]
+                                            [-nt NUMTHREADS] [-bs BATCHSIZE] [-dp DATAPATH] [-m MODEL] [-mf MODEL_FILE]
+                                            [-im INIT_MODEL] [-et EVALTASK] [-eps NUM_EPOCHS] [-ttim MAX_TRAIN_TIME]
+                                            [-vtim VALIDATION_EVERY_N_SECS] [-stim SAVE_EVERY_N_SECS] [-sval SAVE_AFTER_VALID]
+                                            [-veps VALIDATION_EVERY_N_EPOCHS] [-vp VALIDATION_PATIENCE] [-vmt VALIDATION_METRIC]
+                                            [-vmm {max,min}] [-micro AGGREGATE_MICRO] [-mcs METRICS] [-tblog TENSORBOARD_LOG]
+                                            [-pyt PYTORCH_TEACHER_TASK] [-pytd PYTORCH_TEACHER_DATASET]
+
+Train a model
+
+optional arguments:
+  -h, --help
+        show this help message and exit
+
+Main ParlAI Arguments:
+  -o, --init-opt INIT_OPT
+        Path to json file of options. Note: Further Command-line arguments override file-based options. (default: None)
+  -v, --show-advanced-args
+        Show hidden command line options (advanced users only) (default: False)
+  -t, --task TASK
+        ParlAI task(s), e.g. &quot;babi:Task1&quot; or &quot;babi,cbt&quot; (default: None)
+  -dt, --datatype {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}
+        choose from: train, train:ordered, valid, test. to stream data add &quot;:stream&quot; to any option (e.g., train:stream). by
+        default: train is random with replacement, valid is ordered, test is ordered. (default: train)
+  -nt, --numthreads NUMTHREADS
+        number of threads. Used for hogwild if batchsize is 1, else for number of threads in threadpool loading, (default: 1)
+  -bs, --batchsize BATCHSIZE
+        batch size for minibatch training schemes (default: 1)
+  -dp, --datapath DATAPATH
+        path to datasets, defaults to {parlai_dir}/data (default: None)
+
+ParlAI Model Arguments:
+  -m, --model MODEL
+        the model class name. can match parlai/agents/&lt;model&gt; for agents in that directory, or can provide a fully specified
+        module for `from X import Y` via `-m X:Y` (e.g. `-m parlai.agents.seq2seq.seq2seq:Seq2SeqAgent`) (default: None)
+  -mf, --model-file MODEL_FILE
+        model file name for loading and saving models (default: None)
+  -im, --init-model INIT_MODEL
+        load model weights and dict from this file (default: None)
+
+Training Loop Arguments:
+  -et, --evaltask EVALTASK
+        task to use for valid/test (defaults to the one used for training) (default: None)
+  -eps, --num-epochs NUM_EPOCHS
+  -ttim, --max-train-time MAX_TRAIN_TIME
+  -vtim, --validation-every-n-secs VALIDATION_EVERY_N_SECS
+        Validate every n seconds. Saves model to model_file (if set) whenever best val metric is found (default: -1)
+  -stim, --save-every-n-secs SAVE_EVERY_N_SECS
+        Saves the model to model_file.checkpoint after every n seconds (default -1, never). (default: -1)
+  -sval, --save-after-valid SAVE_AFTER_VALID
+        Saves the model to model_file.checkpoint after every validation (default False).
+  -veps, --validation-every-n-epochs VALIDATION_EVERY_N_EPOCHS
+        Validate every n epochs. Saves model to model_file (if set) whenever best val metric is found (default: -1)
+  -vp, --validation-patience VALIDATION_PATIENCE
+        number of iterations of validation where result does not improve before we stop training (default: 10)
+  -vmt, --validation-metric VALIDATION_METRIC
+        key into report table for selecting best validation (default: accuracy)
+  -vmm, --validation-metric-mode {max,min}
+        how to optimize validation metric (max or min) (default: None)
+  -micro, --aggregate-micro AGGREGATE_MICRO
+        If multitasking, average metrics over the number of examples. If false, averages over the number of tasks. (default:
+        False)
+  -mcs, --metrics METRICS
+        list of metrics to show/compute, e.g. all, default,or give a list split by , like ppl,f1,accuracy,hits@1,rouge,bleuthe
+        rouge metrics will be computed as rouge-1, rouge-2 and rouge-l (default: default)
+
+Tensorboard Arguments:
+  -tblog, --tensorboard-log TENSORBOARD_LOG
+        Tensorboard logging of metrics, default is False
+
+PytorchData Arguments:
+  -pyt, --pytorch-teacher-task PYTORCH_TEACHER_TASK
+        Use the PytorchDataTeacher for multiprocessed data loading with a standard ParlAI task, e.g. &quot;babi:Task1k&quot; (default: None)
+  -pytd, --pytorch-teacher-dataset PYTORCH_TEACHER_DATASET
+        Use the PytorchDataTeacher for multiprocessed data loading with a pytorch Dataset, e.g. &quot;vqa_1&quot; or &quot;flickr30k&quot; (default:
+        None)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="module-parlai.scripts.interactive_rank">
+<span id="interactive-rank"></span><h2>interactive_rank<a class="headerlink" href="#module-parlai.scripts.interactive_rank" title="Permalink to this headline">¶</a></h2>
+<p>Does human evaluation on a task with label_candidates.</p>
+<p>Human can exit with ctrl + c and metrics will be computed and displayed.</p>
+<div class="section" id="id3">
+<h3>Examples<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python examples/interactive_rank.py -t babi:task10k:1 -dt valid
+</pre></div>
+</div>
+<p>When prompted, enter the index of the label_candidate you think is correct.
+Candidates are shuffled for each example.
+During datatype train, examples are randomly sampled with replacement; use
+train:ordered to not repeat examples.
+During datatype valid or test, examples are shown in order, not shuffled.</p>
+</div>
+<div class="section" id="id4">
+<h3>CLI help<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: python -m parlai.scripts.interactive_rank [-h] [-o INIT_OPT] [-v] [-t TASK]
+                                                 [-dt {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}]
+                                                 [-nt NUMTHREADS] [-bs BATCHSIZE] [-dp DATAPATH] [-pyt PYTORCH_TEACHER_TASK]
+                                                 [-pytd PYTORCH_TEACHER_DATASET]
+
+ParlAI parser
+
+optional arguments:
+  -h, --help
+        show this help message and exit
+
+Main ParlAI Arguments:
+  -o, --init-opt INIT_OPT
+        Path to json file of options. Note: Further Command-line arguments override file-based options. (default: None)
+  -v, --show-advanced-args
+        Show hidden command line options (advanced users only) (default: False)
+  -t, --task TASK
+        ParlAI task(s), e.g. &quot;babi:Task1&quot; or &quot;babi,cbt&quot; (default: None)
+  -dt, --datatype {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}
+        choose from: train, train:ordered, valid, test. to stream data add &quot;:stream&quot; to any option (e.g., train:stream). by
+        default: train is random with replacement, valid is ordered, test is ordered. (default: train)
+  -nt, --numthreads NUMTHREADS
+        number of threads. Used for hogwild if batchsize is 1, else for number of threads in threadpool loading, (default: 1)
+  -bs, --batchsize BATCHSIZE
+        batch size for minibatch training schemes (default: 1)
+  -dp, --datapath DATAPATH
+        path to datasets, defaults to {parlai_dir}/data (default: None)
+
+PytorchData Arguments:
+  -pyt, --pytorch-teacher-task PYTORCH_TEACHER_TASK
+        Use the PytorchDataTeacher for multiprocessed data loading with a standard ParlAI task, e.g. &quot;babi:Task1k&quot; (default: None)
+  -pytd, --pytorch-teacher-dataset PYTORCH_TEACHER_DATASET
+        Use the PytorchDataTeacher for multiprocessed data loading with a pytorch Dataset, e.g. &quot;vqa_1&quot; or &quot;flickr30k&quot; (default:
+        None)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="module-parlai.scripts.display_model">
+<span id="display-model"></span><h2>display_model<a class="headerlink" href="#module-parlai.scripts.display_model" title="Permalink to this headline">¶</a></h2>
+<p>Basic example which iterates through the tasks specified and runs the given
+model on them.</p>
+<div class="section" id="id5">
+<h3>Examples<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python examples/display_model.py -t babi:task1k:1 -m <span class="s2">&quot;repeat_label&quot;</span>
+python examples/display_model.py -t <span class="s2">&quot;#MovieDD-Reddit&quot;</span> -m <span class="s2">&quot;ir_baseline&quot;</span> -mp <span class="s2">&quot;-lp 0.5&quot;</span> -dt <span class="nb">test</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>CLI help<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: python -m parlai.scripts.display_model [-h] [-o INIT_OPT] [-v] [-t TASK]
+                                              [-dt {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}]
+                                              [-nt NUMTHREADS] [-bs BATCHSIZE] [-dp DATAPATH] [-m MODEL] [-mf MODEL_FILE]
+                                              [-im INIT_MODEL] [-n NUM_EXAMPLES] [--display-ignore-fields DISPLAY_IGNORE_FIELDS]
+
+Display model predictions.
+
+optional arguments:
+  -h, --help
+        show this help message and exit
+  -n, -ne, --num-examples NUM_EXAMPLES
+  --display-ignore-fields DISPLAY_IGNORE_FIELDS
+
+Main ParlAI Arguments:
+  -o, --init-opt INIT_OPT
+        Path to json file of options. Note: Further Command-line arguments override file-based options. (default: None)
+  -v, --show-advanced-args
+        Show hidden command line options (advanced users only) (default: False)
+  -t, --task TASK
+        ParlAI task(s), e.g. &quot;babi:Task1&quot; or &quot;babi,cbt&quot; (default: None)
+  -dt, --datatype {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}
+        choose from: train, train:ordered, valid, test. to stream data add &quot;:stream&quot; to any option (e.g., train:stream). by
+        default: train is random with replacement, valid is ordered, test is ordered. (default: valid)
+  -nt, --numthreads NUMTHREADS
+        number of threads. Used for hogwild if batchsize is 1, else for number of threads in threadpool loading, (default: 1)
+  -bs, --batchsize BATCHSIZE
+        batch size for minibatch training schemes (default: 1)
+  -dp, --datapath DATAPATH
+        path to datasets, defaults to {parlai_dir}/data (default: None)
+
+ParlAI Model Arguments:
+  -m, --model MODEL
+        the model class name. can match parlai/agents/&lt;model&gt; for agents in that directory, or can provide a fully specified
+        module for `from X import Y` via `-m X:Y` (e.g. `-m parlai.agents.seq2seq.seq2seq:Seq2SeqAgent`) (default: None)
+  -mf, --model-file MODEL_FILE
+        model file name for loading and saving models (default: None)
+  -im, --init-model INIT_MODEL
+        load model weights and dict from this file (default: None)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="module-parlai.scripts.build_dict">
+<span id="build-dict"></span><h2>build_dict<a class="headerlink" href="#module-parlai.scripts.build_dict" title="Permalink to this headline">¶</a></h2>
+<p>Generates a dictionary file from the training data.</p>
+<div class="section" id="id7">
+<h3>Examples<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1"># learn the vocabulary from one task, then train on another task.</span>
+python -m parlai.scripts.build_dict -t convai2 --dict-file premade.dict
+python -m parlai.scripts.train_model -t squad --dict-file premade.dict -m seq2seq
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>CLI help<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: python -m parlai.scripts.build_dict [-h] [-o INIT_OPT] [-v] [-t TASK]
+                                           [-dt {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}]
+                                           [-nt NUMTHREADS] [-bs BATCHSIZE] [-dp DATAPATH] [-m MODEL] [-mf MODEL_FILE]
+                                           [-im INIT_MODEL] [-pyt PYTORCH_TEACHER_TASK] [-pytd PYTORCH_TEACHER_DATASET]
+
+Build a dictionary.
+
+optional arguments:
+  -h, --help
+        show this help message and exit
+
+Main ParlAI Arguments:
+  -o, --init-opt INIT_OPT
+        Path to json file of options. Note: Further Command-line arguments override file-based options. (default: None)
+  -v, --show-advanced-args
+        Show hidden command line options (advanced users only) (default: False)
+  -t, --task TASK
+        ParlAI task(s), e.g. &quot;babi:Task1&quot; or &quot;babi,cbt&quot; (default: None)
+  -dt, --datatype {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}
+        choose from: train, train:ordered, valid, test. to stream data add &quot;:stream&quot; to any option (e.g., train:stream). by
+        default: train is random with replacement, valid is ordered, test is ordered. (default: train)
+  -nt, --numthreads NUMTHREADS
+        number of threads. Used for hogwild if batchsize is 1, else for number of threads in threadpool loading, (default: 1)
+  -bs, --batchsize BATCHSIZE
+        batch size for minibatch training schemes (default: 1)
+  -dp, --datapath DATAPATH
+        path to datasets, defaults to {parlai_dir}/data (default: None)
+
+ParlAI Model Arguments:
+  -m, --model MODEL
+        the model class name. can match parlai/agents/&lt;model&gt; for agents in that directory, or can provide a fully specified
+        module for `from X import Y` via `-m X:Y` (e.g. `-m parlai.agents.seq2seq.seq2seq:Seq2SeqAgent`) (default: None)
+  -mf, --model-file MODEL_FILE
+        model file name for loading and saving models (default: None)
+  -im, --init-model INIT_MODEL
+        load model weights and dict from this file (default: None)
+
+PytorchData Arguments:
+  -pyt, --pytorch-teacher-task PYTORCH_TEACHER_TASK
+        Use the PytorchDataTeacher for multiprocessed data loading with a standard ParlAI task, e.g. &quot;babi:Task1k&quot; (default: None)
+  -pytd, --pytorch-teacher-dataset PYTORCH_TEACHER_DATASET
+        Use the PytorchDataTeacher for multiprocessed data loading with a pytorch Dataset, e.g. &quot;vqa_1&quot; or &quot;flickr30k&quot; (default:
+        None)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="module-parlai.scripts.extract_image_feature">
+<span id="extract-image-feature"></span><h2>extract_image_feature<a class="headerlink" href="#module-parlai.scripts.extract_image_feature" title="Permalink to this headline">¶</a></h2>
+<p>Basic example which iterates through the tasks specified and load/extract
+the image features.</p>
+<p>For more options, check <code class="docutils literal notranslate"><span class="pre">parlai.core.image_featurizers</span></code></p>
+<div class="section" id="id9">
+<h3>Examples<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>To extract the image feature of COCO images:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python examples/extract_image_feature.py -t vqa_v1 -im resnet152
+</pre></div>
+</div>
+</div>
+<div class="section" id="id10">
+<h3>CLI help<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: python -m parlai.scripts.extract_image_feature [-h] [-o INIT_OPT] [-v] [-t TASK]
+                                                      [-dt {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}]
+                                                      [-nt NUMTHREADS] [-bs BATCHSIZE] [-dp DATAPATH] [-pyt PYTORCH_TEACHER_TASK]
+                                                      [-pytd PYTORCH_TEACHER_DATASET] [--dataset DATASET] [-at]
+                                                      [--use-hdf5-extraction USE_HDF5_EXTRACTION]
+
+Load/extract image features
+
+optional arguments:
+  -h, --help
+        show this help message and exit
+
+Main ParlAI Arguments:
+  -o, --init-opt INIT_OPT
+        Path to json file of options. Note: Further Command-line arguments override file-based options. (default: None)
+  -v, --show-advanced-args
+        Show hidden command line options (advanced users only) (default: False)
+  -t, --task TASK
+        ParlAI task(s), e.g. &quot;babi:Task1&quot; or &quot;babi,cbt&quot; (default: None)
+  -dt, --datatype {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}
+        choose from: train, train:ordered, valid, test. to stream data add &quot;:stream&quot; to any option (e.g., train:stream). by
+        default: train is random with replacement, valid is ordered, test is ordered. (default: train)
+  -nt, --numthreads NUMTHREADS
+        number of threads. Used for hogwild if batchsize is 1, else for number of threads in threadpool loading, (default: 1)
+  -bs, --batchsize BATCHSIZE
+        batch size for minibatch training schemes (default: 1)
+  -dp, --datapath DATAPATH
+        path to datasets, defaults to {parlai_dir}/data (default: None)
+
+PytorchData Arguments:
+  -pyt, --pytorch-teacher-task PYTORCH_TEACHER_TASK
+        Use the PytorchDataTeacher for multiprocessed data loading with a standard ParlAI task, e.g. &quot;babi:Task1k&quot; (default: None)
+  -pytd, --pytorch-teacher-dataset PYTORCH_TEACHER_DATASET
+        Use the PytorchDataTeacher for multiprocessed data loading with a pytorch Dataset, e.g. &quot;vqa_1&quot; or &quot;flickr30k&quot; (default:
+        None)
+
+Image Extraction:
+  --dataset DATASET
+        Pytorch Dataset; if specified, will save the images in one hdf5 file according to how they are returned by the specified
+        dataset (default: None)
+  -at, --attention
+        Whether to extract image features with attention (Note - this is specifically for the mlb_vqa model) (default: False)
+  --use-hdf5-extraction USE_HDF5_EXTRACTION
+        Whether to extract images into an hdf5 dataset (default: False)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="module-parlai.scripts.eval_ppl">
+<span id="eval-ppl"></span><h2>eval_ppl<a class="headerlink" href="#module-parlai.scripts.eval_ppl" title="Permalink to this headline">¶</a></h2>
+<p>Base script for model-agnostic perplexity evaluation.</p>
+<p>While resistent to choices of model-added tokens like START and END, this
+requires fixing a specific vocabulary. Be sure to use the same build_dict
+parameters for all comparisons.</p>
+<p>Tokens which are present in the data being evaluated but not in the vocabulary
+do not contribute to the perplexity score, but they are still sent to the model
+so the model can update its state. If the token is in the vocabulary but
+receives a probability score of zero by the model, the model will get a
+perplexity score of <cite>inf</cite>.</p>
+<p>This requires agents to implement the following function:</p>
+<dl>
+<dt>def next_word_probability(self, partial_out):</dt><dd><p>Return probability distribution over next words given a partial true output.
+This is used to calculate the per-word perplexity.</p>
+<p>Arguments:
+partial_out – list of previous “true” words</p>
+<p>Returns a dict, where each key is a word and each value is a probability
+score for that word. Unset keys assume a probability of zero.</p>
+<p>e.g.
+(previous observation: {‘text’: ‘Run test program.’})
+[] =&gt; {‘hello’: 1.0}
+[‘hello’] =&gt; {‘world’: 1.0}</p>
+</dd>
+</dl>
+<div class="section" id="id11">
+<h3>CLI help<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: python -m parlai.scripts.eval_ppl [-h] [-o INIT_OPT] [-v] [-t TASK]
+                                         [-dt {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}]
+                                         [-nt NUMTHREADS] [-bs BATCHSIZE] [-dp DATAPATH] [-m MODEL] [-mf MODEL_FILE]
+                                         [-im INIT_MODEL] [-pyt PYTORCH_TEACHER_TASK] [-pytd PYTORCH_TEACHER_DATASET]
+
+Evaluate perplexity
+
+optional arguments:
+  -h, --help
+        show this help message and exit
+
+Main ParlAI Arguments:
+  -o, --init-opt INIT_OPT
+        Path to json file of options. Note: Further Command-line arguments override file-based options. (default: None)
+  -v, --show-advanced-args
+        Show hidden command line options (advanced users only) (default: False)
+  -t, --task TASK
+        ParlAI task(s), e.g. &quot;babi:Task1&quot; or &quot;babi,cbt&quot; (default: None)
+  -dt, --datatype {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}
+        choose from: train, train:ordered, valid, test. to stream data add &quot;:stream&quot; to any option (e.g., train:stream). by
+        default: train is random with replacement, valid is ordered, test is ordered. (default: valid)
+  -nt, --numthreads NUMTHREADS
+        number of threads. Used for hogwild if batchsize is 1, else for number of threads in threadpool loading, (default: 1)
+  -bs, --batchsize BATCHSIZE
+        batch size for minibatch training schemes (default: 1)
+  -dp, --datapath DATAPATH
+        path to datasets, defaults to {parlai_dir}/data (default: None)
+
+ParlAI Model Arguments:
+  -m, --model MODEL
+        the model class name. can match parlai/agents/&lt;model&gt; for agents in that directory, or can provide a fully specified
+        module for `from X import Y` via `-m X:Y` (e.g. `-m parlai.agents.seq2seq.seq2seq:Seq2SeqAgent`) (default: None)
+  -mf, --model-file MODEL_FILE
+        model file name for loading and saving models (default: None)
+  -im, --init-model INIT_MODEL
+        load model weights and dict from this file (default: None)
+
+PytorchData Arguments:
+  -pyt, --pytorch-teacher-task PYTORCH_TEACHER_TASK
+        Use the PytorchDataTeacher for multiprocessed data loading with a standard ParlAI task, e.g. &quot;babi:Task1k&quot; (default: None)
+  -pytd, --pytorch-teacher-dataset PYTORCH_TEACHER_DATASET
+        Use the PytorchDataTeacher for multiprocessed data loading with a pytorch Dataset, e.g. &quot;vqa_1&quot; or &quot;flickr30k&quot; (default:
+        None)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="module-parlai.scripts.eval_wordstat">
+<span id="eval-wordstat"></span><h2>eval_wordstat<a class="headerlink" href="#module-parlai.scripts.eval_wordstat" title="Permalink to this headline">¶</a></h2>
+<p>This helper script can be used alone with modelfile and task: the output will
+contain the word statistics of the model outputs.
+One can also use the function defined here in other places in order to get such
+statistic for any agent given the agent object (with corr. dict) and a
+sequence.</p>
+<p>Additionally provides function get_word_stats that can be used in other parts
+of runtime code since it depends only on the agent object. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">parlai.scripts.eval_wordstat</span> <span class="k">import</span> <span class="n">get_word_stats</span>
+<span class="n">reqs</span><span class="p">,</span> <span class="n">cnt</span> <span class="o">=</span> <span class="n">get_word_stats</span><span class="p">(</span><span class="n">predictions</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="id12">
+<h3>Examples<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>eval_wordstat.py -mf data/model -t convai2:self --freq-bins <span class="m">10</span>,100,1000
+</pre></div>
+</div>
+</div>
+<div class="section" id="id13">
+<h3>CLI help<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: python -m parlai.scripts.eval_wordstat [-h] [-o INIT_OPT] [-v] [-t TASK]
+                                              [-dt {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}]
+                                              [-nt NUMTHREADS] [-bs BATCHSIZE] [-dp DATAPATH] [-m MODEL] [-mf MODEL_FILE]
+                                              [-im INIT_MODEL] [-pyt PYTORCH_TEACHER_TASK] [-pytd PYTORCH_TEACHER_DATASET]
+                                              [-ne NUM_EXAMPLES] [-ltim LOG_EVERY_N_SECS] [-ed EXTERNAL_DICT] [-fb FREQ_BINS]
+                                              [-dup DUMP_PREDICTIONS_PATH] [-cun COMPUTE_UNIQUE] [-tblog TENSORBOARD_LOG]
+
+compute statistics from model predictions
+
+optional arguments:
+  -h, --help
+        show this help message and exit
+  -ne, --num-examples NUM_EXAMPLES
+  -ltim, --log-every-n-secs LOG_EVERY_N_SECS
+  -ed, --external-dict EXTERNAL_DICT
+        External dictionary for stat computation (default: None)
+  -fb, --freq-bins FREQ_BINS
+        Bins boundaries for rare words stat (default: 0,100,1000,10000)
+  -dup, --dump-predictions-path DUMP_PREDICTIONS_PATH
+        Dump predictions into file (default: None)
+  -cun, --compute-unique COMPUTE_UNIQUE
+        Compute % of unique responses from the model (default: True)
+
+Main ParlAI Arguments:
+  -o, --init-opt INIT_OPT
+        Path to json file of options. Note: Further Command-line arguments override file-based options. (default: None)
+  -v, --show-advanced-args
+        Show hidden command line options (advanced users only) (default: False)
+  -t, --task TASK
+        ParlAI task(s), e.g. &quot;babi:Task1&quot; or &quot;babi,cbt&quot; (default: None)
+  -dt, --datatype {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}
+        choose from: train, train:ordered, valid, test. to stream data add &quot;:stream&quot; to any option (e.g., train:stream). by
+        default: train is random with replacement, valid is ordered, test is ordered. (default: valid)
+  -nt, --numthreads NUMTHREADS
+        number of threads. Used for hogwild if batchsize is 1, else for number of threads in threadpool loading, (default: 1)
+  -bs, --batchsize BATCHSIZE
+        batch size for minibatch training schemes (default: 1)
+  -dp, --datapath DATAPATH
+        path to datasets, defaults to {parlai_dir}/data (default: None)
+
+ParlAI Model Arguments:
+  -m, --model MODEL
+        the model class name. can match parlai/agents/&lt;model&gt; for agents in that directory, or can provide a fully specified
+        module for `from X import Y` via `-m X:Y` (e.g. `-m parlai.agents.seq2seq.seq2seq:Seq2SeqAgent`) (default: repeat_label)
+  -mf, --model-file MODEL_FILE
+        model file name for loading and saving models (default: None)
+  -im, --init-model INIT_MODEL
+        load model weights and dict from this file (default: None)
+
+PytorchData Arguments:
+  -pyt, --pytorch-teacher-task PYTORCH_TEACHER_TASK
+        Use the PytorchDataTeacher for multiprocessed data loading with a standard ParlAI task, e.g. &quot;babi:Task1k&quot; (default: None)
+  -pytd, --pytorch-teacher-dataset PYTORCH_TEACHER_DATASET
+        Use the PytorchDataTeacher for multiprocessed data loading with a pytorch Dataset, e.g. &quot;vqa_1&quot; or &quot;flickr30k&quot; (default:
+        None)
+
+Tensorboard Arguments:
+  -tblog, --tensorboard-log TENSORBOARD_LOG
+        Tensorboard logging of metrics, default is False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="module-parlai.scripts.interactive">
+<span id="interactive"></span><h2>interactive<a class="headerlink" href="#module-parlai.scripts.interactive" title="Permalink to this headline">¶</a></h2>
+<p>Basic script which allows local human keyboard input to talk to a trained model.</p>
+<div class="section" id="id14">
+<h3>Examples<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python examples/interactive.py -m drqa -mf <span class="s2">&quot;models:drqa/squad/model&quot;</span>
+</pre></div>
+</div>
+<p>When prompted, enter something like: <code class="docutils literal notranslate"><span class="pre">Bob</span> <span class="pre">is</span> <span class="pre">Blue.\nWhat</span> <span class="pre">is</span> <span class="pre">Bob?</span></code></p>
+<p>Input is often model or task specific, but in drqa, it is always
+<code class="docutils literal notranslate"><span class="pre">context</span> <span class="pre">'\n'</span> <span class="pre">question</span></code>.</p>
+</div>
+<div class="section" id="id15">
+<h3>CLI help<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: python -m parlai.scripts.interactive [-h] [-o INIT_OPT] [-v] [-t TASK]
+                                            [-dt {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}]
+                                            [-nt NUMTHREADS] [-bs BATCHSIZE] [-dp DATAPATH] [-m MODEL] [-mf MODEL_FILE]
+                                            [-im INIT_MODEL] [-d DISPLAY_EXAMPLES] [--display-prettify DISPLAY_PRETTIFY]
+                                            [--display-ignore-fields DISPLAY_IGNORE_FIELDS] [-it INTERACTIVE_TASK]
+                                            [-fixedCands LOCAL_HUMAN_CANDIDATES_FILE] [--single-turn SINGLE_TURN]
+
+Interactive chat with a model
+
+optional arguments:
+  -h, --help
+        show this help message and exit
+  -d, --display-examples DISPLAY_EXAMPLES
+  --display-prettify DISPLAY_PRETTIFY
+        Set to use a prettytable when displaying examples with text candidates (default: False)
+  --display-ignore-fields DISPLAY_IGNORE_FIELDS
+        Do not display these fields (default: label_candidates,text_candidates)
+  -it, --interactive-task INTERACTIVE_TASK
+        Create interactive version of task (default: True)
+
+Main ParlAI Arguments:
+  -o, --init-opt INIT_OPT
+        Path to json file of options. Note: Further Command-line arguments override file-based options. (default: None)
+  -v, --show-advanced-args
+        Show hidden command line options (advanced users only) (default: False)
+  -t, --task TASK
+        ParlAI task(s), e.g. &quot;babi:Task1&quot; or &quot;babi,cbt&quot; (default: interactive)
+  -dt, --datatype {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}
+        choose from: train, train:ordered, valid, test. to stream data add &quot;:stream&quot; to any option (e.g., train:stream). by
+        default: train is random with replacement, valid is ordered, test is ordered. (default: train)
+  -nt, --numthreads NUMTHREADS
+        number of threads. Used for hogwild if batchsize is 1, else for number of threads in threadpool loading, (default: 1)
+  -bs, --batchsize BATCHSIZE
+        batch size for minibatch training schemes (default: 1)
+  -dp, --datapath DATAPATH
+        path to datasets, defaults to {parlai_dir}/data (default: None)
+
+ParlAI Model Arguments:
+  -m, --model MODEL
+        the model class name. can match parlai/agents/&lt;model&gt; for agents in that directory, or can provide a fully specified
+        module for `from X import Y` via `-m X:Y` (e.g. `-m parlai.agents.seq2seq.seq2seq:Seq2SeqAgent`) (default: None)
+  -mf, --model-file MODEL_FILE
+        model file name for loading and saving models (default: None)
+  -im, --init-model INIT_MODEL
+        load model weights and dict from this file (default: None)
+
+Local Human Arguments:
+  -fixedCands, --local-human-candidates-file LOCAL_HUMAN_CANDIDATES_FILE
+        File of label_candidates to send to other agent (default: None)
+  --single-turn SINGLE_TURN
+        If on, assumes single turn episodes. (default: False)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="module-parlai.scripts.detect_offensive_language">
+<span id="detect-offensive-language"></span><h2>detect_offensive_language<a class="headerlink" href="#module-parlai.scripts.detect_offensive_language" title="Permalink to this headline">¶</a></h2>
+<p>Basic example which iterates through the tasks specified and
+checks them for offensive language.</p>
+<div class="section" id="id16">
+<h3>Examples<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python -m parlai.scripts.detect_offensive_language -t <span class="s2">&quot;convai_chitchat&quot;</span> --display-examples True
+</pre></div>
+</div>
+</div>
+<div class="section" id="id17">
+<h3>CLI help<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: python -m parlai.scripts.detect_offensive_language [-h] [-o INIT_OPT] [-v] [-t TASK]
+                                                          [-dt {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}]
+                                                          [-nt NUMTHREADS] [-bs BATCHSIZE] [-dp DATAPATH] [-m MODEL]
+                                                          [-mf MODEL_FILE] [-im INIT_MODEL] [-pyt PYTORCH_TEACHER_TASK]
+                                                          [-pytd PYTORCH_TEACHER_DATASET] [-ltim LOG_EVERY_N_SECS]
+                                                          [-d DISPLAY_EXAMPLES]
+
+Check task for offensive language
+
+optional arguments:
+  -h, --help
+        show this help message and exit
+  -ltim, --log-every-n-secs LOG_EVERY_N_SECS
+  -d, --display-examples DISPLAY_EXAMPLES
+
+Main ParlAI Arguments:
+  -o, --init-opt INIT_OPT
+        Path to json file of options. Note: Further Command-line arguments override file-based options. (default: None)
+  -v, --show-advanced-args
+        Show hidden command line options (advanced users only) (default: False)
+  -t, --task TASK
+        ParlAI task(s), e.g. &quot;babi:Task1&quot; or &quot;babi,cbt&quot; (default: None)
+  -dt, --datatype {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}
+        choose from: train, train:ordered, valid, test. to stream data add &quot;:stream&quot; to any option (e.g., train:stream). by
+        default: train is random with replacement, valid is ordered, test is ordered. (default: train:ordered)
+  -nt, --numthreads NUMTHREADS
+        number of threads. Used for hogwild if batchsize is 1, else for number of threads in threadpool loading, (default: 1)
+  -bs, --batchsize BATCHSIZE
+        batch size for minibatch training schemes (default: 1)
+  -dp, --datapath DATAPATH
+        path to datasets, defaults to {parlai_dir}/data (default: None)
+
+ParlAI Model Arguments:
+  -m, --model MODEL
+        the model class name. can match parlai/agents/&lt;model&gt; for agents in that directory, or can provide a fully specified
+        module for `from X import Y` via `-m X:Y` (e.g. `-m parlai.agents.seq2seq.seq2seq:Seq2SeqAgent`) (default: repeat_query)
+  -mf, --model-file MODEL_FILE
+        model file name for loading and saving models (default: None)
+  -im, --init-model INIT_MODEL
+        load model weights and dict from this file (default: None)
+
+PytorchData Arguments:
+  -pyt, --pytorch-teacher-task PYTORCH_TEACHER_TASK
+        Use the PytorchDataTeacher for multiprocessed data loading with a standard ParlAI task, e.g. &quot;babi:Task1k&quot; (default: None)
+  -pytd, --pytorch-teacher-dataset PYTORCH_TEACHER_DATASET
+        Use the PytorchDataTeacher for multiprocessed data loading with a pytorch Dataset, e.g. &quot;vqa_1&quot; or &quot;flickr30k&quot; (default:
+        None)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="module-parlai.scripts.verify_data">
+<span id="verify-data"></span><h2>verify_data<a class="headerlink" href="#module-parlai.scripts.verify_data" title="Permalink to this headline">¶</a></h2>
+<p>Verify data doesn’t have basic mistakes, like empty text fields
+or empty label candidates.</p>
+<div class="section" id="id18">
+<h3>Examples<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python parlai/scripts/verify_data.py -t convai2 -dt train:ordered
+</pre></div>
+</div>
+</div>
+<div class="section" id="id19">
+<h3>CLI help<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: python -m parlai.scripts.verify_data [-h] [-o INIT_OPT] [-v] [-t TASK]
+                                            [-dt {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}]
+                                            [-nt NUMTHREADS] [-bs BATCHSIZE] [-dp DATAPATH] [-m MODEL] [-mf MODEL_FILE]
+                                            [-im INIT_MODEL] [-pyt PYTORCH_TEACHER_TASK] [-pytd PYTORCH_TEACHER_DATASET]
+                                            [-ltim LOG_EVERY_N_SECS] [-d DISPLAY_EXAMPLES]
+
+Lint for ParlAI tasks
+
+optional arguments:
+  -h, --help
+        show this help message and exit
+  -ltim, --log-every-n-secs LOG_EVERY_N_SECS
+  -d, --display-examples DISPLAY_EXAMPLES
+
+Main ParlAI Arguments:
+  -o, --init-opt INIT_OPT
+        Path to json file of options. Note: Further Command-line arguments override file-based options. (default: None)
+  -v, --show-advanced-args
+        Show hidden command line options (advanced users only) (default: False)
+  -t, --task TASK
+        ParlAI task(s), e.g. &quot;babi:Task1&quot; or &quot;babi,cbt&quot; (default: None)
+  -dt, --datatype {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}
+        choose from: train, train:ordered, valid, test. to stream data add &quot;:stream&quot; to any option (e.g., train:stream). by
+        default: train is random with replacement, valid is ordered, test is ordered. (default: train:stream)
+  -nt, --numthreads NUMTHREADS
+        number of threads. Used for hogwild if batchsize is 1, else for number of threads in threadpool loading, (default: 1)
+  -bs, --batchsize BATCHSIZE
+        batch size for minibatch training schemes (default: 1)
+  -dp, --datapath DATAPATH
+        path to datasets, defaults to {parlai_dir}/data (default: None)
+
+ParlAI Model Arguments:
+  -m, --model MODEL
+        the model class name. can match parlai/agents/&lt;model&gt; for agents in that directory, or can provide a fully specified
+        module for `from X import Y` via `-m X:Y` (e.g. `-m parlai.agents.seq2seq.seq2seq:Seq2SeqAgent`) (default: None)
+  -mf, --model-file MODEL_FILE
+        model file name for loading and saving models (default: None)
+  -im, --init-model INIT_MODEL
+        load model weights and dict from this file (default: None)
+
+PytorchData Arguments:
+  -pyt, --pytorch-teacher-task PYTORCH_TEACHER_TASK
+        Use the PytorchDataTeacher for multiprocessed data loading with a standard ParlAI task, e.g. &quot;babi:Task1k&quot; (default: None)
+  -pytd, --pytorch-teacher-dataset PYTORCH_TEACHER_DATASET
+        Use the PytorchDataTeacher for multiprocessed data loading with a pytorch Dataset, e.g. &quot;vqa_1&quot; or &quot;flickr30k&quot; (default:
+        None)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="module-parlai.scripts.multiprocessing_train">
+<span id="multiprocessing-train"></span><h2>multiprocessing_train<a class="headerlink" href="#module-parlai.scripts.multiprocessing_train" title="Permalink to this headline">¶</a></h2>
+<p>Main launch script for single-host, multi-GPU training.</p>
+<p>This is a drop-in replacement for train_model.py.  This script will launch N
+subprocess, each which runs the full training loop independently.</p>
+<p>Uses torch.nn.parallel.DistributedDataParallel for its main uses.  Agents must
+specifically implement the wrapper of DistributedDatParallel, but all
+TorchRankerAgents and TorchGeneratorAgents support this.</p>
+<div class="section" id="id20">
+<h3>CLI help<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: python -m parlai.scripts.multiprocessing_train [-h] [-o INIT_OPT] [-v] [-t TASK]
+                                                      [-dt {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}]
+                                                      [-nt NUMTHREADS] [-bs BATCHSIZE] [-dp DATAPATH] [-m MODEL] [-mf MODEL_FILE]
+                                                      [-im INIT_MODEL] [-et EVALTASK] [-eps NUM_EPOCHS] [-ttim MAX_TRAIN_TIME]
+                                                      [-vtim VALIDATION_EVERY_N_SECS] [-stim SAVE_EVERY_N_SECS]
+                                                      [-sval SAVE_AFTER_VALID] [-veps VALIDATION_EVERY_N_EPOCHS]
+                                                      [-vp VALIDATION_PATIENCE] [-vmt VALIDATION_METRIC] [-vmm {max,min}]
+                                                      [-micro AGGREGATE_MICRO] [-mcs METRICS] [-tblog TENSORBOARD_LOG]
+                                                      [-pyt PYTORCH_TEACHER_TASK] [-pytd PYTORCH_TEACHER_DATASET]
+                                                      [--distributed-world-size DISTRIBUTED_WORLD_SIZE]
+
+Train a model
+
+optional arguments:
+  -h, --help
+        show this help message and exit
+
+Main ParlAI Arguments:
+  -o, --init-opt INIT_OPT
+        Path to json file of options. Note: Further Command-line arguments override file-based options. (default: None)
+  -v, --show-advanced-args
+        Show hidden command line options (advanced users only) (default: False)
+  -t, --task TASK
+        ParlAI task(s), e.g. &quot;babi:Task1&quot; or &quot;babi,cbt&quot; (default: None)
+  -dt, --datatype {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}
+        choose from: train, train:ordered, valid, test. to stream data add &quot;:stream&quot; to any option (e.g., train:stream). by
+        default: train is random with replacement, valid is ordered, test is ordered. (default: train)
+  -nt, --numthreads NUMTHREADS
+        number of threads. Used for hogwild if batchsize is 1, else for number of threads in threadpool loading, (default: 1)
+  -bs, --batchsize BATCHSIZE
+        batch size for minibatch training schemes (default: 1)
+  -dp, --datapath DATAPATH
+        path to datasets, defaults to {parlai_dir}/data (default: None)
+
+ParlAI Model Arguments:
+  -m, --model MODEL
+        the model class name. can match parlai/agents/&lt;model&gt; for agents in that directory, or can provide a fully specified
+        module for `from X import Y` via `-m X:Y` (e.g. `-m parlai.agents.seq2seq.seq2seq:Seq2SeqAgent`) (default: None)
+  -mf, --model-file MODEL_FILE
+        model file name for loading and saving models (default: None)
+  -im, --init-model INIT_MODEL
+        load model weights and dict from this file (default: None)
+
+Training Loop Arguments:
+  -et, --evaltask EVALTASK
+        task to use for valid/test (defaults to the one used for training) (default: None)
+  -eps, --num-epochs NUM_EPOCHS
+  -ttim, --max-train-time MAX_TRAIN_TIME
+  -vtim, --validation-every-n-secs VALIDATION_EVERY_N_SECS
+        Validate every n seconds. Saves model to model_file (if set) whenever best val metric is found (default: -1)
+  -stim, --save-every-n-secs SAVE_EVERY_N_SECS
+        Saves the model to model_file.checkpoint after every n seconds (default -1, never). (default: -1)
+  -sval, --save-after-valid SAVE_AFTER_VALID
+        Saves the model to model_file.checkpoint after every validation (default False).
+  -veps, --validation-every-n-epochs VALIDATION_EVERY_N_EPOCHS
+        Validate every n epochs. Saves model to model_file (if set) whenever best val metric is found (default: -1)
+  -vp, --validation-patience VALIDATION_PATIENCE
+        number of iterations of validation where result does not improve before we stop training (default: 10)
+  -vmt, --validation-metric VALIDATION_METRIC
+        key into report table for selecting best validation (default: accuracy)
+  -vmm, --validation-metric-mode {max,min}
+        how to optimize validation metric (max or min) (default: None)
+  -micro, --aggregate-micro AGGREGATE_MICRO
+        If multitasking, average metrics over the number of examples. If false, averages over the number of tasks. (default:
+        False)
+  -mcs, --metrics METRICS
+        list of metrics to show/compute, e.g. all, default,or give a list split by , like ppl,f1,accuracy,hits@1,rouge,bleuthe
+        rouge metrics will be computed as rouge-1, rouge-2 and rouge-l (default: default)
+
+Tensorboard Arguments:
+  -tblog, --tensorboard-log TENSORBOARD_LOG
+        Tensorboard logging of metrics, default is False
+
+PytorchData Arguments:
+  -pyt, --pytorch-teacher-task PYTORCH_TEACHER_TASK
+        Use the PytorchDataTeacher for multiprocessed data loading with a standard ParlAI task, e.g. &quot;babi:Task1k&quot; (default: None)
+  -pytd, --pytorch-teacher-dataset PYTORCH_TEACHER_DATASET
+        Use the PytorchDataTeacher for multiprocessed data loading with a pytorch Dataset, e.g. &quot;vqa_1&quot; or &quot;flickr30k&quot; (default:
+        None)
+
+Distributed Training:
+  --distributed-world-size DISTRIBUTED_WORLD_SIZE
+        Number of workers. (default: 0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="module-parlai.scripts.interactive_web">
+<span id="interactive-web"></span><h2>interactive_web<a class="headerlink" href="#module-parlai.scripts.interactive_web" title="Permalink to this headline">¶</a></h2>
+<p>Talk with a model using a web UI.</p>
+<div class="section" id="id21">
+<h3>CLI help<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: python -m parlai.scripts.interactive_web [-h] [-o INIT_OPT] [-v] [-t TASK]
+                                                [-dt {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}]
+                                                [-nt NUMTHREADS] [-bs BATCHSIZE] [-dp DATAPATH] [-m MODEL] [-mf MODEL_FILE]
+                                                [-im INIT_MODEL] [-d DISPLAY_EXAMPLES] [--display-prettify DISPLAY_PRETTIFY]
+                                                [--display-ignore-fields DISPLAY_IGNORE_FIELDS] [-it INTERACTIVE_TASK]
+                                                [-fixedCands LOCAL_HUMAN_CANDIDATES_FILE] [--single-turn SINGLE_TURN]
+
+Interactive chat with a model
+
+optional arguments:
+  -h, --help
+        show this help message and exit
+  -d, --display-examples DISPLAY_EXAMPLES
+  --display-prettify DISPLAY_PRETTIFY
+        Set to use a prettytable when displaying examples with text candidates (default: False)
+  --display-ignore-fields DISPLAY_IGNORE_FIELDS
+        Do not display these fields (default: label_candidates,text_candidates)
+  -it, --interactive-task INTERACTIVE_TASK
+        Create interactive version of task (default: True)
+
+Main ParlAI Arguments:
+  -o, --init-opt INIT_OPT
+        Path to json file of options. Note: Further Command-line arguments override file-based options. (default: None)
+  -v, --show-advanced-args
+        Show hidden command line options (advanced users only) (default: False)
+  -t, --task TASK
+        ParlAI task(s), e.g. &quot;babi:Task1&quot; or &quot;babi,cbt&quot; (default: interactive)
+  -dt, --datatype {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}
+        choose from: train, train:ordered, valid, test. to stream data add &quot;:stream&quot; to any option (e.g., train:stream). by
+        default: train is random with replacement, valid is ordered, test is ordered. (default: train)
+  -nt, --numthreads NUMTHREADS
+        number of threads. Used for hogwild if batchsize is 1, else for number of threads in threadpool loading, (default: 1)
+  -bs, --batchsize BATCHSIZE
+        batch size for minibatch training schemes (default: 1)
+  -dp, --datapath DATAPATH
+        path to datasets, defaults to {parlai_dir}/data (default: None)
+
+ParlAI Model Arguments:
+  -m, --model MODEL
+        the model class name. can match parlai/agents/&lt;model&gt; for agents in that directory, or can provide a fully specified
+        module for `from X import Y` via `-m X:Y` (e.g. `-m parlai.agents.seq2seq.seq2seq:Seq2SeqAgent`) (default: None)
+  -mf, --model-file MODEL_FILE
+        model file name for loading and saving models (default: None)
+  -im, --init-model INIT_MODEL
+        load model weights and dict from this file (default: None)
+
+Local Human Arguments:
+  -fixedCands, --local-human-candidates-file LOCAL_HUMAN_CANDIDATES_FILE
+        File of label_candidates to send to other agent (default: None)
+  --single-turn SINGLE_TURN
+        If on, assumes single turn episodes. (default: False)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="module-parlai.scripts.eval_model">
+<span id="eval-model"></span><h2>eval_model<a class="headerlink" href="#module-parlai.scripts.eval_model" title="Permalink to this headline">¶</a></h2>
+<p>Basic example which iterates through the tasks specified and
+evaluates the given model on them.</p>
+<div class="section" id="id22">
+<h3>Examples<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python eval_model.py -t <span class="s2">&quot;babi:Task1k:2&quot;</span> -m <span class="s2">&quot;repeat_label&quot;</span>
+python eval_model.py -t <span class="s2">&quot;#CornellMovie&quot;</span> -m <span class="s2">&quot;ir_baseline&quot;</span> -mp <span class="s2">&quot;-lp 0.5&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id23">
+<h3>CLI help<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: python -m parlai.scripts.eval_model [-h] [-o INIT_OPT] [-v] [-t TASK]
+                                           [-dt {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}]
+                                           [-nt NUMTHREADS] [-bs BATCHSIZE] [-dp DATAPATH] [-m MODEL] [-mf MODEL_FILE]
+                                           [-im INIT_MODEL] [-pyt PYTORCH_TEACHER_TASK] [-pytd PYTORCH_TEACHER_DATASET]
+                                           [-ne NUM_EXAMPLES] [-d DISPLAY_EXAMPLES] [-ltim LOG_EVERY_N_SECS]
+                                           [-micro AGGREGATE_MICRO] [-mcs METRICS] [-tblog TENSORBOARD_LOG]
+
+Evaluate a model
+
+optional arguments:
+  -h, --help
+        show this help message and exit
+  -ne, --num-examples NUM_EXAMPLES
+  -d, --display-examples DISPLAY_EXAMPLES
+  -ltim, --log-every-n-secs LOG_EVERY_N_SECS
+  -micro, --aggregate-micro AGGREGATE_MICRO
+        If multitasking, average metrics over the number of examples. If false, averages over the number of tasks. (default:
+        False)
+  -mcs, --metrics METRICS
+        list of metrics to show/compute, e.g. all, default,or give a list split by , like ppl,f1,accuracy,hits@1,rouge,bleuthe
+        rouge metrics will be computed as rouge-1, rouge-2 and rouge-l (default: default)
+
+Main ParlAI Arguments:
+  -o, --init-opt INIT_OPT
+        Path to json file of options. Note: Further Command-line arguments override file-based options. (default: None)
+  -v, --show-advanced-args
+        Show hidden command line options (advanced users only) (default: False)
+  -t, --task TASK
+        ParlAI task(s), e.g. &quot;babi:Task1&quot; or &quot;babi,cbt&quot; (default: None)
+  -dt, --datatype {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}
+        choose from: train, train:ordered, valid, test. to stream data add &quot;:stream&quot; to any option (e.g., train:stream). by
+        default: train is random with replacement, valid is ordered, test is ordered. (default: valid)
+  -nt, --numthreads NUMTHREADS
+        number of threads. Used for hogwild if batchsize is 1, else for number of threads in threadpool loading, (default: 1)
+  -bs, --batchsize BATCHSIZE
+        batch size for minibatch training schemes (default: 1)
+  -dp, --datapath DATAPATH
+        path to datasets, defaults to {parlai_dir}/data (default: None)
+
+ParlAI Model Arguments:
+  -m, --model MODEL
+        the model class name. can match parlai/agents/&lt;model&gt; for agents in that directory, or can provide a fully specified
+        module for `from X import Y` via `-m X:Y` (e.g. `-m parlai.agents.seq2seq.seq2seq:Seq2SeqAgent`) (default: None)
+  -mf, --model-file MODEL_FILE
+        model file name for loading and saving models (default: None)
+  -im, --init-model INIT_MODEL
+        load model weights and dict from this file (default: None)
+
+PytorchData Arguments:
+  -pyt, --pytorch-teacher-task PYTORCH_TEACHER_TASK
+        Use the PytorchDataTeacher for multiprocessed data loading with a standard ParlAI task, e.g. &quot;babi:Task1k&quot; (default: None)
+  -pytd, --pytorch-teacher-dataset PYTORCH_TEACHER_DATASET
+        Use the PytorchDataTeacher for multiprocessed data loading with a pytorch Dataset, e.g. &quot;vqa_1&quot; or &quot;flickr30k&quot; (default:
+        None)
+
+Tensorboard Arguments:
+  -tblog, --tensorboard-log TENSORBOARD_LOG
+        Tensorboard logging of metrics, default is False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="module-parlai.scripts.build_pytorch_data">
+<span id="build-pytorch-data"></span><h2>build_pytorch_data<a class="headerlink" href="#module-parlai.scripts.build_pytorch_data" title="Permalink to this headline">¶</a></h2>
+<p>Generates a pytorch data file from the training data; for use in the
+PytorchDataTeacher.</p>
+<p>Note that with our given implementation of batch act, episodes are compressed
+such that each episode is one example for a model.</p>
+<p>One can set the <code class="docutils literal notranslate"><span class="pre">--context-len</span></code> flag to specify how many past utterances
+are used in a flattened episode.</p>
+<div class="section" id="id24">
+<h3>CLI help<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: python -m parlai.scripts.build_pytorch_data [-h] [-o INIT_OPT] [-v] [-t TASK]
+                                                   [-dt {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}]
+                                                   [-nt NUMTHREADS] [-bs BATCHSIZE] [-dp DATAPATH] [-m MODEL] [-mf MODEL_FILE]
+                                                   [-im INIT_MODEL] [-pyt PYTORCH_TEACHER_TASK] [-pytd PYTORCH_TEACHER_DATASET]
+
+Builds a pytorch data file.
+
+optional arguments:
+  -h, --help
+        show this help message and exit
+
+Main ParlAI Arguments:
+  -o, --init-opt INIT_OPT
+        Path to json file of options. Note: Further Command-line arguments override file-based options. (default: None)
+  -v, --show-advanced-args
+        Show hidden command line options (advanced users only) (default: False)
+  -t, --task TASK
+        ParlAI task(s), e.g. &quot;babi:Task1&quot; or &quot;babi,cbt&quot; (default: None)
+  -dt, --datatype {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}
+        choose from: train, train:ordered, valid, test. to stream data add &quot;:stream&quot; to any option (e.g., train:stream). by
+        default: train is random with replacement, valid is ordered, test is ordered. (default: train)
+  -nt, --numthreads NUMTHREADS
+        number of threads. Used for hogwild if batchsize is 1, else for number of threads in threadpool loading, (default: 1)
+  -bs, --batchsize BATCHSIZE
+        batch size for minibatch training schemes (default: 1)
+  -dp, --datapath DATAPATH
+        path to datasets, defaults to {parlai_dir}/data (default: None)
+
+ParlAI Model Arguments:
+  -m, --model MODEL
+        the model class name. can match parlai/agents/&lt;model&gt; for agents in that directory, or can provide a fully specified
+        module for `from X import Y` via `-m X:Y` (e.g. `-m parlai.agents.seq2seq.seq2seq:Seq2SeqAgent`) (default: None)
+  -mf, --model-file MODEL_FILE
+        model file name for loading and saving models (default: None)
+  -im, --init-model INIT_MODEL
+        load model weights and dict from this file (default: None)
+
+PytorchData Arguments:
+  -pyt, --pytorch-teacher-task PYTORCH_TEACHER_TASK
+        Use the PytorchDataTeacher for multiprocessed data loading with a standard ParlAI task, e.g. &quot;babi:Task1k&quot; (default: None)
+  -pytd, --pytorch-teacher-dataset PYTORCH_TEACHER_DATASET
+        Use the PytorchDataTeacher for multiprocessed data loading with a pytorch Dataset, e.g. &quot;vqa_1&quot; or &quot;flickr30k&quot; (default:
+        None)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="module-parlai.scripts.profile_train">
+<span id="profile-train"></span><h2>profile_train<a class="headerlink" href="#module-parlai.scripts.profile_train" title="Permalink to this headline">¶</a></h2>
+<p>Run the python or pytorch profiler and prints the results.</p>
+<div class="section" id="id25">
+<h3>Examples<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
+<p>To make sure that bAbI task 1 (1k exs) loads one can run and to
+see a few of them:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python examples/profile.py -t babi:task1k:1 -m seq2seq -e <span class="m">0</span>.1 --dict-file /tmp/dict
+</pre></div>
+</div>
+</div>
+<div class="section" id="id26">
+<h3>CLI help<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: python -m parlai.scripts.profile_train [-h] [-o INIT_OPT] [-v] [-t TASK]
+                                              [-dt {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}]
+                                              [-nt NUMTHREADS] [-bs BATCHSIZE] [-dp DATAPATH] [-m MODEL] [-mf MODEL_FILE]
+                                              [-im INIT_MODEL] [-et EVALTASK] [-eps NUM_EPOCHS] [-ttim MAX_TRAIN_TIME]
+                                              [-vtim VALIDATION_EVERY_N_SECS] [-stim SAVE_EVERY_N_SECS] [-sval SAVE_AFTER_VALID]
+                                              [-veps VALIDATION_EVERY_N_EPOCHS] [-vp VALIDATION_PATIENCE] [-vmt VALIDATION_METRIC]
+                                              [-vmm {max,min}] [-micro AGGREGATE_MICRO] [-mcs METRICS] [-tblog TENSORBOARD_LOG]
+                                              [-pyt PYTORCH_TEACHER_TASK] [-pytd PYTORCH_TEACHER_DATASET] [--torch TORCH]
+                                              [--torch-cuda TORCH_CUDA] [--debug DEBUG]
+
+cProfile a training run
+
+optional arguments:
+  -h, --help
+        show this help message and exit
+
+Main ParlAI Arguments:
+  -o, --init-opt INIT_OPT
+        Path to json file of options. Note: Further Command-line arguments override file-based options. (default: None)
+  -v, --show-advanced-args
+        Show hidden command line options (advanced users only) (default: False)
+  -t, --task TASK
+        ParlAI task(s), e.g. &quot;babi:Task1&quot; or &quot;babi,cbt&quot; (default: None)
+  -dt, --datatype {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}
+        choose from: train, train:ordered, valid, test. to stream data add &quot;:stream&quot; to any option (e.g., train:stream). by
+        default: train is random with replacement, valid is ordered, test is ordered. (default: train)
+  -nt, --numthreads NUMTHREADS
+        number of threads. Used for hogwild if batchsize is 1, else for number of threads in threadpool loading, (default: 1)
+  -bs, --batchsize BATCHSIZE
+        batch size for minibatch training schemes (default: 1)
+  -dp, --datapath DATAPATH
+        path to datasets, defaults to {parlai_dir}/data (default: None)
+
+ParlAI Model Arguments:
+  -m, --model MODEL
+        the model class name. can match parlai/agents/&lt;model&gt; for agents in that directory, or can provide a fully specified
+        module for `from X import Y` via `-m X:Y` (e.g. `-m parlai.agents.seq2seq.seq2seq:Seq2SeqAgent`) (default: None)
+  -mf, --model-file MODEL_FILE
+        model file name for loading and saving models (default: None)
+  -im, --init-model INIT_MODEL
+        load model weights and dict from this file (default: None)
+
+Training Loop Arguments:
+  -et, --evaltask EVALTASK
+        task to use for valid/test (defaults to the one used for training) (default: None)
+  -eps, --num-epochs NUM_EPOCHS
+  -ttim, --max-train-time MAX_TRAIN_TIME
+  -vtim, --validation-every-n-secs VALIDATION_EVERY_N_SECS
+        Validate every n seconds. Saves model to model_file (if set) whenever best val metric is found (default: -1)
+  -stim, --save-every-n-secs SAVE_EVERY_N_SECS
+        Saves the model to model_file.checkpoint after every n seconds (default -1, never). (default: -1)
+  -sval, --save-after-valid SAVE_AFTER_VALID
+        Saves the model to model_file.checkpoint after every validation (default False).
+  -veps, --validation-every-n-epochs VALIDATION_EVERY_N_EPOCHS
+        Validate every n epochs. Saves model to model_file (if set) whenever best val metric is found (default: -1)
+  -vp, --validation-patience VALIDATION_PATIENCE
+        number of iterations of validation where result does not improve before we stop training (default: 10)
+  -vmt, --validation-metric VALIDATION_METRIC
+        key into report table for selecting best validation (default: accuracy)
+  -vmm, --validation-metric-mode {max,min}
+        how to optimize validation metric (max or min) (default: None)
+  -micro, --aggregate-micro AGGREGATE_MICRO
+        If multitasking, average metrics over the number of examples. If false, averages over the number of tasks. (default:
+        False)
+  -mcs, --metrics METRICS
+        list of metrics to show/compute, e.g. all, default,or give a list split by , like ppl,f1,accuracy,hits@1,rouge,bleuthe
+        rouge metrics will be computed as rouge-1, rouge-2 and rouge-l (default: default)
+
+Tensorboard Arguments:
+  -tblog, --tensorboard-log TENSORBOARD_LOG
+        Tensorboard logging of metrics, default is False
+
+PytorchData Arguments:
+  -pyt, --pytorch-teacher-task PYTORCH_TEACHER_TASK
+        Use the PytorchDataTeacher for multiprocessed data loading with a standard ParlAI task, e.g. &quot;babi:Task1k&quot; (default: None)
+  -pytd, --pytorch-teacher-dataset PYTORCH_TEACHER_DATASET
+        Use the PytorchDataTeacher for multiprocessed data loading with a pytorch Dataset, e.g. &quot;vqa_1&quot; or &quot;flickr30k&quot; (default:
+        None)
+
+Profiler Arguments:
+  --torch TORCH
+        If true, use the torch profiler. Otherwise use cProfile. (default: False)
+  --torch-cuda TORCH_CUDA
+        If true, use the torch cuda profiler. Otherwise use cProfile. (default: False)
+  --debug DEBUG
+        If true, enter debugger at end of run. (default: False)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="module-parlai.scripts.data_stats">
+<span id="data-stats"></span><h2>data_stats<a class="headerlink" href="#module-parlai.scripts.data_stats" title="Permalink to this headline">¶</a></h2>
+<p>Count and display statistics of the data.</p>
+<div class="section" id="id27">
+<h3>Examples<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python parlai/scripts/data_stats.py -t convai2 -dt train:ordered
+</pre></div>
+</div>
+</div>
+<div class="section" id="id28">
+<h3>CLI help<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>usage: python -m parlai.scripts.data_stats [-h] [-o INIT_OPT] [-v] [-t TASK]
+                                           [-dt {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}]
+                                           [-nt NUMTHREADS] [-bs BATCHSIZE] [-dp DATAPATH] [-pyt PYTORCH_TEACHER_TASK]
+                                           [-pytd PYTORCH_TEACHER_DATASET] [-ltim LOG_EVERY_N_SECS] [--agent {0,1}]
+                                           [--new-line-new-utt NEW_LINE_NEW_UTT] [--ignore-tokens IGNORE_TOKENS]
+
+Lint for ParlAI tasks
+
+optional arguments:
+  -h, --help
+        show this help message and exit
+  -ltim, --log-every-n-secs LOG_EVERY_N_SECS
+  --agent {0,1}
+        Use teacher (agent 0) or model (agent 1) (default: 0)
+  --new-line-new-utt NEW_LINE_NEW_UTT
+        New lines treat substrings as separate utterances. (default: False)
+  --ignore-tokens IGNORE_TOKENS
+        ignore tokens containings these substrings (comma-separated) (default: )
+
+Main ParlAI Arguments:
+  -o, --init-opt INIT_OPT
+        Path to json file of options. Note: Further Command-line arguments override file-based options. (default: None)
+  -v, --show-advanced-args
+        Show hidden command line options (advanced users only) (default: False)
+  -t, --task TASK
+        ParlAI task(s), e.g. &quot;babi:Task1&quot; or &quot;babi,cbt&quot; (default: None)
+  -dt, --datatype {train,train:stream,train:ordered,train:ordered:stream,train:stream:ordered,train:evalmode,train:evalmode:stream,train:evalmode:ordered,train:evalmode:ordered:stream,train:evalmode:stream:ordered,valid,valid:stream,test,test:stream}
+        choose from: train, train:ordered, valid, test. to stream data add &quot;:stream&quot; to any option (e.g., train:stream). by
+        default: train is random with replacement, valid is ordered, test is ordered. (default: train:ordered)
+  -nt, --numthreads NUMTHREADS
+        number of threads. Used for hogwild if batchsize is 1, else for number of threads in threadpool loading, (default: 1)
+  -bs, --batchsize BATCHSIZE
+        batch size for minibatch training schemes (default: 1)
+  -dp, --datapath DATAPATH
+        path to datasets, defaults to {parlai_dir}/data (default: None)
+
+PytorchData Arguments:
+  -pyt, --pytorch-teacher-task PYTORCH_TEACHER_TASK
+        Use the PytorchDataTeacher for multiprocessed data loading with a standard ParlAI task, e.g. &quot;babi:Task1k&quot; (default: None)
+  -pytd, --pytorch-teacher-dataset PYTORCH_TEACHER_DATASET
+        Use the PytorchDataTeacher for multiprocessed data loading with a pytorch Dataset, e.g. &quot;vqa_1&quot; or &quot;flickr30k&quot; (default:
+        None)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="example_seq2seq.html" class="btn btn-neutral float-left" title="agents.example_seq2seq" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Facebook AI Research
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

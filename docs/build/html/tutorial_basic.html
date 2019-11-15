@@ -1,0 +1,574 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Intro to ParlAI &mdash; ParlAI  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/parlai_theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tasks and Datasets in ParlAI" href="tutorial_task.html" />
+    <link rel="prev" title="ParlAI Quick-start" href="tutorial_quick.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ParlAI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorial_quick.html">ParlAI Quick-start</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Intro to ParlAI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-parlai">What is ParlAI?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#core-concepts">Core Concepts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agents">Agents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#observations">Observations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#teachers">Teachers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#worlds">Worlds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advanced-worlds">Advanced Worlds</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#using-parlai">Using ParlAI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#concepts-in-action-simple-display-data-script">Concepts in Action: Simple Display Data Script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#validation-and-testing">Validation and Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tasks">Tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#training-and-evaluating-existing-agents">Training and Evaluating Existing Agents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_task.html">Tasks and Datasets in ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_worlds.html">Data Handling, Batching, and Hogwild</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_seq2seq.html">Creating an Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_torch_ranker_agent.html">Using Torch Ranker Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tipsntricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_mturk.html">Using Mechanical Turk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_messenger.html">Using Facebook Messenger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tensorboard.html">Using tensorboard for metric tracking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tasks &amp; Model Zoo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zoo.html">Model Zoo</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Core Library</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="observations.html">observations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents.html">core.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="torch_agent.html">core.torch_agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_data.html">core.build_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dict.html">core.dict</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metrics.html">core.metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="params.html">core.params</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teachers.html">core.teachers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">core.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thread_utils.html">core.thread_utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worlds.html">core.worlds</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="repeat_label.html">agents.repeat_label</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unigram_agent.html">agents.unigram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_seq2seq.html">agents.example_seq2seq</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Scripts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cli_usage.html">Command Line Usage</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ParlAI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Intro to ParlAI</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/tutorial_basic.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="intro-to-parlai">
+<h1>Intro to ParlAI<a class="headerlink" href="#intro-to-parlai" title="Permalink to this headline">¶</a></h1>
+<p><strong>Authors</strong>: Alexander Holden Miller, Margaret Li, Jason Weston</p>
+<div class="section" id="what-is-parlai">
+<h2>What is ParlAI?<a class="headerlink" href="#what-is-parlai" title="Permalink to this headline">¶</a></h2>
+<p>ParlAI is a python-based platform for enabling dialog AI research.</p>
+<p>Its goal is to provide researchers:</p>
+<ul class="simple">
+<li><p>a unified framework for sharing, training and testing dialog models</p></li>
+<li><p>many popular datasets available all in one place, with the ability to multi-task over them</p></li>
+<li><p>seamless integration of <a class="reference internal" href="tutorial_mturk.html"><span class="doc">Amazon Mechanical Turk</span></a> for data collection and human evaluation</p></li>
+<li><p>integration with <a class="reference internal" href="tutorial_messenger.html"><span class="doc">Facebook Messenger</span></a> to connect agents with humans in a chat interface</p></li>
+</ul>
+<p>You can also see the <a class="reference external" href="https://github.com/facebookresearch/ParlAI/blob/master/README.md">README</a> for more basic info on ParlAI, or continue reading this document.</p>
+</div>
+<div class="section" id="core-concepts">
+<h2>Core Concepts<a class="headerlink" href="#core-concepts" title="Permalink to this headline">¶</a></h2>
+<p>We’re going to introduce some of the terminology we use in the ParlAI framework.
+In ParlAI, we call an environment a <strong>world</strong>.  In each world, there are <strong>agents</strong>.
+Examples of agents include models and datasets. Agents interact with each other by
+taking turns acting and observing <strong>acts</strong>.</p>
+<p>To concretize this, we’ll consider the train loop used to train a Transformer ranker
+on the Twitter dataset in our <a class="reference internal" href="tutorial_quick.html"><span class="doc">Quick Start</span></a>. We call this train environment a world,
+and it contains two agents - the transformer model and the dataset. The model and dataset
+agents interact with each other in this way: the dataset acts first and outputs a batch of train
+examples with the correct labels. The model observes this act to get the train examples,
+and then acts by doing a single train step on this batch (predicting labels and updating its parameters according to the loss).
+The dataset observes this act and outputs the next batch, and so on.</p>
+<p>That’s just a quick overview. Now let’s take a more detailed look at these concepts and how to use them.</p>
+<div class="section" id="agents">
+<h3>Agents<a class="headerlink" href="#agents" title="Permalink to this headline">¶</a></h3>
+<p>The most basic concept in ParlAI is an Agent.
+An agent can be a human, a simple bot which repeats back anything that it hears,
+your perfectly tuned neural network, a dataset being read out,
+or anything else that might send messages or interact with its environment.</p>
+<p>Agents have two primary methods they need to define:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">observe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">observation</span><span class="p">):</span> <span class="c1"># update internal state with observation</span>
+<span class="k">def</span> <span class="nf">act</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1"># produce action based on internal state</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">observe()</span></code> takes as input an observation dict, which is usually the result of an action taken by another agent,
+and updates this agent’s internal state accordingly.</p>
+<p><code class="docutils literal notranslate"><span class="pre">act()</span></code> produces an action from the agent. For a dataset agent, this might increment a counter for examples seen and
+return the next batch of examples. For a neural net agent, this could be a train step or eval step.</p>
+</div>
+<div class="section" id="observations">
+<h3>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h3>
+<p>Observations are what we call the objects returned by an agent’s act function and are so named
+because they are input to other agents’ observe() functions.
+This is the primary way messages are passed between agents and the environment in ParlAI.
+Observations are usually in the form of python dictionaries containing different types of information.</p>
+<p>The <a class="reference internal" href="observations.html"><span class="doc">observations</span></a> documentation goes into more detail about
+each field, but the following table shows the basics.</p>
+<a class="reference internal image-reference" href="_images/act-obs-dict.png"><img alt="_images/act-obs-dict.png" src="_images/act-obs-dict.png" style="width: 60%;" /></a>
+<p>All of these fields are technically optional, and each task should use them
+according to what kind of information is available in that task (for example,
+not all tasks contain explicit rewards, or a set of candidate labels to choose from).</p>
+<p>Dataset-specific fields are available in some cases in order to support
+reproducing paper results. For example, SQuAD has an <code class="docutils literal notranslate"><span class="pre">answer_starts</span></code> field,
+which is available in the “squad:index” task.</p>
+<p><strong>Note</strong>: during validation and testing, the <code class="docutils literal notranslate"><span class="pre">labels</span></code> field is renamed
+<code class="docutils literal notranslate"><span class="pre">eval_labels</span></code>–this way, the model won’t accidentally train on the labels,
+but they are still available for calculating model-side loss.
+Models can check if they are training on a supervised task in the following manner:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">is_training</span> <span class="o">=</span> <span class="s1">&#39;labels&#39;</span> <span class="ow">in</span> <span class="n">observation</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="teachers">
+<h3>Teachers<a class="headerlink" href="#teachers" title="Permalink to this headline">¶</a></h3>
+<p>A Teacher is special type of agent. They implement the <code class="docutils literal notranslate"><span class="pre">act</span></code> and <code class="docutils literal notranslate"><span class="pre">observe</span></code>
+functions as all agents do, but they also keep track of metrics which they
+return via a <code class="docutils literal notranslate"><span class="pre">report</span></code> function, such as the number of questions they have posed
+or how many times those questions have been answered correctly.</p>
+<p>Datasets and tasks typically implement a subclass of Teacher, providing functions which
+download the dataset from its source if necessary, read the file into the
+right format, and return an example with each call to the teacher’s <code class="docutils literal notranslate"><span class="pre">act</span></code>
+function.</p>
+<p>Observations exchanged between a student (model) Agent and a bAbI task Teacher might look like the following dicts:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Teacher</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="s1">&#39;Sam went to the kitchen</span><span class="se">\n</span><span class="s1">Pat gave Sam the milk</span><span class="se">\n</span><span class="s1">Where is the milk?&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;kitchen&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;label_candidates&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;hallway&#39;</span><span class="p">,</span> <span class="s1">&#39;kitchen&#39;</span><span class="p">,</span> <span class="s1">&#39;bathroom&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;episode_done&#39;</span><span class="p">:</span> <span class="bp">False</span>  <span class="c1"># indicates next example will be related to this one</span>
+<span class="p">}</span>
+<span class="n">Student</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="s1">&#39;hallway&#39;</span>
+<span class="p">}</span>
+<span class="n">Teacher</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="s1">&#39;Sam went to the hallway</span><span class="se">\n</span><span class="s1">Pat went to the bathroom</span><span class="se">\n</span><span class="s1">Where is the milk?&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;hallway&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;label_candidates&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;hallway&#39;</span><span class="p">,</span> <span class="s1">&#39;kitchen&#39;</span><span class="p">,</span> <span class="s1">&#39;bathroom&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;episode_done&#39;</span><span class="p">:</span> <span class="bp">True</span>
+<span class="p">}</span>
+<span class="n">Student</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="s1">&#39;hallway&#39;</span>
+<span class="p">}</span>
+<span class="n">Teacher</span><span class="p">:</span> <span class="p">{</span>
+    <span class="o">...</span> <span class="c1"># starts next episode</span>
+<span class="p">}</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="worlds">
+<h3>Worlds<a class="headerlink" href="#worlds" title="Permalink to this headline">¶</a></h3>
+<p>Worlds define the environment in which agents interact with one another. Worlds
+must implement a <code class="docutils literal notranslate"><span class="pre">parley</span></code> method. Each call to <code class="docutils literal notranslate"><span class="pre">parley</span></code> conducts one turn of interactions typically containing
+one action per agent.</p>
+<p>A simple world included in ParlAI, which all of our currently included tasks use,
+is the <code class="docutils literal notranslate"><span class="pre">DialogPartnerWorld</span></code>. DialogPartnerWorld is initialized with one task teacher agent and one student agent.
+With each call to <code class="docutils literal notranslate"><span class="pre">parley</span></code>, one exchange is done between the agents, in
+the following manner:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="n">teacher</span><span class="o">.</span><span class="n">act</span><span class="p">()</span>
+<span class="n">student</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+<span class="n">reply</span> <span class="o">=</span> <span class="n">student</span><span class="o">.</span><span class="n">act</span><span class="p">()</span>
+<span class="n">teacher</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">reply</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Another simple world we include is MultiAgentDialogWorld, which is similar
+but generalizes this to cycle between any number of agents in a round robin
+fashion.</p>
+</div>
+<div class="section" id="advanced-worlds">
+<h3>Advanced Worlds<a class="headerlink" href="#advanced-worlds" title="Permalink to this headline">¶</a></h3>
+<p>We also include a few more advanced “container” worlds: in particular, we include both a
+BatchWorld and a HogwildWorld. These worlds are automatically used when either
+the <code class="docutils literal notranslate"><span class="pre">numthreads</span></code> parameter or the <code class="docutils literal notranslate"><span class="pre">batchsize</span></code> parameter are set to greater
+than one. Some extra functionality is needed to get these to work on the side
+of both the teacher and the learner, but we’ll cover that in a different
+tutorial (see: <a class="reference internal" href="tutorial_worlds.html"><span class="doc">Data Handling, Batching, and Hogwild</span></a>).</p>
+</div>
+</div>
+<div class="section" id="using-parlai">
+<h2>Using ParlAI<a class="headerlink" href="#using-parlai" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="concepts-in-action-simple-display-data-script">
+<h3>Concepts in Action: Simple Display Data Script<a class="headerlink" href="#concepts-in-action-simple-display-data-script" title="Permalink to this headline">¶</a></h3>
+<p>Now that we understand the basics, let’s set up a simple script which displays
+any specified task. A complete version of this for utility is included
+at <code class="docutils literal notranslate"><span class="pre">parlai/scripts/display_data.py</span></code>, but we’ll do this from scratch
+to demonstrate the concepts we just introduced.</p>
+<p>We’ll create a new agent class and implement observe() and act() functions
+so that, in a world with a task teacher, it will observe the data outputted
+by the task teacher, save the data as its last observation,
+and then act by printing the label in its observation.</p>
+<p>First, a few imports:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">parlai.core.agents</span> <span class="kn">import</span> <span class="n">Agent</span>
+<span class="kn">from</span> <span class="nn">parlai.core.params</span> <span class="kn">import</span> <span class="n">ParlaiParser</span>
+<span class="kn">from</span> <span class="nn">parlai.core.worlds</span> <span class="kn">import</span> <span class="n">create_task</span>
+</pre></div>
+</div>
+<p>The Agent class will be the parent class for our own agent.
+The <code class="docutils literal notranslate"><span class="pre">ParlaiParser</span></code> provides a set of default command-line arguments and
+parsing, and create_task will automatically set up the appropriate world and
+teacher for any task available within ParlAI that we choose.</p>
+<p>We define our agent (which we name <code class="docutils literal notranslate"><span class="pre">RepeatLabelAgent</span></code>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">RepeatLabelAgent</span><span class="p">(</span><span class="n">Agent</span><span class="p">):</span>
+    <span class="c1"># initialize by setting id</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opt</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="s1">&#39;RepeatLabel&#39;</span>
+    <span class="c1"># store observation for later, return it unmodified</span>
+    <span class="k">def</span> <span class="nf">observe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">observation</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">observation</span> <span class="o">=</span> <span class="n">observation</span>
+        <span class="k">return</span> <span class="n">observation</span>
+    <span class="c1"># return label from before if available</span>
+    <span class="k">def</span> <span class="nf">act</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">reply</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">}</span>
+        <span class="k">if</span> <span class="s1">&#39;labels&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">observation</span><span class="p">:</span>
+            <span class="n">reply</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">observation</span><span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">reply</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;I don&#39;t know.&quot;</span>
+        <span class="k">return</span> <span class="n">reply</span>
+</pre></div>
+</div>
+<p>Now that we have our our agent, we’ll set up the display loop.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parser</span> <span class="o">=</span> <span class="n">ParlaiParser</span><span class="p">()</span>
+<span class="n">opt</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+<span class="n">agent</span> <span class="o">=</span> <span class="n">RepeatLabelAgent</span><span class="p">(</span><span class="n">opt</span><span class="p">)</span>
+<span class="n">world</span> <span class="o">=</span> <span class="n">create_task</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">agent</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">world</span><span class="o">.</span><span class="n">parley</span><span class="p">()</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">world</span><span class="o">.</span><span class="n">display</span><span class="p">())</span>
+    <span class="k">if</span> <span class="n">world</span><span class="o">.</span><span class="n">epoch_done</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;EPOCH DONE&#39;</span><span class="p">)</span>
+        <span class="k">break</span>
+</pre></div>
+</div>
+<p>And that’s it! The world.display() cycles through each of the
+world’s agents and displays their last action.  However, if you want to access
+the data directly without calling
+world.display(), you could access world.acts directly:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parser</span> <span class="o">=</span> <span class="n">ParlaiParser</span><span class="p">()</span>
+<span class="n">opt</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+<span class="n">agent</span> <span class="o">=</span> <span class="n">RepeatLabelAgent</span><span class="p">(</span><span class="n">opt</span><span class="p">)</span>
+<span class="n">world</span> <span class="o">=</span> <span class="n">create_task</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">agent</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">world</span><span class="o">.</span><span class="n">parley</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">world</span><span class="o">.</span><span class="n">acts</span><span class="p">:</span>
+        <span class="c1"># print the actions from each agent</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+          <span class="k">if</span> <span class="n">world</span><span class="o">.</span><span class="n">epoch_done</span><span class="p">():</span>
+              <span class="k">print</span><span class="p">(</span><span class="s1">&#39;EPOCH DONE&#39;</span><span class="p">)</span>
+              <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="validation-and-testing">
+<h3>Validation and Testing<a class="headerlink" href="#validation-and-testing" title="Permalink to this headline">¶</a></h3>
+<p>During validation and testing, the ‘labels’ field is removed from the observation dict.
+This tells the agent not to use these labels for training–however, the labels are
+still available via the ‘eval_labels’ field in case you need to compute model-side
+metrics such as perplexity.</p>
+<p>In these cases, our RepeatLabel agent no longer has anything to say. For datasets which provide a set
+of candidates to choose from (‘label_candidates’ in the observation dict), we
+can give our agent a chance of getting the answer correct by replying with one
+of those.</p>
+<p>Let’s modify our agent’s act function to select a random label candidate when
+the labels aren’t available:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+
+<span class="k">def</span> <span class="nf">act</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">reply</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">}</span>
+    <span class="k">if</span> <span class="s1">&#39;labels&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">observation</span><span class="p">:</span>
+        <span class="n">reply</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">observation</span><span class="p">[</span><span class="s1">&#39;labels&#39;</span><span class="p">])</span>
+    <span class="k">elif</span> <span class="s1">&#39;label_candidates&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">observation</span><span class="p">:</span>
+        <span class="n">cands</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">observation</span><span class="p">[</span><span class="s1">&#39;label_candidates&#39;</span><span class="p">]</span>
+        <span class="n">reply</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">cands</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">reply</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;I don&#39;t know.&quot;</span>
+    <span class="k">return</span> <span class="n">reply</span>
+</pre></div>
+</div>
+<p>Of course, we can do much better than randomly guessing. In <a class="reference internal" href="tutorial_seq2seq.html"><span class="doc">a later tutorial</span></a>,
+we’ll set up a better agent which learns from the training data.</p>
+</div>
+<div class="section" id="tasks">
+<h3>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h3>
+<p>If you run this on the command line, you can specify which task to show by setting ‘-t {task}’ in the following format:</p>
+<ul class="simple">
+<li><p>‘-t babi’ sets up the <code class="docutils literal notranslate"><span class="pre">DefaultTeacher</span></code> in ‘parlai/core/tasks/babi/agents.py’.</p></li>
+<li><p>‘-t babi:task1k’ sets up the <code class="docutils literal notranslate"><span class="pre">Task1kTeacher</span></code> in the babi/agents.py file, which allows
+you to specify specific settings for certain tasks. For bAbI, this refers to the setting
+where there are only 1000 unique training examples per task.</p></li>
+<li><p>‘-t babi:task1k:1’ provides 1 as a parameter to <code class="docutils literal notranslate"><span class="pre">Task1kTeacher</span></code>, which is interpreted
+by the Task1kTeacher to mean “I want task 1” (as opposed to the 19 other bAbI tasks).</p></li>
+<li><p>‘-t babi,squad’ sets up the <code class="docutils literal notranslate"><span class="pre">DefaultTeacher</span></code> for both babi and squad. Any number
+of tasks can be chained together with commas to load up each one of them.</p></li>
+<li><p>‘-t #qa’ specifies the ‘qa’ category, loading up all tasks with that category
+in the ‘parlai/core/task_list.py’ file.</p></li>
+</ul>
+<p>These flags are used across ParlAI. Here are some examples of using them for
+displaying data with the existing script
+<a class="reference external" href="https://github.com/facebookresearch/ParlAI/blob/master/parlai/scripts/display_data.py">display_data</a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Display 10 random examples from task 1 of the &quot;1k training examples&quot; bAbI task:</span>
+<span class="n">python</span> <span class="n">examples</span><span class="o">/</span><span class="n">display_data</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">t</span> <span class="n">babi</span><span class="p">:</span><span class="n">task1k</span><span class="p">:</span><span class="mi">1</span>
+
+<span class="c1">#Displays 100 random examples from multi-tasking on the bAbI task and the SQuAD dataset at the same time:</span>
+<span class="n">python</span> <span class="n">examples</span><span class="o">/</span><span class="n">display_data</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">t</span> <span class="n">babi</span><span class="p">:</span><span class="n">task1k</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="n">squad</span> <span class="o">-</span><span class="n">n</span> <span class="mi">100</span>
+</pre></div>
+</div>
+<p>In the last section, we mentioned that labels are hidden at validation and test time.
+The <cite>–datatype</cite> (<cite>-dt</cite>) flag specifies train, valid or test. These modes can be set from the command line with ‘-dt valid’ / ‘-dt test’.
+You can also set ‘-dt train:evalmode’ if you want to look at the train data in the same way
+as the test data (with labels hidden).</p>
+<p>ParlAI downloads the data required for a requested task automatically (using the build.py code in the task)
+and will put it in your <cite>–datapath</cite>. This is ParlAI/data by default but you can configure this to point elsewhere,
+e.g. to another disk with more memory. Only the tasks you request are downloaded.
+Additionally, you could specify <cite>-dt train:stream</cite> or <cite>-dt valid:stream</cite>
+to denote that you want the data to stream online if possible, rather than loading into memory.</p>
+<p>You can also specify <cite>-dt train:ordered</cite> the override the default behavior that data
+from the train set comes in a random order (whereas valid and test data is ordered by default).</p>
+<p>We maintain a complete task list in the <a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/task_list.py">code here</a> or in this <a class="reference external" href="tasks.html">documentation
+here</a>. The set of tasks in ParlAI is continually growing from contributors.
+See <a class="reference external" href="tutorial_task.html">this tutorial</a> for making your own tasks.</p>
+</div>
+<div class="section" id="training-and-evaluating-existing-agents">
+<h3>Training and Evaluating Existing Agents<a class="headerlink" href="#training-and-evaluating-existing-agents" title="Permalink to this headline">¶</a></h3>
+<p>For now, we’ll look at the scripts we’ve provided for training and evaluation:
+<a class="reference external" href="https://github.com/facebookresearch/ParlAI/blob/master/parlai/scripts/train_model.py">train_model</a>
+and <a class="reference external" href="https://github.com/facebookresearch/ParlAI/blob/master/parlai/scripts/eval_model.py">eval_model</a>.
+Here are some examples:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Train a seq2seq model on the &quot;10k training examples&quot; bAbI task 1 with batch size of 32 examples until accuracy reaches 95% on validation (requires pytorch):</span>
+<span class="n">python</span> <span class="n">examples</span><span class="o">/</span><span class="n">train_model</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">t</span> <span class="n">babi</span><span class="p">:</span><span class="n">task10k</span><span class="p">:</span><span class="mi">1</span> <span class="o">-</span><span class="n">m</span> <span class="n">seq2seq</span> <span class="o">-</span><span class="n">mf</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">model_s2s</span> <span class="o">-</span><span class="n">bs</span> <span class="mi">32</span> <span class="o">-</span><span class="n">vtim</span> <span class="mi">30</span> <span class="o">-</span><span class="n">vcut</span> <span class="mf">0.95</span>
+
+<span class="c1">#Trains an attentive LSTM model on the SQuAD dataset with a batch size of 32 examples (pytorch and regex):</span>
+<span class="n">python</span> <span class="n">examples</span><span class="o">/</span><span class="n">train_model</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">m</span> <span class="n">drqa</span> <span class="o">-</span><span class="n">t</span> <span class="n">squad</span> <span class="o">-</span><span class="n">bs</span> <span class="mi">32</span> <span class="o">-</span><span class="n">mf</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">model_drqa</span>
+
+<span class="c1">#Tests an existing attentive LSTM model (DrQA reader) on the SQuAD dataset from our model zoo:</span>
+<span class="n">python</span> <span class="n">examples</span><span class="o">/</span><span class="n">eval_model</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">t</span> <span class="n">squad</span> <span class="o">-</span><span class="n">mf</span> <span class="s2">&quot;zoo:drqa/squad/model&quot;</span>
+
+<span class="c1">#Evaluate on the bAbI test set with a human agent (using the local keyboard as input):</span>
+<span class="n">python</span> <span class="n">examples</span><span class="o">/</span><span class="n">eval_model</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">m</span> <span class="n">local_human</span> <span class="o">-</span><span class="n">t</span> <span class="n">babi</span><span class="p">:</span><span class="n">Task1k</span><span class="p">:</span><span class="mi">1</span> <span class="o">-</span><span class="n">dt</span> <span class="n">valid</span>
+
+<span class="c1">#Evaluate an IR baseline model on the validation set of the Movies Subreddit dataset:</span>
+<span class="n">python</span> <span class="n">examples</span><span class="o">/</span><span class="n">eval_model</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">m</span> <span class="n">ir_baseline</span> <span class="o">-</span><span class="n">t</span> <span class="s2">&quot;#moviedd-reddit&quot;</span> <span class="o">-</span><span class="n">dt</span> <span class="n">valid</span>
+
+<span class="c1">#Display the predictions of that same IR baseline model:</span>
+<span class="n">python</span> <span class="n">examples</span><span class="o">/</span><span class="n">display_model</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">m</span> <span class="n">ir_baseline</span> <span class="o">-</span><span class="n">t</span> <span class="s2">&quot;#moviedd-reddit&quot;</span> <span class="o">-</span><span class="n">dt</span> <span class="n">valid</span>
+</pre></div>
+</div>
+<p>The main flags are:</p>
+<p>1) <cite>-m</cite> (<cite>-model</cite>) which sets the agent type that will be trained. The agents available in parlAI <a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/agents">are here</a>.
+See <a class="reference external" href="tutorial_task.html">this tutorial</a> for making your own agents.</p>
+<ol class="arabic simple" start="2">
+<li><p><cite>-mf</cite> (<cite>–modelfile</cite>) points to the file name of where to save your model.</p></li>
+<li><p><cite>-t</cite> (<cite>–task</cite>) as described before.</p></li>
+</ol>
+<p>Of course every model has various parameters and hyperparameters to set in general.</p>
+<p><strong>Model Zoo</strong></p>
+<p>A new feature in ParlAI is that it also now maintains a <em>model zoo</em> of existing model files of agents that have been trained on tasks. See the devoted documentation section or <a class="reference external" href="https://github.com/facebookresearch/ParlAI/blob/master/parlai/zoo/model_list.py">here for details</a>.</p>
+<p>The set of agents and models in the model zoo in ParlAI is continually growing from contributors.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tutorial_task.html" class="btn btn-neutral float-right" title="Tasks and Datasets in ParlAI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tutorial_quick.html" class="btn btn-neutral float-left" title="ParlAI Quick-start" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Facebook AI Research
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
