@@ -1,0 +1,740 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Data Handling, Batching, and Hogwild &mdash; ParlAI  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/parlai_theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Creating an Agent" href="tutorial_seq2seq.html" />
+    <link rel="prev" title="Tasks and Datasets in ParlAI" href="tutorial_task.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ParlAI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorial_quick.html">ParlAI Quick-start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_basic.html">Intro to ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_task.html">Tasks and Datasets in ParlAI</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data Handling, Batching, and Hogwild</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#expanding-to-batching-hogwild-using-share">Expanding to batching / hogwild using share()</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Hogwild (multiprocessing)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hogwild-teachers">Hogwild Teachers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hogwild-models">Hogwild Models</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#batching">Batching</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#batched-models">Batched Models</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#multiprocessed-pytorch-dataloader">Multiprocessed Pytorch Dataloader</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pytorch-dataloading-intro">Pytorch Dataloading Intro</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pytorch-dataloading-in-parlai">Pytorch Dataloading in ParlAI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#implementation">Implementation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-use">How to Use</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pytorch-batch-sorting-and-squashing">PyTorch Batch Sorting and Squashing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#explanation-and-benefits-of-batch-sorting">Explanation and Benefits of Batch Sorting</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pytorchdatateacher-multitask-training">PytorchDataTeacher Multitask Training</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_seq2seq.html">Creating an Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_torch_ranker_agent.html">Using Torch Ranker Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tipsntricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_mturk.html">Using Mechanical Turk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_messenger.html">Using Facebook Messenger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tensorboard.html">Using tensorboard for metric tracking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tasks &amp; Model Zoo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zoo.html">Model Zoo</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Core Library</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="observations.html">observations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents.html">core.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="torch_agent.html">core.torch_agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_data.html">core.build_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dict.html">core.dict</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metrics.html">core.metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="params.html">core.params</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teachers.html">core.teachers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">core.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thread_utils.html">core.thread_utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worlds.html">core.worlds</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="repeat_label.html">agents.repeat_label</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unigram_agent.html">agents.unigram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_seq2seq.html">agents.example_seq2seq</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Scripts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cli_usage.html">Command Line Usage</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ParlAI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Data Handling, Batching, and Hogwild</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/tutorial_worlds.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="data-handling-batching-and-hogwild">
+<h1>Data Handling, Batching, and Hogwild<a class="headerlink" href="#data-handling-batching-and-hogwild" title="Permalink to this headline">¶</a></h1>
+<p><strong>Authors</strong>: Alexander Holden Miller, Kurt Shuster</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are unfamiliar with the basics of displaying data or
+calling train or evaluate on a model, please first see
+the <a class="reference external" href="tutorial_basic.html">getting started</a> section.
+If you are interested in creating a task, please see
+<a class="reference external" href="tutorial_task.html">that section</a>.</p>
+</div>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This tutorial will cover the details of:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="#id1">hogwild (multiprocessing)</a>;</p></li>
+<li><p><a class="reference external" href="#batching">batched data</a>; and</p></li>
+<li><p><a class="reference external" href="#multiprocessed-pytorch-dataloader">handling large datasets using PyTorch Data Loaders</a></p></li>
+</ol>
+<p>With relatively small modifications to a basic agent, it will be able to support
+multithreading and batching. If you need extra speed or are using a very large
+dataset which does not fit in memory, we can use a multiprocessed pytorch
+dataloader for improved performance.</p>
+<p>First, let’s consider a diagram of the basic flow of DialogPartnerWorld,
+a simple world with two conversing agents.</p>
+<img alt="_images/world_basic.png" src="_images/world_basic.png" />
+<p>The teacher generates a message, which is shown to the agent.
+The agent generates a reply, which is seen by the teacher.</p>
+<div class="section" id="expanding-to-batching-hogwild-using-share">
+<h3>Expanding to batching / hogwild using share()<a class="headerlink" href="#expanding-to-batching-hogwild-using-share" title="Permalink to this headline">¶</a></h3>
+<p>For all tasks one might make,
+there’s one function we need to support for both hogwild and batching: <code class="docutils literal notranslate"><span class="pre">share()</span></code>.
+This function should provide whatever is needed to set up a “copy” of the original
+instance of the agent for either each row of a batch or each thread in hogwild.</p>
+<p>The same function is used for both batching and hogwild, since most agents only
+use one or the other. However, an agent may check the <code class="docutils literal notranslate"><span class="pre">numthreads</span></code> and/or
+<code class="docutils literal notranslate"><span class="pre">batchsize</span></code> options to adjust its behavior if it wants to support both, and
+we do support doing both batching and hogwild at the same time if the agent
+desires.</p>
+<p>We create shared agents by instantiating them in the following way:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Agent0</span> <span class="o">=</span> <span class="n">Agent</span><span class="p">(</span><span class="n">opt</span><span class="p">)</span>
+<span class="o">...</span>
+<span class="n">Agent1</span> <span class="o">=</span> <span class="n">Agent</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">Agent0</span><span class="o">.</span><span class="n">share</span><span class="p">())</span>
+<span class="n">Agent2</span> <span class="o">=</span> <span class="n">Agent</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">Agent0</span><span class="o">.</span><span class="n">share</span><span class="p">())</span>
+<span class="n">Agent3</span> <span class="o">=</span> <span class="n">Agent</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">Agent0</span><span class="o">.</span><span class="n">share</span><span class="p">())</span>
+</pre></div>
+</div>
+<img alt="_images/world_share.png" src="_images/world_share.png" />
+</div>
+</div>
+<div class="section" id="id1">
+<h2>Hogwild (multiprocessing)<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Hogwild is initialized in the following way:</p>
+<ol class="arabic simple">
+<li><p>We set up a starting instance of the world: that is, we use <code class="docutils literal notranslate"><span class="pre">create_task</span></code>
+to set up a base world with the appropriate agents and tasks.</p></li>
+<li><p>We pass this world to a <code class="docutils literal notranslate"><span class="pre">HogwildWorld</span></code>, which sets up a number of
+synchronization primitives</p></li>
+<li><p>We launch <code class="docutils literal notranslate"><span class="pre">numthreads</span></code> threads, each initialized from a <code class="docutils literal notranslate"><span class="pre">share()</span></code>’d
+version of the world and the agents therein.</p></li>
+<li><p>Once these threads and their world copies are all launched, we return control back</p></li>
+</ol>
+<img alt="_images/world_hogwild.png" src="_images/world_hogwild.png" />
+<p>Now that this world is set up, every time we call parley on it, it will release
+one of its threads to do a parley with its copy of the original base world.</p>
+<p>There’s some added complexity in the implementation of the class to manage
+synchronization primitives, but the Hogwild world should generally behave just
+like a regular World, so you shouldn’t need to worry about it. If you do want
+to check out the implementation, look for HogwildWorld in the <a class="reference external" href="https://github.com/facebookresearch/ParlAI/blob/master/parlai/core/worlds.py">core/worlds.py file</a>.</p>
+<p>Sharing needs to be implemented properly within all these agents and worlds so
+all the proper information is shared and synced between the threads. We’ll take
+a look at the common setup needs for each of those.</p>
+<div class="section" id="hogwild-teachers">
+<h3>Hogwild Teachers<a class="headerlink" href="#hogwild-teachers" title="Permalink to this headline">¶</a></h3>
+<p>The default setup for teachers include creating a Metrics object to track
+different metrics, including the number of examples shown, accuracy, and f1.
+The default <code class="docutils literal notranslate"><span class="pre">share()</span></code> method automatically sets up a thread-safe version of
+these metrics if needed–children can go ahead and access these metrics as normal.</p>
+<p>Teachers using dynamic data can most likely proceed as normal, without syncing
+any information outside of the metrics class. However, fixed datasets need
+mechanisms built in to make sure that they don’t do validation or testing
+examples more or less than once to ensure consistent results.</p>
+<p>Fortunately, the FixedDialogTeacher has this all built in already,
+so merely extending that class provides all the needed functionality.</p>
+</div>
+<div class="section" id="hogwild-models">
+<h3>Hogwild Models<a class="headerlink" href="#hogwild-models" title="Permalink to this headline">¶</a></h3>
+<p>For models using hogwild training, the primary concern is to share a thread-safe
+version of the model. This process will vary based on which framework you’re
+using, but we’ll include a few tips for PyTorch here.</p>
+<p>First, check out the best practices here:
+<a class="reference external" href="http://pytorch.org/docs/master/notes/multiprocessing.html">http://pytorch.org/docs/master/notes/multiprocessing.html</a></p>
+<p>The primary things to remember are
+1. call <code class="docutils literal notranslate"><span class="pre">model.share_memory()</span></code> and include your model in the <code class="docutils literal notranslate"><span class="pre">share()</span></code> function
+2. make sure to switch the multiprocessing start method if CUDA is enabled</p>
+<p>You can see an example of this in the <a class="reference external" href="https://github.com/facebookresearch/ParlAI/blob/master/parlai/agents/starspace/starspace.py">Starspace model</a>.
+This model uses multiple CPU threads for faster training, and does not use GPUs at all.</p>
+<p>Showing only the code relevant to model sharing, we see:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opt</span><span class="p">,</span> <span class="n">shared</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">shared</span><span class="p">:</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">set_num_threads</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># otherwise torch uses multiple cores for computation</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">shared</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">]</span>  <span class="c1"># don&#39;t set up model again yourself</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">Starspace</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">share_memory</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">share</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">shared</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">share</span><span class="p">()</span>
+    <span class="n">shared</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span>
+    <span class="k">return</span> <span class="n">shared</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="batching">
+<h2>Batching<a class="headerlink" href="#batching" title="Permalink to this headline">¶</a></h2>
+<p>Batching is set up in the following way (the first step is the same as Hogwild):</p>
+<ol class="arabic simple">
+<li><p>We set up a starting instance of the world: that is, we use <code class="docutils literal notranslate"><span class="pre">create_task</span></code>
+to set up a base world with the appropriate agents and tasks.</p></li>
+<li><p>We pass this world to a <code class="docutils literal notranslate"><span class="pre">BatchWorld</span></code>.</p></li>
+<li><p>We create <code class="docutils literal notranslate"><span class="pre">batchsize</span></code> worlds, each initialized from a <code class="docutils literal notranslate"><span class="pre">share()</span></code>’d
+version of the world and the agents therein.</p></li>
+</ol>
+<p>Now, every time we call <code class="docutils literal notranslate"><span class="pre">parley</span></code> on this BatchWorld, we will complete <code class="docutils literal notranslate"><span class="pre">batchsize</span></code> examples.
+Note that this is different than the behavior of HogwildWorld, where only a
+single example is executed for each call to parley.</p>
+<img alt="_images/world_batchbasic.png" src="_images/world_batchbasic.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>So far, our diagram is exactly the same as Hogwild. We’ll see how it can
+change below when agents implement the <code class="docutils literal notranslate"><span class="pre">batch_act</span></code> function
+(as GPU-based models will).</p>
+</div>
+<p>There’s a few more complex steps to actually completing a parley in this world.</p>
+<ol class="arabic simple">
+<li><p>Call <code class="docutils literal notranslate"><span class="pre">parley_init</span></code> on each shared world, if the world has it implemented.
+Most classes don’t need this–we currently only use it for our <code class="docutils literal notranslate"><span class="pre">MultiWorld</span></code>,
+which handles the case when one specifies multiple separate tasks to launch
+(e.g. “-t babi,squad”). This does any pre-parley setup, here choosing which
+sub-tasks to use in the next parley.</p></li>
+<li><p>Then, iterate over the number of agents involved in the task. For most tasks,
+this is just two agents: the teacher (task) and the student (model). For each
+agent, we do two steps:</p>
+<ol class="loweralpha simple">
+<li><p>Call <code class="docutils literal notranslate"><span class="pre">BatchWorld.batch_act()</span></code>. This method first checks if the <strong>original</strong>
+instance of the agent (not the copies) has a function named <code class="docutils literal notranslate"><span class="pre">batch_act</span></code>
+implemented and does not have an attribute <code class="docutils literal notranslate"><span class="pre">use_batch_act</span></code> set to <code class="docutils literal notranslate"><span class="pre">False</span></code>.
+This function is described more below. If condition is not met,
+the BatchWorld’s <code class="docutils literal notranslate"><span class="pre">batch_act</span></code> method iterates through each agent copy in the
+batch and calls the <code class="docutils literal notranslate"><span class="pre">act()</span></code> method for that instance.
+This is the default behavior in most circumstances, and allows agents to
+immediately work for batching without any extra work–the batch_act method
+is merely for improved efficiency.</p></li>
+<li><p>Call <code class="docutils literal notranslate"><span class="pre">BatchWorld.batch_observe()</span></code>. This method goes through every <strong>other</strong>
+agent, and tries to call the <code class="docutils literal notranslate"><span class="pre">observe()</span></code> method on those agents. This gives
+other agents (usually, just the one other agent) the chance to see the action
+of the agent whose turn it is to act currently.</p></li>
+</ol>
+</li>
+</ol>
+<p>Next, we’ll look at how teachers and models can take advantage of the setup
+above to improve performance.</p>
+<div class="section" id="batched-models">
+<h3>Batched Models<a class="headerlink" href="#batched-models" title="Permalink to this headline">¶</a></h3>
+<p>Finally, models need to be able to handle observations arriving in batches.</p>
+<p>The first key concept to remember is that, if the model agent implements
+<code class="docutils literal notranslate"><span class="pre">batch_act()</span></code>, <strong>act will not be called</strong> as long as <code class="docutils literal notranslate"><span class="pre">batchsize</span></code> &gt; 1.</p>
+<p>However, copies of the agent will still be created, and the <code class="docutils literal notranslate"><span class="pre">observe</span></code> method
+of each one will be called. This allows each copy to maintain a state related
+to a single row in the batch. Remember, since each row in the batch is represented
+by a separate world, they are completely unrelated. This means that the model
+only needs to be set up in the original instance, and need not be shared with
+its copies.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">observe()</span></code> method returns a (possibly modified) version of the observation
+it sees, which are collected into a list for the agent’s <code class="docutils literal notranslate"><span class="pre">batch_act()</span></code> method.</p>
+<img alt="_images/world_batchagent.png" src="_images/world_batchagent.png" />
+<p>Now, the agent can process the entire batch at once. This is especially helpful
+for GPU-based models, which prefer to process more examples at a time.</p>
+<p>Tip: if you implement <code class="docutils literal notranslate"><span class="pre">batch_act()</span></code>, your <code class="docutils literal notranslate"><span class="pre">act()</span></code> method can just call <code class="docutils literal notranslate"><span class="pre">batchact()</span></code>
+and pass the observation it is supposed to process in a list of length 1.</p>
+<p>Of course, this also means that we can use batch_act in both the task and the
+agent code:</p>
+<img alt="_images/world_batchboth.png" src="_images/world_batchboth.png" />
+</div>
+</div>
+<div class="section" id="multiprocessed-pytorch-dataloader">
+<h2>Multiprocessed Pytorch Dataloader<a class="headerlink" href="#multiprocessed-pytorch-dataloader" title="Permalink to this headline">¶</a></h2>
+<p>When a dataset is very large, or requires a lot of preprocessing before a model
+can use it, you can use our <code class="docutils literal notranslate"><span class="pre">PytorchDataTeacher</span></code>, which utilizes multiprocessed
+dataloading for streaming data from disk (rather than loading it into memory).
+That system can take your task as input, and make it fast to load, or you can
+roll your own specific setups if you need more control.</p>
+<p>For large datasets, where it is best to stream from disk during training
+rather than load initially into memory, we provide a teacher that utilizes pytorch data loading.</p>
+<p>(Note: the module <a class="reference external" href="https://github.com/facebookresearch/ParlAI/blob/master/parlai/core/pytorch_data_teacher.py">here</a>
+contains all of the code discussed in this tutorial)</p>
+<div class="section" id="pytorch-dataloading-intro">
+<h3>Pytorch Dataloading Intro<a class="headerlink" href="#pytorch-dataloading-intro" title="Permalink to this headline">¶</a></h3>
+<p>A Pytorch <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> is a dataloading mechanism that provides multiprocessed
+loading of data from disk (as described <a class="reference external" href="http://pytorch.org/tutorials/beginner/data_loading_tutorial.html">here</a>).
+A <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> can be initialized with a variety of different options; the only
+ones that concern us are <code class="docutils literal notranslate"><span class="pre">dataset</span></code> and <code class="docutils literal notranslate"><span class="pre">collate_fn</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">dataset</span></code> is a
+Pytorch <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> (as described <a class="reference external" href="http://pytorch.org/tutorials/beginner/data_loading_tutorial.html">here</a>),
+which is a class that implements two functions: <code class="docutils literal notranslate"><span class="pre">__getitem__(self,</span> <span class="pre">idx)</span></code> and <code class="docutils literal notranslate"><span class="pre">__len__(self)</span></code>.
+As is readily apparent, the <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> method is given an <code class="docutils literal notranslate"><span class="pre">idx</span></code> and returns the
+data item at that <code class="docutils literal notranslate"><span class="pre">idx</span></code>, while the <code class="docutils literal notranslate"><span class="pre">__len__</span></code> method returns the length of the underlying dataset.
+With a <code class="docutils literal notranslate"><span class="pre">dataset</span></code>, the <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> then takes care of everything else.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">collate_fn</span></code> is simply a way of formatting a batch of returned data items;
+Pytorch provides a default <code class="docutils literal notranslate"><span class="pre">collate_fn</span></code> that turns data into tensors, but there
+are many ways that one could want to batch data from the <code class="docutils literal notranslate"><span class="pre">Dataset</span></code>.</p>
+</div>
+<div class="section" id="pytorch-dataloading-in-parlai">
+<h3>Pytorch Dataloading in ParlAI<a class="headerlink" href="#pytorch-dataloading-in-parlai" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="implementation">
+<h4>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h4>
+<p>The <a class="reference external" href="https://github.com/facebookresearch/ParlAI/blob/master/parlai/core/pytorch_data_teacher.py">PytorchDataTeacher</a>
+provides two default <code class="docutils literal notranslate"><span class="pre">Datasets</span></code> and a default <code class="docutils literal notranslate"><span class="pre">collate_fn</span></code> as specified above.</p>
+<p>1. <code class="docutils literal notranslate"><span class="pre">StreamDataset</span></code> - this is the <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> that we provide to the
+<code class="docutils literal notranslate"><span class="pre">DataLoader</span></code> when <code class="docutils literal notranslate"><span class="pre">--datatype</span></code> is set to <code class="docutils literal notranslate"><span class="pre">[train|valid|test]:stream</span></code>.
+The dataset is meant for streaming data - that is, data that
+does not need to (or cannot) be loaded into memory before starting training, e.g.
+datasets with millions of text examples, or datasets with thousands of images.</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">__getitem__(self,</span> <span class="pre">idx)</span></code> returns <code class="docutils literal notranslate"><span class="pre">(index,</span> <span class="pre">ep)</span></code>, where <code class="docutils literal notranslate"><span class="pre">index</span></code> is the</dt><dd><p><code class="docutils literal notranslate"><span class="pre">idx</span></code> argument, and <code class="docutils literal notranslate"><span class="pre">ep</span></code> is the episode at that index in the dataset.</p>
+</dd>
+</dl>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__len__(self)</span></code>. returns the length of the dataset.</p></li>
+</ol>
+</div></blockquote>
+<p>2. <code class="docutils literal notranslate"><span class="pre">ParlAIDataset</span></code> - when <code class="docutils literal notranslate"><span class="pre">stream</span></code> is not in the <code class="docutils literal notranslate"><span class="pre">--datatype</span></code>, ParlAI defaults
+to this <code class="docutils literal notranslate"><span class="pre">Dataset</span></code>, which provides random access into the dataset. Its <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code>
+and <code class="docutils literal notranslate"><span class="pre">__len__</span></code> methods are functionally the same as the <code class="docutils literal notranslate"><span class="pre">StreamDataset</span></code>.</p>
+<p>3. <code class="docutils literal notranslate"><span class="pre">default_collate</span></code> - this function simply returns a list of <code class="docutils literal notranslate"><span class="pre">(index,</span> <span class="pre">ep)</span></code>
+pairs as they are returned from the <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> function above.</p>
+</div>
+<div class="section" id="how-to-use">
+<h4>How to Use<a class="headerlink" href="#how-to-use" title="Permalink to this headline">¶</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">PytorchDataTeacher</span></code> can be used with any dataset/task currently provided
+on the ParlAI platform. There are two ways you can utilize the <code class="docutils literal notranslate"><span class="pre">PytorchDataTeacher</span></code>
+for your specific task. One involves using the <code class="docutils literal notranslate"><span class="pre">ParlAIDataset</span></code> or <code class="docutils literal notranslate"><span class="pre">StreamDataset</span></code> that we have
+provided; the other involves writing your own dataset. Each will be covered
+step by step below. The important thing to know is that in the first case you <strong>only</strong>
+need to write a teacher; in the second case, you <strong>only</strong> need to write a <code class="docutils literal notranslate"><span class="pre">Dataset</span></code>.</p>
+<div class="section" id="pytorch-parlaidataset-streamdataset">
+<h5>PyTorch ParlAIDataset/StreamDataset<a class="headerlink" href="#pytorch-parlaidataset-streamdataset" title="Permalink to this headline">¶</a></h5>
+<p>1. Ensure that there is an appropriate teacher that already exists, which
+can read the data saved on disk and produce an action/observation dict for any
+agent.</p>
+<p>2. Build the data such that it can be used by the <code class="docutils literal notranslate"><span class="pre">ParlAIDataset</span></code> or <code class="docutils literal notranslate"><span class="pre">StreamDataset</span></code>. There
+are two ways of doing this:</p>
+<blockquote>
+<div><ol class="loweralpha">
+<li><p>Run the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">examples</span><span class="o">/</span><span class="n">build_pytorch_data</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">pyt</span> <span class="o">&lt;</span><span class="n">TEACHER</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">datatype</span> <span class="o">&lt;</span><span class="n">DATATYPE</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>The following are the parameters to specify:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">-pyt/--pytorch-teacher-task</span></code> - This is simply the teacher of the task that you</dt><dd><p>are using with the <code class="docutils literal notranslate"><span class="pre">PytorchDataTeacher</span></code></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">--datatype</span></code> - This is one of <code class="docutils literal notranslate"><span class="pre">train,</span> <span class="pre">valid,</span> <span class="pre">test</span></code>, depending on</dt><dd><p>what data you would like to use.</p>
+</dd>
+</dl>
+</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p><strong>(Recommended)</strong> Simply run <code class="docutils literal notranslate"><span class="pre">examples/train_model.py</span></code> with the same
+arguments listed above; this will build the data first before running
+the training loop. <strong>(Important)</strong> If you’d like to use the <code class="docutils literal notranslate"><span class="pre">StreamDataset</span></code>,
+specify e.g. <code class="docutils literal notranslate"><span class="pre">-dt</span> <span class="pre">train:stream</span></code>, otherwise the teacher will default
+to <code class="docutils literal notranslate"><span class="pre">ParlAIDataset</span></code></p></li>
+</ol>
+</div></blockquote>
+<p>3. (<em>Preprocessing</em>) Sometimes, the preprocessing for the agent takes a considerable
+amount of time in itself, and you want the data to simply be loaded preprocessed.
+If you specify the <code class="docutils literal notranslate"><span class="pre">--preprocess</span></code> command line argument to be <code class="docutils literal notranslate"><span class="pre">true</span></code>, then
+the model/agent specified in the command line parameters will have its <code class="docutils literal notranslate"><span class="pre">observe</span></code>
+function called on each example; the data will then be saved for use specifically
+with that model (setting this flag to <code class="docutils literal notranslate"><span class="pre">true</span></code> and then using another agent
+will result in the data needing to be rebuilt).</p>
+<ol class="arabic simple" start="4">
+<li><p>Finally, specify the task with <code class="docutils literal notranslate"><span class="pre">-pyt</span></code> instead of <code class="docutils literal notranslate"><span class="pre">-t</span></code></p></li>
+</ol>
+<p><strong>Example</strong></p>
+<p>The following is an example of how the above steps could be applied to
+use this teacher with the <code class="docutils literal notranslate"><span class="pre">bAbI</span></code> dataset:</p>
+<p>1. The <code class="docutils literal notranslate"><span class="pre">bAbI</span></code> teacher (<code class="docutils literal notranslate"><span class="pre">Task1kTeacher</span></code>) is implemented such that it can
+read the <code class="docutils literal notranslate"><span class="pre">bAbI</span></code> data, and provide an action/observation dict to send to the agent.</p>
+<p>2. Suppose the <code class="docutils literal notranslate"><span class="pre">Task1kTeacher</span></code> teacher sets its <code class="docutils literal notranslate"><span class="pre">self.datafile</span></code> to the
+appropriate datafile. Also, suppose we want the <code class="docutils literal notranslate"><span class="pre">seq2seq</span></code> model to preprocess the data before we save it.
+Then, you can build the pytorch data with one of the following commands:</p>
+<blockquote>
+<div><ol class="loweralpha">
+<li><p>(Build before training):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">examples</span><span class="o">/</span><span class="n">build_pytorch_data</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">m</span> <span class="n">seq2seq</span> <span class="o">-</span><span class="n">pyt</span>
+<span class="n">babi</span><span class="p">:</span><span class="n">task10k</span><span class="p">:</span><span class="mi">1</span> <span class="o">--</span><span class="n">pytorch</span><span class="o">-</span><span class="n">preprocess</span> <span class="n">true</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>Recommended</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">examples</span><span class="o">/</span><span class="n">train_model</span><span class="o">.</span><span class="n">py</span>
+<span class="o">-</span><span class="n">pyt</span> <span class="n">babi</span><span class="p">:</span><span class="n">task10k</span><span class="p">:</span><span class="mi">1</span> <span class="o">-</span><span class="n">m</span> <span class="n">seq2seq</span> <span class="o">--</span><span class="n">pytorch</span><span class="o">-</span><span class="n">preprocess</span> <span class="n">true</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div></blockquote>
+<p>3. To specify a datafile rather than using the <code class="docutils literal notranslate"><span class="pre">self.datafile</span></code> attribute,
+e.g. the validation set file, simply add the following:
+<code class="docutils literal notranslate"><span class="pre">--datafile</span> <span class="pre">data/bAbI/tasks_1-20_v1-2/en-valid-10k-nosf/qa1_valid.txt</span></code></p>
+</div>
+<div class="section" id="your-own-pytorch-dataset">
+<h5>Your Own PyTorch Dataset<a class="headerlink" href="#your-own-pytorch-dataset" title="Permalink to this headline">¶</a></h5>
+<p>1. To use your own method of retrieving data (rather than the streaming data option),
+you can simply subclass the Pytorch <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> class (as specified <a class="reference external" href="http://pytorch.org/tutorials/beginner/data_loading_tutorial.html">here</a>).
+You can add this class anywhere you would like; a good place would be in the
+<code class="docutils literal notranslate"><span class="pre">agents.py</span></code> file for the task you are writing a <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> for.</p>
+<p>2. <strong>(Optional)</strong> The default <code class="docutils literal notranslate"><span class="pre">collate_fn</span></code> that will be used is the one
+specified above in the <code class="docutils literal notranslate"><span class="pre">PytorchDataTeacher</span></code>. If you would like to specify your
+own <code class="docutils literal notranslate"><span class="pre">collate_fn</span></code>, you can implement a static method <code class="docutils literal notranslate"><span class="pre">collate</span></code> in the <strong>agent</strong>
+to which you will be providing the data. This function takes one argument, <code class="docutils literal notranslate"><span class="pre">batch</span></code>, which
+is a list of data items returned by your custom <code class="docutils literal notranslate"><span class="pre">Dataset</span></code>, and returns a
+collated batch. Alternatively, you can also implement the method in the <strong>dataset</strong>.</p>
+<p>3. Finally, instead of setting <code class="docutils literal notranslate"><span class="pre">-t</span></code> on the command line, you need to specify the <code class="docutils literal notranslate"><span class="pre">Dataset</span></code>
+with <code class="docutils literal notranslate"><span class="pre">-pytd</span></code>: <code class="docutils literal notranslate"><span class="pre">-pytd</span></code> dataset_task:DatasetClassName``, where
+<code class="docutils literal notranslate"><span class="pre">dataset_class</span></code> is the agents file where your <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> is written. If you
+name your custom dataset <code class="docutils literal notranslate"><span class="pre">DefaultDataset</span></code>, then you do not need to specify the
+<code class="docutils literal notranslate"><span class="pre">DatasetClassName</span></code>.</p>
+<p><strong>Example</strong></p>
+<p>An example of the above method is used for the VQA V1 task, with the
+<code class="docutils literal notranslate"><span class="pre">mlb_vqa</span></code> agent. Here is how it works in this example:</p>
+<p>1. In the <a class="reference external" href="https://github.com/facebookresearch/ParlAI/blob/master/parlai/tasks/vqa_v1/agents.py">VQA V1 agents file</a>,
+there exists a <code class="docutils literal notranslate"><span class="pre">VQADataset</span></code>, which subclasses <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> (with the appropriate <code class="docutils literal notranslate"><span class="pre">__len__</span></code> and <code class="docutils literal notranslate"><span class="pre">__getitem__</span></code> methods).</p>
+<p>2. In the <a class="reference external" href="https://github.com/facebookresearch/ParlAI/blob/master/parlai/agents/mlb_vqa/mlb_vqa.py">MLB VQA model file</a>,
+there is an implementation of <code class="docutils literal notranslate"><span class="pre">collate</span></code> that returns a processed batch of examples from the
+list of examples provided by the <code class="docutils literal notranslate"><span class="pre">VQADataset</span></code>.</p>
+<p>3. Finally, to use the <code class="docutils literal notranslate"><span class="pre">PytorchDataTeacher</span></code> with the custom <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> and
+<code class="docutils literal notranslate"><span class="pre">collate</span></code>, run the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">examples</span><span class="o">/</span><span class="n">train_model</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">m</span> <span class="n">mlb_vqa</span> <span class="o">-</span><span class="n">pytd</span> <span class="n">vqa_v1</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="pytorch-batch-sorting-and-squashing">
+<h3>PyTorch Batch Sorting and Squashing<a class="headerlink" href="#pytorch-batch-sorting-and-squashing" title="Permalink to this headline">¶</a></h3>
+<p>One of the benefits of using the <code class="docutils literal notranslate"><span class="pre">StreamDataset</span></code> described above when
+using the <code class="docutils literal notranslate"><span class="pre">PytorchDataTeacher</span></code> is that you can achieve the benefits of
+batch sorting and squashing (that is, reducing padding in batches by
+providing the models with similarly sized batches) without having
+to load the whole dataset into memory. We provide an on-the-fly
+batch sorter that uses aggressive caching to create and provide
+batches of similarly sized examples to models nearly as quickly (if not as quickly) as
+can be provided without sorting.</p>
+<p>To use the batch sorting method, just specify the following command line
+argument:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-pybsrt</span></code> - set this parameter to <code class="docutils literal notranslate"><span class="pre">true</span></code> to enable batch sorting</p></li>
+</ol>
+<p>Additional arguments that may be of interest to you:</p>
+<p>1. <code class="docutils literal notranslate"><span class="pre">--batch-sort-field</span></code> - this specifies the field on which the examples will
+be sorted into batches. The default is ‘text’, and thus batch sorting will
+return batches with similarly sized ‘text’ fields.</p>
+<p>2. <code class="docutils literal notranslate"><span class="pre">--batch-length-range</span></code> - this indicates the degree of variation allowed in
+a batch; e.g., by how many characters each example in a cache will, at most, deviate.
+A <code class="docutils literal notranslate"><span class="pre">--batch-length-range</span></code> of 5 would mean that each example in the batch
+would differ by no more than 5 characters (in a text-based dataset).</p>
+<div class="section" id="explanation-and-benefits-of-batch-sorting">
+<h4>Explanation and Benefits of Batch Sorting<a class="headerlink" href="#explanation-and-benefits-of-batch-sorting" title="Permalink to this headline">¶</a></h4>
+<p>Batch sorting can help training by
+reducing the amount of zero-padding in tensors constructed from batches of text.
+This technique alone sped up the time to train on a single epoch of WMT De-En
+with a simple convolutional architecture by approximately 4x.
+See <a class="reference external" href="https://arxiv.org/abs/1706.05765">this paper</a> for an analysis of the
+impact of different strategies on speed and convergence.</p>
+<p>In order to reduce the zero-padding in examples, the <code class="docutils literal notranslate"><span class="pre">PytorchDataTeacher</span></code>
+squashes episodes into a single example
+if there are multiple examples in each episode. For every example
+in an episode, a separate squashed episode will be created from the examples up
+to and including the current example.</p>
+<p>The squashing can be controlled by two command-line arguments, which set
+whether the labels are included in the squashing (you want them for dialog,
+but you might not for question-answering),
+as well as how many examples from the past should be included.</p>
+<dl class="field-list simple">
+<dt class="field-odd">param pytorch-include-labels</dt>
+<dd class="field-odd"><p>(bool, default True) whether to include labels in the context.</p>
+</dd>
+<dt class="field-even">param pytorch-context-length</dt>
+<dd class="field-even"><p>(int, default -1) how many past examples in the episode to
+include in the context for the current one. default -1 is all.
+note that some datasets have <strong>very</strong> long episodes (e.g.
+OpenSubtitles has episodes with hundreds of examples), so
+setting context-length to a smaller value can limit the
+context to an approachable amount of information for the model
+as well as limiting memory usage.</p>
+</dd>
+</dl>
+<p>After doing the squashing, the <code class="docutils literal notranslate"><span class="pre">PytorchDataTeacher</span></code> will return
+batches where each batch contains examples of similar size (where size is determined
+by the number of spaces in the example).</p>
+<p>Let’s look at a quick example to make sure the flattening is clear.
+Consider the following “conversation”, where the <code class="docutils literal notranslate"><span class="pre">x</span></code>’s represent ‘text’ fields
+and the <code class="docutils literal notranslate"><span class="pre">y</span></code>’s represent labels in a continuous conversation between two agents.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="n">y1</span>
+<span class="n">x2</span> <span class="n">y2</span>
+<span class="n">x3</span> <span class="n">y3</span>
+<span class="n">x4</span> <span class="n">y4</span>
+</pre></div>
+</div>
+<p>Without batching, these examples will be presented to the agent over four parleys:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="n">x1</span><span class="p">,</span> <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">y1</span><span class="p">],</span> <span class="s1">&#39;episode_done&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="n">x2</span><span class="p">,</span> <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">y2</span><span class="p">],</span> <span class="s1">&#39;episode_done&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="n">x3</span><span class="p">,</span> <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">y3</span><span class="p">],</span> <span class="s1">&#39;episode_done&#39;</span><span class="p">:</span> <span class="bp">False</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="n">x4</span><span class="p">,</span> <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">y4</span><span class="p">],</span> <span class="s1">&#39;episode_done&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Using the flattening strategy above, with <code class="docutils literal notranslate"><span class="pre">pytorch-context-length</span></code> set to -1 and
+<code class="docutils literal notranslate"><span class="pre">pytorch-include-labels</span></code> set to False (not recommended for conversations),
+in separate rows of a batch we’d get:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="n">x1</span><span class="p">,</span>                <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">y1</span><span class="p">],</span> <span class="s1">&#39;episode_done&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span><span class="p">,</span>           <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">y2</span><span class="p">],</span> <span class="s1">&#39;episode_done&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span> <span class="o">+</span> <span class="n">x3</span><span class="p">,</span>      <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">y3</span><span class="p">],</span> <span class="s1">&#39;episode_done&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span> <span class="o">+</span> <span class="n">x3</span> <span class="o">+</span> <span class="n">x4</span><span class="p">,</span> <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">y4</span><span class="p">],</span> <span class="s1">&#39;episode_done&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>If we change <code class="docutils literal notranslate"><span class="pre">pytorch-context-length</span></code> to 3 and <code class="docutils literal notranslate"><span class="pre">pytorch-include-labels</span></code> to True:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="n">x1</span><span class="p">,</span>           <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">y1</span><span class="p">],</span> <span class="s1">&#39;episode_done&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">y1</span> <span class="o">+</span> <span class="n">x2</span><span class="p">,</span> <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">y2</span><span class="p">],</span> <span class="s1">&#39;episode_done&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="n">x2</span> <span class="o">+</span> <span class="n">y2</span> <span class="o">+</span> <span class="n">x3</span><span class="p">,</span> <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">y3</span><span class="p">],</span> <span class="s1">&#39;episode_done&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">}</span>
+<span class="p">{</span><span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="n">x3</span> <span class="o">+</span> <span class="n">y3</span> <span class="o">+</span> <span class="n">x4</span><span class="p">,</span> <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">y4</span><span class="p">],</span> <span class="s1">&#39;episode_done&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="pytorchdatateacher-multitask-training">
+<h3>PytorchDataTeacher Multitask Training<a class="headerlink" href="#pytorchdatateacher-multitask-training" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">PytorchDataTeacher</span></code> can be used with mutltitask training in a very similar
+way to the standard ParlAI multitasking. There are three simple ways of doing this.</p>
+<p>1. If you do not have any <code class="docutils literal notranslate"><span class="pre">Datasets</span></code> written for the specified tasks, simply
+write <code class="docutils literal notranslate"><span class="pre">-pyt</span> <span class="pre">&lt;task1&gt;,&lt;task2&gt;,...</span></code> on the command line. For example, you could
+run the following command to multitask on SQuAD and bAbI:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">examples</span><span class="o">/</span><span class="n">train_model</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">pyt</span> <span class="n">squad</span><span class="p">,</span><span class="n">babi</span><span class="p">:</span><span class="n">task1k</span><span class="p">:</span><span class="mi">1</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>2. If you only have <code class="docutils literal notranslate"><span class="pre">Datasets</span></code> written for the specified tasks, simply write
+<code class="docutils literal notranslate"><span class="pre">-pytd</span> <span class="pre">&lt;dataset1&gt;,&lt;dataset2&gt;,..</span></code> on the command line. For example, you could
+run the following command to multitask on COCO Captioning and Flickr30k:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">examples</span><span class="o">/</span><span class="n">train_model</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">pytd</span> <span class="n">coco_caption</span><span class="p">,</span><span class="n">flickr30k</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>3. If you have a mix of <code class="docutils literal notranslate"><span class="pre">Datasets</span></code> and regular teachers, you can specify
+the <code class="docutils literal notranslate"><span class="pre">Datasets</span></code> after the <code class="docutils literal notranslate"><span class="pre">-pytd</span></code> flag and the regular teachers after the
+<code class="docutils literal notranslate"><span class="pre">-pyt</span></code> flag. For example, if you wanted to multitask train on SQuAD and
+Flickr30k, you could run the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">examples</span><span class="o">/</span><span class="n">train_model</span><span class="o">.</span><span class="n">py</span> <span class="o">-</span><span class="n">pytd</span> <span class="n">flickr30k</span> <span class="o">-</span><span class="n">pyt</span> <span class="n">squad</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tutorial_seq2seq.html" class="btn btn-neutral float-right" title="Creating an Agent" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tutorial_task.html" class="btn btn-neutral float-left" title="Tasks and Datasets in ParlAI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Facebook AI Research
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

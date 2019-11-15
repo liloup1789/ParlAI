@@ -1,0 +1,379 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ParlAI Quick-start &mdash; ParlAI  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/parlai_theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Intro to ParlAI" href="tutorial_basic.html" />
+    <link rel="prev" title="ParlAI Documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ParlAI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ParlAI Quick-start</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#install">Install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#view-a-task-train-a-model">View a task &amp; train a model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#train-a-transformer-on-twitter">Train a Transformer on Twitter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#add-a-simple-model">Add a simple model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_basic.html">Intro to ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_task.html">Tasks and Datasets in ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_worlds.html">Data Handling, Batching, and Hogwild</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_seq2seq.html">Creating an Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_torch_ranker_agent.html">Using Torch Ranker Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tipsntricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_mturk.html">Using Mechanical Turk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_messenger.html">Using Facebook Messenger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tensorboard.html">Using tensorboard for metric tracking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tasks &amp; Model Zoo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zoo.html">Model Zoo</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Core Library</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="observations.html">observations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents.html">core.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="torch_agent.html">core.torch_agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_data.html">core.build_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dict.html">core.dict</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metrics.html">core.metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="params.html">core.params</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teachers.html">core.teachers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">core.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thread_utils.html">core.thread_utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worlds.html">core.worlds</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="repeat_label.html">agents.repeat_label</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unigram_agent.html">agents.unigram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_seq2seq.html">agents.example_seq2seq</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Scripts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cli_usage.html">Command Line Usage</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ParlAI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>ParlAI Quick-start</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/tutorial_quick.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="parlai-quick-start">
+<h1>ParlAI Quick-start<a class="headerlink" href="#parlai-quick-start" title="Permalink to this headline">¶</a></h1>
+<p><strong>Authors</strong>: Alexander Holden Miller, Margaret Li</p>
+<div class="section" id="install">
+<h2>Install<a class="headerlink" href="#install" title="Permalink to this headline">¶</a></h2>
+<p>First, make sure you have Python 3. Now open up terminal and run the following.</p>
+<ol class="arabic simple">
+<li><p>Clone ParlAI Repository:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/facebookresearch/ParlAI.git ~/ParlAI
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Install ParlAI:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/ParlAI<span class="p">;</span> python setup.py develop
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>Several models have additional requirements, such as <a class="reference external" href="http://pytorch.org/">PyTorch</a>.</p></li>
+</ol>
+</div>
+<div class="section" id="view-a-task-train-a-model">
+<h2>View a task &amp; train a model<a class="headerlink" href="#view-a-task-train-a-model" title="Permalink to this headline">¶</a></h2>
+<p>Let’s start by printing out the first few examples of the bAbI tasks, task 1.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># display examples from bAbI 10k task 1</span>
+python examples/display_data.py -t babi:task10k:1
+</pre></div>
+</div>
+<p>Now let’s try to train a model on it (even on your laptop, this should train fast).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># train MemNN using batch size 1 and 4 threads for 5 epochs</span>
+python examples/train_model.py -t babi:task10k:1 -mf /tmp/babi_memnn -bs <span class="m">1</span> -nt <span class="m">4</span> -eps <span class="m">5</span> -m memnn --no-cuda
+</pre></div>
+</div>
+<p>Let’s print some of its predictions to make sure it’s working.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># display predictions for model save at specified file on bAbI task 1</span>
+python examples/display_model.py -t babi:task10k:1 -mf /tmp/babi_memnn -ecands vocab
+</pre></div>
+</div>
+<p>The “eval_labels” and “MemNN” lines should (usually) match!</p>
+<p>Let’s try asking the model a question ourselves.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># interact with saved model</span>
+python examples/interactive.py -mf /tmp/babi_memnn -ecands vocab
+...
+Enter your message: John went to the hallway.<span class="se">\n</span> Where is John?
+</pre></div>
+</div>
+<p>Hopefully the model gets this right!</p>
+</div>
+<div class="section" id="train-a-transformer-on-twitter">
+<h2>Train a Transformer on Twitter<a class="headerlink" href="#train-a-transformer-on-twitter" title="Permalink to this headline">¶</a></h2>
+<p>Now let’s try training a Transformer (Vaswani, et al 2017) ranker model.
+Make sure to complete this section on a GPU with PyTorch installed.</p>
+<p>We’ll be training on the Twitter task, which is a dataset of tweets and replies.
+There’s more information on tasks in these docs,
+including a full list of <a class="reference external" href="http://parl.ai/docs/tasks.html">tasks</a> and
+<a class="reference external" href="http://parl.ai/docs/tutorial_basic.html#training-and-evaluating-existing-agents">instructions</a>
+on specifying arguments for training and evaluation (like the <code class="docutils literal notranslate"><span class="pre">-t</span> <span class="pre">&lt;task&gt;</span></code> argument used here).</p>
+<p>Let’s begin again by printing the first few examples.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># display first examples from twitter dataset</span>
+python examples/display_data.py -t twitter
+</pre></div>
+</div>
+<p>Now, we’ll train the model. This will take a while to reach convergence.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># train transformer ranker</span>
+python examples/train_model.py -t twitter -mf /tmp/tr_twitter -m transformer/ranker -bs <span class="m">10</span> -vtim <span class="m">3600</span> -cands batch -ecands batch --data-parallel True
+</pre></div>
+</div>
+<p>You can modify some of the command line arguments we use here -
+we set batch size to 10, run validation every 3600 seconds,
+and take candidates from the batch for training and evaluation.</p>
+<p>The train model script will by default save the model after achieving best validation results so far.
+The Twitter task is quite large, and validation is run by default after each epoch (full pass through the train data),
+but we want to save our model more frequently so we set validation to run once an hour with <code class="docutils literal notranslate"><span class="pre">-vtim</span> <span class="pre">3600</span></code>.</p>
+<p>This train model script evaluates the model on the valid and test sets at the end of training, but if we wanted to evaluate a saved model -
+perhaps to compare the results of our newly trained Transformer against a pretrained <code class="docutils literal notranslate"><span class="pre">convai2</span></code> seq2seq baseline from our <a class="reference external" href="http://parl.ai/docs/zoo.html">Model Zoo</a>,
+we could do the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Evaluate seq2seq model trained on convai2 from our model zoo</span>
+python examples/eval_model.py -t twitter -m legacy:seq2seq:0 -mf models:convai2/seq2seq/convai2_self_seq2seq_model
+</pre></div>
+</div>
+<p>Finally, let’s print some of our transformer’s predictions with the same display_model script from above.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># display predictions for model saved at specific file on twitter</span>
+python examples/display_model.py -t twitter -mf /tmp/tr_twitter -ecands batch
+</pre></div>
+</div>
+</div>
+<div class="section" id="add-a-simple-model">
+<h2>Add a simple model<a class="headerlink" href="#add-a-simple-model" title="Permalink to this headline">¶</a></h2>
+<p>Let’s put together a super simple model which will print the parsed version of what is said to it.</p>
+<p>First let’s set it up.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir parlai/agents/parrot
+touch parlai/agents/parrot/parrot.py
+</pre></div>
+</div>
+<p>We’ll inherit the TorchAgent parsing code so we don’t have to write it ourselves.
+Open parrot.py and copy the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">parlai.core.torch_agent</span> <span class="kn">import</span> <span class="n">TorchAgent</span><span class="p">,</span> <span class="n">Output</span>
+
+<span class="k">class</span> <span class="nc">ParrotAgent</span><span class="p">(</span><span class="n">TorchAgent</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">train_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="k">pass</span>
+    <span class="k">def</span> <span class="nf">eval_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="c1"># for each row in batch, convert tensor to back to text strings</span>
+        <span class="k">return</span> <span class="n">Output</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="o">.</span><span class="n">vec2txt</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">batch</span><span class="o">.</span><span class="n">text_vec</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Now let’s test it out:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python examples/display_model.py -t babi:task10k:1 -m parrot
+</pre></div>
+</div>
+<p>You’ll notice the model is always outputting the “unknown” token.
+This token is automatically selected because the dictionary doesn’t recognize any tokens,
+because we haven’t built a dictionary yet. Let’s do that now.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python examples/build_dict.py -t babi:task10k:1 -df /tmp/parrot.dict
+</pre></div>
+</div>
+<p>Now let’s try our Parrot agent again.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python examples/display_model.py -t babi:task10k:1 -m parrot -df /tmp/parrot.dict
+</pre></div>
+</div>
+<p>This ParrotAgent implements <code class="docutils literal notranslate"><span class="pre">eval_step</span></code>, one of two abstract functions in TorchAgent.
+The other is <code class="docutils literal notranslate"><span class="pre">train_step</span></code>.
+You can easily and quickly build a model agent by creating a class which implements only these two functions with the most
+typical custom code for a model, and inheriting vectorization and batching from TorchAgent.</p>
+<p>As needed, you can also override any functions to change the default argument values or to override the behavior with your own.
+For example, you could change the vectorizer to return numpy arrays instead of Torch Tensors.</p>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<p>To see more details about ParlAI’s general structure, how tasks and models are set up,
+or how to use Mechanical Turk, Messenger, Tensorboard, and more–check out the other tutorials.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tutorial_basic.html" class="btn btn-neutral float-right" title="Intro to ParlAI" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="ParlAI Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Facebook AI Research
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

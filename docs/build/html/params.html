@@ -1,0 +1,473 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>core.params &mdash; ParlAI  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/parlai_theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="core.teachers" href="teachers.html" />
+    <link rel="prev" title="core.metrics" href="metrics.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ParlAI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_quick.html">ParlAI Quick-start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_basic.html">Intro to ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_task.html">Tasks and Datasets in ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_worlds.html">Data Handling, Batching, and Hogwild</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_seq2seq.html">Creating an Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_torch_ranker_agent.html">Using Torch Ranker Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tipsntricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_mturk.html">Using Mechanical Turk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_messenger.html">Using Facebook Messenger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tensorboard.html">Using tensorboard for metric tracking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tasks &amp; Model Zoo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zoo.html">Model Zoo</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Core Library</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="observations.html">observations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents.html">core.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="torch_agent.html">core.torch_agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_data.html">core.build_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dict.html">core.dict</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metrics.html">core.metrics</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">core.params</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teachers.html">core.teachers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">core.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thread_utils.html">core.thread_utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worlds.html">core.worlds</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="repeat_label.html">agents.repeat_label</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unigram_agent.html">agents.unigram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_seq2seq.html">agents.example_seq2seq</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Scripts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cli_usage.html">Command Line Usage</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ParlAI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>core.params</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/params.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-parlai.core.params">
+<span id="core-params"></span><h1>core.params<a class="headerlink" href="#module-parlai.core.params" title="Permalink to this headline">¶</a></h1>
+<p>Provide an argument parser and default command line options for using ParlAI.</p>
+<dl class="function">
+<dt id="parlai.core.params.print_git_commit">
+<code class="sig-prename descclassname">parlai.core.params.</code><code class="sig-name descname">print_git_commit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.print_git_commit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print the current git commit of ParlAI and parlai_internal.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.params.print_announcements">
+<code class="sig-prename descclassname">parlai.core.params.</code><code class="sig-name descname">print_announcements</code><span class="sig-paren">(</span><em class="sig-param">opt</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.print_announcements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output any announcements the ParlAI team wishes to make to users.</p>
+<p>Also gives the user the option to suppress the output.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.params.get_model_name">
+<code class="sig-prename descclassname">parlai.core.params.</code><code class="sig-name descname">get_model_name</code><span class="sig-paren">(</span><em class="sig-param">opt</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.get_model_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the model name from either <cite>–model</cite> or <cite>–model-file</cite>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.params.str2bool">
+<code class="sig-prename descclassname">parlai.core.params.</code><code class="sig-name descname">str2bool</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.str2bool" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert ‘yes’, ‘false’, ‘1’, etc. into a boolean.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.params.str2floats">
+<code class="sig-prename descclassname">parlai.core.params.</code><code class="sig-name descname">str2floats</code><span class="sig-paren">(</span><em class="sig-param">s</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.str2floats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Look for single float or comma-separated floats.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.params.str2class">
+<code class="sig-prename descclassname">parlai.core.params.</code><code class="sig-name descname">str2class</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.str2class" title="Permalink to this definition">¶</a></dt>
+<dd><p>From import path string, returns the class specified.</p>
+<p>For example, the string ‘parlai.agents.drqa.drqa:SimpleDictionaryAgent’
+returns &lt;class ‘parlai.agents.drqa.drqa.SimpleDictionaryAgent’&gt;.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.params.class2str">
+<code class="sig-prename descclassname">parlai.core.params.</code><code class="sig-name descname">class2str</code><span class="sig-paren">(</span><em class="sig-param">value</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.class2str" title="Permalink to this definition">¶</a></dt>
+<dd><p>Inverse of params.str2class().</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="parlai.core.params.fix_underscores">
+<code class="sig-prename descclassname">parlai.core.params.</code><code class="sig-name descname">fix_underscores</code><span class="sig-paren">(</span><em class="sig-param">args</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.fix_underscores" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert underscores to hyphens in args.</p>
+<p>For example, converts ‘–gradient_clip’ to ‘–gradient-clip’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>args</strong> – iterable, possibly containing args strings with underscores.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="parlai.core.params.CustomHelpFormatter">
+<em class="property">class </em><code class="sig-prename descclassname">parlai.core.params.</code><code class="sig-name descname">CustomHelpFormatter</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.CustomHelpFormatter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">argparse.ArgumentDefaultsHelpFormatter</span></code></p>
+<p>Produce a custom-formatted <cite>–help</cite> option.</p>
+<p>See <a class="reference external" href="https://goo.gl/DKtHb5">https://goo.gl/DKtHb5</a> for details.</p>
+<dl class="method">
+<dt id="parlai.core.params.CustomHelpFormatter.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.CustomHelpFormatter.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="parlai.core.params.ParlaiParser">
+<em class="property">class </em><code class="sig-prename descclassname">parlai.core.params.</code><code class="sig-name descname">ParlaiParser</code><span class="sig-paren">(</span><em class="sig-param">add_parlai_args=True</em>, <em class="sig-param">add_model_args=False</em>, <em class="sig-param">description='ParlAI parser'</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.ParlaiParser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">argparse.ArgumentParser</span></code></p>
+<p>Provide an opt-producer and CLI argument parser.</p>
+<p>Pseudo-extension of <code class="docutils literal notranslate"><span class="pre">argparse</span></code> which sets a number of parameters
+for the ParlAI framework. More options can be added specific to other
+modules by passing this object and calling <code class="docutils literal notranslate"><span class="pre">add_arg()</span></code> or
+<code class="docutils literal notranslate"><span class="pre">add_argument()</span></code> on it.</p>
+<p>For example, see <code class="docutils literal notranslate"><span class="pre">parlai.core.dict.DictionaryAgent.add_cmdline_args</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>add_parlai_args</strong> – (default True) initializes the default arguments for ParlAI
+package, including the data download paths and task arguments.</p></li>
+<li><p><strong>add_model_args</strong> – (default False) initializes the default arguments for loading
+models, including initializing arguments from that model.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="parlai.core.params.ParlaiParser.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">add_parlai_args=True</em>, <em class="sig-param">add_model_args=False</em>, <em class="sig-param">description='ParlAI parser'</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.ParlaiParser.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the ParlAI argparser.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.params.ParlaiParser.add_parlai_data_path">
+<code class="sig-name descname">add_parlai_data_path</code><span class="sig-paren">(</span><em class="sig-param">argument_group=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.ParlaiParser.add_parlai_data_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add –datapath CLI arg.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.params.ParlaiParser.add_mturk_args">
+<code class="sig-name descname">add_mturk_args</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.ParlaiParser.add_mturk_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add standard mechanical turk arguments.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.params.ParlaiParser.add_messenger_args">
+<code class="sig-name descname">add_messenger_args</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.ParlaiParser.add_messenger_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add Facebook Messenger arguments.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.params.ParlaiParser.add_parlai_args">
+<code class="sig-name descname">add_parlai_args</code><span class="sig-paren">(</span><em class="sig-param">args=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.ParlaiParser.add_parlai_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add common ParlAI args across all scripts.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.params.ParlaiParser.add_distributed_training_args">
+<code class="sig-name descname">add_distributed_training_args</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.ParlaiParser.add_distributed_training_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add CLI args for distributed training.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.params.ParlaiParser.add_pytorch_datateacher_args">
+<code class="sig-name descname">add_pytorch_datateacher_args</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.ParlaiParser.add_pytorch_datateacher_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add CLI args for PytorchDataTeacher.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.params.ParlaiParser.add_model_args">
+<code class="sig-name descname">add_model_args</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.ParlaiParser.add_model_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add arguments related to models such as model files.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.params.ParlaiParser.add_model_subargs">
+<code class="sig-name descname">add_model_subargs</code><span class="sig-paren">(</span><em class="sig-param">model</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.ParlaiParser.add_model_subargs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add arguments specific to a particular model.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.params.ParlaiParser.add_task_args">
+<code class="sig-name descname">add_task_args</code><span class="sig-paren">(</span><em class="sig-param">task</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.ParlaiParser.add_task_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add arguments specific to the specified task.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.params.ParlaiParser.add_pyt_dataset_args">
+<code class="sig-name descname">add_pyt_dataset_args</code><span class="sig-paren">(</span><em class="sig-param">opt</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.ParlaiParser.add_pyt_dataset_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add arguments specific to specified pytorch dataset.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.params.ParlaiParser.add_image_args">
+<code class="sig-name descname">add_image_args</code><span class="sig-paren">(</span><em class="sig-param">image_mode</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.ParlaiParser.add_image_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add additional arguments for handling images.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.params.ParlaiParser.add_extra_args">
+<code class="sig-name descname">add_extra_args</code><span class="sig-paren">(</span><em class="sig-param">args=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.ParlaiParser.add_extra_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add more args depending on how known args are set.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.params.ParlaiParser.parse_known_args">
+<code class="sig-name descname">parse_known_args</code><span class="sig-paren">(</span><em class="sig-param">args=None</em>, <em class="sig-param">namespace=None</em>, <em class="sig-param">nohelp=False</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.ParlaiParser.parse_known_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse known args to ignore help flag.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.params.ParlaiParser.parse_and_process_known_args">
+<code class="sig-name descname">parse_and_process_known_args</code><span class="sig-paren">(</span><em class="sig-param">args=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.ParlaiParser.parse_and_process_known_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse provided arguments and return parlai opts and unknown arg list.</p>
+<p>Runs the same arg-&gt;opt parsing that parse_args does, but doesn’t
+throw an error if the args being parsed include additional command
+line arguments that parlai doesn’t know what to do with.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.params.ParlaiParser.parse_args">
+<code class="sig-name descname">parse_args</code><span class="sig-paren">(</span><em class="sig-param">args=None</em>, <em class="sig-param">namespace=None</em>, <em class="sig-param">print_args=True</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.ParlaiParser.parse_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse the provided arguments and returns a dictionary of the <code class="docutils literal notranslate"><span class="pre">args</span></code>.</p>
+<p>We specifically remove items with <code class="docutils literal notranslate"><span class="pre">None</span></code> as values in order
+to support the style <code class="docutils literal notranslate"><span class="pre">opt.get(key,</span> <span class="pre">default)</span></code>, which would otherwise
+return <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.params.ParlaiParser.print_args">
+<code class="sig-name descname">print_args</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.ParlaiParser.print_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print out all the arguments in this parser.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.params.ParlaiParser.set_params">
+<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.ParlaiParser.set_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set overridable kwargs.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.params.ParlaiParser.show_advanced_args">
+<em class="property">property </em><code class="sig-name descname">show_advanced_args</code><a class="headerlink" href="#parlai.core.params.ParlaiParser.show_advanced_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if we should show arguments marked as hidden.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.params.ParlaiParser.add_argument">
+<code class="sig-name descname">add_argument</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.ParlaiParser.add_argument" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override to convert underscores to hyphens for consistency.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.params.ParlaiParser.add_argument_group">
+<code class="sig-name descname">add_argument_group</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.ParlaiParser.add_argument_group" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override to make arg groups also convert underscores to hyphens.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.params.ParlaiParser.error">
+<code class="sig-name descname">error</code><span class="sig-paren">(</span><em class="sig-param">message</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.params.ParlaiParser.error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override to print custom error message.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="teachers.html" class="btn btn-neutral float-right" title="core.teachers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="metrics.html" class="btn btn-neutral float-left" title="core.metrics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Facebook AI Research
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
