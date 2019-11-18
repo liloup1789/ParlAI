@@ -322,7 +322,7 @@ def _save_best_valid(model_file, best_valid):
     f.write(str(best_valid))
     f.close()
 
-
+import sys
 class TrainLoop:
     """TrainLoop contains the core training loop logic."""
 
@@ -360,7 +360,11 @@ class TrainLoop:
             build_dict(opt, skip_if_built=True)
         # Create model and assign it to the specified task
         self.agent = create_agent(opt)
+        print(self.agent)
         self.world = create_task(opt, self.agent)
+        # print(self.world)
+        print(self.world.get_agents())
+        # sys.exit()
         # set up timers
         self.train_time = Timer()
         self.validate_time = Timer()
@@ -700,11 +704,16 @@ class TrainLoop:
             )
         opt = self.opt
         world = self.world
+        print(world)
+        print(self.max_num_epochs)
+        # sys.exit()
         with world:
             while True:
                 # do one example / batch of examples
                 world.parley()
+                print(world.get_agents()[0].report())
                 self.parleys += 1
+                break
 
                 # get the total training examples done, compute epochs
                 self._total_epochs = (
