@@ -282,7 +282,7 @@ class DialogPartnerWorld(World):
         agents = self.agents
         acts[0] = agents[0].act()
         agents[1].observe(validate(acts[0]))
-        print("students obs "+str(agents[1].observation))
+        # print("students obs "+str(agents[1].observation))
         acts[1] = agents[1].act()
         agents[0].observe(validate(acts[1]))
         # print("teachers obs "+ str(agents[0].tasks[agents[0].task_idx].observation))
