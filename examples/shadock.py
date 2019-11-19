@@ -9,6 +9,7 @@ import sys,os
 from parlai.core.agents import Agent
 from parlai.core.params import ParlaiParser
 from parlai.core.worlds import create_task
+import random
 # schaub@cazotte:~$ source activate parlai
 # (parlai) schaub@cazotte:~$ cd Documents/projets/parlai/ParlAI/examples/
 # (parlai) schaub@cazotte:~/Documents/projets/parlai/ParlAI/examples$ python shadock.py -t babi
@@ -22,13 +23,27 @@ class RepeatLabelAgent(Agent):
         self.observation = observation
         return observation
     # return label from before if available
+    # def act(self):
+    #     reply = {'id': self.id}
+    #     if 'labels' in self.observation:
+    #         reply['text'] = ', '.join(self.observation['labels'])+" THIS IS MY ALMIGHTY ANSWER"
+    #     else:
+    #         reply['text'] = "I don't know."
+    #     return reply
+
+
     def act(self):
         reply = {'id': self.id}
         if 'labels' in self.observation:
             reply['text'] = ', '.join(self.observation['labels'])
+        elif 'label_candidates' in self.observation:
+            cands = self.observation['label_candidates']
+            reply['text'] = random.choice(list(cands))
         else:
             reply['text'] = "I don't know."
         return reply
+
+
 if __name__ == '__main__':
 
     parser = ParlaiParser()
@@ -38,8 +53,6 @@ if __name__ == '__main__':
 
     world = create_task(opt, agent)
     # create task -> world + teachers par défaut
-    print(type(world))
-    print(world.get_agents())
     # sys.exit()
     for _ in range(10):
         world.parley()

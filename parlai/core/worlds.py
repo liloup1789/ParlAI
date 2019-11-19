@@ -45,6 +45,7 @@ import copy
 import importlib
 import random
 import time
+import sys
 
 from functools import lru_cache
 
@@ -246,7 +247,10 @@ class World(object):
             if self.epoch_done():
                 self.total_epochs += 1
 
-
+import inspect as i 
+import sys
+from pprint import pprint
+# from dill.source import getsource
 class DialogPartnerWorld(World):
     """
     Simple world for two agents communicating synchronously.
@@ -280,11 +284,18 @@ class DialogPartnerWorld(World):
         """Agent 0 goes first. Alternate between the two agents."""
         acts = self.acts
         agents = self.agents
+        # print(getsource(agents[0].act))        
         acts[0] = agents[0].act()
+        # pprint(acts[0])
+
         agents[1].observe(validate(acts[0]))
         acts[1] = agents[1].act()
+        # pprint(acts[1])
         agents[0].observe(validate(acts[1]))
         self.update_counters()
+        print(self.total_parleys)
+        print(self.total_epochs)
+        print(self.total_exs)
 
     def episode_done(self):
         """Only the first agent indicates when the episode is done."""
@@ -295,6 +306,7 @@ class DialogPartnerWorld(World):
 
     def epoch_done(self):
         """Only the first agent indicates when the epoch is done."""
+        print(self.get_task_agent())
         return self.get_task_agent().epoch_done()
 
     def report(self):

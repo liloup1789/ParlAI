@@ -354,6 +354,7 @@ class FixedDialogTeacher(Teacher):
         if hasattr(self, 'lastY') and self.lastY is not None:
             self.metrics.update(observation, self.lastY)
             self.lastY = None
+        print(self.metrics)
         return observation
 
     def batch_act(self, observations):
