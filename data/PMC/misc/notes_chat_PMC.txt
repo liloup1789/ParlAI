@@ -1,0 +1,87 @@
+IF info sur pdt : 
+	IF info livraison "bonjour, j'aimerais savoir si vous livrez sur la Martinique? merci"
+	IF not Nom Produit : 	
+		Quel est le nom de produit SVP
+			: connaît le produit 
+			: ne connaît pas le produit 
+		d'autres questions  ?
+	IF product.available() :
+		random réponse.
+	IF what is produit : 
+		parfums testeurs : Les testeurs sont des bouteilles de parfum que l’on retrouve dans les 
+		grands magasins, ils permettent aux clients de pouvoir essayer le produit. 
+		La plupart des entreprises utilisent les testeurs comme moyen de promotion. 
+		En effet, ils sont fabriqués avec le même contenu que les parfums 
+		commercialisés, et sont vendus NEUFS. La différence se situe au niveau du 
+		packaging qui est généralement imprimé en noir et blanc ou non-imprimé.
+		
+		 différence entre eau de parfum et eau de toilette? : Une eau de parfum est plus concentrée qu'une eau de toilette donc elle tient plus longtemps
+	IF frais de port : Bonjour, les frais de livraison sont gratuits à partir de quel montant ?  les frais de ports ne sont-ils pas offerts à partir d'un certaine somme? bonjour nouvelle sur votre site j'aimerez commander car prix vraimment pas cher seul les frais de port sont elevé 
+			quelque soit la somme de votre commande, les frais de port sont facturés
+			Les frais de port dépendent de l'option de livraison que vous choisirez :
+			- Livraison dans le point-relais de votre choix en 7 à 10 jours ouvrés 
+			(France Métropolitaine uniquement) :
+			7,99 € pour le premier article et 5,99 € par article supplémentaire
+			- Livraison à domicile en 7 à 14 jours ouvrés :
+			9,99 € pour le premier article et 5,99 € par article supplémentaire
+			- Livraison express à domicile en 7 à 10 jours ouvrés :
+			11,99 € pour le premier article et 6,49 € par article supplémentaire
+
+	IF looking_for : produit :
+		random : oui OR non.
+	IF looking_for : prix : 
+		il est à 75 euros le flacon.
+	IF delivery time : 
+		Combien de temps pour une livraison en France? dans combien de temps suis-je sensé recevoir mon parfum?
+		Les délais de livraison dépendent de l'option de livraison choisie lors de votre commande.Il faut ainsi compter entre 7 et 10 jours ouvrés pour une livraison en Point Relais (France Métropolitaine uniquement) et entre 10 et 14 jours 
+If pdt défectueux :
+	 avez vous envoyé le justificatif postal attestant de ce retour ?
+		if oui : 
+			Si vous n'avez pas reçu nos emails , nous vous invitons à vérifier vos 
+			courriers indésirables ou vos spams. Il arrive en effet que certaines 
+			messageries y transfèrent automatiquement nos emails.
+			if reponse : 
+				je vous invite à répondre directement à ce mail je vous prie
+
+If livraison :
+	if remboursement : 
+		if plus de 72h :
+			refaire remboursement
+		else : 
+			patientez svp
+		
+	if probleme commande : 
+		if erreur commande : 
+			verification. En effet traitement plus brefs délais.
+		if commande non reçue : 
+			if renvoi :
+				procéder renvoi commande. 
+				confirmation mail ? 
+				if oui : 
+					envoie
+				else :
+					fin 
+			else :
+				l'avez-vous commandé il y a plus de 10 jours ? :
+				if oui : 
+					communiquer lien de suivi 
+					if lien de suivi : 
+						est-ce une livraison à domicile ou en point de relais ? 
+						if point de relais : 
+							Comme l'indique votre lien de suivi, votre colis a bien été réceptionné par 
+							le point relais que vous avez choisi
+						else : 
+							IF commande depuis l'étranger :
+								Ceci est lié au fait que Chronopost ne propose pas de suivi aux Etats-unis vous pourrez constater une mise à jour du suivi à l'arrivée du colis sur 
+								le territoire français dans les prochains jours.
+							else :
+								Suite à notre échange sur le tchat, nous vous  confirmons que la marchandise a été perdue ou volée durant son transport. MERCI de bien vouloir nous  confirmer votre adresse postale pour le renvoi de la marchandise à domicile.
+					else : 
+						Votre commande est actuellement entre les mains du transporteur, et il n'a 
+						pas remis à jour le n° de suivi. Nous ne pouvons rien faire pour le moment. 
+				else : 
+					Comme indiqué lors du passage de votre commande, le délai de livraison avec 
+					l'option choisie est généralement compris entre 7 et 10 jours ouvrés à 
+					partir de la date d'expédition.
+					Votre colis devrait donc être remis dans le Point relais que vous avez 
+					choisi dans les prochains jours.

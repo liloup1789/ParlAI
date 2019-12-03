@@ -1,0 +1,71 @@
+<topics version="1" lib="paramétrage des thèmes relatifs aux produits">
+<import includes="Tdelivery.xml Tgeography.xml PtchatEcommerce.xml TrefundAndCompensation.xml"/>
+<internalPattern id="ProductMatter">
+  <h>topic(DeliveryCountry)</h>
+   <h>topic(ProductName)</h>
+   <l>topic(ProductAvailable)</l>
+   <h>topic(Product?Available)</h>
+   <l>topic(FraisdePort)</l>
+   <h>topic(PrixProduit)</h>
+</internalPattern>
+<internalPattern id ="WhatIs">
+<h>topic(WhatIsTesteur)</h>
+</internalPattern>
+<topic id ="FraisdePort">
+<l>$nFrais $de $nPort</l>
+  <u>$vDIntention! $vDePaiement $nFrais $nPort</u>
+  <!-- tarifs de livraison-->
+  <u>$nTarif $nLivraison</u>
+  <!-- frais de livraison -->
+  <u>$nFrais $nLivraison</u>
+  <!-- quels sont les frais additionnel -->
+  <u>$nFrais $aAdditionnel</u>
+  <!-- combien coûte la livraison -->
+  <h>combien $vCoûter $nLivraison</h>
+  <!-- ça coûte combien la livraison -->
+  <h>$vCoûter combien $nLivraison</h>
+  <!-- quels sont les frais de port -->
+  <u>$etre $nFrais $nPort</u>
+</topic>
+<topic id="PrixProduit">
+<h>$pCombien  $vCoûter? $nProduit</h>
+<h>$pCombien  $vCoûter? @perfume</h>
+<h>$pQuel? $nPrix @perfume</h>
+<h>$pQuel? $nPrix $nProduit</h>
+</topic>
+<internalPattern id="DeliveryCountryP">
+  <h>pattern(Rlivraison) pattern(EnDehorsDeMetropole)</h>
+</internalPattern>
+<internalPattern id="ProductAvailableP">
+  <h>pattern(ChoixDispo) @perfume</h>
+  <h>@perfume pattern(ChoixDispo)</h>
+  <h> pattern(ChoixDispo)</h>
+</internalPattern>                                 
+<topic id="Product">
+  <h>pattern(ProductMatter)</h>
+  <h>pattern(WhatIs)</h>
+</topic>
+<topic id ="WhatIsTesteur">
+	<h>testeur</h>
+</topic>                     
+<topic id="DeliveryCountry">
+  <!-- bonjour, j'aimerais savoir si vous livrez sur la Martinique? merci -->
+  <h>pattern(DeliveryCountryP)</h>
+</topic>
+<topic id="ProductName">
+  <!-- Quel est le nom de produit SVP -->
+  <u>$nNom $nProduit</u>
+  
+  <!-- Comment s'appelle le produit SVP -->
+  <u>$vAppeler $nProduit</u>
+</topic>
+<topic id="ProductAvailable">
+  <!-- dispo ?  -->
+  <l>pattern(ProductAvailableP)</l>
+</topic>
+<topic id="Product?Available">
+  <!-- dispo ?  -->
+  <h>pattern(ChoixDispo) !@perfume</h>
+</topic>
+
+</topics>
