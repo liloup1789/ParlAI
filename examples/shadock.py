@@ -43,9 +43,10 @@ if __name__ == '__main__':
     world = create_task(opt, agent)
 
     for _ in range(10):
-        world.parley()
         teacher = world.get_agents()[0]
+        print(teacher.datatype)
         print(teacher.getID())
+        world.parley()
         print(world.display())
         if world.epoch_done():
             print('EPOCH DONE')
