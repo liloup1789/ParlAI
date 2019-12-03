@@ -1,0 +1,605 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Model Zoo &mdash; ParlAI  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/parlai_theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="observations" href="observations.html" />
+    <link rel="prev" title="Tasks" href="tasks.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ParlAI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_quick.html">ParlAI Quick-start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_basic.html">Intro to ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_task.html">Tasks and Datasets in ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_worlds.html">Data Handling, Batching, and Hogwild</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_seq2seq.html">Creating an Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_torch_ranker_agent.html">Using Torch Ranker Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tipsntricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_mturk.html">Using Mechanical Turk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_messenger.html">Using Facebook Messenger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tensorboard.html">Using tensorboard for metric tracking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tasks &amp; Model Zoo</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Model Zoo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#task-convai2">Task: Convai2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#kvmemnn-convai2-model">Kvmemnn Convai2 Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#seq2seq-convai2-model">Seq2Seq Convai2 Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#controllable-dialogue-convai2-model">Controllable Dialogue Convai2 Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#poly-encoder-transformer-convai2-model">Poly-Encoder Transformer Convai2 Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bi-encoder-transformer-convai2-model">Bi-Encoder Transformer Convai2 Model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#task-squad">Task: Squad</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#drqa-squad-model">Drqa Squad Model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#task-wikipedia">Task: Wikipedia</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#wikipedia-retriever-used-for-open-squad">Wikipedia Retriever (Used For Open Squad)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wikipedia-retriever-used-for-wizard-of-wikipedia">Wikipedia Retriever (Used For Wizard Of Wikipedia)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#task-wizard-of-wikipedia">Task: Wizard_of_wikipedia</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#wizard-of-wikipedia-end-to-end-generator">Wizard Of Wikipedia (End To End Generator)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wizard-of-wikipedia-full-dialogue-retrieval-model">Wizard Of Wikipedia (Full Dialogue Retrieval Model)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#task-light-dialog">Task: Light_dialog</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#light-bert-biranker-dialogue-model">Light Bert-Biranker Dialogue Model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#task-personality-captions">Task: Personality_captions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#transresnet-resnet-152-personality-captions-model">Transresnet (Resnet 152) Personality-Captions Model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#task-image-chat">Task: Image_chat</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#transresnet-resnet152-image-chat-model">Transresnet (Resnet152) Image-Chat Model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#task-self-feeding">Task: Self_feeding</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#self-feeding-chatbot">Self-Feeding Chatbot</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#task-dialogue-safety">Task: Dialogue_safety</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#transformer-classifier-single-turn-dialogue-safety-model">Transformer Classifier Single-Turn Dialogue Safety Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bert-classifier-multi-turn-dialogue-safety-model">Bert Classifier Multi-Turn Dialogue Safety Model</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pretrained-word-embeddings">Pretrained Word Embeddings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bert">BERT</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Core Library</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="observations.html">observations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents.html">core.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="torch_agent.html">core.torch_agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_data.html">core.build_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dict.html">core.dict</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metrics.html">core.metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="params.html">core.params</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teachers.html">core.teachers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">core.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thread_utils.html">core.thread_utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worlds.html">core.worlds</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="repeat_label.html">agents.repeat_label</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unigram_agent.html">agents.unigram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_seq2seq.html">agents.example_seq2seq</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Scripts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cli_usage.html">Command Line Usage</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ParlAI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Model Zoo</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/zoo.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="model-zoo">
+<h1>Model Zoo<a class="headerlink" href="#model-zoo" title="Permalink to this headline">¶</a></h1>
+<p>This is a list of pretrained ParlAI models. They are listed by task, or else in a pretraining
+section (at the end) when meant to be used as initialization for fine-tuning on a task.</p>
+<div class="section" id="task-convai2">
+<h2>Task: Convai2<a class="headerlink" href="#task-convai2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="kvmemnn-convai2-model">
+<h3>Kvmemnn Convai2 Model<a class="headerlink" href="#kvmemnn-convai2-model" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/projects/convai2/">[related project]</a> <a class="reference external" href="http://convai.io//">[external website]</a></p>
+<p>KvMemNN trained on the ConvAI2 task, used as a baseline in the competition.</p>
+<p>Example invocation(s):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m parlai.scripts.interactive -mf zoo:convai2/kvmemnn/model
+
+Enter Your Message: Hi, what do you think of peanuts?
+there was a kid in the school system my mum works for with a severe peanut allergy
+</pre></div>
+</div>
+</div>
+<div class="section" id="seq2seq-convai2-model">
+<h3>Seq2Seq Convai2 Model<a class="headerlink" href="#seq2seq-convai2-model" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/projects/convai2/">[related project]</a> <a class="reference external" href="http://convai.io//">[external website]</a></p>
+<p>SeqSeq trained on the ConvAI2 task, used as a baseline in the competition.</p>
+<p>Example invocation(s):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m parlai.scripts.interactive -mf zoo:convai2/seq2seq/convai2_self_seq2seq_model -m legacy:seq2seq:0
+
+Enter Your Message: Hi, what do you think of peanuts?
+[Seq2Seq]: i don&#39;t have any , but i do not have a favorite .
+</pre></div>
+</div>
+</div>
+<div class="section" id="controllable-dialogue-convai2-model">
+<h3>Controllable Dialogue Convai2 Model<a class="headerlink" href="#controllable-dialogue-convai2-model" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/projects/controllable_dialogue/">[related project]</a></p>
+<p>Seq2Seq model with control trained on ConvAI2</p>
+<p>Example invocation(s):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m parlai.scripts.eval_model --model projects.controllable_dialogue.controllable_seq2seq.controllable_seq2seq:ControllableSeq2seqAgent --task projects.controllable_dialogue.tasks.agents -mf zoo:controllable_dialogue/convai2_finetuned_baseline
+
+{&#39;exs&#39;: 7801, &#39;accuracy&#39;: 0.0006409, &#39;f1&#39;: 0.1702, &#39;bleu&#39;: 0.005205, &#39;token_acc&#39;: 0.3949, &#39;loss&#39;: 3.129, &#39;ppl&#39;: 22.86}
+</pre></div>
+</div>
+</div>
+<div class="section" id="poly-encoder-transformer-convai2-model">
+<h3>Poly-Encoder Transformer Convai2 Model<a class="headerlink" href="#poly-encoder-transformer-convai2-model" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/projects/polyencoder//">[related project]</a></p>
+<p>Polyencoder pretrained on Reddit and fine-tuned on ConvAI2 scoring 89+ <a class="reference external" href="mailto:hits&#37;&#52;&#48;1/20">hits<span>&#64;</span>1/20</a>. See the pretrained_transformers directory for a list of other available pretrained transformers</p>
+<p>Example invocation(s):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python examples/interactive.py -mf zoo:pretrained_transformers/model_poly/model -t convai2
+
+hi how are you doing ?
+[Polyencoder]: i am alright . i am back from the library .
+Enter Your Message: oh, what do you do for a living?
+[Polyencoder]: i work at the museum downtown . i love it there .
+Enter Your Message: what is your favorite drink?
+[Polyencoder]: i am more of a tea guy . i get my tea from china .
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python examples/eval_model.py -mf zoo:pretrained_transformers/model_poly/model -t convai2 --eval-candidates inline
+
+[ Finished evaluating tasks [&#39;convai2&#39;] using datatype valid ]
+{&#39;exs&#39;: 7801, &#39;accuracy&#39;: 0.8942, &#39;f1&#39;: 0.9065, &#39;hits@1&#39;: 0.894, &#39;hits@5&#39;: 0.99, &#39;hits@10&#39;: 0.997, &#39;hits@100&#39;: 1.0, &#39;bleu&#39;: 0.8941, &#39;lr&#39;: 5e-09, &#39;total_train_updates&#39;: 0, &#39;examples&#39;: 7801, &#39;loss&#39;: 3004.0, &#39;mean_loss&#39;: 0.385, &#39;mean_rank&#39;: 1.234, &#39;mrr&#39;: 0.9359}
+</pre></div>
+</div>
+</div>
+<div class="section" id="bi-encoder-transformer-convai2-model">
+<h3>Bi-Encoder Transformer Convai2 Model<a class="headerlink" href="#bi-encoder-transformer-convai2-model" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/projects/polyencoder//">[related project]</a></p>
+<p>Bi-encoder pretrained on Reddit and fine-tuned on ConvAI2 scoring ~87 <a class="reference external" href="mailto:hits&#37;&#52;&#48;1/20">hits<span>&#64;</span>1/20</a>.</p>
+<p>Example invocation(s):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python examples/interactive.py -mf zoo:pretrained_transformers/model_bi/model -t convai2
+
+hi how are you doing ?
+[Biencoder]: my mother is from russia .
+Enter Your Message: oh cool, whereabouts ?
+[Biencoder]: no , she passed away when i was 18 . thinking about russian recipes she taught me ,
+Enter Your Message: what do you cook?
+[Biencoder]: like meat mostly , me and my dogs love them , do you like dogs ?
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python examples/eval_model.py -mf zoo:pretrained_transformers/model_bi/model -t convai2 --eval-candidates inline
+
+[ Finished evaluating tasks [&#39;convai2&#39;] using datatype valid ]
+{&#39;exs&#39;: 7801, &#39;accuracy&#39;: 0.8686, &#39;f1&#39;: 0.8833, &#39;hits@1&#39;: 0.869, &#39;hits@5&#39;: 0.987, &#39;hits@10&#39;: 0.996, &#39;hits@100&#39;: 1.0, &#39;bleu&#39;: 0.8685, &#39;lr&#39;: 5e-09, &#39;total_train_updates&#39;: 0, &#39;examples&#39;: 7801, &#39;loss&#39;: 28.77, &#39;mean_loss&#39;: 0.003688, &#39;mean_rank&#39;: 1.301, &#39;mrr&#39;: 0.9197}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="task-squad">
+<h2>Task: Squad<a class="headerlink" href="#task-squad" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="drqa-squad-model">
+<h3>Drqa Squad Model<a class="headerlink" href="#drqa-squad-model" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/facebookresearch/DrQA/">[external website]</a></p>
+<p>DrQA Reader trained on SQuAD</p>
+<p>Example invocation(s):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m parlai.scripts.eval_model -mf zoo:drqa/squad/model -t squad -dt test
+
+{&#39;exs&#39;: 10570, &#39;accuracy&#39;: 0.6886, &#39;f1&#39;: 0.7821, &#39;hits@1&#39;: 0.689, &#39;hits@5&#39;: 0.689, &#39;hits@10&#39;: 0.689, &#39;hits@100&#39;: 0.689, &#39;bleu&#39;: 0.1364, &#39;train_loss&#39;: 0}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="task-wikipedia">
+<h2>Task: Wikipedia<a class="headerlink" href="#task-wikipedia" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="wikipedia-retriever-used-for-open-squad">
+<h3>Wikipedia Retriever (Used For Open Squad)<a class="headerlink" href="#wikipedia-retriever-used-for-open-squad" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/facebookresearch/DrQA/">[external website]</a></p>
+<p>Retrieval over Wikipedia dump, used for DrQA on the open squad dataset. This is the dump from the original paper, used for replicating results.</p>
+<p>Example invocation(s):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m parlai.scripts.interactive --model tfidf_retriever -mf zoo:wikipedia_2016-12-21/tfidf_retriever/drqa_docs
+
+Enter Your Message: Yann LeCun
+[candidate_scores]: [507.05804682 390.18244433 279.24033928 269.60377042 214.00140589]
+[SparseTfidfRetrieverAgent]:
+Deep learning (also known as deep structured learning, hierarchical learning or deep machine learning) is a branch of machine learning based on a set of algorithms that attempt to model high level abstractions in data. In a simple case, you could have two sets of neurons: ones that receive an input signal and ones that send an output signal. When the input layer receives an input it passes on a modified version of the input to the next layer. In a deep network, there are many layers between the input and output (and the layers are not made of neurons but it can help to think of it that way), allowing the algorithm to use multiple processing layers, composed of multiple linear and non-linear transformations.
+
+Deep learning is part of a broader family of machine learning methods based on ...
+to commonsense reasoning which operates on concepts in terms of production rules of the grammar, and is a basic goal of both human language acquisition and AI. (See also Grammar induction.)
+</pre></div>
+</div>
+</div>
+<div class="section" id="wikipedia-retriever-used-for-wizard-of-wikipedia">
+<h3>Wikipedia Retriever (Used For Wizard Of Wikipedia)<a class="headerlink" href="#wikipedia-retriever-used-for-wizard-of-wikipedia" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/projects/wizard_of_wikipedia/">[related project]</a></p>
+<p>Retrieval over Wikipedia dump, used for DrQA on the open squad dataset.</p>
+<p>Example invocation(s):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m parlai.scripts.interactive --model tfidf_retriever -mf zoo:wikipedia_full/tfidf_retriever/model
+
+Enter Your Message: Yann LeCun
+[candidate_scores]: [454.74038503 353.88863708 307.31353203 280.4501096  269.89960432]
+[SparseTfidfRetrieverAgent]:
+Yann LeCun (; born 1960) is a computer scientist with contributions in machine learning, computer vision, mobile robotics and computational neuroscience. He is well known for his work on optical character recognition and computer vision using convolutional neural networks (CNN), and is a founding father of convolutional nets. He is also one of the main creators of the DjVu image compression technology (together with Léon Bottou and Patrick Haffner). He co-developed the Lush programming language with Léon Bottou.
+
+Yann LeCun was born near Paris, France, in 1960. He received a Diplôme d&#39;Ingénieur from the Ecole Superieure d&#39;Ingénieur en Electrotechnique et Electronique (ESIEE), Paris in 1983, and a PhD in Computer Science from Université Pierre et Marie Curie in 1987 during which he ...
+of Science and Technology in Saudi Arabia because he was considered a terrorist in the country in view of his atheism.
+
+In 2018 Yann LeCun picked a fight with a robot to support Facebook AI goals.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="task-wizard-of-wikipedia">
+<h2>Task: Wizard_of_wikipedia<a class="headerlink" href="#task-wizard-of-wikipedia" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="wizard-of-wikipedia-end-to-end-generator">
+<h3>Wizard Of Wikipedia (End To End Generator)<a class="headerlink" href="#wizard-of-wikipedia-end-to-end-generator" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/projects/wizard_of_wikipedia/">[related project]</a></p>
+<p>End2End Generative model for Wizard of Wikipedia</p>
+<p>Example invocation(s):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python examples/display_model.py -t wizard_of_wikipedia:generator -mf zoo:wizard_of_wikipedia/end2end_generator/model -n 1 --display-ignore-fields knowledge_parsed
+
+[chosen_topic]: Gardening
+[knowledge]: no_passages_used __knowledge__ no_passages_used
+Gardening __knowledge__ Gardening is the practice of growing and cultivating plants as part of horticulture.
+Gardening __knowledge__ In gardens, ornamental plants are often grown for their flowers, foliage, or overall appearance; useful plants, such as root vegetables, leaf vegetables, fruits, and herbs, are grown for consumption, for use as dyes, or for medicinal or cosmetic use.
+Gardening __knowledge__ Gardening is considered by many people to be a relaxing activity.
+Gardening __knowledge__ Gardening ranges in scale from fruit orchards, to long boulevard plantings with one or more different types of shrubs, trees, and herbaceous plants, to residential yards including lawns and foundation plantings, to plants in large or small containers ...
+there had been several other notable gardening magazines in circulation, including the &quot;Gardeners&#39; Chronicle&quot; and &quot;Gardens Illustrated&quot;, but these were tailored more for the professional gardener.
+
+[title]: Gardening
+[checked_sentence]: Gardening is considered by many people to be a relaxing activity.
+[eval_labels_choice]: I live on a farm, we garden all year long, it is very relaxing.
+[checked_sentence_parsed]: Gardening __knowledge__ Gardening is considered by many people to be a relaxing activity.
+[WizTeacher]: Gardening
+I like Gardening, even when I&#39;ve only been doing it for a short time.
+[eval_labels: I live on a farm, we garden all year long, it is very relaxing.]
+[TorchAgent]: i love gardening , it is considered a relaxing activity .
+</pre></div>
+</div>
+</div>
+<div class="section" id="wizard-of-wikipedia-full-dialogue-retrieval-model">
+<h3>Wizard Of Wikipedia (Full Dialogue Retrieval Model)<a class="headerlink" href="#wizard-of-wikipedia-full-dialogue-retrieval-model" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/projects/wizard_of_wikipedia/">[related project]</a></p>
+<p>Full Dialogue Retrieval Model for Wizard of Wikipedia</p>
+<p>Example invocation(s):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python examples/display_model.py -t wizard_of_wikipedia -mf zoo:wizard_of_wikipedia/full_dialogue_retrieval_model/model -m projects:wizard_of_wikipedia:wizard_transformer_ranker --n-heads 6 --ffn-size 1200 --embeddings-scale False --delimiter &#39; __SOC__ &#39; --n-positions 1000 --legacy True
+
+[chosen_topic]: Gardening
+[knowledge]: Gardening Gardening is the practice of growing and cultivating plants as part of horticulture.
+Gardening In gardens, ornamental plants are often grown for their flowers, foliage, or overall appearance; useful plants, such as root vegetables, leaf vegetables, fruits, and herbs, are grown for consumption, for use as dyes, or for medicinal or cosmetic use.
+Gardening Gardening is considered by many people to be a relaxing activity.
+Gardening Gardening ranges in scale from fruit orchards, to long boulevard plantings with one or more different types of shrubs, trees, and herbaceous plants, to residential yards including lawns and foundation plantings, to plants in large or small containers grown inside or outside.
+Gardening Gardening may be very specialized, with only one type of plant grown, ...
+there had been several other notable gardening magazines in circulation, including the &quot;Gardeners&#39; Chronicle&quot; and &quot;Gardens Illustrated&quot;, but these were tailored more for the professional gardener.
+
+[title]: Gardening
+[checked_sentence]: Gardening is considered by many people to be a relaxing activity.
+[eval_labels_choice]: I live on a farm, we garden all year long, it is very relaxing.
+[wizard_of_wikipedia]: Gardening
+I like Gardening, even when I&#39;ve only been doing it for a short time.
+[label_candidates: OK what&#39;s the history?|Right, thats cool. I had no idea they still did the DVD thing, What is Netflix&#39;s highest rated show? do you know? |I will definitely check his first album out as he sounds interesting.|I don&#39;t know a whole lot about it. I was raised Catholic but don&#39;t practice anything now.|Well , this was a good conversation. |...and 95 more]
+[eval_labels: I live on a farm, we garden all year long, it is very relaxing.]
+[TorchAgent]: I live on a farm, we garden all year long, it is very relaxing.
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>examples/interactive.py -m projects:wizard_of_wikipedia:interactive_retrieval -t wizard_of_wikipedia
+
+[ Your chosen topic is: Teapot ]
+Enter Your Message: do you like tea?
+[WizardRetrievalInteractiveAgent]: Yes!  I only use teapots that have a little air hole in the lid. That prevents the spout from dripping or splashing when the tea is poured. Most teapots have this though.
+Enter Your Message: what about kettles?
+[WizardRetrievalInteractiveAgent]: I would think you could use them to heat any type of liquid! I use my teapots with a tea cosy. It&#39;s a thermal cover that helps keep the tea hot.
+Enter Your Message: do you like earl grey?
+[WizardRetrievalInteractiveAgent]: I think I&#39;ll try some Lipton, I love their green tea!
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="task-light-dialog">
+<h2>Task: Light_dialog<a class="headerlink" href="#task-light-dialog" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="light-bert-biranker-dialogue-model">
+<h3>Light Bert-Biranker Dialogue Model<a class="headerlink" href="#light-bert-biranker-dialogue-model" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/projects/light/">[related project]</a></p>
+<p>LIGHT Dialogue task, replicating the numbers from the paper.</p>
+<p>Example invocation(s):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python examples/eval_model.py -t light_dialog -mf zoo:light/biranker_dialogue/model
+
+{&#39;exs&#39;: 6623, &#39;accuracy&#39;: 0.7586, &#39;f1&#39;: 0.7802, &#39;hits@1&#39;: 0.759, &#39;hits@5&#39;: 0.965,&#39;hits@10&#39;: 0.994, &#39;hits@100&#39;: 1.0, &#39;bleu&#39;: 0.7255, &#39;lr&#39;: 5e-05, &#39;total_train_updates&#39;: 15050,&#39;examples&#39;: 6623, &#39;loss&#39;: 5307.0, &#39;mean_loss&#39;: 0.8013, &#39;mean_rank&#39;: 1.599, &#39;train_accuracy&#39;: 0}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="task-personality-captions">
+<h2>Task: Personality_captions<a class="headerlink" href="#task-personality-captions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="transresnet-resnet-152-personality-captions-model">
+<h3>Transresnet (Resnet 152) Personality-Captions Model<a class="headerlink" href="#transresnet-resnet-152-personality-captions-model" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/projects/personality_captions/">[related project]</a></p>
+<p>Transresnet Model pretrained on the Personality-Captions task</p>
+<p>Example invocation(s):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python examples/eval_model.py -t personality_captions -mf zoo:personality_captions/transresnet/model --num-test-labels 5 -dt test
+
+{&#39;exs&#39;: 10000, &#39;accuracy&#39;: 0.5113, &#39;f1&#39;: 0.5951, &#39;hits@1&#39;: 0.511, &#39;hits@5&#39;: 0.816, &#39;hits@10&#39;: 0.903, &#39;hits@100&#39;: 0.998, &#39;bleu&#39;: 0.4999, &#39;hits@1/100&#39;: 1.0, &#39;loss&#39;: -0.002, &#39;med_rank&#39;: 1.0}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="task-image-chat">
+<h2>Task: Image_chat<a class="headerlink" href="#task-image-chat" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="transresnet-resnet152-image-chat-model">
+<h3>Transresnet (Resnet152) Image-Chat Model<a class="headerlink" href="#transresnet-resnet152-image-chat-model" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/projects/image_chat/">[related project]</a></p>
+<p>Transresnet Multimodal Model pretrained on the Image-Chat task</p>
+<p>Example invocation(s):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python examples/eval_model.py -t image_chat -mf zoo:image_chat/transresnet_multimodal/model -dt test
+
+{&#39;exs&#39;: 29991, &#39;accuracy&#39;: 0.4032, &#39;f1&#39;: 0.4432, &#39;hits@1&#39;: 0.403, &#39;hits@5&#39;: 0.672, &#39;hits@10&#39;: 0.779, &#39;hits@100&#39;: 1.0, &#39;bleu&#39;: 0.3923,&#39;first_round&#39;: {&#39;hits@1/100&#39;: 0.3392, &#39;loss&#39;: -0.002001, &#39;med_rank&#39;: 3.0},&#39;second_round&#39;: {&#39;hits@1/100&#39;: 0.4558, &#39;loss&#39;: -0.002001, &#39;med_rank&#39;: 2.0},&#39;third_round+&#39;: {&#39;hits@1/100&#39;: 0.4147, &#39;loss&#39;: -0.002001, &#39;med_rank&#39;: 2.0}}&#39;hits@10&#39;: 0.903, &#39;hits@100&#39;: 0.998, &#39;bleu&#39;: 0.4999, &#39;hits@1/100&#39;: 1.0, &#39;loss&#39;: -0.002, &#39;med_rank&#39;: 1.0}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="task-self-feeding">
+<h2>Task: Self_feeding<a class="headerlink" href="#task-self-feeding" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="self-feeding-chatbot">
+<h3>Self-Feeding Chatbot<a class="headerlink" href="#self-feeding-chatbot" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/projects/self_feeding/">[related project]</a></p>
+<p>The self-feeding chatbot of Hancock, et al., 2019 (<a class="reference external" href="https://arxiv.org/abs/1901.05415">https://arxiv.org/abs/1901.05415</a>). This model learns from is mistakes when actually talking with users. This particular model corresponds to the model with 131k human-human chats + 60k human-bot chats + 60k feedback chats.</p>
+<p>Example invocation(s):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python projects/self_feeding/interactive.py --model-file zoo:self_feeding/hh131k_hb60k_fb60k_st1k/model --no-cuda true
+
+Enter Your Message: hi, my name is stephen. what&#39;s yours?
+[SelfFeeding]: hi there greg . do you have pets ? i&#39;ve 2 cats named milo and fio .
+Enter Your Message: sadly, i have no pets. my landlord isn&#39;t a fan.
+[SelfFeeding]: sorry to hear that . i always had bad allergies when i liven on my farm in kansas .
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python examples/eval_model.py -mf zoo:self_feeding/hh131k_hb60k_fb60k_st1k/model -t self_feeding:all
+
+[ Finished evaluating tasks [&#39;self_feeding:all&#39;] using datatype valid ]
+{&#39;exs&#39;: 3500, &#39;dia_rank&#39;: 4.654, &#39;dia_acc&#39;: 0.3525, &#39;fee_rank&#39;: 1.0, &#39;fee_acc&#39;: 1.0, &#39;fee_exs&#39;: 1000, &#39;sat_re&#39;: 0.4607, &#39;sat_f1&#39;: 0.5605, &#39;sat_acc&#39;: 0.724}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="task-dialogue-safety">
+<h2>Task: Dialogue_safety<a class="headerlink" href="#task-dialogue-safety" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="transformer-classifier-single-turn-dialogue-safety-model">
+<h3>Transformer Classifier Single-Turn Dialogue Safety Model<a class="headerlink" href="#transformer-classifier-single-turn-dialogue-safety-model" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/projects/dialogue_safety/">[related project]</a></p>
+<p>Classifier trained on both the standard and adversarial safety tasks in addition to Wikipedia Toxic Comments.</p>
+<p>Example invocation(s):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python examples/eval_model.py -t dialogue_safety:adversarial --round 3 -dt test -mf zoo:dialogue_safety/single_turn/model -bs 40
+
+{&#39;exs&#39;: 3000, &#39;accuracy&#39;: 0.9627, &#39;f1&#39;: 0.9627, &#39;bleu&#39;: 9.627e-10, &#39;lr&#39;: 5e-09, &#39;total_train_updates&#39;: 0, &#39;examples&#39;: 3000, &#39;mean_loss&#39;: 0.005441, &#39;class___notok___recall&#39;: 0.7833, &#39;class___notok___prec&#39;: 0.8333, &#39;class___notok___f1&#39;: 0.8076, &#39;class___ok___recall&#39;: 0.9826, &#39;class___ok___prec&#39;: 0.9761, &#39;class___ok___f1&#39;: 0.9793, &#39;weighted_f1&#39;: 0.9621}
+</pre></div>
+</div>
+</div>
+<div class="section" id="bert-classifier-multi-turn-dialogue-safety-model">
+<h3>Bert Classifier Multi-Turn Dialogue Safety Model<a class="headerlink" href="#bert-classifier-multi-turn-dialogue-safety-model" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/projects/dialogue_safety/">[related project]</a></p>
+<p>Classifier trained on the multi-turn adversarial safety task in addition to both the single-turn standard and adversarial safety tasks and Wikipedia Toxic Comments.</p>
+<p>Example invocation(s):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python examples/eval_model.py -t dialogue_safety:multiturn -dt test -mf zoo:dialogue_safety/multi_turn/model --split-lines True -bs 40
+
+{&#39;exs&#39;: 3000, &#39;accuracy&#39;: 0.9317, &#39;f1&#39;: 0.9317, &#39;bleu&#39;: 9.317e-10, &#39;lr&#39;: 5e-09, &#39;total_train_updates&#39;: 0, &#39;examples&#39;: 3000, &#39;mean_loss&#39;: 0.008921, &#39;class___notok___recall&#39;: 0.7067, &#39;class___notok___prec&#39;: 0.6444, &#39;class___notok___f1&#39;: 0.6741, &#39;class___ok___recall&#39;: 0.9567, &#39;class___ok___prec&#39;: 0.9671, &#39;class___ok___f1&#39;: 0.9618, &#39;weighted_f1&#39;: 0.9331}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="pretrained-word-embeddings">
+<h2>Pretrained Word Embeddings<a class="headerlink" href="#pretrained-word-embeddings" title="Permalink to this headline">¶</a></h2>
+<p>Some models support using Pretrained Embeddings, via <a class="reference external" href="https://github.com/pytorch/text">torchtext</a>. As of writing, this includes:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fasttext</span></code>: 300-dim Fasttext vectors based on mixed corpora (<a class="reference external" href="https://fasttext.cc/docs/en/english-vectors.html">Mikolov et al., 2018</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fasttext_cc</span></code>: 300-dim Fasttext vectors based on Common Crawl (<a class="reference external" href="https://fasttext.cc/docs/en/english-vectors.html">Mikolov et al., 2018</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">glove</span></code>: 300-dim Pretrained GLoVe vectors based on 840B Common Crawl (<a class="reference external" href="https://nlp.stanford.edu/projects/glove/">Pennington et al., 2014</a>)</p></li>
+</ul>
+<p>Example invocation:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python -m parlai.scripts.train_model -t convai2 -m seq2seq -emb fasttext_cc
+</pre></div>
+</div>
+<p>Adding ‘-fixed’ to the name e.g. ‘twitter-fixed’ means backprop will not go through this
+(i.e. they will remain unchanged).</p>
+</div>
+<div class="section" id="bert">
+<h2>BERT<a class="headerlink" href="#bert" title="Permalink to this headline">¶</a></h2>
+<p>BERT is in the model zoo and is automatically used for initialization of
+bert bi-, poly- and cross-encoder rankers.</p>
+<p>Example invocation:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python -m parlai.scripts.train_model -t convai2 -m bert_ranker/bi_encoder_ranker
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="observations.html" class="btn btn-neutral float-right" title="observations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tasks.html" class="btn btn-neutral float-left" title="Tasks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Facebook AI Research
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

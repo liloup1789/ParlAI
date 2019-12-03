@@ -1,0 +1,1062 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>core.teachers &mdash; ParlAI  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/parlai_theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="core.utils" href="utils.html" />
+    <link rel="prev" title="core.params" href="params.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ParlAI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_quick.html">ParlAI Quick-start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_basic.html">Intro to ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_task.html">Tasks and Datasets in ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_worlds.html">Data Handling, Batching, and Hogwild</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_seq2seq.html">Creating an Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_torch_ranker_agent.html">Using Torch Ranker Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tipsntricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_mturk.html">Using Mechanical Turk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_messenger.html">Using Facebook Messenger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tensorboard.html">Using tensorboard for metric tracking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tasks &amp; Model Zoo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zoo.html">Model Zoo</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Core Library</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="observations.html">observations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents.html">core.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="torch_agent.html">core.torch_agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_data.html">core.build_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dict.html">core.dict</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metrics.html">core.metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="params.html">core.params</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">core.teachers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">core.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thread_utils.html">core.thread_utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worlds.html">core.worlds</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="repeat_label.html">agents.repeat_label</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unigram_agent.html">agents.unigram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_seq2seq.html">agents.example_seq2seq</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Scripts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cli_usage.html">Command Line Usage</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ParlAI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>core.teachers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/teachers.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-parlai.core.teachers">
+<span id="core-teachers"></span><h1>core.teachers<a class="headerlink" href="#module-parlai.core.teachers" title="Permalink to this headline">¶</a></h1>
+<p>This module provides a set of teachers that deal with dialog.</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">FixedDialogTeacher(Teacher)</span></code>
+Base class for teachers in tasks that have fixed dialog - i.e., dialog
+that is not dynamically generated but rather is pulled from set examples.
+However, the class can be extended to all tasks involved fixed data.
+Implements much of the basic functionality of these teachers, including
+<code class="docutils literal notranslate"><span class="pre">observe()</span></code>, <code class="docutils literal notranslate"><span class="pre">act()</span></code>, <code class="docutils literal notranslate"><span class="pre">next_example()</span></code></p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">DialogTeacher(FixedDialogTeacher)</span></code></dt><dd><p>Base teacher class for doing dialog specifically with fixed chat logs.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">FbDialogTeacher(DialogTeacher)</span></code></dt><dd><p>Teacher class that provides access to data in the Facebook Dialog format.
+See the class description for more details.
+** NOTE: ** We plan to deprecate this method soon in favor of ParlAIDialogTeacher,
+however several existing tasks are currently still using it.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">ParlAIDialogTeacher(DialogTeacher)</span></code></dt><dd><p>Teacher class that provides access to data in the ParlAI Dialog format.
+See the class description for more details.</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>This module also includes <code class="docutils literal notranslate"><span class="pre">DataLoader</span></code>, a threadpool data loader for
+<code class="docutils literal notranslate"><span class="pre">FixedDialogTeacher</span></code>, and <code class="docutils literal notranslate"><span class="pre">DialogData</span></code>/<code class="docutils literal notranslate"><span class="pre">StreamDialogData</span></code>, data
+structures for accessing textual dialog data and utilized by <code class="docutils literal notranslate"><span class="pre">DialogTeacher</span></code></p>
+<dl class="class">
+<dt id="parlai.core.teachers.DataLoader">
+<em class="property">class </em><code class="sig-prename descclassname">parlai.core.teachers.</code><code class="sig-name descname">DataLoader</code><span class="sig-paren">(</span><em class="sig-param">opt</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.DataLoader" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">threading.Thread</span></code></p>
+<p>A worker thread that provides a threadpool for data loading.</p>
+<p>A teacher may submit a request to the loader, which will return the
+appropriate data.</p>
+<p>To submit a request, a teacher should call <code class="docutils literal notranslate"><span class="pre">request_load</span></code>.</p>
+<dl class="method">
+<dt id="parlai.core.teachers.DataLoader.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">opt</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.DataLoader.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>This constructor should always be called with keyword arguments. Arguments are:</p>
+<p><em>group</em> should be None; reserved for future extension when a ThreadGroup
+class is implemented.</p>
+<p><em>target</em> is the callable object to be invoked by the run()
+method. Defaults to None, meaning nothing is called.</p>
+<p><em>name</em> is the thread name. By default, a unique name is constructed of
+the form “Thread-N” where N is a small decimal number.</p>
+<p><em>args</em> is the argument tuple for the target invocation. Defaults to ().</p>
+<p><em>kwargs</em> is a dictionary of keyword arguments for the target
+invocation. Defaults to {}.</p>
+<p>If a subclass overrides the constructor, it must make sure to invoke
+the base class constructor (Thread.__init__()) before doing anything
+else to the thread.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.DataLoader.request_load">
+<code class="sig-name descname">request_load</code><span class="sig-paren">(</span><em class="sig-param">receive_fn</em>, <em class="sig-param">load_fn</em>, <em class="sig-param">args</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.DataLoader.request_load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Queue a request for loading.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>receive_fn</strong> – a receive function (for receiving the data)</p></li>
+<li><p><strong>load_fn</strong> – a load function (for loading the data)</p></li>
+<li><p><strong>args</strong> – arguments for the load function. args can be either a dictionary of
+arguments for a function, or a list of positional arguments</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.DataLoader.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.DataLoader.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the execution loop.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="parlai.core.teachers.FixedDialogTeacher">
+<em class="property">class </em><code class="sig-prename descclassname">parlai.core.teachers.</code><code class="sig-name descname">FixedDialogTeacher</code><span class="sig-paren">(</span><em class="sig-param">opt</em>, <em class="sig-param">shared=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.FixedDialogTeacher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="agents.html#parlai.core.agents.Teacher" title="parlai.core.agents.Teacher"><code class="xref py py-class docutils literal notranslate"><span class="pre">parlai.core.agents.Teacher</span></code></a></p>
+<p>A teacher agent for all teachers involved in tasks with fixed data.</p>
+<p>This class provides the following functionality for its subclasses:</p>
+<ul class="simple">
+<li><p>Resets a teacher</p></li>
+<li><p>Provides an observe method</p></li>
+<li><p>Computes and retrieves the next episode index for a teacher</p></li>
+<li><p>Provides a threadpool option for loading data (especially useful for
+large data, e.g. images)</p></li>
+</ul>
+<p>In order to take advantage of the first few features, all a subclass has to
+implement is three functions: <code class="docutils literal notranslate"><span class="pre">num_episodes</span></code>, <code class="docutils literal notranslate"><span class="pre">num_examples</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">get</span></code> (which returns a specific example from a specific episode).</p>
+<p>To utilize the DataLoader for threadpool loading, a teacher should
+implement the <code class="docutils literal notranslate"><span class="pre">submit_load_request</span></code> function to send a load request
+to the DataLoader by calling <code class="docutils literal notranslate"><span class="pre">self.data_loader.request_load</span></code> with the
+appropriate arguments (<code class="docutils literal notranslate"><span class="pre">receive_fn,</span> <span class="pre">load_fn,</span> <span class="pre">args</span></code>). The DataLoader then
+returns the data to the teacher’s <code class="docutils literal notranslate"><span class="pre">data_queue</span></code>, which the teacher can
+poll in its <code class="docutils literal notranslate"><span class="pre">act</span></code> method.</p>
+<p>The following is an example of the DataLoader usage in the VQA-V1 teacher.</p>
+<ol class="arabic">
+<li><p>In the teacher’s <code class="docutils literal notranslate"><span class="pre">init</span></code> function, the teacher calls its
+<code class="docutils literal notranslate"><span class="pre">submit_load_request</span></code> function to preload an image.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">submit_load_request</span></code> function gets the next <code class="docutils literal notranslate"><span class="pre">episode_idx</span></code>,
+and computes the image path for the load request.</p></li>
+<li><p>At the end of <code class="docutils literal notranslate"><span class="pre">submit_load_request</span></code>, the teacher calls
+<code class="docutils literal notranslate"><span class="pre">self.data_loader.request_load</span></code> with three args:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">self.receive_data</span></code> - the function that the DataLoader calls to
+return the the loaded object</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">self.image_loader.load</span></code> - the function used to load the image
+from the image path</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[img_path]</span></code> - a list of arguments for the load function, which
+in this case is the path of the image.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>In the teacher’s <code class="docutils literal notranslate"><span class="pre">act</span></code> function, the teacher loads the data from
+its data queue.</p></li>
+<li><p>At the end of the <code class="docutils literal notranslate"><span class="pre">act</span></code> function, the teacher calls
+<code class="docutils literal notranslate"><span class="pre">submit_load_request</span></code> to preload an image for the next example.</p></li>
+</ol>
+<p>To see this in action, take a look at this teacher in <code class="docutils literal notranslate"><span class="pre">tasks.vqa_v1.agents</span></code>.</p>
+<dl class="method">
+<dt id="parlai.core.teachers.FixedDialogTeacher.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">opt</em>, <em class="sig-param">shared=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.FixedDialogTeacher.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.FixedDialogTeacher.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.FixedDialogTeacher.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the dialog to the start of the epoch, and reset all metrics.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.FixedDialogTeacher.submit_load_request">
+<code class="sig-name descname">submit_load_request</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.FixedDialogTeacher.submit_load_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Submit a load request.</p>
+<p>An agent should implement this method to submit requests to the data
+loader. At the end of this method, the agent should call
+<code class="docutils literal notranslate"><span class="pre">self.data_loader.request_load()</span></code> with the appropriate args.</p>
+<p>By default, this method does nothing.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.FixedDialogTeacher.receive_data">
+<code class="sig-name descname">receive_data</code><span class="sig-paren">(</span><em class="sig-param">future</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.FixedDialogTeacher.receive_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receive data from the data loader.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>future</strong> – result from the load request.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.FixedDialogTeacher.share">
+<code class="sig-name descname">share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.FixedDialogTeacher.share" title="Permalink to this definition">¶</a></dt>
+<dd><p>Share the data and dataloader.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.FixedDialogTeacher.next_episode_idx">
+<code class="sig-name descname">next_episode_idx</code><span class="sig-paren">(</span><em class="sig-param">num_eps=None</em>, <em class="sig-param">loop=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.FixedDialogTeacher.next_episode_idx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the next episode index.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>num_eps</strong> – default None uses <code class="docutils literal notranslate"><span class="pre">num_episodes</span></code> value.</p></li>
+<li><p><strong>loop</strong> – default None loops during training but not evaluation.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.FixedDialogTeacher.next_example">
+<code class="sig-name descname">next_example</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.FixedDialogTeacher.next_example" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the next example.</p>
+<p>If there are multiple examples in the same episode, returns the next
+one in that episode. If that episode is over, gets a new episode index
+and returns the first example of that episode.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.FixedDialogTeacher.next_batch">
+<code class="sig-name descname">next_batch</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.FixedDialogTeacher.next_batch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the next batch of examples.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.FixedDialogTeacher.num_episodes">
+<code class="sig-name descname">num_episodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.FixedDialogTeacher.num_episodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the number of episodes in this dataset.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="parlai.core.teachers.FixedDialogTeacher.num_examples">
+<code class="sig-name descname">num_examples</code><a class="headerlink" href="#parlai.core.teachers.FixedDialogTeacher.num_examples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the total number of examples in this dataset.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.FixedDialogTeacher.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">episode_idx</em>, <em class="sig-param">entry_idx=0</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.FixedDialogTeacher.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the specified episode and the specified entry in that episode.</p>
+<p>Children must override this method in order to inherit the
+<cite>next_example</cite> method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>episode_idx</strong> – which episode to return examples from</p></li>
+<li><p><strong>entry_idx</strong> – which example to return from the episode.  Many datasets have only
+single-entry episodes, so this defaults to zero.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.FixedDialogTeacher.observe">
+<code class="sig-name descname">observe</code><span class="sig-paren">(</span><em class="sig-param">observation</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.FixedDialogTeacher.observe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process observation for metrics.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.FixedDialogTeacher.batch_act">
+<code class="sig-name descname">batch_act</code><span class="sig-paren">(</span><em class="sig-param">observations</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.FixedDialogTeacher.batch_act" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return an entire batch of examples.</p>
+<p>Note: Currently used by PytorchDataTeacher.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.FixedDialogTeacher.act">
+<code class="sig-name descname">act</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.FixedDialogTeacher.act" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send new dialog message.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="parlai.core.teachers.DialogTeacher">
+<em class="property">class </em><code class="sig-prename descclassname">parlai.core.teachers.</code><code class="sig-name descname">DialogTeacher</code><span class="sig-paren">(</span><em class="sig-param">opt</em>, <em class="sig-param">shared=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.DialogTeacher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#parlai.core.teachers.FixedDialogTeacher" title="parlai.core.teachers.FixedDialogTeacher"><code class="xref py py-class docutils literal notranslate"><span class="pre">parlai.core.teachers.FixedDialogTeacher</span></code></a></p>
+<p>A base teacher class for doing dialog with fixed chat logs.</p>
+<p>This class provides a set a basic functionality:</p>
+<ul class="simple">
+<li><p>uses data class to store and query text data</p></li>
+<li><p>generates action tables to send to the student agent from the data</p></li>
+</ul>
+<p>If you have <code class="docutils literal notranslate"><span class="pre">opt.numthreads</span> <span class="pre">&gt;</span> <span class="pre">1</span></code>, this also activates a shared memory
+array for the data and lock-protected shared-memory metrics.</p>
+<p>In order to subclass this class, you must implement <code class="docutils literal notranslate"><span class="pre">setup_data()</span></code> in
+your class (or subclass another class which does, like
+<code class="docutils literal notranslate"><span class="pre">FbDialogTeacher</span></code>), which reads your data file as an iterator.</p>
+<dl class="method">
+<dt id="parlai.core.teachers.DialogTeacher.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">opt</em>, <em class="sig-param">shared=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.DialogTeacher.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.DialogTeacher.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.DialogTeacher.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the dialog to the start of the epoch, reset all metrics.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.DialogTeacher.share">
+<code class="sig-name descname">share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.DialogTeacher.share" title="Permalink to this definition">¶</a></dt>
+<dd><p>Share the data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.DialogTeacher.label_candidates">
+<code class="sig-name descname">label_candidates</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.DialogTeacher.label_candidates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provide consistent label candidates for all examples.</p>
+<p>Default implementation returns <code class="docutils literal notranslate"><span class="pre">None</span></code> always, but this may be overriden
+to provide candidates in all areas. See <code class="docutils literal notranslate"><span class="pre">FbDialogueTeacher</span></code>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.DialogTeacher.num_episodes">
+<code class="sig-name descname">num_episodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.DialogTeacher.num_episodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of episodes in the data.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="parlai.core.teachers.DialogTeacher.num_examples">
+<code class="sig-name descname">num_examples</code><a class="headerlink" href="#parlai.core.teachers.DialogTeacher.num_examples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of examples in the data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.DialogTeacher.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">episode_idx</em>, <em class="sig-param">entry_idx=0</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.DialogTeacher.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a specific example.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.DialogTeacher.next_example">
+<code class="sig-name descname">next_example</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.DialogTeacher.next_example" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the next example.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="parlai.core.teachers.DialogData">
+<em class="property">class </em><code class="sig-prename descclassname">parlai.core.teachers.</code><code class="sig-name descname">DialogData</code><span class="sig-paren">(</span><em class="sig-param">opt</em>, <em class="sig-param">data_loader=None</em>, <em class="sig-param">cands=None</em>, <em class="sig-param">shared=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.DialogData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Provides a data structure for accessing textual dialog data.</p>
+<p>This can be used whenever the dialog data is a fixed log of chats
+(i.e not a simulator setting). The logs can include dialog text and possibly
+supervised labels, candidate labels and rewards.</p>
+<p>All these are stored in this internal data format which is used by the
+<code class="docutils literal notranslate"><span class="pre">DialogTeacher</span></code> class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>opt</strong> – options to initialize the class</p></li>
+<li><p><strong>data_loader</strong> – an iterable with each call returning a tuple in the form
+<code class="docutils literal notranslate"><span class="pre">((x,</span> <span class="pre">y,</span> <span class="pre">r,</span> <span class="pre">c,</span> <span class="pre">i),</span> <span class="pre">new_episode?)</span></code> where the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">new_episode</span></code>
+fields are mandatory and other fields may be omitted or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>cands</strong> – can be set to provide a list of candidate labels for every example in
+this dataset, which the agent can choose from (the correct answer
+should be in this set).</p></li>
+<li><p><strong>random</strong> – tells the data class whether or not to visit episodes sequentially or
+randomly when returning examples to the caller.</p></li>
+</ul>
+</dd>
+</dl>
+<p>The contents of the <code class="docutils literal notranslate"><span class="pre">((x,</span> <span class="pre">y,</span> <span class="pre">r,</span> <span class="pre">c,</span> <span class="pre">i),</span> <span class="pre">new_episode?)</span></code> tuples returned by
+the data loader is the following:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> (str) is a query and possibly context</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code> (iter) is an iterable of label(s) for that query</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> (str) is the str reward for getting that query correct</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">c</span></code> (iter) is an iterable of label candidates that the student can choose from</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">i</span></code> (str) is a str path to an image on disk, which will be loaded by the
+data class at request-time. should always point to the raw image file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">new_episode?</span></code> (bool) is a boolean value specifying whether that example
+is the start of a new episode. If you don’t use episodes set this
+to <code class="docutils literal notranslate"><span class="pre">True</span></code> every time.</p></li>
+</ul>
+<dl class="method">
+<dt id="parlai.core.teachers.DialogData.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">opt</em>, <em class="sig-param">data_loader=None</em>, <em class="sig-param">cands=None</em>, <em class="sig-param">shared=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.DialogData.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.DialogData.share">
+<code class="sig-name descname">share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.DialogData.share" title="Permalink to this definition">¶</a></dt>
+<dd><p>Share the data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.DialogData.num_episodes">
+<code class="sig-name descname">num_episodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.DialogData.num_episodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return number of episodes in the dataset.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="parlai.core.teachers.DialogData.num_examples">
+<code class="sig-name descname">num_examples</code><a class="headerlink" href="#parlai.core.teachers.DialogData.num_examples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return total number of entries available.</p>
+<p>Each episode has at least one entry, but might have many more.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.DialogData.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">episode_idx</em>, <em class="sig-param">entry_idx=0</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.DialogData.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the specified episode and the specified entry in that episode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>episode_idx</strong> – which episode to return examples from</p></li>
+<li><p><strong>entry_idx</strong> – which example to return from the episode. Many datasets have only
+single-entry episodes, so this defaults to zero.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.DialogData.build_table">
+<code class="sig-name descname">build_table</code><span class="sig-paren">(</span><em class="sig-param">entry</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.DialogData.build_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Packs an entry into an action-observation dictionary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>entry</strong> – a tuple in the form described in the class docstring.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="parlai.core.teachers.StreamDialogData">
+<em class="property">class </em><code class="sig-prename descclassname">parlai.core.teachers.</code><code class="sig-name descname">StreamDialogData</code><span class="sig-paren">(</span><em class="sig-param">opt</em>, <em class="sig-param">data_loader=None</em>, <em class="sig-param">cands=None</em>, <em class="sig-param">shared=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.StreamDialogData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#parlai.core.teachers.DialogData" title="parlai.core.teachers.DialogData"><code class="xref py py-class docutils literal notranslate"><span class="pre">parlai.core.teachers.DialogData</span></code></a></p>
+<p>Provides a data structure for streaming textual dialog data.</p>
+<p>This can be used whenever the dialog data follows the format described in
+DialogData but cannot fit entirely into memory.</p>
+<p>Additional keyword-argument cycle defines if the stream should restart from
+the beginning after an epoch is finished (defaults to True).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>opt</strong> – options to initialize the class</p></li>
+<li><p><strong>data_loader</strong> – an iterable with each call returning a tuple in the form
+<code class="docutils literal notranslate"><span class="pre">((x,</span> <span class="pre">y,</span> <span class="pre">r,</span> <span class="pre">c,</span> <span class="pre">i),</span> <span class="pre">new_episode?)</span></code> where the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">new_episode</span></code>
+fields are mandatory and other fields may be omitted or <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+<li><p><strong>cands</strong> – can be set to provide a list of candidate labels for every example in
+this dataset, which the agent can choose from (the correct answer
+should be in this set).</p></li>
+<li><p><strong>random</strong> – tells the data class whether or not to visit episodes sequentially or
+randomly when returning examples to the caller.</p></li>
+<li><p><strong>cycle</strong> – (default True) whether to restart at beginning when end of stream
+reached without reset being called.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="parlai.core.teachers.StreamDialogData.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">opt</em>, <em class="sig-param">data_loader=None</em>, <em class="sig-param">cands=None</em>, <em class="sig-param">shared=None</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.StreamDialogData.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.StreamDialogData.share">
+<code class="sig-name descname">share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.StreamDialogData.share" title="Permalink to this definition">¶</a></dt>
+<dd><p>Share the stream.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.StreamDialogData.load_length">
+<code class="sig-name descname">load_length</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.StreamDialogData.load_length" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the length of the dataset and caches it in a file.</p>
+<p>Note that this can take some time for large datasets. Episode and entry
+indexes cannot be specified during streaming.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.StreamDialogData.num_examples">
+<code class="sig-name descname">num_examples</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.StreamDialogData.num_examples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of examples in the data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.StreamDialogData.num_episodes">
+<code class="sig-name descname">num_episodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.StreamDialogData.num_episodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of episodes in the data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.StreamDialogData.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.StreamDialogData.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the next entry from the stream.</p>
+<p>When episode is done returns first entry of next episode.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.StreamDialogData.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.StreamDialogData.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the datastream to its beginning.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="parlai.core.teachers.FbDialogTeacher">
+<em class="property">class </em><code class="sig-prename descclassname">parlai.core.teachers.</code><code class="sig-name descname">FbDialogTeacher</code><span class="sig-paren">(</span><em class="sig-param">opt</em>, <em class="sig-param">shared=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.FbDialogTeacher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#parlai.core.teachers.DialogTeacher" title="parlai.core.teachers.DialogTeacher"><code class="xref py py-class docutils literal notranslate"><span class="pre">parlai.core.teachers.DialogTeacher</span></code></a></p>
+<p>This module provides access to data in the Facebook Dialog format.</p>
+<p>Subclasses <code class="docutils literal notranslate"><span class="pre">DialogTeacher</span></code> for functionality and provides an
+implementation of <code class="docutils literal notranslate"><span class="pre">setup_data()</span></code> which iterates over datasets in the
+“fbdialog” format. If your data is in the format below, use this class to
+handle file parsing for you.</p>
+<p>The way FB Dialog data is set up is as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1 Sam went to the kitchen.
+2 Pat gave Sam the milk.
+3 Where is the milk?&lt;TAB&gt;kitchen&lt;TAB&gt;1&lt;TAB&gt;hallway|kitchen|bathroom
+4 Sam went to the hallway.
+5 Pat went to the bathroom.
+6 Where is the milk?&lt;TAB&gt;hallway&lt;TAB&gt;1&lt;TAB&gt;hallway|kitchen|bathroom
+</pre></div>
+</div>
+<p>Lines 1-6 represent a single episode, with two different examples: the
+first example is lines 1-3, and the second is lines 4-6.</p>
+<p>Lines 1,2,4, and 5 represent contextual information.</p>
+<p>Lines 3 and 6 contain a query, a label, a reward for getting the question
+correct, and three label candidates.</p>
+<p>Since both of these examples are part of the same episode, the information
+provided in the first example is relevant to the query in the second
+example and therefore the agent must remember the first example in order to
+do well.</p>
+<p>In general dialog in this format can contain any speech, not just QA pairs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1 Hi how&#39;s it going?&lt;TAB&gt;It&#39;s going great. What&#39;s new?
+2 Well I&#39;m working on a new project at work.&lt;TAB&gt;Oh me too!
+3 Oh cool!&lt;TAB&gt;Tell me about yours.
+</pre></div>
+</div>
+<p>etc.</p>
+<p>Note that dialogs are interpreted as being one-way. For example, consider
+this dialog:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="n">X1</span>    <span class="n">Y1</span>
+<span class="mi">2</span> <span class="n">X2</span>    <span class="n">Y2</span>
+<span class="mi">3</span> <span class="n">X3</span>    <span class="n">Y3</span>
+</pre></div>
+</div>
+<p>A set of examples X1 =&gt; Y1, X2 =&gt; Y2, and X3 =&gt; Y3 will be generated.
+However, Y1 =&gt; X2 and Y2 =&gt; X3 are not created as separate examples by
+default. This makes sense for some data (we don’t need to train on the idea
+that “kitchen” should be followed by “Sam went to the hallway…” above),
+but for other datasets it may be helpful to add additional examples in the
+reverse direction (“Oh cool!” is a response to “Oh me too!” above).</p>
+<dl class="method">
+<dt id="parlai.core.teachers.FbDialogTeacher.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">opt</em>, <em class="sig-param">shared=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.FbDialogTeacher.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.FbDialogTeacher.share">
+<code class="sig-name descname">share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.FbDialogTeacher.share" title="Permalink to this definition">¶</a></dt>
+<dd><p>Share the data and canidates.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.FbDialogTeacher.label_candidates">
+<code class="sig-name descname">label_candidates</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.FbDialogTeacher.label_candidates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the candidates.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.FbDialogTeacher.load_cands">
+<code class="sig-name descname">load_cands</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.FbDialogTeacher.load_cands" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load a global fixed set of candidates.</p>
+<p>The candidates will be provided by the teacher for
+every example (the true labels for a specific example are also added to
+this set, so that it’s possible to get the right answer).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.FbDialogTeacher.setup_data">
+<code class="sig-name descname">setup_data</code><span class="sig-paren">(</span><em class="sig-param">path</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.FbDialogTeacher.setup_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read data in the fbdialog format.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">((x,y,r,c),</span> <span class="pre">new_episode?)</span></code> tuples.</p>
+<p><code class="docutils literal notranslate"><span class="pre">x</span></code> represents a query, <code class="docutils literal notranslate"><span class="pre">y</span></code> represents the labels, <code class="docutils literal notranslate"><span class="pre">r</span></code> represents
+any reward, and <code class="docutils literal notranslate"><span class="pre">c</span></code> represents any label_candidates.</p>
+<p>The example above will be translated into the following tuples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">:</span> <span class="s1">&#39;Sam went to the kitchen</span><span class="se">\n</span><span class="s1">Pat gave Sam the milk</span><span class="se">\n</span><span class="s1">Where is the milk?&#39;</span>
+<span class="n">y</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;kitchen&#39;</span><span class="p">]</span>
+<span class="n">r</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span>
+<span class="n">c</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;hallway&#39;</span><span class="p">,</span> <span class="s1">&#39;kitchen&#39;</span><span class="p">,</span> <span class="s1">&#39;bathroom&#39;</span><span class="p">]</span>
+<span class="n">new_episode</span> <span class="o">=</span> <span class="kc">True</span> <span class="p">(</span><span class="n">this</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">first</span> <span class="n">example</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">episode</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>x: &#39;Sam went to the hallway\\nPat went to the bathroom\\nWhere is the
+    milk?&#39;
+y: [&#39;hallway&#39;]
+r: &#39;1&#39;
+c: [&#39;hallway&#39;, &#39;kitchen&#39;, &#39;bathroom&#39;]
+new_episode = False (this is the second example in the episode)
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="parlai.core.teachers.ParlAIDialogTeacher">
+<em class="property">class </em><code class="sig-prename descclassname">parlai.core.teachers.</code><code class="sig-name descname">ParlAIDialogTeacher</code><span class="sig-paren">(</span><em class="sig-param">opt</em>, <em class="sig-param">shared=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.ParlAIDialogTeacher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#parlai.core.teachers.FixedDialogTeacher" title="parlai.core.teachers.FixedDialogTeacher"><code class="xref py py-class docutils literal notranslate"><span class="pre">parlai.core.teachers.FixedDialogTeacher</span></code></a></p>
+<p>This module provides access to data in the ParlAI Text Dialog format.</p>
+<p>Subclasses <code class="docutils literal notranslate"><span class="pre">FixedDialogTeacher</span></code> for functionality and provides an
+implementation of <code class="docutils literal notranslate"><span class="pre">setup_data()</span></code> which iterates over datasets in the
+“ParlAI text” format. If your data is in the format below, use this class to
+handle file parsing for you.</p>
+<p>The way the data is set up is as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>text:Sam went to the kitchen. &lt;NEWL&gt;
+Pat gave Sam the milk. &lt;NEWL&gt;
+Where is the milk? &lt;TAB&gt; labels:kitchen &lt;TAB&gt; reward:1
+&lt;TAB&gt; label_candidates:hallway|kitchen|bathroom
+text:Sam went to the hallway. &lt;NEWL&gt;
+Pat went to the bathroom. &lt;NEWL&gt;
+Where is the milk? &lt;TAB&gt; labels:hallway &lt;TAB&gt; reward:1
+&lt;TAB&gt; label_candidates:hallway|kitchen|bathroom &lt;TAB&gt; episode_done:True
+</pre></div>
+</div>
+<p>Lines 1-2 represent a single episode, with a different example on each line.
+The lines contain a query and a label for getting the question
+correct, and three label candidates.</p>
+<p>Since both of these examples are part of the same episode, the information
+provided in the first example is relevant to the query in the second
+example and therefore the agent must remember the first example in order to
+do well.</p>
+<p>In general dialog this format can contain any speech, not just QA pairs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>text:Hi how&#39;s it going?&lt;TAB&gt;labels:It&#39;s going great. What&#39;s new?
+text:Well I&#39;m working on a new project at work.&lt;TAB&gt;labels:Oh me too!
+text:Oh cool!&lt;TAB&gt;labels:Tell me about yours.
+</pre></div>
+</div>
+<p>etc.</p>
+<p>Note that dialogs are interpreted as being one-way. For example, consider
+this dialog:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="n">X1</span>    <span class="n">Y1</span>
+<span class="mi">2</span> <span class="n">X2</span>    <span class="n">Y2</span>
+<span class="mi">3</span> <span class="n">X3</span>    <span class="n">Y3</span>
+</pre></div>
+</div>
+<p>A set of examples X1 =&gt; Y1, X2 =&gt; Y2, and X3 =&gt; Y3 will be generated.
+However, Y1 =&gt; X2 and Y2 =&gt; X3 are not created as separate examples by
+default. This makes sense for some data (we don’t need to train on the idea
+that “kitchen” should be followed by “Sam went to the hallway…” above),
+but for other datasets it may be helpful to add additional examples in the
+reverse direction (“Oh cool!” is a response to “Oh me too!” above).</p>
+<dl class="method">
+<dt id="parlai.core.teachers.ParlAIDialogTeacher.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">opt</em>, <em class="sig-param">shared=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.ParlAIDialogTeacher.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.ParlAIDialogTeacher.share">
+<code class="sig-name descname">share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.ParlAIDialogTeacher.share" title="Permalink to this definition">¶</a></dt>
+<dd><p>Share the episodes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.ParlAIDialogTeacher.num_examples">
+<code class="sig-name descname">num_examples</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.ParlAIDialogTeacher.num_examples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of examples from the data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.ParlAIDialogTeacher.num_episodes">
+<code class="sig-name descname">num_episodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.ParlAIDialogTeacher.num_episodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the number of episodes from the data.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.ParlAIDialogTeacher.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">episode_idx</em>, <em class="sig-param">entry_idx=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.ParlAIDialogTeacher.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a specific example from the dataset.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="parlai.core.teachers.AbstractImageTeacher">
+<em class="property">class </em><code class="sig-prename descclassname">parlai.core.teachers.</code><code class="sig-name descname">AbstractImageTeacher</code><span class="sig-paren">(</span><em class="sig-param">opt</em>, <em class="sig-param">shared=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.AbstractImageTeacher" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#parlai.core.teachers.FixedDialogTeacher" title="parlai.core.teachers.FixedDialogTeacher"><code class="xref py py-class docutils literal notranslate"><span class="pre">parlai.core.teachers.FixedDialogTeacher</span></code></a></p>
+<p>Abstract class to allow easier creation of image + dialogue tasks.</p>
+<p>This class handles creating image features via ImageLoader if applicable
+(resnet, resnext variants) or loading existing image features from a dict
+path as per get_image_features_path().</p>
+<p>Important methods and properties (override in subclass if needed):
+- get_data_path(): where data file is found (default: &lt;datapath&gt;/&lt;task&gt;)
+- get_image_path(): where images found (default: &lt;datapath&gt;/&lt;task&gt;/images)
+- get_image_features_path(): dict of image features (default:</p>
+<blockquote>
+<div><p>&lt;datapath&gt;/&lt;task&gt;/image_features)</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>&#64;property image_id_key: which key in data file objects represents image_id</p></li>
+<li><p>&#64;property text_key: which key in data file objects represents text</p></li>
+</ul>
+<p>Note: Assumes data files are named &lt;dt&gt;.json</p>
+<p>&#64;abstractmethod image_id_to_image_path() must be implemented in
+subclass</p>
+<p>Example with the key defaults (but the keys can be customized):
+obs = {‘text’: &lt;caption&gt;,</p>
+<blockquote>
+<div><p>‘image’: &lt;image features if specified else image&gt;
+}</p>
+</div></blockquote>
+<dl class="method">
+<dt id="parlai.core.teachers.AbstractImageTeacher.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">opt</em>, <em class="sig-param">shared=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.AbstractImageTeacher.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.AbstractImageTeacher.get_available_image_mode_names">
+<code class="sig-name descname">get_available_image_mode_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.AbstractImageTeacher.get_available_image_mode_names" title="Permalink to this definition">¶</a></dt>
+<dd><p>Available image model names.</p>
+<p>resnet and resnext variants available from the ImageLoader.
+resnext101_XXXXX_wsl is the open-sourced FB AI model (960m images, 1.5k
+hashtags, finetuned on ImageNet).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.AbstractImageTeacher.image_id_key">
+<em class="property">property </em><code class="sig-name descname">image_id_key</code><a class="headerlink" href="#parlai.core.teachers.AbstractImageTeacher.image_id_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Which key in the input data dict objects uniquely identify each image.</p>
+<p>Common image keys are “image_id” or “image_num”. May be implemented by
+subclass.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.AbstractImageTeacher.text_key">
+<em class="property">property </em><code class="sig-name descname">text_key</code><a class="headerlink" href="#parlai.core.teachers.AbstractImageTeacher.text_key" title="Permalink to this definition">¶</a></dt>
+<dd><p>Which key in the input data dict objects identifies the text.</p>
+<p>Common keys are “text” or “comment”. May be implemented by subclass.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.AbstractImageTeacher.image_id_to_image_path">
+<em class="property">abstract </em><code class="sig-name descname">image_id_to_image_path</code><span class="sig-paren">(</span><em class="sig-param">image_id</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.AbstractImageTeacher.image_id_to_image_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the path of the image on disk.</p>
+<p>Must be implemented by subclass.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.AbstractImageTeacher.get_data_path">
+<code class="sig-name descname">get_data_path</code><span class="sig-paren">(</span><em class="sig-param">opt</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.AbstractImageTeacher.get_data_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines path to the data file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.AbstractImageTeacher.get_image_path">
+<code class="sig-name descname">get_image_path</code><span class="sig-paren">(</span><em class="sig-param">opt</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.AbstractImageTeacher.get_image_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the path to the data directory and to the image directory.</p>
+<p>Is based on opt fields: task, datatype (train, valid, test), datapath.</p>
+<p>Subclass can override this.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.AbstractImageTeacher.get_image_features_path">
+<code class="sig-name descname">get_image_features_path</code><span class="sig-paren">(</span><em class="sig-param">task</em>, <em class="sig-param">image_model_name</em>, <em class="sig-param">dt</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.AbstractImageTeacher.get_image_features_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Image features for the dataset images are stored here.</p>
+<p>Can be overriden in subclass to use custom paths.
+Image features can be manually copied into this directory or in the
+case of ImageLoader eligible models, they will be built and stored here if not already there.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.AbstractImageTeacher.is_image_mode_buildable">
+<code class="sig-name descname">is_image_mode_buildable</code><span class="sig-paren">(</span><em class="sig-param">model_name</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.AbstractImageTeacher.is_image_mode_buildable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is buildable if features can be calculated by ImageLoader.</p>
+<p>Users may wish to compute features for the dataset offline and use in
+the model, in which case, the image model should return False and
+get_image_features() should be overriden in subclass.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.AbstractImageTeacher.load_data">
+<code class="sig-name descname">load_data</code><span class="sig-paren">(</span><em class="sig-param">data_path</em>, <em class="sig-param">opt</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.AbstractImageTeacher.load_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loading the data file, which is the index to the images and text.</p>
+<p>It is often a .json file with the name of the &lt;datatype&gt;.json (i.e.
+train.json). Stores in self.data.</p>
+<p>Can be override by subclass.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.AbstractImageTeacher.setup_image_features">
+<code class="sig-name descname">setup_image_features</code><span class="sig-paren">(</span><em class="sig-param">data_path</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.AbstractImageTeacher.setup_image_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load text and image data.</p>
+<p>The image features all live in dicts by default in &lt;data_path&gt;/
+image_features/ but get_image_features_path() above can be overriden by
+subclass to put them elsewhere.</p>
+<p>In the (very odd) case that the resnet or resnext dicts (models
+buildable using ImageLoader) are not found, we build them.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.AbstractImageTeacher.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.AbstractImageTeacher.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the dialog to the start of the epoch, and reset all metrics.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.AbstractImageTeacher.num_episodes">
+<code class="sig-name descname">num_episodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.AbstractImageTeacher.num_episodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the number of episodes in this dataset.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.AbstractImageTeacher.num_examples">
+<code class="sig-name descname">num_examples</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.AbstractImageTeacher.num_examples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the total number of examples in this dataset.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.AbstractImageTeacher.get_image_features">
+<code class="sig-name descname">get_image_features</code><span class="sig-paren">(</span><em class="sig-param">example</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.AbstractImageTeacher.get_image_features" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get image features for example</p>
+<p>Can be overrided in subclass for different behavior.
+For large datasets, it may be more appropriate to use the
+ImageLoader.load() method to load image features (as this is essentially
+streaming the features from disk, so that we do not have to load a
+large image feature dict in memory).
+#TODO Could be the default option if we are using -dt train:stream</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.AbstractImageTeacher.get">
+<code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param">episode_idx</em>, <em class="sig-param">entry_idx=0</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.AbstractImageTeacher.get" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override this in subclass if your data should be handled in a
+different format</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.AbstractImageTeacher.next_example">
+<code class="sig-name descname">next_example</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.AbstractImageTeacher.next_example" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load queued example</p>
+<p>When self.image_features_dict is not <cite>none</cite>, this is essentially a
+no-op. However, this is necessary/useful if self.image_mode is e.g. raw
+or ascii.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.core.teachers.AbstractImageTeacher.share">
+<code class="sig-name descname">share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.core.teachers.AbstractImageTeacher.share" title="Permalink to this definition">¶</a></dt>
+<dd><p>Share the data and dataloader.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="utils.html" class="btn btn-neutral float-right" title="core.utils" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="params.html" class="btn btn-neutral float-left" title="core.params" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Facebook AI Research
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

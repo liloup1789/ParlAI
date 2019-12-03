@@ -1,0 +1,374 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using Torch Ranker Agent &mdash; ParlAI  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/parlai_theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tips and Tricks" href="tutorial_tipsntricks.html" />
+    <link rel="prev" title="Creating an Agent" href="tutorial_seq2seq.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ParlAI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorial_quick.html">ParlAI Quick-start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_basic.html">Intro to ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_task.html">Tasks and Datasets in ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_worlds.html">Data Handling, Batching, and Hogwild</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_seq2seq.html">Creating an Agent</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using Torch Ranker Agent</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#example-models">Example Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-model">Creating a Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#training-a-model">Training a Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setting-candidates">Setting <code class="docutils literal notranslate"><span class="pre">--candidates</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tracking-ranking-metrics">Tracking ranking metrics</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#evaluating-a-model">Evaluating a Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#evaluating-on-a-fixed-candidate-set">Evaluating on a fixed candidate set</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluating-on-vocab-candidates">Evaluating on “vocab” candidates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tipsntricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_mturk.html">Using Mechanical Turk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_messenger.html">Using Facebook Messenger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tensorboard.html">Using tensorboard for metric tracking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tasks &amp; Model Zoo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zoo.html">Model Zoo</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Core Library</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="observations.html">observations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents.html">core.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="torch_agent.html">core.torch_agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_data.html">core.build_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dict.html">core.dict</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metrics.html">core.metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="params.html">core.params</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teachers.html">core.teachers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">core.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thread_utils.html">core.thread_utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worlds.html">core.worlds</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="repeat_label.html">agents.repeat_label</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unigram_agent.html">agents.unigram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_seq2seq.html">agents.example_seq2seq</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Scripts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cli_usage.html">Command Line Usage</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ParlAI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Using Torch Ranker Agent</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/tutorial_torch_ranker_agent.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="using-torch-ranker-agent">
+<h1>Using Torch Ranker Agent<a class="headerlink" href="#using-torch-ranker-agent" title="Permalink to this headline">¶</a></h1>
+<p><strong>Authors</strong>: Emily Dinan</p>
+<p>TorchRankerAgent is an abstract parent class for PyTorch models that rank
+possible responses from a set of possible candidates. It inherits from
+TorchAgent and contains boilerplate code for training and evaluating ranking
+models.</p>
+<div class="section" id="example-models">
+<h2>Example Models<a class="headerlink" href="#example-models" title="Permalink to this headline">¶</a></h2>
+<p>Several existing models in ParlAI inherit from TorchRankerAgent. Try some of
+the examples below:</p>
+<p>Train a Transformer Ranker model on ConvAI2:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python examples/train_model.py -m transformer/ranker -t convai2 -mf /tmp/tr_convai2_test
+</pre></div>
+</div>
+<p>Train a Memory Network model on Daily Dialog:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python examples/train_model.py -m memnn -t dailydialog -mf /tmp/memnn_dd_test -bs <span class="m">20</span> -cands batch -ecands batch
+</pre></div>
+</div>
+<p>Train a BERT-based Bi-Encoder ranker model on Twitter:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python examples/train_model.py -m bert_ranker/bi_encoder_ranker -t twitter -mf /tmp/bert_twitter_test -bs <span class="m">10</span> -cands batch -ecands batch --data-parallel True
+</pre></div>
+</div>
+</div>
+<div class="section" id="creating-a-model">
+<h2>Creating a Model<a class="headerlink" href="#creating-a-model" title="Permalink to this headline">¶</a></h2>
+<p>In order to write a ranking model that inherits from TorchRankerAgent, you
+must implement the following functions:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">score_candidates</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">,</span> <span class="n">cand_vecs</span><span class="p">,</span> <span class="n">cand_encs</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function takes in a Batch object as well as a Tensor of</span>
+<span class="sd">    candidate vectors. It must return a list of scores corresponding to</span>
+<span class="sd">    the likelihood that the candidate vector at that index is the</span>
+<span class="sd">    proper response. If `cand_encs` is not None (when we cache the</span>
+<span class="sd">    encoding of the candidate vectors), you may use these instead of</span>
+<span class="sd">    calling self.model on `cand_vecs`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+
+<span class="k">def</span> <span class="nf">build_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;This function is required to build the model and assign to the</span>
+<span class="sd">    object `self.model`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="training-a-model">
+<h2>Training a Model<a class="headerlink" href="#training-a-model" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="setting-candidates">
+<h3>Setting <code class="docutils literal notranslate"><span class="pre">--candidates</span></code><a class="headerlink" href="#setting-candidates" title="Permalink to this headline">¶</a></h3>
+<p>This flag is used to determine which candidates to rank during training.
+There are several options:</p>
+<p>Possible sources of candidates:</p>
+<ol class="arabic simple">
+<li><p><strong>batch:</strong></p></li>
+</ol>
+<blockquote>
+<div><p>Use all labels in the batch as the candidate set (with all but the
+example’s label being treated as negatives).
+Note: with this setting, the candidate set is identical for all
+examples in a batch. This option may be undesirable if it is possible
+for duplicate labels to occur in a batch, since the second instance of
+the correct label will be treated as a negative.</p>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p><strong>batch-all-cands:</strong></p></li>
+</ol>
+<blockquote>
+<div><p>Use all inline candidates in the batch as candidate set.
+Note 1: This can result in a very large number of candidates.
+Note 2: In this case we will deduplicate candidates.
+Note 3: just like with ‘batch’ the candidate set is identical for all
+examples in a batch.</p>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li><p><strong>inline:</strong></p></li>
+</ol>
+<blockquote>
+<div><p>If each example comes with a list of possible label candidates, use those.
+Each teacher act for the task should contain the field ‘label_candidates’.
+Note: With this setting, each example will have its own candidate set.</p>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li><p><strong>fixed:</strong></p></li>
+</ol>
+<blockquote>
+<div><p>Use a global candidates list, provided by the user.
+If self.fixed_candidates is not None, use a set of fixed candidates for
+all examples.
+Note: this setting is not recommended for training unless the
+universe of possible candidates is very small.
+To use this, add the path to your text file with the candidates to the
+flag <code class="docutils literal notranslate"><span class="pre">--fixed-candidates-path</span></code> or <code class="docutils literal notranslate"><span class="pre">-fcp</span></code>.</p>
+</div></blockquote>
+</div>
+<div class="section" id="tracking-ranking-metrics">
+<h3>Tracking ranking metrics<a class="headerlink" href="#tracking-ranking-metrics" title="Permalink to this headline">¶</a></h3>
+<p>During training, we omit some ranking metrics (like hits&#64;k) for the sake of
+speed. To get these ranking metrics, use the flag <code class="docutils literal notranslate"><span class="pre">--train-predict</span>&#160; <span class="pre">True</span></code>.</p>
+</div>
+</div>
+<div class="section" id="evaluating-a-model">
+<h2>Evaluating a Model<a class="headerlink" href="#evaluating-a-model" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="evaluating-on-a-fixed-candidate-set">
+<h3>Evaluating on a fixed candidate set<a class="headerlink" href="#evaluating-on-a-fixed-candidate-set" title="Permalink to this headline">¶</a></h3>
+<p>As during training, you must add the path to your text file with the
+candidates to the flag <code class="docutils literal notranslate"><span class="pre">--fixed-candidates-path</span></code> or <code class="docutils literal notranslate"><span class="pre">-fcp</span></code>.
+For many models, it’s convenient to cache the the encoding of the candidates
+in the case that the encoding is independent of the context. In order to do
+this and save to a file, set the flag <code class="docutils literal notranslate"><span class="pre">--encode-candidate-vecs</span> <span class="pre">True</span></code>. In
+order to do this, you must implement the function <code class="docutils literal notranslate"><span class="pre">encode_candidates()</span></code>
+which takes in a batch of padded candidates and outputs a batch of candidates
+encoded with the model.</p>
+</div>
+<div class="section" id="evaluating-on-vocab-candidates">
+<h3>Evaluating on “vocab” candidates<a class="headerlink" href="#evaluating-on-vocab-candidates" title="Permalink to this headline">¶</a></h3>
+<p>In addition to the options above for evaluating a model, we also have the
+option of evaluating “vocab” candidates. This is one global candidate list,
+extracted from the vocabulary with the exception of <code class="docutils literal notranslate"><span class="pre">self.NULL_IDX</span></code>.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tutorial_tipsntricks.html" class="btn btn-neutral float-right" title="Tips and Tricks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tutorial_seq2seq.html" class="btn btn-neutral float-left" title="Creating an Agent" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Facebook AI Research
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

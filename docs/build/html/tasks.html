@@ -1,0 +1,373 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tasks &mdash; ParlAI  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/parlai_theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Model Zoo" href="zoo.html" />
+    <link rel="prev" title="Using tensorboard for metric tracking" href="tutorial_tensorboard.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ParlAI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_quick.html">ParlAI Quick-start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_basic.html">Intro to ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_task.html">Tasks and Datasets in ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_worlds.html">Data Handling, Batching, and Hogwild</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_seq2seq.html">Creating an Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_torch_ranker_agent.html">Using Torch Ranker Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tipsntricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_mturk.html">Using Mechanical Turk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_messenger.html">Using Facebook Messenger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tensorboard.html">Using tensorboard for metric tracking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tasks &amp; Model Zoo</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Tasks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#qa-tasks">QA Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cloze-tasks">Cloze Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#goal-tasks">Goal Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#chitchat-tasks">ChitChat Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#negotiation-tasks">Negotiation Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#visual-tasks">Visual Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#decanlp-tasks">decanlp Tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="zoo.html">Model Zoo</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Core Library</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="observations.html">observations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents.html">core.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="torch_agent.html">core.torch_agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_data.html">core.build_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dict.html">core.dict</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metrics.html">core.metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="params.html">core.params</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teachers.html">core.teachers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">core.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thread_utils.html">core.thread_utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worlds.html">core.worlds</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="repeat_label.html">agents.repeat_label</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unigram_agent.html">agents.unigram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_seq2seq.html">agents.example_seq2seq</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Scripts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cli_usage.html">Command Line Usage</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ParlAI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Tasks</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/tasks.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tasks">
+<h1>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h1>
+<p>List of ParlAI tasks defined in the file <a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/task_list.py">task_list.py</a>.</p>
+<p>They consist of:  (1) QA tasks;  (2) Cloze tasks;  (3) Goal tasks;  (4) ChitChat tasks;  (5) Negotiation tasks;  (6) Visual tasks;   and (7) decanlp tasks.</p>
+<div class="section" id="qa-tasks">
+<h2>QA Tasks<a class="headerlink" href="#qa-tasks" title="Permalink to this headline">¶</a></h2>
+<p><strong>AQuA</strong>   Dataset containing algebraic word problems with rationales for their answers. From Ling et. al. 2017, Link: <a class="reference external" href="https://arxiv.org/pdf/1705.04146.pdf">https://arxiv.org/pdf/1705.04146.pdf</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/aqua">aqua</a>  tags:<code class="docutils literal notranslate"><span class="pre">#AQuA</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#QA</span></code> ]</p>
+<p><strong>bAbI 1k</strong>   20 synthetic tasks that each test a unique aspect of text and reasoning, and hence test different capabilities of learning models. From Weston et al. ‘16. Link: <a class="reference external" href="http://arxiv.org/abs/1502.05698">http://arxiv.org/abs/1502.05698</a>   [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/babi:All1k">babi:All1k</a>  tags:<code class="docutils literal notranslate"><span class="pre">#bAbI-1k</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#QA</span></code> ]</p>
+<p><strong>bAbI 10k</strong>   20 synthetic tasks that each test a unique aspect of text and reasoning, and hence test different capabilities of learning models. From Weston et al. ‘16. Link: <a class="reference external" href="http://arxiv.org/abs/1502.05698">http://arxiv.org/abs/1502.05698</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/babi:All10k">babi:All10k</a>  tags:<code class="docutils literal notranslate"><span class="pre">#bAbI-10k</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#QA</span></code> ]</p>
+<p><strong>Conversational Question Answering Challenge</strong>   CoQA is a large-scale dataset for building Conversational Question Answering systems. The goal of the CoQA challenge is to measure the ability of machines to understand a text passage and answer a series of interconnected questions that appear in a conversation. CoQA is pronounced as coca . See <a class="reference external" href="https://arxiv.org/abs/1808.07042">https://arxiv.org/abs/1808.07042</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/coqa">coqa</a>  tags:<code class="docutils literal notranslate"><span class="pre">#COQA</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#QA</span></code> ]</p>
+<p><strong>HotpotQA</strong>   HotpotQA is a dataset for multi-hop question answering.The overall setting is that given some context paragraphs(e.g., a few paragraphs, or the entire Web) and a question,a QA system answers the question by extracting a span of textfrom the context. It is necessary to perform multi-hop reasoningto correctly answer the question.Link: <a class="reference external" href="https://arxiv.org/pdf/1809.09600.pdf">https://arxiv.org/pdf/1809.09600.pdf</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/hotpotqa">hotpotqa</a>  tags:<code class="docutils literal notranslate"><span class="pre">#HotpotQA</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#QA</span></code> ]</p>
+<p><strong>MCTest</strong>   Questions about short children’s stories, from Richardson et al. ‘13. Link: <a class="reference external" href="https://www.microsoft.com/en-us/research/publication/mctest-challenge-dataset-open-domain-machine-comprehension-text/">https://www.microsoft.com/en-us/research/publication/mctest-challenge-dataset-open-domain-machine-comprehension-text/</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/mctest">mctest</a>  tags:<code class="docutils literal notranslate"><span class="pre">#MCTest</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#QA</span></code> ]</p>
+<p><strong>Movie Dialog QA</strong>   Closed-domain QA dataset asking templated questions about movies, answerable from Wikipedia, similar to WikiMovies. From Dodge et al. ‘15. Link: <a class="reference external" href="https://arxiv.org/abs/1511.06931">https://arxiv.org/abs/1511.06931</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/moviedialog:Task:1">moviedialog:Task:1</a>  tags:<code class="docutils literal notranslate"><span class="pre">#MovieDD-QA</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#QA</span></code>, <code class="docutils literal notranslate"><span class="pre">#MovieDD</span></code> ]</p>
+<p><strong>Movie Dialog Recommendations</strong>   Questions asking for movie recommendations. From Dodge et al. ‘15. Link: <a class="reference external" href="https://arxiv.org/abs/1511.06931">https://arxiv.org/abs/1511.06931</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/moviedialog:Task:2">moviedialog:Task:2</a>  tags:<code class="docutils literal notranslate"><span class="pre">#MovieDD-Recs</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#QA</span></code>, <code class="docutils literal notranslate"><span class="pre">#MovieDD</span></code> ]</p>
+<p><strong>MTurk WikiMovies</strong>   Closed-domain QA dataset asking MTurk-derived questions about movies, answerable from Wikipedia. From Li et al. ‘16. Link: <a class="reference external" href="https://arxiv.org/abs/1611.09823">https://arxiv.org/abs/1611.09823</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/mturkwikimovies">mturkwikimovies</a>  tags:<code class="docutils literal notranslate"><span class="pre">#MTurkWikiMovies</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#QA</span></code> ]</p>
+<p><strong>NarrativeQA</strong>   A dataset and set of tasks in which the reader must answer questions about stories by reading entire books or movie scripts. From Kočiský et. al. ‘17. Link: <a class="reference external" href="https://arxiv.org/abs/1712.07040">https://arxiv.org/abs/1712.07040</a>’  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/narrative_qa">narrative_qa</a>  tags:<code class="docutils literal notranslate"><span class="pre">#NarrativeQA</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#QA</span></code> ]</p>
+<p><strong>Question Answering in Context</strong>   Question Answering in Context is a dataset for modeling, understanding, and participating in information seeking dialog. Data instances consist of an interactive dialog between two crowd workers: (1) a student who poses a sequence of freeform questions to learn as much as possible about a hidden Wikipedia text, and (2) a teacher who answers the questions by providing short excerpts (spans) from the text. QuAC introduces challenges not found in existing machine comprehension datasets: its questions are often more open-ended, unanswerable, or only meaningful within the dialog context. link: <a class="reference external" href="https://arxiv.org/abs/1808.07036">https://arxiv.org/abs/1808.07036</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/quac">quac</a>  tags:<code class="docutils literal notranslate"><span class="pre">#QuAC</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#QA</span></code> ]</p>
+<p><strong>Simple Questions</strong>   Open-domain QA dataset based on Freebase triples from Bordes et al. ‘15. Link: <a class="reference external" href="https://arxiv.org/abs/1506.02075">https://arxiv.org/abs/1506.02075</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/simplequestions">simplequestions</a>  tags:<code class="docutils literal notranslate"><span class="pre">#SimpleQuestions</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#QA</span></code> ]</p>
+<p><strong>SQuAD2</strong>   Open-domain QA dataset answerable from a given paragraph from Wikipedia, from Rajpurkar &amp; Jia et al. ‘18. Link: <a class="reference external" href="http://arxiv.org/abs/1806.03822">http://arxiv.org/abs/1806.03822</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/squad2">squad2</a>  tags:<code class="docutils literal notranslate"><span class="pre">#SQuAD2</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#QA</span></code> ]</p>
+<p><strong>SQuAD</strong>   Open-domain QA dataset answerable from a given paragraph from Wikipedia, from Rajpurkar et al. ‘16. Link: <a class="reference external" href="https://arxiv.org/abs/1606.05250">https://arxiv.org/abs/1606.05250</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/squad">squad</a>  tags:<code class="docutils literal notranslate"><span class="pre">#SQuAD</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#QA</span></code> ]</p>
+<p><strong>TriviaQA</strong>   Open-domain QA dataset with question-answer-evidence triples, from Joshi et al. ‘17. Link: <a class="reference external" href="https://arxiv.org/abs/1705.03551">https://arxiv.org/abs/1705.03551</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/triviaqa">triviaqa</a>  tags:<code class="docutils literal notranslate"><span class="pre">#TriviaQA</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#QA</span></code> ]</p>
+<p><strong>Web Questions</strong>   Open-domain QA dataset from Web queries from Berant et al. ‘13. Link: <a class="reference external" href="http://www.aclweb.org/anthology/D13-1160">http://www.aclweb.org/anthology/D13-1160</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/webquestions">webquestions</a>  tags:<code class="docutils literal notranslate"><span class="pre">#WebQuestions</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#QA</span></code> ]</p>
+<p><strong>WikiMovies</strong>   Closed-domain QA dataset asking templated questions about movies, answerable from Wikipedia. From Miller et al. ‘16. Link: <a class="reference external" href="https://arxiv.org/abs/1606.03126">https://arxiv.org/abs/1606.03126</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/wikimovies">wikimovies</a>  tags:<code class="docutils literal notranslate"><span class="pre">#WikiMovies</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#QA</span></code> ]</p>
+<p><strong>WikiQA</strong>   Open domain QA from Wikipedia dataset from Yang et al. ‘15. Link: <a class="reference external" href="https://www.microsoft.com/en-us/research/publication/wikiqa-a-challenge-dataset-for-open-domain-question-answering/">https://www.microsoft.com/en-us/research/publication/wikiqa-a-challenge-dataset-for-open-domain-question-answering/</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/wikiqa">wikiqa</a>  tags:<code class="docutils literal notranslate"><span class="pre">#WikiQA</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#QA</span></code> ]</p>
+<p><strong>InsuranceQA</strong>   Task which requires agents to identify high quality answers composed by professionals with deep domain knowledge. From Feng et al. ‘15. Link: <a class="reference external" href="https://arxiv.org/abs/1508.01585">https://arxiv.org/abs/1508.01585</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/insuranceqa">insuranceqa</a>  tags:<code class="docutils literal notranslate"><span class="pre">#InsuranceQA</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#QA</span></code> ]</p>
+<p><strong>MS_MARCO</strong>   A large scale Machine Reading Comprehension Dataset with questions sampled from real anonymized user queries and contexts from web documents. From Nguyen et al. ‘16. Link: <a class="reference external" href="https://arxiv.org/abs/1611.09268">https://arxiv.org/abs/1611.09268</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/ms_marco">ms_marco</a>  tags:<code class="docutils literal notranslate"><span class="pre">#MS_MARCO</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#QA</span></code> ]</p>
+<p><strong>QAngaroo</strong>   Reading Comprehension with Multiple Hop. Including two datasets: WIKIHOP built on on wikipedia, MEDHOP built on paper abstracts from PubMed. Link to dataset: <a class="reference external" href="http://qangaroo.cs.ucl.ac.uk/">http://qangaroo.cs.ucl.ac.uk/</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/qangaroo">qangaroo</a>  tags:<code class="docutils literal notranslate"><span class="pre">#QAngaroo</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#QA</span></code> ]</p>
+</div>
+<div class="section" id="cloze-tasks">
+<h2>Cloze Tasks<a class="headerlink" href="#cloze-tasks" title="Permalink to this headline">¶</a></h2>
+<p><strong>BookTest</strong>   Sentence completion given a few sentences as context from a book. A larger version of CBT. From Bajgar et al., 16. Link: <a class="reference external" href="https://arxiv.org/abs/1610.00956">https://arxiv.org/abs/1610.00956</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/booktest">booktest</a>  tags:<code class="docutils literal notranslate"><span class="pre">#BookTest</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Cloze</span></code> ]</p>
+<p><strong>Children’s Book Test (CBT)</strong>   Sentence completion given a few sentences as context from a children’s book. From Hill et al., ‘16. Link: <a class="reference external" href="https://arxiv.org/abs/1511.02301">https://arxiv.org/abs/1511.02301</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/cbt">cbt</a>  tags:<code class="docutils literal notranslate"><span class="pre">#CBT</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Cloze</span></code> ]</p>
+<p><strong>QA CNN</strong>   Cloze dataset based on a missing (anonymized) entity phrase from a CNN article, Hermann et al. ‘15. Link: <a class="reference external" href="https://arxiv.org/abs/1506.03340">https://arxiv.org/abs/1506.03340</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/qacnn">qacnn</a>  tags:<code class="docutils literal notranslate"><span class="pre">#QACNN</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Cloze</span></code> ]</p>
+<p><strong>QA Daily Mail</strong>   Cloze dataset based on a missing (anonymized) entity phrase from a Daily Mail article, Hermann et al. ‘15. Link: <a class="reference external" href="https://arxiv.org/abs/1506.03340">https://arxiv.org/abs/1506.03340</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/qadailymail">qadailymail</a>  tags:<code class="docutils literal notranslate"><span class="pre">#QADailyMail</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Cloze</span></code> ]</p>
+</div>
+<div class="section" id="goal-tasks">
+<h2>Goal Tasks<a class="headerlink" href="#goal-tasks" title="Permalink to this headline">¶</a></h2>
+<p><strong>Coached Conversational Preference Elicitation</strong>   A dataset consisting of 502 dialogs with 12,000 annotated utterances between a user and an assistant discussing movie preferences in natural language. It was collected using a Wizard-of-Oz methodology between two paid crowd-workers, where one worker plays the role of an ‘assistant’, while the other plays the role of a ‘user’. From Google, ‘19. Link: <a class="reference external" href="https://ai.google/tools/datasets/coached-conversational-preference-elicitation">https://ai.google/tools/datasets/coached-conversational-preference-elicitation</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/ccpe">ccpe</a>  tags:<code class="docutils literal notranslate"><span class="pre">#CCPE</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Goal</span></code> ]</p>
+<p><strong>Dialog Based Language Learning: bAbI Task</strong>   Short dialogs based on the bAbI tasks, but in the form of a question from a teacher, the answer from the student, and finally a comment on the answer from the teacher. The aim is to find learning models that use the comments to improve. From Weston ‘16. Link: <a class="reference external" href="https://arxiv.org/abs/1604.06045">https://arxiv.org/abs/1604.06045</a>. Tasks can be accessed with a format like: ‘python examples/display_data.py -t dbll_babi:task:2_p0.5’ which specifies task 2, and policy with 0.5 answers correct, see the paper for more details of the tasks.  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/dbll_babi">dbll_babi</a>  tags:<code class="docutils literal notranslate"><span class="pre">#DBLL-bAbI</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Goal</span></code> ]</p>
+<p><strong>Dialog Based Language Learning: WikiMovies Task</strong>   Short dialogs based on WikiMovies, but in the form of a question from a teacher, the answer from the student, and finally a comment on the answer from the teacher. The aim is to find learning models that use the comments to improve. From Weston ‘16. Link: <a class="reference external" href="https://arxiv.org/abs/1604.06045">https://arxiv.org/abs/1604.06045</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/dbll_movie">dbll_movie</a>  tags:<code class="docutils literal notranslate"><span class="pre">#DBLL-Movie</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Goal</span></code> ]</p>
+<p><strong>Dialog bAbI</strong>   Simulated dialogs of restaurant booking, from Bordes et al. ‘16. Link: <a class="reference external" href="https://arxiv.org/abs/1605.07683">https://arxiv.org/abs/1605.07683</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/dialog_babi">dialog_babi</a>  tags:<code class="docutils literal notranslate"><span class="pre">#dialog-bAbI</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Goal</span></code> ]</p>
+<p><strong>Dialog bAbI+</strong>   bAbI+ is an extension of the bAbI Task 1 dialogues with everyday incremental dialogue phenomena (hesitations, restarts, and corrections) which model the disfluencies and communication problems in everyday spoken interaction in real-world environments. See <a class="reference external" href="https://www.researchgate.net/publication/319128941_Challenging_Neural_Dialogue_Models_with_Natural_Data_Memory_Networks_Fail_on_Incremental_Phenomena,http://aclweb.org/anthology/D17-1235">https://www.researchgate.net/publication/319128941_Challenging_Neural_Dialogue_Models_with_Natural_Data_Memory_Networks_Fail_on_Incremental_Phenomena,http://aclweb.org/anthology/D17-1235</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/dialog_babi_plus">dialog_babi_plus</a>  tags:<code class="docutils literal notranslate"><span class="pre">#dialog-bAbI-plus</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Goal</span></code> ]</p>
+<p><strong>MutualFriends</strong>   Task where two agents must discover which friend of theirs is mutual based on the friends’s attributes. From He He et al. ‘17. Link: <a class="reference external" href="https://stanfordnlp.github.io/cocoa/">https://stanfordnlp.github.io/cocoa/</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/mutualfriends">mutualfriends</a>  tags:<code class="docutils literal notranslate"><span class="pre">#MutualFriends</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Goal</span></code> ]</p>
+<p><strong>Movie Dialog QA Recommendations</strong>   Dialogs discussing questions about movies as well as recommendations. From Dodge et al. ‘15. Link: <a class="reference external" href="https://arxiv.org/abs/1511.06931">https://arxiv.org/abs/1511.06931</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/moviedialog:Task:3">moviedialog:Task:3</a>  tags:<code class="docutils literal notranslate"><span class="pre">#MovieDD-QARecs</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Goal</span></code>, <code class="docutils literal notranslate"><span class="pre">#MovieDD</span></code> ]</p>
+<p><strong>Personalized Dialog Full Set</strong>   Simulated dataset of restaurant booking focused on personalization based on user profiles. From Joshi et al. ‘17. Link: <a class="reference external" href="https://arxiv.org/abs/1706.07503">https://arxiv.org/abs/1706.07503</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/personalized_dialog:AllFull">personalized_dialog:AllFull</a>  tags:<code class="docutils literal notranslate"><span class="pre">#personalized-dialog-full</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Goal</span></code>, <code class="docutils literal notranslate"><span class="pre">#Personalization</span></code> ]</p>
+<p><strong>Personalized Dialog Small Set</strong>   Simulated dataset of restaurant booking focused on personalization based on user profiles. From Joshi et al. ‘17. Link: <a class="reference external" href="https://arxiv.org/abs/1706.07503">https://arxiv.org/abs/1706.07503</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/personalized_dialog:AllSmall">personalized_dialog:AllSmall</a>  tags:<code class="docutils literal notranslate"><span class="pre">#personalized-dialog-small</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Goal</span></code>, <code class="docutils literal notranslate"><span class="pre">#Personalization</span></code> ]</p>
+<p><strong>Task N’ Talk</strong>   Dataset of synthetic shapes described by attributes, for agents to play a cooperative QA game, from Kottur et al. ‘17. Link: <a class="reference external" href="https://arxiv.org/abs/1706.08502">https://arxiv.org/abs/1706.08502</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/taskntalk">taskntalk</a>  tags:<code class="docutils literal notranslate"><span class="pre">#TaskNTalk</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Goal</span></code> ]</p>
+<p><strong>SCAN</strong>   SCAN is a set of simple language-driven navigation tasks for studying compositional learning and zero-shot generalization. The SCAN tasks were inspired by the CommAI environment, which is the origin of the acronym (Simplified versions of the CommAI Navigation tasks). See the paper: <a class="reference external" href="https://arxiv.org/abs/1711.00350">https://arxiv.org/abs/1711.00350</a> or data: <a class="reference external" href="https://github.com/brendenlake/SCAN">https://github.com/brendenlake/SCAN</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/scan">scan</a>  tags:<code class="docutils literal notranslate"><span class="pre">#SCAN</span></code>, <code class="docutils literal notranslate"><span class="pre">#Goal</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code> ]</p>
+<p><strong>MultiWOZ</strong>   A fully labeled collection of human-written conversations spanningover multiple domains and topics.(see <a class="reference external" href="http://dialogue.mi.eng.cam.ac.uk/index.php/corpus/">http://dialogue.mi.eng.cam.ac.uk/index.php/corpus/</a> for more information).   [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/multiwoz">multiwoz</a>  tags:<code class="docutils literal notranslate"><span class="pre">#MultiWOZ</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Goal</span></code> ]</p>
+</div>
+<div class="section" id="chitchat-tasks">
+<h2>ChitChat Tasks<a class="headerlink" href="#chitchat-tasks" title="Permalink to this headline">¶</a></h2>
+<p><strong>Cornell Movie</strong>   Fictional conversations extracted from raw movie scripts. Danescu-Niculescu-Mizil &amp; Lee, ‘11. Link: <a class="reference external" href="https://arxiv.org/abs/1106.3077">https://arxiv.org/abs/1106.3077</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/cornell_movie">cornell_movie</a>  tags:<code class="docutils literal notranslate"><span class="pre">#CornellMovie</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#ChitChat</span></code> ]</p>
+<p><strong>Dialogue NLI</strong>   Dialogue NLI is a dataset that addresses the issue of consistency in dialogue models. See: <a class="reference external" href="https://wellecks.github.io/dialogue_nli/">https://wellecks.github.io/dialogue_nli/</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/dialogue_nli">dialogue_nli</a>  tags:<code class="docutils literal notranslate"><span class="pre">#dialogue-nli</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#ChitChat</span></code>, <code class="docutils literal notranslate"><span class="pre">#NLI</span></code> ]</p>
+<p><strong>DSTC7 subtrack 1 - ubuntu</strong>   DSTC7 is a competition which provided a dataset of dialogs very similar to the ubuntu dataset. In particular, the subtrack 1 consists in predicting the next utterance. See: <a class="reference external" href="https://arxiv.org/pdf/1901.03461.pdf">https://arxiv.org/pdf/1901.03461.pdf</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/dstc7">dstc7</a>  tags:<code class="docutils literal notranslate"><span class="pre">#dstc7</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#ChitChat</span></code> ]</p>
+<p><strong>Movie Dialog Reddit</strong>   Dialogs discussing Movies from Reddit (the Movies SubReddit). From Dodge et al. ‘15. Link: <a class="reference external" href="https://arxiv.org/abs/1511.06931">https://arxiv.org/abs/1511.06931</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/moviedialog:Task:4">moviedialog:Task:4</a>  tags:<code class="docutils literal notranslate"><span class="pre">#MovieDD-Reddit</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#ChitChat</span></code>, <code class="docutils literal notranslate"><span class="pre">#MovieDD</span></code> ]</p>
+<p><strong>Open Subtitles</strong>   Dataset of dialogs from movie scripts. Version 2018: <a class="reference external" href="http://opus.lingfil.uu.se/OpenSubtitles2018.php">http://opus.lingfil.uu.se/OpenSubtitles2018.php</a>, version 2009: <a class="reference external" href="http://opus.lingfil.uu.se/OpenSubtitles.php">http://opus.lingfil.uu.se/OpenSubtitles.php</a>. A variant of the dataset used in Vinyals &amp; Le ‘15, <a class="reference external" href="https://arxiv.org/abs/1506.05869">https://arxiv.org/abs/1506.05869</a>.  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/opensubtitles">opensubtitles</a>  tags:<code class="docutils literal notranslate"><span class="pre">#OpenSubtitles</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#ChitChat</span></code> ]</p>
+<p><strong>Ubuntu</strong>   Dialogs between an Ubuntu user and an expert trying to fix issue, we use the V2 version, which cleaned the data to some extent. From Lowe et al. ‘15. Link: <a class="reference external" href="https://arxiv.org/abs/1506.08909">https://arxiv.org/abs/1506.08909</a>.  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/ubuntu">ubuntu</a>  tags:<code class="docutils literal notranslate"><span class="pre">#Ubuntu</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#ChitChat</span></code> ]</p>
+<p><strong>ConvAI2</strong>   A chit-chat dataset based on PersonaChat (<a class="reference external" href="https://arxiv.org/abs/1801.07243">https://arxiv.org/abs/1801.07243</a>) for a NIPS 2018 competition. Link: <a class="reference external" href="http://convai.io/">http://convai.io/</a>.  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/convai2">convai2</a>  tags:<code class="docutils literal notranslate"><span class="pre">#ConvAI2</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#ChitChat</span></code> ]</p>
+<p><strong>ConvAI_ChitChat</strong>   Human-bot dialogues containing free discussions of randomly chosen paragraphs from SQuAD. Link to dataset: <a class="reference external" href="http://convai.io/data/">http://convai.io/data/</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/convai_chitchat">convai_chitchat</a>  tags:<code class="docutils literal notranslate"><span class="pre">#ConvAI_ChitChat</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#ChitChat</span></code>, <code class="docutils literal notranslate"><span class="pre">#decanlp</span></code> ]</p>
+<p><strong>Persona-Chat</strong>   A chit-chat dataset where paired Turkers are given assigned personas and chat to try to get to know each other. See the paper: <a class="reference external" href="https://arxiv.org/abs/1801.07243">https://arxiv.org/abs/1801.07243</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/personachat">personachat</a>  tags:<code class="docutils literal notranslate"><span class="pre">#Persona-Chat</span></code>, <code class="docutils literal notranslate"><span class="pre">#ChitChat</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code> ]</p>
+<p><strong>TaskMaster-1-2019</strong>   A chit-chat dataset by GoogleAI providing high quality goal-oriented conversationsThe dataset hopes to provoke interest in written vs spoken languageBoth the datasets consists of two-person dialogs:Spoken: Created using Wizard of Oz methodology.(woz-dialogs.json)Written: Created by crowdsourced workers who were asked to write the full conversation themselves playing roles of both the user and assistant. (self-dialogs.json)Link: https://ai.google/tools/datasets/taskmaster-1  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/taskmaster">taskmaster</a>  tags:<code class="docutils literal notranslate"><span class="pre">#TaskMaster</span></code>, <code class="docutils literal notranslate"><span class="pre">#ChitChat</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code> ]</p>
+<p><strong>Twitter</strong>   Twitter data from: <a class="reference external" href="https://github.com/Marsan-Ma/chat_corpus/">https://github.com/Marsan-Ma/chat_corpus/</a>. No train/valid/test split was provided so 10k for valid and 10k for test was chosen at random.  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/twitter">twitter</a>  tags:<code class="docutils literal notranslate"><span class="pre">#Twitter</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#ChitChat</span></code> ]</p>
+<p><strong>ConvAI2_wild_evaluation</strong>   Dataset collected during the wild evaluation of ConvaAI2 participants bots (<a class="reference external" href="http://convai.io">http://convai.io</a>). 60% train, 20% valid and 20% test is chosen at random from the whole dataset.  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/convai2_wild_evaluation">convai2_wild_evaluation</a>  tags:<code class="docutils literal notranslate"><span class="pre">#ConvAI2_wild_evaluation</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#ChitChat</span></code> ]</p>
+<p><strong>Image_Chat</strong>   202k dialogues and 401k utterances over 202k images from the YFCC100m dataset(<a class="reference external" href="https://multimediacommons.wordpress.com/yfcc100m-core-dataset/)using">https://multimediacommons.wordpress.com/yfcc100m-core-dataset/)using</a> 215 possible personality traitssee <a class="reference external" href="https://klshuster.github.io/image_chat/">https://klshuster.github.io/image_chat/</a> for more information.  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/image_chat">image_chat</a>  tags:<code class="docutils literal notranslate"><span class="pre">#Image_Chat</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Visual</span></code>, <code class="docutils literal notranslate"><span class="pre">#ChitChat</span></code> ]</p>
+<p><strong>Wizard_of_Wikipedia</strong>   A dataset with conversations directly grounded with knowledge retrieved from Wikipedia. Contains 201k utterances from 22k dialogues spanning over 1300 diverse topics, split into train, test, and valid sets. The test and valid sets are split into two sets each: one with overlapping topics with the train set, and one with unseen topics.See <a class="reference external" href="https://arxiv.org/abs/1811.01241">https://arxiv.org/abs/1811.01241</a> for more information.  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/wizard_of_wikipedia">wizard_of_wikipedia</a>  tags:<code class="docutils literal notranslate"><span class="pre">#Wizard_of_Wikipedia</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#ChitChat</span></code> ]</p>
+<p><strong>Daily Dialog</strong>   A dataset of chitchat dialogues with strong annotations for topic, emotion and utterance act. This version contains both sides of every conversation, and uses the official train/valid/test splits from the original authors. See <a class="reference external" href="https://arxiv.org/abs/1710.03957">https://arxiv.org/abs/1710.03957</a> for more information.  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/dailydialog">dailydialog</a>  tags:<code class="docutils literal notranslate"><span class="pre">#DailyDialog</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#ChitChat</span></code> ]</p>
+<p><strong>Empathetic Dialogues</strong>   A dataset of 25k conversations grounded in emotional situations to facilitate training and evaluating dialogue systems. See <a class="reference external" href="https://arxiv.org/abs/1811.00207">https://arxiv.org/abs/1811.00207</a> for more information.
+Dataset has been released under the CC BY-NC license.
+EmpatheticDialogueTeacher returns examples like so:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>[text]:  context line (previous utterance by ‘speaker’)</p></li>
+<li><p>[labels]: label line  (current utterance by ‘listener’)</p></li>
+</ul>
+</div></blockquote>
+<p>with additional task specific fields:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>[situation]: a 1-3 sentence description of the situation that the conversation is</p></li>
+<li><p>[emotion]: one of 32 emotion words</p></li>
+</ul>
+</div></blockquote>
+<p>Other optional fields:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>[prepend_ctx]: fasttext prediction on context line - or None</p></li>
+<li><p>[prepend_cand]: fasttext prediction on label line (candidate) - or None</p></li>
+<li><p>[deepmoji_ctx]: vector encoding from deepmoji penultimate layer - or None</p></li>
+<li><p>[deepmoji_cand]: vector encoding from deepmoji penultimate layer for label line (candidate) - or None   [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/empathetic_dialogues">empathetic_dialogues</a>  tags:<code class="docutils literal notranslate"><span class="pre">#EmpatheticDialogues</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#ChitChat</span></code> ]</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="negotiation-tasks">
+<h2>Negotiation Tasks<a class="headerlink" href="#negotiation-tasks" title="Permalink to this headline">¶</a></h2>
+<p><strong>Deal or No Deal</strong>   End-to-end negotiation task which requires two agents to agree on how to divide a set of items, with each agent assigning different values to each item. From Lewis et al. ‘17. Link: <a class="reference external" href="https://arxiv.org/abs/1706.05125">https://arxiv.org/abs/1706.05125</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/dealnodeal">dealnodeal</a>  tags:<code class="docutils literal notranslate"><span class="pre">#DealNoDeal</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Negotiation</span></code> ]</p>
+</div>
+<div class="section" id="visual-tasks">
+<h2>Visual Tasks<a class="headerlink" href="#visual-tasks" title="Permalink to this headline">¶</a></h2>
+<p><strong>FVQA</strong>   The FVQA, a VQA dataset which requires, and supports, much deeper reasoning. We extend a conventional visual question answering dataset, which contains image-question-answer triplets, through additional image-question-answer-supporting fact tuples. The supporting fact is represented as a structural triplet, such as &lt;Cat,CapableOf,ClimbingTrees&gt;.  Link: <a class="reference external" href="https://arxiv.org/abs/1606.05433">https://arxiv.org/abs/1606.05433</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/fvqa">fvqa</a>  tags:<code class="docutils literal notranslate"><span class="pre">#FVQA</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Visual</span></code> ]</p>
+<p><strong>VQAv1</strong>   Open-ended question answering about visual content. From Agrawal et al. ‘15. Link: <a class="reference external" href="https://arxiv.org/abs/1505.00468">https://arxiv.org/abs/1505.00468</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/vqa_v1">vqa_v1</a>  tags:<code class="docutils literal notranslate"><span class="pre">#VQAv1</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Visual</span></code> ]</p>
+<p><strong>VQAv2</strong>   Bigger, more balanced version of the original VQA dataset. From Goyal et al. ‘16. Link: <a class="reference external" href="https://arxiv.org/abs/1612.00837">https://arxiv.org/abs/1612.00837</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/vqa_v2">vqa_v2</a>  tags:<code class="docutils literal notranslate"><span class="pre">#VQAv2</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Visual</span></code> ]</p>
+<p><strong>VisDial</strong>   Task which requires agents to hold a meaningful dialog about visual content. From Das et al. ‘16. Link: <a class="reference external" href="https://arxiv.org/abs/1611.08669">https://arxiv.org/abs/1611.08669</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/visdial">visdial</a>  tags:<code class="docutils literal notranslate"><span class="pre">#VisDial</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Visual</span></code> ]</p>
+<p><strong>MNIST_QA</strong>   Task which requires agents to identify which number they are seeing. From the MNIST dataset.  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/mnist_qa">mnist_qa</a>  tags:<code class="docutils literal notranslate"><span class="pre">#MNIST_QA</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Visual</span></code> ]</p>
+<p><strong>CLEVR</strong>   A visual reasoning dataset that tests abilities such as attribute identification, counting, comparison, spatial relationships, and logical operations. From Johnson et al. ‘16. Link: <a class="reference external" href="https://arxiv.org/abs/1612.06890">https://arxiv.org/abs/1612.06890</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/clevr">clevr</a>  tags:<code class="docutils literal notranslate"><span class="pre">#CLEVR</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Visual</span></code> ]</p>
+<p><strong>nlvr</strong>   Cornell Natural Language Visual Reasoning (NLVR) is a language grounding dataset based on  pairs of natural language statements grounded in synthetic images. From Suhr et al. ‘17. Link: <a class="reference external" href="http://lic.nlp.cornell.edu/nlvr/">http://lic.nlp.cornell.edu/nlvr/</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/nlvr">nlvr</a>  tags:<code class="docutils literal notranslate"><span class="pre">#nlvr</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Visual</span></code> ]</p>
+<p><strong>Flickr30k</strong>   30k captioned images pulled from Flickr compiled by UIUC: <a class="reference external" href="http://web.engr.illinois.edu/~bplumme2/Flickr30kEntities/">http://web.engr.illinois.edu/~bplumme2/Flickr30kEntities/</a>. Based off of these papers: <a class="reference external" href="https://arxiv.org/abs/1505.04870v2">https://arxiv.org/abs/1505.04870v2</a>, <a class="reference external" href="http://aclweb.org/anthology/Q14-1006">http://aclweb.org/anthology/Q14-1006</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/flickr30k">flickr30k</a>  tags:<code class="docutils literal notranslate"><span class="pre">#Flickr30k</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Visual</span></code> ]</p>
+<p><strong>COCO_Captions</strong>   COCO annotations derived from the 2015 COCO Caption Competition. Link to dataset: <a class="reference external" href="http://cocodataset.org/#download">http://cocodataset.org/#download</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/coco_caption">coco_caption</a>  tags:<code class="docutils literal notranslate"><span class="pre">#COCO_Captions</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Visual</span></code> ]</p>
+<p><strong>Personality_Captions</strong>   200k images from the YFCC100m dataset (<a class="reference external" href="https://multimediacommons.wordpress.com/yfcc100m-core-dataset/">https://multimediacommons.wordpress.com/yfcc100m-core-dataset/</a>), with captions conditioned on one of 215 personalities. See <a class="reference external" href="https://arxiv.org/abs/1810.10665">https://arxiv.org/abs/1810.10665</a> for more information.  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/personality_captions">personality_captions</a>  tags:<code class="docutils literal notranslate"><span class="pre">#Personality_Captions</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Visual</span></code> ]</p>
+<p><strong>Image_Chat</strong>   202k dialogues and 401k utterances over 202k images from the YFCC100m dataset(<a class="reference external" href="https://multimediacommons.wordpress.com/yfcc100m-core-dataset/)using">https://multimediacommons.wordpress.com/yfcc100m-core-dataset/)using</a> 215 possible personality traitssee <a class="reference external" href="https://klshuster.github.io/image_chat/">https://klshuster.github.io/image_chat/</a> for more information.  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/image_chat">image_chat</a>  tags:<code class="docutils literal notranslate"><span class="pre">#Image_Chat</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Visual</span></code>, <code class="docutils literal notranslate"><span class="pre">#ChitChat</span></code> ]</p>
+<p><strong>Talk the Walk</strong>   Talk the walk dataset.See <a class="reference external" href="https://arxiv.org/abs/1807.03367">https://arxiv.org/abs/1807.03367</a> for more information.  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/talkthewalk">talkthewalk</a>  tags:<code class="docutils literal notranslate"><span class="pre">#TalkTheWalk</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Visual</span></code> ]</p>
+</div>
+<div class="section" id="decanlp-tasks">
+<h2>decanlp Tasks<a class="headerlink" href="#decanlp-tasks" title="Permalink to this headline">¶</a></h2>
+<p><strong>MultiNLI</strong>   A dataset designed for use in the development and evaluation of machine learning models for sentence understanding. Each example contains a premise and hypothesis. Model has to predict whether premise and hypothesis entail, contradict or are neutral to each other. From Williams et al. ‘17. Link: <a class="reference external" href="https://arxiv.org/abs/1704.05426">https://arxiv.org/abs/1704.05426</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/multinli">multinli</a>  tags:<code class="docutils literal notranslate"><span class="pre">#MultiNLI</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#Entailment</span></code>, <code class="docutils literal notranslate"><span class="pre">#decanlp</span></code> ]</p>
+<p><strong>IWSLT14</strong>   2014 International Workshop on Spoken Language task, currently only includes en_de and de_en. From Cettolo et al. ‘12. Link: wit3.fbk.eu  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/iwslt14">iwslt14</a>  tags:<code class="docutils literal notranslate"><span class="pre">#IWSLT14</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#MT</span></code>, <code class="docutils literal notranslate"><span class="pre">#decanlp</span></code> ]</p>
+<p><strong>ConvAI_ChitChat</strong>   Human-bot dialogues containing free discussions of randomly chosen paragraphs from SQuAD. Link to dataset: <a class="reference external" href="http://convai.io/data/">http://convai.io/data/</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/convai_chitchat">convai_chitchat</a>  tags:<code class="docutils literal notranslate"><span class="pre">#ConvAI_ChitChat</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#ChitChat</span></code>, <code class="docutils literal notranslate"><span class="pre">#decanlp</span></code> ]</p>
+<p><strong>SST Sentiment Analysis</strong>   Dataset containing sentiment trees of movie reviews. We use the modified binary sentence analysis subtask given by the DecaNLP paper here, originally from Radford, et. al <a class="reference external" href="https://nlp.stanford.edu/sentiment/index.html">https://nlp.stanford.edu/sentiment/index.html</a> <a class="reference external" href="https://github.com/openai/generating-reviews-discovering-sentiment/">https://github.com/openai/generating-reviews-discovering-sentiment/</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/sst">sst</a>  tags:<code class="docutils literal notranslate"><span class="pre">#sst</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#decanlp</span></code> ]</p>
+<p><strong>CNN/DM Summarisation</strong>   Dataset collected from CNN and the Daily Mail with summaries as labels, Implemented as part of the DecaNLP taskDownloaded from <a class="reference external" href="https://cs.nyu.edu/~kcho/DMQA/">https://cs.nyu.edu/~kcho/DMQA/</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/cnn_dm">cnn_dm</a>  tags:<code class="docutils literal notranslate"><span class="pre">#cnn_dm</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#decanlp</span></code> ]</p>
+<p><strong>QA-SRL Semantic Role Labeling</strong>   QA dataset implemented as part of the DecaNLP task. More info on thedataset can be found here: <a class="reference external" href="https://dada.cs.washington.edu/qasrl/">https://dada.cs.washington.edu/qasrl/</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/qasrl">qasrl</a>  tags:<code class="docutils literal notranslate"><span class="pre">#qasrl</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#decanlp</span></code> ]</p>
+<p><strong>QA-ZRE Relation Extraction</strong>   Zero Shot relation extraction task implemented as part of the DecaNLP task. More info on the dataset can be found here:http://nlp.cs.washington.edu/zeroshot/  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/qazre">qazre</a>  tags:<code class="docutils literal notranslate"><span class="pre">#qazre</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#decanlp</span></code> ]</p>
+<p><strong>WOZ restuarant reservation (Goal-Oriented Dialogue)</strong>   Dataset containing dialogues dengotiating a resturant reservation. Implemented as part of the DecaNLP task, focused on the change in the dialogue state. Original paper: <a class="reference external" href="https://arxiv.org/abs/1604.04562">https://arxiv.org/abs/1604.04562</a>  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/woz">woz</a>  tags:<code class="docutils literal notranslate"><span class="pre">#woz</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#decanlp</span></code> ]</p>
+<p><strong>WikiSQL semantic parsing task</strong>   Dataset for parsing sentences to SQL code, given a table. Implemented as part of the DecaNLP task. More info can be found here:https://github.com/salesforce/WikiSQL  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/wikisql">wikisql</a>  tags:<code class="docutils literal notranslate"><span class="pre">#wikisql</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#decanlp</span></code> ]</p>
+<p><strong>MWSC pronoun resolution</strong>   Resolving possible ambiguous pronouns. Implemented as part of the DecaNLPtask, and can be found on the decaNLP github  [ task:<a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/tasks/mwsc">mwsc</a>  tags:<code class="docutils literal notranslate"><span class="pre">#mwsc</span></code>, <code class="docutils literal notranslate"><span class="pre">#All</span></code>, <code class="docutils literal notranslate"><span class="pre">#decanlp</span></code> ]</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="zoo.html" class="btn btn-neutral float-right" title="Model Zoo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tutorial_tensorboard.html" class="btn btn-neutral float-left" title="Using tensorboard for metric tracking" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Facebook AI Research
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,464 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>observations &mdash; ParlAI  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/parlai_theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="core.agents" href="agents.html" />
+    <link rel="prev" title="Model Zoo" href="zoo.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ParlAI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_quick.html">ParlAI Quick-start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_basic.html">Intro to ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_task.html">Tasks and Datasets in ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_worlds.html">Data Handling, Batching, and Hogwild</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_seq2seq.html">Creating an Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_torch_ranker_agent.html">Using Torch Ranker Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tipsntricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_mturk.html">Using Mechanical Turk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_messenger.html">Using Facebook Messenger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tensorboard.html">Using tensorboard for metric tracking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tasks &amp; Model Zoo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zoo.html">Model Zoo</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Core Library</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">observations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#text">text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id">id</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#labels">labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#eval-labels">eval_labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#label-candidates">label_candidates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#text-candidates">text_candidates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#episode-done">episode_done</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reward">reward</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#image">image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extended-fields">extended fields</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="agents.html">core.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="torch_agent.html">core.torch_agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_data.html">core.build_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dict.html">core.dict</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metrics.html">core.metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="params.html">core.params</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teachers.html">core.teachers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">core.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thread_utils.html">core.thread_utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worlds.html">core.worlds</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="repeat_label.html">agents.repeat_label</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unigram_agent.html">agents.unigram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_seq2seq.html">agents.example_seq2seq</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Scripts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cli_usage.html">Command Line Usage</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ParlAI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>observations</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/observations.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="observations">
+<h1>observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h1>
+<a class="reference internal image-reference" href="_images/act-obs-dict.png"><img alt="_images/act-obs-dict.png" src="_images/act-obs-dict.png" style="width: 60%;" /></a>
+<p>The primary medium for information flow (messages between agents and the environment)
+in ParlAI is a python <code class="docutils literal notranslate"><span class="pre">dict</span></code> containing the actions of an agent
+(observable by other agents or the environment).</p>
+<p>We generally refer to this as an observation dict.
+One should be created by an agent’s <code class="docutils literal notranslate"><span class="pre">act()</span></code> function, and it will be passed
+to another agent’s <code class="docutils literal notranslate"><span class="pre">observe()</span></code> function as the sole argument.</p>
+<p>In general, fields are optional when creating your own task.
+However, there are a number of standard fields that are common and should be
+used when the appropriate type of data is being sent to the model.
+This allows models trained on one dataset to easily train on a different task
+or even to multi-task.</p>
+<p>If necessary, teachers can include other data in this dict using other field names.
+See <a class="reference internal" href="#extended-fields">extended fields</a> below.</p>
+<div class="section" id="text">
+<h2>text<a class="headerlink" href="#text" title="Permalink to this headline">¶</a></h2>
+<p>This is the most standard field of the observation dict.
+This contains a <code class="docutils literal notranslate"><span class="pre">string</span></code> with the text being sent from one agent to others.</p>
+</div>
+<div class="section" id="id">
+<h2>id<a class="headerlink" href="#id" title="Permalink to this headline">¶</a></h2>
+<p>This field can contain the self-identification <code class="docutils literal notranslate"><span class="pre">string</span></code> of the sender.
+For example, we have tasks specify their task name using this field
+(“–task squad” will send messages with the id “squad”).</p>
+</div>
+<div class="section" id="labels">
+<h2>labels<a class="headerlink" href="#labels" title="Permalink to this headline">¶</a></h2>
+<p>When available (ie when doing supervised learning), this field will contain
+any appropriate labels. For many tasks, this will be only a single response.
+However, some datasets do support multiple correct answers, so this field
+should be an <code class="docutils literal notranslate"><span class="pre">iterable</span></code> (e.g. a list, a tuple).</p>
+</div>
+<div class="section" id="eval-labels">
+<h2>eval_labels<a class="headerlink" href="#eval-labels" title="Permalink to this headline">¶</a></h2>
+<p>During validation and testing, the “labels” field is moved to “eval_labels” in
+order to help prevent accidentaly training on evaluation data.</p>
+<p>However, by providing this field, models can still compute model-side metrics
+such as perplexity.</p>
+</div>
+<div class="section" id="label-candidates">
+<h2>label_candidates<a class="headerlink" href="#label-candidates" title="Permalink to this headline">¶</a></h2>
+<p>For tasks that support ranking, this field is an <code class="docutils literal notranslate"><span class="pre">iterable</span></code> of
+possible answers the dataset is suggesting the agent could choose from.</p>
+<p>For example, the “mnist-qa” task provides the following label_candidates:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">label_candidates</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)]</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;zero&#39;</span><span class="p">,</span> <span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">,</span> <span class="s1">&#39;four&#39;</span><span class="p">,</span> <span class="s1">&#39;five&#39;</span><span class="p">,</span> <span class="s1">&#39;six&#39;</span><span class="p">,</span> <span class="s1">&#39;seven&#39;</span><span class="p">,</span> <span class="s1">&#39;eight&#39;</span><span class="p">,</span> <span class="s1">&#39;nine&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="text-candidates">
+<h2>text_candidates<a class="headerlink" href="#text-candidates" title="Permalink to this headline">¶</a></h2>
+<p>This is the partner field to “label_candidates”. In response to received
+candidates for the label, the model can choose to return an <code class="docutils literal notranslate"><span class="pre">iterable</span></code>
+of responses in the order it would rank their relevance to the conversation.</p>
+<p>This allows the teacher to grade the model’s entire ordering, giving the option
+to compute metrics like <code class="docutils literal notranslate"><span class="pre">hits&#64;10</span></code> or <code class="docutils literal notranslate"><span class="pre">MRR</span></code>.</p>
+</div>
+<div class="section" id="episode-done">
+<h2>episode_done<a class="headerlink" href="#episode-done" title="Permalink to this headline">¶</a></h2>
+<p>The “episode_done” flag is used to mark the end of an episode.
+Conversations in ParlAI don’t necesarily have more than one exchange, but
+many datasets do.</p>
+<p>For example, the WikiMovies dataset only has one:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;wikimovies&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="s1">&#39;what movies are about ginger rogers?&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Top Hat&#39;</span><span class="p">,</span> <span class="s1">&#39;Kitty Foyle&#39;</span><span class="p">,</span> <span class="s1">&#39;The Barkleys of Broadway&#39;</span><span class="p">],</span>
+    <span class="n">episode_done</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>On the other hand, the bAbI tasks have multiple exchanges per conversation:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;babi:task1k:15&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;&#39;Cats are afraid of sheep.</span>
+<span class="s1">        Sheep are afraid of mice.</span>
+<span class="s1">        Wolves are afraid of sheep.</span>
+<span class="s1">        Gertrude is a cat.</span>
+<span class="s1">        Winona is a cat.</span>
+<span class="s1">        Emily is a sheep.</span>
+<span class="s1">        Jessica is a cat.</span>
+<span class="s1">        Mice are afraid of cats.</span>
+<span class="s1">        What is winona afraid of?&#39;&#39;&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;sheep&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;label_candidates&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;wolf&#39;</span><span class="p">,</span> <span class="s1">&#39;mouse&#39;</span><span class="p">,</span> <span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;sheep&#39;</span><span class="p">],</span>
+    <span class="n">episode_done</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="p">{</span>
+    <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;babi:task1k:15&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="s1">&#39;What is jessica afraid of?&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;sheep&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;label_candidates&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;wolf&#39;</span><span class="p">,</span> <span class="s1">&#39;mouse&#39;</span><span class="p">,</span> <span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;sheep&#39;</span><span class="p">],</span>
+    <span class="n">episode_done</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="p">{</span>
+    <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;babi:task1k:15&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="s1">&#39;What is gertrude afraid of?&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;sheep&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;label_candidates&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;wolf&#39;</span><span class="p">,</span> <span class="s1">&#39;mouse&#39;</span><span class="p">,</span> <span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;sheep&#39;</span><span class="p">],</span>
+    <span class="n">episode_done</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="p">{</span>
+    <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;babi:task1k:15&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="s1">&#39;What is emily afraid of?&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mouse&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;label_candidates&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;wolf&#39;</span><span class="p">,</span> <span class="s1">&#39;mouse&#39;</span><span class="p">,</span> <span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;sheep&#39;</span><span class="p">],</span>
+    <span class="n">episode_done</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reward">
+<h2>reward<a class="headerlink" href="#reward" title="Permalink to this headline">¶</a></h2>
+<p>This field can be used by reinforcement-learning tasks to send rewards in the
+observation dict.</p>
+</div>
+<div class="section" id="image">
+<h2>image<a class="headerlink" href="#image" title="Permalink to this headline">¶</a></h2>
+<p>Observation dicts may also include images.
+For example, the VQA_v2 dataset contains questions about images.
+The “image” field will contain the image data in whichever format the
+image mode parameters are set to.</p>
+<p>By default, images are returned as their raw RBG pixels.
+They can also be processed by a pre-trained image model and just features of
+from the model will be in the image field, or even converted into a text
+representation for quick debugging.</p>
+<p>Here is an example of using the ascii image mode:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python examples/display_data.py -t mnist_qa --image-mode ascii
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="s1">&#39;Which number is in the image?&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="s1">&#39;four&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;label_candidates&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">,</span> <span class="s1">&#39;5&#39;</span><span class="p">,</span> <span class="s1">&#39;6&#39;</span><span class="p">,</span> <span class="s1">&#39;7&#39;</span><span class="p">,</span> <span class="s1">&#39;8&#39;</span><span class="p">,</span> <span class="s1">&#39;9&#39;</span><span class="p">,</span>
+                         <span class="s1">&#39;zero&#39;</span><span class="p">,</span> <span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">,</span> <span class="s1">&#39;four&#39;</span><span class="p">,</span>
+                         <span class="s1">&#39;five&#39;</span><span class="p">,</span> <span class="s1">&#39;six&#39;</span><span class="p">,</span> <span class="s1">&#39;seven&#39;</span><span class="p">,</span> <span class="s1">&#39;eight&#39;</span><span class="p">,</span> <span class="s1">&#39;nine&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;episode_done&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="s1">&#39;image&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;&#39;@@@@@@@@@@@@@@@@@@@@@@@@@@@@</span>
+<span class="s1">                @@@@@@@@@@@@@@@@@@@@@@@@@@@@</span>
+<span class="s1">                @@@@@@@@@@@@@@@@@@@@@@@@@@@@</span>
+<span class="s1">                @@@@@@@@@@@@@@@@@@@@@@@@@@@@</span>
+<span class="s1">                @@@@@@@@@@@@@@@@@@@@@@;;@@@@</span>
+<span class="s1">                @@@@@@@@@@@@@@@@@@@@@s s@@@@</span>
+<span class="s1">                @@@@@@@@@@@@@@@@@@@@A  H@@@@</span>
+<span class="s1">                @@@@@@@@@@@@@@@@@@@@; ;@@@@@</span>
+<span class="s1">                @@@@@@@@@@@@#;&amp;@@@@H ,9@@@@@</span>
+<span class="s1">                @@@@@@@@@@@@, #@@@@, H@@@@@@</span>
+<span class="s1">                @@@@@@@@@@@@, G@@@9  H@@@@@@</span>
+<span class="s1">                @@@@@@@@@@@A ,&amp;@@@c :@@@@@@@</span>
+<span class="s1">                @@@@@@@@@@8  #@@@s .@@@@@@@@</span>
+<span class="s1">                @@@@@@@@@9. s@@@2  3@@@@@@@@</span>
+<span class="s1">                @@@@@@@@h   :2@&amp;: r@@@@@@@@@</span>
+<span class="s1">                @@@@@@@h   ,  :.  @@@@@@@@@@</span>
+<span class="s1">                @@@@@@H   G9;     .8@@@@@@@@</span>
+<span class="s1">                @@@@@@;.h@@@9:    r@@@@@@@@@</span>
+<span class="s1">                @@@@@@38@@@@#  H99&amp;@@@@@@@@@</span>
+<span class="s1">                @@@@@@@@@@@&amp;s .@@@@@@@@@@@@@</span>
+<span class="s1">                @@@@@@@@@@@2  8@@@@@@@@@@@@@</span>
+<span class="s1">                @@@@@@@@@@8. A@@@@@@@@@@@@@@</span>
+<span class="s1">                @@@@@@@@@@. r@@@@@@@@@@@@@@@</span>
+<span class="s1">                @@@@@@@@@@2 H@@@@@@@@@@@@@@@</span>
+<span class="s1">                @@@@@@@@@@@@@@@@@@@@@@@@@@@@</span>
+<span class="s1">                @@@@@@@@@@@@@@@@@@@@@@@@@@@@</span>
+<span class="s1">                @@@@@@@@@@@@@@@@@@@@@@@@@@@@</span>
+<span class="s1">                @@@@@@@@@@@@@@@@@@@@@@@@@@@@&#39;&#39;&#39;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="extended-fields">
+<h2>extended fields<a class="headerlink" href="#extended-fields" title="Permalink to this headline">¶</a></h2>
+<p>A number of datasets will use their own fields to specify additional metadata.</p>
+<p>For example, the “squad:index” task also includes the starting index of the
+answer in the text (in characters).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;squad&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;text&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;&#39;Architecturally, the school has a Catholic character.</span>
+<span class="s1">        Atop the Main Building</span><span class="se">\&#39;</span><span class="s1">s gold dome is a golden statue of the Virgin Mary.</span>
+<span class="s1">        Immediately in front of the Main Building and facing it,</span>
+<span class="s1">        is a copper statue of Christ with arms upraised with the legend</span>
+<span class="s1">        &quot;Venite Ad Me Omnes&quot;. Next to the Main Building is the Basilica</span>
+<span class="s1">        of the Sacred Heart. Immediately behind the basilica is the Grotto,</span>
+<span class="s1">        a Marian place of prayer and reflection. It is a replica of the</span>
+<span class="s1">        grotto at Lourdes, France where the Virgin Mary reputedly</span>
+<span class="s1">        appeared to Saint Bernadette Soubirous in 1858.</span>
+<span class="s1">        At the end of the main drive (and in a direct line that connects</span>
+<span class="s1">        through 3 statues and the Gold Dome), is a simple,</span>
+<span class="s1">        modern stone statue of Mary.</span>
+<span class="s1">        To whom did the Virgin Mary allegedly appear in 1858 in Lourdes France?&#39;&#39;&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Saint Bernadette Soubirous&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;episode_done&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="s1">&#39;answer_starts&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">515</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can add additional fields to provide task-specific metadata.
+However, note that</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>models trained on specific fields won’t easily transfer to other tasks</p></li>
+<li><p>none of the existing models will take advantage of that field</p></li>
+<li><p>multitasking on different tasks will be more difficult to implement</p></li>
+</ul>
+</div></blockquote>
+<p>For example, the default SQuAD task for ParlAI does not include the “answer_starts”,
+and we include a model (DrQA) which has the functionality to find the index
+of the labels on its own.
+This allows that agent to also be trained on different tasks which contain the
+answer in the introductory text (such as some bAbI tasks) which do not provide
+“answer_starts”.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="agents.html" class="btn btn-neutral float-right" title="core.agents" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="zoo.html" class="btn btn-neutral float-left" title="Model Zoo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Facebook AI Research
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
