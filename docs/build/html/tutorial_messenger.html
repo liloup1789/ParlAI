@@ -1,0 +1,365 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using Facebook Messenger &mdash; ParlAI  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/parlai_theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Using tensorboard for metric tracking" href="tutorial_tensorboard.html" />
+    <link rel="prev" title="Using Mechanical Turk" href="tutorial_mturk.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ParlAI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorial_quick.html">ParlAI Quick-start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_basic.html">Intro to ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_task.html">Tasks and Datasets in ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_worlds.html">Data Handling, Batching, and Hogwild</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_seq2seq.html">Creating an Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_torch_ranker_agent.html">Using Torch Ranker Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tipsntricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_mturk.html">Using Mechanical Turk</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using Facebook Messenger</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#example-tasks">Example Tasks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#task-1-testing-a-model">Task 1: Testing a Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task-2-collecting-training-data">Task 2: Collecting Training Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task-3-exposing-people-to-multiple-tasks">Task 3: Exposing People to Multiple Tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-your-own-task">Creating Your Own Task</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-a-task">Running a Task</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tensorboard.html">Using tensorboard for metric tracking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tasks &amp; Model Zoo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zoo.html">Model Zoo</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Core Library</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="observations.html">observations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents.html">core.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="torch_agent.html">core.torch_agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_data.html">core.build_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dict.html">core.dict</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metrics.html">core.metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="params.html">core.params</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teachers.html">core.teachers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">core.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thread_utils.html">core.thread_utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worlds.html">core.worlds</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="repeat_label.html">agents.repeat_label</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unigram_agent.html">agents.unigram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_seq2seq.html">agents.example_seq2seq</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Scripts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cli_usage.html">Command Line Usage</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ParlAI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Using Facebook Messenger</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/tutorial_messenger.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="using-facebook-messenger">
+<h1>Using Facebook Messenger<a class="headerlink" href="#using-facebook-messenger" title="Permalink to this headline">¶</a></h1>
+<p><strong>Authors</strong>: Jack Urbanek, Kurt Shuster</p>
+<p>In ParlAI, you can allow people on Facebook to participate in a ParlAI world as an agent.</p>
+<p>Facebookers can be viewed as another type of agent in ParlAI, and hence person-to-person, person-to-bot, or multiple people and bots in group chat can all talk to each other within the same framework.</p>
+<p>Facebook agents communicate in observation/action dict format, the same as all other agents in ParlAI. During the conversation, messages are delivered to a person’s inbox from the page that you have set up for ParlAI.</p>
+<div class="figure align-center" id="id1">
+<img alt="_images/personachat_example.png" src="_images/personachat_example.png" />
+<p class="caption"><span class="caption-text"><em>Sample chat with a PersonaChat model over messenger</em></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>Each messenger task has at least one messenger agent that connects to ParlAI using the Facebook messenger Send/Receive API, encapsulated as a <code class="docutils literal notranslate"><span class="pre">MessengerAgent</span></code> object.</p>
+<p>Each messenger task also consists of a <code class="docutils literal notranslate"><span class="pre">World</span></code> where all agents live and interact within.</p>
+<p>Messenger tasks can be grouped together within an <code class="docutils literal notranslate"><span class="pre">Overworld</span></code> which can spawn the subtasks and allow people to pick between multiple conversations.</p>
+<p>The task definition resides in a config file, <code class="docutils literal notranslate"><span class="pre">config.yml</span></code>, in which you specify all the available worlds, and any additional command line arguments.</p>
+<p>Finally, to run a task, simple run the following command from the <code class="docutils literal notranslate"><span class="pre">parlai/messenger/core</span></code> directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python run.py --config-path /path/to/config
+</pre></div>
+</div>
+<div class="section" id="example-tasks">
+<h2>Example Tasks<a class="headerlink" href="#example-tasks" title="Permalink to this headline">¶</a></h2>
+<p>We provide three examples of using Facebook Messenger with ParlAI:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/facebookresearch/ParlAI/blob/master/parlai/messenger/tasks/chatbot/">Generic Chatbot</a>: Allow messenger conversations with any ParlAI models, for instance the <a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/projects/personachat">PersonaChat</a> model.</p></li>
+<li><p><a class="reference external" href="https://github.com/facebookresearch/ParlAI/blob/master/parlai/messenger/tasks/qa_data_collection/">QA Data Collection</a>: collect questions and answers from people, given a random Wikipedia paragraph from SQuAD.</p></li>
+<li><p><a class="reference external" href="https://github.com/facebookresearch/ParlAI/blob/master/parlai/messenger/tasks/overworld_demo/">Overworld Demo</a>: let people select between three different subtasks, namely an echo bot, a demo of onboarding data collection, and a random chat.</p></li>
+</ul>
+<div class="section" id="task-1-testing-a-model">
+<h3>Task 1: Testing a Model<a class="headerlink" href="#task-1-testing-a-model" title="Permalink to this headline">¶</a></h3>
+<p>Oftentimes it’s important to host a created model against humans to evaluate how well it is performing on a number of metrics. This generic ChatBot world allows you to attach a model to a page, and then users who interact with that page will be paired into a conversation with that bot.</p>
+<p>As it is currently implemented, the collected conversations can be observed and rated manually by the ParlAI user. It’s possible to imagine requesting that the human participant rate their conversational partner at the end of the conversation as another way to evaluate the model.</p>
+<p>To run a bot with this world, you’ll need to provide in the <code class="docutils literal notranslate"><span class="pre">config.yml</span></code> file the same model opts you would use elsewhere in a ParlAI environment.
+For instance, one can try testing a model trained on the ConvAI2 dataset with the following <code class="docutils literal notranslate"><span class="pre">config.yml</span></code>:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">tasks</span><span class="p">:</span>
+  <span class="nt">default</span><span class="p">:</span>
+    <span class="nt">onboard_world</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MessengerBotChatOnboardWorld</span>
+    <span class="nt">task_world</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MessengerBotChatTaskWorld</span>
+    <span class="nt">timeout</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1800</span>
+    <span class="nt">agents_required</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">task_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">chatbot</span>
+<span class="nt">world_module</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">parlai.messenger.tasks.chatbot.worlds</span>
+<span class="nt">overworld</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MessengerOverworld</span>
+<span class="nt">page_id</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span> <span class="c1"># Configure Your Own Page</span>
+<span class="nt">max_workers</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">30</span>
+<span class="nt">opt</span><span class="p">:</span>  <span class="c1"># Additional model opts go here</span>
+  <span class="nt">debug</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+  <span class="nt">model</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">legacy:seq2seq:0</span>
+  <span class="nt">model_file</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">models:convai2/seq2seq/convai2_self_seq2seq_model</span>
+  <span class="nt">override</span><span class="p">:</span>
+    <span class="nt">model</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">legacy:seq2seq:0</span>
+</pre></div>
+</div>
+<p>Then, you would simply run the world via the following command (while in <code class="docutils literal notranslate"><span class="pre">parlai/messenger/core</span></code>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python run.py --config-path ../tasks/chatbot/config.yml
+</pre></div>
+</div>
+<p>This code will allow users to talk with a bot in conversations like the one displayed above.</p>
+</div>
+<div class="section" id="task-2-collecting-training-data">
+<h3>Task 2: Collecting Training Data<a class="headerlink" href="#task-2-collecting-training-data" title="Permalink to this headline">¶</a></h3>
+<p>One of the biggest use cases of Messenger in ParlAI is to connect people and collect natural language data.</p>
+<p>As an example, the <a class="reference external" href="https://github.com/facebookresearch/ParlAI/blob/master/parlai/messenger/tasks/qa_data_collection/">QA Data Collection task</a> does the following:</p>
+<ol class="arabic simple">
+<li><p>Pick a random Wikipedia paragraph from SQuAD dataset.</p></li>
+<li><p>Ask a person to provide a question given the paragraph.</p></li>
+<li><p>Ask the person to provide an answer to their question.</p></li>
+</ol>
+<p>In <code class="docutils literal notranslate"><span class="pre">QADataCollectionWorld</span></code>, there are two agents: one is the person (<code class="docutils literal notranslate"><span class="pre">MessengerAgent</span></code>), the other is the task agent (<code class="docutils literal notranslate"><span class="pre">DefaultTeacher</span></code> from SQuAD) that provides the Wikipedia paragraph.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">QADataCollectionWorld</span></code> uses <code class="docutils literal notranslate"><span class="pre">turn_index</span></code> to denote what stage the conversation is at. One <em>turn</em> means that <code class="docutils literal notranslate"><span class="pre">world.parley()</span></code> has been called once.</p>
+<p>After two turns, the task is finished, and the person’s work can be saved during the <code class="docutils literal notranslate"><span class="pre">World.shutdown()</span></code> call.</p>
+</div>
+<div class="section" id="task-3-exposing-people-to-multiple-tasks">
+<h3>Task 3: Exposing People to Multiple Tasks<a class="headerlink" href="#task-3-exposing-people-to-multiple-tasks" title="Permalink to this headline">¶</a></h3>
+<p>ParlAI messenger can also be used to create a multi-function world that users can choose multiple tasks or variations for. This can be used to expose multiple versions of a chatbot you want to test, to allow users to choose what kinds of tasks they do, amongst other things.</p>
+<p>As an example, the <a class="reference external" href="https://github.com/facebookresearch/ParlAI/blob/master/parlai/messenger/tasks/overworld_demo/">Overworld Demo</a> displays three separate tasks connected together by an overworld.</p>
+<div class="figure align-center">
+<img alt="_images/messenger-example.png" src="_images/messenger-example.png" />
+</div>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">echo</span></code> task is a simple example of an echo bot, and shows the functionality and flow of a simple single-person world.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">onboard</span> <span class="pre">data</span></code> task is an example that shows how an onboarding world can collect information that is later exposed in the active task world.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">chat</span></code> task is an example of a task that requires multiple users, and shows how many people can be connected together in an instance of a world and then returned to the overworld upon completion of a task.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="creating-your-own-task">
+<h2>Creating Your Own Task<a class="headerlink" href="#creating-your-own-task" title="Permalink to this headline">¶</a></h2>
+<p>To create your own task, start with reading the tutorials on the provided examples, and then copy and modify the example <code class="docutils literal notranslate"><span class="pre">worlds.py</span></code> and <code class="docutils literal notranslate"><span class="pre">config.yml</span></code> files to create your task.</p>
+<p>A few things to keep in mind:</p>
+<ol class="arabic simple">
+<li><p>A conversation ends when a call between <code class="docutils literal notranslate"><span class="pre">parley</span></code> calls to <code class="docutils literal notranslate"><span class="pre">episode_done</span></code> returns True.</p></li>
+<li><p>Your world can utilize the complete set of <a class="reference external" href="https://developers.facebook.com/docs/messenger-platform/send-messages/templates">Facebook Messenger Templates</a> by putting the formatted data in the ‘payload’ field of the observed action.</p></li>
+<li><p>Quick replies can be attached to any action, the <code class="docutils literal notranslate"><span class="pre">MessengerOverworld</span></code> of the <a class="reference external" href="https://github.com/facebookresearch/ParlAI/blob/master/parlai/messenger/tasks/overworld_demo/">Overworld Demo</a> displays this functionality.</p></li>
+<li><p>Tasks with an overworld should return the name of the world that they want to queue a user into from the <code class="docutils literal notranslate"><span class="pre">parley</span></code> call in which the user makes that selection to enter a world.</p></li>
+<li><p>Tasks with no overworld will immediately attempt to put a user into the queue for the default task onboarding world or actual task world (if no onboarding world exists), and will do so again following the completion of a world (via <code class="docutils literal notranslate"><span class="pre">episode_done</span></code>).</p></li>
+<li><p>To collect the conversation, data should be collected during every <code class="docutils literal notranslate"><span class="pre">parley</span></code> and saved during the <code class="docutils literal notranslate"><span class="pre">world.shutdown</span></code> call. You must inform the user of the fact that the data is being collected as well as your intended use.</p></li>
+<li><p>Finally, if you wish to use and command line arguments as you would in ParlAI, specify those in the <code class="docutils literal notranslate"><span class="pre">opt</span></code> section of the config file.</p></li>
+</ol>
+</div>
+<div class="section" id="running-a-task">
+<h2>Running a Task<a class="headerlink" href="#running-a-task" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>ParlAI’s Messenger functionality requires a free heroku account which can be obtained <a class="reference external" href="https://signup.heroku.com/">here</a>. Running any ParlAI Messenger operation will walk you through linking the two.</p></li>
+<li><p>Running and testing a bot on the <a class="reference external" href="https://developers.facebook.com/docs/messenger-platform">Facebook Messenger Platform</a> for yourself will require following the guide to set up a <a class="reference external" href="https://developers.facebook.com/docs/messenger-platform/getting-started/app-setup">Facebook App</a> for messenger. Skip the set up your webhook step, as ParlAI will do it for you.</p></li>
+<li><p>When the guide asks you to configure your webhook URL, you’re ready to run the task. This can be done by running the <code class="docutils literal notranslate"><span class="pre">run.py</span></code> file in with python.</p></li>
+<li><p>After the heroku server is setup, the script will print out your webhook URL to the console, this should be used to continue the tutorial. The default verify token is <code class="docutils literal notranslate"><span class="pre">Messenger4ParlAI</span></code>.</p></li>
+<li><p>On the first run, the page will ask you for a “Page Access Token,” which is also referred to on the messenger setup page. Paste this in to finish the setup. You should now be able to communicate with your ParlAI world by messaging your page.</p></li>
+<li><p>To open up your bot for the world to use, you’ll need to submit your bot for approval from the <a class="reference external" href="https://developers.facebook.com/apps/">Developer Dashboard</a>.</p></li>
+</ul>
+<p><strong>Note:</strong> When running a new task from a different directory, the webhook url will change. You will need to update this in the developer console from the webhook settings using “edit subscription.” Your Page Access token should not need to be changed unless you want to use a different page.</p>
+<p>Additional flags can be used (you can also specify these in the <code class="docutils literal notranslate"><span class="pre">config.yml</span></code> file):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--password</span> <span class="pre">&lt;value&gt;</span></code> requires that a user sends the message contained in <cite>value</cite> to the bot in order to access the rest of the communications.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--force-page-token</span></code> forces the script to request a new page token from you, allowing you to switch what page you’re running your bot on.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--verbose</span></code> and <code class="docutils literal notranslate"><span class="pre">--debug</span></code> should be used before reporting problems that arise that appear unrelated to your world, as they expose more of the internal state of the messenger manager.</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tutorial_tensorboard.html" class="btn btn-neutral float-right" title="Using tensorboard for metric tracking" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tutorial_mturk.html" class="btn btn-neutral float-left" title="Using Mechanical Turk" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Facebook AI Research
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,776 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Creating an Agent &mdash; ParlAI  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/parlai_theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Using Torch Ranker Agent" href="tutorial_torch_ranker_agent.html" />
+    <link rel="prev" title="Data Handling, Batching, and Hogwild" href="tutorial_worlds.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ParlAI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="tutorial_quick.html">ParlAI Quick-start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_basic.html">Intro to ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_task.html">Tasks and Datasets in ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_worlds.html">Data Handling, Batching, and Hogwild</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Creating an Agent</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#part-1-naming-things">Part 1: Naming Things</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#part-2-main-agent-methods">Part 2: Main Agent Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#batching-example">Batching Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#observing-and-acting">Observing and Acting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#part-3-extended-agent-api">Part 3: Extended Agent API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#share">share()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shutdown">shutdown()</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#part-4-finishing-the-seq2seq-model">Part 4: Finishing the Seq2Seq model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#add-cmdline-args">add_cmdline_args()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#full-init">Full __init__()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vectorize">vectorize()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#predict">predict()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#full-implementation-running-this-model">Full Implementation &amp; running this model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_torch_ranker_agent.html">Using Torch Ranker Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tipsntricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_mturk.html">Using Mechanical Turk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_messenger.html">Using Facebook Messenger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tensorboard.html">Using tensorboard for metric tracking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tasks &amp; Model Zoo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zoo.html">Model Zoo</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Core Library</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="observations.html">observations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents.html">core.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="torch_agent.html">core.torch_agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_data.html">core.build_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dict.html">core.dict</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metrics.html">core.metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="params.html">core.params</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teachers.html">core.teachers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">core.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thread_utils.html">core.thread_utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worlds.html">core.worlds</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference Models</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="repeat_label.html">agents.repeat_label</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unigram_agent.html">agents.unigram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_seq2seq.html">agents.example_seq2seq</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Scripts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cli_usage.html">Command Line Usage</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ParlAI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Creating an Agent</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/tutorial_seq2seq.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="creating-an-agent">
+<h1>Creating an Agent<a class="headerlink" href="#creating-an-agent" title="Permalink to this headline">¶</a></h1>
+<p><strong>Author</strong>: Alexander Holden Miller</p>
+<p>In this tutorial, we’ll be setting up an agent which learns from the data it
+sees to produce the right answers.</p>
+<p>For this agent, we’ll be implementing a simple GRU Seq2Seq agent based on
+Sequence to Sequence Learning with Neural Networks (Sutskever et al. 2014) and
+Sean Robertson’s <a class="reference external" href="http://pytorch.org/tutorials/intermediate/seq2seq_translation_tutorial.html">Seq2Seq PyTorch tutorial</a>.</p>
+<div class="section" id="part-1-naming-things">
+<h2>Part 1: Naming Things<a class="headerlink" href="#part-1-naming-things" title="Permalink to this headline">¶</a></h2>
+<p>In order to make programmatic importing easier, we use a simple naming scheme
+for our models, so that on the command line we can just type “–model seq2seq”
+(“-m seq2seq”) to load up the seq2seq model.</p>
+<p>To this end, we create a folder under parlai/agents with the name seqseq, and
+then put an empty <code class="docutils literal notranslate"><span class="pre">__init__.py</span></code> file there along with seq2seq.py.
+Then, we name our agent “Seq2seqAgent”.</p>
+<p>The ParlAI argparser automatically tries to translate “–model seq2seq” to
+“parlai.agents.seq2seq.seq2seq:Seq2seqAgent”.
+Underscores in the name become capitals in the class name: “–model local_human”
+resides at “parlai.agents.local_human.local_human:LocalHumanAgent”.</p>
+<p>If you need to put a model at a different path, you can specify the full path
+on the command line in the format above (with a colon in front of the class name).
+For example, “–model parlai.agents.remote_agent.remote_agent:ParsedRemoteAgent”.</p>
+</div>
+<div class="section" id="part-2-main-agent-methods">
+<h2>Part 2: Main Agent Methods<a class="headerlink" href="#part-2-main-agent-methods" title="Permalink to this headline">¶</a></h2>
+<p>First off, generally we should inherit from the Agent class in parlai.core.agents.
+This provides us with some default implementations (often, <code class="docutils literal notranslate"><span class="pre">pass</span></code>) of some utility
+functions like “shutdown”.</p>
+<p>First let’s focus on the primary functions to implement: <code class="docutils literal notranslate"><span class="pre">__init__</span></code>, <code class="docutils literal notranslate"><span class="pre">observe</span></code>, and <code class="docutils literal notranslate"><span class="pre">act</span></code>.</p>
+<p>The standard initialization parameters for agents are a dict of command-line
+parameters <code class="docutils literal notranslate"><span class="pre">opt</span></code> and an optional dict of shared parameters called <code class="docutils literal notranslate"><span class="pre">shared</span></code>.</p>
+<p>For our Seq2Seq model we’ll call our parent init method, which does a few basic operations
+like setting self.observation to None and creating a deep copy of the <cite>opt</cite> dict.
+Don’t forget to pass the shared parameter to the parent init as well.</p>
+<p>Then, we do a check to see if the <cite>shared</cite> parameter is set.
+When it is not None, it’s telling this instance to initialize with this particular
+state, as this instance will be used either for batched or hogwild training
+(depending on your preference).</p>
+<p>A loose version of that implementation is this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ExampleSeq2seqAgent</span><span class="p">(</span><span class="n">Agent</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opt</span><span class="p">,</span> <span class="n">shared</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="c1"># initialize defaults first</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">shared</span><span class="p">)</span>
+
+        <span class="c1"># ... some setup for both shared and original instances</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">shared</span><span class="p">:</span>
+            <span class="c1"># set up model from scratch</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># ... copy initialized data from shared table</span>
+</pre></div>
+</div>
+<p>To see more detail about sharing, batching, and hogwild in general, check out
+<a class="reference internal" href="tutorial_worlds.html"><span class="doc">Data Handling, Batching, and Hogwild</span></a>.</p>
+<p>We’ll take a quick digression to describe how it applies to this agent.</p>
+<div class="section" id="batching-example">
+<h3>Batching Example<a class="headerlink" href="#batching-example" title="Permalink to this headline">¶</a></h3>
+<p>Let’s say we are training our seq2seq model on <cite>babi:task10k:1</cite>. What happens
+behind the scenes for a batch size of 4 is that we actually create four shared
+versions of the bAbI Task10k teacher, and four shared versions of the seq2seq
+agent. These shared versions are initialized from the originals: for the bAbI
+teachers, they inherit the data from their parent agent, but they each have
+their own local state such as the current example they’re showing or how far
+through a bAbI episode they are (bAbI task 1 has five examples per episode).</p>
+<p>For the seq2seq agent, each shared agent is keeping track of the previous
+examples they’ve seen in this same episode, since each observation does not
+repeat previously seen but related information–the agent has to remember it.</p>
+<p>For example, in the first entry in the episode the agent could get something like the following:
+“John is in the bathroom. Mary is in the kitchen. Where is Mary?”
+And in the second example in the episode, the agent could get:
+“Mary picked up the milk. Mary went to the hallway. Where is John?”
+Here, the answer is in the first example’s context, so the agent had to remember
+the previous text it saw within the same episode.</p>
+<p>Observations are generated by calling the <code class="docutils literal notranslate"><span class="pre">act</span></code> function on each teacher, then
+passing those observations to each agent by calling the <code class="docutils literal notranslate"><span class="pre">observe</span></code> function of the
+shared agents. The agents are free to transform the previous observation
+(for example, prepending previously seen text from the same episode, if applicable).
+These transformed observations are packed into a list, which is then passed to
+<code class="docutils literal notranslate"><span class="pre">batch_act</span></code> function our agent implements. We can implement <code class="docutils literal notranslate"><span class="pre">batch_act</span></code> differently
+from the simple <code class="docutils literal notranslate"><span class="pre">act</span></code> function to take advantage of the effects of batching
+over multiple examples when executing or updating our model.</p>
+<p>Thus, since our agent’s shared-instances will only be used to keep track
+of state particular to their sequence of examples in the batch, we have
+barely anything to do when setting these shared instances up–they won’t be
+doing any intensive computation, just basic reading of the input.</p>
+<p>The full initialization of the model is included further below, but is very
+particular to this particular implementation. Let’s talk more about the primary
+agent functions we need to define first.</p>
+</div>
+<div class="section" id="observing-and-acting">
+<h3>Observing and Acting<a class="headerlink" href="#observing-and-acting" title="Permalink to this headline">¶</a></h3>
+<p>Let’s take a look at the <code class="docutils literal notranslate"><span class="pre">observe</span></code> function. Here, we can modify the
+observation dict if necessary, and then return it to be queued for batching.</p>
+<p>Check out again the <a class="reference internal" href="observations.html"><span class="doc">observations</span></a> documentation for more
+details about all of the fields contained the observations.</p>
+<p>In this version, we first make a deep copy of the observation. Then, if this is
+not the first entry in an episode (some datasets like SQuAD have only one entry
+for every episode, but others like bAbI have multiple), then we prepend the
+previous text to the current text. We use a newline to separate them in case the
+model wants to recognize the difference between different lines.</p>
+<p>Then, we store whether this is the last entry in the episode so that we’ll be
+ready to reset next time if we need to.</p>
+<p>A simple version of this is shown here:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">observe</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">observation</span><span class="p">):</span>
+    <span class="n">observation</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">observation</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">episode_done</span><span class="p">:</span>
+        <span class="c1"># if the last example wasn&#39;t the end of an episode, then we need to</span>
+        <span class="c1"># recall what was said in that example</span>
+        <span class="n">prev_dialogue</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">observation</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span>
+        <span class="n">observation</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">prev_dialogue</span> <span class="o">+</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">+</span> <span class="n">observation</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">observation</span> <span class="o">=</span> <span class="n">observation</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">episode_done</span> <span class="o">=</span> <span class="n">observation</span><span class="p">[</span><span class="s1">&#39;episode_done&#39;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">observation</span>
+</pre></div>
+</div>
+<p>In the current implementation we use a utility function for more complex
+processing, but this is a suitable first step.</p>
+<p>Next up is the <code class="docutils literal notranslate"><span class="pre">act</span></code> function. Since we are going to implement a batched
+version, we’ll just call the batched version from our single-example act to
+reduce code duplication.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">act</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="c1"># call batch_act with this batch of one</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_act</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">observation</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Now it’s time for the batch_act function. This function gets a list of length
+batchsize of observations and returns a list of the same length with this
+agent’s replies.</p>
+<p>We’ll follow this loose format:</p>
+<ol class="arabic simple">
+<li><p>Set up our list of dicts to send back as replies, with the agent’s ID set.</p></li>
+<li><p>Convert the incoming observations into tensors to feed into our model.</p></li>
+<li><p>Produce predictions on the input text using the model. If labels were available, update the model as well.</p></li>
+<li><p>Unpack the predictions into the reply dicts and return them.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">batch_act</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">observations</span><span class="p">):</span>
+    <span class="n">batchsize</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">observations</span><span class="p">)</span>
+    <span class="c1"># initialize a table of replies with this agent&#39;s id</span>
+    <span class="n">batch_reply</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">getID</span><span class="p">()}</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batchsize</span><span class="p">)]</span>
+
+    <span class="c1"># convert the observations into batches of inputs and targets</span>
+    <span class="c1"># `labels` stores the true labels returned in the `ys` vector</span>
+    <span class="c1"># `valid_inds` tells us the indices of all valid examples</span>
+    <span class="c1"># e.g. for input [{}, {&#39;text&#39;: &#39;hello&#39;}, {}, {}], valid_inds is [1]</span>
+    <span class="c1"># since the other three elements had no &#39;text&#39; field</span>
+    <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">valid_inds</span><span class="p">,</span> <span class="n">is_training</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">observations</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">xs</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="c1"># no valid examples, just return empty responses</span>
+        <span class="k">return</span> <span class="n">batch_reply</span>
+
+    <span class="n">predictions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">is_training</span><span class="p">)</span>
+
+    <span class="c1"># maps returns predictions back to the right `valid_inds`</span>
+    <span class="c1"># in the example above, a prediction `world` should reply to `hello`</span>
+    <span class="n">PaddingUtils</span><span class="o">.</span><span class="n">map_predictions</span><span class="p">(</span>
+        <span class="n">predictions</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">valid_inds</span><span class="p">,</span> <span class="n">batch_reply</span><span class="p">,</span> <span class="n">observations</span><span class="p">,</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">END_IDX</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span>
+        <span class="n">answers</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">ys</span><span class="o">=</span><span class="n">ys</span><span class="o">.</span><span class="n">data</span> <span class="k">if</span> <span class="n">ys</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="k">else</span> <span class="bp">None</span><span class="p">,</span>
+        <span class="n">report_freq</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">opt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;report_freq&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">batch_reply</span>
+</pre></div>
+</div>
+<p>Since the implementation of <code class="docutils literal notranslate"><span class="pre">vectorize</span></code> and <code class="docutils literal notranslate"><span class="pre">predict</span></code> are particular to our
+model, we’ll table those for now. Next up, we’ll cover some of
+the other methods in the Agent API.</p>
+</div>
+</div>
+<div class="section" id="part-3-extended-agent-api">
+<h2>Part 3: Extended Agent API<a class="headerlink" href="#part-3-extended-agent-api" title="Permalink to this headline">¶</a></h2>
+<p>There are a few other useful methods you may want to define in your agent to
+take of additional functionality one might want during training. Many of these
+functions will be automatically called if you use our example training function
+to train your model.</p>
+<div class="section" id="share">
+<h3>share()<a class="headerlink" href="#share" title="Permalink to this headline">¶</a></h3>
+<p>Agents can use this method to share any information they might want between
+different instances during batching or hogwild training. For example, during
+hogwild training all models are being trained indepedently in multiple processes,
+so you would want to share the model parameters between each one. Teacher classes
+use this method to share their data and metrics with other shared intances.</p>
+<p>If you define this method, it’s usually a good idea to initialize the shared
+dict that’s begin return by calling super().share() first. For example, the
+Teacher class in parlai.core.agents defines it this way:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">share</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;In addition to default Agent shared parameters, share metrics.&quot;&quot;&quot;</span>
+    <span class="n">shared</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">share</span><span class="p">()</span>
+    <span class="n">shared</span><span class="p">[</span><span class="s1">&#39;metrics&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span>
+    <span class="k">return</span> <span class="n">shared</span>
+</pre></div>
+</div>
+<p>In our seq2seq model, we’ll share a bunch of basic initial states.
+Most of the implementation is shown here:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">share</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Share internal states between parent and child instances.&quot;&quot;&quot;</span>
+    <span class="n">shared</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">share</span><span class="p">()</span>
+    <span class="n">shared</span><span class="p">[</span><span class="s1">&#39;opt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt</span>
+    <span class="n">shared</span><span class="p">[</span><span class="s1">&#39;dict&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict</span>
+
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">opt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;numthreads&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="c1"># we&#39;re doing hogwild so share the model too</span>
+        <span class="n">shared</span><span class="p">[</span><span class="s1">&#39;encoder&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span>
+        <span class="n">shared</span><span class="p">[</span><span class="s1">&#39;decoder&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span>
+
+    <span class="k">return</span> <span class="n">shared</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="shutdown">
+<h3>shutdown()<a class="headerlink" href="#shutdown" title="Permalink to this headline">¶</a></h3>
+<p>This function allows your model to do any final wrapup, such as writing any last
+logging info, saving an end-state version of the model if desired, or closing
+any open connections.</p>
+<p>The standard ParlAI seq2seq model saves the model parameters to
+opt[‘model_file’] + ‘.shutdown_state’.
+In contrast, the agents in parlai/agents/remote_agent use this to close their
+open TCP connection after sending a shutdown signal through.</p>
+<p>Most models won’t need to do anything in particular here.</p>
+</div>
+</div>
+<div class="section" id="part-4-finishing-the-seq2seq-model">
+<h2>Part 4: Finishing the Seq2Seq model<a class="headerlink" href="#part-4-finishing-the-seq2seq-model" title="Permalink to this headline">¶</a></h2>
+<p>Here we’ll see how to add commandline arguments to the command line parser,
+and then we’ll take a look at the full details of
+<code class="docutils literal notranslate"><span class="pre">__init__</span></code>, <code class="docutils literal notranslate"><span class="pre">vectorize</span></code>, <code class="docutils literal notranslate"><span class="pre">predict</span></code>, and more.</p>
+<div class="section" id="add-cmdline-args">
+<h3>add_cmdline_args()<a class="headerlink" href="#add-cmdline-args" title="Permalink to this headline">¶</a></h3>
+<p>We use this static method to add commandline arguments to the program.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@staticmethod</span>
+<span class="k">def</span> <span class="nf">dictionary_class</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">DictionaryAgent</span>
+
+<span class="nd">@staticmethod</span>
+<span class="k">def</span> <span class="nf">add_cmdline_args</span><span class="p">(</span><span class="n">argparser</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Add command-line arguments specifically for this agent.&quot;&quot;&quot;</span>
+    <span class="n">agent</span> <span class="o">=</span> <span class="n">argparser</span><span class="o">.</span><span class="n">add_argument_group</span><span class="p">(</span><span class="s1">&#39;Seq2Seq Arguments&#39;</span><span class="p">)</span>
+    <span class="n">agent</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-hs&#39;</span><span class="p">,</span> <span class="s1">&#39;--hiddensize&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
+                       <span class="n">help</span><span class="o">=</span><span class="s1">&#39;size of the hidden layers&#39;</span><span class="p">)</span>
+    <span class="n">agent</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-esz&#39;</span><span class="p">,</span> <span class="s1">&#39;--embeddingsize&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">128</span><span class="p">,</span>
+                       <span class="n">help</span><span class="o">=</span><span class="s1">&#39;size of the token embeddings&#39;</span><span class="p">)</span>
+    <span class="n">agent</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-nl&#39;</span><span class="p">,</span> <span class="s1">&#39;--numlayers&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                       <span class="n">help</span><span class="o">=</span><span class="s1">&#39;number of hidden layers&#39;</span><span class="p">)</span>
+    <span class="n">agent</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-lr&#39;</span><span class="p">,</span> <span class="s1">&#39;--learningrate&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                       <span class="n">help</span><span class="o">=</span><span class="s1">&#39;learning rate&#39;</span><span class="p">)</span>
+    <span class="n">agent</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-dr&#39;</span><span class="p">,</span> <span class="s1">&#39;--dropout&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+                       <span class="n">help</span><span class="o">=</span><span class="s1">&#39;dropout rate&#39;</span><span class="p">)</span>
+    <span class="n">agent</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--no-cuda&#39;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                       <span class="n">help</span><span class="o">=</span><span class="s1">&#39;disable GPUs even if available&#39;</span><span class="p">)</span>
+    <span class="n">agent</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;--gpu&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span><span class="p">,</span> <span class="n">default</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+                       <span class="n">help</span><span class="o">=</span><span class="s1">&#39;which GPU device to use&#39;</span><span class="p">)</span>
+    <span class="n">agent</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-rf&#39;</span><span class="p">,</span> <span class="s1">&#39;--report-freq&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
+                       <span class="n">help</span><span class="o">=</span><span class="s1">&#39;Report frequency of prediction during eval.&#39;</span><span class="p">)</span>
+    <span class="n">ExampleSeq2seqAgent</span><span class="o">.</span><span class="n">dictionary_class</span><span class="p">()</span><span class="o">.</span><span class="n">add_cmdline_args</span><span class="p">(</span><span class="n">argparser</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">agent</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="full-init">
+<h3>Full __init__()<a class="headerlink" href="#full-init" title="Permalink to this headline">¶</a></h3>
+<p>Here’s full code to get an initialization of a model working.
+We recommend storing model modules in a separate class and importing them
+(and if you’re using torch, extending nn.Module).
+We’ll show a version which defines its modules in the same file, since it’s a simple model.</p>
+<p>Note that we’re showing the simple version from the PyTorch tutorial below.
+The full seq2seq implementation in ParlAI adds a lot more bells and whistles.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">parlai.core.agents</span> <span class="kn">import</span> <span class="n">Agent</span>
+<span class="kn">from</span> <span class="nn">parlai.core.dict</span> <span class="kn">import</span> <span class="n">DictionaryAgent</span>
+<span class="kn">from</span> <span class="nn">parlai.utils.misc</span> <span class="kn">import</span> <span class="n">PaddingUtils</span>
+<span class="kn">from</span> <span class="nn">parlai.utils.thread</span> <span class="kn">import</span> <span class="n">SharedTable</span>
+
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">torch.autograd</span> <span class="kn">import</span> <span class="n">Variable</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">optim</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="kn">as</span> <span class="nn">nn</span>
+<span class="kn">import</span> <span class="nn">torch.nn.functional</span> <span class="kn">as</span> <span class="nn">F</span>
+
+<span class="kn">import</span> <span class="nn">copy</span>
+
+
+<span class="k">class</span> <span class="nc">EncoderRNN</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">numlayers</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span> <span class="o">=</span> <span class="n">hidden_size</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gru</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">GRU</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">num_layers</span><span class="o">=</span><span class="n">numlayers</span><span class="p">,</span>
+                          <span class="n">batch_first</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">hidden</span><span class="p">):</span>
+        <span class="n">embedded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+        <span class="n">output</span><span class="p">,</span> <span class="n">hidden</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gru</span><span class="p">(</span><span class="n">embedded</span><span class="p">,</span> <span class="n">hidden</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">output</span><span class="p">,</span> <span class="n">hidden</span>
+
+
+<span class="k">class</span> <span class="nc">DecoderRNN</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">numlayers</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span> <span class="o">=</span> <span class="n">hidden_size</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Embedding</span><span class="p">(</span><span class="n">output_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gru</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">GRU</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">num_layers</span><span class="o">=</span><span class="n">numlayers</span><span class="p">,</span>
+                          <span class="n">batch_first</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">out</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">softmax</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LogSoftmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">input</span><span class="p">,</span> <span class="n">hidden</span><span class="p">):</span>
+        <span class="n">emb</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+        <span class="n">rel</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">emb</span><span class="p">)</span>
+        <span class="n">output</span><span class="p">,</span> <span class="n">hidden</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gru</span><span class="p">(</span><span class="n">rel</span><span class="p">,</span> <span class="n">hidden</span><span class="p">)</span>
+        <span class="n">scores</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">out</span><span class="p">(</span><span class="n">output</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">scores</span><span class="p">,</span> <span class="n">hidden</span>
+
+
+<span class="k">class</span> <span class="nc">ExampleSeq2seqAgent</span><span class="p">(</span><span class="n">Agent</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">opt</span><span class="p">,</span> <span class="n">shared</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="c1"># initialize defaults first</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">opt</span><span class="p">,</span> <span class="n">shared</span><span class="p">)</span>
+
+        <span class="c1"># check for cuda</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">use_cuda</span> <span class="o">=</span> <span class="ow">not</span> <span class="n">opt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;no_cuda&#39;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">opt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;numthreads&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">set_num_threads</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="s1">&#39;Seq2Seq&#39;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">shared</span><span class="p">:</span>
+            <span class="c1"># set up model from scratch</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dict</span> <span class="o">=</span> <span class="n">DictionaryAgent</span><span class="p">(</span><span class="n">opt</span><span class="p">)</span>
+            <span class="n">hsz</span> <span class="o">=</span> <span class="n">opt</span><span class="p">[</span><span class="s1">&#39;hiddensize&#39;</span><span class="p">]</span>
+            <span class="n">nl</span> <span class="o">=</span> <span class="n">opt</span><span class="p">[</span><span class="s1">&#39;numlayers&#39;</span><span class="p">]</span>
+
+            <span class="c1"># encoder captures the input text</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span> <span class="o">=</span> <span class="n">EncoderRNN</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">),</span> <span class="n">hsz</span><span class="p">,</span> <span class="n">nl</span><span class="p">)</span>
+            <span class="c1"># decoder produces our output states</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span> <span class="o">=</span> <span class="n">DecoderRNN</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">),</span> <span class="n">hsz</span><span class="p">,</span> <span class="n">nl</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_cuda</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="n">opt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;numthreads&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span><span class="o">.</span><span class="n">share_memory</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">share_memory</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># ... copy initialized data from shared table</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">opt</span> <span class="o">=</span> <span class="n">shared</span><span class="p">[</span><span class="s1">&#39;opt&#39;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">dict</span> <span class="o">=</span> <span class="n">shared</span><span class="p">[</span><span class="s1">&#39;dict&#39;</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="s1">&#39;encoder&#39;</span> <span class="ow">in</span> <span class="n">shared</span><span class="p">:</span>
+                <span class="c1"># hogwild shares model as well</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span> <span class="o">=</span> <span class="n">shared</span><span class="p">[</span><span class="s1">&#39;encoder&#39;</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span> <span class="o">=</span> <span class="n">shared</span><span class="p">[</span><span class="s1">&#39;decoder&#39;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;encoder&#39;</span><span class="p">):</span>
+            <span class="c1"># we set up a model for original instance and multithreaded ones</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">NLLLoss</span><span class="p">()</span>
+
+            <span class="c1"># set up optims for each module</span>
+            <span class="n">lr</span> <span class="o">=</span> <span class="n">opt</span><span class="p">[</span><span class="s1">&#39;learningrate&#39;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">optims</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;encoder&#39;</span><span class="p">:</span> <span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">encoder</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">lr</span><span class="p">),</span>
+                <span class="s1">&#39;decoder&#39;</span><span class="p">:</span> <span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">lr</span><span class="p">),</span>
+            <span class="p">}</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">longest_label</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">hiddensize</span> <span class="o">=</span> <span class="n">opt</span><span class="p">[</span><span class="s1">&#39;hiddensize&#39;</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">numlayers</span> <span class="o">=</span> <span class="n">opt</span><span class="p">[</span><span class="s1">&#39;numlayers&#39;</span><span class="p">]</span>
+            <span class="c1"># we use END markers to end our output</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">END_IDX</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="o">.</span><span class="n">end_token</span><span class="p">]</span>
+            <span class="c1"># get index of null token from dictionary (probably 0)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">NULL_IDX</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="o">.</span><span class="n">null_token</span><span class="p">]</span>
+            <span class="c1"># we use START markers to start our output</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">START_IDX</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="o">.</span><span class="n">start_token</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">START</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">START_IDX</span><span class="p">])</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_cuda</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">START</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">START</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Reset observation and episode_done.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">observation</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">episode_done</span> <span class="o">=</span> <span class="bp">True</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="vectorize">
+<h3>vectorize()<a class="headerlink" href="#vectorize" title="Permalink to this headline">¶</a></h3>
+<p>The batchify function takes in a list of observations and turns them into
+tensors to use with our model.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">vectorize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">observations</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert a list of observations into input &amp; target tensors.&quot;&quot;&quot;</span>
+    <span class="n">is_training</span> <span class="o">=</span> <span class="nb">any</span><span class="p">((</span><span class="s1">&#39;labels&#39;</span> <span class="ow">in</span> <span class="n">obs</span> <span class="k">for</span> <span class="n">obs</span> <span class="ow">in</span> <span class="n">observations</span><span class="p">))</span>
+    <span class="c1"># utility function for padding text and returning lists of indices</span>
+    <span class="c1"># parsed using the provided dictionary</span>
+    <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">valid_inds</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">PaddingUtils</span><span class="o">.</span><span class="n">pad_text</span><span class="p">(</span>
+        <span class="n">observations</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">,</span> <span class="n">end_idx</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">END_IDX</span><span class="p">,</span>
+        <span class="n">null_idx</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">NULL_IDX</span><span class="p">,</span> <span class="n">dq</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">eval_labels</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">xs</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span><span class="p">,</span> <span class="bp">None</span>
+
+    <span class="c1"># move lists of indices returned above into tensors</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_cuda</span><span class="p">:</span>
+        <span class="n">xs</span> <span class="o">=</span> <span class="n">xs</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">ys</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">ys</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_cuda</span><span class="p">:</span>
+            <span class="n">ys</span> <span class="o">=</span> <span class="n">ys</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+        <span class="n">ys</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">valid_inds</span><span class="p">,</span> <span class="n">is_training</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="predict">
+<h3>predict()<a class="headerlink" href="#predict" title="Permalink to this headline">¶</a></h3>
+<p>The predict function returns an output from our model. If the targets are
+provided, then it also updates the model. The predictions will be biased in
+this case, since we condition each token on the true label token, but we are
+okay with that–it just improves training F1 scores.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">is_training</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Produce a prediction from our model.</span>
+<span class="sd">    Update the model using the targets if available.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">bsz</span> <span class="o">=</span> <span class="n">xs</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">zeros</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">numlayers</span><span class="p">,</span> <span class="n">bsz</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hiddensize</span><span class="p">))</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_cuda</span><span class="p">:</span>
+        <span class="n">zeros</span> <span class="o">=</span> <span class="n">zeros</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+    <span class="n">starts</span> <span class="o">=</span> <span class="n">Variable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">START</span><span class="p">)</span>
+    <span class="n">starts</span> <span class="o">=</span> <span class="n">starts</span><span class="o">.</span><span class="n">expand</span><span class="p">(</span><span class="n">bsz</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># expand to batch size</span>
+
+    <span class="k">if</span> <span class="n">is_training</span><span class="p">:</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+        <span class="n">target_length</span> <span class="o">=</span> <span class="n">ys</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="c1"># save largest seen label for later</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">longest_label</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">target_length</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">longest_label</span><span class="p">)</span>
+
+        <span class="n">encoder_outputs</span><span class="p">,</span> <span class="n">encoder_hidden</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">zeros</span><span class="p">)</span>
+
+        <span class="c1"># Teacher forcing: Feed the target as the next input</span>
+        <span class="n">y_in</span> <span class="o">=</span> <span class="n">ys</span><span class="o">.</span><span class="n">narrow</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">ys</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">decoder_input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">([</span><span class="n">starts</span><span class="p">,</span> <span class="n">y_in</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">decoder_output</span><span class="p">,</span> <span class="n">decoder_hidden</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="p">(</span><span class="n">decoder_input</span><span class="p">,</span>
+                                                      <span class="n">encoder_hidden</span><span class="p">)</span>
+
+        <span class="n">scores</span> <span class="o">=</span> <span class="n">decoder_output</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">decoder_output</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">criterion</span><span class="p">(</span><span class="n">scores</span><span class="p">,</span> <span class="n">ys</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">update_params</span><span class="p">()</span>
+
+        <span class="n">_max_score</span><span class="p">,</span> <span class="n">idx</span> <span class="o">=</span> <span class="n">decoder_output</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">predictions</span> <span class="o">=</span> <span class="n">idx</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># just predict</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+        <span class="n">encoder_output</span><span class="p">,</span> <span class="n">encoder_hidden</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">zeros</span><span class="p">)</span>
+        <span class="n">decoder_hidden</span> <span class="o">=</span> <span class="n">encoder_hidden</span>
+
+        <span class="n">predictions</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">done</span> <span class="o">=</span> <span class="p">[</span><span class="bp">False</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">bsz</span><span class="p">)]</span>
+        <span class="n">total_done</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">decoder_input</span> <span class="o">=</span> <span class="n">starts</span>
+
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">longest_label</span><span class="p">):</span>
+            <span class="c1"># generate at most longest_label tokens</span>
+            <span class="n">decoder_output</span><span class="p">,</span> <span class="n">decoder_hidden</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="p">(</span><span class="n">decoder_input</span><span class="p">,</span>
+                                                          <span class="n">decoder_hidden</span><span class="p">)</span>
+            <span class="n">_max_score</span><span class="p">,</span> <span class="n">idx</span> <span class="o">=</span> <span class="n">decoder_output</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">preds</span> <span class="o">=</span> <span class="n">idx</span>
+            <span class="n">decoder_input</span> <span class="o">=</span> <span class="n">preds</span>
+            <span class="n">predictions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">preds</span><span class="p">)</span>
+
+            <span class="c1"># check if we&#39;ve produced the end token</span>
+            <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">bsz</span><span class="p">):</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">done</span><span class="p">[</span><span class="n">b</span><span class="p">]:</span>
+                    <span class="c1"># only add more tokens for examples that aren&#39;t done</span>
+                    <span class="k">if</span> <span class="n">preds</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="n">b</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">END_IDX</span><span class="p">:</span>
+                        <span class="c1"># if we produced END, we&#39;re done</span>
+                        <span class="n">done</span><span class="p">[</span><span class="n">b</span><span class="p">]</span> <span class="o">=</span> <span class="bp">True</span>
+                        <span class="n">total_done</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">total_done</span> <span class="o">==</span> <span class="n">bsz</span><span class="p">:</span>
+                <span class="c1"># no need to generate any more</span>
+                <span class="k">break</span>
+        <span class="n">predictions</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span><span class="n">predictions</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">predictions</span>
+</pre></div>
+</div>
+<p>For other utility functions like loading from file, or to see any new features
+that we may have added to the model such as attention over the input or ranking
+candidates, check out the source code at parlai/agents/seq2seq.</p>
+</div>
+<div class="section" id="full-implementation-running-this-model">
+<h3>Full Implementation &amp; running this model<a class="headerlink" href="#full-implementation-running-this-model" title="Permalink to this headline">¶</a></h3>
+<p>You can see the full code for this <a class="reference external" href="https://github.com/facebookresearch/ParlAI/tree/master/parlai/agents/example_seq2seq/example_seq2seq.py">here</a>.</p>
+<p>You can try this model now with a command like the following:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># batchsize 32, numthreads 1</span>
+python examples/train_model.py -t babi:task10k:1 --dict-file /tmp/dict_babi:task10k:1 -bs <span class="m">32</span> -vtim <span class="m">30</span> -vcut <span class="m">0</span>.95 -m example_seq2seq
+
+<span class="c1"># batchsize 1, numthreads 40, no cuda, lower learning rate</span>
+python examples/train_model.py -t babi:task10k:1 --dict-file /tmp/dict_babi:task10k:1 -bs <span class="m">1</span> -nt <span class="m">40</span> -vtim <span class="m">30</span> -vcut <span class="m">0</span>.95 -m example_seq2seq --no-cuda -lr <span class="m">0</span>.01
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tutorial_torch_ranker_agent.html" class="btn btn-neutral float-right" title="Using Torch Ranker Agent" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tutorial_worlds.html" class="btn btn-neutral float-left" title="Data Handling, Batching, and Hogwild" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Facebook AI Research
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

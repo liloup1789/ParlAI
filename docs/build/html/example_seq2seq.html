@@ -1,0 +1,407 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>agents.example_seq2seq &mdash; ParlAI  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/parlai_theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Command Line Usage" href="cli_usage.html" />
+    <link rel="prev" title="agents.unigram" href="unigram_agent.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ParlAI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_quick.html">ParlAI Quick-start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_basic.html">Intro to ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_task.html">Tasks and Datasets in ParlAI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_worlds.html">Data Handling, Batching, and Hogwild</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_seq2seq.html">Creating an Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_torch_ranker_agent.html">Using Torch Ranker Agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tipsntricks.html">Tips and Tricks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_mturk.html">Using Mechanical Turk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_messenger.html">Using Facebook Messenger</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial_tensorboard.html">Using tensorboard for metric tracking</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tasks &amp; Model Zoo</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="tasks.html">Tasks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zoo.html">Model Zoo</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Core Library</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="observations.html">observations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agents.html">core.agents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="torch_agent.html">core.torch_agent</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_data.html">core.build_data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dict.html">core.dict</a></li>
+<li class="toctree-l1"><a class="reference internal" href="metrics.html">core.metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="params.html">core.params</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teachers.html">core.teachers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">core.utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thread_utils.html">core.thread_utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="worlds.html">core.worlds</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Reference Models</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="repeat_label.html">agents.repeat_label</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unigram_agent.html">agents.unigram</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">agents.example_seq2seq</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Scripts</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="cli_usage.html">Command Line Usage</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ParlAI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>agents.example_seq2seq</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/example_seq2seq.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="agents-example-seq2seq">
+<h1>agents.example_seq2seq<a class="headerlink" href="#agents-example-seq2seq" title="Permalink to this headline">¶</a></h1>
+<p>Reference implementation for a simplified Seq2Seq model.</p>
+<span class="target" id="module-parlai.agents.example_seq2seq.example_seq2seq"></span><p>Example sequence to sequence agent for ParlAI “Creating an Agent” tutorial.
+<a class="reference external" href="http://parl.ai/static/docs/tutorial_seq2seq.html">http://parl.ai/static/docs/tutorial_seq2seq.html</a></p>
+<dl class="class">
+<dt id="parlai.agents.example_seq2seq.example_seq2seq.EncoderRNN">
+<em class="property">class </em><code class="sig-prename descclassname">parlai.agents.example_seq2seq.example_seq2seq.</code><code class="sig-name descname">EncoderRNN</code><span class="sig-paren">(</span><em class="sig-param">input_size</em>, <em class="sig-param">hidden_size</em>, <em class="sig-param">numlayers</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.agents.example_seq2seq.example_seq2seq.EncoderRNN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>Encodes the input context.</p>
+<dl class="method">
+<dt id="parlai.agents.example_seq2seq.example_seq2seq.EncoderRNN.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">input_size</em>, <em class="sig-param">hidden_size</em>, <em class="sig-param">numlayers</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.agents.example_seq2seq.example_seq2seq.EncoderRNN.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize encoder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_size</strong> – size of embedding</p></li>
+<li><p><strong>hidden_size</strong> – size of GRU hidden layers</p></li>
+<li><p><strong>numlayers</strong> – number of GRU layers</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.agents.example_seq2seq.example_seq2seq.EncoderRNN.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">input</em>, <em class="sig-param">hidden=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.agents.example_seq2seq.example_seq2seq.EncoderRNN.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return encoded state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> – (batchsize x seqlen) tensor of token indices.</p></li>
+<li><p><strong>hidden</strong> – optional past hidden state</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="parlai.agents.example_seq2seq.example_seq2seq.DecoderRNN">
+<em class="property">class </em><code class="sig-prename descclassname">parlai.agents.example_seq2seq.example_seq2seq.</code><code class="sig-name descname">DecoderRNN</code><span class="sig-paren">(</span><em class="sig-param">output_size</em>, <em class="sig-param">hidden_size</em>, <em class="sig-param">numlayers</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.agents.example_seq2seq.example_seq2seq.DecoderRNN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">torch.nn.modules.module.Module</span></code></p>
+<p>Generates a sequence of tokens in response to context.</p>
+<dl class="method">
+<dt id="parlai.agents.example_seq2seq.example_seq2seq.DecoderRNN.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">output_size</em>, <em class="sig-param">hidden_size</em>, <em class="sig-param">numlayers</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.agents.example_seq2seq.example_seq2seq.DecoderRNN.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize decoder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input_size</strong> – size of embedding</p></li>
+<li><p><strong>hidden_size</strong> – size of GRU hidden layers</p></li>
+<li><p><strong>numlayers</strong> – number of GRU layers</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.agents.example_seq2seq.example_seq2seq.DecoderRNN.forward">
+<code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param">input</em>, <em class="sig-param">hidden</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.agents.example_seq2seq.example_seq2seq.DecoderRNN.forward" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return encoded state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> – batch_size x 1 tensor of token indices.</p></li>
+<li><p><strong>hidden</strong> – past (e.g. encoder) hidden state</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="parlai.agents.example_seq2seq.example_seq2seq.ExampleSeq2seqAgent">
+<em class="property">class </em><code class="sig-prename descclassname">parlai.agents.example_seq2seq.example_seq2seq.</code><code class="sig-name descname">ExampleSeq2seqAgent</code><span class="sig-paren">(</span><em class="sig-param">opt</em>, <em class="sig-param">shared=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.agents.example_seq2seq.example_seq2seq.ExampleSeq2seqAgent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="torch_agent.html#parlai.core.torch_agent.TorchAgent" title="parlai.core.torch_agent.TorchAgent"><code class="xref py py-class docutils literal notranslate"><span class="pre">parlai.core.torch_agent.TorchAgent</span></code></a></p>
+<p>Agent which takes an input sequence and produces an output sequence.</p>
+<p>This model is based on Sean Robertson’s <a class="reference external" href="http://pytorch.org/tutorials/intermediate/seq2seq_translation_tutorial.html">seq2seq tutorial</a>.</p>
+<dl class="method">
+<dt id="parlai.agents.example_seq2seq.example_seq2seq.ExampleSeq2seqAgent.add_cmdline_args">
+<em class="property">classmethod </em><code class="sig-name descname">add_cmdline_args</code><span class="sig-paren">(</span><em class="sig-param">argparser</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.agents.example_seq2seq.example_seq2seq.ExampleSeq2seqAgent.add_cmdline_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add command-line arguments specifically for this agent.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.agents.example_seq2seq.example_seq2seq.ExampleSeq2seqAgent.__init__">
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">opt</em>, <em class="sig-param">shared=None</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.agents.example_seq2seq.example_seq2seq.ExampleSeq2seqAgent.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize example seq2seq agent.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>opt</strong> – options dict generated by parlai.core.params:ParlaiParser</p></li>
+<li><p><strong>shared</strong> – optional shared dict with preinitialized model params</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.agents.example_seq2seq.example_seq2seq.ExampleSeq2seqAgent.zero_grad">
+<code class="sig-name descname">zero_grad</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.agents.example_seq2seq.example_seq2seq.ExampleSeq2seqAgent.zero_grad" title="Permalink to this definition">¶</a></dt>
+<dd><p>Zero out optimizer.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.agents.example_seq2seq.example_seq2seq.ExampleSeq2seqAgent.update_params">
+<code class="sig-name descname">update_params</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.agents.example_seq2seq.example_seq2seq.ExampleSeq2seqAgent.update_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Do one optimization step.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.agents.example_seq2seq.example_seq2seq.ExampleSeq2seqAgent.share">
+<code class="sig-name descname">share</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#parlai.agents.example_seq2seq.example_seq2seq.ExampleSeq2seqAgent.share" title="Permalink to this definition">¶</a></dt>
+<dd><p>Share internal states.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.agents.example_seq2seq.example_seq2seq.ExampleSeq2seqAgent.v2t">
+<code class="sig-name descname">v2t</code><span class="sig-paren">(</span><em class="sig-param">vector</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.agents.example_seq2seq.example_seq2seq.ExampleSeq2seqAgent.v2t" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert vector to text.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>vector</strong> – tensor of token indices.
+1-d tensors will return a string, 2-d will return a list of strings</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.agents.example_seq2seq.example_seq2seq.ExampleSeq2seqAgent.vectorize">
+<code class="sig-name descname">vectorize</code><span class="sig-paren">(</span><em class="sig-param">*args</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.agents.example_seq2seq.example_seq2seq.ExampleSeq2seqAgent.vectorize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call vectorize without adding start tokens to labels.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.agents.example_seq2seq.example_seq2seq.ExampleSeq2seqAgent.train_step">
+<code class="sig-name descname">train_step</code><span class="sig-paren">(</span><em class="sig-param">batch</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.agents.example_seq2seq.example_seq2seq.ExampleSeq2seqAgent.train_step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Train model to produce ys given xs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>batch</strong> – parlai.core.torch_agent.Batch, contains tensorized
+version of observations.</p>
+</dd>
+</dl>
+<p>Return estimated responses, with teacher forcing on the input sequence
+(list of strings of length batchsize).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="parlai.agents.example_seq2seq.example_seq2seq.ExampleSeq2seqAgent.eval_step">
+<code class="sig-name descname">eval_step</code><span class="sig-paren">(</span><em class="sig-param">batch</em><span class="sig-paren">)</span><a class="headerlink" href="#parlai.agents.example_seq2seq.example_seq2seq.ExampleSeq2seqAgent.eval_step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate a response to the input tokens.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>batch</strong> – parlai.core.torch_agent.Batch, contains tensorized
+version of observations.</p>
+</dd>
+</dl>
+<p>Return predicted responses (list of strings of length batchsize).</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="cli_usage.html" class="btn btn-neutral float-right" title="Command Line Usage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="unigram_agent.html" class="btn btn-neutral float-left" title="agents.unigram" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Facebook AI Research
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

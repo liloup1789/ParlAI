@@ -7,6 +7,8 @@
 from parlai.core.agents import Agent
 from parlai.core.params import ParlaiParser
 from parlai.core.worlds import create_task
+
+import sys
 """
 -t babi’ sets up the DefaultTeacher in ‘parlai/core/tasks/babi/agents.py’.
 
@@ -46,8 +48,14 @@ if __name__ == '__main__':
         teacher = world.get_agents()[0]
         print(teacher.datatype)
         print(teacher.getID())
+<<<<<<< HEAD
         world.parley()
         print(world.display())
+=======
+        sys.exit()
+        world.parley()
+        # print(world.display())
+>>>>>>> c650b784d0b3dc391ab5c3b144f5db669ae728cf
         if world.epoch_done():
             print('EPOCH DONE')
             break
