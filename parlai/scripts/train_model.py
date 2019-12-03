@@ -719,9 +719,12 @@ class TrainLoop:
             while True:
                 # do one example / batch of examples
 <<<<<<< HEAD
+<<<<<<< HEAD
                 world.parley()
                 print(world.get_agents()[0].report())
 =======
+=======
+>>>>>>> b07432242bd002b5d071b241b8ed36ca355dda6f
                 try:
                     world.parley()
                 except StopTrainException:
@@ -731,7 +734,14 @@ class TrainLoop:
                         )
                     break
 
+<<<<<<< HEAD
 >>>>>>> upstream/master
+=======
+=======
+                world.parley()
+                print(world.get_agents()[0].report())
+>>>>>>> c650b784d0b3dc391ab5c3b144f5db669ae728cf
+>>>>>>> b07432242bd002b5d071b241b8ed36ca355dda6f
                 self.parleys += 1
                 break
 
