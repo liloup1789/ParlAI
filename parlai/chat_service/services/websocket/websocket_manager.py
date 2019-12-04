@@ -3,11 +3,12 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
-"""Websocket Manager Module
-Contains implementation of the WebsocketManager which helps run ParlAI via
-websockets
+"""
+Websocket Manager Module Contains implementation of the WebsocketManager which helps run
+ParlAI via websockets.
 """
 
+import json
 import asyncio
 import logging
 import traceback
@@ -36,7 +37,9 @@ class WebsocketManager(ChatServiceManager):
             pass
 
     def __init__(self, opt):
-        """Create a WebsocketManager using the given setup options"""
+        """
+        Create a WebsocketManager using the given setup options.
+        """
         super().__init__(opt)
         self.opt = opt
         self.port = opt.get('port')
@@ -56,7 +59,9 @@ class WebsocketManager(ChatServiceManager):
         pass
 
     def _complete_setup(self):
-        """Complete necessary setup items."""
+        """
+        Complete necessary setup items.
+        """
         self.agent_pool = {}
         self.messenger_agent_states = {}
         self.agent_id_to_overworld_future = {}
@@ -64,23 +69,27 @@ class WebsocketManager(ChatServiceManager):
         self._load_model()
 
     def _load_model(self):
-        """Load model if necessary"""
+        """
+        Load model if necessary.
+        """
         if 'model_file' in self.opt or 'model' in self.opt:
-            self.opt['shared_bot_params'] = create_agent(self.opt).share()
+            self.runner_opt['shared_bot_params'] = create_agent(self.runner_opt).share()
 
     def _handle_message_read(self, event):
-        """Send read receipt back to user who sent message
-        This function is left empty as it is not applicable to websockets since
-        read receipts are not supported
+        """
+        Send read receipt back to user who sent message This function is left empty as
+        it is not applicable to websockets since read receipts are not supported.
         """
         pass
 
     def _manager_loop_fn(self):
-        """An iteration of the manager's main loop to launch worlds.
+        """
+        An iteration of the manager's main loop to launch worlds.
         """
 
         def _done_callback(fut):
-            """Log and raise exception of task world, if there is one.
+            """
+            Log and raise exception of task world, if there is one.
 
             Additionally, set active agent to overworld agent.
             """
@@ -114,7 +123,10 @@ class WebsocketManager(ChatServiceManager):
                 world_config = self.task_configs[world_type]
                 if world_config.max_time_in_pool is not None:
                     self.check_timeout_in_pool(
-                        world_type, agent_pool, world_config.max_time_in_pool
+                        world_type,
+                        agent_pool,
+                        world_config.max_time_in_pool,
+                        world_config.backup_task,
                     )
 
                 needed_agents = self.max_agents_for[world_type]
@@ -164,7 +176,8 @@ class WebsocketManager(ChatServiceManager):
                     self.active_worlds[task_id] = future
 
     def start_task(self):
-        """Begin handling task.
+        """
+        Begin handling task.
         """
         self.running = True
         self.app = self._make_app()
@@ -177,7 +190,9 @@ class WebsocketManager(ChatServiceManager):
         tornado.ioloop.IOLoop.current().start()
 
     def shutdown(self):
-        """Defined to shutown the tornado application"""
+        """
+        Defined to shutown the tornado application.
+        """
         try:
             self.world_runner.shutdown()
             self._expire_all_conversations()
@@ -186,7 +201,8 @@ class WebsocketManager(ChatServiceManager):
         tornado.ioloop.IOLoop.current().stop()
 
     def _create_agent(self, task_id, socketID):
-        """Initialize an agent and return it.
+        """
+        Initialize an agent and return it.
 
         Called each time an agent is placed into a new task.
 
@@ -199,7 +215,7 @@ class WebsocketManager(ChatServiceManager):
 
     def _make_app(self):
         """
-        Starts the tornado application
+        Starts the tornado application.
         """
         message_callback = self._on_new_message
 
@@ -217,20 +233,63 @@ class WebsocketManager(ChatServiceManager):
             debug=self.debug,
         )
 
-    def observe_message(self, socket_id, text):
-        """Send a message through the message manager.
+    def observe_message(self, socket_id, message, quick_replies=None):
+        """
+        Send a message through the message manager.
 
         :param socket_id:
             int identifier for agent socket to send message to
-        :param text:
-            string text to send
-        """
-        asyncio.set_event_loop(asyncio.new_event_loop())
-        return MessageSocketHandler.subs[socket_id].write_message(text)
+        :param message:
+            (dict) message to send through the socket. The keys should be:
+                'image': (True/False) whether the message is an image
+                'mime_type': str. Mime type of the message
+                'text': str. base64 encoded content
+        :param quick_replies:
+            (list) list of strings to send as quick replies.
 
-    def restructure_message():
-        """This is to restructure a new message to conform to the message structure
-        defined in the `chat_service` README
+        Returns a tornado future for tracking the `write_message` action.
+        """
+        if quick_replies is not None:
+            quick_replies = list(quick_replies)
+
+        message = json.dumps(
+            {'text': message.replace('\n', '<br />'), 'quick_replies': quick_replies}
+        )
+
+        asyncio.set_event_loop(asyncio.new_event_loop())
+        if socket_id not in MessageSocketHandler.subs:
+            self.agent_id_to_overworld_future[socket_id].cancel()
+            return
+        return MessageSocketHandler.subs[socket_id].write_message(message)
+
+    def observe_payload(self, socket_id, payload, quick_replies=None):
+        """
+        Send a message through the message manager.
+
+        :param socket_id:
+            int identifier for agent socket to send message to
+        :param payload:
+            (dict) payload to send through the socket. The keys should be:
+                'image': (True/False) whether the message is an image
+                'mime_type': str. Mime type of the message
+                'data': str. base64 encoded content
+
+        Returns a tornado future for tracking the `write_message` action.
+        """
+        payload['data'] = payload['data'].replace('\n', '<br />')
+        message = {'text': '', 'payload': payload, 'quick_replies': quick_replies}
+        payload = json.dumps(message)
+
+        asyncio.set_event_loop(asyncio.new_event_loop())
+        if socket_id not in MessageSocketHandler.subs:
+            self.agent_id_to_overworld_future[socket_id].cancel()
+            return
+        return MessageSocketHandler.subs[socket_id].write_message(message)
+
+    def restructure_message(self):
+        """
+        This is to restructure a new message to conform to the message structure defined
+        in the `chat_service` README.
         """
         pass
 

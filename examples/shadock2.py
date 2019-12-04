@@ -46,10 +46,16 @@ if __name__ == '__main__':
 
     for _ in range(10):
         teacher = world.get_agents()[0]
-        # print(teacher.getID())
-        # sys.exit()
+        print(teacher.datatype)
+        print(teacher.getID())
+<<<<<<< HEAD
         world.parley()
         print(world.display())
+=======
+        sys.exit()
+        world.parley()
+        # print(world.display())
+>>>>>>> c650b784d0b3dc391ab5c3b144f5db669ae728cf
         if world.epoch_done():
             print('EPOCH DONE')
             break
