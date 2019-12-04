@@ -26,6 +26,7 @@ WEB_HTML = """
     <script defer src={}></script>
     <head><title> Interactive Run </title></head>
     <body>
+<<<<<<< HEAD
         <div class="columns" style="height: 100%">
             <div class="column is-three-fifths is-offset-one-fifth">
               <section class="hero is-info is-large has-background-light has-text-grey-dark" style="height: 100%">
@@ -35,6 +36,22 @@ WEB_HTML = """
                         <div class="content">
                           <p>
                             <strong>Instructions</strong>
+=======
+        <div class="columns">
+            <div class="column is-three-fifths is-offset-one-fifth">
+              <section class="hero is-info is-large has-background-light has-text-grey-dark">
+                <div id="parent" class="hero-body">
+                    <article class="media">
+                      <figure class="media-left">
+                        <span class="icon is-large">
+                          <i class="fas fa-robot fas fa-2x"></i>
+                        </span>
+                      </figure>
+                      <div class="media-content">
+                        <div class="content">
+                          <p>
+                            <strong>Model</strong>
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
                             <br>
                             Enter a message, and the model will respond interactively.
                           </p>
@@ -42,7 +59,11 @@ WEB_HTML = """
                       </div>
                     </article>
                 </div>
+<<<<<<< HEAD
                 <div class="hero-foot column is-three-fifths is-offset-one-fifth" style="height: 76px">
+=======
+                <div class="hero-foot column is-three-fifths is-offset-one-fifth">
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
                   <form id = "interact">
                       <div class="field is-grouped">
                         <p class="control is-expanded">
@@ -101,10 +122,14 @@ WEB_HTML = """
                 span.appendChild(icon);
                 figure.appendChild(span);
 
+<<<<<<< HEAD
                 if (agent !== "Instructions") {{
                     article.appendChild(figure);
                 }};
 
+=======
+                article.appendChild(figure);
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
                 article.appendChild(media);
 
                 return article;
@@ -127,7 +152,11 @@ WEB_HTML = """
 
                     // Change info for Model response
                     parDiv.append(createChatRow("Model", data.text));
+<<<<<<< HEAD
                     parDiv.scrollTo(0, parDiv.scrollHeight);
+=======
+                    window.scrollTo(0,document.body.scrollHeight);
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
                 }})
             }});
             document.getElementById("interact").addEventListener("reset", function(event){{
@@ -144,8 +173,13 @@ WEB_HTML = """
                     var parDiv = document.getElementById("parent");
 
                     parDiv.innerHTML = '';
+<<<<<<< HEAD
                     parDiv.append(createChatRow("Instructions", "Enter a message, and the model will respond interactively."));
                     parDiv.scrollTo(0, parDiv.scrollHeight);
+=======
+                    parDiv.append(createChatRow("Model", "Enter a message, and the model will respond interactively."));
+                    window.scrollTo(0,document.body.scrollHeight);
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
                 }})
             }});
         </script>
