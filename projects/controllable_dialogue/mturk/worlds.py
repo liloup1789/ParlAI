@@ -10,16 +10,22 @@ from parlai.mturk.core.legacy_2018.worlds import MTurkOnboardWorld
 from parlai.core.message import Message
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
 from parlai.mturk.core.legacy_2018.agents import TIMEOUT_MESSAGE
 from parlai.core.worlds import validate, MultiAgentDialogWorld
 from parlai.mturk.core.legacy_2018.worlds import MTurkOnboardWorld
 from parlai.core.message import Message
 =======
+=======
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
 from parlai.mturk.core.agents import TIMEOUT_MESSAGE
 from parlai.core.worlds import validate, MultiAgentDialogWorld
 from parlai.mturk.core.worlds import MTurkOnboardWorld
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
 
 from joblib import Parallel, delayed
 import numpy as np
@@ -31,9 +37,12 @@ import torch
 import copy
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
 
 # ASK_DETAILED decides whether we ask human evaluators to select individual
 # utterances they found bad. The See et al. 2019 paper has this as True; it is
@@ -41,10 +50,15 @@ import copy
 ASK_DETAILED = False
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
 >>>>>>> origin/master
+=======
+=======
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
 # INSTRUCTIONS
 ONBOARD_MSG = '\nWelcome! Below is your persona \
         (you can find it on the left side of the chat)\n \
@@ -184,11 +198,16 @@ def _strip_tensors(act):
     return Message({k: v for k, v in act.items() if not torch.is_tensor(v)})
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
     return Message({k: v for k, v in act.items() if not torch.is_tensor(v)})
 =======
     return {k: v for k, v in act.items() if not torch.is_tensor(v)}
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
 >>>>>>> origin/master
+=======
+    return {k: v for k, v in act.items() if not torch.is_tensor(v)}
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
 
 
 def _random_delay():
@@ -473,6 +492,7 @@ class ControllableDialogEval(MultiAgentDialogWorld):
                 model_act.force_set('id', 'PERSON_2')
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
                 model_act.force_set('text', self.format_model_reply(model_act['text']))
                 model_act.force_set('id', 'PERSON_2')
 =======
@@ -480,6 +500,11 @@ class ControllableDialogEval(MultiAgentDialogWorld):
                 model_act['id'] = 'PERSON_2'
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
 >>>>>>> origin/master
+=======
+                model_act['text'] = self.format_model_reply(model_act['text'])
+                model_act['id'] = 'PERSON_2'
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
                 self.dialog.append((1, model_act.get('text')))
                 _random_delay()
                 self.eval_agent.observe(_strip_tensors(model_act))
@@ -503,19 +528,25 @@ class ControllableDialogEval(MultiAgentDialogWorld):
         act = Message(self.get_human_agent_act(self.eval_agent))
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
                     act.force_set('text', self.format_model_reply(act['text']))
                     self.eval_agent.observe(act)
 
         # Eval agent turn
         act = Message(self.get_human_agent_act(self.eval_agent))
 =======
+=======
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
                     act['text'] = self.format_model_reply(act['text'])
                     self.eval_agent.observe(act)
 
         # Eval agent turn
         act = self.get_human_agent_act(self.eval_agent)
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
         timeout = self.check_timeout(act)
         if timeout:
             if self.model_agent is None:
@@ -553,11 +584,16 @@ class ControllableDialogEval(MultiAgentDialogWorld):
             act.force_set('text', '\n'.join([self.model_persona_text, act['text']]))
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
             act.force_set('text', '\n'.join([self.model_persona_text, act['text']]))
 =======
             act['text'] = '\n'.join([self.model_persona_text, act['text']])
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
 >>>>>>> origin/master
+=======
+            act['text'] = '\n'.join([self.model_persona_text, act['text']])
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
             self.bot_seen_persona = True
         if self.model_agent is not None:
             self.model_agent.observe(act)
@@ -567,11 +603,16 @@ class ControllableDialogEval(MultiAgentDialogWorld):
             act.force_set('text', self.format_model_reply(act['text']))
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
             act.force_set('text', self.format_model_reply(act['text']))
 =======
             act['text'] = self.format_model_reply(act['text'])
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
 >>>>>>> origin/master
+=======
+            act['text'] = self.format_model_reply(act['text'])
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
             self.other_agent.observe(act)
 
         # Model_agent turn
@@ -584,6 +625,7 @@ class ControllableDialogEval(MultiAgentDialogWorld):
                 act.force_set('id', 'PERSON_2')
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
                 act.force_set('text', self.format_model_reply(act['text']))
                 act.force_set('id', 'PERSON_2')
 =======
@@ -591,6 +633,11 @@ class ControllableDialogEval(MultiAgentDialogWorld):
                 act['id'] = 'PERSON_2'
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
 >>>>>>> origin/master
+=======
+                act['text'] = self.format_model_reply(act['text'])
+                act['id'] = 'PERSON_2'
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
                 # NOTE: your model may or may not need to observe itself here
                 # If it does, call model_observes_itself or some other specialized
                 # function
@@ -610,11 +657,16 @@ class ControllableDialogEval(MultiAgentDialogWorld):
             act.force_set('text', self.format_model_reply(act['text']))
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
             act.force_set('text', self.format_model_reply(act['text']))
 =======
             act['text'] = self.format_model_reply(act['text'])
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
 >>>>>>> origin/master
+=======
+            act['text'] = self.format_model_reply(act['text'])
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
             self.eval_agent.observe(act)
 
     def _evaluate_characteristic(self, question, choices, addto):
@@ -672,11 +724,16 @@ class ControllableDialogEval(MultiAgentDialogWorld):
         if ASK_DETAILED and act_choice != 2:
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
         if ASK_DETAILED and act_choice != 2:
 =======
         if act_choice != 2:
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
 >>>>>>> origin/master
+=======
+        if act_choice != 2:
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
             control_msg = self.get_control_msg()
             control_msg['text'] = REPETITIVENESS_MSGS[1]
             control_msg['good_rounds'] = True
@@ -719,11 +776,16 @@ class ControllableDialogEval(MultiAgentDialogWorld):
         if ASK_DETAILED and act_choice != 3:
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
         if ASK_DETAILED and act_choice != 3:
 =======
         if act_choice != 3:
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
 >>>>>>> origin/master
+=======
+        if act_choice != 3:
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
             control_msg = self.get_control_msg()
             control_msg['text'] = FLUENCY_MSGS[1]
             control_msg['good_rounds'] = True
@@ -752,11 +814,16 @@ class ControllableDialogEval(MultiAgentDialogWorld):
         if ASK_DETAILED and act_choice != 0:
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
         if ASK_DETAILED and act_choice != 0:
 =======
         if act_choice != 0:
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
 >>>>>>> origin/master
+=======
+        if act_choice != 0:
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
             control_msg = self.get_control_msg()
             control_msg['text'] = CONSISTENCY_MSGS[1]
             control_msg['good_rounds'] = True

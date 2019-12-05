@@ -22,10 +22,14 @@ from abc import ABC, abstractmethod
 from typing import TypeVar
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
 from typing import TypeVar
 =======
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
 >>>>>>> origin/master
+=======
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
 import math
 from operator import attrgetter
 
@@ -281,9 +285,12 @@ class TorchGeneratorAgent(TorchAgent):
         )
         agent.add_argument(
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
             '--beam-context-block-ngram',
             type=int,
             default=-1,
@@ -294,10 +301,15 @@ class TorchGeneratorAgent(TorchAgent):
         )
         agent.add_argument(
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
 >>>>>>> origin/master
+=======
+=======
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
             '--beam-block-ngram',
             type=int,
             default=-1,
@@ -338,10 +350,14 @@ class TorchGeneratorAgent(TorchAgent):
         self.beam_context_block_ngram = opt.get('beam_context_block_ngram', -1)
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
         self.beam_context_block_ngram = opt.get('beam_context_block_ngram', -1)
 =======
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
 >>>>>>> origin/master
+=======
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
         self.output_token_losses = opt.get('verbose', False)
 
         if shared:
@@ -691,10 +707,14 @@ class TorchGeneratorAgent(TorchAgent):
                 context_block_ngram=self.beam_context_block_ngram,
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
                 context_block_ngram=self.beam_context_block_ngram,
 =======
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
 >>>>>>> origin/master
+=======
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
                 padding_token=self.NULL_IDX,
                 bos_token=self.START_IDX,
                 eos_token=self.END_IDX,
@@ -709,10 +729,14 @@ class TorchGeneratorAgent(TorchAgent):
                 context_block_ngram=self.beam_context_block_ngram,
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
                 context_block_ngram=self.beam_context_block_ngram,
 =======
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
 >>>>>>> origin/master
+=======
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
                 padding_token=self.NULL_IDX,
                 bos_token=self.START_IDX,
                 eos_token=self.END_IDX,
@@ -728,10 +752,14 @@ class TorchGeneratorAgent(TorchAgent):
                 context_block_ngram=self.beam_context_block_ngram,
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
                 context_block_ngram=self.beam_context_block_ngram,
 =======
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
 >>>>>>> origin/master
+=======
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
                 padding_token=self.NULL_IDX,
                 bos_token=self.START_IDX,
                 eos_token=self.END_IDX,
@@ -747,10 +775,14 @@ class TorchGeneratorAgent(TorchAgent):
                 context_block_ngram=self.beam_context_block_ngram,
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
                 context_block_ngram=self.beam_context_block_ngram,
 =======
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
 >>>>>>> origin/master
+=======
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
                 padding_token=self.NULL_IDX,
                 bos_token=self.START_IDX,
                 eos_token=self.END_IDX,
@@ -795,6 +827,7 @@ class TorchGeneratorAgent(TorchAgent):
         ]
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
         beams = [
             self._treesearch_factory(dev).set_context(ctx) for ctx in batch.text_vec
         ]
@@ -802,6 +835,10 @@ class TorchGeneratorAgent(TorchAgent):
         beams = [self._treesearch_factory(dev) for _ in range(bsz)]
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
 >>>>>>> origin/master
+=======
+        beams = [self._treesearch_factory(dev) for _ in range(bsz)]
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
 
         # repeat encoder outputs and decoder inputs
         decoder_input = (
@@ -872,12 +909,16 @@ TSType = TypeVar('TSType', bound='TreeSearch')
 
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
 TSType = TypeVar('TSType', bound='TreeSearch')
 
 
 =======
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
 >>>>>>> origin/master
+=======
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
 class TreeSearch(object):
     """
     Abstract Tree Search class.
@@ -895,10 +936,14 @@ class TreeSearch(object):
         context_block_ngram=-1,
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
         context_block_ngram=-1,
 =======
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
 >>>>>>> origin/master
+=======
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
         padding_token=0,
         bos_token=1,
         eos_token=2,
@@ -917,11 +962,15 @@ class TreeSearch(object):
             size of context ngrams to block
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
         :param context_block_ngram:
             size of context ngrams to block
 =======
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
 >>>>>>> origin/master
+=======
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
         :param padding_token:
             padding token ID
         :param bos_token:
@@ -944,11 +993,15 @@ class TreeSearch(object):
         self.context_block_ngram = context_block_ngram
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
         self.context = None
         self.context_block_ngram = context_block_ngram
 =======
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
 >>>>>>> origin/master
+=======
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
         self.device = device
         # recent score for each hypo in the beam
         self.scores = None
@@ -968,9 +1021,12 @@ class TreeSearch(object):
         self.partial_hyps = [[self.bos] for i in range(beam_size)]
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
     def set_context(self: TSType, context: torch.LongTensor) -> TSType:
         """
         Set the internal context representation and return self.
@@ -983,10 +1039,15 @@ class TreeSearch(object):
         return self
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
 >>>>>>> origin/master
+=======
+=======
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
     def get_output_from_current_step(self):
         """
         Get the outputput at the current step.
@@ -1024,9 +1085,12 @@ class TreeSearch(object):
         pass
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
     def _block_ngrams(
         self, ngram_size: int, logprobs: torch.Tensor, source: torch.LongTensor = None
     ):
@@ -1054,10 +1118,15 @@ class TreeSearch(object):
         return logprobs
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
 >>>>>>> origin/master
+=======
+=======
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
     def advance(self, logprobs):
         """
         Advance the beam one step.
@@ -1080,9 +1149,12 @@ class TreeSearch(object):
         # beam blocking
         if self.block_ngram > 0:
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
             logprobs = self._block_ngrams(self.block_ngram, logprobs, None)
 
         if self.context_block_ngram > 0:
@@ -1094,7 +1166,10 @@ class TreeSearch(object):
                 self.context_block_ngram, logprobs, self.context
             )
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
 =======
             for beam_id, hyp in enumerate(self.partial_hyps):
                 if len(hyp) < self.block_ngram - 1:
@@ -1105,7 +1180,10 @@ class TreeSearch(object):
                     if prefix == list(ngram[:-1]) or self.block_ngram == 1:
                         logprobs[beam_id][ngram[-1]] = neginf(logprobs.dtype)
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
 
         hyp_ids, tok_ids, self.scores = self.select_paths(logprobs, self.scores)
         # use clone() here to ensure that self.all_scores will not be changed

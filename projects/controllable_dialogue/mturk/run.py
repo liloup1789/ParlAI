@@ -9,6 +9,7 @@ from parlai.mturk.core.legacy_2018.mturk_manager import MTurkManager
 import parlai.mturk.core.legacy_2018.mturk_utils as mturk_utils
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
 from parlai.mturk.core.legacy_2018.mturk_manager import MTurkManager
 import parlai.mturk.core.legacy_2018.mturk_utils as mturk_utils
 =======
@@ -16,6 +17,11 @@ from parlai.mturk.core.mturk_manager import MTurkManager
 import parlai.mturk.core.mturk_utils as mturk_utils
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
 >>>>>>> origin/master
+=======
+from parlai.mturk.core.mturk_manager import MTurkManager
+import parlai.mturk.core.mturk_utils as mturk_utils
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
 
 from worlds import ControllableDialogEval, PersonasGenerator, PersonaAssignWorld
 from task_config import task_config

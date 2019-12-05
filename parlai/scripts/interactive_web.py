@@ -28,9 +28,12 @@ WEB_HTML = """
     <body>
 <<<<<<< HEAD
         <div class="columns" style="height: 100%">
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
         <div class="columns" style="height: 100%">
+=======
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
             <div class="column is-three-fifths is-offset-one-fifth">
               <section class="hero is-info is-large has-background-light has-text-grey-dark" style="height: 100%">
                 <div id="parent" class="hero-body" style="overflow: auto; height: calc(100% - 76px); padding-top: 1em; padding-bottom: 0;">
@@ -54,7 +57,10 @@ WEB_HTML = """
 =======
                             <strong>Model</strong>
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+<<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
                             <br>
                             Enter a message, and the model will respond interactively.
                           </p>
@@ -66,11 +72,16 @@ WEB_HTML = """
                 <div class="hero-foot column is-three-fifths is-offset-one-fifth" style="height: 76px">
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
                 <div class="hero-foot column is-three-fifths is-offset-one-fifth" style="height: 76px">
 =======
                 <div class="hero-foot column is-three-fifths is-offset-one-fifth">
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
 >>>>>>> origin/master
+=======
+                <div class="hero-foot column is-three-fifths is-offset-one-fifth">
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
                   <form id = "interact">
                       <div class="field is-grouped">
                         <p class="control is-expanded">
@@ -130,19 +141,28 @@ WEB_HTML = """
                 figure.appendChild(span);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 >>>>>>> origin/master
+=======
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
                 if (agent !== "Instructions") {{
                     article.appendChild(figure);
                 }};
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 =======
                 article.appendChild(figure);
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
 >>>>>>> origin/master
+=======
+=======
+                article.appendChild(figure);
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
                 article.appendChild(media);
 
                 return article;
@@ -169,11 +189,16 @@ WEB_HTML = """
                     parDiv.scrollTo(0, parDiv.scrollHeight);
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
                     parDiv.scrollTo(0, parDiv.scrollHeight);
 =======
                     window.scrollTo(0,document.body.scrollHeight);
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
 >>>>>>> origin/master
+=======
+                    window.scrollTo(0,document.body.scrollHeight);
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
                 }})
             }});
             document.getElementById("interact").addEventListener("reset", function(event){{
@@ -195,6 +220,7 @@ WEB_HTML = """
                     parDiv.scrollTo(0, parDiv.scrollHeight);
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
                     parDiv.append(createChatRow("Instructions", "Enter a message, and the model will respond interactively."));
                     parDiv.scrollTo(0, parDiv.scrollHeight);
 =======
@@ -202,6 +228,11 @@ WEB_HTML = """
                     window.scrollTo(0,document.body.scrollHeight);
 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
 >>>>>>> origin/master
+=======
+                    parDiv.append(createChatRow("Model", "Enter a message, and the model will respond interactively."));
+                    window.scrollTo(0,document.body.scrollHeight);
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
                 }})
             }});
         </script>
