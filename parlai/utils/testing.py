@@ -266,7 +266,15 @@ def train_model(opt):
             # needed at the very least to set the overrides.
             parser.set_params(**opt)
             parser.set_params(log_every_n_secs=10)
+<<<<<<< HEAD
             popt = parser.parse_args([], print_args=False)
+=======
+<<<<<<< HEAD
+            popt = parser.parse_args([], print_args=False)
+=======
+            popt = parser.parse_args(print_args=False)
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> origin/master
             # in some rare cases, like for instance if the model class also
             # overrides its default params, the params override will not
             # be taken into account.
@@ -301,7 +309,15 @@ def eval_model(opt, skip_valid=False, skip_test=False):
     parser = ems.setup_args()
     parser.set_params(**opt)
     parser.set_params(log_every_n_secs=10)
+<<<<<<< HEAD
     popt = parser.parse_args([], print_args=False)
+=======
+<<<<<<< HEAD
+    popt = parser.parse_args([], print_args=False)
+=======
+    popt = parser.parse_args(print_args=False)
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> origin/master
 
     if popt.get('model_file') and not popt.get('dict_file'):
         popt['dict_file'] = popt['model_file'] + '.dict'
@@ -326,7 +342,15 @@ def display_data(opt):
 
     parser = dd.setup_args()
     parser.set_params(**opt)
+<<<<<<< HEAD
     popt = parser.parse_args([], print_args=False)
+=======
+<<<<<<< HEAD
+    popt = parser.parse_args([], print_args=False)
+=======
+    popt = parser.parse_args(print_args=False)
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> origin/master
 
     with capture_output() as train_output:
         popt['datatype'] = 'train:stream'
@@ -351,7 +375,15 @@ def display_model(opt) -> Tuple[str, str]:
 
     parser = dm.setup_args()
     parser.set_params(**opt)
+<<<<<<< HEAD
     popt = parser.parse_args([], print_args=False)
+=======
+<<<<<<< HEAD
+    popt = parser.parse_args([], print_args=False)
+=======
+    popt = parser.parse_args(print_args=False)
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> origin/master
     with capture_output() as train_output:
         # evalmode so that we don't hit train_step
         popt['datatype'] = 'train:evalmode:stream'
@@ -372,7 +404,15 @@ def download_unittest_models():
     from parlai.core.params import ParlaiParser
     from parlai.core.build_data import download_models
 
+<<<<<<< HEAD
     opt = ParlaiParser().parse_args([], print_args=False)
+=======
+<<<<<<< HEAD
+    opt = ParlaiParser().parse_args([], print_args=False)
+=======
+    opt = ParlaiParser().parse_args(print_args=False)
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> origin/master
     model_filenames = [
         'seq2seq.tar.gz',
         'transformer_ranker.tar.gz',

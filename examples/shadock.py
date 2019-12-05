@@ -46,6 +46,15 @@ if __name__ == '__main__':
 
     for _ in range(10):
         teacher = world.get_agents()[0]
+<<<<<<< HEAD
+<<<<<<< HEAD
+        # print(teacher.getID())
+        # sys.exit()
+        world.parley()
+        print(world.display())
+=======
+=======
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
         print(teacher.datatype)
         print(teacher.getID())
 <<<<<<< HEAD
@@ -56,6 +65,10 @@ if __name__ == '__main__':
         world.parley()
         # print(world.display())
 >>>>>>> c650b784d0b3dc391ab5c3b144f5db669ae728cf
+<<<<<<< HEAD
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+=======
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
         if world.epoch_done():
             print('EPOCH DONE')
             break

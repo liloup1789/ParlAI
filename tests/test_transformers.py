@@ -472,6 +472,10 @@ class TestTransformerGenerator(unittest.TestCase):
             ),
         )
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> origin/master
     @testing_utils.retry(ntries=3)
     def test_beamsearch_contextblocking(self):
         """
@@ -545,6 +549,11 @@ class TestTransformerGenerator(unittest.TestCase):
             # bleu-3 should be totally screwed
             self.assertLessEqual(valid['bleu-3'], 0.01)
 
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+>>>>>>> origin/master
     def test_nucleus(self):
         """
         Test nucleus generation.
