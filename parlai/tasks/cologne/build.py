@@ -10,6 +10,7 @@ def build(opt):
 
     # check if data had been previously built
     if not build_data.built(dpath, version_string=version):
+        print("SOMETHING IS WRONG")
         print('[building data: ' + dpath + ']')
 
         # make a clean directory if needed

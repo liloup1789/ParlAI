@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['wizard_20of_20wikipedia_20data_20collection_20task',['Wizard of Wikipedia Data Collection Task',['../md_parlai_mturk_tasks_wizard_of_wikipedia_README.html',1,'']]]
+  ['updating_20the_20documentation',['Updating the documentation',['../md_docs_README.html',1,'']]],
+  ['unigram_20agent',['Unigram Agent',['../md_parlai_agents_unigram_README.html',1,'']]]
 ];

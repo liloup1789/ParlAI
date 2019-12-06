@@ -1,0 +1,151 @@
+\hypertarget{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher}{}\section{parlai.\+tasks.\+self\+\_\+feeding.\+agents.\+Self\+Feeding\+M\+T\+L\+Teacher Class Reference}
+\label{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher}\index{parlai.\+tasks.\+self\+\_\+feeding.\+agents.\+Self\+Feeding\+M\+T\+L\+Teacher@{parlai.\+tasks.\+self\+\_\+feeding.\+agents.\+Self\+Feeding\+M\+T\+L\+Teacher}}
+
+
+Inheritance diagram for parlai.\+tasks.\+self\+\_\+feeding.\+agents.\+Self\+Feeding\+M\+T\+L\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+tasks.\+self\+\_\+feeding.\+agents.\+Self\+Feeding\+M\+T\+L\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_a422eb4bb783b661fb071405964faa27b}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, opt, shared=None)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_a6028394bf25ea9ae027bcf59a302a72c}{observe} (self, observation)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_ab27a186b935f2194fb38e56bfe14b86c}{batch\+\_\+act} (self, batch\+\_\+observation)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_ac4ee43a50c54d2033be6eb5731650ab3}{act} (self)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_a19777439481c688e85f355802ff4a791}{get\+\_\+task\+\_\+index} (self)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_a2edc59dcf9cae5a9d9c58f955c52d749}{report} (self)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_a7e8b6a7c6d8d05a46e0ed6da2b0988cb}{add\+\_\+cmdline\+\_\+args} (argparser)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_acdd93c4e8e79cc6e609709e2c8cae87e}{sampling\+\_\+prob}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_a7a63c46aea820d9d59650ea447417b60}{task\+\_\+idx\+\_\+assignment}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_affab31c63e5fd885ebd2be70aa6fb945}{new\+\_\+task}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_adb760b673e0b9218a3e5f2c142373f23}{random}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_a355293f82aaba94d2db593fd836de9dd}{task\+\_\+idx}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Creates a teacher that is actually a set of teachers each based on a task string--
+each of these teachers will get called in turn, either randomly or in order. They
+are all in the same world (they are the same agent switching tasks).
+
+More specifically, this child class of MultiTaskTeacher supports multitask learning
+with batches (ensuring that all batches only have data from a single task at a time)
+\end{DoxyVerb}
+ 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_a422eb4bb783b661fb071405964faa27b}\label{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_a422eb4bb783b661fb071405964faa27b}} 
+\index{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher@{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher@{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+self\+\_\+feeding.\+agents.\+Self\+Feeding\+M\+T\+L\+Teacher.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{shared = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_ac4ee43a50c54d2033be6eb5731650ab3}\label{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_ac4ee43a50c54d2033be6eb5731650ab3}} 
+\index{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher@{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher}!act@{act}}
+\index{act@{act}!parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher@{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher}}
+\subsubsection{\texorpdfstring{act()}{act()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+self\+\_\+feeding.\+agents.\+Self\+Feeding\+M\+T\+L\+Teacher.\+act (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_a7e8b6a7c6d8d05a46e0ed6da2b0988cb}\label{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_a7e8b6a7c6d8d05a46e0ed6da2b0988cb}} 
+\index{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher@{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher}!add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}}
+\index{add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}!parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher@{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher}}
+\subsubsection{\texorpdfstring{add\+\_\+cmdline\+\_\+args()}{add\_cmdline\_args()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+self\+\_\+feeding.\+agents.\+Self\+Feeding\+M\+T\+L\+Teacher.\+add\+\_\+cmdline\+\_\+args (\begin{DoxyParamCaption}\item[{}]{argparser }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_ab27a186b935f2194fb38e56bfe14b86c}\label{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_ab27a186b935f2194fb38e56bfe14b86c}} 
+\index{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher@{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher}!batch\+\_\+act@{batch\+\_\+act}}
+\index{batch\+\_\+act@{batch\+\_\+act}!parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher@{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher}}
+\subsubsection{\texorpdfstring{batch\+\_\+act()}{batch\_act()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+self\+\_\+feeding.\+agents.\+Self\+Feeding\+M\+T\+L\+Teacher.\+batch\+\_\+act (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{batch\+\_\+observation }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_a19777439481c688e85f355802ff4a791}\label{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_a19777439481c688e85f355802ff4a791}} 
+\index{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher@{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher}!get\+\_\+task\+\_\+index@{get\+\_\+task\+\_\+index}}
+\index{get\+\_\+task\+\_\+index@{get\+\_\+task\+\_\+index}!parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher@{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher}}
+\subsubsection{\texorpdfstring{get\+\_\+task\+\_\+index()}{get\_task\_index()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+self\+\_\+feeding.\+agents.\+Self\+Feeding\+M\+T\+L\+Teacher.\+get\+\_\+task\+\_\+index (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_a6028394bf25ea9ae027bcf59a302a72c}\label{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_a6028394bf25ea9ae027bcf59a302a72c}} 
+\index{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher@{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher}!observe@{observe}}
+\index{observe@{observe}!parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher@{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher}}
+\subsubsection{\texorpdfstring{observe()}{observe()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+self\+\_\+feeding.\+agents.\+Self\+Feeding\+M\+T\+L\+Teacher.\+observe (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{observation }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_a2edc59dcf9cae5a9d9c58f955c52d749}\label{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_a2edc59dcf9cae5a9d9c58f955c52d749}} 
+\index{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher@{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher}!report@{report}}
+\index{report@{report}!parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher@{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher}}
+\subsubsection{\texorpdfstring{report()}{report()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+self\+\_\+feeding.\+agents.\+Self\+Feeding\+M\+T\+L\+Teacher.\+report (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_affab31c63e5fd885ebd2be70aa6fb945}\label{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_affab31c63e5fd885ebd2be70aa6fb945}} 
+\index{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher@{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher}!new\+\_\+task@{new\+\_\+task}}
+\index{new\+\_\+task@{new\+\_\+task}!parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher@{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher}}
+\subsubsection{\texorpdfstring{new\+\_\+task}{new\_task}}
+{\footnotesize\ttfamily parlai.\+tasks.\+self\+\_\+feeding.\+agents.\+Self\+Feeding\+M\+T\+L\+Teacher.\+new\+\_\+task}
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_adb760b673e0b9218a3e5f2c142373f23}\label{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_adb760b673e0b9218a3e5f2c142373f23}} 
+\index{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher@{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher}!random@{random}}
+\index{random@{random}!parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher@{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher}}
+\subsubsection{\texorpdfstring{random}{random}}
+{\footnotesize\ttfamily parlai.\+tasks.\+self\+\_\+feeding.\+agents.\+Self\+Feeding\+M\+T\+L\+Teacher.\+random}
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_acdd93c4e8e79cc6e609709e2c8cae87e}\label{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_acdd93c4e8e79cc6e609709e2c8cae87e}} 
+\index{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher@{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher}!sampling\+\_\+prob@{sampling\+\_\+prob}}
+\index{sampling\+\_\+prob@{sampling\+\_\+prob}!parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher@{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher}}
+\subsubsection{\texorpdfstring{sampling\+\_\+prob}{sampling\_prob}}
+{\footnotesize\ttfamily parlai.\+tasks.\+self\+\_\+feeding.\+agents.\+Self\+Feeding\+M\+T\+L\+Teacher.\+sampling\+\_\+prob}
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_a355293f82aaba94d2db593fd836de9dd}\label{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_a355293f82aaba94d2db593fd836de9dd}} 
+\index{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher@{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher}!task\+\_\+idx@{task\+\_\+idx}}
+\index{task\+\_\+idx@{task\+\_\+idx}!parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher@{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher}}
+\subsubsection{\texorpdfstring{task\+\_\+idx}{task\_idx}}
+{\footnotesize\ttfamily parlai.\+tasks.\+self\+\_\+feeding.\+agents.\+Self\+Feeding\+M\+T\+L\+Teacher.\+task\+\_\+idx}
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_a7a63c46aea820d9d59650ea447417b60}\label{classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1SelfFeedingMTLTeacher_a7a63c46aea820d9d59650ea447417b60}} 
+\index{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher@{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher}!task\+\_\+idx\+\_\+assignment@{task\+\_\+idx\+\_\+assignment}}
+\index{task\+\_\+idx\+\_\+assignment@{task\+\_\+idx\+\_\+assignment}!parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher@{parlai\+::tasks\+::self\+\_\+feeding\+::agents\+::\+Self\+Feeding\+M\+T\+L\+Teacher}}
+\subsubsection{\texorpdfstring{task\+\_\+idx\+\_\+assignment}{task\_idx\_assignment}}
+{\footnotesize\ttfamily parlai.\+tasks.\+self\+\_\+feeding.\+agents.\+Self\+Feeding\+M\+T\+L\+Teacher.\+task\+\_\+idx\+\_\+assignment}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/tasks/self\+\_\+feeding/\hyperlink{parlai_2tasks_2self__feeding_2agents_8py}{agents.\+py}\end{DoxyCompactItemize}

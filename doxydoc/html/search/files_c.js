@@ -1,6 +1,7 @@
 var searchData=
 [
   ['make_5fcontrol_5fdataset_2epy',['make_control_dataset.py',['../make__control__dataset_8py.html',1,'']]],
+  ['manager_5futils_2epy',['manager_utils.py',['../manager__utils_8py.html',1,'']]],
   ['memnn_2epy',['memnn.py',['../memnn_8py.html',1,'']]],
   ['memnn_5ffeedback_2epy',['memnn_feedback.py',['../memnn__feedback_8py.html',1,'']]],
   ['memnn_5fv0_2epy',['memnn_v0.py',['../memnn__v0_8py.html',1,'']]],

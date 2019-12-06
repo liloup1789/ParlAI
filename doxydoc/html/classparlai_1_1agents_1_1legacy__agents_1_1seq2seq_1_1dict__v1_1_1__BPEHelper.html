@@ -112,9 +112,7 @@ This class just wraps around the official subword-nmt repository.
 This API expects the user to call tokenize() onto the training data,
 then call finalize() to learn the encodings, and then iterate over the data
 in a second pass, calling tokenize() again to get processed output.
-</pre> 
-<p class="definition">Definition at line <a class="el" href="dict__v1_8py_source.html#l00669">669</a> of file <a class="el" href="dict__v1_8py_source.html">dict_v1.py</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a95e6fa33247082a01355d39ee96fed39"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a95e6fa33247082a01355d39ee96fed39">&#9670;&nbsp;</a></span>__init__()</h2>
 
@@ -147,8 +145,6 @@ If it does not, codecs will be saved there after a call to `finalize()`.
 
 :param codecs_filename: place to save/load codecs.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="dict__v1_8py_source.html#l00680">680</a> of file <a class="el" href="dict__v1_8py_source.html">dict_v1.py</a>.</p>
-
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -197,19 +193,6 @@ If it does not, codecs will be saved there after a call to `finalize()`.
 :param minfreq: Minimum frequency of a token before forced BPE
     decomposition. If &lt;= 0 will use subword-nmt default of 2.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="dict__v1_8py_source.html#l00720">720</a> of file <a class="el" href="dict__v1_8py_source.html">dict_v1.py</a>.</p>
-
-<p class="reference">References <a class="el" href="dict__v0_8py_source.html#l00690">parlai.agents.legacy_agents.seq2seq.dict_v0._BPEHelper._load_from_codecs()</a>, <a class="el" href="dict__v1_8py_source.html#l00700">parlai.agents.legacy_agents.seq2seq.dict_v1._BPEHelper._load_from_codecs()</a>, <a class="el" href="dict__v0_8py_source.html#l00686">parlai.agents.legacy_agents.seq2seq.dict_v0._BPEHelper.codecs</a>, <a class="el" href="dict__v1_8py_source.html#l00696">parlai.agents.legacy_agents.seq2seq.dict_v1._BPEHelper.codecs</a>, and <a class="el" href="messenger_2core_2shared__utils_8py_source.html#l00030">parlai.messenger.core.shared_utils.format</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1dict__v1_1_1__BPEHelper_a90568a5897058075adae4b066693c0cc_cgraph.png" border="0" usemap="#classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1dict__v1_1_1__BPEHelper_a90568a5897058075adae4b066693c0cc_cgraph" alt=""/></div>
-<map name="classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1dict__v1_1_1__BPEHelper_a90568a5897058075adae4b066693c0cc_cgraph" id="classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1dict__v1_1_1__BPEHelper_a90568a5897058075adae4b066693c0cc_cgraph">
-<area shape="rect" id="node2" href="classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1dict__v0_1_1__BPEHelper.html#add00536299095bb7d3a0bc29df60569b" title="parlai.agents.legacy\l_agents.seq2seq.dict\l_v0._BPEHelper._load_from\l_codecs" alt="" coords="217,5,404,76"/>
-<area shape="rect" id="node3" href="classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1dict__v1_1_1__BPEHelper.html#a1c3e021fc2cb9e5bace6c1cadbf17975" title="parlai.agents.legacy\l_agents.seq2seq.dict\l_v1._BPEHelper._load_from\l_codecs" alt="" coords="217,100,404,171"/>
-</map>
-</div>
-
 </div>
 </div>
 <a id="a4123dd721a13dc6607498ae29d7dd8a3"></a>
@@ -244,39 +227,6 @@ Otherwise, returns the regularly split tokens that will train the bpe.
 :param text: str. Raw text to tokenize.
 :return: a list of tokens. Will use BPE once finalized.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="dict__v1_8py_source.html#l00704">704</a> of file <a class="el" href="dict__v1_8py_source.html">dict_v1.py</a>.</p>
-
-<p class="reference">References <a class="el" href="dict__v0_8py_source.html#l00692">parlai.agents.legacy_agents.seq2seq.dict_v0._BPEHelper.bpe</a>, <a class="el" href="dict__v1_8py_source.html#l00702">parlai.agents.legacy_agents.seq2seq.dict_v1._BPEHelper.bpe</a>, <a class="el" href="dict__v0_8py_source.html#l00684">parlai.agents.legacy_agents.seq2seq.dict_v0._BPEHelper.splitter</a>, and <a class="el" href="dict__v1_8py_source.html#l00694">parlai.agents.legacy_agents.seq2seq.dict_v1._BPEHelper.splitter</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="dict_8py_source.html#l00737">parlai.core.dict.DictionaryAgent.act()</a>, <a class="el" href="dict_8py_source.html#l00507">parlai.core.dict.DictionaryAgent.span_tokenize()</a>, and <a class="el" href="dict_8py_source.html#l00699">parlai.core.dict.DictionaryAgent.txt2vec()</a>.</p>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1dict__v1_1_1__BPEHelper_a4123dd721a13dc6607498ae29d7dd8a3_icgraph.png" border="0" usemap="#classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1dict__v1_1_1__BPEHelper_a4123dd721a13dc6607498ae29d7dd8a3_icgraph" alt=""/></div>
-<map name="classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1dict__v1_1_1__BPEHelper_a4123dd721a13dc6607498ae29d7dd8a3_icgraph" id="classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1dict__v1_1_1__BPEHelper_a4123dd721a13dc6607498ae29d7dd8a3_icgraph">
-<area shape="rect" id="node2" href="classparlai_1_1core_1_1dict_1_1DictionaryAgent.html#af34b92857b41748aafdecee34ebf9345" title="parlai.core.dict.Dictionary\lAgent.act" alt="" coords="225,57,396,99"/>
-<area shape="rect" id="node3" href="classparlai_1_1core_1_1dict_1_1DictionaryAgent.html#a8fede3cf83af6a47c5dd4bb356de3350" title="parlai.core.dict.Dictionary\lAgent.span_tokenize" alt="" coords="225,123,396,164"/>
-<area shape="rect" id="node4" href="classparlai_1_1core_1_1dict_1_1DictionaryAgent.html#abc3baf742422fc7cdaece698224709d4" title="parlai.core.dict.Dictionary\lAgent.txt2vec" alt="" coords="225,188,396,229"/>
-<area shape="rect" id="node5" href="classparlai_1_1core_1_1dict_1_1DictionaryAgent.html#ad34c4135329f6768d22d519c3c483d68" title="parlai.core.dict.Dictionary\lAgent.parse" alt="" coords="444,188,615,229"/>
-<area shape="rect" id="node6" href="classparlai_1_1core_1_1torch__agent_1_1History.html#a82e02d0b34707b2e00b95bc659411bae" title="parlai.core.torch_agent.\lHistory.reset" alt="" coords="699,5,858,47"/>
-<area shape="rect" id="node8" href="classlight__chats_1_1graph_1_1Graph.html#a7b3fe43bf1e2b53fe7a2e22a24d77ef2" title="light_chats.graph.Graph.get\l_reverse_action" alt="" coords="687,71,870,112"/>
-<area shape="rect" id="node9" href="classlight__chats_1_1graph_1_1Graph.html#accd7dfd84e4f2bee3fc3fbac8d8577cd" title="light_chats.graph.Graph.valid_exec" alt="" coords="665,137,892,163"/>
-<area shape="rect" id="node10" href="classlight__chats_1_1graph_1_1Graph.html#a9aede2dd27f6a9ab66f38eaa5f649195" title="light_chats.graph.Graph.parse_exec" alt="" coords="663,254,894,281"/>
-<area shape="rect" id="node13" href="classmastering__the__dungeon_1_1tasks_1_1graph__world2_1_1graph_1_1Graph.html#a3e15de765a5c825f15f66737b2e9118e" title="mastering_the_dungeon.tasks.graph\l_world2.graph.Graph.parse_exec" alt="" coords="663,188,895,229"/>
-<area shape="rect" id="node14" href="classkvmemnn_1_1KvmemnnAgent.html#ac7dba84c37dab7ef33f52d263fbdbdc7" title="kvmemnn.KvmemnnAgent.batchify" alt="" coords="665,305,892,331"/>
-<area shape="rect" id="node19" href="classagent_1_1memnn__feedback_1_1MemnnFeedbackAgent.html#a901865f6607e3b5509831785bc1e29d0" title="agent.memnn_feedback.Memnn\lFeedbackAgent.batchify" alt="" coords="675,356,883,397"/>
-<area shape="rect" id="node7" href="classparlai_1_1core_1_1torch__agent_1_1History.html#ac7bdfbe78c9f6aed1118161bd24a7c8e" title="parlai.core.torch_agent.\lHistory.update_history" alt="" coords="982,5,1141,47"/>
-<area shape="rect" id="node11" href="classmastering__the__dungeon_1_1tasks_1_1graph__world2_1_1graph_1_1Graph.html#a062ee34ffc89612a75b281a024f74c55" title="mastering_the_dungeon.tasks.graph\l_world2.graph.Graph.update_world" alt="" coords="945,184,1177,225"/>
-<area shape="rect" id="node12" href="classlight__chats_1_1graph_1_1Graph.html#ab4e757d18538326e65b8ed2dce71d9fa" title="light_chats.graph.Graph.update\l_world" alt="" coords="960,249,1163,291"/>
-<area shape="rect" id="node15" href="classkvmemnn_1_1KvmemnnAgent.html#a2a2c0f653125850d739b84e0c55e6796" title="kvmemnn.KvmemnnAgent.batch_act" alt="" coords="943,315,1180,342"/>
-<area shape="rect" id="node16" href="classtransresnet_1_1transresnet_1_1TransresnetAgent.html#ad59fea461b2ea1f9731742901203bdd7" title="transresnet.transresnet.\lTransresnetAgent.act" alt="" coords="1267,243,1427,284"/>
-<area shape="rect" id="node17" href="classmastering__the__dungeon_1_1agents_1_1graph__world2_1_1agents_1_1ModelAgentBase.html#a768f25fa424b2cd4d1de8e62bfed970a" title="mastering_the_dungeon.agents.graph\l_world2.agents.ModelAgentBase.act" alt="" coords="1228,308,1467,349"/>
-<area shape="rect" id="node18" href="classkvmemnn_1_1KvmemnnAgent.html#a6f57723b871277392a3f3fd627c717d8" title="kvmemnn.KvmemnnAgent.act" alt="" coords="1248,374,1447,401"/>
-<area shape="rect" id="node20" href="classagent_1_1memnn__feedback_1_1MemnnFeedbackAgent.html#a0988c186c27ab70d318ea30e39a0a5cc" title="agent.memnn_feedback.Memnn\lFeedbackAgent.batch_act" alt="" coords="957,367,1165,408"/>
-<area shape="rect" id="node21" href="classagent_1_1memnn__feedback_1_1MemnnFeedbackAgent.html#ab221141e0a956be465e718bb349e7554" title="agent.memnn_feedback.Memnn\lFeedbackAgent.act" alt="" coords="1243,425,1451,467"/>
-</map>
-</div>
-
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -292,10 +242,6 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dict__v1_8py_source.html#l00702">702</a> of file <a class="el" href="dict__v1_8py_source.html">dict_v1.py</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="gpt2__helper_8py_source.html#l00144">parlai.core.gpt2_helper.Gpt2BpeHelper.encode()</a>, <a class="el" href="dict__v1_8py_source.html#l00704">parlai.agents.legacy_agents.seq2seq.dict_v1._BPEHelper.tokenize()</a>, and <a class="el" href="dict_8py_source.html#l00813">parlai.core.dict._BPEHelper.tokenize()</a>.</p>
-
 </div>
 </div>
 <a id="a610fc5289a22d9bfe229cd090f647d43"></a>
@@ -309,10 +255,6 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="dict__v1_8py_source.html#l00696">696</a> of file <a class="el" href="dict__v1_8py_source.html">dict_v1.py</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="dict_8py_source.html#l00870">parlai.core.dict._BPEHelper.copy_codecs_file()</a>, <a class="el" href="dict__v1_8py_source.html#l00720">parlai.agents.legacy_agents.seq2seq.dict_v1._BPEHelper.finalize()</a>, and <a class="el" href="dict_8py_source.html#l00830">parlai.core.dict._BPEHelper.finalize()</a>.</p>
 
 </div>
 </div>
@@ -328,14 +270,10 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dict__v1_8py_source.html#l00694">694</a> of file <a class="el" href="dict__v1_8py_source.html">dict_v1.py</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="dict__v1_8py_source.html#l00704">parlai.agents.legacy_agents.seq2seq.dict_v1._BPEHelper.tokenize()</a>, and <a class="el" href="dict_8py_source.html#l00813">parlai.core.dict._BPEHelper.tokenize()</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>parlai/agents/legacy_agents/seq2seq/<a class="el" href="dict__v1_8py_source.html">dict_v1.py</a></li>
+<li>parlai/agents/legacy_agents/seq2seq/<a class="el" href="dict__v1_8py.html">dict_v1.py</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -1,0 +1,145 @@
+\hypertarget{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader}{}\section{parlai.\+agents.\+drqa.\+rnn\+\_\+reader.\+Rnn\+Doc\+Reader Class Reference}
+\label{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader}\index{parlai.\+agents.\+drqa.\+rnn\+\_\+reader.\+Rnn\+Doc\+Reader@{parlai.\+agents.\+drqa.\+rnn\+\_\+reader.\+Rnn\+Doc\+Reader}}
+
+
+Inheritance diagram for parlai.\+agents.\+drqa.\+rnn\+\_\+reader.\+Rnn\+Doc\+Reader\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+agents.\+drqa.\+rnn\+\_\+reader.\+Rnn\+Doc\+Reader\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=199pt]{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_aad7ee892d313b0cd61ddeecba9550789}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_a65606a7fed62ec853d7dd6863644b417}{opt}, padding\+\_\+idx=0)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_ac34674c2a5c3a9b66f10e501725c685a}{forward} (self, x1, x1\+\_\+f, x1\+\_\+mask, x2, x2\+\_\+mask)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_a65606a7fed62ec853d7dd6863644b417}{opt}
+\item 
+\hyperlink{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_ac825a2ff134f93fa9098cab35715fc23}{embedding}
+\item 
+\hyperlink{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_a2d7bda1b45827ea5864b64a766bb1ce9}{qemb\+\_\+match}
+\item 
+\hyperlink{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_ad0f835adb34168f24a3b391febb1799c}{doc\+\_\+rnn}
+\item 
+\hyperlink{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_a6e5d5208e7fb45c3227abf28d965146d}{question\+\_\+rnn}
+\item 
+\hyperlink{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_ac1384d422cfcf625385cd1de3691c6b6}{self\+\_\+attn}
+\item 
+\hyperlink{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_ad3f35e5ca950ee0bc56ba3dd41f38fdb}{start\+\_\+attn}
+\item 
+\hyperlink{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_a1d0098c2e2d1ddbc4fdfc40ddc49da6f}{end\+\_\+attn}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+dictionary \hyperlink{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_a88938b5c3e9017f4e26b2af148917e35}{R\+N\+N\+\_\+\+T\+Y\+P\+ES} = \{\textquotesingle{}lstm\textquotesingle{}\+: nn.\+L\+S\+TM, \textquotesingle{}gru\textquotesingle{}\+: nn.\+G\+RU, \textquotesingle{}rnn\textquotesingle{}\+: nn.\+R\+NN\}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Network for the Document Reader module of DrQA.
+\end{DoxyVerb}
+ 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_aad7ee892d313b0cd61ddeecba9550789}\label{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_aad7ee892d313b0cd61ddeecba9550789}} 
+\index{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader@{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader@{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+drqa.\+rnn\+\_\+reader.\+Rnn\+Doc\+Reader.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{padding\+\_\+idx = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_ac34674c2a5c3a9b66f10e501725c685a}\label{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_ac34674c2a5c3a9b66f10e501725c685a}} 
+\index{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader@{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader}!forward@{forward}}
+\index{forward@{forward}!parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader@{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader}}
+\subsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+drqa.\+rnn\+\_\+reader.\+Rnn\+Doc\+Reader.\+forward (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{x1,  }\item[{}]{x1\+\_\+f,  }\item[{}]{x1\+\_\+mask,  }\item[{}]{x2,  }\item[{}]{x2\+\_\+mask }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Inputs:
+x1 = document word indices             [batch * len_d]
+x1_f = document word features indices  [batch * len_d * nfeat]
+x1_mask = document padding mask        [batch * len_d]
+x2 = question word indices             [batch * len_q]
+x2_mask = question padding mask        [batch * len_q]
+\end{DoxyVerb}
+ 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_ad0f835adb34168f24a3b391febb1799c}\label{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_ad0f835adb34168f24a3b391febb1799c}} 
+\index{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader@{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader}!doc\+\_\+rnn@{doc\+\_\+rnn}}
+\index{doc\+\_\+rnn@{doc\+\_\+rnn}!parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader@{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader}}
+\subsubsection{\texorpdfstring{doc\+\_\+rnn}{doc\_rnn}}
+{\footnotesize\ttfamily parlai.\+agents.\+drqa.\+rnn\+\_\+reader.\+Rnn\+Doc\+Reader.\+doc\+\_\+rnn}
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_ac825a2ff134f93fa9098cab35715fc23}\label{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_ac825a2ff134f93fa9098cab35715fc23}} 
+\index{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader@{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader}!embedding@{embedding}}
+\index{embedding@{embedding}!parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader@{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader}}
+\subsubsection{\texorpdfstring{embedding}{embedding}}
+{\footnotesize\ttfamily parlai.\+agents.\+drqa.\+rnn\+\_\+reader.\+Rnn\+Doc\+Reader.\+embedding}
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_a1d0098c2e2d1ddbc4fdfc40ddc49da6f}\label{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_a1d0098c2e2d1ddbc4fdfc40ddc49da6f}} 
+\index{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader@{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader}!end\+\_\+attn@{end\+\_\+attn}}
+\index{end\+\_\+attn@{end\+\_\+attn}!parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader@{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader}}
+\subsubsection{\texorpdfstring{end\+\_\+attn}{end\_attn}}
+{\footnotesize\ttfamily parlai.\+agents.\+drqa.\+rnn\+\_\+reader.\+Rnn\+Doc\+Reader.\+end\+\_\+attn}
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_a65606a7fed62ec853d7dd6863644b417}\label{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_a65606a7fed62ec853d7dd6863644b417}} 
+\index{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader@{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader}!opt@{opt}}
+\index{opt@{opt}!parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader@{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader}}
+\subsubsection{\texorpdfstring{opt}{opt}}
+{\footnotesize\ttfamily parlai.\+agents.\+drqa.\+rnn\+\_\+reader.\+Rnn\+Doc\+Reader.\+opt}
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_a2d7bda1b45827ea5864b64a766bb1ce9}\label{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_a2d7bda1b45827ea5864b64a766bb1ce9}} 
+\index{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader@{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader}!qemb\+\_\+match@{qemb\+\_\+match}}
+\index{qemb\+\_\+match@{qemb\+\_\+match}!parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader@{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader}}
+\subsubsection{\texorpdfstring{qemb\+\_\+match}{qemb\_match}}
+{\footnotesize\ttfamily parlai.\+agents.\+drqa.\+rnn\+\_\+reader.\+Rnn\+Doc\+Reader.\+qemb\+\_\+match}
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_a6e5d5208e7fb45c3227abf28d965146d}\label{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_a6e5d5208e7fb45c3227abf28d965146d}} 
+\index{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader@{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader}!question\+\_\+rnn@{question\+\_\+rnn}}
+\index{question\+\_\+rnn@{question\+\_\+rnn}!parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader@{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader}}
+\subsubsection{\texorpdfstring{question\+\_\+rnn}{question\_rnn}}
+{\footnotesize\ttfamily parlai.\+agents.\+drqa.\+rnn\+\_\+reader.\+Rnn\+Doc\+Reader.\+question\+\_\+rnn}
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_a88938b5c3e9017f4e26b2af148917e35}\label{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_a88938b5c3e9017f4e26b2af148917e35}} 
+\index{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader@{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader}!R\+N\+N\+\_\+\+T\+Y\+P\+ES@{R\+N\+N\+\_\+\+T\+Y\+P\+ES}}
+\index{R\+N\+N\+\_\+\+T\+Y\+P\+ES@{R\+N\+N\+\_\+\+T\+Y\+P\+ES}!parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader@{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader}}
+\subsubsection{\texorpdfstring{R\+N\+N\+\_\+\+T\+Y\+P\+ES}{RNN\_TYPES}}
+{\footnotesize\ttfamily dictionary parlai.\+agents.\+drqa.\+rnn\+\_\+reader.\+Rnn\+Doc\+Reader.\+R\+N\+N\+\_\+\+T\+Y\+P\+ES = \{\textquotesingle{}lstm\textquotesingle{}\+: nn.\+L\+S\+TM, \textquotesingle{}gru\textquotesingle{}\+: nn.\+G\+RU, \textquotesingle{}rnn\textquotesingle{}\+: nn.\+R\+NN\}\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_ac1384d422cfcf625385cd1de3691c6b6}\label{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_ac1384d422cfcf625385cd1de3691c6b6}} 
+\index{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader@{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader}!self\+\_\+attn@{self\+\_\+attn}}
+\index{self\+\_\+attn@{self\+\_\+attn}!parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader@{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader}}
+\subsubsection{\texorpdfstring{self\+\_\+attn}{self\_attn}}
+{\footnotesize\ttfamily parlai.\+agents.\+drqa.\+rnn\+\_\+reader.\+Rnn\+Doc\+Reader.\+self\+\_\+attn}
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_ad3f35e5ca950ee0bc56ba3dd41f38fdb}\label{classparlai_1_1agents_1_1drqa_1_1rnn__reader_1_1RnnDocReader_ad3f35e5ca950ee0bc56ba3dd41f38fdb}} 
+\index{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader@{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader}!start\+\_\+attn@{start\+\_\+attn}}
+\index{start\+\_\+attn@{start\+\_\+attn}!parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader@{parlai\+::agents\+::drqa\+::rnn\+\_\+reader\+::\+Rnn\+Doc\+Reader}}
+\subsubsection{\texorpdfstring{start\+\_\+attn}{start\_attn}}
+{\footnotesize\ttfamily parlai.\+agents.\+drqa.\+rnn\+\_\+reader.\+Rnn\+Doc\+Reader.\+start\+\_\+attn}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/agents/drqa/\hyperlink{rnn__reader_8py}{rnn\+\_\+reader.\+py}\end{DoxyCompactItemize}

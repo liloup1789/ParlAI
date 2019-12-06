@@ -125,8 +125,6 @@ The index and it's significance in the cheatsheet is shown below:
 :param convo:
     The dialogue between USER and ASSISTANT [after smoothening]
 </pre> 
-<p class="definition">Definition at line <a class="el" href="tm__utils_8py_source.html#l00039">39</a> of file <a class="el" href="tm__utils_8py_source.html">tm_utils.py</a>.</p>
-
 </div>
 </div>
 <a id="ad5d13cd462bd26919f078aa93174e9cd"></a>
@@ -164,18 +162,6 @@ Assumption: utt1 is the one being popped off from the stack and the utt2
 :param utt2:
     Next utterance(json object) from a speaker same as utt1
 </pre> 
-<p class="definition">Definition at line <a class="el" href="tm__utils_8py_source.html#l00094">94</a> of file <a class="el" href="tm__utils_8py_source.html">tm_utils.py</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="tm__utils_8py_source.html#l00117">parlai.tasks.taskmaster.tm_utils.smoothen_convo()</a>.</p>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="namespaceparlai_1_1tasks_1_1taskmaster_1_1tm__utils_ad5d13cd462bd26919f078aa93174e9cd_icgraph.png" border="0" usemap="#namespaceparlai_1_1tasks_1_1taskmaster_1_1tm__utils_ad5d13cd462bd26919f078aa93174e9cd_icgraph" alt=""/></div>
-<map name="namespaceparlai_1_1tasks_1_1taskmaster_1_1tm__utils_ad5d13cd462bd26919f078aa93174e9cd_icgraph" id="namespaceparlai_1_1tasks_1_1taskmaster_1_1tm__utils_ad5d13cd462bd26919f078aa93174e9cd_icgraph">
-<area shape="rect" id="node2" href="namespaceparlai_1_1tasks_1_1taskmaster_1_1tm__utils.html#ad9cc917cf497b3cd81ccb76a719cf1b7" title="parlai.tasks.taskmaster.tm\l_utils.smoothen_convo" alt="" coords="231,5,408,47"/>
-</map>
-</div>
-
 </div>
 </div>
 <a id="ad9cc917cf497b3cd81ccb76a719cf1b7"></a>
@@ -204,26 +190,14 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <pre class="fragment">Aggregates contiguous responses by the same speaker in the data so that data
-eventually contains alternations between USER and ASSISTANT
+eventually contains alternations between USER and ASSISTANT.
+
 :param conversation:
     The dialogue between USER and ASSISTANT with possible multiple contiguous
     speeches by the same speaker
 :param opt:
     options dict, mainly useful for accessing value of exclude_invalid_data
 </pre> 
-<p class="definition">Definition at line <a class="el" href="tm__utils_8py_source.html#l00117">117</a> of file <a class="el" href="tm__utils_8py_source.html">tm_utils.py</a>.</p>
-
-<p class="reference">References <a class="el" href="tm__utils_8py_source.html#l00094">parlai.tasks.taskmaster.tm_utils.join_speech()</a>, and <a class="el" href="tm__utils_8py_source.html#l00080">parlai.tasks.taskmaster.tm_utils.update_indexes()</a>.</p>
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="namespaceparlai_1_1tasks_1_1taskmaster_1_1tm__utils_ad9cc917cf497b3cd81ccb76a719cf1b7_cgraph.png" border="0" usemap="#namespaceparlai_1_1tasks_1_1taskmaster_1_1tm__utils_ad9cc917cf497b3cd81ccb76a719cf1b7_cgraph" alt=""/></div>
-<map name="namespaceparlai_1_1tasks_1_1taskmaster_1_1tm__utils_ad9cc917cf497b3cd81ccb76a719cf1b7_cgraph" id="namespaceparlai_1_1tasks_1_1taskmaster_1_1tm__utils_ad9cc917cf497b3cd81ccb76a719cf1b7_cgraph">
-<area shape="rect" id="node2" href="namespaceparlai_1_1tasks_1_1taskmaster_1_1tm__utils.html#ad5d13cd462bd26919f078aa93174e9cd" title="parlai.tasks.taskmaster.tm\l_utils.join_speech" alt="" coords="231,5,408,47"/>
-<area shape="rect" id="node3" href="namespaceparlai_1_1tasks_1_1taskmaster_1_1tm__utils.html#ad0c8c99eb4b5152ca8cec2a8fe7895fd" title="parlai.tasks.taskmaster.tm\l_utils.update_indexes" alt="" coords="231,71,408,112"/>
-</map>
-</div>
-
 </div>
 </div>
 <a id="ad0c8c99eb4b5152ca8cec2a8fe7895fd"></a>
@@ -241,24 +215,12 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">Re-assigns indexes after smoothening (mostly for clarity purposes)
-Doesn't really matter since we never index by specifically using the "index"
-field of the json obj
+<pre class="fragment">Re-assigns indexes after smoothening (mostly for clarity purposes) Doesn't really
+matter since we never index by specifically using the "index" field of the json obj.
+
 :param conversation:
     The dialogue between USER and ASSISTANT with inconsistent indices
 </pre> 
-<p class="definition">Definition at line <a class="el" href="tm__utils_8py_source.html#l00080">80</a> of file <a class="el" href="tm__utils_8py_source.html">tm_utils.py</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="tm__utils_8py_source.html#l00117">parlai.tasks.taskmaster.tm_utils.smoothen_convo()</a>.</p>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="namespaceparlai_1_1tasks_1_1taskmaster_1_1tm__utils_ad0c8c99eb4b5152ca8cec2a8fe7895fd_icgraph.png" border="0" usemap="#namespaceparlai_1_1tasks_1_1taskmaster_1_1tm__utils_ad0c8c99eb4b5152ca8cec2a8fe7895fd_icgraph" alt=""/></div>
-<map name="namespaceparlai_1_1tasks_1_1taskmaster_1_1tm__utils_ad0c8c99eb4b5152ca8cec2a8fe7895fd_icgraph" id="namespaceparlai_1_1tasks_1_1taskmaster_1_1tm__utils_ad0c8c99eb4b5152ca8cec2a8fe7895fd_icgraph">
-<area shape="rect" id="node2" href="namespaceparlai_1_1tasks_1_1taskmaster_1_1tm__utils.html#ad9cc917cf497b3cd81ccb76a719cf1b7" title="parlai.tasks.taskmaster.tm\l_utils.smoothen_convo" alt="" coords="231,5,408,47"/>
-</map>
-</div>
-
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
@@ -274,8 +236,6 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tm__utils_8py_source.html#l00020">20</a> of file <a class="el" href="tm__utils_8py_source.html">tm_utils.py</a>.</p>
-
 </div>
 </div>
 <a id="a04fbf1f7345d36a9aaec7d12939aaaa2"></a>
@@ -289,8 +249,6 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="tm__utils_8py_source.html#l00017">17</a> of file <a class="el" href="tm__utils_8py_source.html">tm_utils.py</a>.</p>
 
 </div>
 </div>
@@ -309,8 +267,6 @@ Here is the caller graph for this function:</div>
 <p><pre class="fragment">                                                        #
 </pre><p> Constants # # </p>
 
-<p class="definition">Definition at line <a class="el" href="tm__utils_8py_source.html#l00015">15</a> of file <a class="el" href="tm__utils_8py_source.html">tm_utils.py</a>.</p>
-
 </div>
 </div>
 <a id="ad5b7d11e81386ebda37fb85e21ae9cdd"></a>
@@ -324,8 +280,6 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="tm__utils_8py_source.html#l00018">18</a> of file <a class="el" href="tm__utils_8py_source.html">tm_utils.py</a>.</p>
 
 </div>
 </div>
@@ -341,8 +295,6 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="tm__utils_8py_source.html#l00016">16</a> of file <a class="el" href="tm__utils_8py_source.html">tm_utils.py</a>.</p>
-
 </div>
 </div>
 <a id="a44bd1a37b8500c21821e726bd473bfc7"></a>
@@ -356,8 +308,6 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="tm__utils_8py_source.html#l00019">19</a> of file <a class="el" href="tm__utils_8py_source.html">tm_utils.py</a>.</p>
 
 </div>
 </div>

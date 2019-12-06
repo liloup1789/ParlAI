@@ -1,0 +1,85 @@
+\hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized}{}\section{projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+rated\+\_\+to\+\_\+polarized Namespace Reference}
+\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized}\index{projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+rated\+\_\+to\+\_\+polarized}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_acba2c1088cdc95f703203c9166b9499d}{setup\+\_\+args} ()
+\item 
+def \hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_abb1b1c7522da8d4703fc74cdb6422d87}{main} (\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_aeadc1d5335ee2fb1b0c70decb82bc14f}{config})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+string \hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_acbe72fcc7004d0b80aa7f984320d8741}{I\+N\+I\+T\+I\+A\+L\+\_\+\+P\+R\+O\+M\+PT} = \char`\"{}start a conversation\char`\"{}
+\item 
+string \hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_aa061990e0372910406b820e7a04a6e8b}{R\+E\+P\+O\+R\+T\+\_\+\+D\+IR} = \textquotesingle{}/private/home/bhancock/metadialog/mturk/reports\textquotesingle{}
+\item 
+string \hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_abd0fb646bc71faac6a792758d3bb9511}{D\+A\+T\+A\+\_\+\+D\+IR} = \textquotesingle{}/private/home/bhancock/metadialog/data\textquotesingle{}
+\item 
+string \hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_a3cc97f8360251c0c93aebeef66dbdaae}{D\+E\+F\+A\+U\+L\+T\+\_\+\+IN} = \hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_aa061990e0372910406b820e7a04a6e8b}{R\+E\+P\+O\+R\+T\+\_\+\+D\+IR} + \textquotesingle{}/20181105/pilot\+\_\+1.\+txt\textquotesingle{}
+\item 
+string \hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_a4eea690ec8641fee47b90c473377d0c6}{D\+E\+F\+A\+U\+L\+T\+\_\+\+O\+UT} = \hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_abd0fb646bc71faac6a792758d3bb9511}{D\+A\+T\+A\+\_\+\+D\+IR} + \textquotesingle{}/feedback\+\_\+classifier/temp.\+txt\textquotesingle{}
+\item 
+def \hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_aeadc1d5335ee2fb1b0c70decb82bc14f}{config} = \hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_acba2c1088cdc95f703203c9166b9499d}{setup\+\_\+args}()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_abb1b1c7522da8d4703fc74cdb6422d87}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_abb1b1c7522da8d4703fc74cdb6422d87}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}!main@{main}}
+\index{main@{main}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+rated\+\_\+to\+\_\+polarized.\+main (\begin{DoxyParamCaption}\item[{}]{config }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Extracts training data for the negative response classifier (NRC) from Mturk logs.
+
+input: file of logs (in ParlaiDialog format) from Mturk task 1 with turn-by-turn
+    quality ratings 1-5
+output: file of episodes (self-feeding format) w/ +1/-1 ratings indicating
+    positive/negative example
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_acba2c1088cdc95f703203c9166b9499d}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_acba2c1088cdc95f703203c9166b9499d}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}!setup\+\_\+args@{setup\+\_\+args}}
+\index{setup\+\_\+args@{setup\+\_\+args}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}}
+\subsubsection{\texorpdfstring{setup\+\_\+args()}{setup\_args()}}
+{\footnotesize\ttfamily def projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+rated\+\_\+to\+\_\+polarized.\+setup\+\_\+args (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_aeadc1d5335ee2fb1b0c70decb82bc14f}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_aeadc1d5335ee2fb1b0c70decb82bc14f}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}!config@{config}}
+\index{config@{config}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}}
+\subsubsection{\texorpdfstring{config}{config}}
+{\footnotesize\ttfamily def projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+rated\+\_\+to\+\_\+polarized.\+config = \hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_acba2c1088cdc95f703203c9166b9499d}{setup\+\_\+args}()}
+
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_abd0fb646bc71faac6a792758d3bb9511}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_abd0fb646bc71faac6a792758d3bb9511}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}!D\+A\+T\+A\+\_\+\+D\+IR@{D\+A\+T\+A\+\_\+\+D\+IR}}
+\index{D\+A\+T\+A\+\_\+\+D\+IR@{D\+A\+T\+A\+\_\+\+D\+IR}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}}
+\subsubsection{\texorpdfstring{D\+A\+T\+A\+\_\+\+D\+IR}{DATA\_DIR}}
+{\footnotesize\ttfamily string projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+rated\+\_\+to\+\_\+polarized.\+D\+A\+T\+A\+\_\+\+D\+IR = \textquotesingle{}/private/home/bhancock/metadialog/data\textquotesingle{}}
+
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_a3cc97f8360251c0c93aebeef66dbdaae}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_a3cc97f8360251c0c93aebeef66dbdaae}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}!D\+E\+F\+A\+U\+L\+T\+\_\+\+IN@{D\+E\+F\+A\+U\+L\+T\+\_\+\+IN}}
+\index{D\+E\+F\+A\+U\+L\+T\+\_\+\+IN@{D\+E\+F\+A\+U\+L\+T\+\_\+\+IN}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}}
+\subsubsection{\texorpdfstring{D\+E\+F\+A\+U\+L\+T\+\_\+\+IN}{DEFAULT\_IN}}
+{\footnotesize\ttfamily string projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+rated\+\_\+to\+\_\+polarized.\+D\+E\+F\+A\+U\+L\+T\+\_\+\+IN = \hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_aa061990e0372910406b820e7a04a6e8b}{R\+E\+P\+O\+R\+T\+\_\+\+D\+IR} + \textquotesingle{}/20181105/pilot\+\_\+1.\+txt\textquotesingle{}}
+
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_a4eea690ec8641fee47b90c473377d0c6}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_a4eea690ec8641fee47b90c473377d0c6}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}!D\+E\+F\+A\+U\+L\+T\+\_\+\+O\+UT@{D\+E\+F\+A\+U\+L\+T\+\_\+\+O\+UT}}
+\index{D\+E\+F\+A\+U\+L\+T\+\_\+\+O\+UT@{D\+E\+F\+A\+U\+L\+T\+\_\+\+O\+UT}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}}
+\subsubsection{\texorpdfstring{D\+E\+F\+A\+U\+L\+T\+\_\+\+O\+UT}{DEFAULT\_OUT}}
+{\footnotesize\ttfamily string projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+rated\+\_\+to\+\_\+polarized.\+D\+E\+F\+A\+U\+L\+T\+\_\+\+O\+UT = \hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_abd0fb646bc71faac6a792758d3bb9511}{D\+A\+T\+A\+\_\+\+D\+IR} + \textquotesingle{}/feedback\+\_\+classifier/temp.\+txt\textquotesingle{}}
+
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_acbe72fcc7004d0b80aa7f984320d8741}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_acbe72fcc7004d0b80aa7f984320d8741}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}!I\+N\+I\+T\+I\+A\+L\+\_\+\+P\+R\+O\+M\+PT@{I\+N\+I\+T\+I\+A\+L\+\_\+\+P\+R\+O\+M\+PT}}
+\index{I\+N\+I\+T\+I\+A\+L\+\_\+\+P\+R\+O\+M\+PT@{I\+N\+I\+T\+I\+A\+L\+\_\+\+P\+R\+O\+M\+PT}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}}
+\subsubsection{\texorpdfstring{I\+N\+I\+T\+I\+A\+L\+\_\+\+P\+R\+O\+M\+PT}{INITIAL\_PROMPT}}
+{\footnotesize\ttfamily string projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+rated\+\_\+to\+\_\+polarized.\+I\+N\+I\+T\+I\+A\+L\+\_\+\+P\+R\+O\+M\+PT = \char`\"{}start a conversation\char`\"{}}
+
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_aa061990e0372910406b820e7a04a6e8b}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_aa061990e0372910406b820e7a04a6e8b}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}!R\+E\+P\+O\+R\+T\+\_\+\+D\+IR@{R\+E\+P\+O\+R\+T\+\_\+\+D\+IR}}
+\index{R\+E\+P\+O\+R\+T\+\_\+\+D\+IR@{R\+E\+P\+O\+R\+T\+\_\+\+D\+IR}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}}
+\subsubsection{\texorpdfstring{R\+E\+P\+O\+R\+T\+\_\+\+D\+IR}{REPORT\_DIR}}
+{\footnotesize\ttfamily string projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+rated\+\_\+to\+\_\+polarized.\+R\+E\+P\+O\+R\+T\+\_\+\+D\+IR = \textquotesingle{}/private/home/bhancock/metadialog/mturk/reports\textquotesingle{}}
+

@@ -1,0 +1,76 @@
+\hypertarget{namespaceprojects_1_1self__feeding_1_1utils}{}\section{projects.\+self\+\_\+feeding.\+utils Namespace Reference}
+\label{namespaceprojects_1_1self__feeding_1_1utils}\index{projects.\+self\+\_\+feeding.\+utils@{projects.\+self\+\_\+feeding.\+utils}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classprojects_1_1self__feeding_1_1utils_1_1Parley}{Parley}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceprojects_1_1self__feeding_1_1utils_a82b7afe0cb01d90b1de3724f3a6b23fb}{sanitize\+\_\+parley} (parley)
+\item 
+def \hyperlink{namespaceprojects_1_1self__feeding_1_1utils_a3f3d055dc6c4058057baae7b240de5ec}{add\+\_\+person\+\_\+tokens} (responses, first\+\_\+speaker=None, last\+\_\+speaker=1)
+\item 
+def \hyperlink{namespaceprojects_1_1self__feeding_1_1utils_a813014fa481008e57bf444f8a3f88d3e}{extract\+\_\+fb\+\_\+episodes} (datafile)
+\item 
+def \hyperlink{namespaceprojects_1_1self__feeding_1_1utils_a7bfa2fe610a2d0da7968b1a2662e0c23}{extract\+\_\+parlai\+\_\+episodes} (datafile)
+\item 
+def \hyperlink{namespaceprojects_1_1self__feeding_1_1utils_a4523d4a7c4da698dda134e32acebe320}{episode\+\_\+to\+\_\+examples} (episode, histsz)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1utils_a3f3d055dc6c4058057baae7b240de5ec}\label{namespaceprojects_1_1self__feeding_1_1utils_a3f3d055dc6c4058057baae7b240de5ec}} 
+\index{projects\+::self\+\_\+feeding\+::utils@{projects\+::self\+\_\+feeding\+::utils}!add\+\_\+person\+\_\+tokens@{add\+\_\+person\+\_\+tokens}}
+\index{add\+\_\+person\+\_\+tokens@{add\+\_\+person\+\_\+tokens}!projects\+::self\+\_\+feeding\+::utils@{projects\+::self\+\_\+feeding\+::utils}}
+\subsubsection{\texorpdfstring{add\+\_\+person\+\_\+tokens()}{add\_person\_tokens()}}
+{\footnotesize\ttfamily def projects.\+self\+\_\+feeding.\+utils.\+add\+\_\+person\+\_\+tokens (\begin{DoxyParamCaption}\item[{}]{responses,  }\item[{}]{first\+\_\+speaker = {\ttfamily None},  }\item[{}]{last\+\_\+speaker = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Converts a list of responses into a single tag-separated string
+Args:
+    responses: list of responses (strings)
+    first_speaker: either 1 or 2; the owner of the first response
+    last_speaker: either 1 or 2; the owner of the last response
+        NOTE: if first_speaker is provided, it overrides last_speaker
+Output:
+    text: the concatenated text
+
+e.g.,
+responses = ["How are you?", "I'm doing fine!", "I'm glad to hear it!"]
+result = add_person_tokens(responses)
+result: "__p1__ How are you? __p2__ I'm doing fine! __p1__ I'm glad to
+    hear it!"
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1utils_a4523d4a7c4da698dda134e32acebe320}\label{namespaceprojects_1_1self__feeding_1_1utils_a4523d4a7c4da698dda134e32acebe320}} 
+\index{projects\+::self\+\_\+feeding\+::utils@{projects\+::self\+\_\+feeding\+::utils}!episode\+\_\+to\+\_\+examples@{episode\+\_\+to\+\_\+examples}}
+\index{episode\+\_\+to\+\_\+examples@{episode\+\_\+to\+\_\+examples}!projects\+::self\+\_\+feeding\+::utils@{projects\+::self\+\_\+feeding\+::utils}}
+\subsubsection{\texorpdfstring{episode\+\_\+to\+\_\+examples()}{episode\_to\_examples()}}
+{\footnotesize\ttfamily def projects.\+self\+\_\+feeding.\+utils.\+episode\+\_\+to\+\_\+examples (\begin{DoxyParamCaption}\item[{}]{episode,  }\item[{}]{histsz }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Converts an episode (list of Parleys) into self-feeding compatible examples.
+
+WARNING: we no longer require a histz when making a self-feeding file. Shortening of
+the history is typically done in the teacher file or in interactive mode.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1utils_a813014fa481008e57bf444f8a3f88d3e}\label{namespaceprojects_1_1self__feeding_1_1utils_a813014fa481008e57bf444f8a3f88d3e}} 
+\index{projects\+::self\+\_\+feeding\+::utils@{projects\+::self\+\_\+feeding\+::utils}!extract\+\_\+fb\+\_\+episodes@{extract\+\_\+fb\+\_\+episodes}}
+\index{extract\+\_\+fb\+\_\+episodes@{extract\+\_\+fb\+\_\+episodes}!projects\+::self\+\_\+feeding\+::utils@{projects\+::self\+\_\+feeding\+::utils}}
+\subsubsection{\texorpdfstring{extract\+\_\+fb\+\_\+episodes()}{extract\_fb\_episodes()}}
+{\footnotesize\ttfamily def projects.\+self\+\_\+feeding.\+utils.\+extract\+\_\+fb\+\_\+episodes (\begin{DoxyParamCaption}\item[{}]{datafile }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1utils_a7bfa2fe610a2d0da7968b1a2662e0c23}\label{namespaceprojects_1_1self__feeding_1_1utils_a7bfa2fe610a2d0da7968b1a2662e0c23}} 
+\index{projects\+::self\+\_\+feeding\+::utils@{projects\+::self\+\_\+feeding\+::utils}!extract\+\_\+parlai\+\_\+episodes@{extract\+\_\+parlai\+\_\+episodes}}
+\index{extract\+\_\+parlai\+\_\+episodes@{extract\+\_\+parlai\+\_\+episodes}!projects\+::self\+\_\+feeding\+::utils@{projects\+::self\+\_\+feeding\+::utils}}
+\subsubsection{\texorpdfstring{extract\+\_\+parlai\+\_\+episodes()}{extract\_parlai\_episodes()}}
+{\footnotesize\ttfamily def projects.\+self\+\_\+feeding.\+utils.\+extract\+\_\+parlai\+\_\+episodes (\begin{DoxyParamCaption}\item[{}]{datafile }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1utils_a82b7afe0cb01d90b1de3724f3a6b23fb}\label{namespaceprojects_1_1self__feeding_1_1utils_a82b7afe0cb01d90b1de3724f3a6b23fb}} 
+\index{projects\+::self\+\_\+feeding\+::utils@{projects\+::self\+\_\+feeding\+::utils}!sanitize\+\_\+parley@{sanitize\+\_\+parley}}
+\index{sanitize\+\_\+parley@{sanitize\+\_\+parley}!projects\+::self\+\_\+feeding\+::utils@{projects\+::self\+\_\+feeding\+::utils}}
+\subsubsection{\texorpdfstring{sanitize\+\_\+parley()}{sanitize\_parley()}}
+{\footnotesize\ttfamily def projects.\+self\+\_\+feeding.\+utils.\+sanitize\+\_\+parley (\begin{DoxyParamCaption}\item[{}]{parley }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Separate memories from context, pull out response, split context/memories lists.
+\end{DoxyVerb}
+ 

@@ -1,0 +1,103 @@
+\hypertarget{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1arora}{}\section{projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+arora Namespace Reference}
+\label{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1arora}\index{projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+arora@{projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+arora}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1arora_1_1SentenceEmbedder}{Sentence\+Embedder}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1arora_a09f85328842233be3deb489594521c6f}{remove\+\_\+first\+\_\+sv} (emb, first\+\_\+sv)
+\item 
+def \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1arora_a2a5256a5d5666134bc2a89b0fe831fcd}{get\+\_\+word\+\_\+counts} (\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1arora_a2cdfcf7449581870a10f134649dd8d7f}{opt}, count\+\_\+inputs)
+\item 
+def \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1arora_a4fba2bc46a41b5255407e76ca52e0398}{learn\+\_\+arora} (\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1arora_a2cdfcf7449581870a10f134649dd8d7f}{opt})
+\item 
+def \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1arora_aaea3eb10fd28246497bb20a148a26da8}{load\+\_\+arora} (\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1arora_a2cdfcf7449581870a10f134649dd8d7f}{opt})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+string \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1arora_a15100955b9f6d247b5870fa3a454907f}{C\+O\+N\+T\+R\+O\+L\+L\+A\+B\+L\+E\+\_\+\+D\+IR} = \textquotesingle{}controllable\+\_\+dialogue\textquotesingle{}
+\item 
+\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1arora_a59a3a3e672547353559a3eda4ba96870}{parser} = \hyperlink{classparlai_1_1core_1_1params_1_1ParlaiParser}{Parlai\+Parser}()
+\item 
+\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1arora_a2cdfcf7449581870a10f134649dd8d7f}{opt} = parser.\+parse\+\_\+args()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1arora_a2a5256a5d5666134bc2a89b0fe831fcd}\label{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1arora_a2a5256a5d5666134bc2a89b0fe831fcd}} 
+\index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::arora@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::arora}!get\+\_\+word\+\_\+counts@{get\+\_\+word\+\_\+counts}}
+\index{get\+\_\+word\+\_\+counts@{get\+\_\+word\+\_\+counts}!projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::arora@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::arora}}
+\subsubsection{\texorpdfstring{get\+\_\+word\+\_\+counts()}{get\_word\_counts()}}
+{\footnotesize\ttfamily def projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+arora.\+get\+\_\+word\+\_\+counts (\begin{DoxyParamCaption}\item[{}]{opt,  }\item[{}]{count\+\_\+inputs }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Goes through the dataset specified in opt, returns word counts and all utterances.
+
+Inputs:
+  count_inputs: If True, include both input and reply when counting words and
+    utterances. Otherwise, only include reply text.
+
+Returns:
+  word_counter: a Counter mapping each word to the total number of times it appears
+  total_count: int. total word count, i.e. the sum of the counts for each word
+  all_utts: list of strings. all the utterances that were used for counting words
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1arora_a4fba2bc46a41b5255407e76ca52e0398}\label{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1arora_a4fba2bc46a41b5255407e76ca52e0398}} 
+\index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::arora@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::arora}!learn\+\_\+arora@{learn\+\_\+arora}}
+\index{learn\+\_\+arora@{learn\+\_\+arora}!projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::arora@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::arora}}
+\subsubsection{\texorpdfstring{learn\+\_\+arora()}{learn\_arora()}}
+{\footnotesize\ttfamily def projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+arora.\+learn\+\_\+arora (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Go through ConvAI2 data and collect word counts, thus compute the unigram
+probability distribution. Use those probs to compute weighted sentence embeddings
+for all utterances, thus compute first principal component.
+
+Save all info to arora.pkl file.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1arora_aaea3eb10fd28246497bb20a148a26da8}\label{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1arora_aaea3eb10fd28246497bb20a148a26da8}} 
+\index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::arora@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::arora}!load\+\_\+arora@{load\+\_\+arora}}
+\index{load\+\_\+arora@{load\+\_\+arora}!projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::arora@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::arora}}
+\subsubsection{\texorpdfstring{load\+\_\+arora()}{load\_arora()}}
+{\footnotesize\ttfamily def projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+arora.\+load\+\_\+arora (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Load the data in the arora.pkl file in data/controllable_dialogue.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1arora_a09f85328842233be3deb489594521c6f}\label{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1arora_a09f85328842233be3deb489594521c6f}} 
+\index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::arora@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::arora}!remove\+\_\+first\+\_\+sv@{remove\+\_\+first\+\_\+sv}}
+\index{remove\+\_\+first\+\_\+sv@{remove\+\_\+first\+\_\+sv}!projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::arora@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::arora}}
+\subsubsection{\texorpdfstring{remove\+\_\+first\+\_\+sv()}{remove\_first\_sv()}}
+{\footnotesize\ttfamily def projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+arora.\+remove\+\_\+first\+\_\+sv (\begin{DoxyParamCaption}\item[{}]{emb,  }\item[{}]{first\+\_\+sv }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Projects out the first singular value (first_sv) from the embedding (emb).
+
+Inputs:
+  emb: torch Tensor shape (glove_dim)
+  first_sv: torch Tensor shape (glove_dim)
+
+Returns:
+  new emb: torch Tensor shape (glove_dim)
+\end{DoxyVerb}
+ 
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1arora_a15100955b9f6d247b5870fa3a454907f}\label{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1arora_a15100955b9f6d247b5870fa3a454907f}} 
+\index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::arora@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::arora}!C\+O\+N\+T\+R\+O\+L\+L\+A\+B\+L\+E\+\_\+\+D\+IR@{C\+O\+N\+T\+R\+O\+L\+L\+A\+B\+L\+E\+\_\+\+D\+IR}}
+\index{C\+O\+N\+T\+R\+O\+L\+L\+A\+B\+L\+E\+\_\+\+D\+IR@{C\+O\+N\+T\+R\+O\+L\+L\+A\+B\+L\+E\+\_\+\+D\+IR}!projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::arora@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::arora}}
+\subsubsection{\texorpdfstring{C\+O\+N\+T\+R\+O\+L\+L\+A\+B\+L\+E\+\_\+\+D\+IR}{CONTROLLABLE\_DIR}}
+{\footnotesize\ttfamily string projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+arora.\+C\+O\+N\+T\+R\+O\+L\+L\+A\+B\+L\+E\+\_\+\+D\+IR = \textquotesingle{}controllable\+\_\+dialogue\textquotesingle{}}
+
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1arora_a2cdfcf7449581870a10f134649dd8d7f}\label{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1arora_a2cdfcf7449581870a10f134649dd8d7f}} 
+\index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::arora@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::arora}!opt@{opt}}
+\index{opt@{opt}!projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::arora@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::arora}}
+\subsubsection{\texorpdfstring{opt}{opt}}
+{\footnotesize\ttfamily projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+arora.\+opt = parser.\+parse\+\_\+args()}
+
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1arora_a59a3a3e672547353559a3eda4ba96870}\label{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1arora_a59a3a3e672547353559a3eda4ba96870}} 
+\index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::arora@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::arora}!parser@{parser}}
+\index{parser@{parser}!projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::arora@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::arora}}
+\subsubsection{\texorpdfstring{parser}{parser}}
+{\footnotesize\ttfamily projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+arora.\+parser = \hyperlink{classparlai_1_1core_1_1params_1_1ParlaiParser}{Parlai\+Parser}()}
+

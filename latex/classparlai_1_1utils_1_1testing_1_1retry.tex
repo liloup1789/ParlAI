@@ -1,0 +1,93 @@
+\hypertarget{classparlai_1_1utils_1_1testing_1_1retry}{}\section{parlai.\+utils.\+testing.\+retry Class Reference}
+\label{classparlai_1_1utils_1_1testing_1_1retry}\index{parlai.\+utils.\+testing.\+retry@{parlai.\+utils.\+testing.\+retry}}
+
+
+Inheritance diagram for parlai.\+utils.\+testing.\+retry\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{classparlai_1_1utils_1_1testing_1_1retry__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+utils.\+testing.\+retry\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=196pt]{classparlai_1_1utils_1_1testing_1_1retry__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1utils_1_1testing_1_1retry_afa31eb1816cd31f1a22747e7289747c6}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1utils_1_1testing_1_1retry_abd5233dc28b07a53cd11347e5e44c44f}{ntries}=3, \hyperlink{classparlai_1_1utils_1_1testing_1_1retry_a69ead6d82dec33d05ba94a3d561e6dfc}{log\+\_\+retry}=False)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1testing_1_1retry_ac034808bb9ab13c8f8314d7069c6325e}{\+\_\+\+\_\+call\+\_\+\+\_\+} (self, testfn)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1utils_1_1testing_1_1retry_abd5233dc28b07a53cd11347e5e44c44f}{ntries}
+\item 
+\hyperlink{classparlai_1_1utils_1_1testing_1_1retry_a69ead6d82dec33d05ba94a3d561e6dfc}{log\+\_\+retry}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Decorator for flaky tests. Test is run up to ntries times, retrying on failure.
+
+:param ntries:
+    the number of tries to attempt
+:param log_retry:
+    if True, prints to stdout on retry to avoid being seen as "hanging"
+
+On the last time, the test will simply fail.
+
+>>> @retry(ntries=10)
+... def test_flaky(self):
+...     import random
+...     self.assertLess(0.5, random.random())
+\end{DoxyVerb}
+ 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1testing_1_1retry_afa31eb1816cd31f1a22747e7289747c6}\label{classparlai_1_1utils_1_1testing_1_1retry_afa31eb1816cd31f1a22747e7289747c6}} 
+\index{parlai\+::utils\+::testing\+::retry@{parlai\+::utils\+::testing\+::retry}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::utils\+::testing\+::retry@{parlai\+::utils\+::testing\+::retry}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+testing.\+retry.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{ntries = {\ttfamily 3},  }\item[{}]{log\+\_\+retry = {\ttfamily False} }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1testing_1_1retry_ac034808bb9ab13c8f8314d7069c6325e}\label{classparlai_1_1utils_1_1testing_1_1retry_ac034808bb9ab13c8f8314d7069c6325e}} 
+\index{parlai\+::utils\+::testing\+::retry@{parlai\+::utils\+::testing\+::retry}!\+\_\+\+\_\+call\+\_\+\+\_\+@{\+\_\+\+\_\+call\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+call\+\_\+\+\_\+@{\+\_\+\+\_\+call\+\_\+\+\_\+}!parlai\+::utils\+::testing\+::retry@{parlai\+::utils\+::testing\+::retry}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+call\+\_\+\+\_\+()}{\_\_call\_\_()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+testing.\+retry.\+\_\+\+\_\+call\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{testfn }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Call testfn(), possibly multiple times on failureException.
+\end{DoxyVerb}
+ 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1testing_1_1retry_a69ead6d82dec33d05ba94a3d561e6dfc}\label{classparlai_1_1utils_1_1testing_1_1retry_a69ead6d82dec33d05ba94a3d561e6dfc}} 
+\index{parlai\+::utils\+::testing\+::retry@{parlai\+::utils\+::testing\+::retry}!log\+\_\+retry@{log\+\_\+retry}}
+\index{log\+\_\+retry@{log\+\_\+retry}!parlai\+::utils\+::testing\+::retry@{parlai\+::utils\+::testing\+::retry}}
+\subsubsection{\texorpdfstring{log\+\_\+retry}{log\_retry}}
+{\footnotesize\ttfamily parlai.\+utils.\+testing.\+retry.\+log\+\_\+retry}
+
+\mbox{\Hypertarget{classparlai_1_1utils_1_1testing_1_1retry_abd5233dc28b07a53cd11347e5e44c44f}\label{classparlai_1_1utils_1_1testing_1_1retry_abd5233dc28b07a53cd11347e5e44c44f}} 
+\index{parlai\+::utils\+::testing\+::retry@{parlai\+::utils\+::testing\+::retry}!ntries@{ntries}}
+\index{ntries@{ntries}!parlai\+::utils\+::testing\+::retry@{parlai\+::utils\+::testing\+::retry}}
+\subsubsection{\texorpdfstring{ntries}{ntries}}
+{\footnotesize\ttfamily parlai.\+utils.\+testing.\+retry.\+ntries}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/utils/\hyperlink{testing_8py}{testing.\+py}\end{DoxyCompactItemize}

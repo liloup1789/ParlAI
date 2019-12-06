@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['xavier_5finit',['xavier_init',['../namespacetaskntalk_1_1modules.html#a65867c60768600eb7271d39fa3b173e9',1,'taskntalk::modules']]]
+  ['xavier_5finit',['xavier_init',['../namespaceprojects_1_1taskntalk_1_1modules.html#a483197f0d561a3d1ef7d04a2de70e571',1,'projects::taskntalk::modules']]]
 ];

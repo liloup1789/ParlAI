@@ -1,0 +1,139 @@
+\hypertarget{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher}{}\section{parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+agents.\+Wizard\+Of\+Wikipedia\+Teacher Class Reference}
+\label{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher}\index{parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+agents.\+Wizard\+Of\+Wikipedia\+Teacher@{parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+agents.\+Wizard\+Of\+Wikipedia\+Teacher}}
+
+
+Inheritance diagram for parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+agents.\+Wizard\+Of\+Wikipedia\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+agents.\+Wizard\+Of\+Wikipedia\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher_a364b2b8db4fd8162bd72d29fe4001d90}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher_a5d97ef38a8c6e7df29724122f5b9ff72}{opt}, shared=None)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher_aaf24cfe4f6e58a7d9d8bda076759f76d}{num\+\_\+episodes} (self)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher_afcede137a01b56b211aa5792346b0560}{num\+\_\+examples} (self)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher_acf1161101f1d7d03017da25f976488d6}{get} (self, \hyperlink{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_afd4ebab8063eb42d182d30a1a41f133e}{episode\+\_\+idx}, \hyperlink{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_ae3201b15f3c3b46a2f3511bad9b43e7d}{entry\+\_\+idx}=0)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher_a8b8691d7d0a5625fe8524811844109fd}{share} (self)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher_a5d97ef38a8c6e7df29724122f5b9ff72}{opt}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher_acb5f4b5a002320ef54a635a90de99960}{data}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher_a9d14d7a5483ecef2808274cee9ec3e3c}{data\+\_\+path}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher_aebe787bd5fe4b9786187a8aecc3a3817}{num\+\_\+exs}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}The default teacher; essentially reads the json file and outputs the raw data.
+
+Actions have the following form:
+{
+    'wizard_eval': <evaluation of wizard>,
+    'chosen_topic': <chosen_topic>,
+    'chosen_topic_passage': <chosen topic passage>,
+    'mtdo': <whether the conversation had sufficient overlap>,
+    'text': <text>
+    'retrieved_topics': <topics retrieved for text>
+    'full_retrieved_passages': <full retrieved passages>
+    'retrieved_passages': <passages shown to turker>
+    'checked_sentence': <checked sentence if wizard, else None>
+    'checked_passage': <checked_passage if wizard, else None>
+}
+
+The 'passages' are lists of 1 entry dicts, mapping a topic to the sentences
+
+Specify the valid/test split after the last colon in the task, e.g.
+wizard_of_wikipedia:<teacher>:random_split
+\end{DoxyVerb}
+ 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher_a364b2b8db4fd8162bd72d29fe4001d90}\label{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher_a364b2b8db4fd8162bd72d29fe4001d90}} 
+\index{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+agents.\+Wizard\+Of\+Wikipedia\+Teacher.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{shared = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher_acf1161101f1d7d03017da25f976488d6}\label{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher_acf1161101f1d7d03017da25f976488d6}} 
+\index{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher}!get@{get}}
+\index{get@{get}!parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher}}
+\subsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+agents.\+Wizard\+Of\+Wikipedia\+Teacher.\+get (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{episode\+\_\+idx,  }\item[{}]{entry\+\_\+idx = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher_aaf24cfe4f6e58a7d9d8bda076759f76d}\label{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher_aaf24cfe4f6e58a7d9d8bda076759f76d}} 
+\index{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher}!num\+\_\+episodes@{num\+\_\+episodes}}
+\index{num\+\_\+episodes@{num\+\_\+episodes}!parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher}}
+\subsubsection{\texorpdfstring{num\+\_\+episodes()}{num\_episodes()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+agents.\+Wizard\+Of\+Wikipedia\+Teacher.\+num\+\_\+episodes (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher_afcede137a01b56b211aa5792346b0560}\label{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher_afcede137a01b56b211aa5792346b0560}} 
+\index{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher}!num\+\_\+examples@{num\+\_\+examples}}
+\index{num\+\_\+examples@{num\+\_\+examples}!parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher}}
+\subsubsection{\texorpdfstring{num\+\_\+examples()}{num\_examples()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+agents.\+Wizard\+Of\+Wikipedia\+Teacher.\+num\+\_\+examples (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher_a8b8691d7d0a5625fe8524811844109fd}\label{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher_a8b8691d7d0a5625fe8524811844109fd}} 
+\index{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher}!share@{share}}
+\index{share@{share}!parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher}}
+\subsubsection{\texorpdfstring{share()}{share()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+agents.\+Wizard\+Of\+Wikipedia\+Teacher.\+share (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher_acb5f4b5a002320ef54a635a90de99960}\label{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher_acb5f4b5a002320ef54a635a90de99960}} 
+\index{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher}!data@{data}}
+\index{data@{data}!parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher}}
+\subsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+agents.\+Wizard\+Of\+Wikipedia\+Teacher.\+data}
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher_a9d14d7a5483ecef2808274cee9ec3e3c}\label{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher_a9d14d7a5483ecef2808274cee9ec3e3c}} 
+\index{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher}!data\+\_\+path@{data\+\_\+path}}
+\index{data\+\_\+path@{data\+\_\+path}!parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher}}
+\subsubsection{\texorpdfstring{data\+\_\+path}{data\_path}}
+{\footnotesize\ttfamily parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+agents.\+Wizard\+Of\+Wikipedia\+Teacher.\+data\+\_\+path}
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher_aebe787bd5fe4b9786187a8aecc3a3817}\label{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher_aebe787bd5fe4b9786187a8aecc3a3817}} 
+\index{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher}!num\+\_\+exs@{num\+\_\+exs}}
+\index{num\+\_\+exs@{num\+\_\+exs}!parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher}}
+\subsubsection{\texorpdfstring{num\+\_\+exs}{num\_exs}}
+{\footnotesize\ttfamily parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+agents.\+Wizard\+Of\+Wikipedia\+Teacher.\+num\+\_\+exs}
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher_a5d97ef38a8c6e7df29724122f5b9ff72}\label{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1WizardOfWikipediaTeacher_a5d97ef38a8c6e7df29724122f5b9ff72}} 
+\index{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher}!opt@{opt}}
+\index{opt@{opt}!parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Wizard\+Of\+Wikipedia\+Teacher}}
+\subsubsection{\texorpdfstring{opt}{opt}}
+{\footnotesize\ttfamily parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+agents.\+Wizard\+Of\+Wikipedia\+Teacher.\+opt}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/tasks/wizard\+\_\+of\+\_\+wikipedia/\hyperlink{parlai_2tasks_2wizard__of__wikipedia_2agents_8py}{agents.\+py}\end{DoxyCompactItemize}

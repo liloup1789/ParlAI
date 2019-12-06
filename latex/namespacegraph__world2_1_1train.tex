@@ -1,0 +1,206 @@
+\hypertarget{namespacegraph__world2_1_1train}{}\section{graph\+\_\+world2.\+train Namespace Reference}
+\label{namespacegraph__world2_1_1train}\index{graph\+\_\+world2.\+train@{graph\+\_\+world2.\+train}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacegraph__world2_1_1train_ac238655ccbc748146d1cbaaac96433a5}{prepro} (\hyperlink{namespacegraph__world2_1_1train_a286634b8300deedee0924d4ecac34fa6}{opt})
+\item 
+def \hyperlink{namespacegraph__world2_1_1train_aa00e41e1619128901ea053170fedef0b}{validate} (\hyperlink{namespacegraph__world2_1_1train_a286634b8300deedee0924d4ecac34fa6}{opt}, agent)
+\item 
+def \hyperlink{namespacegraph__world2_1_1train_ab3ba8ae63848a00ac638b31329041f6b}{get\+\_\+metrics} (actions, gt\+\_\+actions)
+\item 
+def \hyperlink{namespacegraph__world2_1_1train_a8bb8c5ab11be91db36eb268e1c2088a8}{get\+\_\+accuracy} (actions, gt\+\_\+actions, graph)
+\item 
+def \hyperlink{namespacegraph__world2_1_1train_aaff96a1b7f0cafac9dab96cbc02ae4d0}{additional\+\_\+validate} (\hyperlink{namespacegraph__world2_1_1train_a286634b8300deedee0924d4ecac34fa6}{opt}, model, data\+\_\+agent, valid\+\_\+data\+\_\+file, constrain\+\_\+=True, no\+\_\+hits=False)
+\item 
+def \hyperlink{namespacegraph__world2_1_1train_a145007eac2c8c1c128ec06f4477c943e}{log\+\_\+print} (s, out\+\_\+file)
+\item 
+def \hyperlink{namespacegraph__world2_1_1train_af3dec887619817c1a7a38930ffcfd1cb}{main} (\hyperlink{namespacegraph__world2_1_1train_a286634b8300deedee0924d4ecac34fa6}{opt}, return\+\_\+full=False, out\+\_\+file=None)
+\item 
+def \hyperlink{namespacegraph__world2_1_1train_a8f5e91b9cb92f65b8b096d7eb5dbf2e7}{online\+\_\+exp} (\hyperlink{namespacegraph__world2_1_1train_a286634b8300deedee0924d4ecac34fa6}{opt}, \hyperlink{namespacegraph__world2_1_1train_a37e0c8009dd20c5ccb703af34d50a44e}{log\+\_\+file}=None)
+\item 
+def \hyperlink{namespacegraph__world2_1_1train_a4a2155646856189e143dbc828baef945}{ablation\+\_\+exp} (\hyperlink{namespacegraph__world2_1_1train_a286634b8300deedee0924d4ecac34fa6}{opt})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespacegraph__world2_1_1train_a28914dc685301ea70d35554dc0293486}{argparser} = \hyperlink{classparlai_1_1core_1_1params_1_1ParlaiParser}{Parlai\+Parser}()
+\item 
+\hyperlink{namespacegraph__world2_1_1train_a5483dc050b195034e046160fcc2155c5}{type}
+\item 
+\hyperlink{namespacegraph__world2_1_1train_ae777b30e4de8f0cdfc26bfda0c01b316}{int}
+\item 
+\hyperlink{namespacegraph__world2_1_1train_aa15c4b5001beb863ac4144ec68b832a9}{default}
+\item 
+\hyperlink{namespacegraph__world2_1_1train_adcfd197260a746eeb73a295520831582}{bool}
+\item 
+\hyperlink{namespacegraph__world2_1_1train_a9843eaa25215aba91f3f4b223dbb2049}{float}
+\item 
+\hyperlink{namespacegraph__world2_1_1train_ad6e658a468af9626e8b47490972d33a4}{str}
+\item 
+\hyperlink{namespacegraph__world2_1_1train_a286634b8300deedee0924d4ecac34fa6}{opt} = argparser.\+parse\+\_\+args()
+\item 
+\hyperlink{namespacegraph__world2_1_1train_af8a4335a70104bebca62cb53adba47f9}{job\+\_\+num} = \hyperlink{namespacegraph__world2_1_1train_a286634b8300deedee0924d4ecac34fa6}{opt}\mbox{[}\textquotesingle{}job\+\_\+num\textquotesingle{}\mbox{]}
+\item 
+string \hyperlink{namespacegraph__world2_1_1train_aad4143241a5ed7cfe4954939dda71b60}{input\+\_\+file} = \textquotesingle{}job-\/in-\/\{\}.pkl\textquotesingle{}.format(\hyperlink{namespacegraph__world2_1_1train_af8a4335a70104bebca62cb53adba47f9}{job\+\_\+num})
+\item 
+string \hyperlink{namespacegraph__world2_1_1train_a15d5a47205b2c2191cc7e40b174ee66f}{output\+\_\+file} = \textquotesingle{}job-\/out-\/\{\}.txt\textquotesingle{}.format(\hyperlink{namespacegraph__world2_1_1train_af8a4335a70104bebca62cb53adba47f9}{job\+\_\+num})
+\item 
+string \hyperlink{namespacegraph__world2_1_1train_a37e0c8009dd20c5ccb703af34d50a44e}{log\+\_\+file} = \textquotesingle{}job-\/log-\/\{\}.txt\textquotesingle{}.format(\hyperlink{namespacegraph__world2_1_1train_af8a4335a70104bebca62cb53adba47f9}{job\+\_\+num})
+\item 
+\hyperlink{namespacegraph__world2_1_1train_a0dbc2533a58165ecd79f668f2889cf3e}{job\+\_\+in\+\_\+opt} = pickle.\+load(f\+\_\+in)
+\item 
+\hyperlink{namespacegraph__world2_1_1train_a87df49e5955f1677c3d285abb83ad60d}{new\+\_\+opt} = deepcopy(\hyperlink{namespacegraph__world2_1_1train_a286634b8300deedee0924d4ecac34fa6}{opt})
+\item 
+\hyperlink{namespacegraph__world2_1_1train_a098927108f0006868a4f333d6ce02443}{fout} = open(\hyperlink{namespacegraph__world2_1_1train_a15d5a47205b2c2191cc7e40b174ee66f}{output\+\_\+file}, \textquotesingle{}w\textquotesingle{})
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacegraph__world2_1_1train_a4a2155646856189e143dbc828baef945}\label{namespacegraph__world2_1_1train_a4a2155646856189e143dbc828baef945}} 
+\index{graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}!ablation\+\_\+exp@{ablation\+\_\+exp}}
+\index{ablation\+\_\+exp@{ablation\+\_\+exp}!graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}}
+\subsubsection{\texorpdfstring{ablation\+\_\+exp()}{ablation\_exp()}}
+{\footnotesize\ttfamily def graph\+\_\+world2.\+train.\+ablation\+\_\+exp (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespacegraph__world2_1_1train_aaff96a1b7f0cafac9dab96cbc02ae4d0}\label{namespacegraph__world2_1_1train_aaff96a1b7f0cafac9dab96cbc02ae4d0}} 
+\index{graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}!additional\+\_\+validate@{additional\+\_\+validate}}
+\index{additional\+\_\+validate@{additional\+\_\+validate}!graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}}
+\subsubsection{\texorpdfstring{additional\+\_\+validate()}{additional\_validate()}}
+{\footnotesize\ttfamily def graph\+\_\+world2.\+train.\+additional\+\_\+validate (\begin{DoxyParamCaption}\item[{}]{opt,  }\item[{}]{model,  }\item[{}]{data\+\_\+agent,  }\item[{}]{valid\+\_\+data\+\_\+file,  }\item[{}]{constrain\+\_\+ = {\ttfamily True},  }\item[{}]{no\+\_\+hits = {\ttfamily False} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespacegraph__world2_1_1train_a8bb8c5ab11be91db36eb268e1c2088a8}\label{namespacegraph__world2_1_1train_a8bb8c5ab11be91db36eb268e1c2088a8}} 
+\index{graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}!get\+\_\+accuracy@{get\+\_\+accuracy}}
+\index{get\+\_\+accuracy@{get\+\_\+accuracy}!graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}}
+\subsubsection{\texorpdfstring{get\+\_\+accuracy()}{get\_accuracy()}}
+{\footnotesize\ttfamily def graph\+\_\+world2.\+train.\+get\+\_\+accuracy (\begin{DoxyParamCaption}\item[{}]{actions,  }\item[{}]{gt\+\_\+actions,  }\item[{}]{graph }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespacegraph__world2_1_1train_ab3ba8ae63848a00ac638b31329041f6b}\label{namespacegraph__world2_1_1train_ab3ba8ae63848a00ac638b31329041f6b}} 
+\index{graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}!get\+\_\+metrics@{get\+\_\+metrics}}
+\index{get\+\_\+metrics@{get\+\_\+metrics}!graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}}
+\subsubsection{\texorpdfstring{get\+\_\+metrics()}{get\_metrics()}}
+{\footnotesize\ttfamily def graph\+\_\+world2.\+train.\+get\+\_\+metrics (\begin{DoxyParamCaption}\item[{}]{actions,  }\item[{}]{gt\+\_\+actions }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespacegraph__world2_1_1train_a145007eac2c8c1c128ec06f4477c943e}\label{namespacegraph__world2_1_1train_a145007eac2c8c1c128ec06f4477c943e}} 
+\index{graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}!log\+\_\+print@{log\+\_\+print}}
+\index{log\+\_\+print@{log\+\_\+print}!graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}}
+\subsubsection{\texorpdfstring{log\+\_\+print()}{log\_print()}}
+{\footnotesize\ttfamily def graph\+\_\+world2.\+train.\+log\+\_\+print (\begin{DoxyParamCaption}\item[{}]{s,  }\item[{}]{out\+\_\+file }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespacegraph__world2_1_1train_af3dec887619817c1a7a38930ffcfd1cb}\label{namespacegraph__world2_1_1train_af3dec887619817c1a7a38930ffcfd1cb}} 
+\index{graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}!main@{main}}
+\index{main@{main}!graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def graph\+\_\+world2.\+train.\+main (\begin{DoxyParamCaption}\item[{}]{opt,  }\item[{}]{return\+\_\+full = {\ttfamily False},  }\item[{}]{out\+\_\+file = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespacegraph__world2_1_1train_a8f5e91b9cb92f65b8b096d7eb5dbf2e7}\label{namespacegraph__world2_1_1train_a8f5e91b9cb92f65b8b096d7eb5dbf2e7}} 
+\index{graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}!online\+\_\+exp@{online\+\_\+exp}}
+\index{online\+\_\+exp@{online\+\_\+exp}!graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}}
+\subsubsection{\texorpdfstring{online\+\_\+exp()}{online\_exp()}}
+{\footnotesize\ttfamily def graph\+\_\+world2.\+train.\+online\+\_\+exp (\begin{DoxyParamCaption}\item[{}]{opt,  }\item[{}]{log\+\_\+file = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespacegraph__world2_1_1train_ac238655ccbc748146d1cbaaac96433a5}\label{namespacegraph__world2_1_1train_ac238655ccbc748146d1cbaaac96433a5}} 
+\index{graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}!prepro@{prepro}}
+\index{prepro@{prepro}!graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}}
+\subsubsection{\texorpdfstring{prepro()}{prepro()}}
+{\footnotesize\ttfamily def graph\+\_\+world2.\+train.\+prepro (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespacegraph__world2_1_1train_aa00e41e1619128901ea053170fedef0b}\label{namespacegraph__world2_1_1train_aa00e41e1619128901ea053170fedef0b}} 
+\index{graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}!validate@{validate}}
+\index{validate@{validate}!graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}}
+\subsubsection{\texorpdfstring{validate()}{validate()}}
+{\footnotesize\ttfamily def graph\+\_\+world2.\+train.\+validate (\begin{DoxyParamCaption}\item[{}]{opt,  }\item[{}]{agent }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespacegraph__world2_1_1train_a28914dc685301ea70d35554dc0293486}\label{namespacegraph__world2_1_1train_a28914dc685301ea70d35554dc0293486}} 
+\index{graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}!argparser@{argparser}}
+\index{argparser@{argparser}!graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}}
+\subsubsection{\texorpdfstring{argparser}{argparser}}
+{\footnotesize\ttfamily graph\+\_\+world2.\+train.\+argparser = \hyperlink{classparlai_1_1core_1_1params_1_1ParlaiParser}{Parlai\+Parser}()}
+
+\mbox{\Hypertarget{namespacegraph__world2_1_1train_adcfd197260a746eeb73a295520831582}\label{namespacegraph__world2_1_1train_adcfd197260a746eeb73a295520831582}} 
+\index{graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}!bool@{bool}}
+\index{bool@{bool}!graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}}
+\subsubsection{\texorpdfstring{bool}{bool}}
+{\footnotesize\ttfamily graph\+\_\+world2.\+train.\+bool}
+
+\mbox{\Hypertarget{namespacegraph__world2_1_1train_aa15c4b5001beb863ac4144ec68b832a9}\label{namespacegraph__world2_1_1train_aa15c4b5001beb863ac4144ec68b832a9}} 
+\index{graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}!default@{default}}
+\index{default@{default}!graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}}
+\subsubsection{\texorpdfstring{default}{default}}
+{\footnotesize\ttfamily graph\+\_\+world2.\+train.\+default}
+
+\mbox{\Hypertarget{namespacegraph__world2_1_1train_a9843eaa25215aba91f3f4b223dbb2049}\label{namespacegraph__world2_1_1train_a9843eaa25215aba91f3f4b223dbb2049}} 
+\index{graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}!float@{float}}
+\index{float@{float}!graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}}
+\subsubsection{\texorpdfstring{float}{float}}
+{\footnotesize\ttfamily graph\+\_\+world2.\+train.\+float}
+
+\mbox{\Hypertarget{namespacegraph__world2_1_1train_a098927108f0006868a4f333d6ce02443}\label{namespacegraph__world2_1_1train_a098927108f0006868a4f333d6ce02443}} 
+\index{graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}!fout@{fout}}
+\index{fout@{fout}!graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}}
+\subsubsection{\texorpdfstring{fout}{fout}}
+{\footnotesize\ttfamily graph\+\_\+world2.\+train.\+fout = open(\hyperlink{namespacegraph__world2_1_1train_a15d5a47205b2c2191cc7e40b174ee66f}{output\+\_\+file}, \textquotesingle{}w\textquotesingle{})}
+
+\mbox{\Hypertarget{namespacegraph__world2_1_1train_aad4143241a5ed7cfe4954939dda71b60}\label{namespacegraph__world2_1_1train_aad4143241a5ed7cfe4954939dda71b60}} 
+\index{graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}!input\+\_\+file@{input\+\_\+file}}
+\index{input\+\_\+file@{input\+\_\+file}!graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}}
+\subsubsection{\texorpdfstring{input\+\_\+file}{input\_file}}
+{\footnotesize\ttfamily string graph\+\_\+world2.\+train.\+input\+\_\+file = \textquotesingle{}job-\/in-\/\{\}.pkl\textquotesingle{}.format(\hyperlink{namespacegraph__world2_1_1train_af8a4335a70104bebca62cb53adba47f9}{job\+\_\+num})}
+
+\mbox{\Hypertarget{namespacegraph__world2_1_1train_ae777b30e4de8f0cdfc26bfda0c01b316}\label{namespacegraph__world2_1_1train_ae777b30e4de8f0cdfc26bfda0c01b316}} 
+\index{graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}!int@{int}}
+\index{int@{int}!graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}}
+\subsubsection{\texorpdfstring{int}{int}}
+{\footnotesize\ttfamily graph\+\_\+world2.\+train.\+int}
+
+\mbox{\Hypertarget{namespacegraph__world2_1_1train_a0dbc2533a58165ecd79f668f2889cf3e}\label{namespacegraph__world2_1_1train_a0dbc2533a58165ecd79f668f2889cf3e}} 
+\index{graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}!job\+\_\+in\+\_\+opt@{job\+\_\+in\+\_\+opt}}
+\index{job\+\_\+in\+\_\+opt@{job\+\_\+in\+\_\+opt}!graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}}
+\subsubsection{\texorpdfstring{job\+\_\+in\+\_\+opt}{job\_in\_opt}}
+{\footnotesize\ttfamily graph\+\_\+world2.\+train.\+job\+\_\+in\+\_\+opt = pickle.\+load(f\+\_\+in)}
+
+\mbox{\Hypertarget{namespacegraph__world2_1_1train_af8a4335a70104bebca62cb53adba47f9}\label{namespacegraph__world2_1_1train_af8a4335a70104bebca62cb53adba47f9}} 
+\index{graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}!job\+\_\+num@{job\+\_\+num}}
+\index{job\+\_\+num@{job\+\_\+num}!graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}}
+\subsubsection{\texorpdfstring{job\+\_\+num}{job\_num}}
+{\footnotesize\ttfamily graph\+\_\+world2.\+train.\+job\+\_\+num = \hyperlink{namespacegraph__world2_1_1train_a286634b8300deedee0924d4ecac34fa6}{opt}\mbox{[}\textquotesingle{}job\+\_\+num\textquotesingle{}\mbox{]}}
+
+\mbox{\Hypertarget{namespacegraph__world2_1_1train_a37e0c8009dd20c5ccb703af34d50a44e}\label{namespacegraph__world2_1_1train_a37e0c8009dd20c5ccb703af34d50a44e}} 
+\index{graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}!log\+\_\+file@{log\+\_\+file}}
+\index{log\+\_\+file@{log\+\_\+file}!graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}}
+\subsubsection{\texorpdfstring{log\+\_\+file}{log\_file}}
+{\footnotesize\ttfamily string graph\+\_\+world2.\+train.\+log\+\_\+file = \textquotesingle{}job-\/log-\/\{\}.txt\textquotesingle{}.format(\hyperlink{namespacegraph__world2_1_1train_af8a4335a70104bebca62cb53adba47f9}{job\+\_\+num})}
+
+\mbox{\Hypertarget{namespacegraph__world2_1_1train_a87df49e5955f1677c3d285abb83ad60d}\label{namespacegraph__world2_1_1train_a87df49e5955f1677c3d285abb83ad60d}} 
+\index{graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}!new\+\_\+opt@{new\+\_\+opt}}
+\index{new\+\_\+opt@{new\+\_\+opt}!graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}}
+\subsubsection{\texorpdfstring{new\+\_\+opt}{new\_opt}}
+{\footnotesize\ttfamily graph\+\_\+world2.\+train.\+new\+\_\+opt = deepcopy(\hyperlink{namespacegraph__world2_1_1train_a286634b8300deedee0924d4ecac34fa6}{opt})}
+
+\mbox{\Hypertarget{namespacegraph__world2_1_1train_a286634b8300deedee0924d4ecac34fa6}\label{namespacegraph__world2_1_1train_a286634b8300deedee0924d4ecac34fa6}} 
+\index{graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}!opt@{opt}}
+\index{opt@{opt}!graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}}
+\subsubsection{\texorpdfstring{opt}{opt}}
+{\footnotesize\ttfamily graph\+\_\+world2.\+train.\+opt = argparser.\+parse\+\_\+args()}
+
+\mbox{\Hypertarget{namespacegraph__world2_1_1train_a15d5a47205b2c2191cc7e40b174ee66f}\label{namespacegraph__world2_1_1train_a15d5a47205b2c2191cc7e40b174ee66f}} 
+\index{graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}!output\+\_\+file@{output\+\_\+file}}
+\index{output\+\_\+file@{output\+\_\+file}!graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}}
+\subsubsection{\texorpdfstring{output\+\_\+file}{output\_file}}
+{\footnotesize\ttfamily string graph\+\_\+world2.\+train.\+output\+\_\+file = \textquotesingle{}job-\/out-\/\{\}.txt\textquotesingle{}.format(\hyperlink{namespacegraph__world2_1_1train_af8a4335a70104bebca62cb53adba47f9}{job\+\_\+num})}
+
+\mbox{\Hypertarget{namespacegraph__world2_1_1train_ad6e658a468af9626e8b47490972d33a4}\label{namespacegraph__world2_1_1train_ad6e658a468af9626e8b47490972d33a4}} 
+\index{graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}!str@{str}}
+\index{str@{str}!graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}}
+\subsubsection{\texorpdfstring{str}{str}}
+{\footnotesize\ttfamily graph\+\_\+world2.\+train.\+str}
+
+\mbox{\Hypertarget{namespacegraph__world2_1_1train_a5483dc050b195034e046160fcc2155c5}\label{namespacegraph__world2_1_1train_a5483dc050b195034e046160fcc2155c5}} 
+\index{graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}!type@{type}}
+\index{type@{type}!graph\+\_\+world2\+::train@{graph\+\_\+world2\+::train}}
+\subsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily graph\+\_\+world2.\+train.\+type}
+

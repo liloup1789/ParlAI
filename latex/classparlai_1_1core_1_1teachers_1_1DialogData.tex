@@ -1,0 +1,201 @@
+\hypertarget{classparlai_1_1core_1_1teachers_1_1DialogData}{}\section{parlai.\+core.\+teachers.\+Dialog\+Data Class Reference}
+\label{classparlai_1_1core_1_1teachers_1_1DialogData}\index{parlai.\+core.\+teachers.\+Dialog\+Data@{parlai.\+core.\+teachers.\+Dialog\+Data}}
+
+
+Inheritance diagram for parlai.\+core.\+teachers.\+Dialog\+Data\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{classparlai_1_1core_1_1teachers_1_1DialogData__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+core.\+teachers.\+Dialog\+Data\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{classparlai_1_1core_1_1teachers_1_1DialogData__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1core_1_1teachers_1_1DialogData_a8c20c97b259bf583c53f47d235790813}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, opt, data\+\_\+loader=None, \hyperlink{classparlai_1_1core_1_1teachers_1_1DialogData_a21822d2d86e26a27bdc8326b48ebc9b9}{cands}=None, shared=None, kwargs)
+\item 
+def \hyperlink{classparlai_1_1core_1_1teachers_1_1DialogData_ada6f4dc4e2a8a84fba5f1e54d214d15e}{share} (self)
+\item 
+def \hyperlink{classparlai_1_1core_1_1teachers_1_1DialogData_a83e3457f29a54ec455ad76f7eab6cfc4}{num\+\_\+episodes} (self)
+\item 
+def \hyperlink{classparlai_1_1core_1_1teachers_1_1DialogData_a8deee9e9e45ae8162270bdcdfd7916b6}{num\+\_\+examples} (self)
+\item 
+def \hyperlink{classparlai_1_1core_1_1teachers_1_1DialogData_a1e037df2f18a67503db657ae4cc27ab4}{get} (self, episode\+\_\+idx, entry\+\_\+idx=0)
+\item 
+def \hyperlink{classparlai_1_1core_1_1teachers_1_1DialogData_a467bf261c35da2f5d2a34949281d2669}{build\+\_\+table} (self, entry)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1core_1_1teachers_1_1DialogData_aa44f9307c376a1e4bf4697a289db688b}{image\+\_\+loader}
+\item 
+\hyperlink{classparlai_1_1core_1_1teachers_1_1DialogData_a4acc939bddc7bf81f0e19ae9fa9f197a}{data}
+\item 
+\hyperlink{classparlai_1_1core_1_1teachers_1_1DialogData_a21822d2d86e26a27bdc8326b48ebc9b9}{cands}
+\item 
+\hyperlink{classparlai_1_1core_1_1teachers_1_1DialogData_aee61e6bc9e80fe0443a7f5322c4ae08d}{added\+Cands}
+\item 
+\hyperlink{classparlai_1_1core_1_1teachers_1_1DialogData_a25f9100e2b36edf74528a60533e728e4}{copied\+\_\+cands}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1core_1_1teachers_1_1DialogData_a9c25f1914274bbc5b6aeae335e98957a}{maxsize}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Provides a data structure for accessing textual dialog data.
+
+This can be used whenever the dialog data is a fixed log of chats
+(i.e not a simulator setting). The logs can include dialog text and possibly
+supervised labels, candidate labels and rewards.
+
+All these are stored in this internal data format which is used by the
+``DialogTeacher`` class.
+
+:param opt:
+    options to initialize the class
+:param data_loader:
+    an iterable with each call returning a tuple in the form
+    ``((x, y, r, c, i), new_episode?)`` where the ``x`` and ``new_episode``
+    fields are mandatory and other fields may be omitted or ``None``.
+:param cands:
+    can be set to provide a list of candidate labels for every example in
+    this dataset, which the agent can choose from (the correct answer
+    should be in this set).
+
+:param random:
+    tells the data class whether or not to visit episodes sequentially or
+    randomly when returning examples to the caller.
+
+The contents of the ``((x, y, r, c, i), new_episode?)`` tuples returned by
+the data loader is the following:
+
+- ``x`` (str) is a query and possibly context
+- ``y`` (iter) is an iterable of label(s) for that query
+- ``r`` (str) is the str reward for getting that query correct
+- ``c`` (iter) is an iterable of label candidates that the student can choose from
+- ``i`` (str) is a str path to an image on disk, which will be loaded by the
+  data class at request-time. should always point to the raw image file.
+- ``new_episode?`` (bool) is a boolean value specifying whether that example
+  is the start of a new episode. If you don't use episodes set this
+  to ``True`` every time.
+\end{DoxyVerb}
+ 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogData_a8c20c97b259bf583c53f47d235790813}\label{classparlai_1_1core_1_1teachers_1_1DialogData_a8c20c97b259bf583c53f47d235790813}} 
+\index{parlai\+::core\+::teachers\+::\+Dialog\+Data@{parlai\+::core\+::teachers\+::\+Dialog\+Data}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::core\+::teachers\+::\+Dialog\+Data@{parlai\+::core\+::teachers\+::\+Dialog\+Data}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+core.\+teachers.\+Dialog\+Data.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{data\+\_\+loader = {\ttfamily None},  }\item[{}]{cands = {\ttfamily None},  }\item[{}]{shared = {\ttfamily None},  }\item[{}]{kwargs }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogData_a467bf261c35da2f5d2a34949281d2669}\label{classparlai_1_1core_1_1teachers_1_1DialogData_a467bf261c35da2f5d2a34949281d2669}} 
+\index{parlai\+::core\+::teachers\+::\+Dialog\+Data@{parlai\+::core\+::teachers\+::\+Dialog\+Data}!build\+\_\+table@{build\+\_\+table}}
+\index{build\+\_\+table@{build\+\_\+table}!parlai\+::core\+::teachers\+::\+Dialog\+Data@{parlai\+::core\+::teachers\+::\+Dialog\+Data}}
+\subsubsection{\texorpdfstring{build\+\_\+table()}{build\_table()}}
+{\footnotesize\ttfamily def parlai.\+core.\+teachers.\+Dialog\+Data.\+build\+\_\+table (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{entry }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Packs an entry into an action-observation dictionary.
+
+:param entry: a tuple in the form described in the class docstring.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogData_a1e037df2f18a67503db657ae4cc27ab4}\label{classparlai_1_1core_1_1teachers_1_1DialogData_a1e037df2f18a67503db657ae4cc27ab4}} 
+\index{parlai\+::core\+::teachers\+::\+Dialog\+Data@{parlai\+::core\+::teachers\+::\+Dialog\+Data}!get@{get}}
+\index{get@{get}!parlai\+::core\+::teachers\+::\+Dialog\+Data@{parlai\+::core\+::teachers\+::\+Dialog\+Data}}
+\subsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily def parlai.\+core.\+teachers.\+Dialog\+Data.\+get (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{episode\+\_\+idx,  }\item[{}]{entry\+\_\+idx = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Get the specified episode and the specified entry in that episode.
+
+:param episode_idx:
+    which episode to return examples from
+:param entry_idx:
+    which example to return from the episode. Many datasets have only
+    single-entry episodes, so this defaults to zero.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogData_a83e3457f29a54ec455ad76f7eab6cfc4}\label{classparlai_1_1core_1_1teachers_1_1DialogData_a83e3457f29a54ec455ad76f7eab6cfc4}} 
+\index{parlai\+::core\+::teachers\+::\+Dialog\+Data@{parlai\+::core\+::teachers\+::\+Dialog\+Data}!num\+\_\+episodes@{num\+\_\+episodes}}
+\index{num\+\_\+episodes@{num\+\_\+episodes}!parlai\+::core\+::teachers\+::\+Dialog\+Data@{parlai\+::core\+::teachers\+::\+Dialog\+Data}}
+\subsubsection{\texorpdfstring{num\+\_\+episodes()}{num\_episodes()}}
+{\footnotesize\ttfamily def parlai.\+core.\+teachers.\+Dialog\+Data.\+num\+\_\+episodes (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Return number of episodes in the dataset.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogData_a8deee9e9e45ae8162270bdcdfd7916b6}\label{classparlai_1_1core_1_1teachers_1_1DialogData_a8deee9e9e45ae8162270bdcdfd7916b6}} 
+\index{parlai\+::core\+::teachers\+::\+Dialog\+Data@{parlai\+::core\+::teachers\+::\+Dialog\+Data}!num\+\_\+examples@{num\+\_\+examples}}
+\index{num\+\_\+examples@{num\+\_\+examples}!parlai\+::core\+::teachers\+::\+Dialog\+Data@{parlai\+::core\+::teachers\+::\+Dialog\+Data}}
+\subsubsection{\texorpdfstring{num\+\_\+examples()}{num\_examples()}}
+{\footnotesize\ttfamily def parlai.\+core.\+teachers.\+Dialog\+Data.\+num\+\_\+examples (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Return total number of entries available.
+
+Each episode has at least one entry, but might have many more.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogData_ada6f4dc4e2a8a84fba5f1e54d214d15e}\label{classparlai_1_1core_1_1teachers_1_1DialogData_ada6f4dc4e2a8a84fba5f1e54d214d15e}} 
+\index{parlai\+::core\+::teachers\+::\+Dialog\+Data@{parlai\+::core\+::teachers\+::\+Dialog\+Data}!share@{share}}
+\index{share@{share}!parlai\+::core\+::teachers\+::\+Dialog\+Data@{parlai\+::core\+::teachers\+::\+Dialog\+Data}}
+\subsubsection{\texorpdfstring{share()}{share()}}
+{\footnotesize\ttfamily def parlai.\+core.\+teachers.\+Dialog\+Data.\+share (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Share the data.
+\end{DoxyVerb}
+ 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogData_aee61e6bc9e80fe0443a7f5322c4ae08d}\label{classparlai_1_1core_1_1teachers_1_1DialogData_aee61e6bc9e80fe0443a7f5322c4ae08d}} 
+\index{parlai\+::core\+::teachers\+::\+Dialog\+Data@{parlai\+::core\+::teachers\+::\+Dialog\+Data}!added\+Cands@{added\+Cands}}
+\index{added\+Cands@{added\+Cands}!parlai\+::core\+::teachers\+::\+Dialog\+Data@{parlai\+::core\+::teachers\+::\+Dialog\+Data}}
+\subsubsection{\texorpdfstring{added\+Cands}{addedCands}}
+{\footnotesize\ttfamily parlai.\+core.\+teachers.\+Dialog\+Data.\+added\+Cands}
+
+\mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogData_a21822d2d86e26a27bdc8326b48ebc9b9}\label{classparlai_1_1core_1_1teachers_1_1DialogData_a21822d2d86e26a27bdc8326b48ebc9b9}} 
+\index{parlai\+::core\+::teachers\+::\+Dialog\+Data@{parlai\+::core\+::teachers\+::\+Dialog\+Data}!cands@{cands}}
+\index{cands@{cands}!parlai\+::core\+::teachers\+::\+Dialog\+Data@{parlai\+::core\+::teachers\+::\+Dialog\+Data}}
+\subsubsection{\texorpdfstring{cands}{cands}}
+{\footnotesize\ttfamily parlai.\+core.\+teachers.\+Dialog\+Data.\+cands}
+
+\mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogData_a25f9100e2b36edf74528a60533e728e4}\label{classparlai_1_1core_1_1teachers_1_1DialogData_a25f9100e2b36edf74528a60533e728e4}} 
+\index{parlai\+::core\+::teachers\+::\+Dialog\+Data@{parlai\+::core\+::teachers\+::\+Dialog\+Data}!copied\+\_\+cands@{copied\+\_\+cands}}
+\index{copied\+\_\+cands@{copied\+\_\+cands}!parlai\+::core\+::teachers\+::\+Dialog\+Data@{parlai\+::core\+::teachers\+::\+Dialog\+Data}}
+\subsubsection{\texorpdfstring{copied\+\_\+cands}{copied\_cands}}
+{\footnotesize\ttfamily parlai.\+core.\+teachers.\+Dialog\+Data.\+copied\+\_\+cands}
+
+\mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogData_a4acc939bddc7bf81f0e19ae9fa9f197a}\label{classparlai_1_1core_1_1teachers_1_1DialogData_a4acc939bddc7bf81f0e19ae9fa9f197a}} 
+\index{parlai\+::core\+::teachers\+::\+Dialog\+Data@{parlai\+::core\+::teachers\+::\+Dialog\+Data}!data@{data}}
+\index{data@{data}!parlai\+::core\+::teachers\+::\+Dialog\+Data@{parlai\+::core\+::teachers\+::\+Dialog\+Data}}
+\subsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily parlai.\+core.\+teachers.\+Dialog\+Data.\+data}
+
+\mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogData_aa44f9307c376a1e4bf4697a289db688b}\label{classparlai_1_1core_1_1teachers_1_1DialogData_aa44f9307c376a1e4bf4697a289db688b}} 
+\index{parlai\+::core\+::teachers\+::\+Dialog\+Data@{parlai\+::core\+::teachers\+::\+Dialog\+Data}!image\+\_\+loader@{image\+\_\+loader}}
+\index{image\+\_\+loader@{image\+\_\+loader}!parlai\+::core\+::teachers\+::\+Dialog\+Data@{parlai\+::core\+::teachers\+::\+Dialog\+Data}}
+\subsubsection{\texorpdfstring{image\+\_\+loader}{image\_loader}}
+{\footnotesize\ttfamily parlai.\+core.\+teachers.\+Dialog\+Data.\+image\+\_\+loader}
+
+\mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogData_a9c25f1914274bbc5b6aeae335e98957a}\label{classparlai_1_1core_1_1teachers_1_1DialogData_a9c25f1914274bbc5b6aeae335e98957a}} 
+\index{parlai\+::core\+::teachers\+::\+Dialog\+Data@{parlai\+::core\+::teachers\+::\+Dialog\+Data}!maxsize@{maxsize}}
+\index{maxsize@{maxsize}!parlai\+::core\+::teachers\+::\+Dialog\+Data@{parlai\+::core\+::teachers\+::\+Dialog\+Data}}
+\subsubsection{\texorpdfstring{maxsize}{maxsize}}
+{\footnotesize\ttfamily parlai.\+core.\+teachers.\+Dialog\+Data.\+maxsize\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/core/\hyperlink{teachers_8py}{teachers.\+py}\end{DoxyCompactItemize}

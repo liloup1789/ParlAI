@@ -1,0 +1,92 @@
+\hypertarget{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf}{}\section{projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+nidf Namespace Reference}
+\label{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf}\index{projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+nidf@{projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+nidf}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_ad06ddb173f03a586d8c47c0c40f2f00c}{get\+\_\+word\+\_\+counts} (\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_aef7111d92971802c719300bfe5d9f626}{opt}, count\+\_\+inputs)
+\item 
+def \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_afcd3d0cbb49648e760e9875d32f53f19}{learn\+\_\+nidf} (\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_aef7111d92971802c719300bfe5d9f626}{opt})
+\item 
+def \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_a2f882ed55572a6f2f7558732a6a692ee}{load\+\_\+word2nidf} (\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_aef7111d92971802c719300bfe5d9f626}{opt})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+string \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_a56dd641e98e0dbc6b67b18bb0273abf2}{C\+O\+N\+T\+R\+O\+L\+L\+A\+B\+L\+E\+\_\+\+D\+IR} = \textquotesingle{}controllable\+\_\+dialogue\textquotesingle{}
+\item 
+string \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_a8277b85519dcddac2bdb34598844abfc}{P\+A\+R\+L\+A\+I\+\_\+\+F\+O\+R\+M\+A\+T\+\_\+\+D\+IR} = \textquotesingle{}controllable\+\_\+dialogue/Conv\+A\+I2\+\_\+parlaiformat\textquotesingle{}
+\item 
+\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_a4422dfd9be2af0e9f9481a2a5c33af92}{parser} = \hyperlink{classparlai_1_1core_1_1params_1_1ParlaiParser}{Parlai\+Parser}()
+\item 
+\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_aef7111d92971802c719300bfe5d9f626}{opt} = parser.\+parse\+\_\+args()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_ad06ddb173f03a586d8c47c0c40f2f00c}\label{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_ad06ddb173f03a586d8c47c0c40f2f00c}} 
+\index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf}!get\+\_\+word\+\_\+counts@{get\+\_\+word\+\_\+counts}}
+\index{get\+\_\+word\+\_\+counts@{get\+\_\+word\+\_\+counts}!projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf}}
+\subsubsection{\texorpdfstring{get\+\_\+word\+\_\+counts()}{get\_word\_counts()}}
+{\footnotesize\ttfamily def projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+nidf.\+get\+\_\+word\+\_\+counts (\begin{DoxyParamCaption}\item[{}]{opt,  }\item[{}]{count\+\_\+inputs }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Goes through the dataset specified in opt and gets word counts.
+
+Inputs:
+  count_inputs: If True, include both input and reply when counting words
+    and utterances. Otherwise, only include reply text.
+
+Returns:
+  word_counter_per_sent: a Counter mapping each word to the number of
+    utterances in which it appears.
+  num_sents: int. number of utterances counted
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_afcd3d0cbb49648e760e9875d32f53f19}\label{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_afcd3d0cbb49648e760e9875d32f53f19}} 
+\index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf}!learn\+\_\+nidf@{learn\+\_\+nidf}}
+\index{learn\+\_\+nidf@{learn\+\_\+nidf}!projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf}}
+\subsubsection{\texorpdfstring{learn\+\_\+nidf()}{learn\_nidf()}}
+{\footnotesize\ttfamily def projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+nidf.\+learn\+\_\+nidf (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Go through ConvAI2 and Twitter data, and count word frequences.
+
+Save word2count.pkl, which contains word2count, and total num_sents. These are both
+needed to calculate NIDF later.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_a2f882ed55572a6f2f7558732a6a692ee}\label{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_a2f882ed55572a6f2f7558732a6a692ee}} 
+\index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf}!load\+\_\+word2nidf@{load\+\_\+word2nidf}}
+\index{load\+\_\+word2nidf@{load\+\_\+word2nidf}!projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf}}
+\subsubsection{\texorpdfstring{load\+\_\+word2nidf()}{load\_word2nidf()}}
+{\footnotesize\ttfamily def projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+nidf.\+load\+\_\+word2nidf (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Loads word count stats from word2count.pkl file in data/controllable_dialogue,
+computes NIDF for all words, and returns the word2nidf dictionary.
+
+Returns:
+  word2nidf: dict mapping words to their NIDF score (float between 0 and 1)
+\end{DoxyVerb}
+ 
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_a56dd641e98e0dbc6b67b18bb0273abf2}\label{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_a56dd641e98e0dbc6b67b18bb0273abf2}} 
+\index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf}!C\+O\+N\+T\+R\+O\+L\+L\+A\+B\+L\+E\+\_\+\+D\+IR@{C\+O\+N\+T\+R\+O\+L\+L\+A\+B\+L\+E\+\_\+\+D\+IR}}
+\index{C\+O\+N\+T\+R\+O\+L\+L\+A\+B\+L\+E\+\_\+\+D\+IR@{C\+O\+N\+T\+R\+O\+L\+L\+A\+B\+L\+E\+\_\+\+D\+IR}!projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf}}
+\subsubsection{\texorpdfstring{C\+O\+N\+T\+R\+O\+L\+L\+A\+B\+L\+E\+\_\+\+D\+IR}{CONTROLLABLE\_DIR}}
+{\footnotesize\ttfamily string projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+nidf.\+C\+O\+N\+T\+R\+O\+L\+L\+A\+B\+L\+E\+\_\+\+D\+IR = \textquotesingle{}controllable\+\_\+dialogue\textquotesingle{}}
+
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_aef7111d92971802c719300bfe5d9f626}\label{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_aef7111d92971802c719300bfe5d9f626}} 
+\index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf}!opt@{opt}}
+\index{opt@{opt}!projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf}}
+\subsubsection{\texorpdfstring{opt}{opt}}
+{\footnotesize\ttfamily projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+nidf.\+opt = parser.\+parse\+\_\+args()}
+
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_a8277b85519dcddac2bdb34598844abfc}\label{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_a8277b85519dcddac2bdb34598844abfc}} 
+\index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf}!P\+A\+R\+L\+A\+I\+\_\+\+F\+O\+R\+M\+A\+T\+\_\+\+D\+IR@{P\+A\+R\+L\+A\+I\+\_\+\+F\+O\+R\+M\+A\+T\+\_\+\+D\+IR}}
+\index{P\+A\+R\+L\+A\+I\+\_\+\+F\+O\+R\+M\+A\+T\+\_\+\+D\+IR@{P\+A\+R\+L\+A\+I\+\_\+\+F\+O\+R\+M\+A\+T\+\_\+\+D\+IR}!projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf}}
+\subsubsection{\texorpdfstring{P\+A\+R\+L\+A\+I\+\_\+\+F\+O\+R\+M\+A\+T\+\_\+\+D\+IR}{PARLAI\_FORMAT\_DIR}}
+{\footnotesize\ttfamily string projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+nidf.\+P\+A\+R\+L\+A\+I\+\_\+\+F\+O\+R\+M\+A\+T\+\_\+\+D\+IR = \textquotesingle{}controllable\+\_\+dialogue/Conv\+A\+I2\+\_\+parlaiformat\textquotesingle{}}
+
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_a4422dfd9be2af0e9f9481a2a5c33af92}\label{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_a4422dfd9be2af0e9f9481a2a5c33af92}} 
+\index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf}!parser@{parser}}
+\index{parser@{parser}!projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf}}
+\subsubsection{\texorpdfstring{parser}{parser}}
+{\footnotesize\ttfamily projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+nidf.\+parser = \hyperlink{classparlai_1_1core_1_1params_1_1ParlaiParser}{Parlai\+Parser}()}
+

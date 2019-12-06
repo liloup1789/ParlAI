@@ -1,0 +1,166 @@
+\hypertarget{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner}{}\section{parlai.\+chat\+\_\+service.\+services.\+messenger.\+world\+\_\+runner.\+Messenger\+World\+Runner Class Reference}
+\label{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner}\index{parlai.\+chat\+\_\+service.\+services.\+messenger.\+world\+\_\+runner.\+Messenger\+World\+Runner@{parlai.\+chat\+\_\+service.\+services.\+messenger.\+world\+\_\+runner.\+Messenger\+World\+Runner}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_ad70eeab49b4a620d85fe332ecb96b360}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_a42ff6ed9074e14be34091499649f6935}{opt}, world\+\_\+path, max\+\_\+workers, \hyperlink{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_a93b2e11a3222ab28f53520b30e72fd7c}{manager}, is\+\_\+debug=False)
+\item 
+def \hyperlink{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_ac8ddaf777698c974627ebf3fb4890b6a}{is\+\_\+initialized} (self)
+\item 
+def \hyperlink{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_a4fab2907172298b233a9512726523432}{shutdown} (self)
+\item 
+def \hyperlink{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_a45a5944b8a5a786163c3e1ceb9437b15}{launch\+\_\+task\+\_\+world} (self, task\+\_\+name, world\+\_\+name, agents)
+\item 
+def \hyperlink{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_a2ab603448517f5d973e2079499f1cbed}{launch\+\_\+overworld} (self, task\+\_\+name, overworld\+\_\+name, onboard\+\_\+map, overworld\+\_\+agent)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_aceef013023890c5d9590289d8039adbb}{executor}
+\item 
+\hyperlink{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_a2f850eb160165940f64fdec3f0a8af8f}{debug}
+\item 
+\hyperlink{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_a93b2e11a3222ab28f53520b30e72fd7c}{manager}
+\item 
+\hyperlink{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_af1c6f26b752a0bcfd4c86c3d963bfe72}{system\+\_\+done}
+\item 
+\hyperlink{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_a42ff6ed9074e14be34091499649f6935}{opt}
+\item 
+\hyperlink{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_abadbc6d1ea38c2281e6bd1b893425671}{tasks}
+\item 
+\hyperlink{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_a688d3920aa8dc6a7a5e31d0968e5c718}{initialized}
+\item 
+\hyperlink{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_a0f3ae4787645f946c6a34ebce8fa4e42}{init\+\_\+fut}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}World Runner.
+
+Launches worlds, overworlds, etc. Helper for MessengerManager
+\end{DoxyVerb}
+ 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_ad70eeab49b4a620d85fe332ecb96b360}\label{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_ad70eeab49b4a620d85fe332ecb96b360}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+messenger.\+world\+\_\+runner.\+Messenger\+World\+Runner.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{world\+\_\+path,  }\item[{}]{max\+\_\+workers,  }\item[{}]{manager,  }\item[{}]{is\+\_\+debug = {\ttfamily False} }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_ac8ddaf777698c974627ebf3fb4890b6a}\label{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_ac8ddaf777698c974627ebf3fb4890b6a}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner}!is\+\_\+initialized@{is\+\_\+initialized}}
+\index{is\+\_\+initialized@{is\+\_\+initialized}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner}}
+\subsubsection{\texorpdfstring{is\+\_\+initialized()}{is\_initialized()}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+messenger.\+world\+\_\+runner.\+Messenger\+World\+Runner.\+is\+\_\+initialized (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_a2ab603448517f5d973e2079499f1cbed}\label{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_a2ab603448517f5d973e2079499f1cbed}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner}!launch\+\_\+overworld@{launch\+\_\+overworld}}
+\index{launch\+\_\+overworld@{launch\+\_\+overworld}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner}}
+\subsubsection{\texorpdfstring{launch\+\_\+overworld()}{launch\_overworld()}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+messenger.\+world\+\_\+runner.\+Messenger\+World\+Runner.\+launch\+\_\+overworld (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{task\+\_\+name,  }\item[{}]{overworld\+\_\+name,  }\item[{}]{onboard\+\_\+map,  }\item[{}]{overworld\+\_\+agent }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Launch an overworld and a subsequent onboarding world.
+
+Return the job's future
+
+:param task_name:
+    string. the name of the job thread
+:param overworld_name:
+    string. the name of the overworld in the module file
+:param onboard_map:
+    map. a mapping of overworld return values to the names
+    of onboarding worlds in the module file.
+:param overworld_agent:
+    The agent to run the overworld with
+
+:return:
+    the Futures object corresponding to running the overworld
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_a45a5944b8a5a786163c3e1ceb9437b15}\label{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_a45a5944b8a5a786163c3e1ceb9437b15}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner}!launch\+\_\+task\+\_\+world@{launch\+\_\+task\+\_\+world}}
+\index{launch\+\_\+task\+\_\+world@{launch\+\_\+task\+\_\+world}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner}}
+\subsubsection{\texorpdfstring{launch\+\_\+task\+\_\+world()}{launch\_task\_world()}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+messenger.\+world\+\_\+runner.\+Messenger\+World\+Runner.\+launch\+\_\+task\+\_\+world (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{task\+\_\+name,  }\item[{}]{world\+\_\+name,  }\item[{}]{agents }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Launch a task world.
+
+Return the job's future.
+
+:param task_name:
+    string. the name of the job thread
+:param world_name:
+    string. the name of the task world in the module file
+:param agents:
+    list. the list of agents to install in the world
+
+:return:
+    the Futures object corresponding to this launched task
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_a4fab2907172298b233a9512726523432}\label{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_a4fab2907172298b233a9512726523432}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner}!shutdown@{shutdown}}
+\index{shutdown@{shutdown}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner}}
+\subsubsection{\texorpdfstring{shutdown()}{shutdown()}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+messenger.\+world\+\_\+runner.\+Messenger\+World\+Runner.\+shutdown (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Shutdown the world runner.
+\end{DoxyVerb}
+ 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_a2f850eb160165940f64fdec3f0a8af8f}\label{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_a2f850eb160165940f64fdec3f0a8af8f}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner}!debug@{debug}}
+\index{debug@{debug}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner}}
+\subsubsection{\texorpdfstring{debug}{debug}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+services.\+messenger.\+world\+\_\+runner.\+Messenger\+World\+Runner.\+debug}
+
+\mbox{\Hypertarget{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_aceef013023890c5d9590289d8039adbb}\label{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_aceef013023890c5d9590289d8039adbb}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner}!executor@{executor}}
+\index{executor@{executor}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner}}
+\subsubsection{\texorpdfstring{executor}{executor}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+services.\+messenger.\+world\+\_\+runner.\+Messenger\+World\+Runner.\+executor}
+
+\mbox{\Hypertarget{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_a0f3ae4787645f946c6a34ebce8fa4e42}\label{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_a0f3ae4787645f946c6a34ebce8fa4e42}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner}!init\+\_\+fut@{init\+\_\+fut}}
+\index{init\+\_\+fut@{init\+\_\+fut}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner}}
+\subsubsection{\texorpdfstring{init\+\_\+fut}{init\_fut}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+services.\+messenger.\+world\+\_\+runner.\+Messenger\+World\+Runner.\+init\+\_\+fut}
+
+\mbox{\Hypertarget{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_a688d3920aa8dc6a7a5e31d0968e5c718}\label{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_a688d3920aa8dc6a7a5e31d0968e5c718}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner}!initialized@{initialized}}
+\index{initialized@{initialized}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner}}
+\subsubsection{\texorpdfstring{initialized}{initialized}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+services.\+messenger.\+world\+\_\+runner.\+Messenger\+World\+Runner.\+initialized}
+
+\mbox{\Hypertarget{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_a93b2e11a3222ab28f53520b30e72fd7c}\label{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_a93b2e11a3222ab28f53520b30e72fd7c}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner}!manager@{manager}}
+\index{manager@{manager}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner}}
+\subsubsection{\texorpdfstring{manager}{manager}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+services.\+messenger.\+world\+\_\+runner.\+Messenger\+World\+Runner.\+manager}
+
+\mbox{\Hypertarget{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_a42ff6ed9074e14be34091499649f6935}\label{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_a42ff6ed9074e14be34091499649f6935}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner}!opt@{opt}}
+\index{opt@{opt}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner}}
+\subsubsection{\texorpdfstring{opt}{opt}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+services.\+messenger.\+world\+\_\+runner.\+Messenger\+World\+Runner.\+opt}
+
+\mbox{\Hypertarget{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_af1c6f26b752a0bcfd4c86c3d963bfe72}\label{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_af1c6f26b752a0bcfd4c86c3d963bfe72}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner}!system\+\_\+done@{system\+\_\+done}}
+\index{system\+\_\+done@{system\+\_\+done}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner}}
+\subsubsection{\texorpdfstring{system\+\_\+done}{system\_done}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+services.\+messenger.\+world\+\_\+runner.\+Messenger\+World\+Runner.\+system\+\_\+done}
+
+\mbox{\Hypertarget{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_abadbc6d1ea38c2281e6bd1b893425671}\label{classparlai_1_1chat__service_1_1services_1_1messenger_1_1world__runner_1_1MessengerWorldRunner_abadbc6d1ea38c2281e6bd1b893425671}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner}!tasks@{tasks}}
+\index{tasks@{tasks}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::world\+\_\+runner\+::\+Messenger\+World\+Runner}}
+\subsubsection{\texorpdfstring{tasks}{tasks}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+services.\+messenger.\+world\+\_\+runner.\+Messenger\+World\+Runner.\+tasks}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/chat\+\_\+service/services/messenger/\hyperlink{world__runner_8py}{world\+\_\+runner.\+py}\end{DoxyCompactItemize}

@@ -1,0 +1,123 @@
+\hypertarget{classparlai_1_1core_1_1build__data_1_1DownloadableFile}{}\section{parlai.\+core.\+build\+\_\+data.\+Downloadable\+File Class Reference}
+\label{classparlai_1_1core_1_1build__data_1_1DownloadableFile}\index{parlai.\+core.\+build\+\_\+data.\+Downloadable\+File@{parlai.\+core.\+build\+\_\+data.\+Downloadable\+File}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a674bba356b2fba56bb013b773233f2a7}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1core_1_1build__data_1_1DownloadableFile_acb91fb3fd6168d4188ac901ed8c2453a}{url}, \hyperlink{classparlai_1_1core_1_1build__data_1_1DownloadableFile_aa4d0b0712e8e33759cd55024eae74958}{file\+\_\+name}, \hyperlink{classparlai_1_1core_1_1build__data_1_1DownloadableFile_aa161aa3a965714db66528f7af11a1613}{hashcode}, \hyperlink{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a07640d0af013bbecf9db015754b66dbe}{zipped}=True, \hyperlink{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a7217a744f70ba99fac9306eea01c5a08}{from\+\_\+google}=False)
+\item 
+def \hyperlink{classparlai_1_1core_1_1build__data_1_1DownloadableFile_aa69730e15f7f4a535e01e126ceb87f9d}{checksum} (self, dpath)
+\item 
+def \hyperlink{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a2d7ae322b78f070c78050cbb41636bd4}{download\+\_\+file} (self, dpath)
+\item 
+def \hyperlink{classparlai_1_1core_1_1build__data_1_1DownloadableFile_ad08cadfb6f34f251368bf16fab6e557d}{check\+\_\+header} (self)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1core_1_1build__data_1_1DownloadableFile_acb91fb3fd6168d4188ac901ed8c2453a}{url}
+\item 
+\hyperlink{classparlai_1_1core_1_1build__data_1_1DownloadableFile_aa4d0b0712e8e33759cd55024eae74958}{file\+\_\+name}
+\item 
+\hyperlink{classparlai_1_1core_1_1build__data_1_1DownloadableFile_aa161aa3a965714db66528f7af11a1613}{hashcode}
+\item 
+\hyperlink{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a07640d0af013bbecf9db015754b66dbe}{zipped}
+\item 
+\hyperlink{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a7217a744f70ba99fac9306eea01c5a08}{from\+\_\+google}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}A class used to abstract any file that has to be downloaded online.
+
+Any task that needs to download a file needs to have a list RESOURCES
+that have objects of this class as elements.
+
+This class provides the following functionality:
+
+- Download a file from a URL / Google Drive
+- Untar the file if zipped
+- Checksum for the downloaded file
+- Send HEAD request to validate URL or Google Drive link
+
+An object of this class needs to be created with:
+
+- url <string> : URL or Google Drive id to download from
+- file_name <string> : File name that the file should be named
+- hashcode <string> : SHA256 hashcode of the downloaded file
+- zipped <boolean> : False if the file is not compressed
+- from_google <boolean> : True if the file is from Google Drive
+\end{DoxyVerb}
+ 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a674bba356b2fba56bb013b773233f2a7}\label{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a674bba356b2fba56bb013b773233f2a7}} 
+\index{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+core.\+build\+\_\+data.\+Downloadable\+File.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{url,  }\item[{}]{file\+\_\+name,  }\item[{}]{hashcode,  }\item[{}]{zipped = {\ttfamily True},  }\item[{}]{from\+\_\+google = {\ttfamily False} }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1core_1_1build__data_1_1DownloadableFile_ad08cadfb6f34f251368bf16fab6e557d}\label{classparlai_1_1core_1_1build__data_1_1DownloadableFile_ad08cadfb6f34f251368bf16fab6e557d}} 
+\index{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}!check\+\_\+header@{check\+\_\+header}}
+\index{check\+\_\+header@{check\+\_\+header}!parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}}
+\subsubsection{\texorpdfstring{check\+\_\+header()}{check\_header()}}
+{\footnotesize\ttfamily def parlai.\+core.\+build\+\_\+data.\+Downloadable\+File.\+check\+\_\+header (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Performs a HEAD request to check if the URL / Google Drive ID is live.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classparlai_1_1core_1_1build__data_1_1DownloadableFile_aa69730e15f7f4a535e01e126ceb87f9d}\label{classparlai_1_1core_1_1build__data_1_1DownloadableFile_aa69730e15f7f4a535e01e126ceb87f9d}} 
+\index{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}!checksum@{checksum}}
+\index{checksum@{checksum}!parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}}
+\subsubsection{\texorpdfstring{checksum()}{checksum()}}
+{\footnotesize\ttfamily def parlai.\+core.\+build\+\_\+data.\+Downloadable\+File.\+checksum (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{dpath }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Checksum on a given file.
+
+:param dpath: path to the downloaded file.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a2d7ae322b78f070c78050cbb41636bd4}\label{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a2d7ae322b78f070c78050cbb41636bd4}} 
+\index{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}!download\+\_\+file@{download\+\_\+file}}
+\index{download\+\_\+file@{download\+\_\+file}!parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}}
+\subsubsection{\texorpdfstring{download\+\_\+file()}{download\_file()}}
+{\footnotesize\ttfamily def parlai.\+core.\+build\+\_\+data.\+Downloadable\+File.\+download\+\_\+file (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{dpath }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1core_1_1build__data_1_1DownloadableFile_aa4d0b0712e8e33759cd55024eae74958}\label{classparlai_1_1core_1_1build__data_1_1DownloadableFile_aa4d0b0712e8e33759cd55024eae74958}} 
+\index{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}!file\+\_\+name@{file\+\_\+name}}
+\index{file\+\_\+name@{file\+\_\+name}!parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}}
+\subsubsection{\texorpdfstring{file\+\_\+name}{file\_name}}
+{\footnotesize\ttfamily parlai.\+core.\+build\+\_\+data.\+Downloadable\+File.\+file\+\_\+name}
+
+\mbox{\Hypertarget{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a7217a744f70ba99fac9306eea01c5a08}\label{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a7217a744f70ba99fac9306eea01c5a08}} 
+\index{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}!from\+\_\+google@{from\+\_\+google}}
+\index{from\+\_\+google@{from\+\_\+google}!parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}}
+\subsubsection{\texorpdfstring{from\+\_\+google}{from\_google}}
+{\footnotesize\ttfamily parlai.\+core.\+build\+\_\+data.\+Downloadable\+File.\+from\+\_\+google}
+
+\mbox{\Hypertarget{classparlai_1_1core_1_1build__data_1_1DownloadableFile_aa161aa3a965714db66528f7af11a1613}\label{classparlai_1_1core_1_1build__data_1_1DownloadableFile_aa161aa3a965714db66528f7af11a1613}} 
+\index{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}!hashcode@{hashcode}}
+\index{hashcode@{hashcode}!parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}}
+\subsubsection{\texorpdfstring{hashcode}{hashcode}}
+{\footnotesize\ttfamily parlai.\+core.\+build\+\_\+data.\+Downloadable\+File.\+hashcode}
+
+\mbox{\Hypertarget{classparlai_1_1core_1_1build__data_1_1DownloadableFile_acb91fb3fd6168d4188ac901ed8c2453a}\label{classparlai_1_1core_1_1build__data_1_1DownloadableFile_acb91fb3fd6168d4188ac901ed8c2453a}} 
+\index{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}!url@{url}}
+\index{url@{url}!parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}}
+\subsubsection{\texorpdfstring{url}{url}}
+{\footnotesize\ttfamily parlai.\+core.\+build\+\_\+data.\+Downloadable\+File.\+url}
+
+\mbox{\Hypertarget{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a07640d0af013bbecf9db015754b66dbe}\label{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a07640d0af013bbecf9db015754b66dbe}} 
+\index{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}!zipped@{zipped}}
+\index{zipped@{zipped}!parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}}
+\subsubsection{\texorpdfstring{zipped}{zipped}}
+{\footnotesize\ttfamily parlai.\+core.\+build\+\_\+data.\+Downloadable\+File.\+zipped}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/core/\hyperlink{build__data_8py}{build\+\_\+data.\+py}\end{DoxyCompactItemize}

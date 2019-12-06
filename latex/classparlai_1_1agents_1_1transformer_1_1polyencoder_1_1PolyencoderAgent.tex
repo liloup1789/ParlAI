@@ -1,0 +1,159 @@
+\hypertarget{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent}{}\section{parlai.\+agents.\+transformer.\+polyencoder.\+Polyencoder\+Agent Class Reference}
+\label{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent}\index{parlai.\+agents.\+transformer.\+polyencoder.\+Polyencoder\+Agent@{parlai.\+agents.\+transformer.\+polyencoder.\+Polyencoder\+Agent}}
+
+
+Inheritance diagram for parlai.\+agents.\+transformer.\+polyencoder.\+Polyencoder\+Agent\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=282pt]{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+agents.\+transformer.\+polyencoder.\+Polyencoder\+Agent\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_adbbf75b4d5b32529621ab9f6edbb904f}{add\+\_\+cmdline\+\_\+args} (cls, argparser)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a2e8f1aca19a3ba34386d7c69ed7e17bc}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1core_1_1torch__agent_1_1TorchAgent_a785bb920cf8c8afc3e9bf6a8b77e335a}{opt}, shared=None)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a50c59f1b745560d8883c1f9b65dce10a}{build\+\_\+model} (self, states=None)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a02cea5573a5135f5a7201c49296abded}{vectorize} (self, args, kwargs)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_ad002f52bc5bfbe8269983bbfc0988f98}{vectorize\+\_\+fixed\+\_\+candidates} (self, args, kwargs)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_ae73fe8d98b46a7ef18ef7115f29c999d}{encode\+\_\+candidates} (self, padded\+\_\+cands)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_ad75794f4004267ab538258bc2571235f}{score\+\_\+candidates} (self, batch, cand\+\_\+vecs, cand\+\_\+encs=None)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a4b6301664c0a7e98e9c688cc75ca79dc}{load\+\_\+state\+\_\+dict} (self, \hyperlink{classparlai_1_1core_1_1torch__agent_1_1TorchAgent_a9f89e606931a4622a5c6a6f6b832235c}{state\+\_\+dict})
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a20e36e9eb037ae6f71ae661e94bb6445}{rank\+\_\+loss}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a7b415240e04df392cb8767911fc0ff68}{data\+\_\+parallel}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a1b3a89e114cfe44d7601a47d62c78861}{model}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Poly-encoder Agent.
+
+Equivalent of bert_ranker/polyencoder and biencoder_multiple_output but does not
+rely on an external library (hugging face).
+\end{DoxyVerb}
+ 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a2e8f1aca19a3ba34386d7c69ed7e17bc}\label{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a2e8f1aca19a3ba34386d7c69ed7e17bc}} 
+\index{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+polyencoder.\+Polyencoder\+Agent.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{shared = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_adbbf75b4d5b32529621ab9f6edbb904f}\label{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_adbbf75b4d5b32529621ab9f6edbb904f}} 
+\index{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}!add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}}
+\index{add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}!parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}}
+\subsubsection{\texorpdfstring{add\+\_\+cmdline\+\_\+args()}{add\_cmdline\_args()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+polyencoder.\+Polyencoder\+Agent.\+add\+\_\+cmdline\+\_\+args (\begin{DoxyParamCaption}\item[{}]{cls,  }\item[{}]{argparser }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Add command-line arguments specifically for this agent.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a50c59f1b745560d8883c1f9b65dce10a}\label{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a50c59f1b745560d8883c1f9b65dce10a}} 
+\index{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}!build\+\_\+model@{build\+\_\+model}}
+\index{build\+\_\+model@{build\+\_\+model}!parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}}
+\subsubsection{\texorpdfstring{build\+\_\+model()}{build\_model()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+polyencoder.\+Polyencoder\+Agent.\+build\+\_\+model (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{states = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Return built model.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_ae73fe8d98b46a7ef18ef7115f29c999d}\label{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_ae73fe8d98b46a7ef18ef7115f29c999d}} 
+\index{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}!encode\+\_\+candidates@{encode\+\_\+candidates}}
+\index{encode\+\_\+candidates@{encode\+\_\+candidates}!parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}}
+\subsubsection{\texorpdfstring{encode\+\_\+candidates()}{encode\_candidates()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+polyencoder.\+Polyencoder\+Agent.\+encode\+\_\+candidates (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{padded\+\_\+cands }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Encode candidates.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a4b6301664c0a7e98e9c688cc75ca79dc}\label{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a4b6301664c0a7e98e9c688cc75ca79dc}} 
+\index{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}!load\+\_\+state\+\_\+dict@{load\+\_\+state\+\_\+dict}}
+\index{load\+\_\+state\+\_\+dict@{load\+\_\+state\+\_\+dict}!parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}}
+\subsubsection{\texorpdfstring{load\+\_\+state\+\_\+dict()}{load\_state\_dict()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+polyencoder.\+Polyencoder\+Agent.\+load\+\_\+state\+\_\+dict (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{state\+\_\+dict }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Override to account for codes.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_ad75794f4004267ab538258bc2571235f}\label{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_ad75794f4004267ab538258bc2571235f}} 
+\index{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}!score\+\_\+candidates@{score\+\_\+candidates}}
+\index{score\+\_\+candidates@{score\+\_\+candidates}!parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}}
+\subsubsection{\texorpdfstring{score\+\_\+candidates()}{score\_candidates()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+polyencoder.\+Polyencoder\+Agent.\+score\+\_\+candidates (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{batch,  }\item[{}]{cand\+\_\+vecs,  }\item[{}]{cand\+\_\+encs = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Score candidates.
+
+The Poly-encoder encodes the candidate and context independently. Then, the
+model applies additional attention before ultimately scoring a candidate.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a02cea5573a5135f5a7201c49296abded}\label{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a02cea5573a5135f5a7201c49296abded}} 
+\index{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}!vectorize@{vectorize}}
+\index{vectorize@{vectorize}!parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}}
+\subsubsection{\texorpdfstring{vectorize()}{vectorize()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+polyencoder.\+Polyencoder\+Agent.\+vectorize (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{args,  }\item[{}]{kwargs }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Add the start and end token to the labels.
+\end{DoxyVerb}
+ \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_ad002f52bc5bfbe8269983bbfc0988f98}\label{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_ad002f52bc5bfbe8269983bbfc0988f98}} 
+\index{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}!vectorize\+\_\+fixed\+\_\+candidates@{vectorize\+\_\+fixed\+\_\+candidates}}
+\index{vectorize\+\_\+fixed\+\_\+candidates@{vectorize\+\_\+fixed\+\_\+candidates}!parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}}
+\subsubsection{\texorpdfstring{vectorize\+\_\+fixed\+\_\+candidates()}{vectorize\_fixed\_candidates()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+polyencoder.\+Polyencoder\+Agent.\+vectorize\+\_\+fixed\+\_\+candidates (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{args,  }\item[{}]{kwargs }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Vectorize fixed candidates.
+
+Override to add start and end token when computing the candidate encodings in
+interactive mode.
+\end{DoxyVerb}
+ 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a7b415240e04df392cb8767911fc0ff68}\label{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a7b415240e04df392cb8767911fc0ff68}} 
+\index{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}!data\+\_\+parallel@{data\+\_\+parallel}}
+\index{data\+\_\+parallel@{data\+\_\+parallel}!parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}}
+\subsubsection{\texorpdfstring{data\+\_\+parallel}{data\_parallel}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+polyencoder.\+Polyencoder\+Agent.\+data\+\_\+parallel}
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a1b3a89e114cfe44d7601a47d62c78861}\label{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a1b3a89e114cfe44d7601a47d62c78861}} 
+\index{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}!model@{model}}
+\index{model@{model}!parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}}
+\subsubsection{\texorpdfstring{model}{model}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+polyencoder.\+Polyencoder\+Agent.\+model}
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a20e36e9eb037ae6f71ae661e94bb6445}\label{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a20e36e9eb037ae6f71ae661e94bb6445}} 
+\index{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}!rank\+\_\+loss@{rank\+\_\+loss}}
+\index{rank\+\_\+loss@{rank\+\_\+loss}!parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}}
+\subsubsection{\texorpdfstring{rank\+\_\+loss}{rank\_loss}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+polyencoder.\+Polyencoder\+Agent.\+rank\+\_\+loss}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/agents/transformer/\hyperlink{polyencoder_8py}{polyencoder.\+py}\end{DoxyCompactItemize}

@@ -1,0 +1,134 @@
+\hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils}{}\section{parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils Namespace Reference}
+\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils}\index{parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils@{parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_ad6686d06420159711f730caba7e82964}{setup\+\_\+heroku\+\_\+server} (task\+\_\+name)
+\item 
+def \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_ad2f0d428e09b0ce197091c41c21dfafb}{delete\+\_\+heroku\+\_\+server} (task\+\_\+name)
+\item 
+def \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a89bf62978803958356c32096df679432}{setup\+\_\+local\+\_\+server} (task\+\_\+name)
+\item 
+def \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a94445c358161efa9329ecbeefadb01dc}{delete\+\_\+local\+\_\+server} (task\+\_\+name)
+\item 
+def \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_afb56b04206cd0f42384438f1ac6d9cda}{setup\+\_\+server} (task\+\_\+name, local=False)
+\item 
+def \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a0dd350cc27da7cfdc225f8daf19d5e57}{delete\+\_\+server} (task\+\_\+name, local=False)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+string \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a4e22e27725adafcd1a6b95d189d627cf}{region\+\_\+name} = \textquotesingle{}us-\/east-\/1\textquotesingle{}
+\item 
+\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a9b83dd4b20a92013cf4199f198aa360a}{user\+\_\+name} = getpass.\+getuser()
+\item 
+\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_acde853bd5872b1d77d8cbf7f61216c7a}{parent\+\_\+dir} = os.\+path.\+dirname(os.\+path.\+abspath(\+\_\+\+\_\+file\+\_\+\+\_\+))
+\item 
+string \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_aa10ee06f560e1007b8d3b50c869001c0}{server\+\_\+source\+\_\+directory\+\_\+name} = \textquotesingle{}server\textquotesingle{}
+\item 
+string \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a9f647dadd18219a9e8bc19d810622582}{heroku\+\_\+server\+\_\+directory\+\_\+name} = \textquotesingle{}heroku\+\_\+server\textquotesingle{}
+\item 
+string \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a3237a588c9ba62516404f9234816aaa5}{local\+\_\+server\+\_\+directory\+\_\+name} = \textquotesingle{}local\+\_\+server\textquotesingle{}
+\item 
+string \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a087efe2fa17d505b0fa8753f6dbab06f}{task\+\_\+directory\+\_\+name} = \textquotesingle{}task\textquotesingle{}
+\item 
+\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_aa627704acdf6fa8e166558a521a14ef8}{server\+\_\+process} = None
+\item 
+string \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a1673520e492a9e606a82b26fe83bdcb1}{heroku\+\_\+url} = \textquotesingle{}https\+://cli-\/assets.\+heroku.\+com/heroku-\/cli/channels/stable/heroku-\/cli\textquotesingle{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_ad2f0d428e09b0ce197091c41c21dfafb}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_ad2f0d428e09b0ce197091c41c21dfafb}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!delete\+\_\+heroku\+\_\+server@{delete\+\_\+heroku\+\_\+server}}
+\index{delete\+\_\+heroku\+\_\+server@{delete\+\_\+heroku\+\_\+server}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{delete\+\_\+heroku\+\_\+server()}{delete\_heroku\_server()}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+delete\+\_\+heroku\+\_\+server (\begin{DoxyParamCaption}\item[{}]{task\+\_\+name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a94445c358161efa9329ecbeefadb01dc}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a94445c358161efa9329ecbeefadb01dc}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!delete\+\_\+local\+\_\+server@{delete\+\_\+local\+\_\+server}}
+\index{delete\+\_\+local\+\_\+server@{delete\+\_\+local\+\_\+server}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{delete\+\_\+local\+\_\+server()}{delete\_local\_server()}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+delete\+\_\+local\+\_\+server (\begin{DoxyParamCaption}\item[{}]{task\+\_\+name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a0dd350cc27da7cfdc225f8daf19d5e57}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a0dd350cc27da7cfdc225f8daf19d5e57}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!delete\+\_\+server@{delete\+\_\+server}}
+\index{delete\+\_\+server@{delete\+\_\+server}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{delete\+\_\+server()}{delete\_server()}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+delete\+\_\+server (\begin{DoxyParamCaption}\item[{}]{task\+\_\+name,  }\item[{}]{local = {\ttfamily False} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_ad6686d06420159711f730caba7e82964}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_ad6686d06420159711f730caba7e82964}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!setup\+\_\+heroku\+\_\+server@{setup\+\_\+heroku\+\_\+server}}
+\index{setup\+\_\+heroku\+\_\+server@{setup\+\_\+heroku\+\_\+server}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{setup\+\_\+heroku\+\_\+server()}{setup\_heroku\_server()}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+setup\+\_\+heroku\+\_\+server (\begin{DoxyParamCaption}\item[{}]{task\+\_\+name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a89bf62978803958356c32096df679432}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a89bf62978803958356c32096df679432}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!setup\+\_\+local\+\_\+server@{setup\+\_\+local\+\_\+server}}
+\index{setup\+\_\+local\+\_\+server@{setup\+\_\+local\+\_\+server}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{setup\+\_\+local\+\_\+server()}{setup\_local\_server()}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+setup\+\_\+local\+\_\+server (\begin{DoxyParamCaption}\item[{}]{task\+\_\+name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_afb56b04206cd0f42384438f1ac6d9cda}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_afb56b04206cd0f42384438f1ac6d9cda}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!setup\+\_\+server@{setup\+\_\+server}}
+\index{setup\+\_\+server@{setup\+\_\+server}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{setup\+\_\+server()}{setup\_server()}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+setup\+\_\+server (\begin{DoxyParamCaption}\item[{}]{task\+\_\+name,  }\item[{}]{local = {\ttfamily False} }\end{DoxyParamCaption})}
+
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a9f647dadd18219a9e8bc19d810622582}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a9f647dadd18219a9e8bc19d810622582}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!heroku\+\_\+server\+\_\+directory\+\_\+name@{heroku\+\_\+server\+\_\+directory\+\_\+name}}
+\index{heroku\+\_\+server\+\_\+directory\+\_\+name@{heroku\+\_\+server\+\_\+directory\+\_\+name}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{heroku\+\_\+server\+\_\+directory\+\_\+name}{heroku\_server\_directory\_name}}
+{\footnotesize\ttfamily string parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+heroku\+\_\+server\+\_\+directory\+\_\+name = \textquotesingle{}heroku\+\_\+server\textquotesingle{}}
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a1673520e492a9e606a82b26fe83bdcb1}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a1673520e492a9e606a82b26fe83bdcb1}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!heroku\+\_\+url@{heroku\+\_\+url}}
+\index{heroku\+\_\+url@{heroku\+\_\+url}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{heroku\+\_\+url}{heroku\_url}}
+{\footnotesize\ttfamily string parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+heroku\+\_\+url = \textquotesingle{}https\+://cli-\/assets.\+heroku.\+com/heroku-\/cli/channels/stable/heroku-\/cli\textquotesingle{}}
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a3237a588c9ba62516404f9234816aaa5}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a3237a588c9ba62516404f9234816aaa5}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!local\+\_\+server\+\_\+directory\+\_\+name@{local\+\_\+server\+\_\+directory\+\_\+name}}
+\index{local\+\_\+server\+\_\+directory\+\_\+name@{local\+\_\+server\+\_\+directory\+\_\+name}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{local\+\_\+server\+\_\+directory\+\_\+name}{local\_server\_directory\_name}}
+{\footnotesize\ttfamily string parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+local\+\_\+server\+\_\+directory\+\_\+name = \textquotesingle{}local\+\_\+server\textquotesingle{}}
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_acde853bd5872b1d77d8cbf7f61216c7a}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_acde853bd5872b1d77d8cbf7f61216c7a}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!parent\+\_\+dir@{parent\+\_\+dir}}
+\index{parent\+\_\+dir@{parent\+\_\+dir}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{parent\+\_\+dir}{parent\_dir}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+parent\+\_\+dir = os.\+path.\+dirname(os.\+path.\+abspath(\+\_\+\+\_\+file\+\_\+\+\_\+))}
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a4e22e27725adafcd1a6b95d189d627cf}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a4e22e27725adafcd1a6b95d189d627cf}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!region\+\_\+name@{region\+\_\+name}}
+\index{region\+\_\+name@{region\+\_\+name}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{region\+\_\+name}{region\_name}}
+{\footnotesize\ttfamily string parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+region\+\_\+name = \textquotesingle{}us-\/east-\/1\textquotesingle{}}
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_aa627704acdf6fa8e166558a521a14ef8}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_aa627704acdf6fa8e166558a521a14ef8}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!server\+\_\+process@{server\+\_\+process}}
+\index{server\+\_\+process@{server\+\_\+process}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{server\+\_\+process}{server\_process}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+server\+\_\+process = None}
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_aa10ee06f560e1007b8d3b50c869001c0}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_aa10ee06f560e1007b8d3b50c869001c0}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!server\+\_\+source\+\_\+directory\+\_\+name@{server\+\_\+source\+\_\+directory\+\_\+name}}
+\index{server\+\_\+source\+\_\+directory\+\_\+name@{server\+\_\+source\+\_\+directory\+\_\+name}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{server\+\_\+source\+\_\+directory\+\_\+name}{server\_source\_directory\_name}}
+{\footnotesize\ttfamily string parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+server\+\_\+source\+\_\+directory\+\_\+name = \textquotesingle{}server\textquotesingle{}}
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a087efe2fa17d505b0fa8753f6dbab06f}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a087efe2fa17d505b0fa8753f6dbab06f}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!task\+\_\+directory\+\_\+name@{task\+\_\+directory\+\_\+name}}
+\index{task\+\_\+directory\+\_\+name@{task\+\_\+directory\+\_\+name}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{task\+\_\+directory\+\_\+name}{task\_directory\_name}}
+{\footnotesize\ttfamily string parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+task\+\_\+directory\+\_\+name = \textquotesingle{}task\textquotesingle{}}
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a9b83dd4b20a92013cf4199f198aa360a}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a9b83dd4b20a92013cf4199f198aa360a}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!user\+\_\+name@{user\+\_\+name}}
+\index{user\+\_\+name@{user\+\_\+name}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{user\+\_\+name}{user\_name}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+user\+\_\+name = getpass.\+getuser()}
+

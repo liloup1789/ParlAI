@@ -87,8 +87,8 @@ Collaboration diagram for parlai.utils.testing.retry:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a35e3eafac8f9ba72092a2a4d1b4c0545"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classparlai_1_1utils_1_1testing_1_1retry.html#a35e3eafac8f9ba72092a2a4d1b4c0545">__init__</a> (self, <a class="el" href="classparlai_1_1utils_1_1testing_1_1retry.html#abd5233dc28b07a53cd11347e5e44c44f">ntries</a>=3)</td></tr>
-<tr class="separator:a35e3eafac8f9ba72092a2a4d1b4c0545"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa31eb1816cd31f1a22747e7289747c6"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classparlai_1_1utils_1_1testing_1_1retry.html#afa31eb1816cd31f1a22747e7289747c6">__init__</a> (self, <a class="el" href="classparlai_1_1utils_1_1testing_1_1retry.html#abd5233dc28b07a53cd11347e5e44c44f">ntries</a>=3, <a class="el" href="classparlai_1_1utils_1_1testing_1_1retry.html#a69ead6d82dec33d05ba94a3d561e6dfc">log_retry</a>=False)</td></tr>
+<tr class="separator:afa31eb1816cd31f1a22747e7289747c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac034808bb9ab13c8f8314d7069c6325e"><td class="memItemLeft" align="right" valign="top">def&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classparlai_1_1utils_1_1testing_1_1retry.html#ac034808bb9ab13c8f8314d7069c6325e">__call__</a> (self, testfn)</td></tr>
 <tr class="separator:ac034808bb9ab13c8f8314d7069c6325e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -96,9 +96,16 @@ Public Member Functions</h2></td></tr>
 Public Attributes</h2></td></tr>
 <tr class="memitem:abd5233dc28b07a53cd11347e5e44c44f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classparlai_1_1utils_1_1testing_1_1retry.html#abd5233dc28b07a53cd11347e5e44c44f">ntries</a></td></tr>
 <tr class="separator:abd5233dc28b07a53cd11347e5e44c44f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69ead6d82dec33d05ba94a3d561e6dfc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classparlai_1_1utils_1_1testing_1_1retry.html#a69ead6d82dec33d05ba94a3d561e6dfc">log_retry</a></td></tr>
+<tr class="separator:a69ead6d82dec33d05ba94a3d561e6dfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><pre class="fragment">Decorator for flaky tests. Test is run up to ntries times, retrying on failure.
+
+:param ntries:
+    the number of tries to attempt
+:param log_retry:
+    if True, prints to stdout on retry to avoid being seen as "hanging"
 
 On the last time, the test will simply fail.
 
@@ -106,11 +113,9 @@ On the last time, the test will simply fail.
 ... def test_flaky(self):
 ...     import random
 ...     self.assertLess(0.5, random.random())
-</pre> 
-<p class="definition">Definition at line <a class="el" href="testing_8py_source.html#l00082">82</a> of file <a class="el" href="testing_8py_source.html">testing.py</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a35e3eafac8f9ba72092a2a4d1b4c0545"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a35e3eafac8f9ba72092a2a4d1b4c0545">&#9670;&nbsp;</a></span>__init__()</h2>
+</pre> </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="afa31eb1816cd31f1a22747e7289747c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa31eb1816cd31f1a22747e7289747c6">&#9670;&nbsp;</a></span>__init__()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -125,7 +130,13 @@ On the last time, the test will simply fail.
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">&#160;</td>
-          <td class="paramname"><em>ntries</em> = <code>3</code>&#160;</td>
+          <td class="paramname"><em>ntries</em> = <code>3</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>log_retry</em> = <code>False</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -134,8 +145,6 @@ On the last time, the test will simply fail.
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="testing_8py_source.html#l00094">94</a> of file <a class="el" href="testing_8py_source.html">testing.py</a>.</p>
 
 </div>
 </div>
@@ -165,14 +174,25 @@ On the last time, the test will simply fail.
         </tr>
       </table>
 </div><div class="memdoc">
-<pre class="fragment">Call testfn(), possibly multiple times on failureException.</pre> 
-<p class="definition">Definition at line <a class="el" href="testing_8py_source.html#l00097">97</a> of file <a class="el" href="testing_8py_source.html">testing.py</a>.</p>
-
-<p class="reference">References <a class="el" href="testing_8py_source.html#l00095">parlai.utils.testing.retry.ntries</a>.</p>
-
+<pre class="fragment">Call testfn(), possibly multiple times on failureException.
+</pre> 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a69ead6d82dec33d05ba94a3d561e6dfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69ead6d82dec33d05ba94a3d561e6dfc">&#9670;&nbsp;</a></span>log_retry</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">parlai.utils.testing.retry.log_retry</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="abd5233dc28b07a53cd11347e5e44c44f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abd5233dc28b07a53cd11347e5e44c44f">&#9670;&nbsp;</a></span>ntries</h2>
 
@@ -185,14 +205,10 @@ On the last time, the test will simply fail.
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="testing_8py_source.html#l00095">95</a> of file <a class="el" href="testing_8py_source.html">testing.py</a>.</p>
-
-<p class="reference">Referenced by <a class="el" href="testing_8py_source.html#l00097">parlai.utils.testing.retry.__call__()</a>.</p>
-
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>parlai/utils/<a class="el" href="testing_8py_source.html">testing.py</a></li>
+<li>parlai/utils/<a class="el" href="testing_8py.html">testing.py</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

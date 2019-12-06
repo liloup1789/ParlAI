@@ -2,7 +2,7 @@ var searchData=
 [
   ['negotiationteacher',['NegotiationTeacher',['../classparlai_1_1tasks_1_1dealnodeal_1_1agents_1_1NegotiationTeacher.html',1,'parlai::tasks::dealnodeal::agents']]],
   ['neteacher',['NETeacher',['../classparlai_1_1tasks_1_1cbt_1_1agents_1_1NETeacher.html',1,'parlai::tasks::cbt::agents']]],
-  ['nidffeats',['NIDFFeats',['../classcontrollable__seq2seq_1_1controls_1_1NIDFFeats.html',1,'controllable_seq2seq::controls']]],
+  ['nidffeats',['NIDFFeats',['../classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controls_1_1NIDFFeats.html',1,'projects::controllable_dialogue::controllable_seq2seq::controls']]],
   ['nocandidateteacher',['NocandidateTeacher',['../classparlai_1_1tasks_1_1integration__tests_1_1agents_1_1NocandidateTeacher.html',1,'parlai::tasks::integration_tests::agents']]],
   ['nocandidateteacherdataset',['NoCandidateTeacherDataset',['../classparlai_1_1tasks_1_1integration__tests_1_1agents_1_1NoCandidateTeacherDataset.html',1,'parlai::tasks::integration_tests::agents']]],
   ['nolock',['NoLock',['../classparlai_1_1utils_1_1misc_1_1NoLock.html',1,'parlai::utils::misc']]],
