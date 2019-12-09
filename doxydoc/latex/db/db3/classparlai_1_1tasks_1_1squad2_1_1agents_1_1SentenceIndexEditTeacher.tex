@@ -1,0 +1,127 @@
+\hypertarget{classparlai_1_1tasks_1_1squad2_1_1agents_1_1SentenceIndexEditTeacher}{}\section{parlai.\+tasks.\+squad2.\+agents.\+Sentence\+Index\+Edit\+Teacher Class Reference}
+\label{classparlai_1_1tasks_1_1squad2_1_1agents_1_1SentenceIndexEditTeacher}\index{parlai.\+tasks.\+squad2.\+agents.\+Sentence\+Index\+Edit\+Teacher@{parlai.\+tasks.\+squad2.\+agents.\+Sentence\+Index\+Edit\+Teacher}}
+
+
+Inheritance diagram for parlai.\+tasks.\+squad2.\+agents.\+Sentence\+Index\+Edit\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{de/dde/classparlai_1_1tasks_1_1squad2_1_1agents_1_1SentenceIndexEditTeacher__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+tasks.\+squad2.\+agents.\+Sentence\+Index\+Edit\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{d0/d58/classparlai_1_1tasks_1_1squad2_1_1agents_1_1SentenceIndexEditTeacher__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1squad2_1_1agents_1_1SentenceIndexEditTeacher_a7edf449f03ad58cfa58b856b7ada36b5}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1core_1_1agents_1_1Teacher_a3ce6243860ce978a897922863ed32fa4}{opt}, shared=None)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1squad2_1_1agents_1_1SentenceIndexEditTeacher_afb925573397b65655e1375f2f501b545}{get} (self, \hyperlink{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_afd4ebab8063eb42d182d30a1a41f133e}{episode\+\_\+idx}, \hyperlink{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_ae3201b15f3c3b46a2f3511bad9b43e7d}{entry\+\_\+idx}=None)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Index teacher where the labels are the sentences the contain the true answer.
+
+Some punctuation may be removed from the context and the answer for tokenization
+purposes.
+\end{DoxyVerb}
+ 
+
+Definition at line 273 of file agents.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1squad2_1_1agents_1_1SentenceIndexEditTeacher_a7edf449f03ad58cfa58b856b7ada36b5}\label{classparlai_1_1tasks_1_1squad2_1_1agents_1_1SentenceIndexEditTeacher_a7edf449f03ad58cfa58b856b7ada36b5}} 
+\index{parlai\+::tasks\+::squad2\+::agents\+::\+Sentence\+Index\+Edit\+Teacher@{parlai\+::tasks\+::squad2\+::agents\+::\+Sentence\+Index\+Edit\+Teacher}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::tasks\+::squad2\+::agents\+::\+Sentence\+Index\+Edit\+Teacher@{parlai\+::tasks\+::squad2\+::agents\+::\+Sentence\+Index\+Edit\+Teacher}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+squad2.\+agents.\+Sentence\+Index\+Edit\+Teacher.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{shared = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 281 of file agents.\+py.
+
+
+\begin{DoxyCode}
+281     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
+282         super().\_\_init\_\_(opt, shared)
+283 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1squad2_1_1agents_1_1SentenceIndexEditTeacher_afb925573397b65655e1375f2f501b545}\label{classparlai_1_1tasks_1_1squad2_1_1agents_1_1SentenceIndexEditTeacher_afb925573397b65655e1375f2f501b545}} 
+\index{parlai\+::tasks\+::squad2\+::agents\+::\+Sentence\+Index\+Edit\+Teacher@{parlai\+::tasks\+::squad2\+::agents\+::\+Sentence\+Index\+Edit\+Teacher}!get@{get}}
+\index{get@{get}!parlai\+::tasks\+::squad2\+::agents\+::\+Sentence\+Index\+Edit\+Teacher@{parlai\+::tasks\+::squad2\+::agents\+::\+Sentence\+Index\+Edit\+Teacher}}
+\subsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+squad2.\+agents.\+Sentence\+Index\+Edit\+Teacher.\+get (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{episode\+\_\+idx,  }\item[{}]{entry\+\_\+idx = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 284 of file agents.\+py.
+
+
+\begin{DoxyCode}
+284     \textcolor{keyword}{def }get(self, episode\_idx, entry\_idx=None):
+285         article\_idx, paragraph\_idx, qa\_idx = self.examples[episode\_idx]
+286         article = self.squad[article\_idx]
+287         paragraph = article[\textcolor{stringliteral}{'paragraphs'}][paragraph\_idx]
+288         qa = paragraph[\textcolor{stringliteral}{'qas'}][qa\_idx]
+289         context = paragraph[\textcolor{stringliteral}{'context'}]
+290         question = qa[\textcolor{stringliteral}{'question'}]
+291 
+292         answers = [\textcolor{stringliteral}{""}]
+293         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} qa[\textcolor{stringliteral}{'is\_impossible'}]:
+294             answers = [a[\textcolor{stringliteral}{'text'}] \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} qa[\textcolor{stringliteral}{'answers'}]]
+295 
+296         \textcolor{comment}{# remove '.', '?', '!' from answers for proper sentence}
+297         \textcolor{comment}{# tokenization}
+298         edited\_answers = []
+299         \textcolor{keywordflow}{for} answer \textcolor{keywordflow}{in} answers:
+300             new\_answer = answer.replace(\textcolor{stringliteral}{'.'}, \textcolor{stringliteral}{''}).replace(\textcolor{stringliteral}{'?'}, \textcolor{stringliteral}{''}).replace(\textcolor{stringliteral}{'!'}, \textcolor{stringliteral}{''})
+301             context = context.replace(answer, new\_answer)
+302             edited\_answers.append(new\_answer)
+303 
+304         edited\_sentences = self.sent\_tok.\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_a1fdb457e98eb4e4c26047e229686a616}{tokenize}(context)
+305 
+306         labels = []
+307         label\_starts = []
+308         \textcolor{keywordflow}{for} sentence \textcolor{keywordflow}{in} edited\_sentences:
+309             \textcolor{keywordflow}{for} answer \textcolor{keywordflow}{in} edited\_answers:
+310                 \textcolor{keywordflow}{if} answer \textcolor{keywordflow}{in} sentence \textcolor{keywordflow}{and} sentence \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} labels:
+311                     labels.append(sentence)
+312                     label\_starts.append(context.index(sentence))
+313                     \textcolor{keywordflow}{break}
+314 
+315         plausible = []
+316         \textcolor{keywordflow}{if} qa[\textcolor{stringliteral}{'is\_impossible'}]:
+317             plausible = qa[\textcolor{stringliteral}{'plausible\_answers'}]
+318         action = \{
+319             \textcolor{stringliteral}{'id'}: \textcolor{stringliteral}{'squad'},
+320             \textcolor{stringliteral}{'text'}: context + \textcolor{stringliteral}{'\(\backslash\)n'} + question,
+321             \textcolor{stringliteral}{'labels'}: labels,
+322             \textcolor{stringliteral}{'plausible\_answers'}: plausible,
+323             \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True},
+324             \textcolor{stringliteral}{'answer\_starts'}: label\_starts,
+325         \}
+326         \textcolor{keywordflow}{return} action
+327 
+328 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/tasks/squad2/\hyperlink{parlai_2tasks_2squad2_2agents_8py}{agents.\+py}\end{DoxyCompactItemize}

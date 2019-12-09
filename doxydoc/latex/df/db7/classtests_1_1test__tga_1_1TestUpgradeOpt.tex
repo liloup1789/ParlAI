@@ -1,0 +1,159 @@
+\hypertarget{classtests_1_1test__tga_1_1TestUpgradeOpt}{}\section{tests.\+test\+\_\+tga.\+Test\+Upgrade\+Opt Class Reference}
+\label{classtests_1_1test__tga_1_1TestUpgradeOpt}\index{tests.\+test\+\_\+tga.\+Test\+Upgrade\+Opt@{tests.\+test\+\_\+tga.\+Test\+Upgrade\+Opt}}
+
+
+Inheritance diagram for tests.\+test\+\_\+tga.\+Test\+Upgrade\+Opt\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{dc/dff/classtests_1_1test__tga_1_1TestUpgradeOpt__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for tests.\+test\+\_\+tga.\+Test\+Upgrade\+Opt\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{d5/d12/classtests_1_1test__tga_1_1TestUpgradeOpt__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classtests_1_1test__tga_1_1TestUpgradeOpt_acaefe84187dab5f848fa33afae999144}{test\+\_\+inference} (self)
+\item 
+def \hyperlink{classtests_1_1test__tga_1_1TestUpgradeOpt_a811fa4e0fa3155e3a031968cbc69b369}{test\+\_\+no\+\_\+greedy\+\_\+largebeam} (self)
+\item 
+def \hyperlink{classtests_1_1test__tga_1_1TestUpgradeOpt_a8ba19a5f6b229d7f34a3a8ac022e211b}{test\+\_\+file\+\_\+inference} (self)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Test upgrade_opt behavior.
+\end{DoxyVerb}
+ 
+
+Definition at line 17 of file test\+\_\+tga.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtests_1_1test__tga_1_1TestUpgradeOpt_a8ba19a5f6b229d7f34a3a8ac022e211b}\label{classtests_1_1test__tga_1_1TestUpgradeOpt_a8ba19a5f6b229d7f34a3a8ac022e211b}} 
+\index{tests\+::test\+\_\+tga\+::\+Test\+Upgrade\+Opt@{tests\+::test\+\_\+tga\+::\+Test\+Upgrade\+Opt}!test\+\_\+file\+\_\+inference@{test\+\_\+file\+\_\+inference}}
+\index{test\+\_\+file\+\_\+inference@{test\+\_\+file\+\_\+inference}!tests\+::test\+\_\+tga\+::\+Test\+Upgrade\+Opt@{tests\+::test\+\_\+tga\+::\+Test\+Upgrade\+Opt}}
+\subsubsection{\texorpdfstring{test\+\_\+file\+\_\+inference()}{test\_file\_inference()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+tga.\+Test\+Upgrade\+Opt.\+test\+\_\+file\+\_\+inference (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Test --inference with older model files.
+\end{DoxyVerb}
+ 
+
+Definition at line 60 of file test\+\_\+tga.\+py.
+
+
+\begin{DoxyCode}
+60     \textcolor{keyword}{def }test\_file\_inference(self):
+61         \textcolor{stringliteral}{"""}
+62 \textcolor{stringliteral}{        Test --inference with older model files.}
+63 \textcolor{stringliteral}{        """}
+64         testing\_utils.download\_unittest\_models()
+65         with testing\_utils.capture\_output():
+66             pp = ParlaiParser(\textcolor{keyword}{True}, \textcolor{keyword}{True})
+67             opt = pp.parse\_args(
+68                 [\textcolor{stringliteral}{'--model-file'}, \textcolor{stringliteral}{'zoo:unittest/transformer\_generator2/model'}]
+69             )
+70             agent = \hyperlink{namespaceparlai_1_1core_1_1agents_ad0d54074d4bcc148bb415ab5515a53b5}{create\_agent}(opt, \textcolor{keyword}{True})
+71             self.assertEqual(agent.opt[\textcolor{stringliteral}{'inference'}], \textcolor{stringliteral}{'greedy'})
+72 
+73         with testing\_utils.capture\_output():
+74             pp = ParlaiParser(\textcolor{keyword}{True}, \textcolor{keyword}{True})
+75             opt = pp.parse\_args(
+76                 [
+77                     \textcolor{stringliteral}{'--model-file'},
+78                     \textcolor{stringliteral}{'zoo:unittest/transformer\_generator2/model'},
+79                     \textcolor{stringliteral}{'--beam-size'},
+80                     \textcolor{stringliteral}{'5'},
+81                 ],
+82                 print\_args=\textcolor{keyword}{False},
+83             )
+84             agent = \hyperlink{namespaceparlai_1_1core_1_1agents_ad0d54074d4bcc148bb415ab5515a53b5}{create\_agent}(opt, \textcolor{keyword}{True})
+85             self.assertEqual(agent.opt[\textcolor{stringliteral}{'inference'}], \textcolor{stringliteral}{'beam'})
+86 
+87 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__tga_1_1TestUpgradeOpt_acaefe84187dab5f848fa33afae999144}\label{classtests_1_1test__tga_1_1TestUpgradeOpt_acaefe84187dab5f848fa33afae999144}} 
+\index{tests\+::test\+\_\+tga\+::\+Test\+Upgrade\+Opt@{tests\+::test\+\_\+tga\+::\+Test\+Upgrade\+Opt}!test\+\_\+inference@{test\+\_\+inference}}
+\index{test\+\_\+inference@{test\+\_\+inference}!tests\+::test\+\_\+tga\+::\+Test\+Upgrade\+Opt@{tests\+::test\+\_\+tga\+::\+Test\+Upgrade\+Opt}}
+\subsubsection{\texorpdfstring{test\+\_\+inference()}{test\_inference()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+tga.\+Test\+Upgrade\+Opt.\+test\+\_\+inference (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Test --inference with simple options.
+\end{DoxyVerb}
+ 
+
+Definition at line 22 of file test\+\_\+tga.\+py.
+
+
+\begin{DoxyCode}
+22     \textcolor{keyword}{def }test\_inference(self):
+23         \textcolor{stringliteral}{"""}
+24 \textcolor{stringliteral}{        Test --inference with simple options.}
+25 \textcolor{stringliteral}{        """}
+26         with testing\_utils.capture\_output():
+27             upgraded = TorchGeneratorAgent.upgrade\_opt(\{\textcolor{stringliteral}{'beam\_size'}: 1\})
+28             self.assertEqual(upgraded[\textcolor{stringliteral}{'inference'}], \textcolor{stringliteral}{'greedy'})
+29 
+30             upgraded = TorchGeneratorAgent.upgrade\_opt(\{\textcolor{stringliteral}{'beam\_size'}: 5\})
+31             self.assertEqual(upgraded[\textcolor{stringliteral}{'inference'}], \textcolor{stringliteral}{'beam'})
+32 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__tga_1_1TestUpgradeOpt_a811fa4e0fa3155e3a031968cbc69b369}\label{classtests_1_1test__tga_1_1TestUpgradeOpt_a811fa4e0fa3155e3a031968cbc69b369}} 
+\index{tests\+::test\+\_\+tga\+::\+Test\+Upgrade\+Opt@{tests\+::test\+\_\+tga\+::\+Test\+Upgrade\+Opt}!test\+\_\+no\+\_\+greedy\+\_\+largebeam@{test\+\_\+no\+\_\+greedy\+\_\+largebeam}}
+\index{test\+\_\+no\+\_\+greedy\+\_\+largebeam@{test\+\_\+no\+\_\+greedy\+\_\+largebeam}!tests\+::test\+\_\+tga\+::\+Test\+Upgrade\+Opt@{tests\+::test\+\_\+tga\+::\+Test\+Upgrade\+Opt}}
+\subsubsection{\texorpdfstring{test\+\_\+no\+\_\+greedy\+\_\+largebeam()}{test\_no\_greedy\_largebeam()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+tga.\+Test\+Upgrade\+Opt.\+test\+\_\+no\+\_\+greedy\+\_\+largebeam (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Ensures that --beam-size > 1 and --inference greedy causes a failure.
+\end{DoxyVerb}
+ 
+
+Definition at line 33 of file test\+\_\+tga.\+py.
+
+
+\begin{DoxyCode}
+33     \textcolor{keyword}{def }test\_no\_greedy\_largebeam(self):
+34         \textcolor{stringliteral}{"""}
+35 \textcolor{stringliteral}{        Ensures that --beam-size > 1 and --inference greedy causes a failure.}
+36 \textcolor{stringliteral}{        """}
+37         testing\_utils.download\_unittest\_models()
+38 
+39         \textcolor{comment}{# we should have an exception if we mix beam size > 1 with inference greedy}
+40         with self.assertRaises(ValueError):
+41             testing\_utils.display\_model(
+42                 dict(
+43                     task=\textcolor{stringliteral}{'integration\_tests:multipass'},
+44                     model\_file=\textcolor{stringliteral}{'zoo:unittest/transformer\_generator2/model'},
+45                     beam\_size=5,
+46                     inference=\textcolor{stringliteral}{'greedy'},
+47                 )
+48             )
+49 
+50         \textcolor{comment}{# and we shouldn't if we have inference beam}
+51         testing\_utils.display\_model(
+52             dict(
+53                 task=\textcolor{stringliteral}{'integration\_tests:multipass'},
+54                 model\_file=\textcolor{stringliteral}{'zoo:unittest/transformer\_generator2/model'},
+55                 beam\_size=5,
+56                 inference=\textcolor{stringliteral}{'beam'},
+57             )
+58         )
+59 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+tests/\hyperlink{test__tga_8py}{test\+\_\+tga.\+py}\end{DoxyCompactItemize}

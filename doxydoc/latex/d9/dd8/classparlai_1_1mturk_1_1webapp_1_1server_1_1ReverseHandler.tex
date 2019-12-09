@@ -1,0 +1,98 @@
+\hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1ReverseHandler}{}\section{parlai.\+mturk.\+webapp.\+server.\+Reverse\+Handler Class Reference}
+\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1ReverseHandler}\index{parlai.\+mturk.\+webapp.\+server.\+Reverse\+Handler@{parlai.\+mturk.\+webapp.\+server.\+Reverse\+Handler}}
+
+
+Inheritance diagram for parlai.\+mturk.\+webapp.\+server.\+Reverse\+Handler\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{d8/d8a/classparlai_1_1mturk_1_1webapp_1_1server_1_1ReverseHandler__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+mturk.\+webapp.\+server.\+Reverse\+Handler\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{dc/d91/classparlai_1_1mturk_1_1webapp_1_1server_1_1ReverseHandler__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1mturk_1_1webapp_1_1server_1_1ReverseHandler_a84a97cad4ff974d2765f02610941016c}{initialize} (self, app)
+\item 
+def \hyperlink{classparlai_1_1mturk_1_1webapp_1_1server_1_1ReverseHandler_a68457ba85cc4853cd5e1be1cbc05ca22}{post} (self, assignment\+\_\+target)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1mturk_1_1webapp_1_1server_1_1ReverseHandler_a60664e4d71da9169afe68bd7b4f8a801}{mturk\+\_\+manager}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 451 of file server.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1ReverseHandler_a84a97cad4ff974d2765f02610941016c}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1ReverseHandler_a84a97cad4ff974d2765f02610941016c}} 
+\index{parlai\+::mturk\+::webapp\+::server\+::\+Reverse\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Reverse\+Handler}!initialize@{initialize}}
+\index{initialize@{initialize}!parlai\+::mturk\+::webapp\+::server\+::\+Reverse\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Reverse\+Handler}}
+\subsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily def parlai.\+mturk.\+webapp.\+server.\+Reverse\+Handler.\+initialize (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{app }\end{DoxyParamCaption})}
+
+
+
+Definition at line 452 of file server.\+py.
+
+
+\begin{DoxyCode}
+452     \textcolor{keyword}{def }initialize(self, app):
+453         self.mturk\_manager = app.mturk\_manager
+454 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1ReverseHandler_a68457ba85cc4853cd5e1be1cbc05ca22}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1ReverseHandler_a68457ba85cc4853cd5e1be1cbc05ca22}} 
+\index{parlai\+::mturk\+::webapp\+::server\+::\+Reverse\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Reverse\+Handler}!post@{post}}
+\index{post@{post}!parlai\+::mturk\+::webapp\+::server\+::\+Reverse\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Reverse\+Handler}}
+\subsubsection{\texorpdfstring{post()}{post()}}
+{\footnotesize\ttfamily def parlai.\+mturk.\+webapp.\+server.\+Reverse\+Handler.\+post (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{assignment\+\_\+target }\end{DoxyParamCaption})}
+
+
+
+Definition at line 455 of file server.\+py.
+
+
+\begin{DoxyCode}
+455     \textcolor{keyword}{def }post(self, assignment\_target):
+456         self.mturk\_manager.approve\_work(assignment\_target, \textcolor{keyword}{True})
+457         print(\textcolor{stringliteral}{'Assignment \{\} had rejection reversed'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(assignment\_target))
+458         data = \{\textcolor{stringliteral}{'status'}: \textcolor{keyword}{True}\}
+459         self.write(json.dumps(data))
+460 
+461 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1ReverseHandler_a60664e4d71da9169afe68bd7b4f8a801}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1ReverseHandler_a60664e4d71da9169afe68bd7b4f8a801}} 
+\index{parlai\+::mturk\+::webapp\+::server\+::\+Reverse\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Reverse\+Handler}!mturk\+\_\+manager@{mturk\+\_\+manager}}
+\index{mturk\+\_\+manager@{mturk\+\_\+manager}!parlai\+::mturk\+::webapp\+::server\+::\+Reverse\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Reverse\+Handler}}
+\subsubsection{\texorpdfstring{mturk\+\_\+manager}{mturk\_manager}}
+{\footnotesize\ttfamily parlai.\+mturk.\+webapp.\+server.\+Reverse\+Handler.\+mturk\+\_\+manager}
+
+
+
+Definition at line 453 of file server.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/mturk/webapp/\hyperlink{server_8py}{server.\+py}\end{DoxyCompactItemize}

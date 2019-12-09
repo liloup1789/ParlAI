@@ -1,0 +1,211 @@
+\hypertarget{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1util}{}\section{projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+util Namespace Reference}
+\label{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1util}\index{projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+util@{projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+util}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1util_1_1ConvAI2History}{Conv\+A\+I2\+History}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1util_accba1ac2dc7bedf184abe7d46120861c}{remove\+\_\+prefix} (utt, prefix)
+\item 
+def \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1util_a21f7e685d288dffc51d76664b3f31859}{fix\+\_\+personaline\+\_\+period} (line)
+\item 
+def \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1util_ad8bee76107b49379c621746db6fd7d4e}{show\+\_\+beam\+\_\+cands} (n\+\_\+best\+\_\+beam\+\_\+preds, history, dictionary)
+\item 
+def \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1util_aa1ba917d170af0191d23b033358bc9eb}{reorder\+\_\+extrep2gram\+\_\+qn} (n\+\_\+best\+\_\+beam\+\_\+preds, history, dictionary, verbose)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1util_a21f7e685d288dffc51d76664b3f31859}\label{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1util_a21f7e685d288dffc51d76664b3f31859}} 
+\index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::util@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::util}!fix\+\_\+personaline\+\_\+period@{fix\+\_\+personaline\+\_\+period}}
+\index{fix\+\_\+personaline\+\_\+period@{fix\+\_\+personaline\+\_\+period}!projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::util@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::util}}
+\subsubsection{\texorpdfstring{fix\+\_\+personaline\+\_\+period()}{fix\_personaline\_period()}}
+{\footnotesize\ttfamily def projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+util.\+fix\+\_\+personaline\+\_\+period (\begin{DoxyParamCaption}\item[{}]{line }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Sometimes the tokenized persona lines have a period at the end but no space before
+the period.
+
+This function fixes it, e.g. changes 'my favorite color is blue.' to 'my favorite
+color is blue .'
+\end{DoxyVerb}
+ 
+
+Definition at line 90 of file util.\+py.
+
+
+\begin{DoxyCode}
+90 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1util_a21f7e685d288dffc51d76664b3f31859}{fix\_personaline\_period}(line):
+91     \textcolor{stringliteral}{"""}
+92 \textcolor{stringliteral}{    Sometimes the tokenized persona lines have a period at the end but no space before}
+93 \textcolor{stringliteral}{    the period.}
+94 \textcolor{stringliteral}{}
+95 \textcolor{stringliteral}{    This function fixes it, e.g. changes 'my favorite color is blue.' to 'my favorite}
+96 \textcolor{stringliteral}{    color is blue .'}
+97 \textcolor{stringliteral}{    """}
+98     \textcolor{keyword}{assert} len(line) >= 2
+99     \textcolor{keyword}{assert} line[-1] == \textcolor{stringliteral}{"."} \textcolor{keywordflow}{and} line[-2] != \textcolor{stringliteral}{" "}
+100     pl = line[:-1] + \textcolor{stringliteral}{" ."}
+101     \textcolor{keywordflow}{return} pl
+102 
+103 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1util_accba1ac2dc7bedf184abe7d46120861c}\label{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1util_accba1ac2dc7bedf184abe7d46120861c}} 
+\index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::util@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::util}!remove\+\_\+prefix@{remove\+\_\+prefix}}
+\index{remove\+\_\+prefix@{remove\+\_\+prefix}!projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::util@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::util}}
+\subsubsection{\texorpdfstring{remove\+\_\+prefix()}{remove\_prefix()}}
+{\footnotesize\ttfamily def projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+util.\+remove\+\_\+prefix (\begin{DoxyParamCaption}\item[{}]{utt,  }\item[{}]{prefix }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Check that utt begins with prefix+" ", and then remove.
+
+Inputs:
+  utt: string
+  prefix: string
+
+Returns:
+  new utt: utt with the prefix+" " removed.
+\end{DoxyVerb}
+ 
+
+Definition at line 69 of file util.\+py.
+
+
+\begin{DoxyCode}
+69 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1util_accba1ac2dc7bedf184abe7d46120861c}{remove\_prefix}(utt, prefix):
+70     \textcolor{stringliteral}{"""}
+71 \textcolor{stringliteral}{    Check that utt begins with prefix+" ", and then remove.}
+72 \textcolor{stringliteral}{}
+73 \textcolor{stringliteral}{    Inputs:}
+74 \textcolor{stringliteral}{      utt: string}
+75 \textcolor{stringliteral}{      prefix: string}
+76 \textcolor{stringliteral}{}
+77 \textcolor{stringliteral}{    Returns:}
+78 \textcolor{stringliteral}{      new utt: utt with the prefix+" " removed.}
+79 \textcolor{stringliteral}{    """}
+80     \textcolor{keywordflow}{try}:
+81         \textcolor{keyword}{assert} utt[: len(prefix) + 1] == prefix + \textcolor{stringliteral}{" "}
+82     \textcolor{keywordflow}{except} AssertionError \textcolor{keyword}{as} e:
+83         print(\textcolor{stringliteral}{"ERROR: utterance '%s' does not start with '%s '"} % (utt, prefix))
+84         print(repr(utt[: len(prefix) + 1]))
+85         print(repr(prefix + \textcolor{stringliteral}{" "}))
+86         \textcolor{keywordflow}{raise} e
+87     \textcolor{keywordflow}{return} utt[len(prefix) + 1 :]
+88 
+89 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1util_aa1ba917d170af0191d23b033358bc9eb}\label{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1util_aa1ba917d170af0191d23b033358bc9eb}} 
+\index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::util@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::util}!reorder\+\_\+extrep2gram\+\_\+qn@{reorder\+\_\+extrep2gram\+\_\+qn}}
+\index{reorder\+\_\+extrep2gram\+\_\+qn@{reorder\+\_\+extrep2gram\+\_\+qn}!projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::util@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::util}}
+\subsubsection{\texorpdfstring{reorder\+\_\+extrep2gram\+\_\+qn()}{reorder\_extrep2gram\_qn()}}
+{\footnotesize\ttfamily def projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+util.\+reorder\+\_\+extrep2gram\+\_\+qn (\begin{DoxyParamCaption}\item[{}]{n\+\_\+best\+\_\+beam\+\_\+preds,  }\item[{}]{history,  }\item[{}]{dictionary,  }\item[{}]{verbose }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Inputs:
+    n_best_beam_preds: list length num_candidates of (prediction, score) pairs.
+      prediction is a tensor of word indices, score is a single float tensor.
+    history: ConvAI2History
+    dictionary: parlai DictionaryAgent
+    verbose: bool. If True, print out the selection process.
+
+Outputs: (tensor, tensor) pair which is the chosen (prediction, score)
+\end{DoxyVerb}
+ 
+
+Definition at line 126 of file util.\+py.
+
+
+\begin{DoxyCode}
+126 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1util_aa1ba917d170af0191d23b033358bc9eb}{reorder\_extrep2gram\_qn}(n\_best\_beam\_preds, history, dictionary, verbose):
+127     \textcolor{stringliteral}{"""}
+128 \textcolor{stringliteral}{    Inputs:}
+129 \textcolor{stringliteral}{        n\_best\_beam\_preds: list length num\_candidates of (prediction, score) pairs.}
+130 \textcolor{stringliteral}{          prediction is a tensor of word indices, score is a single float tensor.}
+131 \textcolor{stringliteral}{        history: ConvAI2History}
+132 \textcolor{stringliteral}{        dictionary: parlai DictionaryAgent}
+133 \textcolor{stringliteral}{        verbose: bool. If True, print out the selection process.}
+134 \textcolor{stringliteral}{}
+135 \textcolor{stringliteral}{    Outputs: (tensor, tensor) pair which is the chosen (prediction, score)}
+136 \textcolor{stringliteral}{    """}
+137     \textcolor{comment}{# Optionally print out the history}
+138     \textcolor{keywordflow}{if} verbose:
+139         print(\textcolor{stringliteral}{"persona: "}, history.persona\_lines)
+140         print(\textcolor{stringliteral}{"partner\_utts: "}, history.partner\_utts)
+141         print(\textcolor{stringliteral}{"own\_utts: "}, history.own\_utts)
+142 
+143     \textcolor{comment}{# Go through the candidates, measuring their extrep\_2gram level}
+144     \textcolor{comment}{# Optionally print out the original ordering}
+145     candidates = []  \textcolor{comment}{# list of (orig\_idx, pred, text, score, extrep\_2gram) tuples}
+146     \textcolor{keywordflow}{if} verbose:
+147         print(\textcolor{stringliteral}{"\(\backslash\)nORIGINAL ORDER:"})
+148     \textcolor{keywordflow}{for} idx, (pred, score) \textcolor{keywordflow}{in} enumerate(n\_best\_beam\_preds):
+149         text = dictionary.vec2txt(pred.tolist())
+150         text = text.replace(\textcolor{stringliteral}{'\_\_start\_\_ '}, \textcolor{stringliteral}{''}).replace(\textcolor{stringliteral}{' \_\_end\_\_'}, \textcolor{stringliteral}{''})
+151         \textcolor{keywordflow}{if} verbose:
+152             print(\textcolor{stringliteral}{"%i  %.4f  %s"} % (idx, score, text))
+153         extrep\_2gram = \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controls_afc2b447cbf1dcb4a754d080d2e611c24}{eval\_attr}(text, history, \textcolor{stringliteral}{'extrep\_2gram'})
+154         candidates.append((idx, pred, text, score, extrep\_2gram))
+155 
+156     \textcolor{comment}{# Sort the candidates by ascending repetition. Tiebreak using original ranking.}
+157     candidates = sorted(candidates, key=\textcolor{keyword}{lambda} x: (x[4], x[0]))
+158 
+159     \textcolor{comment}{# Optionally print out the new ordering}
+160     \textcolor{keywordflow}{if} verbose:
+161         print(\textcolor{stringliteral}{"\(\backslash\)nSORTED BY EXTREP\_2GRAM:"})
+162         \textcolor{keywordflow}{for} (idx, \_, text, \_, extrep\_2gram) \textcolor{keywordflow}{in} candidates:
+163             print(\textcolor{stringliteral}{"%i  %.4f  %s"} % (idx, extrep\_2gram, text))
+164         print(\textcolor{stringliteral}{""})
+165 
+166     \textcolor{comment}{# Identify the top-ranked (w.r.t. new ordering) candidate that contains '?'}
+167     \textcolor{keywordflow}{for} (\_, pred, text, score, \_) \textcolor{keywordflow}{in} candidates:
+168         \textcolor{keywordflow}{if} \textcolor{stringliteral}{"?"} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} text:
+169             \textcolor{keywordflow}{continue}
+170         \textcolor{keywordflow}{return} (pred, score)
+171 
+172     \textcolor{comment}{# If there was no candidate containing '?', return top-ranked (w.r.t extrep\_2gram)}
+173     (\_, pred, score, \_, \_) = candidates[0]
+174     \textcolor{keywordflow}{return} (pred, score)
+175 \end{DoxyCode}
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1util_ad8bee76107b49379c621746db6fd7d4e}\label{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1util_ad8bee76107b49379c621746db6fd7d4e}} 
+\index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::util@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::util}!show\+\_\+beam\+\_\+cands@{show\+\_\+beam\+\_\+cands}}
+\index{show\+\_\+beam\+\_\+cands@{show\+\_\+beam\+\_\+cands}!projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::util@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::util}}
+\subsubsection{\texorpdfstring{show\+\_\+beam\+\_\+cands()}{show\_beam\_cands()}}
+{\footnotesize\ttfamily def projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+util.\+show\+\_\+beam\+\_\+cands (\begin{DoxyParamCaption}\item[{}]{n\+\_\+best\+\_\+beam\+\_\+preds,  }\item[{}]{history,  }\item[{}]{dictionary }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Pretty-print the n-best candidates from beam search, along with their probabilities.
+
+Inputs:
+  n_best_beam_preds: list length num_candidates of (prediction, score) pairs.
+    prediction is a tensor of word indices, score is a single float tensor.
+  history: ConvAI2History
+  dictionary: parlai DictionaryAgent
+\end{DoxyVerb}
+ 
+
+Definition at line 104 of file util.\+py.
+
+
+\begin{DoxyCode}
+104 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1util_ad8bee76107b49379c621746db6fd7d4e}{show\_beam\_cands}(n\_best\_beam\_preds, history, dictionary):
+105     \textcolor{stringliteral}{"""}
+106 \textcolor{stringliteral}{    Pretty-print the n-best candidates from beam search, along with their probabilities.}
+107 \textcolor{stringliteral}{}
+108 \textcolor{stringliteral}{    Inputs:}
+109 \textcolor{stringliteral}{      n\_best\_beam\_preds: list length num\_candidates of (prediction, score) pairs.}
+110 \textcolor{stringliteral}{        prediction is a tensor of word indices, score is a single float tensor.}
+111 \textcolor{stringliteral}{      history: ConvAI2History}
+112 \textcolor{stringliteral}{      dictionary: parlai DictionaryAgent}
+113 \textcolor{stringliteral}{    """}
+114     print(\textcolor{stringliteral}{""})
+115     print(\textcolor{stringliteral}{"persona: "}, history.persona\_lines)
+116     print(\textcolor{stringliteral}{"partner\_utts: "}, history.partner\_utts)
+117     print(\textcolor{stringliteral}{"own\_utts: "}, history.own\_utts)
+118     print(\textcolor{stringliteral}{""})
+119     \textcolor{keywordflow}{for} idx, (pred, score) \textcolor{keywordflow}{in} enumerate(n\_best\_beam\_preds):
+120         text = dictionary.vec2txt(pred.tolist())
+121         text = text.replace(\textcolor{stringliteral}{'\_\_start\_\_ '}, \textcolor{stringliteral}{''}).replace(\textcolor{stringliteral}{' \_\_end\_\_'}, \textcolor{stringliteral}{''})
+122         print(\textcolor{stringliteral}{"%i  %.4f  %s"} % (idx, score, text))
+123     print(\textcolor{stringliteral}{""})
+124 
+125 
+\end{DoxyCode}

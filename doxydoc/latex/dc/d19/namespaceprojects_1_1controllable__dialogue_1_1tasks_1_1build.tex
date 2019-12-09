@@ -1,0 +1,128 @@
+\hypertarget{namespaceprojects_1_1controllable__dialogue_1_1tasks_1_1build}{}\section{projects.\+controllable\+\_\+dialogue.\+tasks.\+build Namespace Reference}
+\label{namespaceprojects_1_1controllable__dialogue_1_1tasks_1_1build}\index{projects.\+controllable\+\_\+dialogue.\+tasks.\+build@{projects.\+controllable\+\_\+dialogue.\+tasks.\+build}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1tasks_1_1build_a81362ba81ea151eaa905d59ec129291f}{build} (\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1tasks_1_1build_aff2d50a83bc83a9f5f82bca82737fec2}{opt})
+\item 
+def \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1tasks_1_1build_a4ad8db760a5f21fd2efa3e09b47a0ec9}{make\+\_\+path} (\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1tasks_1_1build_aff2d50a83bc83a9f5f82bca82737fec2}{opt}, fname)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1tasks_1_1build_a48accd28e7fcfa8d0aa47c27043c780c}{U\+R\+L\+\_\+\+R\+O\+OT}
+\item 
+\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1tasks_1_1build_a30f40f900104e4d15e8f5bae96e3d2de}{F\+O\+L\+D\+E\+R\+\_\+\+N\+A\+ME}
+\item 
+\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1tasks_1_1build_aff2d50a83bc83a9f5f82bca82737fec2}{opt}
+\item 
+\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1tasks_1_1build_aaf9c6056a355c387d96a033f4633f673}{print\+\_\+args}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1tasks_1_1build_a81362ba81ea151eaa905d59ec129291f}\label{namespaceprojects_1_1controllable__dialogue_1_1tasks_1_1build_a81362ba81ea151eaa905d59ec129291f}} 
+\index{projects\+::controllable\+\_\+dialogue\+::tasks\+::build@{projects\+::controllable\+\_\+dialogue\+::tasks\+::build}!build@{build}}
+\index{build@{build}!projects\+::controllable\+\_\+dialogue\+::tasks\+::build@{projects\+::controllable\+\_\+dialogue\+::tasks\+::build}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily def projects.\+controllable\+\_\+dialogue.\+tasks.\+build.\+build (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 16 of file build.\+py.
+
+
+\begin{DoxyCode}
+16 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
+17     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], FOLDER\_NAME)
+18     \textcolor{comment}{# version 1.0: initial release}
+19     \textcolor{comment}{# version 1.1: add evaluation logs}
+20     version = \textcolor{stringliteral}{'1.1'}
+21 
+22     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version\_string=version):
+23         \textcolor{keywordflow}{if} build\_data.built(dpath):
+24             \textcolor{comment}{# older version exists, so remove the outdated files.}
+25             build\_data.remove\_dir(dpath)
+26         build\_data.make\_dir(dpath)
+27 
+28         \textcolor{comment}{# first download the data files}
+29         fname\_data = \textcolor{stringliteral}{'data\_v1.tar.gz'}
+30         build\_data.download(URL\_ROOT + fname\_data, dpath, fname\_data)
+31         build\_data.untar(dpath, fname\_data)
+32 
+33         \textcolor{comment}{# next download the wordstats files}
+34         fname\_wordstats = \textcolor{stringliteral}{'wordstats\_v1.tar.gz'}
+35         build\_data.download(URL\_ROOT + fname\_wordstats, dpath, fname\_wordstats)
+36         build\_data.untar(dpath, fname\_wordstats)
+37 
+38         \textcolor{comment}{# next download the evaluation logs}
+39         fname\_evallogs = \textcolor{stringliteral}{'evaluationlogs\_v1.tar.gz'}
+40         build\_data.download(URL\_ROOT + fname\_evallogs, dpath, fname\_evallogs)
+41         build\_data.untar(dpath, fname\_evallogs)
+42 
+43         print(\textcolor{stringliteral}{"Data has been placed in "} + dpath)
+44 
+45         build\_data.mark\_done(dpath, version)
+46 
+47 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1tasks_1_1build_a4ad8db760a5f21fd2efa3e09b47a0ec9}\label{namespaceprojects_1_1controllable__dialogue_1_1tasks_1_1build_a4ad8db760a5f21fd2efa3e09b47a0ec9}} 
+\index{projects\+::controllable\+\_\+dialogue\+::tasks\+::build@{projects\+::controllable\+\_\+dialogue\+::tasks\+::build}!make\+\_\+path@{make\+\_\+path}}
+\index{make\+\_\+path@{make\+\_\+path}!projects\+::controllable\+\_\+dialogue\+::tasks\+::build@{projects\+::controllable\+\_\+dialogue\+::tasks\+::build}}
+\subsubsection{\texorpdfstring{make\+\_\+path()}{make\_path()}}
+{\footnotesize\ttfamily def projects.\+controllable\+\_\+dialogue.\+tasks.\+build.\+make\+\_\+path (\begin{DoxyParamCaption}\item[{}]{opt,  }\item[{}]{fname }\end{DoxyParamCaption})}
+
+
+
+Definition at line 48 of file build.\+py.
+
+
+\begin{DoxyCode}
+48 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1tasks_1_1build_a4ad8db760a5f21fd2efa3e09b47a0ec9}{make\_path}(opt, fname):
+49     \textcolor{keywordflow}{return} os.path.join(opt[\textcolor{stringliteral}{'datapath'}], FOLDER\_NAME, fname)
+50 
+51 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1tasks_1_1build_a30f40f900104e4d15e8f5bae96e3d2de}\label{namespaceprojects_1_1controllable__dialogue_1_1tasks_1_1build_a30f40f900104e4d15e8f5bae96e3d2de}} 
+\index{projects\+::controllable\+\_\+dialogue\+::tasks\+::build@{projects\+::controllable\+\_\+dialogue\+::tasks\+::build}!F\+O\+L\+D\+E\+R\+\_\+\+N\+A\+ME@{F\+O\+L\+D\+E\+R\+\_\+\+N\+A\+ME}}
+\index{F\+O\+L\+D\+E\+R\+\_\+\+N\+A\+ME@{F\+O\+L\+D\+E\+R\+\_\+\+N\+A\+ME}!projects\+::controllable\+\_\+dialogue\+::tasks\+::build@{projects\+::controllable\+\_\+dialogue\+::tasks\+::build}}
+\subsubsection{\texorpdfstring{F\+O\+L\+D\+E\+R\+\_\+\+N\+A\+ME}{FOLDER\_NAME}}
+{\footnotesize\ttfamily projects.\+controllable\+\_\+dialogue.\+tasks.\+build.\+F\+O\+L\+D\+E\+R\+\_\+\+N\+A\+ME}
+
+
+
+Definition at line 13 of file build.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1tasks_1_1build_aff2d50a83bc83a9f5f82bca82737fec2}\label{namespaceprojects_1_1controllable__dialogue_1_1tasks_1_1build_aff2d50a83bc83a9f5f82bca82737fec2}} 
+\index{projects\+::controllable\+\_\+dialogue\+::tasks\+::build@{projects\+::controllable\+\_\+dialogue\+::tasks\+::build}!opt@{opt}}
+\index{opt@{opt}!projects\+::controllable\+\_\+dialogue\+::tasks\+::build@{projects\+::controllable\+\_\+dialogue\+::tasks\+::build}}
+\subsubsection{\texorpdfstring{opt}{opt}}
+{\footnotesize\ttfamily projects.\+controllable\+\_\+dialogue.\+tasks.\+build.\+opt}
+
+
+
+Definition at line 53 of file build.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1tasks_1_1build_aaf9c6056a355c387d96a033f4633f673}\label{namespaceprojects_1_1controllable__dialogue_1_1tasks_1_1build_aaf9c6056a355c387d96a033f4633f673}} 
+\index{projects\+::controllable\+\_\+dialogue\+::tasks\+::build@{projects\+::controllable\+\_\+dialogue\+::tasks\+::build}!print\+\_\+args@{print\+\_\+args}}
+\index{print\+\_\+args@{print\+\_\+args}!projects\+::controllable\+\_\+dialogue\+::tasks\+::build@{projects\+::controllable\+\_\+dialogue\+::tasks\+::build}}
+\subsubsection{\texorpdfstring{print\+\_\+args}{print\_args}}
+{\footnotesize\ttfamily projects.\+controllable\+\_\+dialogue.\+tasks.\+build.\+print\+\_\+args}
+
+
+
+Definition at line 53 of file build.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1tasks_1_1build_a48accd28e7fcfa8d0aa47c27043c780c}\label{namespaceprojects_1_1controllable__dialogue_1_1tasks_1_1build_a48accd28e7fcfa8d0aa47c27043c780c}} 
+\index{projects\+::controllable\+\_\+dialogue\+::tasks\+::build@{projects\+::controllable\+\_\+dialogue\+::tasks\+::build}!U\+R\+L\+\_\+\+R\+O\+OT@{U\+R\+L\+\_\+\+R\+O\+OT}}
+\index{U\+R\+L\+\_\+\+R\+O\+OT@{U\+R\+L\+\_\+\+R\+O\+OT}!projects\+::controllable\+\_\+dialogue\+::tasks\+::build@{projects\+::controllable\+\_\+dialogue\+::tasks\+::build}}
+\subsubsection{\texorpdfstring{U\+R\+L\+\_\+\+R\+O\+OT}{URL\_ROOT}}
+{\footnotesize\ttfamily projects.\+controllable\+\_\+dialogue.\+tasks.\+build.\+U\+R\+L\+\_\+\+R\+O\+OT}
+
+
+
+Definition at line 12 of file build.\+py.
+

@@ -1,0 +1,103 @@
+\hypertarget{namespaceparlai_1_1mturk_1_1tasks_1_1qualification__flow__example_1_1run}{}\section{parlai.\+mturk.\+tasks.\+qualification\+\_\+flow\+\_\+example.\+run Namespace Reference}
+\label{namespaceparlai_1_1mturk_1_1tasks_1_1qualification__flow__example_1_1run}\index{parlai.\+mturk.\+tasks.\+qualification\+\_\+flow\+\_\+example.\+run@{parlai.\+mturk.\+tasks.\+qualification\+\_\+flow\+\_\+example.\+run}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1qualification__flow__example_1_1run_a4bca4106989cf4085b207d8e5c0e66ab}{main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1tasks_1_1qualification__flow__example_1_1run_a4bca4106989cf4085b207d8e5c0e66ab}\label{namespaceparlai_1_1mturk_1_1tasks_1_1qualification__flow__example_1_1run_a4bca4106989cf4085b207d8e5c0e66ab}} 
+\index{parlai\+::mturk\+::tasks\+::qualification\+\_\+flow\+\_\+example\+::run@{parlai\+::mturk\+::tasks\+::qualification\+\_\+flow\+\_\+example\+::run}!main@{main}}
+\index{main@{main}!parlai\+::mturk\+::tasks\+::qualification\+\_\+flow\+\_\+example\+::run@{parlai\+::mturk\+::tasks\+::qualification\+\_\+flow\+\_\+example\+::run}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def parlai.\+mturk.\+tasks.\+qualification\+\_\+flow\+\_\+example.\+run.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 18 of file run.\+py.
+
+
+\begin{DoxyCode}
+18 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1run_ad3ab2c71f8083c3112815c0b363d316b}{main}():
+19     completed\_workers = []
+20     argparser = ParlaiParser(\textcolor{keyword}{False}, \textcolor{keyword}{False})
+21     argparser.add\_parlai\_data\_path()
+22     argparser.add\_mturk\_args()
+23     opt = argparser.parse\_args()
+24     opt[\textcolor{stringliteral}{'task'}] = os.path.basename(os.path.dirname(os.path.abspath(\_\_file\_\_)))
+25     opt.update(task\_config)
+26 
+27     mturk\_agent\_id = \textcolor{stringliteral}{'Worker'}
+28     mturk\_manager = MTurkManager(opt=opt, mturk\_agent\_ids=[mturk\_agent\_id])
+29     mturk\_manager.setup\_server()
+30     qual\_name = \textcolor{stringliteral}{'ParlAIExcludeQual\{\}t\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+31         random.randint(10000, 99999), random.randint(10000, 99999)
+32     )
+33     qual\_desc = (
+34         \textcolor{stringliteral}{'Qualification for a worker not correctly completing the '}
+35         \textcolor{stringliteral}{'first iteration of a task. Used to filter to different task pools.'}
+36     )
+37     qualification\_id = mturk\_utils.find\_or\_create\_qualification(
+38         qual\_name, qual\_desc, opt[\textcolor{stringliteral}{'is\_sandbox'}]
+39     )
+40     print(\textcolor{stringliteral}{'Created qualification: '}, qualification\_id)
+41 
+42     \textcolor{keyword}{def }run\_onboard(worker):
+43         world = QualificationFlowOnboardWorld(opt, worker)
+44         \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} world.episode\_done():
+45             world.parley()
+46         world.shutdown()
+47 
+48     mturk\_manager.set\_onboard\_function(onboard\_function=run\_onboard)
+49 
+50     \textcolor{keywordflow}{try}:
+51         mturk\_manager.start\_new\_run()
+52         agent\_qualifications = [
+53             \{
+54                 \textcolor{stringliteral}{'QualificationTypeId'}: qualification\_id,
+55                 \textcolor{stringliteral}{'Comparator'}: \textcolor{stringliteral}{'DoesNotExist'},
+56                 \textcolor{stringliteral}{'RequiredToPreview'}: \textcolor{keyword}{True},
+57             \}
+58         ]
+59         mturk\_manager.create\_hits(qualifications=agent\_qualifications)
+60 
+61         mturk\_manager.ready\_to\_accept\_workers()
+62 
+63         \textcolor{keyword}{def }check\_worker\_eligibility(worker):
+64             \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+65 
+66         \textcolor{keyword}{def }assign\_worker\_roles(worker):
+67             worker[0].id = mturk\_agent\_id
+68 
+69         \textcolor{keyword}{global} run\_conversation
+70 
+71         \textcolor{keyword}{def }run\_conversation(mturk\_manager, opt, workers):
+72             mturk\_agent = workers[0]
+73             world = QualificationFlowSoloWorld(
+74                 opt=opt,
+75                 mturk\_agent=mturk\_agent,
+76                 qualification\_id=qualification\_id,
+77                 firstTime=(mturk\_agent.worker\_id \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} completed\_workers),
+78             )
+79             \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} world.episode\_done():
+80                 world.parley()
+81             completed\_workers.append(mturk\_agent.worker\_id)
+82             world.shutdown()
+83             world.review\_work()
+84 
+85         mturk\_manager.start\_task(
+86             eligibility\_function=check\_worker\_eligibility,
+87             assign\_role\_function=assign\_worker\_roles,
+88             task\_function=run\_conversation,
+89         )
+90     \textcolor{keywordflow}{except} BaseException:
+91         \textcolor{keywordflow}{raise}
+92     \textcolor{keywordflow}{finally}:
+93         mturk\_utils.delete\_qualification(qualification\_id, opt[\textcolor{stringliteral}{'is\_sandbox'}])
+94         mturk\_manager.expire\_all\_unassigned\_hits()
+95         mturk\_manager.shutdown()
+96 
+97 
+\end{DoxyCode}

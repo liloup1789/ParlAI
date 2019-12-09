@@ -1,0 +1,226 @@
+\hypertarget{classprojects_1_1personality__captions_1_1interactive_1_1MyHandler}{}\section{projects.\+personality\+\_\+captions.\+interactive.\+My\+Handler Class Reference}
+\label{classprojects_1_1personality__captions_1_1interactive_1_1MyHandler}\index{projects.\+personality\+\_\+captions.\+interactive.\+My\+Handler@{projects.\+personality\+\_\+captions.\+interactive.\+My\+Handler}}
+
+
+Inheritance diagram for projects.\+personality\+\_\+captions.\+interactive.\+My\+Handler\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{d6/ddd/classprojects_1_1personality__captions_1_1interactive_1_1MyHandler__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for projects.\+personality\+\_\+captions.\+interactive.\+My\+Handler\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{d5/d27/classprojects_1_1personality__captions_1_1interactive_1_1MyHandler__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classprojects_1_1personality__captions_1_1interactive_1_1MyHandler_ae58a0c4c564f54a29ff85afa26086e47}{interactive\+\_\+running} (self, data)
+\item 
+def \hyperlink{classprojects_1_1personality__captions_1_1interactive_1_1MyHandler_a51c600da08cf2f01d860f4a4c500e827}{do\+\_\+\+H\+E\+AD} (self)
+\item 
+def \hyperlink{classprojects_1_1personality__captions_1_1interactive_1_1MyHandler_a846c973c3c91308218b79f84396265ac}{do\+\_\+\+P\+O\+ST} (self)
+\item 
+def \hyperlink{classprojects_1_1personality__captions_1_1interactive_1_1MyHandler_a52eec9579c85ca0497df9cbe773f729c}{do\+\_\+\+G\+ET} (self)
+\item 
+def \hyperlink{classprojects_1_1personality__captions_1_1interactive_1_1MyHandler_aa0900ea1f19ecd9cd9bf0ae93ce1028e}{handle\+\_\+http} (self, status\+\_\+code, path, text=None)
+\item 
+def \hyperlink{classprojects_1_1personality__captions_1_1interactive_1_1MyHandler_a990c770086f0596dde94fc2a84e76d90}{respond} (self, opts)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Interactive Handler.
+\end{DoxyVerb}
+ 
+
+Definition at line 182 of file interactive.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classprojects_1_1personality__captions_1_1interactive_1_1MyHandler_a52eec9579c85ca0497df9cbe773f729c}\label{classprojects_1_1personality__captions_1_1interactive_1_1MyHandler_a52eec9579c85ca0497df9cbe773f729c}} 
+\index{projects\+::personality\+\_\+captions\+::interactive\+::\+My\+Handler@{projects\+::personality\+\_\+captions\+::interactive\+::\+My\+Handler}!do\+\_\+\+G\+ET@{do\+\_\+\+G\+ET}}
+\index{do\+\_\+\+G\+ET@{do\+\_\+\+G\+ET}!projects\+::personality\+\_\+captions\+::interactive\+::\+My\+Handler@{projects\+::personality\+\_\+captions\+::interactive\+::\+My\+Handler}}
+\subsubsection{\texorpdfstring{do\+\_\+\+G\+E\+T()}{do\_GET()}}
+{\footnotesize\ttfamily def projects.\+personality\+\_\+captions.\+interactive.\+My\+Handler.\+do\+\_\+\+G\+ET (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Handle GET.
+\end{DoxyVerb}
+ 
+
+Definition at line 232 of file interactive.\+py.
+
+
+\begin{DoxyCode}
+232     \textcolor{keyword}{def }do\_GET(self):
+233         \textcolor{stringliteral}{"""}
+234 \textcolor{stringliteral}{        Handle GET.}
+235 \textcolor{stringliteral}{        """}
+236         paths = \{
+237             \textcolor{stringliteral}{'/'}: \{\textcolor{stringliteral}{'status'}: 200\},
+238             \textcolor{stringliteral}{'/favicon.ico'}: \{\textcolor{stringliteral}{'status'}: 202\},  \textcolor{comment}{# Need for chrome}
+239         \}
+240         \textcolor{keywordflow}{if} self.path \textcolor{keywordflow}{in} paths:
+241             self.respond(paths[self.path])
+242         \textcolor{keywordflow}{else}:
+243             self.respond(\{\textcolor{stringliteral}{'status'}: 500\})
+244 
+\end{DoxyCode}
+\mbox{\Hypertarget{classprojects_1_1personality__captions_1_1interactive_1_1MyHandler_a51c600da08cf2f01d860f4a4c500e827}\label{classprojects_1_1personality__captions_1_1interactive_1_1MyHandler_a51c600da08cf2f01d860f4a4c500e827}} 
+\index{projects\+::personality\+\_\+captions\+::interactive\+::\+My\+Handler@{projects\+::personality\+\_\+captions\+::interactive\+::\+My\+Handler}!do\+\_\+\+H\+E\+AD@{do\+\_\+\+H\+E\+AD}}
+\index{do\+\_\+\+H\+E\+AD@{do\+\_\+\+H\+E\+AD}!projects\+::personality\+\_\+captions\+::interactive\+::\+My\+Handler@{projects\+::personality\+\_\+captions\+::interactive\+::\+My\+Handler}}
+\subsubsection{\texorpdfstring{do\+\_\+\+H\+E\+A\+D()}{do\_HEAD()}}
+{\footnotesize\ttfamily def projects.\+personality\+\_\+captions.\+interactive.\+My\+Handler.\+do\+\_\+\+H\+E\+AD (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Handle headers.
+\end{DoxyVerb}
+ 
+
+Definition at line 207 of file interactive.\+py.
+
+
+\begin{DoxyCode}
+207     \textcolor{keyword}{def }do\_HEAD(self):
+208         \textcolor{stringliteral}{"""}
+209 \textcolor{stringliteral}{        Handle headers.}
+210 \textcolor{stringliteral}{        """}
+211         self.send\_response(200)
+212         self.send\_header(\textcolor{stringliteral}{'Content-type'}, \textcolor{stringliteral}{'text/html'})
+213         self.end\_headers()
+214 
+\end{DoxyCode}
+\mbox{\Hypertarget{classprojects_1_1personality__captions_1_1interactive_1_1MyHandler_a846c973c3c91308218b79f84396265ac}\label{classprojects_1_1personality__captions_1_1interactive_1_1MyHandler_a846c973c3c91308218b79f84396265ac}} 
+\index{projects\+::personality\+\_\+captions\+::interactive\+::\+My\+Handler@{projects\+::personality\+\_\+captions\+::interactive\+::\+My\+Handler}!do\+\_\+\+P\+O\+ST@{do\+\_\+\+P\+O\+ST}}
+\index{do\+\_\+\+P\+O\+ST@{do\+\_\+\+P\+O\+ST}!projects\+::personality\+\_\+captions\+::interactive\+::\+My\+Handler@{projects\+::personality\+\_\+captions\+::interactive\+::\+My\+Handler}}
+\subsubsection{\texorpdfstring{do\+\_\+\+P\+O\+S\+T()}{do\_POST()}}
+{\footnotesize\ttfamily def projects.\+personality\+\_\+captions.\+interactive.\+My\+Handler.\+do\+\_\+\+P\+O\+ST (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Handle POST.
+\end{DoxyVerb}
+ 
+
+Definition at line 215 of file interactive.\+py.
+
+
+\begin{DoxyCode}
+215     \textcolor{keyword}{def }do\_POST(self):
+216         \textcolor{stringliteral}{"""}
+217 \textcolor{stringliteral}{        Handle POST.}
+218 \textcolor{stringliteral}{        """}
+219         \textcolor{keywordflow}{if} self.path != \textcolor{stringliteral}{'/interact'}:
+220             \textcolor{keywordflow}{return} self.respond(\{\textcolor{stringliteral}{'status'}: 500\})
+221         ctype, pdict = cgi.parse\_header(self.headers[\textcolor{stringliteral}{'content-type'}])
+222         pdict[\textcolor{stringliteral}{'boundary'}] = bytes(pdict[\textcolor{stringliteral}{'boundary'}], \textcolor{stringliteral}{"utf-8"})
+223         postvars = cgi.parse\_multipart(self.rfile, pdict)
+224         model\_response = self.interactive\_running(postvars)
+225 
+226         self.send\_response(200)
+227         self.send\_header(\textcolor{stringliteral}{'Content-type'}, \textcolor{stringliteral}{'application/json'})
+228         self.end\_headers()
+229         json\_str = json.dumps(model\_response)
+230         self.wfile.write(bytes(json\_str, \textcolor{stringliteral}{'utf-8'}))
+231 
+\end{DoxyCode}
+\mbox{\Hypertarget{classprojects_1_1personality__captions_1_1interactive_1_1MyHandler_aa0900ea1f19ecd9cd9bf0ae93ce1028e}\label{classprojects_1_1personality__captions_1_1interactive_1_1MyHandler_aa0900ea1f19ecd9cd9bf0ae93ce1028e}} 
+\index{projects\+::personality\+\_\+captions\+::interactive\+::\+My\+Handler@{projects\+::personality\+\_\+captions\+::interactive\+::\+My\+Handler}!handle\+\_\+http@{handle\+\_\+http}}
+\index{handle\+\_\+http@{handle\+\_\+http}!projects\+::personality\+\_\+captions\+::interactive\+::\+My\+Handler@{projects\+::personality\+\_\+captions\+::interactive\+::\+My\+Handler}}
+\subsubsection{\texorpdfstring{handle\+\_\+http()}{handle\_http()}}
+{\footnotesize\ttfamily def projects.\+personality\+\_\+captions.\+interactive.\+My\+Handler.\+handle\+\_\+http (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{status\+\_\+code,  }\item[{}]{path,  }\item[{}]{text = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Generate HTTP.
+\end{DoxyVerb}
+ 
+
+Definition at line 245 of file interactive.\+py.
+
+
+\begin{DoxyCode}
+245     \textcolor{keyword}{def }handle\_http(self, status\_code, path, text=None):
+246         \textcolor{stringliteral}{"""}
+247 \textcolor{stringliteral}{        Generate HTTP.}
+248 \textcolor{stringliteral}{        """}
+249         self.send\_response(status\_code)
+250         self.send\_header(\textcolor{stringliteral}{'Content-type'}, \textcolor{stringliteral}{'text/html'})
+251         self.end\_headers()
+252         content = WEB\_HTML.format(STYLE\_SHEET, FONT\_AWESOME)
+253         \textcolor{keywordflow}{return} bytes(content, \textcolor{stringliteral}{'UTF-8'})
+254 
+\end{DoxyCode}
+\mbox{\Hypertarget{classprojects_1_1personality__captions_1_1interactive_1_1MyHandler_ae58a0c4c564f54a29ff85afa26086e47}\label{classprojects_1_1personality__captions_1_1interactive_1_1MyHandler_ae58a0c4c564f54a29ff85afa26086e47}} 
+\index{projects\+::personality\+\_\+captions\+::interactive\+::\+My\+Handler@{projects\+::personality\+\_\+captions\+::interactive\+::\+My\+Handler}!interactive\+\_\+running@{interactive\+\_\+running}}
+\index{interactive\+\_\+running@{interactive\+\_\+running}!projects\+::personality\+\_\+captions\+::interactive\+::\+My\+Handler@{projects\+::personality\+\_\+captions\+::interactive\+::\+My\+Handler}}
+\subsubsection{\texorpdfstring{interactive\+\_\+running()}{interactive\_running()}}
+{\footnotesize\ttfamily def projects.\+personality\+\_\+captions.\+interactive.\+My\+Handler.\+interactive\+\_\+running (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{data }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Generate a model response.
+
+:param data:
+    data to send to model
+
+:return:
+    model act dictionary
+\end{DoxyVerb}
+ 
+
+Definition at line 187 of file interactive.\+py.
+
+
+\begin{DoxyCode}
+187     \textcolor{keyword}{def }interactive\_running(self, data):
+188         \textcolor{stringliteral}{"""}
+189 \textcolor{stringliteral}{        Generate a model response.}
+190 \textcolor{stringliteral}{}
+191 \textcolor{stringliteral}{        :param data:}
+192 \textcolor{stringliteral}{            data to send to model}
+193 \textcolor{stringliteral}{}
+194 \textcolor{stringliteral}{        :return:}
+195 \textcolor{stringliteral}{            model act dictionary}
+196 \textcolor{stringliteral}{        """}
+197         reply = \{\}
+198         reply[\textcolor{stringliteral}{'text'}] = data[\textcolor{stringliteral}{'personality'}][0].decode()
+199         img\_data = \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(data[\textcolor{stringliteral}{'image'}][0])
+200         \_, encoded = img\_data.split(\textcolor{stringliteral}{','}, 1)
+201         image = Image.open(io.BytesIO(b64decode(encoded))).convert(\textcolor{stringliteral}{'RGB'})
+202         reply[\textcolor{stringliteral}{'image'}] = SHARED[\textcolor{stringliteral}{'image\_loader'}].extract(image)
+203         SHARED[\textcolor{stringliteral}{'agent'}].observe(reply)
+204         model\_res = SHARED[\textcolor{stringliteral}{'agent'}].act()
+205         \textcolor{keywordflow}{return} model\_res
+206 
+\end{DoxyCode}
+\mbox{\Hypertarget{classprojects_1_1personality__captions_1_1interactive_1_1MyHandler_a990c770086f0596dde94fc2a84e76d90}\label{classprojects_1_1personality__captions_1_1interactive_1_1MyHandler_a990c770086f0596dde94fc2a84e76d90}} 
+\index{projects\+::personality\+\_\+captions\+::interactive\+::\+My\+Handler@{projects\+::personality\+\_\+captions\+::interactive\+::\+My\+Handler}!respond@{respond}}
+\index{respond@{respond}!projects\+::personality\+\_\+captions\+::interactive\+::\+My\+Handler@{projects\+::personality\+\_\+captions\+::interactive\+::\+My\+Handler}}
+\subsubsection{\texorpdfstring{respond()}{respond()}}
+{\footnotesize\ttfamily def projects.\+personality\+\_\+captions.\+interactive.\+My\+Handler.\+respond (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opts }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Respond.
+\end{DoxyVerb}
+ 
+
+Definition at line 255 of file interactive.\+py.
+
+
+\begin{DoxyCode}
+255     \textcolor{keyword}{def }respond(self, opts):
+256         \textcolor{stringliteral}{"""}
+257 \textcolor{stringliteral}{        Respond.}
+258 \textcolor{stringliteral}{        """}
+259         response = self.handle\_http(opts[\textcolor{stringliteral}{'status'}], self.path)
+260         self.wfile.write(response)
+261 
+262 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+projects/personality\+\_\+captions/\hyperlink{projects_2personality__captions_2interactive_8py}{interactive.\+py}\end{DoxyCompactItemize}

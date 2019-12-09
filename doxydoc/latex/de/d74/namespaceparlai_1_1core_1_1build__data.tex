@@ -1,0 +1,724 @@
+\hypertarget{namespaceparlai_1_1core_1_1build__data}{}\section{parlai.\+core.\+build\+\_\+data Namespace Reference}
+\label{namespaceparlai_1_1core_1_1build__data}\index{parlai.\+core.\+build\+\_\+data@{parlai.\+core.\+build\+\_\+data}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classparlai_1_1core_1_1build__data_1_1DownloadableFile}{Downloadable\+File}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1core_1_1build__data_ad834e1a9be02e18a6c2de2b03b9a8f10}{built} (path, version\+\_\+string=None)
+\item 
+def \hyperlink{namespaceparlai_1_1core_1_1build__data_a2527e6d29b0ccb7b841182890ac36a59}{mark\+\_\+done} (path, version\+\_\+string=None)
+\item 
+def \hyperlink{namespaceparlai_1_1core_1_1build__data_ab74f0e428f05e5d91fa93c8afb367622}{download} (url, path, fname, redownload=False)
+\item 
+def \hyperlink{namespaceparlai_1_1core_1_1build__data_a6ce042fedd4194bd016845bbe7a8facf}{make\+\_\+dir} (path)
+\item 
+def \hyperlink{namespaceparlai_1_1core_1_1build__data_a1678b8a042eeb9d9c8e9de08f52e496b}{move} (path1, path2)
+\item 
+def \hyperlink{namespaceparlai_1_1core_1_1build__data_a24ab3b7e68e41adf774df058d330ff33}{remove\+\_\+dir} (path)
+\item 
+def \hyperlink{namespaceparlai_1_1core_1_1build__data_a4d33f97932682a8513904022d852f3cf}{untar} (path, fname, delete\+Tar=True)
+\item 
+def \hyperlink{namespaceparlai_1_1core_1_1build__data_a7cbfdf246ca40dc3ed9f8613deb14a00}{unzip} (path, fname, delete\+Zip=True)
+\item 
+def \hyperlink{namespaceparlai_1_1core_1_1build__data_adc4feba864e2a0d0663cdf6bf84afaf6}{cat} (file1, file2, outfile, delete\+Files=True)
+\item 
+def \hyperlink{namespaceparlai_1_1core_1_1build__data_ac9224da5c4e4ce9d1f4ab05e837c1f45}{download\+\_\+from\+\_\+google\+\_\+drive} (gd\+\_\+id, destination)
+\item 
+def \hyperlink{namespaceparlai_1_1core_1_1build__data_ad2fe6222094caae59f304931aee0952a}{get\+\_\+model\+\_\+dir} (datapath)
+\item 
+def \hyperlink{namespaceparlai_1_1core_1_1build__data_ab697f23f05d3e36d7979fe5e0ed7911e}{download\+\_\+models} (opt, fnames, model\+\_\+folder, version=\textquotesingle{}v1.\+0\textquotesingle{}, path=\textquotesingle{}aws\textquotesingle{}, use\+\_\+model\+\_\+type=False)
+\item 
+def \hyperlink{namespaceparlai_1_1core_1_1build__data_ad06e9e38ca85db9c4a676ccd9ae41649}{modelzoo\+\_\+path} (datapath, path)
+\item 
+def \hyperlink{namespaceparlai_1_1core_1_1build__data_ae259aeb321a77560fbcd23028178c897}{download\+\_\+multiprocess} (urls, path, num\+\_\+processes=32, chunk\+\_\+size=100, dest\+\_\+filenames=None, error\+\_\+path=None)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1build__data_ad834e1a9be02e18a6c2de2b03b9a8f10}\label{namespaceparlai_1_1core_1_1build__data_ad834e1a9be02e18a6c2de2b03b9a8f10}} 
+\index{parlai\+::core\+::build\+\_\+data@{parlai\+::core\+::build\+\_\+data}!built@{built}}
+\index{built@{built}!parlai\+::core\+::build\+\_\+data@{parlai\+::core\+::build\+\_\+data}}
+\subsubsection{\texorpdfstring{built()}{built()}}
+{\footnotesize\ttfamily def parlai.\+core.\+build\+\_\+data.\+built (\begin{DoxyParamCaption}\item[{}]{path,  }\item[{}]{version\+\_\+string = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Check if '.built' flag has been set for that task.
+
+If a version_string is provided, this has to match, or the version is regarded as
+not built.
+\end{DoxyVerb}
+ 
+
+Definition at line 106 of file build\+\_\+data.\+py.
+
+
+\begin{DoxyCode}
+106 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1build__data_ad834e1a9be02e18a6c2de2b03b9a8f10}{built}(path, version\_string=None):
+107     \textcolor{stringliteral}{"""}
+108 \textcolor{stringliteral}{    Check if '.built' flag has been set for that task.}
+109 \textcolor{stringliteral}{}
+110 \textcolor{stringliteral}{    If a version\_string is provided, this has to match, or the version is regarded as}
+111 \textcolor{stringliteral}{    not built.}
+112 \textcolor{stringliteral}{    """}
+113     \textcolor{keywordflow}{if} version\_string:
+114         fname = os.path.join(path, \textcolor{stringliteral}{'.built'})
+115         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.isfile(fname):
+116             \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+117         \textcolor{keywordflow}{else}:
+118             with open(fname, \textcolor{stringliteral}{'r') as read:}
+119 \textcolor{stringliteral}{                text = read.read().split('\(\backslash\)n'})
+120             \textcolor{keywordflow}{return} len(text) > 1 \textcolor{keywordflow}{and} text[1] == version\_string
+121     \textcolor{keywordflow}{else}:
+122         \textcolor{keywordflow}{return} os.path.isfile(os.path.join(path, \textcolor{stringliteral}{'.built'}))
+123 
+124 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1build__data_adc4feba864e2a0d0663cdf6bf84afaf6}\label{namespaceparlai_1_1core_1_1build__data_adc4feba864e2a0d0663cdf6bf84afaf6}} 
+\index{parlai\+::core\+::build\+\_\+data@{parlai\+::core\+::build\+\_\+data}!cat@{cat}}
+\index{cat@{cat}!parlai\+::core\+::build\+\_\+data@{parlai\+::core\+::build\+\_\+data}}
+\subsubsection{\texorpdfstring{cat()}{cat()}}
+{\footnotesize\ttfamily def parlai.\+core.\+build\+\_\+data.\+cat (\begin{DoxyParamCaption}\item[{}]{file1,  }\item[{}]{file2,  }\item[{}]{outfile,  }\item[{}]{delete\+Files = {\ttfamily True} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Concatenate two files to an outfile, possibly deleting the originals.
+\end{DoxyVerb}
+ 
+
+Definition at line 296 of file build\+\_\+data.\+py.
+
+
+\begin{DoxyCode}
+296 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1build__data_adc4feba864e2a0d0663cdf6bf84afaf6}{cat}(file1, file2, outfile, deleteFiles=True):
+297     \textcolor{stringliteral}{"""}
+298 \textcolor{stringliteral}{    Concatenate two files to an outfile, possibly deleting the originals.}
+299 \textcolor{stringliteral}{    """}
+300     with open(outfile, \textcolor{stringliteral}{'wb'}) \textcolor{keyword}{as} wfd:
+301         \textcolor{keywordflow}{for} f \textcolor{keywordflow}{in} [file1, file2]:
+302             with open(f, \textcolor{stringliteral}{'rb'}) \textcolor{keyword}{as} fd:
+303                 shutil.copyfileobj(fd, wfd, 1024 * 1024 * 10)
+304                 \textcolor{comment}{# 10MB per writing chunk to avoid reading big file into memory.}
+305     \textcolor{keywordflow}{if} deleteFiles:
+306         os.remove(file1)
+307         os.remove(file2)
+308 
+309 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1build__data_ab74f0e428f05e5d91fa93c8afb367622}\label{namespaceparlai_1_1core_1_1build__data_ab74f0e428f05e5d91fa93c8afb367622}} 
+\index{parlai\+::core\+::build\+\_\+data@{parlai\+::core\+::build\+\_\+data}!download@{download}}
+\index{download@{download}!parlai\+::core\+::build\+\_\+data@{parlai\+::core\+::build\+\_\+data}}
+\subsubsection{\texorpdfstring{download()}{download()}}
+{\footnotesize\ttfamily def parlai.\+core.\+build\+\_\+data.\+download (\begin{DoxyParamCaption}\item[{}]{url,  }\item[{}]{path,  }\item[{}]{fname,  }\item[{}]{redownload = {\ttfamily False} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Download file using `requests`.
+
+If ``redownload`` is set to false, then will not download tar file again if it is
+present (default ``True``).
+\end{DoxyVerb}
+ 
+
+Definition at line 144 of file build\+\_\+data.\+py.
+
+
+\begin{DoxyCode}
+144 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1build__data_ab74f0e428f05e5d91fa93c8afb367622}{download}(url, path, fname, redownload=False):
+145     \textcolor{stringliteral}{"""}
+146 \textcolor{stringliteral}{    Download file using `requests`.}
+147 \textcolor{stringliteral}{}
+148 \textcolor{stringliteral}{    If ``redownload`` is set to false, then will not download tar file again if it is}
+149 \textcolor{stringliteral}{    present (default ``True``).}
+150 \textcolor{stringliteral}{    """}
+151     outfile = os.path.join(path, fname)
+152     download = \textcolor{keywordflow}{not} os.path.isfile(outfile) \textcolor{keywordflow}{or} redownload
+153     print(\textcolor{stringliteral}{"[ downloading: "} + url + \textcolor{stringliteral}{" to "} + outfile + \textcolor{stringliteral}{" ]"})
+154     retry = 5
+155     exp\_backoff = [2 ** r \textcolor{keywordflow}{for} r \textcolor{keywordflow}{in} reversed(range(retry))]
+156 
+157     pbar = tqdm.tqdm(unit=\textcolor{stringliteral}{'B'}, unit\_scale=\textcolor{keyword}{True}, desc=\textcolor{stringliteral}{'Downloading \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(fname))
+158 
+159     \textcolor{keywordflow}{while} download \textcolor{keywordflow}{and} retry >= 0:
+160         resume\_file = outfile + \textcolor{stringliteral}{'.part'}
+161         resume = os.path.isfile(resume\_file)
+162         \textcolor{keywordflow}{if} resume:
+163             resume\_pos = os.path.getsize(resume\_file)
+164             mode = \textcolor{stringliteral}{'ab'}
+165         \textcolor{keywordflow}{else}:
+166             resume\_pos = 0
+167             mode = \textcolor{stringliteral}{'wb'}
+168         response = \textcolor{keywordtype}{None}
+169 
+170         with requests.Session() \textcolor{keyword}{as} session:
+171             \textcolor{keywordflow}{try}:
+172                 header = (
+173                     \{\textcolor{stringliteral}{'Range'}: \textcolor{stringliteral}{'bytes=%d-'} % resume\_pos, \textcolor{stringliteral}{'Accept-Encoding'}: \textcolor{stringliteral}{'identity'}\}
+174                     \textcolor{keywordflow}{if} resume
+175                     \textcolor{keywordflow}{else} \{\}
+176                 )
+177                 response = session.get(url, stream=\textcolor{keyword}{True}, timeout=5, headers=header)
+178 
+179                 \textcolor{comment}{# negative reply could be 'none' or just missing}
+180                 \textcolor{keywordflow}{if} resume \textcolor{keywordflow}{and} response.headers.get(\textcolor{stringliteral}{'Accept-Ranges'}, \textcolor{stringliteral}{'none'}) == \textcolor{stringliteral}{'none'}:
+181                     resume\_pos = 0
+182                     mode = \textcolor{stringliteral}{'wb'}
+183 
+184                 CHUNK\_SIZE = 32768
+185                 total\_size = \hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(response.headers.get(\textcolor{stringliteral}{'Content-Length'}, -1))
+186                 \textcolor{comment}{# server returns remaining size if resuming, so adjust total}
+187                 total\_size += resume\_pos
+188                 pbar.total = total\_size
+189                 done = resume\_pos
+190 
+191                 with open(resume\_file, mode) \textcolor{keyword}{as} f:
+192                     \textcolor{keywordflow}{for} chunk \textcolor{keywordflow}{in} response.iter\_content(CHUNK\_SIZE):
+193                         \textcolor{keywordflow}{if} chunk:  \textcolor{comment}{# filter out keep-alive new chunks}
+194                             f.write(chunk)
+195                         \textcolor{keywordflow}{if} total\_size > 0:
+196                             done += len(chunk)
+197                             \textcolor{keywordflow}{if} total\_size < done:
+198                                 \textcolor{comment}{# don't freak out if content-length was too small}
+199                                 total\_size = done
+200                                 pbar.total = total\_size
+201                             pbar.update(len(chunk))
+202                     \textcolor{keywordflow}{break}
+203             \textcolor{keywordflow}{except} requests.exceptions.ConnectionError:
+204                 retry -= 1
+205                 pbar.clear()
+206                 \textcolor{keywordflow}{if} retry >= 0:
+207                     print(\textcolor{stringliteral}{'Connection error, retrying. (%d retries left)'} % retry)
+208                     time.sleep(exp\_backoff[retry])
+209                 \textcolor{keywordflow}{else}:
+210                     print(\textcolor{stringliteral}{'Retried too many times, stopped retrying.'})
+211             \textcolor{keywordflow}{finally}:
+212                 \textcolor{keywordflow}{if} response:
+213                     response.close()
+214     \textcolor{keywordflow}{if} retry < 0:
+215         \textcolor{keywordflow}{raise} RuntimeWarning(\textcolor{stringliteral}{'Connection broken too many times. Stopped retrying.'})
+216 
+217     \textcolor{keywordflow}{if} download \textcolor{keywordflow}{and} retry > 0:
+218         pbar.update(done - pbar.n)
+219         \textcolor{keywordflow}{if} done < total\_size:
+220             \textcolor{keywordflow}{raise} RuntimeWarning(
+221                 \textcolor{stringliteral}{'Received less data than specified in '}
+222                 + \textcolor{stringliteral}{'Content-Length header for '}
+223                 + url
+224                 + \textcolor{stringliteral}{'.'}
+225                 + \textcolor{stringliteral}{' There may be a download problem.'}
+226             )
+227         \hyperlink{namespaceparlai_1_1core_1_1build__data_a1678b8a042eeb9d9c8e9de08f52e496b}{move}(resume\_file, outfile)
+228 
+229     pbar.close()
+230 
+231 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1build__data_ac9224da5c4e4ce9d1f4ab05e837c1f45}\label{namespaceparlai_1_1core_1_1build__data_ac9224da5c4e4ce9d1f4ab05e837c1f45}} 
+\index{parlai\+::core\+::build\+\_\+data@{parlai\+::core\+::build\+\_\+data}!download\+\_\+from\+\_\+google\+\_\+drive@{download\+\_\+from\+\_\+google\+\_\+drive}}
+\index{download\+\_\+from\+\_\+google\+\_\+drive@{download\+\_\+from\+\_\+google\+\_\+drive}!parlai\+::core\+::build\+\_\+data@{parlai\+::core\+::build\+\_\+data}}
+\subsubsection{\texorpdfstring{download\+\_\+from\+\_\+google\+\_\+drive()}{download\_from\_google\_drive()}}
+{\footnotesize\ttfamily def parlai.\+core.\+build\+\_\+data.\+download\+\_\+from\+\_\+google\+\_\+drive (\begin{DoxyParamCaption}\item[{}]{gd\+\_\+id,  }\item[{}]{destination }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Use the requests package to download a file from Google Drive.
+\end{DoxyVerb}
+ 
+
+Definition at line 317 of file build\+\_\+data.\+py.
+
+
+\begin{DoxyCode}
+317 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1build__data_ac9224da5c4e4ce9d1f4ab05e837c1f45}{download\_from\_google\_drive}(gd\_id, destination):
+318     \textcolor{stringliteral}{"""}
+319 \textcolor{stringliteral}{    Use the requests package to download a file from Google Drive.}
+320 \textcolor{stringliteral}{    """}
+321     URL = \textcolor{stringliteral}{'https://docs.google.com/uc?export=download'}
+322 
+323     with requests.Session() \textcolor{keyword}{as} session:
+324         response = session.get(URL, params=\{\textcolor{stringliteral}{'id'}: gd\_id\}, stream=\textcolor{keyword}{True})
+325         token = \_get\_confirm\_token(response)
+326 
+327         \textcolor{keywordflow}{if} token:
+328             response.close()
+329             params = \{\textcolor{stringliteral}{'id'}: gd\_id, \textcolor{stringliteral}{'confirm'}: token\}
+330             response = session.get(URL, params=params, stream=\textcolor{keyword}{True})
+331 
+332         CHUNK\_SIZE = 32768
+333         with open(destination, \textcolor{stringliteral}{'wb'}) \textcolor{keyword}{as} f:
+334             \textcolor{keywordflow}{for} chunk \textcolor{keywordflow}{in} response.iter\_content(CHUNK\_SIZE):
+335                 \textcolor{keywordflow}{if} chunk:  \textcolor{comment}{# filter out keep-alive new chunks}
+336                     f.write(chunk)
+337         response.close()
+338 
+339 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1build__data_ab697f23f05d3e36d7979fe5e0ed7911e}\label{namespaceparlai_1_1core_1_1build__data_ab697f23f05d3e36d7979fe5e0ed7911e}} 
+\index{parlai\+::core\+::build\+\_\+data@{parlai\+::core\+::build\+\_\+data}!download\+\_\+models@{download\+\_\+models}}
+\index{download\+\_\+models@{download\+\_\+models}!parlai\+::core\+::build\+\_\+data@{parlai\+::core\+::build\+\_\+data}}
+\subsubsection{\texorpdfstring{download\+\_\+models()}{download\_models()}}
+{\footnotesize\ttfamily def parlai.\+core.\+build\+\_\+data.\+download\+\_\+models (\begin{DoxyParamCaption}\item[{}]{opt,  }\item[{}]{fnames,  }\item[{}]{model\+\_\+folder,  }\item[{}]{version = {\ttfamily \textquotesingle{}v1.0\textquotesingle{}},  }\item[{}]{path = {\ttfamily \textquotesingle{}aws\textquotesingle{}},  }\item[{}]{use\+\_\+model\+\_\+type = {\ttfamily False} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Download models into the ParlAI model zoo from a url.
+
+:param fnames: list of filenames to download
+:param model_folder: models will be downloaded into models/model_folder/model_type
+:param path: url for downloading models; defaults to downloading from AWS
+:param use_model_type: whether models are categorized by type in AWS
+\end{DoxyVerb}
+ 
+
+Definition at line 346 of file build\+\_\+data.\+py.
+
+
+\begin{DoxyCode}
+346 ):
+347     \textcolor{stringliteral}{"""}
+348 \textcolor{stringliteral}{    Download models into the ParlAI model zoo from a url.}
+349 \textcolor{stringliteral}{}
+350 \textcolor{stringliteral}{    :param fnames: list of filenames to download}
+351 \textcolor{stringliteral}{    :param model\_folder: models will be downloaded into models/model\_folder/model\_type}
+352 \textcolor{stringliteral}{    :param path: url for downloading models; defaults to downloading from AWS}
+353 \textcolor{stringliteral}{    :param use\_model\_type: whether models are categorized by type in AWS}
+354 \textcolor{stringliteral}{    """}
+355     model\_type = opt.get(\textcolor{stringliteral}{'model\_type'}, \textcolor{keywordtype}{None})
+356     \textcolor{keywordflow}{if} model\_type \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+357         dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'models'}, model\_folder, model\_type)
+358     \textcolor{keywordflow}{else}:
+359         dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'models'}, model\_folder)
+360 
+361     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \hyperlink{namespaceparlai_1_1core_1_1build__data_ad834e1a9be02e18a6c2de2b03b9a8f10}{built}(dpath, version):
+362         \textcolor{keywordflow}{for} fname \textcolor{keywordflow}{in} fnames:
+363             print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{'/'} + fname + \textcolor{stringliteral}{']'})
+364         \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1core_1_1build__data_ad834e1a9be02e18a6c2de2b03b9a8f10}{built}(dpath):
+365             \textcolor{comment}{# An older version exists, so remove these outdated files.}
+366             \hyperlink{namespaceparlai_1_1core_1_1build__data_a24ab3b7e68e41adf774df058d330ff33}{remove\_dir}(dpath)
+367         \hyperlink{namespaceparlai_1_1core_1_1build__data_a6ce042fedd4194bd016845bbe7a8facf}{make\_dir}(dpath)
+368 
+369         \textcolor{comment}{# Download the data.}
+370         \textcolor{keywordflow}{for} fname \textcolor{keywordflow}{in} fnames:
+371             \textcolor{keywordflow}{if} path == \textcolor{stringliteral}{'aws'}:
+372                 url = \textcolor{stringliteral}{'http://parl.ai/downloads/\_models/'}
+373                 url += model\_folder + \textcolor{stringliteral}{'/'}
+374                 \textcolor{keywordflow}{if} use\_model\_type:
+375                     url += model\_type + \textcolor{stringliteral}{'/'}
+376                 url += fname
+377             \textcolor{keywordflow}{else}:
+378                 url = path + \textcolor{stringliteral}{'/'} + fname
+379             \hyperlink{namespaceparlai_1_1core_1_1build__data_ab74f0e428f05e5d91fa93c8afb367622}{download}(url, dpath, fname)
+380             \textcolor{keywordflow}{if} \textcolor{stringliteral}{'.tgz'} \textcolor{keywordflow}{in} fname \textcolor{keywordflow}{or} \textcolor{stringliteral}{'.gz'} \textcolor{keywordflow}{in} fname \textcolor{keywordflow}{or} \textcolor{stringliteral}{'.zip'} \textcolor{keywordflow}{in} fname:
+381                 \hyperlink{namespaceparlai_1_1core_1_1build__data_a4d33f97932682a8513904022d852f3cf}{untar}(dpath, fname)
+382         \textcolor{comment}{# Mark the data as built.}
+383         \hyperlink{namespaceparlai_1_1core_1_1build__data_a2527e6d29b0ccb7b841182890ac36a59}{mark\_done}(dpath, version)
+384 
+385 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1build__data_ae259aeb321a77560fbcd23028178c897}\label{namespaceparlai_1_1core_1_1build__data_ae259aeb321a77560fbcd23028178c897}} 
+\index{parlai\+::core\+::build\+\_\+data@{parlai\+::core\+::build\+\_\+data}!download\+\_\+multiprocess@{download\+\_\+multiprocess}}
+\index{download\+\_\+multiprocess@{download\+\_\+multiprocess}!parlai\+::core\+::build\+\_\+data@{parlai\+::core\+::build\+\_\+data}}
+\subsubsection{\texorpdfstring{download\+\_\+multiprocess()}{download\_multiprocess()}}
+{\footnotesize\ttfamily def parlai.\+core.\+build\+\_\+data.\+download\+\_\+multiprocess (\begin{DoxyParamCaption}\item[{}]{urls,  }\item[{}]{path,  }\item[{}]{num\+\_\+processes = {\ttfamily 32},  }\item[{}]{chunk\+\_\+size = {\ttfamily 100},  }\item[{}]{dest\+\_\+filenames = {\ttfamily None},  }\item[{}]{error\+\_\+path = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Download items in parallel (e.g. for an image + dialogue task)
+
+Note: "of threading, multiprocess and pytorch.multiprocessing pick two".
+These three don't all play well together. On OS X, may hang upon successful finish.
+
+:param urls: Array of urls to download
+:param path: directory to save items in
+:param num_processes: number of processes to use
+:param chunk_size: chunk size to use
+:param dest_filenames: optional array of same length as url with filenames.
+ Images will be saved as path + dest_filename
+:param error_path: where to save error logs
+:return: array of tuples of (destination filename, http status code, error
+message if any). Note that upon failure, file may not actually be created.
+\end{DoxyVerb}
+ 
+
+Definition at line 438 of file build\+\_\+data.\+py.
+
+
+\begin{DoxyCode}
+438 ):
+439     \textcolor{stringliteral}{"""}
+440 \textcolor{stringliteral}{    Download items in parallel (e.g. for an image + dialogue task)}
+441 \textcolor{stringliteral}{}
+442 \textcolor{stringliteral}{    Note: "of threading, multiprocess and pytorch.multiprocessing pick two".}
+443 \textcolor{stringliteral}{    These three don't all play well together. On OS X, may hang upon successful finish.}
+444 \textcolor{stringliteral}{}
+445 \textcolor{stringliteral}{    :param urls: Array of urls to download}
+446 \textcolor{stringliteral}{    :param path: directory to save items in}
+447 \textcolor{stringliteral}{    :param num\_processes: number of processes to use}
+448 \textcolor{stringliteral}{    :param chunk\_size: chunk size to use}
+449 \textcolor{stringliteral}{    :param dest\_filenames: optional array of same length as url with filenames.}
+450 \textcolor{stringliteral}{     Images will be saved as path + dest\_filename}
+451 \textcolor{stringliteral}{    :param error\_path: where to save error logs}
+452 \textcolor{stringliteral}{    :return: array of tuples of (destination filename, http status code, error}
+453 \textcolor{stringliteral}{    message if any). Note that upon failure, file may not actually be created.}
+454 \textcolor{stringliteral}{    """}
+455 
+456     pbar = tqdm.tqdm(total=len(urls), position=0)
+457 
+458     \textcolor{comment}{# Resume TODO: isfile() may take too long ?? Should I try in a .tmp file}
+459     \textcolor{keywordflow}{if} dest\_filenames:
+460         \textcolor{keywordflow}{if} len(dest\_filenames) != len(urls):
+461             \textcolor{keywordflow}{raise} Exception(
+462                 \textcolor{stringliteral}{'If specified, destination filenames must equal url array in length.'}
+463             )
+464     \textcolor{keywordflow}{else}:
+465 
+466         \textcolor{keyword}{def }\_naming\_fn(url, url\_metadata=None):
+467             \textcolor{keywordflow}{return} hashlib.md5(url.encode(\textcolor{stringliteral}{'utf-8'})).hexdigest()
+468 
+469         dest\_filenames = [\_naming\_fn(url) \textcolor{keywordflow}{for} url \textcolor{keywordflow}{in} urls]
+470 
+471     items = zip(urls, dest\_filenames)
+472     remaining\_items = [
+473         it \textcolor{keywordflow}{for} it \textcolor{keywordflow}{in} items \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.isfile(os.path.join(path, it[1]))
+474     ]
+475     print(
+476         f\textcolor{stringliteral}{'Of \{len(urls)\} items, \{len(urls) - len(remaining\_items)\} already existed; only going to download
+       \{len(remaining\_items)\} items.'}
+477     )
+478     pbar.update(len(urls) - len(remaining\_items))
+479 
+480     pool\_chunks = (
+481         (remaining\_items[i : i + chunk\_size], path, \_download\_multiprocess\_single)
+482         \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(0, len(remaining\_items), chunk\_size)
+483     )
+484     remaining\_chunks\_count = math.ceil(\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(len(remaining\_items) / chunk\_size))
+485     print(
+486         f\textcolor{stringliteral}{'Going to download \{remaining\_chunks\_count\} chunks with \{chunk\_size\} images per chunk using
+       \{num\_processes\} processes.'}
+487     )
+488 
+489     pbar.desc = \textcolor{stringliteral}{'Downloading'}
+490     all\_results = []
+491     collected\_errors = []
+492 
+493     with Pool(num\_processes) \textcolor{keyword}{as} pool:
+494         \textcolor{keywordflow}{for} idx, chunk\_result \textcolor{keywordflow}{in} enumerate(
+495             pool.imap\_unordered(\_download\_multiprocess\_map\_chunk, pool\_chunks, 2)
+496         ):
+497             all\_results.extend(chunk\_result)
+498             \textcolor{keywordflow}{for} dest\_file, http\_status\_code, error\_msg \textcolor{keywordflow}{in} chunk\_result:
+499                 \textcolor{keywordflow}{if} http\_status\_code != 200:
+500                     \textcolor{comment}{# msg field available as third item in the tuple}
+501                     \textcolor{comment}{# not using b/c error log file would blow up}
+502                     collected\_errors.append(
+503                         \{
+504                             \textcolor{stringliteral}{'dest\_file'}: dest\_file,
+505                             \textcolor{stringliteral}{'status\_code'}: http\_status\_code,
+506                             \textcolor{stringliteral}{'error'}: error\_msg,
+507                         \}
+508                     )
+509                     print(
+510                         f\textcolor{stringliteral}{'Bad download - chunk: \{idx\}, dest\_file: \{dest\_file\}, http status code:
+       \{http\_status\_code\}, error\_msg: \{error\_msg\}'}
+511                     )
+512             pbar.update(len(chunk\_result))
+513     pbar.close()
+514 
+515     \textcolor{keywordflow}{if} error\_path:
+516         now = time.strftime(\textcolor{stringliteral}{"%Y%m%d-%H%M%S"})
+517         error\_filename = os.path.join(
+518             error\_path, \textcolor{stringliteral}{'parlai\_download\_multiprocess\_errors\_%s.log'} % now
+519         )
+520 
+521         with open(os.path.join(error\_filename), \textcolor{stringliteral}{'w+'}) \textcolor{keyword}{as} error\_file:
+522             error\_file.write(json.dumps(collected\_errors))
+523             print(\textcolor{stringliteral}{'Summary of errors written to %s'} % error\_filename)
+524 
+525     print(
+526         \textcolor{stringliteral}{'Of %s items attempted downloading, %s had errors.'}
+527         % (len(remaining\_items), len(collected\_errors))
+528     )
+529 
+530     print(\textcolor{stringliteral}{'Finished downloading chunks.'})
+531     \textcolor{keywordflow}{return} all\_results
+532 
+533 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1build__data_ad2fe6222094caae59f304931aee0952a}\label{namespaceparlai_1_1core_1_1build__data_ad2fe6222094caae59f304931aee0952a}} 
+\index{parlai\+::core\+::build\+\_\+data@{parlai\+::core\+::build\+\_\+data}!get\+\_\+model\+\_\+dir@{get\+\_\+model\+\_\+dir}}
+\index{get\+\_\+model\+\_\+dir@{get\+\_\+model\+\_\+dir}!parlai\+::core\+::build\+\_\+data@{parlai\+::core\+::build\+\_\+data}}
+\subsubsection{\texorpdfstring{get\+\_\+model\+\_\+dir()}{get\_model\_dir()}}
+{\footnotesize\ttfamily def parlai.\+core.\+build\+\_\+data.\+get\+\_\+model\+\_\+dir (\begin{DoxyParamCaption}\item[{}]{datapath }\end{DoxyParamCaption})}
+
+
+
+Definition at line 340 of file build\+\_\+data.\+py.
+
+
+\begin{DoxyCode}
+340 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1build__data_ad2fe6222094caae59f304931aee0952a}{get\_model\_dir}(datapath):
+341     \textcolor{keywordflow}{return} os.path.join(datapath, \textcolor{stringliteral}{'models'})
+342 
+343 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1build__data_a6ce042fedd4194bd016845bbe7a8facf}\label{namespaceparlai_1_1core_1_1build__data_a6ce042fedd4194bd016845bbe7a8facf}} 
+\index{parlai\+::core\+::build\+\_\+data@{parlai\+::core\+::build\+\_\+data}!make\+\_\+dir@{make\+\_\+dir}}
+\index{make\+\_\+dir@{make\+\_\+dir}!parlai\+::core\+::build\+\_\+data@{parlai\+::core\+::build\+\_\+data}}
+\subsubsection{\texorpdfstring{make\+\_\+dir()}{make\_dir()}}
+{\footnotesize\ttfamily def parlai.\+core.\+build\+\_\+data.\+make\+\_\+dir (\begin{DoxyParamCaption}\item[{}]{path }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Make the directory and any nonexistent parent directories (`mkdir -p`).
+\end{DoxyVerb}
+ 
+
+Definition at line 232 of file build\+\_\+data.\+py.
+
+
+\begin{DoxyCode}
+232 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1build__data_a6ce042fedd4194bd016845bbe7a8facf}{make\_dir}(path):
+233     \textcolor{stringliteral}{"""}
+234 \textcolor{stringliteral}{    Make the directory and any nonexistent parent directories (`mkdir -p`).}
+235 \textcolor{stringliteral}{    """}
+236     \textcolor{comment}{# the current working directory is a fine path}
+237     \textcolor{keywordflow}{if} path != \textcolor{stringliteral}{''}:
+238         os.makedirs(path, exist\_ok=\textcolor{keyword}{True})
+239 
+240 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1build__data_a2527e6d29b0ccb7b841182890ac36a59}\label{namespaceparlai_1_1core_1_1build__data_a2527e6d29b0ccb7b841182890ac36a59}} 
+\index{parlai\+::core\+::build\+\_\+data@{parlai\+::core\+::build\+\_\+data}!mark\+\_\+done@{mark\+\_\+done}}
+\index{mark\+\_\+done@{mark\+\_\+done}!parlai\+::core\+::build\+\_\+data@{parlai\+::core\+::build\+\_\+data}}
+\subsubsection{\texorpdfstring{mark\+\_\+done()}{mark\_done()}}
+{\footnotesize\ttfamily def parlai.\+core.\+build\+\_\+data.\+mark\+\_\+done (\begin{DoxyParamCaption}\item[{}]{path,  }\item[{}]{version\+\_\+string = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Mark this path as prebuilt.
+
+Marks the path as done by adding a '.built' file with the current timestamp
+plus a version description string if specified.
+
+:param str path:
+    The file path to mark as built.
+
+:param str version_string:
+    The version of this dataset.
+\end{DoxyVerb}
+ 
+
+Definition at line 125 of file build\+\_\+data.\+py.
+
+
+\begin{DoxyCode}
+125 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1build__data_a2527e6d29b0ccb7b841182890ac36a59}{mark\_done}(path, version\_string=None):
+126     \textcolor{stringliteral}{"""}
+127 \textcolor{stringliteral}{    Mark this path as prebuilt.}
+128 \textcolor{stringliteral}{}
+129 \textcolor{stringliteral}{    Marks the path as done by adding a '.built' file with the current timestamp}
+130 \textcolor{stringliteral}{    plus a version description string if specified.}
+131 \textcolor{stringliteral}{}
+132 \textcolor{stringliteral}{    :param str path:}
+133 \textcolor{stringliteral}{        The file path to mark as built.}
+134 \textcolor{stringliteral}{}
+135 \textcolor{stringliteral}{    :param str version\_string:}
+136 \textcolor{stringliteral}{        The version of this dataset.}
+137 \textcolor{stringliteral}{    """}
+138     with open(os.path.join(path, \textcolor{stringliteral}{'.built'}), \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} write:
+139         write.write(\hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(datetime.datetime.today()))
+140         \textcolor{keywordflow}{if} version\_string:
+141             write.write(\textcolor{stringliteral}{'\(\backslash\)n'} + version\_string)
+142 
+143 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1build__data_ad06e9e38ca85db9c4a676ccd9ae41649}\label{namespaceparlai_1_1core_1_1build__data_ad06e9e38ca85db9c4a676ccd9ae41649}} 
+\index{parlai\+::core\+::build\+\_\+data@{parlai\+::core\+::build\+\_\+data}!modelzoo\+\_\+path@{modelzoo\+\_\+path}}
+\index{modelzoo\+\_\+path@{modelzoo\+\_\+path}!parlai\+::core\+::build\+\_\+data@{parlai\+::core\+::build\+\_\+data}}
+\subsubsection{\texorpdfstring{modelzoo\+\_\+path()}{modelzoo\_path()}}
+{\footnotesize\ttfamily def parlai.\+core.\+build\+\_\+data.\+modelzoo\+\_\+path (\begin{DoxyParamCaption}\item[{}]{datapath,  }\item[{}]{path }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Map pretrain models filenames to their path on disk.
+
+If path starts with 'models:', then we remap it to the model zoo path within the
+data directory (default is ParlAI/data/models). We download models from the model
+zoo if they are not here yet.
+\end{DoxyVerb}
+ 
+
+Definition at line 386 of file build\+\_\+data.\+py.
+
+
+\begin{DoxyCode}
+386 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1build__data_ad06e9e38ca85db9c4a676ccd9ae41649}{modelzoo\_path}(datapath, path):
+387     \textcolor{stringliteral}{"""}
+388 \textcolor{stringliteral}{    Map pretrain models filenames to their path on disk.}
+389 \textcolor{stringliteral}{}
+390 \textcolor{stringliteral}{    If path starts with 'models:', then we remap it to the model zoo path within the}
+391 \textcolor{stringliteral}{    data directory (default is ParlAI/data/models). We download models from the model}
+392 \textcolor{stringliteral}{    zoo if they are not here yet.}
+393 \textcolor{stringliteral}{    """}
+394     \textcolor{keywordflow}{if} path \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+395         \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}
+396     \textcolor{keywordflow}{if} (
+397         \textcolor{keywordflow}{not} path.startswith(\textcolor{stringliteral}{'models:'})
+398         \textcolor{keywordflow}{and} \textcolor{keywordflow}{not} path.startswith(\textcolor{stringliteral}{'zoo:'})
+399         \textcolor{keywordflow}{and} \textcolor{keywordflow}{not} path.startswith(\textcolor{stringliteral}{'izoo:'})
+400     ):
+401         \textcolor{keywordflow}{return} path
+402     \textcolor{keywordflow}{elif} path.startswith(\textcolor{stringliteral}{'models:'}) \textcolor{keywordflow}{or} path.startswith(\textcolor{stringliteral}{'zoo:'}):
+403         zoo = path.split(\textcolor{stringliteral}{':'})[0]
+404         zoo\_len = len(zoo) + 1
+405         model\_path = path[zoo\_len:]
+406         \textcolor{comment}{# Check if we need to download the model}
+407         animal = path[zoo\_len : path.rfind(\textcolor{stringliteral}{'/'})].replace(\textcolor{stringliteral}{'/'}, \textcolor{stringliteral}{'.'})
+408         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'.'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} animal:
+409             animal += \textcolor{stringliteral}{'.build'}
+410         module\_name = \textcolor{stringliteral}{'parlai.zoo.\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(animal)
+411         \textcolor{keywordflow}{try}:
+412             my\_module = importlib.import\_module(module\_name)
+413             my\_module.download(datapath)
+414         \textcolor{keywordflow}{except} (ImportError, AttributeError):
+415             \textcolor{keywordflow}{pass}
+416 
+417         \textcolor{keywordflow}{return} os.path.join(datapath, \textcolor{stringliteral}{'models'}, model\_path)
+418     \textcolor{keywordflow}{else}:
+419         \textcolor{comment}{# Internal path (starts with "izoo:") -- useful for non-public}
+420         \textcolor{comment}{# projects.  Save the path to your internal model zoo in}
+421         \textcolor{comment}{# parlai\_internal/.internal\_zoo\_path}
+422         \textcolor{comment}{# TODO: test the internal zoo.}
+423         zoo\_path = \textcolor{stringliteral}{'parlai\_internal/zoo/.internal\_zoo\_path'}
+424         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.isfile(\textcolor{stringliteral}{'parlai\_internal/zoo/.internal\_zoo\_path'}):
+425             \textcolor{keywordflow}{raise} RuntimeError(
+426                 \textcolor{stringliteral}{'Please specify the path to your internal zoo in the '}
+427                 \textcolor{stringliteral}{'file parlai\_internal/zoo/.internal\_zoo\_path in your '}
+428                 \textcolor{stringliteral}{'internal repository.'}
+429             )
+430         \textcolor{keywordflow}{else}:
+431             with open(zoo\_path, \textcolor{stringliteral}{'r') as f:}
+432 \textcolor{stringliteral}{                zoo = f.read().split('\(\backslash\)n'})[0]
+433             \textcolor{keywordflow}{return} os.path.join(zoo, path[5:])
+434 
+435 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1build__data_a1678b8a042eeb9d9c8e9de08f52e496b}\label{namespaceparlai_1_1core_1_1build__data_a1678b8a042eeb9d9c8e9de08f52e496b}} 
+\index{parlai\+::core\+::build\+\_\+data@{parlai\+::core\+::build\+\_\+data}!move@{move}}
+\index{move@{move}!parlai\+::core\+::build\+\_\+data@{parlai\+::core\+::build\+\_\+data}}
+\subsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily def parlai.\+core.\+build\+\_\+data.\+move (\begin{DoxyParamCaption}\item[{}]{path1,  }\item[{}]{path2 }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Rename the given file.
+\end{DoxyVerb}
+ 
+
+Definition at line 241 of file build\+\_\+data.\+py.
+
+
+\begin{DoxyCode}
+241 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1build__data_a1678b8a042eeb9d9c8e9de08f52e496b}{move}(path1, path2):
+242     \textcolor{stringliteral}{"""}
+243 \textcolor{stringliteral}{    Rename the given file.}
+244 \textcolor{stringliteral}{    """}
+245     shutil.move(path1, path2)
+246 
+247 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1build__data_a24ab3b7e68e41adf774df058d330ff33}\label{namespaceparlai_1_1core_1_1build__data_a24ab3b7e68e41adf774df058d330ff33}} 
+\index{parlai\+::core\+::build\+\_\+data@{parlai\+::core\+::build\+\_\+data}!remove\+\_\+dir@{remove\+\_\+dir}}
+\index{remove\+\_\+dir@{remove\+\_\+dir}!parlai\+::core\+::build\+\_\+data@{parlai\+::core\+::build\+\_\+data}}
+\subsubsection{\texorpdfstring{remove\+\_\+dir()}{remove\_dir()}}
+{\footnotesize\ttfamily def parlai.\+core.\+build\+\_\+data.\+remove\+\_\+dir (\begin{DoxyParamCaption}\item[{}]{path }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Remove the given directory, if it exists.
+\end{DoxyVerb}
+ 
+
+Definition at line 248 of file build\+\_\+data.\+py.
+
+
+\begin{DoxyCode}
+248 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1build__data_a24ab3b7e68e41adf774df058d330ff33}{remove\_dir}(path):
+249     \textcolor{stringliteral}{"""}
+250 \textcolor{stringliteral}{    Remove the given directory, if it exists.}
+251 \textcolor{stringliteral}{    """}
+252     shutil.rmtree(path, ignore\_errors=\textcolor{keyword}{True})
+253 
+254 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1build__data_a4d33f97932682a8513904022d852f3cf}\label{namespaceparlai_1_1core_1_1build__data_a4d33f97932682a8513904022d852f3cf}} 
+\index{parlai\+::core\+::build\+\_\+data@{parlai\+::core\+::build\+\_\+data}!untar@{untar}}
+\index{untar@{untar}!parlai\+::core\+::build\+\_\+data@{parlai\+::core\+::build\+\_\+data}}
+\subsubsection{\texorpdfstring{untar()}{untar()}}
+{\footnotesize\ttfamily def parlai.\+core.\+build\+\_\+data.\+untar (\begin{DoxyParamCaption}\item[{}]{path,  }\item[{}]{fname,  }\item[{}]{delete\+Tar = {\ttfamily True} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Unpack the given archive file to the same directory.
+
+:param str path:
+    The folder containing the archive. Will contain the contents.
+
+:param str fname:
+    The filename of the archive file.
+
+:param bool deleteTar:
+    If true, the archive will be deleted after extraction.
+\end{DoxyVerb}
+ 
+
+Definition at line 255 of file build\+\_\+data.\+py.
+
+
+\begin{DoxyCode}
+255 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1build__data_a4d33f97932682a8513904022d852f3cf}{untar}(path, fname, deleteTar=True):
+256     \textcolor{stringliteral}{"""}
+257 \textcolor{stringliteral}{    Unpack the given archive file to the same directory.}
+258 \textcolor{stringliteral}{}
+259 \textcolor{stringliteral}{    :param str path:}
+260 \textcolor{stringliteral}{        The folder containing the archive. Will contain the contents.}
+261 \textcolor{stringliteral}{}
+262 \textcolor{stringliteral}{    :param str fname:}
+263 \textcolor{stringliteral}{        The filename of the archive file.}
+264 \textcolor{stringliteral}{}
+265 \textcolor{stringliteral}{    :param bool deleteTar:}
+266 \textcolor{stringliteral}{        If true, the archive will be deleted after extraction.}
+267 \textcolor{stringliteral}{    """}
+268     print(\textcolor{stringliteral}{'unpacking '} + fname)
+269     fullpath = os.path.join(path, fname)
+270     shutil.unpack\_archive(fullpath, path)
+271     \textcolor{keywordflow}{if} deleteTar:
+272         os.remove(fullpath)
+273 
+274 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1build__data_a7cbfdf246ca40dc3ed9f8613deb14a00}\label{namespaceparlai_1_1core_1_1build__data_a7cbfdf246ca40dc3ed9f8613deb14a00}} 
+\index{parlai\+::core\+::build\+\_\+data@{parlai\+::core\+::build\+\_\+data}!unzip@{unzip}}
+\index{unzip@{unzip}!parlai\+::core\+::build\+\_\+data@{parlai\+::core\+::build\+\_\+data}}
+\subsubsection{\texorpdfstring{unzip()}{unzip()}}
+{\footnotesize\ttfamily def parlai.\+core.\+build\+\_\+data.\+unzip (\begin{DoxyParamCaption}\item[{}]{path,  }\item[{}]{fname,  }\item[{}]{delete\+Zip = {\ttfamily True} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Unzip the given archive file to the same directory.
+
+:param str path:
+    The folder containing the archive. Will contain the contents.
+
+:param str fname:
+    The filename of the archive file.
+
+:param bool deleteZip:
+    If true, the archive will be deleted after extraction.
+\end{DoxyVerb}
+ 
+
+Definition at line 275 of file build\+\_\+data.\+py.
+
+
+\begin{DoxyCode}
+275 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1build__data_a7cbfdf246ca40dc3ed9f8613deb14a00}{unzip}(path, fname, deleteZip=True):
+276     \textcolor{stringliteral}{"""}
+277 \textcolor{stringliteral}{    Unzip the given archive file to the same directory.}
+278 \textcolor{stringliteral}{}
+279 \textcolor{stringliteral}{    :param str path:}
+280 \textcolor{stringliteral}{        The folder containing the archive. Will contain the contents.}
+281 \textcolor{stringliteral}{}
+282 \textcolor{stringliteral}{    :param str fname:}
+283 \textcolor{stringliteral}{        The filename of the archive file.}
+284 \textcolor{stringliteral}{}
+285 \textcolor{stringliteral}{    :param bool deleteZip:}
+286 \textcolor{stringliteral}{        If true, the archive will be deleted after extraction.}
+287 \textcolor{stringliteral}{    """}
+288     print(\textcolor{stringliteral}{'unzipping '} + fname)
+289     fullpath = os.path.join(path, fname)
+290     with zipfile.ZipFile(fullpath, \textcolor{stringliteral}{"r") as zip\_ref:}
+291 \textcolor{stringliteral}{        zip\_ref.extractall(path)}
+292 \textcolor{stringliteral}{    }\textcolor{keywordflow}{if} deleteZip:
+293         os.remove(fullpath)
+294 
+295 
+\end{DoxyCode}

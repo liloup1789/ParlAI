@@ -1,0 +1,102 @@
+\hypertarget{namespacegenerate__cli}{}\section{generate\+\_\+cli Namespace Reference}
+\label{namespacegenerate__cli}\index{generate\+\_\+cli@{generate\+\_\+cli}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacegenerate__cli_a398461fabd4559f4d4d041df98c8cb43}{indent} (rawstr, indentstr=\textquotesingle{} \textquotesingle{})
+\item 
+def \hyperlink{namespacegenerate__cli_a88235ac81a788e005e9aa0dd7624307c}{get\+\_\+scripts} ()
+\item 
+def \hyperlink{namespacegenerate__cli_ac2397b33242e0f40a20f33a2ea5beebf}{main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacegenerate__cli_a88235ac81a788e005e9aa0dd7624307c}\label{namespacegenerate__cli_a88235ac81a788e005e9aa0dd7624307c}} 
+\index{generate\+\_\+cli@{generate\+\_\+cli}!get\+\_\+scripts@{get\+\_\+scripts}}
+\index{get\+\_\+scripts@{get\+\_\+scripts}!generate\+\_\+cli@{generate\+\_\+cli}}
+\subsubsection{\texorpdfstring{get\+\_\+scripts()}{get\_scripts()}}
+{\footnotesize\ttfamily def generate\+\_\+cli.\+get\+\_\+scripts (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 19 of file generate\+\_\+cli.\+py.
+
+
+\begin{DoxyCode}
+19 \textcolor{keyword}{def }\hyperlink{namespacegenerate__cli_a88235ac81a788e005e9aa0dd7624307c}{get\_scripts}():
+20     pathname = os.path.dirname(parlai.scripts.\_\_file\_\_)
+21     \textcolor{keywordflow}{for} fn \textcolor{keywordflow}{in} os.listdir(pathname):
+22         \textcolor{keywordflow}{if} fn.endswith(\textcolor{stringliteral}{'.py'}) \textcolor{keywordflow}{and} \textcolor{keywordflow}{not} fn.startswith(\textcolor{stringliteral}{'\_\_'}):
+23             \textcolor{keywordflow}{yield} os.path.join(pathname, fn)
+24 
+25 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespacegenerate__cli_a398461fabd4559f4d4d041df98c8cb43}\label{namespacegenerate__cli_a398461fabd4559f4d4d041df98c8cb43}} 
+\index{generate\+\_\+cli@{generate\+\_\+cli}!indent@{indent}}
+\index{indent@{indent}!generate\+\_\+cli@{generate\+\_\+cli}}
+\subsubsection{\texorpdfstring{indent()}{indent()}}
+{\footnotesize\ttfamily def generate\+\_\+cli.\+indent (\begin{DoxyParamCaption}\item[{}]{rawstr,  }\item[{}]{indentstr = {\ttfamily \textquotesingle{}~~~~\textquotesingle{}} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 13 of file generate\+\_\+cli.\+py.
+
+
+\begin{DoxyCode}
+13 \textcolor{keyword}{def }\hyperlink{namespacegenerate__cli_a398461fabd4559f4d4d041df98c8cb43}{indent}(rawstr, indentstr='    '):
+14     lines = rawstr.split(\textcolor{stringliteral}{'\(\backslash\)n'})
+15     indented = [(indentstr + l) \textcolor{keywordflow}{for} l \textcolor{keywordflow}{in} lines]
+16     \textcolor{keywordflow}{return} \textcolor{stringliteral}{'\(\backslash\)n'}.join(indented).replace(\textcolor{stringliteral}{'\(\backslash\)\(\backslash\)'}, \textcolor{stringliteral}{'\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)'}).rstrip()
+17 
+18 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespacegenerate__cli_ac2397b33242e0f40a20f33a2ea5beebf}\label{namespacegenerate__cli_ac2397b33242e0f40a20f33a2ea5beebf}} 
+\index{generate\+\_\+cli@{generate\+\_\+cli}!main@{main}}
+\index{main@{main}!generate\+\_\+cli@{generate\+\_\+cli}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def generate\+\_\+cli.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 26 of file generate\+\_\+cli.\+py.
+
+
+\begin{DoxyCode}
+26 \textcolor{keyword}{def }\hyperlink{namespacegenerate__cli_ac2397b33242e0f40a20f33a2ea5beebf}{main}():
+27     fout = open(\textcolor{stringliteral}{'cli\_usage.inc'}, \textcolor{stringliteral}{'w'})
+28 
+29     \textcolor{keywordflow}{for} script\_path \textcolor{keywordflow}{in} \hyperlink{namespacegenerate__cli_a88235ac81a788e005e9aa0dd7624307c}{get\_scripts}():
+30         script\_name = os.path.basename(script\_path).replace(\textcolor{stringliteral}{".py"}, \textcolor{stringliteral}{""})
+31         \textcolor{keywordflow}{try}:
+32             module = importlib.import\_module(\textcolor{stringliteral}{"parlai.scripts."} + script\_name)
+33         \textcolor{keywordflow}{except} ModuleNotFoundError:
+34             \textcolor{keywordflow}{continue}
+35         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} hasattr(module, \textcolor{stringliteral}{'setup\_args'}):
+36             \textcolor{keywordflow}{continue}
+37         \textcolor{comment}{# header}
+38         fout.write(script\_name)
+39         fout.write(\textcolor{stringliteral}{'\(\backslash\)n'})
+40         fout.write(\textcolor{stringliteral}{'-'} * len(script\_name))
+41         fout.write(\textcolor{stringliteral}{'\(\backslash\)n'})
+42 
+43         \textcolor{comment}{# docs from the module}
+44         fout.write(\textcolor{stringliteral}{'.. automodule:: parlai.scripts.\{\}\(\backslash\)n'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(script\_name))
+45 
+46         \textcolor{comment}{# fout.write('   :members:\(\backslash\)n')}
+47         \textcolor{comment}{# fout.write('   :exclude-members: setup\_args\(\backslash\)n')}
+48         fout.write(\textcolor{stringliteral}{'\(\backslash\)n'})
+49         fout.write(\textcolor{stringliteral}{'CLI help\(\backslash\)n'})
+50         fout.write(\textcolor{stringliteral}{'~~~~~~~~\(\backslash\)n\(\backslash\)n\(\backslash\)n'})
+51 
+52         \textcolor{comment}{# output the --help}
+53         fout.write(\textcolor{stringliteral}{'.. code-block:: text\(\backslash\)n\(\backslash\)n'})  \textcolor{comment}{# literal block}
+54         capture = io.StringIO()
+55         parser = module.setup\_args()
+56         parser.prog = \textcolor{stringliteral}{'python -m parlai.scripts.\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(script\_name)
+57         parser.print\_help(capture)
+58         fout.write(\hyperlink{namespacegenerate__cli_a398461fabd4559f4d4d041df98c8cb43}{indent}(capture.getvalue()))
+59         fout.write(\textcolor{stringliteral}{'\(\backslash\)n\(\backslash\)n'})
+60 
+61 
+\end{DoxyCode}

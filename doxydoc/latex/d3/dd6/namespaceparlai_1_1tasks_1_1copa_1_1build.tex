@@ -1,0 +1,69 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1copa_1_1build}{}\section{parlai.\+tasks.\+copa.\+build Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1copa_1_1build}\index{parlai.\+tasks.\+copa.\+build@{parlai.\+tasks.\+copa.\+build}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1copa_1_1build_a20917f15c830f6a3c2af55808ee584bf}{build} (opt)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+list \hyperlink{namespaceparlai_1_1tasks_1_1copa_1_1build_a62573c3b2b21231246c8e91efdb78c4e}{R\+E\+S\+O\+U\+R\+C\+ES}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1copa_1_1build_a20917f15c830f6a3c2af55808ee584bf}\label{namespaceparlai_1_1tasks_1_1copa_1_1build_a20917f15c830f6a3c2af55808ee584bf}} 
+\index{parlai\+::tasks\+::copa\+::build@{parlai\+::tasks\+::copa\+::build}!build@{build}}
+\index{build@{build}!parlai\+::tasks\+::copa\+::build@{parlai\+::tasks\+::copa\+::build}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+copa.\+build.\+build (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 21 of file build.\+py.
+
+
+\begin{DoxyCode}
+21 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
+22     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'COPA'})
+23     version = \textcolor{keywordtype}{None}
+24 
+25     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version\_string=version):
+26         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+27 
+28         \textcolor{keywordflow}{if} build\_data.built(dpath):
+29             \textcolor{comment}{# an older version exists, so remove these outdated files.}
+30             build\_data.remove\_dir(dpath)
+31         build\_data.make\_dir(dpath)
+32 
+33         \textcolor{comment}{# Download the data.}
+34         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES:
+35             downloadable\_file.download\_file(dpath)
+36 
+37         \textcolor{comment}{# mark the data as built}
+38         build\_data.mark\_done(dpath, version\_string=version)
+39 \end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1copa_1_1build_a62573c3b2b21231246c8e91efdb78c4e}\label{namespaceparlai_1_1tasks_1_1copa_1_1build_a62573c3b2b21231246c8e91efdb78c4e}} 
+\index{parlai\+::tasks\+::copa\+::build@{parlai\+::tasks\+::copa\+::build}!R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}}
+\index{R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}!parlai\+::tasks\+::copa\+::build@{parlai\+::tasks\+::copa\+::build}}
+\subsubsection{\texorpdfstring{R\+E\+S\+O\+U\+R\+C\+ES}{RESOURCES}}
+{\footnotesize\ttfamily list parlai.\+tasks.\+copa.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+1 =  [
+2     DownloadableFile(
+3         \textcolor{stringliteral}{'http://people.ict.usc.edu/~gordon/downloads/COPA-resources.tgz'},
+4         \textcolor{stringliteral}{'COPA-resources.tgz'},
+5         \textcolor{stringliteral}{'5145348834d2081ad90da0397d1db3d70fa044e506bd8ce224194d24b04cdbbe'},
+6     )
+7 ]
+\end{DoxyCode}
+
+
+Definition at line 12 of file build.\+py.
+

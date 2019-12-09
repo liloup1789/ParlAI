@@ -1,0 +1,70 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1dealnodeal_1_1build}{}\section{parlai.\+tasks.\+dealnodeal.\+build Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1dealnodeal_1_1build}\index{parlai.\+tasks.\+dealnodeal.\+build@{parlai.\+tasks.\+dealnodeal.\+build}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1dealnodeal_1_1build_a964c2b43bf49102b9541d584d10d8632}{build} (opt)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+list \hyperlink{namespaceparlai_1_1tasks_1_1dealnodeal_1_1build_a241dcbf765e96f5beed61989453698a9}{R\+E\+S\+O\+U\+R\+C\+ES}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1dealnodeal_1_1build_a964c2b43bf49102b9541d584d10d8632}\label{namespaceparlai_1_1tasks_1_1dealnodeal_1_1build_a964c2b43bf49102b9541d584d10d8632}} 
+\index{parlai\+::tasks\+::dealnodeal\+::build@{parlai\+::tasks\+::dealnodeal\+::build}!build@{build}}
+\index{build@{build}!parlai\+::tasks\+::dealnodeal\+::build@{parlai\+::tasks\+::dealnodeal\+::build}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+dealnodeal.\+build.\+build (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 20 of file build.\+py.
+
+
+\begin{DoxyCode}
+20 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
+21     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'negotiation'})
+22     version = \textcolor{keywordtype}{None}
+23 
+24     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version\_string=version):
+25         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+26 
+27         \textcolor{comment}{# make a clean directory if needed}
+28         \textcolor{keywordflow}{if} build\_data.built(dpath):
+29             \textcolor{comment}{# an older version exists, so remove these outdated files.}
+30             build\_data.remove\_dir(dpath)
+31         build\_data.make\_dir(dpath)
+32 
+33         \textcolor{comment}{# Download the data.}
+34         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES:
+35             downloadable\_file.download\_file(dpath)
+36 
+37         \textcolor{comment}{# Mark as done}
+38         build\_data.mark\_done(dpath, version\_string=version)
+39 \end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1dealnodeal_1_1build_a241dcbf765e96f5beed61989453698a9}\label{namespaceparlai_1_1tasks_1_1dealnodeal_1_1build_a241dcbf765e96f5beed61989453698a9}} 
+\index{parlai\+::tasks\+::dealnodeal\+::build@{parlai\+::tasks\+::dealnodeal\+::build}!R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}}
+\index{R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}!parlai\+::tasks\+::dealnodeal\+::build@{parlai\+::tasks\+::dealnodeal\+::build}}
+\subsubsection{\texorpdfstring{R\+E\+S\+O\+U\+R\+C\+ES}{RESOURCES}}
+{\footnotesize\ttfamily list parlai.\+tasks.\+dealnodeal.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+1 =  [
+2     DownloadableFile(
+3         \textcolor{stringliteral}{'https://github.com/facebookresearch/end-to-end-negotiator/archive/master.zip'},
+4         \textcolor{stringliteral}{'negotiation.zip'},
+5         \textcolor{stringliteral}{'0f62af6ced9d0c41183118ccce4ef012886fce7ccbe23565280c5f0da358a2e5'},
+6     )
+7 ]
+\end{DoxyCode}
+
+
+Definition at line 11 of file build.\+py.
+

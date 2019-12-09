@@ -1,0 +1,52 @@
+\hypertarget{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds}{}\section{parlai.\+mturk.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+worlds Namespace Reference}
+\label{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds}\index{parlai.\+mturk.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+worlds@{parlai.\+mturk.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+worlds}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld}{M\+Turk\+Wizard\+Of\+Wikipedia\+World}
+\item 
+class \hyperlink{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1PersonasGenerator}{Personas\+Generator}
+\item 
+class \hyperlink{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1RoleOnboardWorld}{Role\+Onboard\+World}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_a040aaf5ecfbddec14f321279454f85a8}{split\+\_\+tokenize} (text)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_a040aaf5ecfbddec14f321279454f85a8}\label{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_a040aaf5ecfbddec14f321279454f85a8}} 
+\index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds}!split\+\_\+tokenize@{split\+\_\+tokenize}}
+\index{split\+\_\+tokenize@{split\+\_\+tokenize}!parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds}}
+\subsubsection{\texorpdfstring{split\+\_\+tokenize()}{split\_tokenize()}}
+{\footnotesize\ttfamily def parlai.\+mturk.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+worlds.\+split\+\_\+tokenize (\begin{DoxyParamCaption}\item[{}]{text }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Splits tokens based on whitespace after adding whitespace around punctuation.
+\end{DoxyVerb}
+ 
+
+Definition at line 40 of file worlds.\+py.
+
+
+\begin{DoxyCode}
+40 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_a040aaf5ecfbddec14f321279454f85a8}{split\_tokenize}(text):
+41     \textcolor{stringliteral}{"""}
+42 \textcolor{stringliteral}{    Splits tokens based on whitespace after adding whitespace around punctuation.}
+43 \textcolor{stringliteral}{    """}
+44     \textcolor{keywordflow}{return} (
+45         text.replace(\textcolor{stringliteral}{'.'}, \textcolor{stringliteral}{' . '})
+46         .replace(\textcolor{stringliteral}{'. . .'}, \textcolor{stringliteral}{'...'})
+47         .replace(\textcolor{stringliteral}{','}, \textcolor{stringliteral}{' , '})
+48         .replace(\textcolor{stringliteral}{';'}, \textcolor{stringliteral}{' ; '})
+49         .replace(\textcolor{stringliteral}{':'}, \textcolor{stringliteral}{' : '})
+50         .replace(\textcolor{stringliteral}{'!'}, \textcolor{stringliteral}{' ! '})
+51         .replace(\textcolor{stringliteral}{'?'}, \textcolor{stringliteral}{' ? '})
+52         .replace(\textcolor{stringliteral}{'('}, \textcolor{stringliteral}{' ( '})
+53         .replace(\textcolor{stringliteral}{')'}, \textcolor{stringliteral}{' ) '})
+54         .split()
+55     )
+56 
+57 
+\end{DoxyCode}

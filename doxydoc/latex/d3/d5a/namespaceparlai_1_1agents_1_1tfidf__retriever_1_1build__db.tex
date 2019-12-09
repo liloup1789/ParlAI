@@ -1,0 +1,127 @@
+\hypertarget{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__db}{}\section{parlai.\+agents.\+tfidf\+\_\+retriever.\+build\+\_\+db Namespace Reference}
+\label{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__db}\index{parlai.\+agents.\+tfidf\+\_\+retriever.\+build\+\_\+db@{parlai.\+agents.\+tfidf\+\_\+retriever.\+build\+\_\+db}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__db_a794fe63c76c7ac42ca1ac1b18c2528f4}{store\+\_\+contents} (opt, task, save\+\_\+path, context\+\_\+length=-\/1, include\+\_\+labels=True)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+string \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__db_a7a8b2cb13da2ca64f153da8af410072e}{fmt} = \textquotesingle{}\%(asctime)s\+: \mbox{[} \%(message)s \mbox{]}\textquotesingle{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__db_a794fe63c76c7ac42ca1ac1b18c2528f4}\label{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__db_a794fe63c76c7ac42ca1ac1b18c2528f4}} 
+\index{parlai\+::agents\+::tfidf\+\_\+retriever\+::build\+\_\+db@{parlai\+::agents\+::tfidf\+\_\+retriever\+::build\+\_\+db}!store\+\_\+contents@{store\+\_\+contents}}
+\index{store\+\_\+contents@{store\+\_\+contents}!parlai\+::agents\+::tfidf\+\_\+retriever\+::build\+\_\+db@{parlai\+::agents\+::tfidf\+\_\+retriever\+::build\+\_\+db}}
+\subsubsection{\texorpdfstring{store\+\_\+contents()}{store\_contents()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+tfidf\+\_\+retriever.\+build\+\_\+db.\+store\+\_\+contents (\begin{DoxyParamCaption}\item[{}]{opt,  }\item[{}]{task,  }\item[{}]{save\+\_\+path,  }\item[{}]{context\+\_\+length = {\ttfamily -\/1},  }\item[{}]{include\+\_\+labels = {\ttfamily True} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Preprocess and store a corpus of documents in sqlite.
+
+Args:
+    task: ParlAI tasks of text (and possibly values) to store.
+    save_path: Path to output sqlite db.
+    num_workers: Number of parallel processes to use when reading docs.
+\end{DoxyVerb}
+ 
+
+Definition at line 30 of file build\+\_\+db.\+py.
+
+
+\begin{DoxyCode}
+30 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__db_a794fe63c76c7ac42ca1ac1b18c2528f4}{store\_contents}(opt, task, save\_path, context\_length=-1, include\_labels=True):
+31     \textcolor{stringliteral}{"""}
+32 \textcolor{stringliteral}{    Preprocess and store a corpus of documents in sqlite.}
+33 \textcolor{stringliteral}{}
+34 \textcolor{stringliteral}{    Args:}
+35 \textcolor{stringliteral}{        task: ParlAI tasks of text (and possibly values) to store.}
+36 \textcolor{stringliteral}{        save\_path: Path to output sqlite db.}
+37 \textcolor{stringliteral}{        num\_workers: Number of parallel processes to use when reading docs.}
+38 \textcolor{stringliteral}{    """}
+39     \textcolor{keywordflow}{if} os.path.isfile(save\_path):
+40         \textcolor{keywordflow}{raise} RuntimeError(\textcolor{stringliteral}{'%s already exists! Not overwriting.'} % save\_path)
+41 
+42     logger.info(\textcolor{stringliteral}{'Reading into database...'})
+43     conn = sqlite3.connect(save\_path)
+44     c = conn.cursor()
+45     c.execute(\textcolor{stringliteral}{'CREATE TABLE documents (id INTEGER PRIMARY KEY, text, value);'})
+46     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} task:
+47         logger.info(\textcolor{stringliteral}{'No data to initialize table: just creating table.'})
+48         logger.info(\textcolor{stringliteral}{'Add more data by passing observations to the agent.'})
+49         logger.info(\textcolor{stringliteral}{'Committing...'})
+50         conn.commit()
+51         conn.close()
+52         \textcolor{keywordflow}{return}
+53 
+54     ordered\_opt = opt.copy()
+55     dt = opt.get(\textcolor{stringliteral}{'datatype'}, \textcolor{stringliteral}{''}).split(\textcolor{stringliteral}{':'})
+56     ordered\_opt[\textcolor{stringliteral}{'datatype'}] = \textcolor{stringliteral}{':'}.join([dt[0], \textcolor{stringliteral}{'ordered'}] + dt[1:])
+57     ordered\_opt[\textcolor{stringliteral}{'batchsize'}] = 1
+58     ordered\_opt[\textcolor{stringliteral}{'numthreads'}] = 1
+59     ordered\_opt[\textcolor{stringliteral}{'task'}] = task
+60     teacher = \hyperlink{namespaceparlai_1_1core_1_1agents_ab4473fa54af02b5ab385b41b51dacd10}{create\_task\_agent\_from\_taskname}(ordered\_opt)[0]
+61 
+62     episode\_done = \textcolor{keyword}{False}
+63     current = []
+64     triples = []
+65     context\_length = context\_length \textcolor{keywordflow}{if} context\_length >= 0 \textcolor{keywordflow}{else} \textcolor{keywordtype}{None}
+66     context = deque(maxlen=context\_length)
+67     with tqdm(total=teacher.num\_episodes()) \textcolor{keyword}{as} pbar:
+68         \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} teacher.epoch\_done():
+69             \textcolor{comment}{# collect examples in episode}
+70             \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} episode\_done:
+71                 action = teacher.act()
+72                 current.append(action)
+73                 episode\_done = action[\textcolor{stringliteral}{'episode\_done'}]
+74 
+75             \textcolor{keywordflow}{for} ex \textcolor{keywordflow}{in} current:
+76                 \textcolor{keywordflow}{if} \textcolor{stringliteral}{'text'} \textcolor{keywordflow}{in} ex:
+77                     text = ex[\textcolor{stringliteral}{'text'}]
+78                     context.append(text)
+79                     \textcolor{keywordflow}{if} len(context) > 1:
+80                         text = \textcolor{stringliteral}{'\(\backslash\)n'}.join(context)
+81 
+82                 \textcolor{comment}{# add labels to context}
+83                 labels = ex.get(\textcolor{stringliteral}{'labels'}, ex.get(\textcolor{stringliteral}{'eval\_labels'}))
+84                 label = \textcolor{keywordtype}{None}
+85                 \textcolor{keywordflow}{if} labels \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+86                     label = random.choice(labels)
+87                     \textcolor{keywordflow}{if} include\_labels:
+88                         context.append(label)
+89                 \textcolor{comment}{# use None for ID to auto-assign doc ids--we don't need to}
+90                 \textcolor{comment}{# ever reverse-lookup them}
+91                 triples.append((\textcolor{keywordtype}{None}, text, label))
+92 
+93             c.executemany(\textcolor{stringliteral}{'INSERT OR IGNORE INTO documents VALUES (?,?,?)'}, triples)
+94             pbar.update()
+95 
+96             \textcolor{comment}{# reset flags and content}
+97             episode\_done = \textcolor{keyword}{False}
+98             triples.clear()
+99             current.clear()
+100             context.clear()
+101 
+102     logger.info(
+103         \textcolor{stringliteral}{'Read %d examples from %d episodes.'}
+104         % (teacher.num\_examples(), teacher.num\_episodes())
+105     )
+106     logger.info(\textcolor{stringliteral}{'Committing...'})
+107     conn.commit()
+108     conn.close()
+109 \end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__db_a7a8b2cb13da2ca64f153da8af410072e}\label{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__db_a7a8b2cb13da2ca64f153da8af410072e}} 
+\index{parlai\+::agents\+::tfidf\+\_\+retriever\+::build\+\_\+db@{parlai\+::agents\+::tfidf\+\_\+retriever\+::build\+\_\+db}!fmt@{fmt}}
+\index{fmt@{fmt}!parlai\+::agents\+::tfidf\+\_\+retriever\+::build\+\_\+db@{parlai\+::agents\+::tfidf\+\_\+retriever\+::build\+\_\+db}}
+\subsubsection{\texorpdfstring{fmt}{fmt}}
+{\footnotesize\ttfamily string parlai.\+agents.\+tfidf\+\_\+retriever.\+build\+\_\+db.\+fmt = \textquotesingle{}\%(asctime)s\+: \mbox{[} \%(message)s \mbox{]}\textquotesingle{}}
+
+
+
+Definition at line 22 of file build\+\_\+db.\+py.
+

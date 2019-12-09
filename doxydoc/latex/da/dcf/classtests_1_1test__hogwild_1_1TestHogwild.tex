@@ -1,0 +1,113 @@
+\hypertarget{classtests_1_1test__hogwild_1_1TestHogwild}{}\section{tests.\+test\+\_\+hogwild.\+Test\+Hogwild Class Reference}
+\label{classtests_1_1test__hogwild_1_1TestHogwild}\index{tests.\+test\+\_\+hogwild.\+Test\+Hogwild@{tests.\+test\+\_\+hogwild.\+Test\+Hogwild}}
+
+
+Inheritance diagram for tests.\+test\+\_\+hogwild.\+Test\+Hogwild\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{d1/d18/classtests_1_1test__hogwild_1_1TestHogwild__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for tests.\+test\+\_\+hogwild.\+Test\+Hogwild\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=234pt]{d8/dc6/classtests_1_1test__hogwild_1_1TestHogwild__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classtests_1_1test__hogwild_1_1TestHogwild_a8ae07bb2d6dda177244cecb1900211b5}{test\+\_\+hogwild\+\_\+train} (self)
+\item 
+def \hyperlink{classtests_1_1test__hogwild_1_1TestHogwild_a0d83543defe591e2c7db1a94dce52189}{test\+\_\+hogwild\+\_\+eval} (self)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Check that hogwild is doing the right number of examples.
+\end{DoxyVerb}
+ 
+
+Definition at line 18 of file test\+\_\+hogwild.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtests_1_1test__hogwild_1_1TestHogwild_a0d83543defe591e2c7db1a94dce52189}\label{classtests_1_1test__hogwild_1_1TestHogwild_a0d83543defe591e2c7db1a94dce52189}} 
+\index{tests\+::test\+\_\+hogwild\+::\+Test\+Hogwild@{tests\+::test\+\_\+hogwild\+::\+Test\+Hogwild}!test\+\_\+hogwild\+\_\+eval@{test\+\_\+hogwild\+\_\+eval}}
+\index{test\+\_\+hogwild\+\_\+eval@{test\+\_\+hogwild\+\_\+eval}!tests\+::test\+\_\+hogwild\+::\+Test\+Hogwild@{tests\+::test\+\_\+hogwild\+::\+Test\+Hogwild}}
+\subsubsection{\texorpdfstring{test\+\_\+hogwild\+\_\+eval()}{test\_hogwild\_eval()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+hogwild.\+Test\+Hogwild.\+test\+\_\+hogwild\+\_\+eval (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Test eval with numthreads > 1 and batchsize in [1,2,3].
+\end{DoxyVerb}
+ 
+
+Definition at line 43 of file test\+\_\+hogwild.\+py.
+
+
+\begin{DoxyCode}
+43     \textcolor{keyword}{def }test\_hogwild\_eval(self):
+44         \textcolor{stringliteral}{"""}
+45 \textcolor{stringliteral}{        Test eval with numthreads > 1 and batchsize in [1,2,3].}
+46 \textcolor{stringliteral}{        """}
+47         opt = dict(
+48             task=\textcolor{stringliteral}{'tasks.repeat:RepeatTeacher:\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(NUM\_EXS), model=\textcolor{stringliteral}{'repeat\_label'}
+49         )
+50         \textcolor{keywordflow}{for} nt \textcolor{keywordflow}{in} NUM\_THREADS\_CHOICES:
+51             \textcolor{keywordflow}{for} bs \textcolor{keywordflow}{in} BATCHSIZE\_CHOICES:
+52                 opt[\textcolor{stringliteral}{'num\_threads'}] = nt
+53                 opt[\textcolor{stringliteral}{'batchsize'}] = bs
+54 
+55                 stdout, valid, test = testing\_utils.eval\_model(opt)
+56                 self.assertEqual(valid[\textcolor{stringliteral}{'exs'}], NUM\_EXS, \textcolor{stringliteral}{'LOG:\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(stdout))
+57                 self.assertEqual(test[\textcolor{stringliteral}{'exs'}], NUM\_EXS, \textcolor{stringliteral}{'LOG:\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(stdout))
+58 
+59 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__hogwild_1_1TestHogwild_a8ae07bb2d6dda177244cecb1900211b5}\label{classtests_1_1test__hogwild_1_1TestHogwild_a8ae07bb2d6dda177244cecb1900211b5}} 
+\index{tests\+::test\+\_\+hogwild\+::\+Test\+Hogwild@{tests\+::test\+\_\+hogwild\+::\+Test\+Hogwild}!test\+\_\+hogwild\+\_\+train@{test\+\_\+hogwild\+\_\+train}}
+\index{test\+\_\+hogwild\+\_\+train@{test\+\_\+hogwild\+\_\+train}!tests\+::test\+\_\+hogwild\+::\+Test\+Hogwild@{tests\+::test\+\_\+hogwild\+::\+Test\+Hogwild}}
+\subsubsection{\texorpdfstring{test\+\_\+hogwild\+\_\+train()}{test\_hogwild\_train()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+hogwild.\+Test\+Hogwild.\+test\+\_\+hogwild\+\_\+train (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Test the trainer eval with numthreads > 1 and batchsize in [1,2,3].
+\end{DoxyVerb}
+ 
+
+Definition at line 23 of file test\+\_\+hogwild.\+py.
+
+
+\begin{DoxyCode}
+23     \textcolor{keyword}{def }test\_hogwild\_train(self):
+24         \textcolor{stringliteral}{"""}
+25 \textcolor{stringliteral}{        Test the trainer eval with numthreads > 1 and batchsize in [1,2,3].}
+26 \textcolor{stringliteral}{        """}
+27         opt = dict(
+28             task=\textcolor{stringliteral}{'tasks.repeat:RepeatTeacher:\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(1),
+29             evaltask=\textcolor{stringliteral}{'tasks.repeat:RepeatTeacher:\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(NUM\_EXS),
+30             model=\textcolor{stringliteral}{'repeat\_label'},
+31             display\_examples=\textcolor{keyword}{False},
+32             num\_epochs=10,
+33         )
+34         \textcolor{keywordflow}{for} nt \textcolor{keywordflow}{in} NUM\_THREADS\_CHOICES:
+35             \textcolor{keywordflow}{for} bs \textcolor{keywordflow}{in} BATCHSIZE\_CHOICES:
+36                 opt[\textcolor{stringliteral}{'num\_threads'}] = nt
+37                 opt[\textcolor{stringliteral}{'batchsize'}] = bs
+38 
+39                 stdout, valid, test = testing\_utils.train\_model(opt)
+40                 self.assertEqual(valid[\textcolor{stringliteral}{'exs'}], NUM\_EXS, \textcolor{stringliteral}{'LOG:\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(stdout))
+41                 self.assertEqual(test[\textcolor{stringliteral}{'exs'}], NUM\_EXS, \textcolor{stringliteral}{'LOG:\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(stdout))
+42 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+tests/\hyperlink{test__hogwild_8py}{test\+\_\+hogwild.\+py}\end{DoxyCompactItemize}

@@ -1,0 +1,38 @@
+\hypertarget{namespacelanguage__model_1_1eval__f1}{}\section{language\+\_\+model.\+eval\+\_\+f1 Namespace Reference}
+\label{namespacelanguage__model_1_1eval__f1}\index{language\+\_\+model.\+eval\+\_\+f1@{language\+\_\+model.\+eval\+\_\+f1}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacelanguage__model_1_1eval__f1_a88a3c5c1d47606053bd1b66ab08daf0e}{main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacelanguage__model_1_1eval__f1_a88a3c5c1d47606053bd1b66ab08daf0e}\label{namespacelanguage__model_1_1eval__f1_a88a3c5c1d47606053bd1b66ab08daf0e}} 
+\index{language\+\_\+model\+::eval\+\_\+f1@{language\+\_\+model\+::eval\+\_\+f1}!main@{main}}
+\index{main@{main}!language\+\_\+model\+::eval\+\_\+f1@{language\+\_\+model\+::eval\+\_\+f1}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def language\+\_\+model.\+eval\+\_\+f1.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 16 of file eval\+\_\+f1.\+py.
+
+
+\begin{DoxyCode}
+16 \textcolor{keyword}{def }\hyperlink{namespaceseq2seq_1_1eval__f1_a99ede4f55975fd62d1d5834b72fa03c7}{main}():
+17     parser = \hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a74826f78ce1ce6c9fe9b6d4a6297f3bd}{setup\_args}()
+18     parser.set\_params(
+19         model=\textcolor{stringliteral}{'language\_model'},
+20         model\_file=\textcolor{stringliteral}{'models:convai2/language\_model/model'},
+21         dict\_file=\textcolor{stringliteral}{'models:convai2/language\_model/model.dict'},
+22         batchsize=20,
+23     )
+24     opt = parser.parse\_args()
+25     opt[\textcolor{stringliteral}{'model\_type'}] = \textcolor{stringliteral}{'language\_model'}
+26     fnames = [\textcolor{stringliteral}{'model'}, \textcolor{stringliteral}{'model.dict'}, \textcolor{stringliteral}{'model.opt'}]
+27     \hyperlink{namespaceparlai_1_1core_1_1build__data_ab697f23f05d3e36d7979fe5e0ed7911e}{download\_models}(opt, fnames, \textcolor{stringliteral}{'convai2'}, version=\textcolor{stringliteral}{'v2.0'}, use\_model\_type=\textcolor{keyword}{True})
+28     \textcolor{keywordflow}{return} \hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_aac16a2ead8ff2b896c82411fe262f449}{eval\_f1}(opt, print\_parser=parser)
+29 
+30 
+\end{DoxyCode}

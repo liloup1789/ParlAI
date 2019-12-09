@@ -1,0 +1,75 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1taskmaster_1_1build}{}\section{parlai.\+tasks.\+taskmaster.\+build Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1taskmaster_1_1build}\index{parlai.\+tasks.\+taskmaster.\+build@{parlai.\+tasks.\+taskmaster.\+build}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1taskmaster_1_1build_a9a432c354754067775ff8c419e2e4ffe}{build} (opt)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceparlai_1_1tasks_1_1taskmaster_1_1build_ab4e1e1aa4bfa24c0ffbafacab10c4da3}{R\+E\+S\+O\+U\+R\+C\+ES}
+\item 
+bool \hyperlink{namespaceparlai_1_1tasks_1_1taskmaster_1_1build_a28d7bb8bf45ebbf6d20c29488824e2ac}{zipped} = False,
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1taskmaster_1_1build_a9a432c354754067775ff8c419e2e4ffe}\label{namespaceparlai_1_1tasks_1_1taskmaster_1_1build_a9a432c354754067775ff8c419e2e4ffe}} 
+\index{parlai\+::tasks\+::taskmaster\+::build@{parlai\+::tasks\+::taskmaster\+::build}!build@{build}}
+\index{build@{build}!parlai\+::tasks\+::taskmaster\+::build@{parlai\+::tasks\+::taskmaster\+::build}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+taskmaster.\+build.\+build (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 28 of file build.\+py.
+
+
+\begin{DoxyCode}
+28 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
+29     \textcolor{comment}{# get path to data directory}
+30     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'taskmaster-1'})
+31     \textcolor{comment}{# define version if any}
+32     version = \textcolor{stringliteral}{"1.0"}
+33 
+34     \textcolor{comment}{# check if data had been previously built}
+35     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version\_string=version):
+36         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+37 
+38         \textcolor{comment}{# make a clean directory if needed}
+39         \textcolor{keywordflow}{if} build\_data.built(dpath):
+40             \textcolor{comment}{# an older version exists, so remove these outdated files.}
+41             build\_data.remove\_dir(dpath)
+42         build\_data.make\_dir(dpath)
+43 
+44         \textcolor{comment}{# Download the data.}
+45         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES:
+46             downloadable\_file.download\_file(dpath)
+47 
+48         \textcolor{comment}{# mark the data as built}
+49         build\_data.mark\_done(dpath, version\_string=version)
+50 \end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1taskmaster_1_1build_ab4e1e1aa4bfa24c0ffbafacab10c4da3}\label{namespaceparlai_1_1tasks_1_1taskmaster_1_1build_ab4e1e1aa4bfa24c0ffbafacab10c4da3}} 
+\index{parlai\+::tasks\+::taskmaster\+::build@{parlai\+::tasks\+::taskmaster\+::build}!R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}}
+\index{R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}!parlai\+::tasks\+::taskmaster\+::build@{parlai\+::tasks\+::taskmaster\+::build}}
+\subsubsection{\texorpdfstring{R\+E\+S\+O\+U\+R\+C\+ES}{RESOURCES}}
+{\footnotesize\ttfamily parlai.\+tasks.\+taskmaster.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
+
+
+
+Definition at line 12 of file build.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1taskmaster_1_1build_a28d7bb8bf45ebbf6d20c29488824e2ac}\label{namespaceparlai_1_1tasks_1_1taskmaster_1_1build_a28d7bb8bf45ebbf6d20c29488824e2ac}} 
+\index{parlai\+::tasks\+::taskmaster\+::build@{parlai\+::tasks\+::taskmaster\+::build}!zipped@{zipped}}
+\index{zipped@{zipped}!parlai\+::tasks\+::taskmaster\+::build@{parlai\+::tasks\+::taskmaster\+::build}}
+\subsubsection{\texorpdfstring{zipped}{zipped}}
+{\footnotesize\ttfamily bool parlai.\+tasks.\+taskmaster.\+build.\+zipped = False,}
+
+
+
+Definition at line 17 of file build.\+py.
+

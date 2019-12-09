@@ -1,0 +1,269 @@
+\hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__chatted__to__unfiltered}{}\section{projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+chatted\+\_\+to\+\_\+unfiltered Namespace Reference}
+\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__chatted__to__unfiltered}\index{projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+chatted\+\_\+to\+\_\+unfiltered@{projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+chatted\+\_\+to\+\_\+unfiltered}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__chatted__to__unfiltered_a0c8516f372e45778279d5e8dd120d508}{setup\+\_\+args} ()
+\item 
+def \hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__chatted__to__unfiltered_a1fc60d6ff016ace4fb6d348542ae6e86}{main} (\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__chatted__to__unfiltered_a71704466ed2361d7eaaeca75661ba325}{opt})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__chatted__to__unfiltered_a2a2060a0b2c5986c6ca31f9f298d15cc}{I\+N\+I\+T\+I\+A\+L\+\_\+\+P\+R\+O\+M\+PT}
+\item 
+\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__chatted__to__unfiltered_a84063a7656fa650ee9a41447242b26fe}{E\+X\+P\+\_\+\+R\+E\+Q\+U\+E\+ST}
+\item 
+\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__chatted__to__unfiltered_aa470b1da841a299443747765a423b7ff}{N\+E\+W\+T\+O\+P\+IC}
+\item 
+\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__chatted__to__unfiltered_ad5a8bb2712b5621f39e1e3b4dc89a97e}{R\+A\+T\+\_\+\+R\+E\+Q\+U\+E\+ST}
+\item 
+\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__chatted__to__unfiltered_ac8142342b1bf465261b17dd5b788557e}{C\+O\+N\+T\+I\+N\+UE}
+\item 
+\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__chatted__to__unfiltered_a71704466ed2361d7eaaeca75661ba325}{opt}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__chatted__to__unfiltered_a1fc60d6ff016ace4fb6d348542ae6e86}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__chatted__to__unfiltered_a1fc60d6ff016ace4fb6d348542ae6e86}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered}!main@{main}}
+\index{main@{main}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+chatted\+\_\+to\+\_\+unfiltered.\+main (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Extracts training data for the negative response classifier (NRC) from Mturk logs.
+
+input: file of logs (in ParlaiDialog format) from Mturk task 1 with turn-by-turn
+    quality ratings 1-5
+output: file of episodes (self-feeding format) w/ +1/-1 ratings indicating
+    positive/negative example
+\end{DoxyVerb}
+ 
+
+Definition at line 70 of file convert\+\_\+chatted\+\_\+to\+\_\+unfiltered.\+py.
+
+
+\begin{DoxyCode}
+70 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__chatted__to__unfiltered_a1fc60d6ff016ace4fb6d348542ae6e86}{main}(opt):
+71     \textcolor{stringliteral}{"""}
+72 \textcolor{stringliteral}{    Extracts training data for the negative response classifier (NRC) from Mturk logs.}
+73 \textcolor{stringliteral}{}
+74 \textcolor{stringliteral}{    input: file of logs (in ParlaiDialog format) from Mturk task 1 with turn-by-turn}
+75 \textcolor{stringliteral}{        quality ratings 1-5}
+76 \textcolor{stringliteral}{    output: file of episodes (self-feeding format) w/ +1/-1 ratings indicating}
+77 \textcolor{stringliteral}{        positive/negative example}
+78 \textcolor{stringliteral}{    """}
+79     examples = []
+80 
+81     num\_episodes = 0
+82     num\_parleys = 0
+83     \textcolor{keywordflow}{for} episode \textcolor{keywordflow}{in} \hyperlink{namespaceprojects_1_1self__feeding_1_1utils_a7bfa2fe610a2d0da7968b1a2662e0c23}{extract\_parlai\_episodes}(opt[\textcolor{stringliteral}{'infile'}]):
+84         num\_episodes += 1
+85         history = []
+86         \textcolor{keywordflow}{for} parley \textcolor{keywordflow}{in} episode:
+87             num\_parleys += 1
+88             \textcolor{comment}{# Update history (not including stock control flow responses)}
+89             \textcolor{keywordflow}{if} parley.context.startswith(INITIAL\_PROMPT) \textcolor{keywordflow}{or} parley.context.startswith(
+90                 NEWTOPIC
+91             ):
+92                 \textcolor{comment}{# a prompt, first utterance}
+93                 \textcolor{comment}{# Begin history}
+94                 history = [parley.response]
+95                 \textcolor{comment}{# NOTE: we now allow these one-utterance episodes to be examples}
+96                 \textcolor{comment}{# continue}
+97             \textcolor{keywordflow}{elif} parley.context.startswith(EXP\_REQUEST) \textcolor{keywordflow}{or} parley.context.startswith(
+98                 RAT\_REQUEST
+99             ):
+100                 \textcolor{comment}{# If 'filter\_accusation' is on and the last example added was a human,}
+101                 \textcolor{comment}{# toss the previous example, which is when the human expressed}
+102                 \textcolor{comment}{# dissatisfaction}
+103                 \textcolor{keywordflow}{if} (
+104                     opt[\textcolor{stringliteral}{'mode'}] == \textcolor{stringliteral}{'human'}
+105                     \textcolor{keywordflow}{and} opt[\textcolor{stringliteral}{'filter\_accusation'}]
+106                     \textcolor{keywordflow}{and} parley.context.startswith(EXP\_REQUEST)
+107                     \textcolor{keywordflow}{and} len(examples) > 0
+108                 ):
+109                     examples.pop()
+110                 \textcolor{comment}{# If 'filter\_mistake' is on and the last example in the queue was a bot,}
+111                 \textcolor{comment}{# toss it too, since that's when the bot messed up}
+112                 \textcolor{keywordflow}{if} (
+113                     opt[\textcolor{stringliteral}{'mode'}] == \textcolor{stringliteral}{'bot'}
+114                     \textcolor{keywordflow}{and} opt[\textcolor{stringliteral}{'filter\_mistake'}]
+115                     \textcolor{keywordflow}{and} parley.context.startswith(EXP\_REQUEST)
+116                     \textcolor{keywordflow}{and} len(examples) > 0
+117                 ):
+118                     examples.pop()
+119 
+120                 \textcolor{comment}{# Asked for y\_exp or rating, got it}
+121                 \textcolor{comment}{# Messed up, so blast history}
+122                 history = []
+123                 \textcolor{keywordflow}{continue}
+124             \textcolor{keywordflow}{elif} CONTINUE \textcolor{keywordflow}{in} parley.context:
+125                 \textcolor{comment}{# if response was negative, history will get blasted in EXP\_REQUEST}
+126                 \textcolor{comment}{# if we're here, response was neutral/positive, so continue the history}
+127                 history.append(parley.context[parley.context.rindex(\textcolor{stringliteral}{':'}) + 1 :])
+128                 history.append(parley.response)
+129             \textcolor{keywordflow}{else}:
+130                 \textcolor{comment}{# normal turn: maintain the history}
+131                 history.append(parley.context)
+132                 history.append(parley.response)
+133 
+134             \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'mode'}] \textcolor{keywordflow}{in} [\textcolor{stringliteral}{'bot'}] \textcolor{keywordflow}{and} len(history) >= 2:
+135                 \textcolor{keywordflow}{if} len(history) == 2:
+136                     example = Parley(context=\textcolor{stringliteral}{'\_\_null\_\_'}, response=history[0])
+137                 \textcolor{keywordflow}{else}:
+138                     example = Parley(
+139                         context=\hyperlink{namespaceprojects_1_1self__feeding_1_1utils_a3f3d055dc6c4058057baae7b240de5ec}{add\_person\_tokens}(history[:-2], last\_speaker=1),
+140                         response=history[-2],  \textcolor{comment}{# What the bot said}
+141                     )
+142                 examples.append(example)
+143 
+144             \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'mode'}] \textcolor{keywordflow}{in} [\textcolor{stringliteral}{'human'}]:
+145                 \textcolor{keywordflow}{if} len(history) == 1:
+146                     example = Parley(context=\textcolor{stringliteral}{'\_\_null\_\_'}, response=history[0])
+147                 \textcolor{keywordflow}{else}:
+148                     example = Parley(
+149                         \textcolor{comment}{# this is not technically true:}
+150                         \textcolor{comment}{# the last speaker was the bot (\_\_p2\_\_),}
+151                         \textcolor{comment}{# not the human (\_\_p1\_\_), but in all our data, \_\_p1\_\_ is always}
+152                         \textcolor{comment}{# the speaking partner of the learner}
+153                         context=\hyperlink{namespaceprojects_1_1self__feeding_1_1utils_a3f3d055dc6c4058057baae7b240de5ec}{add\_person\_tokens}(history[:-1], last\_speaker=1),
+154                         response=history[-1],  \textcolor{comment}{# What the bot said}
+155                     )
+156                 examples.append(example)
+157 
+158     with open(opt[\textcolor{stringliteral}{'outfile'}], \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} outfile:
+159         \textcolor{keywordflow}{for} ex \textcolor{keywordflow}{in} examples:
+160             outfile.write(json.dumps(ex.to\_dict()) + \textcolor{stringliteral}{'\(\backslash\)n'})
+161 
+162     print(
+163         f\textcolor{stringliteral}{"Extracted \{len(examples)\} examples out of \{num\_episodes\} episodes "}
+164         f\textcolor{stringliteral}{"(\{num\_parleys\} parleys) and wrote them to \{opt['outfile']\} with "}
+165         f\textcolor{stringliteral}{"histsz == \{opt['history\_size']\}."}
+166     )
+167 
+168 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__chatted__to__unfiltered_a0c8516f372e45778279d5e8dd120d508}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__chatted__to__unfiltered_a0c8516f372e45778279d5e8dd120d508}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered}!setup\+\_\+args@{setup\+\_\+args}}
+\index{setup\+\_\+args@{setup\+\_\+args}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered}}
+\subsubsection{\texorpdfstring{setup\+\_\+args()}{setup\_args()}}
+{\footnotesize\ttfamily def projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+chatted\+\_\+to\+\_\+unfiltered.\+setup\+\_\+args (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 23 of file convert\+\_\+chatted\+\_\+to\+\_\+unfiltered.\+py.
+
+
+\begin{DoxyCode}
+23 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__chatted__to__unfiltered_a0c8516f372e45778279d5e8dd120d508}{setup\_args}():
+24     parser = ArgumentParser()
+25     parser.add\_argument(\textcolor{stringliteral}{'-if'}, \textcolor{stringliteral}{'--infile'}, type=str)
+26     parser.add\_argument(\textcolor{stringliteral}{'-of'}, \textcolor{stringliteral}{'--outfile'}, type=str)
+27     parser.add\_argument(
+28         \textcolor{stringliteral}{'-mode'},
+29         \textcolor{stringliteral}{'--mode'},
+30         type=str,
+31         choices=[\textcolor{stringliteral}{'bot'}, \textcolor{stringliteral}{'human'}],
+32         help=\textcolor{stringliteral}{"Whether to use as target responses what the bot said, "}
+33         \textcolor{stringliteral}{"human said, or both"},
+34     )
+35     parser.add\_argument(
+36         \textcolor{stringliteral}{'-fm'},
+37         \textcolor{stringliteral}{'--filter-mistake'},
+38         type=int,
+39         default=0,
+40         help=\textcolor{stringliteral}{"If true, toss bot examples where the bot made a mistake"},
+41     )
+42     parser.add\_argument(
+43         \textcolor{stringliteral}{'-fa'},
+44         \textcolor{stringliteral}{'--filter-accusation'},
+45         type=int,
+46         default=0,
+47         help=\textcolor{stringliteral}{"If true, toss human examples where the human is "}
+48         \textcolor{stringliteral}{"expressing dissatisfaction"},
+49     )
+50     parser.add\_argument(
+51         \textcolor{stringliteral}{'-histsz'},
+52         \textcolor{stringliteral}{'--history-size'},
+53         type=int,
+54         default=-1,
+55         help=\textcolor{stringliteral}{"The number of turns to include in the prompt."},
+56     )
+57     opt = vars(parser.parse\_args())
+58 
+59     \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'filter\_accusation'}]:
+60         \textcolor{keyword}{assert} \textcolor{keywordflow}{not} opt[\textcolor{stringliteral}{'outfile'}].endswith(\textcolor{stringliteral}{'unfiltered'})
+61     \textcolor{keywordflow}{else}:
+62         \textcolor{keyword}{assert} opt[\textcolor{stringliteral}{'outfile'}].endswith(\textcolor{stringliteral}{'unfiltered'})
+63 
+64     \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'mode'}] == \textcolor{stringliteral}{'all'}:
+65         \textcolor{keywordflow}{raise} Exception(\textcolor{stringliteral}{"Double check the logic for extracting bot comments first..."})
+66 
+67     \textcolor{keywordflow}{return} opt
+68 
+69 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__chatted__to__unfiltered_ac8142342b1bf465261b17dd5b788557e}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__chatted__to__unfiltered_ac8142342b1bf465261b17dd5b788557e}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered}!C\+O\+N\+T\+I\+N\+UE@{C\+O\+N\+T\+I\+N\+UE}}
+\index{C\+O\+N\+T\+I\+N\+UE@{C\+O\+N\+T\+I\+N\+UE}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered}}
+\subsubsection{\texorpdfstring{C\+O\+N\+T\+I\+N\+UE}{CONTINUE}}
+{\footnotesize\ttfamily projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+chatted\+\_\+to\+\_\+unfiltered.\+C\+O\+N\+T\+I\+N\+UE}
+
+
+
+Definition at line 20 of file convert\+\_\+chatted\+\_\+to\+\_\+unfiltered.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__chatted__to__unfiltered_a84063a7656fa650ee9a41447242b26fe}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__chatted__to__unfiltered_a84063a7656fa650ee9a41447242b26fe}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered}!E\+X\+P\+\_\+\+R\+E\+Q\+U\+E\+ST@{E\+X\+P\+\_\+\+R\+E\+Q\+U\+E\+ST}}
+\index{E\+X\+P\+\_\+\+R\+E\+Q\+U\+E\+ST@{E\+X\+P\+\_\+\+R\+E\+Q\+U\+E\+ST}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered}}
+\subsubsection{\texorpdfstring{E\+X\+P\+\_\+\+R\+E\+Q\+U\+E\+ST}{EXP\_REQUEST}}
+{\footnotesize\ttfamily projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+chatted\+\_\+to\+\_\+unfiltered.\+E\+X\+P\+\_\+\+R\+E\+Q\+U\+E\+ST}
+
+
+
+Definition at line 17 of file convert\+\_\+chatted\+\_\+to\+\_\+unfiltered.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__chatted__to__unfiltered_a2a2060a0b2c5986c6ca31f9f298d15cc}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__chatted__to__unfiltered_a2a2060a0b2c5986c6ca31f9f298d15cc}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered}!I\+N\+I\+T\+I\+A\+L\+\_\+\+P\+R\+O\+M\+PT@{I\+N\+I\+T\+I\+A\+L\+\_\+\+P\+R\+O\+M\+PT}}
+\index{I\+N\+I\+T\+I\+A\+L\+\_\+\+P\+R\+O\+M\+PT@{I\+N\+I\+T\+I\+A\+L\+\_\+\+P\+R\+O\+M\+PT}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered}}
+\subsubsection{\texorpdfstring{I\+N\+I\+T\+I\+A\+L\+\_\+\+P\+R\+O\+M\+PT}{INITIAL\_PROMPT}}
+{\footnotesize\ttfamily projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+chatted\+\_\+to\+\_\+unfiltered.\+I\+N\+I\+T\+I\+A\+L\+\_\+\+P\+R\+O\+M\+PT}
+
+
+
+Definition at line 16 of file convert\+\_\+chatted\+\_\+to\+\_\+unfiltered.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__chatted__to__unfiltered_aa470b1da841a299443747765a423b7ff}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__chatted__to__unfiltered_aa470b1da841a299443747765a423b7ff}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered}!N\+E\+W\+T\+O\+P\+IC@{N\+E\+W\+T\+O\+P\+IC}}
+\index{N\+E\+W\+T\+O\+P\+IC@{N\+E\+W\+T\+O\+P\+IC}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered}}
+\subsubsection{\texorpdfstring{N\+E\+W\+T\+O\+P\+IC}{NEWTOPIC}}
+{\footnotesize\ttfamily projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+chatted\+\_\+to\+\_\+unfiltered.\+N\+E\+W\+T\+O\+P\+IC}
+
+
+
+Definition at line 18 of file convert\+\_\+chatted\+\_\+to\+\_\+unfiltered.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__chatted__to__unfiltered_a71704466ed2361d7eaaeca75661ba325}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__chatted__to__unfiltered_a71704466ed2361d7eaaeca75661ba325}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered}!opt@{opt}}
+\index{opt@{opt}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered}}
+\subsubsection{\texorpdfstring{opt}{opt}}
+{\footnotesize\ttfamily projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+chatted\+\_\+to\+\_\+unfiltered.\+opt}
+
+
+
+Definition at line 170 of file convert\+\_\+chatted\+\_\+to\+\_\+unfiltered.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__chatted__to__unfiltered_ad5a8bb2712b5621f39e1e3b4dc89a97e}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__chatted__to__unfiltered_ad5a8bb2712b5621f39e1e3b4dc89a97e}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered}!R\+A\+T\+\_\+\+R\+E\+Q\+U\+E\+ST@{R\+A\+T\+\_\+\+R\+E\+Q\+U\+E\+ST}}
+\index{R\+A\+T\+\_\+\+R\+E\+Q\+U\+E\+ST@{R\+A\+T\+\_\+\+R\+E\+Q\+U\+E\+ST}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+chatted\+\_\+to\+\_\+unfiltered}}
+\subsubsection{\texorpdfstring{R\+A\+T\+\_\+\+R\+E\+Q\+U\+E\+ST}{RAT\_REQUEST}}
+{\footnotesize\ttfamily projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+chatted\+\_\+to\+\_\+unfiltered.\+R\+A\+T\+\_\+\+R\+E\+Q\+U\+E\+ST}
+
+
+
+Definition at line 19 of file convert\+\_\+chatted\+\_\+to\+\_\+unfiltered.\+py.
+

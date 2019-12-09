@@ -1,0 +1,86 @@
+\hypertarget{classparlai_1_1mturk_1_1tasks_1_1multi__agent__dialog_1_1worlds_1_1MTurkMultiAgentDialogOnboardWorld}{}\section{parlai.\+mturk.\+tasks.\+multi\+\_\+agent\+\_\+dialog.\+worlds.\+M\+Turk\+Multi\+Agent\+Dialog\+Onboard\+World Class Reference}
+\label{classparlai_1_1mturk_1_1tasks_1_1multi__agent__dialog_1_1worlds_1_1MTurkMultiAgentDialogOnboardWorld}\index{parlai.\+mturk.\+tasks.\+multi\+\_\+agent\+\_\+dialog.\+worlds.\+M\+Turk\+Multi\+Agent\+Dialog\+Onboard\+World@{parlai.\+mturk.\+tasks.\+multi\+\_\+agent\+\_\+dialog.\+worlds.\+M\+Turk\+Multi\+Agent\+Dialog\+Onboard\+World}}
+
+
+Inheritance diagram for parlai.\+mturk.\+tasks.\+multi\+\_\+agent\+\_\+dialog.\+worlds.\+M\+Turk\+Multi\+Agent\+Dialog\+Onboard\+World\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{d1/d93/classparlai_1_1mturk_1_1tasks_1_1multi__agent__dialog_1_1worlds_1_1MTurkMultiAgentDialogOnboardWorld__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+mturk.\+tasks.\+multi\+\_\+agent\+\_\+dialog.\+worlds.\+M\+Turk\+Multi\+Agent\+Dialog\+Onboard\+World\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{d7/d1a/classparlai_1_1mturk_1_1tasks_1_1multi__agent__dialog_1_1worlds_1_1MTurkMultiAgentDialogOnboardWorld__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1mturk_1_1tasks_1_1multi__agent__dialog_1_1worlds_1_1MTurkMultiAgentDialogOnboardWorld_a7d4faad98ebcfd2479530e0f10e1d7ca}{parley} (self)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1mturk_1_1tasks_1_1multi__agent__dialog_1_1worlds_1_1MTurkMultiAgentDialogOnboardWorld_ab64b208abf89723fe28967e054f4802e}{episode\+Done}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 11 of file worlds.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1multi__agent__dialog_1_1worlds_1_1MTurkMultiAgentDialogOnboardWorld_a7d4faad98ebcfd2479530e0f10e1d7ca}\label{classparlai_1_1mturk_1_1tasks_1_1multi__agent__dialog_1_1worlds_1_1MTurkMultiAgentDialogOnboardWorld_a7d4faad98ebcfd2479530e0f10e1d7ca}} 
+\index{parlai\+::mturk\+::tasks\+::multi\+\_\+agent\+\_\+dialog\+::worlds\+::\+M\+Turk\+Multi\+Agent\+Dialog\+Onboard\+World@{parlai\+::mturk\+::tasks\+::multi\+\_\+agent\+\_\+dialog\+::worlds\+::\+M\+Turk\+Multi\+Agent\+Dialog\+Onboard\+World}!parley@{parley}}
+\index{parley@{parley}!parlai\+::mturk\+::tasks\+::multi\+\_\+agent\+\_\+dialog\+::worlds\+::\+M\+Turk\+Multi\+Agent\+Dialog\+Onboard\+World@{parlai\+::mturk\+::tasks\+::multi\+\_\+agent\+\_\+dialog\+::worlds\+::\+M\+Turk\+Multi\+Agent\+Dialog\+Onboard\+World}}
+\subsubsection{\texorpdfstring{parley()}{parley()}}
+{\footnotesize\ttfamily def parlai.\+mturk.\+tasks.\+multi\+\_\+agent\+\_\+dialog.\+worlds.\+M\+Turk\+Multi\+Agent\+Dialog\+Onboard\+World.\+parley (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 12 of file worlds.\+py.
+
+
+\begin{DoxyCode}
+12     \textcolor{keyword}{def }parley(self):
+13         self.mturk\_agent.observe(\{\textcolor{stringliteral}{'id'}: \textcolor{stringliteral}{'System'}, \textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'Welcome onboard!'}\})
+14         self.mturk\_agent.act()
+15         self.mturk\_agent.observe(
+16             \{
+17                 \textcolor{stringliteral}{'id'}: \textcolor{stringliteral}{'System'},
+18                 \textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'Thank you for your input! Please wait while '}
+19                 \textcolor{stringliteral}{'we match you with another worker...'},
+20             \}
+21         )
+22         self.episodeDone = \textcolor{keyword}{True}
+23 
+24 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1multi__agent__dialog_1_1worlds_1_1MTurkMultiAgentDialogOnboardWorld_ab64b208abf89723fe28967e054f4802e}\label{classparlai_1_1mturk_1_1tasks_1_1multi__agent__dialog_1_1worlds_1_1MTurkMultiAgentDialogOnboardWorld_ab64b208abf89723fe28967e054f4802e}} 
+\index{parlai\+::mturk\+::tasks\+::multi\+\_\+agent\+\_\+dialog\+::worlds\+::\+M\+Turk\+Multi\+Agent\+Dialog\+Onboard\+World@{parlai\+::mturk\+::tasks\+::multi\+\_\+agent\+\_\+dialog\+::worlds\+::\+M\+Turk\+Multi\+Agent\+Dialog\+Onboard\+World}!episode\+Done@{episode\+Done}}
+\index{episode\+Done@{episode\+Done}!parlai\+::mturk\+::tasks\+::multi\+\_\+agent\+\_\+dialog\+::worlds\+::\+M\+Turk\+Multi\+Agent\+Dialog\+Onboard\+World@{parlai\+::mturk\+::tasks\+::multi\+\_\+agent\+\_\+dialog\+::worlds\+::\+M\+Turk\+Multi\+Agent\+Dialog\+Onboard\+World}}
+\subsubsection{\texorpdfstring{episode\+Done}{episodeDone}}
+{\footnotesize\ttfamily parlai.\+mturk.\+tasks.\+multi\+\_\+agent\+\_\+dialog.\+worlds.\+M\+Turk\+Multi\+Agent\+Dialog\+Onboard\+World.\+episode\+Done}
+
+
+
+Definition at line 22 of file worlds.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/mturk/tasks/multi\+\_\+agent\+\_\+dialog/\hyperlink{parlai_2mturk_2tasks_2multi__agent__dialog_2worlds_8py}{worlds.\+py}\end{DoxyCompactItemize}

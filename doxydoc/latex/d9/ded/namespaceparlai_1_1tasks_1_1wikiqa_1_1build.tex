@@ -1,0 +1,111 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1wikiqa_1_1build}{}\section{parlai.\+tasks.\+wikiqa.\+build Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1wikiqa_1_1build}\index{parlai.\+tasks.\+wikiqa.\+build@{parlai.\+tasks.\+wikiqa.\+build}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1wikiqa_1_1build_a554828702769592403db58c955d1dfe3}{create\+\_\+fb\+\_\+format} (outpath, dtype, inpath)
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1wikiqa_1_1build_a76f8aa9733d147ed1b5f2ec73a2bde07}{build} (opt)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceparlai_1_1tasks_1_1wikiqa_1_1build_a5774588ffae31655f4f21a871e97ebdb}{R\+E\+S\+O\+U\+R\+C\+ES}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1wikiqa_1_1build_a76f8aa9733d147ed1b5f2ec73a2bde07}\label{namespaceparlai_1_1tasks_1_1wikiqa_1_1build_a76f8aa9733d147ed1b5f2ec73a2bde07}} 
+\index{parlai\+::tasks\+::wikiqa\+::build@{parlai\+::tasks\+::wikiqa\+::build}!build@{build}}
+\index{build@{build}!parlai\+::tasks\+::wikiqa\+::build@{parlai\+::tasks\+::wikiqa\+::build}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+wikiqa.\+build.\+build (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 49 of file build.\+py.
+
+
+\begin{DoxyCode}
+49 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
+50     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'WikiQA'})
+51     version = \textcolor{keywordtype}{None}
+52 
+53     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version\_string=version):
+54         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+55         \textcolor{keywordflow}{if} build\_data.built(dpath):
+56             \textcolor{comment}{# An older version exists, so remove these outdated files.}
+57             build\_data.remove\_dir(dpath)
+58         build\_data.make\_dir(dpath)
+59 
+60         \textcolor{comment}{# Download the data.}
+61         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES:
+62             downloadable\_file.download\_file(dpath)
+63 
+64         dpext = os.path.join(dpath, \textcolor{stringliteral}{'WikiQACorpus'})
+65         \hyperlink{namespaceparlai_1_1tasks_1_1wikiqa_1_1build_a554828702769592403db58c955d1dfe3}{create\_fb\_format}(dpath, \textcolor{stringliteral}{'train'}, os.path.join(dpext, \textcolor{stringliteral}{'WikiQA-train.tsv'}))
+66         \hyperlink{namespaceparlai_1_1tasks_1_1wikiqa_1_1build_a554828702769592403db58c955d1dfe3}{create\_fb\_format}(dpath, \textcolor{stringliteral}{'valid'}, os.path.join(dpext, \textcolor{stringliteral}{'WikiQA-dev.tsv'}))
+67         \hyperlink{namespaceparlai_1_1tasks_1_1wikiqa_1_1build_a554828702769592403db58c955d1dfe3}{create\_fb\_format}(dpath, \textcolor{stringliteral}{'test'}, os.path.join(dpext, \textcolor{stringliteral}{'WikiQA-test.tsv'}))
+68         \hyperlink{namespaceparlai_1_1tasks_1_1wikiqa_1_1build_a554828702769592403db58c955d1dfe3}{create\_fb\_format}(
+69             dpath, \textcolor{stringliteral}{'train-filtered'}, os.path.join(dpext, \textcolor{stringliteral}{'WikiQA-train.tsv'})
+70         )
+71         \hyperlink{namespaceparlai_1_1tasks_1_1wikiqa_1_1build_a554828702769592403db58c955d1dfe3}{create\_fb\_format}(dpath, \textcolor{stringliteral}{'valid-filtered'}, os.path.join(dpext, \textcolor{stringliteral}{'WikiQA-dev.tsv'}))
+72         \hyperlink{namespaceparlai_1_1tasks_1_1wikiqa_1_1build_a554828702769592403db58c955d1dfe3}{create\_fb\_format}(dpath, \textcolor{stringliteral}{'test-filtered'}, os.path.join(dpext, \textcolor{stringliteral}{'WikiQA-test.tsv'}))
+73 
+74         \textcolor{comment}{# Mark the data as built.}
+75         build\_data.mark\_done(dpath, version\_string=version)
+76 \end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1wikiqa_1_1build_a554828702769592403db58c955d1dfe3}\label{namespaceparlai_1_1tasks_1_1wikiqa_1_1build_a554828702769592403db58c955d1dfe3}} 
+\index{parlai\+::tasks\+::wikiqa\+::build@{parlai\+::tasks\+::wikiqa\+::build}!create\+\_\+fb\+\_\+format@{create\+\_\+fb\+\_\+format}}
+\index{create\+\_\+fb\+\_\+format@{create\+\_\+fb\+\_\+format}!parlai\+::tasks\+::wikiqa\+::build@{parlai\+::tasks\+::wikiqa\+::build}}
+\subsubsection{\texorpdfstring{create\+\_\+fb\+\_\+format()}{create\_fb\_format()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+wikiqa.\+build.\+create\+\_\+fb\+\_\+format (\begin{DoxyParamCaption}\item[{}]{outpath,  }\item[{}]{dtype,  }\item[{}]{inpath }\end{DoxyParamCaption})}
+
+
+
+Definition at line 21 of file build.\+py.
+
+
+\begin{DoxyCode}
+21 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1wikiqa_1_1build_a554828702769592403db58c955d1dfe3}{create\_fb\_format}(outpath, dtype, inpath):
+22     print(\textcolor{stringliteral}{'building fbformat:'} + dtype)
+23     fout = open(os.path.join(outpath, dtype + \textcolor{stringliteral}{'.txt'}), \textcolor{stringliteral}{'w'})
+24     with open(inpath) \textcolor{keyword}{as} f:
+25         lines = [line.strip(\textcolor{stringliteral}{'\(\backslash\)n'}) \textcolor{keywordflow}{for} line \textcolor{keywordflow}{in} f]
+26     lastqid, lq, ans, cands = \textcolor{keywordtype}{None}, \textcolor{keywordtype}{None}, \textcolor{keywordtype}{None}, \textcolor{keywordtype}{None}
+27     \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(2, len(lines)):
+28         l = lines[i].split(\textcolor{stringliteral}{'\(\backslash\)t'})
+29         lqid = l[0]  \textcolor{comment}{# question id}
+30         \textcolor{keywordflow}{if} lqid != lastqid:
+31             \textcolor{keywordflow}{if} lastqid \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+32                 \textcolor{comment}{# save}
+33                 s = \textcolor{stringliteral}{'1 '} + lq + \textcolor{stringliteral}{'\(\backslash\)t'} + ans.lstrip(\textcolor{stringliteral}{'|'}) + \textcolor{stringliteral}{'\(\backslash\)t\(\backslash\)t'} + cands.lstrip(\textcolor{stringliteral}{'|'})
+34                 \textcolor{keywordflow}{if} (dtype.find(\textcolor{stringliteral}{'filtered'}) == -1) \textcolor{keywordflow}{or} ans != \textcolor{stringliteral}{''}:
+35                     fout.write(s + \textcolor{stringliteral}{'\(\backslash\)n'})
+36             \textcolor{comment}{# reset}
+37             cands = \textcolor{stringliteral}{''}
+38             ans = \textcolor{stringliteral}{''}
+39             lastqid = lqid
+40         lcand = l[5]  \textcolor{comment}{# candidate answer / sentence from doc}
+41         lq = l[1]  \textcolor{comment}{# question}
+42         llabel = l[6]  \textcolor{comment}{# 0 or 1}
+43         \textcolor{keywordflow}{if} \hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(llabel) == 1:
+44             ans = ans + \textcolor{stringliteral}{'|'} + lcand
+45         cands = cands + \textcolor{stringliteral}{'|'} + lcand
+46     fout.close()
+47 
+48 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1wikiqa_1_1build_a5774588ffae31655f4f21a871e97ebdb}\label{namespaceparlai_1_1tasks_1_1wikiqa_1_1build_a5774588ffae31655f4f21a871e97ebdb}} 
+\index{parlai\+::tasks\+::wikiqa\+::build@{parlai\+::tasks\+::wikiqa\+::build}!R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}}
+\index{R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}!parlai\+::tasks\+::wikiqa\+::build@{parlai\+::tasks\+::wikiqa\+::build}}
+\subsubsection{\texorpdfstring{R\+E\+S\+O\+U\+R\+C\+ES}{RESOURCES}}
+{\footnotesize\ttfamily parlai.\+tasks.\+wikiqa.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
+
+
+
+Definition at line 12 of file build.\+py.
+

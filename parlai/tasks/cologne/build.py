@@ -6,7 +6,9 @@ def build(opt):
     dpath = os.path.join(opt['datapath'], 'cologne')
     print(dpath)
     # define version if any
-    version = None
+    version = 'None'
+    build_data.mark_done(dpath, version_string=version)
+
 
     # check if data had been previously built
     if not build_data.built(dpath, version_string=version):

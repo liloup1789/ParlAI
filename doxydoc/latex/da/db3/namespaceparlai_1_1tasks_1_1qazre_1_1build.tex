@@ -1,0 +1,60 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1qazre_1_1build}{}\section{parlai.\+tasks.\+qazre.\+build Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1qazre_1_1build}\index{parlai.\+tasks.\+qazre.\+build@{parlai.\+tasks.\+qazre.\+build}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1qazre_1_1build_a145136e1a407c8a4476fcc949082a74e}{build} (opt)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceparlai_1_1tasks_1_1qazre_1_1build_ae5e7baf49cee2df090ba6411d4fb2dc2}{R\+E\+S\+O\+U\+R\+C\+ES}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1qazre_1_1build_a145136e1a407c8a4476fcc949082a74e}\label{namespaceparlai_1_1tasks_1_1qazre_1_1build_a145136e1a407c8a4476fcc949082a74e}} 
+\index{parlai\+::tasks\+::qazre\+::build@{parlai\+::tasks\+::qazre\+::build}!build@{build}}
+\index{build@{build}!parlai\+::tasks\+::qazre\+::build@{parlai\+::tasks\+::qazre\+::build}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+qazre.\+build.\+build (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 22 of file build.\+py.
+
+
+\begin{DoxyCode}
+22 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
+23     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'QA-ZRE'})
+24     version = \textcolor{keywordtype}{None}
+25 
+26     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version\_string=version):
+27 
+28         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+29 
+30         \textcolor{keywordflow}{if} build\_data.built(dpath):
+31             \textcolor{comment}{# An older version exists, so remove these outdated files.}
+32             build\_data.remove\_dir(dpath)
+33         build\_data.make\_dir(dpath)
+34 
+35         \textcolor{comment}{# Download the data.}
+36         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES:
+37             downloadable\_file.download\_file(dpath)
+38 
+39         \textcolor{comment}{# Mark the data as built.}
+40         build\_data.mark\_done(dpath, version\_string=version)
+41 \end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1qazre_1_1build_ae5e7baf49cee2df090ba6411d4fb2dc2}\label{namespaceparlai_1_1tasks_1_1qazre_1_1build_ae5e7baf49cee2df090ba6411d4fb2dc2}} 
+\index{parlai\+::tasks\+::qazre\+::build@{parlai\+::tasks\+::qazre\+::build}!R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}}
+\index{R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}!parlai\+::tasks\+::qazre\+::build@{parlai\+::tasks\+::qazre\+::build}}
+\subsubsection{\texorpdfstring{R\+E\+S\+O\+U\+R\+C\+ES}{RESOURCES}}
+{\footnotesize\ttfamily parlai.\+tasks.\+qazre.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
+
+
+
+Definition at line 13 of file build.\+py.
+

@@ -1,0 +1,71 @@
+\hypertarget{classparlai_1_1tasks_1_1integration__tests_1_1agents_1_1CandidateTeacher}{}\section{parlai.\+tasks.\+integration\+\_\+tests.\+agents.\+Candidate\+Teacher Class Reference}
+\label{classparlai_1_1tasks_1_1integration__tests_1_1agents_1_1CandidateTeacher}\index{parlai.\+tasks.\+integration\+\_\+tests.\+agents.\+Candidate\+Teacher@{parlai.\+tasks.\+integration\+\_\+tests.\+agents.\+Candidate\+Teacher}}
+
+
+Inheritance diagram for parlai.\+tasks.\+integration\+\_\+tests.\+agents.\+Candidate\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d4/d48/classparlai_1_1tasks_1_1integration__tests_1_1agents_1_1CandidateTeacher__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+tasks.\+integration\+\_\+tests.\+agents.\+Candidate\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/d03/classparlai_1_1tasks_1_1integration__tests_1_1agents_1_1CandidateTeacher__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1integration__tests_1_1agents_1_1CandidateTeacher_a9dafcc2731525aa45337b2d6816ad9a6}{setup\+\_\+data} (self, fold)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Candidate teacher produces several candidates, one of which is a repeat of the
+input.
+
+A good ranker should easily identify the correct response.
+\end{DoxyVerb}
+ 
+
+Definition at line 165 of file agents.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1integration__tests_1_1agents_1_1CandidateTeacher_a9dafcc2731525aa45337b2d6816ad9a6}\label{classparlai_1_1tasks_1_1integration__tests_1_1agents_1_1CandidateTeacher_a9dafcc2731525aa45337b2d6816ad9a6}} 
+\index{parlai\+::tasks\+::integration\+\_\+tests\+::agents\+::\+Candidate\+Teacher@{parlai\+::tasks\+::integration\+\_\+tests\+::agents\+::\+Candidate\+Teacher}!setup\+\_\+data@{setup\+\_\+data}}
+\index{setup\+\_\+data@{setup\+\_\+data}!parlai\+::tasks\+::integration\+\_\+tests\+::agents\+::\+Candidate\+Teacher@{parlai\+::tasks\+::integration\+\_\+tests\+::agents\+::\+Candidate\+Teacher}}
+\subsubsection{\texorpdfstring{setup\+\_\+data()}{setup\_data()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+integration\+\_\+tests.\+agents.\+Candidate\+Teacher.\+setup\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{fold }\end{DoxyParamCaption})}
+
+
+
+Definition at line 173 of file agents.\+py.
+
+
+\begin{DoxyCode}
+173     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1multinli_1_1agents_a4fa2cb0ba1ed745336ad8bceed36b841}{setup\_data}(self, fold):
+174         super().\_setup\_data(fold)
+175         \textcolor{keywordflow}{for} i, text \textcolor{keywordflow}{in} enumerate(self.corpus):
+176             cands = []
+177             \textcolor{keywordflow}{for} j \textcolor{keywordflow}{in} range(NUM\_CANDIDATES):
+178                 offset = (i + j) % len(self.corpus)
+179                 cands.append(self.corpus[offset])
+180             \textcolor{keywordflow}{yield} (text, [text], 0, cands), \textcolor{keyword}{True}
+181 
+182 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/tasks/integration\+\_\+tests/\hyperlink{parlai_2tasks_2integration__tests_2agents_8py}{agents.\+py}\end{DoxyCompactItemize}

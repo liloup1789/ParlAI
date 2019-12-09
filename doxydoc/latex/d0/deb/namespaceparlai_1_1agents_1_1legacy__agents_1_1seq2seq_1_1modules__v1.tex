@@ -1,0 +1,112 @@
+\hypertarget{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1}{}\section{parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+modules\+\_\+v1 Namespace Reference}
+\label{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1}\index{parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+modules\+\_\+v1@{parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+modules\+\_\+v1}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1AttentionLayer}{Attention\+Layer}
+\item 
+class \hyperlink{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1OutputLayer}{Output\+Layer}
+\item 
+class \hyperlink{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1RNNDecoder}{R\+N\+N\+Decoder}
+\item 
+class \hyperlink{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1RNNEncoder}{R\+N\+N\+Encoder}
+\item 
+class \hyperlink{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1Seq2seq}{Seq2seq}
+\item 
+class \hyperlink{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1UnknownDropout}{Unknown\+Dropout}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_af13e3733abb5828b0c0a75d95833441c}{opt\+\_\+to\+\_\+kwargs} (opt)
+\item 
+def \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_ab71a48e82c903a3a22ff0b000c461922}{pad} (tensor, length, dim=0, pad=0)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_af13e3733abb5828b0c0a75d95833441c}\label{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_af13e3733abb5828b0c0a75d95833441c}} 
+\index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1}!opt\+\_\+to\+\_\+kwargs@{opt\+\_\+to\+\_\+kwargs}}
+\index{opt\+\_\+to\+\_\+kwargs@{opt\+\_\+to\+\_\+kwargs}!parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1}}
+\subsubsection{\texorpdfstring{opt\+\_\+to\+\_\+kwargs()}{opt\_to\_kwargs()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+modules\+\_\+v1.\+opt\+\_\+to\+\_\+kwargs (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Get kwargs for seq2seq from opt.
+\end{DoxyVerb}
+ 
+
+Definition at line 21 of file modules\+\_\+v1.\+py.
+
+
+\begin{DoxyCode}
+21 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_af13e3733abb5828b0c0a75d95833441c}{opt\_to\_kwargs}(opt):
+22     \textcolor{stringliteral}{"""}
+23 \textcolor{stringliteral}{    Get kwargs for seq2seq from opt.}
+24 \textcolor{stringliteral}{    """}
+25     kwargs = \{\}
+26     \textcolor{keywordflow}{for} k \textcolor{keywordflow}{in} [
+27         \textcolor{stringliteral}{'numlayers'},
+28         \textcolor{stringliteral}{'dropout'},
+29         \textcolor{stringliteral}{'bidirectional'},
+30         \textcolor{stringliteral}{'rnn\_class'},
+31         \textcolor{stringliteral}{'lookuptable'},
+32         \textcolor{stringliteral}{'decoder'},
+33         \textcolor{stringliteral}{'numsoftmax'},
+34         \textcolor{stringliteral}{'attention'},
+35         \textcolor{stringliteral}{'attention\_length'},
+36         \textcolor{stringliteral}{'attention\_time'},
+37         \textcolor{stringliteral}{'input\_dropout'},
+38     ]:
+39         \textcolor{keywordflow}{if} k \textcolor{keywordflow}{in} opt:
+40             kwargs[k] = opt[k]
+41     \textcolor{keywordflow}{return} kwargs
+42 
+43 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_ab71a48e82c903a3a22ff0b000c461922}\label{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_ab71a48e82c903a3a22ff0b000c461922}} 
+\index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1}!pad@{pad}}
+\index{pad@{pad}!parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1}}
+\subsubsection{\texorpdfstring{pad()}{pad()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+modules\+\_\+v1.\+pad (\begin{DoxyParamCaption}\item[{}]{tensor,  }\item[{}]{length,  }\item[{}]{dim = {\ttfamily 0},  }\item[{}]{pad = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Pad tensor to a specific length.
+
+:param tensor: vector to pad
+:param length: new length
+:param dim: (default 0) dimension to pad
+
+:returns: padded tensor if the tensor is shorter than length
+\end{DoxyVerb}
+ 
+
+Definition at line 44 of file modules\+\_\+v1.\+py.
+
+
+\begin{DoxyCode}
+44 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_ab71a48e82c903a3a22ff0b000c461922}{pad}(tensor, length, dim=0, pad=0):
+45     \textcolor{stringliteral}{"""}
+46 \textcolor{stringliteral}{    Pad tensor to a specific length.}
+47 \textcolor{stringliteral}{}
+48 \textcolor{stringliteral}{    :param tensor: vector to pad}
+49 \textcolor{stringliteral}{    :param length: new length}
+50 \textcolor{stringliteral}{    :param dim: (default 0) dimension to pad}
+51 \textcolor{stringliteral}{}
+52 \textcolor{stringliteral}{    :returns: padded tensor if the tensor is shorter than length}
+53 \textcolor{stringliteral}{    """}
+54     \textcolor{keywordflow}{if} tensor.size(dim) < length:
+55         \textcolor{keywordflow}{return} torch.cat(
+56             [
+57                 tensor,
+58                 tensor.new(
+59                     *tensor.size()[:dim],
+60                     length - tensor.size(dim),
+61                     *tensor.size()[dim + 1 :],
+62                 ).fill\_(pad),
+63             ],
+64             dim=dim,
+65         )
+66     \textcolor{keywordflow}{else}:
+67         \textcolor{keywordflow}{return} tensor
+68 
+69 
+\end{DoxyCode}

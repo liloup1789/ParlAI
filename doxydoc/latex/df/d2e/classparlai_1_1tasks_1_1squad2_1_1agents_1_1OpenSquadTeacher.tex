@@ -1,0 +1,150 @@
+\hypertarget{classparlai_1_1tasks_1_1squad2_1_1agents_1_1OpenSquadTeacher}{}\section{parlai.\+tasks.\+squad2.\+agents.\+Open\+Squad\+Teacher Class Reference}
+\label{classparlai_1_1tasks_1_1squad2_1_1agents_1_1OpenSquadTeacher}\index{parlai.\+tasks.\+squad2.\+agents.\+Open\+Squad\+Teacher@{parlai.\+tasks.\+squad2.\+agents.\+Open\+Squad\+Teacher}}
+
+
+Inheritance diagram for parlai.\+tasks.\+squad2.\+agents.\+Open\+Squad\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{d6/dd0/classparlai_1_1tasks_1_1squad2_1_1agents_1_1OpenSquadTeacher__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+tasks.\+squad2.\+agents.\+Open\+Squad\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{dc/d15/classparlai_1_1tasks_1_1squad2_1_1agents_1_1OpenSquadTeacher__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1squad2_1_1agents_1_1OpenSquadTeacher_a97032124add4cb349ff65ac04900da82}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1core_1_1agents_1_1Teacher_a3ce6243860ce978a897922863ed32fa4}{opt}, shared=None)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1squad2_1_1agents_1_1OpenSquadTeacher_a7095abdf14125fc5cdae594fb63b71a0}{setup\+\_\+data} (self, path)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1squad2_1_1agents_1_1OpenSquadTeacher_ac0e68cddc67c52ee994725567a6ff45e}{datatype}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1squad2_1_1agents_1_1OpenSquadTeacher_afee4b62658417abd64ef8bd57bbf6620}{id}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1squad2_1_1agents_1_1OpenSquadTeacher_a80a634305ad2a0af202031e430ddf3af}{squad}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}This version of SQuAD inherits from the core Dialog Teacher, which just requires it
+to define an iterator over its data `setup_data` in order to inherit basic metrics,
+a default `act` function.
+
+Note: This teacher omits the context paragraph
+\end{DoxyVerb}
+ 
+
+Definition at line 122 of file agents.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1squad2_1_1agents_1_1OpenSquadTeacher_a97032124add4cb349ff65ac04900da82}\label{classparlai_1_1tasks_1_1squad2_1_1agents_1_1OpenSquadTeacher_a97032124add4cb349ff65ac04900da82}} 
+\index{parlai\+::tasks\+::squad2\+::agents\+::\+Open\+Squad\+Teacher@{parlai\+::tasks\+::squad2\+::agents\+::\+Open\+Squad\+Teacher}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::tasks\+::squad2\+::agents\+::\+Open\+Squad\+Teacher@{parlai\+::tasks\+::squad2\+::agents\+::\+Open\+Squad\+Teacher}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+squad2.\+agents.\+Open\+Squad\+Teacher.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{shared = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 131 of file agents.\+py.
+
+
+\begin{DoxyCode}
+131     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
+132         self.datatype = opt[\textcolor{stringliteral}{'datatype'}]
+133         \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1talkthewalk_1_1download_a8c0fbb9b6dfe127cb8c1bd6e7c4e33fd}{build}(opt)
+134         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'datatype'}].startswith(\textcolor{stringliteral}{'train'}):
+135             suffix = \textcolor{stringliteral}{'train'}
+136         \textcolor{keywordflow}{else}:
+137             suffix = \textcolor{stringliteral}{'dev'}
+138         opt[\textcolor{stringliteral}{'datafile'}] = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'SQuAD2'}, suffix + \textcolor{stringliteral}{'-v2.0.json'})
+139         self.id = \textcolor{stringliteral}{'squad2'}
+140         super().\_\_init\_\_(opt, shared)
+141 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1squad2_1_1agents_1_1OpenSquadTeacher_a7095abdf14125fc5cdae594fb63b71a0}\label{classparlai_1_1tasks_1_1squad2_1_1agents_1_1OpenSquadTeacher_a7095abdf14125fc5cdae594fb63b71a0}} 
+\index{parlai\+::tasks\+::squad2\+::agents\+::\+Open\+Squad\+Teacher@{parlai\+::tasks\+::squad2\+::agents\+::\+Open\+Squad\+Teacher}!setup\+\_\+data@{setup\+\_\+data}}
+\index{setup\+\_\+data@{setup\+\_\+data}!parlai\+::tasks\+::squad2\+::agents\+::\+Open\+Squad\+Teacher@{parlai\+::tasks\+::squad2\+::agents\+::\+Open\+Squad\+Teacher}}
+\subsubsection{\texorpdfstring{setup\+\_\+data()}{setup\_data()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+squad2.\+agents.\+Open\+Squad\+Teacher.\+setup\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{path }\end{DoxyParamCaption})}
+
+
+
+Definition at line 142 of file agents.\+py.
+
+
+\begin{DoxyCode}
+142     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1multinli_1_1agents_a4fa2cb0ba1ed745336ad8bceed36b841}{setup\_data}(self, path):
+143         print(\textcolor{stringliteral}{'loading: '} + path)
+144         with open(path) \textcolor{keyword}{as} data\_file:
+145             self.squad = json.load(data\_file)[\textcolor{stringliteral}{'data'}]
+146         \textcolor{keywordflow}{for} article \textcolor{keywordflow}{in} self.squad:
+147             \textcolor{comment}{# each paragraph is a context for the attached questions}
+148             \textcolor{keywordflow}{for} paragraph \textcolor{keywordflow}{in} article[\textcolor{stringliteral}{'paragraphs'}]:
+149                 \textcolor{comment}{# each question is an example}
+150                 \textcolor{keywordflow}{for} qa \textcolor{keywordflow}{in} paragraph[\textcolor{stringliteral}{'qas'}]:
+151                     question = qa[\textcolor{stringliteral}{'question'}]
+152                     ans\_iter = [\{\textcolor{stringliteral}{"text"}: \textcolor{stringliteral}{''}\}]
+153                     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} qa[\textcolor{stringliteral}{'is\_impossible'}]:
+154                         ans\_iter = qa[\textcolor{stringliteral}{'answers'}]
+155                     answers = (a[\textcolor{stringliteral}{'text'}] \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} ans\_iter)
+156                     \textcolor{keywordflow}{yield} (question, answers), \textcolor{keyword}{True}
+157 
+158 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1squad2_1_1agents_1_1OpenSquadTeacher_ac0e68cddc67c52ee994725567a6ff45e}\label{classparlai_1_1tasks_1_1squad2_1_1agents_1_1OpenSquadTeacher_ac0e68cddc67c52ee994725567a6ff45e}} 
+\index{parlai\+::tasks\+::squad2\+::agents\+::\+Open\+Squad\+Teacher@{parlai\+::tasks\+::squad2\+::agents\+::\+Open\+Squad\+Teacher}!datatype@{datatype}}
+\index{datatype@{datatype}!parlai\+::tasks\+::squad2\+::agents\+::\+Open\+Squad\+Teacher@{parlai\+::tasks\+::squad2\+::agents\+::\+Open\+Squad\+Teacher}}
+\subsubsection{\texorpdfstring{datatype}{datatype}}
+{\footnotesize\ttfamily parlai.\+tasks.\+squad2.\+agents.\+Open\+Squad\+Teacher.\+datatype}
+
+
+
+Definition at line 132 of file agents.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1squad2_1_1agents_1_1OpenSquadTeacher_afee4b62658417abd64ef8bd57bbf6620}\label{classparlai_1_1tasks_1_1squad2_1_1agents_1_1OpenSquadTeacher_afee4b62658417abd64ef8bd57bbf6620}} 
+\index{parlai\+::tasks\+::squad2\+::agents\+::\+Open\+Squad\+Teacher@{parlai\+::tasks\+::squad2\+::agents\+::\+Open\+Squad\+Teacher}!id@{id}}
+\index{id@{id}!parlai\+::tasks\+::squad2\+::agents\+::\+Open\+Squad\+Teacher@{parlai\+::tasks\+::squad2\+::agents\+::\+Open\+Squad\+Teacher}}
+\subsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily parlai.\+tasks.\+squad2.\+agents.\+Open\+Squad\+Teacher.\+id}
+
+
+
+Definition at line 139 of file agents.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1squad2_1_1agents_1_1OpenSquadTeacher_a80a634305ad2a0af202031e430ddf3af}\label{classparlai_1_1tasks_1_1squad2_1_1agents_1_1OpenSquadTeacher_a80a634305ad2a0af202031e430ddf3af}} 
+\index{parlai\+::tasks\+::squad2\+::agents\+::\+Open\+Squad\+Teacher@{parlai\+::tasks\+::squad2\+::agents\+::\+Open\+Squad\+Teacher}!squad@{squad}}
+\index{squad@{squad}!parlai\+::tasks\+::squad2\+::agents\+::\+Open\+Squad\+Teacher@{parlai\+::tasks\+::squad2\+::agents\+::\+Open\+Squad\+Teacher}}
+\subsubsection{\texorpdfstring{squad}{squad}}
+{\footnotesize\ttfamily parlai.\+tasks.\+squad2.\+agents.\+Open\+Squad\+Teacher.\+squad}
+
+
+
+Definition at line 145 of file agents.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/tasks/squad2/\hyperlink{parlai_2tasks_2squad2_2agents_8py}{agents.\+py}\end{DoxyCompactItemize}

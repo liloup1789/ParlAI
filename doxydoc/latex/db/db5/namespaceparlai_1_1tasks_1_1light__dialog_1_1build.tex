@@ -1,0 +1,123 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1light__dialog_1_1build}{}\section{parlai.\+tasks.\+light\+\_\+dialog.\+build Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1light__dialog_1_1build}\index{parlai.\+tasks.\+light\+\_\+dialog.\+build@{parlai.\+tasks.\+light\+\_\+dialog.\+build}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1light__dialog_1_1build_af4e1d56472312e493c43483a2dfff5a3}{download} (opt)
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1light__dialog_1_1build_ac8ebc5da2dd660257535226b26afb26e}{build} (opt)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceparlai_1_1tasks_1_1light__dialog_1_1build_ab85c5847d6a7dabb0d18a66790034ced}{R\+E\+S\+O\+U\+R\+C\+ES}
+\item 
+bool \hyperlink{namespaceparlai_1_1tasks_1_1light__dialog_1_1build_aef4c7390f2270a12a0af892d8dac2f88}{zipped} = False,
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1light__dialog_1_1build_ac8ebc5da2dd660257535226b26afb26e}\label{namespaceparlai_1_1tasks_1_1light__dialog_1_1build_ac8ebc5da2dd660257535226b26afb26e}} 
+\index{parlai\+::tasks\+::light\+\_\+dialog\+::build@{parlai\+::tasks\+::light\+\_\+dialog\+::build}!build@{build}}
+\index{build@{build}!parlai\+::tasks\+::light\+\_\+dialog\+::build@{parlai\+::tasks\+::light\+\_\+dialog\+::build}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+light\+\_\+dialog.\+build.\+build (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 55 of file build.\+py.
+
+
+\begin{DoxyCode}
+55 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
+56     dpath, version = \hyperlink{namespaceparlai_1_1zoo_1_1pretrained__transformers_1_1build_afaead0deab400e1c516706e85dd4ed9b}{download}(opt)
+57     \textcolor{keywordflow}{if} \textcolor{stringliteral}{'light\_use\_speech\_prefix'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} opt:
+58         opt[\textcolor{stringliteral}{'light\_use\_speech\_prefix'}] = \textcolor{keyword}{True}
+59     \textcolor{comment}{# create particular instance of dataset depending on flags..}
+60     fields = [
+61         \textcolor{stringliteral}{'setting'},
+62         \textcolor{stringliteral}{'objects'},
+63         \textcolor{stringliteral}{'person\_names'},
+64         \textcolor{stringliteral}{'persona'},
+65         \textcolor{stringliteral}{'emote'},
+66         \textcolor{stringliteral}{'speech'},
+67         \textcolor{stringliteral}{'action'},
+68         \textcolor{stringliteral}{'affordances'},
+69         \textcolor{stringliteral}{'repeat'},
+70         \textcolor{stringliteral}{'cands'},
+71         \textcolor{stringliteral}{'current\_self\_output'},
+72         \textcolor{stringliteral}{'clip\_cands'},
+73         \textcolor{stringliteral}{'speech\_prefix'},
+74     ]
+75     fpath = \textcolor{stringliteral}{''}
+76     \textcolor{keywordflow}{for} f \textcolor{keywordflow}{in} fields:
+77         fpath += f + \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(opt[\textcolor{stringliteral}{'light\_use\_'} + f]) + \textcolor{stringliteral}{"\_"}
+78     dpath2 = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'light\_dialogue'}, fpath[:-1])
+79     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath2, version):
+80         \textcolor{keywordflow}{if} build\_data.built(dpath2):
+81             \textcolor{comment}{# An older version exists, so remove these outdated files.}
+82             build\_data.remove\_dir(dpath2)
+83         build\_data.make\_dir(dpath2)
+84         fname = \textcolor{stringliteral}{'light\_data.pkl'}
+85         fname2 = \textcolor{stringliteral}{'light\_unseen\_data.pkl'}
+86         \hyperlink{namespaceparlai_1_1tasks_1_1light__dialog_1_1builder_a6a049254e487c29d008f875476ffd76f}{build\_from\_db}(opt, dpath, dpath2, fname, fname2)
+87         \textcolor{comment}{# Mark the data as built.}
+88         build\_data.mark\_done(dpath2, version)
+89 \end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1light__dialog_1_1build_af4e1d56472312e493c43483a2dfff5a3}\label{namespaceparlai_1_1tasks_1_1light__dialog_1_1build_af4e1d56472312e493c43483a2dfff5a3}} 
+\index{parlai\+::tasks\+::light\+\_\+dialog\+::build@{parlai\+::tasks\+::light\+\_\+dialog\+::build}!download@{download}}
+\index{download@{download}!parlai\+::tasks\+::light\+\_\+dialog\+::build@{parlai\+::tasks\+::light\+\_\+dialog\+::build}}
+\subsubsection{\texorpdfstring{download()}{download()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+light\+\_\+dialog.\+build.\+download (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 34 of file build.\+py.
+
+
+\begin{DoxyCode}
+34 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1zoo_1_1pretrained__transformers_1_1build_afaead0deab400e1c516706e85dd4ed9b}{download}(opt):
+35     version = \textcolor{stringliteral}{'v2.03'}
+36     \textcolor{comment}{# download pickled database}
+37     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'light\_dialogue'})
+38     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version):
+39         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+40         \textcolor{keywordflow}{if} build\_data.built(dpath):
+41             \textcolor{comment}{# An older version exists, so remove these outdated files.}
+42             build\_data.remove\_dir(dpath)
+43         build\_data.make\_dir(dpath)
+44 
+45         \textcolor{comment}{# Download the data.}
+46         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES:
+47             downloadable\_file.download\_file(dpath)
+48 
+49         \textcolor{comment}{# Mark the data as built.}
+50         build\_data.mark\_done(dpath, version)
+51 
+52     \textcolor{keywordflow}{return} dpath, version
+53 
+54 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1light__dialog_1_1build_ab85c5847d6a7dabb0d18a66790034ced}\label{namespaceparlai_1_1tasks_1_1light__dialog_1_1build_ab85c5847d6a7dabb0d18a66790034ced}} 
+\index{parlai\+::tasks\+::light\+\_\+dialog\+::build@{parlai\+::tasks\+::light\+\_\+dialog\+::build}!R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}}
+\index{R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}!parlai\+::tasks\+::light\+\_\+dialog\+::build@{parlai\+::tasks\+::light\+\_\+dialog\+::build}}
+\subsubsection{\texorpdfstring{R\+E\+S\+O\+U\+R\+C\+ES}{RESOURCES}}
+{\footnotesize\ttfamily parlai.\+tasks.\+light\+\_\+dialog.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
+
+
+
+Definition at line 12 of file build.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1light__dialog_1_1build_aef4c7390f2270a12a0af892d8dac2f88}\label{namespaceparlai_1_1tasks_1_1light__dialog_1_1build_aef4c7390f2270a12a0af892d8dac2f88}} 
+\index{parlai\+::tasks\+::light\+\_\+dialog\+::build@{parlai\+::tasks\+::light\+\_\+dialog\+::build}!zipped@{zipped}}
+\index{zipped@{zipped}!parlai\+::tasks\+::light\+\_\+dialog\+::build@{parlai\+::tasks\+::light\+\_\+dialog\+::build}}
+\subsubsection{\texorpdfstring{zipped}{zipped}}
+{\footnotesize\ttfamily bool parlai.\+tasks.\+light\+\_\+dialog.\+build.\+zipped = False,}
+
+
+
+Definition at line 17 of file build.\+py.
+

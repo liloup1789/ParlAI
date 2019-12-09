@@ -1,0 +1,97 @@
+\hypertarget{classparlai_1_1tasks_1_1integration__tests_1_1agents_1_1RepeatWordsTeacher}{}\section{parlai.\+tasks.\+integration\+\_\+tests.\+agents.\+Repeat\+Words\+Teacher Class Reference}
+\label{classparlai_1_1tasks_1_1integration__tests_1_1agents_1_1RepeatWordsTeacher}\index{parlai.\+tasks.\+integration\+\_\+tests.\+agents.\+Repeat\+Words\+Teacher@{parlai.\+tasks.\+integration\+\_\+tests.\+agents.\+Repeat\+Words\+Teacher}}
+
+
+Inheritance diagram for parlai.\+tasks.\+integration\+\_\+tests.\+agents.\+Repeat\+Words\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d7/d62/classparlai_1_1tasks_1_1integration__tests_1_1agents_1_1RepeatWordsTeacher__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+tasks.\+integration\+\_\+tests.\+agents.\+Repeat\+Words\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d4/df9/classparlai_1_1tasks_1_1integration__tests_1_1agents_1_1RepeatWordsTeacher__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1integration__tests_1_1agents_1_1RepeatWordsTeacher_a169b9a70cebc4aeb54e4b90ddba644ac}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, args, kwargs)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1integration__tests_1_1agents_1_1RepeatWordsTeacher_ad03d8fb602aca6baf0b62f633b3bb54c}{build\+\_\+corpus} (self)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Each input/output pair is a word repeated n times.
+
+Useful for testing beam-blocking.
+\end{DoxyVerb}
+ 
+
+Definition at line 346 of file agents.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1integration__tests_1_1agents_1_1RepeatWordsTeacher_a169b9a70cebc4aeb54e4b90ddba644ac}\label{classparlai_1_1tasks_1_1integration__tests_1_1agents_1_1RepeatWordsTeacher_a169b9a70cebc4aeb54e4b90ddba644ac}} 
+\index{parlai\+::tasks\+::integration\+\_\+tests\+::agents\+::\+Repeat\+Words\+Teacher@{parlai\+::tasks\+::integration\+\_\+tests\+::agents\+::\+Repeat\+Words\+Teacher}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::tasks\+::integration\+\_\+tests\+::agents\+::\+Repeat\+Words\+Teacher@{parlai\+::tasks\+::integration\+\_\+tests\+::agents\+::\+Repeat\+Words\+Teacher}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+integration\+\_\+tests.\+agents.\+Repeat\+Words\+Teacher.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{args,  }\item[{}]{kwargs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 353 of file agents.\+py.
+
+
+\begin{DoxyCode}
+353     \textcolor{keyword}{def }\_\_init\_\_(self, *args, **kwargs):
+354         \textcolor{comment}{# Set sizes so that we have appropriate number of examples (700)}
+355         kwargs[\textcolor{stringliteral}{'vocab\_size'}] = 70
+356         kwargs[\textcolor{stringliteral}{'example\_size'}] = 11
+357         super().\_\_init\_\_(*args, **kwargs)
+358 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1integration__tests_1_1agents_1_1RepeatWordsTeacher_ad03d8fb602aca6baf0b62f633b3bb54c}\label{classparlai_1_1tasks_1_1integration__tests_1_1agents_1_1RepeatWordsTeacher_ad03d8fb602aca6baf0b62f633b3bb54c}} 
+\index{parlai\+::tasks\+::integration\+\_\+tests\+::agents\+::\+Repeat\+Words\+Teacher@{parlai\+::tasks\+::integration\+\_\+tests\+::agents\+::\+Repeat\+Words\+Teacher}!build\+\_\+corpus@{build\+\_\+corpus}}
+\index{build\+\_\+corpus@{build\+\_\+corpus}!parlai\+::tasks\+::integration\+\_\+tests\+::agents\+::\+Repeat\+Words\+Teacher@{parlai\+::tasks\+::integration\+\_\+tests\+::agents\+::\+Repeat\+Words\+Teacher}}
+\subsubsection{\texorpdfstring{build\+\_\+corpus()}{build\_corpus()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+integration\+\_\+tests.\+agents.\+Repeat\+Words\+Teacher.\+build\+\_\+corpus (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Override to repeat words.
+\end{DoxyVerb}
+ 
+
+Definition at line 359 of file agents.\+py.
+
+
+\begin{DoxyCode}
+359     \textcolor{keyword}{def }build\_corpus(self):
+360         \textcolor{stringliteral}{"""}
+361 \textcolor{stringliteral}{        Override to repeat words.}
+362 \textcolor{stringliteral}{        """}
+363         \textcolor{keywordflow}{return} [
+364             [x \textcolor{keywordflow}{for} \_ \textcolor{keywordflow}{in} range(l)]
+365             \textcolor{keywordflow}{for} l \textcolor{keywordflow}{in} range(1, self.example\_size)
+366             \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} self.words
+367         ]
+368 
+369 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/tasks/integration\+\_\+tests/\hyperlink{parlai_2tasks_2integration__tests_2agents_8py}{agents.\+py}\end{DoxyCompactItemize}

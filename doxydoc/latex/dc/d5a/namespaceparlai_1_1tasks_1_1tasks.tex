@@ -1,0 +1,33 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1tasks}{}\section{parlai.\+tasks.\+tasks Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1tasks}\index{parlai.\+tasks.\+tasks@{parlai.\+tasks.\+tasks}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1tasks_ad536d1295ca5ba2ecf3a48635b482087}{ids\+\_\+to\+\_\+tasks} (ids)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1tasks_ad536d1295ca5ba2ecf3a48635b482087}\label{namespaceparlai_1_1tasks_1_1tasks_ad536d1295ca5ba2ecf3a48635b482087}} 
+\index{parlai\+::tasks\+::tasks@{parlai\+::tasks\+::tasks}!ids\+\_\+to\+\_\+tasks@{ids\+\_\+to\+\_\+tasks}}
+\index{ids\+\_\+to\+\_\+tasks@{ids\+\_\+to\+\_\+tasks}!parlai\+::tasks\+::tasks@{parlai\+::tasks\+::tasks}}
+\subsubsection{\texorpdfstring{ids\+\_\+to\+\_\+tasks()}{ids\_to\_tasks()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+tasks.\+ids\+\_\+to\+\_\+tasks (\begin{DoxyParamCaption}\item[{}]{ids }\end{DoxyParamCaption})}
+
+
+
+Definition at line 56 of file tasks.\+py.
+
+
+\begin{DoxyCode}
+56 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1tasks_ad536d1295ca5ba2ecf3a48635b482087}{ids\_to\_tasks}(ids):
+57     \textcolor{keywordflow}{if} ids \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+58         \textcolor{keywordflow}{raise} RuntimeError(
+59             \textcolor{stringliteral}{'No task specified. Please select a task with '} + \textcolor{stringliteral}{'--task \{task\_name\}.'}
+60         )
+61     \textcolor{keywordflow}{return} \textcolor{stringliteral}{','}.join((\_id\_to\_task(i) \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} ids.split(\textcolor{stringliteral}{','}) \textcolor{keywordflow}{if} len(i) > 0))
+62 
+63 
+64 \textcolor{comment}{# Build the task list from the json file.}
+65 tasks, tags = \_build(task\_list)
+66 \end{DoxyCode}

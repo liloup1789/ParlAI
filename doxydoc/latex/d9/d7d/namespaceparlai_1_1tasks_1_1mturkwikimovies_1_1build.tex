@@ -1,0 +1,61 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1mturkwikimovies_1_1build}{}\section{parlai.\+tasks.\+mturkwikimovies.\+build Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1mturkwikimovies_1_1build}\index{parlai.\+tasks.\+mturkwikimovies.\+build@{parlai.\+tasks.\+mturkwikimovies.\+build}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1mturkwikimovies_1_1build_aa6711f21fb369b452d25f98897f305d7}{build} (opt)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceparlai_1_1tasks_1_1mturkwikimovies_1_1build_a842cd64e233c6a702fc8438ee9de4088}{R\+E\+S\+O\+U\+R\+C\+ES}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1mturkwikimovies_1_1build_aa6711f21fb369b452d25f98897f305d7}\label{namespaceparlai_1_1tasks_1_1mturkwikimovies_1_1build_aa6711f21fb369b452d25f98897f305d7}} 
+\index{parlai\+::tasks\+::mturkwikimovies\+::build@{parlai\+::tasks\+::mturkwikimovies\+::build}!build@{build}}
+\index{build@{build}!parlai\+::tasks\+::mturkwikimovies\+::build@{parlai\+::tasks\+::mturkwikimovies\+::build}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+mturkwikimovies.\+build.\+build (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 22 of file build.\+py.
+
+
+\begin{DoxyCode}
+22 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
+23     \textcolor{comment}{# Depends upon another dataset, wikimovies, build that first.}
+24     wikimovies\_build.build(opt)
+25 
+26     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'MTurkWikiMovies'})
+27     version = \textcolor{keywordtype}{None}
+28 
+29     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version\_string=version):
+30         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+31         \textcolor{keywordflow}{if} build\_data.built(dpath):
+32             \textcolor{comment}{# An older version exists, so remove these outdated files.}
+33             build\_data.remove\_dir(dpath)
+34         build\_data.make\_dir(dpath)
+35 
+36         \textcolor{comment}{# Download the data.}
+37         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES:
+38             downloadable\_file.download\_file(dpath)
+39 
+40         \textcolor{comment}{# Mark the data as built.}
+41         build\_data.mark\_done(dpath, version\_string=version)
+42 \end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1mturkwikimovies_1_1build_a842cd64e233c6a702fc8438ee9de4088}\label{namespaceparlai_1_1tasks_1_1mturkwikimovies_1_1build_a842cd64e233c6a702fc8438ee9de4088}} 
+\index{parlai\+::tasks\+::mturkwikimovies\+::build@{parlai\+::tasks\+::mturkwikimovies\+::build}!R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}}
+\index{R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}!parlai\+::tasks\+::mturkwikimovies\+::build@{parlai\+::tasks\+::mturkwikimovies\+::build}}
+\subsubsection{\texorpdfstring{R\+E\+S\+O\+U\+R\+C\+ES}{RESOURCES}}
+{\footnotesize\ttfamily parlai.\+tasks.\+mturkwikimovies.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
+
+
+
+Definition at line 13 of file build.\+py.
+

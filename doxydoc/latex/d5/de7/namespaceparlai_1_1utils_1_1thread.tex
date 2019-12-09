@@ -1,0 +1,39 @@
+\hypertarget{namespaceparlai_1_1utils_1_1thread}{}\section{parlai.\+utils.\+thread Namespace Reference}
+\label{namespaceparlai_1_1utils_1_1thread}\index{parlai.\+utils.\+thread@{parlai.\+utils.\+thread}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classparlai_1_1utils_1_1thread_1_1SharedTable}{Shared\+Table}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1utils_1_1thread_ad2b01da95ecdc33d8dce76a79f48137f}{is\+\_\+tensor} (v)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1utils_1_1thread_ad2b01da95ecdc33d8dce76a79f48137f}\label{namespaceparlai_1_1utils_1_1thread_ad2b01da95ecdc33d8dce76a79f48137f}} 
+\index{parlai\+::utils\+::thread@{parlai\+::utils\+::thread}!is\+\_\+tensor@{is\+\_\+tensor}}
+\index{is\+\_\+tensor@{is\+\_\+tensor}!parlai\+::utils\+::thread@{parlai\+::utils\+::thread}}
+\subsubsection{\texorpdfstring{is\+\_\+tensor()}{is\_tensor()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+thread.\+is\+\_\+tensor (\begin{DoxyParamCaption}\item[{}]{v }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Return if an object is a torch Tensor, without importing torch.
+\end{DoxyVerb}
+ 
+
+Definition at line 178 of file thread.\+py.
+
+
+\begin{DoxyCode}
+178 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1utils_1_1thread_ad2b01da95ecdc33d8dce76a79f48137f}{is\_tensor}(v):
+179     \textcolor{stringliteral}{"""}
+180 \textcolor{stringliteral}{    Return if an object is a torch Tensor, without importing torch.}
+181 \textcolor{stringliteral}{    """}
+182     \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(v).\_\_module\_\_.startswith(\textcolor{stringliteral}{'torch'}):
+183         \textcolor{keyword}{import} torch
+184 
+185         \textcolor{keywordflow}{return} torch.is\_tensor(v)
+186     \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+187 \end{DoxyCode}

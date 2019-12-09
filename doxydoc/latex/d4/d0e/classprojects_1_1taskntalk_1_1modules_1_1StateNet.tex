@@ -1,0 +1,106 @@
+\hypertarget{classprojects_1_1taskntalk_1_1modules_1_1StateNet}{}\section{projects.\+taskntalk.\+modules.\+State\+Net Class Reference}
+\label{classprojects_1_1taskntalk_1_1modules_1_1StateNet}\index{projects.\+taskntalk.\+modules.\+State\+Net@{projects.\+taskntalk.\+modules.\+State\+Net}}
+
+
+Inheritance diagram for projects.\+taskntalk.\+modules.\+State\+Net\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{de/d99/classprojects_1_1taskntalk_1_1modules_1_1StateNet__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for projects.\+taskntalk.\+modules.\+State\+Net\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{d8/dc0/classprojects_1_1taskntalk_1_1modules_1_1StateNet__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classprojects_1_1taskntalk_1_1modules_1_1StateNet_a46a465e3b5b7b29d39d29e76829bf229}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, embed\+\_\+size, state\+\_\+size)
+\item 
+def \hyperlink{classprojects_1_1taskntalk_1_1modules_1_1StateNet_a3305ceee97d7761dd2417ad776cf046f}{forward} (self, states, embeds)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classprojects_1_1taskntalk_1_1modules_1_1StateNet_a4499c3c6f15bc68c514202ed019f4eff}{net}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Module for containing the state update mechanism for an agent.
+
+In
+``forward``: Update states by passing the embeddings through LSTMCell.
+\end{DoxyVerb}
+ 
+
+Definition at line 65 of file modules.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classprojects_1_1taskntalk_1_1modules_1_1StateNet_a46a465e3b5b7b29d39d29e76829bf229}\label{classprojects_1_1taskntalk_1_1modules_1_1StateNet_a46a465e3b5b7b29d39d29e76829bf229}} 
+\index{projects\+::taskntalk\+::modules\+::\+State\+Net@{projects\+::taskntalk\+::modules\+::\+State\+Net}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!projects\+::taskntalk\+::modules\+::\+State\+Net@{projects\+::taskntalk\+::modules\+::\+State\+Net}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def projects.\+taskntalk.\+modules.\+State\+Net.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{embed\+\_\+size,  }\item[{}]{state\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Definition at line 73 of file modules.\+py.
+
+
+\begin{DoxyCode}
+73     \textcolor{keyword}{def }\_\_init\_\_(self, embed\_size, state\_size):
+74         super().\_\_init\_\_()
+75         self.net = nn.LSTMCell(embed\_size, state\_size)
+76         \hyperlink{namespaceprojects_1_1taskntalk_1_1modules_a483197f0d561a3d1ef7d04a2de70e571}{xavier\_init}(self)
+77 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classprojects_1_1taskntalk_1_1modules_1_1StateNet_a3305ceee97d7761dd2417ad776cf046f}\label{classprojects_1_1taskntalk_1_1modules_1_1StateNet_a3305ceee97d7761dd2417ad776cf046f}} 
+\index{projects\+::taskntalk\+::modules\+::\+State\+Net@{projects\+::taskntalk\+::modules\+::\+State\+Net}!forward@{forward}}
+\index{forward@{forward}!projects\+::taskntalk\+::modules\+::\+State\+Net@{projects\+::taskntalk\+::modules\+::\+State\+Net}}
+\subsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily def projects.\+taskntalk.\+modules.\+State\+Net.\+forward (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{states,  }\item[{}]{embeds }\end{DoxyParamCaption})}
+
+
+
+Definition at line 78 of file modules.\+py.
+
+
+\begin{DoxyCode}
+78     \textcolor{keyword}{def }forward(self, states, embeds):
+79         states = self.net(embeds, states)
+80         \textcolor{keywordflow}{return} states
+81 
+82 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classprojects_1_1taskntalk_1_1modules_1_1StateNet_a4499c3c6f15bc68c514202ed019f4eff}\label{classprojects_1_1taskntalk_1_1modules_1_1StateNet_a4499c3c6f15bc68c514202ed019f4eff}} 
+\index{projects\+::taskntalk\+::modules\+::\+State\+Net@{projects\+::taskntalk\+::modules\+::\+State\+Net}!net@{net}}
+\index{net@{net}!projects\+::taskntalk\+::modules\+::\+State\+Net@{projects\+::taskntalk\+::modules\+::\+State\+Net}}
+\subsubsection{\texorpdfstring{net}{net}}
+{\footnotesize\ttfamily projects.\+taskntalk.\+modules.\+State\+Net.\+net}
+
+
+
+Definition at line 75 of file modules.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+projects/taskntalk/\hyperlink{projects_2taskntalk_2modules_8py}{modules.\+py}\end{DoxyCompactItemize}

@@ -1,0 +1,145 @@
+\hypertarget{classprojects_1_1self__feeding_1_1feedback__classifier_1_1feedback__classifier_1_1FeedbackClassifierRegex}{}\section{projects.\+self\+\_\+feeding.\+feedback\+\_\+classifier.\+feedback\+\_\+classifier.\+Feedback\+Classifier\+Regex Class Reference}
+\label{classprojects_1_1self__feeding_1_1feedback__classifier_1_1feedback__classifier_1_1FeedbackClassifierRegex}\index{projects.\+self\+\_\+feeding.\+feedback\+\_\+classifier.\+feedback\+\_\+classifier.\+Feedback\+Classifier\+Regex@{projects.\+self\+\_\+feeding.\+feedback\+\_\+classifier.\+feedback\+\_\+classifier.\+Feedback\+Classifier\+Regex}}
+
+
+Inheritance diagram for projects.\+self\+\_\+feeding.\+feedback\+\_\+classifier.\+feedback\+\_\+classifier.\+Feedback\+Classifier\+Regex\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{d4/d07/classprojects_1_1self__feeding_1_1feedback__classifier_1_1feedback__classifier_1_1FeedbackClassifierRegex__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for projects.\+self\+\_\+feeding.\+feedback\+\_\+classifier.\+feedback\+\_\+classifier.\+Feedback\+Classifier\+Regex\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{df/d61/classprojects_1_1self__feeding_1_1feedback__classifier_1_1feedback__classifier_1_1FeedbackClassifierRegex__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classprojects_1_1self__feeding_1_1feedback__classifier_1_1feedback__classifier_1_1FeedbackClassifierRegex_a9a8a64c3044529f2418ad7c0dff40bb3}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self)
+\item 
+def \hyperlink{classprojects_1_1self__feeding_1_1feedback__classifier_1_1feedback__classifier_1_1FeedbackClassifierRegex_a31bd7f9578428ad2cf1921c4fbf51ba8}{predict\+\_\+proba} (self, contexts)
+\item 
+def \hyperlink{classprojects_1_1self__feeding_1_1feedback__classifier_1_1feedback__classifier_1_1FeedbackClassifierRegex_a24119cead515b84ee7308a53f821e681}{identify\+\_\+failure\+\_\+mode} (self, text)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classprojects_1_1self__feeding_1_1feedback__classifier_1_1feedback__classifier_1_1FeedbackClassifierRegex_a425d14474da43ffb0a75150fa04b26bc}{failure\+\_\+regexes}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 20 of file feedback\+\_\+classifier.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classprojects_1_1self__feeding_1_1feedback__classifier_1_1feedback__classifier_1_1FeedbackClassifierRegex_a9a8a64c3044529f2418ad7c0dff40bb3}\label{classprojects_1_1self__feeding_1_1feedback__classifier_1_1feedback__classifier_1_1FeedbackClassifierRegex_a9a8a64c3044529f2418ad7c0dff40bb3}} 
+\index{projects\+::self\+\_\+feeding\+::feedback\+\_\+classifier\+::feedback\+\_\+classifier\+::\+Feedback\+Classifier\+Regex@{projects\+::self\+\_\+feeding\+::feedback\+\_\+classifier\+::feedback\+\_\+classifier\+::\+Feedback\+Classifier\+Regex}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!projects\+::self\+\_\+feeding\+::feedback\+\_\+classifier\+::feedback\+\_\+classifier\+::\+Feedback\+Classifier\+Regex@{projects\+::self\+\_\+feeding\+::feedback\+\_\+classifier\+::feedback\+\_\+classifier\+::\+Feedback\+Classifier\+Regex}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def projects.\+self\+\_\+feeding.\+feedback\+\_\+classifier.\+feedback\+\_\+classifier.\+Feedback\+Classifier\+Regex.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 21 of file feedback\+\_\+classifier.\+py.
+
+
+\begin{DoxyCode}
+21     \textcolor{keyword}{def }\_\_init\_\_(self):
+22         self.failure\_regexes = \{
+23             ISAID: \textcolor{stringliteral}{r"i .*(?:said|asked|told).*"},
+24             NOTSENSE: \textcolor{stringliteral}{r"((not|nt|n't).*mak.*sense)|(mak.*no .*sense)"},
+25             UM: \textcolor{stringliteral}{r"u(m|h)+\(\backslash\)W"},
+26             YOUWHAT: \textcolor{stringliteral}{r"you.*what\(\backslash\)?"},
+27             WHATYOU: \textcolor{stringliteral}{r"what.*you (?:mean|refer|talk).*\(\backslash\)?"},
+28             WHATDO: \textcolor{stringliteral}{r"what.*to do with.*\(\backslash\)?"},
+29         \}
+30 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classprojects_1_1self__feeding_1_1feedback__classifier_1_1feedback__classifier_1_1FeedbackClassifierRegex_a24119cead515b84ee7308a53f821e681}\label{classprojects_1_1self__feeding_1_1feedback__classifier_1_1feedback__classifier_1_1FeedbackClassifierRegex_a24119cead515b84ee7308a53f821e681}} 
+\index{projects\+::self\+\_\+feeding\+::feedback\+\_\+classifier\+::feedback\+\_\+classifier\+::\+Feedback\+Classifier\+Regex@{projects\+::self\+\_\+feeding\+::feedback\+\_\+classifier\+::feedback\+\_\+classifier\+::\+Feedback\+Classifier\+Regex}!identify\+\_\+failure\+\_\+mode@{identify\+\_\+failure\+\_\+mode}}
+\index{identify\+\_\+failure\+\_\+mode@{identify\+\_\+failure\+\_\+mode}!projects\+::self\+\_\+feeding\+::feedback\+\_\+classifier\+::feedback\+\_\+classifier\+::\+Feedback\+Classifier\+Regex@{projects\+::self\+\_\+feeding\+::feedback\+\_\+classifier\+::feedback\+\_\+classifier\+::\+Feedback\+Classifier\+Regex}}
+\subsubsection{\texorpdfstring{identify\+\_\+failure\+\_\+mode()}{identify\_failure\_mode()}}
+{\footnotesize\ttfamily def projects.\+self\+\_\+feeding.\+feedback\+\_\+classifier.\+feedback\+\_\+classifier.\+Feedback\+Classifier\+Regex.\+identify\+\_\+failure\+\_\+mode (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{text }\end{DoxyParamCaption})}
+
+
+
+Definition at line 45 of file feedback\+\_\+classifier.\+py.
+
+
+\begin{DoxyCode}
+45     \textcolor{keyword}{def }identify\_failure\_mode(self, text):
+46         \textcolor{keywordflow}{if} re.search(self.failure\_regexes[ISAID], text, flags=re.I):
+47             \textcolor{keywordflow}{return} ISAID
+48         \textcolor{keywordflow}{elif} re.search(self.failure\_regexes[NOTSENSE], text, flags=re.I):
+49             \textcolor{keywordflow}{return} NOTSENSE
+50         \textcolor{keywordflow}{elif} re.search(self.failure\_regexes[UM], text, flags=re.I):
+51             \textcolor{keywordflow}{return} UM
+52         \textcolor{keywordflow}{elif} re.search(self.failure\_regexes[YOUWHAT], text, flags=re.I):
+53             \textcolor{keywordflow}{return} YOUWHAT
+54         \textcolor{keywordflow}{elif} re.search(self.failure\_regexes[WHATYOU], text, flags=re.I):
+55             \textcolor{keywordflow}{return} WHATYOU
+56         \textcolor{keywordflow}{elif} re.search(self.failure\_regexes[WHATDO], text, flags=re.I):
+57             \textcolor{keywordflow}{return} WHATDO
+58         \textcolor{keywordflow}{else}:
+59             \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}
+60 \end{DoxyCode}
+\mbox{\Hypertarget{classprojects_1_1self__feeding_1_1feedback__classifier_1_1feedback__classifier_1_1FeedbackClassifierRegex_a31bd7f9578428ad2cf1921c4fbf51ba8}\label{classprojects_1_1self__feeding_1_1feedback__classifier_1_1feedback__classifier_1_1FeedbackClassifierRegex_a31bd7f9578428ad2cf1921c4fbf51ba8}} 
+\index{projects\+::self\+\_\+feeding\+::feedback\+\_\+classifier\+::feedback\+\_\+classifier\+::\+Feedback\+Classifier\+Regex@{projects\+::self\+\_\+feeding\+::feedback\+\_\+classifier\+::feedback\+\_\+classifier\+::\+Feedback\+Classifier\+Regex}!predict\+\_\+proba@{predict\+\_\+proba}}
+\index{predict\+\_\+proba@{predict\+\_\+proba}!projects\+::self\+\_\+feeding\+::feedback\+\_\+classifier\+::feedback\+\_\+classifier\+::\+Feedback\+Classifier\+Regex@{projects\+::self\+\_\+feeding\+::feedback\+\_\+classifier\+::feedback\+\_\+classifier\+::\+Feedback\+Classifier\+Regex}}
+\subsubsection{\texorpdfstring{predict\+\_\+proba()}{predict\_proba()}}
+{\footnotesize\ttfamily def projects.\+self\+\_\+feeding.\+feedback\+\_\+classifier.\+feedback\+\_\+classifier.\+Feedback\+Classifier\+Regex.\+predict\+\_\+proba (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{contexts }\end{DoxyParamCaption})}
+
+
+
+Definition at line 31 of file feedback\+\_\+classifier.\+py.
+
+
+\begin{DoxyCode}
+31     \textcolor{keyword}{def }predict\_proba(self, contexts):
+32         \textcolor{comment}{# Do naive for loop for now}
+33         probs = []
+34         \textcolor{keywordflow}{for} context \textcolor{keywordflow}{in} contexts:
+35             start = context.rindex(\textcolor{stringliteral}{'\_\_p1\_\_'})
+36             \textcolor{keywordflow}{try}:
+37                 end = context.index(\textcolor{stringliteral}{'\_\_null\_\_'})
+38             \textcolor{keywordflow}{except} ValueError:
+39                 end = len(context)
+40             last\_response = context[start:end]  \textcolor{comment}{# includes padding}
+41             failure\_mode = self.identify\_failure\_mode(last\_response)
+42             probs.append(failure\_mode \textcolor{keywordflow}{is} \textcolor{keywordtype}{None})
+43         \textcolor{keywordflow}{return} torch.FloatTensor(probs)
+44 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classprojects_1_1self__feeding_1_1feedback__classifier_1_1feedback__classifier_1_1FeedbackClassifierRegex_a425d14474da43ffb0a75150fa04b26bc}\label{classprojects_1_1self__feeding_1_1feedback__classifier_1_1feedback__classifier_1_1FeedbackClassifierRegex_a425d14474da43ffb0a75150fa04b26bc}} 
+\index{projects\+::self\+\_\+feeding\+::feedback\+\_\+classifier\+::feedback\+\_\+classifier\+::\+Feedback\+Classifier\+Regex@{projects\+::self\+\_\+feeding\+::feedback\+\_\+classifier\+::feedback\+\_\+classifier\+::\+Feedback\+Classifier\+Regex}!failure\+\_\+regexes@{failure\+\_\+regexes}}
+\index{failure\+\_\+regexes@{failure\+\_\+regexes}!projects\+::self\+\_\+feeding\+::feedback\+\_\+classifier\+::feedback\+\_\+classifier\+::\+Feedback\+Classifier\+Regex@{projects\+::self\+\_\+feeding\+::feedback\+\_\+classifier\+::feedback\+\_\+classifier\+::\+Feedback\+Classifier\+Regex}}
+\subsubsection{\texorpdfstring{failure\+\_\+regexes}{failure\_regexes}}
+{\footnotesize\ttfamily projects.\+self\+\_\+feeding.\+feedback\+\_\+classifier.\+feedback\+\_\+classifier.\+Feedback\+Classifier\+Regex.\+failure\+\_\+regexes}
+
+
+
+Definition at line 22 of file feedback\+\_\+classifier.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+projects/self\+\_\+feeding/feedback\+\_\+classifier/\hyperlink{feedback__classifier_8py}{feedback\+\_\+classifier.\+py}\end{DoxyCompactItemize}

@@ -1,0 +1,129 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1convai2__wild__evaluation_1_1build}{}\section{parlai.\+tasks.\+convai2\+\_\+wild\+\_\+evaluation.\+build Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1convai2__wild__evaluation_1_1build}\index{parlai.\+tasks.\+convai2\+\_\+wild\+\_\+evaluation.\+build@{parlai.\+tasks.\+convai2\+\_\+wild\+\_\+evaluation.\+build}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1convai2__wild__evaluation_1_1build_a6c2b84806e2cb18c6eedb72d161dec5e}{make\+\_\+parlai\+\_\+format}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1convai2__wild__evaluation_1_1build_a7f46320f8766498ee5f87f68e24da31b}{build} (opt)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+list \hyperlink{namespaceparlai_1_1tasks_1_1convai2__wild__evaluation_1_1build_abdb1e0f90d76cfd525e4ef8f8e610839}{R\+E\+S\+O\+U\+R\+C\+ES}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1convai2__wild__evaluation_1_1build_a7f46320f8766498ee5f87f68e24da31b}\label{namespaceparlai_1_1tasks_1_1convai2__wild__evaluation_1_1build_a7f46320f8766498ee5f87f68e24da31b}} 
+\index{parlai\+::tasks\+::convai2\+\_\+wild\+\_\+evaluation\+::build@{parlai\+::tasks\+::convai2\+\_\+wild\+\_\+evaluation\+::build}!build@{build}}
+\index{build@{build}!parlai\+::tasks\+::convai2\+\_\+wild\+\_\+evaluation\+::build@{parlai\+::tasks\+::convai2\+\_\+wild\+\_\+evaluation\+::build}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+convai2\+\_\+wild\+\_\+evaluation.\+build.\+build (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 56 of file build.\+py.
+
+
+\begin{DoxyCode}
+56 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
+57     version = \textcolor{stringliteral}{'0.2'}
+58     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'ConvAI2\_wild\_evaluation'})
+59 
+60     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version):
+61         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+62 
+63         \textcolor{keywordflow}{if} build\_data.built(dpath):
+64             \textcolor{comment}{# An older version exists, so remove these outdated files.}
+65             build\_data.remove\_dir(dpath)
+66         build\_data.make\_dir(dpath)
+67 
+68         \textcolor{comment}{# Download the data.}
+69         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES:
+70             downloadable\_file.download\_file(dpath)
+71 
+72         output\_fname = \textcolor{stringliteral}{'convai2\_wild\_evaluation.json'}
+73         output\_path = os.path.join(dpath, output\_fname)
+74 
+75         with open(output\_path, \textcolor{stringliteral}{'r') as data\_f:}
+76 \textcolor{stringliteral}{            data = json.load(data\_f)}
+77 \textcolor{stringliteral}{}
+78 \textcolor{stringliteral}{        \hyperlink{namespaceparlai_1_1tasks_1_1quac_1_1build_a08c212462b5c58cde91192d35f24f0cc}{make\_parlai\_format}(data, dpath)}
+79 \textcolor{stringliteral}{        os.remove(output\_path)}
+80 \textcolor{stringliteral}{}
+81 \textcolor{stringliteral}{        }\textcolor{comment}{# Mark the data as built.}
+82         build\_data.mark\_done(dpath, version)
+83 \end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1convai2__wild__evaluation_1_1build_a6c2b84806e2cb18c6eedb72d161dec5e}\label{namespaceparlai_1_1tasks_1_1convai2__wild__evaluation_1_1build_a6c2b84806e2cb18c6eedb72d161dec5e}} 
+\index{parlai\+::tasks\+::convai2\+\_\+wild\+\_\+evaluation\+::build@{parlai\+::tasks\+::convai2\+\_\+wild\+\_\+evaluation\+::build}!make\+\_\+parlai\+\_\+format@{make\+\_\+parlai\+\_\+format}}
+\index{make\+\_\+parlai\+\_\+format@{make\+\_\+parlai\+\_\+format}!parlai\+::tasks\+::convai2\+\_\+wild\+\_\+evaluation\+::build@{parlai\+::tasks\+::convai2\+\_\+wild\+\_\+evaluation\+::build}}
+\subsubsection{\texorpdfstring{make\+\_\+parlai\+\_\+format()}{make\_parlai\_format()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+convai2\+\_\+wild\+\_\+evaluation.\+build.\+make\+\_\+parlai\+\_\+format (\begin{DoxyParamCaption}\item[{}]{data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 20 of file build.\+py.
+
+
+\begin{DoxyCode}
+20 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1quac_1_1build_a08c212462b5c58cde91192d35f24f0cc}{make\_parlai\_format}(data: list, dpath: str):
+21     train\_p = 0.6
+22     valid\_p = 0.2
+23     test\_p = 1 - (train\_p + valid\_p)
+24 
+25     \textcolor{keyword}{assert} train\_p > 0
+26     \textcolor{keyword}{assert} valid\_p > 0
+27     \textcolor{keyword}{assert} test\_p > 0
+28 
+29     data\_len = len(data)
+30 
+31     first\_valid = \hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(data\_len * train\_p)
+32     first\_test = \hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(data\_len * (train\_p + valid\_p))
+33 
+34     data\_train = data[:first\_valid]
+35     data\_valid = data[first\_valid:first\_test]
+36     data\_test = data[first\_test:]
+37 
+38     data\_train\_txt = \textcolor{stringliteral}{'\(\backslash\)n'}.join(data\_train)
+39     data\_valid\_txt = \textcolor{stringliteral}{'\(\backslash\)n'}.join(data\_valid)
+40     data\_test\_txt = \textcolor{stringliteral}{'\(\backslash\)n'}.join(data\_test)
+41 
+42     path\_train = os.path.join(dpath, \textcolor{stringliteral}{'train.txt'})
+43     path\_valid = os.path.join(dpath, \textcolor{stringliteral}{'valid.txt'})
+44     path\_test = os.path.join(dpath, \textcolor{stringliteral}{'test.txt'})
+45 
+46     with open(path\_train, \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} f\_train:
+47         f\_train.write(data\_train\_txt)
+48 
+49     with open(path\_valid, \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} f\_valid:
+50         f\_valid.write(data\_valid\_txt)
+51 
+52     with open(path\_test, \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} f\_test:
+53         f\_test.write(data\_test\_txt)
+54 
+55 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1convai2__wild__evaluation_1_1build_abdb1e0f90d76cfd525e4ef8f8e610839}\label{namespaceparlai_1_1tasks_1_1convai2__wild__evaluation_1_1build_abdb1e0f90d76cfd525e4ef8f8e610839}} 
+\index{parlai\+::tasks\+::convai2\+\_\+wild\+\_\+evaluation\+::build@{parlai\+::tasks\+::convai2\+\_\+wild\+\_\+evaluation\+::build}!R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}}
+\index{R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}!parlai\+::tasks\+::convai2\+\_\+wild\+\_\+evaluation\+::build@{parlai\+::tasks\+::convai2\+\_\+wild\+\_\+evaluation\+::build}}
+\subsubsection{\texorpdfstring{R\+E\+S\+O\+U\+R\+C\+ES}{RESOURCES}}
+{\footnotesize\ttfamily list parlai.\+tasks.\+convai2\+\_\+wild\+\_\+evaluation.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+1 =  [
+2     DownloadableFile(
+3         \textcolor{stringliteral}{'http://lnsigo.mipt.ru/export/datasets/convai/convai2\_wild\_evaluation\_0.2.tgz'},
+4         \textcolor{stringliteral}{'convai2\_wild\_evaluation\_0.2.tgz'},
+5         \textcolor{stringliteral}{'d40ff70275c8d1939a8081707edcf4e71072097d18b9998100a1099d23e29801'},
+6     )
+7 ]
+\end{DoxyCode}
+
+
+Definition at line 11 of file build.\+py.
+

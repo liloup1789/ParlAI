@@ -1,0 +1,96 @@
+\hypertarget{namespaceparlai_1_1mturk_1_1tasks_1_1model__evaluator_1_1run}{}\section{parlai.\+mturk.\+tasks.\+model\+\_\+evaluator.\+run Namespace Reference}
+\label{namespaceparlai_1_1mturk_1_1tasks_1_1model__evaluator_1_1run}\index{parlai.\+mturk.\+tasks.\+model\+\_\+evaluator.\+run@{parlai.\+mturk.\+tasks.\+model\+\_\+evaluator.\+run}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1model__evaluator_1_1run_a0884addf15be92fa845f1fd80d057184}{main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1tasks_1_1model__evaluator_1_1run_a0884addf15be92fa845f1fd80d057184}\label{namespaceparlai_1_1mturk_1_1tasks_1_1model__evaluator_1_1run_a0884addf15be92fa845f1fd80d057184}} 
+\index{parlai\+::mturk\+::tasks\+::model\+\_\+evaluator\+::run@{parlai\+::mturk\+::tasks\+::model\+\_\+evaluator\+::run}!main@{main}}
+\index{main@{main}!parlai\+::mturk\+::tasks\+::model\+\_\+evaluator\+::run@{parlai\+::mturk\+::tasks\+::model\+\_\+evaluator\+::run}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def parlai.\+mturk.\+tasks.\+model\+\_\+evaluator.\+run.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 16 of file run.\+py.
+
+
+\begin{DoxyCode}
+16 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1run_ad3ab2c71f8083c3112815c0b363d316b}{main}():
+17     argparser = ParlaiParser(\textcolor{keyword}{False}, \textcolor{keyword}{False})
+18     argparser.add\_parlai\_data\_path()
+19     argparser.add\_mturk\_args()
+20 
+21     \textcolor{comment}{# The dialog model we want to evaluate}
+22     \textcolor{keyword}{from} \hyperlink{namespaceparlai_1_1agents_1_1ir__baseline_1_1ir__baseline}{parlai.agents.ir\_baseline.ir\_baseline} \textcolor{keyword}{import} IrBaselineAgent
+23 
+24     IrBaselineAgent.add\_cmdline\_args(argparser)
+25     opt = argparser.parse\_args()
+26     opt[\textcolor{stringliteral}{'task'}] = os.path.basename(os.path.dirname(os.path.abspath(\_\_file\_\_)))
+27     opt.update(task\_config)
+28 
+29     \textcolor{comment}{# The task that we will evaluate the dialog model on}
+30     task\_opt = \{\}
+31     task\_opt[\textcolor{stringliteral}{'datatype'}] = \textcolor{stringliteral}{'test'}
+32     task\_opt[\textcolor{stringliteral}{'datapath'}] = opt[\textcolor{stringliteral}{'datapath'}]
+33     task\_opt[\textcolor{stringliteral}{'task'}] = \textcolor{stringliteral}{'#MovieDD-Reddit'}
+34 
+35     mturk\_agent\_id = \textcolor{stringliteral}{'Worker'}
+36     mturk\_manager = MTurkManager(opt=opt, mturk\_agent\_ids=[mturk\_agent\_id])
+37     mturk\_manager.setup\_server()
+38 
+39     \textcolor{keywordflow}{try}:
+40         mturk\_manager.start\_new\_run()
+41         mturk\_manager.create\_hits()
+42 
+43         \textcolor{keyword}{def }run\_onboard(worker):
+44             world = ModelEvaluatorOnboardWorld(opt=opt, mturk\_agent=worker)
+45             \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} world.episode\_done():
+46                 world.parley()
+47             world.shutdown()
+48 
+49         mturk\_manager.set\_onboard\_function(onboard\_function=run\_onboard)
+50         mturk\_manager.ready\_to\_accept\_workers()
+51 
+52         \textcolor{keyword}{def }check\_worker\_eligibility(worker):
+53             \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+54 
+55         \textcolor{keyword}{def }assign\_worker\_roles(worker):
+56             worker[0].id = mturk\_agent\_id
+57 
+58         \textcolor{keyword}{global} run\_conversation
+59 
+60         \textcolor{keyword}{def }run\_conversation(mturk\_manager, opt, workers):
+61             mturk\_agent = workers[0]
+62 
+63             model\_agent = IrBaselineAgent(opt=opt)
+64 
+65             world = ModelEvaluatorWorld(
+66                 opt=opt,
+67                 model\_agent=model\_agent,
+68                 task\_opt=task\_opt,
+69                 mturk\_agent=mturk\_agent,
+70             )
+71 
+72             \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} world.episode\_done():
+73                 world.parley()
+74             world.shutdown()
+75             world.review\_work()
+76 
+77         mturk\_manager.start\_task(
+78             eligibility\_function=check\_worker\_eligibility,
+79             assign\_role\_function=assign\_worker\_roles,
+80             task\_function=run\_conversation,
+81         )
+82     \textcolor{keywordflow}{except} BaseException:
+83         \textcolor{keywordflow}{raise}
+84     \textcolor{keywordflow}{finally}:
+85         mturk\_manager.expire\_all\_unassigned\_hits()
+86         mturk\_manager.shutdown()
+87 
+88 
+\end{DoxyCode}

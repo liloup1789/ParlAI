@@ -1,0 +1,121 @@
+\hypertarget{classlight__chats_1_1graph_1_1UnfollowFunction}{}\section{light\+\_\+chats.\+graph.\+Unfollow\+Function Class Reference}
+\label{classlight__chats_1_1graph_1_1UnfollowFunction}\index{light\+\_\+chats.\+graph.\+Unfollow\+Function@{light\+\_\+chats.\+graph.\+Unfollow\+Function}}
+
+
+Inheritance diagram for light\+\_\+chats.\+graph.\+Unfollow\+Function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{d6/d53/classlight__chats_1_1graph_1_1UnfollowFunction__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for light\+\_\+chats.\+graph.\+Unfollow\+Function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{df/d18/classlight__chats_1_1graph_1_1UnfollowFunction__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1UnfollowFunction_adaf6e40567b940e2b467208eae9507c9}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self)
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1UnfollowFunction_a09b37c0a471f8dd65216e434a98983af}{func} (self, graph, args)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classlight__chats_1_1graph_1_1UnfollowFunction_a9b7464a052add385de3d685e1627fcf5}{formats}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 2333 of file graph.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1UnfollowFunction_adaf6e40567b940e2b467208eae9507c9}\label{classlight__chats_1_1graph_1_1UnfollowFunction_adaf6e40567b940e2b467208eae9507c9}} 
+\index{light\+\_\+chats\+::graph\+::\+Unfollow\+Function@{light\+\_\+chats\+::graph\+::\+Unfollow\+Function}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!light\+\_\+chats\+::graph\+::\+Unfollow\+Function@{light\+\_\+chats\+::graph\+::\+Unfollow\+Function}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Unfollow\+Function.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2334 of file graph.\+py.
+
+
+\begin{DoxyCode}
+2334     \textcolor{keyword}{def }\_\_init\_\_(self):
+2335         super().\_\_init\_\_(
+2336             function\_name=[\textcolor{stringliteral}{'unfollow'}],
+2337             callback\_triggers=[\{\textcolor{stringliteral}{'action'}: \textcolor{stringliteral}{'stopped\_following'}, \textcolor{stringliteral}{'args'}: [0]\}],
+2338         )
+2339         self.formats = \{
+2340             \textcolor{stringliteral}{'unfollowed'}: \textcolor{stringliteral}{'\{0\} stopped following \{1\}. '},
+2341             \textcolor{stringliteral}{'failed'}: \textcolor{stringliteral}{'\{0\} couldn\(\backslash\)'t follow that. '},
+2342         \}
+2343 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1UnfollowFunction_a09b37c0a471f8dd65216e434a98983af}\label{classlight__chats_1_1graph_1_1UnfollowFunction_a09b37c0a471f8dd65216e434a98983af}} 
+\index{light\+\_\+chats\+::graph\+::\+Unfollow\+Function@{light\+\_\+chats\+::graph\+::\+Unfollow\+Function}!func@{func}}
+\index{func@{func}!light\+\_\+chats\+::graph\+::\+Unfollow\+Function@{light\+\_\+chats\+::graph\+::\+Unfollow\+Function}}
+\subsubsection{\texorpdfstring{func()}{func()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Unfollow\+Function.\+func (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{graph,  }\item[{}]{args }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2344 of file graph.\+py.
+
+
+\begin{DoxyCode}
+2344     \textcolor{keyword}{def }func(self, graph, args):
+2345         agent\_id = args[0]
+2346         room\_id = graph.location(args[0])
+2347         following = graph.get\_following(agent\_id)
+2348         \textcolor{keywordflow}{if} following \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+2349             graph.send\_msg(agent\_id, \textcolor{stringliteral}{'You are not following anyone.\(\backslash\)n'})
+2350         \textcolor{keywordflow}{else}:
+2351             graph.set\_follow(agent\_id, \textcolor{keywordtype}{None})
+2352             unfollow\_action = \{
+2353                 \textcolor{stringliteral}{'caller'}: self.get\_name(),
+2354                 \textcolor{stringliteral}{'name'}: \textcolor{stringliteral}{'unfollowed'},
+2355                 \textcolor{stringliteral}{'room\_id'}: room\_id,
+2356                 \textcolor{stringliteral}{'actors'}: [args[0], following],
+2357             \}
+2358             graph.broadcast\_to\_room(unfollow\_action)
+2359         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+2360 
+2361 
+2362 \textcolor{comment}{# Constraints}
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1UnfollowFunction_a9b7464a052add385de3d685e1627fcf5}\label{classlight__chats_1_1graph_1_1UnfollowFunction_a9b7464a052add385de3d685e1627fcf5}} 
+\index{light\+\_\+chats\+::graph\+::\+Unfollow\+Function@{light\+\_\+chats\+::graph\+::\+Unfollow\+Function}!formats@{formats}}
+\index{formats@{formats}!light\+\_\+chats\+::graph\+::\+Unfollow\+Function@{light\+\_\+chats\+::graph\+::\+Unfollow\+Function}}
+\subsubsection{\texorpdfstring{formats}{formats}}
+{\footnotesize\ttfamily light\+\_\+chats.\+graph.\+Unfollow\+Function.\+formats}
+
+
+
+Definition at line 2339 of file graph.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/mturk/tasks/light/light\+\_\+chats/\hyperlink{parlai_2mturk_2tasks_2light_2light__chats_2graph_8py}{graph.\+py}\end{DoxyCompactItemize}

@@ -1,0 +1,120 @@
+\hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__sliced}{}\section{projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+rated\+\_\+to\+\_\+sliced Namespace Reference}
+\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__sliced}\index{projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+rated\+\_\+to\+\_\+sliced@{projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+rated\+\_\+to\+\_\+sliced}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__sliced_ae468e6330f1daa2e0ec2408e5049e097}{setup\+\_\+args} ()
+\item 
+def \hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__sliced_a818b0c6970270ed0a9a00c99e20faefd}{main} (\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__sliced_ac1803c7956e2dc63a40562478498245c}{config})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__sliced_a6b7cdfbcbf5853e5a70f43ce5c6de964}{I\+N\+I\+T\+I\+A\+L\+\_\+\+P\+R\+O\+M\+PT}
+\item 
+\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__sliced_ac1803c7956e2dc63a40562478498245c}{config}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__sliced_a818b0c6970270ed0a9a00c99e20faefd}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__sliced_a818b0c6970270ed0a9a00c99e20faefd}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+sliced@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+sliced}!main@{main}}
+\index{main@{main}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+sliced@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+sliced}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+rated\+\_\+to\+\_\+sliced.\+main (\begin{DoxyParamCaption}\item[{}]{config }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Creates input files for y_exp mturk task from conversation/rating mturk task.
+
+input: file of logs (in ParlaiDialog format) from Mturk task 1 with turn-by-turn
+    quality ratings 1-5
+output: file of logs (in ParlaiDialog format) sliced up to begin at the start of
+    an episode or following a new topic request, and ending with a y_exp
+\end{DoxyVerb}
+ 
+
+Definition at line 27 of file convert\+\_\+rated\+\_\+to\+\_\+sliced.\+py.
+
+
+\begin{DoxyCode}
+27 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__sliced_a818b0c6970270ed0a9a00c99e20faefd}{main}(config):
+28     \textcolor{stringliteral}{"""}
+29 \textcolor{stringliteral}{    Creates input files for y\_exp mturk task from conversation/rating mturk task.}
+30 \textcolor{stringliteral}{}
+31 \textcolor{stringliteral}{    input: file of logs (in ParlaiDialog format) from Mturk task 1 with turn-by-turn}
+32 \textcolor{stringliteral}{        quality ratings 1-5}
+33 \textcolor{stringliteral}{    output: file of logs (in ParlaiDialog format) sliced up to begin at the start of}
+34 \textcolor{stringliteral}{        an episode or following a new topic request, and ending with a y\_exp}
+35 \textcolor{stringliteral}{    """}
+36     new\_episodes = []
+37     old\_episodes = [e \textcolor{keywordflow}{for} e \textcolor{keywordflow}{in} \hyperlink{namespaceprojects_1_1self__feeding_1_1utils_a7bfa2fe610a2d0da7968b1a2662e0c23}{extract\_parlai\_episodes}(config[\textcolor{stringliteral}{'infile'}])]
+38     \textcolor{keywordflow}{for} episode \textcolor{keywordflow}{in} old\_episodes:
+39         \textcolor{keywordflow}{for} parley \textcolor{keywordflow}{in} episode:
+40             \textcolor{keywordflow}{if} any(
+41                 parley.context.startswith(x)
+42                 \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} (NEW\_TOPIC\_REQUEST.lower(), INITIAL\_PROMPT.lower())
+43             ):
+44                 new\_episode = []
+45             new\_episode.append(parley)
+46             \textcolor{keywordflow}{if} parley.context.startswith(SUGGESTION\_REQUEST.lower()):
+47                 new\_episodes.append(new\_episode)
+48 
+49     \textcolor{comment}{# Create parlai dialog file for easy viewing}
+50     with open(config[\textcolor{stringliteral}{'outfile'}], \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} f:
+51         \textcolor{keywordflow}{for} episode \textcolor{keywordflow}{in} new\_episodes:
+52             num\_parleys = len(episode)
+53             \textcolor{keywordflow}{for} i, parley \textcolor{keywordflow}{in} enumerate(episode):
+54                 \textcolor{keywordflow}{if} i == num\_parleys - 1:
+55                     parley.episode\_done = \textcolor{keyword}{True}
+56                 f.write(f\textcolor{stringliteral}{"\{i\}\(\backslash\)t\{parley.to\_parlai()\}\(\backslash\)n"})
+57     print(
+58         f\textcolor{stringliteral}{"Extracted \{len(new\_episodes)\} episodes out of \{len(old\_episodes)\} "}
+59         f\textcolor{stringliteral}{"original episodes and wrote them to \{config['outfile']\}."}
+60     )
+61 
+62 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__sliced_ae468e6330f1daa2e0ec2408e5049e097}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__sliced_ae468e6330f1daa2e0ec2408e5049e097}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+sliced@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+sliced}!setup\+\_\+args@{setup\+\_\+args}}
+\index{setup\+\_\+args@{setup\+\_\+args}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+sliced@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+sliced}}
+\subsubsection{\texorpdfstring{setup\+\_\+args()}{setup\_args()}}
+{\footnotesize\ttfamily def projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+rated\+\_\+to\+\_\+sliced.\+setup\+\_\+args (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 18 of file convert\+\_\+rated\+\_\+to\+\_\+sliced.\+py.
+
+
+\begin{DoxyCode}
+18 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__sliced_ae468e6330f1daa2e0ec2408e5049e097}{setup\_args}():
+19     argparser = ArgumentParser()
+20     argparser.add\_argument(\textcolor{stringliteral}{'-if'}, \textcolor{stringliteral}{'--infile'}, type=str)
+21     argparser.add\_argument(\textcolor{stringliteral}{'-of'}, \textcolor{stringliteral}{'--outfile'}, type=str)
+22     config = vars(argparser.parse\_args())
+23 
+24     \textcolor{keywordflow}{return} config
+25 
+26 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__sliced_ac1803c7956e2dc63a40562478498245c}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__sliced_ac1803c7956e2dc63a40562478498245c}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+sliced@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+sliced}!config@{config}}
+\index{config@{config}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+sliced@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+sliced}}
+\subsubsection{\texorpdfstring{config}{config}}
+{\footnotesize\ttfamily projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+rated\+\_\+to\+\_\+sliced.\+config}
+
+
+
+Definition at line 64 of file convert\+\_\+rated\+\_\+to\+\_\+sliced.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__sliced_a6b7cdfbcbf5853e5a70f43ce5c6de964}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__sliced_a6b7cdfbcbf5853e5a70f43ce5c6de964}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+sliced@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+sliced}!I\+N\+I\+T\+I\+A\+L\+\_\+\+P\+R\+O\+M\+PT@{I\+N\+I\+T\+I\+A\+L\+\_\+\+P\+R\+O\+M\+PT}}
+\index{I\+N\+I\+T\+I\+A\+L\+\_\+\+P\+R\+O\+M\+PT@{I\+N\+I\+T\+I\+A\+L\+\_\+\+P\+R\+O\+M\+PT}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+sliced@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+sliced}}
+\subsubsection{\texorpdfstring{I\+N\+I\+T\+I\+A\+L\+\_\+\+P\+R\+O\+M\+PT}{INITIAL\_PROMPT}}
+{\footnotesize\ttfamily projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+rated\+\_\+to\+\_\+sliced.\+I\+N\+I\+T\+I\+A\+L\+\_\+\+P\+R\+O\+M\+PT}
+
+
+
+Definition at line 15 of file convert\+\_\+rated\+\_\+to\+\_\+sliced.\+py.
+

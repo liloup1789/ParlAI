@@ -1,0 +1,231 @@
+\hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics}{}\section{projects.\+self\+\_\+feeding.\+scripts.\+split\+\_\+convai2\+\_\+topics Namespace Reference}
+\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics}\index{projects.\+self\+\_\+feeding.\+scripts.\+split\+\_\+convai2\+\_\+topics@{projects.\+self\+\_\+feeding.\+scripts.\+split\+\_\+convai2\+\_\+topics}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_a182c9e1c2ca6bd71added31ed7088eee}{setup\+\_\+args} ()
+\item 
+def \hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_a273e2c722d60a60b074557be2a4a0714}{includes\+\_\+topic} (episode, topic)
+\item 
+def \hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_ab05b7abb9e9f7c1778462fc1ac5345f1}{main} (\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_a3a3184ed43bb1ecfc3330803dec67fef}{opt})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_afcf2d3a3ba026d41f6d5cf107671635c}{F\+A\+M\+I\+LY}
+\item 
+\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_a54016deb63e36991b25b4c5ede156cce}{variants}
+\item 
+\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_af4e3932eeea9a50be4828afa5293463c}{S\+P\+O\+R\+TS}
+\item 
+\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_a19929460ef03f47e429d42c10b775246}{T\+O\+P\+IC}
+\item 
+\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_afd6b96122ea40ea088282be7a637282b}{T\+O\+P\+I\+C\+\_\+\+N\+A\+ME}
+\item 
+\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_a3a3184ed43bb1ecfc3330803dec67fef}{opt}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_a273e2c722d60a60b074557be2a4a0714}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_a273e2c722d60a60b074557be2a4a0714}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics@{projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics}!includes\+\_\+topic@{includes\+\_\+topic}}
+\index{includes\+\_\+topic@{includes\+\_\+topic}!projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics@{projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics}}
+\subsubsection{\texorpdfstring{includes\+\_\+topic()}{includes\_topic()}}
+{\footnotesize\ttfamily def projects.\+self\+\_\+feeding.\+scripts.\+split\+\_\+convai2\+\_\+topics.\+includes\+\_\+topic (\begin{DoxyParamCaption}\item[{}]{episode,  }\item[{}]{topic }\end{DoxyParamCaption})}
+
+
+
+Definition at line 103 of file split\+\_\+convai2\+\_\+topics.\+py.
+
+
+\begin{DoxyCode}
+103 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_a273e2c722d60a60b074557be2a4a0714}{includes\_topic}(episode, topic):
+104     episode\_words = (
+105         \textcolor{stringliteral}{' '}.join([parley.context \textcolor{keywordflow}{for} parley \textcolor{keywordflow}{in} episode]).split()
+106         + \textcolor{stringliteral}{' '}.join([parley.response \textcolor{keywordflow}{for} parley \textcolor{keywordflow}{in} episode]).split()
+107     )
+108     \textcolor{keywordflow}{if} TOPIC\_NAME == \textcolor{stringliteral}{'family'}:
+109         \textcolor{keywordflow}{return} any(w \textcolor{keywordflow}{in} episode\_words \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} topic)
+110     \textcolor{keywordflow}{elif} TOPIC\_NAME == \textcolor{stringliteral}{'sports'}:
+111         episode\_string = \textcolor{stringliteral}{' '}.join(episode\_words)
+112         \textcolor{keywordflow}{return} any(w \textcolor{keywordflow}{in} episode\_string \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} topic)
+113 
+114 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_ab05b7abb9e9f7c1778462fc1ac5345f1}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_ab05b7abb9e9f7c1778462fc1ac5345f1}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics@{projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics}!main@{main}}
+\index{main@{main}!projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics@{projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def projects.\+self\+\_\+feeding.\+scripts.\+split\+\_\+convai2\+\_\+topics.\+main (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Converts a Fbdialog file of episodes into two self-feeding files (split by topic)
+
+All conversations including a word in the provided topic's bag of words will be
+separated from conversations without those words.
+\end{DoxyVerb}
+ 
+
+Definition at line 115 of file split\+\_\+convai2\+\_\+topics.\+py.
+
+
+\begin{DoxyCode}
+115 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_ab05b7abb9e9f7c1778462fc1ac5345f1}{main}(opt):
+116     \textcolor{stringliteral}{"""}
+117 \textcolor{stringliteral}{    Converts a Fbdialog file of episodes into two self-feeding files (split by topic)}
+118 \textcolor{stringliteral}{}
+119 \textcolor{stringliteral}{    All conversations including a word in the provided topic's bag of words will be}
+120 \textcolor{stringliteral}{    separated from conversations without those words.}
+121 \textcolor{stringliteral}{    """}
+122     on\_topic\_exs = []
+123     off\_topic\_exs = []
+124     num\_episodes = 0
+125     \textcolor{keywordflow}{for} episode \textcolor{keywordflow}{in} \hyperlink{namespaceprojects_1_1self__feeding_1_1utils_a813014fa481008e57bf444f8a3f88d3e}{extract\_fb\_episodes}(opt[\textcolor{stringliteral}{'infile'}]):
+126         num\_episodes += 1
+127         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'min\_unit'}] == \textcolor{stringliteral}{'episode'}:
+128             \textcolor{keywordflow}{if} \hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_a273e2c722d60a60b074557be2a4a0714}{includes\_topic}(episode, TOPIC):
+129                 on\_topic\_exs.extend(\hyperlink{namespaceprojects_1_1self__feeding_1_1utils_a4523d4a7c4da698dda134e32acebe320}{episode\_to\_examples}(episode, opt[\textcolor{stringliteral}{'history\_size'}]))
+130             \textcolor{keywordflow}{else}:
+131                 off\_topic\_exs.extend(\hyperlink{namespaceprojects_1_1self__feeding_1_1utils_a4523d4a7c4da698dda134e32acebe320}{episode\_to\_examples}(episode, opt[\textcolor{stringliteral}{'history\_size'}]))
+132         \textcolor{keywordflow}{elif} opt[\textcolor{stringliteral}{'min\_unit'}] == \textcolor{stringliteral}{'example'}:
+133             \textcolor{keywordflow}{for} example \textcolor{keywordflow}{in} \hyperlink{namespaceprojects_1_1self__feeding_1_1utils_a4523d4a7c4da698dda134e32acebe320}{episode\_to\_examples}(episode, opt[\textcolor{stringliteral}{'history\_size'}]):
+134                 \textcolor{keywordflow}{if} \hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_a273e2c722d60a60b074557be2a4a0714}{includes\_topic}([example], TOPIC):
+135                     on\_topic\_exs.append(example)
+136                 \textcolor{keywordflow}{else}:
+137                     off\_topic\_exs.append(example)
+138 
+139     \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'shuffle'}]:
+140         random.shuffle(on\_topic\_exs)
+141         random.shuffle(off\_topic\_exs)
+142 
+143     total = len(on\_topic\_exs) + len(off\_topic\_exs)
+144     on\_pct = len(on\_topic\_exs) / total
+145     print(
+146         f\textcolor{stringliteral}{"Separated \{total\} examples (from \{num\_episodes\} episodes) into "}
+147         f\textcolor{stringliteral}{"\{len(off\_topic\_exs)\} off-topic and \{len(on\_topic\_exs)\} "}
+148         f\textcolor{stringliteral}{"(\{on\_pct * 100:.1f\}%) on-topic"}
+149     )
+150 
+151     outfile\_base, outfile\_ext = os.path.splitext(opt[\textcolor{stringliteral}{'outfile'}])
+152     unit\_prefix = opt[\textcolor{stringliteral}{'min\_unit'}][:3]
+153     topic\_prefix = TOPIC\_NAME[:3]
+154     on\_topic\_filename = f\textcolor{stringliteral}{"\{outfile\_base\}\_\{unit\_prefix\}\_\{topic\_prefix\}\{outfile\_ext\}"}
+155     with open(on\_topic\_filename, \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} outfile:
+156         \textcolor{keywordflow}{for} ex \textcolor{keywordflow}{in} on\_topic\_exs:
+157             outfile.write(json.dumps(ex.to\_dict()) + \textcolor{stringliteral}{'\(\backslash\)n'})
+158     off\_topic\_filename = f\textcolor{stringliteral}{"\{outfile\_base\}\_\{unit\_prefix\}\_no\{topic\_prefix\}\{outfile\_ext\}"}
+159     with open(off\_topic\_filename, \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} outfile:
+160         \textcolor{keywordflow}{for} ex \textcolor{keywordflow}{in} off\_topic\_exs:
+161             outfile.write(json.dumps(ex.to\_dict()) + \textcolor{stringliteral}{'\(\backslash\)n'})
+162 
+163 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_a182c9e1c2ca6bd71added31ed7088eee}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_a182c9e1c2ca6bd71added31ed7088eee}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics@{projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics}!setup\+\_\+args@{setup\+\_\+args}}
+\index{setup\+\_\+args@{setup\+\_\+args}!projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics@{projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics}}
+\subsubsection{\texorpdfstring{setup\+\_\+args()}{setup\_args()}}
+{\footnotesize\ttfamily def projects.\+self\+\_\+feeding.\+scripts.\+split\+\_\+convai2\+\_\+topics.\+setup\+\_\+args (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 69 of file split\+\_\+convai2\+\_\+topics.\+py.
+
+
+\begin{DoxyCode}
+69 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_a182c9e1c2ca6bd71added31ed7088eee}{setup\_args}():
+70     parser = ArgumentParser()
+71     parser.add\_argument(
+72         \textcolor{stringliteral}{'-if'}, \textcolor{stringliteral}{'--infile'}, type=str, default=\textcolor{stringliteral}{'data/ConvAI2/valid\_self\_original.txt'}
+73     )
+74     parser.add\_argument(
+75         \textcolor{stringliteral}{'-of'}, \textcolor{stringliteral}{'--outfile'}, type=str, default=\textcolor{stringliteral}{'data/convai2meta/dialog/valid.txt'}
+76     )
+77     parser.add\_argument(
+78         \textcolor{stringliteral}{'--min-unit'},
+79         type=str,
+80         default=\textcolor{stringliteral}{'example'},
+81         choices=[\textcolor{stringliteral}{'episode'}, \textcolor{stringliteral}{'example'}],
+82         help=\textcolor{stringliteral}{"The minimal unit that must stay grouped together"},
+83     )
+84     parser.add\_argument(
+85         \textcolor{stringliteral}{'-shuf'},
+86         \textcolor{stringliteral}{'--shuffle'},
+87         type=int,
+88         default=\textcolor{keyword}{True},
+89         help=\textcolor{stringliteral}{"If True, shuffle the examples before writing them"},
+90     )
+91     parser.add\_argument(
+92         \textcolor{stringliteral}{'-histsz'},
+93         \textcolor{stringliteral}{'--history-size'},
+94         type=int,
+95         default=-1,
+96         help=\textcolor{stringliteral}{"The number of turns to concatenate and include in the "}
+97         \textcolor{stringliteral}{"prompt. Default: include all turns and filter in the teacher."},
+98     )
+99     opt = vars(parser.parse\_args())
+100     \textcolor{keywordflow}{return} opt
+101 
+102 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_afcf2d3a3ba026d41f6d5cf107671635c}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_afcf2d3a3ba026d41f6d5cf107671635c}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics@{projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics}!F\+A\+M\+I\+LY@{F\+A\+M\+I\+LY}}
+\index{F\+A\+M\+I\+LY@{F\+A\+M\+I\+LY}!projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics@{projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics}}
+\subsubsection{\texorpdfstring{F\+A\+M\+I\+LY}{FAMILY}}
+{\footnotesize\ttfamily projects.\+self\+\_\+feeding.\+scripts.\+split\+\_\+convai2\+\_\+topics.\+F\+A\+M\+I\+LY}
+
+
+
+Definition at line 13 of file split\+\_\+convai2\+\_\+topics.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_a3a3184ed43bb1ecfc3330803dec67fef}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_a3a3184ed43bb1ecfc3330803dec67fef}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics@{projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics}!opt@{opt}}
+\index{opt@{opt}!projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics@{projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics}}
+\subsubsection{\texorpdfstring{opt}{opt}}
+{\footnotesize\ttfamily projects.\+self\+\_\+feeding.\+scripts.\+split\+\_\+convai2\+\_\+topics.\+opt}
+
+
+
+Definition at line 169 of file split\+\_\+convai2\+\_\+topics.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_af4e3932eeea9a50be4828afa5293463c}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_af4e3932eeea9a50be4828afa5293463c}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics@{projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics}!S\+P\+O\+R\+TS@{S\+P\+O\+R\+TS}}
+\index{S\+P\+O\+R\+TS@{S\+P\+O\+R\+TS}!projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics@{projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics}}
+\subsubsection{\texorpdfstring{S\+P\+O\+R\+TS}{SPORTS}}
+{\footnotesize\ttfamily projects.\+self\+\_\+feeding.\+scripts.\+split\+\_\+convai2\+\_\+topics.\+S\+P\+O\+R\+TS}
+
+
+
+Definition at line 59 of file split\+\_\+convai2\+\_\+topics.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_a19929460ef03f47e429d42c10b775246}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_a19929460ef03f47e429d42c10b775246}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics@{projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics}!T\+O\+P\+IC@{T\+O\+P\+IC}}
+\index{T\+O\+P\+IC@{T\+O\+P\+IC}!projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics@{projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics}}
+\subsubsection{\texorpdfstring{T\+O\+P\+IC}{TOPIC}}
+{\footnotesize\ttfamily projects.\+self\+\_\+feeding.\+scripts.\+split\+\_\+convai2\+\_\+topics.\+T\+O\+P\+IC}
+
+
+
+Definition at line 65 of file split\+\_\+convai2\+\_\+topics.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_afd6b96122ea40ea088282be7a637282b}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_afd6b96122ea40ea088282be7a637282b}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics@{projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics}!T\+O\+P\+I\+C\+\_\+\+N\+A\+ME@{T\+O\+P\+I\+C\+\_\+\+N\+A\+ME}}
+\index{T\+O\+P\+I\+C\+\_\+\+N\+A\+ME@{T\+O\+P\+I\+C\+\_\+\+N\+A\+ME}!projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics@{projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics}}
+\subsubsection{\texorpdfstring{T\+O\+P\+I\+C\+\_\+\+N\+A\+ME}{TOPIC\_NAME}}
+{\footnotesize\ttfamily projects.\+self\+\_\+feeding.\+scripts.\+split\+\_\+convai2\+\_\+topics.\+T\+O\+P\+I\+C\+\_\+\+N\+A\+ME}
+
+
+
+Definition at line 66 of file split\+\_\+convai2\+\_\+topics.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_a54016deb63e36991b25b4c5ede156cce}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1split__convai2__topics_a54016deb63e36991b25b4c5ede156cce}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics@{projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics}!variants@{variants}}
+\index{variants@{variants}!projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics@{projects\+::self\+\_\+feeding\+::scripts\+::split\+\_\+convai2\+\_\+topics}}
+\subsubsection{\texorpdfstring{variants}{variants}}
+{\footnotesize\ttfamily projects.\+self\+\_\+feeding.\+scripts.\+split\+\_\+convai2\+\_\+topics.\+variants}
+
+
+
+Definition at line 53 of file split\+\_\+convai2\+\_\+topics.\+py.
+

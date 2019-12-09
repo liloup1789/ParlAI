@@ -1,0 +1,143 @@
+\hypertarget{classparlai_1_1agents_1_1transformer_1_1crossencoder_1_1CrossEncoderModule}{}\section{parlai.\+agents.\+transformer.\+crossencoder.\+Cross\+Encoder\+Module Class Reference}
+\label{classparlai_1_1agents_1_1transformer_1_1crossencoder_1_1CrossEncoderModule}\index{parlai.\+agents.\+transformer.\+crossencoder.\+Cross\+Encoder\+Module@{parlai.\+agents.\+transformer.\+crossencoder.\+Cross\+Encoder\+Module}}
+
+
+Inheritance diagram for parlai.\+agents.\+transformer.\+crossencoder.\+Cross\+Encoder\+Module\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=269pt]{df/d04/classparlai_1_1agents_1_1transformer_1_1crossencoder_1_1CrossEncoderModule__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+agents.\+transformer.\+crossencoder.\+Cross\+Encoder\+Module\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=269pt]{db/da5/classparlai_1_1agents_1_1transformer_1_1crossencoder_1_1CrossEncoderModule__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1agents_1_1transformer_1_1crossencoder_1_1CrossEncoderModule_ad002e8a3432930432430e2b4c435cc3e}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, opt, dict, null\+\_\+idx)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1transformer_1_1crossencoder_1_1CrossEncoderModule_a86a9cf18bddebb5a1ee9c4096cfe7c20}{forward} (self, tokens, segments)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1crossencoder_1_1CrossEncoderModule_a7b3493099f48331b36c465cc393b5145}{encoder}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1crossencoder_1_1CrossEncoderModule_a50568203fcea07cca868109b95dc8dfc}{linear\+\_\+layer}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}A simple wrapper around the transformer encoder which adds a linear layer.
+\end{DoxyVerb}
+ 
+
+Definition at line 86 of file crossencoder.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1crossencoder_1_1CrossEncoderModule_ad002e8a3432930432430e2b4c435cc3e}\label{classparlai_1_1agents_1_1transformer_1_1crossencoder_1_1CrossEncoderModule_ad002e8a3432930432430e2b4c435cc3e}} 
+\index{parlai\+::agents\+::transformer\+::crossencoder\+::\+Cross\+Encoder\+Module@{parlai\+::agents\+::transformer\+::crossencoder\+::\+Cross\+Encoder\+Module}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::agents\+::transformer\+::crossencoder\+::\+Cross\+Encoder\+Module@{parlai\+::agents\+::transformer\+::crossencoder\+::\+Cross\+Encoder\+Module}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+crossencoder.\+Cross\+Encoder\+Module.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{dict,  }\item[{}]{null\+\_\+idx }\end{DoxyParamCaption})}
+
+
+
+Definition at line 91 of file crossencoder.\+py.
+
+
+\begin{DoxyCode}
+91     \textcolor{keyword}{def }\_\_init\_\_(self, opt, dict, null\_idx):
+92         super(CrossEncoderModule, self).\_\_init\_\_()
+93         n\_positions = \hyperlink{namespaceparlai_1_1agents_1_1transformer_1_1modules_ab67607512c597ddd54f2b60a1a1eaf4c}{get\_n\_positions\_from\_options}(opt)
+94         embeddings = torch.nn.Embedding(
+95             len(dict), opt[\textcolor{stringliteral}{'embedding\_size'}], padding\_idx=null\_idx
+96         )
+97         torch.nn.init.normal\_(embeddings.weight, 0, opt[\textcolor{stringliteral}{'embedding\_size'}] ** -0.5)
+98         self.encoder = TransformerEncoder(
+99             n\_heads=opt[\textcolor{stringliteral}{'n\_heads'}],
+100             n\_layers=opt[\textcolor{stringliteral}{'n\_layers'}],
+101             embedding\_size=opt[\textcolor{stringliteral}{'embedding\_size'}],
+102             ffn\_size=opt[\textcolor{stringliteral}{'ffn\_size'}],
+103             vocabulary\_size=len(dict),
+104             embedding=embeddings,
+105             dropout=opt[\textcolor{stringliteral}{'dropout'}],
+106             attention\_dropout=opt[\textcolor{stringliteral}{'attention\_dropout'}],
+107             relu\_dropout=opt[\textcolor{stringliteral}{'relu\_dropout'}],
+108             padding\_idx=null\_idx,
+109             learn\_positional\_embeddings=opt[\textcolor{stringliteral}{'learn\_positional\_embeddings'}],
+110             embeddings\_scale=opt[\textcolor{stringliteral}{'embeddings\_scale'}],
+111             reduction\_type=opt.get(\textcolor{stringliteral}{'reduction\_type'}, \textcolor{stringliteral}{'first'}),
+112             n\_positions=n\_positions,
+113             n\_segments=2,
+114             activation=opt[\textcolor{stringliteral}{'activation'}],
+115             variant=opt[\textcolor{stringliteral}{'variant'}],
+116             output\_scaling=opt[\textcolor{stringliteral}{'output\_scaling'}],
+117         )
+118         self.linear\_layer = torch.nn.Linear(opt[\textcolor{stringliteral}{'embedding\_size'}], 1)
+119 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1crossencoder_1_1CrossEncoderModule_a86a9cf18bddebb5a1ee9c4096cfe7c20}\label{classparlai_1_1agents_1_1transformer_1_1crossencoder_1_1CrossEncoderModule_a86a9cf18bddebb5a1ee9c4096cfe7c20}} 
+\index{parlai\+::agents\+::transformer\+::crossencoder\+::\+Cross\+Encoder\+Module@{parlai\+::agents\+::transformer\+::crossencoder\+::\+Cross\+Encoder\+Module}!forward@{forward}}
+\index{forward@{forward}!parlai\+::agents\+::transformer\+::crossencoder\+::\+Cross\+Encoder\+Module@{parlai\+::agents\+::transformer\+::crossencoder\+::\+Cross\+Encoder\+Module}}
+\subsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+crossencoder.\+Cross\+Encoder\+Module.\+forward (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{tokens,  }\item[{}]{segments }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Scores each concatenation text + candidate.
+\end{DoxyVerb}
+ 
+
+Definition at line 120 of file crossencoder.\+py.
+
+
+\begin{DoxyCode}
+120     \textcolor{keyword}{def }forward(self, tokens, segments):
+121         \textcolor{stringliteral}{"""}
+122 \textcolor{stringliteral}{        Scores each concatenation text + candidate.}
+123 \textcolor{stringliteral}{        """}
+124         encoded = self.encoder(tokens, \textcolor{keywordtype}{None}, segments)
+125         res = self.linear\_layer(encoded)
+126         \textcolor{keywordflow}{return} res
+127 \end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1crossencoder_1_1CrossEncoderModule_a7b3493099f48331b36c465cc393b5145}\label{classparlai_1_1agents_1_1transformer_1_1crossencoder_1_1CrossEncoderModule_a7b3493099f48331b36c465cc393b5145}} 
+\index{parlai\+::agents\+::transformer\+::crossencoder\+::\+Cross\+Encoder\+Module@{parlai\+::agents\+::transformer\+::crossencoder\+::\+Cross\+Encoder\+Module}!encoder@{encoder}}
+\index{encoder@{encoder}!parlai\+::agents\+::transformer\+::crossencoder\+::\+Cross\+Encoder\+Module@{parlai\+::agents\+::transformer\+::crossencoder\+::\+Cross\+Encoder\+Module}}
+\subsubsection{\texorpdfstring{encoder}{encoder}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+crossencoder.\+Cross\+Encoder\+Module.\+encoder}
+
+
+
+Definition at line 98 of file crossencoder.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1crossencoder_1_1CrossEncoderModule_a50568203fcea07cca868109b95dc8dfc}\label{classparlai_1_1agents_1_1transformer_1_1crossencoder_1_1CrossEncoderModule_a50568203fcea07cca868109b95dc8dfc}} 
+\index{parlai\+::agents\+::transformer\+::crossencoder\+::\+Cross\+Encoder\+Module@{parlai\+::agents\+::transformer\+::crossencoder\+::\+Cross\+Encoder\+Module}!linear\+\_\+layer@{linear\+\_\+layer}}
+\index{linear\+\_\+layer@{linear\+\_\+layer}!parlai\+::agents\+::transformer\+::crossencoder\+::\+Cross\+Encoder\+Module@{parlai\+::agents\+::transformer\+::crossencoder\+::\+Cross\+Encoder\+Module}}
+\subsubsection{\texorpdfstring{linear\+\_\+layer}{linear\_layer}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+crossencoder.\+Cross\+Encoder\+Module.\+linear\+\_\+layer}
+
+
+
+Definition at line 118 of file crossencoder.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/agents/transformer/\hyperlink{crossencoder_8py}{crossencoder.\+py}\end{DoxyCompactItemize}

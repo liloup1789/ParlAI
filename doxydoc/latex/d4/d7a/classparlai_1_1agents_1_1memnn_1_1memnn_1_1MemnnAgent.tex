@@ -1,0 +1,389 @@
+\hypertarget{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent}{}\section{parlai.\+agents.\+memnn.\+memnn.\+Memnn\+Agent Class Reference}
+\label{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent}\index{parlai.\+agents.\+memnn.\+memnn.\+Memnn\+Agent@{parlai.\+agents.\+memnn.\+memnn.\+Memnn\+Agent}}
+
+
+Inheritance diagram for parlai.\+agents.\+memnn.\+memnn.\+Memnn\+Agent\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=263pt]{d9/d10/classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+agents.\+memnn.\+memnn.\+Memnn\+Agent\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{dc/daf/classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_a256f911504285d19b006def388d0772f}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1core_1_1torch__agent_1_1TorchAgent_a785bb920cf8c8afc3e9bf6a8b77e335a}{opt}, shared=None)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_af314871636896b61139ef761765a1872}{build\+\_\+dictionary} (self)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_aa5b5782548443a008c0502ec9ddedee2}{build\+\_\+model} (self)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_ab0c47ca129aeec437446202c941e0a56}{encode\+\_\+candidates} (self, padded\+\_\+cands)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_a10b5418eda4da7bc85913e24e5b5a029}{score\+\_\+candidates} (self, batch, cand\+\_\+vecs, cand\+\_\+encs=None)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_a4c2d3c0bb7d0b78b1c6aa91eca8dd24e}{vectorize} (self, args, kwargs)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_a463b88b1d7fc9a7adea9802762c5968c}{batchify} (self, obs\+\_\+batch, sort=False)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_a25443d48c341d3f88a648c8273dfbf66}{add\+\_\+cmdline\+\_\+args} (argparser)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_ae6e06364ccf919d70064d5966e5c1cf3}{model\+\_\+version} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_ac313c81db957b095beb84fa7ef1c1286}{id}
+\item 
+\hyperlink{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_a73e14a945e200d85f239a6d1f08c8d54}{memsize}
+\item 
+\hyperlink{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_a259eb74db201a70a8f82f160860d7b88}{use\+\_\+time\+\_\+features}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_aff26270b3e93fc2c0a69a184774ec55e}{maxsize}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Memory Network agent.
+
+Tips:
+- time features are necessary when memory order matters
+- multiple hops allow multiple steps of reasoning, but also seem to make it
+    easier to learn to read the memories if you have at least two hops
+- 'adam' seems to work very poorly compared to 'sgd' for hogwild training
+\end{DoxyVerb}
+ 
+
+Definition at line 16 of file memnn.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_a256f911504285d19b006def388d0772f}\label{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_a256f911504285d19b006def388d0772f}} 
+\index{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent@{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent@{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+memnn.\+memnn.\+Memnn\+Agent.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{shared = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 80 of file memnn.\+py.
+
+
+\begin{DoxyCode}
+80     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
+81         self.id = \textcolor{stringliteral}{'MemNN'}
+82         self.memsize = opt[\textcolor{stringliteral}{'memsize'}]
+83         \textcolor{keywordflow}{if} self.memsize < 0:
+84             self.memsize = 0
+85         self.use\_time\_features = opt[\textcolor{stringliteral}{'time\_features'}]
+86         super().\_\_init\_\_(opt, shared)
+87 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_a25443d48c341d3f88a648c8273dfbf66}\label{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_a25443d48c341d3f88a648c8273dfbf66}} 
+\index{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent@{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent}!add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}}
+\index{add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}!parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent@{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent}}
+\subsubsection{\texorpdfstring{add\+\_\+cmdline\+\_\+args()}{add\_cmdline\_args()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+memnn.\+memnn.\+Memnn\+Agent.\+add\+\_\+cmdline\+\_\+args (\begin{DoxyParamCaption}\item[{}]{argparser }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 28 of file memnn.\+py.
+
+
+\begin{DoxyCode}
+28     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(argparser):
+29         arg\_group = argparser.add\_argument\_group(\textcolor{stringliteral}{'MemNN Arguments'})
+30         arg\_group.add\_argument(
+31             \textcolor{stringliteral}{'-esz'},
+32             \textcolor{stringliteral}{'--embedding-size'},
+33             type=int,
+34             default=128,
+35             help=\textcolor{stringliteral}{'size of token embeddings'},
+36         )
+37         arg\_group.add\_argument(
+38             \textcolor{stringliteral}{'-hops'}, \textcolor{stringliteral}{'--hops'}, type=int, default=3, help=\textcolor{stringliteral}{'number of memory hops'}
+39         )
+40         arg\_group.add\_argument(
+41             \textcolor{stringliteral}{'--memsize'},
+42             type=int,
+43             default=32,
+44             help=\textcolor{stringliteral}{'size of memory, set to 0 for "nomemnn" model which just '}
+45             \textcolor{stringliteral}{'embeds query and candidates and picks most similar candidate'},
+46         )
+47         arg\_group.add\_argument(
+48             \textcolor{stringliteral}{'-tf'},
+49             \textcolor{stringliteral}{'--time-features'},
+50             type=\textcolor{stringliteral}{'bool'},
+51             default=\textcolor{keyword}{True},
+52             help=\textcolor{stringliteral}{'use time features for memory embeddings'},
+53         )
+54         arg\_group.add\_argument(
+55             \textcolor{stringliteral}{'-pe'},
+56             \textcolor{stringliteral}{'--position-encoding'},
+57             type=\textcolor{stringliteral}{'bool'},
+58             default=\textcolor{keyword}{False},
+59             help=\textcolor{stringliteral}{'use position encoding instead of bag of words embedding'},
+60         )
+61         argparser.set\_defaults(
+62             split\_lines=\textcolor{keyword}{True}, add\_p1\_after\_newln=\textcolor{keyword}{True}, encode\_candidate\_vecs=\textcolor{keyword}{True}
+63         )
+64         TorchRankerAgent.add\_cmdline\_args(argparser)
+65         MemnnAgent.dictionary\_class().\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(argparser)
+66         \textcolor{keywordflow}{return} arg\_group
+67 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_a463b88b1d7fc9a7adea9802762c5968c}\label{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_a463b88b1d7fc9a7adea9802762c5968c}} 
+\index{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent@{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent}!batchify@{batchify}}
+\index{batchify@{batchify}!parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent@{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent}}
+\subsubsection{\texorpdfstring{batchify()}{batchify()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+memnn.\+memnn.\+Memnn\+Agent.\+batchify (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{obs\+\_\+batch,  }\item[{}]{sort = {\ttfamily False} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Override so that we can add memories to the Batch object.
+\end{DoxyVerb}
+ 
+
+Definition at line 154 of file memnn.\+py.
+
+
+\begin{DoxyCode}
+154     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_aca22dd97c5b6dcda2a7479c1cb22ef1e}{batchify}(self, obs\_batch, sort=False):
+155         \textcolor{stringliteral}{"""}
+156 \textcolor{stringliteral}{        Override so that we can add memories to the Batch object.}
+157 \textcolor{stringliteral}{        """}
+158         batch = super().\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_aca22dd97c5b6dcda2a7479c1cb22ef1e}{batchify}(obs\_batch, sort)
+159 
+160         \textcolor{comment}{# get valid observations}
+161         valid\_obs = [(i, ex) \textcolor{keywordflow}{for} i, ex \textcolor{keywordflow}{in} enumerate(obs\_batch) \textcolor{keywordflow}{if} self.is\_valid(ex)]
+162 
+163         \textcolor{keywordflow}{if} len(valid\_obs) == 0:
+164             \textcolor{keywordflow}{return} batch
+165 
+166         valid\_inds, exs = zip(*valid\_obs)
+167 
+168         \textcolor{comment}{# get memories for the valid observations}
+169         mems = \textcolor{keywordtype}{None}
+170         \textcolor{keywordflow}{if} any(\textcolor{stringliteral}{'memory\_vecs'} \textcolor{keywordflow}{in} ex \textcolor{keywordflow}{for} ex \textcolor{keywordflow}{in} exs):
+171             mems = [ex.get(\textcolor{stringliteral}{'memory\_vecs'}, \textcolor{keywordtype}{None}) \textcolor{keywordflow}{for} ex \textcolor{keywordflow}{in} exs]
+172         batch.memory\_vecs = mems
+173         \textcolor{keywordflow}{return} batch
+174 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_af314871636896b61139ef761765a1872}\label{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_af314871636896b61139ef761765a1872}} 
+\index{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent@{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent}!build\+\_\+dictionary@{build\+\_\+dictionary}}
+\index{build\+\_\+dictionary@{build\+\_\+dictionary}!parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent@{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent}}
+\subsubsection{\texorpdfstring{build\+\_\+dictionary()}{build\_dictionary()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+memnn.\+memnn.\+Memnn\+Agent.\+build\+\_\+dictionary (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Add the time features to the dictionary before building the model.
+\end{DoxyVerb}
+ 
+
+Definition at line 88 of file memnn.\+py.
+
+
+\begin{DoxyCode}
+88     \textcolor{keyword}{def }build\_dictionary(self):
+89         \textcolor{stringliteral}{"""}
+90 \textcolor{stringliteral}{        Add the time features to the dictionary before building the model.}
+91 \textcolor{stringliteral}{        """}
+92         d = super().build\_dictionary()
+93         \textcolor{keywordflow}{if} self.use\_time\_features:
+94             \textcolor{comment}{# add time features to dictionary before building the model}
+95             \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(self.memsize):
+96                 d[self.\_time\_feature(i)] = 100\_000\_000 + i
+97         \textcolor{keywordflow}{return} d
+98 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_aa5b5782548443a008c0502ec9ddedee2}\label{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_aa5b5782548443a008c0502ec9ddedee2}} 
+\index{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent@{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent}!build\+\_\+model@{build\+\_\+model}}
+\index{build\+\_\+model@{build\+\_\+model}!parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent@{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent}}
+\subsubsection{\texorpdfstring{build\+\_\+model()}{build\_model()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+memnn.\+memnn.\+Memnn\+Agent.\+build\+\_\+model (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Build MemNN model.
+\end{DoxyVerb}
+ 
+
+Definition at line 99 of file memnn.\+py.
+
+
+\begin{DoxyCode}
+99     \textcolor{keyword}{def }build\_model(self):
+100         \textcolor{stringliteral}{"""}
+101 \textcolor{stringliteral}{        Build MemNN model.}
+102 \textcolor{stringliteral}{        """}
+103         kwargs = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_af13e3733abb5828b0c0a75d95833441c}{opt\_to\_kwargs}(self.opt)
+104         \textcolor{keywordflow}{return} MemNN(
+105             len(self.dict),
+106             self.opt[\textcolor{stringliteral}{'embedding\_size'}],
+107             padding\_idx=self.NULL\_IDX,
+108             **kwargs,
+109         )
+110 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_ab0c47ca129aeec437446202c941e0a56}\label{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_ab0c47ca129aeec437446202c941e0a56}} 
+\index{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent@{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent}!encode\+\_\+candidates@{encode\+\_\+candidates}}
+\index{encode\+\_\+candidates@{encode\+\_\+candidates}!parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent@{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent}}
+\subsubsection{\texorpdfstring{encode\+\_\+candidates()}{encode\_candidates()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+memnn.\+memnn.\+Memnn\+Agent.\+encode\+\_\+candidates (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{padded\+\_\+cands }\end{DoxyParamCaption})}
+
+
+
+Definition at line 121 of file memnn.\+py.
+
+
+\begin{DoxyCode}
+121     \textcolor{keyword}{def }encode\_candidates(self, padded\_cands):
+122         \textcolor{keywordflow}{return} self.model.answer\_embedder(padded\_cands)
+123 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_ae6e06364ccf919d70064d5966e5c1cf3}\label{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_ae6e06364ccf919d70064d5966e5c1cf3}} 
+\index{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent@{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent}!model\+\_\+version@{model\+\_\+version}}
+\index{model\+\_\+version@{model\+\_\+version}!parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent@{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent}}
+\subsubsection{\texorpdfstring{model\+\_\+version()}{model\_version()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+memnn.\+memnn.\+Memnn\+Agent.\+model\+\_\+version (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}Return current version of this model, counting up from 0.
+
+Models may not be backwards-compatible with older versions. Version 1 split from
+version 0 on Sep 7, 2018. To use version 0, use --model legacy:memnn:0 (legacy
+agent code is located in parlai/agents/legacy_agents).
+\end{DoxyVerb}
+ 
+
+Definition at line 69 of file memnn.\+py.
+
+
+\begin{DoxyCode}
+69     \textcolor{keyword}{def }model\_version():
+70         \textcolor{stringliteral}{"""}
+71 \textcolor{stringliteral}{        Return current version of this model, counting up from 0.}
+72 \textcolor{stringliteral}{}
+73 \textcolor{stringliteral}{        Models may not be backwards-compatible with older versions. Version 1 split from}
+74 \textcolor{stringliteral}{        version 0 on Sep 7, 2018. To use version 0, use --model legacy:memnn:0 (legacy}
+75 \textcolor{stringliteral}{        agent code is located in parlai/agents/legacy\_agents).}
+76 \textcolor{stringliteral}{        """}
+77         \textcolor{comment}{# TODO: Update date that Version 2 split and move version 1 to legacy}
+78         \textcolor{keywordflow}{return} 2
+79 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_a10b5418eda4da7bc85913e24e5b5a029}\label{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_a10b5418eda4da7bc85913e24e5b5a029}} 
+\index{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent@{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent}!score\+\_\+candidates@{score\+\_\+candidates}}
+\index{score\+\_\+candidates@{score\+\_\+candidates}!parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent@{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent}}
+\subsubsection{\texorpdfstring{score\+\_\+candidates()}{score\_candidates()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+memnn.\+memnn.\+Memnn\+Agent.\+score\+\_\+candidates (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{batch,  }\item[{}]{cand\+\_\+vecs,  }\item[{}]{cand\+\_\+encs = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 124 of file memnn.\+py.
+
+
+\begin{DoxyCode}
+124     \textcolor{keyword}{def }score\_candidates(self, batch, cand\_vecs, cand\_encs=None):
+125         mems = self.\_build\_mems(batch.memory\_vecs)
+126         \textcolor{comment}{# Check for rows that have no non-null tokens}
+127         pad\_mask = \textcolor{keywordtype}{None}
+128         \textcolor{keywordflow}{if} mems \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+129             pad\_mask = (mems != self.NULL\_IDX).sum(dim=-1) == 0
+130 
+131         \textcolor{keywordflow}{if} cand\_encs \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+132             state, \_ = self.model(batch.text\_vec, mems, \textcolor{keywordtype}{None}, pad\_mask)
+133         \textcolor{keywordflow}{else}:
+134             state, cand\_encs = self.model(batch.text\_vec, mems, cand\_vecs, pad\_mask)
+135         scores = self.\_score(state, cand\_encs)
+136 
+137         \textcolor{keywordflow}{return} scores
+138 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_a4c2d3c0bb7d0b78b1c6aa91eca8dd24e}\label{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_a4c2d3c0bb7d0b78b1c6aa91eca8dd24e}} 
+\index{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent@{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent}!vectorize@{vectorize}}
+\index{vectorize@{vectorize}!parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent@{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent}}
+\subsubsection{\texorpdfstring{vectorize()}{vectorize()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+memnn.\+memnn.\+Memnn\+Agent.\+vectorize (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{args,  }\item[{}]{kwargs }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Override options in vectorize from parent.
+\end{DoxyVerb}
+ 
+
+Definition at line 146 of file memnn.\+py.
+
+
+\begin{DoxyCode}
+146     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_a5c76cc39e3014c7bcf9199d566dbdc0f}{vectorize}(self, *args, **kwargs):
+147         \textcolor{stringliteral}{"""}
+148 \textcolor{stringliteral}{        Override options in vectorize from parent.}
+149 \textcolor{stringliteral}{        """}
+150         kwargs[\textcolor{stringliteral}{'add\_start'}] = \textcolor{keyword}{False}
+151         kwargs[\textcolor{stringliteral}{'add\_end'}] = \textcolor{keyword}{False}
+152         \textcolor{keywordflow}{return} super().\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_a5c76cc39e3014c7bcf9199d566dbdc0f}{vectorize}(*args, **kwargs)
+153 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_ac313c81db957b095beb84fa7ef1c1286}\label{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_ac313c81db957b095beb84fa7ef1c1286}} 
+\index{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent@{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent}!id@{id}}
+\index{id@{id}!parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent@{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent}}
+\subsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily parlai.\+agents.\+memnn.\+memnn.\+Memnn\+Agent.\+id}
+
+
+
+Definition at line 81 of file memnn.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_aff26270b3e93fc2c0a69a184774ec55e}\label{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_aff26270b3e93fc2c0a69a184774ec55e}} 
+\index{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent@{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent}!maxsize@{maxsize}}
+\index{maxsize@{maxsize}!parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent@{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent}}
+\subsubsection{\texorpdfstring{maxsize}{maxsize}}
+{\footnotesize\ttfamily parlai.\+agents.\+memnn.\+memnn.\+Memnn\+Agent.\+maxsize\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 139 of file memnn.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_a73e14a945e200d85f239a6d1f08c8d54}\label{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_a73e14a945e200d85f239a6d1f08c8d54}} 
+\index{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent@{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent}!memsize@{memsize}}
+\index{memsize@{memsize}!parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent@{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent}}
+\subsubsection{\texorpdfstring{memsize}{memsize}}
+{\footnotesize\ttfamily parlai.\+agents.\+memnn.\+memnn.\+Memnn\+Agent.\+memsize}
+
+
+
+Definition at line 82 of file memnn.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_a259eb74db201a70a8f82f160860d7b88}\label{classparlai_1_1agents_1_1memnn_1_1memnn_1_1MemnnAgent_a259eb74db201a70a8f82f160860d7b88}} 
+\index{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent@{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent}!use\+\_\+time\+\_\+features@{use\+\_\+time\+\_\+features}}
+\index{use\+\_\+time\+\_\+features@{use\+\_\+time\+\_\+features}!parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent@{parlai\+::agents\+::memnn\+::memnn\+::\+Memnn\+Agent}}
+\subsubsection{\texorpdfstring{use\+\_\+time\+\_\+features}{use\_time\_features}}
+{\footnotesize\ttfamily parlai.\+agents.\+memnn.\+memnn.\+Memnn\+Agent.\+use\+\_\+time\+\_\+features}
+
+
+
+Definition at line 85 of file memnn.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/agents/memnn/\hyperlink{memnn_8py}{memnn.\+py}\end{DoxyCompactItemize}

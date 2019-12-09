@@ -1,0 +1,102 @@
+\hypertarget{namespacetests_1_1test__transformers}{}\section{tests.\+test\+\_\+transformers Namespace Reference}
+\label{namespacetests_1_1test__transformers}\index{tests.\+test\+\_\+transformers@{tests.\+test\+\_\+transformers}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classtests_1_1test__transformers_1_1TestLearningRateScheduler}{Test\+Learning\+Rate\+Scheduler}
+\item 
+class \hyperlink{classtests_1_1test__transformers_1_1TestTransformerGenerator}{Test\+Transformer\+Generator}
+\item 
+class \hyperlink{classtests_1_1test__transformers_1_1TestTransformerRanker}{Test\+Transformer\+Ranker}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacetests_1_1test__transformers_a8d6cf0022229f5deba37f23f30601117}{test\+\_\+learning\+\_\+rate\+\_\+resuming} (self, args)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacetests_1_1test__transformers_a8d6cf0022229f5deba37f23f30601117}\label{namespacetests_1_1test__transformers_a8d6cf0022229f5deba37f23f30601117}} 
+\index{tests\+::test\+\_\+transformers@{tests\+::test\+\_\+transformers}!test\+\_\+learning\+\_\+rate\+\_\+resuming@{test\+\_\+learning\+\_\+rate\+\_\+resuming}}
+\index{test\+\_\+learning\+\_\+rate\+\_\+resuming@{test\+\_\+learning\+\_\+rate\+\_\+resuming}!tests\+::test\+\_\+transformers@{tests\+::test\+\_\+transformers}}
+\subsubsection{\texorpdfstring{test\+\_\+learning\+\_\+rate\+\_\+resuming()}{test\_learning\_rate\_resuming()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+transformers.\+test\+\_\+learning\+\_\+rate\+\_\+resuming (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{args }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Test learning rate resumes correctly.
+\end{DoxyVerb}
+ 
+
+Definition at line 725 of file test\+\_\+transformers.\+py.
+
+
+\begin{DoxyCode}
+725 \textcolor{keyword}{def }\hyperlink{namespacetests_1_1test__transformers_a8d6cf0022229f5deba37f23f30601117}{test\_learning\_rate\_resuming}(self, args):
+726     \textcolor{stringliteral}{"""}
+727 \textcolor{stringliteral}{    Test learning rate resumes correctly.}
+728 \textcolor{stringliteral}{    """}
+729     mdl = args[\textcolor{stringliteral}{'model'}]
+730     with testing\_utils.tempdir() \textcolor{keyword}{as} tmpdir:
+731         model\_file = os.path.join(tmpdir, \textcolor{stringliteral}{'model'})
+732         stdout1, valid1, test1 = testing\_utils.train\_model(
+733             dict(model\_file=model\_file, lr\_scheduler=\textcolor{stringliteral}{'invsqrt'}, **args)
+734         )
+735         stdout2, valid2, test2 = testing\_utils.train\_model(
+736             dict(model\_file=model\_file, lr\_scheduler=\textcolor{stringliteral}{'invsqrt'}, **args)
+737         )
+738         \textcolor{comment}{# make sure the number of updates is being tracked correctly}
+739         self.assertGreater(
+740             valid2[\textcolor{stringliteral}{'total\_train\_updates'}],
+741             valid1[\textcolor{stringliteral}{'total\_train\_updates'}],
+742             \textcolor{stringliteral}{'(\{\}) Number of updates is not increasing'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(mdl),
+743         )
+744         \textcolor{comment}{# make sure the learning rate is decreasing}
+745         self.assertLess(
+746             valid2[\textcolor{stringliteral}{'lr'}],
+747             valid1[\textcolor{stringliteral}{'lr'}],
+748             \textcolor{stringliteral}{'(\{\}) Learning rate is not decreasing'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(mdl),
+749         )
+750         \textcolor{comment}{# but make sure we're not loading the scheduler if we're fine}
+751         \textcolor{comment}{# tuning}
+752         stdout3, valid3, test3 = testing\_utils.train\_model(
+753             dict(
+754                 init\_model=os.path.join(tmpdir, \textcolor{stringliteral}{'model'}),
+755                 model\_file=os.path.join(tmpdir, \textcolor{stringliteral}{'newmodel'}),
+756                 lr\_scheduler=\textcolor{stringliteral}{'invsqrt'},
+757                 **args,
+758             )
+759         )
+760         self.assertEqual(
+761             valid3[\textcolor{stringliteral}{'total\_train\_updates'}],
+762             valid1[\textcolor{stringliteral}{'total\_train\_updates'}],
+763             \textcolor{stringliteral}{'(\{\}) Finetuning LR scheduler reset failed '}
+764             \textcolor{stringliteral}{'(total\_train\_updates).'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(mdl),
+765         )
+766         self.assertEqual(
+767             valid3[\textcolor{stringliteral}{'lr'}],
+768             valid1[\textcolor{stringliteral}{'lr'}],
+769             \textcolor{stringliteral}{'(\{\}) Finetuning LR scheduler reset failed '} \textcolor{stringliteral}{'(lr).'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(mdl),
+770         )
+771         \textcolor{comment}{# and make sure we're not loading the scheduler if it changes}
+772         stdout4, valid4, test4 = testing\_utils.train\_model(
+773             dict(
+774                 init\_model=os.path.join(tmpdir, \textcolor{stringliteral}{'model'}),
+775                 model\_file=os.path.join(tmpdir, \textcolor{stringliteral}{'newmodel2'}),
+776                 lr\_scheduler=\textcolor{stringliteral}{'reduceonplateau'},
+777                 **args,
+778             )
+779         )
+780         self.assertEqual(
+781             valid4[\textcolor{stringliteral}{'total\_train\_updates'}],
+782             valid1[\textcolor{stringliteral}{'total\_train\_updates'}],
+783             \textcolor{stringliteral}{'(\{\}) LR scheduler change reset failed (total\_train\_updates).'}
+784             \textcolor{stringliteral}{'\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(mdl, stdout4),
+785         )
+786         self.assertEqual(
+787             valid4[\textcolor{stringliteral}{'lr'}],
+788             1e-3,
+789             \textcolor{stringliteral}{'(\{\}) LR is not correct in final resume.\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(mdl, stdout4),
+790         )
+791 
+792 
+\end{DoxyCode}

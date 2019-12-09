@@ -1,0 +1,169 @@
+\hypertarget{classparlai_1_1agents_1_1drqa_1_1drqa_1_1SimpleDictionaryAgent}{}\section{parlai.\+agents.\+drqa.\+drqa.\+Simple\+Dictionary\+Agent Class Reference}
+\label{classparlai_1_1agents_1_1drqa_1_1drqa_1_1SimpleDictionaryAgent}\index{parlai.\+agents.\+drqa.\+drqa.\+Simple\+Dictionary\+Agent@{parlai.\+agents.\+drqa.\+drqa.\+Simple\+Dictionary\+Agent}}
+
+
+Inheritance diagram for parlai.\+agents.\+drqa.\+drqa.\+Simple\+Dictionary\+Agent\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{dc/dbf/classparlai_1_1agents_1_1drqa_1_1drqa_1_1SimpleDictionaryAgent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+agents.\+drqa.\+drqa.\+Simple\+Dictionary\+Agent\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=305pt]{d0/df5/classparlai_1_1agents_1_1drqa_1_1drqa_1_1SimpleDictionaryAgent__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1agents_1_1drqa_1_1drqa_1_1SimpleDictionaryAgent_ae21eeff2d5a918998ca8ea90279c9b07}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, args, kwargs)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1drqa_1_1drqa_1_1SimpleDictionaryAgent_a5ccaf2bd28a50af2062ad2efd6a36e0e}{add\+\_\+to\+\_\+dict} (self, tokens)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1agents_1_1drqa_1_1drqa_1_1SimpleDictionaryAgent_a43e40daa2e8260d919347a8e40ae3ced}{add\+\_\+cmdline\+\_\+args} (argparser)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1agents_1_1drqa_1_1drqa_1_1SimpleDictionaryAgent_a26ce0c0cc3362b43219d488826c3550a}{embedding\+\_\+words}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Override DictionaryAgent to use spaCy tokenizer.
+\end{DoxyVerb}
+ 
+
+Definition at line 46 of file drqa.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1drqa_1_1drqa_1_1SimpleDictionaryAgent_ae21eeff2d5a918998ca8ea90279c9b07}\label{classparlai_1_1agents_1_1drqa_1_1drqa_1_1SimpleDictionaryAgent_ae21eeff2d5a918998ca8ea90279c9b07}} 
+\index{parlai\+::agents\+::drqa\+::drqa\+::\+Simple\+Dictionary\+Agent@{parlai\+::agents\+::drqa\+::drqa\+::\+Simple\+Dictionary\+Agent}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::agents\+::drqa\+::drqa\+::\+Simple\+Dictionary\+Agent@{parlai\+::agents\+::drqa\+::drqa\+::\+Simple\+Dictionary\+Agent}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+drqa.\+drqa.\+Simple\+Dictionary\+Agent.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{args,  }\item[{}]{kwargs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 62 of file drqa.\+py.
+
+
+\begin{DoxyCode}
+62     \textcolor{keyword}{def }\_\_init\_\_(self, *args, **kwargs):
+63         super().\_\_init\_\_(*args, **kwargs)
+64 
+65         \textcolor{comment}{# Index words in embedding file}
+66         \textcolor{keywordflow}{if} (
+67             self.opt[\textcolor{stringliteral}{'pretrained\_words'}]
+68             \textcolor{keywordflow}{and} self.opt.get(\textcolor{stringliteral}{'embedding\_file'})
+69             \textcolor{keywordflow}{and} \textcolor{keywordflow}{not} self.opt.get(\textcolor{stringliteral}{'trained'}, \textcolor{keyword}{False})
+70         ):
+71             print(\textcolor{stringliteral}{'[ Indexing words with embeddings... ]'})
+72             self.embedding\_words = set()
+73             self.opt[\textcolor{stringliteral}{'embedding\_file'}] = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_a5fbd3301b67f00d6d146fb01c7cd7626}{modelzoo\_path}(
+74                 self.opt.get(\textcolor{stringliteral}{'datapath'}), self.opt[\textcolor{stringliteral}{'embedding\_file'}]
+75             )
+76             with open(self.opt[\textcolor{stringliteral}{'embedding\_file'}]) \textcolor{keyword}{as} f:
+77                 \textcolor{keywordflow}{for} line \textcolor{keywordflow}{in} f:
+78                     w = \hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_a125ab4e64306060e9ecaa3999f7be6b6}{normalize\_text}(line.rstrip().split(\textcolor{stringliteral}{' '})[0])
+79                     self.embedding\_words.add(w)
+80             print(\textcolor{stringliteral}{'[ Num words in set = %d ]'} % len(self.embedding\_words))
+81         \textcolor{keywordflow}{else}:
+82             self.embedding\_words = \textcolor{keywordtype}{None}
+83 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1drqa_1_1drqa_1_1SimpleDictionaryAgent_a43e40daa2e8260d919347a8e40ae3ced}\label{classparlai_1_1agents_1_1drqa_1_1drqa_1_1SimpleDictionaryAgent_a43e40daa2e8260d919347a8e40ae3ced}} 
+\index{parlai\+::agents\+::drqa\+::drqa\+::\+Simple\+Dictionary\+Agent@{parlai\+::agents\+::drqa\+::drqa\+::\+Simple\+Dictionary\+Agent}!add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}}
+\index{add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}!parlai\+::agents\+::drqa\+::drqa\+::\+Simple\+Dictionary\+Agent@{parlai\+::agents\+::drqa\+::drqa\+::\+Simple\+Dictionary\+Agent}}
+\subsubsection{\texorpdfstring{add\+\_\+cmdline\+\_\+args()}{add\_cmdline\_args()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+drqa.\+drqa.\+Simple\+Dictionary\+Agent.\+add\+\_\+cmdline\+\_\+args (\begin{DoxyParamCaption}\item[{}]{argparser }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 52 of file drqa.\+py.
+
+
+\begin{DoxyCode}
+52     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(argparser):
+53         group = DictionaryAgent.add\_cmdline\_args(argparser)
+54         group.add\_argument(
+55             \textcolor{stringliteral}{'--pretrained\_words'},
+56             type=\textcolor{stringliteral}{'bool'},
+57             default=\textcolor{keyword}{True},
+58             help=\textcolor{stringliteral}{'Use only words found in provided embedding\_file'},
+59         )
+60         group.set\_defaults(dict\_tokenizer=\textcolor{stringliteral}{'spacy'})
+61 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1drqa_1_1drqa_1_1SimpleDictionaryAgent_a5ccaf2bd28a50af2062ad2efd6a36e0e}\label{classparlai_1_1agents_1_1drqa_1_1drqa_1_1SimpleDictionaryAgent_a5ccaf2bd28a50af2062ad2efd6a36e0e}} 
+\index{parlai\+::agents\+::drqa\+::drqa\+::\+Simple\+Dictionary\+Agent@{parlai\+::agents\+::drqa\+::drqa\+::\+Simple\+Dictionary\+Agent}!add\+\_\+to\+\_\+dict@{add\+\_\+to\+\_\+dict}}
+\index{add\+\_\+to\+\_\+dict@{add\+\_\+to\+\_\+dict}!parlai\+::agents\+::drqa\+::drqa\+::\+Simple\+Dictionary\+Agent@{parlai\+::agents\+::drqa\+::drqa\+::\+Simple\+Dictionary\+Agent}}
+\subsubsection{\texorpdfstring{add\+\_\+to\+\_\+dict()}{add\_to\_dict()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+drqa.\+drqa.\+Simple\+Dictionary\+Agent.\+add\+\_\+to\+\_\+dict (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{tokens }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Builds dictionary from the list of provided tokens.
+
+Only adds words contained in self.embedding_words, if not None.
+\end{DoxyVerb}
+ 
+
+Definition at line 84 of file drqa.\+py.
+
+
+\begin{DoxyCode}
+84     \textcolor{keyword}{def }add\_to\_dict(self, tokens):
+85         \textcolor{stringliteral}{"""}
+86 \textcolor{stringliteral}{        Builds dictionary from the list of provided tokens.}
+87 \textcolor{stringliteral}{}
+88 \textcolor{stringliteral}{        Only adds words contained in self.embedding\_words, if not None.}
+89 \textcolor{stringliteral}{        """}
+90         \textcolor{keywordflow}{for} token \textcolor{keywordflow}{in} tokens:
+91             \textcolor{keywordflow}{if} self.embedding\_words \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} token \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.embedding\_words:
+92                 \textcolor{keywordflow}{continue}
+93             self.freq[token] += 1
+94             \textcolor{keywordflow}{if} token \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.tok2ind:
+95                 index = len(self.tok2ind)
+96                 self.tok2ind[token] = index
+97                 self.ind2tok[index] = token
+98 
+99 
+100 \textcolor{comment}{# ------------------------------------------------------------------------------}
+101 \textcolor{comment}{# Document Reader.}
+102 \textcolor{comment}{# ------------------------------------------------------------------------------}
+103 
+104 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1drqa_1_1drqa_1_1SimpleDictionaryAgent_a26ce0c0cc3362b43219d488826c3550a}\label{classparlai_1_1agents_1_1drqa_1_1drqa_1_1SimpleDictionaryAgent_a26ce0c0cc3362b43219d488826c3550a}} 
+\index{parlai\+::agents\+::drqa\+::drqa\+::\+Simple\+Dictionary\+Agent@{parlai\+::agents\+::drqa\+::drqa\+::\+Simple\+Dictionary\+Agent}!embedding\+\_\+words@{embedding\+\_\+words}}
+\index{embedding\+\_\+words@{embedding\+\_\+words}!parlai\+::agents\+::drqa\+::drqa\+::\+Simple\+Dictionary\+Agent@{parlai\+::agents\+::drqa\+::drqa\+::\+Simple\+Dictionary\+Agent}}
+\subsubsection{\texorpdfstring{embedding\+\_\+words}{embedding\_words}}
+{\footnotesize\ttfamily parlai.\+agents.\+drqa.\+drqa.\+Simple\+Dictionary\+Agent.\+embedding\+\_\+words}
+
+
+
+Definition at line 72 of file drqa.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/agents/drqa/\hyperlink{drqa_8py}{drqa.\+py}\end{DoxyCompactItemize}

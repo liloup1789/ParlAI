@@ -1,0 +1,113 @@
+\hypertarget{classlight__chats_1_1graph_1_1WaitFunction}{}\section{light\+\_\+chats.\+graph.\+Wait\+Function Class Reference}
+\label{classlight__chats_1_1graph_1_1WaitFunction}\index{light\+\_\+chats.\+graph.\+Wait\+Function@{light\+\_\+chats.\+graph.\+Wait\+Function}}
+
+
+Inheritance diagram for light\+\_\+chats.\+graph.\+Wait\+Function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{df/d3b/classlight__chats_1_1graph_1_1WaitFunction__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for light\+\_\+chats.\+graph.\+Wait\+Function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{df/dd0/classlight__chats_1_1graph_1_1WaitFunction__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1WaitFunction_a08ecc57f17be491ed6a1ee81f38d8d65}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self)
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1WaitFunction_a3349dc4d65c4b33440624bdbbeeb420c}{func} (self, graph, args)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classlight__chats_1_1graph_1_1WaitFunction_a02e41ee37f4a2fe83153606100a5f979}{formats}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 2099 of file graph.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1WaitFunction_a08ecc57f17be491ed6a1ee81f38d8d65}\label{classlight__chats_1_1graph_1_1WaitFunction_a08ecc57f17be491ed6a1ee81f38d8d65}} 
+\index{light\+\_\+chats\+::graph\+::\+Wait\+Function@{light\+\_\+chats\+::graph\+::\+Wait\+Function}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!light\+\_\+chats\+::graph\+::\+Wait\+Function@{light\+\_\+chats\+::graph\+::\+Wait\+Function}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Wait\+Function.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2100 of file graph.\+py.
+
+
+\begin{DoxyCode}
+2100     \textcolor{keyword}{def }\_\_init\_\_(self):
+2101         super().\_\_init\_\_(
+2102             function\_name=\textcolor{stringliteral}{'wait'},
+2103             callback\_triggers=[\{\textcolor{stringliteral}{'action'}: \textcolor{stringliteral}{'agent\_waited'}, \textcolor{stringliteral}{'args'}: [0]\}],
+2104         )
+2105         self.formats = \{\textcolor{stringliteral}{'waited'}: \textcolor{stringliteral}{'\{0\} waited. '}\}
+2106 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1WaitFunction_a3349dc4d65c4b33440624bdbbeeb420c}\label{classlight__chats_1_1graph_1_1WaitFunction_a3349dc4d65c4b33440624bdbbeeb420c}} 
+\index{light\+\_\+chats\+::graph\+::\+Wait\+Function@{light\+\_\+chats\+::graph\+::\+Wait\+Function}!func@{func}}
+\index{func@{func}!light\+\_\+chats\+::graph\+::\+Wait\+Function@{light\+\_\+chats\+::graph\+::\+Wait\+Function}}
+\subsubsection{\texorpdfstring{func()}{func()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Wait\+Function.\+func (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{graph,  }\item[{}]{args }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2107 of file graph.\+py.
+
+
+\begin{DoxyCode}
+2107     \textcolor{keyword}{def }func(self, graph, args):
+2108         room\_id = graph.location(args[0])
+2109         graph.send\_action(
+2110             args[0],
+2111             \{
+2112                 \textcolor{stringliteral}{'caller'}: self.get\_name(),
+2113                 \textcolor{stringliteral}{'name'}: \textcolor{stringliteral}{'waited'},
+2114                 \textcolor{stringliteral}{'room\_id'}: room\_id,
+2115                 \textcolor{stringliteral}{'actors'}: [args[0]],
+2116             \},
+2117         )
+2118         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+2119 
+2120 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1WaitFunction_a02e41ee37f4a2fe83153606100a5f979}\label{classlight__chats_1_1graph_1_1WaitFunction_a02e41ee37f4a2fe83153606100a5f979}} 
+\index{light\+\_\+chats\+::graph\+::\+Wait\+Function@{light\+\_\+chats\+::graph\+::\+Wait\+Function}!formats@{formats}}
+\index{formats@{formats}!light\+\_\+chats\+::graph\+::\+Wait\+Function@{light\+\_\+chats\+::graph\+::\+Wait\+Function}}
+\subsubsection{\texorpdfstring{formats}{formats}}
+{\footnotesize\ttfamily light\+\_\+chats.\+graph.\+Wait\+Function.\+formats}
+
+
+
+Definition at line 2105 of file graph.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/mturk/tasks/light/light\+\_\+chats/\hyperlink{parlai_2mturk_2tasks_2light_2light__chats_2graph_8py}{graph.\+py}\end{DoxyCompactItemize}

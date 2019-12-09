@@ -1,0 +1,158 @@
+\hypertarget{classtests_1_1test__params_1_1TestParlaiParser}{}\section{tests.\+test\+\_\+params.\+Test\+Parlai\+Parser Class Reference}
+\label{classtests_1_1test__params_1_1TestParlaiParser}\index{tests.\+test\+\_\+params.\+Test\+Parlai\+Parser@{tests.\+test\+\_\+params.\+Test\+Parlai\+Parser}}
+
+
+Inheritance diagram for tests.\+test\+\_\+params.\+Test\+Parlai\+Parser\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{d9/d6f/classtests_1_1test__params_1_1TestParlaiParser__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for tests.\+test\+\_\+params.\+Test\+Parlai\+Parser\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{dd/d37/classtests_1_1test__params_1_1TestParlaiParser__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classtests_1_1test__params_1_1TestParlaiParser_acf8ab1cdd831a5743f56623c0af87d5e}{test\+\_\+upgrade\+\_\+opt} (self)
+\item 
+def \hyperlink{classtests_1_1test__params_1_1TestParlaiParser_aa34d539da2370132f7a4974008422f55}{test\+\_\+recommendations\+\_\+single} (self)
+\item 
+def \hyperlink{classtests_1_1test__params_1_1TestParlaiParser_af137ef0fe576f22f6bee508bd52b2b86}{test\+\_\+recommendations\+\_\+group} (self)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Test ParlaiParser.
+\end{DoxyVerb}
+ 
+
+Definition at line 34 of file test\+\_\+params.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtests_1_1test__params_1_1TestParlaiParser_af137ef0fe576f22f6bee508bd52b2b86}\label{classtests_1_1test__params_1_1TestParlaiParser_af137ef0fe576f22f6bee508bd52b2b86}} 
+\index{tests\+::test\+\_\+params\+::\+Test\+Parlai\+Parser@{tests\+::test\+\_\+params\+::\+Test\+Parlai\+Parser}!test\+\_\+recommendations\+\_\+group@{test\+\_\+recommendations\+\_\+group}}
+\index{test\+\_\+recommendations\+\_\+group@{test\+\_\+recommendations\+\_\+group}!tests\+::test\+\_\+params\+::\+Test\+Parlai\+Parser@{tests\+::test\+\_\+params\+::\+Test\+Parlai\+Parser}}
+\subsubsection{\texorpdfstring{test\+\_\+recommendations\+\_\+group()}{test\_recommendations\_group()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+params.\+Test\+Parlai\+Parser.\+test\+\_\+recommendations\+\_\+group (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Test whether recommended args work for a group.
+\end{DoxyVerb}
+ 
+
+Definition at line 80 of file test\+\_\+params.\+py.
+
+
+\begin{DoxyCode}
+80     \textcolor{keyword}{def }test\_recommendations\_group(self):
+81         \textcolor{stringliteral}{"""}
+82 \textcolor{stringliteral}{        Test whether recommended args work for a group.}
+83 \textcolor{stringliteral}{        """}
+84         parser = ParlaiParser()
+85         parser\_grp = parser.add\_argument\_group(\textcolor{stringliteral}{'Test Group'})
+86         parser\_grp.add\_argument(
+87             \textcolor{stringliteral}{'-bs'},
+88             \textcolor{stringliteral}{'--batchsize'},
+89             default=1,
+90             type=int,
+91             help=\textcolor{stringliteral}{'batch size for minibatch training schemes'},
+92             recommended=[5, 10, 15],
+93         )
+94         with testing\_utils.capture\_output() \textcolor{keyword}{as} \_:
+95             parser.parse\_args()
+96 
+97         help\_str = parser.format\_help()
+98         \textcolor{keyword}{assert} re.search(\textcolor{stringliteral}{r'Test Group:\(\backslash\)n'}, help\_str)
+99         \textcolor{keyword}{assert} re.search(
+100             \textcolor{stringliteral}{r'--batchsize[^\(\backslash\)n]*\(\backslash\)n[^\(\backslash\)n]*\(\backslash\)(recommended: \(\backslash\)[5, 10, 15\(\backslash\)]\(\backslash\))'}, help\_str
+101         )
+102 
+103 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__params_1_1TestParlaiParser_aa34d539da2370132f7a4974008422f55}\label{classtests_1_1test__params_1_1TestParlaiParser_aa34d539da2370132f7a4974008422f55}} 
+\index{tests\+::test\+\_\+params\+::\+Test\+Parlai\+Parser@{tests\+::test\+\_\+params\+::\+Test\+Parlai\+Parser}!test\+\_\+recommendations\+\_\+single@{test\+\_\+recommendations\+\_\+single}}
+\index{test\+\_\+recommendations\+\_\+single@{test\+\_\+recommendations\+\_\+single}!tests\+::test\+\_\+params\+::\+Test\+Parlai\+Parser@{tests\+::test\+\_\+params\+::\+Test\+Parlai\+Parser}}
+\subsubsection{\texorpdfstring{test\+\_\+recommendations\+\_\+single()}{test\_recommendations\_single()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+params.\+Test\+Parlai\+Parser.\+test\+\_\+recommendations\+\_\+single (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Test whether recommended args work for non-group.
+\end{DoxyVerb}
+ 
+
+Definition at line 61 of file test\+\_\+params.\+py.
+
+
+\begin{DoxyCode}
+61     \textcolor{keyword}{def }test\_recommendations\_single(self):
+62         \textcolor{stringliteral}{"""}
+63 \textcolor{stringliteral}{        Test whether recommended args work for non-group.}
+64 \textcolor{stringliteral}{        """}
+65         parser = ParlaiParser()
+66         parser.add\_argument(
+67             \textcolor{stringliteral}{'-bs'},
+68             \textcolor{stringliteral}{'--batchsize'},
+69             default=1,
+70             type=int,
+71             help=\textcolor{stringliteral}{'batch size for minibatch training schemes'},
+72             recommended=\textcolor{stringliteral}{"10"},
+73         )
+74 
+75         with testing\_utils.capture\_output() \textcolor{keyword}{as} \_:
+76             parser.parse\_args()
+77         help\_str = parser.format\_help()
+78         \textcolor{keyword}{assert} re.search(\textcolor{stringliteral}{r'--batchsize[^\(\backslash\)n]*\(\backslash\)n[^\(\backslash\)n]*\(\backslash\)(recommended: 10\(\backslash\))'}, help\_str)
+79 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__params_1_1TestParlaiParser_acf8ab1cdd831a5743f56623c0af87d5e}\label{classtests_1_1test__params_1_1TestParlaiParser_acf8ab1cdd831a5743f56623c0af87d5e}} 
+\index{tests\+::test\+\_\+params\+::\+Test\+Parlai\+Parser@{tests\+::test\+\_\+params\+::\+Test\+Parlai\+Parser}!test\+\_\+upgrade\+\_\+opt@{test\+\_\+upgrade\+\_\+opt}}
+\index{test\+\_\+upgrade\+\_\+opt@{test\+\_\+upgrade\+\_\+opt}!tests\+::test\+\_\+params\+::\+Test\+Parlai\+Parser@{tests\+::test\+\_\+params\+::\+Test\+Parlai\+Parser}}
+\subsubsection{\texorpdfstring{test\+\_\+upgrade\+\_\+opt()}{test\_upgrade\_opt()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+params.\+Test\+Parlai\+Parser.\+test\+\_\+upgrade\+\_\+opt (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Test whether upgrade_opt works.
+\end{DoxyVerb}
+ 
+
+Definition at line 39 of file test\+\_\+params.\+py.
+
+
+\begin{DoxyCode}
+39     \textcolor{keyword}{def }test\_upgrade\_opt(self):
+40         \textcolor{stringliteral}{"""}
+41 \textcolor{stringliteral}{        Test whether upgrade\_opt works.}
+42 \textcolor{stringliteral}{        """}
+43         with testing\_utils.tempdir() \textcolor{keyword}{as} tmp:
+44             with testing\_utils.capture\_output() \textcolor{keyword}{as} \_:
+45                 modfn = os.path.join(tmp, \textcolor{stringliteral}{'model'})
+46                 with open(modfn, \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} f:
+47                     f.write(\textcolor{stringliteral}{'Test.'})
+48                 optfn = modfn + \textcolor{stringliteral}{'.opt'}
+49                 base\_opt = \{
+50                     \textcolor{stringliteral}{'model'}: \textcolor{stringliteral}{'tests.test\_params:\_ExampleUpgradeOptAgent'},
+51                     \textcolor{stringliteral}{'dict\_file'}: modfn + \textcolor{stringliteral}{'.dict'},
+52                     \textcolor{stringliteral}{'model\_file'}: modfn,
+53                 \}
+54                 with open(optfn, \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} f:
+55                     json.dump(base\_opt, f)
+56 
+57                 pp = ParlaiParser(\textcolor{keyword}{True}, \textcolor{keyword}{True})
+58                 opt = pp.parse\_args([\textcolor{stringliteral}{'--model-file'}, modfn])
+59                 agents.create\_agent(opt)
+60 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+tests/\hyperlink{test__params_8py}{test\+\_\+params.\+py}\end{DoxyCompactItemize}

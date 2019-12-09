@@ -1,0 +1,99 @@
+\hypertarget{namespaceprojects_1_1convai2_1_1eval__hits}{}\section{projects.\+convai2.\+eval\+\_\+hits Namespace Reference}
+\label{namespaceprojects_1_1convai2_1_1eval__hits}\index{projects.\+convai2.\+eval\+\_\+hits@{projects.\+convai2.\+eval\+\_\+hits}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceprojects_1_1convai2_1_1eval__hits_a276af35abce11628a8e697b370218cf4}{setup\+\_\+args} (\hyperlink{namespaceprojects_1_1convai2_1_1eval__hits_a4b2be0a82e432138d4596303739b8278}{parser}=None)
+\item 
+def \hyperlink{namespaceprojects_1_1convai2_1_1eval__hits_a400fd6a2e183f2cf1da6ebeff169fe70}{eval\+\_\+hits} (\hyperlink{namespaceprojects_1_1convai2_1_1eval__hits_a2e915e9036283f216d5de205f3185ba6}{opt}, print\+\_\+parser)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceprojects_1_1convai2_1_1eval__hits_a4b2be0a82e432138d4596303739b8278}{parser}
+\item 
+\hyperlink{namespaceprojects_1_1convai2_1_1eval__hits_a3956f404156228d738c84aa0fe56be39}{model}
+\item 
+\hyperlink{namespaceprojects_1_1convai2_1_1eval__hits_a2e915e9036283f216d5de205f3185ba6}{opt}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1convai2_1_1eval__hits_a400fd6a2e183f2cf1da6ebeff169fe70}\label{namespaceprojects_1_1convai2_1_1eval__hits_a400fd6a2e183f2cf1da6ebeff169fe70}} 
+\index{projects\+::convai2\+::eval\+\_\+hits@{projects\+::convai2\+::eval\+\_\+hits}!eval\+\_\+hits@{eval\+\_\+hits}}
+\index{eval\+\_\+hits@{eval\+\_\+hits}!projects\+::convai2\+::eval\+\_\+hits@{projects\+::convai2\+::eval\+\_\+hits}}
+\subsubsection{\texorpdfstring{eval\+\_\+hits()}{eval\_hits()}}
+{\footnotesize\ttfamily def projects.\+convai2.\+eval\+\_\+hits.\+eval\+\_\+hits (\begin{DoxyParamCaption}\item[{}]{opt,  }\item[{}]{print\+\_\+parser }\end{DoxyParamCaption})}
+
+
+
+Definition at line 28 of file eval\+\_\+hits.\+py.
+
+
+\begin{DoxyCode}
+28 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1convai2_1_1eval__hits_a400fd6a2e183f2cf1da6ebeff169fe70}{eval\_hits}(opt, print\_parser):
+29     report = \hyperlink{namespaceeval__model}{eval\_model}(opt, print\_parser)
+30     print(\textcolor{stringliteral}{'============================'})
+31     print(\textcolor{stringliteral}{'FINAL Hits@1: '} + \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(report[\textcolor{stringliteral}{'hits@1'}]))
+32     \textcolor{keywordflow}{return} report
+33 
+34 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceprojects_1_1convai2_1_1eval__hits_a276af35abce11628a8e697b370218cf4}\label{namespaceprojects_1_1convai2_1_1eval__hits_a276af35abce11628a8e697b370218cf4}} 
+\index{projects\+::convai2\+::eval\+\_\+hits@{projects\+::convai2\+::eval\+\_\+hits}!setup\+\_\+args@{setup\+\_\+args}}
+\index{setup\+\_\+args@{setup\+\_\+args}!projects\+::convai2\+::eval\+\_\+hits@{projects\+::convai2\+::eval\+\_\+hits}}
+\subsubsection{\texorpdfstring{setup\+\_\+args()}{setup\_args()}}
+{\footnotesize\ttfamily def projects.\+convai2.\+eval\+\_\+hits.\+setup\+\_\+args (\begin{DoxyParamCaption}\item[{}]{parser = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 16 of file eval\+\_\+hits.\+py.
+
+
+\begin{DoxyCode}
+16 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1convai2_1_1eval__hits_a276af35abce11628a8e697b370218cf4}{setup\_args}(parser=None):
+17     parser = base\_setup\_args(parser)
+18     parser.set\_defaults(
+19         task=\textcolor{stringliteral}{'convai2:self'},
+20         datatype=\textcolor{stringliteral}{'valid'},
+21         hide\_labels=\textcolor{keyword}{False},
+22         dict\_tokenizer=\textcolor{stringliteral}{'split'},
+23         metrics=\textcolor{stringliteral}{'hits@1'},
+24     )
+25     \textcolor{keywordflow}{return} parser
+26 
+27 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1convai2_1_1eval__hits_a3956f404156228d738c84aa0fe56be39}\label{namespaceprojects_1_1convai2_1_1eval__hits_a3956f404156228d738c84aa0fe56be39}} 
+\index{projects\+::convai2\+::eval\+\_\+hits@{projects\+::convai2\+::eval\+\_\+hits}!model@{model}}
+\index{model@{model}!projects\+::convai2\+::eval\+\_\+hits@{projects\+::convai2\+::eval\+\_\+hits}}
+\subsubsection{\texorpdfstring{model}{model}}
+{\footnotesize\ttfamily projects.\+convai2.\+eval\+\_\+hits.\+model}
+
+
+
+Definition at line 37 of file eval\+\_\+hits.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1convai2_1_1eval__hits_a2e915e9036283f216d5de205f3185ba6}\label{namespaceprojects_1_1convai2_1_1eval__hits_a2e915e9036283f216d5de205f3185ba6}} 
+\index{projects\+::convai2\+::eval\+\_\+hits@{projects\+::convai2\+::eval\+\_\+hits}!opt@{opt}}
+\index{opt@{opt}!projects\+::convai2\+::eval\+\_\+hits@{projects\+::convai2\+::eval\+\_\+hits}}
+\subsubsection{\texorpdfstring{opt}{opt}}
+{\footnotesize\ttfamily projects.\+convai2.\+eval\+\_\+hits.\+opt}
+
+
+
+Definition at line 38 of file eval\+\_\+hits.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1convai2_1_1eval__hits_a4b2be0a82e432138d4596303739b8278}\label{namespaceprojects_1_1convai2_1_1eval__hits_a4b2be0a82e432138d4596303739b8278}} 
+\index{projects\+::convai2\+::eval\+\_\+hits@{projects\+::convai2\+::eval\+\_\+hits}!parser@{parser}}
+\index{parser@{parser}!projects\+::convai2\+::eval\+\_\+hits@{projects\+::convai2\+::eval\+\_\+hits}}
+\subsubsection{\texorpdfstring{parser}{parser}}
+{\footnotesize\ttfamily projects.\+convai2.\+eval\+\_\+hits.\+parser}
+
+
+
+Definition at line 36 of file eval\+\_\+hits.\+py.
+

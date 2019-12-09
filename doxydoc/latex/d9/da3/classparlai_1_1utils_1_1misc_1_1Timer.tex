@@ -1,0 +1,216 @@
+\hypertarget{classparlai_1_1utils_1_1misc_1_1Timer}{}\section{parlai.\+utils.\+misc.\+Timer Class Reference}
+\label{classparlai_1_1utils_1_1misc_1_1Timer}\index{parlai.\+utils.\+misc.\+Timer@{parlai.\+utils.\+misc.\+Timer}}
+
+
+Inheritance diagram for parlai.\+utils.\+misc.\+Timer\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=193pt]{d6/da8/classparlai_1_1utils_1_1misc_1_1Timer__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+utils.\+misc.\+Timer\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=193pt]{d2/d65/classparlai_1_1utils_1_1misc_1_1Timer__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1utils_1_1misc_1_1Timer_ae566c74592910671655a53eafaf8f92d}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1misc_1_1Timer_a68bdf8abb3fe00edc639b21944d03371}{reset} (self)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1misc_1_1Timer_a855f1e8a3ba03fe16712fd7ae49dab46}{resume} (self)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1misc_1_1Timer_a5a7a90c124ef1b1b92a550606a3c93b9}{stop} (self)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1misc_1_1Timer_a37214d0006ae44a19081c21a5a699ffb}{time} (self)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1utils_1_1misc_1_1Timer_a05abf50b49c1e26baabe03a9daafa870}{running}
+\item 
+\hyperlink{classparlai_1_1utils_1_1misc_1_1Timer_a37214900a663640b33bdce9e6b3053dd}{total}
+\item 
+\hyperlink{classparlai_1_1utils_1_1misc_1_1Timer_a1c32e2a8785377c980bc4b125fe6db0d}{start}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Computes elapsed time.
+\end{DoxyVerb}
+ 
+
+Definition at line 307 of file misc.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1Timer_ae566c74592910671655a53eafaf8f92d}\label{classparlai_1_1utils_1_1misc_1_1Timer_ae566c74592910671655a53eafaf8f92d}} 
+\index{parlai\+::utils\+::misc\+::\+Timer@{parlai\+::utils\+::misc\+::\+Timer}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::utils\+::misc\+::\+Timer@{parlai\+::utils\+::misc\+::\+Timer}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+misc.\+Timer.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initialize timer.
+\end{DoxyVerb}
+ 
+
+Definition at line 312 of file misc.\+py.
+
+
+\begin{DoxyCode}
+312     \textcolor{keyword}{def }\_\_init\_\_(self):
+313         \textcolor{stringliteral}{"""}
+314 \textcolor{stringliteral}{        Initialize timer.}
+315 \textcolor{stringliteral}{        """}
+316         self.running = \textcolor{keyword}{True}
+317         self.total = 0
+318         self.start = time.time()
+319 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1Timer_a68bdf8abb3fe00edc639b21944d03371}\label{classparlai_1_1utils_1_1misc_1_1Timer_a68bdf8abb3fe00edc639b21944d03371}} 
+\index{parlai\+::utils\+::misc\+::\+Timer@{parlai\+::utils\+::misc\+::\+Timer}!reset@{reset}}
+\index{reset@{reset}!parlai\+::utils\+::misc\+::\+Timer@{parlai\+::utils\+::misc\+::\+Timer}}
+\subsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+misc.\+Timer.\+reset (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Reset timer to zero.
+\end{DoxyVerb}
+ 
+
+Definition at line 320 of file misc.\+py.
+
+
+\begin{DoxyCode}
+320     \textcolor{keyword}{def }reset(self):
+321         \textcolor{stringliteral}{"""}
+322 \textcolor{stringliteral}{        Reset timer to zero.}
+323 \textcolor{stringliteral}{        """}
+324         self.running = \textcolor{keyword}{True}
+325         self.total = 0
+326         self.start = time.time()
+327         \textcolor{keywordflow}{return} self
+328 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1Timer_a855f1e8a3ba03fe16712fd7ae49dab46}\label{classparlai_1_1utils_1_1misc_1_1Timer_a855f1e8a3ba03fe16712fd7ae49dab46}} 
+\index{parlai\+::utils\+::misc\+::\+Timer@{parlai\+::utils\+::misc\+::\+Timer}!resume@{resume}}
+\index{resume@{resume}!parlai\+::utils\+::misc\+::\+Timer@{parlai\+::utils\+::misc\+::\+Timer}}
+\subsubsection{\texorpdfstring{resume()}{resume()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+misc.\+Timer.\+resume (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Resume timer.
+\end{DoxyVerb}
+ 
+
+Definition at line 329 of file misc.\+py.
+
+
+\begin{DoxyCode}
+329     \textcolor{keyword}{def }resume(self):
+330         \textcolor{stringliteral}{"""}
+331 \textcolor{stringliteral}{        Resume timer.}
+332 \textcolor{stringliteral}{        """}
+333         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.running:
+334             self.running = \textcolor{keyword}{True}
+335             self.start = time.time()
+336         \textcolor{keywordflow}{return} self
+337 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1Timer_a5a7a90c124ef1b1b92a550606a3c93b9}\label{classparlai_1_1utils_1_1misc_1_1Timer_a5a7a90c124ef1b1b92a550606a3c93b9}} 
+\index{parlai\+::utils\+::misc\+::\+Timer@{parlai\+::utils\+::misc\+::\+Timer}!stop@{stop}}
+\index{stop@{stop}!parlai\+::utils\+::misc\+::\+Timer@{parlai\+::utils\+::misc\+::\+Timer}}
+\subsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+misc.\+Timer.\+stop (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Pause timer.
+\end{DoxyVerb}
+ 
+
+Definition at line 338 of file misc.\+py.
+
+
+\begin{DoxyCode}
+338     \textcolor{keyword}{def }stop(self):
+339         \textcolor{stringliteral}{"""}
+340 \textcolor{stringliteral}{        Pause timer.}
+341 \textcolor{stringliteral}{        """}
+342         \textcolor{keywordflow}{if} self.running:
+343             self.running = \textcolor{keyword}{False}
+344             self.total += time.time() - self.start
+345         \textcolor{keywordflow}{return} self
+346 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1Timer_a37214d0006ae44a19081c21a5a699ffb}\label{classparlai_1_1utils_1_1misc_1_1Timer_a37214d0006ae44a19081c21a5a699ffb}} 
+\index{parlai\+::utils\+::misc\+::\+Timer@{parlai\+::utils\+::misc\+::\+Timer}!time@{time}}
+\index{time@{time}!parlai\+::utils\+::misc\+::\+Timer@{parlai\+::utils\+::misc\+::\+Timer}}
+\subsubsection{\texorpdfstring{time()}{time()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+misc.\+Timer.\+time (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Get current timer time.
+\end{DoxyVerb}
+ 
+
+Definition at line 347 of file misc.\+py.
+
+
+\begin{DoxyCode}
+347     \textcolor{keyword}{def }time(self):
+348         \textcolor{stringliteral}{"""}
+349 \textcolor{stringliteral}{        Get current timer time.}
+350 \textcolor{stringliteral}{        """}
+351         \textcolor{keywordflow}{if} self.running:
+352             \textcolor{keywordflow}{return} self.total + time.time() - self.start
+353         \textcolor{keywordflow}{return} self.total
+354 
+355 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1Timer_a05abf50b49c1e26baabe03a9daafa870}\label{classparlai_1_1utils_1_1misc_1_1Timer_a05abf50b49c1e26baabe03a9daafa870}} 
+\index{parlai\+::utils\+::misc\+::\+Timer@{parlai\+::utils\+::misc\+::\+Timer}!running@{running}}
+\index{running@{running}!parlai\+::utils\+::misc\+::\+Timer@{parlai\+::utils\+::misc\+::\+Timer}}
+\subsubsection{\texorpdfstring{running}{running}}
+{\footnotesize\ttfamily parlai.\+utils.\+misc.\+Timer.\+running}
+
+
+
+Definition at line 316 of file misc.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1Timer_a1c32e2a8785377c980bc4b125fe6db0d}\label{classparlai_1_1utils_1_1misc_1_1Timer_a1c32e2a8785377c980bc4b125fe6db0d}} 
+\index{parlai\+::utils\+::misc\+::\+Timer@{parlai\+::utils\+::misc\+::\+Timer}!start@{start}}
+\index{start@{start}!parlai\+::utils\+::misc\+::\+Timer@{parlai\+::utils\+::misc\+::\+Timer}}
+\subsubsection{\texorpdfstring{start}{start}}
+{\footnotesize\ttfamily parlai.\+utils.\+misc.\+Timer.\+start}
+
+
+
+Definition at line 318 of file misc.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1Timer_a37214900a663640b33bdce9e6b3053dd}\label{classparlai_1_1utils_1_1misc_1_1Timer_a37214900a663640b33bdce9e6b3053dd}} 
+\index{parlai\+::utils\+::misc\+::\+Timer@{parlai\+::utils\+::misc\+::\+Timer}!total@{total}}
+\index{total@{total}!parlai\+::utils\+::misc\+::\+Timer@{parlai\+::utils\+::misc\+::\+Timer}}
+\subsubsection{\texorpdfstring{total}{total}}
+{\footnotesize\ttfamily parlai.\+utils.\+misc.\+Timer.\+total}
+
+
+
+Definition at line 317 of file misc.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/utils/\hyperlink{misc_8py}{misc.\+py}\end{DoxyCompactItemize}

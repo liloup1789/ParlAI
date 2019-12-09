@@ -1,0 +1,50 @@
+\hypertarget{namespaceremote}{}\section{remote Namespace Reference}
+\label{namespaceremote}\index{remote@{remote}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceremote_aa8eb15effdae452b1fde3639cd9bc267}{main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceremote_aa8eb15effdae452b1fde3639cd9bc267}\label{namespaceremote_aa8eb15effdae452b1fde3639cd9bc267}} 
+\index{remote@{remote}!main@{main}}
+\index{main@{main}!remote@{remote}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def remote.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 42 of file remote.\+py.
+
+
+\begin{DoxyCode}
+42 \textcolor{keyword}{def }\hyperlink{namespaceremote_aa8eb15effdae452b1fde3639cd9bc267}{main}():
+43     random.seed(42)
+44 
+45     \textcolor{comment}{# Get command line arguments}
+46     parser = ParlaiParser(\textcolor{keyword}{True}, \textcolor{keyword}{True})
+47     RemoteAgentAgent.add\_cmdline\_args(parser)
+48     opt = parser.parse\_args()
+49 
+50     remote = RemoteAgentAgent(opt)
+51     \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'task'}):
+52         world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(opt, [remote])
+53     \textcolor{keywordflow}{else}:
+54         \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'model'}):
+55             local = \hyperlink{namespaceparlai_1_1core_1_1agents_ad0d54074d4bcc148bb415ab5515a53b5}{create\_agent}(opt)
+56         \textcolor{keywordflow}{else}:
+57             local = LocalHumanAgent(opt)
+58         \textcolor{comment}{# the remote-host goes **second**}
+59         agents = [local, remote] \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} opt[\textcolor{stringliteral}{'remote\_host'}] \textcolor{keywordflow}{else} [remote, local]
+60         world = DialogPartnerWorld(opt, agents)
+61 
+62     \textcolor{comment}{# Talk to the remote agent}
+63     with world:
+64         \textcolor{keywordflow}{while} \textcolor{keyword}{True}:
+65             world.parley()
+66             logger.info(world.display())
+67 
+68 
+\end{DoxyCode}

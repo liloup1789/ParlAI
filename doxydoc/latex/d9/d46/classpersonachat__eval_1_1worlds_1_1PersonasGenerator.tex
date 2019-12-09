@@ -1,0 +1,223 @@
+\hypertarget{classpersonachat__eval_1_1worlds_1_1PersonasGenerator}{}\section{personachat\+\_\+eval.\+worlds.\+Personas\+Generator Class Reference}
+\label{classpersonachat__eval_1_1worlds_1_1PersonasGenerator}\index{personachat\+\_\+eval.\+worlds.\+Personas\+Generator@{personachat\+\_\+eval.\+worlds.\+Personas\+Generator}}
+
+
+Inheritance diagram for personachat\+\_\+eval.\+worlds.\+Personas\+Generator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{d0/d8d/classpersonachat__eval_1_1worlds_1_1PersonasGenerator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for personachat\+\_\+eval.\+worlds.\+Personas\+Generator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{d8/d4d/classpersonachat__eval_1_1worlds_1_1PersonasGenerator__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classpersonachat__eval_1_1worlds_1_1PersonasGenerator_a1040c1f204e103d16f0a8137c1dec671}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, opt)
+\item 
+def \hyperlink{classpersonachat__eval_1_1worlds_1_1PersonasGenerator_a3ee1d0c2545efba647539933d1d649d0}{add\+\_\+idx\+\_\+stack} (self)
+\item 
+def \hyperlink{classpersonachat__eval_1_1worlds_1_1PersonasGenerator_ac73e52e318d64155bf0812768f0e3fa3}{pop\+\_\+persona} (self)
+\item 
+def \hyperlink{classpersonachat__eval_1_1worlds_1_1PersonasGenerator_add94526a589a3e01f2843f88e31b754e}{push\+\_\+persona} (self, idx)
+\item 
+def \hyperlink{classpersonachat__eval_1_1worlds_1_1PersonasGenerator_ae6b7fbf4c1ec66c73f69de4df0357447}{save\+\_\+idx\+\_\+stack} (self)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classpersonachat__eval_1_1worlds_1_1PersonasGenerator_a9f5f33e98c5ca888b345a0adfb799fe7}{personas\+\_\+idx\+\_\+stack\+\_\+path}
+\item 
+\hyperlink{classpersonachat__eval_1_1worlds_1_1PersonasGenerator_a8d78d1748f246ca5a3313dd0719772b2}{personas\+\_\+path}
+\item 
+\hyperlink{classpersonachat__eval_1_1worlds_1_1PersonasGenerator_a93f6fd5e10e1fadb6f4494d223978992}{personas\+\_\+name\+\_\+list}
+\item 
+\hyperlink{classpersonachat__eval_1_1worlds_1_1PersonasGenerator_a0065bfc8c429bc99b4c180315a2a33dd}{idx\+\_\+stack}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 52 of file worlds.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classpersonachat__eval_1_1worlds_1_1PersonasGenerator_a1040c1f204e103d16f0a8137c1dec671}\label{classpersonachat__eval_1_1worlds_1_1PersonasGenerator_a1040c1f204e103d16f0a8137c1dec671}} 
+\index{personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator@{personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator@{personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def personachat\+\_\+eval.\+worlds.\+Personas\+Generator.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 53 of file worlds.\+py.
+
+
+\begin{DoxyCode}
+53     \textcolor{keyword}{def }\_\_init\_\_(self, opt):
+54         self.personas\_idx\_stack\_path = os.path.join(
+55             os.getcwd(), \textcolor{stringliteral}{'./personas\_idx\_stack.pkl'}
+56         )
+57 
+58         self.personas\_path = \textcolor{stringliteral}{'\{\}/data/personas-\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+59             os.getcwd(),
+60             opt[\textcolor{stringliteral}{'persona\_type'}] + \textcolor{stringliteral}{'Revised'} \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'revised'}] \textcolor{keywordflow}{else} \textcolor{stringliteral}{'Original'},
+61         )
+62         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.exists(self.personas\_path):
+63             opt[\textcolor{stringliteral}{'personas\_path'}] = self.personas\_path
+64             main\_extract(opt)
+65         self.personas\_name\_list = []
+66 
+67         \textcolor{keywordflow}{for} f\_name \textcolor{keywordflow}{in} os.listdir(self.personas\_path):
+68             \textcolor{keywordflow}{if} f\_name.endswith(\textcolor{stringliteral}{'.pkl'}):
+69                 self.personas\_name\_list.append(f\_name)
+70 
+71         \textcolor{keywordflow}{if} os.path.exists(self.personas\_idx\_stack\_path):
+72             with open(self.personas\_idx\_stack\_path, \textcolor{stringliteral}{'rb'}) \textcolor{keyword}{as} handle:
+73                 self.idx\_stack = pickle.load(handle)
+74         \textcolor{keywordflow}{else}:
+75             self.idx\_stack = []
+76             self.add\_idx\_stack()
+77             self.save\_idx\_stack()
+78         \textcolor{keywordflow}{pass}
+79 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classpersonachat__eval_1_1worlds_1_1PersonasGenerator_a3ee1d0c2545efba647539933d1d649d0}\label{classpersonachat__eval_1_1worlds_1_1PersonasGenerator_a3ee1d0c2545efba647539933d1d649d0}} 
+\index{personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator@{personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator}!add\+\_\+idx\+\_\+stack@{add\+\_\+idx\+\_\+stack}}
+\index{add\+\_\+idx\+\_\+stack@{add\+\_\+idx\+\_\+stack}!personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator@{personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator}}
+\subsubsection{\texorpdfstring{add\+\_\+idx\+\_\+stack()}{add\_idx\_stack()}}
+{\footnotesize\ttfamily def personachat\+\_\+eval.\+worlds.\+Personas\+Generator.\+add\+\_\+idx\+\_\+stack (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 80 of file worlds.\+py.
+
+
+\begin{DoxyCode}
+80     \textcolor{keyword}{def }add\_idx\_stack(self):
+81         stack = [i \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(self.personas\_name\_list))]
+82         random.seed()
+83         random.shuffle(stack)
+84         self.idx\_stack = stack + self.idx\_stack
+85 
+\end{DoxyCode}
+\mbox{\Hypertarget{classpersonachat__eval_1_1worlds_1_1PersonasGenerator_ac73e52e318d64155bf0812768f0e3fa3}\label{classpersonachat__eval_1_1worlds_1_1PersonasGenerator_ac73e52e318d64155bf0812768f0e3fa3}} 
+\index{personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator@{personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator}!pop\+\_\+persona@{pop\+\_\+persona}}
+\index{pop\+\_\+persona@{pop\+\_\+persona}!personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator@{personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator}}
+\subsubsection{\texorpdfstring{pop\+\_\+persona()}{pop\_persona()}}
+{\footnotesize\ttfamily def personachat\+\_\+eval.\+worlds.\+Personas\+Generator.\+pop\+\_\+persona (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 86 of file worlds.\+py.
+
+
+\begin{DoxyCode}
+86     \textcolor{keyword}{def }pop\_persona(self):
+87         \textcolor{keywordflow}{if} len(self.idx\_stack) == 0:
+88             self.add\_idx\_stack()
+89         idx = self.idx\_stack.pop()
+90         print(\textcolor{stringliteral}{"\(\backslash\)n******* Pop persona \{\} from stack. *******\(\backslash\)n"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(idx))
+91         data = np.load(
+92             os.path.join(self.personas\_path, self.personas\_name\_list[\hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(idx)])
+93         )
+94         \textcolor{keywordflow}{return} (idx, data)
+95 
+\end{DoxyCode}
+\mbox{\Hypertarget{classpersonachat__eval_1_1worlds_1_1PersonasGenerator_add94526a589a3e01f2843f88e31b754e}\label{classpersonachat__eval_1_1worlds_1_1PersonasGenerator_add94526a589a3e01f2843f88e31b754e}} 
+\index{personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator@{personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator}!push\+\_\+persona@{push\+\_\+persona}}
+\index{push\+\_\+persona@{push\+\_\+persona}!personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator@{personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator}}
+\subsubsection{\texorpdfstring{push\+\_\+persona()}{push\_persona()}}
+{\footnotesize\ttfamily def personachat\+\_\+eval.\+worlds.\+Personas\+Generator.\+push\+\_\+persona (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{idx }\end{DoxyParamCaption})}
+
+
+
+Definition at line 96 of file worlds.\+py.
+
+
+\begin{DoxyCode}
+96     \textcolor{keyword}{def }push\_persona(self, idx):
+97         self.idx\_stack.append(idx)
+98 
+\end{DoxyCode}
+\mbox{\Hypertarget{classpersonachat__eval_1_1worlds_1_1PersonasGenerator_ae6b7fbf4c1ec66c73f69de4df0357447}\label{classpersonachat__eval_1_1worlds_1_1PersonasGenerator_ae6b7fbf4c1ec66c73f69de4df0357447}} 
+\index{personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator@{personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator}!save\+\_\+idx\+\_\+stack@{save\+\_\+idx\+\_\+stack}}
+\index{save\+\_\+idx\+\_\+stack@{save\+\_\+idx\+\_\+stack}!personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator@{personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator}}
+\subsubsection{\texorpdfstring{save\+\_\+idx\+\_\+stack()}{save\_idx\_stack()}}
+{\footnotesize\ttfamily def personachat\+\_\+eval.\+worlds.\+Personas\+Generator.\+save\+\_\+idx\+\_\+stack (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 99 of file worlds.\+py.
+
+
+\begin{DoxyCode}
+99     \textcolor{keyword}{def }save\_idx\_stack(self):
+100         with open(self.personas\_idx\_stack\_path, \textcolor{stringliteral}{'wb'}) \textcolor{keyword}{as} handle:
+101             pickle.dump(self.idx\_stack, handle)
+102 
+103 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classpersonachat__eval_1_1worlds_1_1PersonasGenerator_a0065bfc8c429bc99b4c180315a2a33dd}\label{classpersonachat__eval_1_1worlds_1_1PersonasGenerator_a0065bfc8c429bc99b4c180315a2a33dd}} 
+\index{personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator@{personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator}!idx\+\_\+stack@{idx\+\_\+stack}}
+\index{idx\+\_\+stack@{idx\+\_\+stack}!personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator@{personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator}}
+\subsubsection{\texorpdfstring{idx\+\_\+stack}{idx\_stack}}
+{\footnotesize\ttfamily personachat\+\_\+eval.\+worlds.\+Personas\+Generator.\+idx\+\_\+stack}
+
+
+
+Definition at line 73 of file worlds.\+py.
+
+\mbox{\Hypertarget{classpersonachat__eval_1_1worlds_1_1PersonasGenerator_a9f5f33e98c5ca888b345a0adfb799fe7}\label{classpersonachat__eval_1_1worlds_1_1PersonasGenerator_a9f5f33e98c5ca888b345a0adfb799fe7}} 
+\index{personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator@{personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator}!personas\+\_\+idx\+\_\+stack\+\_\+path@{personas\+\_\+idx\+\_\+stack\+\_\+path}}
+\index{personas\+\_\+idx\+\_\+stack\+\_\+path@{personas\+\_\+idx\+\_\+stack\+\_\+path}!personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator@{personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator}}
+\subsubsection{\texorpdfstring{personas\+\_\+idx\+\_\+stack\+\_\+path}{personas\_idx\_stack\_path}}
+{\footnotesize\ttfamily personachat\+\_\+eval.\+worlds.\+Personas\+Generator.\+personas\+\_\+idx\+\_\+stack\+\_\+path}
+
+
+
+Definition at line 54 of file worlds.\+py.
+
+\mbox{\Hypertarget{classpersonachat__eval_1_1worlds_1_1PersonasGenerator_a93f6fd5e10e1fadb6f4494d223978992}\label{classpersonachat__eval_1_1worlds_1_1PersonasGenerator_a93f6fd5e10e1fadb6f4494d223978992}} 
+\index{personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator@{personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator}!personas\+\_\+name\+\_\+list@{personas\+\_\+name\+\_\+list}}
+\index{personas\+\_\+name\+\_\+list@{personas\+\_\+name\+\_\+list}!personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator@{personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator}}
+\subsubsection{\texorpdfstring{personas\+\_\+name\+\_\+list}{personas\_name\_list}}
+{\footnotesize\ttfamily personachat\+\_\+eval.\+worlds.\+Personas\+Generator.\+personas\+\_\+name\+\_\+list}
+
+
+
+Definition at line 65 of file worlds.\+py.
+
+\mbox{\Hypertarget{classpersonachat__eval_1_1worlds_1_1PersonasGenerator_a8d78d1748f246ca5a3313dd0719772b2}\label{classpersonachat__eval_1_1worlds_1_1PersonasGenerator_a8d78d1748f246ca5a3313dd0719772b2}} 
+\index{personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator@{personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator}!personas\+\_\+path@{personas\+\_\+path}}
+\index{personas\+\_\+path@{personas\+\_\+path}!personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator@{personachat\+\_\+eval\+::worlds\+::\+Personas\+Generator}}
+\subsubsection{\texorpdfstring{personas\+\_\+path}{personas\_path}}
+{\footnotesize\ttfamily personachat\+\_\+eval.\+worlds.\+Personas\+Generator.\+personas\+\_\+path}
+
+
+
+Definition at line 58 of file worlds.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+projects/personachat/mturk/personachat\+\_\+eval/\hyperlink{projects_2personachat_2mturk_2personachat__eval_2worlds_8py}{worlds.\+py}\end{DoxyCompactItemize}

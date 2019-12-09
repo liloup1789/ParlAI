@@ -1,0 +1,75 @@
+\hypertarget{classtests_1_1test__display__data_1_1TestDisplayData}{}\section{tests.\+test\+\_\+display\+\_\+data.\+Test\+Display\+Data Class Reference}
+\label{classtests_1_1test__display__data_1_1TestDisplayData}\index{tests.\+test\+\_\+display\+\_\+data.\+Test\+Display\+Data@{tests.\+test\+\_\+display\+\_\+data.\+Test\+Display\+Data}}
+
+
+Inheritance diagram for tests.\+test\+\_\+display\+\_\+data.\+Test\+Display\+Data\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{da/d34/classtests_1_1test__display__data_1_1TestDisplayData__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for tests.\+test\+\_\+display\+\_\+data.\+Test\+Display\+Data\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{d9/da5/classtests_1_1test__display__data_1_1TestDisplayData__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classtests_1_1test__display__data_1_1TestDisplayData_ad9482f68927957ca12e22f14b5b096a0}{test\+\_\+output} (self)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Basic tests on the display_data.py example.
+\end{DoxyVerb}
+ 
+
+Definition at line 12 of file test\+\_\+display\+\_\+data.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtests_1_1test__display__data_1_1TestDisplayData_ad9482f68927957ca12e22f14b5b096a0}\label{classtests_1_1test__display__data_1_1TestDisplayData_ad9482f68927957ca12e22f14b5b096a0}} 
+\index{tests\+::test\+\_\+display\+\_\+data\+::\+Test\+Display\+Data@{tests\+::test\+\_\+display\+\_\+data\+::\+Test\+Display\+Data}!test\+\_\+output@{test\+\_\+output}}
+\index{test\+\_\+output@{test\+\_\+output}!tests\+::test\+\_\+display\+\_\+data\+::\+Test\+Display\+Data@{tests\+::test\+\_\+display\+\_\+data\+::\+Test\+Display\+Data}}
+\subsubsection{\texorpdfstring{test\+\_\+output()}{test\_output()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+display\+\_\+data.\+Test\+Display\+Data.\+test\+\_\+output (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Does display_data reach the end of the loop?
+\end{DoxyVerb}
+ 
+
+Definition at line 17 of file test\+\_\+display\+\_\+data.\+py.
+
+
+\begin{DoxyCode}
+17     \textcolor{keyword}{def }test\_output(self):
+18         \textcolor{stringliteral}{"""}
+19 \textcolor{stringliteral}{        Does display\_data reach the end of the loop?}
+20 \textcolor{stringliteral}{        """}
+21         with testing\_utils.capture\_output() \textcolor{keyword}{as} stdout:
+22             parser = ParlaiParser()
+23             opt = parser.parse\_args([\textcolor{stringliteral}{'--task'}, \textcolor{stringliteral}{'babi:task1k:1'}], print\_args=\textcolor{keyword}{False})
+24             opt[\textcolor{stringliteral}{'num\_examples'}] = 1
+25             \hyperlink{namespacedisplay__data}{display\_data}(opt)
+26 
+27         str\_output = stdout.getvalue()
+28         self.assertGreater(len(str\_output), 0, \textcolor{stringliteral}{"Output is empty"})
+29         self.assertIn(\textcolor{stringliteral}{"[babi:task1k:1]:"}, str\_output, \textcolor{stringliteral}{"Babi task did not print"})
+30         self.assertIn(\textcolor{stringliteral}{"~~"}, str\_output, \textcolor{stringliteral}{"Example output did not complete"})
+31 
+32 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+tests/\hyperlink{test__display__data_8py}{test\+\_\+display\+\_\+data.\+py}\end{DoxyCompactItemize}

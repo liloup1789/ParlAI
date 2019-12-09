@@ -1,0 +1,327 @@
+\hypertarget{classparlai_1_1core_1_1agents_1_1Teacher}{}\section{parlai.\+core.\+agents.\+Teacher Class Reference}
+\label{classparlai_1_1core_1_1agents_1_1Teacher}\index{parlai.\+core.\+agents.\+Teacher@{parlai.\+core.\+agents.\+Teacher}}
+
+
+Inheritance diagram for parlai.\+core.\+agents.\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{d6/d93/classparlai_1_1core_1_1agents_1_1Teacher__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+core.\+agents.\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{d8/d69/classparlai_1_1core_1_1agents_1_1Teacher__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1core_1_1agents_1_1Teacher_ab15a6b5c801681b96bcb9725df0c7c7d}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1core_1_1agents_1_1Teacher_a3ce6243860ce978a897922863ed32fa4}{opt}, shared=None)
+\item 
+def \hyperlink{classparlai_1_1core_1_1agents_1_1Teacher_a3f4cbdfdddddb8776ab665f5f7ee63d6}{act} (self)
+\item 
+def \hyperlink{classparlai_1_1core_1_1agents_1_1Teacher_a4a2eda53b7b26f114ae3149b60f57845}{epoch\+\_\+done} (self)
+\item 
+def \hyperlink{classparlai_1_1core_1_1agents_1_1Teacher_a93370e4e99236e8ad267b40cd4437920}{num\+\_\+examples} (self)
+\item 
+def \hyperlink{classparlai_1_1core_1_1agents_1_1Teacher_aa35e171610f8dd8e6a2fd5a87ad91e10}{num\+\_\+episodes} (self)
+\item 
+def \hyperlink{classparlai_1_1core_1_1agents_1_1Teacher_aa0afab11fb5f3f26ac59576f064623a4}{report} (self)
+\item 
+def \hyperlink{classparlai_1_1core_1_1agents_1_1Teacher_a3b1fe4cf4ea53c9b2ce28435391ad081}{reset} (self)
+\item 
+def \hyperlink{classparlai_1_1core_1_1agents_1_1Teacher_a3f14618f0f49c57a6fbcb4f80f8a1de4}{reset\+\_\+metrics} (self)
+\item 
+def \hyperlink{classparlai_1_1core_1_1agents_1_1Teacher_a43cf8d0b49ef4ff150ceef0149c063c3}{share} (self)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1core_1_1agents_1_1Teacher_a3ce6243860ce978a897922863ed32fa4}{opt}
+\item 
+\hyperlink{classparlai_1_1core_1_1agents_1_1Teacher_a8385159acf54471fee8887ba2a83b53c}{id}
+\item 
+\hyperlink{classparlai_1_1core_1_1agents_1_1Teacher_a159705efe2a9f389d8adfdad76891f08}{metrics}
+\item 
+\hyperlink{classparlai_1_1core_1_1agents_1_1Teacher_a2a21915f2270b76ba0e99137d506af89}{epoch\+Done}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Basic Teacher agent that keeps track of how many times it's received messages.
+
+Teachers provide the ``report()`` method to get back metrics.
+\end{DoxyVerb}
+ 
+
+Definition at line 195 of file agents.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1Teacher_ab15a6b5c801681b96bcb9725df0c7c7d}\label{classparlai_1_1core_1_1agents_1_1Teacher_ab15a6b5c801681b96bcb9725df0c7c7d}} 
+\index{parlai\+::core\+::agents\+::\+Teacher@{parlai\+::core\+::agents\+::\+Teacher}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::core\+::agents\+::\+Teacher@{parlai\+::core\+::agents\+::\+Teacher}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+core.\+agents.\+Teacher.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{shared = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 202 of file agents.\+py.
+
+
+\begin{DoxyCode}
+202     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
+203         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} hasattr(self, \textcolor{stringliteral}{'opt'}):
+204             self.opt = copy.deepcopy(opt)
+205         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} hasattr(self, \textcolor{stringliteral}{'id'}):
+206             self.id = opt.get(\textcolor{stringliteral}{'task'}, \textcolor{stringliteral}{'teacher'})
+207         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} hasattr(self, \textcolor{stringliteral}{'metrics'}):
+208             \textcolor{keywordflow}{if} shared \textcolor{keywordflow}{and} shared.get(\textcolor{stringliteral}{'metrics'}):
+209                 self.metrics = shared[\textcolor{stringliteral}{'metrics'}]
+210             \textcolor{keywordflow}{else}:
+211                 self.metrics = Metrics(opt)
+212         self.epochDone = \textcolor{keyword}{False}
+213 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1Teacher_a3f4cbdfdddddb8776ab665f5f7ee63d6}\label{classparlai_1_1core_1_1agents_1_1Teacher_a3f4cbdfdddddb8776ab665f5f7ee63d6}} 
+\index{parlai\+::core\+::agents\+::\+Teacher@{parlai\+::core\+::agents\+::\+Teacher}!act@{act}}
+\index{act@{act}!parlai\+::core\+::agents\+::\+Teacher@{parlai\+::core\+::agents\+::\+Teacher}}
+\subsubsection{\texorpdfstring{act()}{act()}}
+{\footnotesize\ttfamily def parlai.\+core.\+agents.\+Teacher.\+act (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Act upon the previous observation.
+\end{DoxyVerb}
+ 
+
+Definition at line 215 of file agents.\+py.
+
+
+\begin{DoxyCode}
+215     \textcolor{keyword}{def }act(self):
+216         \textcolor{stringliteral}{"""}
+217 \textcolor{stringliteral}{        Act upon the previous observation.}
+218 \textcolor{stringliteral}{        """}
+219         \textcolor{keywordflow}{if} self.observation \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} \textcolor{stringliteral}{'text'} \textcolor{keywordflow}{in} self.observation:
+220             t = \{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'Hello agent!'}\}
+221         \textcolor{keywordflow}{return} t
+222 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1Teacher_a4a2eda53b7b26f114ae3149b60f57845}\label{classparlai_1_1core_1_1agents_1_1Teacher_a4a2eda53b7b26f114ae3149b60f57845}} 
+\index{parlai\+::core\+::agents\+::\+Teacher@{parlai\+::core\+::agents\+::\+Teacher}!epoch\+\_\+done@{epoch\+\_\+done}}
+\index{epoch\+\_\+done@{epoch\+\_\+done}!parlai\+::core\+::agents\+::\+Teacher@{parlai\+::core\+::agents\+::\+Teacher}}
+\subsubsection{\texorpdfstring{epoch\+\_\+done()}{epoch\_done()}}
+{\footnotesize\ttfamily def parlai.\+core.\+agents.\+Teacher.\+epoch\+\_\+done (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Return whether the epoch is done.
+\end{DoxyVerb}
+ 
+
+Definition at line 223 of file agents.\+py.
+
+
+\begin{DoxyCode}
+223     \textcolor{keyword}{def }epoch\_done(self):
+224         \textcolor{stringliteral}{"""}
+225 \textcolor{stringliteral}{        Return whether the epoch is done.}
+226 \textcolor{stringliteral}{        """}
+227         \textcolor{keywordflow}{return} self.epochDone
+228 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1Teacher_aa35e171610f8dd8e6a2fd5a87ad91e10}\label{classparlai_1_1core_1_1agents_1_1Teacher_aa35e171610f8dd8e6a2fd5a87ad91e10}} 
+\index{parlai\+::core\+::agents\+::\+Teacher@{parlai\+::core\+::agents\+::\+Teacher}!num\+\_\+episodes@{num\+\_\+episodes}}
+\index{num\+\_\+episodes@{num\+\_\+episodes}!parlai\+::core\+::agents\+::\+Teacher@{parlai\+::core\+::agents\+::\+Teacher}}
+\subsubsection{\texorpdfstring{num\+\_\+episodes()}{num\_episodes()}}
+{\footnotesize\ttfamily def parlai.\+core.\+agents.\+Teacher.\+num\+\_\+episodes (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Return the number of episodes (e.g. conversations) in the dataset.
+
+Default implementation returns `None`, indicating an unknown number.
+\end{DoxyVerb}
+ 
+
+Definition at line 238 of file agents.\+py.
+
+
+\begin{DoxyCode}
+238     \textcolor{keyword}{def }num\_episodes(self):
+239         \textcolor{stringliteral}{"""}
+240 \textcolor{stringliteral}{        Return the number of episodes (e.g. conversations) in the dataset.}
+241 \textcolor{stringliteral}{}
+242 \textcolor{stringliteral}{        Default implementation returns `None`, indicating an unknown number.}
+243 \textcolor{stringliteral}{        """}
+244         \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}
+245 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1Teacher_a93370e4e99236e8ad267b40cd4437920}\label{classparlai_1_1core_1_1agents_1_1Teacher_a93370e4e99236e8ad267b40cd4437920}} 
+\index{parlai\+::core\+::agents\+::\+Teacher@{parlai\+::core\+::agents\+::\+Teacher}!num\+\_\+examples@{num\+\_\+examples}}
+\index{num\+\_\+examples@{num\+\_\+examples}!parlai\+::core\+::agents\+::\+Teacher@{parlai\+::core\+::agents\+::\+Teacher}}
+\subsubsection{\texorpdfstring{num\+\_\+examples()}{num\_examples()}}
+{\footnotesize\ttfamily def parlai.\+core.\+agents.\+Teacher.\+num\+\_\+examples (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Return the number of examples (e.g. individual utterances) in the dataset.
+
+Default implementation returns `None`, indicating an unknown number.
+\end{DoxyVerb}
+ 
+
+Definition at line 230 of file agents.\+py.
+
+
+\begin{DoxyCode}
+230     \textcolor{keyword}{def }num\_examples(self):
+231         \textcolor{stringliteral}{"""}
+232 \textcolor{stringliteral}{        Return the number of examples (e.g. individual utterances) in the dataset.}
+233 \textcolor{stringliteral}{}
+234 \textcolor{stringliteral}{        Default implementation returns `None`, indicating an unknown number.}
+235 \textcolor{stringliteral}{        """}
+236         \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}
+237 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1Teacher_aa0afab11fb5f3f26ac59576f064623a4}\label{classparlai_1_1core_1_1agents_1_1Teacher_aa0afab11fb5f3f26ac59576f064623a4}} 
+\index{parlai\+::core\+::agents\+::\+Teacher@{parlai\+::core\+::agents\+::\+Teacher}!report@{report}}
+\index{report@{report}!parlai\+::core\+::agents\+::\+Teacher@{parlai\+::core\+::agents\+::\+Teacher}}
+\subsubsection{\texorpdfstring{report()}{report()}}
+{\footnotesize\ttfamily def parlai.\+core.\+agents.\+Teacher.\+report (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Return metrics showing total examples and accuracy if available.
+\end{DoxyVerb}
+ 
+
+Definition at line 246 of file agents.\+py.
+
+
+\begin{DoxyCode}
+246     \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}(self):
+247         \textcolor{stringliteral}{"""}
+248 \textcolor{stringliteral}{        Return metrics showing total examples and accuracy if available.}
+249 \textcolor{stringliteral}{        """}
+250         \textcolor{keywordflow}{return} self.metrics.\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}()
+251 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1Teacher_a3b1fe4cf4ea53c9b2ce28435391ad081}\label{classparlai_1_1core_1_1agents_1_1Teacher_a3b1fe4cf4ea53c9b2ce28435391ad081}} 
+\index{parlai\+::core\+::agents\+::\+Teacher@{parlai\+::core\+::agents\+::\+Teacher}!reset@{reset}}
+\index{reset@{reset}!parlai\+::core\+::agents\+::\+Teacher@{parlai\+::core\+::agents\+::\+Teacher}}
+\subsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily def parlai.\+core.\+agents.\+Teacher.\+reset (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Reset the teacher.
+\end{DoxyVerb}
+ 
+
+Definition at line 252 of file agents.\+py.
+
+
+\begin{DoxyCode}
+252     \textcolor{keyword}{def }reset(self):
+253         \textcolor{stringliteral}{"""}
+254 \textcolor{stringliteral}{        Reset the teacher.}
+255 \textcolor{stringliteral}{        """}
+256         super().reset()
+257         self.reset\_metrics()
+258         self.epochDone = \textcolor{keyword}{False}
+259 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1Teacher_a3f14618f0f49c57a6fbcb4f80f8a1de4}\label{classparlai_1_1core_1_1agents_1_1Teacher_a3f14618f0f49c57a6fbcb4f80f8a1de4}} 
+\index{parlai\+::core\+::agents\+::\+Teacher@{parlai\+::core\+::agents\+::\+Teacher}!reset\+\_\+metrics@{reset\+\_\+metrics}}
+\index{reset\+\_\+metrics@{reset\+\_\+metrics}!parlai\+::core\+::agents\+::\+Teacher@{parlai\+::core\+::agents\+::\+Teacher}}
+\subsubsection{\texorpdfstring{reset\+\_\+metrics()}{reset\_metrics()}}
+{\footnotesize\ttfamily def parlai.\+core.\+agents.\+Teacher.\+reset\+\_\+metrics (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Reset metrics.
+\end{DoxyVerb}
+ 
+
+Definition at line 260 of file agents.\+py.
+
+
+\begin{DoxyCode}
+260     \textcolor{keyword}{def }reset\_metrics(self):
+261         \textcolor{stringliteral}{"""}
+262 \textcolor{stringliteral}{        Reset metrics.}
+263 \textcolor{stringliteral}{        """}
+264         self.metrics.clear()
+265 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1Teacher_a43cf8d0b49ef4ff150ceef0149c063c3}\label{classparlai_1_1core_1_1agents_1_1Teacher_a43cf8d0b49ef4ff150ceef0149c063c3}} 
+\index{parlai\+::core\+::agents\+::\+Teacher@{parlai\+::core\+::agents\+::\+Teacher}!share@{share}}
+\index{share@{share}!parlai\+::core\+::agents\+::\+Teacher@{parlai\+::core\+::agents\+::\+Teacher}}
+\subsubsection{\texorpdfstring{share()}{share()}}
+{\footnotesize\ttfamily def parlai.\+core.\+agents.\+Teacher.\+share (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}In addition to default Agent shared parameters, share metrics.
+\end{DoxyVerb}
+ 
+
+Definition at line 266 of file agents.\+py.
+
+
+\begin{DoxyCode}
+266     \textcolor{keyword}{def }share(self):
+267         \textcolor{stringliteral}{"""}
+268 \textcolor{stringliteral}{        In addition to default Agent shared parameters, share metrics.}
+269 \textcolor{stringliteral}{        """}
+270         shared = super().share()
+271         shared[\textcolor{stringliteral}{'metrics'}] = self.metrics
+272         \textcolor{keywordflow}{return} shared
+273 
+274 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1Teacher_a2a21915f2270b76ba0e99137d506af89}\label{classparlai_1_1core_1_1agents_1_1Teacher_a2a21915f2270b76ba0e99137d506af89}} 
+\index{parlai\+::core\+::agents\+::\+Teacher@{parlai\+::core\+::agents\+::\+Teacher}!epoch\+Done@{epoch\+Done}}
+\index{epoch\+Done@{epoch\+Done}!parlai\+::core\+::agents\+::\+Teacher@{parlai\+::core\+::agents\+::\+Teacher}}
+\subsubsection{\texorpdfstring{epoch\+Done}{epochDone}}
+{\footnotesize\ttfamily parlai.\+core.\+agents.\+Teacher.\+epoch\+Done}
+
+
+
+Definition at line 212 of file agents.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1Teacher_a8385159acf54471fee8887ba2a83b53c}\label{classparlai_1_1core_1_1agents_1_1Teacher_a8385159acf54471fee8887ba2a83b53c}} 
+\index{parlai\+::core\+::agents\+::\+Teacher@{parlai\+::core\+::agents\+::\+Teacher}!id@{id}}
+\index{id@{id}!parlai\+::core\+::agents\+::\+Teacher@{parlai\+::core\+::agents\+::\+Teacher}}
+\subsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily parlai.\+core.\+agents.\+Teacher.\+id}
+
+
+
+Definition at line 206 of file agents.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1Teacher_a159705efe2a9f389d8adfdad76891f08}\label{classparlai_1_1core_1_1agents_1_1Teacher_a159705efe2a9f389d8adfdad76891f08}} 
+\index{parlai\+::core\+::agents\+::\+Teacher@{parlai\+::core\+::agents\+::\+Teacher}!metrics@{metrics}}
+\index{metrics@{metrics}!parlai\+::core\+::agents\+::\+Teacher@{parlai\+::core\+::agents\+::\+Teacher}}
+\subsubsection{\texorpdfstring{metrics}{metrics}}
+{\footnotesize\ttfamily parlai.\+core.\+agents.\+Teacher.\+metrics}
+
+
+
+Definition at line 209 of file agents.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1Teacher_a3ce6243860ce978a897922863ed32fa4}\label{classparlai_1_1core_1_1agents_1_1Teacher_a3ce6243860ce978a897922863ed32fa4}} 
+\index{parlai\+::core\+::agents\+::\+Teacher@{parlai\+::core\+::agents\+::\+Teacher}!opt@{opt}}
+\index{opt@{opt}!parlai\+::core\+::agents\+::\+Teacher@{parlai\+::core\+::agents\+::\+Teacher}}
+\subsubsection{\texorpdfstring{opt}{opt}}
+{\footnotesize\ttfamily parlai.\+core.\+agents.\+Teacher.\+opt}
+
+
+
+Definition at line 204 of file agents.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/core/\hyperlink{parlai_2core_2agents_8py}{agents.\+py}\end{DoxyCompactItemize}

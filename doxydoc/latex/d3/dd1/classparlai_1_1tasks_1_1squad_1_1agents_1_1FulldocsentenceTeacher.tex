@@ -1,0 +1,190 @@
+\hypertarget{classparlai_1_1tasks_1_1squad_1_1agents_1_1FulldocsentenceTeacher}{}\section{parlai.\+tasks.\+squad.\+agents.\+Fulldocsentence\+Teacher Class Reference}
+\label{classparlai_1_1tasks_1_1squad_1_1agents_1_1FulldocsentenceTeacher}\index{parlai.\+tasks.\+squad.\+agents.\+Fulldocsentence\+Teacher@{parlai.\+tasks.\+squad.\+agents.\+Fulldocsentence\+Teacher}}
+
+
+Inheritance diagram for parlai.\+tasks.\+squad.\+agents.\+Fulldocsentence\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{d4/de0/classparlai_1_1tasks_1_1squad_1_1agents_1_1FulldocsentenceTeacher__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+tasks.\+squad.\+agents.\+Fulldocsentence\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{dc/dc0/classparlai_1_1tasks_1_1squad_1_1agents_1_1FulldocsentenceTeacher__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1squad_1_1agents_1_1FulldocsentenceTeacher_a0d38880d3b8ab12f4af6b95a5aa5e57f}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1core_1_1agents_1_1Teacher_a3ce6243860ce978a897922863ed32fa4}{opt}, shared=None)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1squad_1_1agents_1_1FulldocsentenceTeacher_a60f31f40d228baf2a27eb4e1e2e1c213}{get} (self, \hyperlink{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_afd4ebab8063eb42d182d30a1a41f133e}{episode\+\_\+idx}, \hyperlink{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_ae3201b15f3c3b46a2f3511bad9b43e7d}{entry\+\_\+idx}=None)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1squad_1_1agents_1_1FulldocsentenceTeacher_af4fae24533376a66d54c771b6c8d06b7}{add\+\_\+cmdline\+\_\+args} (argparser)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1squad_1_1agents_1_1FulldocsentenceTeacher_a3ad4365c2ebc8896e90e8b478eeb68ed}{sent\+\_\+tok}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1squad_1_1agents_1_1FulldocsentenceTeacher_a1861bd0d07fa2488073e0292513187dc}{include\+\_\+context}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Teacher which contains the question as the text, the sentences as the label
+candidates, and the label as the sentence containing the answer.
+
+Some punctuation may be removed for tokenization purposes.
+
+If `include_context` is False, the teacher returns action dict in the
+following format:
+{
+    'context': <context>,
+    'text': <question>,
+    'labels': <sentences containing the true answer>,
+    'label_candidates': <all sentences in the context>,
+    'episode_done': True,
+    'answer_starts': <index of start of answer in context>
+}
+Otherwise, the 'text' field contains <context>\n<question> and there is
+no separate context field.
+\end{DoxyVerb}
+ 
+
+Definition at line 302 of file agents.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1squad_1_1agents_1_1FulldocsentenceTeacher_a0d38880d3b8ab12f4af6b95a5aa5e57f}\label{classparlai_1_1tasks_1_1squad_1_1agents_1_1FulldocsentenceTeacher_a0d38880d3b8ab12f4af6b95a5aa5e57f}} 
+\index{parlai\+::tasks\+::squad\+::agents\+::\+Fulldocsentence\+Teacher@{parlai\+::tasks\+::squad\+::agents\+::\+Fulldocsentence\+Teacher}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::tasks\+::squad\+::agents\+::\+Fulldocsentence\+Teacher@{parlai\+::tasks\+::squad\+::agents\+::\+Fulldocsentence\+Teacher}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+squad.\+agents.\+Fulldocsentence\+Teacher.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{shared = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 323 of file agents.\+py.
+
+
+\begin{DoxyCode}
+323     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
+324         super().\_\_init\_\_(opt, shared)
+325         self.sent\_tok = \hyperlink{namespaceparlai_1_1tasks_1_1squad_1_1agents_aedb3f218a9f6d84f322f3b17372bd047}{get\_sentence\_tokenizer}()
+326         self.include\_context = opt.get(\textcolor{stringliteral}{'include\_context'}, \textcolor{keyword}{False})
+327 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1squad_1_1agents_1_1FulldocsentenceTeacher_af4fae24533376a66d54c771b6c8d06b7}\label{classparlai_1_1tasks_1_1squad_1_1agents_1_1FulldocsentenceTeacher_af4fae24533376a66d54c771b6c8d06b7}} 
+\index{parlai\+::tasks\+::squad\+::agents\+::\+Fulldocsentence\+Teacher@{parlai\+::tasks\+::squad\+::agents\+::\+Fulldocsentence\+Teacher}!add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}}
+\index{add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}!parlai\+::tasks\+::squad\+::agents\+::\+Fulldocsentence\+Teacher@{parlai\+::tasks\+::squad\+::agents\+::\+Fulldocsentence\+Teacher}}
+\subsubsection{\texorpdfstring{add\+\_\+cmdline\+\_\+args()}{add\_cmdline\_args()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+squad.\+agents.\+Fulldocsentence\+Teacher.\+add\+\_\+cmdline\+\_\+args (\begin{DoxyParamCaption}\item[{}]{argparser }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 329 of file agents.\+py.
+
+
+\begin{DoxyCode}
+329     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(argparser):
+330         agent = argparser.add\_argument\_group(\textcolor{stringliteral}{'SQuAD Fulldoc Sentence Teacher Arguments'})
+331         agent.add\_argument(
+332             \textcolor{stringliteral}{'--include-context'},
+333             type=\textcolor{stringliteral}{'bool'},
+334             default=\textcolor{keyword}{False},
+335             help=\textcolor{stringliteral}{'include context within text instead of as a '} \textcolor{stringliteral}{'separate field'},
+336         )
+337 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1squad_1_1agents_1_1FulldocsentenceTeacher_a60f31f40d228baf2a27eb4e1e2e1c213}\label{classparlai_1_1tasks_1_1squad_1_1agents_1_1FulldocsentenceTeacher_a60f31f40d228baf2a27eb4e1e2e1c213}} 
+\index{parlai\+::tasks\+::squad\+::agents\+::\+Fulldocsentence\+Teacher@{parlai\+::tasks\+::squad\+::agents\+::\+Fulldocsentence\+Teacher}!get@{get}}
+\index{get@{get}!parlai\+::tasks\+::squad\+::agents\+::\+Fulldocsentence\+Teacher@{parlai\+::tasks\+::squad\+::agents\+::\+Fulldocsentence\+Teacher}}
+\subsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+squad.\+agents.\+Fulldocsentence\+Teacher.\+get (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{episode\+\_\+idx,  }\item[{}]{entry\+\_\+idx = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 338 of file agents.\+py.
+
+
+\begin{DoxyCode}
+338     \textcolor{keyword}{def }get(self, episode\_idx, entry\_idx=None):
+339         action = \{\}
+340         episode = self.episodes[episode\_idx][entry\_idx]
+341         context = \textcolor{stringliteral}{' '}.join(episode[\textcolor{stringliteral}{'text'}].split(\textcolor{stringliteral}{'\(\backslash\)n'})[:-1]).replace(
+342             \textcolor{stringliteral}{'\(\backslash\)xa0'}, \textcolor{stringliteral}{' '}
+343         )  \textcolor{comment}{# get rid of non breaking space characters}
+344         question = episode[\textcolor{stringliteral}{'text'}].split(\textcolor{stringliteral}{'\(\backslash\)n'})[-1]
+345         label\_field = \textcolor{stringliteral}{'labels'} \textcolor{keywordflow}{if} \textcolor{stringliteral}{'labels'} \textcolor{keywordflow}{in} episode \textcolor{keywordflow}{else} \textcolor{stringliteral}{'eval\_labels'}
+346         answers = []
+347         \textcolor{keywordflow}{for} answer \textcolor{keywordflow}{in} episode[label\_field]:
+348             new\_answer = answer.replace(\textcolor{stringliteral}{'.'}, \textcolor{stringliteral}{''}).replace(\textcolor{stringliteral}{'?'}, \textcolor{stringliteral}{''}).replace(\textcolor{stringliteral}{'!'}, \textcolor{stringliteral}{''})
+349             context = context.replace(answer, new\_answer)
+350             answers.append(new\_answer)
+351         sentences = self.sent\_tok.\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_a1fdb457e98eb4e4c26047e229686a616}{tokenize}(context)
+352         labels = []
+353         label\_starts = []
+354         \textcolor{keywordflow}{for} sentence \textcolor{keywordflow}{in} sentences:
+355             \textcolor{keywordflow}{for} answer \textcolor{keywordflow}{in} answers:
+356                 \textcolor{keywordflow}{if} answer \textcolor{keywordflow}{in} sentence \textcolor{keywordflow}{and} sentence \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} labels:
+357                     labels.append(sentence)
+358                     label\_starts.append(context.index(sentence))
+359 
+360         action = \{
+361             \textcolor{stringliteral}{'context'}: context,
+362             \textcolor{stringliteral}{'text'}: question,
+363             label\_field: labels,
+364             \textcolor{stringliteral}{'answer\_starts'}: label\_starts,
+365             \textcolor{stringliteral}{'label\_candidates'}: sentences,
+366             \textcolor{stringliteral}{'episode\_done'}: episode[\textcolor{stringliteral}{'episode\_done'}],
+367         \}
+368 
+369         \textcolor{keywordflow}{if} self.include\_context:
+370             action[\textcolor{stringliteral}{'text'}] = action[\textcolor{stringliteral}{'context'}] + \textcolor{stringliteral}{'\(\backslash\)n'} + action[\textcolor{stringliteral}{'text'}]
+371             del action[\textcolor{stringliteral}{'context'}]
+372 
+373         \textcolor{keywordflow}{return} action
+374 \end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1squad_1_1agents_1_1FulldocsentenceTeacher_a1861bd0d07fa2488073e0292513187dc}\label{classparlai_1_1tasks_1_1squad_1_1agents_1_1FulldocsentenceTeacher_a1861bd0d07fa2488073e0292513187dc}} 
+\index{parlai\+::tasks\+::squad\+::agents\+::\+Fulldocsentence\+Teacher@{parlai\+::tasks\+::squad\+::agents\+::\+Fulldocsentence\+Teacher}!include\+\_\+context@{include\+\_\+context}}
+\index{include\+\_\+context@{include\+\_\+context}!parlai\+::tasks\+::squad\+::agents\+::\+Fulldocsentence\+Teacher@{parlai\+::tasks\+::squad\+::agents\+::\+Fulldocsentence\+Teacher}}
+\subsubsection{\texorpdfstring{include\+\_\+context}{include\_context}}
+{\footnotesize\ttfamily parlai.\+tasks.\+squad.\+agents.\+Fulldocsentence\+Teacher.\+include\+\_\+context}
+
+
+
+Definition at line 326 of file agents.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1squad_1_1agents_1_1FulldocsentenceTeacher_a3ad4365c2ebc8896e90e8b478eeb68ed}\label{classparlai_1_1tasks_1_1squad_1_1agents_1_1FulldocsentenceTeacher_a3ad4365c2ebc8896e90e8b478eeb68ed}} 
+\index{parlai\+::tasks\+::squad\+::agents\+::\+Fulldocsentence\+Teacher@{parlai\+::tasks\+::squad\+::agents\+::\+Fulldocsentence\+Teacher}!sent\+\_\+tok@{sent\+\_\+tok}}
+\index{sent\+\_\+tok@{sent\+\_\+tok}!parlai\+::tasks\+::squad\+::agents\+::\+Fulldocsentence\+Teacher@{parlai\+::tasks\+::squad\+::agents\+::\+Fulldocsentence\+Teacher}}
+\subsubsection{\texorpdfstring{sent\+\_\+tok}{sent\_tok}}
+{\footnotesize\ttfamily parlai.\+tasks.\+squad.\+agents.\+Fulldocsentence\+Teacher.\+sent\+\_\+tok}
+
+
+
+Definition at line 325 of file agents.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/tasks/squad/\hyperlink{parlai_2tasks_2squad_2agents_8py}{agents.\+py}\end{DoxyCompactItemize}

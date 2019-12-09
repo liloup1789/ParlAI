@@ -1,0 +1,180 @@
+\hypertarget{classtests_1_1test__build__data_1_1TestBuildData}{}\section{tests.\+test\+\_\+build\+\_\+data.\+Test\+Build\+Data Class Reference}
+\label{classtests_1_1test__build__data_1_1TestBuildData}\index{tests.\+test\+\_\+build\+\_\+data.\+Test\+Build\+Data@{tests.\+test\+\_\+build\+\_\+data.\+Test\+Build\+Data}}
+
+
+Inheritance diagram for tests.\+test\+\_\+build\+\_\+data.\+Test\+Build\+Data\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{d2/d88/classtests_1_1test__build__data_1_1TestBuildData__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for tests.\+test\+\_\+build\+\_\+data.\+Test\+Build\+Data\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{d2/d60/classtests_1_1test__build__data_1_1TestBuildData__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classtests_1_1test__build__data_1_1TestBuildData_a778e0feb33f86ce770dc7bf7a3b8a416}{set\+Up} (self)
+\item 
+def \hyperlink{classtests_1_1test__build__data_1_1TestBuildData_a24ccc6522078dd41dbc5d608bc1297e2}{test\+\_\+download\+\_\+multiprocess} (self)
+\item 
+def \hyperlink{classtests_1_1test__build__data_1_1TestBuildData_a57a7d34acf8cec7b757605c5659b6e96}{test\+\_\+download\+\_\+multiprocess\+\_\+chunks} (self)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classtests_1_1test__build__data_1_1TestBuildData_a4b59ee6d7a834ee32404afe63512db12}{datapath}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classtests_1_1test__build__data_1_1TestBuildData_a44c09a6faf9f298de2d4a094a25a9f17}{dest\+\_\+filenames}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Basic tests on the build_data.py download_multiprocess.
+\end{DoxyVerb}
+ 
+
+Definition at line 15 of file test\+\_\+build\+\_\+data.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtests_1_1test__build__data_1_1TestBuildData_a778e0feb33f86ce770dc7bf7a3b8a416}\label{classtests_1_1test__build__data_1_1TestBuildData_a778e0feb33f86ce770dc7bf7a3b8a416}} 
+\index{tests\+::test\+\_\+build\+\_\+data\+::\+Test\+Build\+Data@{tests\+::test\+\_\+build\+\_\+data\+::\+Test\+Build\+Data}!set\+Up@{set\+Up}}
+\index{set\+Up@{set\+Up}!tests\+::test\+\_\+build\+\_\+data\+::\+Test\+Build\+Data@{tests\+::test\+\_\+build\+\_\+data\+::\+Test\+Build\+Data}}
+\subsubsection{\texorpdfstring{set\+Up()}{setUp()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+build\+\_\+data.\+Test\+Build\+Data.\+set\+Up (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 22 of file test\+\_\+build\+\_\+data.\+py.
+
+
+\begin{DoxyCode}
+22     \textcolor{keyword}{def }setUp(self):
+23         self.datapath = ParlaiParser().parse\_args(print\_args=\textcolor{keyword}{False})[\textcolor{stringliteral}{'datapath'}]
+24         self.datapath = os.path.join(self.datapath, \textcolor{stringliteral}{'build\_data\_pyt\_data'})
+25         os.makedirs(self.datapath, exist\_ok=\textcolor{keyword}{True})
+26 
+27         \textcolor{keywordflow}{for} d \textcolor{keywordflow}{in} self.dest\_filenames:
+28             \textcolor{comment}{# Removing files if they are already there b/c otherwise it won't try to download them again}
+29             \textcolor{keywordflow}{try}:
+30                 os.remove(os.path.join(self.datapath, d))
+31             \textcolor{keywordflow}{except} OSError:
+32                 \textcolor{keywordflow}{pass}
+33 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__build__data_1_1TestBuildData_a24ccc6522078dd41dbc5d608bc1297e2}\label{classtests_1_1test__build__data_1_1TestBuildData_a24ccc6522078dd41dbc5d608bc1297e2}} 
+\index{tests\+::test\+\_\+build\+\_\+data\+::\+Test\+Build\+Data@{tests\+::test\+\_\+build\+\_\+data\+::\+Test\+Build\+Data}!test\+\_\+download\+\_\+multiprocess@{test\+\_\+download\+\_\+multiprocess}}
+\index{test\+\_\+download\+\_\+multiprocess@{test\+\_\+download\+\_\+multiprocess}!tests\+::test\+\_\+build\+\_\+data\+::\+Test\+Build\+Data@{tests\+::test\+\_\+build\+\_\+data\+::\+Test\+Build\+Data}}
+\subsubsection{\texorpdfstring{test\+\_\+download\+\_\+multiprocess()}{test\_download\_multiprocess()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+build\+\_\+data.\+Test\+Build\+Data.\+test\+\_\+download\+\_\+multiprocess (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 34 of file test\+\_\+build\+\_\+data.\+py.
+
+
+\begin{DoxyCode}
+34     \textcolor{keyword}{def }test\_download\_multiprocess(self):
+35         urls = [
+36             \textcolor{stringliteral}{'https://parl.ai/downloads/mnist/mnist.tar.gz'},
+37             \textcolor{stringliteral}{'https://parl.ai/downloads/mnist/mnist.tar.gz.BAD'},
+38             \textcolor{stringliteral}{'https://parl.ai/downloads/mnist/mnist.tar.gz.BAD'},
+39         ]
+40 
+41         with testing\_utils.capture\_output() \textcolor{keyword}{as} stdout:
+42             download\_results = build\_data.download\_multiprocess(
+43                 urls, self.datapath, dest\_filenames=self.dest\_filenames
+44             )
+45         stdout = stdout.getvalue()
+46 
+47         output\_filenames, output\_statuses, output\_errors = zip(*download\_results)
+48         self.assertEqual(
+49             output\_filenames,
+50             self.dest\_filenames,
+51             f\textcolor{stringliteral}{'output filenames not correct\(\backslash\)n\{stdout\}'},
+52         )
+53         self.assertEqual(
+54             output\_statuses,
+55             (200, 403, 403),
+56             f\textcolor{stringliteral}{'output http statuses not correct\(\backslash\)n\{stdout\}'},
+57         )
+58 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__build__data_1_1TestBuildData_a57a7d34acf8cec7b757605c5659b6e96}\label{classtests_1_1test__build__data_1_1TestBuildData_a57a7d34acf8cec7b757605c5659b6e96}} 
+\index{tests\+::test\+\_\+build\+\_\+data\+::\+Test\+Build\+Data@{tests\+::test\+\_\+build\+\_\+data\+::\+Test\+Build\+Data}!test\+\_\+download\+\_\+multiprocess\+\_\+chunks@{test\+\_\+download\+\_\+multiprocess\+\_\+chunks}}
+\index{test\+\_\+download\+\_\+multiprocess\+\_\+chunks@{test\+\_\+download\+\_\+multiprocess\+\_\+chunks}!tests\+::test\+\_\+build\+\_\+data\+::\+Test\+Build\+Data@{tests\+::test\+\_\+build\+\_\+data\+::\+Test\+Build\+Data}}
+\subsubsection{\texorpdfstring{test\+\_\+download\+\_\+multiprocess\+\_\+chunks()}{test\_download\_multiprocess\_chunks()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+build\+\_\+data.\+Test\+Build\+Data.\+test\+\_\+download\+\_\+multiprocess\+\_\+chunks (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 59 of file test\+\_\+build\+\_\+data.\+py.
+
+
+\begin{DoxyCode}
+59     \textcolor{keyword}{def }test\_download\_multiprocess\_chunks(self):
+60         \textcolor{comment}{# Tests that the three finish downloading but may finish in any order}
+61         urls = [
+62             \textcolor{stringliteral}{'https://parl.ai/downloads/mnist/mnist.tar.gz'},
+63             \textcolor{stringliteral}{'https://parl.ai/downloads/mnist/mnist.tar.gz.BAD'},
+64             \textcolor{stringliteral}{'https://parl.ai/downloads/mnist/mnist.tar.gz.BAD'},
+65         ]
+66 
+67         with testing\_utils.capture\_output() \textcolor{keyword}{as} stdout:
+68             download\_results = build\_data.download\_multiprocess(
+69                 urls, self.datapath, dest\_filenames=self.dest\_filenames, chunk\_size=1
+70             )
+71         stdout = stdout.getvalue()
+72 
+73         output\_filenames, output\_statuses, output\_errors = zip(*download\_results)
+74 
+75         self.assertIn(\textcolor{stringliteral}{'mnist0.tar.gz'}, output\_filenames, f\textcolor{stringliteral}{'missing file:\(\backslash\)n\{stdout\}'})
+76         self.assertIn(\textcolor{stringliteral}{'mnist1.tar.gz'}, output\_filenames, f\textcolor{stringliteral}{'missing file:\(\backslash\)n\{stdout\}'})
+77         self.assertIn(\textcolor{stringliteral}{'mnist2.tar.gz'}, output\_filenames, f\textcolor{stringliteral}{'missing file:\(\backslash\)n\{stdout\}'})
+78         self.assertIn(200, output\_statuses, f\textcolor{stringliteral}{'unexpected error code:\(\backslash\)n\{stdout\}'})
+79         self.assertIn(403, output\_statuses, f\textcolor{stringliteral}{'unexpected error code:\(\backslash\)n\{stdout\}'})
+80 
+81 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classtests_1_1test__build__data_1_1TestBuildData_a4b59ee6d7a834ee32404afe63512db12}\label{classtests_1_1test__build__data_1_1TestBuildData_a4b59ee6d7a834ee32404afe63512db12}} 
+\index{tests\+::test\+\_\+build\+\_\+data\+::\+Test\+Build\+Data@{tests\+::test\+\_\+build\+\_\+data\+::\+Test\+Build\+Data}!datapath@{datapath}}
+\index{datapath@{datapath}!tests\+::test\+\_\+build\+\_\+data\+::\+Test\+Build\+Data@{tests\+::test\+\_\+build\+\_\+data\+::\+Test\+Build\+Data}}
+\subsubsection{\texorpdfstring{datapath}{datapath}}
+{\footnotesize\ttfamily tests.\+test\+\_\+build\+\_\+data.\+Test\+Build\+Data.\+datapath}
+
+
+
+Definition at line 23 of file test\+\_\+build\+\_\+data.\+py.
+
+\mbox{\Hypertarget{classtests_1_1test__build__data_1_1TestBuildData_a44c09a6faf9f298de2d4a094a25a9f17}\label{classtests_1_1test__build__data_1_1TestBuildData_a44c09a6faf9f298de2d4a094a25a9f17}} 
+\index{tests\+::test\+\_\+build\+\_\+data\+::\+Test\+Build\+Data@{tests\+::test\+\_\+build\+\_\+data\+::\+Test\+Build\+Data}!dest\+\_\+filenames@{dest\+\_\+filenames}}
+\index{dest\+\_\+filenames@{dest\+\_\+filenames}!tests\+::test\+\_\+build\+\_\+data\+::\+Test\+Build\+Data@{tests\+::test\+\_\+build\+\_\+data\+::\+Test\+Build\+Data}}
+\subsubsection{\texorpdfstring{dest\+\_\+filenames}{dest\_filenames}}
+{\footnotesize\ttfamily tests.\+test\+\_\+build\+\_\+data.\+Test\+Build\+Data.\+dest\+\_\+filenames\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 20 of file test\+\_\+build\+\_\+data.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+tests/\hyperlink{test__build__data_8py}{test\+\_\+build\+\_\+data.\+py}\end{DoxyCompactItemize}

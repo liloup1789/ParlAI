@@ -1,0 +1,119 @@
+\hypertarget{classparlai_1_1agents_1_1drqa_1_1layers_1_1LinearSeqAttn}{}\section{parlai.\+agents.\+drqa.\+layers.\+Linear\+Seq\+Attn Class Reference}
+\label{classparlai_1_1agents_1_1drqa_1_1layers_1_1LinearSeqAttn}\index{parlai.\+agents.\+drqa.\+layers.\+Linear\+Seq\+Attn@{parlai.\+agents.\+drqa.\+layers.\+Linear\+Seq\+Attn}}
+
+
+Inheritance diagram for parlai.\+agents.\+drqa.\+layers.\+Linear\+Seq\+Attn\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=206pt]{dd/d8a/classparlai_1_1agents_1_1drqa_1_1layers_1_1LinearSeqAttn__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+agents.\+drqa.\+layers.\+Linear\+Seq\+Attn\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=206pt]{d8/d08/classparlai_1_1agents_1_1drqa_1_1layers_1_1LinearSeqAttn__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1agents_1_1drqa_1_1layers_1_1LinearSeqAttn_a4f7535d9314733bcbcbe957d96600907}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, input\+\_\+size)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1drqa_1_1layers_1_1LinearSeqAttn_adae548d437f9b26ca9d928989e80a3ad}{forward} (self, x, x\+\_\+mask)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1agents_1_1drqa_1_1layers_1_1LinearSeqAttn_a5e221c809306db7c5877e5f6f919ac7f}{linear}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Self attention over a sequence:
+
+* o_i = softmax(Wx_i) for x_i in X.
+\end{DoxyVerb}
+ 
+
+Definition at line 239 of file layers.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1drqa_1_1layers_1_1LinearSeqAttn_a4f7535d9314733bcbcbe957d96600907}\label{classparlai_1_1agents_1_1drqa_1_1layers_1_1LinearSeqAttn_a4f7535d9314733bcbcbe957d96600907}} 
+\index{parlai\+::agents\+::drqa\+::layers\+::\+Linear\+Seq\+Attn@{parlai\+::agents\+::drqa\+::layers\+::\+Linear\+Seq\+Attn}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::agents\+::drqa\+::layers\+::\+Linear\+Seq\+Attn@{parlai\+::agents\+::drqa\+::layers\+::\+Linear\+Seq\+Attn}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+drqa.\+layers.\+Linear\+Seq\+Attn.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{input\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Definition at line 246 of file layers.\+py.
+
+
+\begin{DoxyCode}
+246     \textcolor{keyword}{def }\_\_init\_\_(self, input\_size):
+247         super(LinearSeqAttn, self).\_\_init\_\_()
+248         self.linear = nn.Linear(input\_size, 1)
+249 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1drqa_1_1layers_1_1LinearSeqAttn_adae548d437f9b26ca9d928989e80a3ad}\label{classparlai_1_1agents_1_1drqa_1_1layers_1_1LinearSeqAttn_adae548d437f9b26ca9d928989e80a3ad}} 
+\index{parlai\+::agents\+::drqa\+::layers\+::\+Linear\+Seq\+Attn@{parlai\+::agents\+::drqa\+::layers\+::\+Linear\+Seq\+Attn}!forward@{forward}}
+\index{forward@{forward}!parlai\+::agents\+::drqa\+::layers\+::\+Linear\+Seq\+Attn@{parlai\+::agents\+::drqa\+::layers\+::\+Linear\+Seq\+Attn}}
+\subsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+drqa.\+layers.\+Linear\+Seq\+Attn.\+forward (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{x,  }\item[{}]{x\+\_\+mask }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}x = batch * len * hdim
+x_mask = batch * len
+\end{DoxyVerb}
+ 
+
+Definition at line 250 of file layers.\+py.
+
+
+\begin{DoxyCode}
+250     \textcolor{keyword}{def }forward(self, x, x\_mask):
+251         \textcolor{stringliteral}{"""}
+252 \textcolor{stringliteral}{        x = batch * len * hdim}
+253 \textcolor{stringliteral}{        x\_mask = batch * len}
+254 \textcolor{stringliteral}{        """}
+255         x\_flat = x.view(-1, x.size(-1))
+256         scores = self.linear(x\_flat).view(x.size(0), x.size(1))
+257         scores.data.masked\_fill\_(x\_mask.data, -\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(\textcolor{stringliteral}{'inf'}))
+258         alpha = F.softmax(scores)
+259         \textcolor{keywordflow}{return} alpha
+260 
+261 
+262 \textcolor{comment}{# ------------------------------------------------------------------------------}
+263 \textcolor{comment}{# Functional}
+264 \textcolor{comment}{# ------------------------------------------------------------------------------}
+265 
+266 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1drqa_1_1layers_1_1LinearSeqAttn_a5e221c809306db7c5877e5f6f919ac7f}\label{classparlai_1_1agents_1_1drqa_1_1layers_1_1LinearSeqAttn_a5e221c809306db7c5877e5f6f919ac7f}} 
+\index{parlai\+::agents\+::drqa\+::layers\+::\+Linear\+Seq\+Attn@{parlai\+::agents\+::drqa\+::layers\+::\+Linear\+Seq\+Attn}!linear@{linear}}
+\index{linear@{linear}!parlai\+::agents\+::drqa\+::layers\+::\+Linear\+Seq\+Attn@{parlai\+::agents\+::drqa\+::layers\+::\+Linear\+Seq\+Attn}}
+\subsubsection{\texorpdfstring{linear}{linear}}
+{\footnotesize\ttfamily parlai.\+agents.\+drqa.\+layers.\+Linear\+Seq\+Attn.\+linear}
+
+
+
+Definition at line 248 of file layers.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/agents/drqa/\hyperlink{layers_8py}{layers.\+py}\end{DoxyCompactItemize}

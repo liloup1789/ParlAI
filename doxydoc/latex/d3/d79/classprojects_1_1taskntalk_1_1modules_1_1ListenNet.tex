@@ -1,0 +1,105 @@
+\hypertarget{classprojects_1_1taskntalk_1_1modules_1_1ListenNet}{}\section{projects.\+taskntalk.\+modules.\+Listen\+Net Class Reference}
+\label{classprojects_1_1taskntalk_1_1modules_1_1ListenNet}\index{projects.\+taskntalk.\+modules.\+Listen\+Net@{projects.\+taskntalk.\+modules.\+Listen\+Net}}
+
+
+Inheritance diagram for projects.\+taskntalk.\+modules.\+Listen\+Net\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{d8/d41/classprojects_1_1taskntalk_1_1modules_1_1ListenNet__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for projects.\+taskntalk.\+modules.\+Listen\+Net\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{d6/df7/classprojects_1_1taskntalk_1_1modules_1_1ListenNet__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classprojects_1_1taskntalk_1_1modules_1_1ListenNet_aecba12850e8db36a5a1b4c7c56e29836}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, in\+\_\+size, embed\+\_\+size)
+\item 
+def \hyperlink{classprojects_1_1taskntalk_1_1modules_1_1ListenNet_ad2d13c813b626f6b92bd17f6693c179c}{forward} (self, text\+\_\+tokens)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classprojects_1_1taskntalk_1_1modules_1_1ListenNet_a01d428f1730b2a3abf26c86ed72adf1b}{net}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Module for listening the sequence spoken by other agent.
+
+In ``forward``: Generate token embeddings.
+\end{DoxyVerb}
+ 
+
+Definition at line 48 of file modules.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classprojects_1_1taskntalk_1_1modules_1_1ListenNet_aecba12850e8db36a5a1b4c7c56e29836}\label{classprojects_1_1taskntalk_1_1modules_1_1ListenNet_aecba12850e8db36a5a1b4c7c56e29836}} 
+\index{projects\+::taskntalk\+::modules\+::\+Listen\+Net@{projects\+::taskntalk\+::modules\+::\+Listen\+Net}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!projects\+::taskntalk\+::modules\+::\+Listen\+Net@{projects\+::taskntalk\+::modules\+::\+Listen\+Net}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def projects.\+taskntalk.\+modules.\+Listen\+Net.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{in\+\_\+size,  }\item[{}]{embed\+\_\+size }\end{DoxyParamCaption})}
+
+
+
+Definition at line 55 of file modules.\+py.
+
+
+\begin{DoxyCode}
+55     \textcolor{keyword}{def }\_\_init\_\_(self, in\_size, embed\_size):
+56         super().\_\_init\_\_()
+57         self.net = nn.Embedding(in\_size, embed\_size)
+58         \hyperlink{namespaceprojects_1_1taskntalk_1_1modules_a483197f0d561a3d1ef7d04a2de70e571}{xavier\_init}(self)
+59 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classprojects_1_1taskntalk_1_1modules_1_1ListenNet_ad2d13c813b626f6b92bd17f6693c179c}\label{classprojects_1_1taskntalk_1_1modules_1_1ListenNet_ad2d13c813b626f6b92bd17f6693c179c}} 
+\index{projects\+::taskntalk\+::modules\+::\+Listen\+Net@{projects\+::taskntalk\+::modules\+::\+Listen\+Net}!forward@{forward}}
+\index{forward@{forward}!projects\+::taskntalk\+::modules\+::\+Listen\+Net@{projects\+::taskntalk\+::modules\+::\+Listen\+Net}}
+\subsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily def projects.\+taskntalk.\+modules.\+Listen\+Net.\+forward (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{text\+\_\+tokens }\end{DoxyParamCaption})}
+
+
+
+Definition at line 60 of file modules.\+py.
+
+
+\begin{DoxyCode}
+60     \textcolor{keyword}{def }forward(self, text\_tokens):
+61         embeds = self.net(text\_tokens)
+62         \textcolor{keywordflow}{return} embeds
+63 
+64 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classprojects_1_1taskntalk_1_1modules_1_1ListenNet_a01d428f1730b2a3abf26c86ed72adf1b}\label{classprojects_1_1taskntalk_1_1modules_1_1ListenNet_a01d428f1730b2a3abf26c86ed72adf1b}} 
+\index{projects\+::taskntalk\+::modules\+::\+Listen\+Net@{projects\+::taskntalk\+::modules\+::\+Listen\+Net}!net@{net}}
+\index{net@{net}!projects\+::taskntalk\+::modules\+::\+Listen\+Net@{projects\+::taskntalk\+::modules\+::\+Listen\+Net}}
+\subsubsection{\texorpdfstring{net}{net}}
+{\footnotesize\ttfamily projects.\+taskntalk.\+modules.\+Listen\+Net.\+net}
+
+
+
+Definition at line 57 of file modules.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+projects/taskntalk/\hyperlink{projects_2taskntalk_2modules_8py}{modules.\+py}\end{DoxyCompactItemize}

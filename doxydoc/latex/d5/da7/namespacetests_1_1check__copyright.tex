@@ -1,0 +1,96 @@
+\hypertarget{namespacetests_1_1check__copyright}{}\section{tests.\+check\+\_\+copyright Namespace Reference}
+\label{namespacetests_1_1check__copyright}\index{tests.\+check\+\_\+copyright@{tests.\+check\+\_\+copyright}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacetests_1_1check__copyright_a9fcf3c755e0bf8e93320f2f09bd7ce04}{main} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespacetests_1_1check__copyright_af73f59f49275a23b52addda3278068db}{F\+I\+L\+E\+N\+A\+M\+E\+\_\+\+E\+X\+T\+E\+N\+S\+I\+O\+NS}
+\item 
+\hyperlink{namespacetests_1_1check__copyright_af4202011da6a1540735f6cf9f7a30c61}{W\+H\+I\+T\+E\+L\+I\+S\+T\+\_\+\+P\+H\+R\+A\+S\+ES}
+\item 
+\hyperlink{namespacetests_1_1check__copyright_a2aae78d9a278ab846941cce2c4c4c469}{C\+O\+P\+Y\+R\+I\+G\+HT}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacetests_1_1check__copyright_a9fcf3c755e0bf8e93320f2f09bd7ce04}\label{namespacetests_1_1check__copyright_a9fcf3c755e0bf8e93320f2f09bd7ce04}} 
+\index{tests\+::check\+\_\+copyright@{tests\+::check\+\_\+copyright}!main@{main}}
+\index{main@{main}!tests\+::check\+\_\+copyright@{tests\+::check\+\_\+copyright}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def tests.\+check\+\_\+copyright.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 20 of file check\+\_\+copyright.\+py.
+
+
+\begin{DoxyCode}
+20 \textcolor{keyword}{def }\hyperlink{namespacetests_1_1check__copyright_a9fcf3c755e0bf8e93320f2f09bd7ce04}{main}():
+21     allgood = \textcolor{keyword}{True}
+22     \textcolor{keywordflow}{for} fn \textcolor{keywordflow}{in} testing\_utils.git\_ls\_files():
+23         \textcolor{comment}{# only check source files}
+24         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} re.match(FILENAME\_EXTENSIONS, fn):
+25             \textcolor{keywordflow}{continue}
+26 
+27         with open(fn, \textcolor{stringliteral}{'r') as f:}
+28 \textcolor{stringliteral}{            src = f.read(512)  }\textcolor{comment}{# only need the beginning}
+29 
+30         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} src.strip():
+31             \textcolor{comment}{# skip empty files}
+32             \textcolor{keywordflow}{continue}
+33 
+34         \textcolor{keywordflow}{if} any(wl \textcolor{keywordflow}{in} src \textcolor{keywordflow}{for} wl \textcolor{keywordflow}{in} WHITELIST\_PHRASES):
+35             \textcolor{comment}{# skip a few things we don't have the copyright on}
+36             \textcolor{keywordflow}{continue}
+37 
+38         \textcolor{keywordflow}{for} i, msg \textcolor{keywordflow}{in} enumerate(COPYRIGHT):
+39             \textcolor{keywordflow}{if} \textcolor{stringliteral}{"mlb\_vqa"} \textcolor{keywordflow}{in} fn \textcolor{keywordflow}{and} i < 2:
+40                 \textcolor{comment}{# very special exception for mlb\_vqa}
+41                 \textcolor{keywordflow}{continue}
+42 
+43             \textcolor{keywordflow}{if} msg \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} src:
+44                 print(\textcolor{stringliteral}{'\{\} missing copyright "\{\}"'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(fn, msg))
+45                 allgood = \textcolor{keyword}{False}
+46 
+47     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} allgood:
+48         sys.exit(1)
+49 
+50 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespacetests_1_1check__copyright_a2aae78d9a278ab846941cce2c4c4c469}\label{namespacetests_1_1check__copyright_a2aae78d9a278ab846941cce2c4c4c469}} 
+\index{tests\+::check\+\_\+copyright@{tests\+::check\+\_\+copyright}!C\+O\+P\+Y\+R\+I\+G\+HT@{C\+O\+P\+Y\+R\+I\+G\+HT}}
+\index{C\+O\+P\+Y\+R\+I\+G\+HT@{C\+O\+P\+Y\+R\+I\+G\+HT}!tests\+::check\+\_\+copyright@{tests\+::check\+\_\+copyright}}
+\subsubsection{\texorpdfstring{C\+O\+P\+Y\+R\+I\+G\+HT}{COPYRIGHT}}
+{\footnotesize\ttfamily tests.\+check\+\_\+copyright.\+C\+O\+P\+Y\+R\+I\+G\+HT}
+
+
+
+Definition at line 13 of file check\+\_\+copyright.\+py.
+
+\mbox{\Hypertarget{namespacetests_1_1check__copyright_af73f59f49275a23b52addda3278068db}\label{namespacetests_1_1check__copyright_af73f59f49275a23b52addda3278068db}} 
+\index{tests\+::check\+\_\+copyright@{tests\+::check\+\_\+copyright}!F\+I\+L\+E\+N\+A\+M\+E\+\_\+\+E\+X\+T\+E\+N\+S\+I\+O\+NS@{F\+I\+L\+E\+N\+A\+M\+E\+\_\+\+E\+X\+T\+E\+N\+S\+I\+O\+NS}}
+\index{F\+I\+L\+E\+N\+A\+M\+E\+\_\+\+E\+X\+T\+E\+N\+S\+I\+O\+NS@{F\+I\+L\+E\+N\+A\+M\+E\+\_\+\+E\+X\+T\+E\+N\+S\+I\+O\+NS}!tests\+::check\+\_\+copyright@{tests\+::check\+\_\+copyright}}
+\subsubsection{\texorpdfstring{F\+I\+L\+E\+N\+A\+M\+E\+\_\+\+E\+X\+T\+E\+N\+S\+I\+O\+NS}{FILENAME\_EXTENSIONS}}
+{\footnotesize\ttfamily tests.\+check\+\_\+copyright.\+F\+I\+L\+E\+N\+A\+M\+E\+\_\+\+E\+X\+T\+E\+N\+S\+I\+O\+NS}
+
+
+
+Definition at line 11 of file check\+\_\+copyright.\+py.
+
+\mbox{\Hypertarget{namespacetests_1_1check__copyright_af4202011da6a1540735f6cf9f7a30c61}\label{namespacetests_1_1check__copyright_af4202011da6a1540735f6cf9f7a30c61}} 
+\index{tests\+::check\+\_\+copyright@{tests\+::check\+\_\+copyright}!W\+H\+I\+T\+E\+L\+I\+S\+T\+\_\+\+P\+H\+R\+A\+S\+ES@{W\+H\+I\+T\+E\+L\+I\+S\+T\+\_\+\+P\+H\+R\+A\+S\+ES}}
+\index{W\+H\+I\+T\+E\+L\+I\+S\+T\+\_\+\+P\+H\+R\+A\+S\+ES@{W\+H\+I\+T\+E\+L\+I\+S\+T\+\_\+\+P\+H\+R\+A\+S\+ES}!tests\+::check\+\_\+copyright@{tests\+::check\+\_\+copyright}}
+\subsubsection{\texorpdfstring{W\+H\+I\+T\+E\+L\+I\+S\+T\+\_\+\+P\+H\+R\+A\+S\+ES}{WHITELIST\_PHRASES}}
+{\footnotesize\ttfamily tests.\+check\+\_\+copyright.\+W\+H\+I\+T\+E\+L\+I\+S\+T\+\_\+\+P\+H\+R\+A\+S\+ES}
+
+
+
+Definition at line 12 of file check\+\_\+copyright.\+py.
+

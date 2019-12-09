@@ -1,0 +1,135 @@
+\hypertarget{namespaceparlai_1_1scripts_1_1eval__model}{}\section{parlai.\+scripts.\+eval\+\_\+model Namespace Reference}
+\label{namespaceparlai_1_1scripts_1_1eval__model}\index{parlai.\+scripts.\+eval\+\_\+model@{parlai.\+scripts.\+eval\+\_\+model}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1eval__model_a2eaba0aa76c4d83e2a0f7f77c23479c8}{setup\+\_\+args} (\hyperlink{namespaceparlai_1_1scripts_1_1eval__model_ad0eac535b81763908ecc3cc63c12c885}{parser}=None)
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1eval__model_ade1dfda1be70776553a1fbd6a3450c40}{eval\+\_\+model} (opt, print\+\_\+parser=None)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1eval__model_ad0eac535b81763908ecc3cc63c12c885}{parser} = \hyperlink{namespaceparlai_1_1scripts_1_1eval__model_a2eaba0aa76c4d83e2a0f7f77c23479c8}{setup\+\_\+args}()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1eval__model_ade1dfda1be70776553a1fbd6a3450c40}\label{namespaceparlai_1_1scripts_1_1eval__model_ade1dfda1be70776553a1fbd6a3450c40}} 
+\index{parlai\+::scripts\+::eval\+\_\+model@{parlai\+::scripts\+::eval\+\_\+model}!eval\+\_\+model@{eval\+\_\+model}}
+\index{eval\+\_\+model@{eval\+\_\+model}!parlai\+::scripts\+::eval\+\_\+model@{parlai\+::scripts\+::eval\+\_\+model}}
+\subsubsection{\texorpdfstring{eval\+\_\+model()}{eval\_model()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+eval\+\_\+model.\+eval\+\_\+model (\begin{DoxyParamCaption}\item[{}]{opt,  }\item[{}]{print\+\_\+parser = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Evaluates a model.
+
+:param opt: tells the evaluation function how to run
+:param bool print_parser: if provided, prints the options that are set within the
+    model after loading the model
+:return: the final result of calling report()
+\end{DoxyVerb}
+ 
+
+Definition at line 98 of file eval\+\_\+model.\+py.
+
+
+\begin{DoxyCode}
+98 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1eval__model_ade1dfda1be70776553a1fbd6a3450c40}{eval\_model}(opt, print\_parser=None):
+99     \textcolor{stringliteral}{"""}
+100 \textcolor{stringliteral}{    Evaluates a model.}
+101 \textcolor{stringliteral}{}
+102 \textcolor{stringliteral}{    :param opt: tells the evaluation function how to run}
+103 \textcolor{stringliteral}{    :param bool print\_parser: if provided, prints the options that are set within the}
+104 \textcolor{stringliteral}{        model after loading the model}
+105 \textcolor{stringliteral}{    :return: the final result of calling report()}
+106 \textcolor{stringliteral}{    """}
+107     random.seed(42)
+108 
+109     \textcolor{comment}{# load model and possibly print opt}
+110     agent = \hyperlink{namespaceparlai_1_1core_1_1agents_ad0d54074d4bcc148bb415ab5515a53b5}{create\_agent}(opt, requireModelExists=\textcolor{keyword}{True})
+111     \textcolor{keywordflow}{if} print\_parser:
+112         \textcolor{comment}{# show args after loading model}
+113         print\_parser.opt = agent.opt
+114         print\_parser.print\_args()
+115 
+116     tasks = opt[\textcolor{stringliteral}{'task'}].split(\textcolor{stringliteral}{','})
+117     reports = []
+118     \textcolor{keywordflow}{for} task \textcolor{keywordflow}{in} tasks:
+119         task\_report = \_eval\_single\_world(opt, agent, task)
+120         reports.append(task\_report)
+121 
+122     report = \hyperlink{namespaceparlai_1_1core_1_1metrics_ae323045c05ed03d93c260521ebb8bf71}{aggregate\_task\_reports}(
+123         reports, tasks, micro=opt.get(\textcolor{stringliteral}{'aggregate\_micro'}, \textcolor{keyword}{True})
+124     )
+125 
+126     \textcolor{comment}{# print announcments and report}
+127     \hyperlink{namespaceparlai_1_1core_1_1params_afd1a47c94990168ea9e70d894a79bd2c}{print\_announcements}(opt)
+128     print(
+129         \textcolor{stringliteral}{'[ Finished evaluating tasks \{\} using datatype \{\} ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+130             tasks, opt.get(\textcolor{stringliteral}{'datatype'}, \textcolor{stringliteral}{'N/A'})
+131         )
+132     )
+133     print(report)
+134 
+135     \textcolor{keywordflow}{return} report
+136 
+137 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1eval__model_a2eaba0aa76c4d83e2a0f7f77c23479c8}\label{namespaceparlai_1_1scripts_1_1eval__model_a2eaba0aa76c4d83e2a0f7f77c23479c8}} 
+\index{parlai\+::scripts\+::eval\+\_\+model@{parlai\+::scripts\+::eval\+\_\+model}!setup\+\_\+args@{setup\+\_\+args}}
+\index{setup\+\_\+args@{setup\+\_\+args}!parlai\+::scripts\+::eval\+\_\+model@{parlai\+::scripts\+::eval\+\_\+model}}
+\subsubsection{\texorpdfstring{setup\+\_\+args()}{setup\_args()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+eval\+\_\+model.\+setup\+\_\+args (\begin{DoxyParamCaption}\item[{}]{parser = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 30 of file eval\+\_\+model.\+py.
+
+
+\begin{DoxyCode}
+30 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1eval__model_a2eaba0aa76c4d83e2a0f7f77c23479c8}{setup\_args}(parser=None):
+31     \textcolor{keywordflow}{if} parser \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+32         parser = ParlaiParser(\textcolor{keyword}{True}, \textcolor{keyword}{True}, \textcolor{stringliteral}{'Evaluate a model'})
+33     parser.add\_pytorch\_datateacher\_args()
+34     \textcolor{comment}{# Get command line arguments}
+35     parser.add\_argument(\textcolor{stringliteral}{'-ne'}, \textcolor{stringliteral}{'--num-examples'}, type=int, default=-1)
+36     parser.add\_argument(\textcolor{stringliteral}{'-d'}, \textcolor{stringliteral}{'--display-examples'}, type=\textcolor{stringliteral}{'bool'}, default=\textcolor{keyword}{False})
+37     parser.add\_argument(\textcolor{stringliteral}{'-ltim'}, \textcolor{stringliteral}{'--log-every-n-secs'}, type=float, default=2)
+38     parser.add\_argument(
+39         \textcolor{stringliteral}{'-micro'},
+40         \textcolor{stringliteral}{'--aggregate-micro'},
+41         type=\textcolor{stringliteral}{'bool'},
+42         default=\textcolor{keyword}{False},
+43         help=\textcolor{stringliteral}{'If multitasking, average metrics over the '}
+44         \textcolor{stringliteral}{'number of examples. If false, averages over the '}
+45         \textcolor{stringliteral}{'number of tasks.'},
+46     )
+47     parser.add\_argument(
+48         \textcolor{stringliteral}{'-mcs'},
+49         \textcolor{stringliteral}{'--metrics'},
+50         type=str,
+51         default=\textcolor{stringliteral}{'default'},
+52         help=\textcolor{stringliteral}{'list of metrics to show/compute, e.g. all, default,'}
+53         \textcolor{stringliteral}{'or give a list split by , like '}
+54         \textcolor{stringliteral}{'ppl,f1,accuracy,hits@1,rouge,bleu'}
+55         \textcolor{stringliteral}{'the rouge metrics will be computed as rouge-1, rouge-2 and rouge-l'},
+56     )
+57     TensorboardLogger.add\_cmdline\_args(parser)
+58     parser.set\_defaults(datatype=\textcolor{stringliteral}{'valid'})
+59     \textcolor{keywordflow}{return} parser
+60 
+61 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1eval__model_ad0eac535b81763908ecc3cc63c12c885}\label{namespaceparlai_1_1scripts_1_1eval__model_ad0eac535b81763908ecc3cc63c12c885}} 
+\index{parlai\+::scripts\+::eval\+\_\+model@{parlai\+::scripts\+::eval\+\_\+model}!parser@{parser}}
+\index{parser@{parser}!parlai\+::scripts\+::eval\+\_\+model@{parlai\+::scripts\+::eval\+\_\+model}}
+\subsubsection{\texorpdfstring{parser}{parser}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+eval\+\_\+model.\+parser = \hyperlink{namespaceparlai_1_1scripts_1_1eval__model_a2eaba0aa76c4d83e2a0f7f77c23479c8}{setup\+\_\+args}()}
+
+
+
+Definition at line 139 of file eval\+\_\+model.\+py.
+

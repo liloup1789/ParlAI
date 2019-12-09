@@ -1,0 +1,130 @@
+\hypertarget{classshadock_1_1RepeatLabelAgent}{}\section{shadock.\+Repeat\+Label\+Agent Class Reference}
+\label{classshadock_1_1RepeatLabelAgent}\index{shadock.\+Repeat\+Label\+Agent@{shadock.\+Repeat\+Label\+Agent}}
+
+
+Inheritance diagram for shadock.\+Repeat\+Label\+Agent\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{d2/d42/classshadock_1_1RepeatLabelAgent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for shadock.\+Repeat\+Label\+Agent\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{db/d14/classshadock_1_1RepeatLabelAgent__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classshadock_1_1RepeatLabelAgent_aa39519dbddd86ff20666995ea8202ea2}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1core_1_1agents_1_1Agent_ab3b45d2754244608c75d4068b90cd051}{opt})
+\item 
+def \hyperlink{classshadock_1_1RepeatLabelAgent_a72e70867bd2e94077d26b52a6040914e}{observe} (self, \hyperlink{classshadock_1_1RepeatLabelAgent_a2455b332a14c998490f888f28322a3bd}{observation})
+\item 
+def \hyperlink{classshadock_1_1RepeatLabelAgent_aec9b605ede2ba59d9a46aa913bd15649}{act} (self)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classshadock_1_1RepeatLabelAgent_af4a393b8da6a36d52f38ea8162efae09}{id}
+\item 
+\hyperlink{classshadock_1_1RepeatLabelAgent_a2455b332a14c998490f888f28322a3bd}{observation}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 24 of file shadock.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classshadock_1_1RepeatLabelAgent_aa39519dbddd86ff20666995ea8202ea2}\label{classshadock_1_1RepeatLabelAgent_aa39519dbddd86ff20666995ea8202ea2}} 
+\index{shadock\+::\+Repeat\+Label\+Agent@{shadock\+::\+Repeat\+Label\+Agent}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!shadock\+::\+Repeat\+Label\+Agent@{shadock\+::\+Repeat\+Label\+Agent}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def shadock.\+Repeat\+Label\+Agent.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 26 of file shadock.\+py.
+
+
+\begin{DoxyCode}
+26     \textcolor{keyword}{def }\_\_init\_\_(self, opt):
+27         self.id = \textcolor{stringliteral}{'RepeatLabel'}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classshadock_1_1RepeatLabelAgent_aec9b605ede2ba59d9a46aa913bd15649}\label{classshadock_1_1RepeatLabelAgent_aec9b605ede2ba59d9a46aa913bd15649}} 
+\index{shadock\+::\+Repeat\+Label\+Agent@{shadock\+::\+Repeat\+Label\+Agent}!act@{act}}
+\index{act@{act}!shadock\+::\+Repeat\+Label\+Agent@{shadock\+::\+Repeat\+Label\+Agent}}
+\subsubsection{\texorpdfstring{act()}{act()}}
+{\footnotesize\ttfamily def shadock.\+Repeat\+Label\+Agent.\+act (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 33 of file shadock.\+py.
+
+
+\begin{DoxyCode}
+33     \textcolor{keyword}{def }act(self):
+34         reply = \{\textcolor{stringliteral}{'id'}: self.id\}
+35         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'labels'} \textcolor{keywordflow}{in} self.observation:
+36             reply[\textcolor{stringliteral}{'text'}] = \textcolor{stringliteral}{', '}.join(self.observation[\textcolor{stringliteral}{'labels'}])
+37         \textcolor{keywordflow}{else}:
+38             reply[\textcolor{stringliteral}{'text'}] = \textcolor{stringliteral}{"I don't know."}
+39         \textcolor{keywordflow}{return} reply
+\end{DoxyCode}
+\mbox{\Hypertarget{classshadock_1_1RepeatLabelAgent_a72e70867bd2e94077d26b52a6040914e}\label{classshadock_1_1RepeatLabelAgent_a72e70867bd2e94077d26b52a6040914e}} 
+\index{shadock\+::\+Repeat\+Label\+Agent@{shadock\+::\+Repeat\+Label\+Agent}!observe@{observe}}
+\index{observe@{observe}!shadock\+::\+Repeat\+Label\+Agent@{shadock\+::\+Repeat\+Label\+Agent}}
+\subsubsection{\texorpdfstring{observe()}{observe()}}
+{\footnotesize\ttfamily def shadock.\+Repeat\+Label\+Agent.\+observe (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{observation }\end{DoxyParamCaption})}
+
+
+
+Definition at line 29 of file shadock.\+py.
+
+
+\begin{DoxyCode}
+29     \textcolor{keyword}{def }observe(self, observation):
+30         self.observation = observation
+31         \textcolor{keywordflow}{return} observation
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classshadock_1_1RepeatLabelAgent_af4a393b8da6a36d52f38ea8162efae09}\label{classshadock_1_1RepeatLabelAgent_af4a393b8da6a36d52f38ea8162efae09}} 
+\index{shadock\+::\+Repeat\+Label\+Agent@{shadock\+::\+Repeat\+Label\+Agent}!id@{id}}
+\index{id@{id}!shadock\+::\+Repeat\+Label\+Agent@{shadock\+::\+Repeat\+Label\+Agent}}
+\subsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily shadock.\+Repeat\+Label\+Agent.\+id}
+
+
+
+Definition at line 27 of file shadock.\+py.
+
+\mbox{\Hypertarget{classshadock_1_1RepeatLabelAgent_a2455b332a14c998490f888f28322a3bd}\label{classshadock_1_1RepeatLabelAgent_a2455b332a14c998490f888f28322a3bd}} 
+\index{shadock\+::\+Repeat\+Label\+Agent@{shadock\+::\+Repeat\+Label\+Agent}!observation@{observation}}
+\index{observation@{observation}!shadock\+::\+Repeat\+Label\+Agent@{shadock\+::\+Repeat\+Label\+Agent}}
+\subsubsection{\texorpdfstring{observation}{observation}}
+{\footnotesize\ttfamily shadock.\+Repeat\+Label\+Agent.\+observation}
+
+
+
+Definition at line 30 of file shadock.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+examples/\hyperlink{shadock_8py}{shadock.\+py}\end{DoxyCompactItemize}

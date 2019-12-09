@@ -1,0 +1,111 @@
+\hypertarget{classparlai_1_1tasks_1_1fromfile_1_1agents_1_1Parlaiformat2Teacher}{}\section{parlai.\+tasks.\+fromfile.\+agents.\+Parlaiformat2\+Teacher Class Reference}
+\label{classparlai_1_1tasks_1_1fromfile_1_1agents_1_1Parlaiformat2Teacher}\index{parlai.\+tasks.\+fromfile.\+agents.\+Parlaiformat2\+Teacher@{parlai.\+tasks.\+fromfile.\+agents.\+Parlaiformat2\+Teacher}}
+
+
+Inheritance diagram for parlai.\+tasks.\+fromfile.\+agents.\+Parlaiformat2\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{d5/dd1/classparlai_1_1tasks_1_1fromfile_1_1agents_1_1Parlaiformat2Teacher__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+tasks.\+fromfile.\+agents.\+Parlaiformat2\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{de/d6b/classparlai_1_1tasks_1_1fromfile_1_1agents_1_1Parlaiformat2Teacher__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1fromfile_1_1agents_1_1Parlaiformat2Teacher_a18904cf2f5851ea2f1ee37136a0efb2b}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1core_1_1agents_1_1Teacher_a3ce6243860ce978a897922863ed32fa4}{opt}, shared=None)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1fromfile_1_1agents_1_1Parlaiformat2Teacher_adbba4165f1d6690562c545fb48d1af06}{add\+\_\+cmdline\+\_\+args} (argparser)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1fromfile_1_1agents_1_1Parlaiformat2Teacher_aeea3091d7296c9abc5376a3b920a31b8}{id}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 88 of file agents.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1fromfile_1_1agents_1_1Parlaiformat2Teacher_a18904cf2f5851ea2f1ee37136a0efb2b}\label{classparlai_1_1tasks_1_1fromfile_1_1agents_1_1Parlaiformat2Teacher_a18904cf2f5851ea2f1ee37136a0efb2b}} 
+\index{parlai\+::tasks\+::fromfile\+::agents\+::\+Parlaiformat2\+Teacher@{parlai\+::tasks\+::fromfile\+::agents\+::\+Parlaiformat2\+Teacher}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::tasks\+::fromfile\+::agents\+::\+Parlaiformat2\+Teacher@{parlai\+::tasks\+::fromfile\+::agents\+::\+Parlaiformat2\+Teacher}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+fromfile.\+agents.\+Parlaiformat2\+Teacher.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{shared = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 94 of file agents.\+py.
+
+
+\begin{DoxyCode}
+94     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
+95         super().\_\_init\_\_(opt, shared)
+96         opt = copy.deepcopy(opt)
+97         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} opt.get(\textcolor{stringliteral}{'fromfile\_datapath2'}):
+98             \textcolor{keywordflow}{raise} RuntimeError(\textcolor{stringliteral}{'fromfile\_datapath2 not specified'})
+99         datafile = opt[\textcolor{stringliteral}{'fromfile\_datapath2'}]
+100         \textcolor{keywordflow}{if} shared \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+101             self.\_setup\_data(datafile)
+102         self.id = datafile
+103         self.reset()
+104 
+105 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1fromfile_1_1agents_1_1Parlaiformat2Teacher_adbba4165f1d6690562c545fb48d1af06}\label{classparlai_1_1tasks_1_1fromfile_1_1agents_1_1Parlaiformat2Teacher_adbba4165f1d6690562c545fb48d1af06}} 
+\index{parlai\+::tasks\+::fromfile\+::agents\+::\+Parlaiformat2\+Teacher@{parlai\+::tasks\+::fromfile\+::agents\+::\+Parlaiformat2\+Teacher}!add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}}
+\index{add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}!parlai\+::tasks\+::fromfile\+::agents\+::\+Parlaiformat2\+Teacher@{parlai\+::tasks\+::fromfile\+::agents\+::\+Parlaiformat2\+Teacher}}
+\subsubsection{\texorpdfstring{add\+\_\+cmdline\+\_\+args()}{add\_cmdline\_args()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+fromfile.\+agents.\+Parlaiformat2\+Teacher.\+add\+\_\+cmdline\+\_\+args (\begin{DoxyParamCaption}\item[{}]{argparser }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 90 of file agents.\+py.
+
+
+\begin{DoxyCode}
+90     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(argparser):
+91         agent = argparser.add\_argument\_group(\textcolor{stringliteral}{'FromFile Task Arguments'})
+92         agent.add\_argument(\textcolor{stringliteral}{'--fromfile-datapath2'}, type=str, help=\textcolor{stringliteral}{"Data file"})
+93 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1fromfile_1_1agents_1_1Parlaiformat2Teacher_aeea3091d7296c9abc5376a3b920a31b8}\label{classparlai_1_1tasks_1_1fromfile_1_1agents_1_1Parlaiformat2Teacher_aeea3091d7296c9abc5376a3b920a31b8}} 
+\index{parlai\+::tasks\+::fromfile\+::agents\+::\+Parlaiformat2\+Teacher@{parlai\+::tasks\+::fromfile\+::agents\+::\+Parlaiformat2\+Teacher}!id@{id}}
+\index{id@{id}!parlai\+::tasks\+::fromfile\+::agents\+::\+Parlaiformat2\+Teacher@{parlai\+::tasks\+::fromfile\+::agents\+::\+Parlaiformat2\+Teacher}}
+\subsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily parlai.\+tasks.\+fromfile.\+agents.\+Parlaiformat2\+Teacher.\+id}
+
+
+
+Definition at line 102 of file agents.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/tasks/fromfile/\hyperlink{parlai_2tasks_2fromfile_2agents_8py}{agents.\+py}\end{DoxyCompactItemize}

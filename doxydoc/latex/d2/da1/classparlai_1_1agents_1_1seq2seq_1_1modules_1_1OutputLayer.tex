@@ -1,0 +1,352 @@
+\hypertarget{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer}{}\section{parlai.\+agents.\+seq2seq.\+modules.\+Output\+Layer Class Reference}
+\label{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer}\index{parlai.\+agents.\+seq2seq.\+modules.\+Output\+Layer@{parlai.\+agents.\+seq2seq.\+modules.\+Output\+Layer}}
+
+
+Inheritance diagram for parlai.\+agents.\+seq2seq.\+modules.\+Output\+Layer\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=235pt]{d9/de4/classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+agents.\+seq2seq.\+modules.\+Output\+Layer\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=235pt]{d1/d66/classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_ae79d593ea8038932fc431369de1fa91d}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, num\+\_\+features, embeddingsize, hiddensize, \hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_aa9bb2d06eae7ebeb2fc1d2d0a27e0c3b}{dropout}=0, \hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_a1a08bf54424b676bb5f35aa2ca8dc096}{numsoftmax}=1, shared\+\_\+weight=None, \hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_acc82ef26b2a162662c729fc325d39b54}{padding\+\_\+idx}=-\/1)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_a730001f010633b53df7f7d96a75d8812}{forward} (self, input)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_aa9bb2d06eae7ebeb2fc1d2d0a27e0c3b}{dropout}
+\item 
+\hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_acc82ef26b2a162662c729fc325d39b54}{padding\+\_\+idx}
+\item 
+\hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_af9588423b3853ca292927fc37a24a674}{bias}
+\item 
+\hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_a83aa3c50706ed16f09ee44423dbb73ad}{shared}
+\item 
+\hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_a7a1a9304974964821e1d4d73bdccec0a}{weight}
+\item 
+\hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_a1a08bf54424b676bb5f35aa2ca8dc096}{numsoftmax}
+\item 
+\hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_a8764480c3d69166a1bc8b80886c16a97}{esz}
+\item 
+\hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_ab2922db72cff29a3c4853dd25a464a93}{softmax}
+\item 
+\hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_aa727b98d848c1dcdee4149255d2d30ed}{prior}
+\item 
+\hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_ace91a61ce9d1afaf8e69c8891dc37de4}{latent}
+\item 
+\hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_a0654abd36d1e9fc9425ac366ded9d624}{activation}
+\item 
+\hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_a0d76edf5fb553c45e025103b154b34a1}{o2e}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Takes in final states and returns distribution over candidates.
+\end{DoxyVerb}
+ 
+
+Definition at line 462 of file modules.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_ae79d593ea8038932fc431369de1fa91d}\label{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_ae79d593ea8038932fc431369de1fa91d}} 
+\index{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer@{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer@{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+seq2seq.\+modules.\+Output\+Layer.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{num\+\_\+features,  }\item[{}]{embeddingsize,  }\item[{}]{hiddensize,  }\item[{}]{dropout = {\ttfamily 0},  }\item[{}]{numsoftmax = {\ttfamily 1},  }\item[{}]{shared\+\_\+weight = {\ttfamily None},  }\item[{}]{padding\+\_\+idx = {\ttfamily -\/1} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initialize output layer.
+
+:param num_features:  number of candidates to rank
+:param hiddensize:    (last) dimension of the input vectors
+:param embeddingsize: (last) dimension of the candidate vectors
+:param numsoftmax:   (default 1) number of softmaxes to calculate.
+              see arxiv.org/abs/1711.03953 for more info.
+              increasing this slows down computation but can
+              add more expressivity to the embeddings.
+:param shared_weight: (num_features x esz) vector of weights to use as
+              the final linear layer's weight matrix. default
+              None starts with a new linear layer.
+:param padding_idx:   model should output a large negative number for
+              score at this index. if set to -1 (default),
+              this is disabled. if >= 0, subtracts one from
+              num_features and always outputs -1e20 at this
+              index. only used when shared_weight is not None.
+              setting this param helps protect gradient from
+              entering shared embedding matrices.
+\end{DoxyVerb}
+ 
+
+Definition at line 476 of file modules.\+py.
+
+
+\begin{DoxyCode}
+476     ):
+477         \textcolor{stringliteral}{"""}
+478 \textcolor{stringliteral}{        Initialize output layer.}
+479 \textcolor{stringliteral}{}
+480 \textcolor{stringliteral}{        :param num\_features:  number of candidates to rank}
+481 \textcolor{stringliteral}{        :param hiddensize:    (last) dimension of the input vectors}
+482 \textcolor{stringliteral}{        :param embeddingsize: (last) dimension of the candidate vectors}
+483 \textcolor{stringliteral}{        :param numsoftmax:   (default 1) number of softmaxes to calculate.}
+484 \textcolor{stringliteral}{                              see arxiv.org/abs/1711.03953 for more info.}
+485 \textcolor{stringliteral}{                              increasing this slows down computation but can}
+486 \textcolor{stringliteral}{                              add more expressivity to the embeddings.}
+487 \textcolor{stringliteral}{        :param shared\_weight: (num\_features x esz) vector of weights to use as}
+488 \textcolor{stringliteral}{                              the final linear layer's weight matrix. default}
+489 \textcolor{stringliteral}{                              None starts with a new linear layer.}
+490 \textcolor{stringliteral}{        :param padding\_idx:   model should output a large negative number for}
+491 \textcolor{stringliteral}{                              score at this index. if set to -1 (default),}
+492 \textcolor{stringliteral}{                              this is disabled. if >= 0, subtracts one from}
+493 \textcolor{stringliteral}{                              num\_features and always outputs -1e20 at this}
+494 \textcolor{stringliteral}{                              index. only used when shared\_weight is not None.}
+495 \textcolor{stringliteral}{                              setting this param helps protect gradient from}
+496 \textcolor{stringliteral}{                              entering shared embedding matrices.}
+497 \textcolor{stringliteral}{        """}
+498         super().\_\_init\_\_()
+499         self.dropout = nn.Dropout(p=dropout)
+500 
+501         self.padding\_idx = padding\_idx
+502         rng = 1.0 / math.sqrt(num\_features)
+503         self.bias = Parameter(torch.Tensor(num\_features).uniform\_(-rng, rng))
+504 
+505         \textcolor{comment}{# embedding to scores}
+506         \textcolor{keywordflow}{if} shared\_weight \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+507             \textcolor{comment}{# just a regular linear layer}
+508             self.shared = \textcolor{keyword}{False}
+509             self.weight = Parameter(
+510                 torch.Tensor(num\_features, embeddingsize).normal\_(0, 1)
+511             )
+512         \textcolor{keywordflow}{else}:
+513             \textcolor{comment}{# use shared weights and a bias layer instead}
+514             self.shared = \textcolor{keyword}{True}
+515             self.weight = shared\_weight.weight
+516 
+517         self.numsoftmax = numsoftmax
+518         \textcolor{keywordflow}{if} numsoftmax > 1:
+519             self.esz = embeddingsize
+520             self.softmax = nn.Softmax(dim=1)
+521             self.prior = nn.Linear(hiddensize, numsoftmax, bias=\textcolor{keyword}{False})
+522             self.latent = nn.Linear(hiddensize, numsoftmax * embeddingsize)
+523             self.activation = nn.Tanh()
+524         \textcolor{keywordflow}{else}:
+525             \textcolor{comment}{# rnn output to embedding}
+526             \textcolor{keywordflow}{if} hiddensize != embeddingsize:
+527                 \textcolor{comment}{# learn projection to correct dimensions}
+528                 self.o2e = nn.Linear(hiddensize, embeddingsize, bias=\textcolor{keyword}{True})
+529             \textcolor{keywordflow}{else}:
+530                 \textcolor{comment}{# no need for any transformation here}
+531                 self.o2e = Identity()
+532 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_a730001f010633b53df7f7d96a75d8812}\label{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_a730001f010633b53df7f7d96a75d8812}} 
+\index{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer@{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer}!forward@{forward}}
+\index{forward@{forward}!parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer@{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer}}
+\subsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+seq2seq.\+modules.\+Output\+Layer.\+forward (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{input }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Compute scores from inputs.
+
+:param input: (bsz x seq_len x num_directions * hiddensize) tensor of
+       states, e.g. the output states of an RNN
+
+:returns: (bsz x seqlen x num_cands) scores for each candidate
+\end{DoxyVerb}
+ 
+
+Definition at line 533 of file modules.\+py.
+
+
+\begin{DoxyCode}
+533     \textcolor{keyword}{def }forward(self, input):
+534         \textcolor{stringliteral}{"""}
+535 \textcolor{stringliteral}{        Compute scores from inputs.}
+536 \textcolor{stringliteral}{}
+537 \textcolor{stringliteral}{        :param input: (bsz x seq\_len x num\_directions * hiddensize) tensor of}
+538 \textcolor{stringliteral}{                       states, e.g. the output states of an RNN}
+539 \textcolor{stringliteral}{}
+540 \textcolor{stringliteral}{        :returns: (bsz x seqlen x num\_cands) scores for each candidate}
+541 \textcolor{stringliteral}{        """}
+542         \textcolor{comment}{# next compute scores over dictionary}
+543         \textcolor{keywordflow}{if} self.numsoftmax > 1:
+544             bsz = input.size(0)
+545             seqlen = input.size(1) \textcolor{keywordflow}{if} input.dim() > 1 \textcolor{keywordflow}{else} 1
+546 
+547             \textcolor{comment}{# first compute different softmax scores based on input vec}
+548             \textcolor{comment}{# hsz => numsoftmax * esz}
+549             latent = self.latent(input)
+550             active = self.dropout(self.activation(latent))
+551             \textcolor{comment}{# esz => num\_features}
+552             logit = F.linear(active.view(-1, self.esz), self.weight, self.bias)
+553 
+554             \textcolor{comment}{# calculate priors: distribution over which softmax scores to use}
+555             \textcolor{comment}{# hsz => numsoftmax}
+556             prior\_logit = self.prior(input).view(-1, self.numsoftmax)
+557             \textcolor{comment}{# softmax over numsoftmax's}
+558             prior = self.softmax(prior\_logit)
+559 
+560             \textcolor{comment}{# now combine priors with logits}
+561             prob = self.softmax(logit).view(bsz * seqlen, self.numsoftmax, -1)
+562             probs = (prob * prior.unsqueeze(2)).sum(1).view(bsz, seqlen, -1)
+563             scores = probs.log()
+564         \textcolor{keywordflow}{else}:
+565             \textcolor{comment}{# hsz => esz, good time for dropout}
+566             e = self.dropout(self.o2e(input))
+567             \textcolor{comment}{# esz => num\_features}
+568             scores = F.linear(e, self.weight, self.bias)
+569 
+570         \textcolor{keywordflow}{if} self.padding\_idx >= 0:
+571             scores[:, :, self.padding\_idx] = -NEAR\_INF
+572 
+573         \textcolor{keywordflow}{return} scores
+574 
+575 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_a0654abd36d1e9fc9425ac366ded9d624}\label{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_a0654abd36d1e9fc9425ac366ded9d624}} 
+\index{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer@{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer}!activation@{activation}}
+\index{activation@{activation}!parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer@{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer}}
+\subsubsection{\texorpdfstring{activation}{activation}}
+{\footnotesize\ttfamily parlai.\+agents.\+seq2seq.\+modules.\+Output\+Layer.\+activation}
+
+
+
+Definition at line 523 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_af9588423b3853ca292927fc37a24a674}\label{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_af9588423b3853ca292927fc37a24a674}} 
+\index{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer@{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer}!bias@{bias}}
+\index{bias@{bias}!parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer@{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer}}
+\subsubsection{\texorpdfstring{bias}{bias}}
+{\footnotesize\ttfamily parlai.\+agents.\+seq2seq.\+modules.\+Output\+Layer.\+bias}
+
+
+
+Definition at line 503 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_aa9bb2d06eae7ebeb2fc1d2d0a27e0c3b}\label{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_aa9bb2d06eae7ebeb2fc1d2d0a27e0c3b}} 
+\index{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer@{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer}!dropout@{dropout}}
+\index{dropout@{dropout}!parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer@{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer}}
+\subsubsection{\texorpdfstring{dropout}{dropout}}
+{\footnotesize\ttfamily parlai.\+agents.\+seq2seq.\+modules.\+Output\+Layer.\+dropout}
+
+
+
+Definition at line 499 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_a8764480c3d69166a1bc8b80886c16a97}\label{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_a8764480c3d69166a1bc8b80886c16a97}} 
+\index{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer@{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer}!esz@{esz}}
+\index{esz@{esz}!parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer@{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer}}
+\subsubsection{\texorpdfstring{esz}{esz}}
+{\footnotesize\ttfamily parlai.\+agents.\+seq2seq.\+modules.\+Output\+Layer.\+esz}
+
+
+
+Definition at line 519 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_ace91a61ce9d1afaf8e69c8891dc37de4}\label{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_ace91a61ce9d1afaf8e69c8891dc37de4}} 
+\index{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer@{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer}!latent@{latent}}
+\index{latent@{latent}!parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer@{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer}}
+\subsubsection{\texorpdfstring{latent}{latent}}
+{\footnotesize\ttfamily parlai.\+agents.\+seq2seq.\+modules.\+Output\+Layer.\+latent}
+
+
+
+Definition at line 522 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_a1a08bf54424b676bb5f35aa2ca8dc096}\label{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_a1a08bf54424b676bb5f35aa2ca8dc096}} 
+\index{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer@{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer}!numsoftmax@{numsoftmax}}
+\index{numsoftmax@{numsoftmax}!parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer@{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer}}
+\subsubsection{\texorpdfstring{numsoftmax}{numsoftmax}}
+{\footnotesize\ttfamily parlai.\+agents.\+seq2seq.\+modules.\+Output\+Layer.\+numsoftmax}
+
+
+
+Definition at line 517 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_a0d76edf5fb553c45e025103b154b34a1}\label{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_a0d76edf5fb553c45e025103b154b34a1}} 
+\index{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer@{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer}!o2e@{o2e}}
+\index{o2e@{o2e}!parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer@{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer}}
+\subsubsection{\texorpdfstring{o2e}{o2e}}
+{\footnotesize\ttfamily parlai.\+agents.\+seq2seq.\+modules.\+Output\+Layer.\+o2e}
+
+
+
+Definition at line 528 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_acc82ef26b2a162662c729fc325d39b54}\label{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_acc82ef26b2a162662c729fc325d39b54}} 
+\index{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer@{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer}!padding\+\_\+idx@{padding\+\_\+idx}}
+\index{padding\+\_\+idx@{padding\+\_\+idx}!parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer@{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer}}
+\subsubsection{\texorpdfstring{padding\+\_\+idx}{padding\_idx}}
+{\footnotesize\ttfamily parlai.\+agents.\+seq2seq.\+modules.\+Output\+Layer.\+padding\+\_\+idx}
+
+
+
+Definition at line 501 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_aa727b98d848c1dcdee4149255d2d30ed}\label{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_aa727b98d848c1dcdee4149255d2d30ed}} 
+\index{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer@{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer}!prior@{prior}}
+\index{prior@{prior}!parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer@{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer}}
+\subsubsection{\texorpdfstring{prior}{prior}}
+{\footnotesize\ttfamily parlai.\+agents.\+seq2seq.\+modules.\+Output\+Layer.\+prior}
+
+
+
+Definition at line 521 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_a83aa3c50706ed16f09ee44423dbb73ad}\label{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_a83aa3c50706ed16f09ee44423dbb73ad}} 
+\index{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer@{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer}!shared@{shared}}
+\index{shared@{shared}!parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer@{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer}}
+\subsubsection{\texorpdfstring{shared}{shared}}
+{\footnotesize\ttfamily parlai.\+agents.\+seq2seq.\+modules.\+Output\+Layer.\+shared}
+
+
+
+Definition at line 508 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_ab2922db72cff29a3c4853dd25a464a93}\label{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_ab2922db72cff29a3c4853dd25a464a93}} 
+\index{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer@{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer}!softmax@{softmax}}
+\index{softmax@{softmax}!parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer@{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer}}
+\subsubsection{\texorpdfstring{softmax}{softmax}}
+{\footnotesize\ttfamily parlai.\+agents.\+seq2seq.\+modules.\+Output\+Layer.\+softmax}
+
+
+
+Definition at line 520 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_a7a1a9304974964821e1d4d73bdccec0a}\label{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1OutputLayer_a7a1a9304974964821e1d4d73bdccec0a}} 
+\index{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer@{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer}!weight@{weight}}
+\index{weight@{weight}!parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer@{parlai\+::agents\+::seq2seq\+::modules\+::\+Output\+Layer}}
+\subsubsection{\texorpdfstring{weight}{weight}}
+{\footnotesize\ttfamily parlai.\+agents.\+seq2seq.\+modules.\+Output\+Layer.\+weight}
+
+
+
+Definition at line 509 of file modules.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/agents/seq2seq/\hyperlink{parlai_2agents_2seq2seq_2modules_8py}{modules.\+py}\end{DoxyCompactItemize}

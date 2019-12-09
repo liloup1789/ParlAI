@@ -1,0 +1,136 @@
+\hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1TaskRunHandler}{}\section{parlai.\+mturk.\+webapp.\+server.\+Task\+Run\+Handler Class Reference}
+\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1TaskRunHandler}\index{parlai.\+mturk.\+webapp.\+server.\+Task\+Run\+Handler@{parlai.\+mturk.\+webapp.\+server.\+Task\+Run\+Handler}}
+
+
+Inheritance diagram for parlai.\+mturk.\+webapp.\+server.\+Task\+Run\+Handler\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{d4/d07/classparlai_1_1mturk_1_1webapp_1_1server_1_1TaskRunHandler__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+mturk.\+webapp.\+server.\+Task\+Run\+Handler\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{d8/dfc/classparlai_1_1mturk_1_1webapp_1_1server_1_1TaskRunHandler__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1mturk_1_1webapp_1_1server_1_1TaskRunHandler_a110db01a938080c447a64b5a70918e25}{initialize} (self, \hyperlink{classparlai_1_1mturk_1_1webapp_1_1server_1_1TaskRunHandler_ae9e57d3ffed2fe707e9b1b041e65c2b7}{app})
+\item 
+def \hyperlink{classparlai_1_1mturk_1_1webapp_1_1server_1_1TaskRunHandler_a957a29eb2fcfec6fba5890470387e1d0}{post} (self, task\+\_\+target)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1mturk_1_1webapp_1_1server_1_1TaskRunHandler_ae9e57d3ffed2fe707e9b1b041e65c2b7}{app}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 591 of file server.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1TaskRunHandler_a110db01a938080c447a64b5a70918e25}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1TaskRunHandler_a110db01a938080c447a64b5a70918e25}} 
+\index{parlai\+::mturk\+::webapp\+::server\+::\+Task\+Run\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Task\+Run\+Handler}!initialize@{initialize}}
+\index{initialize@{initialize}!parlai\+::mturk\+::webapp\+::server\+::\+Task\+Run\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Task\+Run\+Handler}}
+\subsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily def parlai.\+mturk.\+webapp.\+server.\+Task\+Run\+Handler.\+initialize (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{app }\end{DoxyParamCaption})}
+
+
+
+Definition at line 592 of file server.\+py.
+
+
+\begin{DoxyCode}
+592     \textcolor{keyword}{def }initialize(self, app):
+593         self.app = app
+594 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1TaskRunHandler_a957a29eb2fcfec6fba5890470387e1d0}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1TaskRunHandler_a957a29eb2fcfec6fba5890470387e1d0}} 
+\index{parlai\+::mturk\+::webapp\+::server\+::\+Task\+Run\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Task\+Run\+Handler}!post@{post}}
+\index{post@{post}!parlai\+::mturk\+::webapp\+::server\+::\+Task\+Run\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Task\+Run\+Handler}}
+\subsubsection{\texorpdfstring{post()}{post()}}
+{\footnotesize\ttfamily def parlai.\+mturk.\+webapp.\+server.\+Task\+Run\+Handler.\+post (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{task\+\_\+target }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Requests to /run_task/{task_id} will launch a task locally for the given task.
+
+It will die after 20 mins if it doesn't end on its own.
+\end{DoxyVerb}
+ 
+
+Definition at line 595 of file server.\+py.
+
+
+\begin{DoxyCode}
+595     \textcolor{keyword}{def }post(self, task\_target):
+596         \textcolor{stringliteral}{"""}
+597 \textcolor{stringliteral}{        Requests to /run\_task/\{task\_id\} will launch a task locally for the given task.}
+598 \textcolor{stringliteral}{}
+599 \textcolor{stringliteral}{        It will die after 20 mins if it doesn't end on its own.}
+600 \textcolor{stringliteral}{        """}
+601         \textcolor{keywordflow}{try}:
+602             \textcolor{comment}{# Load the run and task\_config modules from the expected locations}
+603             t = \hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a49eb9835228f9f47f9aa55bc6369c23f}{get\_run\_module}(task\_target)
+604             conf = \hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_aee065cfdb6346d4815762ae793427f1e}{get\_config\_module}(task\_target)
+605             \textcolor{comment}{# Set the run file's MTurkManager module to be MockTurkManager}
+606             t.MTurkManager = MockTurkManager
+607             MockTurkManager.current\_manager = \textcolor{keywordtype}{None}
+608 
+609             \textcolor{comment}{# Start a task thread, then wait for the task to be running}
+610             task\_thread = threading.Thread(target=t.main, name=\textcolor{stringliteral}{'Demo-Thread'})
+611             task\_thread.start()
+612             \textcolor{keywordflow}{while} MockTurkManager.current\_manager \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+613                 time.sleep(1)
+614             time.sleep(1)
+615             manager = MockTurkManager.current\_manager
+616 
+617             \textcolor{comment}{# Register the current manager, then alive the agents}
+618             self.app.task\_manager = manager
+619             \textcolor{keywordflow}{for} agent \textcolor{keywordflow}{in} manager.agents:
+620                 manager.worker\_alive(agent.worker\_id, agent.hit\_id, agent.assignment\_id)
+621 
+622             \textcolor{comment}{# Tell frontend we're done, and give the initial packets.}
+623             data = \{
+624                 \textcolor{stringliteral}{'started'}: \textcolor{keyword}{True},
+625                 \textcolor{stringliteral}{'data'}: [agent.get\_update\_packet() \textcolor{keywordflow}{for} agent \textcolor{keywordflow}{in} manager.agents],
+626                 \textcolor{stringliteral}{'task\_config'}: conf.task\_config,
+627             \}
+628             self.write(json.dumps(data))
+629         \textcolor{keywordflow}{except} Exception \textcolor{keyword}{as} e:
+630             data = \{\textcolor{stringliteral}{'error'}: e\}
+631             print(repr(e))
+632             print(traceback.format\_exc())
+633             self.write(json.dumps(data))
+634 
+635 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1TaskRunHandler_ae9e57d3ffed2fe707e9b1b041e65c2b7}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1TaskRunHandler_ae9e57d3ffed2fe707e9b1b041e65c2b7}} 
+\index{parlai\+::mturk\+::webapp\+::server\+::\+Task\+Run\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Task\+Run\+Handler}!app@{app}}
+\index{app@{app}!parlai\+::mturk\+::webapp\+::server\+::\+Task\+Run\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Task\+Run\+Handler}}
+\subsubsection{\texorpdfstring{app}{app}}
+{\footnotesize\ttfamily parlai.\+mturk.\+webapp.\+server.\+Task\+Run\+Handler.\+app}
+
+
+
+Definition at line 593 of file server.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/mturk/webapp/\hyperlink{server_8py}{server.\+py}\end{DoxyCompactItemize}

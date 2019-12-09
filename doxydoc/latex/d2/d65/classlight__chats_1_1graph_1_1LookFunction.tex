@@ -1,0 +1,239 @@
+\hypertarget{classlight__chats_1_1graph_1_1LookFunction}{}\section{light\+\_\+chats.\+graph.\+Look\+Function Class Reference}
+\label{classlight__chats_1_1graph_1_1LookFunction}\index{light\+\_\+chats.\+graph.\+Look\+Function@{light\+\_\+chats.\+graph.\+Look\+Function}}
+
+
+Inheritance diagram for light\+\_\+chats.\+graph.\+Look\+Function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{d7/d18/classlight__chats_1_1graph_1_1LookFunction__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for light\+\_\+chats.\+graph.\+Look\+Function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{d2/d58/classlight__chats_1_1graph_1_1LookFunction__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1LookFunction_a2b2692f97a52251a450c60d10a80f37e}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self)
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1LookFunction_aeaedd1fa680a930dc86a1120d9daf63d}{func} (self, graph, args)
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1LookFunction_a7723e1da8ce79443c49fd4a5f6dce978}{format\+\_\+observation} (self, graph, viewing\+\_\+agent, action, telling\+\_\+agent=None, is\+\_\+constraint=False)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classlight__chats_1_1graph_1_1LookFunction_a98ca1312bcaf009a34ee3e1b1b43a3d6}{formats}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 2203 of file graph.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1LookFunction_a2b2692f97a52251a450c60d10a80f37e}\label{classlight__chats_1_1graph_1_1LookFunction_a2b2692f97a52251a450c60d10a80f37e}} 
+\index{light\+\_\+chats\+::graph\+::\+Look\+Function@{light\+\_\+chats\+::graph\+::\+Look\+Function}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!light\+\_\+chats\+::graph\+::\+Look\+Function@{light\+\_\+chats\+::graph\+::\+Look\+Function}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Look\+Function.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2204 of file graph.\+py.
+
+
+\begin{DoxyCode}
+2204     \textcolor{keyword}{def }\_\_init\_\_(self):
+2205         super().\_\_init\_\_(
+2206             function\_name=[\textcolor{stringliteral}{'look'}, \textcolor{stringliteral}{'l'}],
+2207             callback\_triggers=[\{\textcolor{stringliteral}{'action'}: \textcolor{stringliteral}{'looked'}, \textcolor{stringliteral}{'args'}: [0]\}],
+2208         )
+2209         self.formats = \{\textcolor{stringliteral}{'looked'}: \textcolor{stringliteral}{'\{0\} looked around. '}\}
+2210 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1LookFunction_a7723e1da8ce79443c49fd4a5f6dce978}\label{classlight__chats_1_1graph_1_1LookFunction_a7723e1da8ce79443c49fd4a5f6dce978}} 
+\index{light\+\_\+chats\+::graph\+::\+Look\+Function@{light\+\_\+chats\+::graph\+::\+Look\+Function}!format\+\_\+observation@{format\+\_\+observation}}
+\index{format\+\_\+observation@{format\+\_\+observation}!light\+\_\+chats\+::graph\+::\+Look\+Function@{light\+\_\+chats\+::graph\+::\+Look\+Function}}
+\subsubsection{\texorpdfstring{format\+\_\+observation()}{format\_observation()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Look\+Function.\+format\+\_\+observation (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{graph,  }\item[{}]{viewing\+\_\+agent,  }\item[{}]{action,  }\item[{}]{telling\+\_\+agent = {\ttfamily None},  }\item[{}]{is\+\_\+constraint = {\ttfamily False} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Return the observation text to display for an action for the case of look.
+
+Look is a special case, as the description can change more than just tense based
+on who or what was seen and who you tell it to.
+\end{DoxyVerb}
+ 
+
+Definition at line 2248 of file graph.\+py.
+
+
+\begin{DoxyCode}
+2248     ):
+2249         \textcolor{stringliteral}{"""}
+2250 \textcolor{stringliteral}{        Return the observation text to display for an action for the case of look.}
+2251 \textcolor{stringliteral}{}
+2252 \textcolor{stringliteral}{        Look is a special case, as the description can change more than just tense based}
+2253 \textcolor{stringliteral}{        on who or what was seen and who you tell it to.}
+2254 \textcolor{stringliteral}{        """}
+2255         \textcolor{keywordflow}{if} action[\textcolor{stringliteral}{'name'}] != \textcolor{stringliteral}{'list\_room'}:
+2256             \textcolor{keywordflow}{return} super().\hyperlink{namespacelight__chats_1_1graph_a6d359942394976812f0055affc289f56}{format\_observation}(
+2257                 graph, viewing\_agent, action, telling\_agent, is\_constraint
+2258             )
+2259         room\_desc = action[\textcolor{stringliteral}{'room\_desc'}]
+2260         object\_descs = action[\textcolor{stringliteral}{'object\_descs'}]
+2261         object\_ids = action[\textcolor{stringliteral}{'object\_ids'}]
+2262         ents = \{object\_descs[i]: object\_ids[i] \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(object\_ids))\}
+2263         agent\_descs = action[\textcolor{stringliteral}{'agent\_descs'}][:]
+2264         agent\_ids = action[\textcolor{stringliteral}{'agent\_ids'}]
+2265         room\_descs = action[\textcolor{stringliteral}{'room\_descs'}]
+2266         room = action[\textcolor{stringliteral}{'room\_id'}]
+2267         actor\_id = action[\textcolor{stringliteral}{'actors'}][0]
+2268         returned = action[\textcolor{stringliteral}{'returned'}]
+2269 
+2270         \textcolor{keywordflow}{if} telling\_agent \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+2271             \textcolor{comment}{# Override for first description to set it to EXACTLY what was}
+2272             \textcolor{comment}{# given.}
+2273             has\_actors = len(agent\_ids) > 0
+2274             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} has\_actors:
+2275                 \textcolor{keywordflow}{return} room\_desc
+2276 
+2277             \textcolor{keywordflow}{try}:
+2278                 \textcolor{comment}{# Remove viewing agent from the list (it's implied)}
+2279                 i = agent\_ids.index(viewing\_agent)
+2280                 del agent\_descs[i]
+2281             \textcolor{keywordflow}{except} BaseException:
+2282                 \textcolor{keywordflow}{pass}
+2283             \textcolor{keywordflow}{if} returned:
+2284                 s = \textcolor{stringliteral}{'You are back '}
+2285             \textcolor{keywordflow}{else}:
+2286                 s = \textcolor{stringliteral}{'You are '}
+2287             s += \textcolor{stringliteral}{'in \{\}.\(\backslash\)n'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(graph.node\_to\_desc(room))
+2288             \textcolor{keywordflow}{if} room\_desc \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+2289                 s += room\_desc + \textcolor{stringliteral}{'\(\backslash\)n'}
+2290             \textcolor{keywordflow}{if} len(object\_ids) > 0:
+2291                 s += graph.get\_room\_object\_text(object\_descs, ents)
+2292             \textcolor{keywordflow}{if} len(agent\_descs) > 0:
+2293                 s += graph.get\_room\_agent\_text(agent\_descs)
+2294             \textcolor{keywordflow}{if} len(room\_descs) > 0:
+2295                 s += graph.get\_room\_edge\_text(room\_descs)
+2296             \textcolor{keywordflow}{return} s
+2297         \textcolor{keywordflow}{else}:
+2298             is\_present = room == graph.location(actor\_id)
+2299 
+2300             \textcolor{keywordflow}{if} telling\_agent \textcolor{keywordflow}{in} agent\_ids:
+2301                 \textcolor{comment}{# Remove telling agent from descriptions (its implied)}
+2302                 i = agent\_ids.index(telling\_agent)
+2303                 del agent\_descs[i]
+2304                 del agent\_ids[i]
+2305             \textcolor{keywordflow}{if} telling\_agent \textcolor{keywordflow}{in} agent\_ids:
+2306                 \textcolor{comment}{# Replace telling agent with I (I was there)}
+2307                 i = agent\_ids.index(telling\_agent)
+2308                 \textcolor{keywordflow}{if} i < len(agent\_descs):
+2309                     agent\_descs[i] = \textcolor{stringliteral}{'I'}
+2310             actor\_desc = graph.node\_to\_desc(actor\_id) + \textcolor{stringliteral}{' was'}
+2311             \textcolor{keywordflow}{if} actor\_id == telling\_agent:
+2312                 actor\_desc = \textcolor{stringliteral}{'I am'} \textcolor{keywordflow}{if} is\_present \textcolor{keywordflow}{else} \textcolor{stringliteral}{'I was'}
+2313             \textcolor{keywordflow}{elif} actor\_id == viewing\_agent:
+2314                 actor\_desc = \textcolor{stringliteral}{'You are'} \textcolor{keywordflow}{if} is\_present \textcolor{keywordflow}{else} \textcolor{stringliteral}{'You were'}
+2315 
+2316             s = \textcolor{stringliteral}{'\{\} in \{\}.\(\backslash\)n'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(actor\_desc, graph.node\_to\_desc(room))
+2317             \textcolor{keywordflow}{if} room\_desc \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+2318                 s += room\_desc + \textcolor{stringliteral}{'\(\backslash\)n'}
+2319             s += graph.get\_room\_object\_text(
+2320                 object\_descs, ents, past=\textcolor{keywordflow}{not} is\_present, give\_empty=\textcolor{keyword}{False}
+2321             )
+2322             \textcolor{keywordflow}{if} viewing\_agent \textcolor{keywordflow}{in} agent\_ids:
+2323                 \textcolor{comment}{# Replace viewing agent with you were}
+2324                 i = agent\_ids.index(viewing\_agent)
+2325                 del agent\_descs[i]
+2326                 del agent\_ids[i]
+2327                 s += \textcolor{stringliteral}{'You are here.\(\backslash\)n'} \textcolor{keywordflow}{if} is\_present \textcolor{keywordflow}{else} \textcolor{stringliteral}{'You were there.\(\backslash\)n'}
+2328             s += graph.get\_room\_agent\_text(agent\_descs, past=\textcolor{keywordflow}{not} is\_present)
+2329             s += graph.get\_room\_edge\_text(room\_descs, past=\textcolor{keywordflow}{not} is\_present)
+2330             \textcolor{keywordflow}{return} s
+2331 
+2332 
+\end{DoxyCode}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1LookFunction_aeaedd1fa680a930dc86a1120d9daf63d}\label{classlight__chats_1_1graph_1_1LookFunction_aeaedd1fa680a930dc86a1120d9daf63d}} 
+\index{light\+\_\+chats\+::graph\+::\+Look\+Function@{light\+\_\+chats\+::graph\+::\+Look\+Function}!func@{func}}
+\index{func@{func}!light\+\_\+chats\+::graph\+::\+Look\+Function@{light\+\_\+chats\+::graph\+::\+Look\+Function}}
+\subsubsection{\texorpdfstring{func()}{func()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Look\+Function.\+func (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{graph,  }\item[{}]{args }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2211 of file graph.\+py.
+
+
+\begin{DoxyCode}
+2211     \textcolor{keyword}{def }func(self, graph, args):
+2212         room\_id = graph.location(args[0])
+2213 
+2214         \textcolor{comment}{# Prepare and send action for listing room contents}
+2215         is\_return = room\_id \textcolor{keywordflow}{in} graph.\_visited\_rooms[args[0]]
+2216         \textcolor{keywordflow}{if} is\_return \textcolor{keywordflow}{or} \textcolor{keywordflow}{not} graph.has\_prop(room\_id, \textcolor{stringliteral}{'first\_desc'}):
+2217             room\_desc = graph.get\_classed\_prop(room\_id, \textcolor{stringliteral}{'desc'}, args[0], \textcolor{keywordtype}{None})
+2218         \textcolor{keywordflow}{else}:
+2219             room\_desc = graph.get\_classed\_prop(room\_id, \textcolor{stringliteral}{'first\_desc'}, args[0])
+2220         graph.\_visited\_rooms[args[0]].add(room\_id)
+2221         \textcolor{keywordflow}{if} is\_return \textcolor{keywordflow}{or} \textcolor{keywordflow}{not} graph.has\_prop(room\_id, \textcolor{stringliteral}{'first\_desc'}):
+2222             agent\_ids, agent\_descs = graph.get\_nondescribed\_room\_agents(room\_id)
+2223             object\_ids, object\_descs = graph.get\_nondescribed\_room\_objects(room\_id)
+2224             \_room\_ids, room\_descs = graph.get\_room\_edges(room\_id)
+2225         \textcolor{keywordflow}{else}:
+2226             agent\_ids, agent\_descs = [], []
+2227             object\_ids, object\_descs = [], []
+2228             room\_descs = []
+2229         list\_room\_action = \{
+2230             \textcolor{stringliteral}{'caller'}: self.get\_name(),
+2231             \textcolor{stringliteral}{'name'}: \textcolor{stringliteral}{'list\_room'},
+2232             \textcolor{stringliteral}{'room\_id'}: room\_id,
+2233             \textcolor{stringliteral}{'actors'}: [args[0]],
+2234             \textcolor{stringliteral}{'agent\_ids'}: agent\_ids,
+2235             \textcolor{stringliteral}{'present\_agent\_ids'}: agent\_ids,
+2236             \textcolor{stringliteral}{'object\_ids'}: object\_ids,
+2237             \textcolor{stringliteral}{'agent\_descs'}: agent\_descs,
+2238             \textcolor{stringliteral}{'object\_descs'}: object\_descs,
+2239             \textcolor{stringliteral}{'room\_descs'}: room\_descs,
+2240             \textcolor{stringliteral}{'room\_desc'}: room\_desc,
+2241             \textcolor{stringliteral}{'returned'}: \textcolor{keyword}{False},
+2242         \}
+2243         graph.send\_action(args[0], list\_room\_action)
+2244         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+2245 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1LookFunction_a98ca1312bcaf009a34ee3e1b1b43a3d6}\label{classlight__chats_1_1graph_1_1LookFunction_a98ca1312bcaf009a34ee3e1b1b43a3d6}} 
+\index{light\+\_\+chats\+::graph\+::\+Look\+Function@{light\+\_\+chats\+::graph\+::\+Look\+Function}!formats@{formats}}
+\index{formats@{formats}!light\+\_\+chats\+::graph\+::\+Look\+Function@{light\+\_\+chats\+::graph\+::\+Look\+Function}}
+\subsubsection{\texorpdfstring{formats}{formats}}
+{\footnotesize\ttfamily light\+\_\+chats.\+graph.\+Look\+Function.\+formats}
+
+
+
+Definition at line 2209 of file graph.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/mturk/tasks/light/light\+\_\+chats/\hyperlink{parlai_2mturk_2tasks_2light_2light__chats_2graph_8py}{graph.\+py}\end{DoxyCompactItemize}

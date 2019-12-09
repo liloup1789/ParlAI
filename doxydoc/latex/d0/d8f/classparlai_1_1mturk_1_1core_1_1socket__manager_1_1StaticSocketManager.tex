@@ -1,0 +1,146 @@
+\hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1StaticSocketManager}{}\section{parlai.\+mturk.\+core.\+socket\+\_\+manager.\+Static\+Socket\+Manager Class Reference}
+\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1StaticSocketManager}\index{parlai.\+mturk.\+core.\+socket\+\_\+manager.\+Static\+Socket\+Manager@{parlai.\+mturk.\+core.\+socket\+\_\+manager.\+Static\+Socket\+Manager}}
+
+
+Inheritance diagram for parlai.\+mturk.\+core.\+socket\+\_\+manager.\+Static\+Socket\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{d8/d83/classparlai_1_1mturk_1_1core_1_1socket__manager_1_1StaticSocketManager__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+mturk.\+core.\+socket\+\_\+manager.\+Static\+Socket\+Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{df/d1d/classparlai_1_1mturk_1_1core_1_1socket__manager_1_1StaticSocketManager__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1StaticSocketManager_ac141271b1df6f50a5bfee040d7904696}{channel\+\_\+thread} (self)
+\item 
+def \hyperlink{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1StaticSocketManager_a4672bc8a07f4ae122338ceb3a59cd54a}{open\+\_\+channel} (self, worker\+\_\+id, assignment\+\_\+id)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Version of SocketManager that communicates consistently with the world, but isn't
+keeping track of the liveliness of the agents that connect as these are single
+person tasks.
+
+Submissions are handled via post rather than served over socket, so it doesn't make
+sense to.
+\end{DoxyVerb}
+ 
+
+Definition at line 805 of file socket\+\_\+manager.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1StaticSocketManager_ac141271b1df6f50a5bfee040d7904696}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1StaticSocketManager_ac141271b1df6f50a5bfee040d7904696}} 
+\index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Static\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Static\+Socket\+Manager}!channel\+\_\+thread@{channel\+\_\+thread}}
+\index{channel\+\_\+thread@{channel\+\_\+thread}!parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Static\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Static\+Socket\+Manager}}
+\subsubsection{\texorpdfstring{channel\+\_\+thread()}{channel\_thread()}}
+{\footnotesize\ttfamily def parlai.\+mturk.\+core.\+socket\+\_\+manager.\+Static\+Socket\+Manager.\+channel\+\_\+thread (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Handler thread for monitoring all channels to send things to.
+\end{DoxyVerb}
+ 
+
+Definition at line 815 of file socket\+\_\+manager.\+py.
+
+
+\begin{DoxyCode}
+815     \textcolor{keyword}{def }channel\_thread(self):
+816         \textcolor{stringliteral}{"""}
+817 \textcolor{stringliteral}{        Handler thread for monitoring all channels to send things to.}
+818 \textcolor{stringliteral}{        """}
+819         \textcolor{comment}{# while the thread is still alive}
+820         \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} self.is\_shutdown:
+821             \textcolor{keywordflow}{for} connection\_id \textcolor{keywordflow}{in} self.run.copy():
+822                 \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.run[connection\_id]:
+823                     \textcolor{keywordflow}{continue}
+824                 \textcolor{keywordflow}{try}:
+825                     \textcolor{comment}{# Make sure the queue still exists}
+826                     \textcolor{keywordflow}{if} connection\_id \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.queues:
+827                         self.run[connection\_id] = \textcolor{keyword}{False}
+828                         \textcolor{keywordflow}{break}
+829                     \textcolor{keywordflow}{if} self.blocking\_packets.get(connection\_id) \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+830                         packet\_item = self.blocking\_packets[connection\_id]
+831                         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.packet\_should\_block(packet\_item):
+832                             self.blocking\_packets[connection\_id] = \textcolor{keywordtype}{None}
+833                         \textcolor{keywordflow}{else}:
+834                             \textcolor{keywordflow}{continue}
+835                     \textcolor{keywordflow}{try}:
+836                         \textcolor{comment}{# Get first item in the queue, check if can send it yet}
+837                         item = self.queues[connection\_id].get(block=\textcolor{keyword}{False})
+838                         t = item[0]
+839                         \textcolor{keywordflow}{if} time.time() < t:
+840                             \textcolor{comment}{# Put the item back into the queue,}
+841                             \textcolor{comment}{# it's not time to pop yet}
+842                             self.\_safe\_put(connection\_id, item)
+843                         \textcolor{keywordflow}{else}:
+844                             \textcolor{comment}{# Try to send the packet}
+845                             packet = item[1]
+846                             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} packet:
+847                                 \textcolor{comment}{# This packet was deleted out from under us}
+848                                 \textcolor{keywordflow}{continue}
+849                             \textcolor{keywordflow}{if} packet.status \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} Packet.STATUS\_ACK:
+850                                 \textcolor{comment}{# either need to send initial packet}
+851                                 \textcolor{comment}{# or resend not-acked packet}
+852                                 self.\_send\_packet(packet, connection\_id, t)
+853                     \textcolor{keywordflow}{except} Empty:
+854                         \textcolor{keywordflow}{pass}
+855                 \textcolor{keywordflow}{except} Exception \textcolor{keyword}{as} e:
+856                     shared\_utils.print\_and\_log(
+857                         logging.WARN,
+858                         \textcolor{stringliteral}{'Unexpected error occurred in socket handling thread: '}
+859                         \textcolor{stringliteral}{'\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(repr(e)),
+860                         should\_print=\textcolor{keyword}{True},
+861                     )
+862             time.sleep(shared\_utils.THREAD\_SHORT\_SLEEP)
+863 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1StaticSocketManager_a4672bc8a07f4ae122338ceb3a59cd54a}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1StaticSocketManager_a4672bc8a07f4ae122338ceb3a59cd54a}} 
+\index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Static\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Static\+Socket\+Manager}!open\+\_\+channel@{open\+\_\+channel}}
+\index{open\+\_\+channel@{open\+\_\+channel}!parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Static\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Static\+Socket\+Manager}}
+\subsubsection{\texorpdfstring{open\+\_\+channel()}{open\_channel()}}
+{\footnotesize\ttfamily def parlai.\+mturk.\+core.\+socket\+\_\+manager.\+Static\+Socket\+Manager.\+open\+\_\+channel (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{worker\+\_\+id,  }\item[{}]{assignment\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Opens a channel for a worker on a given assignment, doesn't re-open if the
+channel is already open.
+\end{DoxyVerb}
+ 
+
+Definition at line 864 of file socket\+\_\+manager.\+py.
+
+
+\begin{DoxyCode}
+864     \textcolor{keyword}{def }open\_channel(self, worker\_id, assignment\_id):
+865         \textcolor{stringliteral}{"""}
+866 \textcolor{stringliteral}{        Opens a channel for a worker on a given assignment, doesn't re-open if the}
+867 \textcolor{stringliteral}{        channel is already open.}
+868 \textcolor{stringliteral}{        """}
+869         connection\_id = \textcolor{stringliteral}{'\{\}\_\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(worker\_id, assignment\_id)
+870         \textcolor{keywordflow}{if} connection\_id \textcolor{keywordflow}{in} self.queues \textcolor{keywordflow}{and} self.run[connection\_id]:
+871             shared\_utils.print\_and\_log(
+872                 logging.DEBUG, \textcolor{stringliteral}{'Channel (\{\}) already open'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(connection\_id)
+873             )
+874             \textcolor{keywordflow}{return}
+875         self.run[connection\_id] = \textcolor{keyword}{True}
+876         self.queues[connection\_id] = PriorityQueue()
+877         self.worker\_assign\_ids[connection\_id] = (worker\_id, assignment\_id)
+878 \end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/mturk/core/\hyperlink{socket__manager_8py}{socket\+\_\+manager.\+py}\end{DoxyCompactItemize}

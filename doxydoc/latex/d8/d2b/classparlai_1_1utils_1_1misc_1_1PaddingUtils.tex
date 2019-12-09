@@ -1,0 +1,254 @@
+\hypertarget{classparlai_1_1utils_1_1misc_1_1PaddingUtils}{}\section{parlai.\+utils.\+misc.\+Padding\+Utils Class Reference}
+\label{classparlai_1_1utils_1_1misc_1_1PaddingUtils}\index{parlai.\+utils.\+misc.\+Padding\+Utils@{parlai.\+utils.\+misc.\+Padding\+Utils}}
+
+
+Inheritance diagram for parlai.\+utils.\+misc.\+Padding\+Utils\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=203pt]{d0/dec/classparlai_1_1utils_1_1misc_1_1PaddingUtils__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+utils.\+misc.\+Padding\+Utils\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=203pt]{d9/dda/classparlai_1_1utils_1_1misc_1_1PaddingUtils__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1utils_1_1misc_1_1PaddingUtils_acd7178452139c55dc56e9889b10347cc}{pad\+\_\+text} (cls, observations, dictionary, end\+\_\+idx=None, null\+\_\+idx=0, dq=False, eval\+\_\+labels=True, truncate=None)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1misc_1_1PaddingUtils_ae862960e8f261ff4088d5dedbe42a25c}{map\+\_\+predictions} (cls, predictions, valid\+\_\+inds, batch\+\_\+reply, observations, dictionary, end\+\_\+idx, report\+\_\+freq=0.\+1, labels=None, answers=None, ys=None)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Helps with padding input and target tensors.
+
+DEPRECATED. USE PARLAI.CORE.TORCH_AGENT INSTEAD.
+\end{DoxyVerb}
+ 
+
+Definition at line 492 of file misc.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1PaddingUtils_ae862960e8f261ff4088d5dedbe42a25c}\label{classparlai_1_1utils_1_1misc_1_1PaddingUtils_ae862960e8f261ff4088d5dedbe42a25c}} 
+\index{parlai\+::utils\+::misc\+::\+Padding\+Utils@{parlai\+::utils\+::misc\+::\+Padding\+Utils}!map\+\_\+predictions@{map\+\_\+predictions}}
+\index{map\+\_\+predictions@{map\+\_\+predictions}!parlai\+::utils\+::misc\+::\+Padding\+Utils@{parlai\+::utils\+::misc\+::\+Padding\+Utils}}
+\subsubsection{\texorpdfstring{map\+\_\+predictions()}{map\_predictions()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+misc.\+Padding\+Utils.\+map\+\_\+predictions (\begin{DoxyParamCaption}\item[{}]{cls,  }\item[{}]{predictions,  }\item[{}]{valid\+\_\+inds,  }\item[{}]{batch\+\_\+reply,  }\item[{}]{observations,  }\item[{}]{dictionary,  }\item[{}]{end\+\_\+idx,  }\item[{}]{report\+\_\+freq = {\ttfamily 0.1},  }\item[{}]{labels = {\ttfamily None},  }\item[{}]{answers = {\ttfamily None},  }\item[{}]{ys = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Match predictions to original index in the batch.
+
+Predictions are mapped back to appropriate indices in the batch_reply
+using valid_inds.
+
+report_freq -- how often we report predictions
+
+DEPRECATED. USE PARLAI.CORE.TORCH_AGENT INSTEAD.
+\end{DoxyVerb}
+ 
+
+Definition at line 638 of file misc.\+py.
+
+
+\begin{DoxyCode}
+638     ):
+639         \textcolor{stringliteral}{"""}
+640 \textcolor{stringliteral}{        Match predictions to original index in the batch.}
+641 \textcolor{stringliteral}{}
+642 \textcolor{stringliteral}{        Predictions are mapped back to appropriate indices in the batch\_reply}
+643 \textcolor{stringliteral}{        using valid\_inds.}
+644 \textcolor{stringliteral}{}
+645 \textcolor{stringliteral}{        report\_freq -- how often we report predictions}
+646 \textcolor{stringliteral}{}
+647 \textcolor{stringliteral}{        DEPRECATED. USE PARLAI.CORE.TORCH\_AGENT INSTEAD.}
+648 \textcolor{stringliteral}{        """}
+649         \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(predictions)):
+650             \textcolor{comment}{# map the predictions back to non-empty examples in the batch}
+651             \textcolor{comment}{# we join with spaces since we produce tokens one at a timelab}
+652             curr = batch\_reply[valid\_inds[i]]
+653             output\_tokens = []
+654             j = 0
+655             \textcolor{keywordflow}{for} c \textcolor{keywordflow}{in} predictions[i]:
+656                 \textcolor{keywordflow}{if} c == end\_idx \textcolor{keywordflow}{and} j != 0:
+657                     \textcolor{keywordflow}{break}
+658                 \textcolor{keywordflow}{else}:
+659                     output\_tokens.append(c)
+660                 j += 1
+661             curr\_pred = dictionary.vec2txt(output\_tokens)
+662             curr[\textcolor{stringliteral}{'text'}] = curr\_pred
+663 
+664             \textcolor{keywordflow}{if} labels \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} answers \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} ys \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+665                 y = []
+666                 \textcolor{keywordflow}{for} c \textcolor{keywordflow}{in} ys[i]:
+667                     \textcolor{keywordflow}{if} c == end\_idx:
+668                         \textcolor{keywordflow}{break}
+669                     \textcolor{keywordflow}{else}:
+670                         y.append(c)
+671                 answers[valid\_inds[i]] = y
+672             \textcolor{keywordflow}{elif} answers \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+673                 answers[valid\_inds[i]] = curr\_pred
+674 
+675             \textcolor{keywordflow}{if} random.random() > (1 - report\_freq):
+676                 \textcolor{comment}{# log sometimes}
+677                 print(\textcolor{stringliteral}{'TEXT: '}, observations[valid\_inds[i]][\textcolor{stringliteral}{'text'}])
+678                 print(\textcolor{stringliteral}{'PREDICTION: '}, curr\_pred, \textcolor{stringliteral}{'\(\backslash\)n~'})
+679         \textcolor{keywordflow}{return}
+680 
+681 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1PaddingUtils_acd7178452139c55dc56e9889b10347cc}\label{classparlai_1_1utils_1_1misc_1_1PaddingUtils_acd7178452139c55dc56e9889b10347cc}} 
+\index{parlai\+::utils\+::misc\+::\+Padding\+Utils@{parlai\+::utils\+::misc\+::\+Padding\+Utils}!pad\+\_\+text@{pad\+\_\+text}}
+\index{pad\+\_\+text@{pad\+\_\+text}!parlai\+::utils\+::misc\+::\+Padding\+Utils@{parlai\+::utils\+::misc\+::\+Padding\+Utils}}
+\subsubsection{\texorpdfstring{pad\+\_\+text()}{pad\_text()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+misc.\+Padding\+Utils.\+pad\+\_\+text (\begin{DoxyParamCaption}\item[{}]{cls,  }\item[{}]{observations,  }\item[{}]{dictionary,  }\item[{}]{end\+\_\+idx = {\ttfamily None},  }\item[{}]{null\+\_\+idx = {\ttfamily 0},  }\item[{}]{dq = {\ttfamily False},  }\item[{}]{eval\+\_\+labels = {\ttfamily True},  }\item[{}]{truncate = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Pad observations to max width.
+
+We check that examples are valid, pad with zeros, and sort by length
+so that we can use the pack_padded function. The list valid_inds
+keeps track of which indices are valid and the order in which we sort
+the examples.
+
+dq -- whether we should use deque or list
+eval_labels -- whether or not we want to consider eval labels
+truncate -- truncate input and output lengths
+
+DEPRECATED. USE PARLAI.CORE.TORCH_AGENT INSTEAD.
+\end{DoxyVerb}
+ 
+
+Definition at line 511 of file misc.\+py.
+
+
+\begin{DoxyCode}
+511     ):
+512         \textcolor{stringliteral}{"""}
+513 \textcolor{stringliteral}{        Pad observations to max width.}
+514 \textcolor{stringliteral}{}
+515 \textcolor{stringliteral}{        We check that examples are valid, pad with zeros, and sort by length}
+516 \textcolor{stringliteral}{        so that we can use the pack\_padded function. The list valid\_inds}
+517 \textcolor{stringliteral}{        keeps track of which indices are valid and the order in which we sort}
+518 \textcolor{stringliteral}{        the examples.}
+519 \textcolor{stringliteral}{}
+520 \textcolor{stringliteral}{        dq -- whether we should use deque or list}
+521 \textcolor{stringliteral}{        eval\_labels -- whether or not we want to consider eval labels}
+522 \textcolor{stringliteral}{        truncate -- truncate input and output lengths}
+523 \textcolor{stringliteral}{}
+524 \textcolor{stringliteral}{        DEPRECATED. USE PARLAI.CORE.TORCH\_AGENT INSTEAD.}
+525 \textcolor{stringliteral}{        """}
+526 
+527         \textcolor{keyword}{def }valid(obs):
+528             \textcolor{comment}{# check if this is an example our model should actually process}
+529             \textcolor{keywordflow}{return} \textcolor{stringliteral}{'text'} \textcolor{keywordflow}{in} obs \textcolor{keywordflow}{and} len(obs[\textcolor{stringliteral}{'text'}]) > 0
+530 
+531         \textcolor{keywordflow}{try}:
+532             \textcolor{comment}{# valid examples and their indices}
+533             valid\_inds, exs = zip(
+534                 *[(i, ex) \textcolor{keywordflow}{for} i, ex \textcolor{keywordflow}{in} enumerate(observations) \textcolor{keywordflow}{if} valid(ex)]
+535             )
+536         \textcolor{keywordflow}{except} ValueError:
+537             \textcolor{comment}{# zero examples to process in this batch, so zip failed to unpack}
+538             \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}, \textcolor{keywordtype}{None}, \textcolor{keywordtype}{None}, \textcolor{keywordtype}{None}, \textcolor{keywordtype}{None}, \textcolor{keywordtype}{None}
+539 
+540         \textcolor{comment}{# `x` text is already tokenized and truncated}
+541         \textcolor{comment}{# sort by length so we can use pack\_padded}
+542         \textcolor{keywordflow}{if} any([\textcolor{stringliteral}{'text2vec'} \textcolor{keywordflow}{in} ex \textcolor{keywordflow}{for} ex \textcolor{keywordflow}{in} exs]):
+543             parsed\_x = [ex[\textcolor{stringliteral}{'text2vec'}] \textcolor{keywordflow}{for} ex \textcolor{keywordflow}{in} exs]
+544         \textcolor{keywordflow}{else}:
+545             parsed\_x = [dictionary.txt2vec(ex[\textcolor{stringliteral}{'text'}]) \textcolor{keywordflow}{for} ex \textcolor{keywordflow}{in} exs]
+546 
+547         \textcolor{keywordflow}{if} len(parsed\_x) > 0 \textcolor{keywordflow}{and} \textcolor{keywordflow}{not} isinstance(parsed\_x[0], deque):
+548             \textcolor{keywordflow}{if} dq:
+549                 parsed\_x = [deque(x, maxlen=truncate) \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} parsed\_x]
+550             \textcolor{keywordflow}{elif} truncate \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} truncate > 0:
+551                 parsed\_x = [x[-truncate:] \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} parsed\_x]
+552 
+553         x\_lens = [len(x) \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} parsed\_x]
+554         ind\_sorted = sorted(range(len(x\_lens)), key=\textcolor{keyword}{lambda} k: -x\_lens[k])
+555 
+556         exs = [exs[k] \textcolor{keywordflow}{for} k \textcolor{keywordflow}{in} ind\_sorted]
+557         valid\_inds = [valid\_inds[k] \textcolor{keywordflow}{for} k \textcolor{keywordflow}{in} ind\_sorted]
+558         parsed\_x = [parsed\_x[k] \textcolor{keywordflow}{for} k \textcolor{keywordflow}{in} ind\_sorted]
+559         end\_idxs = [x\_lens[k] \textcolor{keywordflow}{for} k \textcolor{keywordflow}{in} ind\_sorted]
+560 
+561         eval\_labels\_avail = any([\textcolor{stringliteral}{'eval\_labels'} \textcolor{keywordflow}{in} ex \textcolor{keywordflow}{for} ex \textcolor{keywordflow}{in} exs])
+562         labels\_avail = any([\textcolor{stringliteral}{'labels'} \textcolor{keywordflow}{in} ex \textcolor{keywordflow}{for} ex \textcolor{keywordflow}{in} exs])
+563         \textcolor{keywordflow}{if} eval\_labels:
+564             some\_labels\_avail = eval\_labels\_avail \textcolor{keywordflow}{or} labels\_avail
+565         \textcolor{keywordflow}{else}:
+566             some\_labels\_avail = labels\_avail
+567 
+568         max\_x\_len = max(x\_lens)
+569 
+570         \textcolor{comment}{# pad with zeros}
+571         \textcolor{keywordflow}{if} dq:
+572             parsed\_x = [
+573                 x
+574                 \textcolor{keywordflow}{if} len(x) == max\_x\_len
+575                 \textcolor{keywordflow}{else} x + deque((null\_idx,)) * (max\_x\_len - len(x))
+576                 \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} parsed\_x
+577             ]
+578         \textcolor{keywordflow}{else}:
+579             parsed\_x = [
+580                 x \textcolor{keywordflow}{if} len(x) == max\_x\_len \textcolor{keywordflow}{else} x + [null\_idx] * (max\_x\_len - len(x))
+581                 \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} parsed\_x
+582             ]
+583         xs = parsed\_x
+584 
+585         \textcolor{comment}{# set up the target tensors}
+586         ys = \textcolor{keywordtype}{None}
+587         labels = \textcolor{keywordtype}{None}
+588         y\_lens = \textcolor{keywordtype}{None}
+589         \textcolor{keywordflow}{if} some\_labels\_avail:
+590             \textcolor{comment}{# randomly select one of the labels to update on (if multiple)}
+591             \textcolor{keywordflow}{if} labels\_avail:
+592                 labels = [random.choice(ex.get(\textcolor{stringliteral}{'labels'}, [\textcolor{stringliteral}{''}])) \textcolor{keywordflow}{for} ex \textcolor{keywordflow}{in} exs]
+593             \textcolor{keywordflow}{else}:
+594                 labels = [random.choice(ex.get(\textcolor{stringliteral}{'eval\_labels'}, [\textcolor{stringliteral}{''}])) \textcolor{keywordflow}{for} ex \textcolor{keywordflow}{in} exs]
+595             \textcolor{comment}{# parse each label and append END}
+596             \textcolor{keywordflow}{if} dq:
+597                 parsed\_y = [deque(maxlen=truncate) \textcolor{keywordflow}{for} \_ \textcolor{keywordflow}{in} labels]
+598                 \textcolor{keywordflow}{for} deq, y \textcolor{keywordflow}{in} zip(parsed\_y, labels):
+599                     deq.extendleft(reversed(dictionary.txt2vec(y)))
+600             \textcolor{keywordflow}{else}:
+601                 parsed\_y = [dictionary.txt2vec(label) \textcolor{keywordflow}{for} label \textcolor{keywordflow}{in} labels]
+602             \textcolor{keywordflow}{if} end\_idx \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+603                 \textcolor{keywordflow}{for} y \textcolor{keywordflow}{in} parsed\_y:
+604                     y.append(end\_idx)
+605 
+606             y\_lens = [len(y) \textcolor{keywordflow}{for} y \textcolor{keywordflow}{in} parsed\_y]
+607             max\_y\_len = max(y\_lens)
+608 
+609             \textcolor{keywordflow}{if} dq:
+610                 parsed\_y = [
+611                     y
+612                     \textcolor{keywordflow}{if} len(y) == max\_y\_len
+613                     \textcolor{keywordflow}{else} y + deque((null\_idx,)) * (max\_y\_len - len(y))
+614                     \textcolor{keywordflow}{for} y \textcolor{keywordflow}{in} parsed\_y
+615                 ]
+616             \textcolor{keywordflow}{else}:
+617                 parsed\_y = [
+618                     y \textcolor{keywordflow}{if} len(y) == max\_y\_len \textcolor{keywordflow}{else} y + [null\_idx] * (max\_y\_len - len(y))
+619                     \textcolor{keywordflow}{for} y \textcolor{keywordflow}{in} parsed\_y
+620                 ]
+621             ys = parsed\_y
+622 
+623         \textcolor{keywordflow}{return} xs, ys, labels, valid\_inds, end\_idxs, y\_lens
+624 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/utils/\hyperlink{misc_8py}{misc.\+py}\end{DoxyCompactItemize}

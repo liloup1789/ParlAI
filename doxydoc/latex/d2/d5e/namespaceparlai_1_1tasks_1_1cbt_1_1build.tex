@@ -1,0 +1,68 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1cbt_1_1build}{}\section{parlai.\+tasks.\+cbt.\+build Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1cbt_1_1build}\index{parlai.\+tasks.\+cbt.\+build@{parlai.\+tasks.\+cbt.\+build}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1cbt_1_1build_a761a40fc1977992c31cb21a230ba12c5}{build} (opt)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+list \hyperlink{namespaceparlai_1_1tasks_1_1cbt_1_1build_ae08deedf182e874d8653cda0704bff83}{R\+E\+S\+O\+U\+R\+C\+ES}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1cbt_1_1build_a761a40fc1977992c31cb21a230ba12c5}\label{namespaceparlai_1_1tasks_1_1cbt_1_1build_a761a40fc1977992c31cb21a230ba12c5}} 
+\index{parlai\+::tasks\+::cbt\+::build@{parlai\+::tasks\+::cbt\+::build}!build@{build}}
+\index{build@{build}!parlai\+::tasks\+::cbt\+::build@{parlai\+::tasks\+::cbt\+::build}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+cbt.\+build.\+build (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 21 of file build.\+py.
+
+
+\begin{DoxyCode}
+21 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
+22     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'CBT'})
+23     version = \textcolor{keywordtype}{None}
+24 
+25     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version\_string=version):
+26         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+27         \textcolor{keywordflow}{if} build\_data.built(dpath):
+28             \textcolor{comment}{# An older version exists, so remove these outdated files.}
+29             build\_data.remove\_dir(dpath)
+30         build\_data.make\_dir(dpath)
+31 
+32         \textcolor{comment}{# Download the data.}
+33         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES:
+34             downloadable\_file.download\_file(dpath)
+35 
+36         \textcolor{comment}{# Mark the data as built.}
+37         build\_data.mark\_done(dpath, version\_string=version)
+38 \end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1cbt_1_1build_ae08deedf182e874d8653cda0704bff83}\label{namespaceparlai_1_1tasks_1_1cbt_1_1build_ae08deedf182e874d8653cda0704bff83}} 
+\index{parlai\+::tasks\+::cbt\+::build@{parlai\+::tasks\+::cbt\+::build}!R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}}
+\index{R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}!parlai\+::tasks\+::cbt\+::build@{parlai\+::tasks\+::cbt\+::build}}
+\subsubsection{\texorpdfstring{R\+E\+S\+O\+U\+R\+C\+ES}{RESOURCES}}
+{\footnotesize\ttfamily list parlai.\+tasks.\+cbt.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+1 =  [
+2     DownloadableFile(
+3         \textcolor{stringliteral}{'http://parl.ai/downloads/cbt/cbt.tar.gz'},
+4         \textcolor{stringliteral}{'cbt.tar.gz'},
+5         \textcolor{stringliteral}{'932df0cadc1337b2a12b4c696b1041c1d1c6d4b6bd319874c6288f02e4a61e92'},
+6     )
+7 ]
+\end{DoxyCode}
+
+
+Definition at line 12 of file build.\+py.
+

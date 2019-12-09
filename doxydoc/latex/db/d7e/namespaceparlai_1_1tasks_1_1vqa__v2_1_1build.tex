@@ -1,0 +1,58 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1vqa__v2_1_1build}{}\section{parlai.\+tasks.\+vqa\+\_\+v2.\+build Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1vqa__v2_1_1build}\index{parlai.\+tasks.\+vqa\+\_\+v2.\+build@{parlai.\+tasks.\+vqa\+\_\+v2.\+build}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1vqa__v2_1_1build_ad8bd5179304b2b092593e6876da288f9}{build} (opt)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceparlai_1_1tasks_1_1vqa__v2_1_1build_a8dccbe691a8c92e52857fad46442cff7}{R\+E\+S\+O\+U\+R\+C\+ES}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1vqa__v2_1_1build_ad8bd5179304b2b092593e6876da288f9}\label{namespaceparlai_1_1tasks_1_1vqa__v2_1_1build_ad8bd5179304b2b092593e6876da288f9}} 
+\index{parlai\+::tasks\+::vqa\+\_\+v2\+::build@{parlai\+::tasks\+::vqa\+\_\+v2\+::build}!build@{build}}
+\index{build@{build}!parlai\+::tasks\+::vqa\+\_\+v2\+::build@{parlai\+::tasks\+::vqa\+\_\+v2\+::build}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+vqa\+\_\+v2.\+build.\+build (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 41 of file build.\+py.
+
+
+\begin{DoxyCode}
+41 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
+42     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'VQA-v2'})
+43     version = \textcolor{keywordtype}{None}
+44 
+45     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version\_string=version):
+46         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+47         \textcolor{comment}{# An older version exists, so remove these outdated files.}
+48         \textcolor{keywordflow}{if} build\_data.built(dpath):
+49             build\_data.remove\_dir(dpath)
+50         build\_data.make\_dir(dpath)
+51 
+52         \textcolor{comment}{# Download the data.}
+53         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES:
+54             downloadable\_file.download\_file(dpath)
+55 
+56         \textcolor{comment}{# Mark the data as built.}
+57         build\_data.mark\_done(dpath, version\_string=version)
+58 \end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1vqa__v2_1_1build_a8dccbe691a8c92e52857fad46442cff7}\label{namespaceparlai_1_1tasks_1_1vqa__v2_1_1build_a8dccbe691a8c92e52857fad46442cff7}} 
+\index{parlai\+::tasks\+::vqa\+\_\+v2\+::build@{parlai\+::tasks\+::vqa\+\_\+v2\+::build}!R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}}
+\index{R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}!parlai\+::tasks\+::vqa\+\_\+v2\+::build@{parlai\+::tasks\+::vqa\+\_\+v2\+::build}}
+\subsubsection{\texorpdfstring{R\+E\+S\+O\+U\+R\+C\+ES}{RESOURCES}}
+{\footnotesize\ttfamily parlai.\+tasks.\+vqa\+\_\+v2.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
+
+
+
+Definition at line 12 of file build.\+py.
+

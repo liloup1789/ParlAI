@@ -1,0 +1,178 @@
+\hypertarget{namespaceparlai_1_1scripts_1_1self__chat}{}\section{parlai.\+scripts.\+self\+\_\+chat Namespace Reference}
+\label{namespaceparlai_1_1scripts_1_1self__chat}\index{parlai.\+scripts.\+self\+\_\+chat@{parlai.\+scripts.\+self\+\_\+chat}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1self__chat_a0899a6bf4e3d48c81a2c1b97f9696714}{setup\+\_\+args} (\hyperlink{namespaceparlai_1_1scripts_1_1self__chat_aa318de0dcf8e4474b9cc89fb2ed28a80}{parser}=None)
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1self__chat_a3b20ced8dd92830f75efb0dc18269794}{self\+\_\+chat} (opt, \hyperlink{namespaceparlai_1_1scripts_1_1self__chat_a41f7dd601db93d7b7f5edfa0da0ab336}{print\+\_\+parser}=None)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1self__chat_aa318de0dcf8e4474b9cc89fb2ed28a80}{parser} = \hyperlink{namespaceparlai_1_1scripts_1_1self__chat_a0899a6bf4e3d48c81a2c1b97f9696714}{setup\+\_\+args}()
+\item 
+\hyperlink{namespaceparlai_1_1scripts_1_1self__chat_a41f7dd601db93d7b7f5edfa0da0ab336}{print\+\_\+parser}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1self__chat_a3b20ced8dd92830f75efb0dc18269794}\label{namespaceparlai_1_1scripts_1_1self__chat_a3b20ced8dd92830f75efb0dc18269794}} 
+\index{parlai\+::scripts\+::self\+\_\+chat@{parlai\+::scripts\+::self\+\_\+chat}!self\+\_\+chat@{self\+\_\+chat}}
+\index{self\+\_\+chat@{self\+\_\+chat}!parlai\+::scripts\+::self\+\_\+chat@{parlai\+::scripts\+::self\+\_\+chat}}
+\subsubsection{\texorpdfstring{self\+\_\+chat()}{self\_chat()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+self\+\_\+chat.\+self\+\_\+chat (\begin{DoxyParamCaption}\item[{}]{opt,  }\item[{}]{print\+\_\+parser = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 52 of file self\+\_\+chat.\+py.
+
+
+\begin{DoxyCode}
+52 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1self__chat_a3b20ced8dd92830f75efb0dc18269794}{self\_chat}(opt, print\_parser=None):
+53     \textcolor{keywordflow}{if} print\_parser \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+54         \textcolor{keywordflow}{if} print\_parser \textcolor{keywordflow}{is} \textcolor{keyword}{True} \textcolor{keywordflow}{and} isinstance(opt, ParlaiParser):
+55             print\_parser = opt
+56         \textcolor{keywordflow}{elif} print\_parser \textcolor{keywordflow}{is} \textcolor{keyword}{False}:
+57             print\_parser = \textcolor{keywordtype}{None}
+58     \textcolor{keywordflow}{if} isinstance(opt, ParlaiParser):
+59         print(\textcolor{stringliteral}{'[ Deprecated Warning: self\_chat should be passed opt not Parser ]'})
+60         opt = opt.parse\_args()
+61 
+62     random.seed(opt[\textcolor{stringliteral}{'seed'}])
+63     \textcolor{comment}{# Create models}
+64     agent1 = \hyperlink{namespaceparlai_1_1core_1_1agents_ad0d54074d4bcc148bb415ab5515a53b5}{create\_agent}(opt, requireModelExists=\textcolor{keyword}{True})
+65     agent2 = agent1.clone()
+66     \textcolor{keywordflow}{if} hasattr(agent2, \textcolor{stringliteral}{'id'}):
+67         agent2.id = agent2.id + \textcolor{stringliteral}{"2"}
+68 
+69     world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(opt, [agent1, agent2])
+70 
+71     \textcolor{keywordflow}{if} print\_parser:
+72         \textcolor{comment}{# Show arguments after loading model}
+73         print\_parser.opt = agent1.opt
+74         print\_parser.print\_args()
+75 
+76     \textcolor{comment}{# set up logging}
+77     log\_every\_n\_secs = opt.get(\textcolor{stringliteral}{'log\_every\_n\_secs'}, -1)
+78     \textcolor{keywordflow}{if} log\_every\_n\_secs <= 0:
+79         log\_every\_n\_secs = \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(\textcolor{stringliteral}{'inf'})
+80     log\_time = TimeLogger()
+81     logger = WorldLogger(opt)
+82 
+83     \textcolor{comment}{# Run some self chats.}
+84     max\_cnt = opt[\textcolor{stringliteral}{'num\_examples'}]
+85     cnt = 0
+86     \textcolor{keywordflow}{while} cnt < max\_cnt:
+87         cnt += opt.get(\textcolor{stringliteral}{'batchsize'}, 1)
+88         world.parley()
+89         logger.log(world)
+90 
+91         \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'display\_examples'}):
+92 <<<<<<< HEAD
+93 =======
+94 <<<<<<< HEAD
+95 <<<<<<< HEAD
+96 =======
+97             print(\textcolor{stringliteral}{"---"})
+98 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+99 >>>>>>> origin/master
+100 =======
+101             print(\textcolor{stringliteral}{"---"})
+102 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+103 >>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
+104             print(world.display())
+105         \textcolor{keywordflow}{if} log\_time.time() > log\_every\_n\_secs:
+106             text = log\_time.log(cnt, max\_cnt)
+107             print(text)
+108 
+109 <<<<<<< HEAD
+110     \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'display\_examples'}):
+111         print(\textcolor{stringliteral}{'-- end of episode --'})
+112 
+113 =======
+114 <<<<<<< HEAD
+115 <<<<<<< HEAD
+116     \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'display\_examples'}):
+117         print(\textcolor{stringliteral}{'-- end of episode --'})
+118 
+119 =======
+120 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+121 >>>>>>> origin/master
+122 =======
+123 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+124 >>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
+125     logger.write(opt[\textcolor{stringliteral}{'outfile'}], opt[\textcolor{stringliteral}{'format'}])
+126 
+127 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1self__chat_a0899a6bf4e3d48c81a2c1b97f9696714}\label{namespaceparlai_1_1scripts_1_1self__chat_a0899a6bf4e3d48c81a2c1b97f9696714}} 
+\index{parlai\+::scripts\+::self\+\_\+chat@{parlai\+::scripts\+::self\+\_\+chat}!setup\+\_\+args@{setup\+\_\+args}}
+\index{setup\+\_\+args@{setup\+\_\+args}!parlai\+::scripts\+::self\+\_\+chat@{parlai\+::scripts\+::self\+\_\+chat}}
+\subsubsection{\texorpdfstring{setup\+\_\+args()}{setup\_args()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+self\+\_\+chat.\+setup\+\_\+args (\begin{DoxyParamCaption}\item[{}]{parser = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 18 of file self\+\_\+chat.\+py.
+
+
+\begin{DoxyCode}
+18 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1self__chat_a0899a6bf4e3d48c81a2c1b97f9696714}{setup\_args}(parser=None):
+19     \textcolor{keywordflow}{if} parser \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+20         parser = ParlaiParser(\textcolor{keyword}{True}, \textcolor{keyword}{True}, \textcolor{stringliteral}{'Self chat with a model'})
+21     parser.add\_argument(\textcolor{stringliteral}{'--seed'}, type=int, default=42)
+22     parser.add\_argument(\textcolor{stringliteral}{'-d'}, \textcolor{stringliteral}{'--display-examples'}, type=\textcolor{stringliteral}{'bool'}, default=\textcolor{keyword}{True})
+23     parser.add\_argument(\textcolor{stringliteral}{'-n'}, \textcolor{stringliteral}{'-ne'}, \textcolor{stringliteral}{'--num-examples'}, type=int, default=10)
+24     parser.add\_argument(\textcolor{stringliteral}{'-ltim'}, \textcolor{stringliteral}{'--log-every-n-secs'}, type=float, default=2)
+25     parser.add\_argument(
+26         \textcolor{stringliteral}{'--display-ignore-fields'},
+27         type=str,
+28         default=\textcolor{stringliteral}{'label\_candidates,text\_candidates'},
+29         help=\textcolor{stringliteral}{'Do not display these fields'},
+30     )
+31     parser.add\_argument(
+32         \textcolor{stringliteral}{'-it'},
+33         \textcolor{stringliteral}{'--interactive-task'},
+34         type=\textcolor{stringliteral}{'bool'},
+35         default=\textcolor{keyword}{True},
+36         help=\textcolor{stringliteral}{'Create interactive version of task'},
+37     )
+38     parser.add\_argument(
+39         \textcolor{stringliteral}{'--selfchat-max-turns'},
+40         type=int,
+41         default=10,
+42         help=\textcolor{stringliteral}{"The number of dialogue turns before self chat ends."},
+43     )
+44     parser.add\_argument(\textcolor{stringliteral}{'--outfile'}, type=str, default=\textcolor{stringliteral}{'/tmp/selfchat.json'})
+45     parser.add\_argument(
+46         \textcolor{stringliteral}{'--format'}, type=str, default=\textcolor{stringliteral}{'json'}, choices=\{\textcolor{stringliteral}{'parlai'}, \textcolor{stringliteral}{'json'}\}
+47     )
+48     parser.set\_defaults(interactive\_mode=\textcolor{keyword}{True}, task=\textcolor{stringliteral}{'self\_chat'})
+49     \textcolor{keywordflow}{return} parser
+50 
+51 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1self__chat_aa318de0dcf8e4474b9cc89fb2ed28a80}\label{namespaceparlai_1_1scripts_1_1self__chat_aa318de0dcf8e4474b9cc89fb2ed28a80}} 
+\index{parlai\+::scripts\+::self\+\_\+chat@{parlai\+::scripts\+::self\+\_\+chat}!parser@{parser}}
+\index{parser@{parser}!parlai\+::scripts\+::self\+\_\+chat@{parlai\+::scripts\+::self\+\_\+chat}}
+\subsubsection{\texorpdfstring{parser}{parser}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+self\+\_\+chat.\+parser = \hyperlink{namespaceparlai_1_1scripts_1_1self__chat_a0899a6bf4e3d48c81a2c1b97f9696714}{setup\+\_\+args}()}
+
+
+
+Definition at line 129 of file self\+\_\+chat.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1self__chat_a41f7dd601db93d7b7f5edfa0da0ab336}\label{namespaceparlai_1_1scripts_1_1self__chat_a41f7dd601db93d7b7f5edfa0da0ab336}} 
+\index{parlai\+::scripts\+::self\+\_\+chat@{parlai\+::scripts\+::self\+\_\+chat}!print\+\_\+parser@{print\+\_\+parser}}
+\index{print\+\_\+parser@{print\+\_\+parser}!parlai\+::scripts\+::self\+\_\+chat@{parlai\+::scripts\+::self\+\_\+chat}}
+\subsubsection{\texorpdfstring{print\+\_\+parser}{print\_parser}}
+{\footnotesize\ttfamily parlai.\+scripts.\+self\+\_\+chat.\+print\+\_\+parser}
+
+
+
+Definition at line 130 of file self\+\_\+chat.\+py.
+

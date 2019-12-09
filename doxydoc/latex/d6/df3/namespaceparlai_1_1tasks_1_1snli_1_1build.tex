@@ -1,0 +1,59 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1snli_1_1build}{}\section{parlai.\+tasks.\+snli.\+build Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1snli_1_1build}\index{parlai.\+tasks.\+snli.\+build@{parlai.\+tasks.\+snli.\+build}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1snli_1_1build_a525584627ce716e22d77dd663be2c2ba}{build} (opt)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceparlai_1_1tasks_1_1snli_1_1build_ae6b4372d4e627c59cb67c273f5dabca7}{R\+E\+S\+O\+U\+R\+C\+ES}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1snli_1_1build_a525584627ce716e22d77dd663be2c2ba}\label{namespaceparlai_1_1tasks_1_1snli_1_1build_a525584627ce716e22d77dd663be2c2ba}} 
+\index{parlai\+::tasks\+::snli\+::build@{parlai\+::tasks\+::snli\+::build}!build@{build}}
+\index{build@{build}!parlai\+::tasks\+::snli\+::build@{parlai\+::tasks\+::snli\+::build}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+snli.\+build.\+build (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 21 of file build.\+py.
+
+
+\begin{DoxyCode}
+21 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
+22     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'SNLI'})
+23     version = \textcolor{stringliteral}{'1.0'}
+24 
+25     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version\_string=version):
+26         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+27 
+28         \textcolor{keywordflow}{if} build\_data.built(dpath):
+29             \textcolor{comment}{# an older version exists, so remove these outdated files.}
+30             build\_data.remove\_dir(dpath)
+31         build\_data.make\_dir(dpath)
+32 
+33         \textcolor{comment}{# Download the data.}
+34         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES:
+35             downloadable\_file.download\_file(dpath)
+36 
+37         \textcolor{comment}{# mark the data as built}
+38         build\_data.mark\_done(dpath, version\_string=version)
+39 \end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1snli_1_1build_ae6b4372d4e627c59cb67c273f5dabca7}\label{namespaceparlai_1_1tasks_1_1snli_1_1build_ae6b4372d4e627c59cb67c273f5dabca7}} 
+\index{parlai\+::tasks\+::snli\+::build@{parlai\+::tasks\+::snli\+::build}!R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}}
+\index{R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}!parlai\+::tasks\+::snli\+::build@{parlai\+::tasks\+::snli\+::build}}
+\subsubsection{\texorpdfstring{R\+E\+S\+O\+U\+R\+C\+ES}{RESOURCES}}
+{\footnotesize\ttfamily parlai.\+tasks.\+snli.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
+
+
+
+Definition at line 12 of file build.\+py.
+

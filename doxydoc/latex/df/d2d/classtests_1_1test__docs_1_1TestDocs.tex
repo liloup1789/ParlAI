@@ -1,0 +1,68 @@
+\hypertarget{classtests_1_1test__docs_1_1TestDocs}{}\section{tests.\+test\+\_\+docs.\+Test\+Docs Class Reference}
+\label{classtests_1_1test__docs_1_1TestDocs}\index{tests.\+test\+\_\+docs.\+Test\+Docs@{tests.\+test\+\_\+docs.\+Test\+Docs}}
+
+
+Inheritance diagram for tests.\+test\+\_\+docs.\+Test\+Docs\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{dd/de0/classtests_1_1test__docs_1_1TestDocs__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for tests.\+test\+\_\+docs.\+Test\+Docs\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{d0/d82/classtests_1_1test__docs_1_1TestDocs__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classtests_1_1test__docs_1_1TestDocs_ad8142c9573a84626d58a8d26cf2ac695}{test\+\_\+docs\+\_\+build} (self)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 28 of file test\+\_\+docs.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtests_1_1test__docs_1_1TestDocs_ad8142c9573a84626d58a8d26cf2ac695}\label{classtests_1_1test__docs_1_1TestDocs_ad8142c9573a84626d58a8d26cf2ac695}} 
+\index{tests\+::test\+\_\+docs\+::\+Test\+Docs@{tests\+::test\+\_\+docs\+::\+Test\+Docs}!test\+\_\+docs\+\_\+build@{test\+\_\+docs\+\_\+build}}
+\index{test\+\_\+docs\+\_\+build@{test\+\_\+docs\+\_\+build}!tests\+::test\+\_\+docs\+::\+Test\+Docs@{tests\+::test\+\_\+docs\+::\+Test\+Docs}}
+\subsubsection{\texorpdfstring{test\+\_\+docs\+\_\+build()}{test\_docs\_build()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+docs.\+Test\+Docs.\+test\+\_\+docs\+\_\+build (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 30 of file test\+\_\+docs.\+py.
+
+
+\begin{DoxyCode}
+30     \textcolor{keyword}{def }test\_docs\_build(self):
+31         call = subprocess.run(
+32             [\textcolor{stringliteral}{"make"}, \textcolor{stringliteral}{"html"}],
+33             stdout=subprocess.PIPE,
+34             stderr=subprocess.PIPE,
+35             cwd=DOCS\_DIR,
+36             universal\_newlines=\textcolor{keyword}{True},
+37         )
+38         self.assertEqual(
+39             call.returncode, 0, \textcolor{stringliteral}{'Failed to compile docs:\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(call.stderr)
+40         )
+41 
+42 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+tests/\hyperlink{test__docs_8py}{test\+\_\+docs.\+py}\end{DoxyCompactItemize}

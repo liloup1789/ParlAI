@@ -1,0 +1,274 @@
+\hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1AttentionLayer}{}\section{parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+modules\+\_\+v1.\+Attention\+Layer Class Reference}
+\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1AttentionLayer}\index{parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+modules\+\_\+v1.\+Attention\+Layer@{parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+modules\+\_\+v1.\+Attention\+Layer}}
+
+
+Inheritance diagram for parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+modules\+\_\+v1.\+Attention\+Layer\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{df/de7/classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1AttentionLayer__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+modules\+\_\+v1.\+Attention\+Layer\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{d6/d91/classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1AttentionLayer__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1AttentionLayer_aed77232760e470a547c8c4ec68e529c7}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, attn\+\_\+type, hiddensize, embeddingsize, bidirectional=False, attn\+\_\+length=-\/1, attn\+\_\+time=\textquotesingle{}pre\textquotesingle{})
+\item 
+def \hyperlink{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1AttentionLayer_ad6041bd52e148a4dfe894b71f79937c0}{forward} (self, xes, hidden, attn\+\_\+params)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1AttentionLayer_a6c95b5fa079109f57c305954f1f1465a}{attention}
+\item 
+\hyperlink{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1AttentionLayer_a1ead8a9fdb5a6ad88b1613961a7eff99}{attn\+\_\+combine}
+\item 
+\hyperlink{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1AttentionLayer_afb020d5934ba3cee17968fe893417ce8}{max\+\_\+length}
+\item 
+\hyperlink{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1AttentionLayer_aa9eaecc56fcf6d7816fe23d0c27dd481}{attn}
+\item 
+\hyperlink{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1AttentionLayer_a034298f5224687c4fe53f401e5a13ec2}{attn\+\_\+v}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Computes attention between hidden and encoder states.
+
+See arxiv.org/abs/1508.04025 for more info on each attention type.
+\end{DoxyVerb}
+ 
+
+Definition at line 722 of file modules\+\_\+v1.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1AttentionLayer_aed77232760e470a547c8c4ec68e529c7}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1AttentionLayer_aed77232760e470a547c8c4ec68e529c7}} 
+\index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Attention\+Layer@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Attention\+Layer}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Attention\+Layer@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Attention\+Layer}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+modules\+\_\+v1.\+Attention\+Layer.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{attn\+\_\+type,  }\item[{}]{hiddensize,  }\item[{}]{embeddingsize,  }\item[{}]{bidirectional = {\ttfamily False},  }\item[{}]{attn\+\_\+length = {\ttfamily -\/1},  }\item[{}]{attn\+\_\+time = {\ttfamily \textquotesingle{}pre\textquotesingle{}} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initialize attention layer.
+\end{DoxyVerb}
+ 
+
+Definition at line 737 of file modules\+\_\+v1.\+py.
+
+
+\begin{DoxyCode}
+737     ):
+738         \textcolor{stringliteral}{"""}
+739 \textcolor{stringliteral}{        Initialize attention layer.}
+740 \textcolor{stringliteral}{        """}
+741         super().\_\_init\_\_()
+742         self.attention = attn\_type
+743 
+744         \textcolor{keywordflow}{if} self.attention != \textcolor{stringliteral}{'none'}:
+745             hsz = hiddensize
+746             hszXdirs = hsz * (2 \textcolor{keywordflow}{if} bidirectional \textcolor{keywordflow}{else} 1)
+747             \textcolor{keywordflow}{if} attn\_time == \textcolor{stringliteral}{'pre'}:
+748                 \textcolor{comment}{# attention happens on the input embeddings}
+749                 input\_dim = embeddingsize
+750             \textcolor{keywordflow}{elif} attn\_time == \textcolor{stringliteral}{'post'}:
+751                 \textcolor{comment}{# attention happens on the output of the rnn}
+752                 input\_dim = hsz
+753             \textcolor{keywordflow}{else}:
+754                 \textcolor{keywordflow}{raise} RuntimeError(\textcolor{stringliteral}{'unsupported attention time'})
+755 
+756             \textcolor{comment}{# linear layer for combining applied attention weights with input}
+757             self.attn\_combine = nn.Linear(hszXdirs + input\_dim, input\_dim, bias=\textcolor{keyword}{False})
+758 
+759             \textcolor{keywordflow}{if} self.attention == \textcolor{stringliteral}{'local'}:
+760                 \textcolor{comment}{# local attention over fixed set of output states}
+761                 \textcolor{keywordflow}{if} attn\_length < 0:
+762                     \textcolor{keywordflow}{raise} RuntimeError(\textcolor{stringliteral}{'Set attention length to > 0.'})
+763                 self.max\_length = attn\_length
+764                 \textcolor{comment}{# combines input and previous hidden output layer}
+765                 self.attn = nn.Linear(hsz + input\_dim, attn\_length, bias=\textcolor{keyword}{False})
+766                 \textcolor{comment}{# combines attention weights with encoder outputs}
+767             \textcolor{keywordflow}{elif} self.attention == \textcolor{stringliteral}{'concat'}:
+768                 self.attn = nn.Linear(hsz + hszXdirs, hsz, bias=\textcolor{keyword}{False})
+769                 self.attn\_v = nn.Linear(hsz, 1, bias=\textcolor{keyword}{False})
+770             \textcolor{keywordflow}{elif} self.attention == \textcolor{stringliteral}{'general'}:
+771                 \textcolor{comment}{# equivalent to dot if attn is identity}
+772                 self.attn = nn.Linear(hsz, hszXdirs, bias=\textcolor{keyword}{False})
+773 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1AttentionLayer_ad6041bd52e148a4dfe894b71f79937c0}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1AttentionLayer_ad6041bd52e148a4dfe894b71f79937c0}} 
+\index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Attention\+Layer@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Attention\+Layer}!forward@{forward}}
+\index{forward@{forward}!parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Attention\+Layer@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Attention\+Layer}}
+\subsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+modules\+\_\+v1.\+Attention\+Layer.\+forward (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{xes,  }\item[{}]{hidden,  }\item[{}]{attn\+\_\+params }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Compute attention over attn_params given input and hidden states.
+
+:param xes:         input state. will be combined with applied
+            attention.
+:param hidden:      hidden state from model. will be used to select
+            states to attend to in from the attn_params.
+:param attn_params: tuple of encoder output states and a mask showing
+            which input indices are nonzero.
+
+:returns: output, attn_weights
+  output is a new state of same size as input state `xes`.
+  attn_weights are the weights given to each state in the
+  encoder outputs.
+\end{DoxyVerb}
+ 
+
+Definition at line 774 of file modules\+\_\+v1.\+py.
+
+
+\begin{DoxyCode}
+774     \textcolor{keyword}{def }forward(self, xes, hidden, attn\_params):
+775         \textcolor{stringliteral}{"""}
+776 \textcolor{stringliteral}{        Compute attention over attn\_params given input and hidden states.}
+777 \textcolor{stringliteral}{}
+778 \textcolor{stringliteral}{        :param xes:         input state. will be combined with applied}
+779 \textcolor{stringliteral}{                            attention.}
+780 \textcolor{stringliteral}{        :param hidden:      hidden state from model. will be used to select}
+781 \textcolor{stringliteral}{                            states to attend to in from the attn\_params.}
+782 \textcolor{stringliteral}{        :param attn\_params: tuple of encoder output states and a mask showing}
+783 \textcolor{stringliteral}{                            which input indices are nonzero.}
+784 \textcolor{stringliteral}{}
+785 \textcolor{stringliteral}{        :returns: output, attn\_weights}
+786 \textcolor{stringliteral}{                  output is a new state of same size as input state `xes`.}
+787 \textcolor{stringliteral}{                  attn\_weights are the weights given to each state in the}
+788 \textcolor{stringliteral}{                  encoder outputs.}
+789 \textcolor{stringliteral}{        """}
+790         \textcolor{keywordflow}{if} self.attention == \textcolor{stringliteral}{'none'}:
+791             \textcolor{comment}{# do nothing, no attention}
+792             \textcolor{keywordflow}{return} xes, \textcolor{keywordtype}{None}
+793 
+794         \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(hidden) == tuple:
+795             \textcolor{comment}{# for lstms use the "hidden" state not the cell state}
+796             hidden = hidden[0]
+797         last\_hidden = hidden[-1]  \textcolor{comment}{# select hidden state from last RNN layer}
+798 
+799         enc\_out, attn\_mask = attn\_params
+800         bsz, seqlen, hszXnumdir = enc\_out.size()
+801         numlayersXnumdir = last\_hidden.size(1)
+802 
+803         \textcolor{keywordflow}{if} self.attention == \textcolor{stringliteral}{'local'}:
+804             \textcolor{comment}{# local attention weights aren't based on encoder states}
+805             h\_merged = torch.cat((xes.squeeze(1), last\_hidden), 1)
+806             attn\_weights = F.softmax(self.attn(h\_merged), dim=1)
+807 
+808             \textcolor{comment}{# adjust state sizes to the fixed window size}
+809             \textcolor{keywordflow}{if} seqlen > self.max\_length:
+810                 offset = seqlen - self.max\_length
+811                 enc\_out = enc\_out.narrow(1, offset, self.max\_length)
+812                 seqlen = self.max\_length
+813             \textcolor{keywordflow}{if} attn\_weights.size(1) > seqlen:
+814                 attn\_weights = attn\_weights.narrow(1, 0, seqlen)
+815         \textcolor{keywordflow}{else}:
+816             hid = last\_hidden.unsqueeze(1)
+817             \textcolor{keywordflow}{if} self.attention == \textcolor{stringliteral}{'concat'}:
+818                 \textcolor{comment}{# concat hidden state and encoder outputs}
+819                 hid = hid.expand(bsz, seqlen, numlayersXnumdir)
+820                 h\_merged = torch.cat((enc\_out, hid), 2)
+821                 \textcolor{comment}{# then do linear combination of them with activation}
+822                 active = F.tanh(self.attn(h\_merged))
+823                 attn\_w\_premask = self.attn\_v(active).squeeze(2)
+824             \textcolor{keywordflow}{elif} self.attention == \textcolor{stringliteral}{'dot'}:
+825                 \textcolor{comment}{# dot product between hidden and encoder outputs}
+826                 \textcolor{keywordflow}{if} numlayersXnumdir != hszXnumdir:
+827                     \textcolor{comment}{# enc\_out has two directions, so double hid}
+828                     hid = torch.cat([hid, hid], 2)
+829                 enc\_t = enc\_out.transpose(1, 2)
+830                 attn\_w\_premask = torch.bmm(hid, enc\_t).squeeze(1)
+831             \textcolor{keywordflow}{elif} self.attention == \textcolor{stringliteral}{'general'}:
+832                 \textcolor{comment}{# before doing dot product, transform hidden state with linear}
+833                 \textcolor{comment}{# same as dot if linear is identity}
+834                 hid = self.attn(hid)
+835                 enc\_t = enc\_out.transpose(1, 2)
+836                 attn\_w\_premask = torch.bmm(hid, enc\_t).squeeze(1)
+837 
+838             \textcolor{comment}{# calculate activation scores, apply mask if needed}
+839             \textcolor{keywordflow}{if} attn\_mask \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+840                 \textcolor{comment}{# remove activation from NULL symbols}
+841                 attn\_w\_premask.masked\_fill\_((1 - attn\_mask), -NEAR\_INF)
+842             attn\_weights = F.softmax(attn\_w\_premask, dim=1)
+843 
+844         \textcolor{comment}{# apply the attention weights to the encoder states}
+845         attn\_applied = torch.bmm(attn\_weights.unsqueeze(1), enc\_out)
+846         \textcolor{comment}{# concatenate the input and encoder states}
+847         merged = torch.cat((xes.squeeze(1), attn\_applied.squeeze(1)), 1)
+848         \textcolor{comment}{# combine them with a linear layer and tanh activation}
+849         output = torch.tanh(self.attn\_combine(merged).unsqueeze(1))
+850 
+851         \textcolor{keywordflow}{return} output, attn\_weights
+852 \end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1AttentionLayer_a6c95b5fa079109f57c305954f1f1465a}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1AttentionLayer_a6c95b5fa079109f57c305954f1f1465a}} 
+\index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Attention\+Layer@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Attention\+Layer}!attention@{attention}}
+\index{attention@{attention}!parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Attention\+Layer@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Attention\+Layer}}
+\subsubsection{\texorpdfstring{attention}{attention}}
+{\footnotesize\ttfamily parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+modules\+\_\+v1.\+Attention\+Layer.\+attention}
+
+
+
+Definition at line 742 of file modules\+\_\+v1.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1AttentionLayer_aa9eaecc56fcf6d7816fe23d0c27dd481}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1AttentionLayer_aa9eaecc56fcf6d7816fe23d0c27dd481}} 
+\index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Attention\+Layer@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Attention\+Layer}!attn@{attn}}
+\index{attn@{attn}!parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Attention\+Layer@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Attention\+Layer}}
+\subsubsection{\texorpdfstring{attn}{attn}}
+{\footnotesize\ttfamily parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+modules\+\_\+v1.\+Attention\+Layer.\+attn}
+
+
+
+Definition at line 765 of file modules\+\_\+v1.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1AttentionLayer_a1ead8a9fdb5a6ad88b1613961a7eff99}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1AttentionLayer_a1ead8a9fdb5a6ad88b1613961a7eff99}} 
+\index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Attention\+Layer@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Attention\+Layer}!attn\+\_\+combine@{attn\+\_\+combine}}
+\index{attn\+\_\+combine@{attn\+\_\+combine}!parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Attention\+Layer@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Attention\+Layer}}
+\subsubsection{\texorpdfstring{attn\+\_\+combine}{attn\_combine}}
+{\footnotesize\ttfamily parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+modules\+\_\+v1.\+Attention\+Layer.\+attn\+\_\+combine}
+
+
+
+Definition at line 757 of file modules\+\_\+v1.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1AttentionLayer_a034298f5224687c4fe53f401e5a13ec2}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1AttentionLayer_a034298f5224687c4fe53f401e5a13ec2}} 
+\index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Attention\+Layer@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Attention\+Layer}!attn\+\_\+v@{attn\+\_\+v}}
+\index{attn\+\_\+v@{attn\+\_\+v}!parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Attention\+Layer@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Attention\+Layer}}
+\subsubsection{\texorpdfstring{attn\+\_\+v}{attn\_v}}
+{\footnotesize\ttfamily parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+modules\+\_\+v1.\+Attention\+Layer.\+attn\+\_\+v}
+
+
+
+Definition at line 769 of file modules\+\_\+v1.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1AttentionLayer_afb020d5934ba3cee17968fe893417ce8}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1AttentionLayer_afb020d5934ba3cee17968fe893417ce8}} 
+\index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Attention\+Layer@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Attention\+Layer}!max\+\_\+length@{max\+\_\+length}}
+\index{max\+\_\+length@{max\+\_\+length}!parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Attention\+Layer@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Attention\+Layer}}
+\subsubsection{\texorpdfstring{max\+\_\+length}{max\_length}}
+{\footnotesize\ttfamily parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+modules\+\_\+v1.\+Attention\+Layer.\+max\+\_\+length}
+
+
+
+Definition at line 763 of file modules\+\_\+v1.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/agents/legacy\+\_\+agents/seq2seq/\hyperlink{modules__v1_8py}{modules\+\_\+v1.\+py}\end{DoxyCompactItemize}

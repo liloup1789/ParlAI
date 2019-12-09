@@ -1,0 +1,282 @@
+\hypertarget{classlight__chats_1_1graph_1_1GetObjectFunction}{}\section{light\+\_\+chats.\+graph.\+Get\+Object\+Function Class Reference}
+\label{classlight__chats_1_1graph_1_1GetObjectFunction}\index{light\+\_\+chats.\+graph.\+Get\+Object\+Function@{light\+\_\+chats.\+graph.\+Get\+Object\+Function}}
+
+
+Inheritance diagram for light\+\_\+chats.\+graph.\+Get\+Object\+Function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{d9/df9/classlight__chats_1_1graph_1_1GetObjectFunction__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for light\+\_\+chats.\+graph.\+Get\+Object\+Function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{d1/d46/classlight__chats_1_1graph_1_1GetObjectFunction__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1GetObjectFunction_a77ef8fd9dd23fae23a1cb61fb0ebeca1}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self)
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1GetObjectFunction_a36f3c298e8ac89d67ae856306d42a22d}{func} (self, graph, args)
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1GetObjectFunction_a257db456e6c73645523f4ad9bd5ff918}{get\+\_\+find\+\_\+fail\+\_\+text} (self, arg\+\_\+idx)
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1GetObjectFunction_a2854af16c5150dcd6a39176fefc3d536}{parse\+\_\+descs\+\_\+to\+\_\+args} (self, graph, args)
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1GetObjectFunction_a95528a5a8694228805bad940519e6e0e}{get\+\_\+canonical\+\_\+form} (self, graph, args)
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1GetObjectFunction_abf058d18fba80c7d17fc0d3ce8edbc72}{get\+\_\+reverse} (self, graph, args)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classlight__chats_1_1graph_1_1GetObjectFunction_a726f8b3315bfedc530da445bb3e135e6}{formats}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}[Actor, object attainable by actor, optional container for object]
+\end{DoxyVerb}
+ 
+
+Definition at line 1196 of file graph.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1GetObjectFunction_a77ef8fd9dd23fae23a1cb61fb0ebeca1}\label{classlight__chats_1_1graph_1_1GetObjectFunction_a77ef8fd9dd23fae23a1cb61fb0ebeca1}} 
+\index{light\+\_\+chats\+::graph\+::\+Get\+Object\+Function@{light\+\_\+chats\+::graph\+::\+Get\+Object\+Function}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!light\+\_\+chats\+::graph\+::\+Get\+Object\+Function@{light\+\_\+chats\+::graph\+::\+Get\+Object\+Function}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Get\+Object\+Function.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1201 of file graph.\+py.
+
+
+\begin{DoxyCode}
+1201     \textcolor{keyword}{def }\_\_init\_\_(self):
+1202         super().\_\_init\_\_(
+1203             function\_name=[\textcolor{stringliteral}{'get'}, \textcolor{stringliteral}{'take'}],
+1204             possible\_arg\_nums=[2, 3],
+1205             arg\_split\_words=[\textcolor{stringliteral}{'from'}],
+1206             arg\_find\_type=[
+1207                 [\{\}, \{\}],  \textcolor{comment}{# no constraints on the actor}
+1208                 [\{\textcolor{stringliteral}{'type'}: \textcolor{stringliteral}{'all+here'}, \textcolor{stringliteral}{'from'}: 0\}, \{\textcolor{stringliteral}{'type'}: \textcolor{stringliteral}{'carrying'}, \textcolor{stringliteral}{'from'}: 2\}],
+1209                 [\{\textcolor{stringliteral}{'type'}: \textcolor{stringliteral}{'contains'}, \textcolor{stringliteral}{'from'}: 1\}, \{\textcolor{stringliteral}{'type'}: \textcolor{stringliteral}{'all+here'}, \textcolor{stringliteral}{'from'}: 0\}],
+1210             ],
+1211             arg\_constraints=[
+1212                 [],  \textcolor{comment}{# no constraints on the actor}
+1213                 [
+1214                     \{\textcolor{stringliteral}{'type'}: \textcolor{stringliteral}{'is\_type'}, \textcolor{stringliteral}{'in\_args'}: [1], \textcolor{stringliteral}{'args'}: [\textcolor{stringliteral}{'object'}]\},
+1215                     \{
+1216                         \textcolor{stringliteral}{'type'}: \textcolor{stringliteral}{'not\_type'},
+1217                         \textcolor{stringliteral}{'in\_args'}: [1],
+1218                         \textcolor{stringliteral}{'args'}: [[\textcolor{stringliteral}{'not\_gettable'}], \textcolor{stringliteral}{"That isn't something you can get"}],
+1219                     \},
+1220                     \{
+1221                         \textcolor{stringliteral}{'type'}: \textcolor{stringliteral}{'not\_type'},
+1222                         \textcolor{stringliteral}{'in\_args'}: [1],
+1223                         \textcolor{stringliteral}{'args'}: [
+1224                             [\textcolor{stringliteral}{'described'}],
+1225                             \textcolor{stringliteral}{"You choose not to take that and ruin "}
+1226                             \textcolor{stringliteral}{"this room's description"},
+1227                         ],
+1228                     \},
+1229                 ],
+1230                 [
+1231                     \{
+1232                         \textcolor{stringliteral}{'type'}: \textcolor{stringliteral}{'is\_type'},
+1233                         \textcolor{stringliteral}{'in\_args'}: [2],
+1234                         \textcolor{stringliteral}{'args'}: [[\textcolor{stringliteral}{'container'}, \textcolor{stringliteral}{'room'}], \textcolor{stringliteral}{'That\(\backslash\)'s not a container.'}],
+1235                     \},
+1236                     \{\textcolor{stringliteral}{'type'}: \textcolor{stringliteral}{'is\_locked'}, \textcolor{stringliteral}{'in\_args'}: [2], \textcolor{stringliteral}{'args'}: [\textcolor{keyword}{False}]\},
+1237                 ],
+1238             ],
+1239             func\_constraints=[
+1240                 \{
+1241                     \textcolor{stringliteral}{'type'}: \textcolor{stringliteral}{'fits\_in'},
+1242                     \textcolor{stringliteral}{'in\_args'}: [1, 0],
+1243                     \textcolor{stringliteral}{'args'}: [],
+1244                     \textcolor{stringliteral}{'spec\_fail'}: \textcolor{stringliteral}{'cant\_carry'},
+1245                 \}
+1246             ],
+1247             callback\_triggers=[
+1248                 \{\textcolor{stringliteral}{'action'}: \textcolor{stringliteral}{'moved\_to'}, \textcolor{stringliteral}{'args'}: [1, 0]\},
+1249                 \{\textcolor{stringliteral}{'action'}: \textcolor{stringliteral}{'agent\_got'}, \textcolor{stringliteral}{'args'}: [0, 1]\},
+1250             ],
+1251         )
+1252         self.formats = \{
+1253             \textcolor{stringliteral}{'got'}: \textcolor{stringliteral}{'\{0\} got \{1\}. '},
+1254             \textcolor{stringliteral}{'got\_from'}: \textcolor{stringliteral}{'\{0\} got \{1\} from \{2\}. '},
+1255             \textcolor{stringliteral}{'failed'}: \textcolor{stringliteral}{'\{0\} couldn\(\backslash\)'t get \{1\}. '},
+1256         \}
+1257 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1GetObjectFunction_a36f3c298e8ac89d67ae856306d42a22d}\label{classlight__chats_1_1graph_1_1GetObjectFunction_a36f3c298e8ac89d67ae856306d42a22d}} 
+\index{light\+\_\+chats\+::graph\+::\+Get\+Object\+Function@{light\+\_\+chats\+::graph\+::\+Get\+Object\+Function}!func@{func}}
+\index{func@{func}!light\+\_\+chats\+::graph\+::\+Get\+Object\+Function@{light\+\_\+chats\+::graph\+::\+Get\+Object\+Function}}
+\subsubsection{\texorpdfstring{func()}{func()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Get\+Object\+Function.\+func (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{graph,  }\item[{}]{args }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}<Actor> gets <item> [from <container>]
+\end{DoxyVerb}
+ 
+
+Definition at line 1258 of file graph.\+py.
+
+
+\begin{DoxyCode}
+1258     \textcolor{keyword}{def }func(self, graph, args):
+1259         \textcolor{stringliteral}{"""}
+1260 \textcolor{stringliteral}{        <Actor> gets <item> [from <container>]}
+1261 \textcolor{stringliteral}{        """}
+1262         agent\_id, object\_id = args[0], args[1]
+1263         container\_id = graph.location(object\_id)
+1264         room\_id = graph.location(agent\_id)
+1265         graph.move\_object(object\_id, agent\_id)
+1266         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'room'} \textcolor{keywordflow}{in} graph.get\_prop(container\_id, \textcolor{stringliteral}{'classes'}):
+1267             get\_action = \{
+1268                 \textcolor{stringliteral}{'caller'}: self.get\_name(),
+1269                 \textcolor{stringliteral}{'name'}: \textcolor{stringliteral}{'got'},
+1270                 \textcolor{stringliteral}{'room\_id'}: room\_id,
+1271                 \textcolor{stringliteral}{'actors'}: [agent\_id, object\_id],
+1272             \}
+1273         \textcolor{keywordflow}{else}:
+1274             get\_action = \{
+1275                 \textcolor{stringliteral}{'caller'}: self.get\_name(),
+1276                 \textcolor{stringliteral}{'name'}: \textcolor{stringliteral}{'got\_from'},
+1277                 \textcolor{stringliteral}{'room\_id'}: room\_id,
+1278                 \textcolor{stringliteral}{'actors'}: [agent\_id, object\_id, container\_id],
+1279             \}
+1280         graph.broadcast\_to\_room(get\_action)
+1281         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+1282 
+\end{DoxyCode}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1GetObjectFunction_a95528a5a8694228805bad940519e6e0e}\label{classlight__chats_1_1graph_1_1GetObjectFunction_a95528a5a8694228805bad940519e6e0e}} 
+\index{light\+\_\+chats\+::graph\+::\+Get\+Object\+Function@{light\+\_\+chats\+::graph\+::\+Get\+Object\+Function}!get\+\_\+canonical\+\_\+form@{get\+\_\+canonical\+\_\+form}}
+\index{get\+\_\+canonical\+\_\+form@{get\+\_\+canonical\+\_\+form}!light\+\_\+chats\+::graph\+::\+Get\+Object\+Function@{light\+\_\+chats\+::graph\+::\+Get\+Object\+Function}}
+\subsubsection{\texorpdfstring{get\+\_\+canonical\+\_\+form()}{get\_canonical\_form()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Get\+Object\+Function.\+get\+\_\+canonical\+\_\+form (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{graph,  }\item[{}]{args }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Get canonical form for the given args on this function.
+\end{DoxyVerb}
+ 
+
+Definition at line 1308 of file graph.\+py.
+
+
+\begin{DoxyCode}
+1308     \textcolor{keyword}{def }get\_canonical\_form(self, graph, args):
+1309         \textcolor{stringliteral}{"""}
+1310 \textcolor{stringliteral}{        Get canonical form for the given args on this function.}
+1311 \textcolor{stringliteral}{        """}
+1312         \textcolor{keywordflow}{if} len(args) == 3 \textcolor{keywordflow}{and} graph.get\_prop(args[2], \textcolor{stringliteral}{'container'}) \textcolor{keywordflow}{is} \textcolor{keyword}{True}:
+1313             \textcolor{keywordflow}{return} super().get\_canonical\_form(graph, args)
+1314         \textcolor{keywordflow}{else}:
+1315             \textcolor{keywordflow}{return} super().get\_canonical\_form(graph, args[:2])
+1316 
+\end{DoxyCode}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1GetObjectFunction_a257db456e6c73645523f4ad9bd5ff918}\label{classlight__chats_1_1graph_1_1GetObjectFunction_a257db456e6c73645523f4ad9bd5ff918}} 
+\index{light\+\_\+chats\+::graph\+::\+Get\+Object\+Function@{light\+\_\+chats\+::graph\+::\+Get\+Object\+Function}!get\+\_\+find\+\_\+fail\+\_\+text@{get\+\_\+find\+\_\+fail\+\_\+text}}
+\index{get\+\_\+find\+\_\+fail\+\_\+text@{get\+\_\+find\+\_\+fail\+\_\+text}!light\+\_\+chats\+::graph\+::\+Get\+Object\+Function@{light\+\_\+chats\+::graph\+::\+Get\+Object\+Function}}
+\subsubsection{\texorpdfstring{get\+\_\+find\+\_\+fail\+\_\+text()}{get\_find\_fail\_text()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Get\+Object\+Function.\+get\+\_\+find\+\_\+fail\+\_\+text (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{arg\+\_\+idx }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1283 of file graph.\+py.
+
+
+\begin{DoxyCode}
+1283     \textcolor{keyword}{def }get\_find\_fail\_text(self, arg\_idx):
+1284         \textcolor{keywordflow}{if} arg\_idx == 2:
+1285             \textcolor{keywordflow}{return} \textcolor{stringliteral}{'That isn\(\backslash\)'t there. '}
+1286         \textcolor{keywordflow}{else}:
+1287             \textcolor{keywordflow}{return} \textcolor{stringliteral}{'That isn\(\backslash\)'t here. '}
+1288 
+\end{DoxyCode}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1GetObjectFunction_abf058d18fba80c7d17fc0d3ce8edbc72}\label{classlight__chats_1_1graph_1_1GetObjectFunction_abf058d18fba80c7d17fc0d3ce8edbc72}} 
+\index{light\+\_\+chats\+::graph\+::\+Get\+Object\+Function@{light\+\_\+chats\+::graph\+::\+Get\+Object\+Function}!get\+\_\+reverse@{get\+\_\+reverse}}
+\index{get\+\_\+reverse@{get\+\_\+reverse}!light\+\_\+chats\+::graph\+::\+Get\+Object\+Function@{light\+\_\+chats\+::graph\+::\+Get\+Object\+Function}}
+\subsubsection{\texorpdfstring{get\+\_\+reverse()}{get\_reverse()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Get\+Object\+Function.\+get\+\_\+reverse (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{graph,  }\item[{}]{args }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1317 of file graph.\+py.
+
+
+\begin{DoxyCode}
+1317     \textcolor{keyword}{def }get\_reverse(self, graph, args):
+1318         \textcolor{keywordflow}{if} graph.get\_prop(args[2], \textcolor{stringliteral}{'container'}) \textcolor{keywordflow}{is} \textcolor{keyword}{True}:
+1319             \textcolor{keywordflow}{return} \textcolor{stringliteral}{'put'}, args
+1320         \textcolor{keywordflow}{else}:
+1321             \textcolor{keywordflow}{return} \textcolor{stringliteral}{'drop'}, args[:2]
+1322 
+1323 
+1324 \textcolor{comment}{# TODO override get\_canonical\_form for on/in}
+\end{DoxyCode}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1GetObjectFunction_a2854af16c5150dcd6a39176fefc3d536}\label{classlight__chats_1_1graph_1_1GetObjectFunction_a2854af16c5150dcd6a39176fefc3d536}} 
+\index{light\+\_\+chats\+::graph\+::\+Get\+Object\+Function@{light\+\_\+chats\+::graph\+::\+Get\+Object\+Function}!parse\+\_\+descs\+\_\+to\+\_\+args@{parse\+\_\+descs\+\_\+to\+\_\+args}}
+\index{parse\+\_\+descs\+\_\+to\+\_\+args@{parse\+\_\+descs\+\_\+to\+\_\+args}!light\+\_\+chats\+::graph\+::\+Get\+Object\+Function@{light\+\_\+chats\+::graph\+::\+Get\+Object\+Function}}
+\subsubsection{\texorpdfstring{parse\+\_\+descs\+\_\+to\+\_\+args()}{parse\_descs\_to\_args()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Get\+Object\+Function.\+parse\+\_\+descs\+\_\+to\+\_\+args (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{graph,  }\item[{}]{args }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1289 of file graph.\+py.
+
+
+\begin{DoxyCode}
+1289     \textcolor{keyword}{def }parse\_descs\_to\_args(self, graph, args):
+1290         \textcolor{comment}{# Append a location for the object, defaulting to the room if the}
+1291         \textcolor{comment}{# immediate container of something can't be found}
+1292         args = [a.lower() \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} args]
+1293         \textcolor{keywordflow}{if} len(args) < 3:
+1294             \textcolor{keywordflow}{try}:
+1295                 object\_ids = graph.desc\_to\_nodes(args[1], args[0], \textcolor{stringliteral}{'all+here'})
+1296                 i = 0
+1297                 container\_id = args[0]
+1298                 \textcolor{comment}{# avoid reflexive matches!}
+1299                 \textcolor{keywordflow}{while} container\_id == args[0]:
+1300                     container\_id = graph.location(object\_ids[i])
+1301                     i += 1
+1302                 container\_name = graph.node\_to\_desc\_raw(container\_id)
+1303                 args.append(container\_name)
+1304             \textcolor{keywordflow}{except} Exception:
+1305                 args.append(graph.node\_to\_desc\_raw(graph.location(args[0])))
+1306         \textcolor{keywordflow}{return} super().parse\_descs\_to\_args(graph, args)
+1307 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1GetObjectFunction_a726f8b3315bfedc530da445bb3e135e6}\label{classlight__chats_1_1graph_1_1GetObjectFunction_a726f8b3315bfedc530da445bb3e135e6}} 
+\index{light\+\_\+chats\+::graph\+::\+Get\+Object\+Function@{light\+\_\+chats\+::graph\+::\+Get\+Object\+Function}!formats@{formats}}
+\index{formats@{formats}!light\+\_\+chats\+::graph\+::\+Get\+Object\+Function@{light\+\_\+chats\+::graph\+::\+Get\+Object\+Function}}
+\subsubsection{\texorpdfstring{formats}{formats}}
+{\footnotesize\ttfamily light\+\_\+chats.\+graph.\+Get\+Object\+Function.\+formats}
+
+
+
+Definition at line 1252 of file graph.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/mturk/tasks/light/light\+\_\+chats/\hyperlink{parlai_2mturk_2tasks_2light_2light__chats_2graph_8py}{graph.\+py}\end{DoxyCompactItemize}

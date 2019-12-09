@@ -1,0 +1,174 @@
+\hypertarget{namespacepersonachat__eval_1_1extract__and__save__personas}{}\section{personachat\+\_\+eval.\+extract\+\_\+and\+\_\+save\+\_\+personas Namespace Reference}
+\label{namespacepersonachat__eval_1_1extract__and__save__personas}\index{personachat\+\_\+eval.\+extract\+\_\+and\+\_\+save\+\_\+personas@{personachat\+\_\+eval.\+extract\+\_\+and\+\_\+save\+\_\+personas}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacepersonachat__eval_1_1extract__and__save__personas_a7bae99c34a0b3f49cbce1328146926fd}{extract\+\_\+and\+\_\+save} (\hyperlink{namespacepersonachat__eval_1_1extract__and__save__personas_af8429edf17061783a8e88df2612ed634}{opt})
+\item 
+def \hyperlink{namespacepersonachat__eval_1_1extract__and__save__personas_aa39f496bc78dfa28c1fbc2c4129a915c}{main} (\hyperlink{namespacepersonachat__eval_1_1extract__and__save__personas_af8429edf17061783a8e88df2612ed634}{opt})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespacepersonachat__eval_1_1extract__and__save__personas_a0c7a023ff3a444b10a5a7241dcb2a654}{parser}
+\item 
+string \hyperlink{namespacepersonachat__eval_1_1extract__and__save__personas_ad30dd7296027c9500819dc1c99da8bb7}{default} = \textquotesingle{}both\textquotesingle{},
+\item 
+\hyperlink{namespacepersonachat__eval_1_1extract__and__save__personas_aaa2aa8bccd8967599740aecfd4d8cde9}{type} = str,
+\item 
+list \hyperlink{namespacepersonachat__eval_1_1extract__and__save__personas_aa78b9367f11da5f51dff879d09b130db}{choices} = \mbox{[}\textquotesingle{}both\textquotesingle{}, \textquotesingle{}self\textquotesingle{}, \textquotesingle{}other\textquotesingle{}\mbox{]},
+\item 
+string \hyperlink{namespacepersonachat__eval_1_1extract__and__save__personas_a691998cfb8d73e52c4ca6e116c026e31}{help} = \textquotesingle{}Which personas to load from personachat\textquotesingle{},
+\item 
+\hyperlink{namespacepersonachat__eval_1_1extract__and__save__personas_a7badd33b93a306d071f1c5c813dcf242}{False}
+\item 
+\hyperlink{namespacepersonachat__eval_1_1extract__and__save__personas_af8429edf17061783a8e88df2612ed634}{opt}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacepersonachat__eval_1_1extract__and__save__personas_a7bae99c34a0b3f49cbce1328146926fd}\label{namespacepersonachat__eval_1_1extract__and__save__personas_a7bae99c34a0b3f49cbce1328146926fd}} 
+\index{personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas@{personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas}!extract\+\_\+and\+\_\+save@{extract\+\_\+and\+\_\+save}}
+\index{extract\+\_\+and\+\_\+save@{extract\+\_\+and\+\_\+save}!personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas@{personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas}}
+\subsubsection{\texorpdfstring{extract\+\_\+and\+\_\+save()}{extract\_and\_save()}}
+{\footnotesize\ttfamily def personachat\+\_\+eval.\+extract\+\_\+and\+\_\+save\+\_\+personas.\+extract\+\_\+and\+\_\+save (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 13 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
+
+
+\begin{DoxyCode}
+13 \textcolor{keyword}{def }\hyperlink{namespacepersonachat__eval_1_1extract__and__save__personas_a7bae99c34a0b3f49cbce1328146926fd}{extract\_and\_save}(opt):
+14     agent = RepeatLabelAgent(opt)
+15     world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(opt, agent)
+16     teacher = world.agents[0]
+17 
+18     personas\_path = opt.get(\textcolor{stringliteral}{'personas\_path'})
+19     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.exists(personas\_path):
+20         os.makedirs(personas\_path)
+21 
+22     new\_episode = \textcolor{keyword}{True}
+23     personas = []
+24     \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} teacher.epoch\_done():
+25         act = teacher.act()
+26         \textcolor{keywordflow}{if} new\_episode:
+27             persona\_text = act[\textcolor{stringliteral}{'text'}].split(\textcolor{stringliteral}{'\(\backslash\)n'})[:-1]
+28             \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'persona\_type'}) == \textcolor{stringliteral}{'both'}:
+29                 persona\_1 = [p \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} persona\_text \textcolor{keywordflow}{if} \textcolor{stringliteral}{'your persona:'} \textcolor{keywordflow}{in} p]
+30                 persona\_2 = [p \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} persona\_text \textcolor{keywordflow}{if} \textcolor{stringliteral}{'partner\(\backslash\)'s persona:'} \textcolor{keywordflow}{in} p]
+31                 persona\_1 = [p[p.find(\textcolor{stringliteral}{':'}) + 1 :] \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} persona\_1]
+32                 persona\_2 = [p[p.find(\textcolor{stringliteral}{':'}) + 1 :] \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} persona\_2]
+33                 personas += [persona\_1, persona\_2]
+34             \textcolor{keywordflow}{else}:
+35                 persona = [p \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} persona\_text \textcolor{keywordflow}{if} \textcolor{stringliteral}{'persona:'} \textcolor{keywordflow}{in} p]
+36                 persona = [p[p.find(\textcolor{stringliteral}{':'}) + 1 :] \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} persona]
+37                 personas.append(persona)
+38             new\_episode = act.get(\textcolor{stringliteral}{'episode\_done'})
+39         \textcolor{keywordflow}{else}:
+40             new\_episode = act.get(\textcolor{stringliteral}{'episode\_done'})
+41 
+42     \textcolor{keywordflow}{for} idx, persona \textcolor{keywordflow}{in} enumerate(personas):
+43         with open(\textcolor{stringliteral}{'\{\}/\{\}.pkl'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(personas\_path, idx), \textcolor{stringliteral}{'wb'}) \textcolor{keyword}{as} f:
+44             pickle.dump(persona, f)
+45     print(\textcolor{stringliteral}{'---Finished extracting and saving personas, to \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(personas\_path))
+46 
+47 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespacepersonachat__eval_1_1extract__and__save__personas_aa39f496bc78dfa28c1fbc2c4129a915c}\label{namespacepersonachat__eval_1_1extract__and__save__personas_aa39f496bc78dfa28c1fbc2c4129a915c}} 
+\index{personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas@{personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas}!main@{main}}
+\index{main@{main}!personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas@{personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def personachat\+\_\+eval.\+extract\+\_\+and\+\_\+save\+\_\+personas.\+main (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 48 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
+
+
+\begin{DoxyCode}
+48 \textcolor{keyword}{def }\hyperlink{namespacepersonachat__eval_1_1extract__and__save__personas_aa39f496bc78dfa28c1fbc2c4129a915c}{main}(opt):
+49     print(\textcolor{stringliteral}{'---Extracting and saving personas---'})
+50     teacher\_name = \textcolor{stringliteral}{'personachat:\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(opt.get(\textcolor{stringliteral}{'persona\_type'}))
+51     teacher\_name += \textcolor{stringliteral}{'Revised'} \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'revised'}) \textcolor{keywordflow}{else} \textcolor{stringliteral}{'Original'}
+52     opt[\textcolor{stringliteral}{'task'}] = teacher\_name
+53     opt[\textcolor{stringliteral}{'datatype'}] = \textcolor{stringliteral}{'train:ordered:stream'}
+54     opt[\textcolor{stringliteral}{'numthreads'}] = 1
+55     opt[\textcolor{stringliteral}{'batchsize'}] = 1
+56     \hyperlink{namespacepersonachat__eval_1_1extract__and__save__personas_a7bae99c34a0b3f49cbce1328146926fd}{extract\_and\_save}(opt)
+57 
+58 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespacepersonachat__eval_1_1extract__and__save__personas_aa78b9367f11da5f51dff879d09b130db}\label{namespacepersonachat__eval_1_1extract__and__save__personas_aa78b9367f11da5f51dff879d09b130db}} 
+\index{personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas@{personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas}!choices@{choices}}
+\index{choices@{choices}!personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas@{personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas}}
+\subsubsection{\texorpdfstring{choices}{choices}}
+{\footnotesize\ttfamily list personachat\+\_\+eval.\+extract\+\_\+and\+\_\+save\+\_\+personas.\+choices = \mbox{[}\textquotesingle{}both\textquotesingle{}, \textquotesingle{}self\textquotesingle{}, \textquotesingle{}other\textquotesingle{}\mbox{]},}
+
+
+
+Definition at line 65 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
+
+\mbox{\Hypertarget{namespacepersonachat__eval_1_1extract__and__save__personas_ad30dd7296027c9500819dc1c99da8bb7}\label{namespacepersonachat__eval_1_1extract__and__save__personas_ad30dd7296027c9500819dc1c99da8bb7}} 
+\index{personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas@{personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas}!default@{default}}
+\index{default@{default}!personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas@{personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas}}
+\subsubsection{\texorpdfstring{default}{default}}
+{\footnotesize\ttfamily personachat\+\_\+eval.\+extract\+\_\+and\+\_\+save\+\_\+personas.\+default = \textquotesingle{}both\textquotesingle{},}
+
+
+
+Definition at line 63 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
+
+\mbox{\Hypertarget{namespacepersonachat__eval_1_1extract__and__save__personas_a7badd33b93a306d071f1c5c813dcf242}\label{namespacepersonachat__eval_1_1extract__and__save__personas_a7badd33b93a306d071f1c5c813dcf242}} 
+\index{personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas@{personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas}!False@{False}}
+\index{False@{False}!personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas@{personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas}}
+\subsubsection{\texorpdfstring{False}{False}}
+{\footnotesize\ttfamily personachat\+\_\+eval.\+extract\+\_\+and\+\_\+save\+\_\+personas.\+False}
+
+
+
+Definition at line 69 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
+
+\mbox{\Hypertarget{namespacepersonachat__eval_1_1extract__and__save__personas_a691998cfb8d73e52c4ca6e116c026e31}\label{namespacepersonachat__eval_1_1extract__and__save__personas_a691998cfb8d73e52c4ca6e116c026e31}} 
+\index{personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas@{personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas}!help@{help}}
+\index{help@{help}!personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas@{personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas}}
+\subsubsection{\texorpdfstring{help}{help}}
+{\footnotesize\ttfamily personachat\+\_\+eval.\+extract\+\_\+and\+\_\+save\+\_\+personas.\+help = \textquotesingle{}Which personas to load from personachat\textquotesingle{},}
+
+
+
+Definition at line 66 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
+
+\mbox{\Hypertarget{namespacepersonachat__eval_1_1extract__and__save__personas_af8429edf17061783a8e88df2612ed634}\label{namespacepersonachat__eval_1_1extract__and__save__personas_af8429edf17061783a8e88df2612ed634}} 
+\index{personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas@{personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas}!opt@{opt}}
+\index{opt@{opt}!personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas@{personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas}}
+\subsubsection{\texorpdfstring{opt}{opt}}
+{\footnotesize\ttfamily personachat\+\_\+eval.\+extract\+\_\+and\+\_\+save\+\_\+personas.\+opt}
+
+
+
+Definition at line 71 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
+
+\mbox{\Hypertarget{namespacepersonachat__eval_1_1extract__and__save__personas_a0c7a023ff3a444b10a5a7241dcb2a654}\label{namespacepersonachat__eval_1_1extract__and__save__personas_a0c7a023ff3a444b10a5a7241dcb2a654}} 
+\index{personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas@{personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas}!parser@{parser}}
+\index{parser@{parser}!personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas@{personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas}}
+\subsubsection{\texorpdfstring{parser}{parser}}
+{\footnotesize\ttfamily personachat\+\_\+eval.\+extract\+\_\+and\+\_\+save\+\_\+personas.\+parser}
+
+
+
+Definition at line 60 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
+
+\mbox{\Hypertarget{namespacepersonachat__eval_1_1extract__and__save__personas_aaa2aa8bccd8967599740aecfd4d8cde9}\label{namespacepersonachat__eval_1_1extract__and__save__personas_aaa2aa8bccd8967599740aecfd4d8cde9}} 
+\index{personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas@{personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas}!type@{type}}
+\index{type@{type}!personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas@{personachat\+\_\+eval\+::extract\+\_\+and\+\_\+save\+\_\+personas}}
+\subsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily personachat\+\_\+eval.\+extract\+\_\+and\+\_\+save\+\_\+personas.\+type = str,}
+
+
+
+Definition at line 64 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
+

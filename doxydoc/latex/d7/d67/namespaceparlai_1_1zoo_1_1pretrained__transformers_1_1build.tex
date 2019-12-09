@@ -1,0 +1,31 @@
+\hypertarget{namespaceparlai_1_1zoo_1_1pretrained__transformers_1_1build}{}\section{parlai.\+zoo.\+pretrained\+\_\+transformers.\+build Namespace Reference}
+\label{namespaceparlai_1_1zoo_1_1pretrained__transformers_1_1build}\index{parlai.\+zoo.\+pretrained\+\_\+transformers.\+build@{parlai.\+zoo.\+pretrained\+\_\+transformers.\+build}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1zoo_1_1pretrained__transformers_1_1build_afaead0deab400e1c516706e85dd4ed9b}{download} (datapath)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1zoo_1_1pretrained__transformers_1_1build_afaead0deab400e1c516706e85dd4ed9b}\label{namespaceparlai_1_1zoo_1_1pretrained__transformers_1_1build_afaead0deab400e1c516706e85dd4ed9b}} 
+\index{parlai\+::zoo\+::pretrained\+\_\+transformers\+::build@{parlai\+::zoo\+::pretrained\+\_\+transformers\+::build}!download@{download}}
+\index{download@{download}!parlai\+::zoo\+::pretrained\+\_\+transformers\+::build@{parlai\+::zoo\+::pretrained\+\_\+transformers\+::build}}
+\subsubsection{\texorpdfstring{download()}{download()}}
+{\footnotesize\ttfamily def parlai.\+zoo.\+pretrained\+\_\+transformers.\+build.\+download (\begin{DoxyParamCaption}\item[{}]{datapath }\end{DoxyParamCaption})}
+
+
+
+Definition at line 15 of file build.\+py.
+
+
+\begin{DoxyCode}
+15 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1zoo_1_1pretrained__transformers_1_1build_afaead0deab400e1c516706e85dd4ed9b}{download}(datapath):
+16     model\_name = \textcolor{stringliteral}{'pretrained\_transformers'}
+17     mdir = os.path.join(\hyperlink{namespaceparlai_1_1core_1_1build__data_ad2fe6222094caae59f304931aee0952a}{get\_model\_dir}(datapath), model\_name)
+18     version = \textcolor{stringliteral}{'v3.0'}
+19     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \hyperlink{namespaceparlai_1_1core_1_1build__data_ad834e1a9be02e18a6c2de2b03b9a8f10}{built}(mdir, version):
+20         opt = \{\textcolor{stringliteral}{'datapath'}: datapath\}
+21         fnames = [\textcolor{stringliteral}{'pretrained\_transformers.tgz'}]
+22         \hyperlink{namespaceparlai_1_1core_1_1build__data_ab697f23f05d3e36d7979fe5e0ed7911e}{download\_models}(opt, fnames, model\_name, version=version, use\_model\_type=\textcolor{keyword}{False})
+23 \end{DoxyCode}

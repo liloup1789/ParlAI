@@ -1,0 +1,176 @@
+\hypertarget{namespacelight__chats_1_1run}{}\section{light\+\_\+chats.\+run Namespace Reference}
+\label{namespacelight__chats_1_1run}\index{light\+\_\+chats.\+run@{light\+\_\+chats.\+run}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classlight__chats_1_1run_1_1GraphGenerator}{Graph\+Generator}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacelight__chats_1_1run_a1966c0bed443d10aceaa1729e5f1950c}{main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacelight__chats_1_1run_a1966c0bed443d10aceaa1729e5f1950c}\label{namespacelight__chats_1_1run_a1966c0bed443d10aceaa1729e5f1950c}} 
+\index{light\+\_\+chats\+::run@{light\+\_\+chats\+::run}!main@{main}}
+\index{main@{main}!light\+\_\+chats\+::run@{light\+\_\+chats\+::run}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+run.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Handles setting up and running a ParlAI-MTurk task by instantiating an MTurk manager
+and configuring it for the qa_data_collection task.
+\end{DoxyVerb}
+ 
+
+Definition at line 300 of file run.\+py.
+
+
+\begin{DoxyCode}
+300 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1run_ad3ab2c71f8083c3112815c0b363d316b}{main}():
+301     \textcolor{stringliteral}{"""}
+302 \textcolor{stringliteral}{    Handles setting up and running a ParlAI-MTurk task by instantiating an MTurk manager}
+303 \textcolor{stringliteral}{    and configuring it for the qa\_data\_collection task.}
+304 \textcolor{stringliteral}{    """}
+305     \textcolor{comment}{# Get relevant arguments}
+306     argparser = ParlaiParser(\textcolor{keyword}{False}, \textcolor{keyword}{False})
+307     argparser.add\_parlai\_data\_path()
+308     argparser.add\_mturk\_args()
+309     argparser.add\_argument(
+310         \textcolor{stringliteral}{'--light-unseen-rooms'},
+311         default=\textcolor{keyword}{False},
+312         type=\textcolor{stringliteral}{'bool'},
+313         help=\textcolor{stringliteral}{'Launch using rooms from the unseen set rather than the seen'},
+314     )
+315     opt = argparser.parse\_args()
+316 
+317     generator = GraphGenerator(opt, opt[\textcolor{stringliteral}{'light\_unseen\_rooms'}])
+318 
+319     \textcolor{comment}{# Set the task name to be the folder name}
+320     opt[\textcolor{stringliteral}{'task'}] = os.path.basename(os.path.dirname(os.path.abspath(\_\_file\_\_)))
+321 
+322     \textcolor{comment}{# append the contents of task\_config.py to the configuration}
+323     opt.update(task\_config)
+324 
+325     \textcolor{comment}{# Select an agent\_id that worker agents will be assigned in their world}
+326     mturk\_agent\_roles = [\textcolor{stringliteral}{'worker\_1'}, \textcolor{stringliteral}{'worker\_2'}]
+327 
+328     \textcolor{comment}{# Set runtime to be an hour in case workers are slow}
+329     opt[\textcolor{stringliteral}{'assignment\_duration\_in\_seconds'}] = 60 * 60
+330 
+331     \textcolor{comment}{# Instantiate an MTurkManager with the given options and a maximum number}
+332     \textcolor{comment}{# of agents per world of 1 (based on the length of mturk\_agent\_ids)}
+333     mturk\_manager = MTurkManager(
+334         opt=opt, mturk\_agent\_ids=mturk\_agent\_roles, use\_db=\textcolor{keyword}{True}
+335     )
+336     mturk\_manager.setup\_server(
+337         task\_directory\_path=os.path.dirname(os.path.abspath(\_\_file\_\_))
+338     )
+339 
+340     \textcolor{comment}{# Create an onboard\_function, which will be run for workers who have}
+341     \textcolor{comment}{# accepted your task and must be completed before they are put in the}
+342     \textcolor{comment}{# queue for a task world.}
+343     completed\_agents = []
+344 
+345     \textcolor{keyword}{def }run\_onboard(worker):
+346         nonlocal completed\_agents
+347         \textcolor{keywordflow}{if} worker.worker\_id \textcolor{keywordflow}{in} completed\_agents:
+348             \textcolor{keywordflow}{return}
+349         \textcolor{keywordflow}{else}:
+350             world = LightChatOnboardingWorld(opt=opt, mturk\_agent=worker)
+351             \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} world.episode\_done():
+352                 world.parley()
+353             world.shutdown()
+354             completed\_agents.append(worker.worker\_id)
+355             print(worker.worker\_id, \textcolor{stringliteral}{'took'}, world.turns, \textcolor{stringliteral}{'turns for onboarding'})
+356             \textcolor{keywordflow}{return} world.prep\_save\_data([worker])
+357 
+358     \textcolor{comment}{# If we want to use the above onboard function, we can replace the below}
+359     \textcolor{comment}{# with set\_onboard\_function(onboard\_function=run\_onboard)}
+360     mturk\_manager.set\_onboard\_function(onboard\_function=run\_onboard)
+361 
+362     qualification\_id = mturk\_utils.find\_qualification(
+363         \textcolor{stringliteral}{'adventure\_chat\_reject'}, opt[\textcolor{stringliteral}{'is\_sandbox'}], must\_be\_owned=\textcolor{keyword}{False}
+364     )
+365     print(\textcolor{stringliteral}{'Found qualification: '}, qualification\_id)
+366 
+367     \textcolor{keywordflow}{try}:
+368         \textcolor{comment}{# Initialize run information}
+369         mturk\_manager.start\_new\_run()
+370 
+371         \textcolor{comment}{# Set up the sockets and threads to recieve workers}
+372         mturk\_manager.ready\_to\_accept\_workers()
+373 
+374         agent\_qualifications = [
+375             \{
+376                 \textcolor{stringliteral}{'QualificationTypeId'}: qualification\_id,
+377                 \textcolor{stringliteral}{'Comparator'}: \textcolor{stringliteral}{'DoesNotExist'},
+378                 \textcolor{stringliteral}{'RequiredToPreview'}: \textcolor{keyword}{True},
+379             \}
+380         ]
+381 
+382         \textcolor{comment}{# Create the hits as specified by command line arguments}
+383         mturk\_manager.create\_hits(qualifications=agent\_qualifications)
+384 
+385         \textcolor{comment}{# Check workers eligiblity acts as a filter, and should return}
+386         \textcolor{comment}{# the list of all workers currently eligible to work on the task}
+387         \textcolor{comment}{# Can be used to pair workers that meet certain criterea}
+388         \textcolor{keyword}{def }check\_workers\_eligibility(workers):
+389             \textcolor{keywordflow}{return} workers
+390 
+391         eligibility\_function = \{\textcolor{stringliteral}{'func'}: check\_workers\_eligibility, \textcolor{stringliteral}{'multiple'}: \textcolor{keyword}{True}\}
+392 
+393         \textcolor{comment}{# Assign worker roles is used to determine what the role each worker}
+394         \textcolor{comment}{# in the given worker list will play. Setting `id` to None will return}
+395         \textcolor{comment}{# the worker to the pool rather than putting them in a given task,}
+396         \textcolor{comment}{# which is useful for having tasks with different possible worker}
+397         \textcolor{comment}{# counts.}
+398         \textcolor{keyword}{def }assign\_worker\_roles(workers):
+399             workers[0].id = mturk\_agent\_roles[0]
+400             workers[1].id = mturk\_agent\_roles[1]
+401 
+402         \textcolor{comment}{# Define the task function, which will be run with workers that are}
+403         \textcolor{comment}{# as the main task.}
+404         \textcolor{keyword}{global} run\_conversation
+405 
+406         \textcolor{keyword}{def }run\_conversation(mturk\_manager, opt, workers):
+407             \textcolor{comment}{# Create the task world}
+408             g = \textcolor{keywordtype}{None}
+409             \textcolor{keywordflow}{while} g \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+410                 \textcolor{keywordflow}{try}:
+411                     g, room, characters = generator.get\_room()
+412                 \textcolor{keywordflow}{except} Exception \textcolor{keyword}{as} e:
+413                     print(\textcolor{stringliteral}{'error when creating graph:'}, repr(e))
+414             world = LightChatTaskWorld(
+415                 opt=opt, mturk\_agents=workers, graph=g, room=room, characters=characters
+416             )
+417             \textcolor{comment}{# run the world to completion}
+418             \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} world.episode\_done():
+419                 world.parley()
+420 
+421             \textcolor{comment}{# shutdown and review the work}
+422             world.shutdown()
+423             world.review\_work()
+424 
+425             \textcolor{comment}{# Return the contents for saving}
+426             \textcolor{keywordflow}{return} world.prep\_save\_data(workers)
+427 
+428         \textcolor{comment}{# Begin the task, allowing mturk\_manager to start running the task}
+429         \textcolor{comment}{# world on any workers who connect}
+430         mturk\_manager.start\_task(
+431             eligibility\_function=eligibility\_function,
+432             assign\_role\_function=assign\_worker\_roles,
+433             task\_function=run\_conversation,
+434         )
+435     \textcolor{keywordflow}{except} BaseException:
+436         \textcolor{keywordflow}{raise}
+437     \textcolor{keywordflow}{finally}:
+438         \textcolor{comment}{# Any hits that aren't claimed or completed have to be shut down. Must}
+439         \textcolor{comment}{# keep the world running until that point.}
+440         mturk\_manager.expire\_all\_unassigned\_hits()
+441         \textcolor{comment}{# Shutdown the manager and free all related resources}
+442         mturk\_manager.shutdown()
+443 
+444 
+\end{DoxyCode}

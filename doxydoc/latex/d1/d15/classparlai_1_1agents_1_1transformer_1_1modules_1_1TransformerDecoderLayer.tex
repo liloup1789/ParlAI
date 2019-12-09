@@ -1,0 +1,273 @@
+\hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer}{}\section{parlai.\+agents.\+transformer.\+modules.\+Transformer\+Decoder\+Layer Class Reference}
+\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer}\index{parlai.\+agents.\+transformer.\+modules.\+Transformer\+Decoder\+Layer@{parlai.\+agents.\+transformer.\+modules.\+Transformer\+Decoder\+Layer}}
+
+
+Inheritance diagram for parlai.\+agents.\+transformer.\+modules.\+Transformer\+Decoder\+Layer\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{d2/daa/classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+agents.\+transformer.\+modules.\+Transformer\+Decoder\+Layer\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{df/d83/classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_ad893ac51805fd662173f777c91b2cca4}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, n\+\_\+heads, embedding\+\_\+size, ffn\+\_\+size, attention\+\_\+dropout=0.\+0, relu\+\_\+dropout=0.\+0, \hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_aba87c66e402b0cfdf196872c3f038d43}{dropout}=0.\+0, \hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_a33276633e128020853db98128f1d93c3}{activation}=\textquotesingle{}relu\textquotesingle{}, \hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_a94a9a714a2585fd6a675a08643e3ce6b}{variant}=\textquotesingle{}aiayn\textquotesingle{})
+\item 
+def \hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_ad0a63d90190682d0f9ff325fcf60f426}{forward} (self, x, encoder\+\_\+output, encoder\+\_\+mask)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_afc3159ec4e88329e2967edf28923ea20}{dim}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_a296aa88e8a31be628bb31f55de0a0360}{ffn\+\_\+dim}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_a94a9a714a2585fd6a675a08643e3ce6b}{variant}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_a33276633e128020853db98128f1d93c3}{activation}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_aba87c66e402b0cfdf196872c3f038d43}{dropout}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_ad656c203b5b2ab890ea419febace286f}{self\+\_\+attention}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_aa82d4bae763a0867633b6d5bc8484129}{norm1}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_a50be54030dc6526fd5cae1f48a448f04}{encoder\+\_\+attention}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_ac581c47d531c120ca010ce5fa3836b24}{norm2}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_a394248deb2cfa738a51f890d4c232224}{ffn}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_a24e685c1a13c11ce7bd4a839bc93ab2a}{norm3}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Implements a single Transformer decoder layer.
+
+Decoder layers are similar to encoder layers but:
+
+1. Self-attention is limited in a casaul (auto-regressive) manner.
+2. Attend over all of the encoder states.
+\end{DoxyVerb}
+ 
+
+Definition at line 722 of file modules.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_ad893ac51805fd662173f777c91b2cca4}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_ad893ac51805fd662173f777c91b2cca4}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+modules.\+Transformer\+Decoder\+Layer.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{n\+\_\+heads,  }\item[{}]{embedding\+\_\+size,  }\item[{}]{ffn\+\_\+size,  }\item[{}]{attention\+\_\+dropout = {\ttfamily 0.0},  }\item[{}]{relu\+\_\+dropout = {\ttfamily 0.0},  }\item[{}]{dropout = {\ttfamily 0.0},  }\item[{}]{activation = {\ttfamily \textquotesingle{}relu\textquotesingle{}},  }\item[{}]{variant = {\ttfamily \textquotesingle{}aiayn\textquotesingle{}} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 742 of file modules.\+py.
+
+
+\begin{DoxyCode}
+742     ):
+743         super().\_\_init\_\_()
+744         self.dim = embedding\_size
+745         self.ffn\_dim = ffn\_size
+746         self.variant = variant
+747         self.activation = activation
+748         self.dropout = nn.Dropout(p=dropout)
+749 
+750         self.self\_attention = MultiHeadAttention(
+751             n\_heads, embedding\_size, dropout=attention\_dropout
+752         )
+753         self.norm1 = LayerNorm(embedding\_size, eps=LAYER\_NORM\_EPS)
+754 
+755         self.encoder\_attention = MultiHeadAttention(
+756             n\_heads, embedding\_size, dropout=attention\_dropout
+757         )
+758         self.norm2 = LayerNorm(embedding\_size, eps=LAYER\_NORM\_EPS)
+759 
+760         self.ffn = TransformerFFN(
+761             embedding\_size, ffn\_size, relu\_dropout=relu\_dropout, activation=activation
+762         )
+763         self.norm3 = LayerNorm(embedding\_size, eps=LAYER\_NORM\_EPS)
+764 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_ad0a63d90190682d0f9ff325fcf60f426}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_ad0a63d90190682d0f9ff325fcf60f426}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer}!forward@{forward}}
+\index{forward@{forward}!parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer}}
+\subsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+modules.\+Transformer\+Decoder\+Layer.\+forward (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{x,  }\item[{}]{encoder\+\_\+output,  }\item[{}]{encoder\+\_\+mask }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Forward pass.
+\end{DoxyVerb}
+ 
+
+Definition at line 765 of file modules.\+py.
+
+
+\begin{DoxyCode}
+765     \textcolor{keyword}{def }forward(self, x, encoder\_output, encoder\_mask):
+766         \textcolor{stringliteral}{"""}
+767 \textcolor{stringliteral}{        Forward pass.}
+768 \textcolor{stringliteral}{        """}
+769         decoder\_mask = self.\_create\_selfattn\_mask(x)
+770         \textcolor{comment}{# first self attn}
+771         residual = x
+772         \textcolor{comment}{# don't peak into the future!}
+773         x = self.self\_attention(query=x, mask=decoder\_mask)
+774         x = self.dropout(x)  \textcolor{comment}{# --dropout}
+775         x = x + residual
+776         x = \_normalize(x, self.norm1)
+777 
+778         residual = x
+779         x = self.encoder\_attention(
+780             query=x, key=encoder\_output, value=encoder\_output, mask=encoder\_mask
+781         )
+782         x = self.dropout(x)  \textcolor{comment}{# --dropout}
+783         x = residual + x
+784         x = \_normalize(x, self.norm2)
+785 
+786         \textcolor{comment}{# finally the ffn}
+787         residual = x
+788         x = self.ffn(x)
+789         x = self.dropout(x)  \textcolor{comment}{# --dropout}
+790         x = residual + x
+791         x = \_normalize(x, self.norm3)
+792 
+793         \textcolor{keywordflow}{return} x
+794 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_a33276633e128020853db98128f1d93c3}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_a33276633e128020853db98128f1d93c3}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer}!activation@{activation}}
+\index{activation@{activation}!parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer}}
+\subsubsection{\texorpdfstring{activation}{activation}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+Transformer\+Decoder\+Layer.\+activation}
+
+
+
+Definition at line 747 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_afc3159ec4e88329e2967edf28923ea20}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_afc3159ec4e88329e2967edf28923ea20}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer}!dim@{dim}}
+\index{dim@{dim}!parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer}}
+\subsubsection{\texorpdfstring{dim}{dim}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+Transformer\+Decoder\+Layer.\+dim}
+
+
+
+Definition at line 744 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_aba87c66e402b0cfdf196872c3f038d43}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_aba87c66e402b0cfdf196872c3f038d43}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer}!dropout@{dropout}}
+\index{dropout@{dropout}!parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer}}
+\subsubsection{\texorpdfstring{dropout}{dropout}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+Transformer\+Decoder\+Layer.\+dropout}
+
+
+
+Definition at line 748 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_a50be54030dc6526fd5cae1f48a448f04}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_a50be54030dc6526fd5cae1f48a448f04}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer}!encoder\+\_\+attention@{encoder\+\_\+attention}}
+\index{encoder\+\_\+attention@{encoder\+\_\+attention}!parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer}}
+\subsubsection{\texorpdfstring{encoder\+\_\+attention}{encoder\_attention}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+Transformer\+Decoder\+Layer.\+encoder\+\_\+attention}
+
+
+
+Definition at line 755 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_a394248deb2cfa738a51f890d4c232224}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_a394248deb2cfa738a51f890d4c232224}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer}!ffn@{ffn}}
+\index{ffn@{ffn}!parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer}}
+\subsubsection{\texorpdfstring{ffn}{ffn}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+Transformer\+Decoder\+Layer.\+ffn}
+
+
+
+Definition at line 760 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_a296aa88e8a31be628bb31f55de0a0360}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_a296aa88e8a31be628bb31f55de0a0360}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer}!ffn\+\_\+dim@{ffn\+\_\+dim}}
+\index{ffn\+\_\+dim@{ffn\+\_\+dim}!parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer}}
+\subsubsection{\texorpdfstring{ffn\+\_\+dim}{ffn\_dim}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+Transformer\+Decoder\+Layer.\+ffn\+\_\+dim}
+
+
+
+Definition at line 745 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_aa82d4bae763a0867633b6d5bc8484129}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_aa82d4bae763a0867633b6d5bc8484129}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer}!norm1@{norm1}}
+\index{norm1@{norm1}!parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer}}
+\subsubsection{\texorpdfstring{norm1}{norm1}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+Transformer\+Decoder\+Layer.\+norm1}
+
+
+
+Definition at line 753 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_ac581c47d531c120ca010ce5fa3836b24}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_ac581c47d531c120ca010ce5fa3836b24}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer}!norm2@{norm2}}
+\index{norm2@{norm2}!parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer}}
+\subsubsection{\texorpdfstring{norm2}{norm2}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+Transformer\+Decoder\+Layer.\+norm2}
+
+
+
+Definition at line 758 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_a24e685c1a13c11ce7bd4a839bc93ab2a}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_a24e685c1a13c11ce7bd4a839bc93ab2a}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer}!norm3@{norm3}}
+\index{norm3@{norm3}!parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer}}
+\subsubsection{\texorpdfstring{norm3}{norm3}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+Transformer\+Decoder\+Layer.\+norm3}
+
+
+
+Definition at line 763 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_ad656c203b5b2ab890ea419febace286f}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_ad656c203b5b2ab890ea419febace286f}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer}!self\+\_\+attention@{self\+\_\+attention}}
+\index{self\+\_\+attention@{self\+\_\+attention}!parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer}}
+\subsubsection{\texorpdfstring{self\+\_\+attention}{self\_attention}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+Transformer\+Decoder\+Layer.\+self\+\_\+attention}
+
+
+
+Definition at line 750 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_a94a9a714a2585fd6a675a08643e3ce6b}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoderLayer_a94a9a714a2585fd6a675a08643e3ce6b}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer}!variant@{variant}}
+\index{variant@{variant}!parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder\+Layer}}
+\subsubsection{\texorpdfstring{variant}{variant}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+Transformer\+Decoder\+Layer.\+variant}
+
+
+
+Definition at line 746 of file modules.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/agents/transformer/\hyperlink{parlai_2agents_2transformer_2modules_8py}{modules.\+py}\end{DoxyCompactItemize}

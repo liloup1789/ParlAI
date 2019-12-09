@@ -1,0 +1,100 @@
+\hypertarget{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerGeneratorAgent}{}\section{parlai.\+agents.\+transformer.\+transformer.\+Transformer\+Generator\+Agent Class Reference}
+\label{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerGeneratorAgent}\index{parlai.\+agents.\+transformer.\+transformer.\+Transformer\+Generator\+Agent@{parlai.\+agents.\+transformer.\+transformer.\+Transformer\+Generator\+Agent}}
+
+
+Inheritance diagram for parlai.\+agents.\+transformer.\+transformer.\+Transformer\+Generator\+Agent\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/db6/classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerGeneratorAgent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+agents.\+transformer.\+transformer.\+Transformer\+Generator\+Agent\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{d9/d8e/classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerGeneratorAgent__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerGeneratorAgent_a496b5ccc5efe17f290c37dc094ff74e8}{add\+\_\+cmdline\+\_\+args} (cls, argparser)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerGeneratorAgent_a473f2a19d6bce412c4c9163c7beb9b09}{build\+\_\+model} (self, states=None)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}TransformerGeneratorAgent.
+
+Implementation of TorchGeneratorAgent, where the model is a Transformer
+\end{DoxyVerb}
+ 
+
+Definition at line 289 of file transformer.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerGeneratorAgent_a496b5ccc5efe17f290c37dc094ff74e8}\label{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerGeneratorAgent_a496b5ccc5efe17f290c37dc094ff74e8}} 
+\index{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Generator\+Agent@{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Generator\+Agent}!add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}}
+\index{add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}!parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Generator\+Agent@{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Generator\+Agent}}
+\subsubsection{\texorpdfstring{add\+\_\+cmdline\+\_\+args()}{add\_cmdline\_args()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+transformer.\+Transformer\+Generator\+Agent.\+add\+\_\+cmdline\+\_\+args (\begin{DoxyParamCaption}\item[{}]{cls,  }\item[{}]{argparser }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Add command-line arguments specifically for this agent.
+\end{DoxyVerb}
+ 
+
+Definition at line 297 of file transformer.\+py.
+
+
+\begin{DoxyCode}
+297     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(cls, argparser):
+298         \textcolor{stringliteral}{"""}
+299 \textcolor{stringliteral}{        Add command-line arguments specifically for this agent.}
+300 \textcolor{stringliteral}{        """}
+301         agent = argparser.add\_argument\_group(\textcolor{stringliteral}{'Transformer Arguments'})
+302         \hyperlink{namespaceparlai_1_1agents_1_1transformer_1_1transformer_a916bc49d43dc0e244d24c47956c621ca}{add\_common\_cmdline\_args}(agent)
+303         cls.dictionary\_class().\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(argparser)
+304 
+305         super(TransformerGeneratorAgent, cls).\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(argparser)
+306         \textcolor{keywordflow}{return} agent
+307 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerGeneratorAgent_a473f2a19d6bce412c4c9163c7beb9b09}\label{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerGeneratorAgent_a473f2a19d6bce412c4c9163c7beb9b09}} 
+\index{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Generator\+Agent@{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Generator\+Agent}!build\+\_\+model@{build\+\_\+model}}
+\index{build\+\_\+model@{build\+\_\+model}!parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Generator\+Agent@{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Generator\+Agent}}
+\subsubsection{\texorpdfstring{build\+\_\+model()}{build\_model()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+transformer.\+Transformer\+Generator\+Agent.\+build\+\_\+model (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{states = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Build and return model.
+\end{DoxyVerb}
+ 
+
+Definition at line 308 of file transformer.\+py.
+
+
+\begin{DoxyCode}
+308     \textcolor{keyword}{def }build\_model(self, states=None):
+309         \textcolor{stringliteral}{"""}
+310 \textcolor{stringliteral}{        Build and return model.}
+311 \textcolor{stringliteral}{        """}
+312         model = TransformerGeneratorModel(self.opt, self.dict)
+313         \textcolor{keywordflow}{if} self.opt[\textcolor{stringliteral}{'embedding\_type'}] != \textcolor{stringliteral}{'random'}:
+314             self.\_copy\_embeddings(
+315                 model.encoder.embeddings.weight, self.opt[\textcolor{stringliteral}{'embedding\_type'}]
+316             )
+317         \textcolor{keywordflow}{return} model
+318 \end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/agents/transformer/\hyperlink{transformer_8py}{transformer.\+py}\end{DoxyCompactItemize}

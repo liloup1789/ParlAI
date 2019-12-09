@@ -111,7 +111,9 @@ def built(path, version_string=None):
     not built.
     """
     if version_string:
+        print("VERSION STRING ON")
         fname = os.path.join(path, '.built')
+        print(fname)
         if not os.path.isfile(fname):
             return False
         else:
@@ -119,6 +121,7 @@ def built(path, version_string=None):
                 text = read.read().split('\n')
             return len(text) > 1 and text[1] == version_string
     else:
+        print("VERSION STRING OFF")
         return os.path.isfile(os.path.join(path, '.built'))
 
 

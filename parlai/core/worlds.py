@@ -285,6 +285,7 @@ class World(object):
                 self.total_epochs += 1
 
 
+import sys
 class DialogPartnerWorld(World):
     """
     Simple world for two agents communicating synchronously.
@@ -315,7 +316,7 @@ class DialogPartnerWorld(World):
         Return task agent.
         """
         return self.get_agents()[0]
-
+        
     def parley(self):
         """
         Agent 0 goes first.
@@ -324,7 +325,12 @@ class DialogPartnerWorld(World):
         """
         acts = self.acts
         agents = self.agents
+        print(agents)
+        print(acts)
+        self.display()
+        # sys.exit()
         acts[0] = agents[0].act()
+        print(acts[0])
         agents[1].observe(validate(acts[0]))
         acts[1] = agents[1].act()
         agents[0].observe(validate(acts[1]))

@@ -1,0 +1,475 @@
+\hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils}{}\section{parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils Namespace Reference}
+\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils}\index{parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils@{parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_ad6686d06420159711f730caba7e82964}{setup\+\_\+heroku\+\_\+server} (task\+\_\+name)
+\item 
+def \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_ad2f0d428e09b0ce197091c41c21dfafb}{delete\+\_\+heroku\+\_\+server} (task\+\_\+name)
+\item 
+def \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a89bf62978803958356c32096df679432}{setup\+\_\+local\+\_\+server} (task\+\_\+name)
+\item 
+def \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a94445c358161efa9329ecbeefadb01dc}{delete\+\_\+local\+\_\+server} (task\+\_\+name)
+\item 
+def \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_afb56b04206cd0f42384438f1ac6d9cda}{setup\+\_\+server} (task\+\_\+name, local=False)
+\item 
+def \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a0dd350cc27da7cfdc225f8daf19d5e57}{delete\+\_\+server} (task\+\_\+name, local=False)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+string \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a4e22e27725adafcd1a6b95d189d627cf}{region\+\_\+name} = \textquotesingle{}us-\/east-\/1\textquotesingle{}
+\item 
+\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a9b83dd4b20a92013cf4199f198aa360a}{user\+\_\+name} = getpass.\+getuser()
+\item 
+\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_acde853bd5872b1d77d8cbf7f61216c7a}{parent\+\_\+dir} = os.\+path.\+dirname(os.\+path.\+abspath(\+\_\+\+\_\+file\+\_\+\+\_\+))
+\item 
+string \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_aa10ee06f560e1007b8d3b50c869001c0}{server\+\_\+source\+\_\+directory\+\_\+name} = \textquotesingle{}server\textquotesingle{}
+\item 
+string \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a9f647dadd18219a9e8bc19d810622582}{heroku\+\_\+server\+\_\+directory\+\_\+name} = \textquotesingle{}heroku\+\_\+server\textquotesingle{}
+\item 
+string \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a3237a588c9ba62516404f9234816aaa5}{local\+\_\+server\+\_\+directory\+\_\+name} = \textquotesingle{}local\+\_\+server\textquotesingle{}
+\item 
+string \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a087efe2fa17d505b0fa8753f6dbab06f}{task\+\_\+directory\+\_\+name} = \textquotesingle{}task\textquotesingle{}
+\item 
+\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_aa627704acdf6fa8e166558a521a14ef8}{server\+\_\+process} = None
+\item 
+string \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a1673520e492a9e606a82b26fe83bdcb1}{heroku\+\_\+url} = \textquotesingle{}https\+://cli-\/assets.\+heroku.\+com/heroku-\/cli/channels/stable/heroku-\/cli\textquotesingle{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_ad2f0d428e09b0ce197091c41c21dfafb}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_ad2f0d428e09b0ce197091c41c21dfafb}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!delete\+\_\+heroku\+\_\+server@{delete\+\_\+heroku\+\_\+server}}
+\index{delete\+\_\+heroku\+\_\+server@{delete\+\_\+heroku\+\_\+server}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{delete\+\_\+heroku\+\_\+server()}{delete\_heroku\_server()}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+delete\+\_\+heroku\+\_\+server (\begin{DoxyParamCaption}\item[{}]{task\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Definition at line 208 of file server\+\_\+utils.\+py.
+
+
+\begin{DoxyCode}
+208 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1core_1_1server__utils_a8dfde882f9d6ff492ca565ae2334fc70}{delete\_heroku\_server}(task\_name):
+209     heroku\_directory\_name = glob.glob(os.path.join(parent\_dir, \textcolor{stringliteral}{'heroku-cli-*'}))[0]
+210     heroku\_directory\_path = os.path.join(parent\_dir, heroku\_directory\_name)
+211     heroku\_executable\_path = os.path.join(heroku\_directory\_path, \textcolor{stringliteral}{'bin'}, \textcolor{stringliteral}{'heroku'})
+212 
+213     heroku\_user\_identifier = netrc.netrc(
+214         os.path.join(os.path.expanduser(\textcolor{stringliteral}{"~"}), \textcolor{stringliteral}{'.netrc'})
+215     ).hosts[\textcolor{stringliteral}{'api.heroku.com'}][0]
+216 
+217     heroku\_app\_name = (
+218         \textcolor{stringliteral}{'\{\}-\{\}-\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+219             user\_name,
+220             task\_name,
+221             hashlib.md5(heroku\_user\_identifier.encode(\textcolor{stringliteral}{'utf-8'})).hexdigest(),
+222         )
+223     )[:30]
+224     \textcolor{keywordflow}{while} heroku\_app\_name[-1] == \textcolor{stringliteral}{'-'}:
+225         heroku\_app\_name = heroku\_app\_name[:-1]
+226     print(\textcolor{stringliteral}{"Heroku: Deleting server: \{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(heroku\_app\_name))
+227     subprocess.check\_output(
+228         shlex.split(
+229             \textcolor{stringliteral}{'\{\} destroy \{\} --confirm \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+230                 heroku\_executable\_path, heroku\_app\_name, heroku\_app\_name
+231             )
+232         )
+233     )
+234 
+235 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a94445c358161efa9329ecbeefadb01dc}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a94445c358161efa9329ecbeefadb01dc}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!delete\+\_\+local\+\_\+server@{delete\+\_\+local\+\_\+server}}
+\index{delete\+\_\+local\+\_\+server@{delete\+\_\+local\+\_\+server}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{delete\+\_\+local\+\_\+server()}{delete\_local\_server()}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+delete\+\_\+local\+\_\+server (\begin{DoxyParamCaption}\item[{}]{task\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Definition at line 273 of file server\+\_\+utils.\+py.
+
+
+\begin{DoxyCode}
+273 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1core_1_1server__utils_a9b4f4c3f696be001c2fa96b3690af83c}{delete\_local\_server}(task\_name):
+274     \textcolor{keyword}{global} server\_process
+275     print(\textcolor{stringliteral}{'Terminating server'})
+276     server\_process.terminate()
+277     server\_process.wait()
+278     print(\textcolor{stringliteral}{'Cleaning temp directory'})
+279     local\_server\_directory\_path = os.path.join(
+280         parent\_dir, \textcolor{stringliteral}{'\{\}\_\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(local\_server\_directory\_name, task\_name)
+281     )
+282     sh.rm(shlex.split(\textcolor{stringliteral}{'-rf '} + local\_server\_directory\_path))
+283 
+284 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a0dd350cc27da7cfdc225f8daf19d5e57}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a0dd350cc27da7cfdc225f8daf19d5e57}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!delete\+\_\+server@{delete\+\_\+server}}
+\index{delete\+\_\+server@{delete\+\_\+server}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{delete\+\_\+server()}{delete\_server()}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+delete\+\_\+server (\begin{DoxyParamCaption}\item[{}]{task\+\_\+name,  }\item[{}]{local = {\ttfamily False} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 291 of file server\+\_\+utils.\+py.
+
+
+\begin{DoxyCode}
+291 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1core_1_1server__utils_a3c7c1d82bd4d26eb98ce9711de3cca7c}{delete\_server}(task\_name, local=False):
+292     \textcolor{keywordflow}{if} local:
+293         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1server__utils_a9b4f4c3f696be001c2fa96b3690af83c}{delete\_local\_server}(task\_name)
+294     \textcolor{keywordflow}{else}:
+295         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1server__utils_a8dfde882f9d6ff492ca565ae2334fc70}{delete\_heroku\_server}(task\_name)
+296 \end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_ad6686d06420159711f730caba7e82964}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_ad6686d06420159711f730caba7e82964}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!setup\+\_\+heroku\+\_\+server@{setup\+\_\+heroku\+\_\+server}}
+\index{setup\+\_\+heroku\+\_\+server@{setup\+\_\+heroku\+\_\+server}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{setup\+\_\+heroku\+\_\+server()}{setup\_heroku\_server()}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+setup\+\_\+heroku\+\_\+server (\begin{DoxyParamCaption}\item[{}]{task\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Definition at line 33 of file server\+\_\+utils.\+py.
+
+
+\begin{DoxyCode}
+33 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1core_1_1server__utils_af1c97e9b93a403e200ac75b87a51c3c1}{setup\_heroku\_server}(task\_name):
+34     print(\textcolor{stringliteral}{"Heroku: Collecting files..."})
+35     \textcolor{comment}{# Install Heroku CLI}
+36     os\_name = \textcolor{keywordtype}{None}
+37     bit\_architecture = \textcolor{keywordtype}{None}
+38 
+39     \textcolor{comment}{# Get the platform we are working on}
+40     platform\_info = platform.platform()
+41     \textcolor{keywordflow}{if} \textcolor{stringliteral}{'Darwin'} \textcolor{keywordflow}{in} platform\_info:  \textcolor{comment}{# Mac OS X}
+42         os\_name = \textcolor{stringliteral}{'darwin'}
+43     \textcolor{keywordflow}{elif} \textcolor{stringliteral}{'Linux'} \textcolor{keywordflow}{in} platform\_info:  \textcolor{comment}{# Linux}
+44         os\_name = \textcolor{stringliteral}{'linux'}
+45     \textcolor{keywordflow}{else}:
+46         os\_name = \textcolor{stringliteral}{'windows'}
+47 
+48     \textcolor{comment}{# Find our architecture}
+49     bit\_architecture\_info = platform.architecture()[0]
+50     \textcolor{keywordflow}{if} \textcolor{stringliteral}{'64bit'} \textcolor{keywordflow}{in} bit\_architecture\_info:
+51         bit\_architecture = \textcolor{stringliteral}{'x64'}
+52     \textcolor{keywordflow}{else}:
+53         bit\_architecture = \textcolor{stringliteral}{'x86'}
+54 
+55     \textcolor{comment}{# Remove existing heroku client files}
+56     existing\_heroku\_directory\_names = glob.glob(
+57         os.path.join(parent\_dir, \textcolor{stringliteral}{'heroku-cli-*'})
+58     )
+59     \textcolor{keywordflow}{if} len(existing\_heroku\_directory\_names) == 0:
+60         \textcolor{keywordflow}{if} os.path.exists(os.path.join(parent\_dir, \textcolor{stringliteral}{'heroku.tar.gz'})):
+61             os.remove(os.path.join(parent\_dir, \textcolor{stringliteral}{'heroku.tar.gz'}))
+62 
+63         \textcolor{comment}{# Get the heroku client and unzip}
+64         os.chdir(parent\_dir)
+65         sh.wget(
+66             shlex.split(
+67                 \textcolor{stringliteral}{'\{\}-\{\}-\{\}.tar.gz -O heroku.tar.gz'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+68                     heroku\_url, os\_name, bit\_architecture
+69                 )
+70             )
+71         )
+72         sh.tar(shlex.split(\textcolor{stringliteral}{'-xvzf heroku.tar.gz'}))
+73 
+74     heroku\_directory\_name = glob.glob(os.path.join(parent\_dir, \textcolor{stringliteral}{'heroku-cli-*'}))[0]
+75     heroku\_directory\_path = os.path.join(parent\_dir, heroku\_directory\_name)
+76     heroku\_executable\_path = os.path.join(heroku\_directory\_path, \textcolor{stringliteral}{'bin'}, \textcolor{stringliteral}{'heroku'})
+77 
+78     server\_source\_directory\_path = os.path.join(
+79         parent\_dir, server\_source\_directory\_name
+80     )
+81     heroku\_server\_directory\_path = os.path.join(
+82         parent\_dir, \textcolor{stringliteral}{'\{\}\_\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(heroku\_server\_directory\_name, task\_name)
+83     )
+84 
+85     \textcolor{comment}{# Delete old server files}
+86     sh.rm(shlex.split(\textcolor{stringliteral}{'-rf '} + heroku\_server\_directory\_path))
+87 
+88     \textcolor{comment}{# Copy over a clean copy into the server directory}
+89     shutil.copytree(server\_source\_directory\_path, heroku\_server\_directory\_path)
+90 
+91     print(\textcolor{stringliteral}{"Heroku: Starting server..."})
+92 
+93     os.chdir(heroku\_server\_directory\_path)
+94     sh.git(\textcolor{stringliteral}{'init'})
+95 
+96     \textcolor{comment}{# get heroku credentials}
+97     heroku\_user\_identifier = \textcolor{keywordtype}{None}
+98     \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} heroku\_user\_identifier:
+99         \textcolor{keywordflow}{try}:
+100             subprocess.check\_output(shlex.split(heroku\_executable\_path + \textcolor{stringliteral}{' auth:token'}))
+101             heroku\_user\_identifier = netrc.netrc(
+102                 os.path.join(os.path.expanduser(\textcolor{stringliteral}{"~"}), \textcolor{stringliteral}{'.netrc'})
+103             ).hosts[\textcolor{stringliteral}{'api.heroku.com'}][0]
+104         \textcolor{keywordflow}{except} subprocess.CalledProcessError:
+105             \textcolor{keywordflow}{raise} SystemExit(
+106                 \textcolor{stringliteral}{'A free Heroku account is required for launching MTurk tasks. '}
+107                 \textcolor{stringliteral}{'Please register at https://signup.heroku.com/ and run `\{\} '}
+108                 \textcolor{stringliteral}{'login` at the terminal to login to Heroku, and then run this '}
+109                 \textcolor{stringliteral}{'program again.'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(heroku\_executable\_path)
+110             )
+111 
+112     heroku\_app\_name = (
+113         \textcolor{stringliteral}{'\{\}-\{\}-\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+114             user\_name,
+115             task\_name,
+116             hashlib.md5(heroku\_user\_identifier.encode(\textcolor{stringliteral}{'utf-8'})).hexdigest(),
+117         )
+118     )[:30]
+119 
+120     \textcolor{keywordflow}{while} heroku\_app\_name[-1] == \textcolor{stringliteral}{'-'}:
+121         heroku\_app\_name = heroku\_app\_name[:-1]
+122 
+123     \textcolor{comment}{# Create or attach to the server}
+124     \textcolor{keywordflow}{try}:
+125         subprocess.check\_output(
+126             shlex.split(\textcolor{stringliteral}{'\{\} create \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(heroku\_executable\_path, heroku\_app\_name)),
+127             stderr=subprocess.STDOUT,
+128         )
+129     \textcolor{keywordflow}{except} subprocess.CalledProcessError \textcolor{keyword}{as} e:
+130         error\_text = bytes.decode(e.output)
+131         \textcolor{keywordflow}{if} \textcolor{stringliteral}{"Name is already taken"} \textcolor{keywordflow}{in} error\_text:  \textcolor{comment}{# already running this app}
+132             do\_continue = \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1test_1_1test__full__system_a1e1817cd65688fb90f827834d1fb4567}{input}(
+133                 \textcolor{stringliteral}{'An app is already running with that name, do you want to '}
+134                 \textcolor{stringliteral}{'restart a new run with it? (y/N): '}
+135             )
+136             \textcolor{keywordflow}{if} do\_continue != \textcolor{stringliteral}{'y'}:
+137                 \textcolor{keywordflow}{raise} SystemExit(\textcolor{stringliteral}{'User chose not to re-run the app.'})
+138             \textcolor{keywordflow}{else}:
+139                 \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1server__utils_a8dfde882f9d6ff492ca565ae2334fc70}{delete\_heroku\_server}(task\_name)
+140                 \textcolor{keywordflow}{try}:
+141                     subprocess.check\_output(
+142                         shlex.split(
+143                             \textcolor{stringliteral}{'\{\} create \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+144                                 heroku\_executable\_path, heroku\_app\_name
+145                             )
+146                         ),
+147                         stderr=subprocess.STDOUT,
+148                     )
+149                 \textcolor{keywordflow}{except} subprocess.CalledProcessError \textcolor{keyword}{as} e:
+150                     error\_text = bytes.decode(e.output)
+151                     sh.rm(shlex.split(\textcolor{stringliteral}{'-rf \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(heroku\_server\_directory\_path)))
+152                     print(error\_text)
+153                     \textcolor{keywordflow}{raise} SystemExit(
+154                         \textcolor{stringliteral}{'Something unexpected happened trying to set up the '}
+155                         \textcolor{stringliteral}{'heroku server - please use the above printed error '}
+156                         \textcolor{stringliteral}{'to debug the issue however necessary.'}
+157                     )
+158         \textcolor{keywordflow}{elif} \textcolor{stringliteral}{"Delete some apps"} \textcolor{keywordflow}{in} error\_text:  \textcolor{comment}{# too many apps running}
+159             sh.rm(shlex.split(\textcolor{stringliteral}{'-rf \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(heroku\_server\_directory\_path)))
+160             \textcolor{keywordflow}{raise} SystemExit(
+161                 \textcolor{stringliteral}{'You have hit your limit on concurrent apps with heroku, '}
+162                 \textcolor{stringliteral}{'which are required to run multiple concurrent tasks.\(\backslash\)nPlease '}
+163                 \textcolor{stringliteral}{'wait for some of your existing tasks to complete. If you '}
+164                 \textcolor{stringliteral}{'have no tasks running, login to heroku.com and delete some '}
+165                 \textcolor{stringliteral}{'of the running apps or verify your account to allow more '}
+166                 \textcolor{stringliteral}{'concurrent apps.'}
+167             )
+168         \textcolor{keywordflow}{else}:
+169             sh.rm(shlex.split(\textcolor{stringliteral}{'-rf \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(heroku\_server\_directory\_path)))
+170             print(error\_text)
+171             \textcolor{keywordflow}{raise} SystemExit(
+172                 \textcolor{stringliteral}{'Something unexpected happened trying to set up the heroku '}
+173                 \textcolor{stringliteral}{'server - please use the above printed error to debug the '}
+174                 \textcolor{stringliteral}{'issue however necessary.'}
+175             )
+176 
+177     \textcolor{comment}{# Enable WebSockets}
+178     \textcolor{keywordflow}{try}:
+179         subprocess.check\_output(
+180             shlex.split(
+181                 \textcolor{stringliteral}{'\{\} features:enable http-session-affinity'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+182                     heroku\_executable\_path
+183                 )
+184             )
+185         )
+186     \textcolor{keywordflow}{except} subprocess.CalledProcessError:  \textcolor{comment}{# Already enabled WebSockets}
+187         \textcolor{keywordflow}{pass}
+188 
+189     \textcolor{comment}{# commit and push to the heroku server}
+190     os.chdir(heroku\_server\_directory\_path)
+191     sh.git(shlex.split(\textcolor{stringliteral}{'add -A'}))
+192     sh.git(shlex.split(\textcolor{stringliteral}{'commit -m "app"'}))
+193     sh.git(shlex.split(\textcolor{stringliteral}{'push -f heroku master'}))
+194     subprocess.check\_output(
+195         shlex.split(\textcolor{stringliteral}{'\{\} ps:scale web=1'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(heroku\_executable\_path))
+196     )
+197     os.chdir(parent\_dir)
+198 
+199     \textcolor{comment}{# Clean up heroku files}
+200     \textcolor{keywordflow}{if} os.path.exists(os.path.join(parent\_dir, \textcolor{stringliteral}{'heroku.tar.gz'})):
+201         os.remove(os.path.join(parent\_dir, \textcolor{stringliteral}{'heroku.tar.gz'}))
+202 
+203     sh.rm(shlex.split(\textcolor{stringliteral}{'-rf \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(heroku\_server\_directory\_path)))
+204 
+205     \textcolor{keywordflow}{return} \textcolor{stringliteral}{'https://\{\}.herokuapp.com'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(heroku\_app\_name)
+206 
+207 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a89bf62978803958356c32096df679432}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a89bf62978803958356c32096df679432}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!setup\+\_\+local\+\_\+server@{setup\+\_\+local\+\_\+server}}
+\index{setup\+\_\+local\+\_\+server@{setup\+\_\+local\+\_\+server}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{setup\+\_\+local\+\_\+server()}{setup\_local\_server()}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+setup\+\_\+local\+\_\+server (\begin{DoxyParamCaption}\item[{}]{task\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Definition at line 236 of file server\+\_\+utils.\+py.
+
+
+\begin{DoxyCode}
+236 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1core_1_1server__utils_a9d4c4937ea60bd74630a44739e825ebf}{setup\_local\_server}(task\_name):
+237     \textcolor{keyword}{global} server\_process
+238     print(\textcolor{stringliteral}{"Local Server: Collecting files..."})
+239 
+240     server\_source\_directory\_path = os.path.join(
+241         parent\_dir, server\_source\_directory\_name
+242     )
+243     local\_server\_directory\_path = os.path.join(
+244         parent\_dir, \textcolor{stringliteral}{'\{\}\_\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(local\_server\_directory\_name, task\_name)
+245     )
+246 
+247     \textcolor{comment}{# Delete old server files}
+248     sh.rm(shlex.split(\textcolor{stringliteral}{'-rf '} + local\_server\_directory\_path))
+249 
+250     \textcolor{comment}{# Copy over a clean copy into the server directory}
+251     shutil.copytree(server\_source\_directory\_path, local\_server\_directory\_path)
+252 
+253     print(\textcolor{stringliteral}{"Local: Starting server..."})
+254 
+255     os.chdir(local\_server\_directory\_path)
+256 
+257     packages\_installed = subprocess.call([\textcolor{stringliteral}{'npm'}, \textcolor{stringliteral}{'install'}])
+258     \textcolor{keywordflow}{if} packages\_installed != 0:
+259         \textcolor{keywordflow}{raise} Exception(
+260             \textcolor{stringliteral}{'please make sure npm is installed, otherwise view '}
+261             \textcolor{stringliteral}{'the above error for more info.'}
+262         )
+263 
+264     server\_process = subprocess.Popen([\textcolor{stringliteral}{'node'}, \textcolor{stringliteral}{'server.js'}])
+265 
+266     time.sleep(1)
+267     print(\textcolor{stringliteral}{'Server running locally with pid \{\}.'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(server\_process.pid))
+268     host = \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1test_1_1test__full__system_a1e1817cd65688fb90f827834d1fb4567}{input}(\textcolor{stringliteral}{'Please enter the public server address, like https://hostname.com: '})
+269     port = \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1test_1_1test__full__system_a1e1817cd65688fb90f827834d1fb4567}{input}(\textcolor{stringliteral}{'Please enter the port given above, likely 3000: '})
+270     \textcolor{keywordflow}{return} \textcolor{stringliteral}{'\{\}:\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(host, port)
+271 
+272 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_afb56b04206cd0f42384438f1ac6d9cda}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_afb56b04206cd0f42384438f1ac6d9cda}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!setup\+\_\+server@{setup\+\_\+server}}
+\index{setup\+\_\+server@{setup\+\_\+server}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{setup\+\_\+server()}{setup\_server()}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+setup\+\_\+server (\begin{DoxyParamCaption}\item[{}]{task\+\_\+name,  }\item[{}]{local = {\ttfamily False} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 285 of file server\+\_\+utils.\+py.
+
+
+\begin{DoxyCode}
+285 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1core_1_1server__utils_a154e8cbb18375ff8fd6730154d312bbc}{setup\_server}(task\_name, local=False):
+286     \textcolor{keywordflow}{if} local:
+287         \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1server__utils_a9d4c4937ea60bd74630a44739e825ebf}{setup\_local\_server}(task\_name)
+288     \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1server__utils_af1c97e9b93a403e200ac75b87a51c3c1}{setup\_heroku\_server}(task\_name)
+289 
+290 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a9f647dadd18219a9e8bc19d810622582}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a9f647dadd18219a9e8bc19d810622582}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!heroku\+\_\+server\+\_\+directory\+\_\+name@{heroku\+\_\+server\+\_\+directory\+\_\+name}}
+\index{heroku\+\_\+server\+\_\+directory\+\_\+name@{heroku\+\_\+server\+\_\+directory\+\_\+name}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{heroku\+\_\+server\+\_\+directory\+\_\+name}{heroku\_server\_directory\_name}}
+{\footnotesize\ttfamily string parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+heroku\+\_\+server\+\_\+directory\+\_\+name = \textquotesingle{}heroku\+\_\+server\textquotesingle{}}
+
+
+
+Definition at line 24 of file server\+\_\+utils.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a1673520e492a9e606a82b26fe83bdcb1}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a1673520e492a9e606a82b26fe83bdcb1}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!heroku\+\_\+url@{heroku\+\_\+url}}
+\index{heroku\+\_\+url@{heroku\+\_\+url}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{heroku\+\_\+url}{heroku\_url}}
+{\footnotesize\ttfamily string parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+heroku\+\_\+url = \textquotesingle{}https\+://cli-\/assets.\+heroku.\+com/heroku-\/cli/channels/stable/heroku-\/cli\textquotesingle{}}
+
+
+
+Definition at line 30 of file server\+\_\+utils.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a3237a588c9ba62516404f9234816aaa5}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a3237a588c9ba62516404f9234816aaa5}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!local\+\_\+server\+\_\+directory\+\_\+name@{local\+\_\+server\+\_\+directory\+\_\+name}}
+\index{local\+\_\+server\+\_\+directory\+\_\+name@{local\+\_\+server\+\_\+directory\+\_\+name}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{local\+\_\+server\+\_\+directory\+\_\+name}{local\_server\_directory\_name}}
+{\footnotesize\ttfamily string parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+local\+\_\+server\+\_\+directory\+\_\+name = \textquotesingle{}local\+\_\+server\textquotesingle{}}
+
+
+
+Definition at line 25 of file server\+\_\+utils.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_acde853bd5872b1d77d8cbf7f61216c7a}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_acde853bd5872b1d77d8cbf7f61216c7a}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!parent\+\_\+dir@{parent\+\_\+dir}}
+\index{parent\+\_\+dir@{parent\+\_\+dir}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{parent\+\_\+dir}{parent\_dir}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+parent\+\_\+dir = os.\+path.\+dirname(os.\+path.\+abspath(\+\_\+\+\_\+file\+\_\+\+\_\+))}
+
+
+
+Definition at line 22 of file server\+\_\+utils.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a4e22e27725adafcd1a6b95d189d627cf}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a4e22e27725adafcd1a6b95d189d627cf}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!region\+\_\+name@{region\+\_\+name}}
+\index{region\+\_\+name@{region\+\_\+name}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{region\+\_\+name}{region\_name}}
+{\footnotesize\ttfamily string parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+region\+\_\+name = \textquotesingle{}us-\/east-\/1\textquotesingle{}}
+
+
+
+Definition at line 19 of file server\+\_\+utils.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_aa627704acdf6fa8e166558a521a14ef8}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_aa627704acdf6fa8e166558a521a14ef8}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!server\+\_\+process@{server\+\_\+process}}
+\index{server\+\_\+process@{server\+\_\+process}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{server\+\_\+process}{server\_process}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+server\+\_\+process = None}
+
+
+
+Definition at line 28 of file server\+\_\+utils.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_aa10ee06f560e1007b8d3b50c869001c0}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_aa10ee06f560e1007b8d3b50c869001c0}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!server\+\_\+source\+\_\+directory\+\_\+name@{server\+\_\+source\+\_\+directory\+\_\+name}}
+\index{server\+\_\+source\+\_\+directory\+\_\+name@{server\+\_\+source\+\_\+directory\+\_\+name}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{server\+\_\+source\+\_\+directory\+\_\+name}{server\_source\_directory\_name}}
+{\footnotesize\ttfamily string parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+server\+\_\+source\+\_\+directory\+\_\+name = \textquotesingle{}server\textquotesingle{}}
+
+
+
+Definition at line 23 of file server\+\_\+utils.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a087efe2fa17d505b0fa8753f6dbab06f}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a087efe2fa17d505b0fa8753f6dbab06f}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!task\+\_\+directory\+\_\+name@{task\+\_\+directory\+\_\+name}}
+\index{task\+\_\+directory\+\_\+name@{task\+\_\+directory\+\_\+name}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{task\+\_\+directory\+\_\+name}{task\_directory\_name}}
+{\footnotesize\ttfamily string parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+task\+\_\+directory\+\_\+name = \textquotesingle{}task\textquotesingle{}}
+
+
+
+Definition at line 26 of file server\+\_\+utils.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a9b83dd4b20a92013cf4199f198aa360a}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_a9b83dd4b20a92013cf4199f198aa360a}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}!user\+\_\+name@{user\+\_\+name}}
+\index{user\+\_\+name@{user\+\_\+name}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::server\+\_\+utils}}
+\subsubsection{\texorpdfstring{user\+\_\+name}{user\_name}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+services.\+messenger.\+server\+\_\+utils.\+user\+\_\+name = getpass.\+getuser()}
+
+
+
+Definition at line 20 of file server\+\_\+utils.\+py.
+

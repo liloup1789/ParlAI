@@ -1,0 +1,196 @@
+\hypertarget{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Embed}{}\section{projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Embed Class Reference}
+\label{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Embed}\index{projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Embed@{projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Embed}}
+
+
+Inheritance diagram for projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Embed\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=281pt]{d7/d54/classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Embed__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Embed\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=281pt]{d1/df1/classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Embed__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Embed_aeb99af34ce2338cced068f77a499789f}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, args, \hyperlink{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Embed_a53464118dd2c6052e8ce44978c573c27}{position\+\_\+encoding}=False, kwargs)
+\item 
+def \hyperlink{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Embed_afb772fd0a940a5fe69a57613c45c898b}{forward} (self, lengths, indices)
+\item 
+def \hyperlink{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Embed_a493bb5875793e19802cfc1ed7abfdfaa}{position\+\_\+matrix} (J, d)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Embed_a53662ab0fd08d06071b2321685a24723}{position\+\_\+tensor} (sentence\+\_\+lengths, embeddings)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Embed_a53464118dd2c6052e8ce44978c573c27}{position\+\_\+encoding}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Embed_a8daadcc50f9245d9814a62a860f10de9}{maxsize}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 168 of file modules.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Embed_aeb99af34ce2338cced068f77a499789f}\label{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Embed_aeb99af34ce2338cced068f77a499789f}} 
+\index{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Embed@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Embed}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Embed@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Embed}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Embed.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{args,  }\item[{}]{position\+\_\+encoding = {\ttfamily False},  }\item[{}]{kwargs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 169 of file modules.\+py.
+
+
+\begin{DoxyCode}
+169     \textcolor{keyword}{def }\_\_init\_\_(self, *args, position\_encoding=False, **kwargs):
+170         self.position\_encoding = position\_encoding
+171         super().\_\_init\_\_(*args, **kwargs)
+172 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Embed_afb772fd0a940a5fe69a57613c45c898b}\label{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Embed_afb772fd0a940a5fe69a57613c45c898b}} 
+\index{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Embed@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Embed}!forward@{forward}}
+\index{forward@{forward}!projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Embed@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Embed}}
+\subsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily def projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Embed.\+forward (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{lengths,  }\item[{}]{indices }\end{DoxyParamCaption})}
+
+
+
+Definition at line 173 of file modules.\+py.
+
+
+\begin{DoxyCode}
+173     \textcolor{keyword}{def }forward(self, lengths, indices):
+174         lengths\_mat = lengths.data
+175         indices = indices.data
+176         \textcolor{keywordflow}{if} lengths.dim() == 1 \textcolor{keywordflow}{or} lengths.size(1) == 1:
+177             lengths\_mat = lengths\_mat.squeeze().unsqueeze(0)
+178 
+179         input = torch.LongTensor(
+180             lengths\_mat.size(0), lengths\_mat.size(1), torch.max(lengths\_mat)
+181         )
+182         pad = self.padding\_idx \textcolor{keywordflow}{if} self.padding\_idx \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{else} 0
+183         input.fill\_(pad)
+184         emb\_list = []
+185         offset = 0
+186         \textcolor{keywordflow}{for} i, row \textcolor{keywordflow}{in} enumerate(lengths\_mat):
+187             \textcolor{keywordflow}{for} j, length \textcolor{keywordflow}{in} enumerate(row):
+188                 \textcolor{keywordflow}{if} length > 0:
+189                     input[i, j, :length] = indices[offset : offset + length]
+190                 offset += length
+191         input = Variable(input)
+192 
+193         \textcolor{keywordflow}{for} i, row \textcolor{keywordflow}{in} enumerate(lengths\_mat):
+194             emb = super().forward(input[i, :, :])
+195             \textcolor{keywordflow}{if} self.position\_encoding:
+196                 emb = emb * Variable(self.position\_tensor(row, emb))
+197             emb = torch.sum(emb, dim=1).squeeze(1)
+198             \textcolor{keywordflow}{for} j, length \textcolor{keywordflow}{in} enumerate(row):
+199                 \textcolor{keywordflow}{if} length > 0:
+200                     emb[j] /= length
+201             emb\_list.append(emb)
+202         embs = torch.stack(emb\_list)
+203 
+204         \textcolor{keywordflow}{if} lengths.dim() == 1:
+205             embs = embs.squeeze(0)
+206         \textcolor{keywordflow}{elif} lengths.size(1) == 1:
+207             embs = embs.squeeze().unsqueeze(1)
+208         \textcolor{keywordflow}{return} embs
+209 
+\end{DoxyCode}
+\mbox{\Hypertarget{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Embed_a493bb5875793e19802cfc1ed7abfdfaa}\label{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Embed_a493bb5875793e19802cfc1ed7abfdfaa}} 
+\index{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Embed@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Embed}!position\+\_\+matrix@{position\+\_\+matrix}}
+\index{position\+\_\+matrix@{position\+\_\+matrix}!projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Embed@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Embed}}
+\subsubsection{\texorpdfstring{position\+\_\+matrix()}{position\_matrix()}}
+{\footnotesize\ttfamily def projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Embed.\+position\+\_\+matrix (\begin{DoxyParamCaption}\item[{}]{J,  }\item[{}]{d }\end{DoxyParamCaption})}
+
+
+
+Definition at line 212 of file modules.\+py.
+
+
+\begin{DoxyCode}
+212     \textcolor{keyword}{def }position\_matrix(J, d):
+213         m = torch.Tensor(J, d)
+214         \textcolor{keywordflow}{for} k \textcolor{keywordflow}{in} range(1, d + 1):
+215             \textcolor{keywordflow}{for} j \textcolor{keywordflow}{in} range(1, J + 1):
+216                 m[j - 1, k - 1] = (1 - j / J) - (k / d) * (1 - 2 * j / J)
+217         \textcolor{keywordflow}{return} m
+218 
+\end{DoxyCode}
+\mbox{\Hypertarget{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Embed_a53662ab0fd08d06071b2321685a24723}\label{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Embed_a53662ab0fd08d06071b2321685a24723}} 
+\index{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Embed@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Embed}!position\+\_\+tensor@{position\+\_\+tensor}}
+\index{position\+\_\+tensor@{position\+\_\+tensor}!projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Embed@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Embed}}
+\subsubsection{\texorpdfstring{position\+\_\+tensor()}{position\_tensor()}}
+{\footnotesize\ttfamily def projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Embed.\+position\+\_\+tensor (\begin{DoxyParamCaption}\item[{}]{sentence\+\_\+lengths,  }\item[{}]{embeddings }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 220 of file modules.\+py.
+
+
+\begin{DoxyCode}
+220     \textcolor{keyword}{def }position\_tensor(sentence\_lengths, embeddings):
+221         t = torch.zeros(embeddings.size())
+222         embedding\_dim = embeddings.size()[-1]
+223         \textcolor{keywordflow}{for} i, length \textcolor{keywordflow}{in} enumerate(sentence\_lengths):
+224             \textcolor{keywordflow}{if} length > 0:
+225                 t[i, :length, :] = Embed.position\_matrix(length, embedding\_dim)
+226         \textcolor{keywordflow}{return} t
+227 
+228 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Embed_a8daadcc50f9245d9814a62a860f10de9}\label{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Embed_a8daadcc50f9245d9814a62a860f10de9}} 
+\index{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Embed@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Embed}!maxsize@{maxsize}}
+\index{maxsize@{maxsize}!projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Embed@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Embed}}
+\subsubsection{\texorpdfstring{maxsize}{maxsize}}
+{\footnotesize\ttfamily projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Embed.\+maxsize\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 211 of file modules.\+py.
+
+\mbox{\Hypertarget{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Embed_a53464118dd2c6052e8ce44978c573c27}\label{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Embed_a53464118dd2c6052e8ce44978c573c27}} 
+\index{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Embed@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Embed}!position\+\_\+encoding@{position\+\_\+encoding}}
+\index{position\+\_\+encoding@{position\+\_\+encoding}!projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Embed@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Embed}}
+\subsubsection{\texorpdfstring{position\+\_\+encoding}{position\_encoding}}
+{\footnotesize\ttfamily projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Embed.\+position\+\_\+encoding}
+
+
+
+Definition at line 170 of file modules.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+projects/memnn\+\_\+feedback/agent/\hyperlink{projects_2memnn__feedback_2agent_2modules_8py}{modules.\+py}\end{DoxyCompactItemize}

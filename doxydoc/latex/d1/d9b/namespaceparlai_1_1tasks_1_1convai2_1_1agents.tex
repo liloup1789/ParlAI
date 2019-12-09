@@ -1,0 +1,48 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1convai2_1_1agents}{}\section{parlai.\+tasks.\+convai2.\+agents Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1convai2_1_1agents}\index{parlai.\+tasks.\+convai2.\+agents@{parlai.\+tasks.\+convai2.\+agents}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classparlai_1_1tasks_1_1convai2_1_1agents_1_1BothTeacher}{Both\+Teacher}
+\item 
+class \hyperlink{classparlai_1_1tasks_1_1convai2_1_1agents_1_1DefaultTeacher}{Default\+Teacher}
+\item 
+class \hyperlink{classparlai_1_1tasks_1_1convai2_1_1agents_1_1InteractiveTeacher}{Interactive\+Teacher}
+\item 
+class \hyperlink{classparlai_1_1tasks_1_1convai2_1_1agents_1_1NoneTeacher}{None\+Teacher}
+\item 
+class \hyperlink{classparlai_1_1tasks_1_1convai2_1_1agents_1_1SelfchatTeacher}{Selfchat\+Teacher}
+\item 
+class \hyperlink{classparlai_1_1tasks_1_1convai2_1_1agents_1_1SelfOriginalTeacher}{Self\+Original\+Teacher}
+\item 
+class \hyperlink{classparlai_1_1tasks_1_1convai2_1_1agents_1_1SelfRevisedTeacher}{Self\+Revised\+Teacher}
+\item 
+class \hyperlink{classparlai_1_1tasks_1_1convai2_1_1agents_1_1SelfTeacher}{Self\+Teacher}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1convai2_1_1agents_a0c9209b5a7c832ac11a43d91ee7929f0}{create\+\_\+agents} (opt, task)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1convai2_1_1agents_a0c9209b5a7c832ac11a43d91ee7929f0}\label{namespaceparlai_1_1tasks_1_1convai2_1_1agents_a0c9209b5a7c832ac11a43d91ee7929f0}} 
+\index{parlai\+::tasks\+::convai2\+::agents@{parlai\+::tasks\+::convai2\+::agents}!create\+\_\+agents@{create\+\_\+agents}}
+\index{create\+\_\+agents@{create\+\_\+agents}!parlai\+::tasks\+::convai2\+::agents@{parlai\+::tasks\+::convai2\+::agents}}
+\subsubsection{\texorpdfstring{create\+\_\+agents()}{create\_agents()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+convai2.\+agents.\+create\+\_\+agents (\begin{DoxyParamCaption}\item[{}]{opt,  }\item[{}]{task }\end{DoxyParamCaption})}
+
+
+
+Definition at line 103 of file agents.\+py.
+
+
+\begin{DoxyCode}
+103 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_a89bd55d60a50f2604b1eb59ab0e064bc}{create\_agents}(opt, task):
+104     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} opt.get(\textcolor{stringliteral}{'interactive\_task'}, \textcolor{keyword}{False}):
+105         \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1core_1_1agents_ab4473fa54af02b5ab385b41b51dacd10}{create\_task\_agent\_from\_taskname}(opt)
+106     \textcolor{keywordflow}{else}:
+107         \textcolor{comment}{# interactive task has no task agents (they are attached as user agents)}
+108         \textcolor{keywordflow}{return} []
+109 \end{DoxyCode}

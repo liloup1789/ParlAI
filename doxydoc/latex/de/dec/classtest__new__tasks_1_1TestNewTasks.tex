@@ -1,0 +1,108 @@
+\hypertarget{classtest__new__tasks_1_1TestNewTasks}{}\section{test\+\_\+new\+\_\+tasks.\+Test\+New\+Tasks Class Reference}
+\label{classtest__new__tasks_1_1TestNewTasks}\index{test\+\_\+new\+\_\+tasks.\+Test\+New\+Tasks@{test\+\_\+new\+\_\+tasks.\+Test\+New\+Tasks}}
+
+
+Inheritance diagram for test\+\_\+new\+\_\+tasks.\+Test\+New\+Tasks\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=235pt]{d0/dde/classtest__new__tasks_1_1TestNewTasks__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for test\+\_\+new\+\_\+tasks.\+Test\+New\+Tasks\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=235pt]{dc/d24/classtest__new__tasks_1_1TestNewTasks__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classtest__new__tasks_1_1TestNewTasks_af52063eb5d4e045a1546f00c3ded043a}{test\+\_\+verify\+\_\+data} (self)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Make sure any changes to tasks pass verify_data test.
+\end{DoxyVerb}
+ 
+
+Definition at line 19 of file test\+\_\+new\+\_\+tasks.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtest__new__tasks_1_1TestNewTasks_af52063eb5d4e045a1546f00c3ded043a}\label{classtest__new__tasks_1_1TestNewTasks_af52063eb5d4e045a1546f00c3ded043a}} 
+\index{test\+\_\+new\+\_\+tasks\+::\+Test\+New\+Tasks@{test\+\_\+new\+\_\+tasks\+::\+Test\+New\+Tasks}!test\+\_\+verify\+\_\+data@{test\+\_\+verify\+\_\+data}}
+\index{test\+\_\+verify\+\_\+data@{test\+\_\+verify\+\_\+data}!test\+\_\+new\+\_\+tasks\+::\+Test\+New\+Tasks@{test\+\_\+new\+\_\+tasks\+::\+Test\+New\+Tasks}}
+\subsubsection{\texorpdfstring{test\+\_\+verify\+\_\+data()}{test\_verify\_data()}}
+{\footnotesize\ttfamily def test\+\_\+new\+\_\+tasks.\+Test\+New\+Tasks.\+test\+\_\+verify\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 24 of file test\+\_\+new\+\_\+tasks.\+py.
+
+
+\begin{DoxyCode}
+24     \textcolor{keyword}{def }test\_verify\_data(self):
+25         parser = \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1run_a17bafea2534d593de1fbf1e0724e5b67}{setup\_args}()
+26         opt = parser.parse\_args(print\_args=\textcolor{keyword}{False})
+27         changed\_task\_files = [
+28             fn
+29             \textcolor{keywordflow}{for} fn \textcolor{keywordflow}{in} testing\_utils.git\_changed\_files()
+30             \textcolor{keywordflow}{if} testing\_utils.is\_new\_task\_filename(fn)
+31         ]
+32         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} changed\_task\_files:
+33             \textcolor{keywordflow}{return}
+34 
+35         found\_errors = \textcolor{keyword}{False}
+36         \textcolor{keywordflow}{for} file \textcolor{keywordflow}{in} changed\_task\_files:
+37             task = file.split(\textcolor{stringliteral}{'/'})[-2]
+38             module\_name = \textcolor{stringliteral}{"%s.tasks.%s.agents"} % (\textcolor{stringliteral}{'parlai'}, task)
+39             task\_module = importlib.import\_module(module\_name)
+40             subtasks = [
+41                 \textcolor{stringliteral}{':'}.join([task, x])
+42                 \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} dir(task\_module)
+43                 \textcolor{keywordflow}{if} (\textcolor{stringliteral}{'teacher'} \textcolor{keywordflow}{in} x.lower() \textcolor{keywordflow}{and} x \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} BASE\_TEACHERS)
+44             ]
+45 
+46             \textcolor{keywordflow}{if} testing\_utils.is\_this\_circleci():
+47                 \textcolor{keywordflow}{if} len(subtasks) == 0:
+48                     \textcolor{keywordflow}{continue}
+49 
+50                 self.fail(
+51                     \textcolor{stringliteral}{'test\_verify\_data plays poorly with CircleCI. Please run '}
+52                     \textcolor{stringliteral}{'`python tests/datatests/test\_new\_tasks.py` locally and '}
+53                     \textcolor{stringliteral}{'paste the output in your pull request.'}
+54                 )
+55 
+56             \textcolor{keywordflow}{for} subt \textcolor{keywordflow}{in} subtasks:
+57                 parser = \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1run_a17bafea2534d593de1fbf1e0724e5b67}{setup\_args}()
+58                 opt = parser.parse\_args(args=[\textcolor{stringliteral}{'--task'}, subt], print\_args=\textcolor{keyword}{False})
+59                 opt[\textcolor{stringliteral}{'task'}] = subt
+60                 \textcolor{keywordflow}{try}:
+61                     with testing\_utils.capture\_output():
+62                         text, log = \hyperlink{namespaceparlai_1_1scripts_1_1data__stats_a3bf0a490abe0b6ea608d1f9ece194c79}{verify}(opt, print\_parser=\textcolor{keyword}{False})
+63                 \textcolor{keywordflow}{except} Exception:
+64                     found\_errors = \textcolor{keyword}{True}
+65                     traceback.print\_exc()
+66                     print(\textcolor{stringliteral}{"Got above exception in \{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(subt))
+67                 \textcolor{keywordflow}{for} key \textcolor{keywordflow}{in} KEYS:
+68                     \textcolor{keywordflow}{if} log[key] != 0:
+69                         print(\textcolor{stringliteral}{'There are \{\} \{\} in \{\}.'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(log[key], key, subt))
+70                         found\_errors = \textcolor{keyword}{True}
+71 
+72         self.assertFalse(found\_errors, \textcolor{stringliteral}{"Errors were found."})
+73 
+74 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+tests/datatests/\hyperlink{test__new__tasks_8py}{test\+\_\+new\+\_\+tasks.\+py}\end{DoxyCompactItemize}

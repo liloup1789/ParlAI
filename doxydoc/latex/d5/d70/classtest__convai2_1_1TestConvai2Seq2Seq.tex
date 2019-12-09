@@ -1,0 +1,87 @@
+\hypertarget{classtest__convai2_1_1TestConvai2Seq2Seq}{}\section{test\+\_\+convai2.\+Test\+Convai2\+Seq2\+Seq Class Reference}
+\label{classtest__convai2_1_1TestConvai2Seq2Seq}\index{test\+\_\+convai2.\+Test\+Convai2\+Seq2\+Seq@{test\+\_\+convai2.\+Test\+Convai2\+Seq2\+Seq}}
+
+
+Inheritance diagram for test\+\_\+convai2.\+Test\+Convai2\+Seq2\+Seq\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{d1/d08/classtest__convai2_1_1TestConvai2Seq2Seq__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for test\+\_\+convai2.\+Test\+Convai2\+Seq2\+Seq\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{dd/df0/classtest__convai2_1_1TestConvai2Seq2Seq__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classtest__convai2_1_1TestConvai2Seq2Seq_ae1f1ed9b54523ecf62a983e6d0ae1bb2}{test\+\_\+seq2seq\+\_\+hits1} (self)
+\item 
+def \hyperlink{classtest__convai2_1_1TestConvai2Seq2Seq_af92bc095f0d62a64388b736f06b003a6}{test\+\_\+seq2seq\+\_\+f1} (self)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Checks that the Convai2 seq2seq model produces correct results.
+\end{DoxyVerb}
+ 
+
+Definition at line 21 of file test\+\_\+convai2.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtest__convai2_1_1TestConvai2Seq2Seq_af92bc095f0d62a64388b736f06b003a6}\label{classtest__convai2_1_1TestConvai2Seq2Seq_af92bc095f0d62a64388b736f06b003a6}} 
+\index{test\+\_\+convai2\+::\+Test\+Convai2\+Seq2\+Seq@{test\+\_\+convai2\+::\+Test\+Convai2\+Seq2\+Seq}!test\+\_\+seq2seq\+\_\+f1@{test\+\_\+seq2seq\+\_\+f1}}
+\index{test\+\_\+seq2seq\+\_\+f1@{test\+\_\+seq2seq\+\_\+f1}!test\+\_\+convai2\+::\+Test\+Convai2\+Seq2\+Seq@{test\+\_\+convai2\+::\+Test\+Convai2\+Seq2\+Seq}}
+\subsubsection{\texorpdfstring{test\+\_\+seq2seq\+\_\+f1()}{test\_seq2seq\_f1()}}
+{\footnotesize\ttfamily def test\+\_\+convai2.\+Test\+Convai2\+Seq2\+Seq.\+test\+\_\+seq2seq\+\_\+f1 (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 33 of file test\+\_\+convai2.\+py.
+
+
+\begin{DoxyCode}
+33     \textcolor{keyword}{def }test\_seq2seq\_f1(self):
+34         \textcolor{keyword}{import} projects.convai2.baselines.seq2seq.eval\_f1 \textcolor{keyword}{as} eval\_f1
+35 
+36         with testing\_utils.capture\_output() \textcolor{keyword}{as} stdout:
+37             report = eval\_f1.main()
+38         self.assertEqual(report[\textcolor{stringliteral}{'f1'}], 0.1682, \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(stdout))
+39 
+40 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtest__convai2_1_1TestConvai2Seq2Seq_ae1f1ed9b54523ecf62a983e6d0ae1bb2}\label{classtest__convai2_1_1TestConvai2Seq2Seq_ae1f1ed9b54523ecf62a983e6d0ae1bb2}} 
+\index{test\+\_\+convai2\+::\+Test\+Convai2\+Seq2\+Seq@{test\+\_\+convai2\+::\+Test\+Convai2\+Seq2\+Seq}!test\+\_\+seq2seq\+\_\+hits1@{test\+\_\+seq2seq\+\_\+hits1}}
+\index{test\+\_\+seq2seq\+\_\+hits1@{test\+\_\+seq2seq\+\_\+hits1}!test\+\_\+convai2\+::\+Test\+Convai2\+Seq2\+Seq@{test\+\_\+convai2\+::\+Test\+Convai2\+Seq2\+Seq}}
+\subsubsection{\texorpdfstring{test\+\_\+seq2seq\+\_\+hits1()}{test\_seq2seq\_hits1()}}
+{\footnotesize\ttfamily def test\+\_\+convai2.\+Test\+Convai2\+Seq2\+Seq.\+test\+\_\+seq2seq\+\_\+hits1 (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 26 of file test\+\_\+convai2.\+py.
+
+
+\begin{DoxyCode}
+26     \textcolor{keyword}{def }test\_seq2seq\_hits1(self):
+27         \textcolor{keyword}{import} projects.convai2.baselines.seq2seq.eval\_hits \textcolor{keyword}{as} eval\_hits
+28 
+29         with testing\_utils.capture\_output() \textcolor{keyword}{as} stdout:
+30             report = eval\_hits.main()
+31         self.assertEqual(report[\textcolor{stringliteral}{'hits@1'}], 0.1250, \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(stdout))
+32 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+tests/nightly/gpu/\hyperlink{test__convai2_8py}{test\+\_\+convai2.\+py}\end{DoxyCompactItemize}

@@ -1,0 +1,111 @@
+\hypertarget{classparlai_1_1tasks_1_1ms__marco_1_1agents_1_1DefaultTeacher}{}\section{parlai.\+tasks.\+ms\+\_\+marco.\+agents.\+Default\+Teacher Class Reference}
+\label{classparlai_1_1tasks_1_1ms__marco_1_1agents_1_1DefaultTeacher}\index{parlai.\+tasks.\+ms\+\_\+marco.\+agents.\+Default\+Teacher@{parlai.\+tasks.\+ms\+\_\+marco.\+agents.\+Default\+Teacher}}
+
+
+Inheritance diagram for parlai.\+tasks.\+ms\+\_\+marco.\+agents.\+Default\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{d8/ddc/classparlai_1_1tasks_1_1ms__marco_1_1agents_1_1DefaultTeacher__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+tasks.\+ms\+\_\+marco.\+agents.\+Default\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=231pt]{d0/dc0/classparlai_1_1tasks_1_1ms__marco_1_1agents_1_1DefaultTeacher__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1ms__marco_1_1agents_1_1DefaultTeacher_a0363814798100d63ef899b4de3de82d9}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1core_1_1agents_1_1Teacher_a3ce6243860ce978a897922863ed32fa4}{opt}, shared=None)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1ms__marco_1_1agents_1_1DefaultTeacher_aea8c65570701d5869ffe0494b4622f3b}{setup\+\_\+data} (self, path)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1ms__marco_1_1agents_1_1DefaultTeacher_abcedf76bc126510edfe336ab60b76a58}{datatype}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 34 of file agents.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1ms__marco_1_1agents_1_1DefaultTeacher_a0363814798100d63ef899b4de3de82d9}\label{classparlai_1_1tasks_1_1ms__marco_1_1agents_1_1DefaultTeacher_a0363814798100d63ef899b4de3de82d9}} 
+\index{parlai\+::tasks\+::ms\+\_\+marco\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::ms\+\_\+marco\+::agents\+::\+Default\+Teacher}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::tasks\+::ms\+\_\+marco\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::ms\+\_\+marco\+::agents\+::\+Default\+Teacher}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+ms\+\_\+marco.\+agents.\+Default\+Teacher.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{shared = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 35 of file agents.\+py.
+
+
+\begin{DoxyCode}
+35     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
+36         opt = copy.deepcopy(opt)
+37         self.datatype = opt[\textcolor{stringliteral}{'datatype'}]
+38         opt[\textcolor{stringliteral}{'datafile'}] = \_path(opt, is\_passage=\textcolor{keyword}{False})
+39         super().\_\_init\_\_(opt, shared)
+40 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1ms__marco_1_1agents_1_1DefaultTeacher_aea8c65570701d5869ffe0494b4622f3b}\label{classparlai_1_1tasks_1_1ms__marco_1_1agents_1_1DefaultTeacher_aea8c65570701d5869ffe0494b4622f3b}} 
+\index{parlai\+::tasks\+::ms\+\_\+marco\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::ms\+\_\+marco\+::agents\+::\+Default\+Teacher}!setup\+\_\+data@{setup\+\_\+data}}
+\index{setup\+\_\+data@{setup\+\_\+data}!parlai\+::tasks\+::ms\+\_\+marco\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::ms\+\_\+marco\+::agents\+::\+Default\+Teacher}}
+\subsubsection{\texorpdfstring{setup\+\_\+data()}{setup\_data()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+ms\+\_\+marco.\+agents.\+Default\+Teacher.\+setup\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{path }\end{DoxyParamCaption})}
+
+
+
+Definition at line 41 of file agents.\+py.
+
+
+\begin{DoxyCode}
+41     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1multinli_1_1agents_a4fa2cb0ba1ed745336ad8bceed36b841}{setup\_data}(self, path):
+42         with open(path) \textcolor{keyword}{as} data\_file:
+43             \textcolor{keywordflow}{for} jline \textcolor{keywordflow}{in} data\_file:
+44                 d\_example = json.loads(jline)
+45                 context = [d[\textcolor{stringliteral}{'passage\_text'}] \textcolor{keywordflow}{for} d \textcolor{keywordflow}{in} d\_example[\textcolor{stringliteral}{'passages'}]]
+46                 question = d\_example[\textcolor{stringliteral}{'query'}]
+47                 \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.datatype.startswith(\textcolor{stringliteral}{'test'}):
+48                     answers = d\_example[\textcolor{stringliteral}{'answers'}]
+49                     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} answers:
+50                         answers = [\textcolor{stringliteral}{'NULL'}]  \textcolor{comment}{# empty list of answers will cause exception}
+51                 \textcolor{keywordflow}{else}:
+52                     answers = [\textcolor{stringliteral}{'NULL'}]
+53                 \textcolor{keywordflow}{yield} (\textcolor{stringliteral}{'\(\backslash\)n'}.join(context) + \textcolor{stringliteral}{'\(\backslash\)n'} + question, answers), \textcolor{keyword}{True}
+54 \end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1ms__marco_1_1agents_1_1DefaultTeacher_abcedf76bc126510edfe336ab60b76a58}\label{classparlai_1_1tasks_1_1ms__marco_1_1agents_1_1DefaultTeacher_abcedf76bc126510edfe336ab60b76a58}} 
+\index{parlai\+::tasks\+::ms\+\_\+marco\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::ms\+\_\+marco\+::agents\+::\+Default\+Teacher}!datatype@{datatype}}
+\index{datatype@{datatype}!parlai\+::tasks\+::ms\+\_\+marco\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::ms\+\_\+marco\+::agents\+::\+Default\+Teacher}}
+\subsubsection{\texorpdfstring{datatype}{datatype}}
+{\footnotesize\ttfamily parlai.\+tasks.\+ms\+\_\+marco.\+agents.\+Default\+Teacher.\+datatype}
+
+
+
+Definition at line 37 of file agents.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/tasks/ms\+\_\+marco/\hyperlink{parlai_2tasks_2ms__marco_2agents_8py}{agents.\+py}\end{DoxyCompactItemize}

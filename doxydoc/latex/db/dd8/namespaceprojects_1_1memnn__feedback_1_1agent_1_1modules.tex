@@ -1,0 +1,46 @@
+\hypertarget{namespaceprojects_1_1memnn__feedback_1_1agent_1_1modules}{}\section{projects.\+memnn\+\_\+feedback.\+agent.\+modules Namespace Reference}
+\label{namespaceprojects_1_1memnn__feedback_1_1agent_1_1modules}\index{projects.\+memnn\+\_\+feedback.\+agent.\+modules@{projects.\+memnn\+\_\+feedback.\+agent.\+modules}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Decoder}{Decoder}
+\item 
+class \hyperlink{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1DotScore}{Dot\+Score}
+\item 
+class \hyperlink{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Embed}{Embed}
+\item 
+class \hyperlink{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Hop}{Hop}
+\item 
+class \hyperlink{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1MemNN}{Mem\+NN}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceprojects_1_1memnn__feedback_1_1agent_1_1modules_aa0f3493dccc8a3c07b66c48378f14003}{to\+\_\+tensors} (sentences, dictionary)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1memnn__feedback_1_1agent_1_1modules_aa0f3493dccc8a3c07b66c48378f14003}\label{namespaceprojects_1_1memnn__feedback_1_1agent_1_1modules_aa0f3493dccc8a3c07b66c48378f14003}} 
+\index{projects\+::memnn\+\_\+feedback\+::agent\+::modules@{projects\+::memnn\+\_\+feedback\+::agent\+::modules}!to\+\_\+tensors@{to\+\_\+tensors}}
+\index{to\+\_\+tensors@{to\+\_\+tensors}!projects\+::memnn\+\_\+feedback\+::agent\+::modules@{projects\+::memnn\+\_\+feedback\+::agent\+::modules}}
+\subsubsection{\texorpdfstring{to\+\_\+tensors()}{to\_tensors()}}
+{\footnotesize\ttfamily def projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+to\+\_\+tensors (\begin{DoxyParamCaption}\item[{}]{sentences,  }\item[{}]{dictionary }\end{DoxyParamCaption})}
+
+
+
+Definition at line 292 of file modules.\+py.
+
+
+\begin{DoxyCode}
+292 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1memnn__feedback_1_1agent_1_1modules_aa0f3493dccc8a3c07b66c48378f14003}{to\_tensors}(sentences, dictionary):
+293     lengths = []
+294     indices = []
+295     \textcolor{keywordflow}{for} sentence \textcolor{keywordflow}{in} sentences:
+296         tokens = dictionary.txt2vec(sentence)
+297         lengths.append(len(tokens))
+298         indices.extend(tokens)
+299     lengths = torch.LongTensor(lengths)
+300     indices = torch.LongTensor(indices)
+301     \textcolor{keywordflow}{return} lengths, indices
+302 \end{DoxyCode}

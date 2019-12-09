@@ -1,0 +1,250 @@
+\hypertarget{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState}{}\section{parlai.\+mturk.\+core.\+dev.\+worker\+\_\+manager.\+Worker\+State Class Reference}
+\label{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState}\index{parlai.\+mturk.\+core.\+dev.\+worker\+\_\+manager.\+Worker\+State@{parlai.\+mturk.\+core.\+dev.\+worker\+\_\+manager.\+Worker\+State}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_ad5b7c2eef6d44cb5856beb7f951bc76a}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_aa4019a351d1a1e41bc7a8c26229b2772}{worker\+\_\+id}, \hyperlink{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_aaf0e1e68c219df754da29d8188150796}{disconnects}=0)
+\item 
+def \hyperlink{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_a16edfbd2d655096cbd8c42ab44aad988}{active\+\_\+conversation\+\_\+count} (self)
+\item 
+def \hyperlink{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_a36a49c3444954cb32d3500c834dd8f6a}{add\+\_\+agent} (self, mturk\+\_\+agent)
+\item 
+def \hyperlink{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_a39acee8124982d290385f35365a72051}{get\+\_\+agent\+\_\+for\+\_\+assignment} (self, assignment\+\_\+id)
+\item 
+def \hyperlink{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_a739a3208abd2d6d674694e1d6aebc292}{has\+\_\+assignment} (self, assign\+\_\+id)
+\item 
+def \hyperlink{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_af8edaccdc36152c54f0a4083edcad3b3}{completed\+\_\+assignments} (self)
+\item 
+def \hyperlink{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_a484636b6cf7e2bd4772369345d3854fe}{disconnected\+\_\+assignments} (self)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_aa4019a351d1a1e41bc7a8c26229b2772}{worker\+\_\+id}
+\item 
+\hyperlink{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_ae267b0c320d73f92f96dd347bb9265cb}{agents}
+\item 
+\hyperlink{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_aaf0e1e68c219df754da29d8188150796}{disconnects}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Class for holding state information about an mturk worker.
+\end{DoxyVerb}
+ 
+
+Definition at line 30 of file worker\+\_\+manager.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_ad5b7c2eef6d44cb5856beb7f951bc76a}\label{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_ad5b7c2eef6d44cb5856beb7f951bc76a}} 
+\index{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State@{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State@{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+mturk.\+core.\+dev.\+worker\+\_\+manager.\+Worker\+State.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{worker\+\_\+id,  }\item[{}]{disconnects = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Create a new worker state for the given worker_id.
+
+Number of prior disconnects is optional.
+\end{DoxyVerb}
+ 
+
+Definition at line 35 of file worker\+\_\+manager.\+py.
+
+
+\begin{DoxyCode}
+35     \textcolor{keyword}{def }\_\_init\_\_(self, worker\_id, disconnects=0):
+36         \textcolor{stringliteral}{"""}
+37 \textcolor{stringliteral}{        Create a new worker state for the given worker\_id.}
+38 \textcolor{stringliteral}{}
+39 \textcolor{stringliteral}{        Number of prior disconnects is optional.}
+40 \textcolor{stringliteral}{        """}
+41         self.worker\_id = worker\_id
+42         self.agents = \{\}
+43         self.disconnects = disconnects
+44 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_a16edfbd2d655096cbd8c42ab44aad988}\label{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_a16edfbd2d655096cbd8c42ab44aad988}} 
+\index{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State@{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State}!active\+\_\+conversation\+\_\+count@{active\+\_\+conversation\+\_\+count}}
+\index{active\+\_\+conversation\+\_\+count@{active\+\_\+conversation\+\_\+count}!parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State@{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State}}
+\subsubsection{\texorpdfstring{active\+\_\+conversation\+\_\+count()}{active\_conversation\_count()}}
+{\footnotesize\ttfamily def parlai.\+mturk.\+core.\+dev.\+worker\+\_\+manager.\+Worker\+State.\+active\+\_\+conversation\+\_\+count (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Return the number of conversations within this worker state that aren't in a
+final state.
+\end{DoxyVerb}
+ 
+
+Definition at line 45 of file worker\+\_\+manager.\+py.
+
+
+\begin{DoxyCode}
+45     \textcolor{keyword}{def }active\_conversation\_count(self):
+46         \textcolor{stringliteral}{"""}
+47 \textcolor{stringliteral}{        Return the number of conversations within this worker state that aren't in a}
+48 \textcolor{stringliteral}{        final state.}
+49 \textcolor{stringliteral}{        """}
+50         count = 0
+51         \textcolor{keywordflow}{for} assign\_id \textcolor{keywordflow}{in} self.agents:
+52             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.agents[assign\_id].is\_final():
+53                 count += 1
+54         \textcolor{keywordflow}{return} count
+55 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_a36a49c3444954cb32d3500c834dd8f6a}\label{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_a36a49c3444954cb32d3500c834dd8f6a}} 
+\index{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State@{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State}!add\+\_\+agent@{add\+\_\+agent}}
+\index{add\+\_\+agent@{add\+\_\+agent}!parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State@{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State}}
+\subsubsection{\texorpdfstring{add\+\_\+agent()}{add\_agent()}}
+{\footnotesize\ttfamily def parlai.\+mturk.\+core.\+dev.\+worker\+\_\+manager.\+Worker\+State.\+add\+\_\+agent (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{mturk\+\_\+agent }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Add an assignment to this worker state with the given assign_it.
+\end{DoxyVerb}
+ 
+
+Definition at line 56 of file worker\+\_\+manager.\+py.
+
+
+\begin{DoxyCode}
+56     \textcolor{keyword}{def }add\_agent(self, mturk\_agent):
+57         \textcolor{stringliteral}{"""}
+58 \textcolor{stringliteral}{        Add an assignment to this worker state with the given assign\_it.}
+59 \textcolor{stringliteral}{        """}
+60         \textcolor{keyword}{assert} (
+61             mturk\_agent.worker\_id == self.worker\_id
+62         ), \textcolor{stringliteral}{"Can't add agent that does not match state's worker\_id"}
+63         self.agents[mturk\_agent.assignment\_id] = mturk\_agent
+64 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_af8edaccdc36152c54f0a4083edcad3b3}\label{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_af8edaccdc36152c54f0a4083edcad3b3}} 
+\index{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State@{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State}!completed\+\_\+assignments@{completed\+\_\+assignments}}
+\index{completed\+\_\+assignments@{completed\+\_\+assignments}!parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State@{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State}}
+\subsubsection{\texorpdfstring{completed\+\_\+assignments()}{completed\_assignments()}}
+{\footnotesize\ttfamily def parlai.\+mturk.\+core.\+dev.\+worker\+\_\+manager.\+Worker\+State.\+completed\+\_\+assignments (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Returns the number of assignments this worker has completed.
+\end{DoxyVerb}
+ 
+
+Definition at line 74 of file worker\+\_\+manager.\+py.
+
+
+\begin{DoxyCode}
+74     \textcolor{keyword}{def }completed\_assignments(self):
+75         \textcolor{stringliteral}{"""}
+76 \textcolor{stringliteral}{        Returns the number of assignments this worker has completed.}
+77 \textcolor{stringliteral}{        """}
+78         complete\_count = 0
+79         \textcolor{keywordflow}{for} agent \textcolor{keywordflow}{in} self.agents.values():
+80             \textcolor{keywordflow}{if} agent.get\_status() == AssignState.STATUS\_DONE:
+81                 complete\_count += 1
+82         \textcolor{keywordflow}{return} complete\_count
+83 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_a484636b6cf7e2bd4772369345d3854fe}\label{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_a484636b6cf7e2bd4772369345d3854fe}} 
+\index{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State@{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State}!disconnected\+\_\+assignments@{disconnected\+\_\+assignments}}
+\index{disconnected\+\_\+assignments@{disconnected\+\_\+assignments}!parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State@{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State}}
+\subsubsection{\texorpdfstring{disconnected\+\_\+assignments()}{disconnected\_assignments()}}
+{\footnotesize\ttfamily def parlai.\+mturk.\+core.\+dev.\+worker\+\_\+manager.\+Worker\+State.\+disconnected\+\_\+assignments (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Returns the number of assignments this worker has completed.
+\end{DoxyVerb}
+ 
+
+Definition at line 84 of file worker\+\_\+manager.\+py.
+
+
+\begin{DoxyCode}
+84     \textcolor{keyword}{def }disconnected\_assignments(self):
+85         \textcolor{stringliteral}{"""}
+86 \textcolor{stringliteral}{        Returns the number of assignments this worker has completed.}
+87 \textcolor{stringliteral}{        """}
+88         disconnect\_count = 0
+89         \textcolor{keywordflow}{for} agent \textcolor{keywordflow}{in} self.agents.values():
+90             \textcolor{keywordflow}{if} agent.get\_status() \textcolor{keywordflow}{in} [
+91                 AssignState.STATUS\_DISCONNECT,
+92                 AssignState.STATUS\_RETURNED,
+93             ]:
+94                 disconnect\_count += 1
+95         \textcolor{keywordflow}{return} disconnect\_count
+96 
+97 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_a39acee8124982d290385f35365a72051}\label{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_a39acee8124982d290385f35365a72051}} 
+\index{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State@{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State}!get\+\_\+agent\+\_\+for\+\_\+assignment@{get\+\_\+agent\+\_\+for\+\_\+assignment}}
+\index{get\+\_\+agent\+\_\+for\+\_\+assignment@{get\+\_\+agent\+\_\+for\+\_\+assignment}!parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State@{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State}}
+\subsubsection{\texorpdfstring{get\+\_\+agent\+\_\+for\+\_\+assignment()}{get\_agent\_for\_assignment()}}
+{\footnotesize\ttfamily def parlai.\+mturk.\+core.\+dev.\+worker\+\_\+manager.\+Worker\+State.\+get\+\_\+agent\+\_\+for\+\_\+assignment (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{assignment\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Definition at line 65 of file worker\+\_\+manager.\+py.
+
+
+\begin{DoxyCode}
+65     \textcolor{keyword}{def }get\_agent\_for\_assignment(self, assignment\_id):
+66         \textcolor{keywordflow}{return} self.agents.get(assignment\_id, \textcolor{keywordtype}{None})
+67 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_a739a3208abd2d6d674694e1d6aebc292}\label{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_a739a3208abd2d6d674694e1d6aebc292}} 
+\index{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State@{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State}!has\+\_\+assignment@{has\+\_\+assignment}}
+\index{has\+\_\+assignment@{has\+\_\+assignment}!parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State@{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State}}
+\subsubsection{\texorpdfstring{has\+\_\+assignment()}{has\_assignment()}}
+{\footnotesize\ttfamily def parlai.\+mturk.\+core.\+dev.\+worker\+\_\+manager.\+Worker\+State.\+has\+\_\+assignment (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{assign\+\_\+id }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Returns true if this worker has an assignment for the given id.
+\end{DoxyVerb}
+ 
+
+Definition at line 68 of file worker\+\_\+manager.\+py.
+
+
+\begin{DoxyCode}
+68     \textcolor{keyword}{def }has\_assignment(self, assign\_id):
+69         \textcolor{stringliteral}{"""}
+70 \textcolor{stringliteral}{        Returns true if this worker has an assignment for the given id.}
+71 \textcolor{stringliteral}{        """}
+72         \textcolor{keywordflow}{return} assign\_id \textcolor{keywordflow}{in} self.agents
+73 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_ae267b0c320d73f92f96dd347bb9265cb}\label{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_ae267b0c320d73f92f96dd347bb9265cb}} 
+\index{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State@{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State}!agents@{agents}}
+\index{agents@{agents}!parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State@{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State}}
+\subsubsection{\texorpdfstring{agents}{agents}}
+{\footnotesize\ttfamily parlai.\+mturk.\+core.\+dev.\+worker\+\_\+manager.\+Worker\+State.\+agents}
+
+
+
+Definition at line 42 of file worker\+\_\+manager.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_aaf0e1e68c219df754da29d8188150796}\label{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_aaf0e1e68c219df754da29d8188150796}} 
+\index{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State@{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State}!disconnects@{disconnects}}
+\index{disconnects@{disconnects}!parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State@{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State}}
+\subsubsection{\texorpdfstring{disconnects}{disconnects}}
+{\footnotesize\ttfamily parlai.\+mturk.\+core.\+dev.\+worker\+\_\+manager.\+Worker\+State.\+disconnects}
+
+
+
+Definition at line 43 of file worker\+\_\+manager.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_aa4019a351d1a1e41bc7a8c26229b2772}\label{classparlai_1_1mturk_1_1core_1_1dev_1_1worker__manager_1_1WorkerState_aa4019a351d1a1e41bc7a8c26229b2772}} 
+\index{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State@{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State}!worker\+\_\+id@{worker\+\_\+id}}
+\index{worker\+\_\+id@{worker\+\_\+id}!parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State@{parlai\+::mturk\+::core\+::dev\+::worker\+\_\+manager\+::\+Worker\+State}}
+\subsubsection{\texorpdfstring{worker\+\_\+id}{worker\_id}}
+{\footnotesize\ttfamily parlai.\+mturk.\+core.\+dev.\+worker\+\_\+manager.\+Worker\+State.\+worker\+\_\+id}
+
+
+
+Definition at line 41 of file worker\+\_\+manager.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/mturk/core/dev/\hyperlink{dev_2worker__manager_8py}{worker\+\_\+manager.\+py}\end{DoxyCompactItemize}

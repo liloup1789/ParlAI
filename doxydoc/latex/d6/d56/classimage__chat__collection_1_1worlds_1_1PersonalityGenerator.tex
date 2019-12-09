@@ -1,0 +1,215 @@
+\hypertarget{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator}{}\section{image\+\_\+chat\+\_\+collection.\+worlds.\+Personality\+Generator Class Reference}
+\label{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator}\index{image\+\_\+chat\+\_\+collection.\+worlds.\+Personality\+Generator@{image\+\_\+chat\+\_\+collection.\+worlds.\+Personality\+Generator}}
+
+
+Inheritance diagram for image\+\_\+chat\+\_\+collection.\+worlds.\+Personality\+Generator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{d7/d4e/classimage__chat__collection_1_1worlds_1_1PersonalityGenerator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for image\+\_\+chat\+\_\+collection.\+worlds.\+Personality\+Generator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=228pt]{de/da9/classimage__chat__collection_1_1worlds_1_1PersonalityGenerator__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_aea4fe82298d9fea4e7b20b3380a47c99}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, opt)
+\item 
+def \hyperlink{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_a53113dc205f282b68fb601bb4f1b094e}{add\+\_\+idx\+\_\+stack} (self)
+\item 
+def \hyperlink{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_ad35601df7a905c1e043c6fb1117db74e}{pop\+\_\+personality} (self)
+\item 
+def \hyperlink{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_afbcf297c74564898b5c96d29c017c7b1}{push\+\_\+personality} (self, idx)
+\item 
+def \hyperlink{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_a19645254b8da82832d6bcb0825119c65}{save\+\_\+idx\+\_\+stack} (self)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_a1d40759bb3feb63f32181b1b623437d2}{personalities\+\_\+path}
+\item 
+\hyperlink{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_a7d2134cba68716b4483d31741497c85e}{personalities\+\_\+idx\+\_\+stack\+\_\+path}
+\item 
+\hyperlink{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_ad34d454740fa68cf23f3d35121fc92c6}{personalities}
+\item 
+\hyperlink{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_acbfcdffd779cc5be94fb47154c770c8a}{idx\+\_\+stack}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 55 of file worlds.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_aea4fe82298d9fea4e7b20b3380a47c99}\label{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_aea4fe82298d9fea4e7b20b3380a47c99}} 
+\index{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def image\+\_\+chat\+\_\+collection.\+worlds.\+Personality\+Generator.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 56 of file worlds.\+py.
+
+
+\begin{DoxyCode}
+56     \textcolor{keyword}{def }\_\_init\_\_(self, opt):
+57         self.personalities\_path = os.path.join(
+58             opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'personality\_captions/personalities.json'}
+59         )
+60         self.personalities\_idx\_stack\_path = os.path.join(
+61             os.getcwd(), \textcolor{stringliteral}{'./personalities\_idx\_stack.pkl'}
+62         )
+63 
+64         self.personalities = []
+65 
+66         with open(self.personalities\_path) \textcolor{keyword}{as} f:
+67             p\_dict = json.load(f)
+68             self.personalities = [p \textcolor{keywordflow}{for} p\_type \textcolor{keywordflow}{in} p\_dict.values() \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} p\_type]
+69 
+70         \textcolor{keywordflow}{if} os.path.exists(self.personalities\_idx\_stack\_path):
+71             with open(self.personalities\_idx\_stack\_path, \textcolor{stringliteral}{'rb'}) \textcolor{keyword}{as} handle:
+72                 self.idx\_stack = pickle.load(handle)
+73         \textcolor{keywordflow}{else}:
+74             self.idx\_stack = []
+75             self.add\_idx\_stack()
+76             self.save\_idx\_stack()
+77 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_a53113dc205f282b68fb601bb4f1b094e}\label{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_a53113dc205f282b68fb601bb4f1b094e}} 
+\index{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator}!add\+\_\+idx\+\_\+stack@{add\+\_\+idx\+\_\+stack}}
+\index{add\+\_\+idx\+\_\+stack@{add\+\_\+idx\+\_\+stack}!image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator}}
+\subsubsection{\texorpdfstring{add\+\_\+idx\+\_\+stack()}{add\_idx\_stack()}}
+{\footnotesize\ttfamily def image\+\_\+chat\+\_\+collection.\+worlds.\+Personality\+Generator.\+add\+\_\+idx\+\_\+stack (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 78 of file worlds.\+py.
+
+
+\begin{DoxyCode}
+78     \textcolor{keyword}{def }add\_idx\_stack(self):
+79         stack = [i \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(self.personalities))]
+80         random.seed()
+81         random.shuffle(stack)
+82         self.idx\_stack = stack + self.idx\_stack
+83 
+\end{DoxyCode}
+\mbox{\Hypertarget{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_ad35601df7a905c1e043c6fb1117db74e}\label{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_ad35601df7a905c1e043c6fb1117db74e}} 
+\index{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator}!pop\+\_\+personality@{pop\+\_\+personality}}
+\index{pop\+\_\+personality@{pop\+\_\+personality}!image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator}}
+\subsubsection{\texorpdfstring{pop\+\_\+personality()}{pop\_personality()}}
+{\footnotesize\ttfamily def image\+\_\+chat\+\_\+collection.\+worlds.\+Personality\+Generator.\+pop\+\_\+personality (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 84 of file worlds.\+py.
+
+
+\begin{DoxyCode}
+84     \textcolor{keyword}{def }pop\_personality(self):
+85         \textcolor{keywordflow}{if} len(self.idx\_stack) == 0:
+86             self.add\_idx\_stack()
+87         idx = self.idx\_stack.pop()
+88         data = self.personalities[idx]
+89         \textcolor{keywordflow}{return} (idx, data)
+90 
+\end{DoxyCode}
+\mbox{\Hypertarget{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_afbcf297c74564898b5c96d29c017c7b1}\label{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_afbcf297c74564898b5c96d29c017c7b1}} 
+\index{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator}!push\+\_\+personality@{push\+\_\+personality}}
+\index{push\+\_\+personality@{push\+\_\+personality}!image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator}}
+\subsubsection{\texorpdfstring{push\+\_\+personality()}{push\_personality()}}
+{\footnotesize\ttfamily def image\+\_\+chat\+\_\+collection.\+worlds.\+Personality\+Generator.\+push\+\_\+personality (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{idx }\end{DoxyParamCaption})}
+
+
+
+Definition at line 91 of file worlds.\+py.
+
+
+\begin{DoxyCode}
+91     \textcolor{keyword}{def }push\_personality(self, idx):
+92         self.idx\_stack.append(idx)
+93 
+\end{DoxyCode}
+\mbox{\Hypertarget{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_a19645254b8da82832d6bcb0825119c65}\label{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_a19645254b8da82832d6bcb0825119c65}} 
+\index{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator}!save\+\_\+idx\+\_\+stack@{save\+\_\+idx\+\_\+stack}}
+\index{save\+\_\+idx\+\_\+stack@{save\+\_\+idx\+\_\+stack}!image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator}}
+\subsubsection{\texorpdfstring{save\+\_\+idx\+\_\+stack()}{save\_idx\_stack()}}
+{\footnotesize\ttfamily def image\+\_\+chat\+\_\+collection.\+worlds.\+Personality\+Generator.\+save\+\_\+idx\+\_\+stack (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 94 of file worlds.\+py.
+
+
+\begin{DoxyCode}
+94     \textcolor{keyword}{def }save\_idx\_stack(self):
+95         with open(self.personalities\_idx\_stack\_path, \textcolor{stringliteral}{'wb'}) \textcolor{keyword}{as} handle:
+96             pickle.dump(self.idx\_stack, handle)
+97 
+98 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_acbfcdffd779cc5be94fb47154c770c8a}\label{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_acbfcdffd779cc5be94fb47154c770c8a}} 
+\index{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator}!idx\+\_\+stack@{idx\+\_\+stack}}
+\index{idx\+\_\+stack@{idx\+\_\+stack}!image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator}}
+\subsubsection{\texorpdfstring{idx\+\_\+stack}{idx\_stack}}
+{\footnotesize\ttfamily image\+\_\+chat\+\_\+collection.\+worlds.\+Personality\+Generator.\+idx\+\_\+stack}
+
+
+
+Definition at line 72 of file worlds.\+py.
+
+\mbox{\Hypertarget{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_ad34d454740fa68cf23f3d35121fc92c6}\label{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_ad34d454740fa68cf23f3d35121fc92c6}} 
+\index{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator}!personalities@{personalities}}
+\index{personalities@{personalities}!image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator}}
+\subsubsection{\texorpdfstring{personalities}{personalities}}
+{\footnotesize\ttfamily image\+\_\+chat\+\_\+collection.\+worlds.\+Personality\+Generator.\+personalities}
+
+
+
+Definition at line 64 of file worlds.\+py.
+
+\mbox{\Hypertarget{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_a7d2134cba68716b4483d31741497c85e}\label{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_a7d2134cba68716b4483d31741497c85e}} 
+\index{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator}!personalities\+\_\+idx\+\_\+stack\+\_\+path@{personalities\+\_\+idx\+\_\+stack\+\_\+path}}
+\index{personalities\+\_\+idx\+\_\+stack\+\_\+path@{personalities\+\_\+idx\+\_\+stack\+\_\+path}!image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator}}
+\subsubsection{\texorpdfstring{personalities\+\_\+idx\+\_\+stack\+\_\+path}{personalities\_idx\_stack\_path}}
+{\footnotesize\ttfamily image\+\_\+chat\+\_\+collection.\+worlds.\+Personality\+Generator.\+personalities\+\_\+idx\+\_\+stack\+\_\+path}
+
+
+
+Definition at line 60 of file worlds.\+py.
+
+\mbox{\Hypertarget{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_a1d40759bb3feb63f32181b1b623437d2}\label{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_a1d40759bb3feb63f32181b1b623437d2}} 
+\index{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator}!personalities\+\_\+path@{personalities\+\_\+path}}
+\index{personalities\+\_\+path@{personalities\+\_\+path}!image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator}}
+\subsubsection{\texorpdfstring{personalities\+\_\+path}{personalities\_path}}
+{\footnotesize\ttfamily image\+\_\+chat\+\_\+collection.\+worlds.\+Personality\+Generator.\+personalities\+\_\+path}
+
+
+
+Definition at line 57 of file worlds.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/mturk/tasks/image\+\_\+chat/image\+\_\+chat\+\_\+collection/\hyperlink{parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py}{worlds.\+py}\end{DoxyCompactItemize}

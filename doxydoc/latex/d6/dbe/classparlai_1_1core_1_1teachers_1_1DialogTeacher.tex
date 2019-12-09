@@ -1,0 +1,386 @@
+\hypertarget{classparlai_1_1core_1_1teachers_1_1DialogTeacher}{}\section{parlai.\+core.\+teachers.\+Dialog\+Teacher Class Reference}
+\label{classparlai_1_1core_1_1teachers_1_1DialogTeacher}\index{parlai.\+core.\+teachers.\+Dialog\+Teacher@{parlai.\+core.\+teachers.\+Dialog\+Teacher}}
+
+
+Inheritance diagram for parlai.\+core.\+teachers.\+Dialog\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{df/d2c/classparlai_1_1core_1_1teachers_1_1DialogTeacher__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+core.\+teachers.\+Dialog\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{d6/d8e/classparlai_1_1core_1_1teachers_1_1DialogTeacher__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a9385b9ae914ef84be6b54107811b202b}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1core_1_1agents_1_1Teacher_a3ce6243860ce978a897922863ed32fa4}{opt}, shared=None)
+\item 
+def \hyperlink{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a393f94ea28e1733f575a9f36a0b43c18}{reset} (self)
+\item 
+def \hyperlink{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a55fc9dead757489e127ec1a872849376}{share} (self)
+\item 
+def \hyperlink{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a50649105cc9d00bcaa860290d804eac9}{label\+\_\+candidates} (self)
+\item 
+def \hyperlink{classparlai_1_1core_1_1teachers_1_1DialogTeacher_af1e90a07058dc489c45280f0982e21be}{num\+\_\+episodes} (self)
+\item 
+def \hyperlink{classparlai_1_1core_1_1teachers_1_1DialogTeacher_ad90c8cac27f2db22db77e29828b94dfe}{num\+\_\+examples} (self)
+\item 
+def \hyperlink{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a1988d984bf87370e9a9e58c9b8ca67a8}{get} (self, \hyperlink{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_afd4ebab8063eb42d182d30a1a41f133e}{episode\+\_\+idx}, \hyperlink{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_ae3201b15f3c3b46a2f3511bad9b43e7d}{entry\+\_\+idx}=0)
+\item 
+def \hyperlink{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a738c4571db2fee7ce3ab01072f10ed49}{next\+\_\+example} (self)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a8dc7153ce190442ad5d35b255389bf5a}{start\+Time}
+\item 
+\hyperlink{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a4bd247f78e23331700e150991d0afdba}{datatype}
+\item 
+\hyperlink{classparlai_1_1core_1_1teachers_1_1DialogTeacher_aaca26d863c30e54b4612539843f20b49}{training}
+\item 
+\hyperlink{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a82fa5b519a14c4301ce82f6c59c8867a}{stream}
+\item 
+\hyperlink{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a6089018ef23e5f55862292d25628e6a5}{data}
+\item 
+\hyperlink{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a9e2cd457217253ef6d3aa0b23418739b}{epoch\+Done}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1core_1_1teachers_1_1DialogTeacher_aa0637cf3392baf2e9c965de7ffc812ac}{maxsize}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}A base teacher class for doing dialog with fixed chat logs.
+
+This class provides a set a basic functionality:
+
+- uses data class to store and query text data
+- generates action tables to send to the student agent from the data
+
+If you have ``opt.numthreads > 1``, this also activates a shared memory
+array for the data and lock-protected shared-memory metrics.
+
+In order to subclass this class, you must implement ``setup_data()`` in
+your class (or subclass another class which does, like
+``FbDialogTeacher``), which reads your data file as an iterator.
+\end{DoxyVerb}
+ 
+
+Definition at line 438 of file teachers.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a9385b9ae914ef84be6b54107811b202b}\label{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a9385b9ae914ef84be6b54107811b202b}} 
+\index{parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+core.\+teachers.\+Dialog\+Teacher.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{shared = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 455 of file teachers.\+py.
+
+
+\begin{DoxyCode}
+455     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
+456         \textcolor{comment}{# Check for setup\_data}
+457         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} hasattr(self, \textcolor{stringliteral}{'setup\_data'}):
+458             \textcolor{keywordflow}{raise} RuntimeError(
+459                 \textcolor{stringliteral}{'Must implement setup\_data or subclass a class '}
+460                 \textcolor{stringliteral}{'which implements it (e.g. FbDialogTeacher) '}
+461                 \textcolor{stringliteral}{'in order to use this class.'}
+462             )
+463         super().\_\_init\_\_(opt, shared)
+464 
+465         self.startTime = time.time()
+466         self.datatype = opt[\textcolor{stringliteral}{'datatype'}]
+467         self.training = (
+468             self.datatype.startswith(\textcolor{stringliteral}{'train'}) \textcolor{keywordflow}{and} \textcolor{stringliteral}{'evalmode'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.datatype
+469         )
+470         self.stream = \textcolor{stringliteral}{'stream'} \textcolor{keywordflow}{in} self.datatype.split(\textcolor{stringliteral}{':'})
+471 
+472         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.use\_batch\_act:
+473             \textcolor{comment}{# first initialize any shared objects}
+474             data\_class = StreamDialogData \textcolor{keywordflow}{if} self.stream \textcolor{keywordflow}{else} DialogData
+475             kwargs = \{\textcolor{stringliteral}{'cycle'}: self.training\} \textcolor{keywordflow}{if} self.stream \textcolor{keywordflow}{else} \{\}
+476             \textcolor{keywordflow}{if} shared \textcolor{keywordflow}{and} shared.get(\textcolor{stringliteral}{'data'}):
+477                 self.data = data\_class(opt, shared=shared[\textcolor{stringliteral}{'data'}], **kwargs)
+478             \textcolor{keywordflow}{else}:
+479                 self.data = data\_class(
+480                     opt,
+481                     data\_loader=self.setup\_data,
+482                     cands=self.label\_candidates(),
+483                     **kwargs,
+484                 )
+485 
+486         self.reset()
+487 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a1988d984bf87370e9a9e58c9b8ca67a8}\label{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a1988d984bf87370e9a9e58c9b8ca67a8}} 
+\index{parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}!get@{get}}
+\index{get@{get}!parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}}
+\subsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily def parlai.\+core.\+teachers.\+Dialog\+Teacher.\+get (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{episode\+\_\+idx,  }\item[{}]{entry\+\_\+idx = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Get a specific example.
+\end{DoxyVerb}
+ 
+
+Definition at line 538 of file teachers.\+py.
+
+
+\begin{DoxyCode}
+538     \textcolor{keyword}{def }get(self, episode\_idx, entry\_idx=0):
+539         \textcolor{stringliteral}{"""}
+540 \textcolor{stringliteral}{        Get a specific example.}
+541 \textcolor{stringliteral}{        """}
+542         \textcolor{keywordflow}{return} self.data.get(episode\_idx, entry\_idx)[0]
+543 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a50649105cc9d00bcaa860290d804eac9}\label{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a50649105cc9d00bcaa860290d804eac9}} 
+\index{parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}!label\+\_\+candidates@{label\+\_\+candidates}}
+\index{label\+\_\+candidates@{label\+\_\+candidates}!parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}}
+\subsubsection{\texorpdfstring{label\+\_\+candidates()}{label\_candidates()}}
+{\footnotesize\ttfamily def parlai.\+core.\+teachers.\+Dialog\+Teacher.\+label\+\_\+candidates (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Provide consistent label candidates for all examples.
+
+Default implementation returns ``None`` always, but this may be overriden to
+provide candidates in all areas. See ``FbDialogueTeacher``.
+\end{DoxyVerb}
+ 
+
+Definition at line 506 of file teachers.\+py.
+
+
+\begin{DoxyCode}
+506     \textcolor{keyword}{def }label\_candidates(self):
+507         \textcolor{stringliteral}{"""}
+508 \textcolor{stringliteral}{        Provide consistent label candidates for all examples.}
+509 \textcolor{stringliteral}{}
+510 \textcolor{stringliteral}{        Default implementation returns ``None`` always, but this may be overriden to}
+511 \textcolor{stringliteral}{        provide candidates in all areas. See ``FbDialogueTeacher``.}
+512 \textcolor{stringliteral}{        """}
+513         \textcolor{comment}{# TODO DEPRECATIONDAY: FbiDialogueTeacher is being deprecated, should we}
+514         \textcolor{comment}{# remove this?}
+515 
+516         \textcolor{comment}{# TODO: mark as optionally abstract?}
+517         \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}
+518 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a738c4571db2fee7ce3ab01072f10ed49}\label{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a738c4571db2fee7ce3ab01072f10ed49}} 
+\index{parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}!next\+\_\+example@{next\+\_\+example}}
+\index{next\+\_\+example@{next\+\_\+example}!parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}}
+\subsubsection{\texorpdfstring{next\+\_\+example()}{next\_example()}}
+{\footnotesize\ttfamily def parlai.\+core.\+teachers.\+Dialog\+Teacher.\+next\+\_\+example (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Get the next example.
+\end{DoxyVerb}
+ 
+
+Definition at line 544 of file teachers.\+py.
+
+
+\begin{DoxyCode}
+544     \textcolor{keyword}{def }next\_example(self):
+545         \textcolor{stringliteral}{"""}
+546 \textcolor{stringliteral}{        Get the next example.}
+547 \textcolor{stringliteral}{        """}
+548         \textcolor{keywordflow}{if} self.stream:
+549             action, epoch\_done = self.data.get()
+550         \textcolor{keywordflow}{else}:
+551             action, epoch\_done = super().next\_example()
+552         \textcolor{keywordflow}{return} action, epoch\_done
+553 
+554 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogTeacher_af1e90a07058dc489c45280f0982e21be}\label{classparlai_1_1core_1_1teachers_1_1DialogTeacher_af1e90a07058dc489c45280f0982e21be}} 
+\index{parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}!num\+\_\+episodes@{num\+\_\+episodes}}
+\index{num\+\_\+episodes@{num\+\_\+episodes}!parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}}
+\subsubsection{\texorpdfstring{num\+\_\+episodes()}{num\_episodes()}}
+{\footnotesize\ttfamily def parlai.\+core.\+teachers.\+Dialog\+Teacher.\+num\+\_\+episodes (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Return the number of episodes in the data.
+\end{DoxyVerb}
+ 
+
+Definition at line 519 of file teachers.\+py.
+
+
+\begin{DoxyCode}
+519     \textcolor{keyword}{def }num\_episodes(self):
+520         \textcolor{stringliteral}{"""}
+521 \textcolor{stringliteral}{        Return the number of episodes in the data.}
+522 \textcolor{stringliteral}{        """}
+523         \textcolor{keywordflow}{try}:
+524             \textcolor{keywordflow}{return} self.data.num\_episodes()
+525         \textcolor{keywordflow}{except} AttributeError:
+526             \textcolor{keywordflow}{return} super().num\_episodes()
+527 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogTeacher_ad90c8cac27f2db22db77e29828b94dfe}\label{classparlai_1_1core_1_1teachers_1_1DialogTeacher_ad90c8cac27f2db22db77e29828b94dfe}} 
+\index{parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}!num\+\_\+examples@{num\+\_\+examples}}
+\index{num\+\_\+examples@{num\+\_\+examples}!parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}}
+\subsubsection{\texorpdfstring{num\+\_\+examples()}{num\_examples()}}
+{\footnotesize\ttfamily def parlai.\+core.\+teachers.\+Dialog\+Teacher.\+num\+\_\+examples (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Return the number of examples in the data.
+\end{DoxyVerb}
+ 
+
+Definition at line 529 of file teachers.\+py.
+
+
+\begin{DoxyCode}
+529     \textcolor{keyword}{def }num\_examples(self):
+530         \textcolor{stringliteral}{"""}
+531 \textcolor{stringliteral}{        Return the number of examples in the data.}
+532 \textcolor{stringliteral}{        """}
+533         \textcolor{keywordflow}{try}:
+534             \textcolor{keywordflow}{return} self.data.num\_examples()
+535         \textcolor{keywordflow}{except} AttributeError:
+536             \textcolor{keywordflow}{return} super().num\_examples()
+537 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a393f94ea28e1733f575a9f36a0b43c18}\label{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a393f94ea28e1733f575a9f36a0b43c18}} 
+\index{parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}!reset@{reset}}
+\index{reset@{reset}!parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}}
+\subsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily def parlai.\+core.\+teachers.\+Dialog\+Teacher.\+reset (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Reset the dialog to the start of the epoch, reset all metrics.
+\end{DoxyVerb}
+ 
+
+Definition at line 488 of file teachers.\+py.
+
+
+\begin{DoxyCode}
+488     \textcolor{keyword}{def }reset(self):
+489         \textcolor{stringliteral}{"""}
+490 \textcolor{stringliteral}{        Reset the dialog to the start of the epoch, reset all metrics.}
+491 \textcolor{stringliteral}{        """}
+492         super().reset()
+493         \textcolor{keywordflow}{if} self.stream:
+494             self.data.reset()
+495             self.epochDone = \textcolor{keyword}{False}
+496 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a55fc9dead757489e127ec1a872849376}\label{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a55fc9dead757489e127ec1a872849376}} 
+\index{parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}!share@{share}}
+\index{share@{share}!parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}}
+\subsubsection{\texorpdfstring{share()}{share()}}
+{\footnotesize\ttfamily def parlai.\+core.\+teachers.\+Dialog\+Teacher.\+share (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Share the data.
+\end{DoxyVerb}
+ 
+
+Definition at line 497 of file teachers.\+py.
+
+
+\begin{DoxyCode}
+497     \textcolor{keyword}{def }share(self):
+498         \textcolor{stringliteral}{"""}
+499 \textcolor{stringliteral}{        Share the data.}
+500 \textcolor{stringliteral}{        """}
+501         shared = super().share()
+502         \textcolor{keywordflow}{if} hasattr(self, \textcolor{stringliteral}{'data'}):
+503             shared[\textcolor{stringliteral}{'data'}] = self.data.share()
+504         \textcolor{keywordflow}{return} shared
+505 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a6089018ef23e5f55862292d25628e6a5}\label{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a6089018ef23e5f55862292d25628e6a5}} 
+\index{parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}!data@{data}}
+\index{data@{data}!parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}}
+\subsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily parlai.\+core.\+teachers.\+Dialog\+Teacher.\+data}
+
+
+
+Definition at line 477 of file teachers.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a4bd247f78e23331700e150991d0afdba}\label{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a4bd247f78e23331700e150991d0afdba}} 
+\index{parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}!datatype@{datatype}}
+\index{datatype@{datatype}!parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}}
+\subsubsection{\texorpdfstring{datatype}{datatype}}
+{\footnotesize\ttfamily parlai.\+core.\+teachers.\+Dialog\+Teacher.\+datatype}
+
+
+
+Definition at line 466 of file teachers.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a9e2cd457217253ef6d3aa0b23418739b}\label{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a9e2cd457217253ef6d3aa0b23418739b}} 
+\index{parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}!epoch\+Done@{epoch\+Done}}
+\index{epoch\+Done@{epoch\+Done}!parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}}
+\subsubsection{\texorpdfstring{epoch\+Done}{epochDone}}
+{\footnotesize\ttfamily parlai.\+core.\+teachers.\+Dialog\+Teacher.\+epoch\+Done}
+
+
+
+Definition at line 495 of file teachers.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogTeacher_aa0637cf3392baf2e9c965de7ffc812ac}\label{classparlai_1_1core_1_1teachers_1_1DialogTeacher_aa0637cf3392baf2e9c965de7ffc812ac}} 
+\index{parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}!maxsize@{maxsize}}
+\index{maxsize@{maxsize}!parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}}
+\subsubsection{\texorpdfstring{maxsize}{maxsize}}
+{\footnotesize\ttfamily parlai.\+core.\+teachers.\+Dialog\+Teacher.\+maxsize\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 528 of file teachers.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a8dc7153ce190442ad5d35b255389bf5a}\label{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a8dc7153ce190442ad5d35b255389bf5a}} 
+\index{parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}!start\+Time@{start\+Time}}
+\index{start\+Time@{start\+Time}!parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}}
+\subsubsection{\texorpdfstring{start\+Time}{startTime}}
+{\footnotesize\ttfamily parlai.\+core.\+teachers.\+Dialog\+Teacher.\+start\+Time}
+
+
+
+Definition at line 465 of file teachers.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a82fa5b519a14c4301ce82f6c59c8867a}\label{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a82fa5b519a14c4301ce82f6c59c8867a}} 
+\index{parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}!stream@{stream}}
+\index{stream@{stream}!parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}}
+\subsubsection{\texorpdfstring{stream}{stream}}
+{\footnotesize\ttfamily parlai.\+core.\+teachers.\+Dialog\+Teacher.\+stream}
+
+
+
+Definition at line 470 of file teachers.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogTeacher_aaca26d863c30e54b4612539843f20b49}\label{classparlai_1_1core_1_1teachers_1_1DialogTeacher_aaca26d863c30e54b4612539843f20b49}} 
+\index{parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}!training@{training}}
+\index{training@{training}!parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}}
+\subsubsection{\texorpdfstring{training}{training}}
+{\footnotesize\ttfamily parlai.\+core.\+teachers.\+Dialog\+Teacher.\+training}
+
+
+
+Definition at line 467 of file teachers.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/core/\hyperlink{teachers_8py}{teachers.\+py}\end{DoxyCompactItemize}

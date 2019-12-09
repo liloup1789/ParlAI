@@ -1,0 +1,443 @@
+\hypertarget{classparlai_1_1utils_1_1thread_1_1SharedTable}{}\section{parlai.\+utils.\+thread.\+Shared\+Table Class Reference}
+\label{classparlai_1_1utils_1_1thread_1_1SharedTable}\index{parlai.\+utils.\+thread.\+Shared\+Table@{parlai.\+utils.\+thread.\+Shared\+Table}}
+
+
+Inheritance diagram for parlai.\+utils.\+thread.\+Shared\+Table\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{dc/deb/classparlai_1_1utils_1_1thread_1_1SharedTable__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+utils.\+thread.\+Shared\+Table\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=205pt]{de/df7/classparlai_1_1utils_1_1thread_1_1SharedTable__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1utils_1_1thread_1_1SharedTable_a52b58b8d6ad0ba31cf2e3236afe970a5}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, init\+\_\+dict=None)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1thread_1_1SharedTable_a6b6c4f7fb5887de4e2c82b0c11b6d680}{\+\_\+\+\_\+len\+\_\+\+\_\+} (self)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1thread_1_1SharedTable_a6c386b5fba3bd7ff0715c808decbaa54}{\+\_\+\+\_\+iter\+\_\+\+\_\+} (self)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1thread_1_1SharedTable_afac82c3717ad0344c5bdfc7b8913d796}{\+\_\+\+\_\+contains\+\_\+\+\_\+} (self, key)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1thread_1_1SharedTable_a624b898ff3294a8be69ad796640cc7ee}{\+\_\+\+\_\+getitem\+\_\+\+\_\+} (self, key)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1thread_1_1SharedTable_a43bc2c55c2125ce9c4848933fadeef5c}{\+\_\+\+\_\+setitem\+\_\+\+\_\+} (self, key, value)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1thread_1_1SharedTable_a567947ad20bdc1ad18815fc1883ea247}{\+\_\+\+\_\+delitem\+\_\+\+\_\+} (self, key)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1thread_1_1SharedTable_aa18f723bbdfce0ab50d9c36b20cec2c7}{\+\_\+\+\_\+str\+\_\+\+\_\+} (self)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1thread_1_1SharedTable_af4577c8c954666ac3905a6215835bbd0}{\+\_\+\+\_\+repr\+\_\+\+\_\+} (self)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1thread_1_1SharedTable_ab9acef58b28d0c992c841a4cc11a5df2}{get\+\_\+lock} (self)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1utils_1_1thread_1_1SharedTable_aec0fa85ca2544dd6220db34c7da01a08}{idx}
+\item 
+\hyperlink{classparlai_1_1utils_1_1thread_1_1SharedTable_a722e0cb6428af2282f4a2697c2c86d01}{arrays}
+\item 
+\hyperlink{classparlai_1_1utils_1_1thread_1_1SharedTable_ad1a6839c09b909c73c7b57ece300d4d4}{tensors}
+\item 
+\hyperlink{classparlai_1_1utils_1_1thread_1_1SharedTable_aa9c342b24e24a93c40950671a326d014}{lock}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1utils_1_1thread_1_1SharedTable_afd2aec148b1e66d0496f137749862e58}{types}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Provides a simple shared-memory table of integers, floats, or strings.
+
+Use this class as follows:
+
+.. code-block:: python
+
+    tbl = SharedTable({'cnt': 0})
+    with tbl.get_lock():
+        tbl['startTime'] = time.time()
+    for i in range(10):
+        with tbl.get_lock():
+            tbl['cnt'] += 1
+\end{DoxyVerb}
+ 
+
+Definition at line 18 of file thread.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1thread_1_1SharedTable_a52b58b8d6ad0ba31cf2e3236afe970a5}\label{classparlai_1_1utils_1_1thread_1_1SharedTable_a52b58b8d6ad0ba31cf2e3236afe970a5}} 
+\index{parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+thread.\+Shared\+Table.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{init\+\_\+dict = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Create a shared memory version of each element of the initial dictionary.
+
+Creates an empty array otherwise, which will extend
+automatically when keys are added.
+
+Each different type (all supported types listed in the ``types`` array
+above) has its own array. For each key we store an index into the
+appropriate array as well as the type of value stored for that key.
+\end{DoxyVerb}
+ 
+
+Definition at line 36 of file thread.\+py.
+
+
+\begin{DoxyCode}
+36     \textcolor{keyword}{def }\_\_init\_\_(self, init\_dict=None):
+37         \textcolor{stringliteral}{"""}
+38 \textcolor{stringliteral}{        Create a shared memory version of each element of the initial dictionary.}
+39 \textcolor{stringliteral}{}
+40 \textcolor{stringliteral}{        Creates an empty array otherwise, which will extend}
+41 \textcolor{stringliteral}{        automatically when keys are added.}
+42 \textcolor{stringliteral}{}
+43 \textcolor{stringliteral}{        Each different type (all supported types listed in the ``types`` array}
+44 \textcolor{stringliteral}{        above) has its own array. For each key we store an index into the}
+45 \textcolor{stringliteral}{        appropriate array as well as the type of value stored for that key.}
+46 \textcolor{stringliteral}{        """}
+47         \textcolor{comment}{# idx is dict of \{key: (array\_idx, value\_type)\}}
+48         self.idx = \{\}
+49         \textcolor{comment}{# arrays is dict of \{value\_type: array\_of\_ctype\}}
+50         self.arrays = \{\}
+51         self.tensors = \{\}
+52 
+53         \textcolor{keywordflow}{if} init\_dict:
+54             sizes = \{typ: 0 \textcolor{keywordflow}{for} typ \textcolor{keywordflow}{in} self.types.keys()\}
+55             \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} init\_dict.items():
+56                 \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1utils_1_1thread_ad2b01da95ecdc33d8dce76a79f48137f}{is\_tensor}(v):
+57                     \textcolor{comment}{# add tensor to tensor dict--don't try to put in rawarray}
+58                     self.tensors[k] = v
+59                     \textcolor{keywordflow}{continue}
+60                 \textcolor{keywordflow}{elif} \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(v) \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} sizes:
+61                     \textcolor{keywordflow}{raise} TypeError(
+62                         \textcolor{stringliteral}{'SharedTable does not support values of '}
+63                         + \textcolor{stringliteral}{'type '}
+64                         + \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(v))
+65                     )
+66                 sizes[\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(v)] += 1
+67             \textcolor{comment}{# pop tensors from init\_dict}
+68             \textcolor{keywordflow}{for} k \textcolor{keywordflow}{in} self.tensors.keys():
+69                 init\_dict.pop(k)
+70             \textcolor{comment}{# create raw arrays for each type}
+71             \textcolor{keywordflow}{for} typ, sz \textcolor{keywordflow}{in} sizes.items():
+72                 self.arrays[typ] = RawArray(self.types[typ], sz)
+73             \textcolor{comment}{# track indices for each key, assign them to their typed rawarray}
+74             idxs = \{typ: 0 \textcolor{keywordflow}{for} typ \textcolor{keywordflow}{in} self.types.keys()\}
+75             \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} init\_dict.items():
+76                 val\_type = \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(v)
+77                 self.idx[k] = (idxs[val\_type], val\_type)
+78                 \textcolor{keywordflow}{if} val\_type == str:
+79                     v = sys.intern(v)
+80                 self.arrays[val\_type][idxs[val\_type]] = v
+81                 idxs[val\_type] += 1
+82         \textcolor{comment}{# initialize any needed empty arrays}
+83         \textcolor{keywordflow}{for} typ, ctyp \textcolor{keywordflow}{in} self.types.items():
+84             \textcolor{keywordflow}{if} typ \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.arrays:
+85                 self.arrays[typ] = RawArray(ctyp, 0)
+86         self.lock = Lock()
+87 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1thread_1_1SharedTable_afac82c3717ad0344c5bdfc7b8913d796}\label{classparlai_1_1utils_1_1thread_1_1SharedTable_afac82c3717ad0344c5bdfc7b8913d796}} 
+\index{parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}!\+\_\+\+\_\+contains\+\_\+\+\_\+@{\+\_\+\+\_\+contains\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+contains\+\_\+\+\_\+@{\+\_\+\+\_\+contains\+\_\+\+\_\+}!parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+contains\+\_\+\+\_\+()}{\_\_contains\_\_()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+thread.\+Shared\+Table.\+\_\+\+\_\+contains\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{key }\end{DoxyParamCaption})}
+
+
+
+Definition at line 94 of file thread.\+py.
+
+
+\begin{DoxyCode}
+94     \textcolor{keyword}{def }\_\_contains\_\_(self, key):
+95         \textcolor{keywordflow}{return} key \textcolor{keywordflow}{in} self.idx \textcolor{keywordflow}{or} key \textcolor{keywordflow}{in} self.tensors
+96 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1thread_1_1SharedTable_a567947ad20bdc1ad18815fc1883ea247}\label{classparlai_1_1utils_1_1thread_1_1SharedTable_a567947ad20bdc1ad18815fc1883ea247}} 
+\index{parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}!\+\_\+\+\_\+delitem\+\_\+\+\_\+@{\+\_\+\+\_\+delitem\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+delitem\+\_\+\+\_\+@{\+\_\+\+\_\+delitem\+\_\+\+\_\+}!parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+delitem\+\_\+\+\_\+()}{\_\_delitem\_\_()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+thread.\+Shared\+Table.\+\_\+\+\_\+delitem\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{key }\end{DoxyParamCaption})}
+
+
+
+Definition at line 145 of file thread.\+py.
+
+
+\begin{DoxyCode}
+145     \textcolor{keyword}{def }\_\_delitem\_\_(self, key):
+146         \textcolor{keywordflow}{if} key \textcolor{keywordflow}{in} self.tensors:
+147             del self.tensors[key]
+148         \textcolor{keywordflow}{elif} key \textcolor{keywordflow}{in} self.idx:
+149             del self.idx[key]
+150         \textcolor{keywordflow}{else}:
+151             \textcolor{keywordflow}{raise} KeyError(\textcolor{stringliteral}{'Key "\{\}" not found in SharedTable'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(key))
+152 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1thread_1_1SharedTable_a624b898ff3294a8be69ad796640cc7ee}\label{classparlai_1_1utils_1_1thread_1_1SharedTable_a624b898ff3294a8be69ad796640cc7ee}} 
+\index{parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}!\+\_\+\+\_\+getitem\+\_\+\+\_\+@{\+\_\+\+\_\+getitem\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+getitem\+\_\+\+\_\+@{\+\_\+\+\_\+getitem\+\_\+\+\_\+}!parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+getitem\+\_\+\+\_\+()}{\_\_getitem\_\_()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+thread.\+Shared\+Table.\+\_\+\+\_\+getitem\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{key }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Return shared value if key is available.
+\end{DoxyVerb}
+ 
+
+Definition at line 97 of file thread.\+py.
+
+
+\begin{DoxyCode}
+97     \textcolor{keyword}{def }\_\_getitem\_\_(self, key):
+98         \textcolor{stringliteral}{"""}
+99 \textcolor{stringliteral}{        Return shared value if key is available.}
+100 \textcolor{stringliteral}{        """}
+101         \textcolor{keywordflow}{if} key \textcolor{keywordflow}{in} self.tensors:
+102             \textcolor{keywordflow}{return} self.tensors[key]
+103         \textcolor{keywordflow}{elif} key \textcolor{keywordflow}{in} self.idx:
+104             idx, typ = self.idx[key]
+105             \textcolor{keywordflow}{return} self.arrays[typ][idx]
+106         \textcolor{keywordflow}{else}:
+107             \textcolor{keywordflow}{raise} KeyError(\textcolor{stringliteral}{'Key "\{\}" not found in SharedTable'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(key))
+108 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1thread_1_1SharedTable_a6c386b5fba3bd7ff0715c808decbaa54}\label{classparlai_1_1utils_1_1thread_1_1SharedTable_a6c386b5fba3bd7ff0715c808decbaa54}} 
+\index{parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}!\+\_\+\+\_\+iter\+\_\+\+\_\+@{\+\_\+\+\_\+iter\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+iter\+\_\+\+\_\+@{\+\_\+\+\_\+iter\+\_\+\+\_\+}!parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+iter\+\_\+\+\_\+()}{\_\_iter\_\_()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+thread.\+Shared\+Table.\+\_\+\+\_\+iter\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 91 of file thread.\+py.
+
+
+\begin{DoxyCode}
+91     \textcolor{keyword}{def }\_\_iter\_\_(self):
+92         \textcolor{keywordflow}{return} iter([k \textcolor{keywordflow}{for} k \textcolor{keywordflow}{in} self.idx] + [k \textcolor{keywordflow}{for} k \textcolor{keywordflow}{in} self.tensors])
+93 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1thread_1_1SharedTable_a6b6c4f7fb5887de4e2c82b0c11b6d680}\label{classparlai_1_1utils_1_1thread_1_1SharedTable_a6b6c4f7fb5887de4e2c82b0c11b6d680}} 
+\index{parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}!\+\_\+\+\_\+len\+\_\+\+\_\+@{\+\_\+\+\_\+len\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+len\+\_\+\+\_\+@{\+\_\+\+\_\+len\+\_\+\+\_\+}!parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+len\+\_\+\+\_\+()}{\_\_len\_\_()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+thread.\+Shared\+Table.\+\_\+\+\_\+len\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 88 of file thread.\+py.
+
+
+\begin{DoxyCode}
+88     \textcolor{keyword}{def }\_\_len\_\_(self):
+89         \textcolor{keywordflow}{return} len(self.idx) + len(self.tensors)
+90 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1thread_1_1SharedTable_af4577c8c954666ac3905a6215835bbd0}\label{classparlai_1_1utils_1_1thread_1_1SharedTable_af4577c8c954666ac3905a6215835bbd0}} 
+\index{parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}!\+\_\+\+\_\+repr\+\_\+\+\_\+@{\+\_\+\+\_\+repr\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+repr\+\_\+\+\_\+@{\+\_\+\+\_\+repr\+\_\+\+\_\+}!parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+repr\+\_\+\+\_\+()}{\_\_repr\_\_()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+thread.\+Shared\+Table.\+\_\+\+\_\+repr\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Return the object type and memory location with the mapping.
+\end{DoxyVerb}
+ 
+
+Definition at line 164 of file thread.\+py.
+
+
+\begin{DoxyCode}
+164     \textcolor{keyword}{def }\_\_repr\_\_(self):
+165         \textcolor{stringliteral}{"""}
+166 \textcolor{stringliteral}{        Return the object type and memory location with the mapping.}
+167 \textcolor{stringliteral}{        """}
+168         representation = super().\_\_repr\_\_()
+169         \textcolor{keywordflow}{return} representation.replace(\textcolor{stringliteral}{'>'}, \textcolor{stringliteral}{': \{\}>'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(\hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(self)))
+170 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1thread_1_1SharedTable_a43bc2c55c2125ce9c4848933fadeef5c}\label{classparlai_1_1utils_1_1thread_1_1SharedTable_a43bc2c55c2125ce9c4848933fadeef5c}} 
+\index{parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}!\+\_\+\+\_\+setitem\+\_\+\+\_\+@{\+\_\+\+\_\+setitem\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+setitem\+\_\+\+\_\+@{\+\_\+\+\_\+setitem\+\_\+\+\_\+}!parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+setitem\+\_\+\+\_\+()}{\_\_setitem\_\_()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+thread.\+Shared\+Table.\+\_\+\+\_\+setitem\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{key,  }\item[{}]{value }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}If key is in table, update it. Otherwise, extend the array to make room.
+
+This uses additive resizing not multiplicative, since the number
+of keys is not likely to change frequently during a run, so do not
+abuse it.
+
+Raises an error if you try to change the type of the value stored for
+that key -- if you need to do this, you must delete the key first.
+\end{DoxyVerb}
+ 
+
+Definition at line 109 of file thread.\+py.
+
+
+\begin{DoxyCode}
+109     \textcolor{keyword}{def }\_\_setitem\_\_(self, key, value):
+110         \textcolor{stringliteral}{"""}
+111 \textcolor{stringliteral}{        If key is in table, update it. Otherwise, extend the array to make room.}
+112 \textcolor{stringliteral}{}
+113 \textcolor{stringliteral}{        This uses additive resizing not multiplicative, since the number}
+114 \textcolor{stringliteral}{        of keys is not likely to change frequently during a run, so do not}
+115 \textcolor{stringliteral}{        abuse it.}
+116 \textcolor{stringliteral}{}
+117 \textcolor{stringliteral}{        Raises an error if you try to change the type of the value stored for}
+118 \textcolor{stringliteral}{        that key -- if you need to do this, you must delete the key first.}
+119 \textcolor{stringliteral}{        """}
+120         val\_type = \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(value)
+121         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'Tensor'} \textcolor{keywordflow}{in} \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(val\_type):
+122             self.tensors[key] = value
+123             \textcolor{keywordflow}{return}
+124         \textcolor{keywordflow}{if} val\_type \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.types:
+125             \textcolor{keywordflow}{raise} TypeError(\textcolor{stringliteral}{'SharedTable does not support type '} + \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(value)))
+126         \textcolor{keywordflow}{if} val\_type == str:
+127             value = sys.intern(value)
+128         \textcolor{keywordflow}{if} key \textcolor{keywordflow}{in} self.idx:
+129             idx, typ = self.idx[key]
+130             \textcolor{keywordflow}{if} typ != val\_type:
+131                 \textcolor{keywordflow}{raise} TypeError(
+132                     (
+133                         \textcolor{stringliteral}{'Cannot change stored type for \{key\} from '}
+134                         + \textcolor{stringliteral}{'\{v1\} to \{v2\}. You need to del the key first'}
+135                         + \textcolor{stringliteral}{' if you need to change value types.'}
+136                     ).\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(key=key, v1=typ, v2=val\_type)
+137                 )
+138             self.arrays[typ][idx] = value
+139         \textcolor{keywordflow}{else}:
+140             \textcolor{keywordflow}{raise} KeyError(
+141                 \textcolor{stringliteral}{'Cannot add more keys to the shared table as '}
+142                 \textcolor{stringliteral}{'they will not be synced across processes.'}
+143             )
+144 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1thread_1_1SharedTable_aa18f723bbdfce0ab50d9c36b20cec2c7}\label{classparlai_1_1utils_1_1thread_1_1SharedTable_aa18f723bbdfce0ab50d9c36b20cec2c7}} 
+\index{parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}!\+\_\+\+\_\+str\+\_\+\+\_\+@{\+\_\+\+\_\+str\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+str\+\_\+\+\_\+@{\+\_\+\+\_\+str\+\_\+\+\_\+}!parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+str\+\_\+\+\_\+()}{\_\_str\_\_()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+thread.\+Shared\+Table.\+\_\+\+\_\+str\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Return simple dict representation of the mapping.
+\end{DoxyVerb}
+ 
+
+Definition at line 153 of file thread.\+py.
+
+
+\begin{DoxyCode}
+153     \textcolor{keyword}{def }\_\_str\_\_(self):
+154         \textcolor{stringliteral}{"""}
+155 \textcolor{stringliteral}{        Return simple dict representation of the mapping.}
+156 \textcolor{stringliteral}{        """}
+157         lhs = [
+158             \textcolor{stringliteral}{'\{k\}: \{v\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(k=key, v=self.arrays[typ][idx])
+159             \textcolor{keywordflow}{for} key, (idx, typ) \textcolor{keywordflow}{in} self.idx.items()
+160         ]
+161         rhs = [\textcolor{stringliteral}{'\{k\}: \{v\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(k=k, v=v) \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} self.tensors.items()]
+162         \textcolor{keywordflow}{return} \textcolor{stringliteral}{'\{\{\{\}\}\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(\textcolor{stringliteral}{', '}.join(lhs + rhs))
+163 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1thread_1_1SharedTable_ab9acef58b28d0c992c841a4cc11a5df2}\label{classparlai_1_1utils_1_1thread_1_1SharedTable_ab9acef58b28d0c992c841a4cc11a5df2}} 
+\index{parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}!get\+\_\+lock@{get\+\_\+lock}}
+\index{get\+\_\+lock@{get\+\_\+lock}!parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}}
+\subsubsection{\texorpdfstring{get\+\_\+lock()}{get\_lock()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+thread.\+Shared\+Table.\+get\+\_\+lock (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Return the lock.
+\end{DoxyVerb}
+ 
+
+Definition at line 171 of file thread.\+py.
+
+
+\begin{DoxyCode}
+171     \textcolor{keyword}{def }get\_lock(self):
+172         \textcolor{stringliteral}{"""}
+173 \textcolor{stringliteral}{        Return the lock.}
+174 \textcolor{stringliteral}{        """}
+175         \textcolor{keywordflow}{return} self.lock
+176 
+177 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1thread_1_1SharedTable_a722e0cb6428af2282f4a2697c2c86d01}\label{classparlai_1_1utils_1_1thread_1_1SharedTable_a722e0cb6428af2282f4a2697c2c86d01}} 
+\index{parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}!arrays@{arrays}}
+\index{arrays@{arrays}!parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}}
+\subsubsection{\texorpdfstring{arrays}{arrays}}
+{\footnotesize\ttfamily parlai.\+utils.\+thread.\+Shared\+Table.\+arrays}
+
+
+
+Definition at line 50 of file thread.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1utils_1_1thread_1_1SharedTable_aec0fa85ca2544dd6220db34c7da01a08}\label{classparlai_1_1utils_1_1thread_1_1SharedTable_aec0fa85ca2544dd6220db34c7da01a08}} 
+\index{parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}!idx@{idx}}
+\index{idx@{idx}!parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}}
+\subsubsection{\texorpdfstring{idx}{idx}}
+{\footnotesize\ttfamily parlai.\+utils.\+thread.\+Shared\+Table.\+idx}
+
+
+
+Definition at line 48 of file thread.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1utils_1_1thread_1_1SharedTable_aa9c342b24e24a93c40950671a326d014}\label{classparlai_1_1utils_1_1thread_1_1SharedTable_aa9c342b24e24a93c40950671a326d014}} 
+\index{parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}!lock@{lock}}
+\index{lock@{lock}!parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}}
+\subsubsection{\texorpdfstring{lock}{lock}}
+{\footnotesize\ttfamily parlai.\+utils.\+thread.\+Shared\+Table.\+lock}
+
+
+
+Definition at line 86 of file thread.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1utils_1_1thread_1_1SharedTable_ad1a6839c09b909c73c7b57ece300d4d4}\label{classparlai_1_1utils_1_1thread_1_1SharedTable_ad1a6839c09b909c73c7b57ece300d4d4}} 
+\index{parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}!tensors@{tensors}}
+\index{tensors@{tensors}!parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}}
+\subsubsection{\texorpdfstring{tensors}{tensors}}
+{\footnotesize\ttfamily parlai.\+utils.\+thread.\+Shared\+Table.\+tensors}
+
+
+
+Definition at line 51 of file thread.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1utils_1_1thread_1_1SharedTable_afd2aec148b1e66d0496f137749862e58}\label{classparlai_1_1utils_1_1thread_1_1SharedTable_afd2aec148b1e66d0496f137749862e58}} 
+\index{parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}!types@{types}}
+\index{types@{types}!parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}}
+\subsubsection{\texorpdfstring{types}{types}}
+{\footnotesize\ttfamily parlai.\+utils.\+thread.\+Shared\+Table.\+types\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 34 of file thread.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/utils/\hyperlink{thread_8py}{thread.\+py}\end{DoxyCompactItemize}

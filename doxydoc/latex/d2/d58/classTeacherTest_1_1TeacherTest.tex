@@ -1,0 +1,86 @@
+\hypertarget{classTeacherTest_1_1TeacherTest}{}\section{Teacher\+Test.\+Teacher\+Test Class Reference}
+\label{classTeacherTest_1_1TeacherTest}\index{Teacher\+Test.\+Teacher\+Test@{Teacher\+Test.\+Teacher\+Test}}
+
+
+Inheritance diagram for Teacher\+Test.\+Teacher\+Test\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{d4/d1d/classTeacherTest_1_1TeacherTest__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Teacher\+Test.\+Teacher\+Test\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{d7/d62/classTeacherTest_1_1TeacherTest__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classTeacherTest_1_1TeacherTest_aeb5a6c83bfa0e5eb8d8fad13789421aa}{test\+\_\+data\+\_\+generator} (self)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 15 of file Teacher\+Test.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classTeacherTest_1_1TeacherTest_aeb5a6c83bfa0e5eb8d8fad13789421aa}\label{classTeacherTest_1_1TeacherTest_aeb5a6c83bfa0e5eb8d8fad13789421aa}} 
+\index{Teacher\+Test\+::\+Teacher\+Test@{Teacher\+Test\+::\+Teacher\+Test}!test\+\_\+data\+\_\+generator@{test\+\_\+data\+\_\+generator}}
+\index{test\+\_\+data\+\_\+generator@{test\+\_\+data\+\_\+generator}!Teacher\+Test\+::\+Teacher\+Test@{Teacher\+Test\+::\+Teacher\+Test}}
+\subsubsection{\texorpdfstring{test\+\_\+data\+\_\+generator()}{test\_data\_generator()}}
+{\footnotesize\ttfamily def Teacher\+Test.\+Teacher\+Test.\+test\+\_\+data\+\_\+generator (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Checks:
+- data_generator should create two episodes from the one dialogue entry
+- data_generator should put the first user on one side of the
+  conversation and the second user on the other side.
+- data_generator should correct parse dialog from dict
+- data_generator should works with context
+\end{DoxyVerb}
+ 
+
+Definition at line 16 of file Teacher\+Test.\+py.
+
+
+\begin{DoxyCode}
+16     \textcolor{keyword}{def }test\_data\_generator(self):
+17         \textcolor{stringliteral}{"""}
+18 \textcolor{stringliteral}{        Checks:}
+19 \textcolor{stringliteral}{        - data\_generator should create two episodes from the one dialogue entry}
+20 \textcolor{stringliteral}{        - data\_generator should put the first user on one side of the}
+21 \textcolor{stringliteral}{          conversation and the second user on the other side.}
+22 \textcolor{stringliteral}{        - data\_generator should correct parse dialog from dict}
+23 \textcolor{stringliteral}{        - data\_generator should works with context}
+24 \textcolor{stringliteral}{        """}
+25         with open(os.path.join(\_\_location\_\_, \textcolor{stringliteral}{'dialogs.fixture.json'})) \textcolor{keyword}{as} data\_file:
+26             dialogs = json.load(data\_file)
+27 
+28         correct\_items = [
+29             ((dialogs[0][\textcolor{stringliteral}{'context'}], [\textcolor{stringliteral}{''}]), \textcolor{keyword}{True}),
+30             ((\textcolor{stringliteral}{'Hello there!'}, [\textcolor{stringliteral}{"Hey, what's up?"}]), \textcolor{keyword}{False}),
+31             ((\textcolor{stringliteral}{'Nothing much. You?'}, [\textcolor{stringliteral}{'Same.'}]), \textcolor{keyword}{False}),
+32             ((\textcolor{stringliteral}{'Some context'}, [\textcolor{stringliteral}{'Hello there!'}]), \textcolor{keyword}{True}),
+33             ((\textcolor{stringliteral}{"Hey, what's up?"}, [\textcolor{stringliteral}{'Nothing much. You?'}]), \textcolor{keyword}{False}),
+34         ]
+35         self.assertListEqual(
+36             [i \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} DefaultTeacher.\_data\_generator(dialogs)], correct\_items
+37         )
+38 
+39 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+tests/tasks/convai\+\_\+chitchat/\hyperlink{TeacherTest_8py}{Teacher\+Test.\+py}\end{DoxyCompactItemize}

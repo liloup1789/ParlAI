@@ -1,0 +1,128 @@
+\hypertarget{namespaceparlai_1_1scripts_1_1interactive}{}\section{parlai.\+scripts.\+interactive Namespace Reference}
+\label{namespaceparlai_1_1scripts_1_1interactive}\index{parlai.\+scripts.\+interactive@{parlai.\+scripts.\+interactive}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1interactive_a873c4ae402aee061884a22139a5a442f}{setup\+\_\+args} (\hyperlink{namespaceparlai_1_1scripts_1_1interactive_af631be047dd505af8c9365e15ed26c16}{parser}=None)
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1interactive_aae322ec752aa32b1304870833db25f13}{interactive} (opt, \hyperlink{namespaceparlai_1_1scripts_1_1interactive_a680885c6952e73c13d84a76689b5822d}{print\+\_\+parser}=None)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1interactive_af631be047dd505af8c9365e15ed26c16}{parser} = \hyperlink{namespaceparlai_1_1scripts_1_1interactive_a873c4ae402aee061884a22139a5a442f}{setup\+\_\+args}()
+\item 
+\hyperlink{namespaceparlai_1_1scripts_1_1interactive_a680885c6952e73c13d84a76689b5822d}{print\+\_\+parser}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1interactive_aae322ec752aa32b1304870833db25f13}\label{namespaceparlai_1_1scripts_1_1interactive_aae322ec752aa32b1304870833db25f13}} 
+\index{parlai\+::scripts\+::interactive@{parlai\+::scripts\+::interactive}!interactive@{interactive}}
+\index{interactive@{interactive}!parlai\+::scripts\+::interactive@{parlai\+::scripts\+::interactive}}
+\subsubsection{\texorpdfstring{interactive()}{interactive()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+interactive.\+interactive (\begin{DoxyParamCaption}\item[{}]{opt,  }\item[{}]{print\+\_\+parser = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 58 of file interactive.\+py.
+
+
+\begin{DoxyCode}
+58 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1self__feeding_1_1interactive_aaebd4c577ab0371c73e8442be469ebab}{interactive}(opt, print\_parser=None):
+59     \textcolor{keywordflow}{if} print\_parser \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+60         \textcolor{keywordflow}{if} print\_parser \textcolor{keywordflow}{is} \textcolor{keyword}{True} \textcolor{keywordflow}{and} isinstance(opt, ParlaiParser):
+61             print\_parser = opt
+62         \textcolor{keywordflow}{elif} print\_parser \textcolor{keywordflow}{is} \textcolor{keyword}{False}:
+63             print\_parser = \textcolor{keywordtype}{None}
+64     \textcolor{keywordflow}{if} isinstance(opt, ParlaiParser):
+65         print(\textcolor{stringliteral}{'[ Deprecated Warning: interactive should be passed opt not Parser ]'})
+66         opt = opt.parse\_args()
+67 
+68     \textcolor{comment}{# Create model and assign it to the specified task}
+69     agent = \hyperlink{namespaceparlai_1_1core_1_1agents_ad0d54074d4bcc148bb415ab5515a53b5}{create\_agent}(opt, requireModelExists=\textcolor{keyword}{True})
+70     human\_agent = LocalHumanAgent(opt)
+71     world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(opt, [human\_agent, agent])
+72 
+73     \textcolor{keywordflow}{if} print\_parser:
+74         \textcolor{comment}{# Show arguments after loading model}
+75         print\_parser.opt = agent.opt
+76         print\_parser.print\_args()
+77 
+78     \textcolor{comment}{# Show some example dialogs:}
+79     \textcolor{keywordflow}{while} \textcolor{keyword}{True}:
+80         world.parley()
+81         \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'display\_examples'}):
+82             print(\textcolor{stringliteral}{"---"})
+83             print(world.display())
+84         \textcolor{keywordflow}{if} world.epoch\_done():
+85             print(\textcolor{stringliteral}{"EPOCH DONE"})
+86             \textcolor{keywordflow}{break}
+87 
+88 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1interactive_a873c4ae402aee061884a22139a5a442f}\label{namespaceparlai_1_1scripts_1_1interactive_a873c4ae402aee061884a22139a5a442f}} 
+\index{parlai\+::scripts\+::interactive@{parlai\+::scripts\+::interactive}!setup\+\_\+args@{setup\+\_\+args}}
+\index{setup\+\_\+args@{setup\+\_\+args}!parlai\+::scripts\+::interactive@{parlai\+::scripts\+::interactive}}
+\subsubsection{\texorpdfstring{setup\+\_\+args()}{setup\_args()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+interactive.\+setup\+\_\+args (\begin{DoxyParamCaption}\item[{}]{parser = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 29 of file interactive.\+py.
+
+
+\begin{DoxyCode}
+29 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1self__feeding_1_1interactive_a2ad3b874d9caef6e76ea41e029b933f0}{setup\_args}(parser=None):
+30     \textcolor{keywordflow}{if} parser \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+31         parser = ParlaiParser(\textcolor{keyword}{True}, \textcolor{keyword}{True}, \textcolor{stringliteral}{'Interactive chat with a model'})
+32     parser.add\_argument(\textcolor{stringliteral}{'-d'}, \textcolor{stringliteral}{'--display-examples'}, type=\textcolor{stringliteral}{'bool'}, default=\textcolor{keyword}{False})
+33     parser.add\_argument(
+34         \textcolor{stringliteral}{'--display-prettify'},
+35         type=\textcolor{stringliteral}{'bool'},
+36         default=\textcolor{keyword}{False},
+37         help=\textcolor{stringliteral}{'Set to use a prettytable when displaying '}
+38         \textcolor{stringliteral}{'examples with text candidates'},
+39     )
+40     parser.add\_argument(
+41         \textcolor{stringliteral}{'--display-ignore-fields'},
+42         type=str,
+43         default=\textcolor{stringliteral}{'label\_candidates,text\_candidates'},
+44         help=\textcolor{stringliteral}{'Do not display these fields'},
+45     )
+46     parser.add\_argument(
+47         \textcolor{stringliteral}{'-it'},
+48         \textcolor{stringliteral}{'--interactive-task'},
+49         type=\textcolor{stringliteral}{'bool'},
+50         default=\textcolor{keyword}{True},
+51         help=\textcolor{stringliteral}{'Create interactive version of task'},
+52     )
+53     parser.set\_defaults(interactive\_mode=\textcolor{keyword}{True}, task=\textcolor{stringliteral}{'interactive'})
+54     LocalHumanAgent.add\_cmdline\_args(parser)
+55     \textcolor{keywordflow}{return} parser
+56 
+57 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1interactive_af631be047dd505af8c9365e15ed26c16}\label{namespaceparlai_1_1scripts_1_1interactive_af631be047dd505af8c9365e15ed26c16}} 
+\index{parlai\+::scripts\+::interactive@{parlai\+::scripts\+::interactive}!parser@{parser}}
+\index{parser@{parser}!parlai\+::scripts\+::interactive@{parlai\+::scripts\+::interactive}}
+\subsubsection{\texorpdfstring{parser}{parser}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+interactive.\+parser = \hyperlink{namespaceparlai_1_1scripts_1_1interactive_a873c4ae402aee061884a22139a5a442f}{setup\+\_\+args}()}
+
+
+
+Definition at line 91 of file interactive.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1interactive_a680885c6952e73c13d84a76689b5822d}\label{namespaceparlai_1_1scripts_1_1interactive_a680885c6952e73c13d84a76689b5822d}} 
+\index{parlai\+::scripts\+::interactive@{parlai\+::scripts\+::interactive}!print\+\_\+parser@{print\+\_\+parser}}
+\index{print\+\_\+parser@{print\+\_\+parser}!parlai\+::scripts\+::interactive@{parlai\+::scripts\+::interactive}}
+\subsubsection{\texorpdfstring{print\+\_\+parser}{print\_parser}}
+{\footnotesize\ttfamily parlai.\+scripts.\+interactive.\+print\+\_\+parser}
+
+
+
+Definition at line 92 of file interactive.\+py.
+

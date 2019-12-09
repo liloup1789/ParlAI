@@ -1,0 +1,379 @@
+\hypertarget{classparlai_1_1core_1_1metrics_1_1Metrics}{}\section{parlai.\+core.\+metrics.\+Metrics Class Reference}
+\label{classparlai_1_1core_1_1metrics_1_1Metrics}\index{parlai.\+core.\+metrics.\+Metrics@{parlai.\+core.\+metrics.\+Metrics}}
+
+
+Inheritance diagram for parlai.\+core.\+metrics.\+Metrics\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{da/d27/classparlai_1_1core_1_1metrics_1_1Metrics__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+core.\+metrics.\+Metrics\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{dd/d46/classparlai_1_1core_1_1metrics_1_1Metrics__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1core_1_1metrics_1_1Metrics_a58ecf4b635e97145e7cea37acac9f8d8}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, opt)
+\item 
+def \hyperlink{classparlai_1_1core_1_1metrics_1_1Metrics_a3d15255e3daf76e9aeabd23c94f879cf}{\+\_\+\+\_\+str\+\_\+\+\_\+} (self)
+\item 
+def \hyperlink{classparlai_1_1core_1_1metrics_1_1Metrics_a652e6f48f5754c1365f18a7f2c86353b}{\+\_\+\+\_\+repr\+\_\+\+\_\+} (self)
+\item 
+def \hyperlink{classparlai_1_1core_1_1metrics_1_1Metrics_ab1a5a659f2c5747af5d0b674dc647742}{update} (self, observation, labels)
+\item 
+def \hyperlink{classparlai_1_1core_1_1metrics_1_1Metrics_ae96ffa8a0a1044cdcfcf6cf15fa139ee}{report} (self)
+\item 
+def \hyperlink{classparlai_1_1core_1_1metrics_1_1Metrics_a72759455e9d5ebab2775aed1fa7f952a}{clear} (self)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1core_1_1metrics_1_1Metrics_ad4d95ce9a2d1fdecf7fd9ef7cf282a15}{metrics}
+\item 
+\hyperlink{classparlai_1_1core_1_1metrics_1_1Metrics_ae0d3620f86dd5cd08e4d1c097ac6dde4}{metrics\+\_\+list}
+\item 
+\hyperlink{classparlai_1_1core_1_1metrics_1_1Metrics_a6bf169112945fa8e28547e8c4464b5d6}{eval\+\_\+pr}
+\item 
+\hyperlink{classparlai_1_1core_1_1metrics_1_1Metrics_a8075a929d40c06f5bbae755b98126c71}{flags}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Class that maintains evaluation metrics over dialog.
+\end{DoxyVerb}
+ 
+
+Definition at line 248 of file metrics.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1core_1_1metrics_1_1Metrics_a58ecf4b635e97145e7cea37acac9f8d8}\label{classparlai_1_1core_1_1metrics_1_1Metrics_a58ecf4b635e97145e7cea37acac9f8d8}} 
+\index{parlai\+::core\+::metrics\+::\+Metrics@{parlai\+::core\+::metrics\+::\+Metrics}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::core\+::metrics\+::\+Metrics@{parlai\+::core\+::metrics\+::\+Metrics}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+core.\+metrics.\+Metrics.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 253 of file metrics.\+py.
+
+
+\begin{DoxyCode}
+253     \textcolor{keyword}{def }\_\_init\_\_(self, opt):
+254         self.metrics = \{\}
+255         self.metrics[\textcolor{stringliteral}{'cnt'}] = 0
+256         self.metrics\_list = set()
+257         optional\_metrics\_list = []
+258         metrics\_arg = opt.get(\textcolor{stringliteral}{'metrics'}, \textcolor{stringliteral}{'default'})
+259         \textcolor{keywordflow}{if} metrics\_arg == \textcolor{stringliteral}{'default'}:
+260             optional\_metrics\_list = DEFAULT\_METRICS
+261         \textcolor{keywordflow}{elif} metrics\_arg == \textcolor{stringliteral}{'all'}:
+262             optional\_metrics\_list = ALL\_METRICS
+263         \textcolor{keywordflow}{else}:
+264             optional\_metrics\_list = set(metrics\_arg.split(\textcolor{stringliteral}{','}))
+265             optional\_metrics\_list.add(\textcolor{stringliteral}{'correct'})
+266         \textcolor{keywordflow}{for} each\_m \textcolor{keywordflow}{in} optional\_metrics\_list:
+267             \textcolor{keywordflow}{if} each\_m.startswith(\textcolor{stringliteral}{'rouge'}):
+268                 \textcolor{keywordflow}{if} rouge \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+269                     \textcolor{comment}{# only compute rouge if rouge is available}
+270                     self.metrics\_list.add(each\_m)
+271             \textcolor{keywordflow}{elif} each\_m == \textcolor{stringliteral}{'bleu'} \textcolor{keywordflow}{and} nltkbleu \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+272                 \textcolor{comment}{# only compute bleu if bleu is available}
+273                 \textcolor{keywordflow}{pass}
+274             \textcolor{keywordflow}{else}:
+275                 self.metrics\_list.add(each\_m)
+276         self.\_print\_metrics\_list = (
+277             self.metrics\_list
+278             \textcolor{keywordflow}{if} \textcolor{stringliteral}{'rouge'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.metrics\_list
+279             \textcolor{keywordflow}{else} self.metrics\_list | ROUGE\_METRICS
+280         )
+281         \textcolor{keywordflow}{for} k \textcolor{keywordflow}{in} self.\_print\_metrics\_list:
+282             self.metrics[k] = 0.0
+283             self.metrics[k + \textcolor{stringliteral}{'\_cnt'}] = 0
+284         self.eval\_pr = [1, 5, 10, 100]
+285         \textcolor{keywordflow}{for} k \textcolor{keywordflow}{in} self.eval\_pr:
+286             self.metrics[\textcolor{stringliteral}{'hits@'} + \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(k)] = 0
+287         self.metrics[\textcolor{stringliteral}{'hits@\_cnt'}] = 0
+288         self.flags = \{\textcolor{stringliteral}{'has\_text\_cands'}: \textcolor{keyword}{False}, \textcolor{stringliteral}{'print\_prediction\_metrics'}: \textcolor{keyword}{False}\}
+289         \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'numthreads'}, 1) > 1:
+290             self.metrics = SharedTable(self.metrics)
+291             self.flags = SharedTable(self.flags)
+292 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1core_1_1metrics_1_1Metrics_a652e6f48f5754c1365f18a7f2c86353b}\label{classparlai_1_1core_1_1metrics_1_1Metrics_a652e6f48f5754c1365f18a7f2c86353b}} 
+\index{parlai\+::core\+::metrics\+::\+Metrics@{parlai\+::core\+::metrics\+::\+Metrics}!\+\_\+\+\_\+repr\+\_\+\+\_\+@{\+\_\+\+\_\+repr\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+repr\+\_\+\+\_\+@{\+\_\+\+\_\+repr\+\_\+\+\_\+}!parlai\+::core\+::metrics\+::\+Metrics@{parlai\+::core\+::metrics\+::\+Metrics}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+repr\+\_\+\+\_\+()}{\_\_repr\_\_()}}
+{\footnotesize\ttfamily def parlai.\+core.\+metrics.\+Metrics.\+\_\+\+\_\+repr\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 296 of file metrics.\+py.
+
+
+\begin{DoxyCode}
+296     \textcolor{keyword}{def }\_\_repr\_\_(self):
+297         representation = super().\_\_repr\_\_()
+298         \textcolor{keywordflow}{return} representation.replace(\textcolor{stringliteral}{'>'}, \textcolor{stringliteral}{': \{\}>'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(repr(self.metrics)))
+299 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1core_1_1metrics_1_1Metrics_a3d15255e3daf76e9aeabd23c94f879cf}\label{classparlai_1_1core_1_1metrics_1_1Metrics_a3d15255e3daf76e9aeabd23c94f879cf}} 
+\index{parlai\+::core\+::metrics\+::\+Metrics@{parlai\+::core\+::metrics\+::\+Metrics}!\+\_\+\+\_\+str\+\_\+\+\_\+@{\+\_\+\+\_\+str\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+str\+\_\+\+\_\+@{\+\_\+\+\_\+str\+\_\+\+\_\+}!parlai\+::core\+::metrics\+::\+Metrics@{parlai\+::core\+::metrics\+::\+Metrics}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+str\+\_\+\+\_\+()}{\_\_str\_\_()}}
+{\footnotesize\ttfamily def parlai.\+core.\+metrics.\+Metrics.\+\_\+\+\_\+str\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 293 of file metrics.\+py.
+
+
+\begin{DoxyCode}
+293     \textcolor{keyword}{def }\_\_str\_\_(self):
+294         \textcolor{keywordflow}{return} \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(self.metrics)
+295 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1core_1_1metrics_1_1Metrics_a72759455e9d5ebab2775aed1fa7f952a}\label{classparlai_1_1core_1_1metrics_1_1Metrics_a72759455e9d5ebab2775aed1fa7f952a}} 
+\index{parlai\+::core\+::metrics\+::\+Metrics@{parlai\+::core\+::metrics\+::\+Metrics}!clear@{clear}}
+\index{clear@{clear}!parlai\+::core\+::metrics\+::\+Metrics@{parlai\+::core\+::metrics\+::\+Metrics}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily def parlai.\+core.\+metrics.\+Metrics.\+clear (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Clear all the metrics.
+\end{DoxyVerb}
+ 
+
+Definition at line 447 of file metrics.\+py.
+
+
+\begin{DoxyCode}
+447     \textcolor{keyword}{def }clear(self):
+448         \textcolor{stringliteral}{"""}
+449 \textcolor{stringliteral}{        Clear all the metrics.}
+450 \textcolor{stringliteral}{        """}
+451         \textcolor{comment}{# TODO: rename to reset for consistency with rest of ParlAI}
+452         with self.\_lock():
+453             self.metrics[\textcolor{stringliteral}{'cnt'}] = 0
+454             metrics\_list = (
+455                 self.metrics\_list
+456                 \textcolor{keywordflow}{if} \textcolor{stringliteral}{'rouge'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.metrics\_list
+457                 \textcolor{keywordflow}{else} self.metrics\_list | ROUGE\_METRICS
+458             )
+459             \textcolor{keywordflow}{for} k \textcolor{keywordflow}{in} metrics\_list:
+460                 v = self.metrics[k]
+461                 v\_typ = \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(v)
+462                 \textcolor{keywordflow}{if} \textcolor{stringliteral}{'Tensor'} \textcolor{keywordflow}{in} \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(v\_typ):
+463                     self.metrics[k].zero\_()
+464                 \textcolor{keywordflow}{if} isinstance(v, int):
+465                     self.metrics[k] = 0
+466                 \textcolor{keywordflow}{else}:
+467                     self.metrics[k] = 0.0
+468                 self.metrics[k + \textcolor{stringliteral}{'\_cnt'}] = 0
+469             \textcolor{keywordflow}{for} k \textcolor{keywordflow}{in} self.eval\_pr:
+470                 self.metrics[\textcolor{stringliteral}{'hits@'} + \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(k)] = 0
+471             self.metrics[\textcolor{stringliteral}{'hits@\_cnt'}] = 0
+472 \end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1core_1_1metrics_1_1Metrics_ae96ffa8a0a1044cdcfcf6cf15fa139ee}\label{classparlai_1_1core_1_1metrics_1_1Metrics_ae96ffa8a0a1044cdcfcf6cf15fa139ee}} 
+\index{parlai\+::core\+::metrics\+::\+Metrics@{parlai\+::core\+::metrics\+::\+Metrics}!report@{report}}
+\index{report@{report}!parlai\+::core\+::metrics\+::\+Metrics@{parlai\+::core\+::metrics\+::\+Metrics}}
+\subsubsection{\texorpdfstring{report()}{report()}}
+{\footnotesize\ttfamily def parlai.\+core.\+metrics.\+Metrics.\+report (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Report the metrics over all data seen so far.
+\end{DoxyVerb}
+ 
+
+Definition at line 416 of file metrics.\+py.
+
+
+\begin{DoxyCode}
+416     \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}(self):
+417         \textcolor{stringliteral}{"""}
+418 \textcolor{stringliteral}{        Report the metrics over all data seen so far.}
+419 \textcolor{stringliteral}{        """}
+420         m = \{\}
+421         total = self.metrics[\textcolor{stringliteral}{'cnt'}]
+422         m[\textcolor{stringliteral}{'exs'}] = total
+423         \textcolor{keywordflow}{if} total > 0:
+424             \textcolor{keywordflow}{if} self.flags[\textcolor{stringliteral}{'print\_prediction\_metrics'}]:
+425                 \textcolor{keywordflow}{if} \textcolor{stringliteral}{'accuracy'} \textcolor{keywordflow}{in} self.metrics\_list:
+426                     m[\textcolor{stringliteral}{'accuracy'}] = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_af377ec61bfc0423461e7b409ffc883b9}{round\_sigfigs}(
+427                         self.metrics[\textcolor{stringliteral}{'correct'}] / max(1, self.metrics[\textcolor{stringliteral}{'correct\_cnt'}]), 4
+428                     )
+429                 \textcolor{keywordflow}{if} \textcolor{stringliteral}{'f1'} \textcolor{keywordflow}{in} self.metrics\_list:
+430                     m[\textcolor{stringliteral}{'f1'}] = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_af377ec61bfc0423461e7b409ffc883b9}{round\_sigfigs}(
+431                         self.metrics[\textcolor{stringliteral}{'f1'}] / max(1, self.metrics[\textcolor{stringliteral}{'f1\_cnt'}]), 4
+432                     )
+433             \textcolor{keywordflow}{if} self.flags[\textcolor{stringliteral}{'has\_text\_cands'}]:
+434                 \textcolor{keywordflow}{for} k \textcolor{keywordflow}{in} self.eval\_pr:
+435                     m[\textcolor{stringliteral}{'hits@'} + \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(k)] = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_af377ec61bfc0423461e7b409ffc883b9}{round\_sigfigs}(
+436                         self.metrics[\textcolor{stringliteral}{'hits@'} + \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(k)]
+437                         / max(1, self.metrics[\textcolor{stringliteral}{'hits@\_cnt'}]),
+438                         3,
+439                     )
+440             \textcolor{keywordflow}{for} k \textcolor{keywordflow}{in} self.\_print\_metrics\_list:
+441                 \textcolor{keywordflow}{if} self.metrics[k + \textcolor{stringliteral}{'\_cnt'}] > 0 \textcolor{keywordflow}{and} k != \textcolor{stringliteral}{'correct'} \textcolor{keywordflow}{and} k != \textcolor{stringliteral}{'f1'}:
+442                     m[k] = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_af377ec61bfc0423461e7b409ffc883b9}{round\_sigfigs}(
+443                         self.metrics[k] / max(1, self.metrics[k + \textcolor{stringliteral}{'\_cnt'}]), 4
+444                     )
+445         \textcolor{keywordflow}{return} m
+446 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1core_1_1metrics_1_1Metrics_ab1a5a659f2c5747af5d0b674dc647742}\label{classparlai_1_1core_1_1metrics_1_1Metrics_ab1a5a659f2c5747af5d0b674dc647742}} 
+\index{parlai\+::core\+::metrics\+::\+Metrics@{parlai\+::core\+::metrics\+::\+Metrics}!update@{update}}
+\index{update@{update}!parlai\+::core\+::metrics\+::\+Metrics@{parlai\+::core\+::metrics\+::\+Metrics}}
+\subsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily def parlai.\+core.\+metrics.\+Metrics.\+update (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{observation,  }\item[{}]{labels }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Update metrics based on an observation and true labels.
+\end{DoxyVerb}
+ 
+
+Definition at line 335 of file metrics.\+py.
+
+
+\begin{DoxyCode}
+335     \textcolor{keyword}{def }update(self, observation, labels):
+336         \textcolor{stringliteral}{"""}
+337 \textcolor{stringliteral}{        Update metrics based on an observation and true labels.}
+338 \textcolor{stringliteral}{        """}
+339         with self.\_lock():
+340             self.metrics[\textcolor{stringliteral}{'cnt'}] += 1
+341 
+342         \textcolor{comment}{# Exact match metric.}
+343         correct = 0
+344         prediction = observation.get(\textcolor{stringliteral}{'text'}, \textcolor{keywordtype}{None})
+345         \textcolor{keywordflow}{if} prediction \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+346             \textcolor{keywordflow}{if} \_exact\_match(prediction, labels):
+347                 correct = 1
+348             with self.\_lock():
+349                 self.flags[\textcolor{stringliteral}{'print\_prediction\_metrics'}] = \textcolor{keyword}{True}
+350                 self.metrics[\textcolor{stringliteral}{'correct'}] += correct
+351                 self.metrics[\textcolor{stringliteral}{'correct\_cnt'}] += 1
+352 
+353             \textcolor{comment}{# F1 and BLEU metrics.}
+354             \textcolor{keywordflow}{if} \textcolor{stringliteral}{'f1'} \textcolor{keywordflow}{in} self.metrics\_list:
+355                 f1 = \_f1\_score(prediction, labels)
+356             bleu\_scores = \{\}
+357             rouge1 = rouge2 = rougeL = \textcolor{keywordtype}{None}
+358             \textcolor{keywordflow}{if} \textcolor{stringliteral}{'bleu-4'} \textcolor{keywordflow}{in} self.metrics\_list:
+359                 bleu\_scores[\textcolor{stringliteral}{'bleu-4'}] = \_bleu(prediction, labels)
+360             \textcolor{keywordflow}{if} \textcolor{stringliteral}{'bleu-1'} \textcolor{keywordflow}{in} self.metrics\_list:
+361                 \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(3):
+362                     weights = [1 / (i + 1) \textcolor{keywordflow}{for} \_ \textcolor{keywordflow}{in} range(i + 1)]
+363                     bleu\_scores[f\textcolor{stringliteral}{'bleu-\{i + 1\}'}] = \_bleu(prediction, labels, weights)
+364             \textcolor{keywordflow}{if} \textcolor{stringliteral}{'rouge-L'} \textcolor{keywordflow}{in} self.metrics\_list:
+365                 rouge1, rouge2, rougeL = \_rouge(prediction, labels)
+366             with self.\_lock():
+367                 \textcolor{keywordflow}{if} \textcolor{stringliteral}{'f1'} \textcolor{keywordflow}{in} self.metrics:
+368                     self.metrics[\textcolor{stringliteral}{'f1'}] += f1
+369                     self.metrics[\textcolor{stringliteral}{'f1\_cnt'}] += 1
+370                 \textcolor{keywordflow}{if} \textcolor{stringliteral}{'bleu-4'} \textcolor{keywordflow}{in} self.metrics:
+371                     self.metrics[\textcolor{stringliteral}{'bleu-4'}] += bleu\_scores.pop(\textcolor{stringliteral}{'bleu-4'})
+372                     self.metrics[\textcolor{stringliteral}{'bleu-4\_cnt'}] += 1
+373                 \textcolor{keywordflow}{if} \textcolor{stringliteral}{'bleu-1'} \textcolor{keywordflow}{in} self.metrics:
+374                     \textcolor{keywordflow}{for} b, b\_score \textcolor{keywordflow}{in} bleu\_scores.items():
+375                         self.metrics[b] += b\_score
+376                         self.metrics[f\textcolor{stringliteral}{'\{b\}\_cnt'}] += 1
+377                 \textcolor{keywordflow}{if} \textcolor{stringliteral}{'rouge-L'} \textcolor{keywordflow}{in} self.metrics \textcolor{keywordflow}{and} rouge1 \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+378                     self.metrics[\textcolor{stringliteral}{'rouge-1'}] += rouge1
+379                     self.metrics[\textcolor{stringliteral}{'rouge-1\_cnt'}] += 1
+380                     self.metrics[\textcolor{stringliteral}{'rouge-2'}] += rouge2
+381                     self.metrics[\textcolor{stringliteral}{'rouge-2\_cnt'}] += 1
+382                     self.metrics[\textcolor{stringliteral}{'rouge-L'}] += rougeL
+383                     self.metrics[\textcolor{stringliteral}{'rouge-L\_cnt'}] += 1
+384 
+385         \textcolor{comment}{# Ranking metrics.}
+386         self.\_update\_ranking\_metrics(observation, labels)
+387 
+388         \textcolor{comment}{# User-reported metrics}
+389         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'metrics'} \textcolor{keywordflow}{in} observation:
+390             \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} observation[\textcolor{stringliteral}{'metrics'}].items():
+391                 \textcolor{keywordflow}{if} k \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} ALL\_METRICS \textcolor{keywordflow}{and} k != \textcolor{stringliteral}{'rouge'}:
+392                     \textcolor{keywordflow}{if} k \textcolor{keywordflow}{in} self.metrics\_list:
+393                         with self.\_lock():
+394                             self.metrics[k] += v
+395                             self.metrics[k + \textcolor{stringliteral}{'\_cnt'}] += 1
+396                     \textcolor{keywordflow}{else}:
+397                         \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(self.metrics) \textcolor{keywordflow}{is} SharedTable:
+398                             \textcolor{comment}{# can't share custom metrics during hogwild}
+399                             \textcolor{keywordflow}{pass}
+400                         \textcolor{keywordflow}{else}:
+401                             \textcolor{comment}{# no need to lock because not SharedTable}
+402                             \textcolor{keywordflow}{if} k \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.metrics:
+403                                 self.metrics[k] = v
+404                                 self.metrics\_list.add(k)
+405                                 self.metrics[k + \textcolor{stringliteral}{'\_cnt'}] = 1.0
+406                             \textcolor{keywordflow}{else}:
+407                                 self.metrics[k] += v
+408 
+409         \textcolor{comment}{# Return a dict containing the metrics for this specific example.}
+410         \textcolor{comment}{# Metrics across all data is stored internally in the class, and}
+411         \textcolor{comment}{# can be accessed with the report method.}
+412         loss = \{\}
+413         loss[\textcolor{stringliteral}{'correct'}] = correct
+414         \textcolor{keywordflow}{return} loss
+415 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1core_1_1metrics_1_1Metrics_a6bf169112945fa8e28547e8c4464b5d6}\label{classparlai_1_1core_1_1metrics_1_1Metrics_a6bf169112945fa8e28547e8c4464b5d6}} 
+\index{parlai\+::core\+::metrics\+::\+Metrics@{parlai\+::core\+::metrics\+::\+Metrics}!eval\+\_\+pr@{eval\+\_\+pr}}
+\index{eval\+\_\+pr@{eval\+\_\+pr}!parlai\+::core\+::metrics\+::\+Metrics@{parlai\+::core\+::metrics\+::\+Metrics}}
+\subsubsection{\texorpdfstring{eval\+\_\+pr}{eval\_pr}}
+{\footnotesize\ttfamily parlai.\+core.\+metrics.\+Metrics.\+eval\+\_\+pr}
+
+
+
+Definition at line 284 of file metrics.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1core_1_1metrics_1_1Metrics_a8075a929d40c06f5bbae755b98126c71}\label{classparlai_1_1core_1_1metrics_1_1Metrics_a8075a929d40c06f5bbae755b98126c71}} 
+\index{parlai\+::core\+::metrics\+::\+Metrics@{parlai\+::core\+::metrics\+::\+Metrics}!flags@{flags}}
+\index{flags@{flags}!parlai\+::core\+::metrics\+::\+Metrics@{parlai\+::core\+::metrics\+::\+Metrics}}
+\subsubsection{\texorpdfstring{flags}{flags}}
+{\footnotesize\ttfamily parlai.\+core.\+metrics.\+Metrics.\+flags}
+
+
+
+Definition at line 288 of file metrics.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1core_1_1metrics_1_1Metrics_ad4d95ce9a2d1fdecf7fd9ef7cf282a15}\label{classparlai_1_1core_1_1metrics_1_1Metrics_ad4d95ce9a2d1fdecf7fd9ef7cf282a15}} 
+\index{parlai\+::core\+::metrics\+::\+Metrics@{parlai\+::core\+::metrics\+::\+Metrics}!metrics@{metrics}}
+\index{metrics@{metrics}!parlai\+::core\+::metrics\+::\+Metrics@{parlai\+::core\+::metrics\+::\+Metrics}}
+\subsubsection{\texorpdfstring{metrics}{metrics}}
+{\footnotesize\ttfamily parlai.\+core.\+metrics.\+Metrics.\+metrics}
+
+
+
+Definition at line 254 of file metrics.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1core_1_1metrics_1_1Metrics_ae0d3620f86dd5cd08e4d1c097ac6dde4}\label{classparlai_1_1core_1_1metrics_1_1Metrics_ae0d3620f86dd5cd08e4d1c097ac6dde4}} 
+\index{parlai\+::core\+::metrics\+::\+Metrics@{parlai\+::core\+::metrics\+::\+Metrics}!metrics\+\_\+list@{metrics\+\_\+list}}
+\index{metrics\+\_\+list@{metrics\+\_\+list}!parlai\+::core\+::metrics\+::\+Metrics@{parlai\+::core\+::metrics\+::\+Metrics}}
+\subsubsection{\texorpdfstring{metrics\+\_\+list}{metrics\_list}}
+{\footnotesize\ttfamily parlai.\+core.\+metrics.\+Metrics.\+metrics\+\_\+list}
+
+
+
+Definition at line 256 of file metrics.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/core/\hyperlink{metrics_8py}{metrics.\+py}\end{DoxyCompactItemize}

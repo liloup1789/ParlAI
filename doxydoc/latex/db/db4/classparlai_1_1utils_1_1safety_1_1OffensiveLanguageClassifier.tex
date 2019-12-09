@@ -1,0 +1,137 @@
+\hypertarget{classparlai_1_1utils_1_1safety_1_1OffensiveLanguageClassifier}{}\section{parlai.\+utils.\+safety.\+Offensive\+Language\+Classifier Class Reference}
+\label{classparlai_1_1utils_1_1safety_1_1OffensiveLanguageClassifier}\index{parlai.\+utils.\+safety.\+Offensive\+Language\+Classifier@{parlai.\+utils.\+safety.\+Offensive\+Language\+Classifier}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1utils_1_1safety_1_1OffensiveLanguageClassifier_a93630f9592ceded8584a09a0b9553ab5}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1safety_1_1OffensiveLanguageClassifier_a7f4e833bea93ab9f920f2dd2a4b6e586}{contains\+\_\+offensive\+\_\+language} (self, text)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1safety_1_1OffensiveLanguageClassifier_a86de8f64f68732b91d4cdfdf65dd841c}{\+\_\+\+\_\+contains\+\_\+\+\_\+} (self, key)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1utils_1_1safety_1_1OffensiveLanguageClassifier_a917240edc6718f3b7f3560214780ac9d}{model}
+\item 
+\hyperlink{classparlai_1_1utils_1_1safety_1_1OffensiveLanguageClassifier_a4230d2f45693c00e565fa90d7bae2d2a}{classes}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Load model trained to detect offensive language in the context of single- turn
+dialogue utterances.
+
+This model was trained to be robust to adversarial examples created by humans. See
+<http://parl.ai/projects/dialogue_safety/> for more information.
+\end{DoxyVerb}
+ 
+
+Definition at line 19 of file safety.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1safety_1_1OffensiveLanguageClassifier_a93630f9592ceded8584a09a0b9553ab5}\label{classparlai_1_1utils_1_1safety_1_1OffensiveLanguageClassifier_a93630f9592ceded8584a09a0b9553ab5}} 
+\index{parlai\+::utils\+::safety\+::\+Offensive\+Language\+Classifier@{parlai\+::utils\+::safety\+::\+Offensive\+Language\+Classifier}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::utils\+::safety\+::\+Offensive\+Language\+Classifier@{parlai\+::utils\+::safety\+::\+Offensive\+Language\+Classifier}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+safety.\+Offensive\+Language\+Classifier.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 28 of file safety.\+py.
+
+
+\begin{DoxyCode}
+28     \textcolor{keyword}{def }\_\_init\_\_(self):
+29         self.model = self.\_create\_safety\_model()
+30         self.classes = \{OK\_CLASS: \textcolor{keyword}{False}, NOT\_OK\_CLASS: \textcolor{keyword}{True}\}
+31 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1safety_1_1OffensiveLanguageClassifier_a86de8f64f68732b91d4cdfdf65dd841c}\label{classparlai_1_1utils_1_1safety_1_1OffensiveLanguageClassifier_a86de8f64f68732b91d4cdfdf65dd841c}} 
+\index{parlai\+::utils\+::safety\+::\+Offensive\+Language\+Classifier@{parlai\+::utils\+::safety\+::\+Offensive\+Language\+Classifier}!\+\_\+\+\_\+contains\+\_\+\+\_\+@{\+\_\+\+\_\+contains\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+contains\+\_\+\+\_\+@{\+\_\+\+\_\+contains\+\_\+\+\_\+}!parlai\+::utils\+::safety\+::\+Offensive\+Language\+Classifier@{parlai\+::utils\+::safety\+::\+Offensive\+Language\+Classifier}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+contains\+\_\+\+\_\+()}{\_\_contains\_\_()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+safety.\+Offensive\+Language\+Classifier.\+\_\+\+\_\+contains\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{key }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}A simple way of checking whether the model classifies an utterance as offensive.
+
+Returns True if the input phrase is offensive.
+\end{DoxyVerb}
+ 
+
+Definition at line 56 of file safety.\+py.
+
+
+\begin{DoxyCode}
+56     \textcolor{keyword}{def }\_\_contains\_\_(self, key):
+57         \textcolor{stringliteral}{"""}
+58 \textcolor{stringliteral}{        A simple way of checking whether the model classifies an utterance as offensive.}
+59 \textcolor{stringliteral}{}
+60 \textcolor{stringliteral}{        Returns True if the input phrase is offensive.}
+61 \textcolor{stringliteral}{        """}
+62         pred\_not\_ok, prob = self.contains\_offensive\_language(key)
+63         \textcolor{keywordflow}{return} pred\_not\_ok
+64 
+65 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1safety_1_1OffensiveLanguageClassifier_a7f4e833bea93ab9f920f2dd2a4b6e586}\label{classparlai_1_1utils_1_1safety_1_1OffensiveLanguageClassifier_a7f4e833bea93ab9f920f2dd2a4b6e586}} 
+\index{parlai\+::utils\+::safety\+::\+Offensive\+Language\+Classifier@{parlai\+::utils\+::safety\+::\+Offensive\+Language\+Classifier}!contains\+\_\+offensive\+\_\+language@{contains\+\_\+offensive\+\_\+language}}
+\index{contains\+\_\+offensive\+\_\+language@{contains\+\_\+offensive\+\_\+language}!parlai\+::utils\+::safety\+::\+Offensive\+Language\+Classifier@{parlai\+::utils\+::safety\+::\+Offensive\+Language\+Classifier}}
+\subsubsection{\texorpdfstring{contains\+\_\+offensive\+\_\+language()}{contains\_offensive\_language()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+safety.\+Offensive\+Language\+Classifier.\+contains\+\_\+offensive\+\_\+language (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{text }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Returns the probability that a message is safe according to the classifier.
+\end{DoxyVerb}
+ 
+
+Definition at line 43 of file safety.\+py.
+
+
+\begin{DoxyCode}
+43     \textcolor{keyword}{def }contains\_offensive\_language(self, text):
+44         \textcolor{stringliteral}{"""}
+45 \textcolor{stringliteral}{        Returns the probability that a message is safe according to the classifier.}
+46 \textcolor{stringliteral}{        """}
+47         act = \{\textcolor{stringliteral}{'text'}: text, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}
+48         self.model.observe(act)
+49         response = self.model.act()[\textcolor{stringliteral}{'text'}]
+50         pred\_class, prob = [x.split(\textcolor{stringliteral}{': '})[-1] \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} response.split(\textcolor{stringliteral}{'\(\backslash\)n'})]
+51         pred\_not\_ok = self.classes[pred\_class]  \textcolor{comment}{# check whether classified as NOT OK}
+52         prob = \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(prob)  \textcolor{comment}{# cast string to float}
+53 
+54         \textcolor{keywordflow}{return} pred\_not\_ok, prob
+55 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1safety_1_1OffensiveLanguageClassifier_a4230d2f45693c00e565fa90d7bae2d2a}\label{classparlai_1_1utils_1_1safety_1_1OffensiveLanguageClassifier_a4230d2f45693c00e565fa90d7bae2d2a}} 
+\index{parlai\+::utils\+::safety\+::\+Offensive\+Language\+Classifier@{parlai\+::utils\+::safety\+::\+Offensive\+Language\+Classifier}!classes@{classes}}
+\index{classes@{classes}!parlai\+::utils\+::safety\+::\+Offensive\+Language\+Classifier@{parlai\+::utils\+::safety\+::\+Offensive\+Language\+Classifier}}
+\subsubsection{\texorpdfstring{classes}{classes}}
+{\footnotesize\ttfamily parlai.\+utils.\+safety.\+Offensive\+Language\+Classifier.\+classes}
+
+
+
+Definition at line 30 of file safety.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1utils_1_1safety_1_1OffensiveLanguageClassifier_a917240edc6718f3b7f3560214780ac9d}\label{classparlai_1_1utils_1_1safety_1_1OffensiveLanguageClassifier_a917240edc6718f3b7f3560214780ac9d}} 
+\index{parlai\+::utils\+::safety\+::\+Offensive\+Language\+Classifier@{parlai\+::utils\+::safety\+::\+Offensive\+Language\+Classifier}!model@{model}}
+\index{model@{model}!parlai\+::utils\+::safety\+::\+Offensive\+Language\+Classifier@{parlai\+::utils\+::safety\+::\+Offensive\+Language\+Classifier}}
+\subsubsection{\texorpdfstring{model}{model}}
+{\footnotesize\ttfamily parlai.\+utils.\+safety.\+Offensive\+Language\+Classifier.\+model}
+
+
+
+Definition at line 29 of file safety.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/utils/\hyperlink{safety_8py}{safety.\+py}\end{DoxyCompactItemize}

@@ -1,0 +1,60 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1personality__captions_1_1build}{}\section{parlai.\+tasks.\+personality\+\_\+captions.\+build Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1personality__captions_1_1build}\index{parlai.\+tasks.\+personality\+\_\+captions.\+build@{parlai.\+tasks.\+personality\+\_\+captions.\+build}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1personality__captions_1_1build_a74a7207f7a37bbac7c1f1b17bb5a2080}{build} (opt)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceparlai_1_1tasks_1_1personality__captions_1_1build_a01ca1cbf21a409d302ebcc1df913dcbb}{R\+E\+S\+O\+U\+R\+C\+ES}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1personality__captions_1_1build_a74a7207f7a37bbac7c1f1b17bb5a2080}\label{namespaceparlai_1_1tasks_1_1personality__captions_1_1build_a74a7207f7a37bbac7c1f1b17bb5a2080}} 
+\index{parlai\+::tasks\+::personality\+\_\+captions\+::build@{parlai\+::tasks\+::personality\+\_\+captions\+::build}!build@{build}}
+\index{build@{build}!parlai\+::tasks\+::personality\+\_\+captions\+::build@{parlai\+::tasks\+::personality\+\_\+captions\+::build}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+personality\+\_\+captions.\+build.\+build (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 18 of file build.\+py.
+
+
+\begin{DoxyCode}
+18 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
+19     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'personality\_captions'})
+20     image\_path = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'yfcc\_images'})
+21     version = \textcolor{stringliteral}{'2.0'}
+22     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version):
+23         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+24         \textcolor{keywordflow}{if} build\_data.built(dpath):
+25             \textcolor{comment}{# An older version exists, so remove these outdated files.}
+26             build\_data.remove\_dir(dpath)
+27         build\_data.make\_dir(dpath)
+28 
+29         \textcolor{comment}{# Download the data.}
+30         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES:
+31             downloadable\_file.download\_file(dpath)
+32 
+33         build\_data.mark\_done(dpath, version)
+34 
+35     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(image\_path, version) \textcolor{keywordflow}{and} \textcolor{keywordflow}{not} opt.get(\textcolor{stringliteral}{'yfcc\_path'}):
+36         \hyperlink{namespaceparlai_1_1tasks_1_1personality__captions_1_1download__images_a9d812a095ca6d48541b3d5cdc65a4bf3}{download\_images}(opt)
+37 \end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1personality__captions_1_1build_a01ca1cbf21a409d302ebcc1df913dcbb}\label{namespaceparlai_1_1tasks_1_1personality__captions_1_1build_a01ca1cbf21a409d302ebcc1df913dcbb}} 
+\index{parlai\+::tasks\+::personality\+\_\+captions\+::build@{parlai\+::tasks\+::personality\+\_\+captions\+::build}!R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}}
+\index{R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}!parlai\+::tasks\+::personality\+\_\+captions\+::build@{parlai\+::tasks\+::personality\+\_\+captions\+::build}}
+\subsubsection{\texorpdfstring{R\+E\+S\+O\+U\+R\+C\+ES}{RESOURCES}}
+{\footnotesize\ttfamily parlai.\+tasks.\+personality\+\_\+captions.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
+
+
+
+Definition at line 9 of file build.\+py.
+

@@ -1,0 +1,338 @@
+\hypertarget{namespaceparlai_1_1scripts_1_1Cologne2fb}{}\section{parlai.\+scripts.\+Cologne2fb Namespace Reference}
+\label{namespaceparlai_1_1scripts_1_1Cologne2fb}\index{parlai.\+scripts.\+Cologne2fb@{parlai.\+scripts.\+Cologne2fb}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_ac765067cc58a95632761e7cf25d552ca}{state0} (current)
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_a54d10b54a93975b9903bd789aa2b5b91}{state1} (current)
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_afdd76596097051e6d1580703a4f2abe8}{finalstate} (current\+\_\+state, turn, \hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_a9cdaab7c6b5d02bcf42de03da00fa817}{conv})
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_a0769ed4e08e090e651516d1c4dd50b39}{find\+\_\+current} (elem)
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_a1600997b7fde85c597ea9ec986997276}{converter} (\hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_a9cdaab7c6b5d02bcf42de03da00fa817}{conv})
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_aada34019571fe1ff9ae0a5fc8bf03c67}{printer} (\hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_a9cdaab7c6b5d02bcf42de03da00fa817}{conv})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_a2c2775ea3b77b08039c44de9db5e2302}{user}
+\item 
+\hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_a2daa0c10243dae832a8f536c1af3f401}{bot}
+\item 
+\hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_a9cdaab7c6b5d02bcf42de03da00fa817}{conv}
+\item 
+\hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_a5cc1bac96c382d42d0de484c9a132afa}{conv2}
+\item 
+\hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_a6f6c61af667625808d3554bc1a8cac7b}{conv3}
+\item 
+\hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_af399596e05aa1c02f7cc74cb8b449861}{conv4}
+\item 
+\hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_acdf2c80ef97e5b6e69ea92d38484445e}{conv5}
+\item 
+\hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_aee103b86f514b05352951131adbc0971}{conv6}
+\item 
+\hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_a6d3a522854ceb9dbba1b0f043af8b9fb}{conv7}
+\item 
+\hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_a960be2b5161d03a0d299f271df580d8a}{conv8}
+\item 
+\hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_aa6c7de7860100333b7a5b24578491867}{convs}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1Cologne2fb_a1600997b7fde85c597ea9ec986997276}\label{namespaceparlai_1_1scripts_1_1Cologne2fb_a1600997b7fde85c597ea9ec986997276}} 
+\index{parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}!converter@{converter}}
+\index{converter@{converter}!parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}}
+\subsubsection{\texorpdfstring{converter()}{converter()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+Cologne2fb.\+converter (\begin{DoxyParamCaption}\item[{}]{conv }\end{DoxyParamCaption})}
+
+
+
+Definition at line 47 of file Cologne2fb.\+py.
+
+
+\begin{DoxyCode}
+47 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_a1600997b7fde85c597ea9ec986997276}{converter}(conv) : 
+48     conversation = []
+49     current\_state = 0
+50     current\_turn = \textcolor{stringliteral}{""}
+51     buffer\_turn = \textcolor{stringliteral}{""}
+52     turn\_complete = \textcolor{keyword}{False}
+53     cpt = 0
+54     \textcolor{keywordflow}{for} elem \textcolor{keywordflow}{in} conv : 
+55         \textcolor{comment}{# print(elem)}
+56         cpt += 1 
+57 
+58         \textcolor{comment}{# print("turn number \{\}".format(cpt))     }
+59 
+60 
+61         \textcolor{keywordflow}{if} turn\_complete : 
+62 
+63             conversation.append(current\_turn)
+64             current\_turn = \textcolor{stringliteral}{""}
+65             turn\_complete = \textcolor{keyword}{False}
+66    
+67         current = \hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_a0769ed4e08e090e651516d1c4dd50b39}{find\_current}(elem)
+68         \textcolor{comment}{# print(current)}
+69 
+70         \textcolor{keywordflow}{if} current\_state == 0 :
+71 
+72 
+73             goodness,current\_state = \hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_ac765067cc58a95632761e7cf25d552ca}{state0}(current)
+74 
+75             \textcolor{keywordflow}{if} goodness  : 
+76 
+77                 current\_turn = elem
+78 
+79             \textcolor{keywordflow}{else} : 
+80             
+81                 current\_turn = \textcolor{stringliteral}{"silence\(\backslash\)t"}+elem
+82                 turn\_complete = \textcolor{keyword}{True}
+83 
+84         \textcolor{keywordflow}{else} : 
+85 
+86             goodness,current\_state = \hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_a54d10b54a93975b9903bd789aa2b5b91}{state1}(current)
+87 
+88             \textcolor{keywordflow}{if} buffer\_turn : 
+89 
+90                 print(\textcolor{stringliteral}{"there was a buffer !"})
+91                 
+92                 current\_turn = buffer\_turn               
+93                 buffer\_turn = \textcolor{stringliteral}{""}
+94 
+95             \textcolor{keywordflow}{if} goodness : 
+96 
+97                 current\_turn += elem
+98                 turn\_complete = \textcolor{keyword}{True}
+99             
+100             \textcolor{keywordflow}{else} : 
+101 
+102                 current\_turn += \textcolor{stringliteral}{'\(\backslash\)tsilence'}
+103                 conversation.append(current\_turn)
+104                 turn\_complete = \textcolor{keyword}{True}
+105                 buffer\_turn = elem
+106 
+107         \textcolor{keywordflow}{if} elem == conv[-1] :
+108 
+109             \textcolor{keywordflow}{if} buffer\_turn : 
+110                 current\_turn = buffer\_turn
+111             \hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_afdd76596097051e6d1580703a4f2abe8}{finalstate}(current\_state,current\_turn,conversation)
+112 
+113     \textcolor{keywordflow}{return} conversation
+114 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1Cologne2fb_afdd76596097051e6d1580703a4f2abe8}\label{namespaceparlai_1_1scripts_1_1Cologne2fb_afdd76596097051e6d1580703a4f2abe8}} 
+\index{parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}!finalstate@{finalstate}}
+\index{finalstate@{finalstate}!parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}}
+\subsubsection{\texorpdfstring{finalstate()}{finalstate()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+Cologne2fb.\+finalstate (\begin{DoxyParamCaption}\item[{}]{current\+\_\+state,  }\item[{}]{turn,  }\item[{}]{conv }\end{DoxyParamCaption})}
+
+
+
+Definition at line 33 of file Cologne2fb.\+py.
+
+
+\begin{DoxyCode}
+33 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_afdd76596097051e6d1580703a4f2abe8}{finalstate}(current\_state,turn,conv) :
+34 
+35     \textcolor{keywordflow}{if} current\_state == 0 :
+36 
+37         conv.append(turn)
+38 
+39     \textcolor{keywordflow}{else} : 
+40         conv.append(turn+\textcolor{stringliteral}{'\(\backslash\)tsilence'})
+41 
+42 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1Cologne2fb_a0769ed4e08e090e651516d1c4dd50b39}\label{namespaceparlai_1_1scripts_1_1Cologne2fb_a0769ed4e08e090e651516d1c4dd50b39}} 
+\index{parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}!find\+\_\+current@{find\+\_\+current}}
+\index{find\+\_\+current@{find\+\_\+current}!parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}}
+\subsubsection{\texorpdfstring{find\+\_\+current()}{find\_current()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+Cologne2fb.\+find\+\_\+current (\begin{DoxyParamCaption}\item[{}]{elem }\end{DoxyParamCaption})}
+
+
+
+Definition at line 43 of file Cologne2fb.\+py.
+
+
+\begin{DoxyCode}
+43 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_a0769ed4e08e090e651516d1c4dd50b39}{find\_current}(elem) :
+44 
+45     \textcolor{keywordflow}{return} elem[0]
+46 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1Cologne2fb_aada34019571fe1ff9ae0a5fc8bf03c67}\label{namespaceparlai_1_1scripts_1_1Cologne2fb_aada34019571fe1ff9ae0a5fc8bf03c67}} 
+\index{parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}!printer@{printer}}
+\index{printer@{printer}!parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}}
+\subsubsection{\texorpdfstring{printer()}{printer()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+Cologne2fb.\+printer (\begin{DoxyParamCaption}\item[{}]{conv }\end{DoxyParamCaption})}
+
+
+
+Definition at line 115 of file Cologne2fb.\+py.
+
+
+\begin{DoxyCode}
+115 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_aada34019571fe1ff9ae0a5fc8bf03c67}{printer}(conv) : 
+116     \textcolor{keywordflow}{for} elem \textcolor{keywordflow}{in} conv : 
+117         print(elem)
+118 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1Cologne2fb_ac765067cc58a95632761e7cf25d552ca}\label{namespaceparlai_1_1scripts_1_1Cologne2fb_ac765067cc58a95632761e7cf25d552ca}} 
+\index{parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}!state0@{state0}}
+\index{state0@{state0}!parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}}
+\subsubsection{\texorpdfstring{state0()}{state0()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+Cologne2fb.\+state0 (\begin{DoxyParamCaption}\item[{}]{current }\end{DoxyParamCaption})}
+
+
+
+Definition at line 17 of file Cologne2fb.\+py.
+
+
+\begin{DoxyCode}
+17 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_ac765067cc58a95632761e7cf25d552ca}{state0}(current) : 
+18 
+19     \textcolor{keywordflow}{if} current == user :
+20         \textcolor{comment}{# print("going to state 1 : all good")}
+21         \textcolor{keywordflow}{return} \textcolor{keyword}{True},1 
+22     \textcolor{comment}{# print("not good staying in 0")}
+23     \textcolor{keywordflow}{return} \textcolor{keyword}{False},0
+24 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1Cologne2fb_a54d10b54a93975b9903bd789aa2b5b91}\label{namespaceparlai_1_1scripts_1_1Cologne2fb_a54d10b54a93975b9903bd789aa2b5b91}} 
+\index{parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}!state1@{state1}}
+\index{state1@{state1}!parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}}
+\subsubsection{\texorpdfstring{state1()}{state1()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+Cologne2fb.\+state1 (\begin{DoxyParamCaption}\item[{}]{current }\end{DoxyParamCaption})}
+
+
+
+Definition at line 25 of file Cologne2fb.\+py.
+
+
+\begin{DoxyCode}
+25 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1Cologne2fb_a54d10b54a93975b9903bd789aa2b5b91}{state1}(current) : 
+26 
+27     \textcolor{keywordflow}{if} current == bot :
+28         \textcolor{comment}{# print("going to state 0 : all good")}
+29         \textcolor{keywordflow}{return} \textcolor{keyword}{True},0 
+30     \textcolor{comment}{# print("not good staying in 1")}
+31     \textcolor{keywordflow}{return} \textcolor{keyword}{False},1
+32 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1Cologne2fb_a2daa0c10243dae832a8f536c1af3f401}\label{namespaceparlai_1_1scripts_1_1Cologne2fb_a2daa0c10243dae832a8f536c1af3f401}} 
+\index{parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}!bot@{bot}}
+\index{bot@{bot}!parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}}
+\subsubsection{\texorpdfstring{bot}{bot}}
+{\footnotesize\ttfamily parlai.\+scripts.\+Cologne2fb.\+bot}
+
+
+
+Definition at line 15 of file Cologne2fb.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1Cologne2fb_a9cdaab7c6b5d02bcf42de03da00fa817}\label{namespaceparlai_1_1scripts_1_1Cologne2fb_a9cdaab7c6b5d02bcf42de03da00fa817}} 
+\index{parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}!conv@{conv}}
+\index{conv@{conv}!parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}}
+\subsubsection{\texorpdfstring{conv}{conv}}
+{\footnotesize\ttfamily parlai.\+scripts.\+Cologne2fb.\+conv}
+
+
+
+Definition at line 121 of file Cologne2fb.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1Cologne2fb_a5cc1bac96c382d42d0de484c9a132afa}\label{namespaceparlai_1_1scripts_1_1Cologne2fb_a5cc1bac96c382d42d0de484c9a132afa}} 
+\index{parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}!conv2@{conv2}}
+\index{conv2@{conv2}!parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}}
+\subsubsection{\texorpdfstring{conv2}{conv2}}
+{\footnotesize\ttfamily parlai.\+scripts.\+Cologne2fb.\+conv2}
+
+
+
+Definition at line 124 of file Cologne2fb.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1Cologne2fb_a6f6c61af667625808d3554bc1a8cac7b}\label{namespaceparlai_1_1scripts_1_1Cologne2fb_a6f6c61af667625808d3554bc1a8cac7b}} 
+\index{parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}!conv3@{conv3}}
+\index{conv3@{conv3}!parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}}
+\subsubsection{\texorpdfstring{conv3}{conv3}}
+{\footnotesize\ttfamily parlai.\+scripts.\+Cologne2fb.\+conv3}
+
+
+
+Definition at line 125 of file Cologne2fb.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1Cologne2fb_af399596e05aa1c02f7cc74cb8b449861}\label{namespaceparlai_1_1scripts_1_1Cologne2fb_af399596e05aa1c02f7cc74cb8b449861}} 
+\index{parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}!conv4@{conv4}}
+\index{conv4@{conv4}!parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}}
+\subsubsection{\texorpdfstring{conv4}{conv4}}
+{\footnotesize\ttfamily parlai.\+scripts.\+Cologne2fb.\+conv4}
+
+
+
+Definition at line 126 of file Cologne2fb.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1Cologne2fb_acdf2c80ef97e5b6e69ea92d38484445e}\label{namespaceparlai_1_1scripts_1_1Cologne2fb_acdf2c80ef97e5b6e69ea92d38484445e}} 
+\index{parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}!conv5@{conv5}}
+\index{conv5@{conv5}!parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}}
+\subsubsection{\texorpdfstring{conv5}{conv5}}
+{\footnotesize\ttfamily parlai.\+scripts.\+Cologne2fb.\+conv5}
+
+
+
+Definition at line 127 of file Cologne2fb.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1Cologne2fb_aee103b86f514b05352951131adbc0971}\label{namespaceparlai_1_1scripts_1_1Cologne2fb_aee103b86f514b05352951131adbc0971}} 
+\index{parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}!conv6@{conv6}}
+\index{conv6@{conv6}!parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}}
+\subsubsection{\texorpdfstring{conv6}{conv6}}
+{\footnotesize\ttfamily parlai.\+scripts.\+Cologne2fb.\+conv6}
+
+
+
+Definition at line 128 of file Cologne2fb.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1Cologne2fb_a6d3a522854ceb9dbba1b0f043af8b9fb}\label{namespaceparlai_1_1scripts_1_1Cologne2fb_a6d3a522854ceb9dbba1b0f043af8b9fb}} 
+\index{parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}!conv7@{conv7}}
+\index{conv7@{conv7}!parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}}
+\subsubsection{\texorpdfstring{conv7}{conv7}}
+{\footnotesize\ttfamily parlai.\+scripts.\+Cologne2fb.\+conv7}
+
+
+
+Definition at line 129 of file Cologne2fb.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1Cologne2fb_a960be2b5161d03a0d299f271df580d8a}\label{namespaceparlai_1_1scripts_1_1Cologne2fb_a960be2b5161d03a0d299f271df580d8a}} 
+\index{parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}!conv8@{conv8}}
+\index{conv8@{conv8}!parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}}
+\subsubsection{\texorpdfstring{conv8}{conv8}}
+{\footnotesize\ttfamily parlai.\+scripts.\+Cologne2fb.\+conv8}
+
+
+
+Definition at line 130 of file Cologne2fb.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1Cologne2fb_aa6c7de7860100333b7a5b24578491867}\label{namespaceparlai_1_1scripts_1_1Cologne2fb_aa6c7de7860100333b7a5b24578491867}} 
+\index{parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}!convs@{convs}}
+\index{convs@{convs}!parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}}
+\subsubsection{\texorpdfstring{convs}{convs}}
+{\footnotesize\ttfamily parlai.\+scripts.\+Cologne2fb.\+convs}
+
+
+
+Definition at line 131 of file Cologne2fb.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1Cologne2fb_a2c2775ea3b77b08039c44de9db5e2302}\label{namespaceparlai_1_1scripts_1_1Cologne2fb_a2c2775ea3b77b08039c44de9db5e2302}} 
+\index{parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}!user@{user}}
+\index{user@{user}!parlai\+::scripts\+::\+Cologne2fb@{parlai\+::scripts\+::\+Cologne2fb}}
+\subsubsection{\texorpdfstring{user}{user}}
+{\footnotesize\ttfamily parlai.\+scripts.\+Cologne2fb.\+user}
+
+
+
+Definition at line 14 of file Cologne2fb.\+py.
+

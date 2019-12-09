@@ -1,0 +1,186 @@
+\hypertarget{classparlai_1_1tasks_1_1wikipedia_1_1agents_1_1FullTeacher}{}\section{parlai.\+tasks.\+wikipedia.\+agents.\+Full\+Teacher Class Reference}
+\label{classparlai_1_1tasks_1_1wikipedia_1_1agents_1_1FullTeacher}\index{parlai.\+tasks.\+wikipedia.\+agents.\+Full\+Teacher@{parlai.\+tasks.\+wikipedia.\+agents.\+Full\+Teacher}}
+
+
+Inheritance diagram for parlai.\+tasks.\+wikipedia.\+agents.\+Full\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{dd/d1f/classparlai_1_1tasks_1_1wikipedia_1_1agents_1_1FullTeacher__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+tasks.\+wikipedia.\+agents.\+Full\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{d2/d6f/classparlai_1_1tasks_1_1wikipedia_1_1agents_1_1FullTeacher__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1wikipedia_1_1agents_1_1FullTeacher_a51b594b0d89c482575edc4ada9e1edcb}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1tasks_1_1wikipedia_1_1agents_1_1FullTeacher_aa4ceed492ea802e93be6cad4f5a7b322}{opt}, shared=None)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1wikipedia_1_1agents_1_1FullTeacher_a969b628c85be8be59009ef29fb0855fc}{setup\+\_\+data} (self, path)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1wikipedia_1_1agents_1_1FullTeacher_a37c660b0fdaba618690bfde0eb425ccf}{get\+\_\+extraction\+\_\+instructions} (self)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1wikipedia_1_1agents_1_1FullTeacher_ad868c50f3a789ce8f091605630b8f715}{key\+\_\+value}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1wikipedia_1_1agents_1_1FullTeacher_aa4ceed492ea802e93be6cad4f5a7b322}{opt}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1wikipedia_1_1agents_1_1FullTeacher_a336be0a2ec18a9d19fd58cc4031c30b6}{id}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Reads Wikipedia pages one at a time.
+\end{DoxyVerb}
+ 
+
+Definition at line 23 of file agents.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1wikipedia_1_1agents_1_1FullTeacher_a51b594b0d89c482575edc4ada9e1edcb}\label{classparlai_1_1tasks_1_1wikipedia_1_1agents_1_1FullTeacher_a51b594b0d89c482575edc4ada9e1edcb}} 
+\index{parlai\+::tasks\+::wikipedia\+::agents\+::\+Full\+Teacher@{parlai\+::tasks\+::wikipedia\+::agents\+::\+Full\+Teacher}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::tasks\+::wikipedia\+::agents\+::\+Full\+Teacher@{parlai\+::tasks\+::wikipedia\+::agents\+::\+Full\+Teacher}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+wikipedia.\+agents.\+Full\+Teacher.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{shared = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 28 of file agents.\+py.
+
+
+\begin{DoxyCode}
+28     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
+29         self.key\_value = \textcolor{stringliteral}{':key-value'} \textcolor{keywordflow}{in} opt[\textcolor{stringliteral}{'task'}]
+30         opt[\textcolor{stringliteral}{'task'}] = \textcolor{stringliteral}{'wikipedia:all'}
+31         \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1talkthewalk_1_1download_a8c0fbb9b6dfe127cb8c1bd6e7c4e33fd}{build}(opt)
+32         self.opt = opt
+33         opt[\textcolor{stringliteral}{'datafile'}] = os.path.join(
+34             opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'wikipedia/full/wiki\_full\_extracted'}
+35         )
+36         self.id = \textcolor{stringliteral}{'wikipedia'}
+37         super().\_\_init\_\_(opt, shared)
+38 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1wikipedia_1_1agents_1_1FullTeacher_a37c660b0fdaba618690bfde0eb425ccf}\label{classparlai_1_1tasks_1_1wikipedia_1_1agents_1_1FullTeacher_a37c660b0fdaba618690bfde0eb425ccf}} 
+\index{parlai\+::tasks\+::wikipedia\+::agents\+::\+Full\+Teacher@{parlai\+::tasks\+::wikipedia\+::agents\+::\+Full\+Teacher}!get\+\_\+extraction\+\_\+instructions@{get\+\_\+extraction\+\_\+instructions}}
+\index{get\+\_\+extraction\+\_\+instructions@{get\+\_\+extraction\+\_\+instructions}!parlai\+::tasks\+::wikipedia\+::agents\+::\+Full\+Teacher@{parlai\+::tasks\+::wikipedia\+::agents\+::\+Full\+Teacher}}
+\subsubsection{\texorpdfstring{get\+\_\+extraction\+\_\+instructions()}{get\_extraction\_instructions()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+wikipedia.\+agents.\+Full\+Teacher.\+get\+\_\+extraction\+\_\+instructions (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}If one wants to run extraction themselves on a raw wikipedia dump.
+\end{DoxyVerb}
+ 
+
+Definition at line 57 of file agents.\+py.
+
+
+\begin{DoxyCode}
+57     \textcolor{keyword}{def }get\_extraction\_instructions(self):
+58         \textcolor{stringliteral}{"""}
+59 \textcolor{stringliteral}{        If one wants to run extraction themselves on a raw wikipedia dump.}
+60 \textcolor{stringliteral}{        """}
+61         dpath = os.path.join(self.opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'wikipedia'}, \textcolor{stringliteral}{'full'})
+62         fname = \textcolor{stringliteral}{'enwiki-latest-pages-articles.xml.bz2'}
+63         instructions = (
+64             \textcolor{stringliteral}{"To complete the data extraction, please run the following:\(\backslash\)n"}
+65             \textcolor{stringliteral}{"mkdir -p \{download\} && "}
+66             \textcolor{stringliteral}{"git clone https://github.com/attardi/wikiextractor "}
+67             \textcolor{stringliteral}{"\{download\}/wikiextract && cd \{download\}/wikiextract && "}
+68             \textcolor{stringliteral}{"python WikiExtractor.py \{wikifile\} --filter\_disambig\_pages "}
+69             \textcolor{stringliteral}{"-o \{output\} --json"}
+70         ).\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+71             download=self.opt[\textcolor{stringliteral}{'download\_path'}],
+72             wikifile=dpath + \textcolor{stringliteral}{'/'} + fname,
+73             output=dpath + \textcolor{stringliteral}{'/'} + \textcolor{stringliteral}{'wiki\_extracted'},
+74         )
+75 
+76         \textcolor{keywordflow}{return} instructions
+77 
+78 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1wikipedia_1_1agents_1_1FullTeacher_a969b628c85be8be59009ef29fb0855fc}\label{classparlai_1_1tasks_1_1wikipedia_1_1agents_1_1FullTeacher_a969b628c85be8be59009ef29fb0855fc}} 
+\index{parlai\+::tasks\+::wikipedia\+::agents\+::\+Full\+Teacher@{parlai\+::tasks\+::wikipedia\+::agents\+::\+Full\+Teacher}!setup\+\_\+data@{setup\+\_\+data}}
+\index{setup\+\_\+data@{setup\+\_\+data}!parlai\+::tasks\+::wikipedia\+::agents\+::\+Full\+Teacher@{parlai\+::tasks\+::wikipedia\+::agents\+::\+Full\+Teacher}}
+\subsubsection{\texorpdfstring{setup\+\_\+data()}{setup\_data()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+wikipedia.\+agents.\+Full\+Teacher.\+setup\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{path }\end{DoxyParamCaption})}
+
+
+
+Definition at line 39 of file agents.\+py.
+
+
+\begin{DoxyCode}
+39     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1multinli_1_1agents_a4fa2cb0ba1ed745336ad8bceed36b841}{setup\_data}(self, path):
+40         print(\textcolor{stringliteral}{'loading: '} + path)
+41         \textcolor{keywordflow}{for} subdir \textcolor{keywordflow}{in} os.listdir(path):
+42             \textcolor{keywordflow}{if} subdir == \textcolor{stringliteral}{'README.md'}:
+43                 \textcolor{keywordflow}{continue}
+44             subdir\_path = os.path.join(path, subdir)
+45             \textcolor{keywordflow}{for} wiki\_file \textcolor{keywordflow}{in} os.listdir(subdir\_path):
+46                 wiki\_file\_path = os.path.join(subdir\_path, wiki\_file)
+47                 with open(wiki\_file\_path) \textcolor{keyword}{as} wf:
+48                     \textcolor{keywordflow}{for} article\_json \textcolor{keywordflow}{in} wf:
+49                         article = json.loads(article\_json)
+50                         title = article[\textcolor{stringliteral}{'title'}]
+51                         text = article[\textcolor{stringliteral}{'text'}]
+52                         \textcolor{keywordflow}{if} self.key\_value:
+53                             \textcolor{keywordflow}{yield} (title, [text]), \textcolor{keyword}{True}
+54                         \textcolor{keywordflow}{else}:
+55                             \textcolor{keywordflow}{yield} (text, [\textcolor{stringliteral}{''}]), \textcolor{keyword}{True}
+56 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1wikipedia_1_1agents_1_1FullTeacher_a336be0a2ec18a9d19fd58cc4031c30b6}\label{classparlai_1_1tasks_1_1wikipedia_1_1agents_1_1FullTeacher_a336be0a2ec18a9d19fd58cc4031c30b6}} 
+\index{parlai\+::tasks\+::wikipedia\+::agents\+::\+Full\+Teacher@{parlai\+::tasks\+::wikipedia\+::agents\+::\+Full\+Teacher}!id@{id}}
+\index{id@{id}!parlai\+::tasks\+::wikipedia\+::agents\+::\+Full\+Teacher@{parlai\+::tasks\+::wikipedia\+::agents\+::\+Full\+Teacher}}
+\subsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily parlai.\+tasks.\+wikipedia.\+agents.\+Full\+Teacher.\+id}
+
+
+
+Definition at line 36 of file agents.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1wikipedia_1_1agents_1_1FullTeacher_ad868c50f3a789ce8f091605630b8f715}\label{classparlai_1_1tasks_1_1wikipedia_1_1agents_1_1FullTeacher_ad868c50f3a789ce8f091605630b8f715}} 
+\index{parlai\+::tasks\+::wikipedia\+::agents\+::\+Full\+Teacher@{parlai\+::tasks\+::wikipedia\+::agents\+::\+Full\+Teacher}!key\+\_\+value@{key\+\_\+value}}
+\index{key\+\_\+value@{key\+\_\+value}!parlai\+::tasks\+::wikipedia\+::agents\+::\+Full\+Teacher@{parlai\+::tasks\+::wikipedia\+::agents\+::\+Full\+Teacher}}
+\subsubsection{\texorpdfstring{key\+\_\+value}{key\_value}}
+{\footnotesize\ttfamily parlai.\+tasks.\+wikipedia.\+agents.\+Full\+Teacher.\+key\+\_\+value}
+
+
+
+Definition at line 29 of file agents.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1wikipedia_1_1agents_1_1FullTeacher_aa4ceed492ea802e93be6cad4f5a7b322}\label{classparlai_1_1tasks_1_1wikipedia_1_1agents_1_1FullTeacher_aa4ceed492ea802e93be6cad4f5a7b322}} 
+\index{parlai\+::tasks\+::wikipedia\+::agents\+::\+Full\+Teacher@{parlai\+::tasks\+::wikipedia\+::agents\+::\+Full\+Teacher}!opt@{opt}}
+\index{opt@{opt}!parlai\+::tasks\+::wikipedia\+::agents\+::\+Full\+Teacher@{parlai\+::tasks\+::wikipedia\+::agents\+::\+Full\+Teacher}}
+\subsubsection{\texorpdfstring{opt}{opt}}
+{\footnotesize\ttfamily parlai.\+tasks.\+wikipedia.\+agents.\+Full\+Teacher.\+opt}
+
+
+
+Definition at line 32 of file agents.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/tasks/wikipedia/\hyperlink{parlai_2tasks_2wikipedia_2agents_8py}{agents.\+py}\end{DoxyCompactItemize}

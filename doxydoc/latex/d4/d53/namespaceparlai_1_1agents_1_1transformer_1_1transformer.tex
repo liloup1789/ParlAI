@@ -1,0 +1,118 @@
+\hypertarget{namespaceparlai_1_1agents_1_1transformer_1_1transformer}{}\section{parlai.\+agents.\+transformer.\+transformer Namespace Reference}
+\label{namespaceparlai_1_1agents_1_1transformer_1_1transformer}\index{parlai.\+agents.\+transformer.\+transformer@{parlai.\+agents.\+transformer.\+transformer}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classparlai_1_1agents_1_1transformer_1_1transformer_1_1Transformer}{Transformer}
+\item 
+class \hyperlink{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerGeneratorAgent}{Transformer\+Generator\+Agent}
+\item 
+class \hyperlink{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent}{Transformer\+Ranker\+Agent}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1agents_1_1transformer_1_1transformer_a916bc49d43dc0e244d24c47956c621ca}{add\+\_\+common\+\_\+cmdline\+\_\+args} (argparser)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1agents_1_1transformer_1_1transformer_a916bc49d43dc0e244d24c47956c621ca}\label{namespaceparlai_1_1agents_1_1transformer_1_1transformer_a916bc49d43dc0e244d24c47956c621ca}} 
+\index{parlai\+::agents\+::transformer\+::transformer@{parlai\+::agents\+::transformer\+::transformer}!add\+\_\+common\+\_\+cmdline\+\_\+args@{add\+\_\+common\+\_\+cmdline\+\_\+args}}
+\index{add\+\_\+common\+\_\+cmdline\+\_\+args@{add\+\_\+common\+\_\+cmdline\+\_\+args}!parlai\+::agents\+::transformer\+::transformer@{parlai\+::agents\+::transformer\+::transformer}}
+\subsubsection{\texorpdfstring{add\+\_\+common\+\_\+cmdline\+\_\+args()}{add\_common\_cmdline\_args()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+transformer.\+add\+\_\+common\+\_\+cmdline\+\_\+args (\begin{DoxyParamCaption}\item[{}]{argparser }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Add common command line args.
+\end{DoxyVerb}
+ 
+
+Definition at line 18 of file transformer.\+py.
+
+
+\begin{DoxyCode}
+18 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1transformer_1_1transformer_a916bc49d43dc0e244d24c47956c621ca}{add\_common\_cmdline\_args}(argparser):
+19     \textcolor{stringliteral}{"""}
+20 \textcolor{stringliteral}{    Add common command line args.}
+21 \textcolor{stringliteral}{    """}
+22     argparser.add\_argument(
+23         \textcolor{stringliteral}{'-esz'},
+24         \textcolor{stringliteral}{'--embedding-size'},
+25         type=int,
+26         default=300,
+27         help=\textcolor{stringliteral}{'Size of all embedding layers'},
+28     )
+29     argparser.add\_argument(\textcolor{stringliteral}{'-nl'}, \textcolor{stringliteral}{'--n-layers'}, type=int, default=2)
+30     argparser.add\_argument(
+31         \textcolor{stringliteral}{'-hid'},
+32         \textcolor{stringliteral}{'--ffn-size'},
+33         type=int,
+34         default=300,
+35         help=\textcolor{stringliteral}{'Hidden size of the FFN layers'},
+36     )
+37     argparser.add\_argument(
+38         \textcolor{stringliteral}{'--dropout'}, type=float, default=0.0, help=\textcolor{stringliteral}{'Dropout used in Vaswani 2017.'}
+39     )
+40     argparser.add\_argument(
+41         \textcolor{stringliteral}{'--attention-dropout'},
+42         type=float,
+43         default=0.0,
+44         help=\textcolor{stringliteral}{'Dropout used after attention softmax.'},
+45     )
+46     argparser.add\_argument(
+47         \textcolor{stringliteral}{'--relu-dropout'},
+48         type=float,
+49         default=0.0,
+50         help=\textcolor{stringliteral}{'Dropout used after ReLU. From tensor2tensor.'},
+51     )
+52     argparser.add\_argument(
+53         \textcolor{stringliteral}{'--n-heads'}, type=int, default=2, help=\textcolor{stringliteral}{'Number of multihead attention heads'}
+54     )
+55     argparser.add\_argument(\textcolor{stringliteral}{'--learn-positional-embeddings'}, type=\textcolor{stringliteral}{'bool'}, default=\textcolor{keyword}{False})
+56     argparser.add\_argument(\textcolor{stringliteral}{'--embeddings-scale'}, type=\textcolor{stringliteral}{'bool'}, default=\textcolor{keyword}{True})
+57     argparser.add\_argument(
+58         \textcolor{stringliteral}{'--n-positions'},
+59         type=int,
+60         default=\textcolor{keywordtype}{None},
+61         hidden=\textcolor{keyword}{True},
+62         help=\textcolor{stringliteral}{'Number of positional embeddings to learn. Defaults '}
+63         \textcolor{stringliteral}{'to truncate or 1024 if not provided.'},
+64     )
+65     argparser.add\_argument(
+66         \textcolor{stringliteral}{'--n-segments'},
+67         type=int,
+68         default=0,
+69         help=\textcolor{stringliteral}{'The number of segments that support the model. '}
+70         \textcolor{stringliteral}{'If zero no segment and no langs\_embedding.'},
+71     )
+72     argparser.add\_argument(
+73         \textcolor{stringliteral}{'--variant'},
+74         choices=\{\textcolor{stringliteral}{'aiayn'}, \textcolor{stringliteral}{'xlm'}\},
+75         default=\textcolor{stringliteral}{'aiayn'},
+76         help=\textcolor{stringliteral}{'Chooses locations of layer norms, etc.'},
+77         recommended=\textcolor{stringliteral}{'xlm'},
+78     )
+79     argparser.add\_argument(
+80         \textcolor{stringliteral}{'--activation'},
+81         choices=\{\textcolor{stringliteral}{'relu'}, \textcolor{stringliteral}{'gelu'}\},
+82         default=\textcolor{stringliteral}{'relu'},
+83         help=\textcolor{stringliteral}{'Nonlinear activation to use. AIAYN uses relu, but '}
+84         \textcolor{stringliteral}{'more recent papers prefer gelu.'},
+85         recommended=\textcolor{stringliteral}{'gelu'},
+86     )
+87     argparser.add\_argument(
+88         \textcolor{stringliteral}{'--output-scaling'},
+89         type=float,
+90         default=1.0,
+91         help=\textcolor{stringliteral}{'scale the output of every transformer by this quantity.'},
+92     )
+93     argparser.add\_argument(
+94         \textcolor{stringliteral}{'--share-word-embeddings'},
+95         type=\textcolor{stringliteral}{'bool'},
+96         default=\textcolor{keyword}{True},
+97         help=\textcolor{stringliteral}{'Share word embeddings table for candidate and context'}
+98         \textcolor{stringliteral}{'in the memory network'},
+99     )
+100 
+101 
+\end{DoxyCode}

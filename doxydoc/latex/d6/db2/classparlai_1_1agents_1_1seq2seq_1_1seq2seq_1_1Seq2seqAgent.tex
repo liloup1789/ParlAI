@@ -1,0 +1,463 @@
+\hypertarget{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent}{}\section{parlai.\+agents.\+seq2seq.\+seq2seq.\+Seq2seq\+Agent Class Reference}
+\label{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent}\index{parlai.\+agents.\+seq2seq.\+seq2seq.\+Seq2seq\+Agent@{parlai.\+agents.\+seq2seq.\+seq2seq.\+Seq2seq\+Agent}}
+
+
+Inheritance diagram for parlai.\+agents.\+seq2seq.\+seq2seq.\+Seq2seq\+Agent\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=268pt]{d0/dfc/classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+agents.\+seq2seq.\+seq2seq.\+Seq2seq\+Agent\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{d8/db0/classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_a1287bfcdb2072a431bbbd513c36043a9}{add\+\_\+cmdline\+\_\+args} (cls, argparser)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_a7d1af2d90ac02cd2c7401185c2d09c3e}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1core_1_1torch__agent_1_1TorchAgent_a785bb920cf8c8afc3e9bf6a8b77e335a}{opt}, shared=None)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_a43422bdf284bfc06a9bd2db434a7167c}{build\+\_\+model} (self, states=None)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_aad570608fb05da482411201aa2e0b47f}{build\+\_\+criterion} (self)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_ab7917b41c18eea62f9e7b63c36466bb6}{batchify} (self, args, kwargs)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_a7b68df3db0fcadb70a97a28ec2617cb2}{state\+\_\+dict} (self)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_a6f94b2896a2a76476f8646ec7d9360ed}{load} (self, path)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_a6fbfdde4ec69ec4050fa4005c6608f1a}{is\+\_\+valid} (self, obs)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_aba4b52b4f15795eeda202cb303525483}{model\+\_\+version} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_a5254266798a52da5d4df057f5d8dc213}{id}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Agent which takes an input sequence and produces an output sequence.
+
+This model supports encoding the input and decoding the output via one of
+several flavors of RNN. It then uses a linear layer (whose weights can
+be shared with the embedding layer) to convert RNN output states into
+output tokens. This model supports greedy decoding, selecting the
+highest probability token at each time step, as well as beam
+search.
+
+For more information, see the following papers:
+- Neural Machine Translation by Jointly Learning to Align and Translate
+  `(Bahdanau et al. 2014) <arxiv.org/abs/1409.0473>`_
+- Sequence to Sequence Learning with Neural Networks
+  `(Sutskever et al. 2014) <arxiv.org/abs/1409.3215>`_
+- Effective Approaches to Attention-based Neural Machine Translation
+  `(Luong et al. 2015) <arxiv.org/abs/1508.04025>`_
+\end{DoxyVerb}
+ 
+
+Definition at line 15 of file seq2seq.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_a7d1af2d90ac02cd2c7401185c2d09c3e}\label{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_a7d1af2d90ac02cd2c7401185c2d09c3e}} 
+\index{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent@{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent@{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+seq2seq.\+seq2seq.\+Seq2seq\+Agent.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{shared = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Set up model.
+\end{DoxyVerb}
+ 
+
+Definition at line 153 of file seq2seq.\+py.
+
+
+\begin{DoxyCode}
+153     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
+154         \textcolor{stringliteral}{"""}
+155 \textcolor{stringliteral}{        Set up model.}
+156 \textcolor{stringliteral}{        """}
+157         super().\_\_init\_\_(opt, shared)
+158         self.id = \textcolor{stringliteral}{'Seq2Seq'}
+159 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_a1287bfcdb2072a431bbbd513c36043a9}\label{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_a1287bfcdb2072a431bbbd513c36043a9}} 
+\index{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent@{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent}!add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}}
+\index{add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}!parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent@{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent}}
+\subsubsection{\texorpdfstring{add\+\_\+cmdline\+\_\+args()}{add\_cmdline\_args()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+seq2seq.\+seq2seq.\+Seq2seq\+Agent.\+add\+\_\+cmdline\+\_\+args (\begin{DoxyParamCaption}\item[{}]{cls,  }\item[{}]{argparser }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Add command-line arguments specifically for this agent.
+\end{DoxyVerb}
+ 
+
+Definition at line 36 of file seq2seq.\+py.
+
+
+\begin{DoxyCode}
+36     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(cls, argparser):
+37         \textcolor{stringliteral}{"""}
+38 \textcolor{stringliteral}{        Add command-line arguments specifically for this agent.}
+39 \textcolor{stringliteral}{        """}
+40         agent = argparser.add\_argument\_group(\textcolor{stringliteral}{'Seq2Seq Arguments'})
+41         agent.add\_argument(
+42             \textcolor{stringliteral}{'-hs'},
+43             \textcolor{stringliteral}{'--hiddensize'},
+44             type=int,
+45             default=128,
+46             help=\textcolor{stringliteral}{'size of the hidden layers'},
+47         )
+48         agent.add\_argument(
+49             \textcolor{stringliteral}{'-esz'},
+50             \textcolor{stringliteral}{'--embeddingsize'},
+51             type=int,
+52             default=128,
+53             help=\textcolor{stringliteral}{'size of the token embeddings'},
+54         )
+55         agent.add\_argument(
+56             \textcolor{stringliteral}{'-nl'}, \textcolor{stringliteral}{'--numlayers'}, type=int, default=2, help=\textcolor{stringliteral}{'number of hidden layers'}
+57         )
+58         agent.add\_argument(
+59             \textcolor{stringliteral}{'-dr'}, \textcolor{stringliteral}{'--dropout'}, type=float, default=0.1, help=\textcolor{stringliteral}{'dropout rate'}
+60         )
+61         agent.add\_argument(
+62             \textcolor{stringliteral}{'-bi'},
+63             \textcolor{stringliteral}{'--bidirectional'},
+64             type=\textcolor{stringliteral}{'bool'},
+65             default=\textcolor{keyword}{False},
+66             help=\textcolor{stringliteral}{'whether to encode the context with a '} \textcolor{stringliteral}{'bidirectional rnn'},
+67         )
+68         agent.add\_argument(
+69             \textcolor{stringliteral}{'-att'},
+70             \textcolor{stringliteral}{'--attention'},
+71             default=\textcolor{stringliteral}{'none'},
+72             choices=[\textcolor{stringliteral}{'none'}, \textcolor{stringliteral}{'concat'}, \textcolor{stringliteral}{'general'}, \textcolor{stringliteral}{'dot'}, \textcolor{stringliteral}{'local'}],
+73             help=\textcolor{stringliteral}{'Choices: none, concat, general, local. '}
+74             \textcolor{stringliteral}{'If set local, also set attention-length. '}
+75             \textcolor{stringliteral}{'(see arxiv.org/abs/1508.04025)'},
+76         )
+77         agent.add\_argument(
+78             \textcolor{stringliteral}{'-attl'},
+79             \textcolor{stringliteral}{'--attention-length'},
+80             default=48,
+81             type=int,
+82             help=\textcolor{stringliteral}{'Length of local attention.'},
+83         )
+84         agent.add\_argument(
+85             \textcolor{stringliteral}{'--attention-time'},
+86             default=\textcolor{stringliteral}{'post'},
+87             choices=[\textcolor{stringliteral}{'pre'}, \textcolor{stringliteral}{'post'}],
+88             help=\textcolor{stringliteral}{'Whether to apply attention before or after '} \textcolor{stringliteral}{'decoding.'},
+89         )
+90         agent.add\_argument(
+91             \textcolor{stringliteral}{'-rnn'},
+92             \textcolor{stringliteral}{'--rnn-class'},
+93             default=\textcolor{stringliteral}{'lstm'},
+94             choices=Seq2seq.RNN\_OPTS.keys(),
+95             help=\textcolor{stringliteral}{'Choose between different types of RNNs.'},
+96         )
+97         agent.add\_argument(
+98             \textcolor{stringliteral}{'-dec'},
+99             \textcolor{stringliteral}{'--decoder'},
+100             default=\textcolor{stringliteral}{'same'},
+101             choices=[\textcolor{stringliteral}{'same'}, \textcolor{stringliteral}{'shared'}],
+102             help=\textcolor{stringliteral}{'Choose between different decoder modules. '}
+103             \textcolor{stringliteral}{'Default "same" uses same class as encoder, '}
+104             \textcolor{stringliteral}{'while "shared" also uses the same weights. '}
+105             \textcolor{stringliteral}{'Note that shared disabled some encoder '}
+106             \textcolor{stringliteral}{'options--in particular, bidirectionality.'},
+107         )
+108         agent.add\_argument(
+109             \textcolor{stringliteral}{'-lt'},
+110             \textcolor{stringliteral}{'--lookuptable'},
+111             default=\textcolor{stringliteral}{'unique'},
+112             choices=[\textcolor{stringliteral}{'unique'}, \textcolor{stringliteral}{'enc\_dec'}, \textcolor{stringliteral}{'dec\_out'}, \textcolor{stringliteral}{'all'}],
+113             help=\textcolor{stringliteral}{'The encoder, decoder, and output modules can '}
+114             \textcolor{stringliteral}{'share weights, or not. '}
+115             \textcolor{stringliteral}{'Unique has independent embeddings for each. '}
+116             \textcolor{stringliteral}{'Enc\_dec shares the embedding for the encoder '}
+117             \textcolor{stringliteral}{'and decoder. '}
+118             \textcolor{stringliteral}{'Dec\_out shares decoder embedding and output '}
+119             \textcolor{stringliteral}{'weights. '}
+120             \textcolor{stringliteral}{'All shares all three weights.'},
+121         )
+122         agent.add\_argument(
+123             \textcolor{stringliteral}{'-soft'},
+124             \textcolor{stringliteral}{'--numsoftmax'},
+125             default=1,
+126             type=int,
+127             help=\textcolor{stringliteral}{'default 1, if greater then uses mixture of '}
+128             \textcolor{stringliteral}{'softmax (see arxiv.org/abs/1711.03953).'},
+129         )
+130         agent.add\_argument(
+131             \textcolor{stringliteral}{'-idr'},
+132             \textcolor{stringliteral}{'--input-dropout'},
+133             type=float,
+134             default=0.0,
+135             help=\textcolor{stringliteral}{'Probability of replacing tokens with UNK in training.'},
+136         )
+137 
+138         super(Seq2seqAgent, cls).\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(argparser)
+139         \textcolor{keywordflow}{return} agent
+140 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_ab7917b41c18eea62f9e7b63c36466bb6}\label{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_ab7917b41c18eea62f9e7b63c36466bb6}} 
+\index{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent@{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent}!batchify@{batchify}}
+\index{batchify@{batchify}!parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent@{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent}}
+\subsubsection{\texorpdfstring{batchify()}{batchify()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+seq2seq.\+seq2seq.\+Seq2seq\+Agent.\+batchify (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{args,  }\item[{}]{kwargs }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Override batchify options for seq2seq.
+\end{DoxyVerb}
+ 
+
+Definition at line 212 of file seq2seq.\+py.
+
+
+\begin{DoxyCode}
+212     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_aca22dd97c5b6dcda2a7479c1cb22ef1e}{batchify}(self, *args, **kwargs):
+213         \textcolor{stringliteral}{"""}
+214 \textcolor{stringliteral}{        Override batchify options for seq2seq.}
+215 \textcolor{stringliteral}{        """}
+216         kwargs[\textcolor{stringliteral}{'sort'}] = \textcolor{keyword}{True}  \textcolor{comment}{# need sorted for pack\_padded}
+217         \textcolor{keywordflow}{return} super().\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_aca22dd97c5b6dcda2a7479c1cb22ef1e}{batchify}(*args, **kwargs)
+218 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_aad570608fb05da482411201aa2e0b47f}\label{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_aad570608fb05da482411201aa2e0b47f}} 
+\index{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent@{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent}!build\+\_\+criterion@{build\+\_\+criterion}}
+\index{build\+\_\+criterion@{build\+\_\+criterion}!parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent@{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent}}
+\subsubsection{\texorpdfstring{build\+\_\+criterion()}{build\_criterion()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+seq2seq.\+seq2seq.\+Seq2seq\+Agent.\+build\+\_\+criterion (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 205 of file seq2seq.\+py.
+
+
+\begin{DoxyCode}
+205     \textcolor{keyword}{def }build\_criterion(self):
+206         \textcolor{comment}{# set up criteria}
+207         \textcolor{keywordflow}{if} self.opt.get(\textcolor{stringliteral}{'numsoftmax'}, 1) > 1:
+208             \textcolor{keywordflow}{return} nn.NLLLoss(ignore\_index=self.NULL\_IDX, reduction=\textcolor{stringliteral}{'sum'})
+209         \textcolor{keywordflow}{else}:
+210             \textcolor{keywordflow}{return} nn.CrossEntropyLoss(ignore\_index=self.NULL\_IDX, reduction=\textcolor{stringliteral}{'sum'})
+211 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_a43422bdf284bfc06a9bd2db434a7167c}\label{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_a43422bdf284bfc06a9bd2db434a7167c}} 
+\index{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent@{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent}!build\+\_\+model@{build\+\_\+model}}
+\index{build\+\_\+model@{build\+\_\+model}!parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent@{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent}}
+\subsubsection{\texorpdfstring{build\+\_\+model()}{build\_model()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+seq2seq.\+seq2seq.\+Seq2seq\+Agent.\+build\+\_\+model (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{states = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initialize model, override to change model setup.
+\end{DoxyVerb}
+ 
+
+Definition at line 160 of file seq2seq.\+py.
+
+
+\begin{DoxyCode}
+160     \textcolor{keyword}{def }build\_model(self, states=None):
+161         \textcolor{stringliteral}{"""}
+162 \textcolor{stringliteral}{        Initialize model, override to change model setup.}
+163 \textcolor{stringliteral}{        """}
+164         opt = self.opt
+165         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} states:
+166             states = \{\}
+167 
+168         kwargs = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_af13e3733abb5828b0c0a75d95833441c}{opt\_to\_kwargs}(opt)
+169         model = Seq2seq(
+170             len(self.dict),
+171             opt[\textcolor{stringliteral}{'embeddingsize'}],
+172             opt[\textcolor{stringliteral}{'hiddensize'}],
+173             padding\_idx=self.NULL\_IDX,
+174             start\_idx=self.START\_IDX,
+175             end\_idx=self.END\_IDX,
+176             unknown\_idx=self.dict[self.dict.unk\_token],
+177             longest\_label=states.get(\textcolor{stringliteral}{'longest\_label'}, 1),
+178             **kwargs,
+179         )
+180 
+181         \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'dict\_tokenizer'}) == \textcolor{stringliteral}{'bpe'} \textcolor{keywordflow}{and} opt[\textcolor{stringliteral}{'embedding\_type'}] != \textcolor{stringliteral}{'random'}:
+182             print(\textcolor{stringliteral}{'skipping preinitialization of embeddings for bpe'})
+183         \textcolor{keywordflow}{elif} \textcolor{keywordflow}{not} states \textcolor{keywordflow}{and} opt[\textcolor{stringliteral}{'embedding\_type'}] != \textcolor{stringliteral}{'random'}:
+184             \textcolor{comment}{# `not states`: only set up embeddings if not loading model}
+185             self.\_copy\_embeddings(model.decoder.lt.weight, opt[\textcolor{stringliteral}{'embedding\_type'}])
+186             \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'lookuptable'}] \textcolor{keywordflow}{in} [\textcolor{stringliteral}{'unique'}, \textcolor{stringliteral}{'dec\_out'}]:
+187                 \textcolor{comment}{# also set encoder lt, since it's not shared}
+188                 self.\_copy\_embeddings(
+189                     model.encoder.lt.weight, opt[\textcolor{stringliteral}{'embedding\_type'}], log=\textcolor{keyword}{False}
+190                 )
+191 
+192         \textcolor{keywordflow}{if} states:
+193             \textcolor{comment}{# set loaded states if applicable}
+194             model.load\_state\_dict(states[\textcolor{stringliteral}{'model'}])
+195 
+196         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'embedding\_type'}].endswith(\textcolor{stringliteral}{'fixed'}):
+197             print(\textcolor{stringliteral}{'Seq2seq: fixing embedding weights.'})
+198             model.decoder.lt.weight.requires\_grad = \textcolor{keyword}{False}
+199             model.encoder.lt.weight.requires\_grad = \textcolor{keyword}{False}
+200             \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'lookuptable'}] \textcolor{keywordflow}{in} [\textcolor{stringliteral}{'dec\_out'}, \textcolor{stringliteral}{'all'}]:
+201                 model.output.weight.requires\_grad = \textcolor{keyword}{False}
+202 
+203         \textcolor{keywordflow}{return} model
+204 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_a6fbfdde4ec69ec4050fa4005c6608f1a}\label{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_a6fbfdde4ec69ec4050fa4005c6608f1a}} 
+\index{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent@{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent}!is\+\_\+valid@{is\+\_\+valid}}
+\index{is\+\_\+valid@{is\+\_\+valid}!parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent@{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent}}
+\subsubsection{\texorpdfstring{is\+\_\+valid()}{is\_valid()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+seq2seq.\+seq2seq.\+Seq2seq\+Agent.\+is\+\_\+valid (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{obs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 244 of file seq2seq.\+py.
+
+
+\begin{DoxyCode}
+244     \textcolor{keyword}{def }is\_valid(self, obs):
+245         normally\_valid = super().is\_valid(obs)
+246         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} normally\_valid:
+247             \textcolor{comment}{# shortcut boolean evaluation}
+248             \textcolor{keywordflow}{return} normally\_valid
+249         contains\_empties = obs[\textcolor{stringliteral}{'text\_vec'}].shape[0] == 0
+250         \textcolor{keywordflow}{if} self.is\_training \textcolor{keywordflow}{and} contains\_empties:
+251             \hyperlink{namespaceparlai_1_1utils_1_1misc_acf146e70ea7f6867969a7c2b545d4b4b}{warn\_once}(
+252                 \textcolor{stringliteral}{'seq2seq got an empty input sequence (text\_vec) during training. '}
+253                 \textcolor{stringliteral}{'Skipping this example, but you should check your dataset and '}
+254                 \textcolor{stringliteral}{'preprocessing.'}
+255             )
+256         \textcolor{keywordflow}{elif} \textcolor{keywordflow}{not} self.is\_training \textcolor{keywordflow}{and} contains\_empties:
+257             \hyperlink{namespaceparlai_1_1utils_1_1misc_acf146e70ea7f6867969a7c2b545d4b4b}{warn\_once}(
+258                 \textcolor{stringliteral}{'seq2seq got an empty input sequence (text\_vec) in an '}
+259                 \textcolor{stringliteral}{'evaluation example! This may affect your metrics!'}
+260             )
+261         \textcolor{keywordflow}{return} \textcolor{keywordflow}{not} contains\_empties
+262 \end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_a6f94b2896a2a76476f8646ec7d9360ed}\label{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_a6f94b2896a2a76476f8646ec7d9360ed}} 
+\index{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent@{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent}!load@{load}}
+\index{load@{load}!parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent@{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent}}
+\subsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+seq2seq.\+seq2seq.\+Seq2seq\+Agent.\+load (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{path }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Return opt and model states.
+\end{DoxyVerb}
+ 
+
+Definition at line 233 of file seq2seq.\+py.
+
+
+\begin{DoxyCode}
+233     \textcolor{keyword}{def }load(self, path):
+234         \textcolor{stringliteral}{"""}
+235 \textcolor{stringliteral}{        Return opt and model states.}
+236 \textcolor{stringliteral}{        """}
+237         states = torch.load(path, map\_location=\textcolor{keyword}{lambda} cpu, \_: cpu)
+238         \textcolor{comment}{# set loaded states if applicable}
+239         self.model.load\_state\_dict(states[\textcolor{stringliteral}{'model'}])
+240         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'longest\_label'} \textcolor{keywordflow}{in} states:
+241             self.model.longest\_label = states[\textcolor{stringliteral}{'longest\_label'}]
+242         \textcolor{keywordflow}{return} states
+243 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_aba4b52b4f15795eeda202cb303525483}\label{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_aba4b52b4f15795eeda202cb303525483}} 
+\index{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent@{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent}!model\+\_\+version@{model\+\_\+version}}
+\index{model\+\_\+version@{model\+\_\+version}!parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent@{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent}}
+\subsubsection{\texorpdfstring{model\+\_\+version()}{model\_version()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+seq2seq.\+seq2seq.\+Seq2seq\+Agent.\+model\+\_\+version (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyVerb}Return current version of this model, counting up from 0.
+
+Models may not be backwards-compatible with older versions. Version 1 split from
+version 0 on Aug 29, 2018. Version 2 split from version 1 on Nov 13, 2018 To use
+version 0, use --model legacy:seq2seq:0 To use version 1, use --model
+legacy:seq2seq:1 (legacy agent code is located in parlai/agents/legacy_agents).
+\end{DoxyVerb}
+ 
+
+Definition at line 142 of file seq2seq.\+py.
+
+
+\begin{DoxyCode}
+142     \textcolor{keyword}{def }model\_version():
+143         \textcolor{stringliteral}{"""}
+144 \textcolor{stringliteral}{        Return current version of this model, counting up from 0.}
+145 \textcolor{stringliteral}{}
+146 \textcolor{stringliteral}{        Models may not be backwards-compatible with older versions. Version 1 split from}
+147 \textcolor{stringliteral}{        version 0 on Aug 29, 2018. Version 2 split from version 1 on Nov 13, 2018 To use}
+148 \textcolor{stringliteral}{        version 0, use --model legacy:seq2seq:0 To use version 1, use --model}
+149 \textcolor{stringliteral}{        legacy:seq2seq:1 (legacy agent code is located in parlai/agents/legacy\_agents).}
+150 \textcolor{stringliteral}{        """}
+151         \textcolor{keywordflow}{return} 2
+152 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_a7b68df3db0fcadb70a97a28ec2617cb2}\label{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_a7b68df3db0fcadb70a97a28ec2617cb2}} 
+\index{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent@{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent}!state\+\_\+dict@{state\+\_\+dict}}
+\index{state\+\_\+dict@{state\+\_\+dict}!parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent@{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent}}
+\subsubsection{\texorpdfstring{state\+\_\+dict()}{state\_dict()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+seq2seq.\+seq2seq.\+Seq2seq\+Agent.\+state\+\_\+dict (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Get the model states for saving.
+
+Overriden to include longest_label
+\end{DoxyVerb}
+ 
+
+Definition at line 219 of file seq2seq.\+py.
+
+
+\begin{DoxyCode}
+219     \textcolor{keyword}{def }state\_dict(self):
+220         \textcolor{stringliteral}{"""}
+221 \textcolor{stringliteral}{        Get the model states for saving.}
+222 \textcolor{stringliteral}{}
+223 \textcolor{stringliteral}{        Overriden to include longest\_label}
+224 \textcolor{stringliteral}{        """}
+225         states = super().state\_dict()
+226         \textcolor{keywordflow}{if} hasattr(self.model, \textcolor{stringliteral}{'module'}):
+227             states[\textcolor{stringliteral}{'longest\_label'}] = self.model.module.longest\_label
+228         \textcolor{keywordflow}{else}:
+229             states[\textcolor{stringliteral}{'longest\_label'}] = self.model.longest\_label
+230 
+231         \textcolor{keywordflow}{return} states
+232 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_a5254266798a52da5d4df057f5d8dc213}\label{classparlai_1_1agents_1_1seq2seq_1_1seq2seq_1_1Seq2seqAgent_a5254266798a52da5d4df057f5d8dc213}} 
+\index{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent@{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent}!id@{id}}
+\index{id@{id}!parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent@{parlai\+::agents\+::seq2seq\+::seq2seq\+::\+Seq2seq\+Agent}}
+\subsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily parlai.\+agents.\+seq2seq.\+seq2seq.\+Seq2seq\+Agent.\+id}
+
+
+
+Definition at line 158 of file seq2seq.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/agents/seq2seq/\hyperlink{agents_2seq2seq_2seq2seq_8py}{seq2seq.\+py}\end{DoxyCompactItemize}

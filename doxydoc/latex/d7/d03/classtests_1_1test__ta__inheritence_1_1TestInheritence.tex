@@ -1,0 +1,109 @@
+\hypertarget{classtests_1_1test__ta__inheritence_1_1TestInheritence}{}\section{tests.\+test\+\_\+ta\+\_\+inheritence.\+Test\+Inheritence Class Reference}
+\label{classtests_1_1test__ta__inheritence_1_1TestInheritence}\index{tests.\+test\+\_\+ta\+\_\+inheritence.\+Test\+Inheritence@{tests.\+test\+\_\+ta\+\_\+inheritence.\+Test\+Inheritence}}
+
+
+Inheritance diagram for tests.\+test\+\_\+ta\+\_\+inheritence.\+Test\+Inheritence\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=207pt]{d2/d6c/classtests_1_1test__ta__inheritence_1_1TestInheritence__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for tests.\+test\+\_\+ta\+\_\+inheritence.\+Test\+Inheritence\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=207pt]{d0/de5/classtests_1_1test__ta__inheritence_1_1TestInheritence__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classtests_1_1test__ta__inheritence_1_1TestInheritence_acf9dc743befc9912294b89b31f393846}{test\+\_\+subclassA} (self)
+\item 
+def \hyperlink{classtests_1_1test__ta__inheritence_1_1TestInheritence_a3bed049c4393b8c6c8a9afbe550f7893}{test\+\_\+subclassB} (self)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 41 of file test\+\_\+ta\+\_\+inheritence.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtests_1_1test__ta__inheritence_1_1TestInheritence_acf9dc743befc9912294b89b31f393846}\label{classtests_1_1test__ta__inheritence_1_1TestInheritence_acf9dc743befc9912294b89b31f393846}} 
+\index{tests\+::test\+\_\+ta\+\_\+inheritence\+::\+Test\+Inheritence@{tests\+::test\+\_\+ta\+\_\+inheritence\+::\+Test\+Inheritence}!test\+\_\+subclassA@{test\+\_\+subclassA}}
+\index{test\+\_\+subclassA@{test\+\_\+subclassA}!tests\+::test\+\_\+ta\+\_\+inheritence\+::\+Test\+Inheritence@{tests\+::test\+\_\+ta\+\_\+inheritence\+::\+Test\+Inheritence}}
+\subsubsection{\texorpdfstring{test\+\_\+subclass\+A()}{test\_subclassA()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+ta\+\_\+inheritence.\+Test\+Inheritence.\+test\+\_\+subclassA (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Verify that class A does contain the super args.
+\end{DoxyVerb}
+ 
+
+Definition at line 42 of file test\+\_\+ta\+\_\+inheritence.\+py.
+
+
+\begin{DoxyCode}
+42     \textcolor{keyword}{def }test\_subclassA(self):
+43         \textcolor{stringliteral}{"""}
+44 \textcolor{stringliteral}{        Verify that class A does contain the super args.}
+45 \textcolor{stringliteral}{        """}
+46         parser = ParlaiParser(add\_model\_args=\textcolor{keyword}{True})
+47         opt = parser.parse\_args(
+48             args=[\textcolor{stringliteral}{'--model'}, \textcolor{stringliteral}{'tests.test\_ta\_inheritence:SubClassA'}], print\_args=\textcolor{keyword}{False}
+49         )
+50         self.assertEqual(\textcolor{stringliteral}{'a'}, opt.get(\textcolor{stringliteral}{'withclassinheritence'}))
+51         \textcolor{comment}{# make sure we have the dictionary arg}
+52         self.assertEqual(\textcolor{stringliteral}{'d'}, opt.get(\textcolor{stringliteral}{'dictarg'}))
+53         \textcolor{comment}{# something that torch agent has}
+54         self.assertIn(\textcolor{stringliteral}{'no\_cuda'}, opt)
+55         \textcolor{comment}{# something torch generator agent has}
+56         self.assertIn(\textcolor{stringliteral}{'beam\_size'}, opt)
+57 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__ta__inheritence_1_1TestInheritence_a3bed049c4393b8c6c8a9afbe550f7893}\label{classtests_1_1test__ta__inheritence_1_1TestInheritence_a3bed049c4393b8c6c8a9afbe550f7893}} 
+\index{tests\+::test\+\_\+ta\+\_\+inheritence\+::\+Test\+Inheritence@{tests\+::test\+\_\+ta\+\_\+inheritence\+::\+Test\+Inheritence}!test\+\_\+subclassB@{test\+\_\+subclassB}}
+\index{test\+\_\+subclassB@{test\+\_\+subclassB}!tests\+::test\+\_\+ta\+\_\+inheritence\+::\+Test\+Inheritence@{tests\+::test\+\_\+ta\+\_\+inheritence\+::\+Test\+Inheritence}}
+\subsubsection{\texorpdfstring{test\+\_\+subclass\+B()}{test\_subclassB()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+ta\+\_\+inheritence.\+Test\+Inheritence.\+test\+\_\+subclassB (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Verify that class B does not contain the super args.
+\end{DoxyVerb}
+ 
+
+Definition at line 58 of file test\+\_\+ta\+\_\+inheritence.\+py.
+
+
+\begin{DoxyCode}
+58     \textcolor{keyword}{def }test\_subclassB(self):
+59         \textcolor{stringliteral}{"""}
+60 \textcolor{stringliteral}{        Verify that class B does not contain the super args.}
+61 \textcolor{stringliteral}{        """}
+62         parser = ParlaiParser(add\_model\_args=\textcolor{keyword}{True})
+63         opt = parser.parse\_args(
+64             args=[\textcolor{stringliteral}{'--model'}, \textcolor{stringliteral}{'tests.test\_ta\_inheritence:SubClassB'}], print\_args=\textcolor{keyword}{False}
+65         )
+66         self.assertEqual(\textcolor{stringliteral}{'b'}, opt.get(\textcolor{stringliteral}{'withoutclassinheritence'}))
+67         \textcolor{comment}{# make sure we don't have the dictionary now}
+68         self.assertNotIn(\textcolor{stringliteral}{'dictarg'}, opt)
+69         \textcolor{comment}{# something the parent has}
+70         self.assertNotIn(\textcolor{stringliteral}{'withclassinheritence'}, opt)
+71         \textcolor{comment}{# something that torch agent has}
+72         self.assertNotIn(\textcolor{stringliteral}{'no\_cuda'}, opt)
+73         \textcolor{comment}{# something torch generator agent has}
+74         self.assertNotIn(\textcolor{stringliteral}{'beam\_size'}, opt)
+75 
+76 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+tests/\hyperlink{test__ta__inheritence_8py}{test\+\_\+ta\+\_\+inheritence.\+py}\end{DoxyCompactItemize}

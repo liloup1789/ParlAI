@@ -1,0 +1,87 @@
+\hypertarget{classtest__urls_1_1TestUtils}{}\section{test\+\_\+urls.\+Test\+Utils Class Reference}
+\label{classtest__urls_1_1TestUtils}\index{test\+\_\+urls.\+Test\+Utils@{test\+\_\+urls.\+Test\+Utils}}
+
+
+Inheritance diagram for test\+\_\+urls.\+Test\+Utils\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=177pt]{db/db0/classtest__urls_1_1TestUtils__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for test\+\_\+urls.\+Test\+Utils\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=177pt]{d7/de5/classtest__urls_1_1TestUtils__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classtest__urls_1_1TestUtils_a5575b932cdbb76885c5c325f91b098ff}{test\+\_\+http\+\_\+response} (self)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 20 of file test\+\_\+urls.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtest__urls_1_1TestUtils_a5575b932cdbb76885c5c325f91b098ff}\label{classtest__urls_1_1TestUtils_a5575b932cdbb76885c5c325f91b098ff}} 
+\index{test\+\_\+urls\+::\+Test\+Utils@{test\+\_\+urls\+::\+Test\+Utils}!test\+\_\+http\+\_\+response@{test\+\_\+http\+\_\+response}}
+\index{test\+\_\+http\+\_\+response@{test\+\_\+http\+\_\+response}!test\+\_\+urls\+::\+Test\+Utils@{test\+\_\+urls\+::\+Test\+Utils}}
+\subsubsection{\texorpdfstring{test\+\_\+http\+\_\+response()}{test\_http\_response()}}
+{\footnotesize\ttfamily def test\+\_\+urls.\+Test\+Utils.\+test\+\_\+http\+\_\+response (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 21 of file test\+\_\+urls.\+py.
+
+
+\begin{DoxyCode}
+21     \textcolor{keyword}{def }test\_http\_response(self):
+22         tasks = set(
+23             task[\textcolor{stringliteral}{'task'}]
+24             \textcolor{keywordflow}{if} \textcolor{stringliteral}{':'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} task[\textcolor{stringliteral}{'task'}]
+25             \textcolor{keywordflow}{else} task[\textcolor{stringliteral}{'task'}][: task[\textcolor{stringliteral}{'task'}].index(\textcolor{stringliteral}{':'})]
+26             \textcolor{keywordflow}{for} task \textcolor{keywordflow}{in} task\_list
+27         )
+28         \textcolor{keywordflow}{for} task \textcolor{keywordflow}{in} sorted(tasks):
+29             with warnings.catch\_warnings():
+30                 warnings.simplefilter(\textcolor{stringliteral}{"ignore"}, ResourceWarning)
+31                 warnings.simplefilter(\textcolor{stringliteral}{"ignore"}, DeprecationWarning)
+32                 \textcolor{keywordflow}{if} task \textcolor{keywordflow}{in} SPECIFIC\_BUILDS:
+33                     \textcolor{keywordflow}{for} build \textcolor{keywordflow}{in} SPECIFIC\_BUILDS[task]:
+34                         mod = importlib.import\_module(
+35                             (\textcolor{stringliteral}{'parlai.tasks.'} + task + \textcolor{stringliteral}{'.'} + build)
+36                         )
+37                         \textcolor{keywordflow}{for} f \textcolor{keywordflow}{in} mod.RESOURCES:
+38                             with self.subTest(f\textcolor{stringliteral}{"\{task\}: \{f.url\}"}):
+39                                 f.check\_header()
+40                 \textcolor{keywordflow}{else}:
+41                     \textcolor{keywordflow}{try}:
+42                         mod = importlib.import\_module(
+43                             (\textcolor{stringliteral}{'parlai.tasks.'} + task + \textcolor{stringliteral}{'.build'})
+44                         )
+45                         file\_list = mod.RESOURCES
+46                     \textcolor{keywordflow}{except} (ModuleNotFoundError, AttributeError):
+47                         \textcolor{keywordflow}{continue}
+48                     \textcolor{keywordflow}{for} f \textcolor{keywordflow}{in} file\_list:
+49                         with self.subTest(f\textcolor{stringliteral}{"\{task\}: \{f.url\}"}):
+50                             f.check\_header()
+51 
+52 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+tests/nightly/cpu/\hyperlink{test__urls_8py}{test\+\_\+urls.\+py}\end{DoxyCompactItemize}

@@ -1,0 +1,38 @@
+\hypertarget{namespacekvmemnn_1_1eval__f1}{}\section{kvmemnn.\+eval\+\_\+f1 Namespace Reference}
+\label{namespacekvmemnn_1_1eval__f1}\index{kvmemnn.\+eval\+\_\+f1@{kvmemnn.\+eval\+\_\+f1}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacekvmemnn_1_1eval__f1_a37c672effdc33f74f7d18f8c12cd3a52}{main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacekvmemnn_1_1eval__f1_a37c672effdc33f74f7d18f8c12cd3a52}\label{namespacekvmemnn_1_1eval__f1_a37c672effdc33f74f7d18f8c12cd3a52}} 
+\index{kvmemnn\+::eval\+\_\+f1@{kvmemnn\+::eval\+\_\+f1}!main@{main}}
+\index{main@{main}!kvmemnn\+::eval\+\_\+f1@{kvmemnn\+::eval\+\_\+f1}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def kvmemnn.\+eval\+\_\+f1.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 15 of file eval\+\_\+f1.\+py.
+
+
+\begin{DoxyCode}
+15 \textcolor{keyword}{def }\hyperlink{namespaceseq2seq_1_1eval__f1_a99ede4f55975fd62d1d5834b72fa03c7}{main}():
+16     parser = \hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a74826f78ce1ce6c9fe9b6d4a6297f3bd}{setup\_args}()
+17     parser.set\_defaults(
+18         model=\textcolor{stringliteral}{'projects.personachat.kvmemnn.kvmemnn:Kvmemnn'},
+19         model\_file=\textcolor{stringliteral}{'models:convai2/kvmemnn/model'},
+20         numthreads=80,
+21     )
+22     opt = parser.parse\_args(print\_args=\textcolor{keyword}{False})
+23     \textcolor{comment}{# build all profile memory models}
+24     fnames = [\textcolor{stringliteral}{'kvmemnn.tgz'}]
+25     opt[\textcolor{stringliteral}{'model\_type'}] = \textcolor{stringliteral}{'kvmemnn'}  \textcolor{comment}{# for builder}
+26     \hyperlink{namespaceparlai_1_1core_1_1build__data_ab697f23f05d3e36d7979fe5e0ed7911e}{download\_models}(opt, fnames, \textcolor{stringliteral}{'convai2'})
+27     \textcolor{keywordflow}{return} \hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_aac16a2ead8ff2b896c82411fe262f449}{eval\_f1}(opt, print\_parser=parser)
+28 
+29 
+\end{DoxyCode}

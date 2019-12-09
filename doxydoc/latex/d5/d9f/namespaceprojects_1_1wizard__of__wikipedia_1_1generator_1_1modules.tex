@@ -1,0 +1,67 @@
+\hypertarget{namespaceprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules}{}\section{projects.\+wizard\+\_\+of\+\_\+wikipedia.\+generator.\+modules Namespace Reference}
+\label{namespaceprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules}\index{projects.\+wizard\+\_\+of\+\_\+wikipedia.\+generator.\+modules@{projects.\+wizard\+\_\+of\+\_\+wikipedia.\+generator.\+modules}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_1_1ContextKnowledgeDecoder}{Context\+Knowledge\+Decoder}
+\item 
+class \hyperlink{classprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_1_1ContextKnowledgeEncoder}{Context\+Knowledge\+Encoder}
+\item 
+class \hyperlink{classprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_1_1EndToEndModel}{End\+To\+End\+Model}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_aa0e28a2592caa75f5c687c6200d2a68d}{universal\+\_\+sentence\+\_\+embedding} (sentences, mask, sqrt=True)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_aa0e28a2592caa75f5c687c6200d2a68d}\label{namespaceprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_aa0e28a2592caa75f5c687c6200d2a68d}} 
+\index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::generator\+::modules@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::generator\+::modules}!universal\+\_\+sentence\+\_\+embedding@{universal\+\_\+sentence\+\_\+embedding}}
+\index{universal\+\_\+sentence\+\_\+embedding@{universal\+\_\+sentence\+\_\+embedding}!projects\+::wizard\+\_\+of\+\_\+wikipedia\+::generator\+::modules@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::generator\+::modules}}
+\subsubsection{\texorpdfstring{universal\+\_\+sentence\+\_\+embedding()}{universal\_sentence\_embedding()}}
+{\footnotesize\ttfamily def projects.\+wizard\+\_\+of\+\_\+wikipedia.\+generator.\+modules.\+universal\+\_\+sentence\+\_\+embedding (\begin{DoxyParamCaption}\item[{}]{sentences,  }\item[{}]{mask,  }\item[{}]{sqrt = {\ttfamily True} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Perform Universal Sentence Encoder averaging (https://arxiv.org/abs/1803.11175).
+
+This is really just sum / sqrt(len).
+
+:param Tensor sentences: an N x T x D of Transformer outputs. Note this is
+    the exact output of TransformerEncoder, but has the time axis first
+:param ByteTensor: an N x T binary matrix of paddings
+
+:return: an N x D matrix of sentence embeddings
+:rtype Tensor:
+\end{DoxyVerb}
+ 
+
+Definition at line 15 of file modules.\+py.
+
+
+\begin{DoxyCode}
+15 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_aa0e28a2592caa75f5c687c6200d2a68d}{universal\_sentence\_embedding}(sentences, mask, sqrt=True):
+16     \textcolor{stringliteral}{"""}
+17 \textcolor{stringliteral}{    Perform Universal Sentence Encoder averaging (https://arxiv.org/abs/1803.11175).}
+18 \textcolor{stringliteral}{}
+19 \textcolor{stringliteral}{    This is really just sum / sqrt(len).}
+20 \textcolor{stringliteral}{}
+21 \textcolor{stringliteral}{    :param Tensor sentences: an N x T x D of Transformer outputs. Note this is}
+22 \textcolor{stringliteral}{        the exact output of TransformerEncoder, but has the time axis first}
+23 \textcolor{stringliteral}{    :param ByteTensor: an N x T binary matrix of paddings}
+24 \textcolor{stringliteral}{}
+25 \textcolor{stringliteral}{    :return: an N x D matrix of sentence embeddings}
+26 \textcolor{stringliteral}{    :rtype Tensor:}
+27 \textcolor{stringliteral}{    """}
+28     \textcolor{comment}{# need to mask out the padded chars}
+29     sentence\_sums = th.bmm(
+30         sentences.permute(0, 2, 1), mask.float().unsqueeze(-1)
+31     ).squeeze(-1)
+32     divisor = mask.sum(dim=1).view(-1, 1).\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}()
+33     \textcolor{keywordflow}{if} sqrt:
+34         divisor = divisor.sqrt()
+35     sentence\_sums /= divisor
+36     \textcolor{keywordflow}{return} sentence\_sums
+37 
+38 
+\end{DoxyCode}

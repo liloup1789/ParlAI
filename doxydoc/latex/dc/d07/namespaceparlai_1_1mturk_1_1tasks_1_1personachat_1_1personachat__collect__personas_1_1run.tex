@@ -1,0 +1,129 @@
+\hypertarget{namespaceparlai_1_1mturk_1_1tasks_1_1personachat_1_1personachat__collect__personas_1_1run}{}\section{parlai.\+mturk.\+tasks.\+personachat.\+personachat\+\_\+collect\+\_\+personas.\+run Namespace Reference}
+\label{namespaceparlai_1_1mturk_1_1tasks_1_1personachat_1_1personachat__collect__personas_1_1run}\index{parlai.\+mturk.\+tasks.\+personachat.\+personachat\+\_\+collect\+\_\+personas.\+run@{parlai.\+mturk.\+tasks.\+personachat.\+personachat\+\_\+collect\+\_\+personas.\+run}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1personachat_1_1personachat__collect__personas_1_1run_a334f052cd3e8caffe3a2a4b7e4b668e2}{main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1tasks_1_1personachat_1_1personachat__collect__personas_1_1run_a334f052cd3e8caffe3a2a4b7e4b668e2}\label{namespaceparlai_1_1mturk_1_1tasks_1_1personachat_1_1personachat__collect__personas_1_1run_a334f052cd3e8caffe3a2a4b7e4b668e2}} 
+\index{parlai\+::mturk\+::tasks\+::personachat\+::personachat\+\_\+collect\+\_\+personas\+::run@{parlai\+::mturk\+::tasks\+::personachat\+::personachat\+\_\+collect\+\_\+personas\+::run}!main@{main}}
+\index{main@{main}!parlai\+::mturk\+::tasks\+::personachat\+::personachat\+\_\+collect\+\_\+personas\+::run@{parlai\+::mturk\+::tasks\+::personachat\+::personachat\+\_\+collect\+\_\+personas\+::run}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def parlai.\+mturk.\+tasks.\+personachat.\+personachat\+\_\+collect\+\_\+personas.\+run.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This task consists of one agent, model or MTurk worker, talking to an MTurk worker
+to negotiate a deal.
+\end{DoxyVerb}
+ 
+
+Definition at line 14 of file run.\+py.
+
+
+\begin{DoxyCode}
+14 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1run_ad3ab2c71f8083c3112815c0b363d316b}{main}():
+15     \textcolor{stringliteral}{"""}
+16 \textcolor{stringliteral}{    This task consists of one agent, model or MTurk worker, talking to an MTurk worker}
+17 \textcolor{stringliteral}{    to negotiate a deal.}
+18 \textcolor{stringliteral}{    """}
+19     argparser = ParlaiParser(\textcolor{keyword}{False}, \textcolor{keyword}{False})
+20     argparser.add\_parlai\_data\_path()
+21     argparser.add\_mturk\_args()
+22     argparser.add\_argument(
+23         \textcolor{stringliteral}{'-min\_t'}, \textcolor{stringliteral}{'--min\_turns'}, default=5, type=int, help=\textcolor{stringliteral}{'minimum number of turns'}
+24     )
+25     argparser.add\_argument(
+26         \textcolor{stringliteral}{'-mt'}, \textcolor{stringliteral}{'--max\_turns'}, default=10, type=int, help=\textcolor{stringliteral}{'maximal number of chat turns'}
+27     )
+28     argparser.add\_argument(
+29         \textcolor{stringliteral}{'-mx\_rsp\_time'},
+30         \textcolor{stringliteral}{'--max\_resp\_time'},
+31         default=150,
+32         type=int,
+33         help=\textcolor{stringliteral}{'time limit for entering a dialog message'},
+34     )
+35     argparser.add\_argument(
+36         \textcolor{stringliteral}{'-mx\_psn\_time'},
+37         \textcolor{stringliteral}{'--max\_persona\_time'},
+38         type=int,
+39         default=300,
+40         help=\textcolor{stringliteral}{'time limit for turker'} \textcolor{stringliteral}{'entering the persona'},
+41     )
+42     argparser.add\_argument(
+43         \textcolor{stringliteral}{'--ag\_shutdown\_time'},
+44         default=120,
+45         type=int,
+46         help=\textcolor{stringliteral}{'time limit for entering a dialog message'},
+47     )
+48     argparser.add\_argument(
+49         \textcolor{stringliteral}{'-rp'},
+50         \textcolor{stringliteral}{'--range\_persona'},
+51         default=\textcolor{stringliteral}{'4,6'},
+52         help=\textcolor{stringliteral}{'sample range of number of persona sentences'},
+53     )
+54     opt = argparser.parse\_args()
+55     directory\_path = os.path.dirname(os.path.abspath(\_\_file\_\_))
+56     opt[\textcolor{stringliteral}{'task'}] = os.path.basename(directory\_path)
+57 
+58     \textcolor{keywordflow}{if} \textcolor{stringliteral}{'data\_path'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} opt:
+59         opt[\textcolor{stringliteral}{'data\_path'}] = os.getcwd() + \textcolor{stringliteral}{'/data/'} + opt[\textcolor{stringliteral}{'task'}]
+60     opt.update(task\_config)
+61 
+62     mturk\_agent\_ids = [\textcolor{stringliteral}{'PERSON\_1'}]
+63 
+64     mturk\_manager = MTurkManager(opt=opt, mturk\_agent\_ids=mturk\_agent\_ids)
+65 
+66     mturk\_manager.setup\_server(task\_directory\_path=directory\_path)
+67 
+68     \textcolor{keywordflow}{try}:
+69         mturk\_manager.start\_new\_run()
+70         mturk\_manager.create\_hits()
+71 
+72         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} opt[\textcolor{stringliteral}{'is\_sandbox'}]:
+73             \textcolor{comment}{# ADD BLOCKED WORKERS HERE}
+74             blocked\_worker\_list = []
+75             \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} blocked\_worker\_list:
+76                 mturk\_manager.block\_worker(
+77                     w,
+78                     \textcolor{stringliteral}{'We found that you have unexpected behaviors in our previous '}
+79                     \textcolor{stringliteral}{'HITs. For more questions please email us.'},
+80                 )
+81 
+82         \textcolor{keyword}{def }run\_onboard(worker):
+83             \textcolor{keywordflow}{pass}
+84 
+85         mturk\_manager.set\_onboard\_function(onboard\_function=run\_onboard)
+86         mturk\_manager.ready\_to\_accept\_workers()
+87 
+88         \textcolor{keyword}{def }check\_worker\_eligibility(worker):
+89             \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+90 
+91         \textcolor{keyword}{def }assign\_worker\_roles(workers):
+92             \textcolor{keywordflow}{for} index, worker \textcolor{keywordflow}{in} enumerate(workers):
+93                 worker.id = mturk\_agent\_ids[index % len(mturk\_agent\_ids)]
+94 
+95         \textcolor{keyword}{def }run\_conversation(mturk\_manager, opt, workers):
+96             worker = workers[0]
+97             world = PersonaProfileWorld(opt, worker)
+98             \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} world.episode\_done():
+99                 world.parley()
+100             world.save\_data()
+101             world.shutdown()
+102             world.review\_work()
+103 
+104         mturk\_manager.start\_task(
+105             eligibility\_function=check\_worker\_eligibility,
+106             assign\_role\_function=assign\_worker\_roles,
+107             task\_function=run\_conversation,
+108         )
+109 
+110     \textcolor{keywordflow}{except} BaseException:
+111         \textcolor{keywordflow}{raise}
+112     \textcolor{keywordflow}{finally}:
+113         mturk\_manager.expire\_all\_unassigned\_hits()
+114         mturk\_manager.shutdown()
+115 
+116 
+\end{DoxyCode}

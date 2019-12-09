@@ -1,0 +1,176 @@
+\hypertarget{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1AdamWithDecay}{}\section{parlai.\+agents.\+bert\+\_\+ranker.\+helpers.\+Adam\+With\+Decay Class Reference}
+\label{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1AdamWithDecay}\index{parlai.\+agents.\+bert\+\_\+ranker.\+helpers.\+Adam\+With\+Decay@{parlai.\+agents.\+bert\+\_\+ranker.\+helpers.\+Adam\+With\+Decay}}
+
+
+Inheritance diagram for parlai.\+agents.\+bert\+\_\+ranker.\+helpers.\+Adam\+With\+Decay\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=241pt]{d1/d2f/classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1AdamWithDecay__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+agents.\+bert\+\_\+ranker.\+helpers.\+Adam\+With\+Decay\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=241pt]{d2/da4/classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1AdamWithDecay__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1AdamWithDecay_a23ec68b6a5fa73936194b9d1acde8557}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, params, lr=required, b1=0.\+9, b2=0.\+999, e=1e-\/6, weight\+\_\+decay=0.\+01, max\+\_\+grad\+\_\+norm=1.\+0)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1AdamWithDecay_aeb41188377c1a61b4638228abd6c3e64}{step} (self, closure=None)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Adam with decay; mirror's HF's implementation.
+
+:param lr:
+    learning rate
+:param b1:
+    Adams b1. Default: 0.9
+:param b2:
+    Adams b2. Default: 0.999
+:param e:
+    Adams epsilon. Default: 1e-6
+:param weight_decay:
+    Weight decay. Default: 0.01
+:param max_grad_norm:
+    Maximum norm for the gradients (-1 means no clipping).  Default: 1.0
+\end{DoxyVerb}
+ 
+
+Definition at line 243 of file helpers.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1AdamWithDecay_a23ec68b6a5fa73936194b9d1acde8557}\label{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1AdamWithDecay_a23ec68b6a5fa73936194b9d1acde8557}} 
+\index{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Adam\+With\+Decay@{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Adam\+With\+Decay}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Adam\+With\+Decay@{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Adam\+With\+Decay}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+bert\+\_\+ranker.\+helpers.\+Adam\+With\+Decay.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{params,  }\item[{}]{lr = {\ttfamily required},  }\item[{}]{b1 = {\ttfamily 0.9},  }\item[{}]{b2 = {\ttfamily 0.999},  }\item[{}]{e = {\ttfamily 1e-\/6},  }\item[{}]{weight\+\_\+decay = {\ttfamily 0.01},  }\item[{}]{max\+\_\+grad\+\_\+norm = {\ttfamily 1.0} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 270 of file helpers.\+py.
+
+
+\begin{DoxyCode}
+270     ):
+271         \textcolor{keywordflow}{if} lr \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} required \textcolor{keywordflow}{and} lr < 0.0:
+272             \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{'Invalid learning rate: \{\} - should be >= 0.0'}.
+      \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(lr))
+273         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} 0.0 <= b1 < 1.0:
+274             \textcolor{keywordflow}{raise} ValueError(
+275                 \textcolor{stringliteral}{'Invalid b1 parameter: \{\} - should be in [0.0, 1.0['}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(b1)
+276             )
+277         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} 0.0 <= b2 < 1.0:
+278             \textcolor{keywordflow}{raise} ValueError(
+279                 \textcolor{stringliteral}{'Invalid b2 parameter: \{\} - should be in [0.0, 1.0['}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(b2)
+280             )
+281         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} e >= 0.0:
+282             \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{'Invalid epsilon value: \{\} - should be >= 0.0'}.
+      \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(e))
+283         defaults = dict(
+284             lr=lr,
+285             b1=b1,
+286             b2=b2,
+287             e=e,
+288             weight\_decay=weight\_decay,
+289             max\_grad\_norm=max\_grad\_norm,
+290         )
+291         super(AdamWithDecay, self).\_\_init\_\_(params, defaults)
+292 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1AdamWithDecay_aeb41188377c1a61b4638228abd6c3e64}\label{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1AdamWithDecay_aeb41188377c1a61b4638228abd6c3e64}} 
+\index{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Adam\+With\+Decay@{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Adam\+With\+Decay}!step@{step}}
+\index{step@{step}!parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Adam\+With\+Decay@{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Adam\+With\+Decay}}
+\subsubsection{\texorpdfstring{step()}{step()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+bert\+\_\+ranker.\+helpers.\+Adam\+With\+Decay.\+step (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{closure = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Perform a single optimization step.
+
+:param closure:
+    A closure that reevaluates the model and returns the loss.
+\end{DoxyVerb}
+ 
+
+Definition at line 293 of file helpers.\+py.
+
+
+\begin{DoxyCode}
+293     \textcolor{keyword}{def }step(self, closure=None):
+294         \textcolor{stringliteral}{"""}
+295 \textcolor{stringliteral}{        Perform a single optimization step.}
+296 \textcolor{stringliteral}{}
+297 \textcolor{stringliteral}{        :param closure:}
+298 \textcolor{stringliteral}{            A closure that reevaluates the model and returns the loss.}
+299 \textcolor{stringliteral}{        """}
+300         loss = \textcolor{keywordtype}{None}
+301         \textcolor{keywordflow}{if} closure \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+302             loss = closure()
+303 
+304         \textcolor{keywordflow}{for} group \textcolor{keywordflow}{in} self.param\_groups:
+305             \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} group[\textcolor{stringliteral}{'params'}]:
+306                 \textcolor{keywordflow}{if} p.grad \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+307                     \textcolor{keywordflow}{continue}
+308                 grad = p.grad.data
+309                 \textcolor{keywordflow}{if} grad.is\_sparse:
+310                     \textcolor{keywordflow}{raise} RuntimeError(
+311                         \textcolor{stringliteral}{'Adam does not support sparse gradients, please '}
+312                         \textcolor{stringliteral}{'consider SparseAdam instead'}
+313                     )
+314 
+315                 state = self.state[p]
+316 
+317                 \textcolor{comment}{# State initialization}
+318                 \textcolor{keywordflow}{if} len(state) == 0:
+319                     \textcolor{comment}{# Exponential moving average of gradient values}
+320                     state[\textcolor{stringliteral}{'next\_m'}] = torch.zeros\_like(p.data)
+321                     \textcolor{comment}{# Exponential moving average of squared gradient values}
+322                     state[\textcolor{stringliteral}{'next\_v'}] = torch.zeros\_like(p.data)
+323 
+324                 next\_m, next\_v = state[\textcolor{stringliteral}{'next\_m'}], state[\textcolor{stringliteral}{'next\_v'}]
+325                 beta1, beta2 = group[\textcolor{stringliteral}{'b1'}], group[\textcolor{stringliteral}{'b2'}]
+326 
+327                 \textcolor{comment}{# Add grad clipping}
+328                 \textcolor{keywordflow}{if} group[\textcolor{stringliteral}{'max\_grad\_norm'}] > 0:
+329                     clip\_grad\_norm\_(p, group[\textcolor{stringliteral}{'max\_grad\_norm'}])
+330 
+331                 \textcolor{comment}{# Decay the first and second moment running average coefficient}
+332                 \textcolor{comment}{# In-place operations to update the averages at the same time}
+333                 next\_m.mul\_(beta1).add\_(1 - beta1, grad)
+334                 next\_v.mul\_(beta2).addcmul\_(1 - beta2, grad, grad)
+335                 update = next\_m / (next\_v.sqrt() + group[\textcolor{stringliteral}{'e'}])
+336 
+337                 \textcolor{comment}{# Just adding the square of the weights to the loss function is *not*}
+338                 \textcolor{comment}{# the correct way of using L2 regularization/weight decay with Adam,}
+339                 \textcolor{comment}{# since that will interact with the m and v parameters in strange ways.}
+340                 \textcolor{comment}{#}
+341                 \textcolor{comment}{# Instead we want to decay the weights in a manner that doesn't interact}
+342                 \textcolor{comment}{# with the m/v parameters. This is equivalent to adding the square}
+343                 \textcolor{comment}{# of the weights to the loss with plain (non-momentum) SGD.}
+344                 \textcolor{keywordflow}{if} group[\textcolor{stringliteral}{'weight\_decay'}] > 0.0:
+345                     update += group[\textcolor{stringliteral}{'weight\_decay'}] * p.data
+346                 lr = group[\textcolor{stringliteral}{'lr'}]
+347 
+348                 update\_with\_lr = lr * update
+349                 p.data.add\_(-update\_with\_lr)
+350         \textcolor{keywordflow}{return} loss
+351 \end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/agents/bert\+\_\+ranker/\hyperlink{helpers_8py}{helpers.\+py}\end{DoxyCompactItemize}

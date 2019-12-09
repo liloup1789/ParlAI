@@ -1,0 +1,179 @@
+\hypertarget{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket}{}\section{parlai.\+chat\+\_\+service.\+core.\+manager\+\_\+utils.\+Chat\+Service\+Message\+Socket Class Reference}
+\label{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket}\index{parlai.\+chat\+\_\+service.\+core.\+manager\+\_\+utils.\+Chat\+Service\+Message\+Socket@{parlai.\+chat\+\_\+service.\+core.\+manager\+\_\+utils.\+Chat\+Service\+Message\+Socket}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_ae21cee0e3e221d9c8480abdd3dd56eee}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_a42860d1afbafa3cb98688feae503bcef}{server\+\_\+url}, \hyperlink{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_a0dfdf8ef9c7388e55d7c174ee01fc572}{port}, \hyperlink{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_a8a28e261f70852625b02a1ec5c18356a}{message\+\_\+callback})
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_a42860d1afbafa3cb98688feae503bcef}{server\+\_\+url}
+\item 
+\hyperlink{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_a0dfdf8ef9c7388e55d7c174ee01fc572}{port}
+\item 
+\hyperlink{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_a8a28e261f70852625b02a1ec5c18356a}{message\+\_\+callback}
+\item 
+\hyperlink{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_a40815e1425dd12525060427d99c85b78}{ws}
+\item 
+\hyperlink{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_a548c52469eba4c8a4d5d047caf031d05}{last\+\_\+pong}
+\item 
+\hyperlink{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_a56247cb3af9fce17b726e63f43d30914}{alive}
+\item 
+\hyperlink{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_a5a78df442fb45c0d0e099b59833d8216}{listen\+\_\+thread}
+\item 
+\hyperlink{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_a34cf8032c69d53ba0539c355d52d7aff}{keep\+\_\+running}
+\item 
+\hyperlink{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_af1c65756d630bd95b2cced749cabbb4d}{use\+\_\+socket}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}ChatServiceMessageSocket is a wrapper around websocket to forward messages from the
+remote server to the ChatServiceManager.
+\end{DoxyVerb}
+ 
+
+Definition at line 21 of file manager\+\_\+utils.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_ae21cee0e3e221d9c8480abdd3dd56eee}\label{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_ae21cee0e3e221d9c8480abdd3dd56eee}} 
+\index{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+core.\+manager\+\_\+utils.\+Chat\+Service\+Message\+Socket.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{server\+\_\+url,  }\item[{}]{port,  }\item[{}]{message\+\_\+callback }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}server_url:           url at which the server is to be run
+port:                 port for the socket to operate on
+message_callback:     function to be called on incoming message objects
+              format: message_callback(self, data)
+\end{DoxyVerb}
+ 
+
+Definition at line 27 of file manager\+\_\+utils.\+py.
+
+
+\begin{DoxyCode}
+27     \textcolor{keyword}{def }\_\_init\_\_(self, server\_url, port, message\_callback):
+28         \textcolor{stringliteral}{"""}
+29 \textcolor{stringliteral}{        server\_url:           url at which the server is to be run}
+30 \textcolor{stringliteral}{        port:                 port for the socket to operate on}
+31 \textcolor{stringliteral}{        message\_callback:     function to be called on incoming message objects}
+32 \textcolor{stringliteral}{                              format: message\_callback(self, data)}
+33 \textcolor{stringliteral}{        """}
+34         self.server\_url = server\_url
+35         self.port = port
+36         self.message\_callback = message\_callback
+37 
+38         self.ws = \textcolor{keywordtype}{None}
+39         self.last\_pong = \textcolor{keywordtype}{None}
+40         self.alive = \textcolor{keyword}{False}
+41 
+42         \textcolor{comment}{# initialize the state}
+43         self.listen\_thread = \textcolor{keywordtype}{None}
+44 
+45         \textcolor{comment}{# setup the socket}
+46         self.keep\_running = \textcolor{keyword}{True}
+47         self.\_setup\_socket()
+48 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_a56247cb3af9fce17b726e63f43d30914}\label{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_a56247cb3af9fce17b726e63f43d30914}} 
+\index{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket}!alive@{alive}}
+\index{alive@{alive}!parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket}}
+\subsubsection{\texorpdfstring{alive}{alive}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+core.\+manager\+\_\+utils.\+Chat\+Service\+Message\+Socket.\+alive}
+
+
+
+Definition at line 40 of file manager\+\_\+utils.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_a34cf8032c69d53ba0539c355d52d7aff}\label{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_a34cf8032c69d53ba0539c355d52d7aff}} 
+\index{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket}!keep\+\_\+running@{keep\+\_\+running}}
+\index{keep\+\_\+running@{keep\+\_\+running}!parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket}}
+\subsubsection{\texorpdfstring{keep\+\_\+running}{keep\_running}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+core.\+manager\+\_\+utils.\+Chat\+Service\+Message\+Socket.\+keep\+\_\+running}
+
+
+
+Definition at line 46 of file manager\+\_\+utils.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_a548c52469eba4c8a4d5d047caf031d05}\label{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_a548c52469eba4c8a4d5d047caf031d05}} 
+\index{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket}!last\+\_\+pong@{last\+\_\+pong}}
+\index{last\+\_\+pong@{last\+\_\+pong}!parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket}}
+\subsubsection{\texorpdfstring{last\+\_\+pong}{last\_pong}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+core.\+manager\+\_\+utils.\+Chat\+Service\+Message\+Socket.\+last\+\_\+pong}
+
+
+
+Definition at line 39 of file manager\+\_\+utils.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_a5a78df442fb45c0d0e099b59833d8216}\label{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_a5a78df442fb45c0d0e099b59833d8216}} 
+\index{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket}!listen\+\_\+thread@{listen\+\_\+thread}}
+\index{listen\+\_\+thread@{listen\+\_\+thread}!parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket}}
+\subsubsection{\texorpdfstring{listen\+\_\+thread}{listen\_thread}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+core.\+manager\+\_\+utils.\+Chat\+Service\+Message\+Socket.\+listen\+\_\+thread}
+
+
+
+Definition at line 43 of file manager\+\_\+utils.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_a8a28e261f70852625b02a1ec5c18356a}\label{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_a8a28e261f70852625b02a1ec5c18356a}} 
+\index{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket}!message\+\_\+callback@{message\+\_\+callback}}
+\index{message\+\_\+callback@{message\+\_\+callback}!parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket}}
+\subsubsection{\texorpdfstring{message\+\_\+callback}{message\_callback}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+core.\+manager\+\_\+utils.\+Chat\+Service\+Message\+Socket.\+message\+\_\+callback}
+
+
+
+Definition at line 36 of file manager\+\_\+utils.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_a0dfdf8ef9c7388e55d7c174ee01fc572}\label{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_a0dfdf8ef9c7388e55d7c174ee01fc572}} 
+\index{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket}!port@{port}}
+\index{port@{port}!parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket}}
+\subsubsection{\texorpdfstring{port}{port}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+core.\+manager\+\_\+utils.\+Chat\+Service\+Message\+Socket.\+port}
+
+
+
+Definition at line 35 of file manager\+\_\+utils.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_a42860d1afbafa3cb98688feae503bcef}\label{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_a42860d1afbafa3cb98688feae503bcef}} 
+\index{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket}!server\+\_\+url@{server\+\_\+url}}
+\index{server\+\_\+url@{server\+\_\+url}!parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket}}
+\subsubsection{\texorpdfstring{server\+\_\+url}{server\_url}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+core.\+manager\+\_\+utils.\+Chat\+Service\+Message\+Socket.\+server\+\_\+url}
+
+
+
+Definition at line 34 of file manager\+\_\+utils.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_af1c65756d630bd95b2cced749cabbb4d}\label{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_af1c65756d630bd95b2cced749cabbb4d}} 
+\index{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket}!use\+\_\+socket@{use\+\_\+socket}}
+\index{use\+\_\+socket@{use\+\_\+socket}!parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket}}
+\subsubsection{\texorpdfstring{use\+\_\+socket}{use\_socket}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+core.\+manager\+\_\+utils.\+Chat\+Service\+Message\+Socket.\+use\+\_\+socket}
+
+
+
+Definition at line 99 of file manager\+\_\+utils.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_a40815e1425dd12525060427d99c85b78}\label{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceMessageSocket_a40815e1425dd12525060427d99c85b78}} 
+\index{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket}!ws@{ws}}
+\index{ws@{ws}!parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+Message\+Socket}}
+\subsubsection{\texorpdfstring{ws}{ws}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+core.\+manager\+\_\+utils.\+Chat\+Service\+Message\+Socket.\+ws}
+
+
+
+Definition at line 38 of file manager\+\_\+utils.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/chat\+\_\+service/core/\hyperlink{manager__utils_8py}{manager\+\_\+utils.\+py}\end{DoxyCompactItemize}

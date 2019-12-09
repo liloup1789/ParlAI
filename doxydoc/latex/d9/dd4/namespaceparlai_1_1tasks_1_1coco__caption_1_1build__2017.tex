@@ -1,0 +1,125 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1coco__caption_1_1build__2017}{}\section{parlai.\+tasks.\+coco\+\_\+caption.\+build\+\_\+2017 Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1coco__caption_1_1build__2017}\index{parlai.\+tasks.\+coco\+\_\+caption.\+build\+\_\+2017@{parlai.\+tasks.\+coco\+\_\+caption.\+build\+\_\+2017}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1coco__caption_1_1build__2017_ae85e762d86aa89bda50b2f9b6df4f112}{build\+Image} (opt)
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1coco__caption_1_1build__2017_a7831ed11d47deae2c049d33a4fe035c8}{build} (opt)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+list \hyperlink{namespaceparlai_1_1tasks_1_1coco__caption_1_1build__2017_a3e665907435d9aac4b0b9e567934c06e}{R\+E\+S\+O\+U\+R\+C\+ES}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1coco__caption_1_1build__2017_a7831ed11d47deae2c049d33a4fe035c8}\label{namespaceparlai_1_1tasks_1_1coco__caption_1_1build__2017_a7831ed11d47deae2c049d33a4fe035c8}} 
+\index{parlai\+::tasks\+::coco\+\_\+caption\+::build\+\_\+2017@{parlai\+::tasks\+::coco\+\_\+caption\+::build\+\_\+2017}!build@{build}}
+\index{build@{build}!parlai\+::tasks\+::coco\+\_\+caption\+::build\+\_\+2017@{parlai\+::tasks\+::coco\+\_\+caption\+::build\+\_\+2017}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+coco\+\_\+caption.\+build\+\_\+2017.\+build (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 60 of file build\+\_\+2017.\+py.
+
+
+\begin{DoxyCode}
+60 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1coco__caption_1_1build__2017_a7831ed11d47deae2c049d33a4fe035c8}{build}(opt):
+61     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'COCO\_2017\_Caption'})
+62     version = \textcolor{keywordtype}{None}
+63 
+64     \textcolor{comment}{# check if data had been previously built}
+65     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version\_string=version):
+66         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+67 
+68         \textcolor{comment}{# make a clean directory if needed}
+69         \textcolor{keywordflow}{if} build\_data.built(dpath):
+70             \textcolor{comment}{# an older version exists, so remove these outdated files.}
+71             build\_data.remove\_dir(dpath)
+72         build\_data.make\_dir(dpath)
+73 
+74         \textcolor{comment}{# download the data.}
+75         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES[3:]:
+76             downloadable\_file.download\_file(dpath)
+77 
+78         \textcolor{comment}{# mark the data as built}
+79         build\_data.mark\_done(dpath, version\_string=version)
+80 \end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1coco__caption_1_1build__2017_ae85e762d86aa89bda50b2f9b6df4f112}\label{namespaceparlai_1_1tasks_1_1coco__caption_1_1build__2017_ae85e762d86aa89bda50b2f9b6df4f112}} 
+\index{parlai\+::tasks\+::coco\+\_\+caption\+::build\+\_\+2017@{parlai\+::tasks\+::coco\+\_\+caption\+::build\+\_\+2017}!build\+Image@{build\+Image}}
+\index{build\+Image@{build\+Image}!parlai\+::tasks\+::coco\+\_\+caption\+::build\+\_\+2017@{parlai\+::tasks\+::coco\+\_\+caption\+::build\+\_\+2017}}
+\subsubsection{\texorpdfstring{build\+Image()}{buildImage()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+coco\+\_\+caption.\+build\+\_\+2017.\+build\+Image (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 41 of file build\+\_\+2017.\+py.
+
+
+\begin{DoxyCode}
+41 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1coco__caption_1_1build__2017_ae85e762d86aa89bda50b2f9b6df4f112}{buildImage}(opt):
+42     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'COCO-IMG-2017'})
+43     version = \textcolor{stringliteral}{'1'}
+44 
+45     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version\_string=version):
+46         print(\textcolor{stringliteral}{'[building image data: '} + dpath + \textcolor{stringliteral}{']'})
+47         \textcolor{keywordflow}{if} build\_data.built(dpath):
+48             \textcolor{comment}{# An older version exists, so remove these outdated files.}
+49             build\_data.remove\_dir(dpath)
+50         build\_data.make\_dir(dpath)
+51 
+52         \textcolor{comment}{# Download the image data.}
+53         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES[:3]:
+54             downloadable\_file.download\_file(dpath)
+55 
+56         \textcolor{comment}{# Mark the data as built.}
+57         build\_data.mark\_done(dpath, version\_string=version)
+58 
+59 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1coco__caption_1_1build__2017_a3e665907435d9aac4b0b9e567934c06e}\label{namespaceparlai_1_1tasks_1_1coco__caption_1_1build__2017_a3e665907435d9aac4b0b9e567934c06e}} 
+\index{parlai\+::tasks\+::coco\+\_\+caption\+::build\+\_\+2017@{parlai\+::tasks\+::coco\+\_\+caption\+::build\+\_\+2017}!R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}}
+\index{R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}!parlai\+::tasks\+::coco\+\_\+caption\+::build\+\_\+2017@{parlai\+::tasks\+::coco\+\_\+caption\+::build\+\_\+2017}}
+\subsubsection{\texorpdfstring{R\+E\+S\+O\+U\+R\+C\+ES}{RESOURCES}}
+{\footnotesize\ttfamily list parlai.\+tasks.\+coco\+\_\+caption.\+build\+\_\+2017.\+R\+E\+S\+O\+U\+R\+C\+ES}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+1 =  [
+2     DownloadableFile(
+3         \textcolor{stringliteral}{'http://parl.ai/downloads/COCO-IMG/train2017.zip'},
+4         \textcolor{stringliteral}{'train2017.zip'},
+5         \textcolor{stringliteral}{'69a8bb58ea5f8f99d24875f21416de2e9ded3178e903f1f7603e283b9e06d929'},
+6     ),
+7     DownloadableFile(
+8         \textcolor{stringliteral}{'http://parl.ai/downloads/COCO-IMG/val2017.zip'},
+9         \textcolor{stringliteral}{'val2017.zip'},
+10         \textcolor{stringliteral}{'4f7e2ccb2866ec5041993c9cf2a952bbed69647b115d0f74da7ce8f4bef82f05'},
+11     ),
+12     DownloadableFile(
+13         \textcolor{stringliteral}{'http://parl.ai/downloads/COCO-IMG/test2017.zip'},
+14         \textcolor{stringliteral}{'test2017.zip'},
+15         \textcolor{stringliteral}{'c7908c3c9f94ba2f3340ebbeec58c25db6be8774f18d68c2f15d0e369d95baba'},
+16     ),
+17     DownloadableFile(
+18         \textcolor{stringliteral}{'http://images.cocodataset.org/annotations/annotations\_trainval2017.zip'},
+19         \textcolor{stringliteral}{'annotations\_trainval2017.zip'},
+20         \textcolor{stringliteral}{'113a836d90195ee1f884e704da6304dfaaecff1f023f49b6ca93c4aaae470268'},
+21     ),
+22     DownloadableFile(
+23         \textcolor{stringliteral}{'http://images.cocodataset.org/annotations/image\_info\_test2017.zip'},
+24         \textcolor{stringliteral}{'image\_info\_test2017.zip'},
+25         \textcolor{stringliteral}{'e52f412dd7195ac8f98d782b44c6dd30ea10241e9f42521f67610fbe055a74f8'},
+26     ),
+27 ]
+\end{DoxyCode}
+
+
+Definition at line 12 of file build\+\_\+2017.\+py.
+

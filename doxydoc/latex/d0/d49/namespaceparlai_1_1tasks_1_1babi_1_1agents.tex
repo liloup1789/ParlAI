@@ -1,0 +1,54 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1babi_1_1agents}{}\section{parlai.\+tasks.\+babi.\+agents Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1babi_1_1agents}\index{parlai.\+tasks.\+babi.\+agents@{parlai.\+tasks.\+babi.\+agents}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classparlai_1_1tasks_1_1babi_1_1agents_1_1All10kTeacher}{All10k\+Teacher}
+\item 
+class \hyperlink{classparlai_1_1tasks_1_1babi_1_1agents_1_1All1kTeacher}{All1k\+Teacher}
+\item 
+class \hyperlink{classparlai_1_1tasks_1_1babi_1_1agents_1_1DefaultTeacher}{Default\+Teacher}
+\item 
+class \hyperlink{classparlai_1_1tasks_1_1babi_1_1agents_1_1Task10kTeacher}{Task10k\+Teacher}
+\item 
+class \hyperlink{classparlai_1_1tasks_1_1babi_1_1agents_1_1Task1kTeacher}{Task1k\+Teacher}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1babi_1_1agents_a80ee701751bc608fcb01bcfb1e884de0}{mod\+\_\+labels} (ys, task)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1babi_1_1agents_a80ee701751bc608fcb01bcfb1e884de0}\label{namespaceparlai_1_1tasks_1_1babi_1_1agents_a80ee701751bc608fcb01bcfb1e884de0}} 
+\index{parlai\+::tasks\+::babi\+::agents@{parlai\+::tasks\+::babi\+::agents}!mod\+\_\+labels@{mod\+\_\+labels}}
+\index{mod\+\_\+labels@{mod\+\_\+labels}!parlai\+::tasks\+::babi\+::agents@{parlai\+::tasks\+::babi\+::agents}}
+\subsubsection{\texorpdfstring{mod\+\_\+labels()}{mod\_labels()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+babi.\+agents.\+mod\+\_\+labels (\begin{DoxyParamCaption}\item[{}]{ys,  }\item[{}]{task }\end{DoxyParamCaption})}
+
+
+
+Definition at line 29 of file agents.\+py.
+
+
+\begin{DoxyCode}
+29 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1babi_1_1agents_a80ee701751bc608fcb01bcfb1e884de0}{mod\_labels}(ys, task):
+30     \textcolor{keywordflow}{if} ys \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+31         \textcolor{comment}{# replace comma-labeled babi tasks with spaces}
+32         \textcolor{comment}{# this is more friendly to our tokenizer which makes commas full tokens}
+33         \textcolor{comment}{# this way models won't be penalized for not generating a comma}
+34         \textcolor{keywordflow}{if} task == \textcolor{stringliteral}{'8'}:
+35             \textcolor{comment}{# holding: labels like 'milk,cookies,football'}
+36             \textcolor{comment}{# replace with spaces 'milk football cookies'}
+37             ys = [y.replace(\textcolor{stringliteral}{','}, \textcolor{stringliteral}{' '}) \textcolor{keywordflow}{for} y \textcolor{keywordflow}{in} ys]
+38         \textcolor{keywordflow}{elif} task == \textcolor{stringliteral}{'19'}:
+39             \textcolor{comment}{# pathfinding: labels like 'n,e' or 's,w'}
+40             \textcolor{comment}{# replace with spaces, 'n e'}
+41             ys = [y.replace(\textcolor{stringliteral}{','}, \textcolor{stringliteral}{' '}) \textcolor{keywordflow}{for} y \textcolor{keywordflow}{in} ys]
+42 
+43     \textcolor{keywordflow}{return} ys
+44 
+45 
+46 \textcolor{comment}{# Single bAbI task (1k training).}
+\end{DoxyCode}

@@ -1,0 +1,71 @@
+\hypertarget{namespacetests_1_1test__torch__agent}{}\section{tests.\+test\+\_\+torch\+\_\+agent Namespace Reference}
+\label{namespacetests_1_1test__torch__agent}\index{tests.\+test\+\_\+torch\+\_\+agent@{tests.\+test\+\_\+torch\+\_\+agent}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classtests_1_1test__torch__agent_1_1TestLegacyVersioning}{Test\+Legacy\+Versioning}
+\item 
+class \hyperlink{classtests_1_1test__torch__agent_1_1TestTorchAgent}{Test\+Torch\+Agent}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\+\_\+agent} (kwargs)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespacetests_1_1test__torch__agent_a0ea22379520e501f5766757405f3920d}{S\+K\+I\+P\+\_\+\+T\+E\+S\+TS}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}\label{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}} 
+\index{tests\+::test\+\_\+torch\+\_\+agent@{tests\+::test\+\_\+torch\+\_\+agent}!get\+\_\+agent@{get\+\_\+agent}}
+\index{get\+\_\+agent@{get\+\_\+agent}!tests\+::test\+\_\+torch\+\_\+agent@{tests\+::test\+\_\+torch\+\_\+agent}}
+\subsubsection{\texorpdfstring{get\+\_\+agent()}{get\_agent()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+torch\+\_\+agent.\+get\+\_\+agent (\begin{DoxyParamCaption}\item[{}]{kwargs }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Return opt-initialized agent.
+
+:param kwargs: any kwargs you want to set using parser.set_params(\*\*kwargs)
+\end{DoxyVerb}
+ 
+
+Definition at line 29 of file test\+\_\+torch\+\_\+agent.\+py.
+
+
+\begin{DoxyCode}
+29 \textcolor{keyword}{def }\hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\_agent}(**kwargs):
+30     \textcolor{stringliteral}{r"""}
+31 \textcolor{stringliteral}{    Return opt-initialized agent.}
+32 \textcolor{stringliteral}{}
+33 \textcolor{stringliteral}{    :param kwargs: any kwargs you want to set using parser.set\_params(\(\backslash\)*\(\backslash\)*kwargs)}
+34 \textcolor{stringliteral}{    """}
+35     \textcolor{keywordflow}{if} \textcolor{stringliteral}{'no\_cuda'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} kwargs:
+36         kwargs[\textcolor{stringliteral}{'no\_cuda'}] = \textcolor{keyword}{True}
+37     \textcolor{keyword}{from} \hyperlink{namespaceparlai_1_1core_1_1params}{parlai.core.params} \textcolor{keyword}{import} ParlaiParser
+38 
+39     parser = ParlaiParser()
+40     MockTorchAgent.add\_cmdline\_args(parser)
+41     parser.set\_params(**kwargs)
+42     opt = parser.parse\_args(print\_args=\textcolor{keyword}{False})
+43     with testing\_utils.capture\_output():
+44         \textcolor{keywordflow}{return} MockTorchAgent(opt)
+45 
+46 
+47 @unittest.skipIf(SKIP\_TESTS, \textcolor{stringliteral}{"Torch not installed."})
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespacetests_1_1test__torch__agent_a0ea22379520e501f5766757405f3920d}\label{namespacetests_1_1test__torch__agent_a0ea22379520e501f5766757405f3920d}} 
+\index{tests\+::test\+\_\+torch\+\_\+agent@{tests\+::test\+\_\+torch\+\_\+agent}!S\+K\+I\+P\+\_\+\+T\+E\+S\+TS@{S\+K\+I\+P\+\_\+\+T\+E\+S\+TS}}
+\index{S\+K\+I\+P\+\_\+\+T\+E\+S\+TS@{S\+K\+I\+P\+\_\+\+T\+E\+S\+TS}!tests\+::test\+\_\+torch\+\_\+agent@{tests\+::test\+\_\+torch\+\_\+agent}}
+\subsubsection{\texorpdfstring{S\+K\+I\+P\+\_\+\+T\+E\+S\+TS}{SKIP\_TESTS}}
+{\footnotesize\ttfamily tests.\+test\+\_\+torch\+\_\+agent.\+S\+K\+I\+P\+\_\+\+T\+E\+S\+TS}
+
+
+
+Definition at line 20 of file test\+\_\+torch\+\_\+agent.\+py.
+

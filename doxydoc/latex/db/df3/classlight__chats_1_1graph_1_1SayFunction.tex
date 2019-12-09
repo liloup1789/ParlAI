@@ -1,0 +1,142 @@
+\hypertarget{classlight__chats_1_1graph_1_1SayFunction}{}\section{light\+\_\+chats.\+graph.\+Say\+Function Class Reference}
+\label{classlight__chats_1_1graph_1_1SayFunction}\index{light\+\_\+chats.\+graph.\+Say\+Function@{light\+\_\+chats.\+graph.\+Say\+Function}}
+
+
+Inheritance diagram for light\+\_\+chats.\+graph.\+Say\+Function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{d2/de2/classlight__chats_1_1graph_1_1SayFunction__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for light\+\_\+chats.\+graph.\+Say\+Function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{dc/d5a/classlight__chats_1_1graph_1_1SayFunction__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1SayFunction_a2d42dde7366558243d4282cab89e9184}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self)
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1SayFunction_af14fb1e5a036d9c537ea2915f2c76275}{func} (self, graph, args)
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1SayFunction_a20e5908183144f719a93276707938894}{format\+\_\+observation} (self, graph, viewing\+\_\+agent, action, telling\+\_\+agent=None)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Output all the following arguments [Actor, raw text]
+\end{DoxyVerb}
+ 
+
+Definition at line 473 of file graph.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1SayFunction_a2d42dde7366558243d4282cab89e9184}\label{classlight__chats_1_1graph_1_1SayFunction_a2d42dde7366558243d4282cab89e9184}} 
+\index{light\+\_\+chats\+::graph\+::\+Say\+Function@{light\+\_\+chats\+::graph\+::\+Say\+Function}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!light\+\_\+chats\+::graph\+::\+Say\+Function@{light\+\_\+chats\+::graph\+::\+Say\+Function}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Say\+Function.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 478 of file graph.\+py.
+
+
+\begin{DoxyCode}
+478     \textcolor{keyword}{def }\_\_init\_\_(self):
+479         super().\_\_init\_\_(
+480             function\_name=\textcolor{stringliteral}{'say'},
+481             possible\_arg\_nums=[\textcolor{stringliteral}{'ALL'}],
+482             arg\_split\_words=[],
+483             arg\_find\_type=[\{\}],
+484             arg\_constraints=[[]],  \textcolor{comment}{# no constraints on the actor}
+485             func\_constraints=[],
+486             callback\_triggers=[\{\textcolor{stringliteral}{'action'}: \textcolor{stringliteral}{'said'}, \textcolor{stringliteral}{'args'}: [0, 1]\}],
+487         )
+488 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1SayFunction_a20e5908183144f719a93276707938894}\label{classlight__chats_1_1graph_1_1SayFunction_a20e5908183144f719a93276707938894}} 
+\index{light\+\_\+chats\+::graph\+::\+Say\+Function@{light\+\_\+chats\+::graph\+::\+Say\+Function}!format\+\_\+observation@{format\+\_\+observation}}
+\index{format\+\_\+observation@{format\+\_\+observation}!light\+\_\+chats\+::graph\+::\+Say\+Function@{light\+\_\+chats\+::graph\+::\+Say\+Function}}
+\subsubsection{\texorpdfstring{format\+\_\+observation()}{format\_observation()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Say\+Function.\+format\+\_\+observation (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{graph,  }\item[{}]{viewing\+\_\+agent,  }\item[{}]{action,  }\item[{}]{telling\+\_\+agent = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Parse the observations to recount, then return them.
+\end{DoxyVerb}
+ 
+
+Definition at line 510 of file graph.\+py.
+
+
+\begin{DoxyCode}
+510     \textcolor{keyword}{def }\hyperlink{namespacelight__chats_1_1graph_a6d359942394976812f0055affc289f56}{format\_observation}(self, graph, viewing\_agent, action, telling\_agent=None):
+511         \textcolor{stringliteral}{"""}
+512 \textcolor{stringliteral}{        Parse the observations to recount, then return them.}
+513 \textcolor{stringliteral}{        """}
+514         actor = action[\textcolor{stringliteral}{'actors'}][0]
+515         content = action[\textcolor{stringliteral}{'content'}]
+516         \textcolor{keywordflow}{if} viewing\_agent == actor:
+517             actor\_text = \textcolor{stringliteral}{'You'}
+518         \textcolor{keywordflow}{else}:
+519             actor\_text = graph.node\_to\_desc(actor, use\_the=\textcolor{keyword}{True}).capitalize()
+520         \textcolor{keywordflow}{if} content[-1] \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} [\textcolor{stringliteral}{'.'}, \textcolor{stringliteral}{'?'}, \textcolor{stringliteral}{'!'}]:
+521             content += \textcolor{stringliteral}{'.'}
+522         \textcolor{keywordflow}{return} \textcolor{stringliteral}{'\{\} said "\{\}"\(\backslash\)n'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(actor\_text, content)
+523 
+524 
+\end{DoxyCode}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1SayFunction_af14fb1e5a036d9c537ea2915f2c76275}\label{classlight__chats_1_1graph_1_1SayFunction_af14fb1e5a036d9c537ea2915f2c76275}} 
+\index{light\+\_\+chats\+::graph\+::\+Say\+Function@{light\+\_\+chats\+::graph\+::\+Say\+Function}!func@{func}}
+\index{func@{func}!light\+\_\+chats\+::graph\+::\+Say\+Function@{light\+\_\+chats\+::graph\+::\+Say\+Function}}
+\subsubsection{\texorpdfstring{func()}{func()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Say\+Function.\+func (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{graph,  }\item[{}]{args }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}<Actor> sends message history to room [or specified <recipient>]
+\end{DoxyVerb}
+ 
+
+Definition at line 489 of file graph.\+py.
+
+
+\begin{DoxyCode}
+489     \textcolor{keyword}{def }func(self, graph, args):
+490         \textcolor{stringliteral}{"""}
+491 \textcolor{stringliteral}{        <Actor> sends message history to room [or specified <recipient>]}
+492 \textcolor{stringliteral}{        """}
+493         actor = args[0]
+494         words = args[1].strip()
+495         \textcolor{keywordflow}{if} words.startswith(\textcolor{stringliteral}{'"'}) \textcolor{keywordflow}{and} words.endswith(\textcolor{stringliteral}{'"'}):
+496             words = words[1:-1]
+497         room\_id = graph.location(actor)
+498         agent\_ids = graph.get\_room\_agents(room\_id)
+499         said\_action = \{
+500             \textcolor{stringliteral}{'caller'}: self.get\_name(),
+501             \textcolor{stringliteral}{'name'}: \textcolor{stringliteral}{'said'},
+502             \textcolor{stringliteral}{'room\_id'}: room\_id,
+503             \textcolor{stringliteral}{'actors'}: [actor],
+504             \textcolor{stringliteral}{'present\_agent\_ids'}: agent\_ids,
+505             \textcolor{stringliteral}{'content'}: words,
+506         \}
+507         graph.broadcast\_to\_room(said\_action, exclude\_agents=[actor])
+508         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+509 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/mturk/tasks/light/light\+\_\+chats/\hyperlink{parlai_2mturk_2tasks_2light_2light__chats_2graph_8py}{graph.\+py}\end{DoxyCompactItemize}

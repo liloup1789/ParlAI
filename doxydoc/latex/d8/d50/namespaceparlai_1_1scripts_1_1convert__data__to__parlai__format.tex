@@ -1,0 +1,113 @@
+\hypertarget{namespaceparlai_1_1scripts_1_1convert__data__to__parlai__format}{}\section{parlai.\+scripts.\+convert\+\_\+data\+\_\+to\+\_\+parlai\+\_\+format Namespace Reference}
+\label{namespaceparlai_1_1scripts_1_1convert__data__to__parlai__format}\index{parlai.\+scripts.\+convert\+\_\+data\+\_\+to\+\_\+parlai\+\_\+format@{parlai.\+scripts.\+convert\+\_\+data\+\_\+to\+\_\+parlai\+\_\+format}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1convert__data__to__parlai__format_a4ed2278a6a86b341d814edbef295124c}{dump\+\_\+data} (opt)
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1convert__data__to__parlai__format_a1cdf007fb0ed5951c0dfb135500d47cd}{main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1convert__data__to__parlai__format_a4ed2278a6a86b341d814edbef295124c}\label{namespaceparlai_1_1scripts_1_1convert__data__to__parlai__format_a4ed2278a6a86b341d814edbef295124c}} 
+\index{parlai\+::scripts\+::convert\+\_\+data\+\_\+to\+\_\+parlai\+\_\+format@{parlai\+::scripts\+::convert\+\_\+data\+\_\+to\+\_\+parlai\+\_\+format}!dump\+\_\+data@{dump\+\_\+data}}
+\index{dump\+\_\+data@{dump\+\_\+data}!parlai\+::scripts\+::convert\+\_\+data\+\_\+to\+\_\+parlai\+\_\+format@{parlai\+::scripts\+::convert\+\_\+data\+\_\+to\+\_\+parlai\+\_\+format}}
+\subsubsection{\texorpdfstring{dump\+\_\+data()}{dump\_data()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+convert\+\_\+data\+\_\+to\+\_\+parlai\+\_\+format.\+dump\+\_\+data (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 25 of file convert\+\_\+data\+\_\+to\+\_\+parlai\+\_\+format.\+py.
+
+
+\begin{DoxyCode}
+25 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1convert__data__to__parlai__format_a4ed2278a6a86b341d814edbef295124c}{dump\_data}(opt):
+26     \textcolor{comment}{# create repeat label agent and assign it to the specified task}
+27     agent = RepeatLabelAgent(opt)
+28     world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(opt, agent)
+29     ignorefields = opt.get(\textcolor{stringliteral}{'ignore\_fields'}, \textcolor{stringliteral}{''})
+30     \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'outfile'}] \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+31         outfile = tempfile.mkstemp(
+32             prefix=\textcolor{stringliteral}{'\{\}\_\{\}\_'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(opt[\textcolor{stringliteral}{'task'}], opt[\textcolor{stringliteral}{'datatype'}]), suffix=\textcolor{stringliteral}{'.txt'}
+33         )[1]
+34     \textcolor{keywordflow}{else}:
+35         outfile = opt[\textcolor{stringliteral}{'outfile'}]
+36 
+37     \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'num\_examples'}] == -1:
+38         num\_examples = world.num\_examples()
+39     \textcolor{keywordflow}{else}:
+40         num\_examples = opt[\textcolor{stringliteral}{'num\_examples'}]
+41     log\_timer = TimeLogger()
+42 
+43     print(\textcolor{stringliteral}{'[ starting to convert.. ]'})
+44     print(\textcolor{stringliteral}{'[ saving output to \{\} ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(outfile))
+45     fw = open(outfile, \textcolor{stringliteral}{'w'})
+46     \textcolor{keywordflow}{for} \_ \textcolor{keywordflow}{in} range(num\_examples):
+47         world.parley()
+48         acts = world.get\_acts()
+49         value = acts[0].get(\textcolor{stringliteral}{'labels'}, acts[0].pop(\textcolor{stringliteral}{'eval\_labels'}, \textcolor{keywordtype}{None}))
+50         acts[0].force\_set(\textcolor{stringliteral}{'labels'}, value)
+51         txt = \hyperlink{namespaceparlai_1_1utils_1_1misc_ae5db473b41d3b49814e2566e866282b6}{msg\_to\_str}(acts[0], ignore\_fields=ignorefields)
+52         fw.write(txt + \textcolor{stringliteral}{'\(\backslash\)n'})
+53         \textcolor{keywordflow}{if} acts[0].get(\textcolor{stringliteral}{'episode\_done'}, \textcolor{keyword}{False}):
+54             fw.write(\textcolor{stringliteral}{'\(\backslash\)n'})
+55 
+56         \textcolor{keywordflow}{if} log\_timer.time() > opt[\textcolor{stringliteral}{'log\_every\_n\_secs'}]:
+57             text, \_log = log\_timer.log(world.total\_parleys, world.num\_examples())
+58             print(text)
+59 
+60         \textcolor{keywordflow}{if} world.epoch\_done():
+61             print(\textcolor{stringliteral}{'EPOCH DONE'})
+62             \textcolor{keywordflow}{break}
+63     fw.close()
+64 
+65 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1convert__data__to__parlai__format_a1cdf007fb0ed5951c0dfb135500d47cd}\label{namespaceparlai_1_1scripts_1_1convert__data__to__parlai__format_a1cdf007fb0ed5951c0dfb135500d47cd}} 
+\index{parlai\+::scripts\+::convert\+\_\+data\+\_\+to\+\_\+parlai\+\_\+format@{parlai\+::scripts\+::convert\+\_\+data\+\_\+to\+\_\+parlai\+\_\+format}!main@{main}}
+\index{main@{main}!parlai\+::scripts\+::convert\+\_\+data\+\_\+to\+\_\+parlai\+\_\+format@{parlai\+::scripts\+::convert\+\_\+data\+\_\+to\+\_\+parlai\+\_\+format}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+convert\+\_\+data\+\_\+to\+\_\+parlai\+\_\+format.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 66 of file convert\+\_\+data\+\_\+to\+\_\+parlai\+\_\+format.\+py.
+
+
+\begin{DoxyCode}
+66 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1convert__data__to__parlai__format_a1cdf007fb0ed5951c0dfb135500d47cd}{main}():
+67     random.seed(42)
+68     \textcolor{comment}{# Get command line arguments}
+69     parser = ParlaiParser()
+70     parser.add\_argument(
+71         \textcolor{stringliteral}{'-n'},
+72         \textcolor{stringliteral}{'--num-examples'},
+73         default=-1,
+74         type=int,
+75         help=\textcolor{stringliteral}{'Total number of exs to convert, -1 to convert \(\backslash\)}
+76 \textcolor{stringliteral}{                                all examples'},
+77     )
+78     parser.add\_argument(
+79         \textcolor{stringliteral}{'-of'},
+80         \textcolor{stringliteral}{'--outfile'},
+81         default=\textcolor{keywordtype}{None},
+82         type=str,
+83         help=\textcolor{stringliteral}{'Output file where to save, by default will be \(\backslash\)}
+84 \textcolor{stringliteral}{                                created in /tmp'},
+85     )
+86     parser.add\_argument(
+87         \textcolor{stringliteral}{'-if'},
+88         \textcolor{stringliteral}{'--ignore-fields'},
+89         default=\textcolor{stringliteral}{'id'},
+90         type=str,
+91         help=\textcolor{stringliteral}{'Ignore these fields from the message (returned\(\backslash\)}
+92 \textcolor{stringliteral}{                                with .act() )'},
+93     )
+94     parser.add\_argument(\textcolor{stringliteral}{'-ltim'}, \textcolor{stringliteral}{'--log-every-n-secs'}, type=float, default=2)
+95     parser.set\_defaults(datatype=\textcolor{stringliteral}{'train:stream'})
+96     opt = parser.parse\_args()
+97     \hyperlink{namespaceparlai_1_1scripts_1_1convert__data__to__parlai__format_a4ed2278a6a86b341d814edbef295124c}{dump\_data}(opt)
+98 
+99 
+\end{DoxyCode}

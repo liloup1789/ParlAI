@@ -1,0 +1,233 @@
+\hypertarget{classparlai_1_1core_1_1build__data_1_1DownloadableFile}{}\section{parlai.\+core.\+build\+\_\+data.\+Downloadable\+File Class Reference}
+\label{classparlai_1_1core_1_1build__data_1_1DownloadableFile}\index{parlai.\+core.\+build\+\_\+data.\+Downloadable\+File@{parlai.\+core.\+build\+\_\+data.\+Downloadable\+File}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a674bba356b2fba56bb013b773233f2a7}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1core_1_1build__data_1_1DownloadableFile_acb91fb3fd6168d4188ac901ed8c2453a}{url}, \hyperlink{classparlai_1_1core_1_1build__data_1_1DownloadableFile_aa4d0b0712e8e33759cd55024eae74958}{file\+\_\+name}, \hyperlink{classparlai_1_1core_1_1build__data_1_1DownloadableFile_aa161aa3a965714db66528f7af11a1613}{hashcode}, \hyperlink{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a07640d0af013bbecf9db015754b66dbe}{zipped}=True, \hyperlink{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a7217a744f70ba99fac9306eea01c5a08}{from\+\_\+google}=False)
+\item 
+def \hyperlink{classparlai_1_1core_1_1build__data_1_1DownloadableFile_aa69730e15f7f4a535e01e126ceb87f9d}{checksum} (self, dpath)
+\item 
+def \hyperlink{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a2d7ae322b78f070c78050cbb41636bd4}{download\+\_\+file} (self, dpath)
+\item 
+def \hyperlink{classparlai_1_1core_1_1build__data_1_1DownloadableFile_ad08cadfb6f34f251368bf16fab6e557d}{check\+\_\+header} (self)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1core_1_1build__data_1_1DownloadableFile_acb91fb3fd6168d4188ac901ed8c2453a}{url}
+\item 
+\hyperlink{classparlai_1_1core_1_1build__data_1_1DownloadableFile_aa4d0b0712e8e33759cd55024eae74958}{file\+\_\+name}
+\item 
+\hyperlink{classparlai_1_1core_1_1build__data_1_1DownloadableFile_aa161aa3a965714db66528f7af11a1613}{hashcode}
+\item 
+\hyperlink{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a07640d0af013bbecf9db015754b66dbe}{zipped}
+\item 
+\hyperlink{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a7217a744f70ba99fac9306eea01c5a08}{from\+\_\+google}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}A class used to abstract any file that has to be downloaded online.
+
+Any task that needs to download a file needs to have a list RESOURCES
+that have objects of this class as elements.
+
+This class provides the following functionality:
+
+- Download a file from a URL / Google Drive
+- Untar the file if zipped
+- Checksum for the downloaded file
+- Send HEAD request to validate URL or Google Drive link
+
+An object of this class needs to be created with:
+
+- url <string> : URL or Google Drive id to download from
+- file_name <string> : File name that the file should be named
+- hashcode <string> : SHA256 hashcode of the downloaded file
+- zipped <boolean> : False if the file is not compressed
+- from_google <boolean> : True if the file is from Google Drive
+\end{DoxyVerb}
+ 
+
+Definition at line 27 of file build\+\_\+data.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a674bba356b2fba56bb013b773233f2a7}\label{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a674bba356b2fba56bb013b773233f2a7}} 
+\index{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+core.\+build\+\_\+data.\+Downloadable\+File.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{url,  }\item[{}]{file\+\_\+name,  }\item[{}]{hashcode,  }\item[{}]{zipped = {\ttfamily True},  }\item[{}]{from\+\_\+google = {\ttfamily False} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 50 of file build\+\_\+data.\+py.
+
+
+\begin{DoxyCode}
+50     \textcolor{keyword}{def }\_\_init\_\_(self, url, file\_name, hashcode, zipped=True, from\_google=False):
+51         self.url = url
+52         self.file\_name = file\_name
+53         self.hashcode = hashcode
+54         self.zipped = zipped
+55         self.from\_google = from\_google
+56 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1core_1_1build__data_1_1DownloadableFile_ad08cadfb6f34f251368bf16fab6e557d}\label{classparlai_1_1core_1_1build__data_1_1DownloadableFile_ad08cadfb6f34f251368bf16fab6e557d}} 
+\index{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}!check\+\_\+header@{check\+\_\+header}}
+\index{check\+\_\+header@{check\+\_\+header}!parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}}
+\subsubsection{\texorpdfstring{check\+\_\+header()}{check\_header()}}
+{\footnotesize\ttfamily def parlai.\+core.\+build\+\_\+data.\+Downloadable\+File.\+check\+\_\+header (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Performs a HEAD request to check if the URL / Google Drive ID is live.
+\end{DoxyVerb}
+ 
+
+Definition at line 87 of file build\+\_\+data.\+py.
+
+
+\begin{DoxyCode}
+87     \textcolor{keyword}{def }check\_header(self):
+88         \textcolor{stringliteral}{"""}
+89 \textcolor{stringliteral}{        Performs a HEAD request to check if the URL / Google Drive ID is live.}
+90 \textcolor{stringliteral}{        """}
+91         session = requests.Session()
+92         \textcolor{keywordflow}{if} self.from\_google:
+93             URL = \textcolor{stringliteral}{'https://docs.google.com/uc?export=download'}
+94             response = session.head(URL, params=\{\textcolor{stringliteral}{'id'}: self.url\}, stream=\textcolor{keyword}{True})
+95         \textcolor{keywordflow}{else}:
+96             headers = \{
+97                 \textcolor{stringliteral}{'User-Agent'}: \textcolor{stringliteral}{'Mozilla/5.0 (Macintosh; Intel Mac OS X 10\_13\_6) AppleWebKit/537.36 (KHTML,
+       like Gecko) Chrome/77.0.3865.90 Safari/537.36'}
+98             \}
+99             response = session.head(self.url, allow\_redirects=\textcolor{keyword}{True}, headers=headers)
+100         status = response.status\_code
+101         session.close()
+102 
+103         \textcolor{keyword}{assert} status == 200
+104 
+105 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1core_1_1build__data_1_1DownloadableFile_aa69730e15f7f4a535e01e126ceb87f9d}\label{classparlai_1_1core_1_1build__data_1_1DownloadableFile_aa69730e15f7f4a535e01e126ceb87f9d}} 
+\index{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}!checksum@{checksum}}
+\index{checksum@{checksum}!parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}}
+\subsubsection{\texorpdfstring{checksum()}{checksum()}}
+{\footnotesize\ttfamily def parlai.\+core.\+build\+\_\+data.\+Downloadable\+File.\+checksum (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{dpath }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Checksum on a given file.
+
+:param dpath: path to the downloaded file.
+\end{DoxyVerb}
+ 
+
+Definition at line 57 of file build\+\_\+data.\+py.
+
+
+\begin{DoxyCode}
+57     \textcolor{keyword}{def }checksum(self, dpath):
+58         \textcolor{stringliteral}{"""}
+59 \textcolor{stringliteral}{        Checksum on a given file.}
+60 \textcolor{stringliteral}{}
+61 \textcolor{stringliteral}{        :param dpath: path to the downloaded file.}
+62 \textcolor{stringliteral}{        """}
+63         sha256\_hash = hashlib.sha256()
+64         with open(os.path.join(dpath, self.file\_name), \textcolor{stringliteral}{"rb"}) \textcolor{keyword}{as} f:
+65             \textcolor{keywordflow}{for} byte\_block \textcolor{keywordflow}{in} iter(\textcolor{keyword}{lambda}: f.read(65536), b\textcolor{stringliteral}{""}):
+66                 sha256\_hash.update(byte\_block)
+67             \textcolor{keywordflow}{if} sha256\_hash.hexdigest() != self.hashcode:
+68                 \textcolor{comment}{# remove\_dir(dpath)}
+69                 \textcolor{keywordflow}{raise} AssertionError(
+70                     f\textcolor{stringliteral}{"[ Checksum for \{self.file\_name\} from \(\backslash\)n\{self.url\}\(\backslash\)n"}
+71                     \textcolor{stringliteral}{"does not match the expected checksum. Please try again. ]"}
+72                 )
+73             \textcolor{keywordflow}{else}:
+74                 print(\textcolor{stringliteral}{"[ Checksum Successful ]"})
+75 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a2d7ae322b78f070c78050cbb41636bd4}\label{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a2d7ae322b78f070c78050cbb41636bd4}} 
+\index{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}!download\+\_\+file@{download\+\_\+file}}
+\index{download\+\_\+file@{download\+\_\+file}!parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}}
+\subsubsection{\texorpdfstring{download\+\_\+file()}{download\_file()}}
+{\footnotesize\ttfamily def parlai.\+core.\+build\+\_\+data.\+Downloadable\+File.\+download\+\_\+file (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{dpath }\end{DoxyParamCaption})}
+
+
+
+Definition at line 76 of file build\+\_\+data.\+py.
+
+
+\begin{DoxyCode}
+76     \textcolor{keyword}{def }download\_file(self, dpath):
+77         \textcolor{keywordflow}{if} self.from\_google:
+78             \hyperlink{namespaceparlai_1_1core_1_1build__data_ac9224da5c4e4ce9d1f4ab05e837c1f45}{download\_from\_google\_drive}(self.url, os.path.join(dpath, self.
+      file\_name))
+79         \textcolor{keywordflow}{else}:
+80             \hyperlink{namespaceparlai_1_1core_1_1build__data_ab74f0e428f05e5d91fa93c8afb367622}{download}(self.url, dpath, self.file\_name)
+81 
+82         self.checksum(dpath)
+83 
+84         \textcolor{keywordflow}{if} self.zipped:
+85             \hyperlink{namespaceparlai_1_1core_1_1build__data_a4d33f97932682a8513904022d852f3cf}{untar}(dpath, self.file\_name)
+86 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1core_1_1build__data_1_1DownloadableFile_aa4d0b0712e8e33759cd55024eae74958}\label{classparlai_1_1core_1_1build__data_1_1DownloadableFile_aa4d0b0712e8e33759cd55024eae74958}} 
+\index{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}!file\+\_\+name@{file\+\_\+name}}
+\index{file\+\_\+name@{file\+\_\+name}!parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}}
+\subsubsection{\texorpdfstring{file\+\_\+name}{file\_name}}
+{\footnotesize\ttfamily parlai.\+core.\+build\+\_\+data.\+Downloadable\+File.\+file\+\_\+name}
+
+
+
+Definition at line 52 of file build\+\_\+data.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a7217a744f70ba99fac9306eea01c5a08}\label{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a7217a744f70ba99fac9306eea01c5a08}} 
+\index{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}!from\+\_\+google@{from\+\_\+google}}
+\index{from\+\_\+google@{from\+\_\+google}!parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}}
+\subsubsection{\texorpdfstring{from\+\_\+google}{from\_google}}
+{\footnotesize\ttfamily parlai.\+core.\+build\+\_\+data.\+Downloadable\+File.\+from\+\_\+google}
+
+
+
+Definition at line 55 of file build\+\_\+data.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1core_1_1build__data_1_1DownloadableFile_aa161aa3a965714db66528f7af11a1613}\label{classparlai_1_1core_1_1build__data_1_1DownloadableFile_aa161aa3a965714db66528f7af11a1613}} 
+\index{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}!hashcode@{hashcode}}
+\index{hashcode@{hashcode}!parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}}
+\subsubsection{\texorpdfstring{hashcode}{hashcode}}
+{\footnotesize\ttfamily parlai.\+core.\+build\+\_\+data.\+Downloadable\+File.\+hashcode}
+
+
+
+Definition at line 53 of file build\+\_\+data.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1core_1_1build__data_1_1DownloadableFile_acb91fb3fd6168d4188ac901ed8c2453a}\label{classparlai_1_1core_1_1build__data_1_1DownloadableFile_acb91fb3fd6168d4188ac901ed8c2453a}} 
+\index{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}!url@{url}}
+\index{url@{url}!parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}}
+\subsubsection{\texorpdfstring{url}{url}}
+{\footnotesize\ttfamily parlai.\+core.\+build\+\_\+data.\+Downloadable\+File.\+url}
+
+
+
+Definition at line 51 of file build\+\_\+data.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a07640d0af013bbecf9db015754b66dbe}\label{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a07640d0af013bbecf9db015754b66dbe}} 
+\index{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}!zipped@{zipped}}
+\index{zipped@{zipped}!parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}}
+\subsubsection{\texorpdfstring{zipped}{zipped}}
+{\footnotesize\ttfamily parlai.\+core.\+build\+\_\+data.\+Downloadable\+File.\+zipped}
+
+
+
+Definition at line 54 of file build\+\_\+data.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/core/\hyperlink{build__data_8py}{build\+\_\+data.\+py}\end{DoxyCompactItemize}

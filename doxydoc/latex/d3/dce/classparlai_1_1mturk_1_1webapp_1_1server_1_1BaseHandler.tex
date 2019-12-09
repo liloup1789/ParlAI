@@ -1,0 +1,117 @@
+\hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1BaseHandler}{}\section{parlai.\+mturk.\+webapp.\+server.\+Base\+Handler Class Reference}
+\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1BaseHandler}\index{parlai.\+mturk.\+webapp.\+server.\+Base\+Handler@{parlai.\+mturk.\+webapp.\+server.\+Base\+Handler}}
+
+
+Inheritance diagram for parlai.\+mturk.\+webapp.\+server.\+Base\+Handler\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/d67/classparlai_1_1mturk_1_1webapp_1_1server_1_1BaseHandler__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+mturk.\+webapp.\+server.\+Base\+Handler\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{d1/dc2/classparlai_1_1mturk_1_1webapp_1_1server_1_1BaseHandler__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1mturk_1_1webapp_1_1server_1_1BaseHandler_aa09a199cc63b8a1294fdbd98688d8b09}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, request, kwargs)
+\item 
+def \hyperlink{classparlai_1_1mturk_1_1webapp_1_1server_1_1BaseHandler_a5598d255e3912452fbfcab561819840e}{write\+\_\+error} (self, status\+\_\+code, kwargs)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1mturk_1_1webapp_1_1server_1_1BaseHandler_a757114ed91180c7263e809175993ad07}{include\+\_\+host}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 168 of file server.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1BaseHandler_aa09a199cc63b8a1294fdbd98688d8b09}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1BaseHandler_aa09a199cc63b8a1294fdbd98688d8b09}} 
+\index{parlai\+::mturk\+::webapp\+::server\+::\+Base\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Base\+Handler}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::mturk\+::webapp\+::server\+::\+Base\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Base\+Handler}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+mturk.\+webapp.\+server.\+Base\+Handler.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{request,  }\item[{}]{kwargs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 169 of file server.\+py.
+
+
+\begin{DoxyCode}
+169     \textcolor{keyword}{def }\_\_init\_\_(self, *request, **kwargs):
+170         self.include\_host = \textcolor{keyword}{False}
+171         super(BaseHandler, self).\_\_init\_\_(*request, **kwargs)
+172 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1BaseHandler_a5598d255e3912452fbfcab561819840e}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1BaseHandler_a5598d255e3912452fbfcab561819840e}} 
+\index{parlai\+::mturk\+::webapp\+::server\+::\+Base\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Base\+Handler}!write\+\_\+error@{write\+\_\+error}}
+\index{write\+\_\+error@{write\+\_\+error}!parlai\+::mturk\+::webapp\+::server\+::\+Base\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Base\+Handler}}
+\subsubsection{\texorpdfstring{write\+\_\+error()}{write\_error()}}
+{\footnotesize\ttfamily def parlai.\+mturk.\+webapp.\+server.\+Base\+Handler.\+write\+\_\+error (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{status\+\_\+code,  }\item[{}]{kwargs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 173 of file server.\+py.
+
+
+\begin{DoxyCode}
+173     \textcolor{keyword}{def }write\_error(self, status\_code, **kwargs):
+174         logging.error(\textcolor{stringliteral}{"ERROR: %s: %s"} % (status\_code, kwargs))
+175         \textcolor{keywordflow}{if} self.settings.get(\textcolor{stringliteral}{"debug"}) \textcolor{keywordflow}{and} \textcolor{stringliteral}{"exc\_info"} \textcolor{keywordflow}{in} kwargs:
+176             logging.error(\textcolor{stringliteral}{"rendering error page"})
+177             exc\_info = kwargs[\textcolor{stringliteral}{"exc\_info"}]
+178             \textcolor{comment}{# exc\_info is a tuple consisting of:}
+179             \textcolor{comment}{# 1. The class of the Exception}
+180             \textcolor{comment}{# 2. The actual Exception that was thrown}
+181             \textcolor{comment}{# 3. The traceback opbject}
+182             \textcolor{keywordflow}{try}:
+183                 params = \{
+184                     \textcolor{stringliteral}{'error'}: exc\_info[1],
+185                     \textcolor{stringliteral}{'trace\_info'}: traceback.format\_exception(*exc\_info),
+186                     \textcolor{stringliteral}{'request'}: self.request.\_\_dict\_\_,
+187                 \}
+188 
+189                 self.render(\textcolor{stringliteral}{"error.html"}, **params)
+190                 logging.error(\textcolor{stringliteral}{"rendering complete"})
+191             \textcolor{keywordflow}{except} Exception \textcolor{keyword}{as} e:
+192                 logging.error(e)
+193 
+194 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1BaseHandler_a757114ed91180c7263e809175993ad07}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1BaseHandler_a757114ed91180c7263e809175993ad07}} 
+\index{parlai\+::mturk\+::webapp\+::server\+::\+Base\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Base\+Handler}!include\+\_\+host@{include\+\_\+host}}
+\index{include\+\_\+host@{include\+\_\+host}!parlai\+::mturk\+::webapp\+::server\+::\+Base\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Base\+Handler}}
+\subsubsection{\texorpdfstring{include\+\_\+host}{include\_host}}
+{\footnotesize\ttfamily parlai.\+mturk.\+webapp.\+server.\+Base\+Handler.\+include\+\_\+host}
+
+
+
+Definition at line 170 of file server.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/mturk/webapp/\hyperlink{server_8py}{server.\+py}\end{DoxyCompactItemize}

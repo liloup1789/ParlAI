@@ -1,0 +1,299 @@
+\hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender}{}\section{parlai.\+chat\+\_\+service.\+services.\+messenger.\+message\+\_\+sender Namespace Reference}
+\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender}\index{parlai.\+chat\+\_\+service.\+services.\+messenger.\+message\+\_\+sender@{parlai.\+chat\+\_\+service.\+services.\+messenger.\+message\+\_\+sender}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_1_1MessageSender}{Message\+Sender}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_a8303c44a600b84c0d42770128be13e9a}{create\+\_\+attachment} (payload)
+\item 
+def \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_a895e006007913ad0fde9c2c9bf9ec5a5}{create\+\_\+reply\+\_\+option} (title, payload=\textquotesingle{}\textquotesingle{})
+\item 
+def \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_a4c32dfd7947a473a730b81e9356e3513}{create\+\_\+text\+\_\+message} (text, quick\+\_\+replies=None)
+\item 
+def \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_a2b2d0c5879079ba1320a7ed62893d7de}{create\+\_\+attachment\+\_\+message} (attachment\+\_\+item, quick\+\_\+replies=None)
+\item 
+def \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_a25b4cf40191d466edc7f8da108326f8c}{create\+\_\+list\+\_\+element} (element)
+\item 
+def \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_aad605cb9ba870a032f7b09775bebabb1}{create\+\_\+compact\+\_\+list\+\_\+message} (raw\+\_\+elems)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_a61aecd6d7c4a42d5dc176d4227917a6b}{M\+A\+X\+\_\+\+Q\+U\+I\+C\+K\+\_\+\+R\+E\+P\+L\+I\+ES} = 10
+\item 
+int \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_ac76d8d8322c067651314d965d8a8a497}{M\+A\+X\+\_\+\+T\+E\+X\+T\+\_\+\+C\+H\+A\+RS} = 640
+\item 
+int \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_abd5af28e90499a925bd858f8c5316f7f}{M\+A\+X\+\_\+\+Q\+U\+I\+C\+K\+\_\+\+R\+E\+P\+L\+Y\+\_\+\+T\+I\+T\+L\+E\+\_\+\+C\+H\+A\+RS} = 20
+\item 
+int \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_a3bd30ae04ad334a26da3be760f18c2b4}{M\+A\+X\+\_\+\+P\+O\+S\+T\+B\+A\+C\+K\+\_\+\+C\+H\+A\+RS} = 1000
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_a8303c44a600b84c0d42770128be13e9a}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_a8303c44a600b84c0d42770128be13e9a}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender}!create\+\_\+attachment@{create\+\_\+attachment}}
+\index{create\+\_\+attachment@{create\+\_\+attachment}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender}}
+\subsubsection{\texorpdfstring{create\+\_\+attachment()}{create\_attachment()}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+messenger.\+message\+\_\+sender.\+create\+\_\+attachment (\begin{DoxyParamCaption}\item[{}]{payload }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Create a simple url-based attachment.
+\end{DoxyVerb}
+ 
+
+Definition at line 22 of file message\+\_\+sender.\+py.
+
+
+\begin{DoxyCode}
+22 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_a8303c44a600b84c0d42770128be13e9a}{create\_attachment}(payload):
+23     \textcolor{stringliteral}{"""}
+24 \textcolor{stringliteral}{    Create a simple url-based attachment.}
+25 \textcolor{stringliteral}{    """}
+26     \textcolor{comment}{# TODO support data-based attachments?}
+27     \textcolor{keyword}{assert} payload[\textcolor{stringliteral}{'type'}] \textcolor{keywordflow}{in} [
+28         \textcolor{stringliteral}{'image'},
+29         \textcolor{stringliteral}{'video'},
+30         \textcolor{stringliteral}{'file'},
+31         \textcolor{stringliteral}{'audio'},
+32     ], \textcolor{stringliteral}{'unsupported attachment type'}
+33     \textcolor{keyword}{assert} (
+34         \textcolor{stringliteral}{'url'} \textcolor{keywordflow}{in} payload \textcolor{keywordflow}{or} \textcolor{stringliteral}{'attachment\_id'} \textcolor{keywordflow}{in} payload
+35     ), \textcolor{stringliteral}{'unsupported attachment method: must contain url or attachment\_id'}
+36     \textcolor{keywordflow}{if} \textcolor{stringliteral}{'url'} \textcolor{keywordflow}{in} payload:
+37         \textcolor{keywordflow}{return} \{\textcolor{stringliteral}{'type'}: payload[\textcolor{stringliteral}{'type'}], \textcolor{stringliteral}{'payload'}: \{\textcolor{stringliteral}{'url'}: payload[\textcolor{stringliteral}{'url'}]\}\}
+38     \textcolor{keywordflow}{elif} \textcolor{stringliteral}{'attachment\_id'} \textcolor{keywordflow}{in} payload:
+39         \textcolor{keywordflow}{return} \{
+40             \textcolor{stringliteral}{'type'}: payload[\textcolor{stringliteral}{'type'}],
+41             \textcolor{stringliteral}{'payload'}: \{\textcolor{stringliteral}{'attachment\_id'}: payload[\textcolor{stringliteral}{'attachment\_id'}]\},
+42         \}
+43 
+44 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_a2b2d0c5879079ba1320a7ed62893d7de}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_a2b2d0c5879079ba1320a7ed62893d7de}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender}!create\+\_\+attachment\+\_\+message@{create\+\_\+attachment\+\_\+message}}
+\index{create\+\_\+attachment\+\_\+message@{create\+\_\+attachment\+\_\+message}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender}}
+\subsubsection{\texorpdfstring{create\+\_\+attachment\+\_\+message()}{create\_attachment\_message()}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+messenger.\+message\+\_\+sender.\+create\+\_\+attachment\+\_\+message (\begin{DoxyParamCaption}\item[{}]{attachment\+\_\+item,  }\item[{}]{quick\+\_\+replies = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Create a message list made with only an attachment.
+
+quick_replies should be a list of options made with create_reply_option.
+\end{DoxyVerb}
+ 
+
+Definition at line 104 of file message\+\_\+sender.\+py.
+
+
+\begin{DoxyCode}
+104 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_a2b2d0c5879079ba1320a7ed62893d7de}{create\_attachment\_message}(attachment\_item, quick\_replies=None):
+105     \textcolor{stringliteral}{"""}
+106 \textcolor{stringliteral}{    Create a message list made with only an attachment.}
+107 \textcolor{stringliteral}{}
+108 \textcolor{stringliteral}{    quick\_replies should be a list of options made with create\_reply\_option.}
+109 \textcolor{stringliteral}{    """}
+110     payload = \{\textcolor{stringliteral}{'attachment'}: attachment\_item\}
+111     \textcolor{keywordflow}{if} quick\_replies:
+112         \textcolor{keyword}{assert} (
+113             len(quick\_replies) <= MAX\_QUICK\_REPLIES
+114         ), \textcolor{stringliteral}{'Number of quick replies \{\} greater than the max of \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+115             len(quick\_replies), MAX\_QUICK\_REPLIES
+116         )
+117         payload[\textcolor{stringliteral}{'quick\_replies'}] = quick\_replies
+118     \textcolor{keywordflow}{return} [payload]
+119 
+120 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_aad605cb9ba870a032f7b09775bebabb1}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_aad605cb9ba870a032f7b09775bebabb1}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender}!create\+\_\+compact\+\_\+list\+\_\+message@{create\+\_\+compact\+\_\+list\+\_\+message}}
+\index{create\+\_\+compact\+\_\+list\+\_\+message@{create\+\_\+compact\+\_\+list\+\_\+message}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender}}
+\subsubsection{\texorpdfstring{create\+\_\+compact\+\_\+list\+\_\+message()}{create\_compact\_list\_message()}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+messenger.\+message\+\_\+sender.\+create\+\_\+compact\+\_\+list\+\_\+message (\begin{DoxyParamCaption}\item[{}]{raw\+\_\+elems }\end{DoxyParamCaption})}
+
+
+
+Definition at line 137 of file message\+\_\+sender.\+py.
+
+
+\begin{DoxyCode}
+137 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_aad605cb9ba870a032f7b09775bebabb1}{create\_compact\_list\_message}(raw\_elems):
+138     elements = [\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_a25b4cf40191d466edc7f8da108326f8c}{create\_list\_element}(elem) \textcolor{keywordflow}{for} elem \textcolor{keywordflow}{in} raw\_elems]
+139     \textcolor{keywordflow}{return} \{
+140         \textcolor{stringliteral}{'type'}: \textcolor{stringliteral}{'template'},
+141         \textcolor{stringliteral}{'payload'}: \{
+142             \textcolor{stringliteral}{'template\_type'}: \textcolor{stringliteral}{'list'},
+143             \textcolor{stringliteral}{'top\_element\_style'}: \textcolor{stringliteral}{'COMPACT'},
+144             \textcolor{stringliteral}{'elements'}: elements,
+145         \},
+146     \}
+147 
+148 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_a25b4cf40191d466edc7f8da108326f8c}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_a25b4cf40191d466edc7f8da108326f8c}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender}!create\+\_\+list\+\_\+element@{create\+\_\+list\+\_\+element}}
+\index{create\+\_\+list\+\_\+element@{create\+\_\+list\+\_\+element}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender}}
+\subsubsection{\texorpdfstring{create\+\_\+list\+\_\+element()}{create\_list\_element()}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+messenger.\+message\+\_\+sender.\+create\+\_\+list\+\_\+element (\begin{DoxyParamCaption}\item[{}]{element }\end{DoxyParamCaption})}
+
+
+
+Definition at line 121 of file message\+\_\+sender.\+py.
+
+
+\begin{DoxyCode}
+121 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_a25b4cf40191d466edc7f8da108326f8c}{create\_list\_element}(element):
+122     \textcolor{keyword}{assert} \textcolor{stringliteral}{'title'} \textcolor{keywordflow}{in} element, \textcolor{stringliteral}{'List elems must have a title'}
+123     ret\_elem = \{
+124         \textcolor{stringliteral}{'title'}: element[\textcolor{stringliteral}{'title'}],
+125         \textcolor{stringliteral}{'subtitle'}: \textcolor{stringliteral}{''},
+126         \textcolor{stringliteral}{'default\_action'}: \{
+127             \textcolor{stringliteral}{'type'}: \textcolor{stringliteral}{'postback'},
+128             \textcolor{stringliteral}{'title'}: element[\textcolor{stringliteral}{'title'}],
+129             \textcolor{stringliteral}{'payload'}: element[\textcolor{stringliteral}{'title'}],
+130         \},
+131     \}
+132     \textcolor{keywordflow}{if} \textcolor{stringliteral}{'subtitle'} \textcolor{keywordflow}{in} element:
+133         ret\_elem[\textcolor{stringliteral}{'subtitle'}] = element[\textcolor{stringliteral}{'subtitle'}]
+134     \textcolor{keywordflow}{return} ret\_elem
+135 
+136 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_a895e006007913ad0fde9c2c9bf9ec5a5}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_a895e006007913ad0fde9c2c9bf9ec5a5}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender}!create\+\_\+reply\+\_\+option@{create\+\_\+reply\+\_\+option}}
+\index{create\+\_\+reply\+\_\+option@{create\+\_\+reply\+\_\+option}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender}}
+\subsubsection{\texorpdfstring{create\+\_\+reply\+\_\+option()}{create\_reply\_option()}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+messenger.\+message\+\_\+sender.\+create\+\_\+reply\+\_\+option (\begin{DoxyParamCaption}\item[{}]{title,  }\item[{}]{payload = {\ttfamily \textquotesingle{}\textquotesingle{}} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Create a quick reply option.
+
+Takes in display title and optionally extra custom data.
+\end{DoxyVerb}
+ 
+
+Definition at line 45 of file message\+\_\+sender.\+py.
+
+
+\begin{DoxyCode}
+45 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_a895e006007913ad0fde9c2c9bf9ec5a5}{create\_reply\_option}(title, payload=''):
+46     \textcolor{stringliteral}{"""}
+47 \textcolor{stringliteral}{    Create a quick reply option.}
+48 \textcolor{stringliteral}{}
+49 \textcolor{stringliteral}{    Takes in display title and optionally extra custom data.}
+50 \textcolor{stringliteral}{    """}
+51     \textcolor{keyword}{assert} (
+52         len(title) <= MAX\_QUICK\_REPLY\_TITLE\_CHARS
+53     ), \textcolor{stringliteral}{'Quick reply title length \{\} greater than the max of \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+54         len(title), MAX\_QUICK\_REPLY\_TITLE\_CHARS
+55     )
+56     \textcolor{keyword}{assert} (
+57         len(payload) <= MAX\_POSTBACK\_CHARS
+58     ), \textcolor{stringliteral}{'Payload length \{\} greater than the max of \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+59         len(payload), MAX\_POSTBACK\_CHARS
+60     )
+61     \textcolor{keywordflow}{return} \{\textcolor{stringliteral}{'content\_type'}: \textcolor{stringliteral}{'text'}, \textcolor{stringliteral}{'title'}: title, \textcolor{stringliteral}{'payload'}: payload\}
+62 
+63 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_a4c32dfd7947a473a730b81e9356e3513}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_a4c32dfd7947a473a730b81e9356e3513}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender}!create\+\_\+text\+\_\+message@{create\+\_\+text\+\_\+message}}
+\index{create\+\_\+text\+\_\+message@{create\+\_\+text\+\_\+message}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender}}
+\subsubsection{\texorpdfstring{create\+\_\+text\+\_\+message()}{create\_text\_message()}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+messenger.\+message\+\_\+sender.\+create\+\_\+text\+\_\+message (\begin{DoxyParamCaption}\item[{}]{text,  }\item[{}]{quick\+\_\+replies = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Return a list of text messages from the given text.
+
+If the message is too long it is split into multiple messages. quick_replies should
+be a list of options made with create_reply_option.
+\end{DoxyVerb}
+ 
+
+Definition at line 64 of file message\+\_\+sender.\+py.
+
+
+\begin{DoxyCode}
+64 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_a4c32dfd7947a473a730b81e9356e3513}{create\_text\_message}(text, quick\_replies=None):
+65     \textcolor{stringliteral}{"""}
+66 \textcolor{stringliteral}{    Return a list of text messages from the given text.}
+67 \textcolor{stringliteral}{}
+68 \textcolor{stringliteral}{    If the message is too long it is split into multiple messages. quick\_replies should}
+69 \textcolor{stringliteral}{    be a list of options made with create\_reply\_option.}
+70 \textcolor{stringliteral}{    """}
+71 
+72     \textcolor{keyword}{def }\_message(text\_content, replies):
+73         payload = \{\textcolor{stringliteral}{'text'}: text\_content[:MAX\_TEXT\_CHARS]\}
+74         \textcolor{keywordflow}{if} replies:
+75             payload[\textcolor{stringliteral}{'quick\_replies'}] = replies
+76         \textcolor{keywordflow}{return} payload
+77 
+78     tokens = [s[:MAX\_TEXT\_CHARS] \textcolor{keywordflow}{for} s \textcolor{keywordflow}{in} text.split(\textcolor{stringliteral}{' '})]
+79     splits = []
+80     cutoff = 0
+81     curr\_length = 0
+82     \textcolor{keywordflow}{if} quick\_replies:
+83         \textcolor{keyword}{assert} (
+84             len(quick\_replies) <= MAX\_QUICK\_REPLIES
+85         ), \textcolor{stringliteral}{'Number of quick replies \{\} greater than the max of \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+86             len(quick\_replies), MAX\_QUICK\_REPLIES
+87         )
+88     \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(tokens)):
+89         \textcolor{keywordflow}{if} tokens[i] == \textcolor{stringliteral}{'[*SPLIT*]'}:
+90             \textcolor{keywordflow}{if} \textcolor{stringliteral}{' '}.join(tokens[cutoff : i - 1]).strip() != \textcolor{stringliteral}{''}:
+91                 splits.append(\_message(\textcolor{stringliteral}{' '}.join(tokens[cutoff:i]), \textcolor{keywordtype}{None}))
+92                 cutoff = i + 1
+93                 curr\_length = 0
+94         \textcolor{keywordflow}{if} curr\_length + len(tokens[i]) > MAX\_TEXT\_CHARS:
+95             splits.append(\_message(\textcolor{stringliteral}{' '}.join(tokens[cutoff:i]), \textcolor{keywordtype}{None}))
+96             cutoff = i
+97             curr\_length = 0
+98         curr\_length += len(tokens[i]) + 1
+99     \textcolor{keywordflow}{if} cutoff < len(tokens):
+100         splits.append(\_message(\textcolor{stringliteral}{' '}.join(tokens[cutoff:]), quick\_replies))
+101     \textcolor{keywordflow}{return} splits
+102 
+103 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_a3bd30ae04ad334a26da3be760f18c2b4}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_a3bd30ae04ad334a26da3be760f18c2b4}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender}!M\+A\+X\+\_\+\+P\+O\+S\+T\+B\+A\+C\+K\+\_\+\+C\+H\+A\+RS@{M\+A\+X\+\_\+\+P\+O\+S\+T\+B\+A\+C\+K\+\_\+\+C\+H\+A\+RS}}
+\index{M\+A\+X\+\_\+\+P\+O\+S\+T\+B\+A\+C\+K\+\_\+\+C\+H\+A\+RS@{M\+A\+X\+\_\+\+P\+O\+S\+T\+B\+A\+C\+K\+\_\+\+C\+H\+A\+RS}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender}}
+\subsubsection{\texorpdfstring{M\+A\+X\+\_\+\+P\+O\+S\+T\+B\+A\+C\+K\+\_\+\+C\+H\+A\+RS}{MAX\_POSTBACK\_CHARS}}
+{\footnotesize\ttfamily int parlai.\+chat\+\_\+service.\+services.\+messenger.\+message\+\_\+sender.\+M\+A\+X\+\_\+\+P\+O\+S\+T\+B\+A\+C\+K\+\_\+\+C\+H\+A\+RS = 1000}
+
+
+
+Definition at line 15 of file message\+\_\+sender.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_a61aecd6d7c4a42d5dc176d4227917a6b}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_a61aecd6d7c4a42d5dc176d4227917a6b}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender}!M\+A\+X\+\_\+\+Q\+U\+I\+C\+K\+\_\+\+R\+E\+P\+L\+I\+ES@{M\+A\+X\+\_\+\+Q\+U\+I\+C\+K\+\_\+\+R\+E\+P\+L\+I\+ES}}
+\index{M\+A\+X\+\_\+\+Q\+U\+I\+C\+K\+\_\+\+R\+E\+P\+L\+I\+ES@{M\+A\+X\+\_\+\+Q\+U\+I\+C\+K\+\_\+\+R\+E\+P\+L\+I\+ES}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender}}
+\subsubsection{\texorpdfstring{M\+A\+X\+\_\+\+Q\+U\+I\+C\+K\+\_\+\+R\+E\+P\+L\+I\+ES}{MAX\_QUICK\_REPLIES}}
+{\footnotesize\ttfamily int parlai.\+chat\+\_\+service.\+services.\+messenger.\+message\+\_\+sender.\+M\+A\+X\+\_\+\+Q\+U\+I\+C\+K\+\_\+\+R\+E\+P\+L\+I\+ES = 10}
+
+
+
+Definition at line 12 of file message\+\_\+sender.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_abd5af28e90499a925bd858f8c5316f7f}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_abd5af28e90499a925bd858f8c5316f7f}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender}!M\+A\+X\+\_\+\+Q\+U\+I\+C\+K\+\_\+\+R\+E\+P\+L\+Y\+\_\+\+T\+I\+T\+L\+E\+\_\+\+C\+H\+A\+RS@{M\+A\+X\+\_\+\+Q\+U\+I\+C\+K\+\_\+\+R\+E\+P\+L\+Y\+\_\+\+T\+I\+T\+L\+E\+\_\+\+C\+H\+A\+RS}}
+\index{M\+A\+X\+\_\+\+Q\+U\+I\+C\+K\+\_\+\+R\+E\+P\+L\+Y\+\_\+\+T\+I\+T\+L\+E\+\_\+\+C\+H\+A\+RS@{M\+A\+X\+\_\+\+Q\+U\+I\+C\+K\+\_\+\+R\+E\+P\+L\+Y\+\_\+\+T\+I\+T\+L\+E\+\_\+\+C\+H\+A\+RS}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender}}
+\subsubsection{\texorpdfstring{M\+A\+X\+\_\+\+Q\+U\+I\+C\+K\+\_\+\+R\+E\+P\+L\+Y\+\_\+\+T\+I\+T\+L\+E\+\_\+\+C\+H\+A\+RS}{MAX\_QUICK\_REPLY\_TITLE\_CHARS}}
+{\footnotesize\ttfamily int parlai.\+chat\+\_\+service.\+services.\+messenger.\+message\+\_\+sender.\+M\+A\+X\+\_\+\+Q\+U\+I\+C\+K\+\_\+\+R\+E\+P\+L\+Y\+\_\+\+T\+I\+T\+L\+E\+\_\+\+C\+H\+A\+RS = 20}
+
+
+
+Definition at line 14 of file message\+\_\+sender.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_ac76d8d8322c067651314d965d8a8a497}\label{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1message__sender_ac76d8d8322c067651314d965d8a8a497}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender}!M\+A\+X\+\_\+\+T\+E\+X\+T\+\_\+\+C\+H\+A\+RS@{M\+A\+X\+\_\+\+T\+E\+X\+T\+\_\+\+C\+H\+A\+RS}}
+\index{M\+A\+X\+\_\+\+T\+E\+X\+T\+\_\+\+C\+H\+A\+RS@{M\+A\+X\+\_\+\+T\+E\+X\+T\+\_\+\+C\+H\+A\+RS}!parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender@{parlai\+::chat\+\_\+service\+::services\+::messenger\+::message\+\_\+sender}}
+\subsubsection{\texorpdfstring{M\+A\+X\+\_\+\+T\+E\+X\+T\+\_\+\+C\+H\+A\+RS}{MAX\_TEXT\_CHARS}}
+{\footnotesize\ttfamily int parlai.\+chat\+\_\+service.\+services.\+messenger.\+message\+\_\+sender.\+M\+A\+X\+\_\+\+T\+E\+X\+T\+\_\+\+C\+H\+A\+RS = 640}
+
+
+
+Definition at line 13 of file message\+\_\+sender.\+py.
+

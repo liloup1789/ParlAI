@@ -1,0 +1,141 @@
+\hypertarget{classtest__wizard__of__wikipedia_1_1TestWoW}{}\section{test\+\_\+wizard\+\_\+of\+\_\+wikipedia.\+Test\+WoW Class Reference}
+\label{classtest__wizard__of__wikipedia_1_1TestWoW}\index{test\+\_\+wizard\+\_\+of\+\_\+wikipedia.\+Test\+WoW@{test\+\_\+wizard\+\_\+of\+\_\+wikipedia.\+Test\+WoW}}
+
+
+Inheritance diagram for test\+\_\+wizard\+\_\+of\+\_\+wikipedia.\+Test\+WoW\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{d0/ddb/classtest__wizard__of__wikipedia_1_1TestWoW__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for test\+\_\+wizard\+\_\+of\+\_\+wikipedia.\+Test\+WoW\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{d1/df7/classtest__wizard__of__wikipedia_1_1TestWoW__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classtest__wizard__of__wikipedia_1_1TestWoW_a5a2ccfeb297d1fa8b356bcb9c4ce2225}{test\+\_\+output} (self)
+\item 
+def \hyperlink{classtest__wizard__of__wikipedia_1_1TestWoW_a8817f78f5eb9d33489bc79c305d174cc}{run\+\_\+display\+\_\+test} (self, kwargs)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Basic tests on the train_model.py example.
+\end{DoxyVerb}
+ 
+
+Definition at line 23 of file test\+\_\+wizard\+\_\+of\+\_\+wikipedia.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtest__wizard__of__wikipedia_1_1TestWoW_a8817f78f5eb9d33489bc79c305d174cc}\label{classtest__wizard__of__wikipedia_1_1TestWoW_a8817f78f5eb9d33489bc79c305d174cc}} 
+\index{test\+\_\+wizard\+\_\+of\+\_\+wikipedia\+::\+Test\+WoW@{test\+\_\+wizard\+\_\+of\+\_\+wikipedia\+::\+Test\+WoW}!run\+\_\+display\+\_\+test@{run\+\_\+display\+\_\+test}}
+\index{run\+\_\+display\+\_\+test@{run\+\_\+display\+\_\+test}!test\+\_\+wizard\+\_\+of\+\_\+wikipedia\+::\+Test\+WoW@{test\+\_\+wizard\+\_\+of\+\_\+wikipedia\+::\+Test\+WoW}}
+\subsubsection{\texorpdfstring{run\+\_\+display\+\_\+test()}{run\_display\_test()}}
+{\footnotesize\ttfamily def test\+\_\+wizard\+\_\+of\+\_\+wikipedia.\+Test\+Wo\+W.\+run\+\_\+display\+\_\+test (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{kwargs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 77 of file test\+\_\+wizard\+\_\+of\+\_\+wikipedia.\+py.
+
+
+\begin{DoxyCode}
+77     \textcolor{keyword}{def }run\_display\_test(self, kwargs):
+78         f = io.StringIO()
+79         with redirect\_stdout(f):
+80             parser = \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1run_a17bafea2534d593de1fbf1e0724e5b67}{setup\_args}()
+81             parser.set\_defaults(**kwargs)
+82             opt = parser.parse\_args()
+83             agent = RepeatLabelAgent(opt)
+84             world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(opt, agent)
+85             display(opt)
+86 
+87         str\_output = f.getvalue()
+88         self.assertTrue(
+89             \textcolor{stringliteral}{'[ loaded \{\} episodes with a total of \{\} examples ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+90                 world.num\_episodes(), world.num\_examples()
+91             )
+92             \textcolor{keywordflow}{in} str\_output,
+93             \textcolor{stringliteral}{'Wizard of Wikipedia failed with following args: \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(opt),
+94         )
+95 
+96 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtest__wizard__of__wikipedia_1_1TestWoW_a5a2ccfeb297d1fa8b356bcb9c4ce2225}\label{classtest__wizard__of__wikipedia_1_1TestWoW_a5a2ccfeb297d1fa8b356bcb9c4ce2225}} 
+\index{test\+\_\+wizard\+\_\+of\+\_\+wikipedia\+::\+Test\+WoW@{test\+\_\+wizard\+\_\+of\+\_\+wikipedia\+::\+Test\+WoW}!test\+\_\+output@{test\+\_\+output}}
+\index{test\+\_\+output@{test\+\_\+output}!test\+\_\+wizard\+\_\+of\+\_\+wikipedia\+::\+Test\+WoW@{test\+\_\+wizard\+\_\+of\+\_\+wikipedia\+::\+Test\+WoW}}
+\subsubsection{\texorpdfstring{test\+\_\+output()}{test\_output()}}
+{\footnotesize\ttfamily def test\+\_\+wizard\+\_\+of\+\_\+wikipedia.\+Test\+Wo\+W.\+test\+\_\+output (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 28 of file test\+\_\+wizard\+\_\+of\+\_\+wikipedia.\+py.
+
+
+\begin{DoxyCode}
+28     \textcolor{keyword}{def }test\_output(self):
+29         dts = [\textcolor{stringliteral}{'train'}, \textcolor{stringliteral}{'valid'}, \textcolor{stringliteral}{'test'}]
+30         main\_task = \textcolor{stringliteral}{'wizard\_of\_wikipedia'}
+31         variants = [
+32             \textcolor{stringliteral}{'WizardOfWikipediaTeacher'},
+33             \textcolor{stringliteral}{'WizardDialogKnowledgeTeacher'},
+34             \textcolor{stringliteral}{'BasicdialogTeacher'},
+35             \textcolor{stringliteral}{'DocreaderTeacher'},
+36             \textcolor{stringliteral}{'GeneratorTeacher'},
+37         ]
+38         variant\_args = \{
+39             \textcolor{stringliteral}{'WizardOfWikipediaTeacher'}: \{\},
+40             \textcolor{stringliteral}{'WizardDialogKnowledgeTeacher'}: \{
+41                 \textcolor{stringliteral}{'label\_type'}: [\textcolor{stringliteral}{'response'}, \textcolor{stringliteral}{'chosen\_sent'}],
+42                 \textcolor{stringliteral}{'include\_knowledge'}: [\textcolor{keyword}{False}, \textcolor{keyword}{True}],
+43                 \textcolor{stringliteral}{'include\_checked\_sentence'}: [\textcolor{keyword}{False}, \textcolor{keyword}{True}],
+44             \},
+45             \textcolor{stringliteral}{'BasicdialogTeacher'}: \{\textcolor{stringliteral}{'wizard\_dialog'}: [\textcolor{keyword}{False}, \textcolor{keyword}{True}]\},
+46             \textcolor{stringliteral}{'DocreaderTeacher'}: \{
+47                 \textcolor{stringliteral}{'teacher\_type'}: [
+48                     \textcolor{stringliteral}{'docs'},
+49                     \textcolor{stringliteral}{'docs\_sentence'},
+50                     \textcolor{stringliteral}{'more\_docs'},
+51                     \textcolor{stringliteral}{'more\_docs\_sentence'},
+52                     \textcolor{stringliteral}{'span'},
+53                 ]
+54             \},
+55             \textcolor{stringliteral}{'GeneratorTeacher'}: \{
+56                 \textcolor{stringliteral}{'only\_checked\_knowledge'}: [\textcolor{keyword}{False}, \textcolor{keyword}{True}],
+57                 \textcolor{stringliteral}{'ignorant\_dropout'}: [0, 0.5, 1],
+58             \},
+59         \}
+60         splits = [\textcolor{stringliteral}{'random\_split'}, \textcolor{stringliteral}{'topic\_split'}]
+61 
+62         \textcolor{keywordflow}{for} datatype \textcolor{keywordflow}{in} dts:
+63             \textcolor{keywordflow}{for} task\_var \textcolor{keywordflow}{in} variants:
+64                 \textcolor{keywordflow}{for} split \textcolor{keywordflow}{in} splits:
+65                     task\_name = \textcolor{stringliteral}{'\{\}:\{\}:\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(main\_task, task\_var, split)
+66                     opt\_defaults = \{\textcolor{stringliteral}{'task'}: task\_name, \textcolor{stringliteral}{'datatype'}: datatype\}
+67                     task\_args = variant\_args[task\_var]
+68                     \textcolor{keywordflow}{if} len(task\_args) == 0:
+69                         print(\textcolor{stringliteral}{'Testing \{\} with args \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(task\_name, opt\_defaults))
+70                         self.run\_display\_test(opt\_defaults)
+71                     \textcolor{keywordflow}{else}:
+72                         \textcolor{keywordflow}{for} combo \textcolor{keywordflow}{in} \hyperlink{namespacetest__wizard__of__wikipedia_a164c55752f617c13303f14f70ac90b0c}{product\_dict}(task\_args):
+73                             args = \{**opt\_defaults, **combo\}
+74                             print(\textcolor{stringliteral}{'Testing \{\} with args \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(task\_name, args))
+75                             self.run\_display\_test(args)
+76 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+tests/tasks/\hyperlink{test__wizard__of__wikipedia_8py}{test\+\_\+wizard\+\_\+of\+\_\+wikipedia.\+py}\end{DoxyCompactItemize}

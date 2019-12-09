@@ -1,0 +1,130 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1talkthewalk_1_1run}{}\section{parlai.\+tasks.\+talkthewalk.\+run Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1talkthewalk_1_1run}\index{parlai.\+tasks.\+talkthewalk.\+run@{parlai.\+tasks.\+talkthewalk.\+run}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1talkthewalk_1_1run_a3534e8afa0a4dc25a6e02740fa35ac84}{setup\+\_\+args} (\hyperlink{namespaceparlai_1_1tasks_1_1talkthewalk_1_1run_a6ddc3f1bb5ff1ce0a0b25bb1abfd2251}{parser}=None)
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1talkthewalk_1_1run_a0a1ec08b8196cb008e4df83468c67e5b}{run} (opt)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceparlai_1_1tasks_1_1talkthewalk_1_1run_a6ddc3f1bb5ff1ce0a0b25bb1abfd2251}{parser}
+\item 
+\hyperlink{namespaceparlai_1_1tasks_1_1talkthewalk_1_1run_aaaa6dd17c737d50be241dc6844bfc581}{print\+\_\+args}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1talkthewalk_1_1run_a0a1ec08b8196cb008e4df83468c67e5b}\label{namespaceparlai_1_1tasks_1_1talkthewalk_1_1run_a0a1ec08b8196cb008e4df83468c67e5b}} 
+\index{parlai\+::tasks\+::talkthewalk\+::run@{parlai\+::tasks\+::talkthewalk\+::run}!run@{run}}
+\index{run@{run}!parlai\+::tasks\+::talkthewalk\+::run@{parlai\+::tasks\+::talkthewalk\+::run}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+talkthewalk.\+run.\+run (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 51 of file run.\+py.
+
+
+\begin{DoxyCode}
+51 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1talkthewalk_1_1run_a0a1ec08b8196cb008e4df83468c67e5b}{run}(opt):
+52     opt = copy.deepcopy(opt)
+53     \_path(opt)
+54 
+55     opt[\textcolor{stringliteral}{'model\_file'}] = opt[\textcolor{stringliteral}{'tourist\_model\_file'}]
+56     tourist = \hyperlink{namespaceparlai_1_1core_1_1agents_ad0d54074d4bcc148bb415ab5515a53b5}{create\_agent}(opt)
+57     opt[\textcolor{stringliteral}{'model\_file'}] = opt[\textcolor{stringliteral}{'guide\_model\_file'}]
+58     guide = \hyperlink{namespaceparlai_1_1core_1_1agents_ad0d54074d4bcc148bb415ab5515a53b5}{create\_agent}(opt)
+59 
+60     world = SimulateWorld(opt, [tourist, guide])
+61 
+62     \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'numthreads'}, 1) > 1:
+63         \textcolor{comment}{# use hogwild world if more than one thread requested}
+64         \textcolor{comment}{# hogwild world will create sub batch worlds as well if bsz > 1}
+65         world = HogwildWorld(opt, world)
+66     \textcolor{keywordflow}{elif} opt.get(\textcolor{stringliteral}{'batchsize'}, 1) > 1:
+67         \textcolor{comment}{# otherwise check if should use batchworld}
+68         world = BatchWorld(opt, world)
+69 
+70     \textcolor{comment}{# Show some example dialogs:}
+71     cnt = 0
+72     \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} world.epoch\_done():
+73         cnt += opt.get(\textcolor{stringliteral}{'batchsize'}, 1)
+74         world.parley()
+75         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'display\_examples'}]:
+76             print(world.display() + \textcolor{stringliteral}{"\(\backslash\)n~~"})
+77         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'num\_examples'}] > 0 \textcolor{keywordflow}{and} cnt >= opt[\textcolor{stringliteral}{'num\_examples'}]:
+78             \textcolor{keywordflow}{break}
+79 
+80     \textcolor{keywordflow}{if} world.epoch\_done():
+81         print(\textcolor{stringliteral}{"EPOCH DONE"})
+82     print(
+83         \textcolor{stringliteral}{'finished evaluating task using datatype \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(opt.get(\textcolor{stringliteral}{'datatype'}, \textcolor{stringliteral}{'N/A'}))
+84     )
+85     report = world.report()
+86     print(report)
+87     \textcolor{keywordflow}{return} report
+88 
+89 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1talkthewalk_1_1run_a3534e8afa0a4dc25a6e02740fa35ac84}\label{namespaceparlai_1_1tasks_1_1talkthewalk_1_1run_a3534e8afa0a4dc25a6e02740fa35ac84}} 
+\index{parlai\+::tasks\+::talkthewalk\+::run@{parlai\+::tasks\+::talkthewalk\+::run}!setup\+\_\+args@{setup\+\_\+args}}
+\index{setup\+\_\+args@{setup\+\_\+args}!parlai\+::tasks\+::talkthewalk\+::run@{parlai\+::tasks\+::talkthewalk\+::run}}
+\subsubsection{\texorpdfstring{setup\+\_\+args()}{setup\_args()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+talkthewalk.\+run.\+setup\+\_\+args (\begin{DoxyParamCaption}\item[{}]{parser = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 28 of file run.\+py.
+
+
+\begin{DoxyCode}
+28 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1talkthewalk_1_1run_a3534e8afa0a4dc25a6e02740fa35ac84}{setup\_args}(parser=None):
+29     \textcolor{keywordflow}{if} parser \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+30         parser = ParlaiParser(\textcolor{keyword}{True}, \textcolor{keyword}{True}, \textcolor{stringliteral}{'Evaluate a model'})
+31     parser.add\_parlai\_data\_path()
+32     \textcolor{comment}{# Get command line arguments}
+33     parser.add\_argument(\textcolor{stringliteral}{'-tmf'}, \textcolor{stringliteral}{'--tourist-model-file'}, type=str)
+34     parser.add\_argument(\textcolor{stringliteral}{'-gmf'}, \textcolor{stringliteral}{'--guide-model-file'}, type=str)
+35     parser.add\_argument(\textcolor{stringliteral}{'-ne'}, \textcolor{stringliteral}{'--num-examples'}, type=int, default=-1)
+36     parser.add\_argument(\textcolor{stringliteral}{'-d'}, \textcolor{stringliteral}{'--display-examples'}, type=\textcolor{stringliteral}{'bool'}, default=\textcolor{keyword}{False})
+37     parser.add\_argument(\textcolor{stringliteral}{'-ltim'}, \textcolor{stringliteral}{'--log-every-n-secs'}, type=float, default=2)
+38     parser.add\_argument(
+39         \textcolor{stringliteral}{'--metrics'},
+40         type=str,
+41         default=\textcolor{stringliteral}{"all"},
+42         help=\textcolor{stringliteral}{"list of metrics to show/compute, e.g. "}
+43         \textcolor{stringliteral}{"ppl,f1,accuracy,hits@1."}
+44         \textcolor{stringliteral}{"If 'all' is specified [default] all are shown."},
+45     )
+46     TensorboardLogger.add\_cmdline\_args(parser)
+47     parser.set\_defaults(datatype=\textcolor{stringliteral}{'valid'})
+48     \textcolor{keywordflow}{return} parser
+49 
+50 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1talkthewalk_1_1run_a6ddc3f1bb5ff1ce0a0b25bb1abfd2251}\label{namespaceparlai_1_1tasks_1_1talkthewalk_1_1run_a6ddc3f1bb5ff1ce0a0b25bb1abfd2251}} 
+\index{parlai\+::tasks\+::talkthewalk\+::run@{parlai\+::tasks\+::talkthewalk\+::run}!parser@{parser}}
+\index{parser@{parser}!parlai\+::tasks\+::talkthewalk\+::run@{parlai\+::tasks\+::talkthewalk\+::run}}
+\subsubsection{\texorpdfstring{parser}{parser}}
+{\footnotesize\ttfamily parlai.\+tasks.\+talkthewalk.\+run.\+parser}
+
+
+
+Definition at line 91 of file run.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1talkthewalk_1_1run_aaaa6dd17c737d50be241dc6844bfc581}\label{namespaceparlai_1_1tasks_1_1talkthewalk_1_1run_aaaa6dd17c737d50be241dc6844bfc581}} 
+\index{parlai\+::tasks\+::talkthewalk\+::run@{parlai\+::tasks\+::talkthewalk\+::run}!print\+\_\+args@{print\+\_\+args}}
+\index{print\+\_\+args@{print\+\_\+args}!parlai\+::tasks\+::talkthewalk\+::run@{parlai\+::tasks\+::talkthewalk\+::run}}
+\subsubsection{\texorpdfstring{print\+\_\+args}{print\_args}}
+{\footnotesize\ttfamily parlai.\+tasks.\+talkthewalk.\+run.\+print\+\_\+args}
+
+
+
+Definition at line 92 of file run.\+py.
+

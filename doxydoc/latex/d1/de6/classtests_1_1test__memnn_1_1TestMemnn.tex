@@ -1,0 +1,192 @@
+\hypertarget{classtests_1_1test__memnn_1_1TestMemnn}{}\section{tests.\+test\+\_\+memnn.\+Test\+Memnn Class Reference}
+\label{classtests_1_1test__memnn_1_1TestMemnn}\index{tests.\+test\+\_\+memnn.\+Test\+Memnn@{tests.\+test\+\_\+memnn.\+Test\+Memnn}}
+
+
+Inheritance diagram for tests.\+test\+\_\+memnn.\+Test\+Memnn\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{d2/df3/classtests_1_1test__memnn_1_1TestMemnn__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for tests.\+test\+\_\+memnn.\+Test\+Memnn\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=230pt]{d3/d5f/classtests_1_1test__memnn_1_1TestMemnn__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classtests_1_1test__memnn_1_1TestMemnn_a3e3c10325fc7905dc77b8e1b1db4490a}{test\+\_\+labelcands\+\_\+nomemnn} (self)
+\item 
+def \hyperlink{classtests_1_1test__memnn_1_1TestMemnn_a2e52386c91c00701e4e58c72e100074d}{test\+\_\+labelcands\+\_\+multi} (self)
+\item 
+def \hyperlink{classtests_1_1test__memnn_1_1TestMemnn_a2c3a2e42a94e00651ee32a03d9b7ba84}{test\+\_\+backcomp} (self)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Checks that seq2seq can learn some very basic tasks.
+\end{DoxyVerb}
+ 
+
+Definition at line 15 of file test\+\_\+memnn.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtests_1_1test__memnn_1_1TestMemnn_a2c3a2e42a94e00651ee32a03d9b7ba84}\label{classtests_1_1test__memnn_1_1TestMemnn_a2c3a2e42a94e00651ee32a03d9b7ba84}} 
+\index{tests\+::test\+\_\+memnn\+::\+Test\+Memnn@{tests\+::test\+\_\+memnn\+::\+Test\+Memnn}!test\+\_\+backcomp@{test\+\_\+backcomp}}
+\index{test\+\_\+backcomp@{test\+\_\+backcomp}!tests\+::test\+\_\+memnn\+::\+Test\+Memnn@{tests\+::test\+\_\+memnn\+::\+Test\+Memnn}}
+\subsubsection{\texorpdfstring{test\+\_\+backcomp()}{test\_backcomp()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+memnn.\+Test\+Memnn.\+test\+\_\+backcomp (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Tests that the memnn model files continue to works over time.
+\end{DoxyVerb}
+ 
+
+Definition at line 86 of file test\+\_\+memnn.\+py.
+
+
+\begin{DoxyCode}
+86     \textcolor{keyword}{def }test\_backcomp(self):
+87         \textcolor{stringliteral}{"""}
+88 \textcolor{stringliteral}{        Tests that the memnn model files continue to works over time.}
+89 \textcolor{stringliteral}{        """}
+90         testing\_utils.download\_unittest\_models()
+91 
+92         stdout, valid, test = testing\_utils.eval\_model(
+93             dict(
+94                 task=\textcolor{stringliteral}{'integration\_tests'},
+95                 model=\textcolor{stringliteral}{'memnn'},
+96                 model\_file=\textcolor{stringliteral}{'zoo:unittest/memnn/model'},
+97                 dict\_file=\textcolor{stringliteral}{'zoo:unittest/memnn/model.dict'},
+98                 batch\_size=16,
+99             )
+100         )
+101 
+102         self.assertGreaterEqual(
+103             valid[\textcolor{stringliteral}{'accuracy'}],
+104             0.88,
+105             \textcolor{stringliteral}{'valid accuracy = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(valid[\textcolor{stringliteral}{'accuracy'}], stdout),
+106         )
+107         self.assertGreaterEqual(
+108             valid[\textcolor{stringliteral}{'f1'}], 0.999, \textcolor{stringliteral}{'valid f1 = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(valid[\textcolor{stringliteral}{'f1'}], stdout)
+109         )
+110         self.assertGreaterEqual(
+111             test[\textcolor{stringliteral}{'accuracy'}],
+112             0.84,
+113             \textcolor{stringliteral}{'test accuracy = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(test[\textcolor{stringliteral}{'accuracy'}], stdout),
+114         )
+115         self.assertGreaterEqual(
+116             test[\textcolor{stringliteral}{'f1'}], 0.999, \textcolor{stringliteral}{'test f1 = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(test[\textcolor{stringliteral}{'f1'}], stdout)
+117         )
+118 
+119 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__memnn_1_1TestMemnn_a2e52386c91c00701e4e58c72e100074d}\label{classtests_1_1test__memnn_1_1TestMemnn_a2e52386c91c00701e4e58c72e100074d}} 
+\index{tests\+::test\+\_\+memnn\+::\+Test\+Memnn@{tests\+::test\+\_\+memnn\+::\+Test\+Memnn}!test\+\_\+labelcands\+\_\+multi@{test\+\_\+labelcands\+\_\+multi}}
+\index{test\+\_\+labelcands\+\_\+multi@{test\+\_\+labelcands\+\_\+multi}!tests\+::test\+\_\+memnn\+::\+Test\+Memnn@{tests\+::test\+\_\+memnn\+::\+Test\+Memnn}}
+\subsubsection{\texorpdfstring{test\+\_\+labelcands\+\_\+multi()}{test\_labelcands\_multi()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+memnn.\+Test\+Memnn.\+test\+\_\+labelcands\+\_\+multi (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This test uses a multi-turn task and multithreading.
+\end{DoxyVerb}
+ 
+
+Definition at line 54 of file test\+\_\+memnn.\+py.
+
+
+\begin{DoxyCode}
+54     \textcolor{keyword}{def }test\_labelcands\_multi(self):
+55         \textcolor{stringliteral}{"""}
+56 \textcolor{stringliteral}{        This test uses a multi-turn task and multithreading.}
+57 \textcolor{stringliteral}{        """}
+58         stdout, valid, test = testing\_utils.train\_model(
+59             dict(
+60                 task=\textcolor{stringliteral}{'integration\_tests:multiturn\_candidate'},
+61                 model=\textcolor{stringliteral}{'memnn'},
+62                 lr=LR,
+63                 batchsize=BATCH\_SIZE,
+64                 num\_epochs=NUM\_EPOCHS * 3,
+65                 numthreads=4,
+66                 no\_cuda=\textcolor{keyword}{True},
+67                 embedding\_size=32,
+68                 gradient\_clip=1.0,
+69                 hops=2,
+70                 position\_encoding=\textcolor{keyword}{False},
+71                 use\_time\_features=\textcolor{keyword}{True},
+72                 memsize=5,
+73                 rank\_candidates=\textcolor{keyword}{True},
+74             )
+75         )
+76 
+77         self.assertTrue(
+78             valid[\textcolor{stringliteral}{'hits@1'}] > 0.95,
+79             \textcolor{stringliteral}{"valid hits@1 = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(valid[\textcolor{stringliteral}{'hits@1'}], stdout),
+80         )
+81         self.assertTrue(
+82             test[\textcolor{stringliteral}{'hits@1'}] > 0.95,
+83             \textcolor{stringliteral}{"test hits@1 = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(test[\textcolor{stringliteral}{'hits@1'}], stdout),
+84         )
+85 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__memnn_1_1TestMemnn_a3e3c10325fc7905dc77b8e1b1db4490a}\label{classtests_1_1test__memnn_1_1TestMemnn_a3e3c10325fc7905dc77b8e1b1db4490a}} 
+\index{tests\+::test\+\_\+memnn\+::\+Test\+Memnn@{tests\+::test\+\_\+memnn\+::\+Test\+Memnn}!test\+\_\+labelcands\+\_\+nomemnn@{test\+\_\+labelcands\+\_\+nomemnn}}
+\index{test\+\_\+labelcands\+\_\+nomemnn@{test\+\_\+labelcands\+\_\+nomemnn}!tests\+::test\+\_\+memnn\+::\+Test\+Memnn@{tests\+::test\+\_\+memnn\+::\+Test\+Memnn}}
+\subsubsection{\texorpdfstring{test\+\_\+labelcands\+\_\+nomemnn()}{test\_labelcands\_nomemnn()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+memnn.\+Test\+Memnn.\+test\+\_\+labelcands\+\_\+nomemnn (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This test uses a single-turn task, so doesn't test memories.
+\end{DoxyVerb}
+ 
+
+Definition at line 20 of file test\+\_\+memnn.\+py.
+
+
+\begin{DoxyCode}
+20     \textcolor{keyword}{def }test\_labelcands\_nomemnn(self):
+21         \textcolor{stringliteral}{"""}
+22 \textcolor{stringliteral}{        This test uses a single-turn task, so doesn't test memories.}
+23 \textcolor{stringliteral}{        """}
+24 
+25         stdout, valid, test = testing\_utils.train\_model(
+26             dict(
+27                 task=\textcolor{stringliteral}{'integration\_tests:candidate'},
+28                 model=\textcolor{stringliteral}{'memnn'},
+29                 lr=LR,
+30                 batchsize=BATCH\_SIZE,
+31                 num\_epochs=NUM\_EPOCHS,
+32                 numthreads=1,
+33                 no\_cuda=\textcolor{keyword}{True},
+34                 embedding\_size=32,
+35                 gradient\_clip=1.0,
+36                 hops=1,
+37                 position\_encoding=\textcolor{keyword}{True},
+38                 use\_time\_features=\textcolor{keyword}{False},
+39                 memsize=0,
+40                 rank\_candidates=\textcolor{keyword}{True},
+41             )
+42         )
+43 
+44         self.assertTrue(
+45             valid[\textcolor{stringliteral}{'hits@1'}] > 0.95,
+46             \textcolor{stringliteral}{"valid hits@1 = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(valid[\textcolor{stringliteral}{'hits@1'}], stdout),
+47         )
+48         self.assertTrue(
+49             test[\textcolor{stringliteral}{'hits@1'}] > 0.95,
+50             \textcolor{stringliteral}{"test hits@1 = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(test[\textcolor{stringliteral}{'hits@1'}], stdout),
+51         )
+52 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+tests/\hyperlink{test__memnn_8py}{test\+\_\+memnn.\+py}\end{DoxyCompactItemize}

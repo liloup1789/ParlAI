@@ -1,0 +1,311 @@
+\hypertarget{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder}{}\section{parlai.\+agents.\+seq2seq.\+modules.\+R\+N\+N\+Decoder Class Reference}
+\label{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder}\index{parlai.\+agents.\+seq2seq.\+modules.\+R\+N\+N\+Decoder@{parlai.\+agents.\+seq2seq.\+modules.\+R\+N\+N\+Decoder}}
+
+
+Inheritance diagram for parlai.\+agents.\+seq2seq.\+modules.\+R\+N\+N\+Decoder\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=235pt]{d1/d57/classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+agents.\+seq2seq.\+modules.\+R\+N\+N\+Decoder\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=235pt]{d0/db8/classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_ac115797a89d673f99c26d1ed9fba6d30}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, num\+\_\+features, embeddingsize, hiddensize, padding\+\_\+idx=0, rnn\+\_\+class=\textquotesingle{}lstm\textquotesingle{}, numlayers=2, \hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_a5d511816f2f290ec64f133b70d07ecba}{dropout}=0.\+1, bidir\+\_\+input=False, \hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_acbc1b2f265124a2fa38e6239753de878}{attn\+\_\+type}=\textquotesingle{}none\textquotesingle{}, \hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_add11830f4f2f5126896647fe0821a0bc}{attn\+\_\+time}=\textquotesingle{}pre\textquotesingle{}, attn\+\_\+length=-\/1, sparse=False)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_a883315b7f0f57ccf17c96fc8f24ddc11}{forward} (self, xs, encoder\+\_\+output, incremental\+\_\+state=None)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_a5d511816f2f290ec64f133b70d07ecba}{dropout}
+\item 
+\hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_aa72b03f6c3bf630739d3147b4b2711c4}{layers}
+\item 
+\hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_ab4a5f0dcf148831333b89f3f4b2d6045}{hsz}
+\item 
+\hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_aa23f87293a0dc476dd4a2c101c3796b2}{esz}
+\item 
+\hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_a86a529bada7d11138e31c658b2c10dbb}{lt}
+\item 
+\hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_ace209ab9eab09c06a356da8daca8ce3c}{rnn}
+\item 
+\hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_acbc1b2f265124a2fa38e6239753de878}{attn\+\_\+type}
+\item 
+\hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_add11830f4f2f5126896647fe0821a0bc}{attn\+\_\+time}
+\item 
+\hyperlink{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_a28ca5ae00c8d57bb952a8c4f477da2db}{attention}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Recurrent decoder module.
+
+Can be used as a standalone language model or paired with an encoder.
+\end{DoxyVerb}
+ 
+
+Definition at line 335 of file modules.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_ac115797a89d673f99c26d1ed9fba6d30}\label{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_ac115797a89d673f99c26d1ed9fba6d30}} 
+\index{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder@{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder@{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+seq2seq.\+modules.\+R\+N\+N\+Decoder.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{num\+\_\+features,  }\item[{}]{embeddingsize,  }\item[{}]{hiddensize,  }\item[{}]{padding\+\_\+idx = {\ttfamily 0},  }\item[{}]{rnn\+\_\+class = {\ttfamily \textquotesingle{}lstm\textquotesingle{}},  }\item[{}]{numlayers = {\ttfamily 2},  }\item[{}]{dropout = {\ttfamily 0.1},  }\item[{}]{bidir\+\_\+input = {\ttfamily False},  }\item[{}]{attn\+\_\+type = {\ttfamily \textquotesingle{}none\textquotesingle{}},  }\item[{}]{attn\+\_\+time = {\ttfamily \textquotesingle{}pre\textquotesingle{}},  }\item[{}]{attn\+\_\+length = {\ttfamily -\/1},  }\item[{}]{sparse = {\ttfamily False} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initialize recurrent decoder.
+\end{DoxyVerb}
+ 
+
+Definition at line 356 of file modules.\+py.
+
+
+\begin{DoxyCode}
+356     ):
+357         \textcolor{stringliteral}{"""}
+358 \textcolor{stringliteral}{        Initialize recurrent decoder.}
+359 \textcolor{stringliteral}{        """}
+360         super().\_\_init\_\_()
+361         self.dropout = nn.Dropout(p=dropout)
+362         self.layers = numlayers
+363         self.hsz = hiddensize
+364         self.esz = embeddingsize
+365 
+366         self.lt = nn.Embedding(
+367             num\_features, embeddingsize, padding\_idx=padding\_idx, sparse=sparse
+368         )
+369         self.rnn = \hyperlink{namespaceseq2seq_1_1train_a1b062073c766f1d34a67f572ef256ba0}{rnn\_class}(
+370             embeddingsize,
+371             hiddensize,
+372             numlayers,
+373             dropout=dropout \textcolor{keywordflow}{if} numlayers > 1 \textcolor{keywordflow}{else} 0,
+374             batch\_first=\textcolor{keyword}{True},
+375         )
+376 
+377         self.attn\_type = attn\_type
+378         self.attn\_time = attn\_time
+379         self.attention = AttentionLayer(
+380             attn\_type=attn\_type,
+381             hiddensize=hiddensize,
+382             embeddingsize=embeddingsize,
+383             bidirectional=bidir\_input,
+384             attn\_length=attn\_length,
+385             attn\_time=attn\_time,
+386         )
+387 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_a883315b7f0f57ccf17c96fc8f24ddc11}\label{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_a883315b7f0f57ccf17c96fc8f24ddc11}} 
+\index{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder@{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder}!forward@{forward}}
+\index{forward@{forward}!parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder@{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder}}
+\subsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+seq2seq.\+modules.\+R\+N\+N\+Decoder.\+forward (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{xs,  }\item[{}]{encoder\+\_\+output,  }\item[{}]{incremental\+\_\+state = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Decode from input tokens.
+
+:param xs: (bsz x seqlen) LongTensor of input token indices
+:param encoder_output: output from RNNEncoder. Tuple containing
+    (enc_out, enc_hidden, attn_mask) tuple.
+:param incremental_state: most recent hidden state to the decoder.
+    If None, the hidden state of the encoder is used as initial state,
+    and the full sequence is computed. If not None, computes only the
+    next forward in the sequence.
+
+:returns: (output, hidden_state) pair from the RNN.
+
+    - output is a bsz x time x latentdim matrix. If incremental_state is
+given, the time dimension will be 1. This value must be passed to
+the model's OutputLayer for a final softmax.
+    - hidden_state depends on the choice of RNN
+\end{DoxyVerb}
+ 
+
+Definition at line 388 of file modules.\+py.
+
+
+\begin{DoxyCode}
+388     \textcolor{keyword}{def }forward(self, xs, encoder\_output, incremental\_state=None):
+389         \textcolor{stringliteral}{"""}
+390 \textcolor{stringliteral}{        Decode from input tokens.}
+391 \textcolor{stringliteral}{}
+392 \textcolor{stringliteral}{        :param xs: (bsz x seqlen) LongTensor of input token indices}
+393 \textcolor{stringliteral}{        :param encoder\_output: output from RNNEncoder. Tuple containing}
+394 \textcolor{stringliteral}{            (enc\_out, enc\_hidden, attn\_mask) tuple.}
+395 \textcolor{stringliteral}{        :param incremental\_state: most recent hidden state to the decoder.}
+396 \textcolor{stringliteral}{            If None, the hidden state of the encoder is used as initial state,}
+397 \textcolor{stringliteral}{            and the full sequence is computed. If not None, computes only the}
+398 \textcolor{stringliteral}{            next forward in the sequence.}
+399 \textcolor{stringliteral}{}
+400 \textcolor{stringliteral}{        :returns: (output, hidden\_state) pair from the RNN.}
+401 \textcolor{stringliteral}{}
+402 \textcolor{stringliteral}{            - output is a bsz x time x latentdim matrix. If incremental\_state is}
+403 \textcolor{stringliteral}{                given, the time dimension will be 1. This value must be passed to}
+404 \textcolor{stringliteral}{                the model's OutputLayer for a final softmax.}
+405 \textcolor{stringliteral}{            - hidden\_state depends on the choice of RNN}
+406 \textcolor{stringliteral}{        """}
+407         enc\_state, enc\_hidden, attn\_mask = encoder\_output
+408         \textcolor{comment}{# in case of multi gpu, we need to transpose back out the hidden state}
+409         attn\_params = (enc\_state, attn\_mask)
+410 
+411         \textcolor{keywordflow}{if} incremental\_state \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+412             \textcolor{comment}{# we're doing it piece by piece, so we have a more important hidden}
+413             \textcolor{comment}{# seed, and we only need to compute for the final timestep}
+414             hidden = \_transpose\_hidden\_state(incremental\_state)
+415             \textcolor{comment}{# only need the last timestep then}
+416             xs = xs[:, -1:]
+417         \textcolor{keywordflow}{else}:
+418             \textcolor{comment}{# starting fresh, or generating from scratch. Use the encoder hidden}
+419             \textcolor{comment}{# state as our start state}
+420             hidden = \_transpose\_hidden\_state(enc\_hidden)
+421 
+422         \textcolor{keywordflow}{if} isinstance(hidden, tuple):
+423             hidden = tuple(x.contiguous() \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} hidden)
+424         \textcolor{keywordflow}{else}:
+425             hidden = hidden.contiguous()
+426 
+427         \textcolor{comment}{# sequence indices => sequence embeddings}
+428         seqlen = xs.size(1)
+429         xes = self.dropout(self.lt(xs))
+430 
+431         \textcolor{keywordflow}{if} self.attn\_time == \textcolor{stringliteral}{'pre'}:
+432             \textcolor{comment}{# modify input vectors with attention}
+433             \textcolor{comment}{# attention module requires we do this one step at a time}
+434             new\_xes = []
+435             \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(seqlen):
+436                 nx, \_ = self.attention(xes[:, i : i + 1], hidden, attn\_params)
+437                 new\_xes.append(nx)
+438             xes = torch.cat(new\_xes, 1).to(xes.device)
+439 
+440         \textcolor{keywordflow}{if} self.attn\_time != \textcolor{stringliteral}{'post'}:
+441             \textcolor{comment}{# no attn, we can just trust the rnn to run through}
+442             output, new\_hidden = self.rnn(xes, hidden)
+443         \textcolor{keywordflow}{else}:
+444             \textcolor{comment}{# uh oh, post attn, we need run through one at a time, and do the}
+445             \textcolor{comment}{# attention modifications}
+446             new\_hidden = hidden
+447             output = []
+448             \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(seqlen):
+449                 o, new\_hidden = self.rnn(xes[:, i, :].unsqueeze(1), new\_hidden)
+450                 o, \_ = self.attention(o, new\_hidden, attn\_params)
+451                 output.append(o)
+452             output = torch.cat(output, dim=1).to(xes.device)
+453 
+454         \textcolor{keywordflow}{return} output, \_transpose\_hidden\_state(new\_hidden)
+455 
+456 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_a28ca5ae00c8d57bb952a8c4f477da2db}\label{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_a28ca5ae00c8d57bb952a8c4f477da2db}} 
+\index{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder@{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder}!attention@{attention}}
+\index{attention@{attention}!parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder@{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder}}
+\subsubsection{\texorpdfstring{attention}{attention}}
+{\footnotesize\ttfamily parlai.\+agents.\+seq2seq.\+modules.\+R\+N\+N\+Decoder.\+attention}
+
+
+
+Definition at line 379 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_add11830f4f2f5126896647fe0821a0bc}\label{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_add11830f4f2f5126896647fe0821a0bc}} 
+\index{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder@{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder}!attn\+\_\+time@{attn\+\_\+time}}
+\index{attn\+\_\+time@{attn\+\_\+time}!parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder@{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder}}
+\subsubsection{\texorpdfstring{attn\+\_\+time}{attn\_time}}
+{\footnotesize\ttfamily parlai.\+agents.\+seq2seq.\+modules.\+R\+N\+N\+Decoder.\+attn\+\_\+time}
+
+
+
+Definition at line 378 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_acbc1b2f265124a2fa38e6239753de878}\label{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_acbc1b2f265124a2fa38e6239753de878}} 
+\index{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder@{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder}!attn\+\_\+type@{attn\+\_\+type}}
+\index{attn\+\_\+type@{attn\+\_\+type}!parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder@{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder}}
+\subsubsection{\texorpdfstring{attn\+\_\+type}{attn\_type}}
+{\footnotesize\ttfamily parlai.\+agents.\+seq2seq.\+modules.\+R\+N\+N\+Decoder.\+attn\+\_\+type}
+
+
+
+Definition at line 377 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_a5d511816f2f290ec64f133b70d07ecba}\label{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_a5d511816f2f290ec64f133b70d07ecba}} 
+\index{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder@{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder}!dropout@{dropout}}
+\index{dropout@{dropout}!parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder@{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder}}
+\subsubsection{\texorpdfstring{dropout}{dropout}}
+{\footnotesize\ttfamily parlai.\+agents.\+seq2seq.\+modules.\+R\+N\+N\+Decoder.\+dropout}
+
+
+
+Definition at line 361 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_aa23f87293a0dc476dd4a2c101c3796b2}\label{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_aa23f87293a0dc476dd4a2c101c3796b2}} 
+\index{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder@{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder}!esz@{esz}}
+\index{esz@{esz}!parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder@{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder}}
+\subsubsection{\texorpdfstring{esz}{esz}}
+{\footnotesize\ttfamily parlai.\+agents.\+seq2seq.\+modules.\+R\+N\+N\+Decoder.\+esz}
+
+
+
+Definition at line 364 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_ab4a5f0dcf148831333b89f3f4b2d6045}\label{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_ab4a5f0dcf148831333b89f3f4b2d6045}} 
+\index{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder@{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder}!hsz@{hsz}}
+\index{hsz@{hsz}!parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder@{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder}}
+\subsubsection{\texorpdfstring{hsz}{hsz}}
+{\footnotesize\ttfamily parlai.\+agents.\+seq2seq.\+modules.\+R\+N\+N\+Decoder.\+hsz}
+
+
+
+Definition at line 363 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_aa72b03f6c3bf630739d3147b4b2711c4}\label{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_aa72b03f6c3bf630739d3147b4b2711c4}} 
+\index{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder@{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder}!layers@{layers}}
+\index{layers@{layers}!parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder@{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder}}
+\subsubsection{\texorpdfstring{layers}{layers}}
+{\footnotesize\ttfamily parlai.\+agents.\+seq2seq.\+modules.\+R\+N\+N\+Decoder.\+layers}
+
+
+
+Definition at line 362 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_a86a529bada7d11138e31c658b2c10dbb}\label{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_a86a529bada7d11138e31c658b2c10dbb}} 
+\index{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder@{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder}!lt@{lt}}
+\index{lt@{lt}!parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder@{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder}}
+\subsubsection{\texorpdfstring{lt}{lt}}
+{\footnotesize\ttfamily parlai.\+agents.\+seq2seq.\+modules.\+R\+N\+N\+Decoder.\+lt}
+
+
+
+Definition at line 366 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_ace209ab9eab09c06a356da8daca8ce3c}\label{classparlai_1_1agents_1_1seq2seq_1_1modules_1_1RNNDecoder_ace209ab9eab09c06a356da8daca8ce3c}} 
+\index{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder@{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder}!rnn@{rnn}}
+\index{rnn@{rnn}!parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder@{parlai\+::agents\+::seq2seq\+::modules\+::\+R\+N\+N\+Decoder}}
+\subsubsection{\texorpdfstring{rnn}{rnn}}
+{\footnotesize\ttfamily parlai.\+agents.\+seq2seq.\+modules.\+R\+N\+N\+Decoder.\+rnn}
+
+
+
+Definition at line 369 of file modules.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/agents/seq2seq/\hyperlink{parlai_2agents_2seq2seq_2modules_8py}{modules.\+py}\end{DoxyCompactItemize}

@@ -1,0 +1,281 @@
+\hypertarget{namespaceparlai_1_1core_1_1metrics}{}\section{parlai.\+core.\+metrics Namespace Reference}
+\label{namespaceparlai_1_1core_1_1metrics}\index{parlai.\+core.\+metrics@{parlai.\+core.\+metrics}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classparlai_1_1core_1_1metrics_1_1Metrics}{Metrics}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1core_1_1metrics_ae7769a6b628f41081e0f43043d52031a}{normalize\+\_\+answer} (s)
+\item 
+def \hyperlink{namespaceparlai_1_1core_1_1metrics_ae323045c05ed03d93c260521ebb8bf71}{aggregate\+\_\+task\+\_\+reports} (reports, tasks, micro=False)
+\item 
+def \hyperlink{namespaceparlai_1_1core_1_1metrics_aa4ed5491962e06684b235fffe1b20fec}{aggregate\+\_\+metrics} (reporters)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+dictionary \hyperlink{namespaceparlai_1_1core_1_1metrics_a5cd26a43d8156c993f30c5a707021562}{D\+E\+F\+A\+U\+L\+T\+\_\+\+M\+E\+T\+R\+I\+CS} = \{\textquotesingle{}correct\textquotesingle{}, \textquotesingle{}bleu-\/4\textquotesingle{}, \textquotesingle{}accuracy\textquotesingle{}, \textquotesingle{}f1\textquotesingle{}\}
+\item 
+dictionary \hyperlink{namespaceparlai_1_1core_1_1metrics_ac01c4a05e91baee81e771e8f7ae9e7e4}{R\+O\+U\+G\+E\+\_\+\+M\+E\+T\+R\+I\+CS} = \{\textquotesingle{}\hyperlink{namespaceparlai_1_1core_1_1metrics_ae0fddd2325f5dc52b2a367e52056242a}{rouge}-\/1\textquotesingle{}, \textquotesingle{}\hyperlink{namespaceparlai_1_1core_1_1metrics_ae0fddd2325f5dc52b2a367e52056242a}{rouge}-\/2\textquotesingle{}, \textquotesingle{}\hyperlink{namespaceparlai_1_1core_1_1metrics_ae0fddd2325f5dc52b2a367e52056242a}{rouge}-\/L\textquotesingle{}\}
+\item 
+dictionary \hyperlink{namespaceparlai_1_1core_1_1metrics_a5f8ea2258b1137554e4544c463ffc101}{B\+L\+E\+U\+\_\+\+M\+E\+T\+R\+I\+CS} = \{\textquotesingle{}bleu-\/1\textquotesingle{}, \textquotesingle{}bleu-\/2\textquotesingle{}, \textquotesingle{}bleu-\/3\textquotesingle{}\}
+\item 
+dictionary \hyperlink{namespaceparlai_1_1core_1_1metrics_add79f9806fe8f3343a620c790eb98be7}{A\+L\+L\+\_\+\+M\+E\+T\+R\+I\+CS} = \hyperlink{namespaceparlai_1_1core_1_1metrics_a5cd26a43d8156c993f30c5a707021562}{D\+E\+F\+A\+U\+L\+T\+\_\+\+M\+E\+T\+R\+I\+CS} $\vert$ \hyperlink{namespaceparlai_1_1core_1_1metrics_ac01c4a05e91baee81e771e8f7ae9e7e4}{R\+O\+U\+G\+E\+\_\+\+M\+E\+T\+R\+I\+CS} $\vert$ \hyperlink{namespaceparlai_1_1core_1_1metrics_a5f8ea2258b1137554e4544c463ffc101}{B\+L\+E\+U\+\_\+\+M\+E\+T\+R\+I\+CS}
+\item 
+\hyperlink{namespaceparlai_1_1core_1_1metrics_aae1295106c31b93af8fbe0da66ebe000}{nltkbleu} = None
+\item 
+\hyperlink{namespaceparlai_1_1core_1_1metrics_ae0fddd2325f5dc52b2a367e52056242a}{rouge} = None
+\item 
+\hyperlink{namespaceparlai_1_1core_1_1metrics_a037f8e3330e87d9de75fac930eac7fc2}{re\+\_\+art} = re.\+compile(r\textquotesingle{}\textbackslash{}b(a$\vert$an$\vert$the)\textbackslash{}b\textquotesingle{})
+\item 
+\hyperlink{namespaceparlai_1_1core_1_1metrics_a334cb58cda231eb62dea1fd375f8d687}{re\+\_\+punc} = re.\+compile(r\textquotesingle{}\mbox{[}!\char`\"{}\#\$\%\&()$\ast$+,-\/./\+:;$<$=$>$?@\textbackslash{}\mbox{[}\textbackslash{}\mbox{]}\textbackslash{}\textbackslash{}$^\wedge$`\{$\vert$\}$\sim$\+\_\+\textbackslash{}\textquotesingle{}\mbox{]}\textquotesingle{})
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1metrics_aa4ed5491962e06684b235fffe1b20fec}\label{namespaceparlai_1_1core_1_1metrics_aa4ed5491962e06684b235fffe1b20fec}} 
+\index{parlai\+::core\+::metrics@{parlai\+::core\+::metrics}!aggregate\+\_\+metrics@{aggregate\+\_\+metrics}}
+\index{aggregate\+\_\+metrics@{aggregate\+\_\+metrics}!parlai\+::core\+::metrics@{parlai\+::core\+::metrics}}
+\subsubsection{\texorpdfstring{aggregate\+\_\+metrics()}{aggregate\_metrics()}}
+{\footnotesize\ttfamily def parlai.\+core.\+metrics.\+aggregate\+\_\+metrics (\begin{DoxyParamCaption}\item[{}]{reporters }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Aggregate metrics from multiple reports.
+\end{DoxyVerb}
+ 
+
+Definition at line 204 of file metrics.\+py.
+
+
+\begin{DoxyCode}
+204 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1metrics_aa4ed5491962e06684b235fffe1b20fec}{aggregate\_metrics}(reporters):
+205     \textcolor{stringliteral}{"""}
+206 \textcolor{stringliteral}{    Aggregate metrics from multiple reports.}
+207 \textcolor{stringliteral}{    """}
+208     \textcolor{comment}{# reporters is a list of teachers or worlds}
+209     m = \{\}
+210     m[\textcolor{stringliteral}{'tasks'}] = \{\}
+211     sums = \{\}
+212     num\_tasks = 0
+213     total = 0
+214     \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(reporters)):
+215         task\_id = reporters[i].getID()
+216         task\_report = reporters[i].\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}()
+217         \textcolor{keywordflow}{for} each\_metric, value \textcolor{keywordflow}{in} task\_report.items():
+218             \textcolor{keywordflow}{if} isinstance(value, float):
+219                 sums[each\_metric] = 0.0
+220                 m[each\_metric] = 0.0
+221             \textcolor{keywordflow}{elif} isinstance(value, Number):
+222                 sums[each\_metric] = 0
+223                 m[each\_metric] = 0
+224 
+225     \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(reporters)):
+226         task\_id = reporters[i].getID()
+227         task\_report = reporters[i].\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}()
+228         \textcolor{keywordflow}{while} task\_id \textcolor{keywordflow}{in} m[\textcolor{stringliteral}{'tasks'}]:
+229             \textcolor{comment}{# prevent name clobbering if using multiple tasks with same ID}
+230             task\_id += \textcolor{stringliteral}{'\_'}
+231         m[\textcolor{stringliteral}{'tasks'}][task\_id] = task\_report
+232         total += task\_report[\textcolor{stringliteral}{'exs'}]
+233         found\_any = \textcolor{keyword}{False}
+234         \textcolor{keywordflow}{for} k \textcolor{keywordflow}{in} sums.keys():
+235             \textcolor{keywordflow}{if} k \textcolor{keywordflow}{in} task\_report:
+236                 sums[k] += task\_report[k]
+237                 found\_any = \textcolor{keyword}{True}
+238         \textcolor{keywordflow}{if} found\_any:
+239             num\_tasks += 1
+240     m[\textcolor{stringliteral}{'exs'}] = total
+241     m[\textcolor{stringliteral}{'accuracy'}] = 0
+242     \textcolor{keywordflow}{if} num\_tasks > 0:
+243         \textcolor{keywordflow}{for} k \textcolor{keywordflow}{in} sums.keys():
+244             m[k] = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_af377ec61bfc0423461e7b409ffc883b9}{round\_sigfigs}(sums[k] / num\_tasks, 4)
+245     \textcolor{keywordflow}{return} m
+246 
+247 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1metrics_ae323045c05ed03d93c260521ebb8bf71}\label{namespaceparlai_1_1core_1_1metrics_ae323045c05ed03d93c260521ebb8bf71}} 
+\index{parlai\+::core\+::metrics@{parlai\+::core\+::metrics}!aggregate\+\_\+task\+\_\+reports@{aggregate\+\_\+task\+\_\+reports}}
+\index{aggregate\+\_\+task\+\_\+reports@{aggregate\+\_\+task\+\_\+reports}!parlai\+::core\+::metrics@{parlai\+::core\+::metrics}}
+\subsubsection{\texorpdfstring{aggregate\+\_\+task\+\_\+reports()}{aggregate\_task\_reports()}}
+{\footnotesize\ttfamily def parlai.\+core.\+metrics.\+aggregate\+\_\+task\+\_\+reports (\begin{DoxyParamCaption}\item[{}]{reports,  }\item[{}]{tasks,  }\item[{}]{micro = {\ttfamily False} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Aggregate separate task reports into a single report.
+
+:param reports: list of report dicts from separate tasks
+:param tasks: list of tasks
+:param micro: average per example if True, else average over t
+
+:return: aggregated report dicts
+\end{DoxyVerb}
+ 
+
+Definition at line 65 of file metrics.\+py.
+
+
+\begin{DoxyCode}
+65 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1metrics_ae323045c05ed03d93c260521ebb8bf71}{aggregate\_task\_reports}(reports, tasks, micro=False):
+66     \textcolor{stringliteral}{"""}
+67 \textcolor{stringliteral}{    Aggregate separate task reports into a single report.}
+68 \textcolor{stringliteral}{}
+69 \textcolor{stringliteral}{    :param reports: list of report dicts from separate tasks}
+70 \textcolor{stringliteral}{    :param tasks: list of tasks}
+71 \textcolor{stringliteral}{    :param micro: average per example if True, else average over t}
+72 \textcolor{stringliteral}{}
+73 \textcolor{stringliteral}{    :return: aggregated report dicts}
+74 \textcolor{stringliteral}{    """}
+75     \textcolor{keywordflow}{if} len(reports) == 1:
+76         \textcolor{comment}{# singular task}
+77         \textcolor{keywordflow}{return} reports[0]
+78     \textcolor{comment}{# multiple tasks, aggregate metrics}
+79     metrics = \{\}
+80     exs = \{\}
+81     total\_report = \{\textcolor{stringliteral}{'tasks'}: \{\}\}
+82     \textcolor{comment}{# collect metrics from all reports}
+83     \textcolor{keywordflow}{for} i, report \textcolor{keywordflow}{in} enumerate(reports):
+84         total\_report[\textcolor{stringliteral}{'tasks'}][tasks[i]] = report
+85         \textcolor{keywordflow}{for} metric, val \textcolor{keywordflow}{in} report.items():
+86             \textcolor{keywordflow}{if} metric == \textcolor{stringliteral}{'exs'}:
+87                 exs[tasks[i]] = val
+88             \textcolor{keywordflow}{else}:
+89                 metrics.setdefault(metric, \{\})[tasks[i]] = val
+90     \textcolor{comment}{# now aggregate}
+91     total\_exs = sum(exs.values())
+92     total\_report[\textcolor{stringliteral}{'exs'}] = total\_exs
+93     \textcolor{keywordflow}{for} metric, task\_vals \textcolor{keywordflow}{in} metrics.items():
+94         \textcolor{keywordflow}{if} all([isinstance(v, Number) \textcolor{keywordflow}{for} v \textcolor{keywordflow}{in} task\_vals.values()]):
+95             \textcolor{keywordflow}{if} micro:
+96                 \textcolor{comment}{# average over the number of examples}
+97                 vals = [task\_vals[task] * exs[task] \textcolor{keywordflow}{for} task \textcolor{keywordflow}{in} tasks]
+98                 total\_report[metric] = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_af377ec61bfc0423461e7b409ffc883b9}{round\_sigfigs}(sum(vals) / total\_exs, 4)
+99             \textcolor{keywordflow}{else}:  \textcolor{comment}{# macro}
+100                 \textcolor{comment}{# average over tasks}
+101                 vals = task\_vals.values()
+102                 total\_report[metric] = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_af377ec61bfc0423461e7b409ffc883b9}{round\_sigfigs}(sum(vals) / len(vals), 4)
+103     \textcolor{comment}{# add a warning describing how metrics were averaged across tasks.}
+104     total\_report[\textcolor{stringliteral}{'warning'}] = \textcolor{stringliteral}{'metrics are averaged across tasks'}
+105     \textcolor{keywordflow}{if} micro:
+106         total\_report[\textcolor{stringliteral}{'warning'}] += \textcolor{stringliteral}{' and weighted by the number of examples '} \textcolor{stringliteral}{'per task'}
+107     \textcolor{keywordflow}{return} total\_report
+108 
+109 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1metrics_ae7769a6b628f41081e0f43043d52031a}\label{namespaceparlai_1_1core_1_1metrics_ae7769a6b628f41081e0f43043d52031a}} 
+\index{parlai\+::core\+::metrics@{parlai\+::core\+::metrics}!normalize\+\_\+answer@{normalize\+\_\+answer}}
+\index{normalize\+\_\+answer@{normalize\+\_\+answer}!parlai\+::core\+::metrics@{parlai\+::core\+::metrics}}
+\subsubsection{\texorpdfstring{normalize\+\_\+answer()}{normalize\_answer()}}
+{\footnotesize\ttfamily def parlai.\+core.\+metrics.\+normalize\+\_\+answer (\begin{DoxyParamCaption}\item[{}]{s }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Lower text and remove punctuation, articles and extra whitespace.
+\end{DoxyVerb}
+ 
+
+Definition at line 45 of file metrics.\+py.
+
+
+\begin{DoxyCode}
+45 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1metrics_ae7769a6b628f41081e0f43043d52031a}{normalize\_answer}(s):
+46     \textcolor{stringliteral}{"""}
+47 \textcolor{stringliteral}{    Lower text and remove punctuation, articles and extra whitespace.}
+48 \textcolor{stringliteral}{    """}
+49 
+50     \textcolor{keyword}{def }remove\_articles(text):
+51         \textcolor{keywordflow}{return} re\_art.sub(\textcolor{stringliteral}{' '}, text)
+52 
+53     \textcolor{keyword}{def }white\_space\_fix(text):
+54         \textcolor{keywordflow}{return} \textcolor{stringliteral}{' '}.join(text.split())
+55 
+56     \textcolor{keyword}{def }remove\_punc(text):
+57         \textcolor{keywordflow}{return} re\_punc.sub(\textcolor{stringliteral}{' '}, text)  \textcolor{comment}{# convert punctuation to spaces}
+58 
+59     \textcolor{keyword}{def }lower(text):
+60         \textcolor{keywordflow}{return} text.lower()
+61 
+62     \textcolor{keywordflow}{return} white\_space\_fix(remove\_articles(remove\_punc(lower(s))))
+63 
+64 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1metrics_add79f9806fe8f3343a620c790eb98be7}\label{namespaceparlai_1_1core_1_1metrics_add79f9806fe8f3343a620c790eb98be7}} 
+\index{parlai\+::core\+::metrics@{parlai\+::core\+::metrics}!A\+L\+L\+\_\+\+M\+E\+T\+R\+I\+CS@{A\+L\+L\+\_\+\+M\+E\+T\+R\+I\+CS}}
+\index{A\+L\+L\+\_\+\+M\+E\+T\+R\+I\+CS@{A\+L\+L\+\_\+\+M\+E\+T\+R\+I\+CS}!parlai\+::core\+::metrics@{parlai\+::core\+::metrics}}
+\subsubsection{\texorpdfstring{A\+L\+L\+\_\+\+M\+E\+T\+R\+I\+CS}{ALL\_METRICS}}
+{\footnotesize\ttfamily dictionary parlai.\+core.\+metrics.\+A\+L\+L\+\_\+\+M\+E\+T\+R\+I\+CS = \hyperlink{namespaceparlai_1_1core_1_1metrics_a5cd26a43d8156c993f30c5a707021562}{D\+E\+F\+A\+U\+L\+T\+\_\+\+M\+E\+T\+R\+I\+CS} $\vert$ \hyperlink{namespaceparlai_1_1core_1_1metrics_ac01c4a05e91baee81e771e8f7ae9e7e4}{R\+O\+U\+G\+E\+\_\+\+M\+E\+T\+R\+I\+CS} $\vert$ \hyperlink{namespaceparlai_1_1core_1_1metrics_a5f8ea2258b1137554e4544c463ffc101}{B\+L\+E\+U\+\_\+\+M\+E\+T\+R\+I\+CS}}
+
+
+
+Definition at line 24 of file metrics.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1metrics_a5f8ea2258b1137554e4544c463ffc101}\label{namespaceparlai_1_1core_1_1metrics_a5f8ea2258b1137554e4544c463ffc101}} 
+\index{parlai\+::core\+::metrics@{parlai\+::core\+::metrics}!B\+L\+E\+U\+\_\+\+M\+E\+T\+R\+I\+CS@{B\+L\+E\+U\+\_\+\+M\+E\+T\+R\+I\+CS}}
+\index{B\+L\+E\+U\+\_\+\+M\+E\+T\+R\+I\+CS@{B\+L\+E\+U\+\_\+\+M\+E\+T\+R\+I\+CS}!parlai\+::core\+::metrics@{parlai\+::core\+::metrics}}
+\subsubsection{\texorpdfstring{B\+L\+E\+U\+\_\+\+M\+E\+T\+R\+I\+CS}{BLEU\_METRICS}}
+{\footnotesize\ttfamily dictionary parlai.\+core.\+metrics.\+B\+L\+E\+U\+\_\+\+M\+E\+T\+R\+I\+CS = \{\textquotesingle{}bleu-\/1\textquotesingle{}, \textquotesingle{}bleu-\/2\textquotesingle{}, \textquotesingle{}bleu-\/3\textquotesingle{}\}}
+
+
+
+Definition at line 23 of file metrics.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1metrics_a5cd26a43d8156c993f30c5a707021562}\label{namespaceparlai_1_1core_1_1metrics_a5cd26a43d8156c993f30c5a707021562}} 
+\index{parlai\+::core\+::metrics@{parlai\+::core\+::metrics}!D\+E\+F\+A\+U\+L\+T\+\_\+\+M\+E\+T\+R\+I\+CS@{D\+E\+F\+A\+U\+L\+T\+\_\+\+M\+E\+T\+R\+I\+CS}}
+\index{D\+E\+F\+A\+U\+L\+T\+\_\+\+M\+E\+T\+R\+I\+CS@{D\+E\+F\+A\+U\+L\+T\+\_\+\+M\+E\+T\+R\+I\+CS}!parlai\+::core\+::metrics@{parlai\+::core\+::metrics}}
+\subsubsection{\texorpdfstring{D\+E\+F\+A\+U\+L\+T\+\_\+\+M\+E\+T\+R\+I\+CS}{DEFAULT\_METRICS}}
+{\footnotesize\ttfamily dictionary parlai.\+core.\+metrics.\+D\+E\+F\+A\+U\+L\+T\+\_\+\+M\+E\+T\+R\+I\+CS = \{\textquotesingle{}correct\textquotesingle{}, \textquotesingle{}bleu-\/4\textquotesingle{}, \textquotesingle{}accuracy\textquotesingle{}, \textquotesingle{}f1\textquotesingle{}\}}
+
+
+
+Definition at line 21 of file metrics.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1metrics_aae1295106c31b93af8fbe0da66ebe000}\label{namespaceparlai_1_1core_1_1metrics_aae1295106c31b93af8fbe0da66ebe000}} 
+\index{parlai\+::core\+::metrics@{parlai\+::core\+::metrics}!nltkbleu@{nltkbleu}}
+\index{nltkbleu@{nltkbleu}!parlai\+::core\+::metrics@{parlai\+::core\+::metrics}}
+\subsubsection{\texorpdfstring{nltkbleu}{nltkbleu}}
+{\footnotesize\ttfamily parlai.\+core.\+metrics.\+nltkbleu = None}
+
+
+
+Definition at line 32 of file metrics.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1metrics_a037f8e3330e87d9de75fac930eac7fc2}\label{namespaceparlai_1_1core_1_1metrics_a037f8e3330e87d9de75fac930eac7fc2}} 
+\index{parlai\+::core\+::metrics@{parlai\+::core\+::metrics}!re\+\_\+art@{re\+\_\+art}}
+\index{re\+\_\+art@{re\+\_\+art}!parlai\+::core\+::metrics@{parlai\+::core\+::metrics}}
+\subsubsection{\texorpdfstring{re\+\_\+art}{re\_art}}
+{\footnotesize\ttfamily parlai.\+core.\+metrics.\+re\+\_\+art = re.\+compile(r\textquotesingle{}\textbackslash{}b(a$\vert$an$\vert$the)\textbackslash{}b\textquotesingle{})}
+
+
+
+Definition at line 41 of file metrics.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1metrics_a334cb58cda231eb62dea1fd375f8d687}\label{namespaceparlai_1_1core_1_1metrics_a334cb58cda231eb62dea1fd375f8d687}} 
+\index{parlai\+::core\+::metrics@{parlai\+::core\+::metrics}!re\+\_\+punc@{re\+\_\+punc}}
+\index{re\+\_\+punc@{re\+\_\+punc}!parlai\+::core\+::metrics@{parlai\+::core\+::metrics}}
+\subsubsection{\texorpdfstring{re\+\_\+punc}{re\_punc}}
+{\footnotesize\ttfamily parlai.\+core.\+metrics.\+re\+\_\+punc = re.\+compile(r\textquotesingle{}\mbox{[}!\char`\"{}\#\$\%\&()$\ast$+,-\/./\+:;$<$=$>$?@\textbackslash{}\mbox{[}\textbackslash{}\mbox{]}\textbackslash{}\textbackslash{}$^\wedge$`\{$\vert$\}$\sim$\+\_\+\textbackslash{}\textquotesingle{}\mbox{]}\textquotesingle{})}
+
+
+
+Definition at line 42 of file metrics.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1metrics_ae0fddd2325f5dc52b2a367e52056242a}\label{namespaceparlai_1_1core_1_1metrics_ae0fddd2325f5dc52b2a367e52056242a}} 
+\index{parlai\+::core\+::metrics@{parlai\+::core\+::metrics}!rouge@{rouge}}
+\index{rouge@{rouge}!parlai\+::core\+::metrics@{parlai\+::core\+::metrics}}
+\subsubsection{\texorpdfstring{rouge}{rouge}}
+{\footnotesize\ttfamily parlai.\+core.\+metrics.\+rouge = None}
+
+
+
+Definition at line 39 of file metrics.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1metrics_ac01c4a05e91baee81e771e8f7ae9e7e4}\label{namespaceparlai_1_1core_1_1metrics_ac01c4a05e91baee81e771e8f7ae9e7e4}} 
+\index{parlai\+::core\+::metrics@{parlai\+::core\+::metrics}!R\+O\+U\+G\+E\+\_\+\+M\+E\+T\+R\+I\+CS@{R\+O\+U\+G\+E\+\_\+\+M\+E\+T\+R\+I\+CS}}
+\index{R\+O\+U\+G\+E\+\_\+\+M\+E\+T\+R\+I\+CS@{R\+O\+U\+G\+E\+\_\+\+M\+E\+T\+R\+I\+CS}!parlai\+::core\+::metrics@{parlai\+::core\+::metrics}}
+\subsubsection{\texorpdfstring{R\+O\+U\+G\+E\+\_\+\+M\+E\+T\+R\+I\+CS}{ROUGE\_METRICS}}
+{\footnotesize\ttfamily dictionary parlai.\+core.\+metrics.\+R\+O\+U\+G\+E\+\_\+\+M\+E\+T\+R\+I\+CS = \{\textquotesingle{}\hyperlink{namespaceparlai_1_1core_1_1metrics_ae0fddd2325f5dc52b2a367e52056242a}{rouge}-\/1\textquotesingle{}, \textquotesingle{}\hyperlink{namespaceparlai_1_1core_1_1metrics_ae0fddd2325f5dc52b2a367e52056242a}{rouge}-\/2\textquotesingle{}, \textquotesingle{}\hyperlink{namespaceparlai_1_1core_1_1metrics_ae0fddd2325f5dc52b2a367e52056242a}{rouge}-\/L\textquotesingle{}\}}
+
+
+
+Definition at line 22 of file metrics.\+py.
+

@@ -1,0 +1,188 @@
+\hypertarget{classlight__chats_1_1graph_1_1UnlockFunction}{}\section{light\+\_\+chats.\+graph.\+Unlock\+Function Class Reference}
+\label{classlight__chats_1_1graph_1_1UnlockFunction}\index{light\+\_\+chats.\+graph.\+Unlock\+Function@{light\+\_\+chats.\+graph.\+Unlock\+Function}}
+
+
+Inheritance diagram for light\+\_\+chats.\+graph.\+Unlock\+Function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{dc/d86/classlight__chats_1_1graph_1_1UnlockFunction__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for light\+\_\+chats.\+graph.\+Unlock\+Function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{dc/d71/classlight__chats_1_1graph_1_1UnlockFunction__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1UnlockFunction_a307201afcd25d90e5c99badda71e0f02}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self)
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1UnlockFunction_a60b9bd71f3b3d8255c9f79a3a408914f}{func} (self, graph, args)
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1UnlockFunction_a25cc5dcf53d2d9bc588ab635aeb376eb}{get\+\_\+improper\+\_\+args\+\_\+text} (self, num\+\_\+args)
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1UnlockFunction_a8527e0ee7a1f29a4daf4899451cdaa6f}{get\+\_\+reverse} (self, graph, args)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classlight__chats_1_1graph_1_1UnlockFunction_a8e80f007572fa2ce7624eca4ec645a56}{formats}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}[Actor, lockable thing in same location, key actor is carrying]
+\end{DoxyVerb}
+ 
+
+Definition at line 1920 of file graph.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1UnlockFunction_a307201afcd25d90e5c99badda71e0f02}\label{classlight__chats_1_1graph_1_1UnlockFunction_a307201afcd25d90e5c99badda71e0f02}} 
+\index{light\+\_\+chats\+::graph\+::\+Unlock\+Function@{light\+\_\+chats\+::graph\+::\+Unlock\+Function}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!light\+\_\+chats\+::graph\+::\+Unlock\+Function@{light\+\_\+chats\+::graph\+::\+Unlock\+Function}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Unlock\+Function.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1925 of file graph.\+py.
+
+
+\begin{DoxyCode}
+1925     \textcolor{keyword}{def }\_\_init\_\_(self):
+1926         super().\_\_init\_\_(
+1927             function\_name=\textcolor{stringliteral}{'unlock'},
+1928             possible\_arg\_nums=[3],
+1929             arg\_split\_words=[\textcolor{stringliteral}{'with'}],
+1930             arg\_find\_type=[
+1931                 \{\},  \textcolor{comment}{# no constraints on the actor}
+1932                 \{\textcolor{stringliteral}{'type'}: \textcolor{stringliteral}{'all+here'}, \textcolor{stringliteral}{'from'}: 0\},
+1933                 \{\textcolor{stringliteral}{'type'}: \textcolor{stringliteral}{'carrying'}, \textcolor{stringliteral}{'from'}: 0\},
+1934             ],
+1935             arg\_constraints=[
+1936                 [],  \textcolor{comment}{# no constraints on the actor}
+1937                 [\{\textcolor{stringliteral}{'type'}: \textcolor{stringliteral}{'is\_lockable'}, \textcolor{stringliteral}{'in\_args'}: [1], \textcolor{stringliteral}{'args'}: [\textcolor{keyword}{True}]\}],
+1938                 [
+1939                     \{
+1940                         \textcolor{stringliteral}{'type'}: \textcolor{stringliteral}{'is\_type'},
+1941                         \textcolor{stringliteral}{'in\_args'}: [2],
+1942                         \textcolor{stringliteral}{'args'}: [[\textcolor{stringliteral}{'key'}], \textcolor{stringliteral}{'That isn\(\backslash\)'t a key.'}],
+1943                     \}
+1944                 ],
+1945             ],
+1946             func\_constraints=[
+1947                 \{\textcolor{stringliteral}{'type'}: \textcolor{stringliteral}{'is\_locked'}, \textcolor{stringliteral}{'in\_args'}: [1], \textcolor{stringliteral}{'args'}: [\textcolor{keyword}{True}]\},
+1948                 \{\textcolor{stringliteral}{'type'}: \textcolor{stringliteral}{'locked\_with'}, \textcolor{stringliteral}{'in\_args'}: [1, 2], \textcolor{stringliteral}{'args'}: []\},
+1949             ],
+1950             callback\_triggers=[\{\textcolor{stringliteral}{'action'}: \textcolor{stringliteral}{'agent\_unlocked'}, \textcolor{stringliteral}{'args'}: [0, 1]\}],
+1951         )
+1952         self.formats = \{
+1953             \textcolor{stringliteral}{'unlocked'}: \textcolor{stringliteral}{'\{0\} unlocked \{1\}. '},
+1954             \textcolor{stringliteral}{'failed'}: \textcolor{stringliteral}{'\{0\} couldn\(\backslash\)'t unlock that. '},
+1955         \}
+1956 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1UnlockFunction_a60b9bd71f3b3d8255c9f79a3a408914f}\label{classlight__chats_1_1graph_1_1UnlockFunction_a60b9bd71f3b3d8255c9f79a3a408914f}} 
+\index{light\+\_\+chats\+::graph\+::\+Unlock\+Function@{light\+\_\+chats\+::graph\+::\+Unlock\+Function}!func@{func}}
+\index{func@{func}!light\+\_\+chats\+::graph\+::\+Unlock\+Function@{light\+\_\+chats\+::graph\+::\+Unlock\+Function}}
+\subsubsection{\texorpdfstring{func()}{func()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Unlock\+Function.\+func (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{graph,  }\item[{}]{args }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}<Actor> unlocks <object> using <key>
+\end{DoxyVerb}
+ 
+
+Definition at line 1957 of file graph.\+py.
+
+
+\begin{DoxyCode}
+1957     \textcolor{keyword}{def }func(self, graph, args):
+1958         \textcolor{stringliteral}{"""}
+1959 \textcolor{stringliteral}{        <Actor> unlocks <object> using <key>}
+1960 \textcolor{stringliteral}{        """}
+1961         actor\_id, target\_id, key\_id = args[0], args[1], args[2]
+1962         room\_id = graph.location(actor\_id)
+1963         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'room'} \textcolor{keywordflow}{in} graph.get\_prop(target\_id, \textcolor{stringliteral}{'classes'}):
+1964             graph.unlock\_path(graph.location(actor\_id), target\_id, key\_id)
+1965         \textcolor{keywordflow}{else}:
+1966             \textcolor{comment}{# TODO implement unlock\_object}
+1967             graph.unlock\_object(target\_id, key\_id)
+1968         lock\_action = \{
+1969             \textcolor{stringliteral}{'caller'}: self.get\_name(),
+1970             \textcolor{stringliteral}{'name'}: \textcolor{stringliteral}{'unlocked'},
+1971             \textcolor{stringliteral}{'room\_id'}: room\_id,
+1972             \textcolor{stringliteral}{'actors'}: [actor\_id, target\_id],
+1973         \}
+1974         graph.broadcast\_to\_room(lock\_action)
+1975         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+1976 
+\end{DoxyCode}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1UnlockFunction_a25cc5dcf53d2d9bc588ab635aeb376eb}\label{classlight__chats_1_1graph_1_1UnlockFunction_a25cc5dcf53d2d9bc588ab635aeb376eb}} 
+\index{light\+\_\+chats\+::graph\+::\+Unlock\+Function@{light\+\_\+chats\+::graph\+::\+Unlock\+Function}!get\+\_\+improper\+\_\+args\+\_\+text@{get\+\_\+improper\+\_\+args\+\_\+text}}
+\index{get\+\_\+improper\+\_\+args\+\_\+text@{get\+\_\+improper\+\_\+args\+\_\+text}!light\+\_\+chats\+::graph\+::\+Unlock\+Function@{light\+\_\+chats\+::graph\+::\+Unlock\+Function}}
+\subsubsection{\texorpdfstring{get\+\_\+improper\+\_\+args\+\_\+text()}{get\_improper\_args\_text()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Unlock\+Function.\+get\+\_\+improper\+\_\+args\+\_\+text (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{num\+\_\+args }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1977 of file graph.\+py.
+
+
+\begin{DoxyCode}
+1977     \textcolor{keyword}{def }get\_improper\_args\_text(self, num\_args):
+1978         \textcolor{keywordflow}{if} num\_args == 2:
+1979             \textcolor{keywordflow}{return} \textcolor{stringliteral}{'Unlock that with what?'}
+1980         \textcolor{keywordflow}{else}:
+1981             \textcolor{keywordflow}{return} \textcolor{stringliteral}{'Unlock is used with "unlock <object/path> with <key>"'}
+1982 
+\end{DoxyCode}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1UnlockFunction_a8527e0ee7a1f29a4daf4899451cdaa6f}\label{classlight__chats_1_1graph_1_1UnlockFunction_a8527e0ee7a1f29a4daf4899451cdaa6f}} 
+\index{light\+\_\+chats\+::graph\+::\+Unlock\+Function@{light\+\_\+chats\+::graph\+::\+Unlock\+Function}!get\+\_\+reverse@{get\+\_\+reverse}}
+\index{get\+\_\+reverse@{get\+\_\+reverse}!light\+\_\+chats\+::graph\+::\+Unlock\+Function@{light\+\_\+chats\+::graph\+::\+Unlock\+Function}}
+\subsubsection{\texorpdfstring{get\+\_\+reverse()}{get\_reverse()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Unlock\+Function.\+get\+\_\+reverse (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{graph,  }\item[{}]{args }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1983 of file graph.\+py.
+
+
+\begin{DoxyCode}
+1983     \textcolor{keyword}{def }get\_reverse(self, graph, args):
+1984         \textcolor{keywordflow}{return} \textcolor{stringliteral}{'lock'}, args
+1985 
+1986 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1UnlockFunction_a8e80f007572fa2ce7624eca4ec645a56}\label{classlight__chats_1_1graph_1_1UnlockFunction_a8e80f007572fa2ce7624eca4ec645a56}} 
+\index{light\+\_\+chats\+::graph\+::\+Unlock\+Function@{light\+\_\+chats\+::graph\+::\+Unlock\+Function}!formats@{formats}}
+\index{formats@{formats}!light\+\_\+chats\+::graph\+::\+Unlock\+Function@{light\+\_\+chats\+::graph\+::\+Unlock\+Function}}
+\subsubsection{\texorpdfstring{formats}{formats}}
+{\footnotesize\ttfamily light\+\_\+chats.\+graph.\+Unlock\+Function.\+formats}
+
+
+
+Definition at line 1952 of file graph.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/mturk/tasks/light/light\+\_\+chats/\hyperlink{parlai_2mturk_2tasks_2light_2light__chats_2graph_8py}{graph.\+py}\end{DoxyCompactItemize}

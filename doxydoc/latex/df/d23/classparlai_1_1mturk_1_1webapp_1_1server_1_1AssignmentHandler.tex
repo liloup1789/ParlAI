@@ -1,0 +1,190 @@
+\hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1AssignmentHandler}{}\section{parlai.\+mturk.\+webapp.\+server.\+Assignment\+Handler Class Reference}
+\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1AssignmentHandler}\index{parlai.\+mturk.\+webapp.\+server.\+Assignment\+Handler@{parlai.\+mturk.\+webapp.\+server.\+Assignment\+Handler}}
+
+
+Inheritance diagram for parlai.\+mturk.\+webapp.\+server.\+Assignment\+Handler\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{db/dc5/classparlai_1_1mturk_1_1webapp_1_1server_1_1AssignmentHandler__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+mturk.\+webapp.\+server.\+Assignment\+Handler\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{da/dab/classparlai_1_1mturk_1_1webapp_1_1server_1_1AssignmentHandler__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1mturk_1_1webapp_1_1server_1_1AssignmentHandler_a4d6fc0f6605557f5ede04d06db680640}{initialize} (self, app)
+\item 
+def \hyperlink{classparlai_1_1mturk_1_1webapp_1_1server_1_1AssignmentHandler_aefae6e70faeaf069860b5d63079b68a1}{get} (self, assignment\+\_\+target)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1mturk_1_1webapp_1_1server_1_1AssignmentHandler_a91eb25d50a115871504574869c53ee15}{state}
+\item 
+\hyperlink{classparlai_1_1mturk_1_1webapp_1_1server_1_1AssignmentHandler_a1c7b99d261745891f7f408a8ee575384}{subs}
+\item 
+\hyperlink{classparlai_1_1mturk_1_1webapp_1_1server_1_1AssignmentHandler_a2a9d201d89e660f9337dce5b79f7969c}{sources}
+\item 
+\hyperlink{classparlai_1_1mturk_1_1webapp_1_1server_1_1AssignmentHandler_adfbd99a455bf117e46d06af4b54f4995}{port}
+\item 
+\hyperlink{classparlai_1_1mturk_1_1webapp_1_1server_1_1AssignmentHandler_a4c052c9d3481b6c237b86cc00238b46e}{data\+\_\+handler}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 386 of file server.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1AssignmentHandler_aefae6e70faeaf069860b5d63079b68a1}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1AssignmentHandler_aefae6e70faeaf069860b5d63079b68a1}} 
+\index{parlai\+::mturk\+::webapp\+::server\+::\+Assignment\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Assignment\+Handler}!get@{get}}
+\index{get@{get}!parlai\+::mturk\+::webapp\+::server\+::\+Assignment\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Assignment\+Handler}}
+\subsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily def parlai.\+mturk.\+webapp.\+server.\+Assignment\+Handler.\+get (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{assignment\+\_\+target }\end{DoxyParamCaption})}
+
+
+
+Definition at line 394 of file server.\+py.
+
+
+\begin{DoxyCode}
+394     \textcolor{keyword}{def }get(self, assignment\_target):
+395         \textcolor{comment}{# Extract assignment}
+396         assignments = [self.data\_handler.get\_assignment\_data(assignment\_target)]
+397         pairings = self.data\_handler.get\_pairings\_for\_assignment(assignment\_target)
+398         processed\_assignments = \hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_abe6ddbf97d0e5c26315fa927ed076489}{merge\_assignments\_with\_pairings}(
+399             assignments, pairings, \textcolor{stringliteral}{'assignment \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(assignment\_target)
+400         )
+401         assignment = processed\_assignments[0]
+402 
+403         \textcolor{comment}{# Get assignment details to retrieve assignment content}
+404         run\_id = assignment[\textcolor{stringliteral}{'run\_id'}]
+405         onboarding\_id = assignment[\textcolor{stringliteral}{'onboarding\_id'}]
+406         conversation\_id = assignment[\textcolor{stringliteral}{'conversation\_id'}]
+407         worker\_id = assignment[\textcolor{stringliteral}{'worker\_id'}]
+408 
+409         onboard\_data = \textcolor{keywordtype}{None}
+410         \textcolor{keywordflow}{if} onboarding\_id \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+411             onboard\_data = MTurkDataHandler.get\_conversation\_data(
+412                 run\_id, onboarding\_id, worker\_id, self.state[\textcolor{stringliteral}{'is\_sandbox'}]
+413             )
+414 
+415         assignment\_content = \{
+416             \textcolor{stringliteral}{'onboarding'}: onboard\_data,
+417             \textcolor{stringliteral}{'task'}: MTurkDataHandler.get\_conversation\_data(
+418                 run\_id, conversation\_id, worker\_id, self.state[\textcolor{stringliteral}{'is\_sandbox'}]
+419             ),
+420             \textcolor{stringliteral}{'task\_name'}: \textcolor{stringliteral}{'\_'}.join(run\_id.split(\textcolor{stringliteral}{'\_'})[:-1]),
+421         \}
+422 
+423         \textcolor{comment}{# Get assignment instruction html. This can be much improved}
+424         task\_name = \textcolor{stringliteral}{'\_'}.join(run\_id.split(\textcolor{stringliteral}{'\_'})[:-1])
+425         \textcolor{keywordflow}{try}:
+426             \textcolor{comment}{# Try to find the task at specified location}
+427             t = \hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_aee065cfdb6346d4815762ae793427f1e}{get\_config\_module}(task\_name)
+428             task\_instructions = t.task\_config[\textcolor{stringliteral}{'task\_description'}]
+429         \textcolor{keywordflow}{except} ImportError:
+430             task\_instructions = \textcolor{keywordtype}{None}
+431 
+432         data = \{
+433             \textcolor{stringliteral}{'assignment\_details'}: assignment,
+434             \textcolor{stringliteral}{'assignment\_content'}: assignment\_content,
+435             \textcolor{stringliteral}{'assignment\_instructions'}: task\_instructions,
+436         \}
+437 
+438         self.write(json.dumps(data))
+439 
+440 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1AssignmentHandler_a4d6fc0f6605557f5ede04d06db680640}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1AssignmentHandler_a4d6fc0f6605557f5ede04d06db680640}} 
+\index{parlai\+::mturk\+::webapp\+::server\+::\+Assignment\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Assignment\+Handler}!initialize@{initialize}}
+\index{initialize@{initialize}!parlai\+::mturk\+::webapp\+::server\+::\+Assignment\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Assignment\+Handler}}
+\subsubsection{\texorpdfstring{initialize()}{initialize()}}
+{\footnotesize\ttfamily def parlai.\+mturk.\+webapp.\+server.\+Assignment\+Handler.\+initialize (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{app }\end{DoxyParamCaption})}
+
+
+
+Definition at line 387 of file server.\+py.
+
+
+\begin{DoxyCode}
+387     \textcolor{keyword}{def }initialize(self, app):
+388         self.state = app.state
+389         self.subs = app.subs
+390         self.sources = app.sources
+391         self.port = app.port
+392         self.data\_handler = app.data\_handler
+393 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1AssignmentHandler_a4c052c9d3481b6c237b86cc00238b46e}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1AssignmentHandler_a4c052c9d3481b6c237b86cc00238b46e}} 
+\index{parlai\+::mturk\+::webapp\+::server\+::\+Assignment\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Assignment\+Handler}!data\+\_\+handler@{data\+\_\+handler}}
+\index{data\+\_\+handler@{data\+\_\+handler}!parlai\+::mturk\+::webapp\+::server\+::\+Assignment\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Assignment\+Handler}}
+\subsubsection{\texorpdfstring{data\+\_\+handler}{data\_handler}}
+{\footnotesize\ttfamily parlai.\+mturk.\+webapp.\+server.\+Assignment\+Handler.\+data\+\_\+handler}
+
+
+
+Definition at line 392 of file server.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1AssignmentHandler_adfbd99a455bf117e46d06af4b54f4995}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1AssignmentHandler_adfbd99a455bf117e46d06af4b54f4995}} 
+\index{parlai\+::mturk\+::webapp\+::server\+::\+Assignment\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Assignment\+Handler}!port@{port}}
+\index{port@{port}!parlai\+::mturk\+::webapp\+::server\+::\+Assignment\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Assignment\+Handler}}
+\subsubsection{\texorpdfstring{port}{port}}
+{\footnotesize\ttfamily parlai.\+mturk.\+webapp.\+server.\+Assignment\+Handler.\+port}
+
+
+
+Definition at line 391 of file server.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1AssignmentHandler_a2a9d201d89e660f9337dce5b79f7969c}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1AssignmentHandler_a2a9d201d89e660f9337dce5b79f7969c}} 
+\index{parlai\+::mturk\+::webapp\+::server\+::\+Assignment\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Assignment\+Handler}!sources@{sources}}
+\index{sources@{sources}!parlai\+::mturk\+::webapp\+::server\+::\+Assignment\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Assignment\+Handler}}
+\subsubsection{\texorpdfstring{sources}{sources}}
+{\footnotesize\ttfamily parlai.\+mturk.\+webapp.\+server.\+Assignment\+Handler.\+sources}
+
+
+
+Definition at line 390 of file server.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1AssignmentHandler_a91eb25d50a115871504574869c53ee15}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1AssignmentHandler_a91eb25d50a115871504574869c53ee15}} 
+\index{parlai\+::mturk\+::webapp\+::server\+::\+Assignment\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Assignment\+Handler}!state@{state}}
+\index{state@{state}!parlai\+::mturk\+::webapp\+::server\+::\+Assignment\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Assignment\+Handler}}
+\subsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily parlai.\+mturk.\+webapp.\+server.\+Assignment\+Handler.\+state}
+
+
+
+Definition at line 388 of file server.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1AssignmentHandler_a1c7b99d261745891f7f408a8ee575384}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1AssignmentHandler_a1c7b99d261745891f7f408a8ee575384}} 
+\index{parlai\+::mturk\+::webapp\+::server\+::\+Assignment\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Assignment\+Handler}!subs@{subs}}
+\index{subs@{subs}!parlai\+::mturk\+::webapp\+::server\+::\+Assignment\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Assignment\+Handler}}
+\subsubsection{\texorpdfstring{subs}{subs}}
+{\footnotesize\ttfamily parlai.\+mturk.\+webapp.\+server.\+Assignment\+Handler.\+subs}
+
+
+
+Definition at line 389 of file server.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/mturk/webapp/\hyperlink{server_8py}{server.\+py}\end{DoxyCompactItemize}

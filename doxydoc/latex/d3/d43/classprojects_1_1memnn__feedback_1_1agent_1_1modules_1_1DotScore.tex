@@ -1,0 +1,77 @@
+\hypertarget{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1DotScore}{}\section{projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Dot\+Score Class Reference}
+\label{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1DotScore}\index{projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Dot\+Score@{projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Dot\+Score}}
+
+
+Inheritance diagram for projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Dot\+Score\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=281pt]{dc/d5f/classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1DotScore__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Dot\+Score\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=281pt]{df/de5/classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1DotScore__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1DotScore_aa8bc1b8eefcd08b7e2bf4540a379ad41}{one\+\_\+to\+\_\+one} (self, query\+\_\+embeddings, answer\+\_\+embeddings, reply\+\_\+embeddings=None)
+\item 
+def \hyperlink{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1DotScore_a0c541c0daa225e3a8cf4918068afa591}{one\+\_\+to\+\_\+many} (self, query\+\_\+embeddings, answer\+\_\+embeddings, reply\+\_\+embeddings=None)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 284 of file modules.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1DotScore_a0c541c0daa225e3a8cf4918068afa591}\label{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1DotScore_a0c541c0daa225e3a8cf4918068afa591}} 
+\index{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Dot\+Score@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Dot\+Score}!one\+\_\+to\+\_\+many@{one\+\_\+to\+\_\+many}}
+\index{one\+\_\+to\+\_\+many@{one\+\_\+to\+\_\+many}!projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Dot\+Score@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Dot\+Score}}
+\subsubsection{\texorpdfstring{one\+\_\+to\+\_\+many()}{one\_to\_many()}}
+{\footnotesize\ttfamily def projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Dot\+Score.\+one\+\_\+to\+\_\+many (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{query\+\_\+embeddings,  }\item[{}]{answer\+\_\+embeddings,  }\item[{}]{reply\+\_\+embeddings = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 288 of file modules.\+py.
+
+
+\begin{DoxyCode}
+288     \textcolor{keyword}{def }one\_to\_many(self, query\_embeddings, answer\_embeddings, reply\_embeddings=None):
+289         \textcolor{keywordflow}{return} query\_embeddings.mm(answer\_embeddings.t())
+290 
+291 
+\end{DoxyCode}
+\mbox{\Hypertarget{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1DotScore_aa8bc1b8eefcd08b7e2bf4540a379ad41}\label{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1DotScore_aa8bc1b8eefcd08b7e2bf4540a379ad41}} 
+\index{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Dot\+Score@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Dot\+Score}!one\+\_\+to\+\_\+one@{one\+\_\+to\+\_\+one}}
+\index{one\+\_\+to\+\_\+one@{one\+\_\+to\+\_\+one}!projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Dot\+Score@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Dot\+Score}}
+\subsubsection{\texorpdfstring{one\+\_\+to\+\_\+one()}{one\_to\_one()}}
+{\footnotesize\ttfamily def projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Dot\+Score.\+one\+\_\+to\+\_\+one (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{query\+\_\+embeddings,  }\item[{}]{answer\+\_\+embeddings,  }\item[{}]{reply\+\_\+embeddings = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 285 of file modules.\+py.
+
+
+\begin{DoxyCode}
+285     \textcolor{keyword}{def }one\_to\_one(self, query\_embeddings, answer\_embeddings, reply\_embeddings=None):
+286         \textcolor{keywordflow}{return} (query\_embeddings * answer\_embeddings).sum(dim=1).squeeze(1)
+287 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+projects/memnn\+\_\+feedback/agent/\hyperlink{projects_2memnn__feedback_2agent_2modules_8py}{modules.\+py}\end{DoxyCompactItemize}

@@ -1,0 +1,374 @@
+\hypertarget{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher}{}\section{parlai.\+utils.\+safety.\+Offensive\+String\+Matcher Class Reference}
+\label{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher}\index{parlai.\+utils.\+safety.\+Offensive\+String\+Matcher@{parlai.\+utils.\+safety.\+Offensive\+String\+Matcher}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a9e850e121799468d26c5720be21bf72c}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a9272830360cad4f382c2350dd39b3e6e}{add\+\_\+phrase} (self, phrase)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_ab5ca96a02141190f747b03b761f18f98}{add\+\_\+words} (self, phrase\+\_\+list)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a926609d00716d64848b3b98079bd1d30}{contains\+\_\+offensive\+\_\+language} (self, text)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a89e75aea403630f53f41502fead9708e}{\+\_\+\+\_\+contains\+\_\+\+\_\+} (self, key)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a6c9ecda500832f159ede21f3a73ee56b}{tokenize}
+\item 
+\hyperlink{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a8c7a5276c0d2ed281a19bbcbcee3b8af}{datapath}
+\item 
+\hyperlink{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a47317e09499753db2a16fc36fd39de90}{datafile}
+\item 
+\hyperlink{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a50a8ff283ddb837060366bba52d8136c}{E\+ND}
+\item 
+\hyperlink{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a3be92b9eb75dc4e4939010af668e724f}{max\+\_\+len}
+\item 
+\hyperlink{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a4fe018f2abe2a73114d783645c006c1b}{offensive\+\_\+trie}
+\item 
+\hyperlink{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_aa880cf00a0354c45f576c3d933a1435e}{word\+\_\+prefixes}
+\item 
+\hyperlink{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_af474171a03d288a3d8adaa2287eedc8c}{word\+\_\+suffixes}
+\item 
+\hyperlink{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a65169673f0ff35c5e1f0258585540389}{white\+\_\+list}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Detects offensive language using a list of offensive language and phrases from
+https://github.com/LDNOOBW.
+\end{DoxyVerb}
+ 
+
+Definition at line 66 of file safety.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a9e850e121799468d26c5720be21bf72c}\label{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a9e850e121799468d26c5720be21bf72c}} 
+\index{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher@{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher@{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+safety.\+Offensive\+String\+Matcher.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Get data from external sources and build data representation.
+\end{DoxyVerb}
+ 
+
+Definition at line 72 of file safety.\+py.
+
+
+\begin{DoxyCode}
+72     \textcolor{keyword}{def }\_\_init\_\_(self):
+73         \textcolor{stringliteral}{"""}
+74 \textcolor{stringliteral}{        Get data from external sources and build data representation.}
+75 \textcolor{stringliteral}{        """}
+76         \textcolor{keyword}{import} \hyperlink{namespaceparlai_1_1core_1_1build__data}{parlai.core.build\_data} \textcolor{keyword}{as} build\_data
+77         \textcolor{keyword}{from} \hyperlink{namespaceparlai_1_1core_1_1params}{parlai.core.params} \textcolor{keyword}{import} ParlaiParser
+78         \textcolor{keyword}{from} \hyperlink{namespaceparlai_1_1core_1_1dict}{parlai.core.dict} \textcolor{keyword}{import} DictionaryAgent
+79 
+80         self.tokenize = DictionaryAgent.split\_tokenize
+81 
+82         parser = ParlaiParser(\textcolor{keyword}{False}, \textcolor{keyword}{False})
+83 
+84         \textcolor{keyword}{def }\_path():
+85             \textcolor{comment}{# Build the data if it doesn't exist.}
+86             \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1talkthewalk_1_1download_a8c0fbb9b6dfe127cb8c1bd6e7c4e33fd}{build}()
+87             \textcolor{keywordflow}{return} os.path.join(
+88                 self.datapath, \textcolor{stringliteral}{'OffensiveLanguage'}, \textcolor{stringliteral}{'OffensiveLanguage.txt'}
+89             )
+90 
+91         \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1talkthewalk_1_1download_a8c0fbb9b6dfe127cb8c1bd6e7c4e33fd}{build}():
+92             version = \textcolor{stringliteral}{'v1.0'}
+93             dpath = os.path.join(self.datapath, \textcolor{stringliteral}{'OffensiveLanguage'})
+94             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version):
+95                 print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+96                 \textcolor{keywordflow}{if} build\_data.built(dpath):
+97                     \textcolor{comment}{# An older version exists, so remove these outdated files.}
+98                     build\_data.remove\_dir(dpath)
+99                 build\_data.make\_dir(dpath)
+100 
+101                 \textcolor{comment}{# Download the data.}
+102                 fname = \textcolor{stringliteral}{'OffensiveLanguage.txt'}
+103                 url = \textcolor{stringliteral}{'http://parl.ai/downloads/offensive\_language/'} + fname
+104                 build\_data.download(url, dpath, fname)
+105 
+106                 \textcolor{comment}{# Mark the data as built.}
+107                 build\_data.mark\_done(dpath, version)
+108 
+109         self.datapath = os.path.join(parser.parlai\_home, \textcolor{stringliteral}{'data'})
+110         self.datafile = \_path()
+111 
+112         \textcolor{comment}{# store a token trie: e.g.}
+113         \textcolor{comment}{# \{'2': \{'girls': \{'1': \{'cup': \{'\_\_END\_\_': True\}\}\}\}}
+114         self.END = \textcolor{stringliteral}{'\_\_END\_\_'}
+115         self.max\_len = 1
+116         self.offensive\_trie = \{\}
+117         self.word\_prefixes = [
+118             \textcolor{stringliteral}{'de'},
+119             \textcolor{stringliteral}{'de-'},
+120             \textcolor{stringliteral}{'dis'},
+121             \textcolor{stringliteral}{'dis-'},
+122             \textcolor{stringliteral}{'ex'},
+123             \textcolor{stringliteral}{'ex-'},
+124             \textcolor{stringliteral}{'mis'},
+125             \textcolor{stringliteral}{'mis-'},
+126             \textcolor{stringliteral}{'pre'},
+127             \textcolor{stringliteral}{'pre-'},
+128             \textcolor{stringliteral}{'non'},
+129             \textcolor{stringliteral}{'non-'},
+130             \textcolor{stringliteral}{'semi'},
+131             \textcolor{stringliteral}{'semi-'},
+132             \textcolor{stringliteral}{'sub'},
+133             \textcolor{stringliteral}{'sub-'},
+134             \textcolor{stringliteral}{'un'},
+135             \textcolor{stringliteral}{'un-'},
+136         ]
+137         self.word\_suffixes = [
+138             \textcolor{stringliteral}{'a'},
+139             \textcolor{stringliteral}{'able'},
+140             \textcolor{stringliteral}{'as'},
+141             \textcolor{stringliteral}{'dom'},
+142             \textcolor{stringliteral}{'ed'},
+143             \textcolor{stringliteral}{'er'},
+144             \textcolor{stringliteral}{'ers'},
+145             \textcolor{stringliteral}{'ery'},
+146             \textcolor{stringliteral}{'es'},
+147             \textcolor{stringliteral}{'est'},
+148             \textcolor{stringliteral}{'ful'},
+149             \textcolor{stringliteral}{'fy'},
+150             \textcolor{stringliteral}{'ies'},
+151             \textcolor{stringliteral}{'ify'},
+152             \textcolor{stringliteral}{'in'},
+153             \textcolor{stringliteral}{'ing'},
+154             \textcolor{stringliteral}{'ish'},
+155             \textcolor{stringliteral}{'less'},
+156             \textcolor{stringliteral}{'ly'},
+157             \textcolor{stringliteral}{'s'},
+158             \textcolor{stringliteral}{'y'},
+159         ]
+160         self.white\_list = [
+161             \textcolor{stringliteral}{'butter'},
+162             \textcolor{stringliteral}{'buttery'},
+163             \textcolor{stringliteral}{'spicy'},
+164             \textcolor{stringliteral}{'spiced'},
+165             \textcolor{stringliteral}{'spices'},
+166             \textcolor{stringliteral}{'spicier'},
+167             \textcolor{stringliteral}{'spicing'},
+168             \textcolor{stringliteral}{'twinkies'},
+169         ]
+170 
+171         with open(self.datafile, \textcolor{stringliteral}{'r') as f:}
+172 \textcolor{stringliteral}{            }\textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} f.read().splitlines():
+173                 mod\_ps = [p]
+174                 mod\_ps += [pref + p \textcolor{keywordflow}{for} pref \textcolor{keywordflow}{in} self.word\_prefixes]
+175                 mod\_ps += [p + suff \textcolor{keywordflow}{for} suff \textcolor{keywordflow}{in} self.word\_suffixes]
+176                 \textcolor{keywordflow}{for} mod\_p \textcolor{keywordflow}{in} mod\_ps:
+177                     \textcolor{keywordflow}{if} mod\_p \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.white\_list:
+178                         self.add\_phrase(mod\_p)
+179 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a89e75aea403630f53f41502fead9708e}\label{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a89e75aea403630f53f41502fead9708e}} 
+\index{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher@{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher}!\+\_\+\+\_\+contains\+\_\+\+\_\+@{\+\_\+\+\_\+contains\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+contains\+\_\+\+\_\+@{\+\_\+\+\_\+contains\+\_\+\+\_\+}!parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher@{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+contains\+\_\+\+\_\+()}{\_\_contains\_\_()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+safety.\+Offensive\+String\+Matcher.\+\_\+\+\_\+contains\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{key }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Determine if text contains any offensive words in the filter.
+\end{DoxyVerb}
+ 
+
+Definition at line 232 of file safety.\+py.
+
+
+\begin{DoxyCode}
+232     \textcolor{keyword}{def }\_\_contains\_\_(self, key):
+233         \textcolor{stringliteral}{"""}
+234 \textcolor{stringliteral}{        Determine if text contains any offensive words in the filter.}
+235 \textcolor{stringliteral}{        """}
+236         \textcolor{keywordflow}{return} self.contains\_offensive\_language(key)
+237 \end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a9272830360cad4f382c2350dd39b3e6e}\label{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a9272830360cad4f382c2350dd39b3e6e}} 
+\index{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher@{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher}!add\+\_\+phrase@{add\+\_\+phrase}}
+\index{add\+\_\+phrase@{add\+\_\+phrase}!parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher@{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher}}
+\subsubsection{\texorpdfstring{add\+\_\+phrase()}{add\_phrase()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+safety.\+Offensive\+String\+Matcher.\+add\+\_\+phrase (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{phrase }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Add a single phrase to the filter.
+\end{DoxyVerb}
+ 
+
+Definition at line 180 of file safety.\+py.
+
+
+\begin{DoxyCode}
+180     \textcolor{keyword}{def }add\_phrase(self, phrase):
+181         \textcolor{stringliteral}{"""}
+182 \textcolor{stringliteral}{        Add a single phrase to the filter.}
+183 \textcolor{stringliteral}{        """}
+184         toks = self.tokenize(phrase)
+185         curr = self.offensive\_trie
+186         \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} toks:
+187             \textcolor{keywordflow}{if} t \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} curr:
+188                 curr[t] = \{\}
+189             curr = curr[t]
+190         curr[self.END] = \textcolor{keyword}{True}
+191         self.max\_len = max(self.max\_len, len(toks))
+192 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_ab5ca96a02141190f747b03b761f18f98}\label{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_ab5ca96a02141190f747b03b761f18f98}} 
+\index{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher@{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher}!add\+\_\+words@{add\+\_\+words}}
+\index{add\+\_\+words@{add\+\_\+words}!parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher@{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher}}
+\subsubsection{\texorpdfstring{add\+\_\+words()}{add\_words()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+safety.\+Offensive\+String\+Matcher.\+add\+\_\+words (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{phrase\+\_\+list }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Add list of custom phrases to the filter.
+\end{DoxyVerb}
+ 
+
+Definition at line 193 of file safety.\+py.
+
+
+\begin{DoxyCode}
+193     \textcolor{keyword}{def }add\_words(self, phrase\_list):
+194         \textcolor{stringliteral}{"""}
+195 \textcolor{stringliteral}{        Add list of custom phrases to the filter.}
+196 \textcolor{stringliteral}{        """}
+197         \textcolor{keywordflow}{for} phrase \textcolor{keywordflow}{in} phrase\_list:
+198             self.add\_phrase(phrase)
+199 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a926609d00716d64848b3b98079bd1d30}\label{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a926609d00716d64848b3b98079bd1d30}} 
+\index{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher@{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher}!contains\+\_\+offensive\+\_\+language@{contains\+\_\+offensive\+\_\+language}}
+\index{contains\+\_\+offensive\+\_\+language@{contains\+\_\+offensive\+\_\+language}!parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher@{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher}}
+\subsubsection{\texorpdfstring{contains\+\_\+offensive\+\_\+language()}{contains\_offensive\_language()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+safety.\+Offensive\+String\+Matcher.\+contains\+\_\+offensive\+\_\+language (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{text }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Determine if text contains any offensive words in the filter.
+\end{DoxyVerb}
+ 
+
+Definition at line 216 of file safety.\+py.
+
+
+\begin{DoxyCode}
+216     \textcolor{keyword}{def }contains\_offensive\_language(self, text):
+217         \textcolor{stringliteral}{"""}
+218 \textcolor{stringliteral}{        Determine if text contains any offensive words in the filter.}
+219 \textcolor{stringliteral}{        """}
+220         \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(text) \textcolor{keywordflow}{is} str:
+221             toks = self.tokenize(text.lower())
+222         \textcolor{keywordflow}{elif} \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(text) \textcolor{keywordflow}{is} list \textcolor{keywordflow}{or} \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(text) \textcolor{keywordflow}{is} tuple:
+223             toks = text
+224 
+225         \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(toks)):
+226             res = self.\_check\_sequence(toks, i, self.offensive\_trie)
+227             \textcolor{keywordflow}{if} res:
+228                 \textcolor{keywordflow}{return} res
+229 
+230         \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}
+231 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a47317e09499753db2a16fc36fd39de90}\label{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a47317e09499753db2a16fc36fd39de90}} 
+\index{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher@{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher}!datafile@{datafile}}
+\index{datafile@{datafile}!parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher@{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher}}
+\subsubsection{\texorpdfstring{datafile}{datafile}}
+{\footnotesize\ttfamily parlai.\+utils.\+safety.\+Offensive\+String\+Matcher.\+datafile}
+
+
+
+Definition at line 110 of file safety.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a8c7a5276c0d2ed281a19bbcbcee3b8af}\label{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a8c7a5276c0d2ed281a19bbcbcee3b8af}} 
+\index{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher@{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher}!datapath@{datapath}}
+\index{datapath@{datapath}!parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher@{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher}}
+\subsubsection{\texorpdfstring{datapath}{datapath}}
+{\footnotesize\ttfamily parlai.\+utils.\+safety.\+Offensive\+String\+Matcher.\+datapath}
+
+
+
+Definition at line 109 of file safety.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a50a8ff283ddb837060366bba52d8136c}\label{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a50a8ff283ddb837060366bba52d8136c}} 
+\index{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher@{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher}!E\+ND@{E\+ND}}
+\index{E\+ND@{E\+ND}!parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher@{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher}}
+\subsubsection{\texorpdfstring{E\+ND}{END}}
+{\footnotesize\ttfamily parlai.\+utils.\+safety.\+Offensive\+String\+Matcher.\+E\+ND}
+
+
+
+Definition at line 114 of file safety.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a3be92b9eb75dc4e4939010af668e724f}\label{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a3be92b9eb75dc4e4939010af668e724f}} 
+\index{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher@{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher}!max\+\_\+len@{max\+\_\+len}}
+\index{max\+\_\+len@{max\+\_\+len}!parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher@{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher}}
+\subsubsection{\texorpdfstring{max\+\_\+len}{max\_len}}
+{\footnotesize\ttfamily parlai.\+utils.\+safety.\+Offensive\+String\+Matcher.\+max\+\_\+len}
+
+
+
+Definition at line 115 of file safety.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a4fe018f2abe2a73114d783645c006c1b}\label{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a4fe018f2abe2a73114d783645c006c1b}} 
+\index{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher@{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher}!offensive\+\_\+trie@{offensive\+\_\+trie}}
+\index{offensive\+\_\+trie@{offensive\+\_\+trie}!parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher@{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher}}
+\subsubsection{\texorpdfstring{offensive\+\_\+trie}{offensive\_trie}}
+{\footnotesize\ttfamily parlai.\+utils.\+safety.\+Offensive\+String\+Matcher.\+offensive\+\_\+trie}
+
+
+
+Definition at line 116 of file safety.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a6c9ecda500832f159ede21f3a73ee56b}\label{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a6c9ecda500832f159ede21f3a73ee56b}} 
+\index{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher@{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher}!tokenize@{tokenize}}
+\index{tokenize@{tokenize}!parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher@{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher}}
+\subsubsection{\texorpdfstring{tokenize}{tokenize}}
+{\footnotesize\ttfamily parlai.\+utils.\+safety.\+Offensive\+String\+Matcher.\+tokenize}
+
+
+
+Definition at line 80 of file safety.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a65169673f0ff35c5e1f0258585540389}\label{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_a65169673f0ff35c5e1f0258585540389}} 
+\index{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher@{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher}!white\+\_\+list@{white\+\_\+list}}
+\index{white\+\_\+list@{white\+\_\+list}!parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher@{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher}}
+\subsubsection{\texorpdfstring{white\+\_\+list}{white\_list}}
+{\footnotesize\ttfamily parlai.\+utils.\+safety.\+Offensive\+String\+Matcher.\+white\+\_\+list}
+
+
+
+Definition at line 160 of file safety.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_aa880cf00a0354c45f576c3d933a1435e}\label{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_aa880cf00a0354c45f576c3d933a1435e}} 
+\index{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher@{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher}!word\+\_\+prefixes@{word\+\_\+prefixes}}
+\index{word\+\_\+prefixes@{word\+\_\+prefixes}!parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher@{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher}}
+\subsubsection{\texorpdfstring{word\+\_\+prefixes}{word\_prefixes}}
+{\footnotesize\ttfamily parlai.\+utils.\+safety.\+Offensive\+String\+Matcher.\+word\+\_\+prefixes}
+
+
+
+Definition at line 117 of file safety.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_af474171a03d288a3d8adaa2287eedc8c}\label{classparlai_1_1utils_1_1safety_1_1OffensiveStringMatcher_af474171a03d288a3d8adaa2287eedc8c}} 
+\index{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher@{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher}!word\+\_\+suffixes@{word\+\_\+suffixes}}
+\index{word\+\_\+suffixes@{word\+\_\+suffixes}!parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher@{parlai\+::utils\+::safety\+::\+Offensive\+String\+Matcher}}
+\subsubsection{\texorpdfstring{word\+\_\+suffixes}{word\_suffixes}}
+{\footnotesize\ttfamily parlai.\+utils.\+safety.\+Offensive\+String\+Matcher.\+word\+\_\+suffixes}
+
+
+
+Definition at line 137 of file safety.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/utils/\hyperlink{safety_8py}{safety.\+py}\end{DoxyCompactItemize}

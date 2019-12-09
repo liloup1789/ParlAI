@@ -1,0 +1,139 @@
+\hypertarget{classparlai_1_1utils_1_1anonymizer_1_1MemoriesAnonymizer}{}\section{parlai.\+utils.\+anonymizer.\+Memories\+Anonymizer Class Reference}
+\label{classparlai_1_1utils_1_1anonymizer_1_1MemoriesAnonymizer}\index{parlai.\+utils.\+anonymizer.\+Memories\+Anonymizer@{parlai.\+utils.\+anonymizer.\+Memories\+Anonymizer}}
+
+
+Inheritance diagram for parlai.\+utils.\+anonymizer.\+Memories\+Anonymizer\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{de/d34/classparlai_1_1utils_1_1anonymizer_1_1MemoriesAnonymizer__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+utils.\+anonymizer.\+Memories\+Anonymizer\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=197pt]{d8/d11/classparlai_1_1utils_1_1anonymizer_1_1MemoriesAnonymizer__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1utils_1_1anonymizer_1_1MemoriesAnonymizer_a47fd1757c0382cd65aea78543aabb247}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1utils_1_1anonymizer_1_1Anonymizer_a348d1fd062fa3f57ad81cce32e8dd2c7}{entry}, \hyperlink{classparlai_1_1utils_1_1anonymizer_1_1Anonymizer_a535b959cd821885d5af2831644cde735}{mode}, \hyperlink{classparlai_1_1utils_1_1anonymizer_1_1MemoriesAnonymizer_ace27f68e5f31c8b07a62a8dc781bca59}{entry\+\_\+type}, javanonymizer)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1anonymizer_1_1MemoriesAnonymizer_ac22260ce2e76207a6b72122c7fb0ba00}{anonymize} (self)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1utils_1_1anonymizer_1_1MemoriesAnonymizer_ab8ae572f757ec11ee806e95c707ac1ea}{anonymizer}
+\item 
+\hyperlink{classparlai_1_1utils_1_1anonymizer_1_1MemoriesAnonymizer_abfbdf36b25476c6aa1a90e4faf43e6f3}{output}
+\item 
+\hyperlink{classparlai_1_1utils_1_1anonymizer_1_1MemoriesAnonymizer_ace27f68e5f31c8b07a62a8dc781bca59}{entry\+\_\+type}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 69 of file anonymizer.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1anonymizer_1_1MemoriesAnonymizer_a47fd1757c0382cd65aea78543aabb247}\label{classparlai_1_1utils_1_1anonymizer_1_1MemoriesAnonymizer_a47fd1757c0382cd65aea78543aabb247}} 
+\index{parlai\+::utils\+::anonymizer\+::\+Memories\+Anonymizer@{parlai\+::utils\+::anonymizer\+::\+Memories\+Anonymizer}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::utils\+::anonymizer\+::\+Memories\+Anonymizer@{parlai\+::utils\+::anonymizer\+::\+Memories\+Anonymizer}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+anonymizer.\+Memories\+Anonymizer.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{entry,  }\item[{}]{mode,  }\item[{}]{entry\+\_\+type,  }\item[{}]{javanonymizer }\end{DoxyParamCaption})}
+
+
+
+Definition at line 71 of file anonymizer.\+py.
+
+
+\begin{DoxyCode}
+71     \textcolor{keyword}{def }\_\_init\_\_(self,entry,mode,entry\_type,javanonymizer) : 
+72 
+73         super.\_\_init\_\_(self)
+74 
+75         self.anonymizer = javanonymizer
+76 
+77         \textcolor{keywordflow}{if} self.mode != 1 :  
+78 
+79             \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{"You chose the wrong mode"}) 
+80 
+81         \textcolor{keywordflow}{if} self.entry\_type != \textcolor{stringliteral}{"conversation"} : 
+82 
+83             \textcolor{keywordflow}{raise} ModeError(\textcolor{stringliteral}{"You can't use this anonymizer with speaking turns"})
+84 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1anonymizer_1_1MemoriesAnonymizer_ac22260ce2e76207a6b72122c7fb0ba00}\label{classparlai_1_1utils_1_1anonymizer_1_1MemoriesAnonymizer_ac22260ce2e76207a6b72122c7fb0ba00}} 
+\index{parlai\+::utils\+::anonymizer\+::\+Memories\+Anonymizer@{parlai\+::utils\+::anonymizer\+::\+Memories\+Anonymizer}!anonymize@{anonymize}}
+\index{anonymize@{anonymize}!parlai\+::utils\+::anonymizer\+::\+Memories\+Anonymizer@{parlai\+::utils\+::anonymizer\+::\+Memories\+Anonymizer}}
+\subsubsection{\texorpdfstring{anonymize()}{anonymize()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+anonymizer.\+Memories\+Anonymizer.\+anonymize (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 85 of file anonymizer.\+py.
+
+
+\begin{DoxyCode}
+85     \textcolor{keyword}{def }anonymize(self) : 
+86 
+87         self.output = self.anonymizer(self.entry,self.mode)
+88 
+89         \textcolor{keywordflow}{if} self.entry\_type == \textcolor{stringliteral}{"conversation"} : 
+90 
+91             self.output.Anonymizer.transformer()
+92 
+93             \textcolor{keywordflow}{return} self.output
+94 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1anonymizer_1_1MemoriesAnonymizer_ab8ae572f757ec11ee806e95c707ac1ea}\label{classparlai_1_1utils_1_1anonymizer_1_1MemoriesAnonymizer_ab8ae572f757ec11ee806e95c707ac1ea}} 
+\index{parlai\+::utils\+::anonymizer\+::\+Memories\+Anonymizer@{parlai\+::utils\+::anonymizer\+::\+Memories\+Anonymizer}!anonymizer@{anonymizer}}
+\index{anonymizer@{anonymizer}!parlai\+::utils\+::anonymizer\+::\+Memories\+Anonymizer@{parlai\+::utils\+::anonymizer\+::\+Memories\+Anonymizer}}
+\subsubsection{\texorpdfstring{anonymizer}{anonymizer}}
+{\footnotesize\ttfamily parlai.\+utils.\+anonymizer.\+Memories\+Anonymizer.\+anonymizer}
+
+
+
+Definition at line 75 of file anonymizer.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1utils_1_1anonymizer_1_1MemoriesAnonymizer_ace27f68e5f31c8b07a62a8dc781bca59}\label{classparlai_1_1utils_1_1anonymizer_1_1MemoriesAnonymizer_ace27f68e5f31c8b07a62a8dc781bca59}} 
+\index{parlai\+::utils\+::anonymizer\+::\+Memories\+Anonymizer@{parlai\+::utils\+::anonymizer\+::\+Memories\+Anonymizer}!entry\+\_\+type@{entry\+\_\+type}}
+\index{entry\+\_\+type@{entry\+\_\+type}!parlai\+::utils\+::anonymizer\+::\+Memories\+Anonymizer@{parlai\+::utils\+::anonymizer\+::\+Memories\+Anonymizer}}
+\subsubsection{\texorpdfstring{entry\+\_\+type}{entry\_type}}
+{\footnotesize\ttfamily parlai.\+utils.\+anonymizer.\+Memories\+Anonymizer.\+entry\+\_\+type}
+
+
+
+Definition at line 89 of file anonymizer.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1utils_1_1anonymizer_1_1MemoriesAnonymizer_abfbdf36b25476c6aa1a90e4faf43e6f3}\label{classparlai_1_1utils_1_1anonymizer_1_1MemoriesAnonymizer_abfbdf36b25476c6aa1a90e4faf43e6f3}} 
+\index{parlai\+::utils\+::anonymizer\+::\+Memories\+Anonymizer@{parlai\+::utils\+::anonymizer\+::\+Memories\+Anonymizer}!output@{output}}
+\index{output@{output}!parlai\+::utils\+::anonymizer\+::\+Memories\+Anonymizer@{parlai\+::utils\+::anonymizer\+::\+Memories\+Anonymizer}}
+\subsubsection{\texorpdfstring{output}{output}}
+{\footnotesize\ttfamily parlai.\+utils.\+anonymizer.\+Memories\+Anonymizer.\+output}
+
+
+
+Definition at line 87 of file anonymizer.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/utils/\hyperlink{anonymizer_8py}{anonymizer.\+py}\end{DoxyCompactItemize}

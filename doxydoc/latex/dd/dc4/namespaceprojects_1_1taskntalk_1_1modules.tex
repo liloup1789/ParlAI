@@ -1,0 +1,52 @@
+\hypertarget{namespaceprojects_1_1taskntalk_1_1modules}{}\section{projects.\+taskntalk.\+modules Namespace Reference}
+\label{namespaceprojects_1_1taskntalk_1_1modules}\index{projects.\+taskntalk.\+modules@{projects.\+taskntalk.\+modules}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classprojects_1_1taskntalk_1_1modules_1_1ImgNet}{Img\+Net}
+\item 
+class \hyperlink{classprojects_1_1taskntalk_1_1modules_1_1ListenNet}{Listen\+Net}
+\item 
+class \hyperlink{classprojects_1_1taskntalk_1_1modules_1_1PredictNet}{Predict\+Net}
+\item 
+class \hyperlink{classprojects_1_1taskntalk_1_1modules_1_1SpeakNet}{Speak\+Net}
+\item 
+class \hyperlink{classprojects_1_1taskntalk_1_1modules_1_1StateNet}{State\+Net}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceprojects_1_1taskntalk_1_1modules_a483197f0d561a3d1ef7d04a2de70e571}{xavier\+\_\+init} (module)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1taskntalk_1_1modules_a483197f0d561a3d1ef7d04a2de70e571}\label{namespaceprojects_1_1taskntalk_1_1modules_a483197f0d561a3d1ef7d04a2de70e571}} 
+\index{projects\+::taskntalk\+::modules@{projects\+::taskntalk\+::modules}!xavier\+\_\+init@{xavier\+\_\+init}}
+\index{xavier\+\_\+init@{xavier\+\_\+init}!projects\+::taskntalk\+::modules@{projects\+::taskntalk\+::modules}}
+\subsubsection{\texorpdfstring{xavier\+\_\+init()}{xavier\_init()}}
+{\footnotesize\ttfamily def projects.\+taskntalk.\+modules.\+xavier\+\_\+init (\begin{DoxyParamCaption}\item[{}]{module }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Xavier initializer for module parameters.
+\end{DoxyVerb}
+ 
+
+Definition at line 12 of file modules.\+py.
+
+
+\begin{DoxyCode}
+12 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1taskntalk_1_1modules_a483197f0d561a3d1ef7d04a2de70e571}{xavier\_init}(module):
+13     \textcolor{stringliteral}{"""}
+14 \textcolor{stringliteral}{    Xavier initializer for module parameters.}
+15 \textcolor{stringliteral}{    """}
+16     \textcolor{keywordflow}{for} parameter \textcolor{keywordflow}{in} module.parameters():
+17         \textcolor{keywordflow}{if} len(parameter.data.shape) == 1:
+18             \textcolor{comment}{# 1D vector means bias}
+19             parameter.data.fill\_(0)
+20         \textcolor{keywordflow}{else}:
+21             fan\_in = parameter.data.size(0)
+22             fan\_out = parameter.data.size(1)
+23             parameter.data.normal\_(0, math.sqrt(2 / (fan\_in + fan\_out)))
+24 
+25 
+\end{DoxyCode}

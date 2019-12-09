@@ -1,0 +1,111 @@
+\hypertarget{classparlai_1_1tasks_1_1light__dialog_1_1agents_1_1SimpleTeacher}{}\section{parlai.\+tasks.\+light\+\_\+dialog.\+agents.\+Simple\+Teacher Class Reference}
+\label{classparlai_1_1tasks_1_1light__dialog_1_1agents_1_1SimpleTeacher}\index{parlai.\+tasks.\+light\+\_\+dialog.\+agents.\+Simple\+Teacher@{parlai.\+tasks.\+light\+\_\+dialog.\+agents.\+Simple\+Teacher}}
+
+
+Inheritance diagram for parlai.\+tasks.\+light\+\_\+dialog.\+agents.\+Simple\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{da/d8e/classparlai_1_1tasks_1_1light__dialog_1_1agents_1_1SimpleTeacher__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+tasks.\+light\+\_\+dialog.\+agents.\+Simple\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{d8/dcc/classparlai_1_1tasks_1_1light__dialog_1_1agents_1_1SimpleTeacher__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1light__dialog_1_1agents_1_1SimpleTeacher_aeb34b661b221d35efef6f24ba5c27e48}{add\+\_\+cmdline\+\_\+args} (argparser)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 118 of file agents.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1light__dialog_1_1agents_1_1SimpleTeacher_aeb34b661b221d35efef6f24ba5c27e48}\label{classparlai_1_1tasks_1_1light__dialog_1_1agents_1_1SimpleTeacher_aeb34b661b221d35efef6f24ba5c27e48}} 
+\index{parlai\+::tasks\+::light\+\_\+dialog\+::agents\+::\+Simple\+Teacher@{parlai\+::tasks\+::light\+\_\+dialog\+::agents\+::\+Simple\+Teacher}!add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}}
+\index{add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}!parlai\+::tasks\+::light\+\_\+dialog\+::agents\+::\+Simple\+Teacher@{parlai\+::tasks\+::light\+\_\+dialog\+::agents\+::\+Simple\+Teacher}}
+\subsubsection{\texorpdfstring{add\+\_\+cmdline\+\_\+args()}{add\_cmdline\_args()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+light\+\_\+dialog.\+agents.\+Simple\+Teacher.\+add\+\_\+cmdline\+\_\+args (\begin{DoxyParamCaption}\item[{}]{argparser }\end{DoxyParamCaption})}
+
+
+
+Definition at line 119 of file agents.\+py.
+
+
+\begin{DoxyCode}
+119     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(argparser):
+120         agent = argparser.add\_argument\_group(\textcolor{stringliteral}{'LIGHT Dialogue options'})
+121         agent.add\_argument(
+122             \textcolor{stringliteral}{'--light\_use\_repeat'},
+123             type=str,
+124             default=\textcolor{stringliteral}{'none'},
+125             choices=[\textcolor{stringliteral}{'self\_last'}, \textcolor{stringliteral}{'partner\_last'}, \textcolor{stringliteral}{'none'}, \textcolor{stringliteral}{'both\_last'}],
+126         )
+127         agent.add\_argument(\textcolor{stringliteral}{'--light\_use\_setting'}, type=\textcolor{stringliteral}{'bool'}, default=\textcolor{keyword}{True})
+128         agent.add\_argument(\textcolor{stringliteral}{'--light\_unseen\_test'}, type=\textcolor{stringliteral}{'bool'}, default=\textcolor{keyword}{False})
+129         agent.add\_argument(\textcolor{stringliteral}{'--light\_use\_person\_names'}, type=\textcolor{stringliteral}{'bool'}, default=\textcolor{keyword}{True})
+130         agent.add\_argument(
+131             \textcolor{stringliteral}{'--light\_use\_persona'},
+132             type=str,
+133             default=\textcolor{stringliteral}{'self'},
+134             choices=[\textcolor{stringliteral}{'partner'}, \textcolor{stringliteral}{'self'}, \textcolor{stringliteral}{'all'}, \textcolor{stringliteral}{'none'}],
+135         )
+136         agent.add\_argument(\textcolor{stringliteral}{'--light\_use\_objects'}, type=\textcolor{stringliteral}{'bool'}, default=\textcolor{keyword}{False})
+137         agent.add\_argument(
+138             \textcolor{stringliteral}{'--light\_use\_emote'},
+139             type=str,
+140             default=\textcolor{stringliteral}{'none'},
+141             choices=[\textcolor{stringliteral}{'partner'}, \textcolor{stringliteral}{'self'}, \textcolor{stringliteral}{'all'}, \textcolor{stringliteral}{'none'}],
+142         )
+143         agent.add\_argument(
+144             \textcolor{stringliteral}{'--light\_use\_speech'},
+145             type=str,
+146             default=\textcolor{stringliteral}{'partner'},
+147             choices=[\textcolor{stringliteral}{'partner'}, \textcolor{stringliteral}{'self'}, \textcolor{stringliteral}{'all'}, \textcolor{stringliteral}{'none'}],
+148         )
+149         agent.add\_argument(
+150             \textcolor{stringliteral}{'--light\_use\_action'},
+151             type=str,
+152             default=\textcolor{stringliteral}{'none'},
+153             choices=[\textcolor{stringliteral}{'partner'}, \textcolor{stringliteral}{'self'}, \textcolor{stringliteral}{'all'}, \textcolor{stringliteral}{'none'}],
+154         )
+155         agent.add\_argument(\textcolor{stringliteral}{'--light\_use\_affordances'}, type=\textcolor{stringliteral}{'bool'}, default=\textcolor{keyword}{False})
+156         agent.add\_argument(
+157             \textcolor{stringliteral}{'--light\_use\_current\_self\_output'},
+158             type=str,
+159             default=\textcolor{stringliteral}{"none"},
+160             choices=[\textcolor{stringliteral}{'none'}, \textcolor{stringliteral}{'all'}, \textcolor{stringliteral}{'all\_filtered'}, \textcolor{stringliteral}{'all\_filtered\_remove'}],
+161         )
+162         agent.add\_argument(
+163             \textcolor{stringliteral}{'--light\_label\_type'},
+164             type=str,
+165             default=\textcolor{stringliteral}{'speech'},
+166             choices=[\textcolor{stringliteral}{'speech'}, \textcolor{stringliteral}{'action'}, \textcolor{stringliteral}{'emote'}],
+167             help=\textcolor{stringliteral}{'type of target in light dialogues'},
+168         )
+169         agent.add\_argument(\textcolor{stringliteral}{'--light\_use\_cands'}, type=int, default=20)
+170         agent.add\_argument(\textcolor{stringliteral}{'--light\_use\_clip\_cands'}, type=int, default=10000)
+171         agent.add\_argument(\textcolor{stringliteral}{'--light\_use\_speech\_prefix'}, type=\textcolor{stringliteral}{'bool'}, default=\textcolor{keyword}{False})
+172 
+173 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/tasks/light\+\_\+dialog/\hyperlink{parlai_2tasks_2light__dialog_2agents_8py}{agents.\+py}\end{DoxyCompactItemize}

@@ -1,0 +1,150 @@
+\hypertarget{namespaceparlai_1_1mturk_1_1tasks_1_1react__task__demo_1_1react__custom__no__extra__deps_1_1run}{}\section{parlai.\+mturk.\+tasks.\+react\+\_\+task\+\_\+demo.\+react\+\_\+custom\+\_\+no\+\_\+extra\+\_\+deps.\+run Namespace Reference}
+\label{namespaceparlai_1_1mturk_1_1tasks_1_1react__task__demo_1_1react__custom__no__extra__deps_1_1run}\index{parlai.\+mturk.\+tasks.\+react\+\_\+task\+\_\+demo.\+react\+\_\+custom\+\_\+no\+\_\+extra\+\_\+deps.\+run@{parlai.\+mturk.\+tasks.\+react\+\_\+task\+\_\+demo.\+react\+\_\+custom\+\_\+no\+\_\+extra\+\_\+deps.\+run}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1react__task__demo_1_1react__custom__no__extra__deps_1_1run_a5ccd8dcc8c90287995d42dc7e0162a23}{main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1tasks_1_1react__task__demo_1_1react__custom__no__extra__deps_1_1run_a5ccd8dcc8c90287995d42dc7e0162a23}\label{namespaceparlai_1_1mturk_1_1tasks_1_1react__task__demo_1_1react__custom__no__extra__deps_1_1run_a5ccd8dcc8c90287995d42dc7e0162a23}} 
+\index{parlai\+::mturk\+::tasks\+::react\+\_\+task\+\_\+demo\+::react\+\_\+custom\+\_\+no\+\_\+extra\+\_\+deps\+::run@{parlai\+::mturk\+::tasks\+::react\+\_\+task\+\_\+demo\+::react\+\_\+custom\+\_\+no\+\_\+extra\+\_\+deps\+::run}!main@{main}}
+\index{main@{main}!parlai\+::mturk\+::tasks\+::react\+\_\+task\+\_\+demo\+::react\+\_\+custom\+\_\+no\+\_\+extra\+\_\+deps\+::run@{parlai\+::mturk\+::tasks\+::react\+\_\+task\+\_\+demo\+::react\+\_\+custom\+\_\+no\+\_\+extra\+\_\+deps\+::run}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def parlai.\+mturk.\+tasks.\+react\+\_\+task\+\_\+demo.\+react\+\_\+custom\+\_\+no\+\_\+extra\+\_\+deps.\+run.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Handles setting up and running a ParlAI-MTurk task by instantiating an MTurk manager
+and configuring it for the qa_data_collection task.
+\end{DoxyVerb}
+ 
+
+Definition at line 20 of file run.\+py.
+
+
+\begin{DoxyCode}
+20 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1run_ad3ab2c71f8083c3112815c0b363d316b}{main}():
+21     \textcolor{stringliteral}{"""}
+22 \textcolor{stringliteral}{    Handles setting up and running a ParlAI-MTurk task by instantiating an MTurk manager}
+23 \textcolor{stringliteral}{    and configuring it for the qa\_data\_collection task.}
+24 \textcolor{stringliteral}{    """}
+25     \textcolor{comment}{# Get relevant arguments}
+26     argparser = ParlaiParser(\textcolor{keyword}{False}, \textcolor{keyword}{False})
+27     argparser.add\_parlai\_data\_path()
+28     argparser.add\_mturk\_args()
+29     opt = argparser.parse\_args()
+30 
+31     \textcolor{comment}{# Set the task name to be the folder name}
+32     opt[\textcolor{stringliteral}{'task'}] = os.path.basename(os.path.dirname(os.path.abspath(\_\_file\_\_)))
+33 
+34     \textcolor{comment}{# append the contents of task\_config.py to the configuration}
+35     opt.update(task\_config)
+36 
+37     \textcolor{comment}{# Select an agent\_id that worker agents will be assigned in their world}
+38     mturk\_agent\_roles = [\textcolor{stringliteral}{'Asker'}, \textcolor{stringliteral}{'Answerer'}, \textcolor{stringliteral}{'Evaluator'}]
+39 
+40     \textcolor{comment}{# Instantiate an MTurkManager with the given options and a maximum number}
+41     \textcolor{comment}{# of agents per world of 1 (based on the length of mturk\_agent\_ids)}
+42     mturk\_manager = MTurkManager(
+43         opt=opt, mturk\_agent\_ids=mturk\_agent\_roles, use\_db=\textcolor{keyword}{True}
+44     )
+45 
+46     mturk\_manager.setup\_server(
+47         task\_directory\_path=os.path.dirname(os.path.abspath(\_\_file\_\_))
+48     )
+49 
+50     role\_index = 0
+51 
+52     \textcolor{comment}{# Create an onboard\_function, which will be run for workers who have}
+53     \textcolor{comment}{# accepted your task and must be completed before they are put in the}
+54     \textcolor{comment}{# queue for a task world.}
+55     \textcolor{keyword}{def }run\_onboard(worker):
+56         nonlocal role\_index
+57         role = mturk\_agent\_roles[role\_index % 3]
+58         role\_index += 1
+59         worker.update\_agent\_id(\textcolor{stringliteral}{'Onboarding \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(role))
+60         worker.demo\_role = role
+61         \textcolor{keywordflow}{if} role == \textcolor{stringliteral}{'Asker'}:
+62             world = AskerOnboardingWorld(opt=opt, mturk\_agent=worker)
+63         \textcolor{keywordflow}{elif} role == \textcolor{stringliteral}{'Answerer'}:
+64             world = AnswererOnboardingWorld(opt=opt, mturk\_agent=worker)
+65         \textcolor{keywordflow}{else}:
+66             world = EvaluatorOnboardingWorld(opt=opt, mturk\_agent=worker)
+67         \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} world.episode\_done():
+68             world.parley()
+69         world.shutdown()
+70         \textcolor{keywordflow}{return} world.prep\_save\_data([worker])
+71 
+72     \textcolor{comment}{# If we want to use the above onboard function, we can replace the below}
+73     \textcolor{comment}{# with set\_onboard\_function(onboard\_function=run\_onboard)}
+74     mturk\_manager.set\_onboard\_function(onboard\_function=run\_onboard)
+75 
+76     \textcolor{keywordflow}{try}:
+77         \textcolor{comment}{# Initialize run information}
+78         mturk\_manager.start\_new\_run()
+79 
+80         \textcolor{comment}{# Set up the sockets and threads to recieve workers}
+81         mturk\_manager.ready\_to\_accept\_workers()
+82 
+83         \textcolor{comment}{# Create the hits as specified by command line arguments}
+84         mturk\_manager.create\_hits()
+85 
+86         \textcolor{comment}{# Check workers eligiblity acts as a filter, and should return}
+87         \textcolor{comment}{# the list of all workers currently eligible to work on the task}
+88         \textcolor{comment}{# Can be used to pair workers that meet certain criterea}
+89         \textcolor{keyword}{def }check\_workers\_eligibility(workers):
+90             filled\_roles = []
+91             use\_workers = []
+92             \textcolor{keywordflow}{for} worker \textcolor{keywordflow}{in} workers:
+93                 \textcolor{keywordflow}{if} worker.demo\_role \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} filled\_roles:
+94                     use\_workers.append(worker)
+95                     filled\_roles.append(worker.demo\_role)
+96             \textcolor{keywordflow}{return} use\_workers
+97 
+98         eligibility\_function = \{\textcolor{stringliteral}{'func'}: check\_workers\_eligibility, \textcolor{stringliteral}{'multiple'}: \textcolor{keyword}{True}\}
+99 
+100         \textcolor{comment}{# Assign worker roles is used to determine what the role each worker}
+101         \textcolor{comment}{# in the given worker list will play. Setting `id` to None will return}
+102         \textcolor{comment}{# the worker to the pool rather than putting them in a given task,}
+103         \textcolor{comment}{# which is useful for having tasks with different possible worker}
+104         \textcolor{comment}{# counts.}
+105         \textcolor{keyword}{def }assign\_worker\_roles(workers):
+106             \textcolor{keywordflow}{for} worker \textcolor{keywordflow}{in} workers:
+107                 worker.id = worker.demo\_role
+108 
+109         \textcolor{comment}{# Define the task function, which will be run with workers that are}
+110         \textcolor{comment}{# as the main task.}
+111         \textcolor{keyword}{global} run\_conversation
+112 
+113         \textcolor{keyword}{def }run\_conversation(mturk\_manager, opt, workers):
+114             \textcolor{comment}{# Create the task world}
+115             world = MultiRoleAgentWorld(opt=opt, mturk\_agents=workers)
+116             \textcolor{comment}{# run the world to completion}
+117             \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} world.episode\_done():
+118                 world.parley()
+119 
+120             \textcolor{comment}{# shutdown and review the work}
+121             world.shutdown()
+122             world.review\_work()
+123 
+124             \textcolor{comment}{# Return the contents for saving}
+125             \textcolor{keywordflow}{return} world.prep\_save\_data(workers)
+126 
+127         \textcolor{comment}{# Begin the task, allowing mturk\_manager to start running the task}
+128         \textcolor{comment}{# world on any workers who connect}
+129         mturk\_manager.start\_task(
+130             eligibility\_function=eligibility\_function,
+131             assign\_role\_function=assign\_worker\_roles,
+132             task\_function=run\_conversation,
+133         )
+134     \textcolor{keywordflow}{except} BaseException:
+135         \textcolor{keywordflow}{raise}
+136     \textcolor{keywordflow}{finally}:
+137         \textcolor{comment}{# Any hits that aren't claimed or completed have to be shut down. Must}
+138         \textcolor{comment}{# keep the world running until that point.}
+139         mturk\_manager.expire\_all\_unassigned\_hits()
+140         \textcolor{comment}{# Shutdown the manager and free all related resources}
+141         mturk\_manager.shutdown()
+142 
+143 
+\end{DoxyCode}

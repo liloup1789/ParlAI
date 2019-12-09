@@ -1,0 +1,268 @@
+\hypertarget{classparlai_1_1utils_1_1misc_1_1Opt}{}\section{parlai.\+utils.\+misc.\+Opt Class Reference}
+\label{classparlai_1_1utils_1_1misc_1_1Opt}\index{parlai.\+utils.\+misc.\+Opt@{parlai.\+utils.\+misc.\+Opt}}
+
+
+Inheritance diagram for parlai.\+utils.\+misc.\+Opt\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{d1/da3/classparlai_1_1utils_1_1misc_1_1Opt__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+utils.\+misc.\+Opt\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{d7/dbe/classparlai_1_1utils_1_1misc_1_1Opt__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1utils_1_1misc_1_1Opt_aa47125b32a0e6388def87e4542f92432}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, args, kwargs)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1misc_1_1Opt_a479b52d2a5f00e4b9aac417ee4990915}{\+\_\+\+\_\+setitem\+\_\+\+\_\+} (self, key, val)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1misc_1_1Opt_a7fae2d1b6ffb48970e59923787adb905}{\+\_\+\+\_\+getstate\+\_\+\+\_\+} (self)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1misc_1_1Opt_ab9abc2aba6c09db1d6e65744dacb6090}{\+\_\+\+\_\+setstate\+\_\+\+\_\+} (self, state)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1misc_1_1Opt_a1304900ba795187adb8bd4a564a435a8}{\+\_\+\+\_\+reduce\+\_\+\+\_\+} (self)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1misc_1_1Opt_a62062801645aec9a868f063e4ddb6407}{\+\_\+\+\_\+deepcopy\+\_\+\+\_\+} (self, memo)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1misc_1_1Opt_aef6b123f77613b7e3ecc45716de89ee2}{display\+\_\+deepcopies} (self)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1misc_1_1Opt_aee1d325bb2691ce4c007075d6f8abffc}{display\+\_\+history} (self, key)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1utils_1_1misc_1_1Opt_a24659f7fa7a137ccd60a139a60d64da2}{history}
+\item 
+\hyperlink{classparlai_1_1utils_1_1misc_1_1Opt_a2bf9d8a08183cd0f988b7a116ae9b396}{deepcopies}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Class for tracking options.
+
+Functions like a dict, but allows us to track the history of arguments as they are
+set.
+\end{DoxyVerb}
+ 
+
+Definition at line 190 of file misc.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1Opt_aa47125b32a0e6388def87e4542f92432}\label{classparlai_1_1utils_1_1misc_1_1Opt_aa47125b32a0e6388def87e4542f92432}} 
+\index{parlai\+::utils\+::misc\+::\+Opt@{parlai\+::utils\+::misc\+::\+Opt}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::utils\+::misc\+::\+Opt@{parlai\+::utils\+::misc\+::\+Opt}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+misc.\+Opt.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{args,  }\item[{}]{kwargs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 198 of file misc.\+py.
+
+
+\begin{DoxyCode}
+198     \textcolor{keyword}{def }\_\_init\_\_(self, *args, **kwargs):
+199         super().\_\_init\_\_(*args, **kwargs)
+200         self.history = \{\}
+201         self.deepcopies = []
+202 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1Opt_a62062801645aec9a868f063e4ddb6407}\label{classparlai_1_1utils_1_1misc_1_1Opt_a62062801645aec9a868f063e4ddb6407}} 
+\index{parlai\+::utils\+::misc\+::\+Opt@{parlai\+::utils\+::misc\+::\+Opt}!\+\_\+\+\_\+deepcopy\+\_\+\+\_\+@{\+\_\+\+\_\+deepcopy\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+deepcopy\+\_\+\+\_\+@{\+\_\+\+\_\+deepcopy\+\_\+\+\_\+}!parlai\+::utils\+::misc\+::\+Opt@{parlai\+::utils\+::misc\+::\+Opt}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+deepcopy\+\_\+\+\_\+()}{\_\_deepcopy\_\_()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+misc.\+Opt.\+\_\+\+\_\+deepcopy\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{memo }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Override deepcopy so that history is copied over to new object.
+\end{DoxyVerb}
+ 
+
+Definition at line 218 of file misc.\+py.
+
+
+\begin{DoxyCode}
+218     \textcolor{keyword}{def }\_\_deepcopy\_\_(self, memo):
+219         \textcolor{stringliteral}{"""}
+220 \textcolor{stringliteral}{        Override deepcopy so that history is copied over to new object.}
+221 \textcolor{stringliteral}{        """}
+222         \textcolor{comment}{# track location of deepcopy}
+223         loc = traceback.format\_stack()[-3]
+224         self.deepcopies.append(loc)
+225         \textcolor{comment}{# deepcopy the dict}
+226         memo = deepcopy(dict(self))
+227         \textcolor{comment}{# make into Opt object}
+228         memo = Opt(memo)
+229         \textcolor{comment}{# deepcopy the history}
+230         memo.history = deepcopy(self.history)
+231         \textcolor{comment}{# deepcopy the deepcopy history}
+232         memo.deepcopies = deepcopy(self.deepcopies)
+233         \textcolor{keywordflow}{return} memo
+234 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1Opt_a7fae2d1b6ffb48970e59923787adb905}\label{classparlai_1_1utils_1_1misc_1_1Opt_a7fae2d1b6ffb48970e59923787adb905}} 
+\index{parlai\+::utils\+::misc\+::\+Opt@{parlai\+::utils\+::misc\+::\+Opt}!\+\_\+\+\_\+getstate\+\_\+\+\_\+@{\+\_\+\+\_\+getstate\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+getstate\+\_\+\+\_\+@{\+\_\+\+\_\+getstate\+\_\+\+\_\+}!parlai\+::utils\+::misc\+::\+Opt@{parlai\+::utils\+::misc\+::\+Opt}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+getstate\+\_\+\+\_\+()}{\_\_getstate\_\_()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+misc.\+Opt.\+\_\+\+\_\+getstate\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 208 of file misc.\+py.
+
+
+\begin{DoxyCode}
+208     \textcolor{keyword}{def }\_\_getstate\_\_(self):
+209         \textcolor{keywordflow}{return} (self.history, self.deepcopies, dict(self))
+210 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1Opt_a1304900ba795187adb8bd4a564a435a8}\label{classparlai_1_1utils_1_1misc_1_1Opt_a1304900ba795187adb8bd4a564a435a8}} 
+\index{parlai\+::utils\+::misc\+::\+Opt@{parlai\+::utils\+::misc\+::\+Opt}!\+\_\+\+\_\+reduce\+\_\+\+\_\+@{\+\_\+\+\_\+reduce\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+reduce\+\_\+\+\_\+@{\+\_\+\+\_\+reduce\+\_\+\+\_\+}!parlai\+::utils\+::misc\+::\+Opt@{parlai\+::utils\+::misc\+::\+Opt}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+reduce\+\_\+\+\_\+()}{\_\_reduce\_\_()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+misc.\+Opt.\+\_\+\+\_\+reduce\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 215 of file misc.\+py.
+
+
+\begin{DoxyCode}
+215     \textcolor{keyword}{def }\_\_reduce\_\_(self):
+216         \textcolor{keywordflow}{return} (Opt, (), self.\_\_getstate\_\_())
+217 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1Opt_a479b52d2a5f00e4b9aac417ee4990915}\label{classparlai_1_1utils_1_1misc_1_1Opt_a479b52d2a5f00e4b9aac417ee4990915}} 
+\index{parlai\+::utils\+::misc\+::\+Opt@{parlai\+::utils\+::misc\+::\+Opt}!\+\_\+\+\_\+setitem\+\_\+\+\_\+@{\+\_\+\+\_\+setitem\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+setitem\+\_\+\+\_\+@{\+\_\+\+\_\+setitem\+\_\+\+\_\+}!parlai\+::utils\+::misc\+::\+Opt@{parlai\+::utils\+::misc\+::\+Opt}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+setitem\+\_\+\+\_\+()}{\_\_setitem\_\_()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+misc.\+Opt.\+\_\+\+\_\+setitem\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{key,  }\item[{}]{val }\end{DoxyParamCaption})}
+
+
+
+Definition at line 203 of file misc.\+py.
+
+
+\begin{DoxyCode}
+203     \textcolor{keyword}{def }\_\_setitem\_\_(self, key, val):
+204         loc = traceback.format\_stack()[-2]
+205         self.history.setdefault(key, []).append((loc, val))
+206         super().\_\_setitem\_\_(key, val)
+207 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1Opt_ab9abc2aba6c09db1d6e65744dacb6090}\label{classparlai_1_1utils_1_1misc_1_1Opt_ab9abc2aba6c09db1d6e65744dacb6090}} 
+\index{parlai\+::utils\+::misc\+::\+Opt@{parlai\+::utils\+::misc\+::\+Opt}!\+\_\+\+\_\+setstate\+\_\+\+\_\+@{\+\_\+\+\_\+setstate\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+setstate\+\_\+\+\_\+@{\+\_\+\+\_\+setstate\+\_\+\+\_\+}!parlai\+::utils\+::misc\+::\+Opt@{parlai\+::utils\+::misc\+::\+Opt}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+setstate\+\_\+\+\_\+()}{\_\_setstate\_\_()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+misc.\+Opt.\+\_\+\+\_\+setstate\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{state }\end{DoxyParamCaption})}
+
+
+
+Definition at line 211 of file misc.\+py.
+
+
+\begin{DoxyCode}
+211     \textcolor{keyword}{def }\_\_setstate\_\_(self, state):
+212         self.history, self.deepcopies, data = state
+213         self.update(data)
+214 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1Opt_aef6b123f77613b7e3ecc45716de89ee2}\label{classparlai_1_1utils_1_1misc_1_1Opt_aef6b123f77613b7e3ecc45716de89ee2}} 
+\index{parlai\+::utils\+::misc\+::\+Opt@{parlai\+::utils\+::misc\+::\+Opt}!display\+\_\+deepcopies@{display\+\_\+deepcopies}}
+\index{display\+\_\+deepcopies@{display\+\_\+deepcopies}!parlai\+::utils\+::misc\+::\+Opt@{parlai\+::utils\+::misc\+::\+Opt}}
+\subsubsection{\texorpdfstring{display\+\_\+deepcopies()}{display\_deepcopies()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+misc.\+Opt.\+display\+\_\+deepcopies (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Display all deepcopies.
+\end{DoxyVerb}
+ 
+
+Definition at line 235 of file misc.\+py.
+
+
+\begin{DoxyCode}
+235     \textcolor{keyword}{def }display\_deepcopies(self):
+236         \textcolor{stringliteral}{"""}
+237 \textcolor{stringliteral}{        Display all deepcopies.}
+238 \textcolor{stringliteral}{        """}
+239         \textcolor{keywordflow}{if} len(self.deepcopies) == 0:
+240             print(\textcolor{stringliteral}{'No deepcopies performed on this opt.'})
+241             \textcolor{keywordflow}{return}
+242         print(\textcolor{stringliteral}{'Deepcopies were performed at the following locations:\(\backslash\)n'})
+243         \textcolor{keywordflow}{for} i, loc \textcolor{keywordflow}{in} enumerate(self.deepcopies):
+244             print(\textcolor{stringliteral}{'\{\}. \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(i + 1, loc))
+245 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1Opt_aee1d325bb2691ce4c007075d6f8abffc}\label{classparlai_1_1utils_1_1misc_1_1Opt_aee1d325bb2691ce4c007075d6f8abffc}} 
+\index{parlai\+::utils\+::misc\+::\+Opt@{parlai\+::utils\+::misc\+::\+Opt}!display\+\_\+history@{display\+\_\+history}}
+\index{display\+\_\+history@{display\+\_\+history}!parlai\+::utils\+::misc\+::\+Opt@{parlai\+::utils\+::misc\+::\+Opt}}
+\subsubsection{\texorpdfstring{display\+\_\+history()}{display\_history()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+misc.\+Opt.\+display\+\_\+history (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{key }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Display the history for an item in the dict.
+\end{DoxyVerb}
+ 
+
+Definition at line 246 of file misc.\+py.
+
+
+\begin{DoxyCode}
+246     \textcolor{keyword}{def }display\_history(self, key):
+247         \textcolor{stringliteral}{"""}
+248 \textcolor{stringliteral}{        Display the history for an item in the dict.}
+249 \textcolor{stringliteral}{        """}
+250         \textcolor{keywordflow}{if} key \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.history:
+251             print(\textcolor{stringliteral}{'No history for key \{\}.'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(key))
+252             \textcolor{keywordflow}{return}
+253         item\_hist = self.history[key]
+254         \textcolor{keywordflow}{for} i, change \textcolor{keywordflow}{in} enumerate(item\_hist):
+255             print(
+256                 \textcolor{stringliteral}{'\{\}. \{\} was set to \{\} at:\(\backslash\)n\{\}\(\backslash\)n'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+257                     i + 1, key, change[1], change[0]
+258                 )
+259             )
+260 
+261 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1Opt_a2bf9d8a08183cd0f988b7a116ae9b396}\label{classparlai_1_1utils_1_1misc_1_1Opt_a2bf9d8a08183cd0f988b7a116ae9b396}} 
+\index{parlai\+::utils\+::misc\+::\+Opt@{parlai\+::utils\+::misc\+::\+Opt}!deepcopies@{deepcopies}}
+\index{deepcopies@{deepcopies}!parlai\+::utils\+::misc\+::\+Opt@{parlai\+::utils\+::misc\+::\+Opt}}
+\subsubsection{\texorpdfstring{deepcopies}{deepcopies}}
+{\footnotesize\ttfamily parlai.\+utils.\+misc.\+Opt.\+deepcopies}
+
+
+
+Definition at line 201 of file misc.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1Opt_a24659f7fa7a137ccd60a139a60d64da2}\label{classparlai_1_1utils_1_1misc_1_1Opt_a24659f7fa7a137ccd60a139a60d64da2}} 
+\index{parlai\+::utils\+::misc\+::\+Opt@{parlai\+::utils\+::misc\+::\+Opt}!history@{history}}
+\index{history@{history}!parlai\+::utils\+::misc\+::\+Opt@{parlai\+::utils\+::misc\+::\+Opt}}
+\subsubsection{\texorpdfstring{history}{history}}
+{\footnotesize\ttfamily parlai.\+utils.\+misc.\+Opt.\+history}
+
+
+
+Definition at line 200 of file misc.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/utils/\hyperlink{misc_8py}{misc.\+py}\end{DoxyCompactItemize}

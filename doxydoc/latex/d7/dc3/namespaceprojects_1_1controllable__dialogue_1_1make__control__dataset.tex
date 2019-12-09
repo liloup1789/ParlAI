@@ -1,0 +1,199 @@
+\hypertarget{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset}{}\section{projects.\+controllable\+\_\+dialogue.\+make\+\_\+control\+\_\+dataset Namespace Reference}
+\label{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset}\index{projects.\+controllable\+\_\+dialogue.\+make\+\_\+control\+\_\+dataset@{projects.\+controllable\+\_\+dialogue.\+make\+\_\+control\+\_\+dataset}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_a8b209e575769f92c93ceb2c06e70fee1}{make\+\_\+dataset} (\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_ab945d95ab130dd8f09fea9282bb7513d}{opt})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_ad4b34cd0357d91d46706e2a2f86e001e}{parser}
+\item 
+int \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_a84cdac7bc463ce88fbc8fa3a4a170f89}{default} = -\/1,
+\item 
+\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_ac18f1b93e514ccda4429a60f66e78367}{type} = int,
+\item 
+string \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_a0b0c1f19d48abcb5f44cface2e2bb1bc}{help}
+\item 
+\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}
+\item 
+\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_a0bead021e69d59fb4cdff2e7705f1f0e}{task}
+\item 
+\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_ae6fa23d8106a608fbab7aae77d8bac39}{datatype}
+\item 
+\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_ab945d95ab130dd8f09fea9282bb7513d}{opt}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_a8b209e575769f92c93ceb2c06e70fee1}\label{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_a8b209e575769f92c93ceb2c06e70fee1}} 
+\index{projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset@{projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset}!make\+\_\+dataset@{make\+\_\+dataset}}
+\index{make\+\_\+dataset@{make\+\_\+dataset}!projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset@{projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset}}
+\subsubsection{\texorpdfstring{make\+\_\+dataset()}{make\_dataset()}}
+{\footnotesize\ttfamily def projects.\+controllable\+\_\+dialogue.\+make\+\_\+control\+\_\+dataset.\+make\+\_\+dataset (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 20 of file make\+\_\+control\+\_\+dataset.\+py.
+
+
+\begin{DoxyCode}
+20 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_a8b209e575769f92c93ceb2c06e70fee1}{make\_dataset}(opt):
+21 
+22     \textcolor{comment}{# Initialize control information so we can compute sentence attributes.}
+23     \textcolor{comment}{# Here we set build\_task=False so we don't download data/controllable\_dialogue}
+24     \textcolor{comment}{# (because we're trying to create it instead).}
+25     \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controls_aafbe257df1791349439cc63c99de8b5e}{initialize\_control\_information}(opt, build\_task=\textcolor{keyword}{False})
+26 
+27     \textcolor{comment}{# Create repeat label agent and assign it to the specified task}
+28     agent = RepeatLabelAgent(opt)
+29     world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(opt, agent)
+30     ignorefields = opt.get(\textcolor{stringliteral}{'ignore\_fields'}, \textcolor{stringliteral}{''})
+31     outfile = opt[\textcolor{stringliteral}{'outfile'}]
+32 
+33     \textcolor{comment}{# Number of examples to process}
+34     \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'num\_examples'}] == -1:
+35         num\_examples = world.num\_examples()
+36     \textcolor{keywordflow}{else}:
+37         num\_examples = opt[\textcolor{stringliteral}{'num\_examples'}]
+38 
+39     \textcolor{comment}{# List of controls to include:}
+40     controls = opt[\textcolor{stringliteral}{'controls'}].split(\textcolor{stringliteral}{','}) \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'controls'}] != \textcolor{stringliteral}{''} \textcolor{keywordflow}{else} []
+41 
+42     print(\textcolor{stringliteral}{'[ starting to convert.. ]'})
+43     print(\textcolor{stringliteral}{'[ saving output to \{\} ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(outfile))
+44     fw = open(outfile, \textcolor{stringliteral}{'w'})
+45     log\_timer = TimeLogger()
+46 
+47     \textcolor{keywordflow}{for} \_ \textcolor{keywordflow}{in} range(num\_examples):
+48         world.parley()
+49         world.acts[0][\textcolor{stringliteral}{'labels'}] = world.acts[0].get(
+50             \textcolor{stringliteral}{'labels'}, world.acts[0].pop(\textcolor{stringliteral}{'eval\_labels'}, \textcolor{keywordtype}{None})
+51         )
+52 
+53         \textcolor{comment}{# Need to get history in order to compute control values}
+54         hist = ConvAI2History(world.acts[0][\textcolor{stringliteral}{'text'}], assume\_persontokens=\textcolor{keyword}{False})
+55         response = world.acts[0][\textcolor{stringliteral}{'labels'}][0]
+56 
+57         \textcolor{comment}{# Compute control values}
+58         \textcolor{keywordflow}{for} ctrl \textcolor{keywordflow}{in} controls:
+59             ctrl\_val = \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controls_afc2b447cbf1dcb4a754d080d2e611c24}{eval\_attr}(response, hist, ctrl)
+60             \textcolor{keywordflow}{if} ctrl == \textcolor{stringliteral}{'avg\_nidf'}:
+61                 \textcolor{keyword}{assert} ctrl\_val >= 0
+62                 \textcolor{keyword}{assert} ctrl\_val <= 1
+63             \textcolor{keywordflow}{elif} ctrl == \textcolor{stringliteral}{'question'}:
+64                 \textcolor{keyword}{assert} ctrl\_val \textcolor{keywordflow}{in} [0, 1]
+65             \textcolor{keywordflow}{elif} ctrl == \textcolor{stringliteral}{'lastuttsim'}:
+66                 \textcolor{keywordflow}{if} ctrl\_val \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+67                     \textcolor{keyword}{assert} ctrl\_val >= -1
+68                     \textcolor{keyword}{assert} ctrl\_val <= 1
+69             \textcolor{keywordflow}{else}:
+70                 \textcolor{keywordflow}{raise} Exception(\textcolor{stringliteral}{'unexpected ctrl name: %s'} % ctrl)
+71             world.acts[0][ctrl] = ctrl\_val  \textcolor{comment}{# add control value to act}
+72 
+73         \textcolor{comment}{# Write to file}
+74         txt = \hyperlink{namespaceparlai_1_1utils_1_1misc_ae5db473b41d3b49814e2566e866282b6}{msg\_to\_str}(world.acts[0], ignore\_fields=ignorefields)
+75         fw.write(txt + \textcolor{stringliteral}{'\(\backslash\)n'})
+76         \textcolor{keywordflow}{if} world.acts[0].get(\textcolor{stringliteral}{'episode\_done'}, \textcolor{keyword}{False}):
+77             fw.write(\textcolor{stringliteral}{'\(\backslash\)n'})
+78 
+79         \textcolor{keywordflow}{if} log\_timer.time() > opt[\textcolor{stringliteral}{'log\_every\_n\_secs'}]:
+80             text, \_log = log\_timer.log(world.total\_parleys, world.num\_examples())
+81             print(text)
+82 
+83         \textcolor{keywordflow}{if} world.epoch\_done():
+84             print(\textcolor{stringliteral}{'EPOCH DONE'})
+85             \textcolor{keywordflow}{break}
+86     fw.close()
+87 
+88 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_ae6fa23d8106a608fbab7aae77d8bac39}\label{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_ae6fa23d8106a608fbab7aae77d8bac39}} 
+\index{projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset@{projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset}!datatype@{datatype}}
+\index{datatype@{datatype}!projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset@{projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset}}
+\subsubsection{\texorpdfstring{datatype}{datatype}}
+{\footnotesize\ttfamily projects.\+controllable\+\_\+dialogue.\+make\+\_\+control\+\_\+dataset.\+datatype}
+
+
+
+Definition at line 127 of file make\+\_\+control\+\_\+dataset.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_a84cdac7bc463ce88fbc8fa3a4a170f89}\label{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_a84cdac7bc463ce88fbc8fa3a4a170f89}} 
+\index{projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset@{projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset}!default@{default}}
+\index{default@{default}!projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset@{projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset}}
+\subsubsection{\texorpdfstring{default}{default}}
+{\footnotesize\ttfamily string projects.\+controllable\+\_\+dialogue.\+make\+\_\+control\+\_\+dataset.\+default = -\/1,}
+
+
+
+Definition at line 96 of file make\+\_\+control\+\_\+dataset.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}\label{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}} 
+\index{projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset@{projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset}!float@{float}}
+\index{float@{float}!projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset@{projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset}}
+\subsubsection{\texorpdfstring{float}{float}}
+{\footnotesize\ttfamily projects.\+controllable\+\_\+dialogue.\+make\+\_\+control\+\_\+dataset.\+float}
+
+
+
+Definition at line 117 of file make\+\_\+control\+\_\+dataset.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_a0b0c1f19d48abcb5f44cface2e2bb1bc}\label{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_a0b0c1f19d48abcb5f44cface2e2bb1bc}} 
+\index{projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset@{projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset}!help@{help}}
+\index{help@{help}!projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset@{projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset}}
+\subsubsection{\texorpdfstring{help}{help}}
+{\footnotesize\ttfamily string projects.\+controllable\+\_\+dialogue.\+make\+\_\+control\+\_\+dataset.\+help}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+1 = \textcolor{stringliteral}{'Total number of exs to convert, -1 to convert \(\backslash\)}
+2 \textcolor{stringliteral}{                                all examples'},
+\end{DoxyCode}
+
+
+Definition at line 98 of file make\+\_\+control\+\_\+dataset.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_ab945d95ab130dd8f09fea9282bb7513d}\label{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_ab945d95ab130dd8f09fea9282bb7513d}} 
+\index{projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset@{projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset}!opt@{opt}}
+\index{opt@{opt}!projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset@{projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset}}
+\subsubsection{\texorpdfstring{opt}{opt}}
+{\footnotesize\ttfamily projects.\+controllable\+\_\+dialogue.\+make\+\_\+control\+\_\+dataset.\+opt}
+
+
+
+Definition at line 129 of file make\+\_\+control\+\_\+dataset.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_ad4b34cd0357d91d46706e2a2f86e001e}\label{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_ad4b34cd0357d91d46706e2a2f86e001e}} 
+\index{projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset@{projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset}!parser@{parser}}
+\index{parser@{parser}!projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset@{projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset}}
+\subsubsection{\texorpdfstring{parser}{parser}}
+{\footnotesize\ttfamily projects.\+controllable\+\_\+dialogue.\+make\+\_\+control\+\_\+dataset.\+parser}
+
+
+
+Definition at line 92 of file make\+\_\+control\+\_\+dataset.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_a0bead021e69d59fb4cdff2e7705f1f0e}\label{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_a0bead021e69d59fb4cdff2e7705f1f0e}} 
+\index{projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset@{projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset}!task@{task}}
+\index{task@{task}!projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset@{projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset}}
+\subsubsection{\texorpdfstring{task}{task}}
+{\footnotesize\ttfamily projects.\+controllable\+\_\+dialogue.\+make\+\_\+control\+\_\+dataset.\+task}
+
+
+
+Definition at line 126 of file make\+\_\+control\+\_\+dataset.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_ac18f1b93e514ccda4429a60f66e78367}\label{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_ac18f1b93e514ccda4429a60f66e78367}} 
+\index{projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset@{projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset}!type@{type}}
+\index{type@{type}!projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset@{projects\+::controllable\+\_\+dialogue\+::make\+\_\+control\+\_\+dataset}}
+\subsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily projects.\+controllable\+\_\+dialogue.\+make\+\_\+control\+\_\+dataset.\+type = int,}
+
+
+
+Definition at line 97 of file make\+\_\+control\+\_\+dataset.\+py.
+

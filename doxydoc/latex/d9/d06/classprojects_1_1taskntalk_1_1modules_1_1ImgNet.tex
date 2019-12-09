@@ -1,0 +1,110 @@
+\hypertarget{classprojects_1_1taskntalk_1_1modules_1_1ImgNet}{}\section{projects.\+taskntalk.\+modules.\+Img\+Net Class Reference}
+\label{classprojects_1_1taskntalk_1_1modules_1_1ImgNet}\index{projects.\+taskntalk.\+modules.\+Img\+Net@{projects.\+taskntalk.\+modules.\+Img\+Net}}
+
+
+Inheritance diagram for projects.\+taskntalk.\+modules.\+Img\+Net\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{d2/d9d/classprojects_1_1taskntalk_1_1modules_1_1ImgNet__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for projects.\+taskntalk.\+modules.\+Img\+Net\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{dc/d36/classprojects_1_1taskntalk_1_1modules_1_1ImgNet__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classprojects_1_1taskntalk_1_1modules_1_1ImgNet_a9723f98d54a1fa7607ed0a4dc98f4786}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, feature\+\_\+size, input\+\_\+size=None)
+\item 
+def \hyperlink{classprojects_1_1taskntalk_1_1modules_1_1ImgNet_a6bdd1b350561c7fc3dce2be95b92fdb7}{forward} (self, image)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classprojects_1_1taskntalk_1_1modules_1_1ImgNet_ad2f75d9e18e4b10703db9f2ff3a988d2}{net}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Module to embed the visual information. Used by answerer agent. In ``forward``:
+Embed image attributes and concatenate them together.
+
+**Note:** ``parlai.core.image_featurizers.ImageLoader`` can also be
+used instead.
+\end{DoxyVerb}
+ 
+
+Definition at line 26 of file modules.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classprojects_1_1taskntalk_1_1modules_1_1ImgNet_a9723f98d54a1fa7607ed0a4dc98f4786}\label{classprojects_1_1taskntalk_1_1modules_1_1ImgNet_a9723f98d54a1fa7607ed0a4dc98f4786}} 
+\index{projects\+::taskntalk\+::modules\+::\+Img\+Net@{projects\+::taskntalk\+::modules\+::\+Img\+Net}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!projects\+::taskntalk\+::modules\+::\+Img\+Net@{projects\+::taskntalk\+::modules\+::\+Img\+Net}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def projects.\+taskntalk.\+modules.\+Img\+Net.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{feature\+\_\+size,  }\item[{}]{input\+\_\+size = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 35 of file modules.\+py.
+
+
+\begin{DoxyCode}
+35     \textcolor{keyword}{def }\_\_init\_\_(self, feature\_size, input\_size=None):
+36         super().\_\_init\_\_()
+37         \textcolor{comment}{# input\_size is needed for modules which require input\_size specification}
+38         \textcolor{comment}{# nn.Embedding requires input size to be specified, while nn.Conv2d doesn't}
+39         self.net = nn.Embedding(input\_size, feature\_size)
+40         \hyperlink{namespaceprojects_1_1taskntalk_1_1modules_a483197f0d561a3d1ef7d04a2de70e571}{xavier\_init}(self)
+41 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classprojects_1_1taskntalk_1_1modules_1_1ImgNet_a6bdd1b350561c7fc3dce2be95b92fdb7}\label{classprojects_1_1taskntalk_1_1modules_1_1ImgNet_a6bdd1b350561c7fc3dce2be95b92fdb7}} 
+\index{projects\+::taskntalk\+::modules\+::\+Img\+Net@{projects\+::taskntalk\+::modules\+::\+Img\+Net}!forward@{forward}}
+\index{forward@{forward}!projects\+::taskntalk\+::modules\+::\+Img\+Net@{projects\+::taskntalk\+::modules\+::\+Img\+Net}}
+\subsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily def projects.\+taskntalk.\+modules.\+Img\+Net.\+forward (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{image }\end{DoxyParamCaption})}
+
+
+
+Definition at line 42 of file modules.\+py.
+
+
+\begin{DoxyCode}
+42     \textcolor{keyword}{def }forward(self, image):
+43         embeds = self.net(image)
+44         features = torch.cat(embeds.transpose(0, 1), 1)
+45         \textcolor{keywordflow}{return} features
+46 
+47 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classprojects_1_1taskntalk_1_1modules_1_1ImgNet_ad2f75d9e18e4b10703db9f2ff3a988d2}\label{classprojects_1_1taskntalk_1_1modules_1_1ImgNet_ad2f75d9e18e4b10703db9f2ff3a988d2}} 
+\index{projects\+::taskntalk\+::modules\+::\+Img\+Net@{projects\+::taskntalk\+::modules\+::\+Img\+Net}!net@{net}}
+\index{net@{net}!projects\+::taskntalk\+::modules\+::\+Img\+Net@{projects\+::taskntalk\+::modules\+::\+Img\+Net}}
+\subsubsection{\texorpdfstring{net}{net}}
+{\footnotesize\ttfamily projects.\+taskntalk.\+modules.\+Img\+Net.\+net}
+
+
+
+Definition at line 39 of file modules.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+projects/taskntalk/\hyperlink{projects_2taskntalk_2modules_8py}{modules.\+py}\end{DoxyCompactItemize}

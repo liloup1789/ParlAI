@@ -1,0 +1,147 @@
+\hypertarget{classparlai_1_1tasks_1_1insuranceqa_1_1build_1_1ParseInsuranceQAV1}{}\section{parlai.\+tasks.\+insuranceqa.\+build.\+Parse\+Insurance\+Q\+A\+V1 Class Reference}
+\label{classparlai_1_1tasks_1_1insuranceqa_1_1build_1_1ParseInsuranceQAV1}\index{parlai.\+tasks.\+insuranceqa.\+build.\+Parse\+Insurance\+Q\+A\+V1@{parlai.\+tasks.\+insuranceqa.\+build.\+Parse\+Insurance\+Q\+A\+V1}}
+
+
+Inheritance diagram for parlai.\+tasks.\+insuranceqa.\+build.\+Parse\+Insurance\+Q\+A\+V1\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{df/db2/classparlai_1_1tasks_1_1insuranceqa_1_1build_1_1ParseInsuranceQAV1__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+tasks.\+insuranceqa.\+build.\+Parse\+Insurance\+Q\+A\+V1\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{d6/df0/classparlai_1_1tasks_1_1insuranceqa_1_1build_1_1ParseInsuranceQAV1__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1insuranceqa_1_1build_1_1ParseInsuranceQAV1_aec860cdc7404febddbbc3434828c74e3}{write\+\_\+data\+\_\+files} (cls, dpext, out\+\_\+path, d\+\_\+vocab, d\+\_\+label\+\_\+answer)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1insuranceqa_1_1build_1_1ParseInsuranceQAV1_a67191000b24f2d3f3be641c5221b9a30}{create\+\_\+fb\+\_\+format} (cls, out\+\_\+path, dtype, inpath, d\+\_\+vocab, d\+\_\+label\+\_\+answer)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string \hyperlink{classparlai_1_1tasks_1_1insuranceqa_1_1build_1_1ParseInsuranceQAV1_a2c80c19256c2c59a2c29ffc88e125165}{version} = \char`\"{}V1\char`\"{}
+\item 
+string \hyperlink{classparlai_1_1tasks_1_1insuranceqa_1_1build_1_1ParseInsuranceQAV1_a6d912e89848985844b85a5c6f2943f5e}{label2answer\+\_\+fname} = \char`\"{}answers.\+label.\+token\+\_\+idx\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 101 of file build.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1insuranceqa_1_1build_1_1ParseInsuranceQAV1_a67191000b24f2d3f3be641c5221b9a30}\label{classparlai_1_1tasks_1_1insuranceqa_1_1build_1_1ParseInsuranceQAV1_a67191000b24f2d3f3be641c5221b9a30}} 
+\index{parlai\+::tasks\+::insuranceqa\+::build\+::\+Parse\+Insurance\+Q\+A\+V1@{parlai\+::tasks\+::insuranceqa\+::build\+::\+Parse\+Insurance\+Q\+A\+V1}!create\+\_\+fb\+\_\+format@{create\+\_\+fb\+\_\+format}}
+\index{create\+\_\+fb\+\_\+format@{create\+\_\+fb\+\_\+format}!parlai\+::tasks\+::insuranceqa\+::build\+::\+Parse\+Insurance\+Q\+A\+V1@{parlai\+::tasks\+::insuranceqa\+::build\+::\+Parse\+Insurance\+Q\+A\+V1}}
+\subsubsection{\texorpdfstring{create\+\_\+fb\+\_\+format()}{create\_fb\_format()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+insuranceqa.\+build.\+Parse\+Insurance\+Q\+A\+V1.\+create\+\_\+fb\+\_\+format (\begin{DoxyParamCaption}\item[{}]{cls,  }\item[{}]{out\+\_\+path,  }\item[{}]{dtype,  }\item[{}]{inpath,  }\item[{}]{d\+\_\+vocab,  }\item[{}]{d\+\_\+label\+\_\+answer }\end{DoxyParamCaption})}
+
+
+
+Definition at line 118 of file build.\+py.
+
+
+\begin{DoxyCode}
+118     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1wikiqa_1_1build_a554828702769592403db58c955d1dfe3}{create\_fb\_format}(cls, out\_path, dtype, inpath, d\_vocab, d\_label\_answer):
+119         print(\textcolor{stringliteral}{'building fbformat:'} + dtype)
+120         fout = open(os.path.join(out\_path, dtype + \textcolor{stringliteral}{'.txt'}), \textcolor{stringliteral}{'w'})
+121         lines = open(inpath).readlines()
+122 
+123         \textcolor{keywordflow}{for} line \textcolor{keywordflow}{in} lines:
+124             fields = line.rstrip(\textcolor{stringliteral}{"\(\backslash\)n"}).split(\textcolor{stringliteral}{"\(\backslash\)t"})
+125             \textcolor{keywordflow}{if} dtype == \textcolor{stringliteral}{"train"}:
+126                 \textcolor{keyword}{assert} len(fields) == 2, \textcolor{stringliteral}{"data file (%s) corrupted."} % inpath
+127                 s\_q\_wids, s\_good\_aids = fields
+128 
+129                 q = cls.wids2sent(s\_q\_wids.split(), d\_vocab)
+130                 good\_ans = [d\_label\_answer[aid\_] \textcolor{keywordflow}{for} aid\_ \textcolor{keywordflow}{in} s\_good\_aids.split()]
+131                 \textcolor{comment}{# save good answers (train only)}
+132                 s = \textcolor{stringliteral}{'1 '} + q + \textcolor{stringliteral}{'\(\backslash\)t'} + \textcolor{stringliteral}{"|"}.join(good\_ans)
+133                 fout.write(s + \textcolor{stringliteral}{'\(\backslash\)n'})
+134             \textcolor{keywordflow}{else}:
+135                 \textcolor{keyword}{assert} len(fields) == 3, \textcolor{stringliteral}{"data file (%s) corrupted."} % inpath
+136                 s\_good\_aids, s\_q\_wids, s\_bad\_aids = fields
+137 
+138                 q = cls.wids2sent(s\_q\_wids.split(), d\_vocab)
+139                 good\_ans = [d\_label\_answer[aid\_] \textcolor{keywordflow}{for} aid\_ \textcolor{keywordflow}{in} s\_good\_aids.split()]
+140                 bad\_ans = [d\_label\_answer[aid\_] \textcolor{keywordflow}{for} aid\_ \textcolor{keywordflow}{in} s\_bad\_aids.split()]
+141                 \textcolor{comment}{# save good answers and candidates}
+142                 s = (
+143                     \textcolor{stringliteral}{'1 '}
+144                     + q
+145                     + \textcolor{stringliteral}{'\(\backslash\)t'}
+146                     + \textcolor{stringliteral}{"|"}.join(good\_ans)
+147                     + \textcolor{stringliteral}{'\(\backslash\)t\(\backslash\)t'}
+148                     + \textcolor{stringliteral}{"|"}.join(good\_ans + bad\_ans)
+149                 )
+150                 fout.write(s + \textcolor{stringliteral}{'\(\backslash\)n'})
+151         fout.close()
+152 
+153 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1insuranceqa_1_1build_1_1ParseInsuranceQAV1_aec860cdc7404febddbbc3434828c74e3}\label{classparlai_1_1tasks_1_1insuranceqa_1_1build_1_1ParseInsuranceQAV1_aec860cdc7404febddbbc3434828c74e3}} 
+\index{parlai\+::tasks\+::insuranceqa\+::build\+::\+Parse\+Insurance\+Q\+A\+V1@{parlai\+::tasks\+::insuranceqa\+::build\+::\+Parse\+Insurance\+Q\+A\+V1}!write\+\_\+data\+\_\+files@{write\+\_\+data\+\_\+files}}
+\index{write\+\_\+data\+\_\+files@{write\+\_\+data\+\_\+files}!parlai\+::tasks\+::insuranceqa\+::build\+::\+Parse\+Insurance\+Q\+A\+V1@{parlai\+::tasks\+::insuranceqa\+::build\+::\+Parse\+Insurance\+Q\+A\+V1}}
+\subsubsection{\texorpdfstring{write\+\_\+data\+\_\+files()}{write\_data\_files()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+insuranceqa.\+build.\+Parse\+Insurance\+Q\+A\+V1.\+write\+\_\+data\+\_\+files (\begin{DoxyParamCaption}\item[{}]{cls,  }\item[{}]{dpext,  }\item[{}]{out\+\_\+path,  }\item[{}]{d\+\_\+vocab,  }\item[{}]{d\+\_\+label\+\_\+answer }\end{DoxyParamCaption})}
+
+
+
+Definition at line 106 of file build.\+py.
+
+
+\begin{DoxyCode}
+106     \textcolor{keyword}{def }write\_data\_files(cls, dpext, out\_path, d\_vocab, d\_label\_answer):
+107         data\_fnames = [
+108             (\textcolor{stringliteral}{"train"}, \textcolor{stringliteral}{"question.train.token\_idx.label"}),
+109             (\textcolor{stringliteral}{"valid"}, \textcolor{stringliteral}{"question.dev.label.token\_idx.pool"}),
+110             (\textcolor{stringliteral}{"test"}, \textcolor{stringliteral}{"question.test1.label.token\_idx.pool"}),
+111             \textcolor{comment}{# ("test2", "question.test2.label.token\_idx.pool")}
+112         ]
+113         \textcolor{keywordflow}{for} dtype, data\_fname \textcolor{keywordflow}{in} data\_fnames:
+114             data\_path = os.path.join(dpext, data\_fname)
+115             cls.create\_fb\_format(out\_path, dtype, data\_path, d\_vocab, d\_label\_answer)
+116 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1insuranceqa_1_1build_1_1ParseInsuranceQAV1_a6d912e89848985844b85a5c6f2943f5e}\label{classparlai_1_1tasks_1_1insuranceqa_1_1build_1_1ParseInsuranceQAV1_a6d912e89848985844b85a5c6f2943f5e}} 
+\index{parlai\+::tasks\+::insuranceqa\+::build\+::\+Parse\+Insurance\+Q\+A\+V1@{parlai\+::tasks\+::insuranceqa\+::build\+::\+Parse\+Insurance\+Q\+A\+V1}!label2answer\+\_\+fname@{label2answer\+\_\+fname}}
+\index{label2answer\+\_\+fname@{label2answer\+\_\+fname}!parlai\+::tasks\+::insuranceqa\+::build\+::\+Parse\+Insurance\+Q\+A\+V1@{parlai\+::tasks\+::insuranceqa\+::build\+::\+Parse\+Insurance\+Q\+A\+V1}}
+\subsubsection{\texorpdfstring{label2answer\+\_\+fname}{label2answer\_fname}}
+{\footnotesize\ttfamily string parlai.\+tasks.\+insuranceqa.\+build.\+Parse\+Insurance\+Q\+A\+V1.\+label2answer\+\_\+fname = \char`\"{}answers.\+label.\+token\+\_\+idx\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 103 of file build.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1insuranceqa_1_1build_1_1ParseInsuranceQAV1_a2c80c19256c2c59a2c29ffc88e125165}\label{classparlai_1_1tasks_1_1insuranceqa_1_1build_1_1ParseInsuranceQAV1_a2c80c19256c2c59a2c29ffc88e125165}} 
+\index{parlai\+::tasks\+::insuranceqa\+::build\+::\+Parse\+Insurance\+Q\+A\+V1@{parlai\+::tasks\+::insuranceqa\+::build\+::\+Parse\+Insurance\+Q\+A\+V1}!version@{version}}
+\index{version@{version}!parlai\+::tasks\+::insuranceqa\+::build\+::\+Parse\+Insurance\+Q\+A\+V1@{parlai\+::tasks\+::insuranceqa\+::build\+::\+Parse\+Insurance\+Q\+A\+V1}}
+\subsubsection{\texorpdfstring{version}{version}}
+{\footnotesize\ttfamily string parlai.\+tasks.\+insuranceqa.\+build.\+Parse\+Insurance\+Q\+A\+V1.\+version = \char`\"{}V1\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 102 of file build.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/tasks/insuranceqa/\hyperlink{parlai_2tasks_2insuranceqa_2build_8py}{build.\+py}\end{DoxyCompactItemize}

@@ -1,0 +1,184 @@
+\hypertarget{classparlai_1_1tasks_1_1dialogue__nli_1_1agents_1_1DialogueNliTeacher}{}\section{parlai.\+tasks.\+dialogue\+\_\+nli.\+agents.\+Dialogue\+Nli\+Teacher Class Reference}
+\label{classparlai_1_1tasks_1_1dialogue__nli_1_1agents_1_1DialogueNliTeacher}\index{parlai.\+tasks.\+dialogue\+\_\+nli.\+agents.\+Dialogue\+Nli\+Teacher@{parlai.\+tasks.\+dialogue\+\_\+nli.\+agents.\+Dialogue\+Nli\+Teacher}}
+
+
+Inheritance diagram for parlai.\+tasks.\+dialogue\+\_\+nli.\+agents.\+Dialogue\+Nli\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/d2c/classparlai_1_1tasks_1_1dialogue__nli_1_1agents_1_1DialogueNliTeacher__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+tasks.\+dialogue\+\_\+nli.\+agents.\+Dialogue\+Nli\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{da/df6/classparlai_1_1tasks_1_1dialogue__nli_1_1agents_1_1DialogueNliTeacher__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1dialogue__nli_1_1agents_1_1DialogueNliTeacher_ab6931a1fbc88ffc407f35ba72cc44b76}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1core_1_1agents_1_1Teacher_a3ce6243860ce978a897922863ed32fa4}{opt}, shared=None, extras=False)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1dialogue__nli_1_1agents_1_1DialogueNliTeacher_a54d9ea8b89d8b5b91c913612fba74726}{num\+\_\+examples} (self)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1dialogue__nli_1_1agents_1_1DialogueNliTeacher_a1277b756af5d3ca234c77526a7bfb5e2}{num\+\_\+episodes} (self)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1dialogue__nli_1_1agents_1_1DialogueNliTeacher_aa3dfbefa7098aa0336896dd7ac5698b9}{get} (self, \hyperlink{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_afd4ebab8063eb42d182d30a1a41f133e}{episode\+\_\+idx}, \hyperlink{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_ae3201b15f3c3b46a2f3511bad9b43e7d}{entry\+\_\+idx}=0)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1dialogue__nli_1_1agents_1_1DialogueNliTeacher_aec219032386350b637684f9ab46a09ab}{id}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1dialogue__nli_1_1agents_1_1DialogueNliTeacher_ae213e3aeb7ef16760a0c62ff1f77454e}{data}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 18 of file agents.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1dialogue__nli_1_1agents_1_1DialogueNliTeacher_ab6931a1fbc88ffc407f35ba72cc44b76}\label{classparlai_1_1tasks_1_1dialogue__nli_1_1agents_1_1DialogueNliTeacher_ab6931a1fbc88ffc407f35ba72cc44b76}} 
+\index{parlai\+::tasks\+::dialogue\+\_\+nli\+::agents\+::\+Dialogue\+Nli\+Teacher@{parlai\+::tasks\+::dialogue\+\_\+nli\+::agents\+::\+Dialogue\+Nli\+Teacher}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::tasks\+::dialogue\+\_\+nli\+::agents\+::\+Dialogue\+Nli\+Teacher@{parlai\+::tasks\+::dialogue\+\_\+nli\+::agents\+::\+Dialogue\+Nli\+Teacher}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+dialogue\+\_\+nli.\+agents.\+Dialogue\+Nli\+Teacher.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{shared = {\ttfamily None},  }\item[{}]{extras = {\ttfamily False} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 19 of file agents.\+py.
+
+
+\begin{DoxyCode}
+19     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None, extras=False):
+20         super().\_\_init\_\_(opt, shared)
+21 
+22         \textcolor{comment}{# Build the data if it doesn't exist.}
+23         \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1talkthewalk_1_1download_a8c0fbb9b6dfe127cb8c1bd6e7c4e33fd}{build}(opt)
+24 
+25         suffix = self.datatype
+26         \textcolor{keywordflow}{if} suffix.startswith(\textcolor{stringliteral}{'train'}):
+27             suffix = \textcolor{stringliteral}{'train'}
+28         \textcolor{keywordflow}{elif} suffix.startswith(\textcolor{stringliteral}{'test'}):
+29             suffix = \textcolor{stringliteral}{'test'}
+30         \textcolor{keywordflow}{elif} suffix.startswith(\textcolor{stringliteral}{'valid'}):
+31             suffix = \textcolor{stringliteral}{'dev'}
+32 
+33         \textcolor{keywordflow}{if} extras:
+34             datapath = os.path.join(
+35                 opt[\textcolor{stringliteral}{'datapath'}],
+36                 \textcolor{stringliteral}{'dialogue\_nli'},
+37                 \textcolor{stringliteral}{'dnli'},
+38                 \textcolor{stringliteral}{'dialogue\_nli\_extra'},
+39                 \textcolor{stringliteral}{'dialogue\_nli\_EXTRA\_uu\_'} + suffix + \textcolor{stringliteral}{'.jsonl'},
+40             )
+41         \textcolor{keywordflow}{else}:
+42             datapath = os.path.join(
+43                 opt[\textcolor{stringliteral}{'datapath'}],
+44                 \textcolor{stringliteral}{'dialogue\_nli'},
+45                 \textcolor{stringliteral}{'dnli'},
+46                 \textcolor{stringliteral}{'dialogue\_nli'},
+47                 \textcolor{stringliteral}{'dialogue\_nli\_'} + suffix + \textcolor{stringliteral}{'.jsonl'},
+48             )
+49 
+50         self.\_setup\_data(datapath)
+51         self.id = \textcolor{stringliteral}{'dnli'}
+52         self.reset()
+53 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1dialogue__nli_1_1agents_1_1DialogueNliTeacher_aa3dfbefa7098aa0336896dd7ac5698b9}\label{classparlai_1_1tasks_1_1dialogue__nli_1_1agents_1_1DialogueNliTeacher_aa3dfbefa7098aa0336896dd7ac5698b9}} 
+\index{parlai\+::tasks\+::dialogue\+\_\+nli\+::agents\+::\+Dialogue\+Nli\+Teacher@{parlai\+::tasks\+::dialogue\+\_\+nli\+::agents\+::\+Dialogue\+Nli\+Teacher}!get@{get}}
+\index{get@{get}!parlai\+::tasks\+::dialogue\+\_\+nli\+::agents\+::\+Dialogue\+Nli\+Teacher@{parlai\+::tasks\+::dialogue\+\_\+nli\+::agents\+::\+Dialogue\+Nli\+Teacher}}
+\subsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+dialogue\+\_\+nli.\+agents.\+Dialogue\+Nli\+Teacher.\+get (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{episode\+\_\+idx,  }\item[{}]{entry\+\_\+idx = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 73 of file agents.\+py.
+
+
+\begin{DoxyCode}
+73     \textcolor{keyword}{def }get(self, episode\_idx, entry\_idx=0):
+74         entry = self.data[episode\_idx]
+75         entry[\textcolor{stringliteral}{'id'}] = self.id
+76         entry[\textcolor{stringliteral}{'episode\_done'}] = \textcolor{keyword}{True}
+77         entry[\textcolor{stringliteral}{'labels'}] = [entry[\textcolor{stringliteral}{'label'}]]
+78         entry[\textcolor{stringliteral}{'text'}] = entry[\textcolor{stringliteral}{'sentence1'}] + \textcolor{stringliteral}{'\(\backslash\)n'} + entry[\textcolor{stringliteral}{'sentence2'}]
+79         \textcolor{keywordflow}{return} entry
+80 
+81 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1dialogue__nli_1_1agents_1_1DialogueNliTeacher_a1277b756af5d3ca234c77526a7bfb5e2}\label{classparlai_1_1tasks_1_1dialogue__nli_1_1agents_1_1DialogueNliTeacher_a1277b756af5d3ca234c77526a7bfb5e2}} 
+\index{parlai\+::tasks\+::dialogue\+\_\+nli\+::agents\+::\+Dialogue\+Nli\+Teacher@{parlai\+::tasks\+::dialogue\+\_\+nli\+::agents\+::\+Dialogue\+Nli\+Teacher}!num\+\_\+episodes@{num\+\_\+episodes}}
+\index{num\+\_\+episodes@{num\+\_\+episodes}!parlai\+::tasks\+::dialogue\+\_\+nli\+::agents\+::\+Dialogue\+Nli\+Teacher@{parlai\+::tasks\+::dialogue\+\_\+nli\+::agents\+::\+Dialogue\+Nli\+Teacher}}
+\subsubsection{\texorpdfstring{num\+\_\+episodes()}{num\_episodes()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+dialogue\+\_\+nli.\+agents.\+Dialogue\+Nli\+Teacher.\+num\+\_\+episodes (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 70 of file agents.\+py.
+
+
+\begin{DoxyCode}
+70     \textcolor{keyword}{def }num\_episodes(self):
+71         \textcolor{keywordflow}{return} self.num\_examples()
+72 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1dialogue__nli_1_1agents_1_1DialogueNliTeacher_a54d9ea8b89d8b5b91c913612fba74726}\label{classparlai_1_1tasks_1_1dialogue__nli_1_1agents_1_1DialogueNliTeacher_a54d9ea8b89d8b5b91c913612fba74726}} 
+\index{parlai\+::tasks\+::dialogue\+\_\+nli\+::agents\+::\+Dialogue\+Nli\+Teacher@{parlai\+::tasks\+::dialogue\+\_\+nli\+::agents\+::\+Dialogue\+Nli\+Teacher}!num\+\_\+examples@{num\+\_\+examples}}
+\index{num\+\_\+examples@{num\+\_\+examples}!parlai\+::tasks\+::dialogue\+\_\+nli\+::agents\+::\+Dialogue\+Nli\+Teacher@{parlai\+::tasks\+::dialogue\+\_\+nli\+::agents\+::\+Dialogue\+Nli\+Teacher}}
+\subsubsection{\texorpdfstring{num\+\_\+examples()}{num\_examples()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+dialogue\+\_\+nli.\+agents.\+Dialogue\+Nli\+Teacher.\+num\+\_\+examples (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 67 of file agents.\+py.
+
+
+\begin{DoxyCode}
+67     \textcolor{keyword}{def }num\_examples(self):
+68         \textcolor{keywordflow}{return} len(self.data)
+69 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1dialogue__nli_1_1agents_1_1DialogueNliTeacher_ae213e3aeb7ef16760a0c62ff1f77454e}\label{classparlai_1_1tasks_1_1dialogue__nli_1_1agents_1_1DialogueNliTeacher_ae213e3aeb7ef16760a0c62ff1f77454e}} 
+\index{parlai\+::tasks\+::dialogue\+\_\+nli\+::agents\+::\+Dialogue\+Nli\+Teacher@{parlai\+::tasks\+::dialogue\+\_\+nli\+::agents\+::\+Dialogue\+Nli\+Teacher}!data@{data}}
+\index{data@{data}!parlai\+::tasks\+::dialogue\+\_\+nli\+::agents\+::\+Dialogue\+Nli\+Teacher@{parlai\+::tasks\+::dialogue\+\_\+nli\+::agents\+::\+Dialogue\+Nli\+Teacher}}
+\subsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily parlai.\+tasks.\+dialogue\+\_\+nli.\+agents.\+Dialogue\+Nli\+Teacher.\+data}
+
+
+
+Definition at line 63 of file agents.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1dialogue__nli_1_1agents_1_1DialogueNliTeacher_aec219032386350b637684f9ab46a09ab}\label{classparlai_1_1tasks_1_1dialogue__nli_1_1agents_1_1DialogueNliTeacher_aec219032386350b637684f9ab46a09ab}} 
+\index{parlai\+::tasks\+::dialogue\+\_\+nli\+::agents\+::\+Dialogue\+Nli\+Teacher@{parlai\+::tasks\+::dialogue\+\_\+nli\+::agents\+::\+Dialogue\+Nli\+Teacher}!id@{id}}
+\index{id@{id}!parlai\+::tasks\+::dialogue\+\_\+nli\+::agents\+::\+Dialogue\+Nli\+Teacher@{parlai\+::tasks\+::dialogue\+\_\+nli\+::agents\+::\+Dialogue\+Nli\+Teacher}}
+\subsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily parlai.\+tasks.\+dialogue\+\_\+nli.\+agents.\+Dialogue\+Nli\+Teacher.\+id}
+
+
+
+Definition at line 51 of file agents.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/tasks/dialogue\+\_\+nli/\hyperlink{parlai_2tasks_2dialogue__nli_2agents_8py}{agents.\+py}\end{DoxyCompactItemize}

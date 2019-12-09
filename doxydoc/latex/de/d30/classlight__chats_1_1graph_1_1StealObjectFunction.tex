@@ -1,0 +1,225 @@
+\hypertarget{classlight__chats_1_1graph_1_1StealObjectFunction}{}\section{light\+\_\+chats.\+graph.\+Steal\+Object\+Function Class Reference}
+\label{classlight__chats_1_1graph_1_1StealObjectFunction}\index{light\+\_\+chats.\+graph.\+Steal\+Object\+Function@{light\+\_\+chats.\+graph.\+Steal\+Object\+Function}}
+
+
+Inheritance diagram for light\+\_\+chats.\+graph.\+Steal\+Object\+Function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{d2/dc8/classlight__chats_1_1graph_1_1StealObjectFunction__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for light\+\_\+chats.\+graph.\+Steal\+Object\+Function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{dd/d96/classlight__chats_1_1graph_1_1StealObjectFunction__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1StealObjectFunction_a388f35f7fac6a0b0814254867c0509c4}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self)
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1StealObjectFunction_a229fafa57d40e38da54a4b04947e2fe0}{func} (self, graph, args)
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1StealObjectFunction_a96475b7b415e03eb52d9efee518e755f}{parse\+\_\+descs\+\_\+to\+\_\+args} (self, graph, args)
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1StealObjectFunction_a1ffe38f920399831ab1fba3cd324c106}{get\+\_\+find\+\_\+fail\+\_\+text} (self, arg\+\_\+idx)
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1StealObjectFunction_a2e77998e7383d823d66f0adc22226ba0}{get\+\_\+reverse} (self, graph, args)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classlight__chats_1_1graph_1_1StealObjectFunction_a07d054e11c32eecd7c93102de254ffec}{formats}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}[Actor, object other agent is carrying, other agent in same room]
+\end{DoxyVerb}
+ 
+
+Definition at line 1514 of file graph.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1StealObjectFunction_a388f35f7fac6a0b0814254867c0509c4}\label{classlight__chats_1_1graph_1_1StealObjectFunction_a388f35f7fac6a0b0814254867c0509c4}} 
+\index{light\+\_\+chats\+::graph\+::\+Steal\+Object\+Function@{light\+\_\+chats\+::graph\+::\+Steal\+Object\+Function}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!light\+\_\+chats\+::graph\+::\+Steal\+Object\+Function@{light\+\_\+chats\+::graph\+::\+Steal\+Object\+Function}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Steal\+Object\+Function.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1519 of file graph.\+py.
+
+
+\begin{DoxyCode}
+1519     \textcolor{keyword}{def }\_\_init\_\_(self):
+1520         super().\_\_init\_\_(
+1521             function\_name=\textcolor{stringliteral}{'steal'},
+1522             possible\_arg\_nums=[2, 3],
+1523             arg\_split\_words=[\textcolor{stringliteral}{'from'}],
+1524             arg\_find\_type=[
+1525                 [\{\}, \{\}],  \textcolor{comment}{# no constraints on the actor}
+1526                 [\{\textcolor{stringliteral}{'type'}: \textcolor{stringliteral}{'all+here'}, \textcolor{stringliteral}{'from'}: 0\}, \{\textcolor{stringliteral}{'type'}: \textcolor{stringliteral}{'carrying'}, \textcolor{stringliteral}{'from'}: 2\}],
+1527                 [\{\textcolor{stringliteral}{'type'}: \textcolor{stringliteral}{'contains'}, \textcolor{stringliteral}{'from'}: 1\}, \{\textcolor{stringliteral}{'type'}: \textcolor{stringliteral}{'all+here'}, \textcolor{stringliteral}{'from'}: 0\}],
+1528             ],
+1529             arg\_constraints=[
+1530                 [],  \textcolor{comment}{# no constraints on the actor}
+1531                 \hyperlink{namespacelight__chats_1_1graph_aa0be6ee7e9f549a7195bea9dfb962ad6}{is\_held\_item}(1),
+1532                 [
+1533                     \{
+1534                         \textcolor{stringliteral}{'type'}: \textcolor{stringliteral}{'is\_type'},
+1535                         \textcolor{stringliteral}{'in\_args'}: [2],
+1536                         \textcolor{stringliteral}{'args'}: [[\textcolor{stringliteral}{'agent'}], \textcolor{stringliteral}{'You can\(\backslash\)'t steal from that.'}],
+1537                     \}
+1538                 ],
+1539             ],
+1540             func\_constraints=[
+1541                 \{
+1542                     \textcolor{stringliteral}{'type'}: \textcolor{stringliteral}{'fits\_in'},
+1543                     \textcolor{stringliteral}{'in\_args'}: [1, 0],
+1544                     \textcolor{stringliteral}{'args'}: [],
+1545                     \textcolor{stringliteral}{'spec\_fail'}: \textcolor{stringliteral}{'cant\_carry'},
+1546                 \}
+1547             ],
+1548             callback\_triggers=[
+1549                 \{\textcolor{stringliteral}{'action'}: \textcolor{stringliteral}{'moved\_to'}, \textcolor{stringliteral}{'args'}: [1, 0]\},
+1550                 \{\textcolor{stringliteral}{'action'}: \textcolor{stringliteral}{'agent\_stole\_from'}, \textcolor{stringliteral}{'args'}: [0, 1, 2]\},
+1551             ],
+1552         )
+1553         self.formats = \{
+1554             \textcolor{stringliteral}{'stole'}: \textcolor{stringliteral}{'\{0\} stole \{1\} from \{2\}. '},
+1555             \textcolor{stringliteral}{'failed'}: \textcolor{stringliteral}{'\{0\} couldn\(\backslash\)'t give that. '},
+1556         \}
+1557 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1StealObjectFunction_a229fafa57d40e38da54a4b04947e2fe0}\label{classlight__chats_1_1graph_1_1StealObjectFunction_a229fafa57d40e38da54a4b04947e2fe0}} 
+\index{light\+\_\+chats\+::graph\+::\+Steal\+Object\+Function@{light\+\_\+chats\+::graph\+::\+Steal\+Object\+Function}!func@{func}}
+\index{func@{func}!light\+\_\+chats\+::graph\+::\+Steal\+Object\+Function@{light\+\_\+chats\+::graph\+::\+Steal\+Object\+Function}}
+\subsubsection{\texorpdfstring{func()}{func()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Steal\+Object\+Function.\+func (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{graph,  }\item[{}]{args }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}<Actor> steals <object> from <agent>
+\end{DoxyVerb}
+ 
+
+Definition at line 1558 of file graph.\+py.
+
+
+\begin{DoxyCode}
+1558     \textcolor{keyword}{def }func(self, graph, args):
+1559         \textcolor{stringliteral}{"""}
+1560 \textcolor{stringliteral}{        <Actor> steals <object> from <agent>}
+1561 \textcolor{stringliteral}{        """}
+1562         agent\_id, object\_id, victim\_id = args[0], args[1], args[2]
+1563         graph.move\_object(object\_id, agent\_id)
+1564         room\_id = graph.location(agent\_id)
+1565         give\_action = \{
+1566             \textcolor{stringliteral}{'caller'}: self.get\_name(),
+1567             \textcolor{stringliteral}{'name'}: \textcolor{stringliteral}{'stole'},
+1568             \textcolor{stringliteral}{'room\_id'}: room\_id,
+1569             \textcolor{stringliteral}{'actors'}: [agent\_id, object\_id, victim\_id],
+1570         \}
+1571         graph.broadcast\_to\_room(give\_action)
+1572         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+1573 
+\end{DoxyCode}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1StealObjectFunction_a1ffe38f920399831ab1fba3cd324c106}\label{classlight__chats_1_1graph_1_1StealObjectFunction_a1ffe38f920399831ab1fba3cd324c106}} 
+\index{light\+\_\+chats\+::graph\+::\+Steal\+Object\+Function@{light\+\_\+chats\+::graph\+::\+Steal\+Object\+Function}!get\+\_\+find\+\_\+fail\+\_\+text@{get\+\_\+find\+\_\+fail\+\_\+text}}
+\index{get\+\_\+find\+\_\+fail\+\_\+text@{get\+\_\+find\+\_\+fail\+\_\+text}!light\+\_\+chats\+::graph\+::\+Steal\+Object\+Function@{light\+\_\+chats\+::graph\+::\+Steal\+Object\+Function}}
+\subsubsection{\texorpdfstring{get\+\_\+find\+\_\+fail\+\_\+text()}{get\_find\_fail\_text()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Steal\+Object\+Function.\+get\+\_\+find\+\_\+fail\+\_\+text (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{arg\+\_\+idx }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1593 of file graph.\+py.
+
+
+\begin{DoxyCode}
+1593     \textcolor{keyword}{def }get\_find\_fail\_text(self, arg\_idx):
+1594         \textcolor{keywordflow}{if} arg\_idx == 1:
+1595             \textcolor{keywordflow}{return} \textcolor{stringliteral}{'They don\(\backslash\)'t have that. '}
+1596         \textcolor{keywordflow}{else}:
+1597             \textcolor{keywordflow}{return} \textcolor{stringliteral}{'They aren\(\backslash\)'t here. '}
+1598 
+\end{DoxyCode}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1StealObjectFunction_a2e77998e7383d823d66f0adc22226ba0}\label{classlight__chats_1_1graph_1_1StealObjectFunction_a2e77998e7383d823d66f0adc22226ba0}} 
+\index{light\+\_\+chats\+::graph\+::\+Steal\+Object\+Function@{light\+\_\+chats\+::graph\+::\+Steal\+Object\+Function}!get\+\_\+reverse@{get\+\_\+reverse}}
+\index{get\+\_\+reverse@{get\+\_\+reverse}!light\+\_\+chats\+::graph\+::\+Steal\+Object\+Function@{light\+\_\+chats\+::graph\+::\+Steal\+Object\+Function}}
+\subsubsection{\texorpdfstring{get\+\_\+reverse()}{get\_reverse()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Steal\+Object\+Function.\+get\+\_\+reverse (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{graph,  }\item[{}]{args }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1599 of file graph.\+py.
+
+
+\begin{DoxyCode}
+1599     \textcolor{keyword}{def }get\_reverse(self, graph, args):
+1600         \textcolor{keywordflow}{return} \textcolor{stringliteral}{'give'}, args
+1601 
+1602 
+\end{DoxyCode}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1StealObjectFunction_a96475b7b415e03eb52d9efee518e755f}\label{classlight__chats_1_1graph_1_1StealObjectFunction_a96475b7b415e03eb52d9efee518e755f}} 
+\index{light\+\_\+chats\+::graph\+::\+Steal\+Object\+Function@{light\+\_\+chats\+::graph\+::\+Steal\+Object\+Function}!parse\+\_\+descs\+\_\+to\+\_\+args@{parse\+\_\+descs\+\_\+to\+\_\+args}}
+\index{parse\+\_\+descs\+\_\+to\+\_\+args@{parse\+\_\+descs\+\_\+to\+\_\+args}!light\+\_\+chats\+::graph\+::\+Steal\+Object\+Function@{light\+\_\+chats\+::graph\+::\+Steal\+Object\+Function}}
+\subsubsection{\texorpdfstring{parse\+\_\+descs\+\_\+to\+\_\+args()}{parse\_descs\_to\_args()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Steal\+Object\+Function.\+parse\+\_\+descs\+\_\+to\+\_\+args (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{graph,  }\item[{}]{args }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1574 of file graph.\+py.
+
+
+\begin{DoxyCode}
+1574     \textcolor{keyword}{def }parse\_descs\_to\_args(self, graph, args):
+1575         \textcolor{comment}{# Append a location for the object, defaulting to the room if the}
+1576         \textcolor{comment}{# immediate container of something can't be found}
+1577         args = [a.lower() \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} args]
+1578         \textcolor{keywordflow}{if} len(args) < 3:
+1579             \textcolor{keywordflow}{try}:
+1580                 object\_ids = graph.desc\_to\_nodes(args[1], args[0], \textcolor{stringliteral}{'all+here'})
+1581                 i = 0
+1582                 container\_id = args[0]
+1583                 \textcolor{comment}{# avoid reflexive matches!}
+1584                 \textcolor{keywordflow}{while} container\_id == args[0]:
+1585                     container\_id = graph.location(object\_ids[i])
+1586                     i += 1
+1587                 container\_name = graph.node\_to\_desc\_raw(container\_id)
+1588                 args.append(container\_name)
+1589             \textcolor{keywordflow}{except} Exception:
+1590                 args.append(graph.node\_to\_desc\_raw(graph.location(args[0])))
+1591         \textcolor{keywordflow}{return} super().parse\_descs\_to\_args(graph, args)
+1592 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1StealObjectFunction_a07d054e11c32eecd7c93102de254ffec}\label{classlight__chats_1_1graph_1_1StealObjectFunction_a07d054e11c32eecd7c93102de254ffec}} 
+\index{light\+\_\+chats\+::graph\+::\+Steal\+Object\+Function@{light\+\_\+chats\+::graph\+::\+Steal\+Object\+Function}!formats@{formats}}
+\index{formats@{formats}!light\+\_\+chats\+::graph\+::\+Steal\+Object\+Function@{light\+\_\+chats\+::graph\+::\+Steal\+Object\+Function}}
+\subsubsection{\texorpdfstring{formats}{formats}}
+{\footnotesize\ttfamily light\+\_\+chats.\+graph.\+Steal\+Object\+Function.\+formats}
+
+
+
+Definition at line 1553 of file graph.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/mturk/tasks/light/light\+\_\+chats/\hyperlink{parlai_2mturk_2tasks_2light_2light__chats_2graph_8py}{graph.\+py}\end{DoxyCompactItemize}

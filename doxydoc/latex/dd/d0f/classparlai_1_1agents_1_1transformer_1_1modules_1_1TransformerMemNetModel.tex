@@ -1,0 +1,396 @@
+\hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel}{}\section{parlai.\+agents.\+transformer.\+modules.\+Transformer\+Mem\+Net\+Model Class Reference}
+\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel}\index{parlai.\+agents.\+transformer.\+modules.\+Transformer\+Mem\+Net\+Model@{parlai.\+agents.\+transformer.\+modules.\+Transformer\+Mem\+Net\+Model}}
+
+
+Inheritance diagram for parlai.\+agents.\+transformer.\+modules.\+Transformer\+Mem\+Net\+Model\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{d4/d02/classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+agents.\+transformer.\+modules.\+Transformer\+Mem\+Net\+Model\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{d8/de9/classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a0b1598bb8f1a8b899c00af25044ffe9c}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a293a7995da2bc66087db07ba4669fb35}{opt}, dictionary)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a1e39cdf6357c9e8dd9f90e7f351e42a1}{encode\+\_\+cand} (self, words)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a12c6c4a26be5401e61c43ec4aa886812}{encode\+\_\+context\+\_\+memory} (self, context\+\_\+w, memories\+\_\+w, context\+\_\+segments=None)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a8c27f924c01b5017c7968b9d98969496}{forward} (self, xs, mems, cands, context\+\_\+segments=None)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a293a7995da2bc66087db07ba4669fb35}{opt}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_ab70ecab55a92126804e165d745642142}{pad\+\_\+idx}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_aa776378904d1ffd3148e330036230713}{embeddings}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a92d7385aa1b2603fa03ed2f5ad7f66be}{share\+\_\+word\+\_\+embedding}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a6c12d979c4ce2a21f9a756e7ccc6e7e5}{cand\+\_\+embeddings}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a3211cf5e4f390d5cf0f7598a7b789985}{reduction\+\_\+type}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a9ac6c75642035a573f9ac123ee302403}{n\+\_\+segments}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a899a125583f6fbf7f4809c2744162ac9}{context\+\_\+encoder}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_adf42f25f3ae4564f531835aeec39bb5f}{cand\+\_\+encoder}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a6d1a5e20639c71de7a60e63b88238784}{memory\+\_\+transformer}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a95c72e762694a7017243bfcf0b37a1e7}{attender}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Model which takes context, memories, candidates and encodes them.
+\end{DoxyVerb}
+ 
+
+Definition at line 138 of file modules.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a0b1598bb8f1a8b899c00af25044ffe9c}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a0b1598bb8f1a8b899c00af25044ffe9c}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+modules.\+Transformer\+Mem\+Net\+Model.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{dictionary }\end{DoxyParamCaption})}
+
+
+
+Definition at line 143 of file modules.\+py.
+
+
+\begin{DoxyCode}
+143     \textcolor{keyword}{def }\_\_init\_\_(self, opt, dictionary):
+144         super().\_\_init\_\_()
+145         self.opt = opt
+146         self.pad\_idx = dictionary[dictionary.null\_token]
+147 
+148         \textcolor{comment}{# set up embeddings}
+149         self.embeddings = \_create\_embeddings(
+150             dictionary, opt[\textcolor{stringliteral}{'embedding\_size'}], self.pad\_idx
+151         )
+152 
+153         self.share\_word\_embedding = opt.get(\textcolor{stringliteral}{'share\_word\_embeddings'}, \textcolor{keyword}{True})
+154         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.share\_word\_embedding:
+155             self.cand\_embeddings = \_create\_embeddings(
+156                 dictionary, opt[\textcolor{stringliteral}{'embedding\_size'}], self.pad\_idx
+157             )
+158 
+159         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} opt.get(\textcolor{stringliteral}{'learn\_embeddings'}):
+160             self.embeddings.weight.requires\_grad = \textcolor{keyword}{False}
+161             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.share\_word\_embedding:
+162                 self.cand\_embeddings.weight.requires\_grad = \textcolor{keyword}{False}
+163 
+164         n\_positions = \hyperlink{namespaceparlai_1_1agents_1_1transformer_1_1modules_ab67607512c597ddd54f2b60a1a1eaf4c}{get\_n\_positions\_from\_options}(opt)
+165 
+166         \textcolor{keywordflow}{if} n\_positions < 0:
+167             \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{'n\_positions must be positive'})
+168 
+169         self.reduction\_type = opt.get(\textcolor{stringliteral}{'reduction\_type'}, \textcolor{stringliteral}{'mean'})
+170         self.n\_segments = opt.get(\textcolor{stringliteral}{'n\_segments'}, 0)
+171 
+172         self.context\_encoder = \_build\_encoder(
+173             opt,
+174             dictionary,
+175             self.embeddings,
+176             self.pad\_idx,
+177             reduction\_type=self.reduction\_type,
+178             n\_positions=n\_positions,
+179             n\_segments=self.n\_segments,
+180         )
+181 
+182         \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'share\_encoders'}):
+183             self.cand\_encoder = TransformerResponseWrapper(
+184                 self.context\_encoder, self.context\_encoder.out\_dim
+185             )
+186         \textcolor{keywordflow}{else}:
+187             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.share\_word\_embedding:
+188                 cand\_embeddings = self.cand\_embeddings
+189             \textcolor{keywordflow}{else}:
+190                 cand\_embeddings = self.embeddings
+191             self.cand\_encoder = \_build\_encoder(
+192                 opt,
+193                 dictionary,
+194                 cand\_embeddings,
+195                 self.pad\_idx,
+196                 n\_positions=n\_positions,
+197                 reduction\_type=self.reduction\_type,
+198                 n\_segments=self.n\_segments,
+199             )
+200 
+201         \textcolor{comment}{# build memory encoder}
+202         \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'wrap\_memory\_encoder'}, \textcolor{keyword}{False}):
+203             self.memory\_transformer = TransformerResponseWrapper(
+204                 self.context\_encoder, self.context\_encoder.out\_dim
+205             )
+206         \textcolor{keywordflow}{else}:
+207             self.memory\_transformer = self.context\_encoder
+208 
+209         self.attender = BasicAttention(
+210             dim=2, attn=opt[\textcolor{stringliteral}{'memory\_attention'}], residual=\textcolor{keyword}{True}
+211         )
+212 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a1e39cdf6357c9e8dd9f90e7f351e42a1}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a1e39cdf6357c9e8dd9f90e7f351e42a1}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}!encode\+\_\+cand@{encode\+\_\+cand}}
+\index{encode\+\_\+cand@{encode\+\_\+cand}!parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}}
+\subsubsection{\texorpdfstring{encode\+\_\+cand()}{encode\_cand()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+modules.\+Transformer\+Mem\+Net\+Model.\+encode\+\_\+cand (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{words }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Encode the candidates.
+\end{DoxyVerb}
+ 
+
+Definition at line 213 of file modules.\+py.
+
+
+\begin{DoxyCode}
+213     \textcolor{keyword}{def }encode\_cand(self, words):
+214         \textcolor{stringliteral}{"""}
+215 \textcolor{stringliteral}{        Encode the candidates.}
+216 \textcolor{stringliteral}{        """}
+217         \textcolor{keywordflow}{if} words \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+218             \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}
+219 
+220         \textcolor{comment}{# flatten if there are many candidates}
+221         \textcolor{keywordflow}{if} words.dim() == 3:
+222             oldshape = words.shape
+223             words = words.reshape(oldshape[0] * oldshape[1], oldshape[2])
+224         \textcolor{keywordflow}{else}:
+225             oldshape = \textcolor{keywordtype}{None}
+226 
+227         encoded = self.cand\_encoder(words)
+228 
+229         \textcolor{keywordflow}{if} oldshape \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+230             encoded = encoded.reshape(oldshape[0], oldshape[1], -1)
+231 
+232         \textcolor{keywordflow}{return} encoded
+233 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a12c6c4a26be5401e61c43ec4aa886812}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a12c6c4a26be5401e61c43ec4aa886812}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}!encode\+\_\+context\+\_\+memory@{encode\+\_\+context\+\_\+memory}}
+\index{encode\+\_\+context\+\_\+memory@{encode\+\_\+context\+\_\+memory}!parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}}
+\subsubsection{\texorpdfstring{encode\+\_\+context\+\_\+memory()}{encode\_context\_memory()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+modules.\+Transformer\+Mem\+Net\+Model.\+encode\+\_\+context\+\_\+memory (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{context\+\_\+w,  }\item[{}]{memories\+\_\+w,  }\item[{}]{context\+\_\+segments = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Encode the context and memories.
+\end{DoxyVerb}
+ 
+
+Definition at line 234 of file modules.\+py.
+
+
+\begin{DoxyCode}
+234     \textcolor{keyword}{def }encode\_context\_memory(self, context\_w, memories\_w, context\_segments=None):
+235         \textcolor{stringliteral}{"""}
+236 \textcolor{stringliteral}{        Encode the context and memories.}
+237 \textcolor{stringliteral}{        """}
+238         \textcolor{comment}{# [batch, d]}
+239         \textcolor{keywordflow}{if} context\_w \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+240             \textcolor{comment}{# it's possible that only candidates were passed into the}
+241             \textcolor{comment}{# forward function, return None here for LHS representation}
+242             \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}, \textcolor{keywordtype}{None}
+243 
+244         context\_h = self.context\_encoder(context\_w, segments=context\_segments)
+245 
+246         \textcolor{keywordflow}{if} memories\_w \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+247             \textcolor{keywordflow}{return} [], context\_h
+248 
+249         bsz = memories\_w.size(0)
+250         memories\_w = memories\_w.view(-1, memories\_w.size(-1))
+251         memories\_h = self.memory\_transformer(memories\_w)
+252         memories\_h = memories\_h.view(bsz, -1, memories\_h.size(-1))
+253 
+254         context\_h = context\_h.unsqueeze(1)
+255         context\_h, weights = self.attender(context\_h, memories\_h)
+256 
+257         \textcolor{keywordflow}{return} weights, context\_h
+258 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a8c27f924c01b5017c7968b9d98969496}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a8c27f924c01b5017c7968b9d98969496}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}!forward@{forward}}
+\index{forward@{forward}!parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}}
+\subsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+modules.\+Transformer\+Mem\+Net\+Model.\+forward (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{xs,  }\item[{}]{mems,  }\item[{}]{cands,  }\item[{}]{context\+\_\+segments = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Forward pass.
+
+:param LongTensor[batch,seqlen] xs: input tokens IDs
+:param LongTensor[batch,num_mems,seqlen] mems: memory token IDs
+:param LongTensor[batch,num_cands,seqlen] cands: candidate token IDs
+:param LongTensor[batch,seqlen] context_segments: segment IDs for xs,
+    used if n_segments is > 0 for the context encoder
+\end{DoxyVerb}
+ 
+
+Definition at line 259 of file modules.\+py.
+
+
+\begin{DoxyCode}
+259     \textcolor{keyword}{def }forward(self, xs, mems, cands, context\_segments=None):
+260         \textcolor{stringliteral}{"""}
+261 \textcolor{stringliteral}{        Forward pass.}
+262 \textcolor{stringliteral}{}
+263 \textcolor{stringliteral}{        :param LongTensor[batch,seqlen] xs: input tokens IDs}
+264 \textcolor{stringliteral}{        :param LongTensor[batch,num\_mems,seqlen] mems: memory token IDs}
+265 \textcolor{stringliteral}{        :param LongTensor[batch,num\_cands,seqlen] cands: candidate token IDs}
+266 \textcolor{stringliteral}{        :param LongTensor[batch,seqlen] context\_segments: segment IDs for xs,}
+267 \textcolor{stringliteral}{            used if n\_segments is > 0 for the context encoder}
+268 \textcolor{stringliteral}{        """}
+269         \textcolor{comment}{# encode the context and memories together}
+270         weights, context\_h = self.encode\_context\_memory(
+271             xs, mems, context\_segments=context\_segments
+272         )
+273         \textcolor{comment}{# encode the candidates}
+274         cands\_h = self.encode\_cand(cands)
+275 
+276         \textcolor{comment}{# possibly normalize the context and candidate representations}
+277         \textcolor{keywordflow}{if} self.opt[\textcolor{stringliteral}{'normalize\_sent\_emb'}]:
+278             context\_h = context\_h / context\_h.norm(2, dim=1, keepdim=\textcolor{keyword}{True})
+279             cands\_h = cands\_h / cands\_h.norm(2, dim=1, keepdim=\textcolor{keyword}{True})
+280 
+281         \textcolor{keywordflow}{return} context\_h, cands\_h
+282 
+283 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a95c72e762694a7017243bfcf0b37a1e7}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a95c72e762694a7017243bfcf0b37a1e7}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}!attender@{attender}}
+\index{attender@{attender}!parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}}
+\subsubsection{\texorpdfstring{attender}{attender}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+Transformer\+Mem\+Net\+Model.\+attender}
+
+
+
+Definition at line 209 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a6c12d979c4ce2a21f9a756e7ccc6e7e5}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a6c12d979c4ce2a21f9a756e7ccc6e7e5}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}!cand\+\_\+embeddings@{cand\+\_\+embeddings}}
+\index{cand\+\_\+embeddings@{cand\+\_\+embeddings}!parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}}
+\subsubsection{\texorpdfstring{cand\+\_\+embeddings}{cand\_embeddings}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+Transformer\+Mem\+Net\+Model.\+cand\+\_\+embeddings}
+
+
+
+Definition at line 155 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_adf42f25f3ae4564f531835aeec39bb5f}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_adf42f25f3ae4564f531835aeec39bb5f}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}!cand\+\_\+encoder@{cand\+\_\+encoder}}
+\index{cand\+\_\+encoder@{cand\+\_\+encoder}!parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}}
+\subsubsection{\texorpdfstring{cand\+\_\+encoder}{cand\_encoder}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+Transformer\+Mem\+Net\+Model.\+cand\+\_\+encoder}
+
+
+
+Definition at line 183 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a899a125583f6fbf7f4809c2744162ac9}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a899a125583f6fbf7f4809c2744162ac9}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}!context\+\_\+encoder@{context\+\_\+encoder}}
+\index{context\+\_\+encoder@{context\+\_\+encoder}!parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}}
+\subsubsection{\texorpdfstring{context\+\_\+encoder}{context\_encoder}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+Transformer\+Mem\+Net\+Model.\+context\+\_\+encoder}
+
+
+
+Definition at line 172 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_aa776378904d1ffd3148e330036230713}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_aa776378904d1ffd3148e330036230713}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}!embeddings@{embeddings}}
+\index{embeddings@{embeddings}!parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}}
+\subsubsection{\texorpdfstring{embeddings}{embeddings}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+Transformer\+Mem\+Net\+Model.\+embeddings}
+
+
+
+Definition at line 149 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a6d1a5e20639c71de7a60e63b88238784}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a6d1a5e20639c71de7a60e63b88238784}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}!memory\+\_\+transformer@{memory\+\_\+transformer}}
+\index{memory\+\_\+transformer@{memory\+\_\+transformer}!parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}}
+\subsubsection{\texorpdfstring{memory\+\_\+transformer}{memory\_transformer}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+Transformer\+Mem\+Net\+Model.\+memory\+\_\+transformer}
+
+
+
+Definition at line 203 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a9ac6c75642035a573f9ac123ee302403}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a9ac6c75642035a573f9ac123ee302403}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}!n\+\_\+segments@{n\+\_\+segments}}
+\index{n\+\_\+segments@{n\+\_\+segments}!parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}}
+\subsubsection{\texorpdfstring{n\+\_\+segments}{n\_segments}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+Transformer\+Mem\+Net\+Model.\+n\+\_\+segments}
+
+
+
+Definition at line 170 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a293a7995da2bc66087db07ba4669fb35}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a293a7995da2bc66087db07ba4669fb35}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}!opt@{opt}}
+\index{opt@{opt}!parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}}
+\subsubsection{\texorpdfstring{opt}{opt}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+Transformer\+Mem\+Net\+Model.\+opt}
+
+
+
+Definition at line 145 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_ab70ecab55a92126804e165d745642142}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_ab70ecab55a92126804e165d745642142}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}!pad\+\_\+idx@{pad\+\_\+idx}}
+\index{pad\+\_\+idx@{pad\+\_\+idx}!parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}}
+\subsubsection{\texorpdfstring{pad\+\_\+idx}{pad\_idx}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+Transformer\+Mem\+Net\+Model.\+pad\+\_\+idx}
+
+
+
+Definition at line 146 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a3211cf5e4f390d5cf0f7598a7b789985}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a3211cf5e4f390d5cf0f7598a7b789985}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}!reduction\+\_\+type@{reduction\+\_\+type}}
+\index{reduction\+\_\+type@{reduction\+\_\+type}!parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}}
+\subsubsection{\texorpdfstring{reduction\+\_\+type}{reduction\_type}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+Transformer\+Mem\+Net\+Model.\+reduction\+\_\+type}
+
+
+
+Definition at line 169 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a92d7385aa1b2603fa03ed2f5ad7f66be}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerMemNetModel_a92d7385aa1b2603fa03ed2f5ad7f66be}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}!share\+\_\+word\+\_\+embedding@{share\+\_\+word\+\_\+embedding}}
+\index{share\+\_\+word\+\_\+embedding@{share\+\_\+word\+\_\+embedding}!parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Mem\+Net\+Model}}
+\subsubsection{\texorpdfstring{share\+\_\+word\+\_\+embedding}{share\_word\_embedding}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+Transformer\+Mem\+Net\+Model.\+share\+\_\+word\+\_\+embedding}
+
+
+
+Definition at line 153 of file modules.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/agents/transformer/\hyperlink{parlai_2agents_2transformer_2modules_8py}{modules.\+py}\end{DoxyCompactItemize}

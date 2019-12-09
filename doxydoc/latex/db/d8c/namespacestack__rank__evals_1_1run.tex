@@ -1,0 +1,309 @@
+\hypertarget{namespacestack__rank__evals_1_1run}{}\section{stack\+\_\+rank\+\_\+evals.\+run Namespace Reference}
+\label{namespacestack__rank__evals_1_1run}\index{stack\+\_\+rank\+\_\+evals.\+run@{stack\+\_\+rank\+\_\+evals.\+run}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacestack__rank__evals_1_1run_a5e968ebe737f4f8e703b5be5bec893bf}{main} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespacestack__rank__evals_1_1run_a7da608ae54872ed1fb55c4c87600cf99}{round\+\_\+choices}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacestack__rank__evals_1_1run_a5e968ebe737f4f8e703b5be5bec893bf}\label{namespacestack__rank__evals_1_1run_a5e968ebe737f4f8e703b5be5bec893bf}} 
+\index{stack\+\_\+rank\+\_\+evals\+::run@{stack\+\_\+rank\+\_\+evals\+::run}!main@{main}}
+\index{main@{main}!stack\+\_\+rank\+\_\+evals\+::run@{stack\+\_\+rank\+\_\+evals\+::run}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def stack\+\_\+rank\+\_\+evals.\+run.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Human Evaluation of various responses to comments on images.
+
+A turker is shown an image and some dialog history. Then, the
+turker is asked to choose which response they think is more engaging.
+
+If no `--eval-data-path` is given, the data from the original
+Image-Chat dataset is used.
+
+To use your own data, please specify `--eval-data-path`, a path to an
+appropriate json file with a list of examples, where each example
+has the following structure:
+    {
+        'image_hash': <hash of image>,
+        'dialog': [(personality, text), ...] - list of personality, text tuples
+        'personality': <personality of responses to compare>
+        '<compare_key_1>': <first response to compare>,
+        '<compare_key_2>': <second option to compare>,
+        .
+        .
+        .
+    }
+Note that compare_key_1 and compare_key_2 can be any field, as long as they
+map to a string response.
+
+Example Scenario:
+    Suppose you have the original Image-Chat dataset, and
+    you would like to compare the outputs of your model called `model`.
+
+    Your data may look like the following:
+    [{
+        'image_hash': hashforimageofcat,
+        'dialog': [
+            ('Sweet', 'What a cute cat!'),
+            ('Neutral', 'Just looks like a plain cat to me')
+        ]
+        'personality': 'Sweet',
+        'comment': 'It really is adorable if you look!', # Human Comment
+        'model_comment': 'You'll love it if you pet it!' # Model Comment
+    }, ...]
+
+    Thus, you would specify `-ck1 comment -ck2 model_comment` to evaluate
+    the outputs of the model vs. the human comments from Personality-Captions
+\end{DoxyVerb}
+
+
+\begin{DoxyVerb}Human Evaluation of various image captions/comments.
+
+A turker is shown an image and two possible comments/captions, and
+optionally the personality used to create these captions. Then, the
+turker is asked to choose which caption they think is more engaging.
+
+In this example, we will just be comparing the original comment twice
+(this is just to demonstrate the task for future use).
+
+To use your own data, please specify `--eval-data-path` to an
+appropriate json file with a list of examples, where each example
+has the following structure:
+    {
+        'image_hash': <hash of image>,
+        'personality': <personality, if applicable>,
+        '<compare_key_1>': <first option to compare>,
+        '<compare_key_2>': <second option to compare>,
+        .
+        .
+        .
+    }
+Note that compare_key_1 and compare_key_2 can be any field, as long as they
+map to a string comment/caption.
+
+Example Scenario:
+    Suppose you have the original Personality-Captions dataset, and
+    you would like to compare the outputs of your model called `model`.
+
+    Your data may look like the following:
+    [{
+        'image_hash': hashforimageofcat,
+        'personality': 'Sweet',
+        'comment': 'Look at the cute cat!', # Human Comment
+        'model_comment': 'That's a weird looking dog' # Model Comment
+    }, ...]
+
+    Thus, you would specify `-ck1 comment -ck2 model_comment` to evaluate
+    the outputs of the model vs. the human comments from Personality-Captions
+\end{DoxyVerb}
+ 
+
+Definition at line 21 of file run.\+py.
+
+
+\begin{DoxyCode}
+21 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1run_ad3ab2c71f8083c3112815c0b363d316b}{main}():
+22     \textcolor{stringliteral}{"""}
+23 \textcolor{stringliteral}{    Human Evaluation of various responses to comments on images.}
+24 \textcolor{stringliteral}{}
+25 \textcolor{stringliteral}{    A turker is shown an image and some dialog history. Then, the}
+26 \textcolor{stringliteral}{    turker is asked to choose which response they think is more engaging.}
+27 \textcolor{stringliteral}{}
+28 \textcolor{stringliteral}{    If no `--eval-data-path` is given, the data from the original}
+29 \textcolor{stringliteral}{    Image-Chat dataset is used.}
+30 \textcolor{stringliteral}{}
+31 \textcolor{stringliteral}{    To use your own data, please specify `--eval-data-path`, a path to an}
+32 \textcolor{stringliteral}{    appropriate json file with a list of examples, where each example}
+33 \textcolor{stringliteral}{    has the following structure:}
+34 \textcolor{stringliteral}{        \{}
+35 \textcolor{stringliteral}{            'image\_hash': <hash of image>,}
+36 \textcolor{stringliteral}{            'dialog': [(personality, text), ...] - list of personality, text tuples}
+37 \textcolor{stringliteral}{            'personality': <personality of responses to compare>}
+38 \textcolor{stringliteral}{            '<compare\_key\_1>': <first response to compare>,}
+39 \textcolor{stringliteral}{            '<compare\_key\_2>': <second option to compare>,}
+40 \textcolor{stringliteral}{            .}
+41 \textcolor{stringliteral}{            .}
+42 \textcolor{stringliteral}{            .}
+43 \textcolor{stringliteral}{        \}}
+44 \textcolor{stringliteral}{    Note that compare\_key\_1 and compare\_key\_2 can be any field, as long as they}
+45 \textcolor{stringliteral}{    map to a string response.}
+46 \textcolor{stringliteral}{}
+47 \textcolor{stringliteral}{    Example Scenario:}
+48 \textcolor{stringliteral}{        Suppose you have the original Image-Chat dataset, and}
+49 \textcolor{stringliteral}{        you would like to compare the outputs of your model called `model`.}
+50 \textcolor{stringliteral}{}
+51 \textcolor{stringliteral}{        Your data may look like the following:}
+52 \textcolor{stringliteral}{        [\{}
+53 \textcolor{stringliteral}{            'image\_hash': hashforimageofcat,}
+54 \textcolor{stringliteral}{            'dialog': [}
+55 \textcolor{stringliteral}{                ('Sweet', 'What a cute cat!'),}
+56 \textcolor{stringliteral}{                ('Neutral', 'Just looks like a plain cat to me')}
+57 \textcolor{stringliteral}{            ]}
+58 \textcolor{stringliteral}{            'personality': 'Sweet',}
+59 \textcolor{stringliteral}{            'comment': 'It really is adorable if you look!', # Human Comment}
+60 \textcolor{stringliteral}{            'model\_comment': 'You'll love it if you pet it!' # Model Comment}
+61 \textcolor{stringliteral}{        \}, ...]}
+62 \textcolor{stringliteral}{}
+63 \textcolor{stringliteral}{        Thus, you would specify `-ck1 comment -ck2 model\_comment` to evaluate}
+64 \textcolor{stringliteral}{        the outputs of the model vs. the human comments from Personality-Captions}
+65 \textcolor{stringliteral}{    """}
+66     argparser = ParlaiParser(\textcolor{keyword}{False}, \textcolor{keyword}{False})
+67     argparser.add\_parlai\_data\_path()
+68     argparser.add\_mturk\_args()
+69     argparser.add\_argument(
+70         \textcolor{stringliteral}{'-min\_t'}, \textcolor{stringliteral}{'--min\_turns'}, default=3, type=int, help=\textcolor{stringliteral}{'minimum number of turns'}
+71     )
+72     argparser.add\_argument(
+73         \textcolor{stringliteral}{'-mt'}, \textcolor{stringliteral}{'--max\_turns'}, default=5, type=int, help=\textcolor{stringliteral}{'maximal number of chat turns'}
+74     )
+75     argparser.add\_argument(
+76         \textcolor{stringliteral}{'-mx\_rsp\_time'},
+77         \textcolor{stringliteral}{'--max\_resp\_time'},
+78         default=1800,
+79         type=int,
+80         help=\textcolor{stringliteral}{'time limit for entering a dialog message'},
+81     )
+82     argparser.add\_argument(
+83         \textcolor{stringliteral}{'-mx\_onb\_time'},
+84         \textcolor{stringliteral}{'--max\_onboard\_time'},
+85         type=int,
+86         default=300,
+87         help=\textcolor{stringliteral}{'time limit for turker'} \textcolor{stringliteral}{'in onboarding'},
+88     )
+89     argparser.add\_argument(
+90         \textcolor{stringliteral}{'-ni'},
+91         \textcolor{stringliteral}{'--num\_images'},
+92         type=int,
+93         default=10,
+94         help=\textcolor{stringliteral}{'number of images to show \(\backslash\)}
+95 \textcolor{stringliteral}{                           to turker'},
+96     )
+97     argparser.add\_argument(
+98         \textcolor{stringliteral}{'--auto-approve-delay'},
+99         type=int,
+100         default=3600 * 24,
+101         help=\textcolor{stringliteral}{'how long to wait for  \(\backslash\)}
+102 \textcolor{stringliteral}{                           auto approval'},
+103     )
+104     argparser.add\_argument(
+105         \textcolor{stringliteral}{'--data-path'}, type=str, default=\textcolor{stringliteral}{''}, help=\textcolor{stringliteral}{'where to save data'}
+106     )
+107     argparser.add\_argument(
+108         \textcolor{stringliteral}{'--eval-data-path'},
+109         type=str,
+110         default=\textcolor{stringliteral}{''},
+111         help=\textcolor{stringliteral}{'where to load data to rank from. Leave '} \textcolor{stringliteral}{'blank to use Image-Chat data'},
+112     )
+113     argparser.add\_argument(
+114         \textcolor{stringliteral}{'-ck1'},
+115         \textcolor{stringliteral}{'--compare-key-1'},
+116         type=str,
+117         default=\textcolor{stringliteral}{'comment'},
+118         help=\textcolor{stringliteral}{'key of first comparable'},
+119     )
+120     argparser.add\_argument(
+121         \textcolor{stringliteral}{'-ck2'},
+122         \textcolor{stringliteral}{'--compare-key-2'},
+123         type=str,
+124         default=\textcolor{stringliteral}{'comment'},
+125         help=\textcolor{stringliteral}{'key of first comparable'},
+126     )
+127     argparser.add\_argument(
+128         \textcolor{stringliteral}{'-rnd'},
+129         \textcolor{stringliteral}{'--dialog-round'},
+130         type=str,
+131         default=\textcolor{stringliteral}{'first\_response'},
+132         choices=round\_choices,
+133         help=\textcolor{stringliteral}{'which dialog round to show'},
+134     )
+135     argparser.add\_argument(
+136         \textcolor{stringliteral}{'--show-personality'},
+137         default=\textcolor{keyword}{True},
+138         type=\textcolor{stringliteral}{'bool'},
+139         help=\textcolor{stringliteral}{'whether to show the personality'},
+140     )
+141     ImageChatTeacher.add\_cmdline\_args(argparser)
+142     opt = argparser.parse\_args()
+143     build\_ic(opt)
+144     directory\_path = os.path.dirname(os.path.abspath(\_\_file\_\_))
+145     opt[\textcolor{stringliteral}{'task'}] = os.path.basename(directory\_path)
+146     \textcolor{keywordflow}{if} \textcolor{stringliteral}{'data\_path'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} opt \textcolor{keywordflow}{or} opt[\textcolor{stringliteral}{'data\_path'}] == \textcolor{stringliteral}{''}:
+147         opt[\textcolor{stringliteral}{'data\_path'}] = os.getcwd() + \textcolor{stringliteral}{'/data/'} + opt[\textcolor{stringliteral}{'task'}]
+148     \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'eval\_data\_path'}) == \textcolor{stringliteral}{''}:
+149         opt[\textcolor{stringliteral}{'eval\_data\_path'}] = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'image\_chat/test.json'})
+150     config = config\_first \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'dialog\_round'}] == \textcolor{stringliteral}{'first\_response'} \textcolor{keywordflow}{else} config\_second
+151     opt.update(config)
+152 
+153     mturk\_agent\_ids = [CHOOSER]
+154     mturk\_manager = MTurkManager(opt=opt, mturk\_agent\_ids=mturk\_agent\_ids)
+155 
+156     example\_generator = ExampleGenerator(opt)
+157     mturk\_manager.setup\_server(task\_directory\_path=directory\_path)
+158 
+159     \textcolor{keywordflow}{try}:
+160         mturk\_manager.start\_new\_run()
+161 
+162         \textcolor{keyword}{def }run\_onboard(worker):
+163             worker.example\_generator = example\_generator
+164             world = RoleOnboardWorld(opt, worker)
+165             world.parley()
+166             world.shutdown()
+167 
+168         mturk\_manager.set\_onboard\_function(onboard\_function=run\_onboard)
+169         mturk\_manager.ready\_to\_accept\_workers()
+170         mturk\_manager.create\_hits()
+171 
+172         \textcolor{keyword}{def }check\_worker\_eligibility(worker):
+173             \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+174 
+175         \textcolor{keyword}{def }assign\_worker\_roles(workers):
+176             \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} workers:
+177                 w.id = mturk\_agent\_ids[0]
+178 
+179         \textcolor{keyword}{def }run\_conversation(mturk\_manager, opt, workers):
+180             agents = workers[:]
+181             conv\_idx = mturk\_manager.conversation\_index
+182             world = MTurkImageChatStackRankWorld(
+183                 opt, agents=agents, world\_tag=\textcolor{stringliteral}{'conversation t\_\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(conv\_idx)
+184             )
+185             \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} world.episode\_done():
+186                 world.parley()
+187             world.save\_data()
+188 
+189             world.shutdown()
+190             world.review\_work()
+191 
+192         mturk\_manager.start\_task(
+193             eligibility\_function=check\_worker\_eligibility,
+194             assign\_role\_function=assign\_worker\_roles,
+195             task\_function=run\_conversation,
+196         )
+197 
+198     \textcolor{keywordflow}{except} BaseException:
+199         \textcolor{keywordflow}{raise}
+200     \textcolor{keywordflow}{finally}:
+201         mturk\_manager.expire\_all\_unassigned\_hits()
+202         mturk\_manager.shutdown()
+203 
+204 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespacestack__rank__evals_1_1run_a7da608ae54872ed1fb55c4c87600cf99}\label{namespacestack__rank__evals_1_1run_a7da608ae54872ed1fb55c4c87600cf99}} 
+\index{stack\+\_\+rank\+\_\+evals\+::run@{stack\+\_\+rank\+\_\+evals\+::run}!round\+\_\+choices@{round\+\_\+choices}}
+\index{round\+\_\+choices@{round\+\_\+choices}!stack\+\_\+rank\+\_\+evals\+::run@{stack\+\_\+rank\+\_\+evals\+::run}}
+\subsubsection{\texorpdfstring{round\+\_\+choices}{round\_choices}}
+{\footnotesize\ttfamily stack\+\_\+rank\+\_\+evals.\+run.\+round\+\_\+choices}
+
+
+
+Definition at line 18 of file run.\+py.
+

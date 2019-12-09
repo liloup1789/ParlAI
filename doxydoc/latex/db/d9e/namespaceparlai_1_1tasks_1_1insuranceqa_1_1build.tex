@@ -1,0 +1,80 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1insuranceqa_1_1build}{}\section{parlai.\+tasks.\+insuranceqa.\+build Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1insuranceqa_1_1build}\index{parlai.\+tasks.\+insuranceqa.\+build@{parlai.\+tasks.\+insuranceqa.\+build}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classparlai_1_1tasks_1_1insuranceqa_1_1build_1_1ParseInsuranceQA}{Parse\+Insurance\+QA}
+\item 
+class \hyperlink{classparlai_1_1tasks_1_1insuranceqa_1_1build_1_1ParseInsuranceQAV1}{Parse\+Insurance\+Q\+A\+V1}
+\item 
+class \hyperlink{classparlai_1_1tasks_1_1insuranceqa_1_1build_1_1ParseInsuranceQAV2}{Parse\+Insurance\+Q\+A\+V2}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1insuranceqa_1_1build_ae48219c5a8158e6688a2b3dba93a99a2}{build} (opt)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+list \hyperlink{namespaceparlai_1_1tasks_1_1insuranceqa_1_1build_ab0ec3ef6da60bb6f79d7345f2fe18985}{R\+E\+S\+O\+U\+R\+C\+ES}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1insuranceqa_1_1build_ae48219c5a8158e6688a2b3dba93a99a2}\label{namespaceparlai_1_1tasks_1_1insuranceqa_1_1build_ae48219c5a8158e6688a2b3dba93a99a2}} 
+\index{parlai\+::tasks\+::insuranceqa\+::build@{parlai\+::tasks\+::insuranceqa\+::build}!build@{build}}
+\index{build@{build}!parlai\+::tasks\+::insuranceqa\+::build@{parlai\+::tasks\+::insuranceqa\+::build}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+insuranceqa.\+build.\+build (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 222 of file build.\+py.
+
+
+\begin{DoxyCode}
+222 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
+223     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'InsuranceQA'})
+224     version = \textcolor{stringliteral}{'1'}
+225 
+226     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version\_string=version):
+227         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+228         \textcolor{keywordflow}{if} build\_data.built(dpath):
+229             \textcolor{comment}{# An older version exists, so remove these outdated files.}
+230             build\_data.remove\_dir(dpath)
+231         build\_data.make\_dir(dpath)
+232 
+233         \textcolor{comment}{# Download the data.}
+234         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES:
+235             downloadable\_file.download\_file(dpath)
+236 
+237         ParseInsuranceQAV1.build(dpath)
+238         ParseInsuranceQAV2.build(dpath)
+239 
+240         \textcolor{comment}{# Mark the data as built.}
+241         build\_data.mark\_done(dpath, version\_string=version)
+242 \end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1insuranceqa_1_1build_ab0ec3ef6da60bb6f79d7345f2fe18985}\label{namespaceparlai_1_1tasks_1_1insuranceqa_1_1build_ab0ec3ef6da60bb6f79d7345f2fe18985}} 
+\index{parlai\+::tasks\+::insuranceqa\+::build@{parlai\+::tasks\+::insuranceqa\+::build}!R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}}
+\index{R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}!parlai\+::tasks\+::insuranceqa\+::build@{parlai\+::tasks\+::insuranceqa\+::build}}
+\subsubsection{\texorpdfstring{R\+E\+S\+O\+U\+R\+C\+ES}{RESOURCES}}
+{\footnotesize\ttfamily list parlai.\+tasks.\+insuranceqa.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+1 =  [
+2     DownloadableFile(
+3         \textcolor{stringliteral}{'https://github.com/shuzi/insuranceQA/archive/master.zip'},
+4         \textcolor{stringliteral}{'insuranceqa.zip'},
+5         \textcolor{stringliteral}{'53e1c4a68734c6a0955dcba50d5a2a9926004d4cd4cda2e988cc7b990a250fbf'},
+6     )
+7 ]
+\end{DoxyCode}
+
+
+Definition at line 213 of file build.\+py.
+

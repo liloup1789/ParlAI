@@ -1,0 +1,216 @@
+\hypertarget{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v1}{}\section{parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+utils\+\_\+v1 Namespace Reference}
+\label{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v1}\index{parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+utils\+\_\+v1@{parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+utils\+\_\+v1}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v1_a17553492abb2e671bc3fc58e1e3a96b0}{set\+\_\+namedtuple\+\_\+defaults} (namedtuple, default=None)
+\item 
+def \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v1_adb5a414ae439f14c54e8c760b91cc4c8}{padded\+\_\+tensor} (items, pad\+\_\+idx=0, use\+\_\+cuda=False, left\+\_\+padded=False, max\+\_\+len=None)
+\item 
+def \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v1_a1521e559b740f741ebb47b8755202bb2}{argsort} (keys, lists, descending=False)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v1_ab1b867624df2a08ba94de6bd5a7acca4}{N\+E\+A\+R\+\_\+\+I\+NF} = 1e20
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v1_a1521e559b740f741ebb47b8755202bb2}\label{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v1_a1521e559b740f741ebb47b8755202bb2}} 
+\index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::utils\+\_\+v1@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::utils\+\_\+v1}!argsort@{argsort}}
+\index{argsort@{argsort}!parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::utils\+\_\+v1@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::utils\+\_\+v1}}
+\subsubsection{\texorpdfstring{argsort()}{argsort()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+utils\+\_\+v1.\+argsort (\begin{DoxyParamCaption}\item[{}]{keys,  }\item[{}]{lists,  }\item[{}]{descending = {\ttfamily False} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Reorder each list in lists by the (descending) sorted order of keys.
+
+:param iter keys: Keys to order by.
+:param list[list] lists: Lists to reordered by keys's order.
+                         Correctly handles lists and 1-D tensors.
+:param bool descending: Use descending order if true.
+
+:returns: The reordered items.
+\end{DoxyVerb}
+ 
+
+Definition at line 105 of file utils\+\_\+v1.\+py.
+
+
+\begin{DoxyCode}
+105 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v1_a1521e559b740f741ebb47b8755202bb2}{argsort}(keys, *lists, descending=False):
+106     \textcolor{stringliteral}{"""}
+107 \textcolor{stringliteral}{    Reorder each list in lists by the (descending) sorted order of keys.}
+108 \textcolor{stringliteral}{}
+109 \textcolor{stringliteral}{    :param iter keys: Keys to order by.}
+110 \textcolor{stringliteral}{    :param list[list] lists: Lists to reordered by keys's order.}
+111 \textcolor{stringliteral}{                             Correctly handles lists and 1-D tensors.}
+112 \textcolor{stringliteral}{    :param bool descending: Use descending order if true.}
+113 \textcolor{stringliteral}{}
+114 \textcolor{stringliteral}{    :returns: The reordered items.}
+115 \textcolor{stringliteral}{    """}
+116     ind\_sorted = sorted(range(len(keys)), key=\textcolor{keyword}{lambda} k: keys[k])
+117     \textcolor{keywordflow}{if} descending:
+118         ind\_sorted = list(reversed(ind\_sorted))
+119     output = []
+120     \textcolor{keywordflow}{for} lst \textcolor{keywordflow}{in} lists:
+121         \textcolor{comment}{# watch out in case we don't have torch installed}
+122         \textcolor{keywordflow}{if} \_\_TORCH\_AVAILABLE \textcolor{keywordflow}{and} isinstance(lst, torch.Tensor):
+123             output.append(lst[ind\_sorted])
+124         \textcolor{keywordflow}{else}:
+125             output.append([lst[i] \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} ind\_sorted])
+126     \textcolor{keywordflow}{return} output
+127 \end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v1_adb5a414ae439f14c54e8c760b91cc4c8}\label{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v1_adb5a414ae439f14c54e8c760b91cc4c8}} 
+\index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::utils\+\_\+v1@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::utils\+\_\+v1}!padded\+\_\+tensor@{padded\+\_\+tensor}}
+\index{padded\+\_\+tensor@{padded\+\_\+tensor}!parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::utils\+\_\+v1@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::utils\+\_\+v1}}
+\subsubsection{\texorpdfstring{padded\+\_\+tensor()}{padded\_tensor()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+utils\+\_\+v1.\+padded\+\_\+tensor (\begin{DoxyParamCaption}\item[{}]{items,  }\item[{}]{pad\+\_\+idx = {\ttfamily 0},  }\item[{}]{use\+\_\+cuda = {\ttfamily False},  }\item[{}]{left\+\_\+padded = {\ttfamily False},  }\item[{}]{max\+\_\+len = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Create a right-padded matrix from an uneven list of lists.
+
+Returns (padded, lengths), where padded is the padded matrix, and lengths
+is a list containing the lengths of each row.
+
+Matrix is right-padded (filled to the right) by default, but can be
+left padded if the flag is set to True.
+
+Matrix can also be placed on cuda automatically.
+
+:param list[iter[int]] items: List of items
+:param bool sort: If True, orders by the length
+:param int pad_idx: the value to use for padding
+:param bool use_cuda: if true, places `padded` on GPU
+:param bool left_padded:
+:param int max_len: if None, the max length is the maximum item length
+
+:returns: (padded, lengths) tuple
+:rtype: (Tensor[int64], list[int])
+\end{DoxyVerb}
+ 
+
+Definition at line 41 of file utils\+\_\+v1.\+py.
+
+
+\begin{DoxyCode}
+41 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v1_adb5a414ae439f14c54e8c760b91cc4c8}{padded\_tensor}(items, pad\_idx=0, use\_cuda=False, left\_padded=False, max\_len=None):
+42     \textcolor{stringliteral}{"""}
+43 \textcolor{stringliteral}{    Create a right-padded matrix from an uneven list of lists.}
+44 \textcolor{stringliteral}{}
+45 \textcolor{stringliteral}{    Returns (padded, lengths), where padded is the padded matrix, and lengths}
+46 \textcolor{stringliteral}{    is a list containing the lengths of each row.}
+47 \textcolor{stringliteral}{}
+48 \textcolor{stringliteral}{    Matrix is right-padded (filled to the right) by default, but can be}
+49 \textcolor{stringliteral}{    left padded if the flag is set to True.}
+50 \textcolor{stringliteral}{}
+51 \textcolor{stringliteral}{    Matrix can also be placed on cuda automatically.}
+52 \textcolor{stringliteral}{}
+53 \textcolor{stringliteral}{    :param list[iter[int]] items: List of items}
+54 \textcolor{stringliteral}{    :param bool sort: If True, orders by the length}
+55 \textcolor{stringliteral}{    :param int pad\_idx: the value to use for padding}
+56 \textcolor{stringliteral}{    :param bool use\_cuda: if true, places `padded` on GPU}
+57 \textcolor{stringliteral}{    :param bool left\_padded:}
+58 \textcolor{stringliteral}{    :param int max\_len: if None, the max length is the maximum item length}
+59 \textcolor{stringliteral}{}
+60 \textcolor{stringliteral}{    :returns: (padded, lengths) tuple}
+61 \textcolor{stringliteral}{    :rtype: (Tensor[int64], list[int])}
+62 \textcolor{stringliteral}{    """}
+63     \textcolor{comment}{# hard fail if we don't have torch}
+64     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \_\_TORCH\_AVAILABLE:
+65         \textcolor{keywordflow}{raise} ImportError(
+66             \textcolor{stringliteral}{"Cannot use padded\_tensor without torch; go to http://pytorch.org"}
+67         )
+68 
+69     \textcolor{comment}{# number of items}
+70     n = len(items)
+71     \textcolor{comment}{# length of each item}
+72     lens = [len(item) \textcolor{keywordflow}{for} item \textcolor{keywordflow}{in} items]
+73     \textcolor{comment}{# max in time dimension}
+74     t = max(lens) \textcolor{keywordflow}{if} max\_len \textcolor{keywordflow}{is} \textcolor{keywordtype}{None} \textcolor{keywordflow}{else} max\_len
+75 
+76     \textcolor{comment}{# if input tensors are empty, we should expand to nulls}
+77     t = max(t, 1)
+78 
+79     \textcolor{keywordflow}{if} isinstance(items[0], torch.Tensor):
+80         \textcolor{comment}{# keep type of input tensors, they may already be cuda ones}
+81         output = items[0].new(n, t)
+82     \textcolor{keywordflow}{else}:
+83         output = torch.LongTensor(n, t)
+84     output.fill\_(pad\_idx)
+85 
+86     \textcolor{keywordflow}{for} i, (item, length) \textcolor{keywordflow}{in} enumerate(zip(items, lens)):
+87         \textcolor{keywordflow}{if} length == 0:
+88             \textcolor{comment}{# skip empty items}
+89             \textcolor{keywordflow}{continue}
+90         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} isinstance(item, torch.Tensor):
+91             \textcolor{comment}{# put non-tensors into a tensor}
+92             item = torch.LongTensor(item)
+93         \textcolor{keywordflow}{if} left\_padded:
+94             \textcolor{comment}{# place at end}
+95             output[i, t - length :] = item
+96         \textcolor{keywordflow}{else}:
+97             \textcolor{comment}{# place at beginning}
+98             output[i, :length] = item
+99 
+100     \textcolor{keywordflow}{if} use\_cuda:
+101         output = output.cuda()
+102     \textcolor{keywordflow}{return} output, lens
+103 
+104 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v1_a17553492abb2e671bc3fc58e1e3a96b0}\label{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v1_a17553492abb2e671bc3fc58e1e3a96b0}} 
+\index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::utils\+\_\+v1@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::utils\+\_\+v1}!set\+\_\+namedtuple\+\_\+defaults@{set\+\_\+namedtuple\+\_\+defaults}}
+\index{set\+\_\+namedtuple\+\_\+defaults@{set\+\_\+namedtuple\+\_\+defaults}!parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::utils\+\_\+v1@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::utils\+\_\+v1}}
+\subsubsection{\texorpdfstring{set\+\_\+namedtuple\+\_\+defaults()}{set\_namedtuple\_defaults()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+utils\+\_\+v1.\+set\+\_\+namedtuple\+\_\+defaults (\begin{DoxyParamCaption}\item[{}]{namedtuple,  }\item[{}]{default = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Set *all* of the fields for a given nametuple to a singular value.
+
+Modifies the tuple in place, but returns it anyway.
+
+More info:
+https://stackoverflow.com/a/18348004
+
+:param namedtuple: A constructed collections.namedtuple
+:param default: The default value to set.
+
+:returns: the modified namedtuple
+\end{DoxyVerb}
+ 
+
+Definition at line 23 of file utils\+\_\+v1.\+py.
+
+
+\begin{DoxyCode}
+23 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v1_a17553492abb2e671bc3fc58e1e3a96b0}{set\_namedtuple\_defaults}(namedtuple, default=None):
+24     \textcolor{stringliteral}{"""}
+25 \textcolor{stringliteral}{    Set *all* of the fields for a given nametuple to a singular value.}
+26 \textcolor{stringliteral}{}
+27 \textcolor{stringliteral}{    Modifies the tuple in place, but returns it anyway.}
+28 \textcolor{stringliteral}{}
+29 \textcolor{stringliteral}{    More info:}
+30 \textcolor{stringliteral}{    https://stackoverflow.com/a/18348004}
+31 \textcolor{stringliteral}{}
+32 \textcolor{stringliteral}{    :param namedtuple: A constructed collections.namedtuple}
+33 \textcolor{stringliteral}{    :param default: The default value to set.}
+34 \textcolor{stringliteral}{}
+35 \textcolor{stringliteral}{    :returns: the modified namedtuple}
+36 \textcolor{stringliteral}{    """}
+37     namedtuple.\_\_new\_\_.\_\_defaults\_\_ = (default,) * len(namedtuple.\_fields)
+38     \textcolor{keywordflow}{return} namedtuple
+39 
+40 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v1_ab1b867624df2a08ba94de6bd5a7acca4}\label{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v1_ab1b867624df2a08ba94de6bd5a7acca4}} 
+\index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::utils\+\_\+v1@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::utils\+\_\+v1}!N\+E\+A\+R\+\_\+\+I\+NF@{N\+E\+A\+R\+\_\+\+I\+NF}}
+\index{N\+E\+A\+R\+\_\+\+I\+NF@{N\+E\+A\+R\+\_\+\+I\+NF}!parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::utils\+\_\+v1@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::utils\+\_\+v1}}
+\subsubsection{\texorpdfstring{N\+E\+A\+R\+\_\+\+I\+NF}{NEAR\_INF}}
+{\footnotesize\ttfamily int parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+utils\+\_\+v1.\+N\+E\+A\+R\+\_\+\+I\+NF = 1e20}
+
+
+
+Definition at line 20 of file utils\+\_\+v1.\+py.
+

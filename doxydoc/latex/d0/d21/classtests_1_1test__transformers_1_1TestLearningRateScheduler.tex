@@ -1,0 +1,163 @@
+\hypertarget{classtests_1_1test__transformers_1_1TestLearningRateScheduler}{}\section{tests.\+test\+\_\+transformers.\+Test\+Learning\+Rate\+Scheduler Class Reference}
+\label{classtests_1_1test__transformers_1_1TestLearningRateScheduler}\index{tests.\+test\+\_\+transformers.\+Test\+Learning\+Rate\+Scheduler@{tests.\+test\+\_\+transformers.\+Test\+Learning\+Rate\+Scheduler}}
+
+
+Inheritance diagram for tests.\+test\+\_\+transformers.\+Test\+Learning\+Rate\+Scheduler\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{d2/d51/classtests_1_1test__transformers_1_1TestLearningRateScheduler__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for tests.\+test\+\_\+transformers.\+Test\+Learning\+Rate\+Scheduler\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{d8/d6c/classtests_1_1test__transformers_1_1TestLearningRateScheduler__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classtests_1_1test__transformers_1_1TestLearningRateScheduler_a8c89a354321034bd5717b8e1907cbfeb}{test\+\_\+resuming\+\_\+generator} (self)
+\item 
+def \hyperlink{classtests_1_1test__transformers_1_1TestLearningRateScheduler_a1f6f7d394258d2170c3005e6dffae8a7}{test\+\_\+resuming\+\_\+ranker} (self)
+\item 
+def \hyperlink{classtests_1_1test__transformers_1_1TestLearningRateScheduler_aecccd2d60496f6fcd1fd94846fc5ac3c}{test\+\_\+invsqrt\+\_\+learning\+\_\+rate} (self)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Test learning rate scheduler for both generative and ranking transformers.
+\end{DoxyVerb}
+ 
+
+Definition at line 793 of file test\+\_\+transformers.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtests_1_1test__transformers_1_1TestLearningRateScheduler_aecccd2d60496f6fcd1fd94846fc5ac3c}\label{classtests_1_1test__transformers_1_1TestLearningRateScheduler_aecccd2d60496f6fcd1fd94846fc5ac3c}} 
+\index{tests\+::test\+\_\+transformers\+::\+Test\+Learning\+Rate\+Scheduler@{tests\+::test\+\_\+transformers\+::\+Test\+Learning\+Rate\+Scheduler}!test\+\_\+invsqrt\+\_\+learning\+\_\+rate@{test\+\_\+invsqrt\+\_\+learning\+\_\+rate}}
+\index{test\+\_\+invsqrt\+\_\+learning\+\_\+rate@{test\+\_\+invsqrt\+\_\+learning\+\_\+rate}!tests\+::test\+\_\+transformers\+::\+Test\+Learning\+Rate\+Scheduler@{tests\+::test\+\_\+transformers\+::\+Test\+Learning\+Rate\+Scheduler}}
+\subsubsection{\texorpdfstring{test\+\_\+invsqrt\+\_\+learning\+\_\+rate()}{test\_invsqrt\_learning\_rate()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+transformers.\+Test\+Learning\+Rate\+Scheduler.\+test\+\_\+invsqrt\+\_\+learning\+\_\+rate (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 837 of file test\+\_\+transformers.\+py.
+
+
+\begin{DoxyCode}
+837     \textcolor{keyword}{def }test\_invsqrt\_learning\_rate(self):
+838         args = dict(
+839             task=\textcolor{stringliteral}{'integration\_tests:candidate'},
+840             model=\textcolor{stringliteral}{'transformer/generator'},
+841             learningrate=1,
+842             batchsize=1,
+843             warmup\_updates=1,
+844             lr\_scheduler=\textcolor{stringliteral}{'invsqrt'},
+845             n\_layers=1,
+846             n\_heads=1,
+847         )
+848 
+849         args[\textcolor{stringliteral}{'num\_epochs'}] = 9 / 500
+850         args[\textcolor{stringliteral}{'validation\_every\_n\_epochs'}] = 9 / 500
+851         stdout1, valid1, test1 = testing\_utils.train\_model(args)
+852         args[\textcolor{stringliteral}{'num\_epochs'}] = 16 / 500
+853         args[\textcolor{stringliteral}{'validation\_every\_n\_epochs'}] = 16 / 500
+854         stdout2, valid2, test2 = testing\_utils.train\_model(args)
+855 
+856         self.assertAlmostEqual(
+857             valid1[\textcolor{stringliteral}{'lr'}],
+858             1 / 3,
+859             msg=\textcolor{stringliteral}{'Invsqrt LR \{\} was not 1/3 at step 9'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(valid1[\textcolor{stringliteral}{'lr'}]),
+860             delta=0.001,
+861         )
+862         self.assertAlmostEqual(
+863             valid2[\textcolor{stringliteral}{'lr'}],
+864             1 / 4,
+865             msg=\textcolor{stringliteral}{'Invsqrt LR \{\} was not 1/4 at step 16'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(valid2[\textcolor{stringliteral}{'lr'}]),
+866             delta=0.001,
+867         )
+868 
+869 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__transformers_1_1TestLearningRateScheduler_a8c89a354321034bd5717b8e1907cbfeb}\label{classtests_1_1test__transformers_1_1TestLearningRateScheduler_a8c89a354321034bd5717b8e1907cbfeb}} 
+\index{tests\+::test\+\_\+transformers\+::\+Test\+Learning\+Rate\+Scheduler@{tests\+::test\+\_\+transformers\+::\+Test\+Learning\+Rate\+Scheduler}!test\+\_\+resuming\+\_\+generator@{test\+\_\+resuming\+\_\+generator}}
+\index{test\+\_\+resuming\+\_\+generator@{test\+\_\+resuming\+\_\+generator}!tests\+::test\+\_\+transformers\+::\+Test\+Learning\+Rate\+Scheduler@{tests\+::test\+\_\+transformers\+::\+Test\+Learning\+Rate\+Scheduler}}
+\subsubsection{\texorpdfstring{test\+\_\+resuming\+\_\+generator()}{test\_resuming\_generator()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+transformers.\+Test\+Learning\+Rate\+Scheduler.\+test\+\_\+resuming\+\_\+generator (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Test generators resume correctly.
+\end{DoxyVerb}
+ 
+
+Definition at line 798 of file test\+\_\+transformers.\+py.
+
+
+\begin{DoxyCode}
+798     \textcolor{keyword}{def }test\_resuming\_generator(self):
+799         \textcolor{stringliteral}{"""}
+800 \textcolor{stringliteral}{        Test generators resume correctly.}
+801 \textcolor{stringliteral}{        """}
+802         GENERATOR\_ARGS = dict(
+803             task=\textcolor{stringliteral}{'integration\_tests:nocandidate'},
+804             model=\textcolor{stringliteral}{'transformer/generator'},
+805             optimizer=\textcolor{stringliteral}{'adamax'},
+806             learningrate=1e-3,
+807             batchsize=32,
+808             num\_epochs=1,
+809             n\_layers=1,
+810             n\_heads=1,
+811             ffn\_size=32,
+812             embedding\_size=32,
+813             skip\_generation=\textcolor{keyword}{True},
+814             warmup\_updates=1,
+815         )
+816         \hyperlink{namespacetests_1_1test__transformers_a8d6cf0022229f5deba37f23f30601117}{test\_learning\_rate\_resuming}(self, GENERATOR\_ARGS)
+817 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__transformers_1_1TestLearningRateScheduler_a1f6f7d394258d2170c3005e6dffae8a7}\label{classtests_1_1test__transformers_1_1TestLearningRateScheduler_a1f6f7d394258d2170c3005e6dffae8a7}} 
+\index{tests\+::test\+\_\+transformers\+::\+Test\+Learning\+Rate\+Scheduler@{tests\+::test\+\_\+transformers\+::\+Test\+Learning\+Rate\+Scheduler}!test\+\_\+resuming\+\_\+ranker@{test\+\_\+resuming\+\_\+ranker}}
+\index{test\+\_\+resuming\+\_\+ranker@{test\+\_\+resuming\+\_\+ranker}!tests\+::test\+\_\+transformers\+::\+Test\+Learning\+Rate\+Scheduler@{tests\+::test\+\_\+transformers\+::\+Test\+Learning\+Rate\+Scheduler}}
+\subsubsection{\texorpdfstring{test\+\_\+resuming\+\_\+ranker()}{test\_resuming\_ranker()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+transformers.\+Test\+Learning\+Rate\+Scheduler.\+test\+\_\+resuming\+\_\+ranker (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Test resuming learning rate for the ranker.
+\end{DoxyVerb}
+ 
+
+Definition at line 818 of file test\+\_\+transformers.\+py.
+
+
+\begin{DoxyCode}
+818     \textcolor{keyword}{def }test\_resuming\_ranker(self):
+819         \textcolor{stringliteral}{"""}
+820 \textcolor{stringliteral}{        Test resuming learning rate for the ranker.}
+821 \textcolor{stringliteral}{        """}
+822         RANKER\_ARGS = dict(
+823             task=\textcolor{stringliteral}{'integration\_tests:candidate'},
+824             model=\textcolor{stringliteral}{'transformer/ranker'},
+825             optimizer=\textcolor{stringliteral}{'adamax'},
+826             learningrate=1e-3,
+827             batchsize=32,
+828             num\_epochs=1,
+829             n\_layers=1,
+830             n\_heads=1,
+831             ffn\_size=32,
+832             embedding\_size=32,
+833             warmup\_updates=1,
+834         )
+835         \hyperlink{namespacetests_1_1test__transformers_a8d6cf0022229f5deba37f23f30601117}{test\_learning\_rate\_resuming}(self, RANKER\_ARGS)
+836 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+tests/\hyperlink{test__transformers_8py}{test\+\_\+transformers.\+py}\end{DoxyCompactItemize}

@@ -1,0 +1,360 @@
+\hypertarget{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent}{}\section{parlai.\+agents.\+transformer.\+transformer.\+Transformer\+Ranker\+Agent Class Reference}
+\label{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent}\index{parlai.\+agents.\+transformer.\+transformer.\+Transformer\+Ranker\+Agent@{parlai.\+agents.\+transformer.\+transformer.\+Transformer\+Ranker\+Agent}}
+
+
+Inheritance diagram for parlai.\+agents.\+transformer.\+transformer.\+Transformer\+Ranker\+Agent\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{df/d72/classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+agents.\+transformer.\+transformer.\+Transformer\+Ranker\+Agent\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{d4/d3a/classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_a6836668a4c2394d7217631fed533a7ac}{add\+\_\+cmdline\+\_\+args} (cls, argparser)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_a677c14e106614404f5c5f8605b90ce3e}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1core_1_1torch__agent_1_1TorchAgent_a785bb920cf8c8afc3e9bf6a8b77e335a}{opt}, shared=None)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_a3336fdab2d667e6e631135ec70e8558f}{build\+\_\+model} (self, states=None)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_af91ef63ee5c7f7588a75e32587364c80}{build\+\_\+criterion} (self)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_a2592aa2dc8469ab671656597b4ba48a8}{batchify} (self, obs\+\_\+batch, sort=False)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_a76ba1a57647f32877fce85a064952c5d}{vectorize} (self, args, kwargs)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_a6067345dff7fefda2809ea3bd63cd8fd}{encode\+\_\+candidates} (self, padded\+\_\+cands)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_af1af764f534c04a7bc98f11b3fe8f6ca}{score\+\_\+candidates} (self, batch, cand\+\_\+vecs, cand\+\_\+encs=None)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_a1698ffc6dff7a16e6ea4835b1463266c}{data\+\_\+parallel}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_a0c4c885014349e9a9b07da029b211be4}{model}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Transformer Ranker Agent.
+
+Implementation of a TorchRankerAgent, where the model is a Transformer
+\end{DoxyVerb}
+ 
+
+Definition at line 117 of file transformer.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_a677c14e106614404f5c5f8605b90ce3e}\label{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_a677c14e106614404f5c5f8605b90ce3e}} 
+\index{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent@{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent@{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+transformer.\+Transformer\+Ranker\+Agent.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{shared = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 186 of file transformer.\+py.
+
+
+\begin{DoxyCode}
+186     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
+187         super().\_\_init\_\_(opt, shared)
+188         self.data\_parallel = opt.get(\textcolor{stringliteral}{'data\_parallel'}) \textcolor{keywordflow}{and} self.use\_cuda
+189         \textcolor{keywordflow}{if} self.data\_parallel:
+190             \textcolor{keyword}{from} \hyperlink{namespaceparlai_1_1utils_1_1distributed}{parlai.utils.distributed} \textcolor{keyword}{import} is\_distributed
+191 
+192             \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a023acb5e3b66e1f27e21247c35661279}{is\_distributed}():
+193                 \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{'Cannot combine --data-parallel and distributed mode'})
+194             self.model = torch.nn.DataParallel(self.model)
+195 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_a6836668a4c2394d7217631fed533a7ac}\label{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_a6836668a4c2394d7217631fed533a7ac}} 
+\index{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent@{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent}!add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}}
+\index{add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}!parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent@{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent}}
+\subsubsection{\texorpdfstring{add\+\_\+cmdline\+\_\+args()}{add\_cmdline\_args()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+transformer.\+Transformer\+Ranker\+Agent.\+add\+\_\+cmdline\+\_\+args (\begin{DoxyParamCaption}\item[{}]{cls,  }\item[{}]{argparser }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Add command-line arguments specifically for this agent.
+\end{DoxyVerb}
+ 
+
+Definition at line 125 of file transformer.\+py.
+
+
+\begin{DoxyCode}
+125     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(cls, argparser):
+126         \textcolor{stringliteral}{"""}
+127 \textcolor{stringliteral}{        Add command-line arguments specifically for this agent.}
+128 \textcolor{stringliteral}{        """}
+129         super(TransformerRankerAgent, cls).\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(argparser)
+130         agent = argparser.add\_argument\_group(\textcolor{stringliteral}{'Transformer Arguments'})
+131         \hyperlink{namespaceparlai_1_1agents_1_1transformer_1_1transformer_a916bc49d43dc0e244d24c47956c621ca}{add\_common\_cmdline\_args}(agent)
+132         \textcolor{comment}{# memory and knowledge arguments}
+133         agent.add\_argument(
+134             \textcolor{stringliteral}{'--use-memories'},
+135             type=\textcolor{stringliteral}{'bool'},
+136             default=\textcolor{keyword}{False},
+137             help=\textcolor{stringliteral}{'use memories: must implement the function '}
+138             \textcolor{stringliteral}{'`\_vectorize\_memories` to use this'},
+139         )
+140         agent.add\_argument(
+141             \textcolor{stringliteral}{'--wrap-memory-encoder'},
+142             type=\textcolor{stringliteral}{'bool'},
+143             default=\textcolor{keyword}{False},
+144             help=\textcolor{stringliteral}{'wrap memory encoder with MLP'},
+145         )
+146         agent.add\_argument(
+147             \textcolor{stringliteral}{'--memory-attention'},
+148             type=str,
+149             default=\textcolor{stringliteral}{'sqrt'},
+150             choices=[\textcolor{stringliteral}{'cosine'}, \textcolor{stringliteral}{'dot'}, \textcolor{stringliteral}{'sqrt'}],
+151             help=\textcolor{stringliteral}{'similarity for basic attention mechanism'}
+152             \textcolor{stringliteral}{'when using transformer to encode memories'},
+153         )
+154         \textcolor{comment}{# model specific arguments}
+155         agent.add\_argument(\textcolor{stringliteral}{'--normalize-sent-emb'}, type=\textcolor{stringliteral}{'bool'}, default=\textcolor{keyword}{False})
+156         agent.add\_argument(\textcolor{stringliteral}{'--share-encoders'}, type=\textcolor{stringliteral}{'bool'}, default=\textcolor{keyword}{True})
+157         argparser.add\_argument(
+158             \textcolor{stringliteral}{'--share-word-embeddings'},
+159             type=\textcolor{stringliteral}{'bool'},
+160             default=\textcolor{keyword}{True},
+161             help=\textcolor{stringliteral}{'Share word embeddings table for candidate and context'}
+162             \textcolor{stringliteral}{'in the memory network'},
+163         )
+164         agent.add\_argument(
+165             \textcolor{stringliteral}{'--learn-embeddings'}, type=\textcolor{stringliteral}{'bool'}, default=\textcolor{keyword}{True}, help=\textcolor{stringliteral}{'learn embeddings'}
+166         )
+167         agent.add\_argument(
+168             \textcolor{stringliteral}{'--data-parallel'},
+169             type=\textcolor{stringliteral}{'bool'},
+170             default=\textcolor{keyword}{False},
+171             help=\textcolor{stringliteral}{'use model in data parallel, requires '} \textcolor{stringliteral}{'multiple gpus'},
+172         )
+173         agent.add\_argument(
+174             \textcolor{stringliteral}{'--reduction-type'},
+175             type=str,
+176             default=\textcolor{stringliteral}{'mean'},
+177             choices=[\textcolor{stringliteral}{'first'}, \textcolor{stringliteral}{'max'}, \textcolor{stringliteral}{'mean'}],
+178             help=\textcolor{stringliteral}{'Type of reduction at the end of transformer'},
+179         )
+180 
+181         argparser.set\_defaults(learningrate=0.0001, optimizer=\textcolor{stringliteral}{'adamax'}, truncate=1024)
+182         cls.dictionary\_class().\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(argparser)
+183 
+184         \textcolor{keywordflow}{return} agent
+185 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_a2592aa2dc8469ab671656597b4ba48a8}\label{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_a2592aa2dc8469ab671656597b4ba48a8}} 
+\index{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent@{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent}!batchify@{batchify}}
+\index{batchify@{batchify}!parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent@{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent}}
+\subsubsection{\texorpdfstring{batchify()}{batchify()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+transformer.\+Transformer\+Ranker\+Agent.\+batchify (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{obs\+\_\+batch,  }\item[{}]{sort = {\ttfamily False} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Override so that we can add memories to the Batch object.
+\end{DoxyVerb}
+ 
+
+Definition at line 221 of file transformer.\+py.
+
+
+\begin{DoxyCode}
+221     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_aca22dd97c5b6dcda2a7479c1cb22ef1e}{batchify}(self, obs\_batch, sort=False):
+222         \textcolor{stringliteral}{"""}
+223 \textcolor{stringliteral}{        Override so that we can add memories to the Batch object.}
+224 \textcolor{stringliteral}{        """}
+225         batch = super().\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_aca22dd97c5b6dcda2a7479c1cb22ef1e}{batchify}(obs\_batch, sort)
+226         \textcolor{keywordflow}{if} self.opt[\textcolor{stringliteral}{'use\_memories'}]:
+227             valid\_obs = [(i, ex) \textcolor{keywordflow}{for} i, ex \textcolor{keywordflow}{in} enumerate(obs\_batch) \textcolor{keywordflow}{if} self.is\_valid(ex)]
+228             valid\_inds, exs = zip(*valid\_obs)
+229             mems = \textcolor{keywordtype}{None}
+230             \textcolor{keywordflow}{if} any(\textcolor{stringliteral}{'memory\_vecs'} \textcolor{keywordflow}{in} ex \textcolor{keywordflow}{for} ex \textcolor{keywordflow}{in} exs):
+231                 mems = [ex.get(\textcolor{stringliteral}{'memory\_vecs'}, \textcolor{keywordtype}{None}) \textcolor{keywordflow}{for} ex \textcolor{keywordflow}{in} exs]
+232             batch.memory\_vecs = mems
+233         \textcolor{keywordflow}{return} batch
+234 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_af91ef63ee5c7f7588a75e32587364c80}\label{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_af91ef63ee5c7f7588a75e32587364c80}} 
+\index{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent@{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent}!build\+\_\+criterion@{build\+\_\+criterion}}
+\index{build\+\_\+criterion@{build\+\_\+criterion}!parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent@{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent}}
+\subsubsection{\texorpdfstring{build\+\_\+criterion()}{build\_criterion()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+transformer.\+Transformer\+Ranker\+Agent.\+build\+\_\+criterion (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Build and return criterion, favoring average instead of sum for the loss.
+\end{DoxyVerb}
+ 
+
+Definition at line 215 of file transformer.\+py.
+
+
+\begin{DoxyCode}
+215     \textcolor{keyword}{def }build\_criterion(self):
+216         \textcolor{stringliteral}{"""}
+217 \textcolor{stringliteral}{        Build and return criterion, favoring average instead of sum for the loss.}
+218 \textcolor{stringliteral}{        """}
+219         \textcolor{keywordflow}{return} torch.nn.CrossEntropyLoss(reduction=\textcolor{stringliteral}{'mean'})
+220 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_a3336fdab2d667e6e631135ec70e8558f}\label{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_a3336fdab2d667e6e631135ec70e8558f}} 
+\index{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent@{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent}!build\+\_\+model@{build\+\_\+model}}
+\index{build\+\_\+model@{build\+\_\+model}!parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent@{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent}}
+\subsubsection{\texorpdfstring{build\+\_\+model()}{build\_model()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+transformer.\+Transformer\+Ranker\+Agent.\+build\+\_\+model (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{states = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Build and return model.
+\end{DoxyVerb}
+ 
+
+Definition at line 206 of file transformer.\+py.
+
+
+\begin{DoxyCode}
+206     \textcolor{keyword}{def }build\_model(self, states=None):
+207         \textcolor{stringliteral}{"""}
+208 \textcolor{stringliteral}{        Build and return model.}
+209 \textcolor{stringliteral}{        """}
+210         model = TransformerMemNetModel(self.opt, self.dict)
+211         \textcolor{keywordflow}{if} self.opt[\textcolor{stringliteral}{'embedding\_type'}] != \textcolor{stringliteral}{'random'}:
+212             self.\_copy\_embeddings(model.embeddings.weight, self.opt[\textcolor{stringliteral}{'embedding\_type'}])
+213         \textcolor{keywordflow}{return} model
+214 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_a6067345dff7fefda2809ea3bd63cd8fd}\label{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_a6067345dff7fefda2809ea3bd63cd8fd}} 
+\index{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent@{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent}!encode\+\_\+candidates@{encode\+\_\+candidates}}
+\index{encode\+\_\+candidates@{encode\+\_\+candidates}!parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent@{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent}}
+\subsubsection{\texorpdfstring{encode\+\_\+candidates()}{encode\_candidates()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+transformer.\+Transformer\+Ranker\+Agent.\+encode\+\_\+candidates (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{padded\+\_\+cands }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Encode candidates.
+\end{DoxyVerb}
+ 
+
+Definition at line 252 of file transformer.\+py.
+
+
+\begin{DoxyCode}
+252     \textcolor{keyword}{def }encode\_candidates(self, padded\_cands):
+253         \textcolor{stringliteral}{"""}
+254 \textcolor{stringliteral}{        Encode candidates.}
+255 \textcolor{stringliteral}{        """}
+256         \_, cands = self.model(xs=\textcolor{keywordtype}{None}, mems=\textcolor{keywordtype}{None}, cands=padded\_cands)
+257 
+258         \textcolor{keywordflow}{return} cands
+259 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_af1af764f534c04a7bc98f11b3fe8f6ca}\label{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_af1af764f534c04a7bc98f11b3fe8f6ca}} 
+\index{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent@{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent}!score\+\_\+candidates@{score\+\_\+candidates}}
+\index{score\+\_\+candidates@{score\+\_\+candidates}!parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent@{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent}}
+\subsubsection{\texorpdfstring{score\+\_\+candidates()}{score\_candidates()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+transformer.\+Transformer\+Ranker\+Agent.\+score\+\_\+candidates (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{batch,  }\item[{}]{cand\+\_\+vecs,  }\item[{}]{cand\+\_\+encs = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Score candidates.
+\end{DoxyVerb}
+ 
+
+Definition at line 260 of file transformer.\+py.
+
+
+\begin{DoxyCode}
+260     \textcolor{keyword}{def }score\_candidates(self, batch, cand\_vecs, cand\_encs=None):
+261         \textcolor{stringliteral}{"""}
+262 \textcolor{stringliteral}{        Score candidates.}
+263 \textcolor{stringliteral}{        """}
+264         \textcolor{comment}{# convoluted check that not all memories are empty}
+265         \textcolor{keywordflow}{if} (
+266             self.opt[\textcolor{stringliteral}{'use\_memories'}]
+267             \textcolor{keywordflow}{and} batch.memory\_vecs \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}
+268             \textcolor{keywordflow}{and} sum(len(m) \textcolor{keywordflow}{for} m \textcolor{keywordflow}{in} batch.memory\_vecs)
+269         ):
+270             mems = \hyperlink{namespaceparlai_1_1utils_1_1misc_ad96b0c9ef6237d9ca051251089faf2c7}{padded\_3d}(
+271                 batch.memory\_vecs, use\_cuda=self.use\_cuda, pad\_idx=self.NULL\_IDX
+272             )
+273         \textcolor{keywordflow}{else}:
+274             mems = \textcolor{keywordtype}{None}
+275 
+276         \textcolor{keywordflow}{if} cand\_encs \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+277             \textcolor{comment}{# we pre-encoded the candidates, do not re-encode here}
+278             cand\_vecs = \textcolor{keywordtype}{None}
+279 
+280         context\_h, cands\_h = self.model(xs=batch.text\_vec, mems=mems, cands=cand\_vecs)
+281 
+282         \textcolor{keywordflow}{if} cand\_encs \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+283             cands\_h = cand\_encs
+284         scores = self.\_score(context\_h, cands\_h)
+285 
+286         \textcolor{keywordflow}{return} scores
+287 
+288 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_a76ba1a57647f32877fce85a064952c5d}\label{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_a76ba1a57647f32877fce85a064952c5d}} 
+\index{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent@{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent}!vectorize@{vectorize}}
+\index{vectorize@{vectorize}!parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent@{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent}}
+\subsubsection{\texorpdfstring{vectorize()}{vectorize()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+transformer.\+Transformer\+Ranker\+Agent.\+vectorize (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{args,  }\item[{}]{kwargs }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Override to include vectorization of memories.
+\end{DoxyVerb}
+ 
+
+Definition at line 241 of file transformer.\+py.
+
+
+\begin{DoxyCode}
+241     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_a5c76cc39e3014c7bcf9199d566dbdc0f}{vectorize}(self, *args, **kwargs):
+242         \textcolor{stringliteral}{"""}
+243 \textcolor{stringliteral}{        Override to include vectorization of memories.}
+244 \textcolor{stringliteral}{        """}
+245         kwargs[\textcolor{stringliteral}{'add\_start'}] = \textcolor{keyword}{False}
+246         kwargs[\textcolor{stringliteral}{'add\_end'}] = \textcolor{keyword}{False}
+247         obs = super().\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_a5c76cc39e3014c7bcf9199d566dbdc0f}{vectorize}(*args, **kwargs)
+248         \textcolor{keywordflow}{if} self.opt[\textcolor{stringliteral}{'use\_memories'}]:
+249             obs = self.\_vectorize\_memories(obs)
+250         \textcolor{keywordflow}{return} obs
+251 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_a1698ffc6dff7a16e6ea4835b1463266c}\label{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_a1698ffc6dff7a16e6ea4835b1463266c}} 
+\index{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent@{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent}!data\+\_\+parallel@{data\+\_\+parallel}}
+\index{data\+\_\+parallel@{data\+\_\+parallel}!parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent@{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent}}
+\subsubsection{\texorpdfstring{data\+\_\+parallel}{data\_parallel}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+transformer.\+Transformer\+Ranker\+Agent.\+data\+\_\+parallel}
+
+
+
+Definition at line 188 of file transformer.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_a0c4c885014349e9a9b07da029b211be4}\label{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent_a0c4c885014349e9a9b07da029b211be4}} 
+\index{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent@{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent}!model@{model}}
+\index{model@{model}!parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent@{parlai\+::agents\+::transformer\+::transformer\+::\+Transformer\+Ranker\+Agent}}
+\subsubsection{\texorpdfstring{model}{model}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+transformer.\+Transformer\+Ranker\+Agent.\+model}
+
+
+
+Definition at line 194 of file transformer.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/agents/transformer/\hyperlink{transformer_8py}{transformer.\+py}\end{DoxyCompactItemize}

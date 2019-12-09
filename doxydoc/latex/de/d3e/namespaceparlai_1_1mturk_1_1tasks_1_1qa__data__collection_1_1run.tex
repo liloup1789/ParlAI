@@ -1,0 +1,136 @@
+\hypertarget{namespaceparlai_1_1mturk_1_1tasks_1_1qa__data__collection_1_1run}{}\section{parlai.\+mturk.\+tasks.\+qa\+\_\+data\+\_\+collection.\+run Namespace Reference}
+\label{namespaceparlai_1_1mturk_1_1tasks_1_1qa__data__collection_1_1run}\index{parlai.\+mturk.\+tasks.\+qa\+\_\+data\+\_\+collection.\+run@{parlai.\+mturk.\+tasks.\+qa\+\_\+data\+\_\+collection.\+run}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1qa__data__collection_1_1run_a461bad0b4f8f16a8ea54e7231ad8848b}{main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1tasks_1_1qa__data__collection_1_1run_a461bad0b4f8f16a8ea54e7231ad8848b}\label{namespaceparlai_1_1mturk_1_1tasks_1_1qa__data__collection_1_1run_a461bad0b4f8f16a8ea54e7231ad8848b}} 
+\index{parlai\+::mturk\+::tasks\+::qa\+\_\+data\+\_\+collection\+::run@{parlai\+::mturk\+::tasks\+::qa\+\_\+data\+\_\+collection\+::run}!main@{main}}
+\index{main@{main}!parlai\+::mturk\+::tasks\+::qa\+\_\+data\+\_\+collection\+::run@{parlai\+::mturk\+::tasks\+::qa\+\_\+data\+\_\+collection\+::run}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def parlai.\+mturk.\+tasks.\+qa\+\_\+data\+\_\+collection.\+run.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Handles setting up and running a ParlAI-MTurk task by instantiating an MTurk manager
+and configuring it for the qa_data_collection task.
+\end{DoxyVerb}
+ 
+
+Definition at line 17 of file run.\+py.
+
+
+\begin{DoxyCode}
+17 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1run_ad3ab2c71f8083c3112815c0b363d316b}{main}():
+18     \textcolor{stringliteral}{"""}
+19 \textcolor{stringliteral}{    Handles setting up and running a ParlAI-MTurk task by instantiating an MTurk manager}
+20 \textcolor{stringliteral}{    and configuring it for the qa\_data\_collection task.}
+21 \textcolor{stringliteral}{    """}
+22     \textcolor{comment}{# Get relevant arguments}
+23     argparser = ParlaiParser(\textcolor{keyword}{False}, \textcolor{keyword}{False})
+24     argparser.add\_parlai\_data\_path()
+25     argparser.add\_mturk\_args()
+26     opt = argparser.parse\_args()
+27 
+28     \textcolor{comment}{# Set the task name to be the folder name}
+29     opt[\textcolor{stringliteral}{'task'}] = os.path.basename(os.path.dirname(os.path.abspath(\_\_file\_\_)))
+30 
+31     \textcolor{comment}{# append the contents of task\_config.py to the configuration}
+32     opt.update(task\_config)
+33 
+34     \textcolor{comment}{# Initialize a SQuAD teacher agent, which we will get context from}
+35     module\_name = \textcolor{stringliteral}{'parlai.tasks.squad.agents'}
+36     class\_name = \textcolor{stringliteral}{'DefaultTeacher'}
+37     my\_module = importlib.import\_module(module\_name)
+38     task\_class = getattr(my\_module, class\_name)
+39     task\_opt = opt.copy()
+40     task\_opt[\textcolor{stringliteral}{'datatype'}] = \textcolor{stringliteral}{'train'}
+41     task\_opt[\textcolor{stringliteral}{'datapath'}] = opt[\textcolor{stringliteral}{'datapath'}]
+42 
+43     \textcolor{comment}{# Select an agent\_id that worker agents will be assigned in their world}
+44     mturk\_agent\_id = \textcolor{stringliteral}{'Worker'}
+45 
+46     \textcolor{comment}{# Instantiate an MTurkManager with the given options and a maximum number}
+47     \textcolor{comment}{# of agents per world of 1 (based on the length of mturk\_agent\_ids)}
+48     mturk\_manager = MTurkManager(opt=opt, mturk\_agent\_ids=[mturk\_agent\_id], use\_db=\textcolor{keyword}{True})
+49     mturk\_manager.setup\_server()
+50 
+51     \textcolor{comment}{# Create an onboard\_function, which will be run for workers who have}
+52     \textcolor{comment}{# accepted your task and must be completed before they are put in the}
+53     \textcolor{comment}{# queue for a task world.}
+54     \textcolor{keyword}{def }run\_onboard(worker):
+55         world = QADataCollectionOnboardWorld(opt=opt, mturk\_agent=worker)
+56         \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} world.episode\_done():
+57             world.parley()
+58         world.shutdown()
+59         \textcolor{keywordflow}{return} world.prep\_save\_data([worker])
+60 
+61     \textcolor{comment}{# If we want to use the above onboard function, we can replace the below}
+62     \textcolor{comment}{# with set\_onboard\_function(onboard\_function=run\_onboard)}
+63     mturk\_manager.set\_onboard\_function(onboard\_function=\textcolor{keywordtype}{None})
+64 
+65     \textcolor{keywordflow}{try}:
+66         \textcolor{comment}{# Initialize run information}
+67         mturk\_manager.start\_new\_run()
+68 
+69         \textcolor{comment}{# Set up the sockets and threads to recieve workers}
+70         mturk\_manager.ready\_to\_accept\_workers()
+71 
+72         \textcolor{comment}{# Create the hits as specified by command line arguments}
+73         mturk\_manager.create\_hits()
+74 
+75         \textcolor{comment}{# Check workers eligiblity acts as a filter, and should return}
+76         \textcolor{comment}{# the list of all workers currently eligible to work on the task}
+77         \textcolor{keyword}{def }check\_workers\_eligibility(workers):
+78             \textcolor{keywordflow}{return} workers
+79 
+80         eligibility\_function = \{\textcolor{stringliteral}{'func'}: check\_workers\_eligibility, \textcolor{stringliteral}{'multiple'}: \textcolor{keyword}{True}\}
+81 
+82         \textcolor{comment}{# Assign worker roles is used to determine what the role each worker}
+83         \textcolor{comment}{# in the given worker list will play. Setting `id` to None will return}
+84         \textcolor{comment}{# the worker to the pool rather than putting them in a given task,}
+85         \textcolor{comment}{# which is useful for having tasks with different possible worker}
+86         \textcolor{comment}{# counts.}
+87         \textcolor{keyword}{def }assign\_worker\_roles(workers):
+88             workers[0].id = mturk\_agent\_id
+89 
+90         \textcolor{comment}{# Define the task function, which will be run with workers that are}
+91         \textcolor{comment}{# as the main task.}
+92         \textcolor{keyword}{global} run\_conversation
+93 
+94         \textcolor{keyword}{def }run\_conversation(mturk\_manager, opt, workers):
+95             \textcolor{comment}{# create a task agent to ask the questions}
+96             task = task\_class(task\_opt)
+97             \textcolor{comment}{# Create the task world}
+98             world = QADataCollectionWorld(opt=opt, task=task, mturk\_agent=workers[0])
+99             \textcolor{comment}{# run the world to completion}
+100             \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} world.episode\_done():
+101                 world.parley()
+102 
+103             \textcolor{comment}{# shutdown and review the work}
+104             world.shutdown()
+105             world.review\_work()
+106 
+107             \textcolor{comment}{# Return the contents for saving}
+108             \textcolor{keywordflow}{return} world.prep\_save\_data(workers)
+109 
+110         \textcolor{comment}{# Begin the task, allowing mturk\_manager to start running the task}
+111         \textcolor{comment}{# world on any workers who connect}
+112         mturk\_manager.start\_task(
+113             eligibility\_function=eligibility\_function,
+114             assign\_role\_function=assign\_worker\_roles,
+115             task\_function=run\_conversation,
+116         )
+117     \textcolor{keywordflow}{except} BaseException:
+118         \textcolor{keywordflow}{raise}
+119     \textcolor{keywordflow}{finally}:
+120         \textcolor{comment}{# Any hits that aren't claimed or completed have to be shut down. Must}
+121         \textcolor{comment}{# keep the world running until that point.}
+122         mturk\_manager.expire\_all\_unassigned\_hits()
+123         \textcolor{comment}{# Shutdown the manager and free all related resources}
+124         mturk\_manager.shutdown()
+125 
+126 
+\end{DoxyCode}

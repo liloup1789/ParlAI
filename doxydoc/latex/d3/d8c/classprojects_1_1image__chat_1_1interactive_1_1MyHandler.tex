@@ -1,0 +1,237 @@
+\hypertarget{classprojects_1_1image__chat_1_1interactive_1_1MyHandler}{}\section{projects.\+image\+\_\+chat.\+interactive.\+My\+Handler Class Reference}
+\label{classprojects_1_1image__chat_1_1interactive_1_1MyHandler}\index{projects.\+image\+\_\+chat.\+interactive.\+My\+Handler@{projects.\+image\+\_\+chat.\+interactive.\+My\+Handler}}
+
+
+Inheritance diagram for projects.\+image\+\_\+chat.\+interactive.\+My\+Handler\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=235pt]{df/dd2/classprojects_1_1image__chat_1_1interactive_1_1MyHandler__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for projects.\+image\+\_\+chat.\+interactive.\+My\+Handler\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=235pt]{d6/d99/classprojects_1_1image__chat_1_1interactive_1_1MyHandler__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classprojects_1_1image__chat_1_1interactive_1_1MyHandler_a6db12cd5204d5f4469f8570c7c38d007}{interactive\+\_\+running} (self, data)
+\item 
+def \hyperlink{classprojects_1_1image__chat_1_1interactive_1_1MyHandler_a40845d6fbb9eed68138c9ae1c52d1344}{do\+\_\+\+H\+E\+AD} (self)
+\item 
+def \hyperlink{classprojects_1_1image__chat_1_1interactive_1_1MyHandler_a7dcb1ea02322e970240bd16b605096fd}{do\+\_\+\+P\+O\+ST} (self)
+\item 
+def \hyperlink{classprojects_1_1image__chat_1_1interactive_1_1MyHandler_adfa43f376385fc93432e34306cc93308}{do\+\_\+\+G\+ET} (self)
+\item 
+def \hyperlink{classprojects_1_1image__chat_1_1interactive_1_1MyHandler_af277e2d0f6c00fc1d0d3467c577a20f8}{handle\+\_\+http} (self, status\+\_\+code, path, text=None)
+\item 
+def \hyperlink{classprojects_1_1image__chat_1_1interactive_1_1MyHandler_a8c651ac02abcedfd49fd7b89128ee737}{respond} (self, opts)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Interactive Handler.
+\end{DoxyVerb}
+ 
+
+Definition at line 214 of file interactive.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classprojects_1_1image__chat_1_1interactive_1_1MyHandler_adfa43f376385fc93432e34306cc93308}\label{classprojects_1_1image__chat_1_1interactive_1_1MyHandler_adfa43f376385fc93432e34306cc93308}} 
+\index{projects\+::image\+\_\+chat\+::interactive\+::\+My\+Handler@{projects\+::image\+\_\+chat\+::interactive\+::\+My\+Handler}!do\+\_\+\+G\+ET@{do\+\_\+\+G\+ET}}
+\index{do\+\_\+\+G\+ET@{do\+\_\+\+G\+ET}!projects\+::image\+\_\+chat\+::interactive\+::\+My\+Handler@{projects\+::image\+\_\+chat\+::interactive\+::\+My\+Handler}}
+\subsubsection{\texorpdfstring{do\+\_\+\+G\+E\+T()}{do\_GET()}}
+{\footnotesize\ttfamily def projects.\+image\+\_\+chat.\+interactive.\+My\+Handler.\+do\+\_\+\+G\+ET (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Handle GET.
+\end{DoxyVerb}
+ 
+
+Definition at line 275 of file interactive.\+py.
+
+
+\begin{DoxyCode}
+275     \textcolor{keyword}{def }do\_GET(self):
+276         \textcolor{stringliteral}{"""}
+277 \textcolor{stringliteral}{        Handle GET.}
+278 \textcolor{stringliteral}{        """}
+279         paths = \{
+280             \textcolor{stringliteral}{"/"}: \{\textcolor{stringliteral}{"status"}: 200\},
+281             \textcolor{stringliteral}{"/favicon.ico"}: \{\textcolor{stringliteral}{"status"}: 202\},  \textcolor{comment}{# Need for chrome}
+282         \}
+283         \textcolor{keywordflow}{if} self.path \textcolor{keywordflow}{in} paths:
+284             self.respond(paths[self.path])
+285         \textcolor{keywordflow}{else}:
+286             self.respond(\{\textcolor{stringliteral}{"status"}: 500\})
+287 
+\end{DoxyCode}
+\mbox{\Hypertarget{classprojects_1_1image__chat_1_1interactive_1_1MyHandler_a40845d6fbb9eed68138c9ae1c52d1344}\label{classprojects_1_1image__chat_1_1interactive_1_1MyHandler_a40845d6fbb9eed68138c9ae1c52d1344}} 
+\index{projects\+::image\+\_\+chat\+::interactive\+::\+My\+Handler@{projects\+::image\+\_\+chat\+::interactive\+::\+My\+Handler}!do\+\_\+\+H\+E\+AD@{do\+\_\+\+H\+E\+AD}}
+\index{do\+\_\+\+H\+E\+AD@{do\+\_\+\+H\+E\+AD}!projects\+::image\+\_\+chat\+::interactive\+::\+My\+Handler@{projects\+::image\+\_\+chat\+::interactive\+::\+My\+Handler}}
+\subsubsection{\texorpdfstring{do\+\_\+\+H\+E\+A\+D()}{do\_HEAD()}}
+{\footnotesize\ttfamily def projects.\+image\+\_\+chat.\+interactive.\+My\+Handler.\+do\+\_\+\+H\+E\+AD (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Handle headers.
+\end{DoxyVerb}
+ 
+
+Definition at line 247 of file interactive.\+py.
+
+
+\begin{DoxyCode}
+247     \textcolor{keyword}{def }do\_HEAD(self):
+248         \textcolor{stringliteral}{"""}
+249 \textcolor{stringliteral}{        Handle headers.}
+250 \textcolor{stringliteral}{        """}
+251         self.send\_response(200)
+252         self.send\_header(\textcolor{stringliteral}{"Content-type"}, \textcolor{stringliteral}{"text/html"})
+253         self.end\_headers()
+254 
+\end{DoxyCode}
+\mbox{\Hypertarget{classprojects_1_1image__chat_1_1interactive_1_1MyHandler_a7dcb1ea02322e970240bd16b605096fd}\label{classprojects_1_1image__chat_1_1interactive_1_1MyHandler_a7dcb1ea02322e970240bd16b605096fd}} 
+\index{projects\+::image\+\_\+chat\+::interactive\+::\+My\+Handler@{projects\+::image\+\_\+chat\+::interactive\+::\+My\+Handler}!do\+\_\+\+P\+O\+ST@{do\+\_\+\+P\+O\+ST}}
+\index{do\+\_\+\+P\+O\+ST@{do\+\_\+\+P\+O\+ST}!projects\+::image\+\_\+chat\+::interactive\+::\+My\+Handler@{projects\+::image\+\_\+chat\+::interactive\+::\+My\+Handler}}
+\subsubsection{\texorpdfstring{do\+\_\+\+P\+O\+S\+T()}{do\_POST()}}
+{\footnotesize\ttfamily def projects.\+image\+\_\+chat.\+interactive.\+My\+Handler.\+do\+\_\+\+P\+O\+ST (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Handle POST.
+\end{DoxyVerb}
+ 
+
+Definition at line 255 of file interactive.\+py.
+
+
+\begin{DoxyCode}
+255     \textcolor{keyword}{def }do\_POST(self):
+256         \textcolor{stringliteral}{"""}
+257 \textcolor{stringliteral}{        Handle POST.}
+258 \textcolor{stringliteral}{        """}
+259         \textcolor{keywordflow}{if} self.path != \textcolor{stringliteral}{"/interact"}:
+260             \textcolor{keywordflow}{return} self.respond(\{\textcolor{stringliteral}{"status"}: 500\})
+261         ctype, pdict = cgi.parse\_header(self.headers[\textcolor{stringliteral}{"content-type"}])
+262         pdict[\textcolor{stringliteral}{"boundary"}] = bytes(pdict[\textcolor{stringliteral}{"boundary"}], \textcolor{stringliteral}{"utf-8"})
+263         postvars = cgi.parse\_multipart(self.rfile, pdict)
+264         \textcolor{keywordflow}{if} postvars[\textcolor{stringliteral}{"image"}][0].decode() != \textcolor{stringliteral}{""}:
+265             SHARED[\textcolor{stringliteral}{"dialog\_history"}] = []
+266             SHARED[\textcolor{stringliteral}{"image\_feats"}] = \textcolor{keywordtype}{None}
+267         model\_response = self.interactive\_running(postvars)
+268 
+269         self.send\_response(200)
+270         self.send\_header(\textcolor{stringliteral}{"Content-type"}, \textcolor{stringliteral}{"application/json"})
+271         self.end\_headers()
+272         json\_str = json.dumps(model\_response)
+273         self.wfile.write(bytes(json\_str, \textcolor{stringliteral}{"utf-8"}))
+274 
+\end{DoxyCode}
+\mbox{\Hypertarget{classprojects_1_1image__chat_1_1interactive_1_1MyHandler_af277e2d0f6c00fc1d0d3467c577a20f8}\label{classprojects_1_1image__chat_1_1interactive_1_1MyHandler_af277e2d0f6c00fc1d0d3467c577a20f8}} 
+\index{projects\+::image\+\_\+chat\+::interactive\+::\+My\+Handler@{projects\+::image\+\_\+chat\+::interactive\+::\+My\+Handler}!handle\+\_\+http@{handle\+\_\+http}}
+\index{handle\+\_\+http@{handle\+\_\+http}!projects\+::image\+\_\+chat\+::interactive\+::\+My\+Handler@{projects\+::image\+\_\+chat\+::interactive\+::\+My\+Handler}}
+\subsubsection{\texorpdfstring{handle\+\_\+http()}{handle\_http()}}
+{\footnotesize\ttfamily def projects.\+image\+\_\+chat.\+interactive.\+My\+Handler.\+handle\+\_\+http (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{status\+\_\+code,  }\item[{}]{path,  }\item[{}]{text = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Generate HTTP.
+\end{DoxyVerb}
+ 
+
+Definition at line 288 of file interactive.\+py.
+
+
+\begin{DoxyCode}
+288     \textcolor{keyword}{def }handle\_http(self, status\_code, path, text=None):
+289         \textcolor{stringliteral}{"""}
+290 \textcolor{stringliteral}{        Generate HTTP.}
+291 \textcolor{stringliteral}{        """}
+292         self.send\_response(status\_code)
+293         self.send\_header(\textcolor{stringliteral}{"Content-type"}, \textcolor{stringliteral}{"text/html"})
+294         self.end\_headers()
+295         content = WEB\_HTML.format(STYLE\_SHEET, FONT\_AWESOME)
+296         \textcolor{keywordflow}{return} bytes(content, \textcolor{stringliteral}{"UTF-8"})
+297 
+\end{DoxyCode}
+\mbox{\Hypertarget{classprojects_1_1image__chat_1_1interactive_1_1MyHandler_a6db12cd5204d5f4469f8570c7c38d007}\label{classprojects_1_1image__chat_1_1interactive_1_1MyHandler_a6db12cd5204d5f4469f8570c7c38d007}} 
+\index{projects\+::image\+\_\+chat\+::interactive\+::\+My\+Handler@{projects\+::image\+\_\+chat\+::interactive\+::\+My\+Handler}!interactive\+\_\+running@{interactive\+\_\+running}}
+\index{interactive\+\_\+running@{interactive\+\_\+running}!projects\+::image\+\_\+chat\+::interactive\+::\+My\+Handler@{projects\+::image\+\_\+chat\+::interactive\+::\+My\+Handler}}
+\subsubsection{\texorpdfstring{interactive\+\_\+running()}{interactive\_running()}}
+{\footnotesize\ttfamily def projects.\+image\+\_\+chat.\+interactive.\+My\+Handler.\+interactive\+\_\+running (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{data }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Generate a model response.
+
+:param data:
+    data to send to model
+
+:return:
+    model act dictionary
+\end{DoxyVerb}
+ 
+
+Definition at line 219 of file interactive.\+py.
+
+
+\begin{DoxyCode}
+219     \textcolor{keyword}{def }interactive\_running(self, data):
+220         \textcolor{stringliteral}{"""}
+221 \textcolor{stringliteral}{        Generate a model response.}
+222 \textcolor{stringliteral}{}
+223 \textcolor{stringliteral}{        :param data:}
+224 \textcolor{stringliteral}{            data to send to model}
+225 \textcolor{stringliteral}{}
+226 \textcolor{stringliteral}{        :return:}
+227 \textcolor{stringliteral}{            model act dictionary}
+228 \textcolor{stringliteral}{        """}
+229         reply = \{\}
+230         reply[\textcolor{stringliteral}{"text"}] = data[\textcolor{stringliteral}{"personality"}][0].decode()
+231         text = data[\textcolor{stringliteral}{"text"}][0].decode()
+232         \textcolor{keywordflow}{if} text:
+233             reply[\textcolor{stringliteral}{"text"}] = \textcolor{stringliteral}{"\(\backslash\)n"}.join(SHARED[\textcolor{stringliteral}{"dialog\_history"}] + [text, reply[\textcolor{stringliteral}{"text"}]])
+234             SHARED[\textcolor{stringliteral}{"dialog\_history"}].append(text)
+235         \textcolor{keywordflow}{if} SHARED[\textcolor{stringliteral}{"image\_feats"}] \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+236 
+237             img\_data = \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(data[\textcolor{stringliteral}{"image"}][0])
+238             \_, encoded = img\_data.split(\textcolor{stringliteral}{","}, 1)
+239             image = Image.open(io.BytesIO(b64decode(encoded))).convert(\textcolor{stringliteral}{"RGB"})
+240             SHARED[\textcolor{stringliteral}{"image\_feats"}] = SHARED[\textcolor{stringliteral}{"image\_loader"}].extract(image)
+241 
+242         reply[\textcolor{stringliteral}{"image"}] = SHARED[\textcolor{stringliteral}{"image\_feats"}]
+243         SHARED[\textcolor{stringliteral}{"agent"}].observe(reply)
+244         model\_res = SHARED[\textcolor{stringliteral}{"agent"}].act()
+245         \textcolor{keywordflow}{return} model\_res
+246 
+\end{DoxyCode}
+\mbox{\Hypertarget{classprojects_1_1image__chat_1_1interactive_1_1MyHandler_a8c651ac02abcedfd49fd7b89128ee737}\label{classprojects_1_1image__chat_1_1interactive_1_1MyHandler_a8c651ac02abcedfd49fd7b89128ee737}} 
+\index{projects\+::image\+\_\+chat\+::interactive\+::\+My\+Handler@{projects\+::image\+\_\+chat\+::interactive\+::\+My\+Handler}!respond@{respond}}
+\index{respond@{respond}!projects\+::image\+\_\+chat\+::interactive\+::\+My\+Handler@{projects\+::image\+\_\+chat\+::interactive\+::\+My\+Handler}}
+\subsubsection{\texorpdfstring{respond()}{respond()}}
+{\footnotesize\ttfamily def projects.\+image\+\_\+chat.\+interactive.\+My\+Handler.\+respond (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opts }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Respond.
+\end{DoxyVerb}
+ 
+
+Definition at line 298 of file interactive.\+py.
+
+
+\begin{DoxyCode}
+298     \textcolor{keyword}{def }respond(self, opts):
+299         \textcolor{stringliteral}{"""}
+300 \textcolor{stringliteral}{        Respond.}
+301 \textcolor{stringliteral}{        """}
+302         response = self.handle\_http(opts[\textcolor{stringliteral}{"status"}], self.path)
+303         self.wfile.write(response)
+304 
+305 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+projects/image\+\_\+chat/\hyperlink{projects_2image__chat_2interactive_8py}{interactive.\+py}\end{DoxyCompactItemize}

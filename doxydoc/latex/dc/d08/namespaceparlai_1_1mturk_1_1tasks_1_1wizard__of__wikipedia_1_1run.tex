@@ -1,0 +1,328 @@
+\hypertarget{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1run}{}\section{parlai.\+mturk.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+run Namespace Reference}
+\label{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1run}\index{parlai.\+mturk.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+run@{parlai.\+mturk.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+run}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1run_a22eb017ecd8f1a211fc5aac511d3102e}{setup\+\_\+retriever} (opt)
+\item 
+def \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1run_a59836c3be93d4b491fa9ddecbb4e83c0}{setup\+\_\+title\+\_\+to\+\_\+passage} (opt)
+\item 
+def \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1run_a5c16caa932230f93c418facd793be473}{setup\+\_\+personas\+\_\+with\+\_\+wiki\+\_\+links} (opt)
+\item 
+def \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1run_a2292712790bc7b0c052359562a4f0943}{main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1run_a2292712790bc7b0c052359562a4f0943}\label{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1run_a2292712790bc7b0c052359562a4f0943}} 
+\index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::run@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::run}!main@{main}}
+\index{main@{main}!parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::run@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::run}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def parlai.\+mturk.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+run.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Wizard of Wikipedia Data Collection Task.
+
+The task involves two people holding a conversation. One dialog partner
+chooses a topic to discuss, and then dialog proceeds.
+
+One partner is the Wizard, who has access to retrieved external
+information conditioned on the last two utterances, as well as
+information regarding the chosen topic.
+
+The other partner is the Apprentice, who assumes the role of someone
+eager to learn about the chosen topic.
+\end{DoxyVerb}
+ 
+
+Definition at line 90 of file run.\+py.
+
+
+\begin{DoxyCode}
+90 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1run_ad3ab2c71f8083c3112815c0b363d316b}{main}():
+91     \textcolor{stringliteral}{"""}
+92 \textcolor{stringliteral}{    Wizard of Wikipedia Data Collection Task.}
+93 \textcolor{stringliteral}{}
+94 \textcolor{stringliteral}{    The task involves two people holding a conversation. One dialog partner}
+95 \textcolor{stringliteral}{    chooses a topic to discuss, and then dialog proceeds.}
+96 \textcolor{stringliteral}{}
+97 \textcolor{stringliteral}{    One partner is the Wizard, who has access to retrieved external}
+98 \textcolor{stringliteral}{    information conditioned on the last two utterances, as well as}
+99 \textcolor{stringliteral}{    information regarding the chosen topic.}
+100 \textcolor{stringliteral}{}
+101 \textcolor{stringliteral}{    The other partner is the Apprentice, who assumes the role of someone}
+102 \textcolor{stringliteral}{    eager to learn about the chosen topic.}
+103 \textcolor{stringliteral}{    """}
+104     argparser = ParlaiParser(\textcolor{keyword}{False}, \textcolor{keyword}{False})
+105     DictionaryAgent.add\_cmdline\_args(argparser)
+106     argparser.add\_parlai\_data\_path()
+107     argparser.add\_mturk\_args()
+108     argparser.add\_argument(
+109         \textcolor{stringliteral}{'-min\_t'}, \textcolor{stringliteral}{'--min\_turns'}, default=3, type=int, help=\textcolor{stringliteral}{'minimum number of turns'}
+110     )
+111     argparser.add\_argument(
+112         \textcolor{stringliteral}{'-max\_t'},
+113         \textcolor{stringliteral}{'--max\_turns'},
+114         default=5,
+115         type=int,
+116         help=\textcolor{stringliteral}{'maximal number of chat turns'},
+117     )
+118     argparser.add\_argument(
+119         \textcolor{stringliteral}{'-mx\_rsp\_time'},
+120         \textcolor{stringliteral}{'--max\_resp\_time'},
+121         default=120,
+122         type=int,
+123         help=\textcolor{stringliteral}{'time limit for entering a dialog message'},
+124     )
+125     argparser.add\_argument(
+126         \textcolor{stringliteral}{'-mx\_onb\_time'},
+127         \textcolor{stringliteral}{'--max\_onboard\_time'},
+128         type=int,
+129         default=300,
+130         help=\textcolor{stringliteral}{'time limit for turker'} \textcolor{stringliteral}{'in onboarding'},
+131     )
+132     argparser.add\_argument(
+133         \textcolor{stringliteral}{'--persona-type'},
+134         default=\textcolor{stringliteral}{'both'},
+135         type=str,
+136         choices=[\textcolor{stringliteral}{'both'}, \textcolor{stringliteral}{'self'}, \textcolor{stringliteral}{'other'}],
+137         help=\textcolor{stringliteral}{'Which personas to load from personachat'},
+138     )
+139     argparser.add\_argument(
+140         \textcolor{stringliteral}{'--auto-approve-delay'},
+141         type=int,
+142         default=3600 * 24 * 1,
+143         help=\textcolor{stringliteral}{'how long to wait for  \(\backslash\)}
+144 \textcolor{stringliteral}{                           auto approval'},
+145     )
+146     argparser.add\_argument(
+147         \textcolor{stringliteral}{'--word-overlap-threshold'},
+148         type=int,
+149         default=2,
+150         help=\textcolor{stringliteral}{'How much word overlap we want between message \(\backslash\)}
+151 \textcolor{stringliteral}{                           and checked sentence'},
+152     )
+153     argparser.add\_argument(
+154         \textcolor{stringliteral}{'--num-good-sentence-threshold'},
+155         type=int,
+156         default=2,
+157         help=\textcolor{stringliteral}{'How many good sentences with sufficient overlap \(\backslash\)}
+158 \textcolor{stringliteral}{                           are necessary for turker to be considered good.'},
+159     )
+160     argparser.add\_argument(
+161         \textcolor{stringliteral}{'--num-passages-retrieved'},
+162         type=int,
+163         default=7,
+164         help=\textcolor{stringliteral}{'How many passages to retrieve per dialog \(\backslash\)}
+165 \textcolor{stringliteral}{                           message'},
+166     )
+167 
+168     opt = argparser.parse\_args()
+169     directory\_path = os.path.dirname(os.path.abspath(\_\_file\_\_))
+170     opt[\textcolor{stringliteral}{'task'}] = os.path.basename(directory\_path)
+171     \textcolor{keywordflow}{if} \textcolor{stringliteral}{'data\_path'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} opt:
+172         opt[\textcolor{stringliteral}{'data\_path'}] = os.getcwd() + \textcolor{stringliteral}{'/data/'} + opt[\textcolor{stringliteral}{'task'}]
+173         opt[\textcolor{stringliteral}{'current\_working\_dir'}] = os.getcwd()
+174     opt.update(task\_config)
+175 
+176     mturk\_agent\_ids = [APPRENTICE, WIZARD]
+177     opt[\textcolor{stringliteral}{'min\_messages'}] = 2
+178 
+179     mturk\_manager = MTurkManager(opt=opt, mturk\_agent\_ids=mturk\_agent\_ids)
+180     \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1run_a5c16caa932230f93c418facd793be473}{setup\_personas\_with\_wiki\_links}(opt)
+181     ir\_agent, task = \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1run_a22eb017ecd8f1a211fc5aac511d3102e}{setup\_retriever}(opt)
+182     persona\_generator = PersonasGenerator(opt)
+183     wiki\_title\_to\_passage = \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1run_a59836c3be93d4b491fa9ddecbb4e83c0}{setup\_title\_to\_passage}(opt)
+184     mturk\_manager.setup\_server(task\_directory\_path=directory\_path)
+185     worker\_roles = \{\}
+186     connect\_counter = AttrDict(value=0)
+187 
+188     \textcolor{keywordflow}{try}:
+189         mturk\_manager.start\_new\_run()
+190         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} opt[\textcolor{stringliteral}{'is\_sandbox'}]:
+191             with open(os.path.join(opt[\textcolor{stringliteral}{'current\_working\_dir'}], \textcolor{stringliteral}{'mtdont.txt'})) \textcolor{keyword}{as} f:
+192                 lines = [l.replace(\textcolor{stringliteral}{'\(\backslash\)n'}, \textcolor{stringliteral}{''}) \textcolor{keywordflow}{for} l \textcolor{keywordflow}{in} f.readlines()]
+193                 \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} lines:
+194                     mturk\_manager.soft\_block\_worker(w)
+195 
+196         \textcolor{keyword}{def }run\_onboard(worker):
+197             role = mturk\_agent\_ids[connect\_counter.value % len(mturk\_agent\_ids)]
+198             connect\_counter.value += 1
+199             worker\_roles[worker.worker\_id] = role
+200             worker.persona\_generator = persona\_generator
+201             world = RoleOnboardWorld(opt, worker, role)
+202             world.parley()
+203             world.shutdown()
+204 
+205         mturk\_manager.set\_onboard\_function(onboard\_function=run\_onboard)
+206         mturk\_manager.ready\_to\_accept\_workers()
+207         mturk\_manager.create\_hits()
+208 
+209         \textcolor{keyword}{def }check\_workers\_eligibility(workers):
+210             \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'is\_sandbox'}]:
+211                 \textcolor{keywordflow}{return} workers
+212             valid\_workers = \{\}
+213             \textcolor{keywordflow}{for} worker \textcolor{keywordflow}{in} workers:
+214                 worker\_id = worker.worker\_id
+215                 \textcolor{keywordflow}{if} worker\_id \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} worker\_roles:
+216                     \textcolor{stringliteral}{"""}
+217 \textcolor{stringliteral}{                    Something went wrong...}
+218 \textcolor{stringliteral}{                    """}
+219                     \textcolor{keywordflow}{continue}
+220                 role = worker\_roles[worker\_id]
+221                 \textcolor{keywordflow}{if} role \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} valid\_workers:
+222                     valid\_workers[role] = worker
+223                 \textcolor{keywordflow}{if} len(valid\_workers) == 2:
+224                     \textcolor{keywordflow}{break}
+225             \textcolor{keywordflow}{return} valid\_workers.values() \textcolor{keywordflow}{if} len(valid\_workers) == 2 \textcolor{keywordflow}{else} []
+226 
+227         eligibility\_function = \{\textcolor{stringliteral}{'func'}: check\_workers\_eligibility, \textcolor{stringliteral}{'multiple'}: \textcolor{keyword}{True}\}
+228 
+229         \textcolor{keyword}{def }assign\_worker\_roles(workers):
+230             \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'is\_sandbox'}]:
+231                 \textcolor{keywordflow}{for} i, worker \textcolor{keywordflow}{in} enumerate(workers):
+232                     worker.id = mturk\_agent\_ids[i % len(mturk\_agent\_ids)]
+233             \textcolor{keywordflow}{else}:
+234                 \textcolor{keywordflow}{for} worker \textcolor{keywordflow}{in} workers:
+235                     worker.id = worker\_roles[worker.worker\_id]
+236 
+237         \textcolor{keyword}{def }run\_conversation(mturk\_manager, opt, workers):
+238             agents = workers[:]
+239             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} opt[\textcolor{stringliteral}{'is\_sandbox'}]:
+240                 \textcolor{keywordflow}{for} agent \textcolor{keywordflow}{in} agents:
+241                     worker\_roles.pop(agent.worker\_id)
+242             conv\_idx = mturk\_manager.conversation\_index
+243             world = MTurkWizardOfWikipediaWorld(
+244                 opt,
+245                 agents=agents,
+246                 world\_tag=\textcolor{stringliteral}{'conversation t\_\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(conv\_idx),
+247                 ir\_agent=ir\_agent,
+248                 wiki\_title\_to\_passage=wiki\_title\_to\_passage,
+249                 task=task,
+250             )
+251             world.reset\_random()
+252             \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} world.episode\_done():
+253                 world.parley()
+254             world.save\_data()
+255             \textcolor{keywordflow}{if} world.convo\_finished \textcolor{keywordflow}{and} \textcolor{keywordflow}{not} world.good\_wiz \textcolor{keywordflow}{and} \textcolor{keywordflow}{not} opt[\textcolor{stringliteral}{'is\_sandbox'}]:
+256                 mturk\_manager.soft\_block\_worker(world.wizard\_worker)
+257             world.shutdown()
+258             world.review\_work()
+259 
+260         mturk\_manager.start\_task(
+261             eligibility\_function=eligibility\_function,
+262             assign\_role\_function=assign\_worker\_roles,
+263             task\_function=run\_conversation,
+264         )
+265 
+266     \textcolor{keywordflow}{except} BaseException:
+267         \textcolor{keywordflow}{raise}
+268     \textcolor{keywordflow}{finally}:
+269         mturk\_manager.expire\_all\_unassigned\_hits()
+270         mturk\_manager.shutdown()
+271 
+272 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1run_a5c16caa932230f93c418facd793be473}\label{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1run_a5c16caa932230f93c418facd793be473}} 
+\index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::run@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::run}!setup\+\_\+personas\+\_\+with\+\_\+wiki\+\_\+links@{setup\+\_\+personas\+\_\+with\+\_\+wiki\+\_\+links}}
+\index{setup\+\_\+personas\+\_\+with\+\_\+wiki\+\_\+links@{setup\+\_\+personas\+\_\+with\+\_\+wiki\+\_\+links}!parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::run@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::run}}
+\subsubsection{\texorpdfstring{setup\+\_\+personas\+\_\+with\+\_\+wiki\+\_\+links()}{setup\_personas\_with\_wiki\_links()}}
+{\footnotesize\ttfamily def parlai.\+mturk.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+run.\+setup\+\_\+personas\+\_\+with\+\_\+wiki\+\_\+links (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 82 of file run.\+py.
+
+
+\begin{DoxyCode}
+82 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1run_a5c16caa932230f93c418facd793be473}{setup\_personas\_with\_wiki\_links}(opt):
+83     fname = \textcolor{stringliteral}{'personas\_with\_wiki\_links.txt'}
+84     file\_path = \textcolor{stringliteral}{'\{\}/\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(os.getcwd(), fname)
+85     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.exists(file\_path):
+86         url = \textcolor{stringliteral}{'http://parl.ai/downloads/wizard\_of\_wikipedia/'} + fname
+87         build\_data.download(url, os.getcwd(), fname)
+88 
+89 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1run_a22eb017ecd8f1a211fc5aac511d3102e}\label{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1run_a22eb017ecd8f1a211fc5aac511d3102e}} 
+\index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::run@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::run}!setup\+\_\+retriever@{setup\+\_\+retriever}}
+\index{setup\+\_\+retriever@{setup\+\_\+retriever}!parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::run@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::run}}
+\subsubsection{\texorpdfstring{setup\+\_\+retriever()}{setup\_retriever()}}
+{\footnotesize\ttfamily def parlai.\+mturk.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+run.\+setup\+\_\+retriever (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 25 of file run.\+py.
+
+
+\begin{DoxyCode}
+25 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1run_a22eb017ecd8f1a211fc5aac511d3102e}{setup\_retriever}(opt):
+26     print(\textcolor{stringliteral}{'[ Setting up Retriever ]'})
+27     task = \textcolor{stringliteral}{'wikipedia:full'}
+28     ret\_opt = copy.deepcopy(opt)
+29     ret\_opt[\textcolor{stringliteral}{'model\_file'}] = \textcolor{stringliteral}{'models:wikipedia\_full/tfidf\_retriever/model'}
+30     ret\_opt[\textcolor{stringliteral}{'retriever\_num\_retrieved'}] = opt.get(\textcolor{stringliteral}{'num\_passages\_retrieved'}, 7)
+31     ret\_opt[\textcolor{stringliteral}{'retriever\_mode'}] = \textcolor{stringliteral}{'keys'}
+32     ret\_opt[\textcolor{stringliteral}{'override'}] = \{\textcolor{stringliteral}{'remove\_title'}: \textcolor{keyword}{False}\}
+33     ir\_agent = \hyperlink{namespaceparlai_1_1core_1_1agents_ad0d54074d4bcc148bb415ab5515a53b5}{create\_agent}(ret\_opt)
+34     \textcolor{keywordflow}{return} ir\_agent, task
+35 
+36 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1run_a59836c3be93d4b491fa9ddecbb4e83c0}\label{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1run_a59836c3be93d4b491fa9ddecbb4e83c0}} 
+\index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::run@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::run}!setup\+\_\+title\+\_\+to\+\_\+passage@{setup\+\_\+title\+\_\+to\+\_\+passage}}
+\index{setup\+\_\+title\+\_\+to\+\_\+passage@{setup\+\_\+title\+\_\+to\+\_\+passage}!parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::run@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::run}}
+\subsubsection{\texorpdfstring{setup\+\_\+title\+\_\+to\+\_\+passage()}{setup\_title\_to\_passage()}}
+{\footnotesize\ttfamily def parlai.\+mturk.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+run.\+setup\+\_\+title\+\_\+to\+\_\+passage (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 37 of file run.\+py.
+
+
+\begin{DoxyCode}
+37 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1run_a59836c3be93d4b491fa9ddecbb4e83c0}{setup\_title\_to\_passage}(opt):
+38     print(\textcolor{stringliteral}{'[ Setting up Title to Passage Dict ]'})
+39     saved\_dp = os.path.join(os.getcwd() + \textcolor{stringliteral}{'/data/'}, \textcolor{stringliteral}{'title\_to\_passage.pkl'})
+40     \textcolor{keywordflow}{if} os.path.exists(saved\_dp):
+41         print(\textcolor{stringliteral}{'[ Loading from saved location, \{\} ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(saved\_dp))
+42         with open(saved\_dp, \textcolor{stringliteral}{'rb'}) \textcolor{keyword}{as} f:
+43             title\_to\_passage = pickle.load(f)
+44             \textcolor{keywordflow}{return} title\_to\_passage
+45     topics\_path = \textcolor{stringliteral}{'\{\}/personas\_with\_wiki\_links.txt'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(os.getcwd())
+46     topics = []
+47     with open(topics\_path) \textcolor{keyword}{as} f:
+48         text = f.read()
+49         personas = text.split(\textcolor{stringliteral}{'\(\backslash\)n\(\backslash\)n'})
+50         \textcolor{keywordflow}{for} persona \textcolor{keywordflow}{in} personas:
+51             persona = persona.split(\textcolor{stringliteral}{'\(\backslash\)n'})
+52             \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(1, len(persona)):
+53                 p\_i = persona[i]
+54                 \textcolor{keywordflow}{if} \textcolor{stringliteral}{'https'} \textcolor{keywordflow}{in} p\_i:
+55                     topic = unquote(p\_i[p\_i.rfind(\textcolor{stringliteral}{'/'}) + 1 :]).replace(\textcolor{stringliteral}{'\_'}, \textcolor{stringliteral}{' '})
+56                     topics.append(topic)
+57     ordered\_opt = opt.copy()
+58     ordered\_opt[\textcolor{stringliteral}{'datatype'}] = \textcolor{stringliteral}{'train:ordered:stream'}
+59     ordered\_opt[\textcolor{stringliteral}{'batchsize'}] = 1
+60     ordered\_opt[\textcolor{stringliteral}{'numthreads'}] = 1
+61     ordered\_opt[\textcolor{stringliteral}{'task'}] = \textcolor{stringliteral}{'wikipedia:full:key-value'}
+62     teacher = \hyperlink{namespaceparlai_1_1core_1_1agents_ab4473fa54af02b5ab385b41b51dacd10}{create\_task\_agent\_from\_taskname}(ordered\_opt)[0]
+63     title\_to\_passage = \{\}
+64     i = 0
+65     length = teacher.num\_episodes()
+66     pbar = tqdm.tqdm(total=length)
+67     \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} teacher.epoch\_done():
+68         pbar.update(1)
+69         i += 1
+70         action = teacher.act()
+71         title = action[\textcolor{stringliteral}{'text'}]
+72         \textcolor{keywordflow}{if} title \textcolor{keywordflow}{in} topics:
+73             text = action[\textcolor{stringliteral}{'labels'}][0]
+74             title\_to\_passage[title] = text
+75     pbar.close()
+76     print(\textcolor{stringliteral}{'[ Finished Building Title to Passage dict; saving now]'})
+77     with open(saved\_dp, \textcolor{stringliteral}{'wb'}) \textcolor{keyword}{as} f:
+78         pickle.dump(title\_to\_passage, f)
+79     \textcolor{keywordflow}{return} title\_to\_passage
+80 
+81 
+\end{DoxyCode}

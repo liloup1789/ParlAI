@@ -1,0 +1,74 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1moviedialog_1_1build}{}\section{parlai.\+tasks.\+moviedialog.\+build Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1moviedialog_1_1build}\index{parlai.\+tasks.\+moviedialog.\+build@{parlai.\+tasks.\+moviedialog.\+build}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1moviedialog_1_1build_a844c68eb87eb666ec20f2b507813469a}{build} (opt)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceparlai_1_1tasks_1_1moviedialog_1_1build_a6a0958effc5a7e76d7f4506ba4044d0a}{R\+E\+S\+O\+U\+R\+C\+ES}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1moviedialog_1_1build_a844c68eb87eb666ec20f2b507813469a}\label{namespaceparlai_1_1tasks_1_1moviedialog_1_1build_a844c68eb87eb666ec20f2b507813469a}} 
+\index{parlai\+::tasks\+::moviedialog\+::build@{parlai\+::tasks\+::moviedialog\+::build}!build@{build}}
+\index{build@{build}!parlai\+::tasks\+::moviedialog\+::build@{parlai\+::tasks\+::moviedialog\+::build}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+moviedialog.\+build.\+build (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 26 of file build.\+py.
+
+
+\begin{DoxyCode}
+26 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
+27     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'MovieDialog'})
+28     version = \textcolor{stringliteral}{'3'}
+29 
+30     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version\_string=version):
+31         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+32         \textcolor{keywordflow}{if} build\_data.built(dpath):
+33             \textcolor{comment}{# An older version exists, so remove these outdated files.}
+34             build\_data.remove\_dir(dpath)
+35         build\_data.make\_dir(dpath)
+36 
+37         \textcolor{comment}{# Download the data.}
+38         RESOURCES[0].download\_file(dpath)
+39 
+40         dpath2 = os.path.join(dpath, \textcolor{stringliteral}{'movie\_dialog\_dataset'}, \textcolor{stringliteral}{'task4\_reddit'})
+41         build\_data.make\_dir(dpath2)
+42 
+43         RESOURCES[1].download\_file(dpath2)
+44 
+45         \textcolor{comment}{# remove pipes from task 4 labels, only one label per example}
+46         \textcolor{keywordflow}{for} root, \_subfolder, files \textcolor{keywordflow}{in} os.walk(os.path.join(dpath2, \textcolor{stringliteral}{'task4\_reddit'})):
+47             \textcolor{keywordflow}{for} f \textcolor{keywordflow}{in} files:
+48                 \textcolor{keywordflow}{if} f.endswith(\textcolor{stringliteral}{'txt'}):
+49                     read\_fn = os.path.join(root, f)
+50                     head = \textcolor{stringliteral}{'task4\_reddit\_'}
+51                     tail = f[len(head) :]
+52                     write\_fn = os.path.join(root, head + \textcolor{stringliteral}{'pipeless\_'} + tail)
+53                     with open(read\_fn) \textcolor{keyword}{as} read, open(write\_fn, \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} write:
+54                         \textcolor{keywordflow}{for} line \textcolor{keywordflow}{in} read:
+55                             write.write(line.replace(\textcolor{stringliteral}{'|'}, \textcolor{stringliteral}{' \_\_PIPE\_\_ '}) + \textcolor{stringliteral}{'\(\backslash\)n'})
+56 
+57         \textcolor{comment}{# Mark the data as built.}
+58         build\_data.mark\_done(dpath, version\_string=version)
+59 \end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1moviedialog_1_1build_a6a0958effc5a7e76d7f4506ba4044d0a}\label{namespaceparlai_1_1tasks_1_1moviedialog_1_1build_a6a0958effc5a7e76d7f4506ba4044d0a}} 
+\index{parlai\+::tasks\+::moviedialog\+::build@{parlai\+::tasks\+::moviedialog\+::build}!R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}}
+\index{R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}!parlai\+::tasks\+::moviedialog\+::build@{parlai\+::tasks\+::moviedialog\+::build}}
+\subsubsection{\texorpdfstring{R\+E\+S\+O\+U\+R\+C\+ES}{RESOURCES}}
+{\footnotesize\ttfamily parlai.\+tasks.\+moviedialog.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
+
+
+
+Definition at line 12 of file build.\+py.
+

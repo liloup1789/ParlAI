@@ -1,0 +1,156 @@
+\hypertarget{classparlai_1_1utils_1_1misc_1_1Predictor}{}\section{parlai.\+utils.\+misc.\+Predictor Class Reference}
+\label{classparlai_1_1utils_1_1misc_1_1Predictor}\index{parlai.\+utils.\+misc.\+Predictor@{parlai.\+utils.\+misc.\+Predictor}}
+
+
+Inheritance diagram for parlai.\+utils.\+misc.\+Predictor\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=207pt]{de/d4b/classparlai_1_1utils_1_1misc_1_1Predictor__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+utils.\+misc.\+Predictor\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=207pt]{d1/d00/classparlai_1_1utils_1_1misc_1_1Predictor__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1utils_1_1misc_1_1Predictor_a40aaf55870ba3c02fc2bff2ef5d2a9b7}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, args=None, kwargs)
+\item 
+def \hyperlink{classparlai_1_1utils_1_1misc_1_1Predictor_a7ff8a927bca43d09d3113dad20cb2a11}{predict} (self, observation)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1utils_1_1misc_1_1Predictor_a608b3d7f6722389f3a7eeed0ec5772b7}{opt}
+\item 
+\hyperlink{classparlai_1_1utils_1_1misc_1_1Predictor_a0ea35fd562c6edaa6affd03006f1bd08}{agent}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Wrapper to set up running version of model and request predictions.
+
+Note that this maintains no World state (does not use a World), merely
+providing the observation directly to the model and getting a response.
+
+This is limiting when it comes to certain use cases, but allows for quick
+model deployment.
+\end{DoxyVerb}
+ 
+
+Definition at line 262 of file misc.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1Predictor_a40aaf55870ba3c02fc2bff2ef5d2a9b7}\label{classparlai_1_1utils_1_1misc_1_1Predictor_a40aaf55870ba3c02fc2bff2ef5d2a9b7}} 
+\index{parlai\+::utils\+::misc\+::\+Predictor@{parlai\+::utils\+::misc\+::\+Predictor}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::utils\+::misc\+::\+Predictor@{parlai\+::utils\+::misc\+::\+Predictor}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+misc.\+Predictor.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{args = {\ttfamily None},  }\item[{}]{kwargs }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initialize the predictor, setting up opt automatically if needed.
+
+Args is expected to be in the same format as sys.argv: e.g. a list in
+the form ['--model', 'seq2seq', '-hs', 128, '-lr', 0.5].
+
+kwargs is interpreted by appending '--' to it and replacing underscores
+with hyphens, so 'dict_file=/tmp/dict.tsv' would be interpreted as
+'--dict-file /tmp/dict.tsv'.
+\end{DoxyVerb}
+ 
+
+Definition at line 273 of file misc.\+py.
+
+
+\begin{DoxyCode}
+273     \textcolor{keyword}{def }\_\_init\_\_(self, args=None, **kwargs):
+274         \textcolor{stringliteral}{"""}
+275 \textcolor{stringliteral}{        Initialize the predictor, setting up opt automatically if needed.}
+276 \textcolor{stringliteral}{}
+277 \textcolor{stringliteral}{        Args is expected to be in the same format as sys.argv: e.g. a list in}
+278 \textcolor{stringliteral}{        the form ['--model', 'seq2seq', '-hs', 128, '-lr', 0.5].}
+279 \textcolor{stringliteral}{}
+280 \textcolor{stringliteral}{        kwargs is interpreted by appending '--' to it and replacing underscores}
+281 \textcolor{stringliteral}{        with hyphens, so 'dict\_file=/tmp/dict.tsv' would be interpreted as}
+282 \textcolor{stringliteral}{        '--dict-file /tmp/dict.tsv'.}
+283 \textcolor{stringliteral}{        """}
+284         \textcolor{keyword}{from} \hyperlink{namespaceparlai_1_1core_1_1params}{parlai.core.params} \textcolor{keyword}{import} ParlaiParser
+285         \textcolor{keyword}{from} \hyperlink{namespaceparlai_1_1core_1_1agents}{parlai.core.agents} \textcolor{keyword}{import} create\_agent
+286 
+287         \textcolor{keywordflow}{if} args \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+288             args = []
+289         \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} kwargs.items():
+290             args.append(\textcolor{stringliteral}{'--'} + \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(k).replace(\textcolor{stringliteral}{'\_'}, \textcolor{stringliteral}{'-'}))
+291             args.append(\hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(v))
+292         parser = ParlaiParser(\textcolor{keyword}{True}, \textcolor{keyword}{True})
+293         self.opt = parser.parse\_args(args)
+294         self.agent = \hyperlink{namespaceparlai_1_1core_1_1agents_ad0d54074d4bcc148bb415ab5515a53b5}{create\_agent}(self.opt)
+295 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1Predictor_a7ff8a927bca43d09d3113dad20cb2a11}\label{classparlai_1_1utils_1_1misc_1_1Predictor_a7ff8a927bca43d09d3113dad20cb2a11}} 
+\index{parlai\+::utils\+::misc\+::\+Predictor@{parlai\+::utils\+::misc\+::\+Predictor}!predict@{predict}}
+\index{predict@{predict}!parlai\+::utils\+::misc\+::\+Predictor@{parlai\+::utils\+::misc\+::\+Predictor}}
+\subsubsection{\texorpdfstring{predict()}{predict()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+misc.\+Predictor.\+predict (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{observation }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}From a ParlAI-standard message dict, get model prediction.
+\end{DoxyVerb}
+ 
+
+Definition at line 296 of file misc.\+py.
+
+
+\begin{DoxyCode}
+296     \textcolor{keyword}{def }predict(self, observation):
+297         \textcolor{stringliteral}{"""}
+298 \textcolor{stringliteral}{        From a ParlAI-standard message dict, get model prediction.}
+299 \textcolor{stringliteral}{        """}
+300         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'episode\_done'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} observation:
+301             observation[\textcolor{stringliteral}{'episode\_done'}] = \textcolor{keyword}{True}
+302         self.agent.observe(observation)
+303         reply = self.agent.act()
+304         \textcolor{keywordflow}{return} reply
+305 
+306 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1Predictor_a0ea35fd562c6edaa6affd03006f1bd08}\label{classparlai_1_1utils_1_1misc_1_1Predictor_a0ea35fd562c6edaa6affd03006f1bd08}} 
+\index{parlai\+::utils\+::misc\+::\+Predictor@{parlai\+::utils\+::misc\+::\+Predictor}!agent@{agent}}
+\index{agent@{agent}!parlai\+::utils\+::misc\+::\+Predictor@{parlai\+::utils\+::misc\+::\+Predictor}}
+\subsubsection{\texorpdfstring{agent}{agent}}
+{\footnotesize\ttfamily parlai.\+utils.\+misc.\+Predictor.\+agent}
+
+
+
+Definition at line 294 of file misc.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1Predictor_a608b3d7f6722389f3a7eeed0ec5772b7}\label{classparlai_1_1utils_1_1misc_1_1Predictor_a608b3d7f6722389f3a7eeed0ec5772b7}} 
+\index{parlai\+::utils\+::misc\+::\+Predictor@{parlai\+::utils\+::misc\+::\+Predictor}!opt@{opt}}
+\index{opt@{opt}!parlai\+::utils\+::misc\+::\+Predictor@{parlai\+::utils\+::misc\+::\+Predictor}}
+\subsubsection{\texorpdfstring{opt}{opt}}
+{\footnotesize\ttfamily parlai.\+utils.\+misc.\+Predictor.\+opt}
+
+
+
+Definition at line 293 of file misc.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/utils/\hyperlink{misc_8py}{misc.\+py}\end{DoxyCompactItemize}

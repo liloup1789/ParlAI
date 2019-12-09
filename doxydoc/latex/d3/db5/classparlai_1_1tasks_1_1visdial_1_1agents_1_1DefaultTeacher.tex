@@ -1,0 +1,202 @@
+\hypertarget{classparlai_1_1tasks_1_1visdial_1_1agents_1_1DefaultTeacher}{}\section{parlai.\+tasks.\+visdial.\+agents.\+Default\+Teacher Class Reference}
+\label{classparlai_1_1tasks_1_1visdial_1_1agents_1_1DefaultTeacher}\index{parlai.\+tasks.\+visdial.\+agents.\+Default\+Teacher@{parlai.\+tasks.\+visdial.\+agents.\+Default\+Teacher}}
+
+
+Inheritance diagram for parlai.\+tasks.\+visdial.\+agents.\+Default\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{d3/d8e/classparlai_1_1tasks_1_1visdial_1_1agents_1_1DefaultTeacher__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+tasks.\+visdial.\+agents.\+Default\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{d7/de3/classparlai_1_1tasks_1_1visdial_1_1agents_1_1DefaultTeacher__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1visdial_1_1agents_1_1DefaultTeacher_ad888b8b7612e78dec919a6769f7e0623}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1core_1_1agents_1_1Teacher_a3ce6243860ce978a897922863ed32fa4}{opt}, shared=None)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1visdial_1_1agents_1_1DefaultTeacher_a73a89661d069778cbdb3b71ec0ea72f0}{setup\+\_\+data} (self, path)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1visdial_1_1agents_1_1DefaultTeacher_ab0c8e86570399b0ea8f6c96c49dc1b38}{datatype}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1visdial_1_1agents_1_1DefaultTeacher_a81c9d1779709d5dbf85b927ac4362496}{image\+\_\+path}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1visdial_1_1agents_1_1DefaultTeacher_af57a8b4ff4119a00559189e2e1fb4ab9}{id}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1visdial_1_1agents_1_1DefaultTeacher_a8cb96fb50b9c8d040dcb9bd8dd3d1d3e}{visdial}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1visdial_1_1agents_1_1DefaultTeacher_a4e9d61cd05584be7a63d7407372ce13a}{questions}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1visdial_1_1agents_1_1DefaultTeacher_a34ad9bd4ee7fcc11445e1df938f0d209}{answers}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}This version of VisDial inherits from the core Dialog Teacher, which just requires
+it to define an iterator over its data `setup_data` in order to inherit basic
+metrics, a `act` function, and enables Hogwild training with shared memory with no
+extra work.
+\end{DoxyVerb}
+ 
+
+Definition at line 49 of file agents.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1visdial_1_1agents_1_1DefaultTeacher_ad888b8b7612e78dec919a6769f7e0623}\label{classparlai_1_1tasks_1_1visdial_1_1agents_1_1DefaultTeacher_ad888b8b7612e78dec919a6769f7e0623}} 
+\index{parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+visdial.\+agents.\+Default\+Teacher.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{shared = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 57 of file agents.\+py.
+
+
+\begin{DoxyCode}
+57     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
+58 
+59         self.datatype = opt[\textcolor{stringliteral}{'datatype'}]
+60         data\_path, self.image\_path = \_path(opt)
+61         opt[\textcolor{stringliteral}{'datafile'}] = data\_path
+62         self.id = \textcolor{stringliteral}{'visdial'}
+63 
+64         super().\_\_init\_\_(opt, shared)
+65 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1visdial_1_1agents_1_1DefaultTeacher_a73a89661d069778cbdb3b71ec0ea72f0}\label{classparlai_1_1tasks_1_1visdial_1_1agents_1_1DefaultTeacher_a73a89661d069778cbdb3b71ec0ea72f0}} 
+\index{parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher}!setup\+\_\+data@{setup\+\_\+data}}
+\index{setup\+\_\+data@{setup\+\_\+data}!parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher}}
+\subsubsection{\texorpdfstring{setup\+\_\+data()}{setup\_data()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+visdial.\+agents.\+Default\+Teacher.\+setup\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{path }\end{DoxyParamCaption})}
+
+
+
+Definition at line 66 of file agents.\+py.
+
+
+\begin{DoxyCode}
+66     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1multinli_1_1agents_a4fa2cb0ba1ed745336ad8bceed36b841}{setup\_data}(self, path):
+67         print(\textcolor{stringliteral}{'loading: '} + path)
+68         with open(path) \textcolor{keyword}{as} data\_file:
+69             self.visdial = json.load(data\_file)
+70 
+71         self.questions = self.visdial[\textcolor{stringliteral}{'data'}][\textcolor{stringliteral}{'questions'}]
+72         self.answers = self.visdial[\textcolor{stringliteral}{'data'}][\textcolor{stringliteral}{'answers'}]
+73 
+74         \textcolor{keywordflow}{for} dialog \textcolor{keywordflow}{in} self.visdial[\textcolor{stringliteral}{'data'}][\textcolor{stringliteral}{'dialogs'}]:
+75             \textcolor{comment}{# for each dialog}
+76             image\_id = dialog[\textcolor{stringliteral}{'image\_id'}]
+77             caption = dialog[\textcolor{stringliteral}{'caption'}]
+78             img\_path = self.image\_path + \textcolor{stringliteral}{'%012d.jpg'} % (image\_id)
+79 
+80             \textcolor{keywordflow}{for} i, qa \textcolor{keywordflow}{in} enumerate(dialog[\textcolor{stringliteral}{'dialog'}]):
+81                 \textcolor{comment}{# for each question answer pair.}
+82                 question = self.questions[qa[\textcolor{stringliteral}{'question'}]]
+83                 answer = [self.answers[qa[\textcolor{stringliteral}{'answer'}]]]
+84                 answer\_options = []
+85                 \textcolor{keywordflow}{for} ans\_id \textcolor{keywordflow}{in} qa[\textcolor{stringliteral}{'answer\_options'}]:
+86                     answer\_options.append(self.answers[ans\_id])
+87                 \textcolor{keywordflow}{if} i == 0:
+88                     \textcolor{comment}{# prepend with caption on first question}
+89                     \textcolor{comment}{# only load image on first item}
+90                     \textcolor{keywordflow}{yield} (
+91                         (
+92                             caption + \textcolor{stringliteral}{'\(\backslash\)n'} + question,
+93                             answer,
+94                             \textcolor{keywordtype}{None},
+95                             answer\_options,
+96                             img\_path,
+97                         ),
+98                         \textcolor{keyword}{True},
+99                     )
+100                 \textcolor{keywordflow}{else}:
+101                     \textcolor{keywordflow}{yield} (question, answer, \textcolor{keywordtype}{None}, answer\_options), \textcolor{keyword}{False}
+102 \end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1visdial_1_1agents_1_1DefaultTeacher_a34ad9bd4ee7fcc11445e1df938f0d209}\label{classparlai_1_1tasks_1_1visdial_1_1agents_1_1DefaultTeacher_a34ad9bd4ee7fcc11445e1df938f0d209}} 
+\index{parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher}!answers@{answers}}
+\index{answers@{answers}!parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher}}
+\subsubsection{\texorpdfstring{answers}{answers}}
+{\footnotesize\ttfamily parlai.\+tasks.\+visdial.\+agents.\+Default\+Teacher.\+answers}
+
+
+
+Definition at line 72 of file agents.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1visdial_1_1agents_1_1DefaultTeacher_ab0c8e86570399b0ea8f6c96c49dc1b38}\label{classparlai_1_1tasks_1_1visdial_1_1agents_1_1DefaultTeacher_ab0c8e86570399b0ea8f6c96c49dc1b38}} 
+\index{parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher}!datatype@{datatype}}
+\index{datatype@{datatype}!parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher}}
+\subsubsection{\texorpdfstring{datatype}{datatype}}
+{\footnotesize\ttfamily parlai.\+tasks.\+visdial.\+agents.\+Default\+Teacher.\+datatype}
+
+
+
+Definition at line 59 of file agents.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1visdial_1_1agents_1_1DefaultTeacher_af57a8b4ff4119a00559189e2e1fb4ab9}\label{classparlai_1_1tasks_1_1visdial_1_1agents_1_1DefaultTeacher_af57a8b4ff4119a00559189e2e1fb4ab9}} 
+\index{parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher}!id@{id}}
+\index{id@{id}!parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher}}
+\subsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily parlai.\+tasks.\+visdial.\+agents.\+Default\+Teacher.\+id}
+
+
+
+Definition at line 62 of file agents.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1visdial_1_1agents_1_1DefaultTeacher_a81c9d1779709d5dbf85b927ac4362496}\label{classparlai_1_1tasks_1_1visdial_1_1agents_1_1DefaultTeacher_a81c9d1779709d5dbf85b927ac4362496}} 
+\index{parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher}!image\+\_\+path@{image\+\_\+path}}
+\index{image\+\_\+path@{image\+\_\+path}!parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher}}
+\subsubsection{\texorpdfstring{image\+\_\+path}{image\_path}}
+{\footnotesize\ttfamily parlai.\+tasks.\+visdial.\+agents.\+Default\+Teacher.\+image\+\_\+path}
+
+
+
+Definition at line 60 of file agents.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1visdial_1_1agents_1_1DefaultTeacher_a4e9d61cd05584be7a63d7407372ce13a}\label{classparlai_1_1tasks_1_1visdial_1_1agents_1_1DefaultTeacher_a4e9d61cd05584be7a63d7407372ce13a}} 
+\index{parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher}!questions@{questions}}
+\index{questions@{questions}!parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher}}
+\subsubsection{\texorpdfstring{questions}{questions}}
+{\footnotesize\ttfamily parlai.\+tasks.\+visdial.\+agents.\+Default\+Teacher.\+questions}
+
+
+
+Definition at line 71 of file agents.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1visdial_1_1agents_1_1DefaultTeacher_a8cb96fb50b9c8d040dcb9bd8dd3d1d3e}\label{classparlai_1_1tasks_1_1visdial_1_1agents_1_1DefaultTeacher_a8cb96fb50b9c8d040dcb9bd8dd3d1d3e}} 
+\index{parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher}!visdial@{visdial}}
+\index{visdial@{visdial}!parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::visdial\+::agents\+::\+Default\+Teacher}}
+\subsubsection{\texorpdfstring{visdial}{visdial}}
+{\footnotesize\ttfamily parlai.\+tasks.\+visdial.\+agents.\+Default\+Teacher.\+visdial}
+
+
+
+Definition at line 69 of file agents.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/tasks/visdial/\hyperlink{parlai_2tasks_2visdial_2agents_8py}{agents.\+py}\end{DoxyCompactItemize}

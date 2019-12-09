@@ -1,0 +1,223 @@
+\hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized}{}\section{projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+rated\+\_\+to\+\_\+polarized Namespace Reference}
+\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized}\index{projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+rated\+\_\+to\+\_\+polarized}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_acba2c1088cdc95f703203c9166b9499d}{setup\+\_\+args} ()
+\item 
+def \hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_abb1b1c7522da8d4703fc74cdb6422d87}{main} (\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_a6caf02831bff7f048ef8755cfa97c477}{config})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_a31d237eba6c7ad7903f930c1e58f8102}{I\+N\+I\+T\+I\+A\+L\+\_\+\+P\+R\+O\+M\+PT}
+\item 
+\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_a6028adaa8a7b30cc2fba04ad49eee0ac}{R\+E\+P\+O\+R\+T\+\_\+\+D\+IR}
+\item 
+\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_ab364c3f1ce755978deef3d5342c64067}{D\+A\+T\+A\+\_\+\+D\+IR}
+\item 
+\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_a1fb0d87725f69230703cb6ad84e91540}{D\+E\+F\+A\+U\+L\+T\+\_\+\+IN}
+\item 
+\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_abb1116b353d5144f1b345189b671b368}{D\+E\+F\+A\+U\+L\+T\+\_\+\+O\+UT}
+\item 
+\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_a6caf02831bff7f048ef8755cfa97c477}{config}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_abb1b1c7522da8d4703fc74cdb6422d87}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_abb1b1c7522da8d4703fc74cdb6422d87}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}!main@{main}}
+\index{main@{main}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+rated\+\_\+to\+\_\+polarized.\+main (\begin{DoxyParamCaption}\item[{}]{config }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Extracts training data for the negative response classifier (NRC) from Mturk logs.
+
+input: file of logs (in ParlaiDialog format) from Mturk task 1 with turn-by-turn
+    quality ratings 1-5
+output: file of episodes (self-feeding format) w/ +1/-1 ratings indicating
+    positive/negative example
+\end{DoxyVerb}
+ 
+
+Definition at line 60 of file convert\+\_\+rated\+\_\+to\+\_\+polarized.\+py.
+
+
+\begin{DoxyCode}
+60 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_abb1b1c7522da8d4703fc74cdb6422d87}{main}(config):
+61     \textcolor{stringliteral}{"""}
+62 \textcolor{stringliteral}{    Extracts training data for the negative response classifier (NRC) from Mturk logs.}
+63 \textcolor{stringliteral}{}
+64 \textcolor{stringliteral}{    input: file of logs (in ParlaiDialog format) from Mturk task 1 with turn-by-turn}
+65 \textcolor{stringliteral}{        quality ratings 1-5}
+66 \textcolor{stringliteral}{    output: file of episodes (self-feeding format) w/ +1/-1 ratings indicating}
+67 \textcolor{stringliteral}{        positive/negative example}
+68 \textcolor{stringliteral}{    """}
+69     examples = []
+70     positives = config[\textcolor{stringliteral}{'positives'}].split(\textcolor{stringliteral}{','})
+71     negatives = config[\textcolor{stringliteral}{'negatives'}].split(\textcolor{stringliteral}{','})
+72     \textcolor{keyword}{assert} len(set(positives).intersection(set(negatives))) == 0
+73 
+74     num\_episodes = 0
+75     num\_parleys = 0
+76     \textcolor{keywordflow}{for} episode \textcolor{keywordflow}{in} \hyperlink{namespaceprojects_1_1self__feeding_1_1utils_a7bfa2fe610a2d0da7968b1a2662e0c23}{extract\_parlai\_episodes}(config[\textcolor{stringliteral}{'infile'}]):
+77         num\_episodes += 1
+78         history = []
+79         \textcolor{keywordflow}{for} parley \textcolor{keywordflow}{in} episode:
+80             num\_parleys += 1
+81 
+82             \textcolor{comment}{# Update history (not including stock control flow responses)}
+83             \textcolor{keywordflow}{if} parley.context.startswith(INITIAL\_PROMPT.lower()):
+84                 \textcolor{comment}{# Conversation prompt, first utterance}
+85                 history = [parley.response]
+86             \textcolor{keywordflow}{elif} parley.context.startswith(SUGGESTION\_REQUEST.lower()):
+87                 \textcolor{comment}{# Asked for y\_exp, got y\_exp}
+88                 \textcolor{keywordflow}{pass}
+89             \textcolor{keywordflow}{elif} parley.context.startswith(NEW\_TOPIC\_REQUEST.lower()):
+90                 \textcolor{comment}{# Asked for new topic, got a first utterance}
+91                 history = [parley.response]
+92             \textcolor{keywordflow}{else}:
+93                 history.append(parley.context)
+94                 history.append(parley.response)
+95 
+96             \textcolor{comment}{# Only create a new example if this parley's rating is relevant}
+97             \textcolor{keywordflow}{if} parley.reward \textcolor{keywordflow}{in} (positives + negatives):
+98                 \textcolor{comment}{# Concatenate history and add speaker tokens as necessary}
+99                 \textcolor{comment}{# history\_size refers to the total number of utterances}
+100                 \textcolor{comment}{# (history\_size == 0 means predict sentiment from '\_\_null\_\_')}
+101                 \textcolor{comment}{# response that's being classified (so if history\_size == 0 then}
+102                 \textcolor{comment}{# classify based only on the response w/o any extra context).}
+103                 \textcolor{comment}{# Note that the response being classified should always be preceded by}
+104                 \textcolor{comment}{# \_\_p1\_\_ (the human), not \_\_p2\_\_ (the bot).}
+105                 \textcolor{keywordflow}{if} config[\textcolor{stringliteral}{'history\_size'}] < 0:
+106                     utterances = history
+107                 \textcolor{keywordflow}{elif} config[\textcolor{stringliteral}{'history\_size'}] == 0:
+108                     utterances = [\textcolor{stringliteral}{'\_\_null\_\_'}]
+109                 \textcolor{keywordflow}{else}:
+110                     utterances = history[-config[\textcolor{stringliteral}{'history\_size'}] :]
+111 
+112                 context = \hyperlink{namespaceprojects_1_1self__feeding_1_1utils_a3f3d055dc6c4058057baae7b240de5ec}{add\_person\_tokens}(utterances, last\_speaker=1)
+113 
+114                 label = 1 \textcolor{keywordflow}{if} parley.reward \textcolor{keywordflow}{in} positives \textcolor{keywordflow}{else} -1
+115 
+116                 example = Parley(context, label)
+117                 examples.append(example)
+118 
+119     with open(config[\textcolor{stringliteral}{'outfile'}], \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} outfile:
+120         \textcolor{keywordflow}{for} ex \textcolor{keywordflow}{in} examples:
+121             outfile.write(json.dumps(ex.to\_dict()) + \textcolor{stringliteral}{'\(\backslash\)n'})
+122 
+123     print(
+124         f\textcolor{stringliteral}{"Extracted \{len(examples)\} ratings out of \{num\_episodes\} episodes "}
+125         f\textcolor{stringliteral}{"(\{num\_parleys\} parleys) and wrote them to \{config['outfile']\} with "}
+126         f\textcolor{stringliteral}{"histsz == \{config['history\_size']\}."}
+127     )
+128 
+129 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_acba2c1088cdc95f703203c9166b9499d}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_acba2c1088cdc95f703203c9166b9499d}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}!setup\+\_\+args@{setup\+\_\+args}}
+\index{setup\+\_\+args@{setup\+\_\+args}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}}
+\subsubsection{\texorpdfstring{setup\+\_\+args()}{setup\_args()}}
+{\footnotesize\ttfamily def projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+rated\+\_\+to\+\_\+polarized.\+setup\+\_\+args (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 30 of file convert\+\_\+rated\+\_\+to\+\_\+polarized.\+py.
+
+
+\begin{DoxyCode}
+30 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_acba2c1088cdc95f703203c9166b9499d}{setup\_args}():
+31     parser = ArgumentParser()
+32     parser.add\_argument(\textcolor{stringliteral}{'-if'}, \textcolor{stringliteral}{'--infile'}, type=str, default=DEFAULT\_IN)
+33     parser.add\_argument(\textcolor{stringliteral}{'-of'}, \textcolor{stringliteral}{'--outfile'}, type=str, default=DEFAULT\_OUT)
+34     parser.add\_argument(
+35         \textcolor{stringliteral}{'-histsz'},
+36         \textcolor{stringliteral}{'--history-size'},
+37         type=int,
+38         default=-1,
+39         help=\textcolor{stringliteral}{"The number of turns to include in the prompt."},
+40     )
+41     parser.add\_argument(
+42         \textcolor{stringliteral}{'-pos'},
+43         \textcolor{stringliteral}{'--positives'},
+44         type=str,
+45         default=\textcolor{stringliteral}{'3,4,5'},
+46         help=\textcolor{stringliteral}{"A comma-separated list of ratings with positive label"},
+47     )
+48     parser.add\_argument(
+49         \textcolor{stringliteral}{'-neg'},
+50         \textcolor{stringliteral}{'--negatives'},
+51         type=str,
+52         default=\textcolor{stringliteral}{'1'},
+53         help=\textcolor{stringliteral}{"A comma-separated list of ratings with negative label"},
+54     )
+55     config = vars(parser.parse\_args())
+56 
+57     \textcolor{keywordflow}{return} config
+58 
+59 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_a6caf02831bff7f048ef8755cfa97c477}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_a6caf02831bff7f048ef8755cfa97c477}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}!config@{config}}
+\index{config@{config}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}}
+\subsubsection{\texorpdfstring{config}{config}}
+{\footnotesize\ttfamily projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+rated\+\_\+to\+\_\+polarized.\+config}
+
+
+
+Definition at line 131 of file convert\+\_\+rated\+\_\+to\+\_\+polarized.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_ab364c3f1ce755978deef3d5342c64067}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_ab364c3f1ce755978deef3d5342c64067}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}!D\+A\+T\+A\+\_\+\+D\+IR@{D\+A\+T\+A\+\_\+\+D\+IR}}
+\index{D\+A\+T\+A\+\_\+\+D\+IR@{D\+A\+T\+A\+\_\+\+D\+IR}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}}
+\subsubsection{\texorpdfstring{D\+A\+T\+A\+\_\+\+D\+IR}{DATA\_DIR}}
+{\footnotesize\ttfamily projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+rated\+\_\+to\+\_\+polarized.\+D\+A\+T\+A\+\_\+\+D\+IR}
+
+
+
+Definition at line 24 of file convert\+\_\+rated\+\_\+to\+\_\+polarized.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_a1fb0d87725f69230703cb6ad84e91540}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_a1fb0d87725f69230703cb6ad84e91540}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}!D\+E\+F\+A\+U\+L\+T\+\_\+\+IN@{D\+E\+F\+A\+U\+L\+T\+\_\+\+IN}}
+\index{D\+E\+F\+A\+U\+L\+T\+\_\+\+IN@{D\+E\+F\+A\+U\+L\+T\+\_\+\+IN}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}}
+\subsubsection{\texorpdfstring{D\+E\+F\+A\+U\+L\+T\+\_\+\+IN}{DEFAULT\_IN}}
+{\footnotesize\ttfamily projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+rated\+\_\+to\+\_\+polarized.\+D\+E\+F\+A\+U\+L\+T\+\_\+\+IN}
+
+
+
+Definition at line 26 of file convert\+\_\+rated\+\_\+to\+\_\+polarized.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_abb1116b353d5144f1b345189b671b368}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_abb1116b353d5144f1b345189b671b368}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}!D\+E\+F\+A\+U\+L\+T\+\_\+\+O\+UT@{D\+E\+F\+A\+U\+L\+T\+\_\+\+O\+UT}}
+\index{D\+E\+F\+A\+U\+L\+T\+\_\+\+O\+UT@{D\+E\+F\+A\+U\+L\+T\+\_\+\+O\+UT}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}}
+\subsubsection{\texorpdfstring{D\+E\+F\+A\+U\+L\+T\+\_\+\+O\+UT}{DEFAULT\_OUT}}
+{\footnotesize\ttfamily projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+rated\+\_\+to\+\_\+polarized.\+D\+E\+F\+A\+U\+L\+T\+\_\+\+O\+UT}
+
+
+
+Definition at line 27 of file convert\+\_\+rated\+\_\+to\+\_\+polarized.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_a31d237eba6c7ad7903f930c1e58f8102}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_a31d237eba6c7ad7903f930c1e58f8102}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}!I\+N\+I\+T\+I\+A\+L\+\_\+\+P\+R\+O\+M\+PT@{I\+N\+I\+T\+I\+A\+L\+\_\+\+P\+R\+O\+M\+PT}}
+\index{I\+N\+I\+T\+I\+A\+L\+\_\+\+P\+R\+O\+M\+PT@{I\+N\+I\+T\+I\+A\+L\+\_\+\+P\+R\+O\+M\+PT}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}}
+\subsubsection{\texorpdfstring{I\+N\+I\+T\+I\+A\+L\+\_\+\+P\+R\+O\+M\+PT}{INITIAL\_PROMPT}}
+{\footnotesize\ttfamily projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+rated\+\_\+to\+\_\+polarized.\+I\+N\+I\+T\+I\+A\+L\+\_\+\+P\+R\+O\+M\+PT}
+
+
+
+Definition at line 21 of file convert\+\_\+rated\+\_\+to\+\_\+polarized.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_a6028adaa8a7b30cc2fba04ad49eee0ac}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__rated__to__polarized_a6028adaa8a7b30cc2fba04ad49eee0ac}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}!R\+E\+P\+O\+R\+T\+\_\+\+D\+IR@{R\+E\+P\+O\+R\+T\+\_\+\+D\+IR}}
+\index{R\+E\+P\+O\+R\+T\+\_\+\+D\+IR@{R\+E\+P\+O\+R\+T\+\_\+\+D\+IR}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+rated\+\_\+to\+\_\+polarized}}
+\subsubsection{\texorpdfstring{R\+E\+P\+O\+R\+T\+\_\+\+D\+IR}{REPORT\_DIR}}
+{\footnotesize\ttfamily projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+rated\+\_\+to\+\_\+polarized.\+R\+E\+P\+O\+R\+T\+\_\+\+D\+IR}
+
+
+
+Definition at line 23 of file convert\+\_\+rated\+\_\+to\+\_\+polarized.\+py.
+

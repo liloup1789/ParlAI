@@ -1,0 +1,215 @@
+\hypertarget{namespaceigc__evals_1_1run}{}\section{igc\+\_\+evals.\+run Namespace Reference}
+\label{namespaceigc__evals_1_1run}\index{igc\+\_\+evals.\+run@{igc\+\_\+evals.\+run}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceigc__evals_1_1run_ac45cf85723a667c904378dacaee81ed7}{main} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceigc__evals_1_1run_a8d800bb89949fff41662851f88503919}{round\+\_\+choices}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceigc__evals_1_1run_ac45cf85723a667c904378dacaee81ed7}\label{namespaceigc__evals_1_1run_ac45cf85723a667c904378dacaee81ed7}} 
+\index{igc\+\_\+evals\+::run@{igc\+\_\+evals\+::run}!main@{main}}
+\index{main@{main}!igc\+\_\+evals\+::run@{igc\+\_\+evals\+::run}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def igc\+\_\+evals.\+run.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}IGC Human Evaluation.
+
+Specify the `--eval-data-path` to load examples for evaluation.
+
+The data in `--eval-data-path` should be formatted as a dictionary
+mapping IGC image ids to dicts with the following fields:
+{
+    'questions': list of (<generator_name>, <generated_question>) tuples,
+    'responses': list of (<generator_name>, <generated_response>) tuples,
+    'question': question to use when evaluating responses,
+    'context': context for the image
+}
+
+If not data path specified, loads a demo_example specified in worlds.py
+
+Specify `--image-path` for the path to the IGC images, where each example
+is saved as <image_id>.jpg
+
+
+NOTE: You can download the IGC Test Set from
+    https://www.microsoft.com/en-us/download/details.aspx?id=55324
+
+And you can use the `download_igc_images.py` script to download the images
+(please put the IGC_crowd_test.csv file in this directory to use the script)
+\end{DoxyVerb}
+ 
+
+Definition at line 15 of file run.\+py.
+
+
+\begin{DoxyCode}
+15 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1run_ad3ab2c71f8083c3112815c0b363d316b}{main}():
+16     \textcolor{stringliteral}{"""}
+17 \textcolor{stringliteral}{    IGC Human Evaluation.}
+18 \textcolor{stringliteral}{}
+19 \textcolor{stringliteral}{    Specify the `--eval-data-path` to load examples for evaluation.}
+20 \textcolor{stringliteral}{}
+21 \textcolor{stringliteral}{    The data in `--eval-data-path` should be formatted as a dictionary}
+22 \textcolor{stringliteral}{    mapping IGC image ids to dicts with the following fields:}
+23 \textcolor{stringliteral}{    \{}
+24 \textcolor{stringliteral}{        'questions': list of (<generator\_name>, <generated\_question>) tuples,}
+25 \textcolor{stringliteral}{        'responses': list of (<generator\_name>, <generated\_response>) tuples,}
+26 \textcolor{stringliteral}{        'question': question to use when evaluating responses,}
+27 \textcolor{stringliteral}{        'context': context for the image}
+28 \textcolor{stringliteral}{    \}}
+29 \textcolor{stringliteral}{}
+30 \textcolor{stringliteral}{    If not data path specified, loads a demo\_example specified in worlds.py}
+31 \textcolor{stringliteral}{}
+32 \textcolor{stringliteral}{    Specify `--image-path` for the path to the IGC images, where each example}
+33 \textcolor{stringliteral}{    is saved as <image\_id>.jpg}
+34 \textcolor{stringliteral}{}
+35 \textcolor{stringliteral}{}
+36 \textcolor{stringliteral}{    NOTE: You can download the IGC Test Set from}
+37 \textcolor{stringliteral}{        https://www.microsoft.com/en-us/download/details.aspx?id=55324}
+38 \textcolor{stringliteral}{}
+39 \textcolor{stringliteral}{    And you can use the `download\_igc\_images.py` script to download the images}
+40 \textcolor{stringliteral}{    (please put the IGC\_crowd\_test.csv file in this directory to use the script)}
+41 \textcolor{stringliteral}{    """}
+42     argparser = ParlaiParser(\textcolor{keyword}{False}, \textcolor{keyword}{False})
+43     argparser.add\_parlai\_data\_path()
+44     argparser.add\_mturk\_args()
+45     argparser.add\_argument(
+46         \textcolor{stringliteral}{'-min\_t'}, \textcolor{stringliteral}{'--min\_turns'}, default=3, type=int, help=\textcolor{stringliteral}{'minimum number of turns'}
+47     )
+48     argparser.add\_argument(
+49         \textcolor{stringliteral}{'-mt'}, \textcolor{stringliteral}{'--max\_turns'}, default=5, type=int, help=\textcolor{stringliteral}{'maximal number of chat turns'}
+50     )
+51     argparser.add\_argument(
+52         \textcolor{stringliteral}{'-mx\_rsp\_time'},
+53         \textcolor{stringliteral}{'--max\_resp\_time'},
+54         default=1800,
+55         type=int,
+56         help=\textcolor{stringliteral}{'time limit for entering a dialog message'},
+57     )
+58     argparser.add\_argument(
+59         \textcolor{stringliteral}{'-mx\_onb\_time'},
+60         \textcolor{stringliteral}{'--max\_onboard\_time'},
+61         type=int,
+62         default=300,
+63         help=\textcolor{stringliteral}{'time limit for turker'} \textcolor{stringliteral}{'in onboarding'},
+64     )
+65     argparser.add\_argument(
+66         \textcolor{stringliteral}{'-ni'},
+67         \textcolor{stringliteral}{'--num\_images'},
+68         type=int,
+69         default=5,
+70         help=\textcolor{stringliteral}{'number of images to show \(\backslash\)}
+71 \textcolor{stringliteral}{                           to turker'},
+72     )
+73     argparser.add\_argument(
+74         \textcolor{stringliteral}{'--auto-approve-delay'},
+75         type=int,
+76         default=3600 * 24,
+77         help=\textcolor{stringliteral}{'how long to wait for  \(\backslash\)}
+78 \textcolor{stringliteral}{                           auto approval'},
+79     )
+80     argparser.add\_argument(
+81         \textcolor{stringliteral}{'--data-path'}, type=str, default=\textcolor{stringliteral}{''}, help=\textcolor{stringliteral}{'where to save data'}
+82     )
+83     argparser.add\_argument(
+84         \textcolor{stringliteral}{'--eval-data-path'},
+85         type=str,
+86         default=\textcolor{stringliteral}{''},
+87         help=\textcolor{stringliteral}{'path to file with candidates to '} \textcolor{stringliteral}{'evaluate'},
+88     )
+89     argparser.add\_argument(
+90         \textcolor{stringliteral}{'--image-path'}, type=str, default=\textcolor{stringliteral}{''}, help=\textcolor{stringliteral}{'path to IGC images'}
+91     )
+92     argparser.add\_argument(
+93         \textcolor{stringliteral}{'-rnd'},
+94         \textcolor{stringliteral}{'--dialog-round'},
+95         type=str,
+96         default=\textcolor{stringliteral}{'questions'},
+97         choices=round\_choices,
+98         help=\textcolor{stringliteral}{'which dialog round to show'},
+99     )
+100 
+101     opt = argparser.parse\_args()
+102     directory\_path = os.path.dirname(os.path.abspath(\_\_file\_\_))
+103     opt[\textcolor{stringliteral}{'task'}] = os.path.basename(directory\_path)
+104     \textcolor{keywordflow}{if} \textcolor{stringliteral}{'data\_path'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} opt \textcolor{keywordflow}{or} opt[\textcolor{stringliteral}{'data\_path'}] == \textcolor{stringliteral}{''}:
+105         opt[\textcolor{stringliteral}{'data\_path'}] = \textcolor{stringliteral}{"\{\}/data/\{\}\_evals"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(os.getcwd(), opt[\textcolor{stringliteral}{'dialog\_round'}])
+106     opt[\textcolor{stringliteral}{'task\_dir'}] = os.getcwd()
+107     \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'dialog\_round'}] == \textcolor{stringliteral}{'questions'}:
+108         opt.update(tc\_questions)
+109     \textcolor{keywordflow}{else}:
+110         opt.update(tc\_responses)
+111 
+112     mturk\_agent\_ids = [RATER]
+113     mturk\_manager = MTurkManager(opt=opt, mturk\_agent\_ids=mturk\_agent\_ids)
+114 
+115     example\_generator = IGCExampleGenerator(opt)
+116     mturk\_manager.setup\_server(task\_directory\_path=directory\_path)
+117 
+118     \textcolor{keywordflow}{try}:
+119         mturk\_manager.start\_new\_run()
+120 
+121         \textcolor{keyword}{def }run\_onboard(worker):
+122             worker.example\_generator = example\_generator
+123             world = RoleOnboardWorld(opt, worker)
+124             world.parley()
+125             world.shutdown()
+126 
+127         mturk\_manager.set\_onboard\_function(onboard\_function=run\_onboard)
+128         mturk\_manager.ready\_to\_accept\_workers()
+129         mturk\_manager.create\_hits()
+130 
+131         \textcolor{keyword}{def }check\_worker\_eligibility(worker):
+132             \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+133 
+134         \textcolor{keyword}{def }assign\_worker\_roles(workers):
+135             \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} workers:
+136                 w.id = mturk\_agent\_ids[0]
+137 
+138         \textcolor{keyword}{def }run\_conversation(mturk\_manager, opt, workers):
+139             agents = workers[:]
+140             conv\_idx = mturk\_manager.conversation\_index
+141             world = MTurkIGCEvalWorld(
+142                 opt, agents=agents, world\_tag=\textcolor{stringliteral}{'conversation t\_\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(conv\_idx)
+143             )
+144             \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} world.episode\_done():
+145                 world.parley()
+146             world.save\_data()
+147 
+148             world.shutdown()
+149             world.review\_work()
+150 
+151         mturk\_manager.start\_task(
+152             eligibility\_function=check\_worker\_eligibility,
+153             assign\_role\_function=assign\_worker\_roles,
+154             task\_function=run\_conversation,
+155         )
+156 
+157     \textcolor{keywordflow}{except} BaseException:
+158         \textcolor{keywordflow}{raise}
+159     \textcolor{keywordflow}{finally}:
+160         mturk\_manager.expire\_all\_unassigned\_hits()
+161         mturk\_manager.shutdown()
+162 
+163 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceigc__evals_1_1run_a8d800bb89949fff41662851f88503919}\label{namespaceigc__evals_1_1run_a8d800bb89949fff41662851f88503919}} 
+\index{igc\+\_\+evals\+::run@{igc\+\_\+evals\+::run}!round\+\_\+choices@{round\+\_\+choices}}
+\index{round\+\_\+choices@{round\+\_\+choices}!igc\+\_\+evals\+::run@{igc\+\_\+evals\+::run}}
+\subsubsection{\texorpdfstring{round\+\_\+choices}{round\_choices}}
+{\footnotesize\ttfamily igc\+\_\+evals.\+run.\+round\+\_\+choices}
+
+
+
+Definition at line 12 of file run.\+py.
+

@@ -1,0 +1,322 @@
+\hypertarget{namespaceparlai_1_1core_1_1params}{}\section{parlai.\+core.\+params Namespace Reference}
+\label{namespaceparlai_1_1core_1_1params}\index{parlai.\+core.\+params@{parlai.\+core.\+params}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classparlai_1_1core_1_1params_1_1CustomHelpFormatter}{Custom\+Help\+Formatter}
+\item 
+class \hyperlink{classparlai_1_1core_1_1params_1_1ParlaiParser}{Parlai\+Parser}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1core_1_1params_ac8624bf16ab6b2df0f2869f29a92c90b}{print\+\_\+git\+\_\+commit} ()
+\item 
+def \hyperlink{namespaceparlai_1_1core_1_1params_afd1a47c94990168ea9e70d894a79bd2c}{print\+\_\+announcements} (opt)
+\item 
+def \hyperlink{namespaceparlai_1_1core_1_1params_a6d160324f6af84562334fd0698141074}{get\+\_\+model\+\_\+name} (opt)
+\item 
+def \hyperlink{namespaceparlai_1_1core_1_1params_a714c9ed20ecfb4f9d524ccbe3510fecc}{str2bool} (value)
+\item 
+def \hyperlink{namespaceparlai_1_1core_1_1params_a3ef8c61c55a77674dd852c5b9f21e560}{str2floats} (s)
+\item 
+def \hyperlink{namespaceparlai_1_1core_1_1params_aa6083a72ad328d26016bd5f805a0b1c8}{str2class} (value)
+\item 
+def \hyperlink{namespaceparlai_1_1core_1_1params_a4abab85fb7a745de31fcc73de5840a60}{class2str} (value)
+\item 
+def \hyperlink{namespaceparlai_1_1core_1_1params_afe2837a1dc21017be30cc7e3cb3696b8}{fix\+\_\+underscores} (args)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1params_a4abab85fb7a745de31fcc73de5840a60}\label{namespaceparlai_1_1core_1_1params_a4abab85fb7a745de31fcc73de5840a60}} 
+\index{parlai\+::core\+::params@{parlai\+::core\+::params}!class2str@{class2str}}
+\index{class2str@{class2str}!parlai\+::core\+::params@{parlai\+::core\+::params}}
+\subsubsection{\texorpdfstring{class2str()}{class2str()}}
+{\footnotesize\ttfamily def parlai.\+core.\+params.\+class2str (\begin{DoxyParamCaption}\item[{}]{value }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Inverse of params.str2class().
+\end{DoxyVerb}
+ 
+
+Definition at line 157 of file params.\+py.
+
+
+\begin{DoxyCode}
+157 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1params_a4abab85fb7a745de31fcc73de5840a60}{class2str}(value):
+158     \textcolor{stringliteral}{"""}
+159 \textcolor{stringliteral}{    Inverse of params.str2class().}
+160 \textcolor{stringliteral}{    """}
+161     s = \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(value)
+162     s = s[s.find(\textcolor{stringliteral}{'\(\backslash\)''}) + 1 : s.rfind(\textcolor{stringliteral}{'\(\backslash\)''})]  \textcolor{comment}{# pull out import path}
+163     s = \textcolor{stringliteral}{':'}.join(s.rsplit(\textcolor{stringliteral}{'.'}, 1))  \textcolor{comment}{# replace last period with ':'}
+164     \textcolor{keywordflow}{return} s
+165 
+166 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1params_afe2837a1dc21017be30cc7e3cb3696b8}\label{namespaceparlai_1_1core_1_1params_afe2837a1dc21017be30cc7e3cb3696b8}} 
+\index{parlai\+::core\+::params@{parlai\+::core\+::params}!fix\+\_\+underscores@{fix\+\_\+underscores}}
+\index{fix\+\_\+underscores@{fix\+\_\+underscores}!parlai\+::core\+::params@{parlai\+::core\+::params}}
+\subsubsection{\texorpdfstring{fix\+\_\+underscores()}{fix\_underscores()}}
+{\footnotesize\ttfamily def parlai.\+core.\+params.\+fix\+\_\+underscores (\begin{DoxyParamCaption}\item[{}]{args }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Convert underscores to hyphens in args.
+
+For example, converts '--gradient_clip' to '--gradient-clip'.
+
+:param args: iterable, possibly containing args strings with underscores.
+\end{DoxyVerb}
+ 
+
+Definition at line 167 of file params.\+py.
+
+
+\begin{DoxyCode}
+167 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1params_afe2837a1dc21017be30cc7e3cb3696b8}{fix\_underscores}(args):
+168     \textcolor{stringliteral}{"""}
+169 \textcolor{stringliteral}{    Convert underscores to hyphens in args.}
+170 \textcolor{stringliteral}{}
+171 \textcolor{stringliteral}{    For example, converts '--gradient\_clip' to '--gradient-clip'.}
+172 \textcolor{stringliteral}{}
+173 \textcolor{stringliteral}{    :param args: iterable, possibly containing args strings with underscores.}
+174 \textcolor{stringliteral}{    """}
+175     \textcolor{keywordflow}{if} args:
+176         new\_args = []
+177         \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} args:
+178             \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(a) \textcolor{keywordflow}{is} str \textcolor{keywordflow}{and} a.startswith(\textcolor{stringliteral}{'-'}):
+179                 a = a.replace(\textcolor{stringliteral}{'\_'}, \textcolor{stringliteral}{'-'})
+180             new\_args.append(a)
+181         args = new\_args
+182     \textcolor{keywordflow}{return} args
+183 
+184 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1params_a6d160324f6af84562334fd0698141074}\label{namespaceparlai_1_1core_1_1params_a6d160324f6af84562334fd0698141074}} 
+\index{parlai\+::core\+::params@{parlai\+::core\+::params}!get\+\_\+model\+\_\+name@{get\+\_\+model\+\_\+name}}
+\index{get\+\_\+model\+\_\+name@{get\+\_\+model\+\_\+name}!parlai\+::core\+::params@{parlai\+::core\+::params}}
+\subsubsection{\texorpdfstring{get\+\_\+model\+\_\+name()}{get\_model\_name()}}
+{\footnotesize\ttfamily def parlai.\+core.\+params.\+get\+\_\+model\+\_\+name (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Get the model name from either `--model` or `--model-file`.
+\end{DoxyVerb}
+ 
+
+Definition at line 104 of file params.\+py.
+
+
+\begin{DoxyCode}
+104 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1params_a6d160324f6af84562334fd0698141074}{get\_model\_name}(opt):
+105     \textcolor{stringliteral}{"""}
+106 \textcolor{stringliteral}{    Get the model name from either `--model` or `--model-file`.}
+107 \textcolor{stringliteral}{    """}
+108     model = opt.get(\textcolor{stringliteral}{'model'}, \textcolor{keywordtype}{None})
+109     \textcolor{keywordflow}{if} model \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+110         \textcolor{comment}{# try to get model name from model opt file}
+111         model\_file = opt.get(\textcolor{stringliteral}{'model\_file'}, \textcolor{keywordtype}{None})
+112         \textcolor{keywordflow}{if} model\_file \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+113             model\_file = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_a5fbd3301b67f00d6d146fb01c7cd7626}{modelzoo\_path}(opt.get(\textcolor{stringliteral}{'datapath'}), model\_file)
+114             optfile = model\_file + \textcolor{stringliteral}{'.opt'}
+115             \textcolor{keywordflow}{if} os.path.isfile(optfile):
+116                 new\_opt = \hyperlink{namespaceparlai_1_1utils_1_1misc_a7c97ef3250327bc549ac652a481be0cf}{load\_opt\_file}(optfile)
+117                 model = new\_opt.get(\textcolor{stringliteral}{'model'}, \textcolor{keywordtype}{None})
+118     \textcolor{keywordflow}{return} model
+119 
+120 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1params_afd1a47c94990168ea9e70d894a79bd2c}\label{namespaceparlai_1_1core_1_1params_afd1a47c94990168ea9e70d894a79bd2c}} 
+\index{parlai\+::core\+::params@{parlai\+::core\+::params}!print\+\_\+announcements@{print\+\_\+announcements}}
+\index{print\+\_\+announcements@{print\+\_\+announcements}!parlai\+::core\+::params@{parlai\+::core\+::params}}
+\subsubsection{\texorpdfstring{print\+\_\+announcements()}{print\_announcements()}}
+{\footnotesize\ttfamily def parlai.\+core.\+params.\+print\+\_\+announcements (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Output any announcements the ParlAI team wishes to make to users.
+
+Also gives the user the option to suppress the output.
+\end{DoxyVerb}
+ 
+
+Definition at line 49 of file params.\+py.
+
+
+\begin{DoxyCode}
+49 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1params_afd1a47c94990168ea9e70d894a79bd2c}{print\_announcements}(opt):
+50     \textcolor{stringliteral}{"""}
+51 \textcolor{stringliteral}{    Output any announcements the ParlAI team wishes to make to users.}
+52 \textcolor{stringliteral}{}
+53 \textcolor{stringliteral}{    Also gives the user the option to suppress the output.}
+54 \textcolor{stringliteral}{    """}
+55     \textcolor{comment}{# no annoucements to make right now}
+56     \textcolor{keywordflow}{return}
+57 
+58     noannounce\_file = os.path.join(opt.get(\textcolor{stringliteral}{'datapath'}), \textcolor{stringliteral}{'noannouncements'})
+59     \textcolor{keywordflow}{if} os.path.exists(noannounce\_file):
+60         \textcolor{comment}{# user has suppressed announcements, don't do anything}
+61         \textcolor{keywordflow}{return}
+62 
+63     \textcolor{comment}{# useful constants}
+64     \textcolor{comment}{# all of these colors are bolded}
+65     RESET = \textcolor{stringliteral}{'\(\backslash\)033[0m'}
+66     BOLD = \textcolor{stringliteral}{'\(\backslash\)033[1m'}
+67     RED = \textcolor{stringliteral}{'\(\backslash\)033[1;91m'}
+68     YELLOW = \textcolor{stringliteral}{'\(\backslash\)033[1;93m'}
+69     GREEN = \textcolor{stringliteral}{'\(\backslash\)033[1;92m'}
+70     BLUE = \textcolor{stringliteral}{'\(\backslash\)033[1;96m'}
+71     CYAN = \textcolor{stringliteral}{'\(\backslash\)033[1;94m'}
+72     MAGENTA = \textcolor{stringliteral}{'\(\backslash\)033[1;95m'}
+73 
+74     \textcolor{comment}{# only use colors if we're outputting to a terminal}
+75     USE\_COLORS = \_sys.stdout.isatty()
+76     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} USE\_COLORS:
+77         RESET = BOLD = RED = YELLOW = GREEN = BLUE = CYAN = MAGENTA = \textcolor{stringliteral}{''}
+78 
+79     \textcolor{comment}{# generate the rainbow stars}
+80     rainbow = [RED, YELLOW, GREEN, CYAN, BLUE, MAGENTA]
+81     size = 78 // len(rainbow)
+82     stars = \textcolor{stringliteral}{''}.join([color + \textcolor{stringliteral}{'*'} * size \textcolor{keywordflow}{for} color \textcolor{keywordflow}{in} rainbow])
+83     stars += RESET
+84 
+85     \textcolor{comment}{# do the actual output}
+86     print(
+87         \textcolor{stringliteral}{'\(\backslash\)n'}.join(
+88             [
+89                 \textcolor{stringliteral}{''},
+90                 stars,
+91                 BOLD,
+92                 \textcolor{stringliteral}{'Announcements go here.'},
+93                 RESET,
+94                 \textcolor{comment}{# don't bold the suppression command}
+95                 \textcolor{stringliteral}{'To suppress this message (and future announcements), run\(\backslash\)n`touch \{\}`'}.
+      \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+96                     noannounce\_file
+97                 ),
+98                 stars,
+99             ]
+100         )
+101     )
+102 
+103 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1params_ac8624bf16ab6b2df0f2869f29a92c90b}\label{namespaceparlai_1_1core_1_1params_ac8624bf16ab6b2df0f2869f29a92c90b}} 
+\index{parlai\+::core\+::params@{parlai\+::core\+::params}!print\+\_\+git\+\_\+commit@{print\+\_\+git\+\_\+commit}}
+\index{print\+\_\+git\+\_\+commit@{print\+\_\+git\+\_\+commit}!parlai\+::core\+::params@{parlai\+::core\+::params}}
+\subsubsection{\texorpdfstring{print\+\_\+git\+\_\+commit()}{print\_git\_commit()}}
+{\footnotesize\ttfamily def parlai.\+core.\+params.\+print\+\_\+git\+\_\+commit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Print the current git commit of ParlAI and parlai_internal.
+\end{DoxyVerb}
+ 
+
+Definition at line 26 of file params.\+py.
+
+
+\begin{DoxyCode}
+26 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1params_ac8624bf16ab6b2df0f2869f29a92c90b}{print\_git\_commit}():
+27     \textcolor{stringliteral}{"""}
+28 \textcolor{stringliteral}{    Print the current git commit of ParlAI and parlai\_internal.}
+29 \textcolor{stringliteral}{    """}
+30     root = os.path.dirname(os.path.dirname(parlai.\_\_file\_\_))
+31     internal\_root = os.path.join(root, \textcolor{stringliteral}{'parlai\_internal'})
+32     \textcolor{keywordflow}{try}:
+33         git\_ = git.Git(root)
+34         current\_commit = git\_.rev\_parse(\textcolor{stringliteral}{'HEAD'})
+35         print(f\textcolor{stringliteral}{'[ Current ParlAI commit: \{current\_commit\} ]'})
+36     \textcolor{keywordflow}{except} git.GitCommandNotFound:
+37         \textcolor{keywordflow}{pass}
+38     \textcolor{keywordflow}{except} git.GitCommandError:
+39         \textcolor{keywordflow}{pass}
+40 
+41     \textcolor{keywordflow}{try}:
+42         git\_ = git.Git(internal\_root)
+43         internal\_commit = git\_.rev\_parse(\textcolor{stringliteral}{'HEAD'})
+44         print(f\textcolor{stringliteral}{'[ Current internal commit: \{internal\_commit\} ]'})
+45     \textcolor{keywordflow}{except} git.GitCommandNotFound:
+46         \textcolor{keywordflow}{pass}
+47 
+48 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1params_a714c9ed20ecfb4f9d524ccbe3510fecc}\label{namespaceparlai_1_1core_1_1params_a714c9ed20ecfb4f9d524ccbe3510fecc}} 
+\index{parlai\+::core\+::params@{parlai\+::core\+::params}!str2bool@{str2bool}}
+\index{str2bool@{str2bool}!parlai\+::core\+::params@{parlai\+::core\+::params}}
+\subsubsection{\texorpdfstring{str2bool()}{str2bool()}}
+{\footnotesize\ttfamily def parlai.\+core.\+params.\+str2bool (\begin{DoxyParamCaption}\item[{}]{value }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Convert 'yes', 'false', '1', etc.
+
+into a boolean.
+\end{DoxyVerb}
+ 
+
+Definition at line 121 of file params.\+py.
+
+
+\begin{DoxyCode}
+121 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1params_a714c9ed20ecfb4f9d524ccbe3510fecc}{str2bool}(value):
+122     \textcolor{stringliteral}{"""}
+123 \textcolor{stringliteral}{    Convert 'yes', 'false', '1', etc.}
+124 \textcolor{stringliteral}{}
+125 \textcolor{stringliteral}{    into a boolean.}
+126 \textcolor{stringliteral}{    """}
+127     v = value.lower()
+128     \textcolor{keywordflow}{if} v \textcolor{keywordflow}{in} (\textcolor{stringliteral}{'yes'}, \textcolor{stringliteral}{'true'}, \textcolor{stringliteral}{'t'}, \textcolor{stringliteral}{'1'}, \textcolor{stringliteral}{'y'}):
+129         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+130     \textcolor{keywordflow}{elif} v \textcolor{keywordflow}{in} (\textcolor{stringliteral}{'no'}, \textcolor{stringliteral}{'false'}, \textcolor{stringliteral}{'f'}, \textcolor{stringliteral}{'n'}, \textcolor{stringliteral}{'0'}):
+131         \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+132     \textcolor{keywordflow}{else}:
+133         \textcolor{keywordflow}{raise} argparse.ArgumentTypeError(\textcolor{stringliteral}{'Boolean value expected.'})
+134 
+135 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1params_aa6083a72ad328d26016bd5f805a0b1c8}\label{namespaceparlai_1_1core_1_1params_aa6083a72ad328d26016bd5f805a0b1c8}} 
+\index{parlai\+::core\+::params@{parlai\+::core\+::params}!str2class@{str2class}}
+\index{str2class@{str2class}!parlai\+::core\+::params@{parlai\+::core\+::params}}
+\subsubsection{\texorpdfstring{str2class()}{str2class()}}
+{\footnotesize\ttfamily def parlai.\+core.\+params.\+str2class (\begin{DoxyParamCaption}\item[{}]{value }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}From import path string, returns the class specified.
+
+For example, the string 'parlai.agents.drqa.drqa:SimpleDictionaryAgent' returns
+<class 'parlai.agents.drqa.drqa.SimpleDictionaryAgent'>.
+\end{DoxyVerb}
+ 
+
+Definition at line 143 of file params.\+py.
+
+
+\begin{DoxyCode}
+143 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1params_aa6083a72ad328d26016bd5f805a0b1c8}{str2class}(value):
+144     \textcolor{stringliteral}{"""}
+145 \textcolor{stringliteral}{    From import path string, returns the class specified.}
+146 \textcolor{stringliteral}{}
+147 \textcolor{stringliteral}{    For example, the string 'parlai.agents.drqa.drqa:SimpleDictionaryAgent' returns}
+148 \textcolor{stringliteral}{    <class 'parlai.agents.drqa.drqa.SimpleDictionaryAgent'>.}
+149 \textcolor{stringliteral}{    """}
+150     \textcolor{keywordflow}{if} \textcolor{stringliteral}{':'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} value:
+151         \textcolor{keywordflow}{raise} RuntimeError(\textcolor{stringliteral}{'Use a colon before the name of the class.'})
+152     name = value.split(\textcolor{stringliteral}{':'})
+153     module = importlib.import\_module(name[0])
+154     \textcolor{keywordflow}{return} getattr(module, name[1])
+155 
+156 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1params_a3ef8c61c55a77674dd852c5b9f21e560}\label{namespaceparlai_1_1core_1_1params_a3ef8c61c55a77674dd852c5b9f21e560}} 
+\index{parlai\+::core\+::params@{parlai\+::core\+::params}!str2floats@{str2floats}}
+\index{str2floats@{str2floats}!parlai\+::core\+::params@{parlai\+::core\+::params}}
+\subsubsection{\texorpdfstring{str2floats()}{str2floats()}}
+{\footnotesize\ttfamily def parlai.\+core.\+params.\+str2floats (\begin{DoxyParamCaption}\item[{}]{s }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Look for single float or comma-separated floats.
+\end{DoxyVerb}
+ 
+
+Definition at line 136 of file params.\+py.
+
+
+\begin{DoxyCode}
+136 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1params_a3ef8c61c55a77674dd852c5b9f21e560}{str2floats}(s):
+137     \textcolor{stringliteral}{"""}
+138 \textcolor{stringliteral}{    Look for single float or comma-separated floats.}
+139 \textcolor{stringliteral}{    """}
+140     \textcolor{keywordflow}{return} tuple(\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(f) \textcolor{keywordflow}{for} f \textcolor{keywordflow}{in} s.split(\textcolor{stringliteral}{','}))
+141 
+142 
+\end{DoxyCode}

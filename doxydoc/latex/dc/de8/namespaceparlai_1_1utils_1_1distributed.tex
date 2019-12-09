@@ -1,0 +1,436 @@
+\hypertarget{namespaceparlai_1_1utils_1_1distributed}{}\section{parlai.\+utils.\+distributed Namespace Reference}
+\label{namespaceparlai_1_1utils_1_1distributed}\index{parlai.\+utils.\+distributed@{parlai.\+utils.\+distributed}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1utils_1_1distributed_afd854992e4cc6571b120b9e179cd4a7a}{validate\+\_\+params} (opt)
+\item 
+def \hyperlink{namespaceparlai_1_1utils_1_1distributed_a023acb5e3b66e1f27e21247c35661279}{is\+\_\+distributed} ()
+\item 
+def \hyperlink{namespaceparlai_1_1utils_1_1distributed_a99b61b4756577c6542039c238d670dba}{num\+\_\+workers} ()
+\item 
+def \hyperlink{namespaceparlai_1_1utils_1_1distributed_a9bb1dac198180590ef8c6b6c6f9fc2c4}{is\+\_\+primary\+\_\+worker} ()
+\item 
+def \hyperlink{namespaceparlai_1_1utils_1_1distributed_a601345e55fc3fc3845c43efa1a04db56}{override\+\_\+print} (suppress=False, prefix=None)
+\item 
+def \hyperlink{namespaceparlai_1_1utils_1_1distributed_a9ef5bf0debf512ddbeb045327bfd87ef}{all\+\_\+gather\+\_\+list} (data, max\+\_\+size=16384)
+\item 
+def \hyperlink{namespaceparlai_1_1utils_1_1distributed_a269d3c7284127d9b287b9b61e9161de6}{sync\+\_\+object} (data, max\+\_\+size=16384)
+\item 
+def \hyperlink{namespaceparlai_1_1utils_1_1distributed_afc64140f9a6437dc1a2b2bd4294ba8ef}{check\+\_\+synced\+\_\+parameters} (model)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceparlai_1_1utils_1_1distributed_af99c57e9c67ff88f4802625436fc2c6c}{T\+O\+R\+C\+H\+\_\+\+A\+V\+A\+I\+L\+A\+B\+LE}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1utils_1_1distributed_a9ef5bf0debf512ddbeb045327bfd87ef}\label{namespaceparlai_1_1utils_1_1distributed_a9ef5bf0debf512ddbeb045327bfd87ef}} 
+\index{parlai\+::utils\+::distributed@{parlai\+::utils\+::distributed}!all\+\_\+gather\+\_\+list@{all\+\_\+gather\+\_\+list}}
+\index{all\+\_\+gather\+\_\+list@{all\+\_\+gather\+\_\+list}!parlai\+::utils\+::distributed@{parlai\+::utils\+::distributed}}
+\subsubsection{\texorpdfstring{all\+\_\+gather\+\_\+list()}{all\_gather\_list()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+distributed.\+all\+\_\+gather\+\_\+list (\begin{DoxyParamCaption}\item[{}]{data,  }\item[{}]{max\+\_\+size = {\ttfamily 16384} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Gather arbitrary data from all nodes into a list.
+
+Similar to `~torch.distributed.all_gather` but for arbitrary Python
+data. Note that *data* must be picklable.
+
+:param data:
+    data from the local worker to be gathered on other workers
+:param int max_size:
+    maximum size of the data to be gathered across workers
+
+:returns:
+    a list containing [data1, data2, ...] of all workers
+\end{DoxyVerb}
+ 
+
+Definition at line 114 of file distributed.\+py.
+
+
+\begin{DoxyCode}
+114 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1utils_1_1distributed_a9ef5bf0debf512ddbeb045327bfd87ef}{all\_gather\_list}(data, max\_size=16384):
+115     \textcolor{stringliteral}{"""}
+116 \textcolor{stringliteral}{    Gather arbitrary data from all nodes into a list.}
+117 \textcolor{stringliteral}{}
+118 \textcolor{stringliteral}{    Similar to `~torch.distributed.all\_gather` but for arbitrary Python}
+119 \textcolor{stringliteral}{    data. Note that *data* must be picklable.}
+120 \textcolor{stringliteral}{}
+121 \textcolor{stringliteral}{    :param data:}
+122 \textcolor{stringliteral}{        data from the local worker to be gathered on other workers}
+123 \textcolor{stringliteral}{    :param int max\_size:}
+124 \textcolor{stringliteral}{        maximum size of the data to be gathered across workers}
+125 \textcolor{stringliteral}{}
+126 \textcolor{stringliteral}{    :returns:}
+127 \textcolor{stringliteral}{        a list containing [data1, data2, ...] of all workers}
+128 \textcolor{stringliteral}{    """}
+129     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a023acb5e3b66e1f27e21247c35661279}{is\_distributed}():
+130         \textcolor{comment}{# fall back to just keeping things basic if we're not distributed}
+131         \textcolor{keywordflow}{return} [data]
+132 
+133     \textcolor{comment}{# stolen shamelessly from fairseq}
+134     \textcolor{comment}{#
+       https://github.com/pytorch/fairseq/blob/c37250ab1c845919af721cd3f5c4cec2993aefe1/fairseq/distributed\_utils.py#L116-L170}
+135     rank = dist.get\_rank()
+136     world\_size = dist.get\_world\_size()
+137 
+138     buffer\_size = max\_size * world\_size
+139     \textcolor{keywordflow}{if} (
+140         \textcolor{keywordflow}{not} hasattr(all\_gather\_list, \textcolor{stringliteral}{'\_buffer'})
+141         \textcolor{keywordflow}{or} all\_gather\_list.\_buffer.numel() < buffer\_size
+142     ):
+143         all\_gather\_list.\_buffer = torch.cuda.ByteTensor(buffer\_size)
+144 
+145     buffer = all\_gather\_list.\_buffer
+146     buffer.zero\_()
+147 
+148     enc = pickle.dumps(data)
+149     enc\_size = len(enc)
+150     \textcolor{keywordflow}{if} enc\_size + 2 > max\_size:
+151         \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{'encoded data exceeds max\_size: \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(enc\_size + 2))
+152     \textcolor{keyword}{assert} max\_size < 255 * 256
+153 
+154     buffer\_rank = buffer[rank * max\_size : (rank + 1) * max\_size]
+155     buffer\_rank[0] = enc\_size // 255  \textcolor{comment}{# this encoding works for max\_size < 65k}
+156     buffer\_rank[1] = enc\_size % 255
+157     buffer\_rank[2 : enc\_size + 2] = torch.ByteTensor(list(enc))
+158 
+159     dist.all\_reduce(buffer)
+160 
+161     result = []
+162     \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(world\_size):
+163         out\_buffer = buffer[i * max\_size : (i + 1) * max\_size]
+164         size = (255 * out\_buffer[0].item()) + out\_buffer[1].item()
+165         \textcolor{keywordflow}{if} size > 0:
+166             \textcolor{keywordflow}{try}:
+167                 result.append(pickle.loads(bytes(out\_buffer[2 : size + 2].tolist())))
+168             \textcolor{keywordflow}{except} pickle.UnpicklingError:
+169                 \textcolor{keywordflow}{raise} RuntimeError(
+170                     \textcolor{stringliteral}{'There was an unpickling error in all\_gather\_list. This likely '}
+171                     \textcolor{stringliteral}{'means your workers got out of syncronization (e.g. one is '}
+172                     \textcolor{stringliteral}{'expecting to sync and another is not.)'}
+173                 )
+174 
+175     \textcolor{keywordflow}{return} result
+176 
+177 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1utils_1_1distributed_afc64140f9a6437dc1a2b2bd4294ba8ef}\label{namespaceparlai_1_1utils_1_1distributed_afc64140f9a6437dc1a2b2bd4294ba8ef}} 
+\index{parlai\+::utils\+::distributed@{parlai\+::utils\+::distributed}!check\+\_\+synced\+\_\+parameters@{check\+\_\+synced\+\_\+parameters}}
+\index{check\+\_\+synced\+\_\+parameters@{check\+\_\+synced\+\_\+parameters}!parlai\+::utils\+::distributed@{parlai\+::utils\+::distributed}}
+\subsubsection{\texorpdfstring{check\+\_\+synced\+\_\+parameters()}{check\_synced\_parameters()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+distributed.\+check\+\_\+synced\+\_\+parameters (\begin{DoxyParamCaption}\item[{}]{model }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Check that all parameters across all workers are the same.
+
+Always returns True, or raises an AssertionError if they are not
+synchronized.
+
+:param torch.nn.Module model: A pytorch model.
+:return: True
+\end{DoxyVerb}
+ 
+
+Definition at line 232 of file distributed.\+py.
+
+
+\begin{DoxyCode}
+232 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1utils_1_1distributed_afc64140f9a6437dc1a2b2bd4294ba8ef}{check\_synced\_parameters}(model):
+233     \textcolor{stringliteral}{"""}
+234 \textcolor{stringliteral}{    Check that all parameters across all workers are the same.}
+235 \textcolor{stringliteral}{}
+236 \textcolor{stringliteral}{    Always returns True, or raises an AssertionError if they are not}
+237 \textcolor{stringliteral}{    synchronized.}
+238 \textcolor{stringliteral}{}
+239 \textcolor{stringliteral}{    :param torch.nn.Module model: A pytorch model.}
+240 \textcolor{stringliteral}{    :return: True}
+241 \textcolor{stringliteral}{    """}
+242     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a023acb5e3b66e1f27e21247c35661279}{is\_distributed}():
+243         \textcolor{comment}{# if things aren't distributed, of course things are in sync}
+244         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+245 
+246     \textcolor{comment}{# compute the local norm:}
+247     norm2 = sum((p.data ** 2).sum().\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}() \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} model.parameters()).item()
+248     all\_versions = \hyperlink{namespaceparlai_1_1utils_1_1distributed_a9ef5bf0debf512ddbeb045327bfd87ef}{all\_gather\_list}(norm2)
+249     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} all(n == norm2 \textcolor{keywordflow}{for} n \textcolor{keywordflow}{in} all\_versions):
+250         \textcolor{keywordflow}{raise} AssertionError(
+251             \textcolor{stringliteral}{"Some models parameters were out of sync. Got the following norms: \{\}"}.
+      \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+252                 \textcolor{stringliteral}{" "}.join(\hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(x) \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} all\_versions)
+253             )
+254         )
+255 
+256     \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+257 \end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1utils_1_1distributed_a023acb5e3b66e1f27e21247c35661279}\label{namespaceparlai_1_1utils_1_1distributed_a023acb5e3b66e1f27e21247c35661279}} 
+\index{parlai\+::utils\+::distributed@{parlai\+::utils\+::distributed}!is\+\_\+distributed@{is\+\_\+distributed}}
+\index{is\+\_\+distributed@{is\+\_\+distributed}!parlai\+::utils\+::distributed@{parlai\+::utils\+::distributed}}
+\subsubsection{\texorpdfstring{is\+\_\+distributed()}{is\_distributed()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+distributed.\+is\+\_\+distributed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Return if we are in distributed mode.
+\end{DoxyVerb}
+ 
+
+Definition at line 54 of file distributed.\+py.
+
+
+\begin{DoxyCode}
+54 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1utils_1_1distributed_a023acb5e3b66e1f27e21247c35661279}{is\_distributed}():
+55     \textcolor{stringliteral}{"""}
+56 \textcolor{stringliteral}{    Return if we are in distributed mode.}
+57 \textcolor{stringliteral}{    """}
+58     \textcolor{keywordflow}{return} TORCH\_AVAILABLE \textcolor{keywordflow}{and} dist.is\_available() \textcolor{keywordflow}{and} dist.is\_initialized()
+59 
+60 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1utils_1_1distributed_a9bb1dac198180590ef8c6b6c6f9fc2c4}\label{namespaceparlai_1_1utils_1_1distributed_a9bb1dac198180590ef8c6b6c6f9fc2c4}} 
+\index{parlai\+::utils\+::distributed@{parlai\+::utils\+::distributed}!is\+\_\+primary\+\_\+worker@{is\+\_\+primary\+\_\+worker}}
+\index{is\+\_\+primary\+\_\+worker@{is\+\_\+primary\+\_\+worker}!parlai\+::utils\+::distributed@{parlai\+::utils\+::distributed}}
+\subsubsection{\texorpdfstring{is\+\_\+primary\+\_\+worker()}{is\_primary\_worker()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+distributed.\+is\+\_\+primary\+\_\+worker (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Determine if we are the primary (master) worker.
+
+Returns False if we are a secondary worker. Returns True if we are either (1) not in
+distributed mode (2) or are the primary (rank 0) worker.
+\end{DoxyVerb}
+ 
+
+Definition at line 71 of file distributed.\+py.
+
+
+\begin{DoxyCode}
+71 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1utils_1_1distributed_a9bb1dac198180590ef8c6b6c6f9fc2c4}{is\_primary\_worker}():
+72     \textcolor{stringliteral}{"""}
+73 \textcolor{stringliteral}{    Determine if we are the primary (master) worker.}
+74 \textcolor{stringliteral}{}
+75 \textcolor{stringliteral}{    Returns False if we are a secondary worker. Returns True if we are either (1) not in}
+76 \textcolor{stringliteral}{    distributed mode (2) or are the primary (rank 0) worker.}
+77 \textcolor{stringliteral}{    """}
+78     \textcolor{keywordflow}{return} \textcolor{keywordflow}{not} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a023acb5e3b66e1f27e21247c35661279}{is\_distributed}() \textcolor{keywordflow}{or} dist.get\_rank() == 0
+79 
+80 
+81 @contextlib.contextmanager
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1utils_1_1distributed_a99b61b4756577c6542039c238d670dba}\label{namespaceparlai_1_1utils_1_1distributed_a99b61b4756577c6542039c238d670dba}} 
+\index{parlai\+::utils\+::distributed@{parlai\+::utils\+::distributed}!num\+\_\+workers@{num\+\_\+workers}}
+\index{num\+\_\+workers@{num\+\_\+workers}!parlai\+::utils\+::distributed@{parlai\+::utils\+::distributed}}
+\subsubsection{\texorpdfstring{num\+\_\+workers()}{num\_workers()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+distributed.\+num\+\_\+workers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Get the total number of workers.
+\end{DoxyVerb}
+ 
+
+Definition at line 61 of file distributed.\+py.
+
+
+\begin{DoxyCode}
+61 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1utils_1_1distributed_a99b61b4756577c6542039c238d670dba}{num\_workers}():
+62     \textcolor{stringliteral}{"""}
+63 \textcolor{stringliteral}{    Get the total number of workers.}
+64 \textcolor{stringliteral}{    """}
+65     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a023acb5e3b66e1f27e21247c35661279}{is\_distributed}():
+66         \textcolor{keywordflow}{return} 1
+67     \textcolor{keywordflow}{else}:
+68         \textcolor{keywordflow}{return} dist.get\_world\_size()
+69 
+70 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1utils_1_1distributed_a601345e55fc3fc3845c43efa1a04db56}\label{namespaceparlai_1_1utils_1_1distributed_a601345e55fc3fc3845c43efa1a04db56}} 
+\index{parlai\+::utils\+::distributed@{parlai\+::utils\+::distributed}!override\+\_\+print@{override\+\_\+print}}
+\index{override\+\_\+print@{override\+\_\+print}!parlai\+::utils\+::distributed@{parlai\+::utils\+::distributed}}
+\subsubsection{\texorpdfstring{override\+\_\+print()}{override\_print()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+distributed.\+override\+\_\+print (\begin{DoxyParamCaption}\item[{}]{suppress = {\ttfamily False},  }\item[{}]{prefix = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Context manager to override the print to suppress or modify output. Recommended
+usage is to call this with suppress=True for all non-primary workers, or call with a
+prefix of rank on all workers.
+
+>>> with override_print(prefix="rank{}".format(rank)):
+...     my_computation()
+:param bool suppress:
+    if true, all future print statements are noops.
+:param str prefix:
+    if not None, this string is prefixed to all future print statements.
+\end{DoxyVerb}
+ 
+
+Definition at line 82 of file distributed.\+py.
+
+
+\begin{DoxyCode}
+82 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1utils_1_1distributed_a601345e55fc3fc3845c43efa1a04db56}{override\_print}(suppress=False, prefix=None):
+83     \textcolor{stringliteral}{"""}
+84 \textcolor{stringliteral}{    Context manager to override the print to suppress or modify output. Recommended}
+85 \textcolor{stringliteral}{    usage is to call this with suppress=True for all non-primary workers, or call with a}
+86 \textcolor{stringliteral}{    prefix of rank on all workers.}
+87 \textcolor{stringliteral}{}
+88 \textcolor{stringliteral}{    >>> with override\_print(prefix="rank\{\}".format(rank)):}
+89 \textcolor{stringliteral}{    ...     my\_computation()}
+90 \textcolor{stringliteral}{    :param bool suppress:}
+91 \textcolor{stringliteral}{        if true, all future print statements are noops.}
+92 \textcolor{stringliteral}{    :param str prefix:}
+93 \textcolor{stringliteral}{        if not None, this string is prefixed to all future print statements.}
+94 \textcolor{stringliteral}{    """}
+95     builtin\_print = builtins.print
+96 
+97     \textcolor{keyword}{def }new\_print(*args, **kwargs):
+98         \textcolor{keywordflow}{if} suppress:
+99             \textcolor{comment}{# do nothing}
+100             \textcolor{keywordflow}{return}
+101         \textcolor{keywordflow}{elif} prefix:
+102             \textcolor{keywordflow}{return} builtin\_print(prefix, *args, **kwargs)
+103         \textcolor{keywordflow}{else}:
+104             \textcolor{comment}{# default to normal print}
+105             \textcolor{keywordflow}{return} builtin\_print(*args, **kwargs)
+106 
+107     \textcolor{comment}{# override the print for now}
+108     builtins.print = new\_print
+109     \textcolor{keywordflow}{yield}
+110     \textcolor{comment}{# bring it back at the end of the context}
+111     builtins.print = builtin\_print
+112 
+113 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1utils_1_1distributed_a269d3c7284127d9b287b9b61e9161de6}\label{namespaceparlai_1_1utils_1_1distributed_a269d3c7284127d9b287b9b61e9161de6}} 
+\index{parlai\+::utils\+::distributed@{parlai\+::utils\+::distributed}!sync\+\_\+object@{sync\+\_\+object}}
+\index{sync\+\_\+object@{sync\+\_\+object}!parlai\+::utils\+::distributed@{parlai\+::utils\+::distributed}}
+\subsubsection{\texorpdfstring{sync\+\_\+object()}{sync\_object()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+distributed.\+sync\+\_\+object (\begin{DoxyParamCaption}\item[{}]{data,  }\item[{}]{max\+\_\+size = {\ttfamily 16384} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Sync an object among all workers.
+
+All workers will return the same value for `data` when returning from this
+method, always using the primary worker's version. Useful for ensuring control
+flow decisions are made the same.
+
+:param object data:
+    The object to synchronize. Must be pickleable.
+:param int max_size:
+    The maximum size of this object in bytes. Large values than 255^2 are not
+    supported.
+
+:return: the synchronized data
+\end{DoxyVerb}
+ 
+
+Definition at line 178 of file distributed.\+py.
+
+
+\begin{DoxyCode}
+178 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1utils_1_1distributed_a269d3c7284127d9b287b9b61e9161de6}{sync\_object}(data, max\_size=16384):
+179     \textcolor{stringliteral}{"""}
+180 \textcolor{stringliteral}{    Sync an object among all workers.}
+181 \textcolor{stringliteral}{}
+182 \textcolor{stringliteral}{    All workers will return the same value for `data` when returning from this}
+183 \textcolor{stringliteral}{    method, always using the primary worker's version. Useful for ensuring control}
+184 \textcolor{stringliteral}{    flow decisions are made the same.}
+185 \textcolor{stringliteral}{}
+186 \textcolor{stringliteral}{    :param object data:}
+187 \textcolor{stringliteral}{        The object to synchronize. Must be pickleable.}
+188 \textcolor{stringliteral}{    :param int max\_size:}
+189 \textcolor{stringliteral}{        The maximum size of this object in bytes. Large values than 255^2 are not}
+190 \textcolor{stringliteral}{        supported.}
+191 \textcolor{stringliteral}{}
+192 \textcolor{stringliteral}{    :return: the synchronized data}
+193 \textcolor{stringliteral}{    """}
+194     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a023acb5e3b66e1f27e21247c35661279}{is\_distributed}():
+195         \textcolor{keywordflow}{return} data
+196 
+197     \textcolor{comment}{# prepare the buffer}
+198     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} hasattr(sync\_object, \textcolor{stringliteral}{'\_buffer'}) \textcolor{keywordflow}{or} sync\_object.\_buffer.numel() < max\_size:
+199         \textcolor{comment}{# cuda is safe because distributed mode is only okay with CUDA}
+200         sync\_object.\_buffer = torch.cuda.ByteTensor(max\_size)
+201 
+202     buffer = sync\_object.\_buffer
+203 
+204     \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a9bb1dac198180590ef8c6b6c6f9fc2c4}{is\_primary\_worker}():
+205         enc = pickle.dumps(data)
+206         enc\_size = len(enc)
+207         \textcolor{keywordflow}{if} (enc\_size + 2 > max\_size) \textcolor{keywordflow}{or} (enc\_size > 255 * 255):
+208             \textcolor{comment}{# can't store the size in the first 2 bytes}
+209             \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{'encoded data exceeds max\_size'})
+210 
+211         buffer[0] = enc\_size // 255
+212         buffer[1] = enc\_size % 255
+213         buffer[2 : enc\_size + 2] = torch.ByteTensor(list(enc))
+214 
+215     dist.broadcast(buffer, 0)
+216 
+217     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a9bb1dac198180590ef8c6b6c6f9fc2c4}{is\_primary\_worker}():
+218         \textcolor{comment}{# deserialize the data}
+219         enc\_size = buffer[0].item() * 255 + buffer[1].item()
+220         \textcolor{keywordflow}{try}:
+221             data = pickle.loads(bytes(buffer[2 : enc\_size + 2].tolist()))
+222         \textcolor{keywordflow}{except} pickle.UnpicklingError:
+223             \textcolor{keywordflow}{raise} RuntimeError(
+224                 \textcolor{stringliteral}{'There was an unpickling error in sync\_object. This likely '}
+225                 \textcolor{stringliteral}{'means your workers got out of syncronization (e.g. one is '}
+226                 \textcolor{stringliteral}{'expecting to sync and another is not.)'}
+227             )
+228 
+229     \textcolor{keywordflow}{return} data
+230 
+231 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1utils_1_1distributed_afd854992e4cc6571b120b9e179cd4a7a}\label{namespaceparlai_1_1utils_1_1distributed_afd854992e4cc6571b120b9e179cd4a7a}} 
+\index{parlai\+::utils\+::distributed@{parlai\+::utils\+::distributed}!validate\+\_\+params@{validate\+\_\+params}}
+\index{validate\+\_\+params@{validate\+\_\+params}!parlai\+::utils\+::distributed@{parlai\+::utils\+::distributed}}
+\subsubsection{\texorpdfstring{validate\+\_\+params()}{validate\_params()}}
+{\footnotesize\ttfamily def parlai.\+utils.\+distributed.\+validate\+\_\+params (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Ensure sane combinations of command line parameters for distributed training.
+
+Raises exceptions if anything is wrong, otherwise returns None.
+\end{DoxyVerb}
+ 
+
+Definition at line 28 of file distributed.\+py.
+
+
+\begin{DoxyCode}
+28 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1utils_1_1distributed_afd854992e4cc6571b120b9e179cd4a7a}{validate\_params}(opt):
+29     \textcolor{stringliteral}{"""}
+30 \textcolor{stringliteral}{    Ensure sane combinations of command line parameters for distributed training.}
+31 \textcolor{stringliteral}{}
+32 \textcolor{stringliteral}{    Raises exceptions if anything is wrong, otherwise returns None.}
+33 \textcolor{stringliteral}{    """}
+34     \textcolor{keywordflow}{if} torch.version.\_\_version\_\_.startswith(\textcolor{stringliteral}{'0.'}):
+35         \textcolor{keywordflow}{raise} ImportError(
+36             \textcolor{stringliteral}{"Please upgrade to PyTorch >=1.0; "}
+37             \textcolor{stringliteral}{"visit https://pytorch.org for instructions."}
+38         )
+39 
+40     \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'no\_cuda'}, \textcolor{keyword}{False}):
+41         \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{'Distributed mode only makes sense when using GPUs.'})
+42 
+43     \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'numthreads'}, 1) != 1:
+44         \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{'--numthreads must be 1 for distributed training.'})
+45 
+46     \textcolor{keywordflow}{if} \textcolor{stringliteral}{'train:stream'} \textcolor{keywordflow}{in} opt[\textcolor{stringliteral}{'datatype'}] \textcolor{keywordflow}{or} \textcolor{stringliteral}{'ordered'} \textcolor{keywordflow}{in} opt[\textcolor{stringliteral}{'datatype'}]:
+47         \textcolor{keywordflow}{raise} ValueError(
+48             \textcolor{stringliteral}{"You should not combine ordered streaming with distributed training "}
+49             \textcolor{stringliteral}{"because all workers will have exactly the same minibatches, "}
+50             \textcolor{stringliteral}{"defeating the purpose."}
+51         )
+52 
+53 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1utils_1_1distributed_af99c57e9c67ff88f4802625436fc2c6c}\label{namespaceparlai_1_1utils_1_1distributed_af99c57e9c67ff88f4802625436fc2c6c}} 
+\index{parlai\+::utils\+::distributed@{parlai\+::utils\+::distributed}!T\+O\+R\+C\+H\+\_\+\+A\+V\+A\+I\+L\+A\+B\+LE@{T\+O\+R\+C\+H\+\_\+\+A\+V\+A\+I\+L\+A\+B\+LE}}
+\index{T\+O\+R\+C\+H\+\_\+\+A\+V\+A\+I\+L\+A\+B\+LE@{T\+O\+R\+C\+H\+\_\+\+A\+V\+A\+I\+L\+A\+B\+LE}!parlai\+::utils\+::distributed@{parlai\+::utils\+::distributed}}
+\subsubsection{\texorpdfstring{T\+O\+R\+C\+H\+\_\+\+A\+V\+A\+I\+L\+A\+B\+LE}{TORCH\_AVAILABLE}}
+{\footnotesize\ttfamily parlai.\+utils.\+distributed.\+T\+O\+R\+C\+H\+\_\+\+A\+V\+A\+I\+L\+A\+B\+LE}
+
+
+
+Definition at line 23 of file distributed.\+py.
+

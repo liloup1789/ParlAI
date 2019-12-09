@@ -1,0 +1,236 @@
+\hypertarget{namespaceparlai_1_1scripts_1_1verify__data}{}\section{parlai.\+scripts.\+verify\+\_\+data Namespace Reference}
+\label{namespaceparlai_1_1scripts_1_1verify__data}\index{parlai.\+scripts.\+verify\+\_\+data@{parlai.\+scripts.\+verify\+\_\+data}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1verify__data_aecfb15331606adc88ee4221c2945a17d}{setup\+\_\+args} (\hyperlink{namespaceparlai_1_1scripts_1_1verify__data_a77500ea3bf26e7b433f37d4fd3c831d3}{parser}=None)
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1verify__data_a26153466b8f1f0c901768b4b3c56c885}{report} (world, counts, log\+\_\+time)
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1verify__data_ab1f264e6d69b1abe3399ba05512f8c66}{warn} (txt, act, opt)
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1verify__data_acf6da63d62b2bf71c8fb7860e944a5bf}{verify} (opt, printargs=None, \hyperlink{namespaceparlai_1_1scripts_1_1verify__data_a60c3d2c8e563b7461b6dd38ed5c389c5}{print\+\_\+parser}=None)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1verify__data_a77500ea3bf26e7b433f37d4fd3c831d3}{parser} = \hyperlink{namespaceparlai_1_1scripts_1_1verify__data_aecfb15331606adc88ee4221c2945a17d}{setup\+\_\+args}()
+\item 
+\hyperlink{namespaceparlai_1_1scripts_1_1verify__data_ac7d7cb0342b938344a59be68a200cda0}{report\+\_\+text}
+\item 
+\hyperlink{namespaceparlai_1_1scripts_1_1verify__data_a72869030307af42a4d0fa97aa1f07bcf}{report\+\_\+log}
+\item 
+\hyperlink{namespaceparlai_1_1scripts_1_1verify__data_a60c3d2c8e563b7461b6dd38ed5c389c5}{print\+\_\+parser}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1verify__data_a26153466b8f1f0c901768b4b3c56c885}\label{namespaceparlai_1_1scripts_1_1verify__data_a26153466b8f1f0c901768b4b3c56c885}} 
+\index{parlai\+::scripts\+::verify\+\_\+data@{parlai\+::scripts\+::verify\+\_\+data}!report@{report}}
+\index{report@{report}!parlai\+::scripts\+::verify\+\_\+data@{parlai\+::scripts\+::verify\+\_\+data}}
+\subsubsection{\texorpdfstring{report()}{report()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+verify\+\_\+data.\+report (\begin{DoxyParamCaption}\item[{}]{world,  }\item[{}]{counts,  }\item[{}]{log\+\_\+time }\end{DoxyParamCaption})}
+
+
+
+Definition at line 35 of file verify\+\_\+data.\+py.
+
+
+\begin{DoxyCode}
+35 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1verify__data_a26153466b8f1f0c901768b4b3c56c885}{report}(world, counts, log\_time):
+36     report = world.report()
+37     log = \{
+38         \textcolor{stringliteral}{'missing\_text'}: counts[\textcolor{stringliteral}{'missing\_text'}],
+39         \textcolor{stringliteral}{'missing\_labels'}: counts[\textcolor{stringliteral}{'missing\_labels'}],
+40         \textcolor{stringliteral}{'missing\_label\_candidates'}: counts[\textcolor{stringliteral}{'missing\_label\_candidates'}],
+41         \textcolor{stringliteral}{'empty\_string\_label\_candidates'}: counts[\textcolor{stringliteral}{'empty\_string\_label\_candidates'}],
+42         \textcolor{stringliteral}{'label\_candidates\_with\_missing\_label'}: counts[
+43             \textcolor{stringliteral}{'label\_candidates\_with\_missing\_label'}
+44         ],
+45         \textcolor{stringliteral}{'did\_not\_return\_message'}: counts[\textcolor{stringliteral}{'did\_not\_return\_message'}],
+46     \}
+47     text, log = log\_time.log(report[\textcolor{stringliteral}{'exs'}], world.num\_examples(), log)
+48     \textcolor{keywordflow}{return} text, log
+49 
+50 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1verify__data_aecfb15331606adc88ee4221c2945a17d}\label{namespaceparlai_1_1scripts_1_1verify__data_aecfb15331606adc88ee4221c2945a17d}} 
+\index{parlai\+::scripts\+::verify\+\_\+data@{parlai\+::scripts\+::verify\+\_\+data}!setup\+\_\+args@{setup\+\_\+args}}
+\index{setup\+\_\+args@{setup\+\_\+args}!parlai\+::scripts\+::verify\+\_\+data@{parlai\+::scripts\+::verify\+\_\+data}}
+\subsubsection{\texorpdfstring{setup\+\_\+args()}{setup\_args()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+verify\+\_\+data.\+setup\+\_\+args (\begin{DoxyParamCaption}\item[{}]{parser = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 24 of file verify\+\_\+data.\+py.
+
+
+\begin{DoxyCode}
+24 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1verify__data_aecfb15331606adc88ee4221c2945a17d}{setup\_args}(parser=None):
+25     \textcolor{keywordflow}{if} parser \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+26         parser = ParlaiParser(\textcolor{keyword}{True}, \textcolor{keyword}{True}, \textcolor{stringliteral}{'Lint for ParlAI tasks'})
+27     parser.add\_pytorch\_datateacher\_args()
+28     \textcolor{comment}{# Get command line arguments}
+29     parser.add\_argument(\textcolor{stringliteral}{'-ltim'}, \textcolor{stringliteral}{'--log-every-n-secs'}, type=float, default=2)
+30     parser.add\_argument(\textcolor{stringliteral}{'-d'}, \textcolor{stringliteral}{'--display-examples'}, type=\textcolor{stringliteral}{'bool'}, default=\textcolor{keyword}{False})
+31     parser.set\_defaults(datatype=\textcolor{stringliteral}{'train:stream'})
+32     \textcolor{keywordflow}{return} parser
+33 
+34 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1verify__data_acf6da63d62b2bf71c8fb7860e944a5bf}\label{namespaceparlai_1_1scripts_1_1verify__data_acf6da63d62b2bf71c8fb7860e944a5bf}} 
+\index{parlai\+::scripts\+::verify\+\_\+data@{parlai\+::scripts\+::verify\+\_\+data}!verify@{verify}}
+\index{verify@{verify}!parlai\+::scripts\+::verify\+\_\+data@{parlai\+::scripts\+::verify\+\_\+data}}
+\subsubsection{\texorpdfstring{verify()}{verify()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+verify\+\_\+data.\+verify (\begin{DoxyParamCaption}\item[{}]{opt,  }\item[{}]{printargs = {\ttfamily None},  }\item[{}]{print\+\_\+parser = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 58 of file verify\+\_\+data.\+py.
+
+
+\begin{DoxyCode}
+58 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1verify__data_acf6da63d62b2bf71c8fb7860e944a5bf}{verify}(opt, printargs=None, print\_parser=None):
+59     \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'datatype'}] == \textcolor{stringliteral}{'train'}:
+60         print(\textcolor{stringliteral}{"[ note: changing datatype from train to train:ordered ]"})
+61         opt[\textcolor{stringliteral}{'datatype'}] = \textcolor{stringliteral}{'train:ordered'}
+62     \textcolor{comment}{# create repeat label agent and assign it to the specified task}
+63     agent = RepeatLabelAgent(opt)
+64     world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(opt, agent)
+65 
+66     log\_every\_n\_secs = opt.get(\textcolor{stringliteral}{'log\_every\_n\_secs'}, -1)
+67     \textcolor{keywordflow}{if} log\_every\_n\_secs <= 0:
+68         log\_every\_n\_secs = \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(\textcolor{stringliteral}{'inf'})
+69     log\_time = TimeLogger()
+70 
+71     counts = \{\}
+72     counts[\textcolor{stringliteral}{'missing\_text'}] = 0
+73     counts[\textcolor{stringliteral}{'missing\_labels'}] = 0
+74     counts[\textcolor{stringliteral}{'missing\_label\_candidates'}] = 0
+75     counts[\textcolor{stringliteral}{'empty\_string\_label\_candidates'}] = 0
+76     counts[\textcolor{stringliteral}{'label\_candidates\_with\_missing\_label'}] = 0
+77     counts[\textcolor{stringliteral}{'did\_not\_return\_message'}] = 0
+78 
+79     \textcolor{comment}{# Show some example dialogs.}
+80     \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} world.epoch\_done():
+81         world.parley()
+82 
+83         act = world.acts[0]
+84 
+85         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} isinstance(act, Message):
+86             counts[\textcolor{stringliteral}{'did\_not\_return\_message'}] += 1
+87 
+88         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'text'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} act:
+89             \hyperlink{namespaceparlai_1_1scripts_1_1verify__data_ab1f264e6d69b1abe3399ba05512f8c66}{warn}(\textcolor{stringliteral}{"warning: missing text field:\(\backslash\)n"}, act, opt)
+90             counts[\textcolor{stringliteral}{'missing\_text'}] += 1
+91 
+92         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'labels'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} act \textcolor{keywordflow}{and} \textcolor{stringliteral}{'eval\_labels'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} act:
+93             \hyperlink{namespaceparlai_1_1scripts_1_1verify__data_ab1f264e6d69b1abe3399ba05512f8c66}{warn}(\textcolor{stringliteral}{"warning: missing labels/eval\_labels field:\(\backslash\)n"}, act, opt)
+94             counts[\textcolor{stringliteral}{'missing\_labels'}] += 1
+95         \textcolor{keywordflow}{else}:
+96             \textcolor{keywordflow}{if} \textcolor{stringliteral}{'label\_candidates'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} act:
+97                 counts[\textcolor{stringliteral}{'missing\_label\_candidates'}] += 1
+98             \textcolor{keywordflow}{else}:
+99                 labels = act.get(\textcolor{stringliteral}{'labels'}, act.get(\textcolor{stringliteral}{'eval\_labels'}))
+100                 is\_label\_cand = \{\}
+101                 \textcolor{keywordflow}{for} l \textcolor{keywordflow}{in} labels:
+102                     is\_label\_cand[l] = \textcolor{keyword}{False}
+103                 \textcolor{keywordflow}{for} c \textcolor{keywordflow}{in} act[\textcolor{stringliteral}{'label\_candidates'}]:
+104                     \textcolor{keywordflow}{if} c == \textcolor{stringliteral}{''}:
+105                         \hyperlink{namespaceparlai_1_1scripts_1_1verify__data_ab1f264e6d69b1abe3399ba05512f8c66}{warn}(\textcolor{stringliteral}{"warning: empty string label\_candidate:\(\backslash\)n"}, act, opt)
+106                         counts[\textcolor{stringliteral}{'empty\_string\_label\_candidates'}] += 1
+107                     \textcolor{keywordflow}{if} c \textcolor{keywordflow}{in} is\_label\_cand:
+108                         \textcolor{keywordflow}{if} is\_label\_cand[c] \textcolor{keywordflow}{is} \textcolor{keyword}{True}:
+109                             \hyperlink{namespaceparlai_1_1scripts_1_1verify__data_ab1f264e6d69b1abe3399ba05512f8c66}{warn}(
+110                                 \textcolor{stringliteral}{"warning: label mentioned twice in candidate\_labels:\(\backslash\)n"},
+111                                 act,
+112                                 opt,
+113                             )
+114                         is\_label\_cand[c] = \textcolor{keyword}{True}
+115                 \textcolor{keywordflow}{for} \_, has \textcolor{keywordflow}{in} is\_label\_cand.items():
+116                     \textcolor{keywordflow}{if} has \textcolor{keywordflow}{is} \textcolor{keyword}{False}:
+117                         \hyperlink{namespaceparlai_1_1scripts_1_1verify__data_ab1f264e6d69b1abe3399ba05512f8c66}{warn}(\textcolor{stringliteral}{"warning: label missing in candidate\_labels:\(\backslash\)n"}, act, opt)
+118                         counts[\textcolor{stringliteral}{'label\_candidates\_with\_missing\_label'}] += 1
+119 
+120         \textcolor{keywordflow}{if} log\_time.time() > log\_every\_n\_secs:
+121             text, log = \hyperlink{namespaceparlai_1_1scripts_1_1verify__data_a26153466b8f1f0c901768b4b3c56c885}{report}(world, counts, log\_time)
+122             \textcolor{keywordflow}{if} print\_parser:
+123                 print(text)
+124 
+125     \textcolor{keywordflow}{try}:
+126         \textcolor{comment}{# print dataset size if available}
+127         print(
+128             \textcolor{stringliteral}{'[ loaded \{\} episodes with a total of \{\} examples ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+129                 world.num\_episodes(), world.num\_examples()
+130             )
+131         )
+132     \textcolor{keywordflow}{except} Exception:
+133         \textcolor{keywordflow}{pass}
+134 
+135     \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1scripts_1_1verify__data_a26153466b8f1f0c901768b4b3c56c885}{report}(world, counts, log\_time)
+136 
+137 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1verify__data_ab1f264e6d69b1abe3399ba05512f8c66}\label{namespaceparlai_1_1scripts_1_1verify__data_ab1f264e6d69b1abe3399ba05512f8c66}} 
+\index{parlai\+::scripts\+::verify\+\_\+data@{parlai\+::scripts\+::verify\+\_\+data}!warn@{warn}}
+\index{warn@{warn}!parlai\+::scripts\+::verify\+\_\+data@{parlai\+::scripts\+::verify\+\_\+data}}
+\subsubsection{\texorpdfstring{warn()}{warn()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+verify\+\_\+data.\+warn (\begin{DoxyParamCaption}\item[{}]{txt,  }\item[{}]{act,  }\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 51 of file verify\+\_\+data.\+py.
+
+
+\begin{DoxyCode}
+51 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1verify__data_ab1f264e6d69b1abe3399ba05512f8c66}{warn}(txt, act, opt):
+52     \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'display\_examples'}):
+53         print(txt + \textcolor{stringliteral}{":\(\backslash\)n"} + \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(act))
+54     \textcolor{keywordflow}{else}:
+55         \hyperlink{namespaceparlai_1_1utils_1_1misc_acf146e70ea7f6867969a7c2b545d4b4b}{warn\_once}(txt)
+56 
+57 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1verify__data_a77500ea3bf26e7b433f37d4fd3c831d3}\label{namespaceparlai_1_1scripts_1_1verify__data_a77500ea3bf26e7b433f37d4fd3c831d3}} 
+\index{parlai\+::scripts\+::verify\+\_\+data@{parlai\+::scripts\+::verify\+\_\+data}!parser@{parser}}
+\index{parser@{parser}!parlai\+::scripts\+::verify\+\_\+data@{parlai\+::scripts\+::verify\+\_\+data}}
+\subsubsection{\texorpdfstring{parser}{parser}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+verify\+\_\+data.\+parser = \hyperlink{namespaceparlai_1_1scripts_1_1verify__data_aecfb15331606adc88ee4221c2945a17d}{setup\+\_\+args}()}
+
+
+
+Definition at line 139 of file verify\+\_\+data.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1verify__data_a60c3d2c8e563b7461b6dd38ed5c389c5}\label{namespaceparlai_1_1scripts_1_1verify__data_a60c3d2c8e563b7461b6dd38ed5c389c5}} 
+\index{parlai\+::scripts\+::verify\+\_\+data@{parlai\+::scripts\+::verify\+\_\+data}!print\+\_\+parser@{print\+\_\+parser}}
+\index{print\+\_\+parser@{print\+\_\+parser}!parlai\+::scripts\+::verify\+\_\+data@{parlai\+::scripts\+::verify\+\_\+data}}
+\subsubsection{\texorpdfstring{print\+\_\+parser}{print\_parser}}
+{\footnotesize\ttfamily parlai.\+scripts.\+verify\+\_\+data.\+print\+\_\+parser}
+
+
+
+Definition at line 141 of file verify\+\_\+data.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1verify__data_a72869030307af42a4d0fa97aa1f07bcf}\label{namespaceparlai_1_1scripts_1_1verify__data_a72869030307af42a4d0fa97aa1f07bcf}} 
+\index{parlai\+::scripts\+::verify\+\_\+data@{parlai\+::scripts\+::verify\+\_\+data}!report\+\_\+log@{report\+\_\+log}}
+\index{report\+\_\+log@{report\+\_\+log}!parlai\+::scripts\+::verify\+\_\+data@{parlai\+::scripts\+::verify\+\_\+data}}
+\subsubsection{\texorpdfstring{report\+\_\+log}{report\_log}}
+{\footnotesize\ttfamily parlai.\+scripts.\+verify\+\_\+data.\+report\+\_\+log}
+
+
+
+Definition at line 140 of file verify\+\_\+data.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1verify__data_ac7d7cb0342b938344a59be68a200cda0}\label{namespaceparlai_1_1scripts_1_1verify__data_ac7d7cb0342b938344a59be68a200cda0}} 
+\index{parlai\+::scripts\+::verify\+\_\+data@{parlai\+::scripts\+::verify\+\_\+data}!report\+\_\+text@{report\+\_\+text}}
+\index{report\+\_\+text@{report\+\_\+text}!parlai\+::scripts\+::verify\+\_\+data@{parlai\+::scripts\+::verify\+\_\+data}}
+\subsubsection{\texorpdfstring{report\+\_\+text}{report\_text}}
+{\footnotesize\ttfamily parlai.\+scripts.\+verify\+\_\+data.\+report\+\_\+text}
+
+
+
+Definition at line 140 of file verify\+\_\+data.\+py.
+

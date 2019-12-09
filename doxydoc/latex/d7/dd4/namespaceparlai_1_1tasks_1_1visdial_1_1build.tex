@@ -1,0 +1,89 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1visdial_1_1build}{}\section{parlai.\+tasks.\+visdial.\+build Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1visdial_1_1build}\index{parlai.\+tasks.\+visdial.\+build@{parlai.\+tasks.\+visdial.\+build}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1visdial_1_1build_a67068d01ede2596cbe1100e5f0896f3c}{build} (opt)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceparlai_1_1tasks_1_1visdial_1_1build_a4c7aca51f877fb6b3dc05ec99dd6eb72}{R\+E\+S\+O\+U\+R\+C\+ES}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1visdial_1_1build_a67068d01ede2596cbe1100e5f0896f3c}\label{namespaceparlai_1_1tasks_1_1visdial_1_1build_a67068d01ede2596cbe1100e5f0896f3c}} 
+\index{parlai\+::tasks\+::visdial\+::build@{parlai\+::tasks\+::visdial\+::build}!build@{build}}
+\index{build@{build}!parlai\+::tasks\+::visdial\+::build@{parlai\+::tasks\+::visdial\+::build}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+visdial.\+build.\+build (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 27 of file build.\+py.
+
+
+\begin{DoxyCode}
+27 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
+28     version = \textcolor{stringliteral}{'v0.9'}
+29     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'VisDial-v0.9'})
+30 
+31     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version):
+32         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+33 
+34         \textcolor{keywordflow}{if} build\_data.built(dpath):
+35             \textcolor{comment}{# An older version exists, so remove these outdated files.}
+36             build\_data.remove\_dir(dpath)
+37         build\_data.make\_dir(dpath)
+38 
+39         \textcolor{comment}{# Download the data.}
+40         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES:
+41             downloadable\_file.download\_file(dpath)
+42 
+43         print(\textcolor{stringliteral}{'processing unpacked files'})
+44         \textcolor{comment}{# Use 1000 examples from training set as validation.}
+45         json1 = os.path.join(dpath, RESOURCES[0].file\_name.rsplit(\textcolor{stringliteral}{'.'}, 1)[0] + \textcolor{stringliteral}{'.json'})
+46         with open(json1) \textcolor{keyword}{as} t\_json:
+47             train\_data = json.load(t\_json)
+48 
+49         valid\_data = train\_data.copy()
+50         valid\_data[\textcolor{stringliteral}{'data'}] = train\_data[\textcolor{stringliteral}{'data'}].copy()
+51         valid\_data[\textcolor{stringliteral}{'data'}][\textcolor{stringliteral}{'dialogs'}] = []
+52 
+53         \textcolor{comment}{# Use constant stride to pick examples.}
+54         num\_valid = 1000
+55         total = len(train\_data[\textcolor{stringliteral}{'data'}][\textcolor{stringliteral}{'dialogs'}])
+56         step = total // (num\_valid - 1)
+57         \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(total - 1, 0, -step)[:num\_valid]:
+58             valid\_data[\textcolor{stringliteral}{'data'}][\textcolor{stringliteral}{'dialogs'}].append(train\_data[\textcolor{stringliteral}{'data'}][\textcolor{stringliteral}{'dialogs'}][i])
+59             del train\_data[\textcolor{stringliteral}{'data'}][\textcolor{stringliteral}{'dialogs'}][i]
+60 
+61         train\_json = json1.rsplit(\textcolor{stringliteral}{'.'}, 1)[0] + \textcolor{stringliteral}{'\_train.json'}
+62         valid\_json = json1.rsplit(\textcolor{stringliteral}{'.'}, 1)[0] + \textcolor{stringliteral}{'\_valid.json'}
+63         with open(train\_json, \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} t\_out, open(valid\_json, \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} v\_out:
+64             json.dump(train\_data, t\_out)
+65             json.dump(valid\_data, v\_out)
+66         os.remove(json1)
+67 
+68         \textcolor{comment}{# Use validation data as test.}
+69         json2 = os.path.join(dpath, RESOURCES[1].file\_name.rsplit(\textcolor{stringliteral}{'.'}, 1)[0] + \textcolor{stringliteral}{'.json'})
+70         test\_json = json2.rsplit(\textcolor{stringliteral}{'.'}, 1)[0] + \textcolor{stringliteral}{'\_test.json'}
+71         build\_data.move(json2, test\_json)
+72 
+73         \textcolor{comment}{# Mark the data as built.}
+74         build\_data.mark\_done(dpath, version)
+75 \end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1visdial_1_1build_a4c7aca51f877fb6b3dc05ec99dd6eb72}\label{namespaceparlai_1_1tasks_1_1visdial_1_1build_a4c7aca51f877fb6b3dc05ec99dd6eb72}} 
+\index{parlai\+::tasks\+::visdial\+::build@{parlai\+::tasks\+::visdial\+::build}!R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}}
+\index{R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}!parlai\+::tasks\+::visdial\+::build@{parlai\+::tasks\+::visdial\+::build}}
+\subsubsection{\texorpdfstring{R\+E\+S\+O\+U\+R\+C\+ES}{RESOURCES}}
+{\footnotesize\ttfamily parlai.\+tasks.\+visdial.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
+
+
+
+Definition at line 13 of file build.\+py.
+

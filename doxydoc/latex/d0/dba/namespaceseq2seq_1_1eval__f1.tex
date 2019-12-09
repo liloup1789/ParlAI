@@ -1,0 +1,47 @@
+\hypertarget{namespaceseq2seq_1_1eval__f1}{}\section{seq2seq.\+eval\+\_\+f1 Namespace Reference}
+\label{namespaceseq2seq_1_1eval__f1}\index{seq2seq.\+eval\+\_\+f1@{seq2seq.\+eval\+\_\+f1}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceseq2seq_1_1eval__f1_a99ede4f55975fd62d1d5834b72fa03c7}{main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceseq2seq_1_1eval__f1_a99ede4f55975fd62d1d5834b72fa03c7}\label{namespaceseq2seq_1_1eval__f1_a99ede4f55975fd62d1d5834b72fa03c7}} 
+\index{seq2seq\+::eval\+\_\+f1@{seq2seq\+::eval\+\_\+f1}!main@{main}}
+\index{main@{main}!seq2seq\+::eval\+\_\+f1@{seq2seq\+::eval\+\_\+f1}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def seq2seq.\+eval\+\_\+f1.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 16 of file eval\+\_\+f1.\+py.
+
+
+\begin{DoxyCode}
+16 \textcolor{keyword}{def }\hyperlink{namespaceseq2seq_1_1eval__f1_a99ede4f55975fd62d1d5834b72fa03c7}{main}():
+17     parser = \hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a74826f78ce1ce6c9fe9b6d4a6297f3bd}{setup\_args}()
+18     parser.set\_params(
+19         model=\textcolor{stringliteral}{'legacy:seq2seq:0'},
+20         model\_file=\textcolor{stringliteral}{'models:convai2/seq2seq/convai2\_self\_seq2seq\_model'},
+21         dict\_file=\textcolor{stringliteral}{'models:convai2/seq2seq/convai2\_self\_seq2seq\_model.dict'},
+22         dict\_lower=\textcolor{keyword}{True},
+23         batchsize=32,
+24     )
+25     opt = parser.parse\_args(print\_args=\textcolor{keyword}{False})
+26     \textcolor{keywordflow}{if} (
+27         opt.get(\textcolor{stringliteral}{'model\_file'}, \textcolor{stringliteral}{''}).find(\textcolor{stringliteral}{'convai2/seq2seq/convai2\_self\_seq2seq\_model'})
+28         != -1
+29     ):
+30         opt[\textcolor{stringliteral}{'model\_type'}] = \textcolor{stringliteral}{'seq2seq'}
+31         fnames = [
+32             \textcolor{stringliteral}{'convai2\_self\_seq2seq\_model.tgz'},
+33             \textcolor{stringliteral}{'convai2\_self\_seq2seq\_model.dict'},
+34             \textcolor{stringliteral}{'convai2\_self\_seq2seq\_model.opt'},
+35         ]
+36         \hyperlink{namespaceparlai_1_1core_1_1build__data_ab697f23f05d3e36d7979fe5e0ed7911e}{download\_models}(opt, fnames, \textcolor{stringliteral}{'convai2'}, version=\textcolor{stringliteral}{'v3.0'})
+37     \textcolor{keywordflow}{return} \hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_aac16a2ead8ff2b896c82411fe262f449}{eval\_f1}(opt, print\_parser=parser)
+38 
+39 
+\end{DoxyCode}

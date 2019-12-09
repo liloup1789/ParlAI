@@ -1,0 +1,300 @@
+\hypertarget{classtests_1_1test__dict_1_1TestDictionary}{}\section{tests.\+test\+\_\+dict.\+Test\+Dictionary Class Reference}
+\label{classtests_1_1test__dict_1_1TestDictionary}\index{tests.\+test\+\_\+dict.\+Test\+Dictionary@{tests.\+test\+\_\+dict.\+Test\+Dictionary}}
+
+
+Inheritance diagram for tests.\+test\+\_\+dict.\+Test\+Dictionary\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{d7/d47/classtests_1_1test__dict_1_1TestDictionary__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for tests.\+test\+\_\+dict.\+Test\+Dictionary\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{d0/d56/classtests_1_1test__dict_1_1TestDictionary__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classtests_1_1test__dict_1_1TestDictionary_a9109b6c1bf1f0e7adfdd3fc4dc1ead74}{test\+\_\+gpt2\+\_\+bpe\+\_\+tokenize} (self)
+\item 
+def \hyperlink{classtests_1_1test__dict_1_1TestDictionary_aa586d6cf97a48027ee00ed74234acb11}{test\+\_\+space\+\_\+tokenize} (self)
+\item 
+def \hyperlink{classtests_1_1test__dict_1_1TestDictionary_aa10a7901ffa04a2d0ba43b43b0a18f26}{test\+\_\+split\+\_\+tokenize} (self)
+\item 
+def \hyperlink{classtests_1_1test__dict_1_1TestDictionary_ae017e72c578005310906979e15c51fe4}{test\+\_\+find\+\_\+ngrams} (self)
+\item 
+def \hyperlink{classtests_1_1test__dict_1_1TestDictionary_a864b582dad32c539b4499f521c9afb3f}{test\+\_\+basic\+\_\+parse} (self)
+\item 
+def \hyperlink{classtests_1_1test__dict_1_1TestDictionary_a6c7dcec12a72ba52852f7b214d4783bf}{test\+\_\+set\+\_\+model\+\_\+file\+\_\+without\+\_\+dict\+\_\+file} (self)
+\item 
+def \hyperlink{classtests_1_1test__dict_1_1TestDictionary_a33993874a2fa2dc57b3936479b17aae1}{test\+\_\+train\+\_\+model\+\_\+with\+\_\+no\+\_\+dict\+\_\+file} (self)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Basic tests on the built-in parlai Dictionary.
+\end{DoxyVerb}
+ 
+
+Definition at line 23 of file test\+\_\+dict.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtests_1_1test__dict_1_1TestDictionary_a864b582dad32c539b4499f521c9afb3f}\label{classtests_1_1test__dict_1_1TestDictionary_a864b582dad32c539b4499f521c9afb3f}} 
+\index{tests\+::test\+\_\+dict\+::\+Test\+Dictionary@{tests\+::test\+\_\+dict\+::\+Test\+Dictionary}!test\+\_\+basic\+\_\+parse@{test\+\_\+basic\+\_\+parse}}
+\index{test\+\_\+basic\+\_\+parse@{test\+\_\+basic\+\_\+parse}!tests\+::test\+\_\+dict\+::\+Test\+Dictionary@{tests\+::test\+\_\+dict\+::\+Test\+Dictionary}}
+\subsubsection{\texorpdfstring{test\+\_\+basic\+\_\+parse()}{test\_basic\_parse()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+dict.\+Test\+Dictionary.\+test\+\_\+basic\+\_\+parse (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Check the dictionary is correctly adding and parsing short sentence.
+\end{DoxyVerb}
+ 
+
+Definition at line 101 of file test\+\_\+dict.\+py.
+
+
+\begin{DoxyCode}
+101     \textcolor{keyword}{def }test\_basic\_parse(self):
+102         \textcolor{stringliteral}{"""}
+103 \textcolor{stringliteral}{        Check the dictionary is correctly adding and parsing short sentence.}
+104 \textcolor{stringliteral}{        """}
+105         argparser = ParlaiParser()
+106         DictionaryAgent.add\_cmdline\_args(argparser)
+107         opt = argparser.parse\_args(print\_args=\textcolor{keyword}{False})
+108         dictionary = DictionaryAgent(opt)
+109         num\_builtin = len(dictionary)
+110 
+111         dictionary.observe(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'hello world'}\})
+112         dictionary.act()
+113         \textcolor{keyword}{assert} len(dictionary) - num\_builtin == 2
+114 
+115         vec = dictionary.parse(\textcolor{stringliteral}{'hello world'})
+116         \textcolor{keyword}{assert} len(vec) == 2
+117         \textcolor{keyword}{assert} vec[0] == num\_builtin
+118         \textcolor{keyword}{assert} vec[1] == num\_builtin + 1
+119 
+120         vec = dictionary.parse(\textcolor{stringliteral}{'hello world'}, vec\_type=list)
+121         \textcolor{keyword}{assert} len(vec) == 2
+122         \textcolor{keyword}{assert} vec[0] == num\_builtin
+123         \textcolor{keyword}{assert} vec[1] == num\_builtin + 1
+124 
+125         vec = dictionary.parse(\textcolor{stringliteral}{'hello world'}, vec\_type=tuple)
+126         \textcolor{keyword}{assert} len(vec) == 2
+127         \textcolor{keyword}{assert} vec[0] == num\_builtin
+128         \textcolor{keyword}{assert} vec[1] == num\_builtin + 1
+129 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__dict_1_1TestDictionary_ae017e72c578005310906979e15c51fe4}\label{classtests_1_1test__dict_1_1TestDictionary_ae017e72c578005310906979e15c51fe4}} 
+\index{tests\+::test\+\_\+dict\+::\+Test\+Dictionary@{tests\+::test\+\_\+dict\+::\+Test\+Dictionary}!test\+\_\+find\+\_\+ngrams@{test\+\_\+find\+\_\+ngrams}}
+\index{test\+\_\+find\+\_\+ngrams@{test\+\_\+find\+\_\+ngrams}!tests\+::test\+\_\+dict\+::\+Test\+Dictionary@{tests\+::test\+\_\+dict\+::\+Test\+Dictionary}}
+\subsubsection{\texorpdfstring{test\+\_\+find\+\_\+ngrams()}{test\_find\_ngrams()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+dict.\+Test\+Dictionary.\+test\+\_\+find\+\_\+ngrams (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Test the ngram class properly recognize uni, bi, and trigrams test.
+\end{DoxyVerb}
+ 
+
+Definition at line 82 of file test\+\_\+dict.\+py.
+
+
+\begin{DoxyCode}
+82     \textcolor{keyword}{def }test\_find\_ngrams(self):
+83         \textcolor{stringliteral}{"""}
+84 \textcolor{stringliteral}{        Test the ngram class properly recognize uni, bi, and trigrams test.}
+85 \textcolor{stringliteral}{        """}
+86         s = set()
+87         s.add(\textcolor{stringliteral}{'hello world'})
+88         s.add(\textcolor{stringliteral}{'ol boy'})
+89         res = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1dict__v0_aa7398720bbf0f8e82c5b1495313f4f8b}{find\_ngrams}(s, [\textcolor{stringliteral}{'hello'}, \textcolor{stringliteral}{'world'}, \textcolor{stringliteral}{'buddy'}, \textcolor{stringliteral}{'ol'}, \textcolor{stringliteral}{'boy'}], 2)
+90         \textcolor{keyword}{assert} \textcolor{stringliteral}{' '}.join(res) == \textcolor{stringliteral}{'hello world buddy ol boy'}
+91         \textcolor{keyword}{assert} \textcolor{stringliteral}{'-'}.join(res) == \textcolor{stringliteral}{'hello world-buddy-ol boy'}
+92         s.add(\textcolor{stringliteral}{'world buddy ol'})
+93         res = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1dict__v0_aa7398720bbf0f8e82c5b1495313f4f8b}{find\_ngrams}(s, [\textcolor{stringliteral}{'hello'}, \textcolor{stringliteral}{'world'}, \textcolor{stringliteral}{'buddy'}, \textcolor{stringliteral}{'ol'}, \textcolor{stringliteral}{'boy'}], 3)
+94         \textcolor{keyword}{assert} \textcolor{stringliteral}{' '}.join(res) == \textcolor{stringliteral}{'hello world buddy ol boy'}
+95         \textcolor{keyword}{assert} \textcolor{stringliteral}{'-'}.join(res) == \textcolor{stringliteral}{'hello-world buddy ol-boy'}
+96         s.add(\textcolor{stringliteral}{'hello world buddy'})
+97         res = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1dict__v0_aa7398720bbf0f8e82c5b1495313f4f8b}{find\_ngrams}(s, [\textcolor{stringliteral}{'hello'}, \textcolor{stringliteral}{'world'}, \textcolor{stringliteral}{'buddy'}, \textcolor{stringliteral}{'ol'}, \textcolor{stringliteral}{'boy'}], 3)
+98         \textcolor{keyword}{assert} \textcolor{stringliteral}{' '}.join(res) == \textcolor{stringliteral}{'hello world buddy ol boy'}
+99         \textcolor{keyword}{assert} \textcolor{stringliteral}{'-'}.join(res) == \textcolor{stringliteral}{'hello world buddy-ol boy'}
+100 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__dict_1_1TestDictionary_a9109b6c1bf1f0e7adfdd3fc4dc1ead74}\label{classtests_1_1test__dict_1_1TestDictionary_a9109b6c1bf1f0e7adfdd3fc4dc1ead74}} 
+\index{tests\+::test\+\_\+dict\+::\+Test\+Dictionary@{tests\+::test\+\_\+dict\+::\+Test\+Dictionary}!test\+\_\+gpt2\+\_\+bpe\+\_\+tokenize@{test\+\_\+gpt2\+\_\+bpe\+\_\+tokenize}}
+\index{test\+\_\+gpt2\+\_\+bpe\+\_\+tokenize@{test\+\_\+gpt2\+\_\+bpe\+\_\+tokenize}!tests\+::test\+\_\+dict\+::\+Test\+Dictionary@{tests\+::test\+\_\+dict\+::\+Test\+Dictionary}}
+\subsubsection{\texorpdfstring{test\+\_\+gpt2\+\_\+bpe\+\_\+tokenize()}{test\_gpt2\_bpe\_tokenize()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+dict.\+Test\+Dictionary.\+test\+\_\+gpt2\+\_\+bpe\+\_\+tokenize (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 28 of file test\+\_\+dict.\+py.
+
+
+\begin{DoxyCode}
+28     \textcolor{keyword}{def }test\_gpt2\_bpe\_tokenize(self):
+29         with testing\_utils.capture\_output():
+30             opt = Opt(\{\textcolor{stringliteral}{'dict\_tokenizer'}: \textcolor{stringliteral}{'gpt2'}, \textcolor{stringliteral}{'datapath'}: \textcolor{stringliteral}{'./data'}\})
+31             agent = DictionaryAgent(opt)
+32         self.assertEqual(
+33             \textcolor{comment}{# grinning face emoji}
+34             agent.gpt2\_tokenize(\textcolor{stringliteral}{u'Hello, ParlAI! \(\backslash\)U0001f600'}),
+35             [
+36                 \textcolor{stringliteral}{'Hello'},
+37                 \textcolor{stringliteral}{','},
+38                 \textcolor{stringliteral}{r'\(\backslash\)xc4\(\backslash\)xa0Par'},
+39                 \textcolor{stringliteral}{'l'},
+40                 \textcolor{stringliteral}{'AI'},
+41                 \textcolor{stringliteral}{'!'},
+42                 \textcolor{stringliteral}{r'\(\backslash\)xc4\(\backslash\)xa0\(\backslash\)xc3\(\backslash\)xb0\(\backslash\)xc5\(\backslash\)x81\(\backslash\)xc4\(\backslash\)xba'},
+43                 \textcolor{stringliteral}{r'\(\backslash\)xc4\(\backslash\)xa2'},
+44             ],
+45         )
+46         self.assertEqual(
+47             agent.vec2txt(
+48                 agent.tok2ind[w]
+49                 \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} [
+50                     \textcolor{stringliteral}{'Hello'},
+51                     \textcolor{stringliteral}{','},
+52                     \textcolor{stringliteral}{r'\(\backslash\)xc4\(\backslash\)xa0Par'},
+53                     \textcolor{stringliteral}{'l'},
+54                     \textcolor{stringliteral}{'AI'},
+55                     \textcolor{stringliteral}{'!'},
+56                     \textcolor{stringliteral}{r'\(\backslash\)xc4\(\backslash\)xa0\(\backslash\)xc3\(\backslash\)xb0\(\backslash\)xc5\(\backslash\)x81\(\backslash\)xc4\(\backslash\)xba'},
+57                     \textcolor{stringliteral}{r'\(\backslash\)xc4\(\backslash\)xa2'},
+58                 ]
+59             ),
+60             \textcolor{comment}{# grinning face emoji}
+61             \textcolor{stringliteral}{u'Hello, ParlAI! \(\backslash\)U0001f600'},
+62         )
+63 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__dict_1_1TestDictionary_a6c7dcec12a72ba52852f7b214d4783bf}\label{classtests_1_1test__dict_1_1TestDictionary_a6c7dcec12a72ba52852f7b214d4783bf}} 
+\index{tests\+::test\+\_\+dict\+::\+Test\+Dictionary@{tests\+::test\+\_\+dict\+::\+Test\+Dictionary}!test\+\_\+set\+\_\+model\+\_\+file\+\_\+without\+\_\+dict\+\_\+file@{test\+\_\+set\+\_\+model\+\_\+file\+\_\+without\+\_\+dict\+\_\+file}}
+\index{test\+\_\+set\+\_\+model\+\_\+file\+\_\+without\+\_\+dict\+\_\+file@{test\+\_\+set\+\_\+model\+\_\+file\+\_\+without\+\_\+dict\+\_\+file}!tests\+::test\+\_\+dict\+::\+Test\+Dictionary@{tests\+::test\+\_\+dict\+::\+Test\+Dictionary}}
+\subsubsection{\texorpdfstring{test\+\_\+set\+\_\+model\+\_\+file\+\_\+without\+\_\+dict\+\_\+file()}{test\_set\_model\_file\_without\_dict\_file()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+dict.\+Test\+Dictionary.\+test\+\_\+set\+\_\+model\+\_\+file\+\_\+without\+\_\+dict\+\_\+file (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Check that moving a model without moving the dictfile raises an error.
+\end{DoxyVerb}
+ 
+
+Definition at line 130 of file test\+\_\+dict.\+py.
+
+
+\begin{DoxyCode}
+130     \textcolor{keyword}{def }test\_set\_model\_file\_without\_dict\_file(self):
+131         \textcolor{stringliteral}{"""}
+132 \textcolor{stringliteral}{        Check that moving a model without moving the dictfile raises an error.}
+133 \textcolor{stringliteral}{        """}
+134         \textcolor{comment}{# Download model, move to a new location}
+135         datapath = ParlaiParser().parse\_args(print\_args=\textcolor{keyword}{False})[\textcolor{stringliteral}{'datapath'}]
+136         \textcolor{keywordflow}{try}:
+137             \textcolor{comment}{# remove unittest models if there before}
+138             shutil.rmtree(os.path.join(datapath, \textcolor{stringliteral}{'models/unittest'}))
+139         \textcolor{keywordflow}{except} FileNotFoundError:
+140             \textcolor{keywordflow}{pass}
+141         testing\_utils.download\_unittest\_models()
+142 
+143         zoo\_path = \textcolor{stringliteral}{'zoo:unittest/seq2seq/model'}
+144         model\_path = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_a5fbd3301b67f00d6d146fb01c7cd7626}{modelzoo\_path}(datapath, zoo\_path)
+145         os.remove(model\_path + \textcolor{stringliteral}{'.dict'})
+146         \textcolor{comment}{# Test that eval model fails}
+147         with self.assertRaises(RuntimeError):
+148             testing\_utils.eval\_model(dict(task=\textcolor{stringliteral}{'babi:task1k:1'}, model\_file=model\_path))
+149         \textcolor{keywordflow}{try}:
+150             \textcolor{comment}{# remove unittest models if there after}
+151             shutil.rmtree(os.path.join(datapath, \textcolor{stringliteral}{'models/unittest'}))
+152         \textcolor{keywordflow}{except} FileNotFoundError:
+153             \textcolor{keywordflow}{pass}
+154 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__dict_1_1TestDictionary_aa586d6cf97a48027ee00ed74234acb11}\label{classtests_1_1test__dict_1_1TestDictionary_aa586d6cf97a48027ee00ed74234acb11}} 
+\index{tests\+::test\+\_\+dict\+::\+Test\+Dictionary@{tests\+::test\+\_\+dict\+::\+Test\+Dictionary}!test\+\_\+space\+\_\+tokenize@{test\+\_\+space\+\_\+tokenize}}
+\index{test\+\_\+space\+\_\+tokenize@{test\+\_\+space\+\_\+tokenize}!tests\+::test\+\_\+dict\+::\+Test\+Dictionary@{tests\+::test\+\_\+dict\+::\+Test\+Dictionary}}
+\subsubsection{\texorpdfstring{test\+\_\+space\+\_\+tokenize()}{test\_space\_tokenize()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+dict.\+Test\+Dictionary.\+test\+\_\+space\+\_\+tokenize (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Space tokenize assumes raw tokenization as input.
+\end{DoxyVerb}
+ 
+
+Definition at line 64 of file test\+\_\+dict.\+py.
+
+
+\begin{DoxyCode}
+64     \textcolor{keyword}{def }test\_space\_tokenize(self):
+65         \textcolor{stringliteral}{"""}
+66 \textcolor{stringliteral}{        Space tokenize assumes raw tokenization as input.}
+67 \textcolor{stringliteral}{        """}
+68         self.assertEqual(
+69             DictionaryAgent.space\_tokenize(\textcolor{stringliteral}{'   this is a test!   '}),
+70             [\textcolor{stringliteral}{'this'}, \textcolor{stringliteral}{'is'}, \textcolor{stringliteral}{'a'}, \textcolor{stringliteral}{'test!'}],
+71         )
+72 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__dict_1_1TestDictionary_aa10a7901ffa04a2d0ba43b43b0a18f26}\label{classtests_1_1test__dict_1_1TestDictionary_aa10a7901ffa04a2d0ba43b43b0a18f26}} 
+\index{tests\+::test\+\_\+dict\+::\+Test\+Dictionary@{tests\+::test\+\_\+dict\+::\+Test\+Dictionary}!test\+\_\+split\+\_\+tokenize@{test\+\_\+split\+\_\+tokenize}}
+\index{test\+\_\+split\+\_\+tokenize@{test\+\_\+split\+\_\+tokenize}!tests\+::test\+\_\+dict\+::\+Test\+Dictionary@{tests\+::test\+\_\+dict\+::\+Test\+Dictionary}}
+\subsubsection{\texorpdfstring{test\+\_\+split\+\_\+tokenize()}{test\_split\_tokenize()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+dict.\+Test\+Dictionary.\+test\+\_\+split\+\_\+tokenize (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Split tokenize specially handles some limited punctuation.
+\end{DoxyVerb}
+ 
+
+Definition at line 73 of file test\+\_\+dict.\+py.
+
+
+\begin{DoxyCode}
+73     \textcolor{keyword}{def }test\_split\_tokenize(self):
+74         \textcolor{stringliteral}{"""}
+75 \textcolor{stringliteral}{        Split tokenize specially handles some limited punctuation.}
+76 \textcolor{stringliteral}{        """}
+77         self.assertEqual(
+78             DictionaryAgent.split\_tokenize(\textcolor{stringliteral}{'   this is a test!   '}),
+79             [\textcolor{stringliteral}{'this'}, \textcolor{stringliteral}{'is'}, \textcolor{stringliteral}{'a'}, \textcolor{stringliteral}{'test'}, \textcolor{stringliteral}{'!'}],
+80         )
+81 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__dict_1_1TestDictionary_a33993874a2fa2dc57b3936479b17aae1}\label{classtests_1_1test__dict_1_1TestDictionary_a33993874a2fa2dc57b3936479b17aae1}} 
+\index{tests\+::test\+\_\+dict\+::\+Test\+Dictionary@{tests\+::test\+\_\+dict\+::\+Test\+Dictionary}!test\+\_\+train\+\_\+model\+\_\+with\+\_\+no\+\_\+dict\+\_\+file@{test\+\_\+train\+\_\+model\+\_\+with\+\_\+no\+\_\+dict\+\_\+file}}
+\index{test\+\_\+train\+\_\+model\+\_\+with\+\_\+no\+\_\+dict\+\_\+file@{test\+\_\+train\+\_\+model\+\_\+with\+\_\+no\+\_\+dict\+\_\+file}!tests\+::test\+\_\+dict\+::\+Test\+Dictionary@{tests\+::test\+\_\+dict\+::\+Test\+Dictionary}}
+\subsubsection{\texorpdfstring{test\+\_\+train\+\_\+model\+\_\+with\+\_\+no\+\_\+dict\+\_\+file()}{test\_train\_model\_with\_no\_dict\_file()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+dict.\+Test\+Dictionary.\+test\+\_\+train\+\_\+model\+\_\+with\+\_\+no\+\_\+dict\+\_\+file (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Ensure training a model requires a dict_file or model_file.
+\end{DoxyVerb}
+ 
+
+Definition at line 155 of file test\+\_\+dict.\+py.
+
+
+\begin{DoxyCode}
+155     \textcolor{keyword}{def }test\_train\_model\_with\_no\_dict\_file(self):
+156         \textcolor{stringliteral}{"""}
+157 \textcolor{stringliteral}{        Ensure training a model requires a dict\_file or model\_file.}
+158 \textcolor{stringliteral}{        """}
+159         \textcolor{keyword}{import} \hyperlink{namespaceparlai_1_1scripts_1_1train__model}{parlai.scripts.train\_model} \textcolor{keyword}{as} tms
+160 
+161         with testing\_utils.capture\_output():
+162             parser = tms.setup\_args()
+163             parser.set\_params(task=\textcolor{stringliteral}{'babi:task1k:1'}, model=\textcolor{stringliteral}{'seq2seq'})
+164             popt = parser.parse\_args(print\_args=\textcolor{keyword}{False})
+165             with self.assertRaises(RuntimeError):
+166                 tms.TrainLoop(popt)
+167 
+168 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+tests/\hyperlink{test__dict_8py}{test\+\_\+dict.\+py}\end{DoxyCompactItemize}

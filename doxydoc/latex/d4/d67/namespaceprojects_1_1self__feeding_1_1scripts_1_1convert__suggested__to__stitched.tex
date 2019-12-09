@@ -1,0 +1,121 @@
+\hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__suggested__to__stitched}{}\section{projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+suggested\+\_\+to\+\_\+stitched Namespace Reference}
+\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__suggested__to__stitched}\index{projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+suggested\+\_\+to\+\_\+stitched@{projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+suggested\+\_\+to\+\_\+stitched}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__suggested__to__stitched_abb3be1e61354f80ddbc5d87ffe42e518}{setup\+\_\+args} ()
+\item 
+def \hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__suggested__to__stitched_a6616af45a9b73cd0314c3d585d66d5f8}{main} (\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__suggested__to__stitched_a04b120384976c805efcd721f6b8acb24}{config})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__suggested__to__stitched_a04b120384976c805efcd721f6b8acb24}{config}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__suggested__to__stitched_a6616af45a9b73cd0314c3d585d66d5f8}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__suggested__to__stitched_a6616af45a9b73cd0314c3d585d66d5f8}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+suggested\+\_\+to\+\_\+stitched@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+suggested\+\_\+to\+\_\+stitched}!main@{main}}
+\index{main@{main}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+suggested\+\_\+to\+\_\+stitched@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+suggested\+\_\+to\+\_\+stitched}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+suggested\+\_\+to\+\_\+stitched.\+main (\begin{DoxyParamCaption}\item[{}]{config }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Creates .stitched files from .suggested files.
+
+input: a .suggested file of logs (in ParlaiDialog format) from Mturk task 2, each of
+    which starts with an initial prompt or topic request, and ends with a y
+    that corresponds to the y_exp given in the previous turn
+output: a .stitched file (in self-feeding format) with the original mistake by the
+    bot replace with the mturked y (based on y_exp)
+\end{DoxyVerb}
+ 
+
+Definition at line 25 of file convert\+\_\+suggested\+\_\+to\+\_\+stitched.\+py.
+
+
+\begin{DoxyCode}
+25 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__suggested__to__stitched_a6616af45a9b73cd0314c3d585d66d5f8}{main}(config):
+26     \textcolor{stringliteral}{"""}
+27 \textcolor{stringliteral}{    Creates .stitched files from .suggested files.}
+28 \textcolor{stringliteral}{}
+29 \textcolor{stringliteral}{    input: a .suggested file of logs (in ParlaiDialog format) from Mturk task 2, each of}
+30 \textcolor{stringliteral}{        which starts with an initial prompt or topic request, and ends with a y}
+31 \textcolor{stringliteral}{        that corresponds to the y\_exp given in the previous turn}
+32 \textcolor{stringliteral}{    output: a .stitched file (in self-feeding format) with the original mistake by the}
+33 \textcolor{stringliteral}{        bot replace with the mturked y (based on y\_exp)}
+34 \textcolor{stringliteral}{    """}
+35     examples = []
+36     episodes = [e \textcolor{keywordflow}{for} e \textcolor{keywordflow}{in} \hyperlink{namespaceprojects_1_1self__feeding_1_1utils_a7bfa2fe610a2d0da7968b1a2662e0c23}{extract\_parlai\_episodes}(config[\textcolor{stringliteral}{'infile'}])]
+37     \textcolor{keywordflow}{for} episode \textcolor{keywordflow}{in} episodes:
+38         history = []
+39         num\_parleys = len(episode)
+40         \textcolor{keywordflow}{for} i, parley \textcolor{keywordflow}{in} enumerate(episode):
+41             \textcolor{keywordflow}{if} i == 0:  \textcolor{comment}{# Don't include the topic request}
+42                 history.append(parley.response)
+43                 \textcolor{keywordflow}{continue}
+44             \textcolor{keywordflow}{elif} i == num\_parleys - 3:
+45                 \textcolor{comment}{# third to last was mistake and negative feedback}
+46                 \textcolor{keywordflow}{continue}
+47             \textcolor{keywordflow}{elif} i == num\_parleys - 2:
+48                 \textcolor{comment}{# penultimate turn was suggestion request and y\_exp}
+49                 \textcolor{keywordflow}{continue}
+50             \textcolor{keywordflow}{elif} i == num\_parleys - 1:
+51                 \textcolor{comment}{# ultimate turn was verbatim request and y}
+52                 example = Parley(
+53                     context=\hyperlink{namespaceprojects_1_1self__feeding_1_1utils_a3f3d055dc6c4058057baae7b240de5ec}{add\_person\_tokens}(history, last\_speaker=1),
+54                     response=parley.response,  \textcolor{comment}{# y}
+55                 )
+56                 examples.append(example)
+57             \textcolor{keywordflow}{else}:
+58                 \textcolor{comment}{# normal turn; just add to history}
+59                 history.append(parley.context)
+60                 history.append(parley.response)
+61 
+62     \textcolor{comment}{# Write new episodes to self-feeding format}
+63     with open(config[\textcolor{stringliteral}{'outfile'}], \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} outfile:
+64         \textcolor{keywordflow}{for} ex \textcolor{keywordflow}{in} examples:
+65             outfile.write(json.dumps(ex.to\_dict()) + \textcolor{stringliteral}{'\(\backslash\)n'})
+66 
+67     print(
+68         f\textcolor{stringliteral}{"Extracted \{len(examples)\} self-feeding episodes out of "}
+69         f\textcolor{stringliteral}{"\{len(episodes)\} parlai episodes and wrote them to \{config['outfile']\}."}
+70     )
+71 
+72 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__suggested__to__stitched_abb3be1e61354f80ddbc5d87ffe42e518}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__suggested__to__stitched_abb3be1e61354f80ddbc5d87ffe42e518}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+suggested\+\_\+to\+\_\+stitched@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+suggested\+\_\+to\+\_\+stitched}!setup\+\_\+args@{setup\+\_\+args}}
+\index{setup\+\_\+args@{setup\+\_\+args}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+suggested\+\_\+to\+\_\+stitched@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+suggested\+\_\+to\+\_\+stitched}}
+\subsubsection{\texorpdfstring{setup\+\_\+args()}{setup\_args()}}
+{\footnotesize\ttfamily def projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+suggested\+\_\+to\+\_\+stitched.\+setup\+\_\+args (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 16 of file convert\+\_\+suggested\+\_\+to\+\_\+stitched.\+py.
+
+
+\begin{DoxyCode}
+16 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__suggested__to__stitched_abb3be1e61354f80ddbc5d87ffe42e518}{setup\_args}():
+17     argparser = ArgumentParser()
+18     argparser.add\_argument(\textcolor{stringliteral}{'-if'}, \textcolor{stringliteral}{'--infile'}, type=str)
+19     argparser.add\_argument(\textcolor{stringliteral}{'-of'}, \textcolor{stringliteral}{'--outfile'}, type=str)
+20     config = vars(argparser.parse\_args())
+21 
+22     \textcolor{keywordflow}{return} config
+23 
+24 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__suggested__to__stitched_a04b120384976c805efcd721f6b8acb24}\label{namespaceprojects_1_1self__feeding_1_1scripts_1_1convert__suggested__to__stitched_a04b120384976c805efcd721f6b8acb24}} 
+\index{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+suggested\+\_\+to\+\_\+stitched@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+suggested\+\_\+to\+\_\+stitched}!config@{config}}
+\index{config@{config}!projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+suggested\+\_\+to\+\_\+stitched@{projects\+::self\+\_\+feeding\+::scripts\+::convert\+\_\+suggested\+\_\+to\+\_\+stitched}}
+\subsubsection{\texorpdfstring{config}{config}}
+{\footnotesize\ttfamily projects.\+self\+\_\+feeding.\+scripts.\+convert\+\_\+suggested\+\_\+to\+\_\+stitched.\+config}
+
+
+
+Definition at line 74 of file convert\+\_\+suggested\+\_\+to\+\_\+stitched.\+py.
+

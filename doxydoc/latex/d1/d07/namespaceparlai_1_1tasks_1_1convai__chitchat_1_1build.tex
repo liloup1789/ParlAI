@@ -1,0 +1,75 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1convai__chitchat_1_1build}{}\section{parlai.\+tasks.\+convai\+\_\+chitchat.\+build Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1convai__chitchat_1_1build}\index{parlai.\+tasks.\+convai\+\_\+chitchat.\+build@{parlai.\+tasks.\+convai\+\_\+chitchat.\+build}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1convai__chitchat_1_1build_a3c8d628ed6619549434124fc4c755995}{build} (opt)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+list \hyperlink{namespaceparlai_1_1tasks_1_1convai__chitchat_1_1build_a687e95f80a9c6975e5ad72cb5ff3c93b}{R\+E\+S\+O\+U\+R\+C\+ES}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1convai__chitchat_1_1build_a3c8d628ed6619549434124fc4c755995}\label{namespaceparlai_1_1tasks_1_1convai__chitchat_1_1build_a3c8d628ed6619549434124fc4c755995}} 
+\index{parlai\+::tasks\+::convai\+\_\+chitchat\+::build@{parlai\+::tasks\+::convai\+\_\+chitchat\+::build}!build@{build}}
+\index{build@{build}!parlai\+::tasks\+::convai\+\_\+chitchat\+::build@{parlai\+::tasks\+::convai\+\_\+chitchat\+::build}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+convai\+\_\+chitchat.\+build.\+build (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 21 of file build.\+py.
+
+
+\begin{DoxyCode}
+21 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
+22     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'ConvAIChitChat'})
+23     version = \textcolor{stringliteral}{'1501534800'}
+24 
+25     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version\_string=version):
+26         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+27 
+28         \textcolor{keywordflow}{if} build\_data.built(dpath):
+29             build\_data.remove\_dir(dpath)
+30         build\_data.make\_dir(dpath)
+31 
+32         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES:
+33             downloadable\_file.download\_file(dpath)
+34 
+35         os.rename(
+36             os.path.join(dpath, \textcolor{stringliteral}{'data\_train\_'} + version + \textcolor{stringliteral}{'.json'}),
+37             os.path.join(dpath, \textcolor{stringliteral}{'train.json'}),
+38         )
+39         os.rename(
+40             os.path.join(dpath, \textcolor{stringliteral}{'data\_test\_'} + version + \textcolor{stringliteral}{'.json'}),
+41             os.path.join(dpath, \textcolor{stringliteral}{'test.json'}),
+42         )
+43 
+44         build\_data.mark\_done(dpath, version\_string=version)
+45 \end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1convai__chitchat_1_1build_a687e95f80a9c6975e5ad72cb5ff3c93b}\label{namespaceparlai_1_1tasks_1_1convai__chitchat_1_1build_a687e95f80a9c6975e5ad72cb5ff3c93b}} 
+\index{parlai\+::tasks\+::convai\+\_\+chitchat\+::build@{parlai\+::tasks\+::convai\+\_\+chitchat\+::build}!R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}}
+\index{R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}!parlai\+::tasks\+::convai\+\_\+chitchat\+::build@{parlai\+::tasks\+::convai\+\_\+chitchat\+::build}}
+\subsubsection{\texorpdfstring{R\+E\+S\+O\+U\+R\+C\+ES}{RESOURCES}}
+{\footnotesize\ttfamily list parlai.\+tasks.\+convai\+\_\+chitchat.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+1 =  [
+2     DownloadableFile(
+3         \textcolor{stringliteral}{'https://raw.githubusercontent.com/deepmipt/turing-data/master/data\_1501534800.tar.gz'},
+4         \textcolor{stringliteral}{'data\_1501534800.tar.gz'},
+5         \textcolor{stringliteral}{'f1a4e7ee7264220cef6bf067b77d6f501023877643e77516c7acd66fbcdf0aaf'},
+6     )
+7 ]
+\end{DoxyCode}
+
+
+Definition at line 12 of file build.\+py.
+

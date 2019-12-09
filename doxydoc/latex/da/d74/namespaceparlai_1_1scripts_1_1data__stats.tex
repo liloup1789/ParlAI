@@ -1,0 +1,255 @@
+\hypertarget{namespaceparlai_1_1scripts_1_1data__stats}{}\section{parlai.\+scripts.\+data\+\_\+stats Namespace Reference}
+\label{namespaceparlai_1_1scripts_1_1data__stats}\index{parlai.\+scripts.\+data\+\_\+stats@{parlai.\+scripts.\+data\+\_\+stats}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1data__stats_add47fb96d75895f4c21d9e310cb1df40}{setup\+\_\+args} (\hyperlink{namespaceparlai_1_1scripts_1_1data__stats_af1cc1fdf5289b1dfc8277f9de43ff109}{parser}=None)
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1data__stats_a8cc2308cc735ce6cf029d4c02fea5a21}{report} (world, counts, log\+\_\+time)
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1data__stats_a3bf0a490abe0b6ea608d1f9ece194c79}{verify} (opt, printargs=None, \hyperlink{namespaceparlai_1_1scripts_1_1data__stats_a89286b21a94125aadf5cc8571abe3f7f}{print\+\_\+parser}=None)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1data__stats_af1cc1fdf5289b1dfc8277f9de43ff109}{parser} = \hyperlink{namespaceparlai_1_1scripts_1_1data__stats_add47fb96d75895f4c21d9e310cb1df40}{setup\+\_\+args}()
+\item 
+\hyperlink{namespaceparlai_1_1scripts_1_1data__stats_a63e65c276e15211e573af8db9cfb9dbf}{report\+\_\+text}
+\item 
+\hyperlink{namespaceparlai_1_1scripts_1_1data__stats_a08ce833d7c44ab350dfd93f9ae09b614}{report\+\_\+log}
+\item 
+\hyperlink{namespaceparlai_1_1scripts_1_1data__stats_a89286b21a94125aadf5cc8571abe3f7f}{print\+\_\+parser}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1data__stats_a8cc2308cc735ce6cf029d4c02fea5a21}\label{namespaceparlai_1_1scripts_1_1data__stats_a8cc2308cc735ce6cf029d4c02fea5a21}} 
+\index{parlai\+::scripts\+::data\+\_\+stats@{parlai\+::scripts\+::data\+\_\+stats}!report@{report}}
+\index{report@{report}!parlai\+::scripts\+::data\+\_\+stats@{parlai\+::scripts\+::data\+\_\+stats}}
+\subsubsection{\texorpdfstring{report()}{report()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+data\+\_\+stats.\+report (\begin{DoxyParamCaption}\item[{}]{world,  }\item[{}]{counts,  }\item[{}]{log\+\_\+time }\end{DoxyParamCaption})}
+
+
+
+Definition at line 53 of file data\+\_\+stats.\+py.
+
+
+\begin{DoxyCode}
+53 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1data__stats_a8cc2308cc735ce6cf029d4c02fea5a21}{report}(world, counts, log\_time):
+54     report = world.report()
+55     stats = \textcolor{stringliteral}{'\(\backslash\)n'}
+56     \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} [\textcolor{stringliteral}{'input'}, \textcolor{stringliteral}{'labels'}, \textcolor{stringliteral}{'both'}]:
+57         stats += t + \textcolor{stringliteral}{":\(\backslash\)n"}
+58         \textcolor{keywordflow}{for} s \textcolor{keywordflow}{in} [
+59             \textcolor{stringliteral}{'utterances\_in\_'},
+60             \textcolor{stringliteral}{'avg\_utterance\_length\_in\_'},
+61             \textcolor{stringliteral}{'tokens\_in\_'},
+62             \textcolor{stringliteral}{'unique\_tokens\_in\_'},
+63             \textcolor{stringliteral}{'unique\_utterances\_in\_'},
+64         ]:
+65             snice = s.replace(\textcolor{stringliteral}{'\_in\_'}, \textcolor{stringliteral}{''}).replace(\textcolor{stringliteral}{'\_'}, \textcolor{stringliteral}{' '})
+66             stats += \textcolor{stringliteral}{"   "} + snice + \textcolor{stringliteral}{': '} + \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(counts[s + t]) + \textcolor{stringliteral}{'\(\backslash\)n'}
+67     log = \{\}
+68     log[\textcolor{stringliteral}{'stats'}] = stats
+69     text, log = log\_time.log(report[\textcolor{stringliteral}{'exs'}], world.num\_examples(), log)
+70     \textcolor{keywordflow}{return} text, log
+71 
+72 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1data__stats_add47fb96d75895f4c21d9e310cb1df40}\label{namespaceparlai_1_1scripts_1_1data__stats_add47fb96d75895f4c21d9e310cb1df40}} 
+\index{parlai\+::scripts\+::data\+\_\+stats@{parlai\+::scripts\+::data\+\_\+stats}!setup\+\_\+args@{setup\+\_\+args}}
+\index{setup\+\_\+args@{setup\+\_\+args}!parlai\+::scripts\+::data\+\_\+stats@{parlai\+::scripts\+::data\+\_\+stats}}
+\subsubsection{\texorpdfstring{setup\+\_\+args()}{setup\_args()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+data\+\_\+stats.\+setup\+\_\+args (\begin{DoxyParamCaption}\item[{}]{parser = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 23 of file data\+\_\+stats.\+py.
+
+
+\begin{DoxyCode}
+23 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1data__stats_add47fb96d75895f4c21d9e310cb1df40}{setup\_args}(parser=None):
+24     \textcolor{keywordflow}{if} parser \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+25         parser = ParlaiParser(\textcolor{keyword}{True}, \textcolor{keyword}{False}, \textcolor{stringliteral}{'Lint for ParlAI tasks'})
+26     parser.add\_pytorch\_datateacher\_args()
+27     \textcolor{comment}{# Get command line arguments}
+28     parser.add\_argument(\textcolor{stringliteral}{'-ltim'}, \textcolor{stringliteral}{'--log-every-n-secs'}, type=float, default=2)
+29     parser.add\_argument(
+30         \textcolor{stringliteral}{'--agent'},
+31         type=int,
+32         default=0,
+33         help=\textcolor{stringliteral}{'Use teacher (agent 0) or model (agent 1)'},
+34         choices=[0, 1],
+35     )
+36     parser.add\_argument(
+37         \textcolor{stringliteral}{'--new\_line\_new\_utt'},
+38         type=\textcolor{stringliteral}{'bool'},
+39         default=\textcolor{keyword}{False},
+40         help=\textcolor{stringliteral}{'New lines treat substrings as separate utterances.'},
+41     )
+42     parser.add\_argument(
+43         \textcolor{stringliteral}{'--ignore\_tokens'},
+44         type=str,
+45         default=\textcolor{stringliteral}{''},
+46         help=\textcolor{stringliteral}{'ignore tokens containings these substrings (comma-separated)'},
+47     )
+48     parser.set\_defaults(datatype=\textcolor{stringliteral}{'train:ordered'})
+49     DictionaryAgent.add\_cmdline\_args(parser)
+50     \textcolor{keywordflow}{return} parser
+51 
+52 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1data__stats_a3bf0a490abe0b6ea608d1f9ece194c79}\label{namespaceparlai_1_1scripts_1_1data__stats_a3bf0a490abe0b6ea608d1f9ece194c79}} 
+\index{parlai\+::scripts\+::data\+\_\+stats@{parlai\+::scripts\+::data\+\_\+stats}!verify@{verify}}
+\index{verify@{verify}!parlai\+::scripts\+::data\+\_\+stats@{parlai\+::scripts\+::data\+\_\+stats}}
+\subsubsection{\texorpdfstring{verify()}{verify()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+data\+\_\+stats.\+verify (\begin{DoxyParamCaption}\item[{}]{opt,  }\item[{}]{printargs = {\ttfamily None},  }\item[{}]{print\+\_\+parser = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 73 of file data\+\_\+stats.\+py.
+
+
+\begin{DoxyCode}
+73 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1data__stats_a3bf0a490abe0b6ea608d1f9ece194c79}{verify}(opt, printargs=None, print\_parser=None):
+74     \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'datatype'}] == \textcolor{stringliteral}{'train'}:
+75         print(\textcolor{stringliteral}{"[ note: changing datatype from train to train:ordered ]"})
+76         opt[\textcolor{stringliteral}{'datatype'}] = \textcolor{stringliteral}{'train:ordered'}
+77 
+78     \textcolor{comment}{# create repeat label agent and assign it to the specified task}
+79     agent = RepeatLabelAgent(opt)
+80     world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(opt, agent)
+81 
+82     log\_every\_n\_secs = opt.get(\textcolor{stringliteral}{'log\_every\_n\_secs'}, -1)
+83     \textcolor{keywordflow}{if} log\_every\_n\_secs <= 0:
+84         log\_every\_n\_secs = \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(\textcolor{stringliteral}{'inf'})
+85     log\_time = TimeLogger()
+86 
+87     dictionary = DictionaryAgent(opt)
+88     ignore\_tokens = opt.get(\textcolor{stringliteral}{'ignore\_tokens'}).split(\textcolor{stringliteral}{','})
+89 
+90     counts = \{\}
+91     \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} \{\textcolor{stringliteral}{'input'}, \textcolor{stringliteral}{'labels'}, \textcolor{stringliteral}{'both'}\}:
+92         counts[\textcolor{stringliteral}{'tokens\_in\_'} + t] = 0
+93         counts[\textcolor{stringliteral}{'utterances\_in\_'} + t] = 0
+94         counts[\textcolor{stringliteral}{'avg\_utterance\_length\_in\_'} + t] = 0
+95         counts[\textcolor{stringliteral}{'unique\_tokens\_in\_'} + t] = 0
+96         counts[\textcolor{stringliteral}{'unique\_utterances\_in\_'} + t] = 0
+97         \textcolor{comment}{# for counting the stats..}
+98         counts[\textcolor{stringliteral}{'token\_dict\_'} + t] = \{\}
+99         counts[\textcolor{stringliteral}{'utterance\_dict\_'} + t] = \{\}
+100 
+101     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_a1fdb457e98eb4e4c26047e229686a616}{tokenize}(txt):
+102         \textcolor{keywordflow}{return} dictionary.tokenize(txt)
+103 
+104     \textcolor{keyword}{def }keep\_token(t):
+105         \textcolor{keywordflow}{for} s \textcolor{keywordflow}{in} ignore\_tokens:
+106             \textcolor{keywordflow}{if} s != \textcolor{stringliteral}{''} \textcolor{keywordflow}{and} s \textcolor{keywordflow}{in} t:
+107                 \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+108         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+109 
+110     \textcolor{comment}{# Show some example dialogs.}
+111     \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} world.epoch\_done():
+112         world.parley()
+113         act = world.get\_acts()[opt.get(\textcolor{stringliteral}{'agent'})]
+114         \textcolor{keywordflow}{for} itype \textcolor{keywordflow}{in} \{\textcolor{stringliteral}{'input'}, \textcolor{stringliteral}{'labels'}\}:
+115             \textcolor{keywordflow}{if} itype == \textcolor{stringliteral}{'input'}:
+116                 \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'new\_line\_new\_utt'}):
+117                     txts = act.get(\textcolor{stringliteral}{'text'}).split(\textcolor{stringliteral}{'\(\backslash\)n'})
+118                 \textcolor{keywordflow}{else}:
+119                     txts = [act.get(\textcolor{stringliteral}{'text'})]
+120             \textcolor{keywordflow}{else}:
+121                 txts = act.get(\textcolor{stringliteral}{'labels'}, act.get(\textcolor{stringliteral}{'eval\_labels'}, [\textcolor{stringliteral}{''}]))
+122 
+123             \textcolor{keywordflow}{for} txt \textcolor{keywordflow}{in} txts:
+124                 tokens = \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_a1fdb457e98eb4e4c26047e229686a616}{tokenize}(txt)
+125                 retxt = []
+126                 \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} tokens:
+127                     \textcolor{keywordflow}{if} keep\_token(t):
+128                         retxt.append(t)
+129                 counts[\textcolor{stringliteral}{'tokens\_in\_'} + itype] += len(retxt)
+130                 counts[\textcolor{stringliteral}{'tokens\_in\_'} + \textcolor{stringliteral}{'both'}] += len(retxt)
+131                 counts[\textcolor{stringliteral}{'utterances\_in\_'} + itype] += 1
+132                 counts[\textcolor{stringliteral}{'utterances\_in\_'} + \textcolor{stringliteral}{'both'}] += 1
+133                 counts[\textcolor{stringliteral}{'avg\_utterance\_length\_in\_'} + itype] = (
+134                     counts[\textcolor{stringliteral}{'tokens\_in\_'} + itype] / counts[\textcolor{stringliteral}{'utterances\_in\_'} + itype]
+135                 )
+136                 counts[\textcolor{stringliteral}{'avg\_utterance\_length\_in\_'} + \textcolor{stringliteral}{'both'}] = (
+137                     counts[\textcolor{stringliteral}{'tokens\_in\_'} + \textcolor{stringliteral}{'both'}] / counts[\textcolor{stringliteral}{'utterances\_in\_'} + \textcolor{stringliteral}{'both'}]
+138                 )
+139                 \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} retxt:
+140                     \textcolor{keywordflow}{if} t \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} counts[\textcolor{stringliteral}{'token\_dict\_'} + itype]:
+141                         counts[\textcolor{stringliteral}{'unique\_tokens\_in\_'} + itype] += 1
+142                         counts[\textcolor{stringliteral}{'token\_dict\_'} + itype][t] = \textcolor{keyword}{True}
+143                     \textcolor{keywordflow}{if} t \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} counts[\textcolor{stringliteral}{'token\_dict\_'} + \textcolor{stringliteral}{'both'}]:
+144                         counts[\textcolor{stringliteral}{'unique\_tokens\_in\_'} + \textcolor{stringliteral}{'both'}] += 1
+145                         counts[\textcolor{stringliteral}{'token\_dict\_'} + \textcolor{stringliteral}{'both'}][t] = \textcolor{keyword}{True}
+146                 retxt = \textcolor{stringliteral}{' '}.join(retxt)
+147                 \textcolor{keywordflow}{if} retxt \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} counts[\textcolor{stringliteral}{'utterance\_dict\_'} + itype]:
+148                     counts[\textcolor{stringliteral}{'unique\_utterances\_in\_'} + itype] += 1
+149                     counts[\textcolor{stringliteral}{'utterance\_dict\_'} + itype][retxt] = \textcolor{keyword}{True}
+150                 \textcolor{keywordflow}{if} retxt \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} counts[\textcolor{stringliteral}{'utterance\_dict\_'} + \textcolor{stringliteral}{'both'}]:
+151                     counts[\textcolor{stringliteral}{'unique\_utterances\_in\_'} + \textcolor{stringliteral}{'both'}] += 1
+152                     counts[\textcolor{stringliteral}{'utterance\_dict\_'} + \textcolor{stringliteral}{'both'}][retxt] = \textcolor{keyword}{True}
+153 
+154         \textcolor{keywordflow}{if} log\_time.time() > log\_every\_n\_secs:
+155             text, log = \hyperlink{namespaceparlai_1_1scripts_1_1data__stats_a8cc2308cc735ce6cf029d4c02fea5a21}{report}(world, counts, log\_time)
+156             \textcolor{keywordflow}{if} print\_parser:
+157                 print(text)
+158 
+159     \textcolor{keywordflow}{try}:
+160         \textcolor{comment}{# print dataset size if available}
+161         print(
+162             \textcolor{stringliteral}{'[ loaded \{\} episodes with a total of \{\} examples ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+163                 world.num\_episodes(), world.num\_examples()
+164             )
+165         )
+166     \textcolor{keywordflow}{except} Exception:
+167         \textcolor{keywordflow}{pass}
+168     \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1scripts_1_1data__stats_a8cc2308cc735ce6cf029d4c02fea5a21}{report}(world, counts, log\_time)
+169 
+170 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1data__stats_af1cc1fdf5289b1dfc8277f9de43ff109}\label{namespaceparlai_1_1scripts_1_1data__stats_af1cc1fdf5289b1dfc8277f9de43ff109}} 
+\index{parlai\+::scripts\+::data\+\_\+stats@{parlai\+::scripts\+::data\+\_\+stats}!parser@{parser}}
+\index{parser@{parser}!parlai\+::scripts\+::data\+\_\+stats@{parlai\+::scripts\+::data\+\_\+stats}}
+\subsubsection{\texorpdfstring{parser}{parser}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+data\+\_\+stats.\+parser = \hyperlink{namespaceparlai_1_1scripts_1_1data__stats_add47fb96d75895f4c21d9e310cb1df40}{setup\+\_\+args}()}
+
+
+
+Definition at line 172 of file data\+\_\+stats.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1data__stats_a89286b21a94125aadf5cc8571abe3f7f}\label{namespaceparlai_1_1scripts_1_1data__stats_a89286b21a94125aadf5cc8571abe3f7f}} 
+\index{parlai\+::scripts\+::data\+\_\+stats@{parlai\+::scripts\+::data\+\_\+stats}!print\+\_\+parser@{print\+\_\+parser}}
+\index{print\+\_\+parser@{print\+\_\+parser}!parlai\+::scripts\+::data\+\_\+stats@{parlai\+::scripts\+::data\+\_\+stats}}
+\subsubsection{\texorpdfstring{print\+\_\+parser}{print\_parser}}
+{\footnotesize\ttfamily parlai.\+scripts.\+data\+\_\+stats.\+print\+\_\+parser}
+
+
+
+Definition at line 174 of file data\+\_\+stats.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1data__stats_a08ce833d7c44ab350dfd93f9ae09b614}\label{namespaceparlai_1_1scripts_1_1data__stats_a08ce833d7c44ab350dfd93f9ae09b614}} 
+\index{parlai\+::scripts\+::data\+\_\+stats@{parlai\+::scripts\+::data\+\_\+stats}!report\+\_\+log@{report\+\_\+log}}
+\index{report\+\_\+log@{report\+\_\+log}!parlai\+::scripts\+::data\+\_\+stats@{parlai\+::scripts\+::data\+\_\+stats}}
+\subsubsection{\texorpdfstring{report\+\_\+log}{report\_log}}
+{\footnotesize\ttfamily parlai.\+scripts.\+data\+\_\+stats.\+report\+\_\+log}
+
+
+
+Definition at line 173 of file data\+\_\+stats.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1data__stats_a63e65c276e15211e573af8db9cfb9dbf}\label{namespaceparlai_1_1scripts_1_1data__stats_a63e65c276e15211e573af8db9cfb9dbf}} 
+\index{parlai\+::scripts\+::data\+\_\+stats@{parlai\+::scripts\+::data\+\_\+stats}!report\+\_\+text@{report\+\_\+text}}
+\index{report\+\_\+text@{report\+\_\+text}!parlai\+::scripts\+::data\+\_\+stats@{parlai\+::scripts\+::data\+\_\+stats}}
+\subsubsection{\texorpdfstring{report\+\_\+text}{report\_text}}
+{\footnotesize\ttfamily parlai.\+scripts.\+data\+\_\+stats.\+report\+\_\+text}
+
+
+
+Definition at line 173 of file data\+\_\+stats.\+py.
+

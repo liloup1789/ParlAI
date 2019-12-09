@@ -1,0 +1,92 @@
+\hypertarget{namespaceparlai_1_1mturk_1_1scripts_1_1bonus__workers}{}\section{parlai.\+mturk.\+scripts.\+bonus\+\_\+workers Namespace Reference}
+\label{namespaceparlai_1_1mturk_1_1scripts_1_1bonus__workers}\index{parlai.\+mturk.\+scripts.\+bonus\+\_\+workers@{parlai.\+mturk.\+scripts.\+bonus\+\_\+workers}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1mturk_1_1scripts_1_1bonus__workers_aafc7a350f4abb5524c1b7477b3fc2bda}{main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1scripts_1_1bonus__workers_aafc7a350f4abb5524c1b7477b3fc2bda}\label{namespaceparlai_1_1mturk_1_1scripts_1_1bonus__workers_aafc7a350f4abb5524c1b7477b3fc2bda}} 
+\index{parlai\+::mturk\+::scripts\+::bonus\+\_\+workers@{parlai\+::mturk\+::scripts\+::bonus\+\_\+workers}!main@{main}}
+\index{main@{main}!parlai\+::mturk\+::scripts\+::bonus\+\_\+workers@{parlai\+::mturk\+::scripts\+::bonus\+\_\+workers}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def parlai.\+mturk.\+scripts.\+bonus\+\_\+workers.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}This script should be used to compensate workers that have not recieved proper
+payment for the completion of tasks due to issues on our end.
+
+It's important to make sure you keep a requester reputation up.
+\end{DoxyVerb}
+ 
+
+Definition at line 11 of file bonus\+\_\+workers.\+py.
+
+
+\begin{DoxyCode}
+11 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1scripts_1_1bonus__workers_aafc7a350f4abb5524c1b7477b3fc2bda}{main}():
+12     \textcolor{stringliteral}{"""}
+13 \textcolor{stringliteral}{    This script should be used to compensate workers that have not recieved proper}
+14 \textcolor{stringliteral}{    payment for the completion of tasks due to issues on our end.}
+15 \textcolor{stringliteral}{}
+16 \textcolor{stringliteral}{    It's important to make sure you keep a requester reputation up.}
+17 \textcolor{stringliteral}{    """}
+18     parser = argparse.ArgumentParser(description=\textcolor{stringliteral}{'Bonus workers directly'})
+19     parser.add\_argument(
+20         \textcolor{stringliteral}{'--sandbox'},
+21         dest=\textcolor{stringliteral}{'sandbox'},
+22         default=\textcolor{keyword}{False},
+23         action=\textcolor{stringliteral}{'store\_true'},
+24         help=\textcolor{stringliteral}{'Test bonus in sandbox'},
+25     )
+26     parser.add\_argument(
+27         \textcolor{stringliteral}{'--hit-id'},
+28         dest=\textcolor{stringliteral}{'use\_hit\_id'},
+29         default=\textcolor{keyword}{False},
+30         action=\textcolor{stringliteral}{'store\_true'},
+31         help=\textcolor{stringliteral}{'Use HIT id instead of assignment id'},
+32     )
+33     opt = parser.parse\_args()
+34     sandbox = opt.sandbox
+35 
+36     \textcolor{keywordflow}{if} sandbox:
+37         print(
+38             \textcolor{stringliteral}{'About to connect to the SANDBOX server. These bonuses will not '}
+39             \textcolor{stringliteral}{'actually be paid out.'}
+40         )
+41     \textcolor{keywordflow}{else}:
+42         print(
+43             \textcolor{stringliteral}{'About to connect to the LIVE server. These bonuses will be '}
+44             \textcolor{stringliteral}{'deducted from your account balance.'}
+45         )
+46 
+47     mturk\_utils.setup\_aws\_credentials()
+48     client = mturk\_utils.get\_mturk\_client(sandbox)
+49 
+50     \textcolor{keywordflow}{while} \textcolor{keyword}{True}:
+51         worker\_id = \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1test_1_1test__full__system_a1e1817cd65688fb90f827834d1fb4567}{input}(\textcolor{stringliteral}{"Enter worker id: "})
+52         \textcolor{keywordflow}{if} len(worker\_id) == 0:
+53             \textcolor{keywordflow}{break}
+54         bonus\_amount = \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1test_1_1test__full__system_a1e1817cd65688fb90f827834d1fb4567}{input}(\textcolor{stringliteral}{"Enter bonus amount: "})
+55         \textcolor{keywordflow}{if} opt.use\_hit\_id:
+56             hit\_id = \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1test_1_1test__full__system_a1e1817cd65688fb90f827834d1fb4567}{input}(\textcolor{stringliteral}{"Enter HIT id: "})
+57             listed = client.list\_assignments\_for\_hit(HITId=hit\_id)
+58             assignment\_id = listed[\textcolor{stringliteral}{'Assignments'}][0][\textcolor{stringliteral}{'AssignmentId'}]
+59         \textcolor{keywordflow}{else}:
+60             assignment\_id = \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1test_1_1test__full__system_a1e1817cd65688fb90f827834d1fb4567}{input}(\textcolor{stringliteral}{"Enter assignment id: "})
+61         reason = \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1test_1_1test__full__system_a1e1817cd65688fb90f827834d1fb4567}{input}(\textcolor{stringliteral}{"Enter reason: "})
+62         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1test_1_1test__full__system_a1e1817cd65688fb90f827834d1fb4567}{input}(
+63             \textcolor{stringliteral}{"Press enter to bonus \{\} to worker \{\} for reason '\{\}' on "}
+64             \textcolor{stringliteral}{"assignment \{\}."}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(bonus\_amount, worker\_id, reason, assignment\_id)
+65         )
+66         resp = client.send\_bonus(
+67             WorkerId=worker\_id,
+68             BonusAmount=\hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(bonus\_amount),
+69             AssignmentId=assignment\_id,
+70             Reason=reason,
+71         )
+72         print(resp)
+73 
+74 
+\end{DoxyCode}

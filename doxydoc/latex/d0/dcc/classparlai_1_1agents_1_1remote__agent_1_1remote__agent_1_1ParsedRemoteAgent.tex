@@ -1,0 +1,220 @@
+\hypertarget{classparlai_1_1agents_1_1remote__agent_1_1remote__agent_1_1ParsedRemoteAgent}{}\section{parlai.\+agents.\+remote\+\_\+agent.\+remote\+\_\+agent.\+Parsed\+Remote\+Agent Class Reference}
+\label{classparlai_1_1agents_1_1remote__agent_1_1remote__agent_1_1ParsedRemoteAgent}\index{parlai.\+agents.\+remote\+\_\+agent.\+remote\+\_\+agent.\+Parsed\+Remote\+Agent@{parlai.\+agents.\+remote\+\_\+agent.\+remote\+\_\+agent.\+Parsed\+Remote\+Agent}}
+
+
+Inheritance diagram for parlai.\+agents.\+remote\+\_\+agent.\+remote\+\_\+agent.\+Parsed\+Remote\+Agent\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=256pt]{de/da7/classparlai_1_1agents_1_1remote__agent_1_1remote__agent_1_1ParsedRemoteAgent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+agents.\+remote\+\_\+agent.\+remote\+\_\+agent.\+Parsed\+Remote\+Agent\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=256pt]{db/d59/classparlai_1_1agents_1_1remote__agent_1_1remote__agent_1_1ParsedRemoteAgent__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1agents_1_1remote__agent_1_1remote__agent_1_1ParsedRemoteAgent_a0bb2c02bb6c928455c2ee24117797e19}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1agents_1_1remote__agent_1_1remote__agent_1_1RemoteAgentAgent_a7b880694aee36d8e2cafb3e53a705a82}{opt}, shared=None)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1remote__agent_1_1remote__agent_1_1ParsedRemoteAgent_a7eb6a8cdcffb425506e085c4bef07a85}{act} (self)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1remote__agent_1_1remote__agent_1_1ParsedRemoteAgent_af4dd0281fd7d6ceb4936f27eaab13f06}{parse} (self, s, split\+\_\+lines=False)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1remote__agent_1_1remote__agent_1_1ParsedRemoteAgent_a6e65666f3754929df13beb82824d4a20}{share} (self)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1agents_1_1remote__agent_1_1remote__agent_1_1ParsedRemoteAgent_ae364a1860ec6ff9f32dabc42b96004d0}{add\+\_\+cmdline\+\_\+args} (argparser)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1remote__agent_1_1remote__agent_1_1ParsedRemoteAgent_a5759817c6b1d248a0b64861222745f62}{dictionary\+\_\+class} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1agents_1_1remote__agent_1_1remote__agent_1_1ParsedRemoteAgent_ac38a24353bb2fd988c9330c5c9e1434f}{dict}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Same as the regular remote agent, except that this agent converts all text into
+vectors using its dictionary before sending them.
+\end{DoxyVerb}
+ 
+
+Definition at line 161 of file remote\+\_\+agent.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1remote__agent_1_1remote__agent_1_1ParsedRemoteAgent_a0bb2c02bb6c928455c2ee24117797e19}\label{classparlai_1_1agents_1_1remote__agent_1_1remote__agent_1_1ParsedRemoteAgent_a0bb2c02bb6c928455c2ee24117797e19}} 
+\index{parlai\+::agents\+::remote\+\_\+agent\+::remote\+\_\+agent\+::\+Parsed\+Remote\+Agent@{parlai\+::agents\+::remote\+\_\+agent\+::remote\+\_\+agent\+::\+Parsed\+Remote\+Agent}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::agents\+::remote\+\_\+agent\+::remote\+\_\+agent\+::\+Parsed\+Remote\+Agent@{parlai\+::agents\+::remote\+\_\+agent\+::remote\+\_\+agent\+::\+Parsed\+Remote\+Agent}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+remote\+\_\+agent.\+remote\+\_\+agent.\+Parsed\+Remote\+Agent.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{shared = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 180 of file remote\+\_\+agent.\+py.
+
+
+\begin{DoxyCode}
+180     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
+181         dict\_shared = shared.get(\textcolor{stringliteral}{'dictionary\_shared'}, \textcolor{keywordtype}{None})
+182         self.dict = ParsedRemoteAgent.dictionary\_class()(opt, dict\_shared)
+183         super().\_\_init\_\_(opt, shared)
+184 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1remote__agent_1_1remote__agent_1_1ParsedRemoteAgent_a7eb6a8cdcffb425506e085c4bef07a85}\label{classparlai_1_1agents_1_1remote__agent_1_1remote__agent_1_1ParsedRemoteAgent_a7eb6a8cdcffb425506e085c4bef07a85}} 
+\index{parlai\+::agents\+::remote\+\_\+agent\+::remote\+\_\+agent\+::\+Parsed\+Remote\+Agent@{parlai\+::agents\+::remote\+\_\+agent\+::remote\+\_\+agent\+::\+Parsed\+Remote\+Agent}!act@{act}}
+\index{act@{act}!parlai\+::agents\+::remote\+\_\+agent\+::remote\+\_\+agent\+::\+Parsed\+Remote\+Agent@{parlai\+::agents\+::remote\+\_\+agent\+::remote\+\_\+agent\+::\+Parsed\+Remote\+Agent}}
+\subsubsection{\texorpdfstring{act()}{act()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+remote\+\_\+agent.\+remote\+\_\+agent.\+Parsed\+Remote\+Agent.\+act (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 185 of file remote\+\_\+agent.\+py.
+
+
+\begin{DoxyCode}
+185     \textcolor{keyword}{def }act(self):
+186         parsed = \{\}
+187         \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} self.observation.items():
+188             \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(v) == str:
+189                 \textcolor{comment}{# We split on newlines because we don't treat them as charactes}
+190                 \textcolor{comment}{# in the default dictionary but our receiving agent might want}
+191                 \textcolor{comment}{# to know where the newlines are in the text block.}
+192                 parsed[k] = self.parse(v, split\_lines=\textcolor{keyword}{True})
+193             \textcolor{keywordflow}{else}:
+194                 \textcolor{comment}{# not a string, see if it's an iterable of strings}
+195                 \textcolor{keywordflow}{try}:
+196                     \textcolor{comment}{# if there are newlines in the label, it's part of the label}
+197                     parsed[k] = [self.parse(s) \textcolor{keywordflow}{for} s \textcolor{keywordflow}{in} v]
+198                 \textcolor{keywordflow}{except} TypeError:
+199                     \textcolor{comment}{# oops, it's not. just pass it on.}
+200                     parsed[k] = v
+201 
+202         super().observe(parsed)
+203         reply = super().act()
+204         unparsed = \{\}
+205         \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} reply.items():
+206             \textcolor{comment}{# TODO(ahm): this fails if remote agent sends anything other than}
+207             \textcolor{comment}{# vectors, which means that pretty much only .text will work}
+208             unparsed[k] = self.parse(v)
+209         \textcolor{keywordflow}{return} unparsed
+210 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1remote__agent_1_1remote__agent_1_1ParsedRemoteAgent_ae364a1860ec6ff9f32dabc42b96004d0}\label{classparlai_1_1agents_1_1remote__agent_1_1remote__agent_1_1ParsedRemoteAgent_ae364a1860ec6ff9f32dabc42b96004d0}} 
+\index{parlai\+::agents\+::remote\+\_\+agent\+::remote\+\_\+agent\+::\+Parsed\+Remote\+Agent@{parlai\+::agents\+::remote\+\_\+agent\+::remote\+\_\+agent\+::\+Parsed\+Remote\+Agent}!add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}}
+\index{add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}!parlai\+::agents\+::remote\+\_\+agent\+::remote\+\_\+agent\+::\+Parsed\+Remote\+Agent@{parlai\+::agents\+::remote\+\_\+agent\+::remote\+\_\+agent\+::\+Parsed\+Remote\+Agent}}
+\subsubsection{\texorpdfstring{add\+\_\+cmdline\+\_\+args()}{add\_cmdline\_args()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+remote\+\_\+agent.\+remote\+\_\+agent.\+Parsed\+Remote\+Agent.\+add\+\_\+cmdline\+\_\+args (\begin{DoxyParamCaption}\item[{}]{argparser }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 168 of file remote\+\_\+agent.\+py.
+
+
+\begin{DoxyCode}
+168     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(argparser):
+169         RemoteAgentAgent.add\_cmdline\_args(argparser)
+170         \textcolor{keywordflow}{try}:
+171             ParsedRemoteAgent.dictionary\_class().\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(argparser)
+172         \textcolor{keywordflow}{except} argparse.ArgumentError:
+173             \textcolor{comment}{# don't freak out if the dictionary has already been added}
+174             \textcolor{keywordflow}{pass}
+175 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1remote__agent_1_1remote__agent_1_1ParsedRemoteAgent_a5759817c6b1d248a0b64861222745f62}\label{classparlai_1_1agents_1_1remote__agent_1_1remote__agent_1_1ParsedRemoteAgent_a5759817c6b1d248a0b64861222745f62}} 
+\index{parlai\+::agents\+::remote\+\_\+agent\+::remote\+\_\+agent\+::\+Parsed\+Remote\+Agent@{parlai\+::agents\+::remote\+\_\+agent\+::remote\+\_\+agent\+::\+Parsed\+Remote\+Agent}!dictionary\+\_\+class@{dictionary\+\_\+class}}
+\index{dictionary\+\_\+class@{dictionary\+\_\+class}!parlai\+::agents\+::remote\+\_\+agent\+::remote\+\_\+agent\+::\+Parsed\+Remote\+Agent@{parlai\+::agents\+::remote\+\_\+agent\+::remote\+\_\+agent\+::\+Parsed\+Remote\+Agent}}
+\subsubsection{\texorpdfstring{dictionary\+\_\+class()}{dictionary\_class()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+remote\+\_\+agent.\+remote\+\_\+agent.\+Parsed\+Remote\+Agent.\+dictionary\+\_\+class (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 177 of file remote\+\_\+agent.\+py.
+
+
+\begin{DoxyCode}
+177     \textcolor{keyword}{def }dictionary\_class():
+178         \textcolor{keywordflow}{return} DictionaryAgent
+179 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1remote__agent_1_1remote__agent_1_1ParsedRemoteAgent_af4dd0281fd7d6ceb4936f27eaab13f06}\label{classparlai_1_1agents_1_1remote__agent_1_1remote__agent_1_1ParsedRemoteAgent_af4dd0281fd7d6ceb4936f27eaab13f06}} 
+\index{parlai\+::agents\+::remote\+\_\+agent\+::remote\+\_\+agent\+::\+Parsed\+Remote\+Agent@{parlai\+::agents\+::remote\+\_\+agent\+::remote\+\_\+agent\+::\+Parsed\+Remote\+Agent}!parse@{parse}}
+\index{parse@{parse}!parlai\+::agents\+::remote\+\_\+agent\+::remote\+\_\+agent\+::\+Parsed\+Remote\+Agent@{parlai\+::agents\+::remote\+\_\+agent\+::remote\+\_\+agent\+::\+Parsed\+Remote\+Agent}}
+\subsubsection{\texorpdfstring{parse()}{parse()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+remote\+\_\+agent.\+remote\+\_\+agent.\+Parsed\+Remote\+Agent.\+parse (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{s,  }\item[{}]{split\+\_\+lines = {\ttfamily False} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Returns a parsed (list of indices) version of a string s.
+
+Optionally return list of vectors for each line in the string in case you need
+to know where those are.
+\end{DoxyVerb}
+ 
+
+Definition at line 211 of file remote\+\_\+agent.\+py.
+
+
+\begin{DoxyCode}
+211     \textcolor{keyword}{def }parse(self, s, split\_lines=False):
+212         \textcolor{stringliteral}{"""}
+213 \textcolor{stringliteral}{        Returns a parsed (list of indices) version of a string s.}
+214 \textcolor{stringliteral}{}
+215 \textcolor{stringliteral}{        Optionally return list of vectors for each line in the string in case you need}
+216 \textcolor{stringliteral}{        to know where those are.}
+217 \textcolor{stringliteral}{        """}
+218         \textcolor{keywordflow}{if} split\_lines:
+219             \textcolor{keywordflow}{return} [self.dict.parse(line, vec\_type=list) \textcolor{keywordflow}{for} line \textcolor{keywordflow}{in} s.split(\textcolor{stringliteral}{'\(\backslash\)n'})]
+220         \textcolor{keywordflow}{else}:
+221             \textcolor{keywordflow}{return} self.dict.parse(s, vec\_type=list)
+222 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1remote__agent_1_1remote__agent_1_1ParsedRemoteAgent_a6e65666f3754929df13beb82824d4a20}\label{classparlai_1_1agents_1_1remote__agent_1_1remote__agent_1_1ParsedRemoteAgent_a6e65666f3754929df13beb82824d4a20}} 
+\index{parlai\+::agents\+::remote\+\_\+agent\+::remote\+\_\+agent\+::\+Parsed\+Remote\+Agent@{parlai\+::agents\+::remote\+\_\+agent\+::remote\+\_\+agent\+::\+Parsed\+Remote\+Agent}!share@{share}}
+\index{share@{share}!parlai\+::agents\+::remote\+\_\+agent\+::remote\+\_\+agent\+::\+Parsed\+Remote\+Agent@{parlai\+::agents\+::remote\+\_\+agent\+::remote\+\_\+agent\+::\+Parsed\+Remote\+Agent}}
+\subsubsection{\texorpdfstring{share()}{share()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+remote\+\_\+agent.\+remote\+\_\+agent.\+Parsed\+Remote\+Agent.\+share (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 223 of file remote\+\_\+agent.\+py.
+
+
+\begin{DoxyCode}
+223     \textcolor{keyword}{def }share(self):
+224         shared = super().share()
+225         shared[\textcolor{stringliteral}{'dictionary\_shared'}] = self.dict.share()
+226         \textcolor{keywordflow}{return} shared
+227 \end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1remote__agent_1_1remote__agent_1_1ParsedRemoteAgent_ac38a24353bb2fd988c9330c5c9e1434f}\label{classparlai_1_1agents_1_1remote__agent_1_1remote__agent_1_1ParsedRemoteAgent_ac38a24353bb2fd988c9330c5c9e1434f}} 
+\index{parlai\+::agents\+::remote\+\_\+agent\+::remote\+\_\+agent\+::\+Parsed\+Remote\+Agent@{parlai\+::agents\+::remote\+\_\+agent\+::remote\+\_\+agent\+::\+Parsed\+Remote\+Agent}!dict@{dict}}
+\index{dict@{dict}!parlai\+::agents\+::remote\+\_\+agent\+::remote\+\_\+agent\+::\+Parsed\+Remote\+Agent@{parlai\+::agents\+::remote\+\_\+agent\+::remote\+\_\+agent\+::\+Parsed\+Remote\+Agent}}
+\subsubsection{\texorpdfstring{dict}{dict}}
+{\footnotesize\ttfamily parlai.\+agents.\+remote\+\_\+agent.\+remote\+\_\+agent.\+Parsed\+Remote\+Agent.\+dict}
+
+
+
+Definition at line 182 of file remote\+\_\+agent.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/agents/remote\+\_\+agent/\hyperlink{remote__agent_8py}{remote\+\_\+agent.\+py}\end{DoxyCompactItemize}

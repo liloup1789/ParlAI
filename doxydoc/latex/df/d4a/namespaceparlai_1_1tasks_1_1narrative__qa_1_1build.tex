@@ -1,0 +1,316 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build}{}\section{parlai.\+tasks.\+narrative\+\_\+qa.\+build Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build}\index{parlai.\+tasks.\+narrative\+\_\+qa.\+build@{parlai.\+tasks.\+narrative\+\_\+qa.\+build}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a8d4e1f30e3de3f62c039296cbed12e8d}{get\+\_\+rows\+\_\+for\+\_\+set} (reader, req\+\_\+set)
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a7fae633ea705d970c2a6d56b7004f6cd}{read\+\_\+csv\+\_\+to\+\_\+dict\+\_\+list} (filepath)
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_ab49502ac724edd933f89bec8f414b452}{write\+\_\+dict\+\_\+list\+\_\+to\+\_\+csv} (dict\+\_\+list, filepath)
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a104cbf949215e7b505c73b33017b1970}{divide\+\_\+csv\+\_\+into\+\_\+sets} (csv\+\_\+filepath, sets=(\textquotesingle{}train\textquotesingle{}, \textquotesingle{}valid\textquotesingle{}, \textquotesingle{}test\textquotesingle{}))
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a602f90b82e6c6eafbd13647ba7567101}{make\+\_\+folders} (base\+\_\+path, sets=(\textquotesingle{}train\textquotesingle{}, \textquotesingle{}valid\textquotesingle{}, \textquotesingle{}test\textquotesingle{}))
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a53e5ef8d085ebdfc1cc6c4918841d097}{move\+\_\+files} (base\+\_\+path, sets=(\textquotesingle{}train\textquotesingle{}, \textquotesingle{}valid\textquotesingle{}, \textquotesingle{}test\textquotesingle{}))
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a9af345566fd27c286f7fef146b2cf00b}{try\+\_\+downloading} (directory, row)
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_afd6f28e1efb7e9f3328eef166f8be5cb}{download\+\_\+stories} (path)
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a51a4aace1ca9f9cbdc332405edaf1ef5}{build} (opt)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_aa2ea03188267ab219abf13b1203daacd}{R\+E\+S\+O\+U\+R\+C\+ES}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a51a4aace1ca9f9cbdc332405edaf1ef5}\label{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a51a4aace1ca9f9cbdc332405edaf1ef5}} 
+\index{parlai\+::tasks\+::narrative\+\_\+qa\+::build@{parlai\+::tasks\+::narrative\+\_\+qa\+::build}!build@{build}}
+\index{build@{build}!parlai\+::tasks\+::narrative\+\_\+qa\+::build@{parlai\+::tasks\+::narrative\+\_\+qa\+::build}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+narrative\+\_\+qa.\+build.\+build (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 127 of file build.\+py.
+
+
+\begin{DoxyCode}
+127 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
+128     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'NarrativeQA'})
+129     version = \textcolor{keywordtype}{None}
+130 
+131     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version\_string=version):
+132         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+133 
+134         \textcolor{keywordflow}{if} build\_data.built(dpath):
+135             \textcolor{comment}{# an older version exists, so remove these outdated files.}
+136             build\_data.remove\_dir(dpath)
+137         build\_data.make\_dir(dpath)
+138 
+139         \textcolor{comment}{# Download the data.}
+140         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES:
+141             downloadable\_file.download\_file(dpath)
+142 
+143         print(\textcolor{stringliteral}{'downloading stories now'})
+144         base\_path = os.path.join(dpath, \textcolor{stringliteral}{'narrativeqa-master'})
+145 
+146         \hyperlink{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_afd6f28e1efb7e9f3328eef166f8be5cb}{download\_stories}(base\_path)
+147 
+148         \textcolor{comment}{# move from tmp to stories}
+149         tmp\_stories\_path = os.path.join(base\_path, \textcolor{stringliteral}{'tmp'})
+150         new\_stories\_path = os.path.join(base\_path, \textcolor{stringliteral}{'stories'})
+151         shutil.move(tmp\_stories\_path, new\_stories\_path)
+152 
+153         \textcolor{comment}{# divide into train, valid and test for summaries}
+154         summaries\_csv\_path = os.path.join(
+155             base\_path, \textcolor{stringliteral}{'third\_party'}, \textcolor{stringliteral}{'wikipedia'}, \textcolor{stringliteral}{'summaries.csv'}
+156         )
+157         new\_path = os.path.join(base\_path, \textcolor{stringliteral}{'summaries.csv'})
+158         shutil.move(summaries\_csv\_path, new\_path)
+159 
+160         \hyperlink{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a104cbf949215e7b505c73b33017b1970}{divide\_csv\_into\_sets}(new\_path)
+161 
+162         \textcolor{comment}{# divide into sets for questions}
+163         questions\_path = os.path.join(base\_path, \textcolor{stringliteral}{'qaps.csv'})
+164         \hyperlink{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a104cbf949215e7b505c73b33017b1970}{divide\_csv\_into\_sets}(questions\_path)
+165 
+166         \textcolor{comment}{# divide into sets for documents}
+167         documents\_path = os.path.join(base\_path, \textcolor{stringliteral}{'documents.csv'})
+168         \hyperlink{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a104cbf949215e7b505c73b33017b1970}{divide\_csv\_into\_sets}(documents\_path)
+169 
+170         \textcolor{comment}{# move specific set's files into their set's folder}
+171         \hyperlink{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a602f90b82e6c6eafbd13647ba7567101}{make\_folders}(base\_path)
+172         \hyperlink{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a53e5ef8d085ebdfc1cc6c4918841d097}{move\_files}(base\_path)
+173 
+174         \textcolor{comment}{# move narrativeqa-master to narrative\_qa}
+175         new\_path = os.path.join(dpath, \textcolor{stringliteral}{'narrative\_qa'})
+176         shutil.move(base\_path, new\_path)
+177 
+178         \textcolor{comment}{# mark the data as built}
+179         build\_data.mark\_done(dpath, version\_string=version)
+180 \end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a104cbf949215e7b505c73b33017b1970}\label{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a104cbf949215e7b505c73b33017b1970}} 
+\index{parlai\+::tasks\+::narrative\+\_\+qa\+::build@{parlai\+::tasks\+::narrative\+\_\+qa\+::build}!divide\+\_\+csv\+\_\+into\+\_\+sets@{divide\+\_\+csv\+\_\+into\+\_\+sets}}
+\index{divide\+\_\+csv\+\_\+into\+\_\+sets@{divide\+\_\+csv\+\_\+into\+\_\+sets}!parlai\+::tasks\+::narrative\+\_\+qa\+::build@{parlai\+::tasks\+::narrative\+\_\+qa\+::build}}
+\subsubsection{\texorpdfstring{divide\+\_\+csv\+\_\+into\+\_\+sets()}{divide\_csv\_into\_sets()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+narrative\+\_\+qa.\+build.\+divide\+\_\+csv\+\_\+into\+\_\+sets (\begin{DoxyParamCaption}\item[{}]{csv\+\_\+filepath,  }\item[{}]{sets = {\ttfamily (\textquotesingle{}train\textquotesingle{},~\textquotesingle{}valid\textquotesingle{},~\textquotesingle{}test\textquotesingle{})} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 46 of file build.\+py.
+
+
+\begin{DoxyCode}
+46 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a104cbf949215e7b505c73b33017b1970}{divide\_csv\_into\_sets}(csv\_filepath, sets=(\textcolor{stringliteral}{'train'}, \textcolor{stringliteral}{'valid'}, \textcolor{stringliteral}{'test'})):
+47     reader, fh = \hyperlink{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a7fae633ea705d970c2a6d56b7004f6cd}{read\_csv\_to\_dict\_list}(csv\_filepath)
+48 
+49     base\_filename = os.path.basename(csv\_filepath).split(\textcolor{stringliteral}{'.'})[0]
+50     base\_path = os.path.dirname(csv\_filepath)
+51 
+52     \textcolor{keywordflow}{for} s \textcolor{keywordflow}{in} sets:
+53         path = os.path.join(base\_path, base\_filename + \textcolor{stringliteral}{'\_'} + s + \textcolor{stringliteral}{'.csv'})
+54         fh.seek(0)
+55         rows = \hyperlink{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a8d4e1f30e3de3f62c039296cbed12e8d}{get\_rows\_for\_set}(reader, s)
+56         \hyperlink{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_ab49502ac724edd933f89bec8f414b452}{write\_dict\_list\_to\_csv}(rows, path)
+57 
+58     fh.close()
+59 
+60 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_afd6f28e1efb7e9f3328eef166f8be5cb}\label{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_afd6f28e1efb7e9f3328eef166f8be5cb}} 
+\index{parlai\+::tasks\+::narrative\+\_\+qa\+::build@{parlai\+::tasks\+::narrative\+\_\+qa\+::build}!download\+\_\+stories@{download\+\_\+stories}}
+\index{download\+\_\+stories@{download\+\_\+stories}!parlai\+::tasks\+::narrative\+\_\+qa\+::build@{parlai\+::tasks\+::narrative\+\_\+qa\+::build}}
+\subsubsection{\texorpdfstring{download\+\_\+stories()}{download\_stories()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+narrative\+\_\+qa.\+build.\+download\+\_\+stories (\begin{DoxyParamCaption}\item[{}]{path }\end{DoxyParamCaption})}
+
+
+
+Definition at line 109 of file build.\+py.
+
+
+\begin{DoxyCode}
+109 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_afd6f28e1efb7e9f3328eef166f8be5cb}{download\_stories}(path):
+110     documents\_csv = os.path.join(path, \textcolor{stringliteral}{'documents.csv'})
+111     tmp\_dir = os.path.join(path, \textcolor{stringliteral}{'tmp'})
+112     build\_data.make\_dir(tmp\_dir)
+113 
+114     with open(documents\_csv, \textcolor{stringliteral}{'r') as f:}
+115 \textcolor{stringliteral}{        reader = csv.DictReader(f, delimiter=','})
+116         \textcolor{keywordflow}{for} row \textcolor{keywordflow}{in} reader:
+117             print(\textcolor{stringliteral}{"Downloading %s (%s)"} % (row[\textcolor{stringliteral}{'wiki\_title'}], row[\textcolor{stringliteral}{'document\_id'}]))
+118             finished = \hyperlink{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a9af345566fd27c286f7fef146b2cf00b}{try\_downloading}(tmp\_dir, row)
+119             count = 0
+120             \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} finished \textcolor{keywordflow}{and} count < 5:
+121                 \textcolor{keywordflow}{if} count != 0:
+122                     print(\textcolor{stringliteral}{"Retrying (%d retries left)"} % (5 - count - 1))
+123                 finished = \hyperlink{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a9af345566fd27c286f7fef146b2cf00b}{try\_downloading}(tmp\_dir, row)
+124                 count += 1
+125 
+126 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a8d4e1f30e3de3f62c039296cbed12e8d}\label{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a8d4e1f30e3de3f62c039296cbed12e8d}} 
+\index{parlai\+::tasks\+::narrative\+\_\+qa\+::build@{parlai\+::tasks\+::narrative\+\_\+qa\+::build}!get\+\_\+rows\+\_\+for\+\_\+set@{get\+\_\+rows\+\_\+for\+\_\+set}}
+\index{get\+\_\+rows\+\_\+for\+\_\+set@{get\+\_\+rows\+\_\+for\+\_\+set}!parlai\+::tasks\+::narrative\+\_\+qa\+::build@{parlai\+::tasks\+::narrative\+\_\+qa\+::build}}
+\subsubsection{\texorpdfstring{get\+\_\+rows\+\_\+for\+\_\+set()}{get\_rows\_for\_set()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+narrative\+\_\+qa.\+build.\+get\+\_\+rows\+\_\+for\+\_\+set (\begin{DoxyParamCaption}\item[{}]{reader,  }\item[{}]{req\+\_\+set }\end{DoxyParamCaption})}
+
+
+
+Definition at line 25 of file build.\+py.
+
+
+\begin{DoxyCode}
+25 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a8d4e1f30e3de3f62c039296cbed12e8d}{get\_rows\_for\_set}(reader, req\_set):
+26     selected\_rows = [row \textcolor{keywordflow}{for} row \textcolor{keywordflow}{in} reader \textcolor{keywordflow}{if} row[\textcolor{stringliteral}{'set'}].strip() == req\_set]
+27     \textcolor{keywordflow}{return} selected\_rows
+28 
+29 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a602f90b82e6c6eafbd13647ba7567101}\label{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a602f90b82e6c6eafbd13647ba7567101}} 
+\index{parlai\+::tasks\+::narrative\+\_\+qa\+::build@{parlai\+::tasks\+::narrative\+\_\+qa\+::build}!make\+\_\+folders@{make\+\_\+folders}}
+\index{make\+\_\+folders@{make\+\_\+folders}!parlai\+::tasks\+::narrative\+\_\+qa\+::build@{parlai\+::tasks\+::narrative\+\_\+qa\+::build}}
+\subsubsection{\texorpdfstring{make\+\_\+folders()}{make\_folders()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+narrative\+\_\+qa.\+build.\+make\+\_\+folders (\begin{DoxyParamCaption}\item[{}]{base\+\_\+path,  }\item[{}]{sets = {\ttfamily (\textquotesingle{}train\textquotesingle{},~\textquotesingle{}valid\textquotesingle{},~\textquotesingle{}test\textquotesingle{})} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 61 of file build.\+py.
+
+
+\begin{DoxyCode}
+61 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a602f90b82e6c6eafbd13647ba7567101}{make\_folders}(base\_path, sets=(\textcolor{stringliteral}{'train'}, \textcolor{stringliteral}{'valid'}, \textcolor{stringliteral}{'test'})):
+62     \textcolor{keywordflow}{for} s \textcolor{keywordflow}{in} sets:
+63         path = os.path.join(base\_path, s)
+64         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.exists(path):
+65             os.mkdir(path)
+66 
+67 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a53e5ef8d085ebdfc1cc6c4918841d097}\label{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a53e5ef8d085ebdfc1cc6c4918841d097}} 
+\index{parlai\+::tasks\+::narrative\+\_\+qa\+::build@{parlai\+::tasks\+::narrative\+\_\+qa\+::build}!move\+\_\+files@{move\+\_\+files}}
+\index{move\+\_\+files@{move\+\_\+files}!parlai\+::tasks\+::narrative\+\_\+qa\+::build@{parlai\+::tasks\+::narrative\+\_\+qa\+::build}}
+\subsubsection{\texorpdfstring{move\+\_\+files()}{move\_files()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+narrative\+\_\+qa.\+build.\+move\+\_\+files (\begin{DoxyParamCaption}\item[{}]{base\+\_\+path,  }\item[{}]{sets = {\ttfamily (\textquotesingle{}train\textquotesingle{},~\textquotesingle{}valid\textquotesingle{},~\textquotesingle{}test\textquotesingle{})} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 68 of file build.\+py.
+
+
+\begin{DoxyCode}
+68 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a53e5ef8d085ebdfc1cc6c4918841d097}{move\_files}(base\_path, sets=(\textcolor{stringliteral}{'train'}, \textcolor{stringliteral}{'valid'}, \textcolor{stringliteral}{'test'})):
+69     source = os.listdir(base\_path)
+70 
+71     \textcolor{keywordflow}{for} f \textcolor{keywordflow}{in} source:
+72         \textcolor{keywordflow}{for} s \textcolor{keywordflow}{in} sets:
+73             \textcolor{keywordflow}{if} f.endswith(\textcolor{stringliteral}{'\_'} + s + \textcolor{stringliteral}{'.csv'}):
+74                 final\_name = f[: -(len(\textcolor{stringliteral}{'\_'} + s + \textcolor{stringliteral}{'.csv'}))] + \textcolor{stringliteral}{'.csv'}
+75                 f = os.path.join(base\_path, f)
+76                 shutil.move(f, os.path.join(base\_path, s, final\_name))
+77 
+78 
+79 \textcolor{comment}{# Returns false unless the story was already downloaded and}
+80 \textcolor{comment}{# has appropriate size}
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a7fae633ea705d970c2a6d56b7004f6cd}\label{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a7fae633ea705d970c2a6d56b7004f6cd}} 
+\index{parlai\+::tasks\+::narrative\+\_\+qa\+::build@{parlai\+::tasks\+::narrative\+\_\+qa\+::build}!read\+\_\+csv\+\_\+to\+\_\+dict\+\_\+list@{read\+\_\+csv\+\_\+to\+\_\+dict\+\_\+list}}
+\index{read\+\_\+csv\+\_\+to\+\_\+dict\+\_\+list@{read\+\_\+csv\+\_\+to\+\_\+dict\+\_\+list}!parlai\+::tasks\+::narrative\+\_\+qa\+::build@{parlai\+::tasks\+::narrative\+\_\+qa\+::build}}
+\subsubsection{\texorpdfstring{read\+\_\+csv\+\_\+to\+\_\+dict\+\_\+list()}{read\_csv\_to\_dict\_list()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+narrative\+\_\+qa.\+build.\+read\+\_\+csv\+\_\+to\+\_\+dict\+\_\+list (\begin{DoxyParamCaption}\item[{}]{filepath }\end{DoxyParamCaption})}
+
+
+
+Definition at line 30 of file build.\+py.
+
+
+\begin{DoxyCode}
+30 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a7fae633ea705d970c2a6d56b7004f6cd}{read\_csv\_to\_dict\_list}(filepath):
+31     f = open(filepath, \textcolor{stringliteral}{'r')}
+32 \textcolor{stringliteral}{    }\textcolor{keywordflow}{return} csv.DictReader(f, delimiter=\textcolor{stringliteral}{','}), f
+33 
+34 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a9af345566fd27c286f7fef146b2cf00b}\label{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a9af345566fd27c286f7fef146b2cf00b}} 
+\index{parlai\+::tasks\+::narrative\+\_\+qa\+::build@{parlai\+::tasks\+::narrative\+\_\+qa\+::build}!try\+\_\+downloading@{try\+\_\+downloading}}
+\index{try\+\_\+downloading@{try\+\_\+downloading}!parlai\+::tasks\+::narrative\+\_\+qa\+::build@{parlai\+::tasks\+::narrative\+\_\+qa\+::build}}
+\subsubsection{\texorpdfstring{try\+\_\+downloading()}{try\_downloading()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+narrative\+\_\+qa.\+build.\+try\+\_\+downloading (\begin{DoxyParamCaption}\item[{}]{directory,  }\item[{}]{row }\end{DoxyParamCaption})}
+
+
+
+Definition at line 81 of file build.\+py.
+
+
+\begin{DoxyCode}
+81 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_a9af345566fd27c286f7fef146b2cf00b}{try\_downloading}(directory, row):
+82     document\_id, kind, story\_url = row[\textcolor{stringliteral}{'document\_id'}], row[\textcolor{stringliteral}{'kind'}], row[\textcolor{stringliteral}{'story\_url'}]
+83     story\_path = os.path.join(directory, document\_id + \textcolor{stringliteral}{'.content'})
+84 
+85     actual\_story\_size = 0
+86     \textcolor{keywordflow}{if} os.path.exists(story\_path):
+87         with open(story\_path, \textcolor{stringliteral}{'rb'}) \textcolor{keyword}{as} f:
+88             actual\_story\_size = len(f.read())
+89 
+90     \textcolor{keywordflow}{if} actual\_story\_size <= 19000:
+91         \textcolor{keywordflow}{if} kind == \textcolor{stringliteral}{'gutenberg'}:
+92             time.sleep(2)
+93 
+94         build\_data.download(story\_url, directory, document\_id + \textcolor{stringliteral}{'.content'})
+95     \textcolor{keywordflow}{else}:
+96         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+97 
+98     file\_type = subprocess.check\_output([\textcolor{stringliteral}{'file'}, \textcolor{stringliteral}{'-b'}, story\_path])
+99     file\_type = file\_type.decode(\textcolor{stringliteral}{'utf-8'})
+100 
+101     \textcolor{keywordflow}{if} \textcolor{stringliteral}{'gzip compressed'} \textcolor{keywordflow}{in} file\_type:
+102         gz\_path = os.path.join(directory, document\_id + \textcolor{stringliteral}{'.content.gz'})
+103         shutil.move(story\_path, gz\_path)
+104         build\_data.untar(gz\_path)
+105 
+106     \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+107 
+108 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_ab49502ac724edd933f89bec8f414b452}\label{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_ab49502ac724edd933f89bec8f414b452}} 
+\index{parlai\+::tasks\+::narrative\+\_\+qa\+::build@{parlai\+::tasks\+::narrative\+\_\+qa\+::build}!write\+\_\+dict\+\_\+list\+\_\+to\+\_\+csv@{write\+\_\+dict\+\_\+list\+\_\+to\+\_\+csv}}
+\index{write\+\_\+dict\+\_\+list\+\_\+to\+\_\+csv@{write\+\_\+dict\+\_\+list\+\_\+to\+\_\+csv}!parlai\+::tasks\+::narrative\+\_\+qa\+::build@{parlai\+::tasks\+::narrative\+\_\+qa\+::build}}
+\subsubsection{\texorpdfstring{write\+\_\+dict\+\_\+list\+\_\+to\+\_\+csv()}{write\_dict\_list\_to\_csv()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+narrative\+\_\+qa.\+build.\+write\+\_\+dict\+\_\+list\+\_\+to\+\_\+csv (\begin{DoxyParamCaption}\item[{}]{dict\+\_\+list,  }\item[{}]{filepath }\end{DoxyParamCaption})}
+
+
+
+Definition at line 35 of file build.\+py.
+
+
+\begin{DoxyCode}
+35 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_ab49502ac724edd933f89bec8f414b452}{write\_dict\_list\_to\_csv}(dict\_list, filepath):
+36     keys = list(dict\_list[0].keys())
+37 
+38     with open(filepath, \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} f:
+39         writer = csv.DictWriter(f, fieldnames=keys)
+40         writer.writeheader()
+41 
+42         \textcolor{keywordflow}{for} row \textcolor{keywordflow}{in} dict\_list:
+43             writer.writerow(row)
+44 
+45 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_aa2ea03188267ab219abf13b1203daacd}\label{namespaceparlai_1_1tasks_1_1narrative__qa_1_1build_aa2ea03188267ab219abf13b1203daacd}} 
+\index{parlai\+::tasks\+::narrative\+\_\+qa\+::build@{parlai\+::tasks\+::narrative\+\_\+qa\+::build}!R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}}
+\index{R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}!parlai\+::tasks\+::narrative\+\_\+qa\+::build@{parlai\+::tasks\+::narrative\+\_\+qa\+::build}}
+\subsubsection{\texorpdfstring{R\+E\+S\+O\+U\+R\+C\+ES}{RESOURCES}}
+{\footnotesize\ttfamily parlai.\+tasks.\+narrative\+\_\+qa.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
+
+
+
+Definition at line 16 of file build.\+py.
+

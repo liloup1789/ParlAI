@@ -1,0 +1,73 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1dialogue__nli_1_1build}{}\section{parlai.\+tasks.\+dialogue\+\_\+nli.\+build Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1dialogue__nli_1_1build}\index{parlai.\+tasks.\+dialogue\+\_\+nli.\+build@{parlai.\+tasks.\+dialogue\+\_\+nli.\+build}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1dialogue__nli_1_1build_a93644603f76ca94864247f963ba47578}{build} (opt)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+list \hyperlink{namespaceparlai_1_1tasks_1_1dialogue__nli_1_1build_a2d6a9ea10c5e9897f090f380fde28e40}{R\+E\+S\+O\+U\+R\+C\+ES}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1dialogue__nli_1_1build_a93644603f76ca94864247f963ba47578}\label{namespaceparlai_1_1tasks_1_1dialogue__nli_1_1build_a93644603f76ca94864247f963ba47578}} 
+\index{parlai\+::tasks\+::dialogue\+\_\+nli\+::build@{parlai\+::tasks\+::dialogue\+\_\+nli\+::build}!build@{build}}
+\index{build@{build}!parlai\+::tasks\+::dialogue\+\_\+nli\+::build@{parlai\+::tasks\+::dialogue\+\_\+nli\+::build}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+dialogue\+\_\+nli.\+build.\+build (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 22 of file build.\+py.
+
+
+\begin{DoxyCode}
+22 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
+23     \textcolor{comment}{# get path to data directory}
+24     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'dialogue\_nli'})
+25     \textcolor{comment}{# define version if any}
+26     version = \textcolor{stringliteral}{'1.0'}
+27 
+28     \textcolor{comment}{# check if data had been previously built}
+29     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version\_string=version):
+30         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+31 
+32         \textcolor{comment}{# make a clean directory if needed}
+33         \textcolor{keywordflow}{if} build\_data.built(dpath):
+34             \textcolor{comment}{# an older version exists, so remove these outdated files.}
+35             build\_data.remove\_dir(dpath)
+36         build\_data.make\_dir(dpath)
+37 
+38         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES:
+39             downloadable\_file.download\_file(dpath)
+40 
+41         \textcolor{comment}{# mark the data as built}
+42         build\_data.mark\_done(dpath, version\_string=version)
+43 \end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1dialogue__nli_1_1build_a2d6a9ea10c5e9897f090f380fde28e40}\label{namespaceparlai_1_1tasks_1_1dialogue__nli_1_1build_a2d6a9ea10c5e9897f090f380fde28e40}} 
+\index{parlai\+::tasks\+::dialogue\+\_\+nli\+::build@{parlai\+::tasks\+::dialogue\+\_\+nli\+::build}!R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}}
+\index{R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}!parlai\+::tasks\+::dialogue\+\_\+nli\+::build@{parlai\+::tasks\+::dialogue\+\_\+nli\+::build}}
+\subsubsection{\texorpdfstring{R\+E\+S\+O\+U\+R\+C\+ES}{RESOURCES}}
+{\footnotesize\ttfamily list parlai.\+tasks.\+dialogue\+\_\+nli.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+1 =  [
+2     DownloadableFile(
+3         \textcolor{stringliteral}{'1WtbXCv3vPB5ql6w0FVDmAEMmWadbrCuG'},
+4         \textcolor{stringliteral}{'dialogue\_nli.zip'},
+5         \textcolor{stringliteral}{'1164b0d9a0a1a6006891a6d4435a6a813464bc9b1e2f1ec5ce28c47267ad5e42'},
+6         from\_google=\textcolor{keyword}{True},
+7     )
+8 ]
+\end{DoxyCode}
+
+
+Definition at line 12 of file build.\+py.
+

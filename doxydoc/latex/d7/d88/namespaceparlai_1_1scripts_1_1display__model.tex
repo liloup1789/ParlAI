@@ -1,0 +1,101 @@
+\hypertarget{namespaceparlai_1_1scripts_1_1display__model}{}\section{parlai.\+scripts.\+display\+\_\+model Namespace Reference}
+\label{namespaceparlai_1_1scripts_1_1display__model}\index{parlai.\+scripts.\+display\+\_\+model@{parlai.\+scripts.\+display\+\_\+model}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1display__model_a9141f8dde0f690b4d641fe08c193e2b5}{setup\+\_\+args} ()
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1display__model_a25488b354b0b8cbaee28b146b17c26f1}{display\+\_\+model} (\hyperlink{namespaceparlai_1_1scripts_1_1display__model_a53054dd9ddcd16817b6dde616a4236c5}{opt})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1display__model_a34f269d469b91fcaf21a045c6f4a3598}{parser} = \hyperlink{namespaceparlai_1_1scripts_1_1display__model_a9141f8dde0f690b4d641fe08c193e2b5}{setup\+\_\+args}()
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1display__model_a53054dd9ddcd16817b6dde616a4236c5}{opt} = parser.\+parse\+\_\+args()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1display__model_a25488b354b0b8cbaee28b146b17c26f1}\label{namespaceparlai_1_1scripts_1_1display__model_a25488b354b0b8cbaee28b146b17c26f1}} 
+\index{parlai\+::scripts\+::display\+\_\+model@{parlai\+::scripts\+::display\+\_\+model}!display\+\_\+model@{display\+\_\+model}}
+\index{display\+\_\+model@{display\+\_\+model}!parlai\+::scripts\+::display\+\_\+model@{parlai\+::scripts\+::display\+\_\+model}}
+\subsubsection{\texorpdfstring{display\+\_\+model()}{display\_model()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+display\+\_\+model.\+display\+\_\+model (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 42 of file display\+\_\+model.\+py.
+
+
+\begin{DoxyCode}
+42 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1display__model_a25488b354b0b8cbaee28b146b17c26f1}{display\_model}(opt):
+43     random.seed(42)
+44 
+45     \textcolor{comment}{# Create model and assign it to the specified task}
+46     agent = \hyperlink{namespaceparlai_1_1core_1_1agents_ad0d54074d4bcc148bb415ab5515a53b5}{create\_agent}(opt)
+47     world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(opt, agent)
+48 
+49     \textcolor{comment}{# Show some example dialogs.}
+50     with world:
+51         \textcolor{keywordflow}{for} \_k \textcolor{keywordflow}{in} range(\hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(opt[\textcolor{stringliteral}{'num\_examples'}])):
+52             world.parley()
+53             print(world.display() + \textcolor{stringliteral}{"\(\backslash\)n~~"})
+54             \textcolor{keywordflow}{if} world.epoch\_done():
+55                 print(\textcolor{stringliteral}{"EPOCH DONE"})
+56                 \textcolor{keywordflow}{break}
+57 
+58 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1display__model_a9141f8dde0f690b4d641fe08c193e2b5}\label{namespaceparlai_1_1scripts_1_1display__model_a9141f8dde0f690b4d641fe08c193e2b5}} 
+\index{parlai\+::scripts\+::display\+\_\+model@{parlai\+::scripts\+::display\+\_\+model}!setup\+\_\+args@{setup\+\_\+args}}
+\index{setup\+\_\+args@{setup\+\_\+args}!parlai\+::scripts\+::display\+\_\+model@{parlai\+::scripts\+::display\+\_\+model}}
+\subsubsection{\texorpdfstring{setup\+\_\+args()}{setup\_args()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+display\+\_\+model.\+setup\+\_\+args (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 26 of file display\+\_\+model.\+py.
+
+
+\begin{DoxyCode}
+26 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1display__model_a9141f8dde0f690b4d641fe08c193e2b5}{setup\_args}():
+27     parser = ParlaiParser(\textcolor{keyword}{True}, \textcolor{keyword}{True}, \textcolor{stringliteral}{'Display model predictions.'})
+28     parser.add\_argument(\textcolor{stringliteral}{'-n'}, \textcolor{stringliteral}{'-ne'}, \textcolor{stringliteral}{'--num-examples'}, default=10)
+29     parser.add\_argument(\textcolor{stringliteral}{'--display-ignore-fields'}, type=str, default=\textcolor{stringliteral}{''})
+30     parser.add\_argument(
+31         \textcolor{stringliteral}{'--verbose'},
+32         type=\textcolor{stringliteral}{'bool'},
+33         default=\textcolor{keyword}{False},
+34         hidden=\textcolor{keyword}{True},
+35         help=\textcolor{stringliteral}{'Display additional debug info, e.g. the per-token loss breakdown for generative models.'},
+36     )
+37     \textcolor{comment}{# by default we want to display info about the validation set}
+38     parser.set\_defaults(datatype=\textcolor{stringliteral}{'valid'})
+39     \textcolor{keywordflow}{return} parser
+40 
+41 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1display__model_a53054dd9ddcd16817b6dde616a4236c5}\label{namespaceparlai_1_1scripts_1_1display__model_a53054dd9ddcd16817b6dde616a4236c5}} 
+\index{parlai\+::scripts\+::display\+\_\+model@{parlai\+::scripts\+::display\+\_\+model}!opt@{opt}}
+\index{opt@{opt}!parlai\+::scripts\+::display\+\_\+model@{parlai\+::scripts\+::display\+\_\+model}}
+\subsubsection{\texorpdfstring{opt}{opt}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+display\+\_\+model.\+opt = parser.\+parse\+\_\+args()}
+
+
+
+Definition at line 62 of file display\+\_\+model.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1display__model_a34f269d469b91fcaf21a045c6f4a3598}\label{namespaceparlai_1_1scripts_1_1display__model_a34f269d469b91fcaf21a045c6f4a3598}} 
+\index{parlai\+::scripts\+::display\+\_\+model@{parlai\+::scripts\+::display\+\_\+model}!parser@{parser}}
+\index{parser@{parser}!parlai\+::scripts\+::display\+\_\+model@{parlai\+::scripts\+::display\+\_\+model}}
+\subsubsection{\texorpdfstring{parser}{parser}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+display\+\_\+model.\+parser = \hyperlink{namespaceparlai_1_1scripts_1_1display__model_a9141f8dde0f690b4d641fe08c193e2b5}{setup\+\_\+args}()}
+
+
+
+Definition at line 61 of file display\+\_\+model.\+py.
+

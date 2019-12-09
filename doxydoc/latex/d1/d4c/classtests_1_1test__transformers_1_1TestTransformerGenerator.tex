@@ -1,0 +1,672 @@
+\hypertarget{classtests_1_1test__transformers_1_1TestTransformerGenerator}{}\section{tests.\+test\+\_\+transformers.\+Test\+Transformer\+Generator Class Reference}
+\label{classtests_1_1test__transformers_1_1TestTransformerGenerator}\index{tests.\+test\+\_\+transformers.\+Test\+Transformer\+Generator@{tests.\+test\+\_\+transformers.\+Test\+Transformer\+Generator}}
+
+
+Inheritance diagram for tests.\+test\+\_\+transformers.\+Test\+Transformer\+Generator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{d1/db0/classtests_1_1test__transformers_1_1TestTransformerGenerator__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for tests.\+test\+\_\+transformers.\+Test\+Transformer\+Generator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{d4/d16/classtests_1_1test__transformers_1_1TestTransformerGenerator__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classtests_1_1test__transformers_1_1TestTransformerGenerator_a46ea25442100b52add258989e9aa9860}{test\+\_\+greedysearch} (self)
+\item 
+def \hyperlink{classtests_1_1test__transformers_1_1TestTransformerGenerator_af16ba00a7a4c07df6bed84c8aad2635c}{test\+\_\+beamsearch} (self)
+\item 
+def \hyperlink{classtests_1_1test__transformers_1_1TestTransformerGenerator_a8f0e08e6e487c697c1e0839dc111a3a5}{test\+\_\+beamsearch\+\_\+blocking} (self)
+\item 
+def \hyperlink{classtests_1_1test__transformers_1_1TestTransformerGenerator_a582830b5de9edfa1b6077988067f9143}{test\+\_\+beamsearch\+\_\+contextblocking} (self)
+\item 
+def \hyperlink{classtests_1_1test__transformers_1_1TestTransformerGenerator_ab1e05d5384de2fcd880f515108de9b4a}{test\+\_\+nucleus} (self)
+\item 
+def \hyperlink{classtests_1_1test__transformers_1_1TestTransformerGenerator_a571dff6d213773d3590419d84f0b088f}{test\+\_\+topk} (self)
+\item 
+def \hyperlink{classtests_1_1test__transformers_1_1TestTransformerGenerator_a5eb4d78c39c3b525e3254789c2101072}{test\+\_\+generator\+\_\+backcomp} (self)
+\item 
+def \hyperlink{classtests_1_1test__transformers_1_1TestTransformerGenerator_a6a21a74b697b8918bc38625e443e24d1}{test\+\_\+badinput} (self)
+\item 
+def \hyperlink{classtests_1_1test__transformers_1_1TestTransformerGenerator_a42e386425e0e497ccb97a73409192990}{test\+\_\+xlm} (self)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classtests_1_1test__transformers_1_1TestTransformerGenerator_a1555f81fb11a5497f644e99607c3d17d}{ntries}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Checks that the generative transformer can learn basic tasks.
+\end{DoxyVerb}
+ 
+
+Definition at line 259 of file test\+\_\+transformers.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtests_1_1test__transformers_1_1TestTransformerGenerator_a6a21a74b697b8918bc38625e443e24d1}\label{classtests_1_1test__transformers_1_1TestTransformerGenerator_a6a21a74b697b8918bc38625e443e24d1}} 
+\index{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator@{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator}!test\+\_\+badinput@{test\+\_\+badinput}}
+\index{test\+\_\+badinput@{test\+\_\+badinput}!tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator@{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator}}
+\subsubsection{\texorpdfstring{test\+\_\+badinput()}{test\_badinput()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+transformers.\+Test\+Transformer\+Generator.\+test\+\_\+badinput (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Ensures model doesn't crash on malformed inputs.
+\end{DoxyVerb}
+ 
+
+Definition at line 661 of file test\+\_\+transformers.\+py.
+
+
+\begin{DoxyCode}
+661     \textcolor{keyword}{def }test\_badinput(self):
+662         \textcolor{stringliteral}{"""}
+663 \textcolor{stringliteral}{        Ensures model doesn't crash on malformed inputs.}
+664 \textcolor{stringliteral}{        """}
+665         stdout, \_, \_ = testing\_utils.train\_model(
+666             dict(
+667                 task=\textcolor{stringliteral}{'integration\_tests:bad\_example'},
+668                 model=\textcolor{stringliteral}{'transformer/generator'},
+669                 batchsize=10,
+670                 datatype=\textcolor{stringliteral}{'train:ordered:stream'},
+671                 num\_epochs=1,
+672                 numthreads=1,
+673                 no\_cuda=\textcolor{keyword}{True},
+674                 embedding\_size=16,
+675                 hiddensize=16,
+676             )
+677         )
+678         self.assertIn(\textcolor{stringliteral}{'valid:\{'}, stdout)
+679         self.assertIn(\textcolor{stringliteral}{'test:\{'}, stdout)
+680 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__transformers_1_1TestTransformerGenerator_af16ba00a7a4c07df6bed84c8aad2635c}\label{classtests_1_1test__transformers_1_1TestTransformerGenerator_af16ba00a7a4c07df6bed84c8aad2635c}} 
+\index{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator@{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator}!test\+\_\+beamsearch@{test\+\_\+beamsearch}}
+\index{test\+\_\+beamsearch@{test\+\_\+beamsearch}!tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator@{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator}}
+\subsubsection{\texorpdfstring{test\+\_\+beamsearch()}{test\_beamsearch()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+transformers.\+Test\+Transformer\+Generator.\+test\+\_\+beamsearch (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Test beamsearch.
+\end{DoxyVerb}
+ 
+
+Definition at line 304 of file test\+\_\+transformers.\+py.
+
+
+\begin{DoxyCode}
+304     \textcolor{keyword}{def }test\_beamsearch(self):
+305         \textcolor{stringliteral}{"""}
+306 \textcolor{stringliteral}{        Test beamsearch.}
+307 \textcolor{stringliteral}{        """}
+308         stdout, valid, test = testing\_utils.train\_model(
+309             dict(
+310                 task=\textcolor{stringliteral}{'integration\_tests:nocandidate'},
+311                 model=\textcolor{stringliteral}{'transformer/generator'},
+312                 optimizer=\textcolor{stringliteral}{'adamax'},
+313                 learningrate=7e-3,
+314                 batchsize=32,
+315                 num\_epochs=20,
+316                 n\_layers=1,
+317                 n\_heads=1,
+318                 ffn\_size=32,
+319                 embedding\_size=32,
+320                 inference=\textcolor{stringliteral}{'beam'},
+321                 beam\_size=5,
+322             )
+323         )
+324 
+325         self.assertLessEqual(
+326             valid[\textcolor{stringliteral}{'ppl'}], 1.20, \textcolor{stringliteral}{"valid ppl = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(valid[\textcolor{stringliteral}{'ppl'}], stdout)
+327         )
+328         self.assertGreaterEqual(
+329             valid[\textcolor{stringliteral}{'bleu-4'}],
+330             0.95,
+331             \textcolor{stringliteral}{"valid blue = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(valid[\textcolor{stringliteral}{'bleu-4'}], stdout),
+332         )
+333         self.assertLessEqual(
+334             test[\textcolor{stringliteral}{'ppl'}], 1.20, \textcolor{stringliteral}{"test ppl = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(test[\textcolor{stringliteral}{'ppl'}], stdout)
+335         )
+336         self.assertGreaterEqual(
+337             test[\textcolor{stringliteral}{'bleu-4'}],
+338             0.95,
+339             \textcolor{stringliteral}{"test bleu = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(test[\textcolor{stringliteral}{'bleu-4'}], stdout),
+340         )
+341 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__transformers_1_1TestTransformerGenerator_a8f0e08e6e487c697c1e0839dc111a3a5}\label{classtests_1_1test__transformers_1_1TestTransformerGenerator_a8f0e08e6e487c697c1e0839dc111a3a5}} 
+\index{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator@{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator}!test\+\_\+beamsearch\+\_\+blocking@{test\+\_\+beamsearch\+\_\+blocking}}
+\index{test\+\_\+beamsearch\+\_\+blocking@{test\+\_\+beamsearch\+\_\+blocking}!tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator@{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator}}
+\subsubsection{\texorpdfstring{test\+\_\+beamsearch\+\_\+blocking()}{test\_beamsearch\_blocking()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+transformers.\+Test\+Transformer\+Generator.\+test\+\_\+beamsearch\+\_\+blocking (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Test beamsearch blocking.
+\end{DoxyVerb}
+ 
+
+Definition at line 343 of file test\+\_\+transformers.\+py.
+
+
+\begin{DoxyCode}
+343     \textcolor{keyword}{def }test\_beamsearch\_blocking(self):
+344         \textcolor{stringliteral}{"""}
+345 \textcolor{stringliteral}{        Test beamsearch blocking.}
+346 \textcolor{stringliteral}{        """}
+347         with testing\_utils.tempdir() \textcolor{keyword}{as} tmpdir:
+348             mf = os.path.join(tmpdir, \textcolor{stringliteral}{'model'})
+349             df = os.path.join(tmpdir, \textcolor{stringliteral}{'model.dict'})
+350             stdout, valid, test = testing\_utils.train\_model(
+351                 dict(
+352                     task=\textcolor{stringliteral}{'integration\_tests:repeat\_words'},
+353                     model=\textcolor{stringliteral}{'transformer/generator'},
+354                     model\_file=mf,
+355                     dict\_file=df,
+356                     optimizer=\textcolor{stringliteral}{'adamax'},
+357                     learningrate=7e-3,
+358                     batchsize=32,
+359                     num\_epochs=20,
+360                     n\_layers=1,
+361                     n\_heads=1,
+362                     ffn\_size=32,
+363                     embedding\_size=32,
+364                     inference=\textcolor{stringliteral}{'beam'},
+365                     beam\_size=2,
+366                 )
+367             )
+368             stdout\_bb, valid\_beam\_block, test\_beam\_block = testing\_utils.eval\_model(
+369                 dict(
+370                     task=\textcolor{stringliteral}{'integration\_tests:repeat\_words'},
+371                     model\_file=mf,
+372                     dict\_file=df,
+373                     batch\_size=1,
+374                     inference=\textcolor{stringliteral}{'beam'},
+375                     beam\_size=5,
+376                     beam\_block\_ngram=1,
+377                     skip\_generation=\textcolor{keyword}{False},
+378                 )
+379             )
+380             stdout\_bb2, valid\_beam\_block2, test\_beam\_block2 = testing\_utils.eval\_model(
+381                 dict(
+382                     task=\textcolor{stringliteral}{'integration\_tests:repeat\_words'},
+383                     model\_file=mf,
+384                     dict\_file=df,
+385                     batch\_size=1,
+386                     inference=\textcolor{stringliteral}{'beam'},
+387                     beam\_size=5,
+388                     beam\_block\_ngram=2,
+389                     skip\_generation=\textcolor{keyword}{False},
+390                 )
+391             )
+392         self.assertLessEqual(
+393             valid[\textcolor{stringliteral}{'ppl'}], 1.30, \textcolor{stringliteral}{"valid ppl = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(valid[\textcolor{stringliteral}{'ppl'}], stdout)
+394         )
+395         self.assertGreaterEqual(
+396             valid[\textcolor{stringliteral}{'f1'}], 0.80, \textcolor{stringliteral}{"valid f1 = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(valid[\textcolor{stringliteral}{'f1'}], stdout)
+397         )
+398         self.assertGreaterEqual(
+399             valid[\textcolor{stringliteral}{'bleu-4'}],
+400             0.5,
+401             \textcolor{stringliteral}{"valid bleu = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(valid[\textcolor{stringliteral}{'bleu-4'}], stdout),
+402         )
+403         self.assertLessEqual(
+404             test[\textcolor{stringliteral}{'ppl'}], 1.30, \textcolor{stringliteral}{"test ppl = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(test[\textcolor{stringliteral}{'ppl'}], stdout)
+405         )
+406         self.assertGreaterEqual(
+407             test[\textcolor{stringliteral}{'f1'}], 0.80, \textcolor{stringliteral}{"test f1 = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(test[\textcolor{stringliteral}{'bleu-4'}], stdout)
+408         )
+409         self.assertGreaterEqual(
+410             test[\textcolor{stringliteral}{'bleu-4'}],
+411             0.5,
+412             \textcolor{stringliteral}{"test bleu = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(test[\textcolor{stringliteral}{'bleu-4'}], stdout),
+413         )
+414 
+415         \textcolor{comment}{# Beam Block 1}
+416         self.assertLessEqual(
+417             valid\_beam\_block[\textcolor{stringliteral}{'f1'}],
+418             0.4,
+419             \textcolor{stringliteral}{"valid beam block f1 = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+420                 valid\_beam\_block[\textcolor{stringliteral}{'f1'}], stdout\_bb
+421             ),
+422         )
+423         self.assertLessEqual(
+424             valid\_beam\_block[\textcolor{stringliteral}{'bleu-4'}],
+425             1e-9,
+426             \textcolor{stringliteral}{"valid beam block bleu = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+427                 valid\_beam\_block[\textcolor{stringliteral}{'bleu-4'}], stdout\_bb
+428             ),
+429         )
+430         self.assertLessEqual(
+431             test\_beam\_block[\textcolor{stringliteral}{'f1'}],
+432             0.4,
+433             \textcolor{stringliteral}{"test beam block f1 = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+434                 test\_beam\_block[\textcolor{stringliteral}{'f1'}], stdout\_bb
+435             ),
+436         )
+437         self.assertLessEqual(
+438             test\_beam\_block[\textcolor{stringliteral}{'bleu-4'}],
+439             1e-9,
+440             \textcolor{stringliteral}{"test beam block bleu = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+441                 test\_beam\_block[\textcolor{stringliteral}{'bleu-4'}], stdout\_bb
+442             ),
+443         )
+444 
+445         \textcolor{comment}{# Beam Block 2}
+446         self.assertLessEqual(
+447             valid\_beam\_block2[\textcolor{stringliteral}{'f1'}],
+448             0.6,
+449             \textcolor{stringliteral}{"valid beam block f1 = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+450                 valid\_beam\_block2[\textcolor{stringliteral}{'f1'}], stdout\_bb2
+451             ),
+452         )
+453         self.assertLessEqual(
+454             valid\_beam\_block2[\textcolor{stringliteral}{'bleu-4'}],
+455             1e-6,
+456             \textcolor{stringliteral}{"valid beam block bleu = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+457                 valid\_beam\_block2[\textcolor{stringliteral}{'bleu-4'}], stdout\_bb2
+458             ),
+459         )
+460         self.assertLessEqual(
+461             test\_beam\_block2[\textcolor{stringliteral}{'f1'}],
+462             0.6,
+463             \textcolor{stringliteral}{"test beam block f1 = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+464                 test\_beam\_block2[\textcolor{stringliteral}{'f1'}], stdout\_bb2
+465             ),
+466         )
+467         self.assertLessEqual(
+468             test\_beam\_block2[\textcolor{stringliteral}{'bleu-4'}],
+469             1e-6,
+470             \textcolor{stringliteral}{"test beam block bleu = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+471                 test\_beam\_block2[\textcolor{stringliteral}{'bleu-4'}], stdout\_bb2
+472             ),
+473         )
+474 
+475 <<<<<<< HEAD
+476 <<<<<<< HEAD
+477 =======
+478 <<<<<<< HEAD
+479 >>>>>>> origin/master
+480 =======
+481 >>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__transformers_1_1TestTransformerGenerator_a582830b5de9edfa1b6077988067f9143}\label{classtests_1_1test__transformers_1_1TestTransformerGenerator_a582830b5de9edfa1b6077988067f9143}} 
+\index{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator@{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator}!test\+\_\+beamsearch\+\_\+contextblocking@{test\+\_\+beamsearch\+\_\+contextblocking}}
+\index{test\+\_\+beamsearch\+\_\+contextblocking@{test\+\_\+beamsearch\+\_\+contextblocking}!tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator@{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator}}
+\subsubsection{\texorpdfstring{test\+\_\+beamsearch\+\_\+contextblocking()}{test\_beamsearch\_contextblocking()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+transformers.\+Test\+Transformer\+Generator.\+test\+\_\+beamsearch\+\_\+contextblocking (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Test beamsearch context blocking.
+
+General strategy: train a parrot model, then block it from doing the parroting
+well. Measure how much context blocking affects performance.
+\end{DoxyVerb}
+ 
+
+Definition at line 483 of file test\+\_\+transformers.\+py.
+
+
+\begin{DoxyCode}
+483     \textcolor{keyword}{def }test\_beamsearch\_contextblocking(self):
+484         \textcolor{stringliteral}{"""}
+485 \textcolor{stringliteral}{        Test beamsearch context blocking.}
+486 \textcolor{stringliteral}{}
+487 \textcolor{stringliteral}{        General strategy: train a parrot model, then block it from doing the parroting}
+488 \textcolor{stringliteral}{        well. Measure how much context blocking affects performance.}
+489 \textcolor{stringliteral}{        """}
+490 
+491         with testing\_utils.tempdir() \textcolor{keyword}{as} tmpdir:
+492             mf = os.path.join(tmpdir, \textcolor{stringliteral}{'model'})
+493             df = os.path.join(tmpdir, \textcolor{stringliteral}{'model.dict'})
+494             \textcolor{comment}{# we'll reuse these}
+495             args = dict(
+496                 task=\textcolor{stringliteral}{'integration\_tests'}, model\_file=mf, dict\_file=df, metrics=\textcolor{stringliteral}{'all'},
+497             )
+498             \_, noblock\_valid, \_ = testing\_utils.train\_model(
+499                 dict(
+500                     model=\textcolor{stringliteral}{'transformer/generator'},
+501                     optimizer=\textcolor{stringliteral}{'adamax'},
+502                     learningrate=7e-3,
+503                     batchsize=32,
+504                     num\_epochs=20,
+505                     n\_layers=1,
+506                     n\_heads=1,
+507                     ffn\_size=32,
+508                     embedding\_size=32,
+509                     inference=\textcolor{stringliteral}{'beam'},
+510                     beam\_size=5,
+511                     **args,
+512                 )
+513             )
+514             self.assertGreaterEqual(noblock\_valid[\textcolor{stringliteral}{'f1'}], 0.99)
+515 
+516             \textcolor{comment}{# first confirm all is good without blocking}
+517             \_, valid, test = testing\_utils.eval\_model(
+518                 dict(beam\_context\_block\_ngram=-1, **args)
+519             )
+520             self.assertGreaterEqual(valid[\textcolor{stringliteral}{'f1'}], 0.99)
+521             self.assertGreaterEqual(valid[\textcolor{stringliteral}{'bleu-4'}], 0.99)
+522 
+523             \textcolor{comment}{# there's a special case for block == 1}
+524             \_, valid, test = testing\_utils.eval\_model(
+525                 dict(beam\_context\_block\_ngram=1, **args)
+526             )
+527             \textcolor{comment}{# bleu and f1 should be totally wrecked.}
+528             self.assertLess(valid[\textcolor{stringliteral}{'f1'}], 0.01)
+529             self.assertLess(valid[\textcolor{stringliteral}{'bleu-4'}], 0.01)
+530 
+531             \textcolor{comment}{# a couple general cases}
+532             \_, valid, test = testing\_utils.eval\_model(
+533                 dict(beam\_context\_block\_ngram=2, **args)
+534             )
+535             \textcolor{comment}{# should take a big hit here}
+536             self.assertLessEqual(valid[\textcolor{stringliteral}{'f1'}], noblock\_valid[\textcolor{stringliteral}{'f1'}])
+537             \textcolor{comment}{# bleu-1 should be relatively okay}
+538             self.assertLessEqual(valid[\textcolor{stringliteral}{'bleu-1'}], noblock\_valid[\textcolor{stringliteral}{'bleu-1'}])
+539             self.assertGreaterEqual(valid[\textcolor{stringliteral}{'bleu-1'}], 0.50)
+540             \textcolor{comment}{# and bleu-2 should be 0 at this point}
+541             self.assertLessEqual(valid[\textcolor{stringliteral}{'bleu-2'}], 0.01)
+542 
+543             \textcolor{comment}{# larger blocking, we can do better now}
+544             \_, valid, test = testing\_utils.eval\_model(
+545                 dict(beam\_context\_block\_ngram=3, **args)
+546             )
+547             \textcolor{comment}{# not as hard a hit from the larger hit}
+548             self.assertLessEqual(valid[\textcolor{stringliteral}{'f1'}], 0.95)
+549             \textcolor{comment}{# bleu-1 and bleu-2 should be relatively okay}
+550             self.assertGreaterEqual(valid[\textcolor{stringliteral}{'bleu-1'}], 0.70)
+551             self.assertGreaterEqual(valid[\textcolor{stringliteral}{'bleu-2'}], 0.30)
+552             \textcolor{comment}{# bleu-3 should be totally screwed}
+553             self.assertLessEqual(valid[\textcolor{stringliteral}{'bleu-3'}], 0.01)
+554 
+555 <<<<<<< HEAD
+556 <<<<<<< HEAD
+557 =======
+558 =======
+559 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+560 >>>>>>> origin/master
+561 =======
+562 =======
+563 >>>>>>> 4f6b99642d60aff1a41b9eae8bd2ccd9e40ebba4
+564 >>>>>>> ef574cebef2a8d5aa38b73176b1e71a919d6670f
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__transformers_1_1TestTransformerGenerator_a5eb4d78c39c3b525e3254789c2101072}\label{classtests_1_1test__transformers_1_1TestTransformerGenerator_a5eb4d78c39c3b525e3254789c2101072}} 
+\index{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator@{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator}!test\+\_\+generator\+\_\+backcomp@{test\+\_\+generator\+\_\+backcomp}}
+\index{test\+\_\+generator\+\_\+backcomp@{test\+\_\+generator\+\_\+backcomp}!tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator@{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator}}
+\subsubsection{\texorpdfstring{test\+\_\+generator\+\_\+backcomp()}{test\_generator\_backcomp()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+transformers.\+Test\+Transformer\+Generator.\+test\+\_\+generator\+\_\+backcomp (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Tests that the generator model files work over time.
+\end{DoxyVerb}
+ 
+
+Definition at line 611 of file test\+\_\+transformers.\+py.
+
+
+\begin{DoxyCode}
+611     \textcolor{keyword}{def }test\_generator\_backcomp(self):
+612         \textcolor{stringliteral}{"""}
+613 \textcolor{stringliteral}{        Tests that the generator model files work over time.}
+614 \textcolor{stringliteral}{        """}
+615         testing\_utils.download\_unittest\_models()
+616 
+617         stdout, valid, test = testing\_utils.eval\_model(
+618             dict(
+619                 task=\textcolor{stringliteral}{'integration\_tests:multipass'},
+620                 model=\textcolor{stringliteral}{'transformer/generator'},
+621                 model\_file=\textcolor{stringliteral}{'zoo:unittest/transformer\_generator2/model'},
+622                 dict\_file=\textcolor{stringliteral}{'zoo:unittest/transformer\_generator2/model.dict'},
+623                 rank\_candidates=\textcolor{keyword}{True},
+624                 batch\_size=64,
+625             )
+626         )
+627 
+628         self.assertGreaterEqual(
+629             valid[\textcolor{stringliteral}{'hits@1'}],
+630             0.95,
+631             \textcolor{stringliteral}{'valid hits@1 = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(valid[\textcolor{stringliteral}{'hits@1'}], stdout),
+632         )
+633         self.assertLessEqual(
+634             valid[\textcolor{stringliteral}{'ppl'}], 1.01, \textcolor{stringliteral}{'valid ppl = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(valid[\textcolor{stringliteral}{'ppl'}], stdout)
+635         )
+636         self.assertGreaterEqual(
+637             valid[\textcolor{stringliteral}{'accuracy'}],
+638             0.99,
+639             \textcolor{stringliteral}{'valid accuracy = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(valid[\textcolor{stringliteral}{'accuracy'}], stdout),
+640         )
+641         self.assertGreaterEqual(
+642             valid[\textcolor{stringliteral}{'f1'}], 0.99, \textcolor{stringliteral}{'valid f1 = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(valid[\textcolor{stringliteral}{'f1'}], stdout)
+643         )
+644         self.assertGreaterEqual(
+645             test[\textcolor{stringliteral}{'hits@1'}],
+646             0.95,
+647             \textcolor{stringliteral}{'test hits@1 = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(test[\textcolor{stringliteral}{'hits@1'}], stdout),
+648         )
+649         self.assertLessEqual(
+650             test[\textcolor{stringliteral}{'ppl'}], 1.01, \textcolor{stringliteral}{'test ppl = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(test[\textcolor{stringliteral}{'ppl'}], stdout)
+651         )
+652         self.assertGreaterEqual(
+653             test[\textcolor{stringliteral}{'accuracy'}],
+654             0.99,
+655             \textcolor{stringliteral}{'test accuracy = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(test[\textcolor{stringliteral}{'accuracy'}], stdout),
+656         )
+657         self.assertGreaterEqual(
+658             test[\textcolor{stringliteral}{'f1'}], 0.99, \textcolor{stringliteral}{'test f1 = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(test[\textcolor{stringliteral}{'f1'}], stdout)
+659         )
+660 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__transformers_1_1TestTransformerGenerator_a46ea25442100b52add258989e9aa9860}\label{classtests_1_1test__transformers_1_1TestTransformerGenerator_a46ea25442100b52add258989e9aa9860}} 
+\index{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator@{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator}!test\+\_\+greedysearch@{test\+\_\+greedysearch}}
+\index{test\+\_\+greedysearch@{test\+\_\+greedysearch}!tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator@{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator}}
+\subsubsection{\texorpdfstring{test\+\_\+greedysearch()}{test\_greedysearch()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+transformers.\+Test\+Transformer\+Generator.\+test\+\_\+greedysearch (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Test greedy search.
+\end{DoxyVerb}
+ 
+
+Definition at line 265 of file test\+\_\+transformers.\+py.
+
+
+\begin{DoxyCode}
+265     \textcolor{keyword}{def }test\_greedysearch(self):
+266         \textcolor{stringliteral}{"""}
+267 \textcolor{stringliteral}{        Test greedy search.}
+268 \textcolor{stringliteral}{        """}
+269         stdout, valid, test = testing\_utils.train\_model(
+270             dict(
+271                 task=\textcolor{stringliteral}{'integration\_tests:nocandidate'},
+272                 model=\textcolor{stringliteral}{'transformer/generator'},
+273                 optimizer=\textcolor{stringliteral}{'adamax'},
+274                 learningrate=7e-3,
+275                 batchsize=32,
+276                 num\_epochs=20,
+277                 n\_layers=1,
+278                 n\_heads=1,
+279                 ffn\_size=32,
+280                 embedding\_size=32,
+281                 inference=\textcolor{stringliteral}{'greedy'},
+282                 beam\_size=1,
+283             )
+284         )
+285 
+286         self.assertLessEqual(
+287             valid[\textcolor{stringliteral}{'ppl'}], 1.30, \textcolor{stringliteral}{"valid ppl = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(valid[\textcolor{stringliteral}{'ppl'}], stdout)
+288         )
+289         self.assertGreaterEqual(
+290             valid[\textcolor{stringliteral}{'bleu-4'}],
+291             0.90,
+292             \textcolor{stringliteral}{"valid blue = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(valid[\textcolor{stringliteral}{'bleu-4'}], stdout),
+293         )
+294         self.assertLessEqual(
+295             test[\textcolor{stringliteral}{'ppl'}], 1.30, \textcolor{stringliteral}{"test ppl = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(test[\textcolor{stringliteral}{'ppl'}], stdout)
+296         )
+297         self.assertGreaterEqual(
+298             test[\textcolor{stringliteral}{'bleu-4'}],
+299             0.90,
+300             \textcolor{stringliteral}{"test bleu = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(test[\textcolor{stringliteral}{'bleu-4'}], stdout),
+301         )
+302 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__transformers_1_1TestTransformerGenerator_ab1e05d5384de2fcd880f515108de9b4a}\label{classtests_1_1test__transformers_1_1TestTransformerGenerator_ab1e05d5384de2fcd880f515108de9b4a}} 
+\index{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator@{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator}!test\+\_\+nucleus@{test\+\_\+nucleus}}
+\index{test\+\_\+nucleus@{test\+\_\+nucleus}!tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator@{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator}}
+\subsubsection{\texorpdfstring{test\+\_\+nucleus()}{test\_nucleus()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+transformers.\+Test\+Transformer\+Generator.\+test\+\_\+nucleus (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Test nucleus generation.
+\end{DoxyVerb}
+ 
+
+Definition at line 565 of file test\+\_\+transformers.\+py.
+
+
+\begin{DoxyCode}
+565     \textcolor{keyword}{def }test\_nucleus(self):
+566         \textcolor{stringliteral}{"""}
+567 \textcolor{stringliteral}{        Test nucleus generation.}
+568 \textcolor{stringliteral}{        """}
+569         \textcolor{comment}{# Nucleus is inherently stochastic, just ensure no crash.}
+570         testing\_utils.train\_model(
+571             dict(
+572                 task=\textcolor{stringliteral}{'integration\_tests:nocandidate'},
+573                 model=\textcolor{stringliteral}{'transformer/generator'},
+574                 optimizer=\textcolor{stringliteral}{'adamax'},
+575                 learningrate=7e-3,
+576                 batchsize=32,
+577                 num\_epochs=20,
+578                 n\_layers=1,
+579                 n\_heads=1,
+580                 ffn\_size=32,
+581                 embedding\_size=32,
+582                 inference=\textcolor{stringliteral}{'nucleus'},
+583                 topp=0.3,
+584                 beam\_size=5,
+585             )
+586         )
+587 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__transformers_1_1TestTransformerGenerator_a571dff6d213773d3590419d84f0b088f}\label{classtests_1_1test__transformers_1_1TestTransformerGenerator_a571dff6d213773d3590419d84f0b088f}} 
+\index{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator@{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator}!test\+\_\+topk@{test\+\_\+topk}}
+\index{test\+\_\+topk@{test\+\_\+topk}!tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator@{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator}}
+\subsubsection{\texorpdfstring{test\+\_\+topk()}{test\_topk()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+transformers.\+Test\+Transformer\+Generator.\+test\+\_\+topk (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Test topk generation.
+\end{DoxyVerb}
+ 
+
+Definition at line 588 of file test\+\_\+transformers.\+py.
+
+
+\begin{DoxyCode}
+588     \textcolor{keyword}{def }test\_topk(self):
+589         \textcolor{stringliteral}{"""}
+590 \textcolor{stringliteral}{        Test topk generation.}
+591 \textcolor{stringliteral}{        """}
+592         \textcolor{comment}{# Topk is inherently stochastic, just ensure no crash.}
+593         testing\_utils.train\_model(
+594             dict(
+595                 task=\textcolor{stringliteral}{'integration\_tests:nocandidate'},
+596                 model=\textcolor{stringliteral}{'transformer/generator'},
+597                 optimizer=\textcolor{stringliteral}{'adamax'},
+598                 learningrate=7e-3,
+599                 batchsize=32,
+600                 num\_epochs=20,
+601                 n\_layers=1,
+602                 n\_heads=1,
+603                 ffn\_size=32,
+604                 embedding\_size=32,
+605                 inference=\textcolor{stringliteral}{'topk'},
+606                 topk=5,
+607                 beam\_size=5,
+608             )
+609         )
+610 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__transformers_1_1TestTransformerGenerator_a42e386425e0e497ccb97a73409192990}\label{classtests_1_1test__transformers_1_1TestTransformerGenerator_a42e386425e0e497ccb97a73409192990}} 
+\index{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator@{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator}!test\+\_\+xlm@{test\+\_\+xlm}}
+\index{test\+\_\+xlm@{test\+\_\+xlm}!tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator@{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator}}
+\subsubsection{\texorpdfstring{test\+\_\+xlm()}{test\_xlm()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+transformers.\+Test\+Transformer\+Generator.\+test\+\_\+xlm (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Test --variant xlm.
+\end{DoxyVerb}
+ 
+
+Definition at line 682 of file test\+\_\+transformers.\+py.
+
+
+\begin{DoxyCode}
+682     \textcolor{keyword}{def }test\_xlm(self):
+683         \textcolor{stringliteral}{"""}
+684 \textcolor{stringliteral}{        Test --variant xlm.}
+685 \textcolor{stringliteral}{        """}
+686         stdout, valid, test = testing\_utils.train\_model(
+687             dict(
+688                 task=\textcolor{stringliteral}{'integration\_tests:nocandidate'},
+689                 model=\textcolor{stringliteral}{'transformer/generator'},
+690                 optimizer=\textcolor{stringliteral}{'adamax'},
+691                 learningrate=7e-3,
+692                 batchsize=32,
+693                 num\_epochs=20,
+694                 n\_layers=1,
+695                 n\_heads=1,
+696                 ffn\_size=32,
+697                 embedding\_size=32,
+698                 inference=\textcolor{stringliteral}{'greedy'},
+699                 beam\_size=1,
+700                 variant=\textcolor{stringliteral}{'xlm'},
+701                 activation=\textcolor{stringliteral}{'gelu'},
+702                 n\_segments=8,  \textcolor{comment}{# doesn't do anything but still good to test}
+703                 adam\_eps=1e-6,  \textcolor{comment}{# just to test another flag simultaneously}
+704             )
+705         )
+706 
+707         self.assertLessEqual(
+708             valid[\textcolor{stringliteral}{'ppl'}], 1.30, \textcolor{stringliteral}{"valid ppl = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(valid[\textcolor{stringliteral}{'ppl'}], stdout)
+709         )
+710         self.assertGreaterEqual(
+711             valid[\textcolor{stringliteral}{'bleu-4'}],
+712             0.90,
+713             \textcolor{stringliteral}{"valid blue = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(valid[\textcolor{stringliteral}{'bleu-4'}], stdout),
+714         )
+715         self.assertLessEqual(
+716             test[\textcolor{stringliteral}{'ppl'}], 1.30, \textcolor{stringliteral}{"test ppl = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(test[\textcolor{stringliteral}{'ppl'}], stdout)
+717         )
+718         self.assertGreaterEqual(
+719             test[\textcolor{stringliteral}{'bleu-4'}],
+720             0.90,
+721             \textcolor{stringliteral}{"test bleu = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(test[\textcolor{stringliteral}{'bleu-4'}], stdout),
+722         )
+723 
+724 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classtests_1_1test__transformers_1_1TestTransformerGenerator_a1555f81fb11a5497f644e99607c3d17d}\label{classtests_1_1test__transformers_1_1TestTransformerGenerator_a1555f81fb11a5497f644e99607c3d17d}} 
+\index{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator@{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator}!ntries@{ntries}}
+\index{ntries@{ntries}!tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator@{tests\+::test\+\_\+transformers\+::\+Test\+Transformer\+Generator}}
+\subsubsection{\texorpdfstring{ntries}{ntries}}
+{\footnotesize\ttfamily tests.\+test\+\_\+transformers.\+Test\+Transformer\+Generator.\+ntries\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 264 of file test\+\_\+transformers.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+tests/\hyperlink{test__transformers_8py}{test\+\_\+transformers.\+py}\end{DoxyCompactItemize}

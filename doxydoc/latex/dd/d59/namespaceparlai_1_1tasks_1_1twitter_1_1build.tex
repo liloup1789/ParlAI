@@ -1,0 +1,183 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1twitter_1_1build}{}\section{parlai.\+tasks.\+twitter.\+build Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1twitter_1_1build}\index{parlai.\+tasks.\+twitter.\+build@{parlai.\+tasks.\+twitter.\+build}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1twitter_1_1build_aea2acf2542f3fb1294fa121bb7cb1a76}{replace\+\_\+emoji} (x)
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1twitter_1_1build_a6296215f669301c1e46b7588e1291ae7}{split\+\_\+punctuation} (x)
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1twitter_1_1build_ab36b25b09bea28cdf3278f910e5e9ff6}{create\+\_\+fb\+\_\+format} (data, dpath)
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1twitter_1_1build_a8faa6a4ae6f2adaa22f068cc6781898d}{build} (opt)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceparlai_1_1tasks_1_1twitter_1_1build_abba1eb3a3cdb532a871ad3e5038c065b}{R\+E\+S\+O\+U\+R\+C\+ES}
+\item 
+bool \hyperlink{namespaceparlai_1_1tasks_1_1twitter_1_1build_a450f6716ab61ba4f1227e35f897d58da}{zipped} = False,
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1twitter_1_1build_a8faa6a4ae6f2adaa22f068cc6781898d}\label{namespaceparlai_1_1tasks_1_1twitter_1_1build_a8faa6a4ae6f2adaa22f068cc6781898d}} 
+\index{parlai\+::tasks\+::twitter\+::build@{parlai\+::tasks\+::twitter\+::build}!build@{build}}
+\index{build@{build}!parlai\+::tasks\+::twitter\+::build@{parlai\+::tasks\+::twitter\+::build}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+twitter.\+build.\+build (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 88 of file build.\+py.
+
+
+\begin{DoxyCode}
+88 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
+89     version = \textcolor{stringliteral}{'v1.1'}
+90     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'Twitter'})
+91 
+92     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version):
+93         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+94         \textcolor{keywordflow}{if} build\_data.built(dpath):
+95             \textcolor{comment}{# An older version exists, so remove these outdated files.}
+96             build\_data.remove\_dir(dpath)
+97         build\_data.make\_dir(dpath)
+98 
+99         \textcolor{comment}{# Download the data.}
+100         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES:
+101             downloadable\_file.download\_file(dpath)
+102 
+103         file1 = os.path.join(dpath, RESOURCES[0].file\_name)
+104         file2 = os.path.join(dpath, RESOURCES[1].file\_name)
+105         file3 = \textcolor{stringliteral}{"twitter\_en\_big.txt.gz"}
+106         outzipfile = os.path.join(dpath, file3)
+107         build\_data.cat(file1, file2, outzipfile)
+108 
+109         \textcolor{keyword}{import} gzip
+110 
+111         with gzip.open(outzipfile, \textcolor{stringliteral}{'r') as f:}
+112 \textcolor{stringliteral}{            file\_content = bytes.decode(f.read())}
+113 \textcolor{stringliteral}{        data = file\_content.split('\(\backslash\)n'})[2:]
+114         \hyperlink{namespaceparlai_1_1tasks_1_1wikiqa_1_1build_a554828702769592403db58c955d1dfe3}{create\_fb\_format}(data, dpath)
+115         os.remove(outzipfile)
+116 
+117         \textcolor{comment}{# Mark the data as built.}
+118         build\_data.mark\_done(dpath, version)
+119 \end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1twitter_1_1build_ab36b25b09bea28cdf3278f910e5e9ff6}\label{namespaceparlai_1_1tasks_1_1twitter_1_1build_ab36b25b09bea28cdf3278f910e5e9ff6}} 
+\index{parlai\+::tasks\+::twitter\+::build@{parlai\+::tasks\+::twitter\+::build}!create\+\_\+fb\+\_\+format@{create\+\_\+fb\+\_\+format}}
+\index{create\+\_\+fb\+\_\+format@{create\+\_\+fb\+\_\+format}!parlai\+::tasks\+::twitter\+::build@{parlai\+::tasks\+::twitter\+::build}}
+\subsubsection{\texorpdfstring{create\+\_\+fb\+\_\+format()}{create\_fb\_format()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+twitter.\+build.\+create\+\_\+fb\+\_\+format (\begin{DoxyParamCaption}\item[{}]{data,  }\item[{}]{dpath }\end{DoxyParamCaption})}
+
+
+
+Definition at line 56 of file build.\+py.
+
+
+\begin{DoxyCode}
+56 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1wikiqa_1_1build_a554828702769592403db58c955d1dfe3}{create\_fb\_format}(data, dpath):
+57     fw1 = open(os.path.join(dpath, \textcolor{stringliteral}{'train.txt'}), \textcolor{stringliteral}{'w'})
+58     fw2 = open(os.path.join(dpath, \textcolor{stringliteral}{'valid.txt'}), \textcolor{stringliteral}{'w'})
+59     fw3 = open(os.path.join(dpath, \textcolor{stringliteral}{'test.txt'}), \textcolor{stringliteral}{'w'})
+60     \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(0, len(data) - 1, 2):
+61         fout = fw1
+62         \textcolor{keywordflow}{if} (i % 500) == 0:
+63             fout = fw2
+64         \textcolor{keywordflow}{elif} (i % 500) == 2:
+65             fout = fw3
+66         use = \textcolor{keyword}{True}
+67         x = data[i].rstrip(\textcolor{stringliteral}{' '}).lstrip(\textcolor{stringliteral}{' '}).replace(\textcolor{stringliteral}{'\(\backslash\)t'}, \textcolor{stringliteral}{' '})
+68         y = data[i + 1].rstrip(\textcolor{stringliteral}{' '}).lstrip(\textcolor{stringliteral}{' '}).replace(\textcolor{stringliteral}{'\(\backslash\)t'}, \textcolor{stringliteral}{' '})
+69         x = x.replace(\textcolor{stringliteral}{'|'}, \textcolor{stringliteral}{' \_\_PIPE\_\_ '})
+70         y = y.replace(\textcolor{stringliteral}{'|'}, \textcolor{stringliteral}{' \_\_PIPE\_\_ '})
+71         x = \textcolor{stringliteral}{''}.join(list(map(replace\_emoji, x)))
+72         y = \textcolor{stringliteral}{''}.join(list(map(replace\_emoji, y)))
+73         x = \hyperlink{namespaceparlai_1_1tasks_1_1twitter_1_1build_a6296215f669301c1e46b7588e1291ae7}{split\_punctuation}(unidecode.unidecode(x))
+74         y = \hyperlink{namespaceparlai_1_1tasks_1_1twitter_1_1build_a6296215f669301c1e46b7588e1291ae7}{split\_punctuation}(unidecode.unidecode(y))
+75         x = \textcolor{stringliteral}{' '}.join(x.split())
+76         y = \textcolor{stringliteral}{' '}.join(y.split())
+77 
+78         \textcolor{keywordflow}{if} len(x) < 1 \textcolor{keywordflow}{or} len(y) < 1:
+79             use = \textcolor{keyword}{False}
+80         \textcolor{keywordflow}{if} use:
+81             s = \textcolor{stringliteral}{'text:'} + x + \textcolor{stringliteral}{'\(\backslash\)tlabels:'} + y + \textcolor{stringliteral}{'\(\backslash\)tepisode\_done:True'}
+82             fout.write(\textcolor{stringliteral}{'\{\} \(\backslash\)n'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(s))
+83     fw1.close()
+84     fw2.close()
+85     fw3.close()
+86 
+87 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1twitter_1_1build_aea2acf2542f3fb1294fa121bb7cb1a76}\label{namespaceparlai_1_1tasks_1_1twitter_1_1build_aea2acf2542f3fb1294fa121bb7cb1a76}} 
+\index{parlai\+::tasks\+::twitter\+::build@{parlai\+::tasks\+::twitter\+::build}!replace\+\_\+emoji@{replace\+\_\+emoji}}
+\index{replace\+\_\+emoji@{replace\+\_\+emoji}!parlai\+::tasks\+::twitter\+::build@{parlai\+::tasks\+::twitter\+::build}}
+\subsubsection{\texorpdfstring{replace\+\_\+emoji()}{replace\_emoji()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+twitter.\+build.\+replace\+\_\+emoji (\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})}
+
+
+
+Definition at line 34 of file build.\+py.
+
+
+\begin{DoxyCode}
+34 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1twitter_1_1build_aea2acf2542f3fb1294fa121bb7cb1a76}{replace\_emoji}(x):
+35     \textcolor{keywordflow}{if} x \textcolor{keywordflow}{in} UNICODE\_EMOJI.keys():
+36         \textcolor{keywordflow}{return} \textcolor{stringliteral}{' '} + UNICODE\_EMOJI[x].replace(\textcolor{stringliteral}{':'}, \textcolor{stringliteral}{'@'}) + \textcolor{stringliteral}{' '}
+37     \textcolor{keywordflow}{else}:
+38         \textcolor{keywordflow}{return} x
+39 
+40 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1twitter_1_1build_a6296215f669301c1e46b7588e1291ae7}\label{namespaceparlai_1_1tasks_1_1twitter_1_1build_a6296215f669301c1e46b7588e1291ae7}} 
+\index{parlai\+::tasks\+::twitter\+::build@{parlai\+::tasks\+::twitter\+::build}!split\+\_\+punctuation@{split\+\_\+punctuation}}
+\index{split\+\_\+punctuation@{split\+\_\+punctuation}!parlai\+::tasks\+::twitter\+::build@{parlai\+::tasks\+::twitter\+::build}}
+\subsubsection{\texorpdfstring{split\+\_\+punctuation()}{split\_punctuation()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+twitter.\+build.\+split\+\_\+punctuation (\begin{DoxyParamCaption}\item[{}]{x }\end{DoxyParamCaption})}
+
+
+
+Definition at line 41 of file build.\+py.
+
+
+\begin{DoxyCode}
+41 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1twitter_1_1build_a6296215f669301c1e46b7588e1291ae7}{split\_punctuation}(x):
+42     \textcolor{keywordflow}{return} (
+43         x.replace(\textcolor{stringliteral}{'.'}, \textcolor{stringliteral}{' . '})
+44         .replace(\textcolor{stringliteral}{'. . .'}, \textcolor{stringliteral}{'...'})
+45         .replace(\textcolor{stringliteral}{','}, \textcolor{stringliteral}{' , '})
+46         .replace(\textcolor{stringliteral}{';'}, \textcolor{stringliteral}{' ; '})
+47         .replace(\textcolor{stringliteral}{':'}, \textcolor{stringliteral}{' : '})
+48         .replace(\textcolor{stringliteral}{'!'}, \textcolor{stringliteral}{' ! '})
+49         .replace(\textcolor{stringliteral}{'?'}, \textcolor{stringliteral}{' ? '})
+50         .replace(\textcolor{stringliteral}{'"'}, \textcolor{stringliteral}{' " '})
+51         .replace(\textcolor{stringliteral}{'('}, \textcolor{stringliteral}{' ( '})
+52         .replace(\textcolor{stringliteral}{')'}, \textcolor{stringliteral}{' ) '})
+53     )
+54 
+55 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1twitter_1_1build_abba1eb3a3cdb532a871ad3e5038c065b}\label{namespaceparlai_1_1tasks_1_1twitter_1_1build_abba1eb3a3cdb532a871ad3e5038c065b}} 
+\index{parlai\+::tasks\+::twitter\+::build@{parlai\+::tasks\+::twitter\+::build}!R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}}
+\index{R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}!parlai\+::tasks\+::twitter\+::build@{parlai\+::tasks\+::twitter\+::build}}
+\subsubsection{\texorpdfstring{R\+E\+S\+O\+U\+R\+C\+ES}{RESOURCES}}
+{\footnotesize\ttfamily parlai.\+tasks.\+twitter.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
+
+
+
+Definition at line 18 of file build.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1twitter_1_1build_a450f6716ab61ba4f1227e35f897d58da}\label{namespaceparlai_1_1tasks_1_1twitter_1_1build_a450f6716ab61ba4f1227e35f897d58da}} 
+\index{parlai\+::tasks\+::twitter\+::build@{parlai\+::tasks\+::twitter\+::build}!zipped@{zipped}}
+\index{zipped@{zipped}!parlai\+::tasks\+::twitter\+::build@{parlai\+::tasks\+::twitter\+::build}}
+\subsubsection{\texorpdfstring{zipped}{zipped}}
+{\footnotesize\ttfamily bool parlai.\+tasks.\+twitter.\+build.\+zipped = False,}
+
+
+
+Definition at line 23 of file build.\+py.
+

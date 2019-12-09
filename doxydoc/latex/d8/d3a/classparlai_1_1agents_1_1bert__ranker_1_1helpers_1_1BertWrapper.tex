@@ -1,0 +1,226 @@
+\hypertarget{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper}{}\section{parlai.\+agents.\+bert\+\_\+ranker.\+helpers.\+Bert\+Wrapper Class Reference}
+\label{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper}\index{parlai.\+agents.\+bert\+\_\+ranker.\+helpers.\+Bert\+Wrapper@{parlai.\+agents.\+bert\+\_\+ranker.\+helpers.\+Bert\+Wrapper}}
+
+
+Inheritance diagram for parlai.\+agents.\+bert\+\_\+ranker.\+helpers.\+Bert\+Wrapper\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{d4/d7c/classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+agents.\+bert\+\_\+ranker.\+helpers.\+Bert\+Wrapper\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{d7/d7f/classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_ad21b2bd2d710a64477265cf882f6c79a}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_a0a706d97aa94500a65154f1ce58c598b}{bert\+\_\+model}, output\+\_\+dim, \hyperlink{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_ae1ec954dac72452d7b156a15f488c024}{add\+\_\+transformer\+\_\+layer}=False, \hyperlink{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_a9223033165d667d6449fdc463d268fe4}{layer\+\_\+pulled}=-\/1, \hyperlink{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_a8943b309044ab440e4ff53e8a1f7e404}{aggregation}=\char`\"{}first\char`\"{})
+\item 
+def \hyperlink{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_a29a138ccda9ff978a641e5f6e0949009}{forward} (self, token\+\_\+ids, segment\+\_\+ids, attention\+\_\+mask)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_a9223033165d667d6449fdc463d268fe4}{layer\+\_\+pulled}
+\item 
+\hyperlink{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_a8943b309044ab440e4ff53e8a1f7e404}{aggregation}
+\item 
+\hyperlink{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_ae1ec954dac72452d7b156a15f488c024}{add\+\_\+transformer\+\_\+layer}
+\item 
+\hyperlink{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_ac94b4da508521ec992bfe9a5f43fd339}{additional\+\_\+transformer\+\_\+layer}
+\item 
+\hyperlink{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_a9c1172be102ac64b708d99aaff6bd442}{additional\+\_\+linear\+\_\+layer}
+\item 
+\hyperlink{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_a0a706d97aa94500a65154f1ce58c598b}{bert\+\_\+model}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Adds a optional transformer layer and a linear layer on top of BERT.
+\end{DoxyVerb}
+ 
+
+Definition at line 100 of file helpers.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_ad21b2bd2d710a64477265cf882f6c79a}\label{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_ad21b2bd2d710a64477265cf882f6c79a}} 
+\index{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper@{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper@{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+bert\+\_\+ranker.\+helpers.\+Bert\+Wrapper.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{bert\+\_\+model,  }\item[{}]{output\+\_\+dim,  }\item[{}]{add\+\_\+transformer\+\_\+layer = {\ttfamily False},  }\item[{}]{layer\+\_\+pulled = {\ttfamily -\/1},  }\item[{}]{aggregation = {\ttfamily \char`\"{}first\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 112 of file helpers.\+py.
+
+
+\begin{DoxyCode}
+112     ):
+113         super(BertWrapper, self).\_\_init\_\_()
+114         self.layer\_pulled = layer\_pulled
+115         self.aggregation = aggregation
+116         self.add\_transformer\_layer = add\_transformer\_layer
+117         \textcolor{comment}{# deduce bert output dim from the size of embeddings}
+118         bert\_output\_dim = bert\_model.embeddings.word\_embeddings.weight.size(1)
+119 
+120         \textcolor{keywordflow}{if} add\_transformer\_layer:
+121             config\_for\_one\_layer = BertConfig(
+122                 0,
+123                 hidden\_size=bert\_output\_dim,
+124                 num\_attention\_heads=\hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(bert\_output\_dim / 64),
+125                 intermediate\_size=3072,
+126                 hidden\_act=\textcolor{stringliteral}{'gelu'},
+127             )
+128             self.additional\_transformer\_layer = BertLayer(config\_for\_one\_layer)
+129         self.additional\_linear\_layer = torch.nn.Linear(bert\_output\_dim, output\_dim)
+130         self.bert\_model = bert\_model
+131 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_a29a138ccda9ff978a641e5f6e0949009}\label{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_a29a138ccda9ff978a641e5f6e0949009}} 
+\index{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper@{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper}!forward@{forward}}
+\index{forward@{forward}!parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper@{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper}}
+\subsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+bert\+\_\+ranker.\+helpers.\+Bert\+Wrapper.\+forward (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{token\+\_\+ids,  }\item[{}]{segment\+\_\+ids,  }\item[{}]{attention\+\_\+mask }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Forward pass.
+\end{DoxyVerb}
+ 
+
+Definition at line 132 of file helpers.\+py.
+
+
+\begin{DoxyCode}
+132     \textcolor{keyword}{def }forward(self, token\_ids, segment\_ids, attention\_mask):
+133         \textcolor{stringliteral}{"""}
+134 \textcolor{stringliteral}{        Forward pass.}
+135 \textcolor{stringliteral}{        """}
+136         output\_bert, output\_pooler = self.bert\_model(
+137             token\_ids, segment\_ids, attention\_mask
+138         )
+139         \textcolor{comment}{# output\_bert is a list of 12 (for bert base) layers.}
+140         layer\_of\_interest = output\_bert[self.layer\_pulled]
+141         dtype = next(self.parameters()).dtype
+142         \textcolor{keywordflow}{if} self.add\_transformer\_layer:
+143             \textcolor{comment}{# Follow up by yet another transformer layer}
+144             extended\_attention\_mask = attention\_mask.unsqueeze(1).unsqueeze(2)
+145             extended\_attention\_mask = (~extended\_attention\_mask).to(dtype) * 
+      \hyperlink{namespaceparlai_1_1utils_1_1misc_a68c44ca571de7149b683539db659c330}{neginf}(
+146                 dtype
+147             )
+148             embedding\_layer = self.additional\_transformer\_layer(
+149                 layer\_of\_interest, extended\_attention\_mask
+150             )
+151         \textcolor{keywordflow}{else}:
+152             embedding\_layer = layer\_of\_interest
+153 
+154         \textcolor{keywordflow}{if} self.aggregation == \textcolor{stringliteral}{"mean"}:
+155             \textcolor{comment}{#  consider the average of all the output except CLS.}
+156             \textcolor{comment}{# obviously ignores masked elements}
+157             outputs\_of\_interest = embedding\_layer[:, 1:, :]
+158             mask = attention\_mask[:, 1:].type\_as(embedding\_layer).unsqueeze(2)
+159             sumed\_embeddings = torch.sum(outputs\_of\_interest * mask, dim=1)
+160             nb\_elems = torch.sum(attention\_mask[:, 1:].\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(dtype), dim=1).unsqueeze(1)
+161             embeddings = sumed\_embeddings / nb\_elems
+162         \textcolor{keywordflow}{elif} self.aggregation == \textcolor{stringliteral}{"max"}:
+163             \textcolor{comment}{#  consider the max of all the output except CLS}
+164             outputs\_of\_interest = embedding\_layer[:, 1:, :]
+165             mask = (~attention\_mask[:, 1:]).\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(dtype).unsqueeze(2) * 
+      \hyperlink{namespaceparlai_1_1utils_1_1misc_a68c44ca571de7149b683539db659c330}{neginf}(dtype)
+166             embeddings, \_ = torch.max(outputs\_of\_interest + mask, dim=1)
+167         \textcolor{keywordflow}{else}:
+168             \textcolor{comment}{# easiest, we consider the output of "CLS" as the embedding}
+169             embeddings = embedding\_layer[:, 0, :]
+170 
+171         \textcolor{comment}{# We need this in case of dimensionality reduction}
+172         result = self.additional\_linear\_layer(embeddings)
+173 
+174         \textcolor{comment}{# Sort of hack to make it work with distributed: this way the pooler layer}
+175         \textcolor{comment}{# is used for grad computation, even though it does not change anything...}
+176         \textcolor{comment}{# in practice, it just adds a very (768*768) x (768*batchsize) matmul}
+177         result += 0 * torch.sum(output\_pooler)
+178         \textcolor{keywordflow}{return} result
+179 
+180 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_ae1ec954dac72452d7b156a15f488c024}\label{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_ae1ec954dac72452d7b156a15f488c024}} 
+\index{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper@{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper}!add\+\_\+transformer\+\_\+layer@{add\+\_\+transformer\+\_\+layer}}
+\index{add\+\_\+transformer\+\_\+layer@{add\+\_\+transformer\+\_\+layer}!parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper@{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper}}
+\subsubsection{\texorpdfstring{add\+\_\+transformer\+\_\+layer}{add\_transformer\_layer}}
+{\footnotesize\ttfamily parlai.\+agents.\+bert\+\_\+ranker.\+helpers.\+Bert\+Wrapper.\+add\+\_\+transformer\+\_\+layer}
+
+
+
+Definition at line 116 of file helpers.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_a9c1172be102ac64b708d99aaff6bd442}\label{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_a9c1172be102ac64b708d99aaff6bd442}} 
+\index{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper@{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper}!additional\+\_\+linear\+\_\+layer@{additional\+\_\+linear\+\_\+layer}}
+\index{additional\+\_\+linear\+\_\+layer@{additional\+\_\+linear\+\_\+layer}!parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper@{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper}}
+\subsubsection{\texorpdfstring{additional\+\_\+linear\+\_\+layer}{additional\_linear\_layer}}
+{\footnotesize\ttfamily parlai.\+agents.\+bert\+\_\+ranker.\+helpers.\+Bert\+Wrapper.\+additional\+\_\+linear\+\_\+layer}
+
+
+
+Definition at line 129 of file helpers.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_ac94b4da508521ec992bfe9a5f43fd339}\label{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_ac94b4da508521ec992bfe9a5f43fd339}} 
+\index{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper@{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper}!additional\+\_\+transformer\+\_\+layer@{additional\+\_\+transformer\+\_\+layer}}
+\index{additional\+\_\+transformer\+\_\+layer@{additional\+\_\+transformer\+\_\+layer}!parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper@{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper}}
+\subsubsection{\texorpdfstring{additional\+\_\+transformer\+\_\+layer}{additional\_transformer\_layer}}
+{\footnotesize\ttfamily parlai.\+agents.\+bert\+\_\+ranker.\+helpers.\+Bert\+Wrapper.\+additional\+\_\+transformer\+\_\+layer}
+
+
+
+Definition at line 128 of file helpers.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_a8943b309044ab440e4ff53e8a1f7e404}\label{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_a8943b309044ab440e4ff53e8a1f7e404}} 
+\index{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper@{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper}!aggregation@{aggregation}}
+\index{aggregation@{aggregation}!parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper@{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper}}
+\subsubsection{\texorpdfstring{aggregation}{aggregation}}
+{\footnotesize\ttfamily parlai.\+agents.\+bert\+\_\+ranker.\+helpers.\+Bert\+Wrapper.\+aggregation}
+
+
+
+Definition at line 115 of file helpers.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_a0a706d97aa94500a65154f1ce58c598b}\label{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_a0a706d97aa94500a65154f1ce58c598b}} 
+\index{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper@{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper}!bert\+\_\+model@{bert\+\_\+model}}
+\index{bert\+\_\+model@{bert\+\_\+model}!parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper@{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper}}
+\subsubsection{\texorpdfstring{bert\+\_\+model}{bert\_model}}
+{\footnotesize\ttfamily parlai.\+agents.\+bert\+\_\+ranker.\+helpers.\+Bert\+Wrapper.\+bert\+\_\+model}
+
+
+
+Definition at line 130 of file helpers.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_a9223033165d667d6449fdc463d268fe4}\label{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_a9223033165d667d6449fdc463d268fe4}} 
+\index{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper@{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper}!layer\+\_\+pulled@{layer\+\_\+pulled}}
+\index{layer\+\_\+pulled@{layer\+\_\+pulled}!parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper@{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper}}
+\subsubsection{\texorpdfstring{layer\+\_\+pulled}{layer\_pulled}}
+{\footnotesize\ttfamily parlai.\+agents.\+bert\+\_\+ranker.\+helpers.\+Bert\+Wrapper.\+layer\+\_\+pulled}
+
+
+
+Definition at line 114 of file helpers.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/agents/bert\+\_\+ranker/\hyperlink{helpers_8py}{helpers.\+py}\end{DoxyCompactItemize}

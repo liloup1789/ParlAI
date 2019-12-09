@@ -1,0 +1,396 @@
+\hypertarget{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat}{}\section{projects.\+controllable\+\_\+dialogue.\+eval\+\_\+wordstat Namespace Reference}
+\label{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat}\index{projects.\+controllable\+\_\+dialogue.\+eval\+\_\+wordstat@{projects.\+controllable\+\_\+dialogue.\+eval\+\_\+wordstat}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_aa40ff30af74bd5824589612828146ec8}{setup\+\_\+args} (\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_a9599ab33fd286db6a73c246ab80de27f}{parser}=None)
+\item 
+def \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_af8f7aeddab4a5c7f0a5597bdb09f40ae}{get\+\_\+word\+\_\+stats} (text, agent\+\_\+dict, bins=(0, 100, 1000, 100000))
+\item 
+def \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_a1bc3cda7d486add0d740338df4688622}{update\+\_\+sent\+\_\+attr\+\_\+stats} (sent\+\_\+attrs, history, prediction)
+\item 
+def \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_aa89fea1e83d255fa77e81e73a7d81161}{eval\+\_\+wordstat} (opt, \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_ada9cf33816fefa715c6df2aee0b8125d}{print\+\_\+parser}=None)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_a9599ab33fd286db6a73c246ab80de27f}{parser}
+\item 
+\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_ada1c5b8154efb70c2be3cad4e8ad71e1}{print\+\_\+args}
+\item 
+\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_ada9cf33816fefa715c6df2aee0b8125d}{print\+\_\+parser}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_aa89fea1e83d255fa77e81e73a7d81161}\label{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_aa89fea1e83d255fa77e81e73a7d81161}} 
+\index{projects\+::controllable\+\_\+dialogue\+::eval\+\_\+wordstat@{projects\+::controllable\+\_\+dialogue\+::eval\+\_\+wordstat}!eval\+\_\+wordstat@{eval\+\_\+wordstat}}
+\index{eval\+\_\+wordstat@{eval\+\_\+wordstat}!projects\+::controllable\+\_\+dialogue\+::eval\+\_\+wordstat@{projects\+::controllable\+\_\+dialogue\+::eval\+\_\+wordstat}}
+\subsubsection{\texorpdfstring{eval\+\_\+wordstat()}{eval\_wordstat()}}
+{\footnotesize\ttfamily def projects.\+controllable\+\_\+dialogue.\+eval\+\_\+wordstat.\+eval\+\_\+wordstat (\begin{DoxyParamCaption}\item[{}]{opt,  }\item[{}]{print\+\_\+parser = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Evaluates a model.
+
+:param opt: tells the evaluation function how to run
+:param print_parser: if provided, prints the options that are set within the
+    model after loading the model
+\end{DoxyVerb}
+ 
+
+Definition at line 120 of file eval\+\_\+wordstat.\+py.
+
+
+\begin{DoxyCode}
+120 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_aa89fea1e83d255fa77e81e73a7d81161}{eval\_wordstat}(opt, print\_parser=None):
+121     \textcolor{stringliteral}{"""}
+122 \textcolor{stringliteral}{    Evaluates a model.}
+123 \textcolor{stringliteral}{}
+124 \textcolor{stringliteral}{    :param opt: tells the evaluation function how to run}
+125 \textcolor{stringliteral}{    :param print\_parser: if provided, prints the options that are set within the}
+126 \textcolor{stringliteral}{        model after loading the model}
+127 \textcolor{stringliteral}{    """}
+128     random.seed(42)
+129 
+130     \textcolor{comment}{# Setup control information}
+131     \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controls_aafbe257df1791349439cc63c99de8b5e}{initialize\_control\_information}(opt)
+132 
+133     \textcolor{comment}{# Create model and assign it to the specified task}
+134     agent = \hyperlink{namespaceparlai_1_1core_1_1agents_ad0d54074d4bcc148bb415ab5515a53b5}{create\_agent}(opt, requireModelExists=\textcolor{keyword}{True})
+135     world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(opt, agent)
+136 
+137     \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'external\_dict'}):
+138         print(\textcolor{stringliteral}{'[ Using external dictionary from: \{\} ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(opt[\textcolor{stringliteral}{'external\_dict'}]))
+139         dict\_opt = copy.deepcopy(opt)
+140         dict\_opt[\textcolor{stringliteral}{'dict\_file'}] = opt[\textcolor{stringliteral}{'external\_dict'}]
+141         dictionary = DictionaryAgent(dict\_opt)
+142     \textcolor{keywordflow}{else}:
+143         print(\textcolor{stringliteral}{'[ Using model bundled dictionary ]'})
+144         dictionary = agent.dict
+145 
+146     batch\_size = opt[\textcolor{stringliteral}{'batchsize'}]
+147 
+148     \textcolor{keywordflow}{if} print\_parser:
+149         \textcolor{comment}{# Show arguments after loading model}
+150         print\_parser.opt = agent.opt
+151         print\_parser.print\_args()
+152     log\_every\_n\_secs = opt.get(\textcolor{stringliteral}{'log\_every\_n\_secs'}, -1)
+153     \textcolor{keywordflow}{if} log\_every\_n\_secs <= 0:
+154         log\_every\_n\_secs = \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(\textcolor{stringliteral}{'inf'})
+155     log\_time = TimeLogger()
+156 
+157     data = \{\}  \textcolor{comment}{# This will be written to the output json file}
+158     data[\textcolor{stringliteral}{'opt'}] = agent.opt  \textcolor{comment}{# Save the opt to json}
+159 
+160     \textcolor{comment}{# Determine the output filename}
+161     \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'gold\_response'}]:  \textcolor{comment}{# Special output file for gold response}
+162         model\_dir, \_ = os.path.split(opt.get(\textcolor{stringliteral}{'model\_file'}))
+163         outfile = os.path.join(model\_dir, \textcolor{stringliteral}{'goldresponse'})
+164         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'use\_reply'}] != \textcolor{stringliteral}{'label'}:
+165             \textcolor{keywordflow}{raise} ValueError(
+166                 \textcolor{stringliteral}{'You should set --use-reply label (not --use-reply model) '}
+167                 \textcolor{stringliteral}{'when measuring goldresponse stats'}
+168             )
+169     \textcolor{keywordflow}{else}:
+170         outfile = \textcolor{stringliteral}{"%s.%s.%s.%s"} % (
+171             opt.get(\textcolor{stringliteral}{'model\_file'}),
+172             opt.get(\textcolor{stringliteral}{'datatype'}),
+173             \textcolor{stringliteral}{"use%sreply"} % agent.opt[\textcolor{stringliteral}{'use\_reply'}],
+174             \textcolor{stringliteral}{"beam%i"} % agent.opt[\textcolor{stringliteral}{'beam\_size'}],
+175         )
+176         \textcolor{keywordflow}{if} agent.opt[\textcolor{stringliteral}{'beam\_size'}] > 1:
+177             outfile += \textcolor{stringliteral}{".beamminnbest%i"} % agent.opt[\textcolor{stringliteral}{'beam\_min\_n\_best'}]
+178         \textcolor{keywordflow}{if} len(agent.control\_settings) > 0:
+179             outfile += \textcolor{stringliteral}{".setcontrols:"} + \textcolor{stringliteral}{"\_"}.join(
+180                 [
+181                     \textcolor{stringliteral}{"%s%s"} % (c, \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(agent.control\_settings[c][\textcolor{stringliteral}{'set\_value'}]))
+182                     \textcolor{keywordflow}{for} c \textcolor{keywordflow}{in} sorted(agent.control\_settings.keys())
+183                 ]
+184             )
+185         \textcolor{keywordflow}{if} agent.opt[\textcolor{stringliteral}{'beam\_reorder'}] \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} [\textcolor{stringliteral}{'none'}, \textcolor{keyword}{False}]:
+186             outfile += \textcolor{stringliteral}{".beamreorder\_%s"} % agent.opt[\textcolor{stringliteral}{'beam\_reorder'}]
+187         \textcolor{keywordflow}{if} len(agent.wd\_features) > 0:
+188             sorted\_bfw = sorted(
+189                 list(zip(agent.wd\_features, agent.wd\_wts)), key=\textcolor{keyword}{lambda} x: x[0]
+190             )
+191             outfile += \textcolor{stringliteral}{".WDfeatures:"} + \textcolor{stringliteral}{"\_"}.join(
+192                 [\textcolor{stringliteral}{"%s%s"} % (f, \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(w)) \textcolor{keywordflow}{for} f, w \textcolor{keywordflow}{in} sorted\_bfw]
+193             )
+194     \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'num\_examples'}] != -1:
+195         outfile += \textcolor{stringliteral}{".numex%i"} % opt[\textcolor{stringliteral}{'num\_examples'}]
+196     outfile += \textcolor{stringliteral}{".wordstats.json"}
+197     print(\textcolor{stringliteral}{"\(\backslash\)nOutfile: %s\(\backslash\)n"} % outfile)
+198 
+199     cnt = 0
+200     word\_statistics = \{
+201         \textcolor{stringliteral}{'mean\_wlength'}: [],  \textcolor{comment}{# list of length (in words) of utterances}
+202         \textcolor{stringliteral}{'mean\_clength'}: [],  \textcolor{comment}{# list of length (in chars) of utterances}
+203         \textcolor{stringliteral}{'freqs\_cnt'}: Counter(),  \textcolor{comment}{# Counter for word frequencies, bucketed}
+204         \textcolor{stringliteral}{'word\_cnt'}: 0,  \textcolor{comment}{# total number of words in all utterances}
+205         \textcolor{stringliteral}{'pred\_list'}: [],  \textcolor{comment}{# list of generated utterances after applying normalize\_answer}
+206         \textcolor{stringliteral}{'pure\_pred\_list'}: [],  \textcolor{comment}{# list of generated utterances}
+207         \textcolor{stringliteral}{'context\_list'}: [],  \textcolor{comment}{# list of text inputs (persona and conversation history)}
+208     \}
+209     bins = [\hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(i) \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} opt[\textcolor{stringliteral}{'freq\_bins'}].split(\textcolor{stringliteral}{','})]
+210 
+211     \textcolor{comment}{# This dictionary records all the sentence-level controllable attributes}
+212     \textcolor{comment}{# For each attribute, we have a list of all the values}
+213     sent\_attrs = \{attr: [] \textcolor{keywordflow}{for} attr \textcolor{keywordflow}{in} ATTR2SENTSCOREFN.keys()\}  \textcolor{comment}{# str to list of floats}
+214 
+215     \textcolor{comment}{# histories will be a list of ConvAI2History objects}
+216     histories = []
+217 
+218     \textcolor{keyword}{def }process\_prediction(prediction, word\_statistics):
+219         word\_statistics[\textcolor{stringliteral}{'pred\_list'}].append(\hyperlink{namespaceparlai_1_1core_1_1metrics_ae7769a6b628f41081e0f43043d52031a}{normalize\_answer}(prediction))
+220         freqs, \_cnt, wlength, clength = \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_af8f7aeddab4a5c7f0a5597bdb09f40ae}{get\_word\_stats}(
+221             prediction, dictionary, bins=bins
+222         )
+223         word\_statistics[\textcolor{stringliteral}{'word\_cnt'}] += \_cnt
+224         word\_statistics[\textcolor{stringliteral}{'mean\_wlength'}].append(wlength)
+225         word\_statistics[\textcolor{stringliteral}{'mean\_clength'}].append(clength)
+226         word\_statistics[\textcolor{stringliteral}{'freqs\_cnt'}] += Counter(freqs)
+227         \textcolor{keywordflow}{return} word\_statistics
+228 
+229     t0 = time.time()
+230     \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} world.epoch\_done():
+231         world.parley()
+232         \textcolor{comment}{# orig eval\_wordstat.py handles bsz=1 but for simplicity we assume bsz>1}
+233         \textcolor{keyword}{assert} batch\_size != 1
+234         \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} world.worlds:
+235             \textcolor{keywordflow}{try}:
+236                 \textcolor{keywordflow}{try}:
+237                     response\_act = w.acts[-1]
+238                     prediction = response\_act[\textcolor{stringliteral}{'text'}]
+239                 \textcolor{keywordflow}{except} KeyError:
+240                     \textcolor{keywordflow}{continue}
+241                 \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'gold\_response'}]:
+242                     \textcolor{comment}{# If we're measuring gold response, use eval\_label as prediction}
+243                     prediction = w.acts[0][\textcolor{stringliteral}{'eval\_labels'}][0]
+244                     response\_act = \{\textcolor{stringliteral}{'text'}: prediction\}
+245                 word\_statistics[\textcolor{stringliteral}{'context\_list'}].append(w.acts[0][\textcolor{stringliteral}{'text'}])
+246                 word\_statistics[\textcolor{stringliteral}{'pure\_pred\_list'}].append(prediction)
+247             \textcolor{keywordflow}{except} IndexError:
+248                 \textcolor{keywordflow}{continue}
+249             cnt += 1
+250             word\_statistics = process\_prediction(prediction, word\_statistics)
+251 
+252             \textcolor{comment}{# Compute and record sentence-level attributes}
+253             history = ConvAI2History(w.acts[0][\textcolor{stringliteral}{'text'}])
+254             histories.append(history)
+255             sent\_attrs = \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_a1bc3cda7d486add0d740338df4688622}{update\_sent\_attr\_stats}(sent\_attrs, history, prediction)
+256 
+257         \textcolor{comment}{# Periodically log some info}
+258         \textcolor{keywordflow}{if} log\_time.time() > log\_every\_n\_secs:
+259             report = world.report()
+260             text, report = log\_time.log(report[\textcolor{stringliteral}{'exs'}], world.num\_examples(), report)
+261             print(text)
+262 
+263         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'num\_examples'}] > 0 \textcolor{keywordflow}{and} cnt >= opt[\textcolor{stringliteral}{'num\_examples'}]:
+264             \textcolor{keywordflow}{break}
+265     \textcolor{keywordflow}{if} world.epoch\_done():
+266         print(\textcolor{stringliteral}{"EPOCH DONE"})
+267     print(\textcolor{stringliteral}{"Time to process %i examples: %f seconds"} % (cnt, time.time() - t0))
+268 
+269     \textcolor{comment}{# Compute percent unique}
+270     \textcolor{comment}{# Note this is w.r.t. normalized pred\_list not original pure\_pred\_list}
+271     unique\_list = []
+272     cntr = Counter(word\_statistics[\textcolor{stringliteral}{'pred\_list'}])
+273     \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} cntr.items():
+274         \textcolor{keywordflow}{if} v == 1:
+275             unique\_list.append(k)
+276     unique\_percent = len(unique\_list) / len(word\_statistics[\textcolor{stringliteral}{'pred\_list'}]) * 100
+277 
+278     \textcolor{comment}{# Print a final report}
+279     report = world.report()
+280     \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'gold\_response'}]:
+281         report[\textcolor{stringliteral}{'ppl'}] = 0.0  \textcolor{comment}{# For gold responses, overwrite the perplexity}
+282     print(report)
+283 
+284     \textcolor{comment}{# Put all information in data dict}
+285     data[\textcolor{stringliteral}{'unique\_percent'}] = unique\_percent  \textcolor{comment}{# percent of all responses that are unique}
+286     data[\textcolor{stringliteral}{'word\_statistics'}] = word\_statistics  \textcolor{comment}{# word stats, as in orig eval\_wordstat}
+287     data[\textcolor{stringliteral}{'report'}] = report  \textcolor{comment}{# the final report}
+288     data[\textcolor{stringliteral}{'histories'}] = [
+289         (hist.persona\_lines, hist.partner\_utts, hist.own\_utts) \textcolor{keywordflow}{for} hist \textcolor{keywordflow}{in} histories
+290     ]  \textcolor{comment}{# history for each example}
+291     data[\textcolor{stringliteral}{'sent\_attrs'}] = sent\_attrs  \textcolor{comment}{# all sentence attribute values for responses}
+292 
+293     \textcolor{comment}{# Write data to outfile}
+294     print(\textcolor{stringliteral}{"Writing to %s..."} % outfile)
+295     with open(outfile, \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} f:
+296         json.dump(data, f)
+297 
+298 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_af8f7aeddab4a5c7f0a5597bdb09f40ae}\label{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_af8f7aeddab4a5c7f0a5597bdb09f40ae}} 
+\index{projects\+::controllable\+\_\+dialogue\+::eval\+\_\+wordstat@{projects\+::controllable\+\_\+dialogue\+::eval\+\_\+wordstat}!get\+\_\+word\+\_\+stats@{get\+\_\+word\+\_\+stats}}
+\index{get\+\_\+word\+\_\+stats@{get\+\_\+word\+\_\+stats}!projects\+::controllable\+\_\+dialogue\+::eval\+\_\+wordstat@{projects\+::controllable\+\_\+dialogue\+::eval\+\_\+wordstat}}
+\subsubsection{\texorpdfstring{get\+\_\+word\+\_\+stats()}{get\_word\_stats()}}
+{\footnotesize\ttfamily def projects.\+controllable\+\_\+dialogue.\+eval\+\_\+wordstat.\+get\+\_\+word\+\_\+stats (\begin{DoxyParamCaption}\item[{}]{text,  }\item[{}]{agent\+\_\+dict,  }\item[{}]{bins = {\ttfamily (0,~100,~1000,~100000)} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Function which takes text sequence and dict, returns word freq and length
+statistics.
+
+:param sequence: text sequence
+:param agent_dict: can be external dict or dict from the model
+:param bins: list with range boundaries
+:return: freqs dictionary, num words, avg word length, avg char length
+\end{DoxyVerb}
+ 
+
+Definition at line 80 of file eval\+\_\+wordstat.\+py.
+
+
+\begin{DoxyCode}
+80 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_af8f7aeddab4a5c7f0a5597bdb09f40ae}{get\_word\_stats}(text, agent\_dict, bins=(0, 100, 1000, 100000)):
+81     \textcolor{stringliteral}{"""}
+82 \textcolor{stringliteral}{    Function which takes text sequence and dict, returns word freq and length}
+83 \textcolor{stringliteral}{    statistics.}
+84 \textcolor{stringliteral}{}
+85 \textcolor{stringliteral}{    :param sequence: text sequence}
+86 \textcolor{stringliteral}{    :param agent\_dict: can be external dict or dict from the model}
+87 \textcolor{stringliteral}{    :param bins: list with range boundaries}
+88 \textcolor{stringliteral}{    :return: freqs dictionary, num words, avg word length, avg char length}
+89 \textcolor{stringliteral}{    """}
+90     pred\_list = agent\_dict.tokenize(text)
+91     pred\_freq = [agent\_dict.freq[word] \textcolor{keywordflow}{for} word \textcolor{keywordflow}{in} pred\_list]
+92     freqs = \{i: 0 \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} bins\}
+93     \textcolor{keywordflow}{for} f \textcolor{keywordflow}{in} pred\_freq:
+94         \textcolor{keywordflow}{for} b \textcolor{keywordflow}{in} bins:
+95             \textcolor{keywordflow}{if} f <= b:
+96                 freqs[b] += 1
+97                 \textcolor{keywordflow}{break}
+98 
+99     wlength = len(pred\_list)
+100     clength = len(text)  \textcolor{comment}{# including spaces}
+101     \textcolor{keywordflow}{return} freqs, len(pred\_freq), wlength, clength
+102 
+103 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_aa40ff30af74bd5824589612828146ec8}\label{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_aa40ff30af74bd5824589612828146ec8}} 
+\index{projects\+::controllable\+\_\+dialogue\+::eval\+\_\+wordstat@{projects\+::controllable\+\_\+dialogue\+::eval\+\_\+wordstat}!setup\+\_\+args@{setup\+\_\+args}}
+\index{setup\+\_\+args@{setup\+\_\+args}!projects\+::controllable\+\_\+dialogue\+::eval\+\_\+wordstat@{projects\+::controllable\+\_\+dialogue\+::eval\+\_\+wordstat}}
+\subsubsection{\texorpdfstring{setup\+\_\+args()}{setup\_args()}}
+{\footnotesize\ttfamily def projects.\+controllable\+\_\+dialogue.\+eval\+\_\+wordstat.\+setup\+\_\+args (\begin{DoxyParamCaption}\item[{}]{parser = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 36 of file eval\+\_\+wordstat.\+py.
+
+
+\begin{DoxyCode}
+36 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_aa40ff30af74bd5824589612828146ec8}{setup\_args}(parser=None):
+37     \textcolor{keywordflow}{if} parser \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+38         parser = ParlaiParser(\textcolor{keyword}{True}, \textcolor{keyword}{True}, \textcolor{stringliteral}{'compute statistics from model predictions'})
+39     DictionaryAgent.add\_cmdline\_args(parser)
+40 
+41     \textcolor{comment}{# These defaults can be overriden by both .opt file and user's command line flags}
+42     parser.add\_argument(\textcolor{stringliteral}{'-ne'}, \textcolor{stringliteral}{'--num-examples'}, type=int, default=-1)
+43     parser.add\_argument(\textcolor{stringliteral}{'-ltim'}, \textcolor{stringliteral}{'--log-every-n-secs'}, type=float, default=2)
+44     parser.add\_argument(
+45         \textcolor{stringliteral}{'-ed'},
+46         \textcolor{stringliteral}{'--external-dict'},
+47         type=str,
+48         default=\textcolor{keywordtype}{None},
+49         help=\textcolor{stringliteral}{'External dictionary for stat computation'},
+50     )
+51     parser.add\_argument(
+52         \textcolor{stringliteral}{'-fb'},
+53         \textcolor{stringliteral}{'--freq-bins'},
+54         type=str,
+55         default=\textcolor{stringliteral}{'0,100,1000,10000'},
+56         help=\textcolor{stringliteral}{'Bins boundaries for rare words stat'},
+57     )
+58     parser.add\_argument(
+59         \textcolor{stringliteral}{'-gr'},
+60         \textcolor{stringliteral}{'--gold-response'},
+61         type=bool,
+62         default=\textcolor{keyword}{False},
+63         help=\textcolor{stringliteral}{'Compute stats for gold response'},
+64     )
+65 
+66     \textcolor{comment}{# These settings override .opt file but not user's command line flags}
+67     parser.set\_params(
+68         datatype=\textcolor{stringliteral}{'valid'},
+69         task=\textcolor{stringliteral}{'projects.controllable\_dialogue.tasks.agents'},
+70         model=\textcolor{stringliteral}{'
+      projects.controllable\_dialogue.controllable\_seq2seq.controllable\_seq2seq:ControllableSeq2seqAgent'},  \textcolor{comment}{# noqa: E501}
+71         batchsize=64,
+72         beam\_size=20,
+73         beam\_min\_n\_best=10,
+74         use\_reply=\textcolor{stringliteral}{'model'},
+75     )
+76     TensorboardLogger.add\_cmdline\_args(parser)
+77     \textcolor{keywordflow}{return} parser
+78 
+79 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_a1bc3cda7d486add0d740338df4688622}\label{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_a1bc3cda7d486add0d740338df4688622}} 
+\index{projects\+::controllable\+\_\+dialogue\+::eval\+\_\+wordstat@{projects\+::controllable\+\_\+dialogue\+::eval\+\_\+wordstat}!update\+\_\+sent\+\_\+attr\+\_\+stats@{update\+\_\+sent\+\_\+attr\+\_\+stats}}
+\index{update\+\_\+sent\+\_\+attr\+\_\+stats@{update\+\_\+sent\+\_\+attr\+\_\+stats}!projects\+::controllable\+\_\+dialogue\+::eval\+\_\+wordstat@{projects\+::controllable\+\_\+dialogue\+::eval\+\_\+wordstat}}
+\subsubsection{\texorpdfstring{update\+\_\+sent\+\_\+attr\+\_\+stats()}{update\_sent\_attr\_stats()}}
+{\footnotesize\ttfamily def projects.\+controllable\+\_\+dialogue.\+eval\+\_\+wordstat.\+update\+\_\+sent\+\_\+attr\+\_\+stats (\begin{DoxyParamCaption}\item[{}]{sent\+\_\+attrs,  }\item[{}]{history,  }\item[{}]{prediction }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Update the sent_attrs dict with the attributes of a prediction with given history.
+
+Inputs:
+  sent_attrs: dictionary mapping each attr (a string) to a list of floats
+    (the scores).
+  history: a ConvAI2History
+  prediction: string. the response text for which we measure sent attributes
+\end{DoxyVerb}
+ 
+
+Definition at line 104 of file eval\+\_\+wordstat.\+py.
+
+
+\begin{DoxyCode}
+104 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_a1bc3cda7d486add0d740338df4688622}{update\_sent\_attr\_stats}(sent\_attrs, history, prediction):
+105     \textcolor{stringliteral}{"""}
+106 \textcolor{stringliteral}{    Update the sent\_attrs dict with the attributes of a prediction with given history.}
+107 \textcolor{stringliteral}{}
+108 \textcolor{stringliteral}{    Inputs:}
+109 \textcolor{stringliteral}{      sent\_attrs: dictionary mapping each attr (a string) to a list of floats}
+110 \textcolor{stringliteral}{        (the scores).}
+111 \textcolor{stringliteral}{      history: a ConvAI2History}
+112 \textcolor{stringliteral}{      prediction: string. the response text for which we measure sent attributes}
+113 \textcolor{stringliteral}{    """}
+114     \textcolor{keywordflow}{for} attr \textcolor{keywordflow}{in} sent\_attrs.keys():
+115         attr\_score = \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controls_afc2b447cbf1dcb4a754d080d2e611c24}{eval\_attr}(prediction, history, attr)
+116         sent\_attrs[attr].append(attr\_score)
+117     \textcolor{keywordflow}{return} sent\_attrs
+118 
+119 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_a9599ab33fd286db6a73c246ab80de27f}\label{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_a9599ab33fd286db6a73c246ab80de27f}} 
+\index{projects\+::controllable\+\_\+dialogue\+::eval\+\_\+wordstat@{projects\+::controllable\+\_\+dialogue\+::eval\+\_\+wordstat}!parser@{parser}}
+\index{parser@{parser}!projects\+::controllable\+\_\+dialogue\+::eval\+\_\+wordstat@{projects\+::controllable\+\_\+dialogue\+::eval\+\_\+wordstat}}
+\subsubsection{\texorpdfstring{parser}{parser}}
+{\footnotesize\ttfamily projects.\+controllable\+\_\+dialogue.\+eval\+\_\+wordstat.\+parser}
+
+
+
+Definition at line 300 of file eval\+\_\+wordstat.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_ada1c5b8154efb70c2be3cad4e8ad71e1}\label{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_ada1c5b8154efb70c2be3cad4e8ad71e1}} 
+\index{projects\+::controllable\+\_\+dialogue\+::eval\+\_\+wordstat@{projects\+::controllable\+\_\+dialogue\+::eval\+\_\+wordstat}!print\+\_\+args@{print\+\_\+args}}
+\index{print\+\_\+args@{print\+\_\+args}!projects\+::controllable\+\_\+dialogue\+::eval\+\_\+wordstat@{projects\+::controllable\+\_\+dialogue\+::eval\+\_\+wordstat}}
+\subsubsection{\texorpdfstring{print\+\_\+args}{print\_args}}
+{\footnotesize\ttfamily projects.\+controllable\+\_\+dialogue.\+eval\+\_\+wordstat.\+print\+\_\+args}
+
+
+
+Definition at line 301 of file eval\+\_\+wordstat.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_ada9cf33816fefa715c6df2aee0b8125d}\label{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_ada9cf33816fefa715c6df2aee0b8125d}} 
+\index{projects\+::controllable\+\_\+dialogue\+::eval\+\_\+wordstat@{projects\+::controllable\+\_\+dialogue\+::eval\+\_\+wordstat}!print\+\_\+parser@{print\+\_\+parser}}
+\index{print\+\_\+parser@{print\+\_\+parser}!projects\+::controllable\+\_\+dialogue\+::eval\+\_\+wordstat@{projects\+::controllable\+\_\+dialogue\+::eval\+\_\+wordstat}}
+\subsubsection{\texorpdfstring{print\+\_\+parser}{print\_parser}}
+{\footnotesize\ttfamily projects.\+controllable\+\_\+dialogue.\+eval\+\_\+wordstat.\+print\+\_\+parser}
+
+
+
+Definition at line 301 of file eval\+\_\+wordstat.\+py.
+

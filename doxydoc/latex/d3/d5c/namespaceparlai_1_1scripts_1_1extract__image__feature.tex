@@ -1,0 +1,246 @@
+\hypertarget{namespaceparlai_1_1scripts_1_1extract__image__feature}{}\section{parlai.\+scripts.\+extract\+\_\+image\+\_\+feature Namespace Reference}
+\label{namespaceparlai_1_1scripts_1_1extract__image__feature}\index{parlai.\+scripts.\+extract\+\_\+image\+\_\+feature@{parlai.\+scripts.\+extract\+\_\+image\+\_\+feature}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1extract__image__feature_ab634fcc65758e30deaf92980edcc20bd}{setup\+\_\+args} (parser=None)
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1extract__image__feature_a4fa5d8aef45056034f4898531a0f9967}{get\+\_\+dataset\+\_\+class} (opt)
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1extract__image__feature_a6e3b12d361756ec79fbd44abd185387b}{extract\+\_\+feats} (opt)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1extract__image__feature_a6e3b12d361756ec79fbd44abd185387b}\label{namespaceparlai_1_1scripts_1_1extract__image__feature_a6e3b12d361756ec79fbd44abd185387b}} 
+\index{parlai\+::scripts\+::extract\+\_\+image\+\_\+feature@{parlai\+::scripts\+::extract\+\_\+image\+\_\+feature}!extract\+\_\+feats@{extract\+\_\+feats}}
+\index{extract\+\_\+feats@{extract\+\_\+feats}!parlai\+::scripts\+::extract\+\_\+image\+\_\+feature@{parlai\+::scripts\+::extract\+\_\+image\+\_\+feature}}
+\subsubsection{\texorpdfstring{extract\+\_\+feats()}{extract\_feats()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+extract\+\_\+image\+\_\+feature.\+extract\+\_\+feats (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 85 of file extract\+\_\+image\+\_\+feature.\+py.
+
+
+\begin{DoxyCode}
+85 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1extract__image__feature_a6e3b12d361756ec79fbd44abd185387b}{extract\_feats}(opt):
+86     \textcolor{keywordflow}{if} isinstance(opt, ParlaiParser):
+87         print(\textcolor{stringliteral}{'[ Deprecated Warning: extract\_feats should be passed opt not Parser ]'})
+88         opt = opt.parse\_args()
+89     \textcolor{comment}{# Get command line arguments}
+90     opt = copy.deepcopy(opt)
+91     dt = opt[\textcolor{stringliteral}{'datatype'}].split(\textcolor{stringliteral}{':'})[0] + \textcolor{stringliteral}{':ordered'}
+92     opt[\textcolor{stringliteral}{'datatype'}] = dt
+93     bsz = opt.get(\textcolor{stringliteral}{'batchsize'}, 1)
+94     opt[\textcolor{stringliteral}{'no\_cuda'}] = \textcolor{keyword}{False}
+95     opt[\textcolor{stringliteral}{'gpu'}] = 0
+96     opt[\textcolor{stringliteral}{'num\_epochs'}] = 1
+97     opt[\textcolor{stringliteral}{'use\_hdf5'}] = \textcolor{keyword}{False}
+98     opt[\textcolor{stringliteral}{'num\_load\_threads'}] = 20
+99     print(\textcolor{stringliteral}{"[ Loading Images ]"})
+100     \textcolor{comment}{# create repeat label agent and assign it to the specified task}
+101     \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'pytorch\_teacher\_dataset'}) \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+102         agent = RepeatLabelAgent(opt)
+103         world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(opt, agent)
+104 
+105         total\_exs = world.num\_examples()
+106         pbar = tqdm.tqdm(unit=\textcolor{stringliteral}{'ex'}, total=total\_exs)
+107         \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} world.epoch\_done():
+108             world.parley()
+109             pbar.update()
+110         pbar.close()
+111     \textcolor{keywordflow}{elif} opt.get(\textcolor{stringliteral}{'use\_hdf5\_extraction'}, \textcolor{keyword}{False}):
+112         \textcolor{comment}{# TODO Deprecate}
+113         \textcolor{stringliteral}{"""}
+114 \textcolor{stringliteral}{        One can specify a Pytorch Dataset for custom image loading.}
+115 \textcolor{stringliteral}{        """}
+116         nw = opt.get(\textcolor{stringliteral}{'numworkers'}, 1)
+117         im = opt.get(\textcolor{stringliteral}{'image\_mode'}, \textcolor{stringliteral}{'raw'})
+118         opt[\textcolor{stringliteral}{'batchsize'}] = 1
+119         opt[\textcolor{stringliteral}{'extract\_image'}] = \textcolor{keyword}{True}
+120         bsz = 1
+121         \textcolor{keywordflow}{try}:
+122             \textcolor{keyword}{import} torch
+123             \textcolor{keyword}{from} torch.utils.data \textcolor{keyword}{import} DataLoader
+124         \textcolor{keywordflow}{except} ImportError:
+125             \textcolor{keywordflow}{raise} ImportError(\textcolor{stringliteral}{'Need to install Pytorch: go to pytorch.org'})
+126 
+127         dataset = \hyperlink{namespaceparlai_1_1scripts_1_1extract__image__feature_a4fa5d8aef45056034f4898531a0f9967}{get\_dataset\_class}(opt)(opt)
+128         pre\_image\_path, \_ = os.path.split(dataset.image\_path)
+129         image\_path = os.path.join(pre\_image\_path, opt.get(\textcolor{stringliteral}{'image\_mode'}))
+130         images\_built\_file = image\_path + \textcolor{stringliteral}{'.built'}
+131 
+132         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.exists(image\_path) \textcolor{keywordflow}{or} \textcolor{keywordflow}{not} os.path.isfile(images\_built\_file):
+133             \textcolor{stringliteral}{"""}
+134 \textcolor{stringliteral}{            Image features have not been computed yet.}
+135 \textcolor{stringliteral}{            """}
+136             opt[\textcolor{stringliteral}{'num\_load\_threads'}] = 20
+137             agent = RepeatLabelAgent(opt)
+138             \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'task'}] == \textcolor{stringliteral}{'pytorch\_teacher'}:
+139                 \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'pytorch\_teacher\_task'}):
+140                     opt[\textcolor{stringliteral}{'task'}] = opt[\textcolor{stringliteral}{'pytorch\_teacher\_task'}]
+141                 \textcolor{keywordflow}{else}:
+142                     opt[\textcolor{stringliteral}{'task'}] = opt[\textcolor{stringliteral}{'pytorch\_teacher\_dataset'}]
+143             world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(opt, agent)
+144             exs\_seen = 0
+145             total\_exs = world.num\_examples()
+146             pbar = tqdm.tqdm(unit=\textcolor{stringliteral}{'ex'}, total=total\_exs)
+147             print(\textcolor{stringliteral}{'[ Computing and Saving Image Features ]'})
+148             \textcolor{keywordflow}{while} exs\_seen < total\_exs:
+149                 world.parley()
+150                 exs\_seen += bsz
+151                 pbar.update(bsz)
+152             pbar.close()
+153             print(\textcolor{stringliteral}{'[ Feature Computation Done ]'})
+154             with open(images\_built\_file, \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} write:
+155                 write.write(\hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(datetime.datetime.today()))
+156 
+157         dataloader = DataLoader(
+158             dataset,
+159             batch\_size=bsz,
+160             shuffle=\textcolor{keyword}{False},
+161             num\_workers=nw,
+162             collate\_fn=\textcolor{keyword}{lambda} batch: batch[0],
+163         )
+164 
+165         dataset\_shape = \textcolor{keywordtype}{None}
+166         image\_id\_to\_index = \{\}
+167         num\_images = dataset.num\_images()
+168         attention = opt.get(\textcolor{stringliteral}{'attention'}, \textcolor{keyword}{False})
+169         \textcolor{keywordflow}{if} attention:
+170             hdf5\_path = \textcolor{stringliteral}{'\{\}mode\_\{\}.hdf5'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(dataset.image\_path, im)
+171         \textcolor{keywordflow}{else}:
+172             hdf5\_path = \textcolor{stringliteral}{'\{\}mode\_\{\}\_noatt.hdf5'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(dataset.image\_path, im)
+173         image\_id\_to\_idx\_path = \textcolor{stringliteral}{'\{\}mode\_\{\}\_id\_to\_idx.txt'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(dataset.image\_path, im)
+174         hdf5\_built\_file = hdf5\_path + \textcolor{stringliteral}{'.built'}
+175         \textcolor{keywordflow}{if} os.path.isfile(hdf5\_path) \textcolor{keywordflow}{and} os.path.isfile(hdf5\_built\_file):
+176             print(\textcolor{stringliteral}{'[ Images already extracted at: \{\} ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(hdf5\_path))
+177             \textcolor{keywordflow}{return}
+178 
+179         print(\textcolor{stringliteral}{"[ Beginning image extraction for \{\} images ]"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(dt.split(\textcolor{stringliteral}{':'})[0]))
+180         hdf5\_file = h5py.File(hdf5\_path, \textcolor{stringliteral}{'w'})
+181         idx = 0
+182         iterator = tqdm.tqdm(
+183             dataloader, unit=\textcolor{stringliteral}{'batch'}, unit\_scale=\textcolor{keyword}{True}, total=total\_exs // bsz
+184         )
+185         \textcolor{keywordflow}{for} ex \textcolor{keywordflow}{in} iterator:
+186             \textcolor{keywordflow}{if} ex[\textcolor{stringliteral}{'image\_id'}] \textcolor{keywordflow}{in} image\_id\_to\_index:
+187                 \textcolor{keywordflow}{continue}
+188             \textcolor{keywordflow}{else}:
+189                 image\_id\_to\_index[ex[\textcolor{stringliteral}{'image\_id'}]] = idx
+190 
+191             img = ex[\textcolor{stringliteral}{'image'}]
+192             \textcolor{keywordflow}{if} isinstance(img, torch.autograd.Variable):
+193                 img = img.cpu().data
+194 
+195             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} attention:
+196                 nb\_regions = img.size(2) * img.size(3)
+197                 img = img.sum(3).sum(2).div(nb\_regions).view(-1, 2048)
+198 
+199             \textcolor{keywordflow}{if} dataset\_shape \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+200                 \textcolor{keywordflow}{if} attention:
+201                     dataset\_shape = (num\_images, img.size(1), img.size(2), img.size(3))
+202                 \textcolor{keywordflow}{else}:
+203                     dataset\_shape = (num\_images, img.size(1))
+204                 hdf5\_dataset = hdf5\_file.create\_dataset(
+205                     \textcolor{stringliteral}{'images'}, dataset\_shape, dtype=\textcolor{stringliteral}{'f'}
+206                 )
+207 
+208             hdf5\_dataset[idx] = img
+209             idx += 1
+210 
+211         hdf5\_file.close()
+212         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.exists(image\_id\_to\_idx\_path):
+213             with open(image\_id\_to\_idx\_path, \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} f:
+214                 json.dump(image\_id\_to\_index, f)
+215         with open(hdf5\_built\_file, \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} write:
+216             write.write(\hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(datetime.datetime.today()))
+217 
+218     print(\textcolor{stringliteral}{"[ Finished extracting images ]"})
+219 
+220 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1extract__image__feature_a4fa5d8aef45056034f4898531a0f9967}\label{namespaceparlai_1_1scripts_1_1extract__image__feature_a4fa5d8aef45056034f4898531a0f9967}} 
+\index{parlai\+::scripts\+::extract\+\_\+image\+\_\+feature@{parlai\+::scripts\+::extract\+\_\+image\+\_\+feature}!get\+\_\+dataset\+\_\+class@{get\+\_\+dataset\+\_\+class}}
+\index{get\+\_\+dataset\+\_\+class@{get\+\_\+dataset\+\_\+class}!parlai\+::scripts\+::extract\+\_\+image\+\_\+feature@{parlai\+::scripts\+::extract\+\_\+image\+\_\+feature}}
+\subsubsection{\texorpdfstring{get\+\_\+dataset\+\_\+class()}{get\_dataset\_class()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+extract\+\_\+image\+\_\+feature.\+get\+\_\+dataset\+\_\+class (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}To use a custom Pytorch Dataset, specify it on the command line: ``--dataset
+parlai.tasks.vqa_v1.agents:VQADataset``
+
+Note that if the dataset is named ``DefaultDataset``, then you do not need to
+specify its name following the colon; e.g., it would just be: ``--dataset
+parlai.tasks.vqa_v1.agents``
+\end{DoxyVerb}
+ 
+
+Definition at line 65 of file extract\+\_\+image\+\_\+feature.\+py.
+
+
+\begin{DoxyCode}
+65 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1extract__image__feature_a4fa5d8aef45056034f4898531a0f9967}{get\_dataset\_class}(opt):
+66     \textcolor{stringliteral}{"""}
+67 \textcolor{stringliteral}{    To use a custom Pytorch Dataset, specify it on the command line: ``--dataset}
+68 \textcolor{stringliteral}{    parlai.tasks.vqa\_v1.agents:VQADataset``}
+69 \textcolor{stringliteral}{}
+70 \textcolor{stringliteral}{    Note that if the dataset is named ``DefaultDataset``, then you do not need to}
+71 \textcolor{stringliteral}{    specify its name following the colon; e.g., it would just be: ``--dataset}
+72 \textcolor{stringliteral}{    parlai.tasks.vqa\_v1.agents``}
+73 \textcolor{stringliteral}{    """}
+74     dataset\_name = opt.get(\textcolor{stringliteral}{'pytorch\_teacher\_dataset'})
+75     sp = dataset\_name.strip().split(\textcolor{stringliteral}{':'})
+76     module\_name = sp[0]
+77     \textcolor{keywordflow}{if} len(sp) > 1:
+78         dataset = sp[1]
+79     \textcolor{keywordflow}{else}:
+80         dataset = \textcolor{stringliteral}{'DefaultDataset'}
+81     my\_module = importlib.import\_module(module\_name)
+82     \textcolor{keywordflow}{return} getattr(my\_module, dataset)
+83 
+84 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1extract__image__feature_ab634fcc65758e30deaf92980edcc20bd}\label{namespaceparlai_1_1scripts_1_1extract__image__feature_ab634fcc65758e30deaf92980edcc20bd}} 
+\index{parlai\+::scripts\+::extract\+\_\+image\+\_\+feature@{parlai\+::scripts\+::extract\+\_\+image\+\_\+feature}!setup\+\_\+args@{setup\+\_\+args}}
+\index{setup\+\_\+args@{setup\+\_\+args}!parlai\+::scripts\+::extract\+\_\+image\+\_\+feature@{parlai\+::scripts\+::extract\+\_\+image\+\_\+feature}}
+\subsubsection{\texorpdfstring{setup\+\_\+args()}{setup\_args()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+extract\+\_\+image\+\_\+feature.\+setup\+\_\+args (\begin{DoxyParamCaption}\item[{}]{parser = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 35 of file extract\+\_\+image\+\_\+feature.\+py.
+
+
+\begin{DoxyCode}
+35 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1extract__image__feature_ab634fcc65758e30deaf92980edcc20bd}{setup\_args}(parser=None):
+36     \textcolor{keywordflow}{if} parser \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+37         parser = ParlaiParser(\textcolor{keyword}{True}, \textcolor{keyword}{False}, \textcolor{stringliteral}{'Load/extract image features'})
+38     parser.add\_pytorch\_datateacher\_args()
+39     arg\_group = parser.add\_argument\_group(\textcolor{stringliteral}{'Image Extraction'})
+40     arg\_group.add\_argument(
+41         \textcolor{stringliteral}{'--dataset'},
+42         type=str,
+43         default=\textcolor{keywordtype}{None},
+44         help=\textcolor{stringliteral}{'Pytorch Dataset; if specified, will save \(\backslash\)}
+45 \textcolor{stringliteral}{                           the images in one hdf5 file according to how \(\backslash\)}
+46 \textcolor{stringliteral}{                           they are returned by the specified dataset'},
+47     )
+48     arg\_group.add\_argument(
+49         \textcolor{stringliteral}{'-at'},
+50         \textcolor{stringliteral}{'--attention'},
+51         action=\textcolor{stringliteral}{'store\_true'},
+52         help=\textcolor{stringliteral}{'Whether to extract image features with attention \(\backslash\)}
+53 \textcolor{stringliteral}{                           (Note - this is specifically for the mlb\_vqa model)'},
+54     )
+55     arg\_group.add\_argument(
+56         \textcolor{stringliteral}{'--use-hdf5-extraction'},
+57         type=\textcolor{stringliteral}{'bool'},
+58         default=\textcolor{keyword}{False},
+59         help=\textcolor{stringliteral}{'Whether to extract images into an hdf5 dataset'},
+60     )
+61 
+62     \textcolor{keywordflow}{return} parser
+63 
+64 
+\end{DoxyCode}

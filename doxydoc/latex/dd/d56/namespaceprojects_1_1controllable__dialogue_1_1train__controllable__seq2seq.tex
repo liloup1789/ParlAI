@@ -1,0 +1,98 @@
+\hypertarget{namespaceprojects_1_1controllable__dialogue_1_1train__controllable__seq2seq}{}\section{projects.\+controllable\+\_\+dialogue.\+train\+\_\+controllable\+\_\+seq2seq Namespace Reference}
+\label{namespaceprojects_1_1controllable__dialogue_1_1train__controllable__seq2seq}\index{projects.\+controllable\+\_\+dialogue.\+train\+\_\+controllable\+\_\+seq2seq@{projects.\+controllable\+\_\+dialogue.\+train\+\_\+controllable\+\_\+seq2seq}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1train__controllable__seq2seq_a493d97108e1bc85e7dee02310e5303ad}{setup\+\_\+args} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1train__controllable__seq2seq_a60db97f9b237238df4976c0cec5152f0}{parser}
+\item 
+\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1train__controllable__seq2seq_a7c853cd6b318c7e4eb468df8dda5c981}{opt}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1train__controllable__seq2seq_a493d97108e1bc85e7dee02310e5303ad}\label{namespaceprojects_1_1controllable__dialogue_1_1train__controllable__seq2seq_a493d97108e1bc85e7dee02310e5303ad}} 
+\index{projects\+::controllable\+\_\+dialogue\+::train\+\_\+controllable\+\_\+seq2seq@{projects\+::controllable\+\_\+dialogue\+::train\+\_\+controllable\+\_\+seq2seq}!setup\+\_\+args@{setup\+\_\+args}}
+\index{setup\+\_\+args@{setup\+\_\+args}!projects\+::controllable\+\_\+dialogue\+::train\+\_\+controllable\+\_\+seq2seq@{projects\+::controllable\+\_\+dialogue\+::train\+\_\+controllable\+\_\+seq2seq}}
+\subsubsection{\texorpdfstring{setup\+\_\+args()}{setup\_args()}}
+{\footnotesize\ttfamily def projects.\+controllable\+\_\+dialogue.\+train\+\_\+controllable\+\_\+seq2seq.\+setup\+\_\+args (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Defaults for baseline model.
+\end{DoxyVerb}
+ 
+
+Definition at line 15 of file train\+\_\+controllable\+\_\+seq2seq.\+py.
+
+
+\begin{DoxyCode}
+15 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1train__controllable__seq2seq_a493d97108e1bc85e7dee02310e5303ad}{setup\_args}():
+16     \textcolor{stringliteral}{"""}
+17 \textcolor{stringliteral}{    Defaults for baseline model.}
+18 \textcolor{stringliteral}{    """}
+19     parser = tm\_setupargs()
+20 
+21     parser.set\_defaults(
+22         task=\textcolor{stringliteral}{'projects.controllable\_dialogue.tasks.agents'},
+23         model=\textcolor{stringliteral}{'
+      projects.controllable\_dialogue.controllable\_seq2seq.controllable\_seq2seq:ControllableSeq2seqAgent'},  \textcolor{comment}{# noqa: E501}
+24         dict\_file=\textcolor{stringliteral}{'models:controllable\_dialogue/dict\_twit30k\_train\_split'},
+25         dict\_lower=\textcolor{keyword}{True},
+26         dict\_include\_valid=\textcolor{keyword}{True},
+27         dict\_maxexs=-1,
+28         datatype=\textcolor{stringliteral}{'train'},
+29         batchsize=64,
+30         hiddensize=1024,
+31         embeddingsize=300,
+32         attention=\textcolor{stringliteral}{'general'},
+33         numlayers=2,
+34         rnn\_class=\textcolor{stringliteral}{'lstm'},
+35         learningrate=3,
+36         dropout=0.1,
+37         gradient\_clip=0.1,
+38         lookuptable=\textcolor{stringliteral}{'enc\_dec'},
+39         optimizer=\textcolor{stringliteral}{'sgd'},
+40         embedding\_type=\textcolor{stringliteral}{'glove'},
+41         momentum=0.9,
+42         bidirectional=\textcolor{keyword}{False},
+43         context\_length=-1,
+44         person\_tokens=\textcolor{keyword}{True},
+45         add\_p1\_after\_newln=\textcolor{keyword}{True},
+46         beam\_min\_n\_best=30,
+47         validation\_every\_n\_secs=90,
+48         validation\_metric=\textcolor{stringliteral}{'ppl'},
+49         validation\_metric\_mode=\textcolor{stringliteral}{'min'},
+50         validation\_patience=12,
+51         log\_every\_n\_secs=10,
+52         dict\_tokenizer=\textcolor{stringliteral}{'split'},
+53     )
+54     \textcolor{keywordflow}{return} parser
+55 
+56 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1train__controllable__seq2seq_a7c853cd6b318c7e4eb468df8dda5c981}\label{namespaceprojects_1_1controllable__dialogue_1_1train__controllable__seq2seq_a7c853cd6b318c7e4eb468df8dda5c981}} 
+\index{projects\+::controllable\+\_\+dialogue\+::train\+\_\+controllable\+\_\+seq2seq@{projects\+::controllable\+\_\+dialogue\+::train\+\_\+controllable\+\_\+seq2seq}!opt@{opt}}
+\index{opt@{opt}!projects\+::controllable\+\_\+dialogue\+::train\+\_\+controllable\+\_\+seq2seq@{projects\+::controllable\+\_\+dialogue\+::train\+\_\+controllable\+\_\+seq2seq}}
+\subsubsection{\texorpdfstring{opt}{opt}}
+{\footnotesize\ttfamily projects.\+controllable\+\_\+dialogue.\+train\+\_\+controllable\+\_\+seq2seq.\+opt}
+
+
+
+Definition at line 59 of file train\+\_\+controllable\+\_\+seq2seq.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1train__controllable__seq2seq_a60db97f9b237238df4976c0cec5152f0}\label{namespaceprojects_1_1controllable__dialogue_1_1train__controllable__seq2seq_a60db97f9b237238df4976c0cec5152f0}} 
+\index{projects\+::controllable\+\_\+dialogue\+::train\+\_\+controllable\+\_\+seq2seq@{projects\+::controllable\+\_\+dialogue\+::train\+\_\+controllable\+\_\+seq2seq}!parser@{parser}}
+\index{parser@{parser}!projects\+::controllable\+\_\+dialogue\+::train\+\_\+controllable\+\_\+seq2seq@{projects\+::controllable\+\_\+dialogue\+::train\+\_\+controllable\+\_\+seq2seq}}
+\subsubsection{\texorpdfstring{parser}{parser}}
+{\footnotesize\ttfamily projects.\+controllable\+\_\+dialogue.\+train\+\_\+controllable\+\_\+seq2seq.\+parser}
+
+
+
+Definition at line 58 of file train\+\_\+controllable\+\_\+seq2seq.\+py.
+

@@ -1,0 +1,103 @@
+\hypertarget{classparlai_1_1core_1_1message_1_1Message}{}\section{parlai.\+core.\+message.\+Message Class Reference}
+\label{classparlai_1_1core_1_1message_1_1Message}\index{parlai.\+core.\+message.\+Message@{parlai.\+core.\+message.\+Message}}
+
+
+Inheritance diagram for parlai.\+core.\+message.\+Message\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{da/d2d/classparlai_1_1core_1_1message_1_1Message__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+core.\+message.\+Message\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{db/dc8/classparlai_1_1core_1_1message_1_1Message__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1core_1_1message_1_1Message_a2fd83603b06a7da7ab7fc99649d855f6}{\+\_\+\+\_\+setitem\+\_\+\+\_\+} (self, key, val)
+\item 
+def \hyperlink{classparlai_1_1core_1_1message_1_1Message_acbafaa2540a6b2ca6513fe9db49a9291}{force\+\_\+set} (self, key, val)
+\item 
+def \hyperlink{classparlai_1_1core_1_1message_1_1Message_a374ac4a5d73e853960cc0f964b73a7fd}{copy} (self)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Class for observations and actions in ParlAI.
+
+Functions like a dict, but triggers a RuntimeError when calling __setitem__ for a
+key that already exists in the dict.
+\end{DoxyVerb}
+ 
+
+Definition at line 14 of file message.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1core_1_1message_1_1Message_a2fd83603b06a7da7ab7fc99649d855f6}\label{classparlai_1_1core_1_1message_1_1Message_a2fd83603b06a7da7ab7fc99649d855f6}} 
+\index{parlai\+::core\+::message\+::\+Message@{parlai\+::core\+::message\+::\+Message}!\+\_\+\+\_\+setitem\+\_\+\+\_\+@{\+\_\+\+\_\+setitem\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+setitem\+\_\+\+\_\+@{\+\_\+\+\_\+setitem\+\_\+\+\_\+}!parlai\+::core\+::message\+::\+Message@{parlai\+::core\+::message\+::\+Message}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+setitem\+\_\+\+\_\+()}{\_\_setitem\_\_()}}
+{\footnotesize\ttfamily def parlai.\+core.\+message.\+Message.\+\_\+\+\_\+setitem\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{key,  }\item[{}]{val }\end{DoxyParamCaption})}
+
+
+
+Definition at line 22 of file message.\+py.
+
+
+\begin{DoxyCode}
+22     \textcolor{keyword}{def }\_\_setitem\_\_(self, key, val):
+23         \textcolor{keywordflow}{if} key \textcolor{keywordflow}{in} self:
+24             \textcolor{keywordflow}{raise} RuntimeError(
+25                 \textcolor{stringliteral}{'Message already contains key `\{\}`. If this was intentional, '}
+26                 \textcolor{stringliteral}{'please use the function `force\_set(key, value)`.'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(key)
+27             )
+28         super().\_\_setitem\_\_(key, val)
+29 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1core_1_1message_1_1Message_a374ac4a5d73e853960cc0f964b73a7fd}\label{classparlai_1_1core_1_1message_1_1Message_a374ac4a5d73e853960cc0f964b73a7fd}} 
+\index{parlai\+::core\+::message\+::\+Message@{parlai\+::core\+::message\+::\+Message}!copy@{copy}}
+\index{copy@{copy}!parlai\+::core\+::message\+::\+Message@{parlai\+::core\+::message\+::\+Message}}
+\subsubsection{\texorpdfstring{copy()}{copy()}}
+{\footnotesize\ttfamily def parlai.\+core.\+message.\+Message.\+copy (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 33 of file message.\+py.
+
+
+\begin{DoxyCode}
+33     \textcolor{keyword}{def }copy(self):
+34         \textcolor{keywordflow}{return} Message(self)
+35 \end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1core_1_1message_1_1Message_acbafaa2540a6b2ca6513fe9db49a9291}\label{classparlai_1_1core_1_1message_1_1Message_acbafaa2540a6b2ca6513fe9db49a9291}} 
+\index{parlai\+::core\+::message\+::\+Message@{parlai\+::core\+::message\+::\+Message}!force\+\_\+set@{force\+\_\+set}}
+\index{force\+\_\+set@{force\+\_\+set}!parlai\+::core\+::message\+::\+Message@{parlai\+::core\+::message\+::\+Message}}
+\subsubsection{\texorpdfstring{force\+\_\+set()}{force\_set()}}
+{\footnotesize\ttfamily def parlai.\+core.\+message.\+Message.\+force\+\_\+set (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{key,  }\item[{}]{val }\end{DoxyParamCaption})}
+
+
+
+Definition at line 30 of file message.\+py.
+
+
+\begin{DoxyCode}
+30     \textcolor{keyword}{def }force\_set(self, key, val):
+31         super().\_\_setitem\_\_(key, val)
+32 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/core/\hyperlink{message_8py}{message.\+py}\end{DoxyCompactItemize}

@@ -1,0 +1,182 @@
+\hypertarget{namespaceparlai_1_1scripts_1_1build__dict}{}\section{parlai.\+scripts.\+build\+\_\+dict Namespace Reference}
+\label{namespaceparlai_1_1scripts_1_1build__dict}\index{parlai.\+scripts.\+build\+\_\+dict@{parlai.\+scripts.\+build\+\_\+dict}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1build__dict_a01e78707ace903aa772ada53fafe7067}{setup\+\_\+args} (parser=None, \hyperlink{namespaceparlai_1_1scripts_1_1build__dict_ab1670dd829e6129c8e3da84dd474da60}{hidden}=True)
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1build__dict_a3a0381817d7188331ee38b4a4627dbe0}{build\+\_\+dict} (opt, skip\+\_\+if\+\_\+built=False)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceparlai_1_1scripts_1_1build__dict_ab1670dd829e6129c8e3da84dd474da60}{hidden}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1build__dict_a3a0381817d7188331ee38b4a4627dbe0}\label{namespaceparlai_1_1scripts_1_1build__dict_a3a0381817d7188331ee38b4a4627dbe0}} 
+\index{parlai\+::scripts\+::build\+\_\+dict@{parlai\+::scripts\+::build\+\_\+dict}!build\+\_\+dict@{build\+\_\+dict}}
+\index{build\+\_\+dict@{build\+\_\+dict}!parlai\+::scripts\+::build\+\_\+dict@{parlai\+::scripts\+::build\+\_\+dict}}
+\subsubsection{\texorpdfstring{build\+\_\+dict()}{build\_dict()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+build\+\_\+dict.\+build\+\_\+dict (\begin{DoxyParamCaption}\item[{}]{opt,  }\item[{}]{skip\+\_\+if\+\_\+built = {\ttfamily False} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 66 of file build\+\_\+dict.\+py.
+
+
+\begin{DoxyCode}
+66 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1convai2_1_1build__dict_a0e5fa5d8d2bd2bc934e287a49d2d60c7}{build\_dict}(opt, skip\_if\_built=False):
+67     \textcolor{keywordflow}{if} isinstance(opt, ParlaiParser):
+68         print(\textcolor{stringliteral}{'[ Deprecated Warning: should be passed opt not Parser ]'})
+69         opt = opt.parse\_args()
+70     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} opt.get(\textcolor{stringliteral}{'dict\_file'}):
+71         print(
+72             \textcolor{stringliteral}{'Tried to build dictionary but `--dict-file` is not set. Set '}
+73             + \textcolor{stringliteral}{'this param so the dictionary can be saved.'}
+74         )
+75         \textcolor{keywordflow}{return}
+76     \textcolor{keywordflow}{if} skip\_if\_built \textcolor{keywordflow}{and} os.path.isfile(opt[\textcolor{stringliteral}{'dict\_file'}]):
+77         \textcolor{comment}{# Dictionary already built, skip all loading or setup}
+78         print(\textcolor{stringliteral}{"[ dictionary already built .]"})
+79         \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}
+80 
+81     \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a023acb5e3b66e1f27e21247c35661279}{is\_distributed}():
+82         \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{'Dictionaries should be pre-built before distributed train.'})
+83 
+84     \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'dict\_class'}):
+85         \textcolor{comment}{# Custom dictionary class}
+86         dictionary = \hyperlink{namespaceparlai_1_1core_1_1params_aa6083a72ad328d26016bd5f805a0b1c8}{str2class}(opt[\textcolor{stringliteral}{'dict\_class'}])(opt)
+87     \textcolor{keywordflow}{else}:
+88         \textcolor{comment}{# Default dictionary class}
+89         dictionary = DictionaryAgent(opt)
+90 
+91     \textcolor{keywordflow}{if} os.path.isfile(opt[\textcolor{stringliteral}{'dict\_file'}]):
+92         \textcolor{comment}{# Dictionary already built, return loaded dictionary agent}
+93         print(\textcolor{stringliteral}{"[ dictionary already built .]"})
+94         \textcolor{keywordflow}{return} dictionary
+95 
+96     ordered\_opt = copy.deepcopy(opt)
+97     cnt = 0
+98     \textcolor{comment}{# we use train set to build dictionary}
+99 
+100     ordered\_opt[\textcolor{stringliteral}{'numthreads'}] = 1
+101     ordered\_opt[\textcolor{stringliteral}{'batchsize'}] = 1
+102     \textcolor{comment}{# Set this to none so that image features are not calculated when Teacher is}
+103     \textcolor{comment}{# instantiated while building the dict}
+104     ordered\_opt[\textcolor{stringliteral}{'image\_mode'}] = \textcolor{stringliteral}{'no\_image\_model'}
+105     ordered\_opt[\textcolor{stringliteral}{'pytorch\_teacher\_batch\_sort'}] = \textcolor{keyword}{False}
+106     \textcolor{keywordflow}{if} ordered\_opt[\textcolor{stringliteral}{'task'}] == \textcolor{stringliteral}{'pytorch\_teacher'} \textcolor{keywordflow}{or} \textcolor{keywordflow}{not} ordered\_opt[\textcolor{stringliteral}{'task'}]:
+107         pytorch\_teacher\_task = ordered\_opt.get(\textcolor{stringliteral}{'pytorch\_teacher\_task'}, \textcolor{stringliteral}{''})
+108         \textcolor{keywordflow}{if} pytorch\_teacher\_task != \textcolor{stringliteral}{''}:
+109             ordered\_opt[\textcolor{stringliteral}{'task'}] = pytorch\_teacher\_task
+110 
+111     datatypes = [\textcolor{stringliteral}{'train:ordered:stream'}]
+112     \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'dict\_include\_valid'}):
+113         datatypes.append(\textcolor{stringliteral}{'valid:stream'})
+114     \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'dict\_include\_test'}):
+115         datatypes.append(\textcolor{stringliteral}{'test:stream'})
+116     cnt = 0
+117     \textcolor{keywordflow}{for} dt \textcolor{keywordflow}{in} datatypes:
+118         ordered\_opt[\textcolor{stringliteral}{'datatype'}] = dt
+119         world\_dict = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(ordered\_opt, dictionary)
+120         \textcolor{comment}{# pass examples to dictionary}
+121         print(\textcolor{stringliteral}{'[ running dictionary over data.. ]'})
+122         log\_time = TimeLogger()
+123         total = world\_dict.num\_examples()
+124         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'dict\_maxexs'}] >= 0:
+125             total = min(total, opt[\textcolor{stringliteral}{'dict\_maxexs'}])
+126 
+127         log\_every\_n\_secs = opt.get(\textcolor{stringliteral}{'log\_every\_n\_secs'}, \textcolor{keywordtype}{None})
+128         \textcolor{keywordflow}{if} log\_every\_n\_secs:
+129             pbar = tqdm.tqdm(
+130                 total=total, desc=\textcolor{stringliteral}{'Building dictionary'}, unit=\textcolor{stringliteral}{'ex'}, unit\_scale=\textcolor{keyword}{True}
+131             )
+132         \textcolor{keywordflow}{else}:
+133             pbar = \textcolor{keywordtype}{None}
+134         \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} world\_dict.epoch\_done():
+135             cnt += 1
+136             \textcolor{keywordflow}{if} cnt > opt[\textcolor{stringliteral}{'dict\_maxexs'}] \textcolor{keywordflow}{and} opt[\textcolor{stringliteral}{'dict\_maxexs'}] >= 0:
+137                 print(\textcolor{stringliteral}{'Processed \{\} exs, moving on.'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(opt[\textcolor{stringliteral}{'dict\_maxexs'}]))
+138                 \textcolor{comment}{# don't wait too long...}
+139                 \textcolor{keywordflow}{break}
+140             world\_dict.parley()
+141             \textcolor{keywordflow}{if} pbar:
+142                 pbar.update(1)
+143         \textcolor{keywordflow}{if} pbar:
+144             pbar.close()
+145 
+146     dictionary.save(opt[\textcolor{stringliteral}{'dict\_file'}], sort=\textcolor{keyword}{True})
+147     print(
+148         \textcolor{stringliteral}{'[ dictionary built with \{\} tokens in \{\}s ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+149             len(dictionary), round(log\_time.total\_time(), 2)
+150         )
+151     )
+152     \textcolor{keywordflow}{return} dictionary
+153 
+154 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1build__dict_a01e78707ace903aa772ada53fafe7067}\label{namespaceparlai_1_1scripts_1_1build__dict_a01e78707ace903aa772ada53fafe7067}} 
+\index{parlai\+::scripts\+::build\+\_\+dict@{parlai\+::scripts\+::build\+\_\+dict}!setup\+\_\+args@{setup\+\_\+args}}
+\index{setup\+\_\+args@{setup\+\_\+args}!parlai\+::scripts\+::build\+\_\+dict@{parlai\+::scripts\+::build\+\_\+dict}}
+\subsubsection{\texorpdfstring{setup\+\_\+args()}{setup\_args()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+build\+\_\+dict.\+setup\+\_\+args (\begin{DoxyParamCaption}\item[{}]{parser = {\ttfamily None},  }\item[{}]{hidden = {\ttfamily True} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 29 of file build\+\_\+dict.\+py.
+
+
+\begin{DoxyCode}
+29 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1build__dict_a01e78707ace903aa772ada53fafe7067}{setup\_args}(parser=None, hidden=True):
+30     \textcolor{keywordflow}{if} parser \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+31         parser = ParlaiParser(\textcolor{keyword}{True}, \textcolor{keyword}{True}, \textcolor{stringliteral}{'Build a dictionary.'})
+32     parser.add\_pytorch\_datateacher\_args()
+33     dict\_loop = parser.add\_argument\_group(\textcolor{stringliteral}{'Dictionary Loop Arguments'})
+34     dict\_loop.add\_argument(
+35         \textcolor{stringliteral}{'--dict-maxexs'},
+36         default=-1,
+37         type=int,
+38         help=\textcolor{stringliteral}{'max number of examples to build dict on'},
+39         hidden=hidden,
+40     )
+41     dict\_loop.add\_argument(
+42         \textcolor{stringliteral}{'--dict-include-valid'},
+43         default=\textcolor{keyword}{False},
+44         type=\textcolor{stringliteral}{'bool'},
+45         help=\textcolor{stringliteral}{'Include validation set in dictionary building '} \textcolor{stringliteral}{'for task.'},
+46         hidden=hidden,
+47     )
+48     dict\_loop.add\_argument(
+49         \textcolor{stringliteral}{'--dict-include-test'},
+50         default=\textcolor{keyword}{False},
+51         type=\textcolor{stringliteral}{'bool'},
+52         help=\textcolor{stringliteral}{'Include test set in dictionary building for task.'},
+53         hidden=hidden,
+54     )
+55     dict\_loop.add\_argument(
+56         \textcolor{stringliteral}{'-ltim'}, \textcolor{stringliteral}{'--log-every-n-secs'}, type=float, default=2, hidden=hidden
+57     )
+58     partial, \_ = parser.parse\_known\_args(nohelp=\textcolor{keyword}{True})
+59     \textcolor{keywordflow}{if} vars(partial).get(\textcolor{stringliteral}{'dict\_class'}):
+60         \hyperlink{namespaceparlai_1_1core_1_1params_aa6083a72ad328d26016bd5f805a0b1c8}{str2class}(vars(partial).get(\textcolor{stringliteral}{'dict\_class'})).\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(parser)
+61     \textcolor{keywordflow}{else}:
+62         DictionaryAgent.add\_cmdline\_args(parser)
+63     \textcolor{keywordflow}{return} parser
+64 
+65 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1build__dict_ab1670dd829e6129c8e3da84dd474da60}\label{namespaceparlai_1_1scripts_1_1build__dict_ab1670dd829e6129c8e3da84dd474da60}} 
+\index{parlai\+::scripts\+::build\+\_\+dict@{parlai\+::scripts\+::build\+\_\+dict}!hidden@{hidden}}
+\index{hidden@{hidden}!parlai\+::scripts\+::build\+\_\+dict@{parlai\+::scripts\+::build\+\_\+dict}}
+\subsubsection{\texorpdfstring{hidden}{hidden}}
+{\footnotesize\ttfamily parlai.\+scripts.\+build\+\_\+dict.\+hidden}
+
+
+
+Definition at line 156 of file build\+\_\+dict.\+py.
+

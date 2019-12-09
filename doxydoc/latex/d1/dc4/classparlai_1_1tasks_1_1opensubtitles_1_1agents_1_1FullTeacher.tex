@@ -1,0 +1,118 @@
+\hypertarget{classparlai_1_1tasks_1_1opensubtitles_1_1agents_1_1FullTeacher}{}\section{parlai.\+tasks.\+opensubtitles.\+agents.\+Full\+Teacher Class Reference}
+\label{classparlai_1_1tasks_1_1opensubtitles_1_1agents_1_1FullTeacher}\index{parlai.\+tasks.\+opensubtitles.\+agents.\+Full\+Teacher@{parlai.\+tasks.\+opensubtitles.\+agents.\+Full\+Teacher}}
+
+
+Inheritance diagram for parlai.\+tasks.\+opensubtitles.\+agents.\+Full\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/d42/classparlai_1_1tasks_1_1opensubtitles_1_1agents_1_1FullTeacher__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+tasks.\+opensubtitles.\+agents.\+Full\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{de/d80/classparlai_1_1tasks_1_1opensubtitles_1_1agents_1_1FullTeacher__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1opensubtitles_1_1agents_1_1FullTeacher_aadd6073a3a0cd25d780679e824fb0673}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1core_1_1teachers_1_1FbDialogTeacher_af7a9ec497b9cd0292d7b8fa220da7c28}{opt}, shared=None, version=\textquotesingle{}2018\textquotesingle{}, use\+\_\+history=True)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1opensubtitles_1_1agents_1_1FullTeacher_abd9f716304f56c2b8b7f7573d34c87f6}{setup\+\_\+data} (self, path)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}This version of opensubtitles creates all possible dialog examples.
+\end{DoxyVerb}
+ 
+
+Definition at line 49 of file agents.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1opensubtitles_1_1agents_1_1FullTeacher_aadd6073a3a0cd25d780679e824fb0673}\label{classparlai_1_1tasks_1_1opensubtitles_1_1agents_1_1FullTeacher_aadd6073a3a0cd25d780679e824fb0673}} 
+\index{parlai\+::tasks\+::opensubtitles\+::agents\+::\+Full\+Teacher@{parlai\+::tasks\+::opensubtitles\+::agents\+::\+Full\+Teacher}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::tasks\+::opensubtitles\+::agents\+::\+Full\+Teacher@{parlai\+::tasks\+::opensubtitles\+::agents\+::\+Full\+Teacher}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+opensubtitles.\+agents.\+Full\+Teacher.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{shared = {\ttfamily None},  }\item[{}]{version = {\ttfamily \textquotesingle{}2018\textquotesingle{}},  }\item[{}]{use\+\_\+history = {\ttfamily True} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 54 of file agents.\+py.
+
+
+\begin{DoxyCode}
+54     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None, version='2018', use\_history=True):
+55         opt = copy.deepcopy(opt)
+56         opt[\textcolor{stringliteral}{'datafile'}] = \_path(opt, version, use\_history)
+57         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} opt[\textcolor{stringliteral}{'datatype'}].startswith(\textcolor{stringliteral}{'train'}):
+58             opt[\textcolor{stringliteral}{'cands\_datafile'}] = opt[\textcolor{stringliteral}{'datafile'}]
+59         super().\_\_init\_\_(opt, shared)
+60 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1opensubtitles_1_1agents_1_1FullTeacher_abd9f716304f56c2b8b7f7573d34c87f6}\label{classparlai_1_1tasks_1_1opensubtitles_1_1agents_1_1FullTeacher_abd9f716304f56c2b8b7f7573d34c87f6}} 
+\index{parlai\+::tasks\+::opensubtitles\+::agents\+::\+Full\+Teacher@{parlai\+::tasks\+::opensubtitles\+::agents\+::\+Full\+Teacher}!setup\+\_\+data@{setup\+\_\+data}}
+\index{setup\+\_\+data@{setup\+\_\+data}!parlai\+::tasks\+::opensubtitles\+::agents\+::\+Full\+Teacher@{parlai\+::tasks\+::opensubtitles\+::agents\+::\+Full\+Teacher}}
+\subsubsection{\texorpdfstring{setup\+\_\+data()}{setup\_data()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+opensubtitles.\+agents.\+Full\+Teacher.\+setup\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{path }\end{DoxyParamCaption})}
+
+
+
+Definition at line 61 of file agents.\+py.
+
+
+\begin{DoxyCode}
+61     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1multinli_1_1agents_a4fa2cb0ba1ed745336ad8bceed36b841}{setup\_data}(self, path):
+62         \textcolor{keyword}{def }rebuild(entries):
+63             \textcolor{keywordflow}{if} len(entries) == 0:
+64                 \textcolor{keywordflow}{return} []
+65             \textcolor{comment}{# flip the first example}
+66             flipped = [(SILENCE\_TOKEN, [entries[0][0]], 0)]
+67             \textcolor{comment}{# flip the rest}
+68             flipped += [
+69                 (entries[i][1][0], [entries[i + 1][0]], 0)
+70                 \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(entries) - 1)
+71             ]
+72             \textcolor{keywordflow}{return} flipped
+73 
+74         \textcolor{comment}{# this shows conversations in both directions}
+75         \textcolor{comment}{# we skip examples for which no label is present}
+76         alternate = []
+77         \textcolor{keywordflow}{for} entry, new \textcolor{keywordflow}{in} super().\hyperlink{namespaceparlai_1_1tasks_1_1multinli_1_1agents_a4fa2cb0ba1ed745336ad8bceed36b841}{setup\_data}(path):
+78             \textcolor{keywordflow}{if} new:
+79                 \textcolor{keywordflow}{for} i, e \textcolor{keywordflow}{in} enumerate(rebuild(alternate)):
+80                     \textcolor{keywordflow}{if} e[1]:
+81                         \textcolor{keywordflow}{yield} e, i == 0
+82                 alternate.clear()
+83             \textcolor{keywordflow}{else}:
+84                 alternate.append(entry)
+85             \textcolor{keywordflow}{if} entry[1]:
+86                 \textcolor{keywordflow}{yield} entry, new
+87 
+88         \textcolor{comment}{# flip the last episode}
+89         \textcolor{keywordflow}{if} alternate:
+90             \textcolor{keywordflow}{for} i, e \textcolor{keywordflow}{in} enumerate(rebuild(alternate)):
+91                 \textcolor{keywordflow}{if} e[1]:
+92                     \textcolor{keywordflow}{yield} e, i == 0
+93             alternate.clear()
+94 
+95 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/tasks/opensubtitles/\hyperlink{parlai_2tasks_2opensubtitles_2agents_8py}{agents.\+py}\end{DoxyCompactItemize}

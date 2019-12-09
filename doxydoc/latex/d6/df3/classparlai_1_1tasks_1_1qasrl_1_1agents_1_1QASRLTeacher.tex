@@ -1,0 +1,149 @@
+\hypertarget{classparlai_1_1tasks_1_1qasrl_1_1agents_1_1QASRLTeacher}{}\section{parlai.\+tasks.\+qasrl.\+agents.\+Q\+A\+S\+R\+L\+Teacher Class Reference}
+\label{classparlai_1_1tasks_1_1qasrl_1_1agents_1_1QASRLTeacher}\index{parlai.\+tasks.\+qasrl.\+agents.\+Q\+A\+S\+R\+L\+Teacher@{parlai.\+tasks.\+qasrl.\+agents.\+Q\+A\+S\+R\+L\+Teacher}}
+
+
+Inheritance diagram for parlai.\+tasks.\+qasrl.\+agents.\+Q\+A\+S\+R\+L\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{df/d99/classparlai_1_1tasks_1_1qasrl_1_1agents_1_1QASRLTeacher__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+tasks.\+qasrl.\+agents.\+Q\+A\+S\+R\+L\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{d6/da9/classparlai_1_1tasks_1_1qasrl_1_1agents_1_1QASRLTeacher__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1qasrl_1_1agents_1_1QASRLTeacher_a53eb0fa6773eb55e1a9088f78930c9c6}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1core_1_1agents_1_1Teacher_a3ce6243860ce978a897922863ed32fa4}{opt}, shared=None)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1qasrl_1_1agents_1_1QASRLTeacher_a92366ab3df366792133f183fbb764b3b}{setup\+\_\+data} (self, input\+\_\+path)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1qasrl_1_1agents_1_1QASRLTeacher_af5c5aa6c9bfe7adfebf9b58ca8ecec4c}{id}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 37 of file agents.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1qasrl_1_1agents_1_1QASRLTeacher_a53eb0fa6773eb55e1a9088f78930c9c6}\label{classparlai_1_1tasks_1_1qasrl_1_1agents_1_1QASRLTeacher_a53eb0fa6773eb55e1a9088f78930c9c6}} 
+\index{parlai\+::tasks\+::qasrl\+::agents\+::\+Q\+A\+S\+R\+L\+Teacher@{parlai\+::tasks\+::qasrl\+::agents\+::\+Q\+A\+S\+R\+L\+Teacher}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::tasks\+::qasrl\+::agents\+::\+Q\+A\+S\+R\+L\+Teacher@{parlai\+::tasks\+::qasrl\+::agents\+::\+Q\+A\+S\+R\+L\+Teacher}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+qasrl.\+agents.\+Q\+A\+S\+R\+L\+Teacher.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{shared = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 38 of file agents.\+py.
+
+
+\begin{DoxyCode}
+38     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
+39         opt = copy.deepcopy(opt)
+40         data\_path = \_path(opt)
+41 
+42         opt[\textcolor{stringliteral}{'datafile'}] = data\_path
+43 
+44         \textcolor{comment}{# store identifier for the teacher in the dialog}
+45         self.id = \textcolor{stringliteral}{'qasrl'}
+46 
+47         \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1talkthewalk_1_1download_a8c0fbb9b6dfe127cb8c1bd6e7c4e33fd}{build}(opt)
+48 
+49         super().\_\_init\_\_(opt, shared)
+50 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1qasrl_1_1agents_1_1QASRLTeacher_a92366ab3df366792133f183fbb764b3b}\label{classparlai_1_1tasks_1_1qasrl_1_1agents_1_1QASRLTeacher_a92366ab3df366792133f183fbb764b3b}} 
+\index{parlai\+::tasks\+::qasrl\+::agents\+::\+Q\+A\+S\+R\+L\+Teacher@{parlai\+::tasks\+::qasrl\+::agents\+::\+Q\+A\+S\+R\+L\+Teacher}!setup\+\_\+data@{setup\+\_\+data}}
+\index{setup\+\_\+data@{setup\+\_\+data}!parlai\+::tasks\+::qasrl\+::agents\+::\+Q\+A\+S\+R\+L\+Teacher@{parlai\+::tasks\+::qasrl\+::agents\+::\+Q\+A\+S\+R\+L\+Teacher}}
+\subsubsection{\texorpdfstring{setup\+\_\+data()}{setup\_data()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+qasrl.\+agents.\+Q\+A\+S\+R\+L\+Teacher.\+setup\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{input\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+Definition at line 51 of file agents.\+py.
+
+
+\begin{DoxyCode}
+51     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1multinli_1_1agents_a4fa2cb0ba1ed745336ad8bceed36b841}{setup\_data}(self, input\_path):
+52 
+53         print(\textcolor{stringliteral}{'loading: '} + input\_path)
+54         file\_path = os.path.join(input\_path)
+55 
+56         new\_episode = \textcolor{keyword}{True}
+57 
+58         \textcolor{keyword}{def }convert\_to\_qa(input\_data):
+59             lines = input\_data.split(\textcolor{stringliteral}{'\(\backslash\)n'})
+60             context = lines[1]
+61             predicate\_count = \hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(lines[0].split(\textcolor{stringliteral}{'\(\backslash\)t'})[-1])
+62             unparsed\_qa = lines[2:]
+63 
+64             \textcolor{keyword}{def }parse\_qa(qa\_line):
+65                 qa\_split = qa\_line.split(\textcolor{stringliteral}{'\(\backslash\)t?\(\backslash\)t'})
+66                 question = (
+67                     context
+68                     + \textcolor{stringliteral}{'\(\backslash\)n'}
+69                     + qa\_split[0].replace(\textcolor{stringliteral}{'\(\backslash\)t\_'}, \textcolor{stringliteral}{''}).replace(\textcolor{stringliteral}{'\(\backslash\)t'}, \textcolor{stringliteral}{' '})
+70                     + \textcolor{stringliteral}{'?'}
+71                 )
+72                 answers = qa\_split[1].split(\textcolor{stringliteral}{' ### '})
+73                 \textcolor{keywordflow}{return} [question, answers]
+74 
+75             qa\_pairs = []
+76             counter = 0
+77             \textcolor{keywordflow}{for} \_i \textcolor{keywordflow}{in} range(predicate\_count):
+78                 question\_count = \hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(unparsed\_qa[counter].split(\textcolor{stringliteral}{'\(\backslash\)t'})[-1])
+79                 counter += 1
+80                 \textcolor{keywordflow}{for} \_j \textcolor{keywordflow}{in} range(question\_count):
+81                     qa\_pairs.append(parse\_qa(unparsed\_qa[counter]))
+82                     counter += 1
+83             \textcolor{keywordflow}{return} qa\_pairs
+84 
+85         with open(file\_path) \textcolor{keyword}{as} file:
+86             \textcolor{comment}{# split the data by sentences}
+87             file\_data = file.read().split(\textcolor{stringliteral}{'\(\backslash\)n\(\backslash\)n'})[:-1]
+88         \textcolor{keywordflow}{for} data \textcolor{keywordflow}{in} file\_data:
+89             \textcolor{keywordflow}{for} qa \textcolor{keywordflow}{in} convert\_to\_qa(data):
+90                 question = qa[0]
+91                 answers = qa[1]
+92                 \textcolor{keywordflow}{yield} (question, answers, \textcolor{keywordtype}{None}, \textcolor{keywordtype}{None}), new\_episode
+93 
+94 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1qasrl_1_1agents_1_1QASRLTeacher_af5c5aa6c9bfe7adfebf9b58ca8ecec4c}\label{classparlai_1_1tasks_1_1qasrl_1_1agents_1_1QASRLTeacher_af5c5aa6c9bfe7adfebf9b58ca8ecec4c}} 
+\index{parlai\+::tasks\+::qasrl\+::agents\+::\+Q\+A\+S\+R\+L\+Teacher@{parlai\+::tasks\+::qasrl\+::agents\+::\+Q\+A\+S\+R\+L\+Teacher}!id@{id}}
+\index{id@{id}!parlai\+::tasks\+::qasrl\+::agents\+::\+Q\+A\+S\+R\+L\+Teacher@{parlai\+::tasks\+::qasrl\+::agents\+::\+Q\+A\+S\+R\+L\+Teacher}}
+\subsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily parlai.\+tasks.\+qasrl.\+agents.\+Q\+A\+S\+R\+L\+Teacher.\+id}
+
+
+
+Definition at line 45 of file agents.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/tasks/qasrl/\hyperlink{parlai_2tasks_2qasrl_2agents_8py}{agents.\+py}\end{DoxyCompactItemize}

@@ -1,0 +1,169 @@
+\hypertarget{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Decoder}{}\section{projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Decoder Class Reference}
+\label{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Decoder}\index{projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Decoder@{projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Decoder}}
+
+
+Inheritance diagram for projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Decoder\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=281pt]{d2/d61/classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Decoder__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Decoder\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=281pt]{d6/d20/classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Decoder__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Decoder_a20c4d7bd66706996d3b34d7cbc68e2ec}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, input\+\_\+size, hidden\+\_\+size, num\+\_\+layers, opt, dictionary)
+\item 
+def \hyperlink{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Decoder_a3f1f3b7a66bff23cd1923ff739c42456}{hidden\+\_\+to\+\_\+idx} (self, hidden, \hyperlink{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Decoder_a1f90b65a911c97661bc4b9c0e6d0d74e}{dropout}=False)
+\item 
+def \hyperlink{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Decoder_afea4d72e2b956ae9c2f896a6f2bf2ff2}{forward} (self, input, state)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Decoder_a26b383c0d9f0e2088f5a1731683e5d7e}{dict}
+\item 
+\hyperlink{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Decoder_a2944c1214ef4b408e0c0e7b2387a2fee}{h2o}
+\item 
+\hyperlink{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Decoder_a1f90b65a911c97661bc4b9c0e6d0d74e}{dropout}
+\item 
+\hyperlink{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Decoder_a7cd6616d295ec8fc3ab0c837e651f402}{rnn}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 258 of file modules.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Decoder_a20c4d7bd66706996d3b34d7cbc68e2ec}\label{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Decoder_a20c4d7bd66706996d3b34d7cbc68e2ec}} 
+\index{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Decoder@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Decoder}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Decoder@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Decoder}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Decoder.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{input\+\_\+size,  }\item[{}]{hidden\+\_\+size,  }\item[{}]{num\+\_\+layers,  }\item[{}]{opt,  }\item[{}]{dictionary }\end{DoxyParamCaption})}
+
+
+
+Definition at line 259 of file modules.\+py.
+
+
+\begin{DoxyCode}
+259     \textcolor{keyword}{def }\_\_init\_\_(self, input\_size, hidden\_size, num\_layers, opt, dictionary):
+260         super().\_\_init\_\_()
+261         self.dict = dictionary
+262         self.h2o = nn.Linear(hidden\_size, len(dictionary))
+263         self.dropout = nn.Dropout(opt[\textcolor{stringliteral}{'dropout'}])
+264         self.rnn = nn.GRU(input\_size, hidden\_size, num\_layers)
+265 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Decoder_afea4d72e2b956ae9c2f896a6f2bf2ff2}\label{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Decoder_afea4d72e2b956ae9c2f896a6f2bf2ff2}} 
+\index{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Decoder@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Decoder}!forward@{forward}}
+\index{forward@{forward}!projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Decoder@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Decoder}}
+\subsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily def projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Decoder.\+forward (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{input,  }\item[{}]{state }\end{DoxyParamCaption})}
+
+
+
+Definition at line 279 of file modules.\+py.
+
+
+\begin{DoxyCode}
+279     \textcolor{keyword}{def }forward(self, input, state):
+280         output, state = self.rnn(input, state)
+281         \textcolor{keywordflow}{return} self.hidden\_to\_idx(output, dropout=self.training)
+282 
+283 
+\end{DoxyCode}
+\mbox{\Hypertarget{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Decoder_a3f1f3b7a66bff23cd1923ff739c42456}\label{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Decoder_a3f1f3b7a66bff23cd1923ff739c42456}} 
+\index{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Decoder@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Decoder}!hidden\+\_\+to\+\_\+idx@{hidden\+\_\+to\+\_\+idx}}
+\index{hidden\+\_\+to\+\_\+idx@{hidden\+\_\+to\+\_\+idx}!projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Decoder@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Decoder}}
+\subsubsection{\texorpdfstring{hidden\+\_\+to\+\_\+idx()}{hidden\_to\_idx()}}
+{\footnotesize\ttfamily def projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Decoder.\+hidden\+\_\+to\+\_\+idx (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{hidden,  }\item[{}]{dropout = {\ttfamily False} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Converts hidden state vectors into indices into the dictionary.
+\end{DoxyVerb}
+ 
+
+Definition at line 266 of file modules.\+py.
+
+
+\begin{DoxyCode}
+266     \textcolor{keyword}{def }hidden\_to\_idx(self, hidden, dropout=False):
+267         \textcolor{stringliteral}{"""}
+268 \textcolor{stringliteral}{        Converts hidden state vectors into indices into the dictionary.}
+269 \textcolor{stringliteral}{        """}
+270         \textcolor{keywordflow}{if} hidden.size(0) > 1:
+271             \textcolor{keywordflow}{raise} RuntimeError(\textcolor{stringliteral}{'Bad dimensions of tensor:'}, hidden)
+272         hidden = hidden.squeeze(0)
+273         scores = self.h2o(hidden)
+274         \textcolor{keywordflow}{if} dropout:
+275             scores = self.dropout(scores)
+276         \_, idx = scores.max(1)
+277         \textcolor{keywordflow}{return} idx, scores
+278 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Decoder_a26b383c0d9f0e2088f5a1731683e5d7e}\label{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Decoder_a26b383c0d9f0e2088f5a1731683e5d7e}} 
+\index{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Decoder@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Decoder}!dict@{dict}}
+\index{dict@{dict}!projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Decoder@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Decoder}}
+\subsubsection{\texorpdfstring{dict}{dict}}
+{\footnotesize\ttfamily projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Decoder.\+dict}
+
+
+
+Definition at line 261 of file modules.\+py.
+
+\mbox{\Hypertarget{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Decoder_a1f90b65a911c97661bc4b9c0e6d0d74e}\label{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Decoder_a1f90b65a911c97661bc4b9c0e6d0d74e}} 
+\index{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Decoder@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Decoder}!dropout@{dropout}}
+\index{dropout@{dropout}!projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Decoder@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Decoder}}
+\subsubsection{\texorpdfstring{dropout}{dropout}}
+{\footnotesize\ttfamily projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Decoder.\+dropout}
+
+
+
+Definition at line 263 of file modules.\+py.
+
+\mbox{\Hypertarget{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Decoder_a2944c1214ef4b408e0c0e7b2387a2fee}\label{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Decoder_a2944c1214ef4b408e0c0e7b2387a2fee}} 
+\index{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Decoder@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Decoder}!h2o@{h2o}}
+\index{h2o@{h2o}!projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Decoder@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Decoder}}
+\subsubsection{\texorpdfstring{h2o}{h2o}}
+{\footnotesize\ttfamily projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Decoder.\+h2o}
+
+
+
+Definition at line 262 of file modules.\+py.
+
+\mbox{\Hypertarget{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Decoder_a7cd6616d295ec8fc3ab0c837e651f402}\label{classprojects_1_1memnn__feedback_1_1agent_1_1modules_1_1Decoder_a7cd6616d295ec8fc3ab0c837e651f402}} 
+\index{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Decoder@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Decoder}!rnn@{rnn}}
+\index{rnn@{rnn}!projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Decoder@{projects\+::memnn\+\_\+feedback\+::agent\+::modules\+::\+Decoder}}
+\subsubsection{\texorpdfstring{rnn}{rnn}}
+{\footnotesize\ttfamily projects.\+memnn\+\_\+feedback.\+agent.\+modules.\+Decoder.\+rnn}
+
+
+
+Definition at line 264 of file modules.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+projects/memnn\+\_\+feedback/agent/\hyperlink{projects_2memnn__feedback_2agent_2modules_8py}{modules.\+py}\end{DoxyCompactItemize}

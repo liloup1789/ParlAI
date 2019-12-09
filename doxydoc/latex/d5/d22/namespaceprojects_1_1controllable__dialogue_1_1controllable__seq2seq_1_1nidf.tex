@@ -1,0 +1,259 @@
+\hypertarget{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf}{}\section{projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+nidf Namespace Reference}
+\label{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf}\index{projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+nidf@{projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+nidf}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_ad06ddb173f03a586d8c47c0c40f2f00c}{get\+\_\+word\+\_\+counts} (\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_aef7111d92971802c719300bfe5d9f626}{opt}, count\+\_\+inputs)
+\item 
+def \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_afcd3d0cbb49648e760e9875d32f53f19}{learn\+\_\+nidf} (\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_aef7111d92971802c719300bfe5d9f626}{opt})
+\item 
+def \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_a2f882ed55572a6f2f7558732a6a692ee}{load\+\_\+word2nidf} (\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_aef7111d92971802c719300bfe5d9f626}{opt})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_acaa9979b89ad4a7ffdea00b513950e33}{C\+O\+N\+T\+R\+O\+L\+L\+A\+B\+L\+E\+\_\+\+D\+IR}
+\item 
+\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_a7953354070ca4e518c92d267e1147f1c}{P\+A\+R\+L\+A\+I\+\_\+\+F\+O\+R\+M\+A\+T\+\_\+\+D\+IR}
+\item 
+\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_a4422dfd9be2af0e9f9481a2a5c33af92}{parser}
+\item 
+\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_aef7111d92971802c719300bfe5d9f626}{opt}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_ad06ddb173f03a586d8c47c0c40f2f00c}\label{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_ad06ddb173f03a586d8c47c0c40f2f00c}} 
+\index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf}!get\+\_\+word\+\_\+counts@{get\+\_\+word\+\_\+counts}}
+\index{get\+\_\+word\+\_\+counts@{get\+\_\+word\+\_\+counts}!projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf}}
+\subsubsection{\texorpdfstring{get\+\_\+word\+\_\+counts()}{get\_word\_counts()}}
+{\footnotesize\ttfamily def projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+nidf.\+get\+\_\+word\+\_\+counts (\begin{DoxyParamCaption}\item[{}]{opt,  }\item[{}]{count\+\_\+inputs }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Goes through the dataset specified in opt and gets word counts.
+
+Inputs:
+  count_inputs: If True, include both input and reply when counting words
+    and utterances. Otherwise, only include reply text.
+
+Returns:
+  word_counter_per_sent: a Counter mapping each word to the number of
+    utterances in which it appears.
+  num_sents: int. number of utterances counted
+\end{DoxyVerb}
+ 
+
+Definition at line 25 of file nidf.\+py.
+
+
+\begin{DoxyCode}
+25 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_ad06ddb173f03a586d8c47c0c40f2f00c}{get\_word\_counts}(opt, count\_inputs):
+26     \textcolor{stringliteral}{"""}
+27 \textcolor{stringliteral}{    Goes through the dataset specified in opt and gets word counts.}
+28 \textcolor{stringliteral}{}
+29 \textcolor{stringliteral}{    Inputs:}
+30 \textcolor{stringliteral}{      count\_inputs: If True, include both input and reply when counting words}
+31 \textcolor{stringliteral}{        and utterances. Otherwise, only include reply text.}
+32 \textcolor{stringliteral}{}
+33 \textcolor{stringliteral}{    Returns:}
+34 \textcolor{stringliteral}{      word\_counter\_per\_sent: a Counter mapping each word to the number of}
+35 \textcolor{stringliteral}{        utterances in which it appears.}
+36 \textcolor{stringliteral}{      num\_sents: int. number of utterances counted}
+37 \textcolor{stringliteral}{    """}
+38     \textcolor{comment}{# Create repeat label agent and assign it to the specified task}
+39     agent = RepeatLabelAgent(opt)
+40     world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(opt, agent)
+41 
+42     \textcolor{comment}{# Count word frequency for all words in dataset}
+43     word\_counter\_per\_sent = Counter()
+44     num\_sents = 0
+45     count = 0
+46     log\_timer = TimeLogger()
+47     \textcolor{keywordflow}{while} \textcolor{keyword}{True}:
+48         count += 1
+49 
+50         world.parley()
+51         reply = world.acts[0].get(\textcolor{stringliteral}{'labels'}, world.acts[0].get(\textcolor{stringliteral}{'eval\_labels'}))[0]
+52 
+53         words = reply.split()
+54         words\_no\_dups = list(set(words))  \textcolor{comment}{# remove duplicates}
+55         word\_counter\_per\_sent.update(words\_no\_dups)
+56         num\_sents += 1
+57 
+58         \textcolor{comment}{# Optionally count words in input text}
+59         \textcolor{keywordflow}{if} count\_inputs:
+60             input = world.acts[0][\textcolor{stringliteral}{'text'}]
+61             input = input.split(\textcolor{stringliteral}{'\(\backslash\)n'})[-1]  \textcolor{comment}{# e.g. in ConvAI2, this removes persona}
+62             words = input.split()
+63             words\_no\_dups = list(set(words))  \textcolor{comment}{# remove duplicates}
+64             word\_counter\_per\_sent.update(words\_no\_dups)
+65             num\_sents += 1
+66 
+67         \textcolor{keywordflow}{if} log\_timer.time() > opt[\textcolor{stringliteral}{'log\_every\_n\_secs'}]:
+68             text, \_log = log\_timer.log(world.total\_parleys, world.num\_examples())
+69             print(text)
+70 
+71         \textcolor{keywordflow}{if} world.epoch\_done():
+72             print(\textcolor{stringliteral}{'EPOCH DONE'})
+73             \textcolor{keywordflow}{break}
+74 
+75     \textcolor{keywordflow}{return} word\_counter\_per\_sent, num\_sents
+76 
+77 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_afcd3d0cbb49648e760e9875d32f53f19}\label{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_afcd3d0cbb49648e760e9875d32f53f19}} 
+\index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf}!learn\+\_\+nidf@{learn\+\_\+nidf}}
+\index{learn\+\_\+nidf@{learn\+\_\+nidf}!projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf}}
+\subsubsection{\texorpdfstring{learn\+\_\+nidf()}{learn\_nidf()}}
+{\footnotesize\ttfamily def projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+nidf.\+learn\+\_\+nidf (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Go through ConvAI2 and Twitter data, and count word frequences.
+
+Save word2count.pkl, which contains word2count, and total num_sents. These are both
+needed to calculate NIDF later.
+\end{DoxyVerb}
+ 
+
+Definition at line 78 of file nidf.\+py.
+
+
+\begin{DoxyCode}
+78 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_afcd3d0cbb49648e760e9875d32f53f19}{learn\_nidf}(opt):
+79     \textcolor{stringliteral}{"""}
+80 \textcolor{stringliteral}{    Go through ConvAI2 and Twitter data, and count word frequences.}
+81 \textcolor{stringliteral}{}
+82 \textcolor{stringliteral}{    Save word2count.pkl, which contains word2count, and total num\_sents. These are both}
+83 \textcolor{stringliteral}{    needed to calculate NIDF later.}
+84 \textcolor{stringliteral}{    """}
+85 
+86     opt[\textcolor{stringliteral}{'log\_every\_n\_secs'}] = 2
+87 
+88     print(\textcolor{stringliteral}{'Counting words in Twitter train set...'})
+89     opt[\textcolor{stringliteral}{'datatype'}] = \textcolor{stringliteral}{'train:ordered'}
+90     opt[\textcolor{stringliteral}{'task'}] = \textcolor{stringliteral}{'twitter'}
+91     wc1, ns1 = \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_ad06ddb173f03a586d8c47c0c40f2f00c}{get\_word\_counts}(opt, count\_inputs=\textcolor{keyword}{True})
+92 
+93     print(\textcolor{stringliteral}{'Counting words in Twitter val set...'})
+94     opt[\textcolor{stringliteral}{'datatype'}] = \textcolor{stringliteral}{'valid'}
+95     opt[\textcolor{stringliteral}{'task'}] = \textcolor{stringliteral}{'twitter'}
+96     wc2, ns2 = \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_ad06ddb173f03a586d8c47c0c40f2f00c}{get\_word\_counts}(opt, count\_inputs=\textcolor{keyword}{True})
+97 
+98     opt[\textcolor{stringliteral}{'task'}] = \textcolor{stringliteral}{'fromfile:parlaiformat'}
+99 
+100     print(\textcolor{stringliteral}{'Counting words in ConvAI2 train set...'})
+101     opt[\textcolor{stringliteral}{'datatype'}] = \textcolor{stringliteral}{'train:ordered'}
+102     opt[\textcolor{stringliteral}{'fromfile\_datapath'}] = os.path.join(
+103         opt[\textcolor{stringliteral}{'datapath'}], PARLAI\_FORMAT\_DIR, \textcolor{stringliteral}{'train.txt'}
+104     )
+105     \textcolor{comment}{# Don't include inputs because ConvAI2 train set reverses every conversation}
+106     wc3, ns3 = \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_ad06ddb173f03a586d8c47c0c40f2f00c}{get\_word\_counts}(opt, count\_inputs=\textcolor{keyword}{False})
+107 
+108     print(\textcolor{stringliteral}{'Counting words in ConvAI2 val set...'})
+109     opt[\textcolor{stringliteral}{'datatype'}] = \textcolor{stringliteral}{'valid'}
+110     opt[\textcolor{stringliteral}{'fromfile\_datapath'}] = os.path.join(
+111         opt[\textcolor{stringliteral}{'datapath'}], PARLAI\_FORMAT\_DIR, \textcolor{stringliteral}{'valid.txt'}
+112     )
+113     wc4, ns4 = \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_ad06ddb173f03a586d8c47c0c40f2f00c}{get\_word\_counts}(opt, count\_inputs=\textcolor{keyword}{True})
+114 
+115     \textcolor{comment}{# Merge word counts}
+116     word\_counter = Counter()
+117     \textcolor{keywordflow}{for} wc \textcolor{keywordflow}{in} [wc1, wc2, wc3, wc4]:
+118         \textcolor{keywordflow}{for} word, count \textcolor{keywordflow}{in} wc.items():
+119             word\_counter[word] += count
+120     num\_sents = ns1 + ns2 + ns3 + ns4
+121 
+122     \textcolor{comment}{# Write word2count and num\_sents to file}
+123     word2count\_fp = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], CONTROLLABLE\_DIR, \textcolor{stringliteral}{'word2count.pkl'})
+124     print(\textcolor{stringliteral}{"Saving word count stats to %s..."} % word2count\_fp)
+125     data = \{\textcolor{stringliteral}{"word2count"}: word\_counter, \textcolor{stringliteral}{"num\_sents"}: num\_sents\}
+126     with open(word2count\_fp, \textcolor{stringliteral}{"wb"}) \textcolor{keyword}{as} f:
+127         pickle.dump(data, f)
+128 
+129 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_a2f882ed55572a6f2f7558732a6a692ee}\label{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_a2f882ed55572a6f2f7558732a6a692ee}} 
+\index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf}!load\+\_\+word2nidf@{load\+\_\+word2nidf}}
+\index{load\+\_\+word2nidf@{load\+\_\+word2nidf}!projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf}}
+\subsubsection{\texorpdfstring{load\+\_\+word2nidf()}{load\_word2nidf()}}
+{\footnotesize\ttfamily def projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+nidf.\+load\+\_\+word2nidf (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Loads word count stats from word2count.pkl file in data/controllable_dialogue,
+computes NIDF for all words, and returns the word2nidf dictionary.
+
+Returns:
+  word2nidf: dict mapping words to their NIDF score (float between 0 and 1)
+\end{DoxyVerb}
+ 
+
+Definition at line 130 of file nidf.\+py.
+
+
+\begin{DoxyCode}
+130 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_a2f882ed55572a6f2f7558732a6a692ee}{load\_word2nidf}(opt):
+131     \textcolor{stringliteral}{"""}
+132 \textcolor{stringliteral}{    Loads word count stats from word2count.pkl file in data/controllable\_dialogue,}
+133 \textcolor{stringliteral}{    computes NIDF for all words, and returns the word2nidf dictionary.}
+134 \textcolor{stringliteral}{}
+135 \textcolor{stringliteral}{    Returns:}
+136 \textcolor{stringliteral}{      word2nidf: dict mapping words to their NIDF score (float between 0 and 1)}
+137 \textcolor{stringliteral}{    """}
+138     word2count\_fp = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], CONTROLLABLE\_DIR, \textcolor{stringliteral}{'word2count.pkl'})
+139     print(\textcolor{stringliteral}{"Loading word count stats from %s..."} % word2count\_fp)
+140     with open(word2count\_fp, \textcolor{stringliteral}{"rb"}) \textcolor{keyword}{as} f:
+141         data = pickle.load(f)
+142     num\_sents = data[\textcolor{stringliteral}{'num\_sents'}]
+143     print(\textcolor{stringliteral}{'num\_sents: '}, num\_sents)
+144     word2count = data[\textcolor{stringliteral}{'word2count'}]
+145     min\_c = min(word2count.values())  \textcolor{comment}{# max count}
+146     max\_c = max(word2count.values())  \textcolor{comment}{# min count}
+147     word2nidf = \{
+148         w: (math.log(max\_c) - math.log(c)) / (math.log(max\_c) - math.log(min\_c))
+149         \textcolor{keywordflow}{for} w, c \textcolor{keywordflow}{in} word2count.items()
+150     \}
+151     print(\textcolor{stringliteral}{"Done loading word2nidf dictionary."})
+152     \textcolor{keywordflow}{return} word2nidf
+153 
+154 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_acaa9979b89ad4a7ffdea00b513950e33}\label{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_acaa9979b89ad4a7ffdea00b513950e33}} 
+\index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf}!C\+O\+N\+T\+R\+O\+L\+L\+A\+B\+L\+E\+\_\+\+D\+IR@{C\+O\+N\+T\+R\+O\+L\+L\+A\+B\+L\+E\+\_\+\+D\+IR}}
+\index{C\+O\+N\+T\+R\+O\+L\+L\+A\+B\+L\+E\+\_\+\+D\+IR@{C\+O\+N\+T\+R\+O\+L\+L\+A\+B\+L\+E\+\_\+\+D\+IR}!projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf}}
+\subsubsection{\texorpdfstring{C\+O\+N\+T\+R\+O\+L\+L\+A\+B\+L\+E\+\_\+\+D\+IR}{CONTROLLABLE\_DIR}}
+{\footnotesize\ttfamily projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+nidf.\+C\+O\+N\+T\+R\+O\+L\+L\+A\+B\+L\+E\+\_\+\+D\+IR}
+
+
+
+Definition at line 21 of file nidf.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_aef7111d92971802c719300bfe5d9f626}\label{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_aef7111d92971802c719300bfe5d9f626}} 
+\index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf}!opt@{opt}}
+\index{opt@{opt}!projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf}}
+\subsubsection{\texorpdfstring{opt}{opt}}
+{\footnotesize\ttfamily projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+nidf.\+opt}
+
+
+
+Definition at line 157 of file nidf.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_a7953354070ca4e518c92d267e1147f1c}\label{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_a7953354070ca4e518c92d267e1147f1c}} 
+\index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf}!P\+A\+R\+L\+A\+I\+\_\+\+F\+O\+R\+M\+A\+T\+\_\+\+D\+IR@{P\+A\+R\+L\+A\+I\+\_\+\+F\+O\+R\+M\+A\+T\+\_\+\+D\+IR}}
+\index{P\+A\+R\+L\+A\+I\+\_\+\+F\+O\+R\+M\+A\+T\+\_\+\+D\+IR@{P\+A\+R\+L\+A\+I\+\_\+\+F\+O\+R\+M\+A\+T\+\_\+\+D\+IR}!projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf}}
+\subsubsection{\texorpdfstring{P\+A\+R\+L\+A\+I\+\_\+\+F\+O\+R\+M\+A\+T\+\_\+\+D\+IR}{PARLAI\_FORMAT\_DIR}}
+{\footnotesize\ttfamily projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+nidf.\+P\+A\+R\+L\+A\+I\+\_\+\+F\+O\+R\+M\+A\+T\+\_\+\+D\+IR}
+
+
+
+Definition at line 22 of file nidf.\+py.
+
+\mbox{\Hypertarget{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_a4422dfd9be2af0e9f9481a2a5c33af92}\label{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1nidf_a4422dfd9be2af0e9f9481a2a5c33af92}} 
+\index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf}!parser@{parser}}
+\index{parser@{parser}!projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::nidf}}
+\subsubsection{\texorpdfstring{parser}{parser}}
+{\footnotesize\ttfamily projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+nidf.\+parser}
+
+
+
+Definition at line 156 of file nidf.\+py.
+

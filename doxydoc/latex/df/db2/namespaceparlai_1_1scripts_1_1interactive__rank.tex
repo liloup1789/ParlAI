@@ -1,0 +1,126 @@
+\hypertarget{namespaceparlai_1_1scripts_1_1interactive__rank}{}\section{parlai.\+scripts.\+interactive\+\_\+rank Namespace Reference}
+\label{namespaceparlai_1_1scripts_1_1interactive__rank}\index{parlai.\+scripts.\+interactive\+\_\+rank@{parlai.\+scripts.\+interactive\+\_\+rank}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1interactive__rank_af87c6b5d3f8843e51461c9cfd75fd510}{setup\+\_\+args} (\hyperlink{namespaceparlai_1_1scripts_1_1interactive__rank_a68288547427936a867a1b8eb9a945be7}{parser}=None)
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1interactive__rank_a9997f1d0eba4a72a45a773ec05874af3}{interactive\+\_\+rank} (opt, print\+\_\+parser=None)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1interactive__rank_a68288547427936a867a1b8eb9a945be7}{parser} = \hyperlink{namespaceparlai_1_1scripts_1_1interactive__rank_af87c6b5d3f8843e51461c9cfd75fd510}{setup\+\_\+args}()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1interactive__rank_a9997f1d0eba4a72a45a773ec05874af3}\label{namespaceparlai_1_1scripts_1_1interactive__rank_a9997f1d0eba4a72a45a773ec05874af3}} 
+\index{parlai\+::scripts\+::interactive\+\_\+rank@{parlai\+::scripts\+::interactive\+\_\+rank}!interactive\+\_\+rank@{interactive\+\_\+rank}}
+\index{interactive\+\_\+rank@{interactive\+\_\+rank}!parlai\+::scripts\+::interactive\+\_\+rank@{parlai\+::scripts\+::interactive\+\_\+rank}}
+\subsubsection{\texorpdfstring{interactive\+\_\+rank()}{interactive\_rank()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+interactive\+\_\+rank.\+interactive\+\_\+rank (\begin{DoxyParamCaption}\item[{}]{opt,  }\item[{}]{print\+\_\+parser = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 40 of file interactive\+\_\+rank.\+py.
+
+
+\begin{DoxyCode}
+40 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1interactive__rank_a9997f1d0eba4a72a45a773ec05874af3}{interactive\_rank}(opt, print\_parser=None):
+41     \textcolor{comment}{# Create model and assign it to the specified task}
+42     human = \hyperlink{namespaceparlai_1_1core_1_1agents_ad0d54074d4bcc148bb415ab5515a53b5}{create\_agent}(opt)
+43     task = \hyperlink{namespaceparlai_1_1core_1_1agents_ab4473fa54af02b5ab385b41b51dacd10}{create\_task\_agent\_from\_taskname}(opt)[0]
+44 
+45     metrics = Metrics(opt)
+46     episodes = 0
+47 
+48     \textcolor{keyword}{def }print\_metrics():
+49         report = metrics.report()
+50         report[\textcolor{stringliteral}{'episodes'}] = episodes
+51         print(report)
+52 
+53     \textcolor{comment}{# Show some example dialogs:}
+54     \textcolor{keywordflow}{try}:
+55         \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} task.epoch\_done():
+56             msg = task.act()
+57             print(\textcolor{stringliteral}{'[\{id\}]: \{text\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(id=task.getID(), text=msg.get(\textcolor{stringliteral}{'text'}, \textcolor{stringliteral}{''})))
+58             cands = list(msg.get(\textcolor{stringliteral}{'label\_candidates'}, []))
+59             random.shuffle(cands)
+60             \textcolor{keywordflow}{for} i, c \textcolor{keywordflow}{in} enumerate(cands):
+61                 print(\textcolor{stringliteral}{'    [\{i\}]: \{c\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(i=i, c=c))
+62 
+63             print(\textcolor{stringliteral}{'[ Please choose a response from the list. ]'})
+64 
+65             choice = \textcolor{keywordtype}{None}
+66             \textcolor{keywordflow}{while} choice \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+67                 choice = human.act().get(\textcolor{stringliteral}{'text'})
+68                 \textcolor{keywordflow}{try}:
+69                     choice = \hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(choice)
+70                     \textcolor{keywordflow}{if} choice >= 0 \textcolor{keywordflow}{and} choice < len(cands):
+71                         choice = cands[choice]
+72                     \textcolor{keywordflow}{else}:
+73                         print(
+74                             \textcolor{stringliteral}{'[ Try again: you selected \{i\} but the '}
+75                             \textcolor{stringliteral}{'candidates are indexed from 0 to \{j\}. ]'}
+76                             \textcolor{stringliteral}{''}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(i=choice, j=len(cands) - 1)
+77                         )
+78                         choice = \textcolor{keywordtype}{None}
+79                 \textcolor{keywordflow}{except} (TypeError, ValueError):
+80                     print(\textcolor{stringliteral}{'[ Try again: you did not enter a valid index. ]'})
+81                     choice = \textcolor{keywordtype}{None}
+82 
+83             print(\textcolor{stringliteral}{'[ You chose ]: \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(choice))
+84             reply = \{\textcolor{stringliteral}{'text\_candidates'}: [choice]\}
+85             labels = msg.get(\textcolor{stringliteral}{'eval\_labels'}, msg.get(\textcolor{stringliteral}{'labels'}))
+86             metrics.update(reply, labels)
+87             \textcolor{keywordflow}{if} msg.get(\textcolor{stringliteral}{'episode\_done'}):
+88                 episodes += 1
+89             print\_metrics()
+90             print(\textcolor{stringliteral}{'------------------------------'})
+91             print(\textcolor{stringliteral}{'[ True reply ]: \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(labels[0]))
+92             \textcolor{keywordflow}{if} msg.get(\textcolor{stringliteral}{'episode\_done'}):
+93                 print(\textcolor{stringliteral}{'******************************'})
+94 
+95     \textcolor{keywordflow}{except} KeyboardInterrupt:
+96         \textcolor{keywordflow}{pass}
+97 
+98     print()
+99     print\_metrics()
+100 
+101 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1interactive__rank_af87c6b5d3f8843e51461c9cfd75fd510}\label{namespaceparlai_1_1scripts_1_1interactive__rank_af87c6b5d3f8843e51461c9cfd75fd510}} 
+\index{parlai\+::scripts\+::interactive\+\_\+rank@{parlai\+::scripts\+::interactive\+\_\+rank}!setup\+\_\+args@{setup\+\_\+args}}
+\index{setup\+\_\+args@{setup\+\_\+args}!parlai\+::scripts\+::interactive\+\_\+rank@{parlai\+::scripts\+::interactive\+\_\+rank}}
+\subsubsection{\texorpdfstring{setup\+\_\+args()}{setup\_args()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+interactive\+\_\+rank.\+setup\+\_\+args (\begin{DoxyParamCaption}\item[{}]{parser = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 32 of file interactive\+\_\+rank.\+py.
+
+
+\begin{DoxyCode}
+32 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1interactive__rank_af87c6b5d3f8843e51461c9cfd75fd510}{setup\_args}(parser=None):
+33     \textcolor{keywordflow}{if} parser \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+34         parser = ParlaiParser()
+35     parser.add\_pytorch\_datateacher\_args()
+36     parser.set\_params(model=\textcolor{stringliteral}{'parlai.agents.local\_human.local\_human:LocalHumanAgent'})
+37     \textcolor{keywordflow}{return} parser
+38 
+39 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1interactive__rank_a68288547427936a867a1b8eb9a945be7}\label{namespaceparlai_1_1scripts_1_1interactive__rank_a68288547427936a867a1b8eb9a945be7}} 
+\index{parlai\+::scripts\+::interactive\+\_\+rank@{parlai\+::scripts\+::interactive\+\_\+rank}!parser@{parser}}
+\index{parser@{parser}!parlai\+::scripts\+::interactive\+\_\+rank@{parlai\+::scripts\+::interactive\+\_\+rank}}
+\subsubsection{\texorpdfstring{parser}{parser}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+interactive\+\_\+rank.\+parser = \hyperlink{namespaceparlai_1_1scripts_1_1interactive__rank_af87c6b5d3f8843e51461c9cfd75fd510}{setup\+\_\+args}()}
+
+
+
+Definition at line 104 of file interactive\+\_\+rank.\+py.
+

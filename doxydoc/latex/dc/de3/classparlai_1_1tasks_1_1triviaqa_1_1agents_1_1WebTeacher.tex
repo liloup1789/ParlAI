@@ -1,0 +1,165 @@
+\hypertarget{classparlai_1_1tasks_1_1triviaqa_1_1agents_1_1WebTeacher}{}\section{parlai.\+tasks.\+triviaqa.\+agents.\+Web\+Teacher Class Reference}
+\label{classparlai_1_1tasks_1_1triviaqa_1_1agents_1_1WebTeacher}\index{parlai.\+tasks.\+triviaqa.\+agents.\+Web\+Teacher@{parlai.\+tasks.\+triviaqa.\+agents.\+Web\+Teacher}}
+
+
+Inheritance diagram for parlai.\+tasks.\+triviaqa.\+agents.\+Web\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{dc/da1/classparlai_1_1tasks_1_1triviaqa_1_1agents_1_1WebTeacher__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+tasks.\+triviaqa.\+agents.\+Web\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{d4/dfe/classparlai_1_1tasks_1_1triviaqa_1_1agents_1_1WebTeacher__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1triviaqa_1_1agents_1_1WebTeacher_a13bb3abbde8cd219d61e2093d38f7210}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1core_1_1agents_1_1Teacher_a3ce6243860ce978a897922863ed32fa4}{opt}, shared=None)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1triviaqa_1_1agents_1_1WebTeacher_a781004317ce0bb925ecf0a51783a3fa0}{setup\+\_\+data} (self, path)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1triviaqa_1_1agents_1_1WebTeacher_ab62932f9cf9704abc101d924f279a8a1}{prefix}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1triviaqa_1_1agents_1_1WebTeacher_adfa79e6153ab8900eff1853bba6def9c}{suffix}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1triviaqa_1_1agents_1_1WebTeacher_a290c1e778391be704efed2dfe06bed25}{evidence\+\_\+dir}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1triviaqa_1_1agents_1_1WebTeacher_aa997ce2a0c127b3cfc6391a0472fa9d3}{id}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 25 of file agents.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1triviaqa_1_1agents_1_1WebTeacher_a13bb3abbde8cd219d61e2093d38f7210}\label{classparlai_1_1tasks_1_1triviaqa_1_1agents_1_1WebTeacher_a13bb3abbde8cd219d61e2093d38f7210}} 
+\index{parlai\+::tasks\+::triviaqa\+::agents\+::\+Web\+Teacher@{parlai\+::tasks\+::triviaqa\+::agents\+::\+Web\+Teacher}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::tasks\+::triviaqa\+::agents\+::\+Web\+Teacher@{parlai\+::tasks\+::triviaqa\+::agents\+::\+Web\+Teacher}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+triviaqa.\+agents.\+Web\+Teacher.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{shared = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 26 of file agents.\+py.
+
+
+\begin{DoxyCode}
+26     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
+27         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} hasattr(self, \textcolor{stringliteral}{'prefix'}):
+28             self.prefix = \textcolor{stringliteral}{''}
+29             \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'datatype'}].startswith(\textcolor{stringliteral}{'train'}):
+30                 self.suffix = \textcolor{stringliteral}{'train'}
+31             \textcolor{keywordflow}{else}:
+32                 self.suffix = \textcolor{stringliteral}{'dev'}
+33 
+34         qa\_dir, self.evidence\_dir = \_path(opt)
+35         opt[\textcolor{stringliteral}{'datafile'}] = os.path.join(
+36             qa\_dir, self.prefix + \textcolor{stringliteral}{'web-'} + self.suffix + \textcolor{stringliteral}{'.json'}
+37         )
+38         self.id = \textcolor{stringliteral}{'triviaqa'}
+39         super().\_\_init\_\_(opt, shared)
+40 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1triviaqa_1_1agents_1_1WebTeacher_a781004317ce0bb925ecf0a51783a3fa0}\label{classparlai_1_1tasks_1_1triviaqa_1_1agents_1_1WebTeacher_a781004317ce0bb925ecf0a51783a3fa0}} 
+\index{parlai\+::tasks\+::triviaqa\+::agents\+::\+Web\+Teacher@{parlai\+::tasks\+::triviaqa\+::agents\+::\+Web\+Teacher}!setup\+\_\+data@{setup\+\_\+data}}
+\index{setup\+\_\+data@{setup\+\_\+data}!parlai\+::tasks\+::triviaqa\+::agents\+::\+Web\+Teacher@{parlai\+::tasks\+::triviaqa\+::agents\+::\+Web\+Teacher}}
+\subsubsection{\texorpdfstring{setup\+\_\+data()}{setup\_data()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+triviaqa.\+agents.\+Web\+Teacher.\+setup\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{path }\end{DoxyParamCaption})}
+
+
+
+Definition at line 41 of file agents.\+py.
+
+
+\begin{DoxyCode}
+41     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1multinli_1_1agents_a4fa2cb0ba1ed745336ad8bceed36b841}{setup\_data}(self, path):
+42         print(\textcolor{stringliteral}{'loading: '} + path)
+43         with open(path) \textcolor{keyword}{as} data\_file:
+44             data = json.load(data\_file)[\textcolor{stringliteral}{'Data'}]
+45         \textcolor{keywordflow}{for} datapoint \textcolor{keywordflow}{in} data:
+46             question = datapoint[\textcolor{stringliteral}{'Question'}]
+47             answers = datapoint[\textcolor{stringliteral}{'Answer'}][\textcolor{stringliteral}{'Aliases'}]
+48             evidence\_list = datapoint[\textcolor{stringliteral}{'SearchResults'}]
+49 
+50             \textcolor{keywordflow}{if} len(evidence\_list) == 0:
+51                 \textcolor{keywordflow}{continue}
+52 
+53             \textcolor{keywordflow}{for} evidence\_item \textcolor{keywordflow}{in} evidence\_list:
+54                 evidence\_file\_path = os.path.join(
+55                     self.evidence\_dir, \textcolor{stringliteral}{'web'}, evidence\_item[\textcolor{stringliteral}{'Filename'}]
+56                 )
+57                 with open(evidence\_file\_path) \textcolor{keyword}{as} evidence\_file:
+58                     evidence = \textcolor{stringliteral}{'Title: %s\(\backslash\)n'} % evidence\_item[\textcolor{stringliteral}{'Title'}]
+59                     evidence += evidence\_file.read()
+60                     \textcolor{keywordflow}{yield} (evidence + \textcolor{stringliteral}{'\(\backslash\)n'} + question, answers), \textcolor{keyword}{True}
+61 
+62 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1triviaqa_1_1agents_1_1WebTeacher_a290c1e778391be704efed2dfe06bed25}\label{classparlai_1_1tasks_1_1triviaqa_1_1agents_1_1WebTeacher_a290c1e778391be704efed2dfe06bed25}} 
+\index{parlai\+::tasks\+::triviaqa\+::agents\+::\+Web\+Teacher@{parlai\+::tasks\+::triviaqa\+::agents\+::\+Web\+Teacher}!evidence\+\_\+dir@{evidence\+\_\+dir}}
+\index{evidence\+\_\+dir@{evidence\+\_\+dir}!parlai\+::tasks\+::triviaqa\+::agents\+::\+Web\+Teacher@{parlai\+::tasks\+::triviaqa\+::agents\+::\+Web\+Teacher}}
+\subsubsection{\texorpdfstring{evidence\+\_\+dir}{evidence\_dir}}
+{\footnotesize\ttfamily parlai.\+tasks.\+triviaqa.\+agents.\+Web\+Teacher.\+evidence\+\_\+dir}
+
+
+
+Definition at line 34 of file agents.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1triviaqa_1_1agents_1_1WebTeacher_aa997ce2a0c127b3cfc6391a0472fa9d3}\label{classparlai_1_1tasks_1_1triviaqa_1_1agents_1_1WebTeacher_aa997ce2a0c127b3cfc6391a0472fa9d3}} 
+\index{parlai\+::tasks\+::triviaqa\+::agents\+::\+Web\+Teacher@{parlai\+::tasks\+::triviaqa\+::agents\+::\+Web\+Teacher}!id@{id}}
+\index{id@{id}!parlai\+::tasks\+::triviaqa\+::agents\+::\+Web\+Teacher@{parlai\+::tasks\+::triviaqa\+::agents\+::\+Web\+Teacher}}
+\subsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily parlai.\+tasks.\+triviaqa.\+agents.\+Web\+Teacher.\+id}
+
+
+
+Definition at line 38 of file agents.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1triviaqa_1_1agents_1_1WebTeacher_ab62932f9cf9704abc101d924f279a8a1}\label{classparlai_1_1tasks_1_1triviaqa_1_1agents_1_1WebTeacher_ab62932f9cf9704abc101d924f279a8a1}} 
+\index{parlai\+::tasks\+::triviaqa\+::agents\+::\+Web\+Teacher@{parlai\+::tasks\+::triviaqa\+::agents\+::\+Web\+Teacher}!prefix@{prefix}}
+\index{prefix@{prefix}!parlai\+::tasks\+::triviaqa\+::agents\+::\+Web\+Teacher@{parlai\+::tasks\+::triviaqa\+::agents\+::\+Web\+Teacher}}
+\subsubsection{\texorpdfstring{prefix}{prefix}}
+{\footnotesize\ttfamily parlai.\+tasks.\+triviaqa.\+agents.\+Web\+Teacher.\+prefix}
+
+
+
+Definition at line 28 of file agents.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1triviaqa_1_1agents_1_1WebTeacher_adfa79e6153ab8900eff1853bba6def9c}\label{classparlai_1_1tasks_1_1triviaqa_1_1agents_1_1WebTeacher_adfa79e6153ab8900eff1853bba6def9c}} 
+\index{parlai\+::tasks\+::triviaqa\+::agents\+::\+Web\+Teacher@{parlai\+::tasks\+::triviaqa\+::agents\+::\+Web\+Teacher}!suffix@{suffix}}
+\index{suffix@{suffix}!parlai\+::tasks\+::triviaqa\+::agents\+::\+Web\+Teacher@{parlai\+::tasks\+::triviaqa\+::agents\+::\+Web\+Teacher}}
+\subsubsection{\texorpdfstring{suffix}{suffix}}
+{\footnotesize\ttfamily parlai.\+tasks.\+triviaqa.\+agents.\+Web\+Teacher.\+suffix}
+
+
+
+Definition at line 30 of file agents.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/tasks/triviaqa/\hyperlink{parlai_2tasks_2triviaqa_2agents_8py}{agents.\+py}\end{DoxyCompactItemize}

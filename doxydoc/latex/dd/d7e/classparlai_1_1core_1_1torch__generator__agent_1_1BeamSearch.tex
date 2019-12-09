@@ -1,0 +1,82 @@
+\hypertarget{classparlai_1_1core_1_1torch__generator__agent_1_1BeamSearch}{}\section{parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Beam\+Search Class Reference}
+\label{classparlai_1_1core_1_1torch__generator__agent_1_1BeamSearch}\index{parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Beam\+Search@{parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Beam\+Search}}
+
+
+Inheritance diagram for parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Beam\+Search\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{da/ddf/classparlai_1_1core_1_1torch__generator__agent_1_1BeamSearch__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Beam\+Search\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=212pt]{d6/d3d/classparlai_1_1core_1_1torch__generator__agent_1_1BeamSearch__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1core_1_1torch__generator__agent_1_1BeamSearch_a3d67c12c987514ad263418ca2d98bbba}{select\+\_\+paths} (self, logprobs, prior\+\_\+scores)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Beam search.
+\end{DoxyVerb}
+ 
+
+Definition at line 1352 of file torch\+\_\+generator\+\_\+agent.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1core_1_1torch__generator__agent_1_1BeamSearch_a3d67c12c987514ad263418ca2d98bbba}\label{classparlai_1_1core_1_1torch__generator__agent_1_1BeamSearch_a3d67c12c987514ad263418ca2d98bbba}} 
+\index{parlai\+::core\+::torch\+\_\+generator\+\_\+agent\+::\+Beam\+Search@{parlai\+::core\+::torch\+\_\+generator\+\_\+agent\+::\+Beam\+Search}!select\+\_\+paths@{select\+\_\+paths}}
+\index{select\+\_\+paths@{select\+\_\+paths}!parlai\+::core\+::torch\+\_\+generator\+\_\+agent\+::\+Beam\+Search@{parlai\+::core\+::torch\+\_\+generator\+\_\+agent\+::\+Beam\+Search}}
+\subsubsection{\texorpdfstring{select\+\_\+paths()}{select\_paths()}}
+{\footnotesize\ttfamily def parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Beam\+Search.\+select\+\_\+paths (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{logprobs,  }\item[{}]{prior\+\_\+scores }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Select the next vocabulary item in these beams.
+\end{DoxyVerb}
+ 
+
+Definition at line 1357 of file torch\+\_\+generator\+\_\+agent.\+py.
+
+
+\begin{DoxyCode}
+1357     \textcolor{keyword}{def }select\_paths(self, logprobs, prior\_scores):
+1358         \textcolor{stringliteral}{"""}
+1359 \textcolor{stringliteral}{        Select the next vocabulary item in these beams.}
+1360 \textcolor{stringliteral}{        """}
+1361         \textcolor{comment}{# if numel is 1, then this is the first time step, only one hyp is expanded}
+1362         \textcolor{keywordflow}{if} prior\_scores.numel() == 1:
+1363             logprobs = logprobs[0:1]
+1364 
+1365         \textcolor{comment}{# beam search actually looks over all hypotheses together so we flatten}
+1366         beam\_scores = logprobs + prior\_scores.unsqueeze(1).expand\_as(logprobs)
+1367         flat\_beam\_scores = beam\_scores.view(-1)
+1368         best\_scores, best\_idxs = torch.topk(flat\_beam\_scores, self.beam\_size, dim=-1)
+1369         voc\_size = logprobs.size(-1)
+1370 
+1371         \textcolor{comment}{# get the backtracking hypothesis id as a multiple of full voc\_sizes}
+1372         hyp\_ids = best\_idxs / voc\_size
+1373         \textcolor{comment}{# get the actual word id from residual of the same division}
+1374         tok\_ids = best\_idxs % voc\_size
+1375 
+1376         \textcolor{keywordflow}{return} (hyp\_ids, tok\_ids, best\_scores)
+1377 
+1378 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/core/\hyperlink{torch__generator__agent_8py}{torch\+\_\+generator\+\_\+agent.\+py}\end{DoxyCompactItemize}

@@ -1,0 +1,127 @@
+\hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1terminal__chat_1_1run}{}\section{parlai.\+chat\+\_\+service.\+services.\+terminal\+\_\+chat.\+run Namespace Reference}
+\label{namespaceparlai_1_1chat__service_1_1services_1_1terminal__chat_1_1run}\index{parlai.\+chat\+\_\+service.\+services.\+terminal\+\_\+chat.\+run@{parlai.\+chat\+\_\+service.\+services.\+terminal\+\_\+chat.\+run}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1terminal__chat_1_1run_a644a131d95fe6a2053b91eddd022fbf6}{setup\+\_\+args} ()
+\item 
+def \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1terminal__chat_1_1run_a2d090fbaf981ed8221ad1a1e5be061ea}{run} (\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1terminal__chat_1_1run_adf4dc01fedda1351bb784c41bc2b21cc}{opt})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+string \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1terminal__chat_1_1run_a29cff218e4a1bce1a042cb80e19a3393}{S\+E\+R\+V\+I\+C\+E\+\_\+\+N\+A\+ME} = \textquotesingle{}terminal\textquotesingle{}
+\item 
+def \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1terminal__chat_1_1run_adf4dc01fedda1351bb784c41bc2b21cc}{opt} = \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1terminal__chat_1_1run_a644a131d95fe6a2053b91eddd022fbf6}{setup\+\_\+args}()
+\item 
+def \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1terminal__chat_1_1run_a83bae75084643003977f413daca860a6}{config\+\_\+path} = opt.\+get(\textquotesingle{}config\+\_\+path\textquotesingle{})
+\item 
+\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1terminal__chat_1_1run_a4361047d588ccc6be7146ba6a063cd9f}{config} = utils.\+parse\+\_\+configuration\+\_\+file(\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1terminal__chat_1_1run_a83bae75084643003977f413daca860a6}{config\+\_\+path})
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1terminal__chat_1_1run_a2d090fbaf981ed8221ad1a1e5be061ea}\label{namespaceparlai_1_1chat__service_1_1services_1_1terminal__chat_1_1run_a2d090fbaf981ed8221ad1a1e5be061ea}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::terminal\+\_\+chat\+::run@{parlai\+::chat\+\_\+service\+::services\+::terminal\+\_\+chat\+::run}!run@{run}}
+\index{run@{run}!parlai\+::chat\+\_\+service\+::services\+::terminal\+\_\+chat\+::run@{parlai\+::chat\+\_\+service\+::services\+::terminal\+\_\+chat\+::run}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+terminal\+\_\+chat.\+run.\+run (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Run TerminalManager.
+\end{DoxyVerb}
+ 
+
+Definition at line 36 of file run.\+py.
+
+
+\begin{DoxyCode}
+36 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1talkthewalk_1_1run_a0a1ec08b8196cb008e4df83468c67e5b}{run}(opt):
+37     \textcolor{stringliteral}{"""}
+38 \textcolor{stringliteral}{    Run TerminalManager.}
+39 \textcolor{stringliteral}{    """}
+40     opt[\textcolor{stringliteral}{'service'}] = SERVICE\_NAME
+41     manager = TerminalManager(opt)
+42     \textcolor{keywordflow}{try}:
+43         manager.start\_task()
+44     \textcolor{keywordflow}{finally}:
+45         manager.shutdown()
+46 
+47 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1terminal__chat_1_1run_a644a131d95fe6a2053b91eddd022fbf6}\label{namespaceparlai_1_1chat__service_1_1services_1_1terminal__chat_1_1run_a644a131d95fe6a2053b91eddd022fbf6}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::terminal\+\_\+chat\+::run@{parlai\+::chat\+\_\+service\+::services\+::terminal\+\_\+chat\+::run}!setup\+\_\+args@{setup\+\_\+args}}
+\index{setup\+\_\+args@{setup\+\_\+args}!parlai\+::chat\+\_\+service\+::services\+::terminal\+\_\+chat\+::run@{parlai\+::chat\+\_\+service\+::services\+::terminal\+\_\+chat\+::run}}
+\subsubsection{\texorpdfstring{setup\+\_\+args()}{setup\_args()}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+terminal\+\_\+chat.\+run.\+setup\+\_\+args (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Set up args.
+
+:return: A parser that takes in command line arguments for chat services (debug, config-path, password), and a port.
+\end{DoxyVerb}
+ 
+
+Definition at line 20 of file run.\+py.
+
+
+\begin{DoxyCode}
+20 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1talkthewalk_1_1run_a3534e8afa0a4dc25a6e02740fa35ac84}{setup\_args}():
+21     \textcolor{stringliteral}{"""}
+22 \textcolor{stringliteral}{    Set up args.}
+23 \textcolor{stringliteral}{}
+24 \textcolor{stringliteral}{    :return: A parser that takes in command line arguments for chat services (debug, config-path,
+       password), and a port.}
+25 \textcolor{stringliteral}{    """}
+26     parser = ParlaiParser(\textcolor{keyword}{False}, \textcolor{keyword}{False})
+27     parser.add\_parlai\_data\_path()
+28     parser.add\_chatservice\_args()
+29     parser\_grp = parser.add\_argument\_group(\textcolor{stringliteral}{'Terminal Chat'})
+30     parser\_grp.add\_argument(
+31         \textcolor{stringliteral}{'--port'}, default=35496, type=int, help=\textcolor{stringliteral}{'Port to run the terminal chat server'}
+32     )
+33     \textcolor{keywordflow}{return} parser.parse\_args()
+34 
+35 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1terminal__chat_1_1run_a4361047d588ccc6be7146ba6a063cd9f}\label{namespaceparlai_1_1chat__service_1_1services_1_1terminal__chat_1_1run_a4361047d588ccc6be7146ba6a063cd9f}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::terminal\+\_\+chat\+::run@{parlai\+::chat\+\_\+service\+::services\+::terminal\+\_\+chat\+::run}!config@{config}}
+\index{config@{config}!parlai\+::chat\+\_\+service\+::services\+::terminal\+\_\+chat\+::run@{parlai\+::chat\+\_\+service\+::services\+::terminal\+\_\+chat\+::run}}
+\subsubsection{\texorpdfstring{config}{config}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+services.\+terminal\+\_\+chat.\+run.\+config = utils.\+parse\+\_\+configuration\+\_\+file(\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1terminal__chat_1_1run_a83bae75084643003977f413daca860a6}{config\+\_\+path})}
+
+
+
+Definition at line 51 of file run.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1terminal__chat_1_1run_a83bae75084643003977f413daca860a6}\label{namespaceparlai_1_1chat__service_1_1services_1_1terminal__chat_1_1run_a83bae75084643003977f413daca860a6}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::terminal\+\_\+chat\+::run@{parlai\+::chat\+\_\+service\+::services\+::terminal\+\_\+chat\+::run}!config\+\_\+path@{config\+\_\+path}}
+\index{config\+\_\+path@{config\+\_\+path}!parlai\+::chat\+\_\+service\+::services\+::terminal\+\_\+chat\+::run@{parlai\+::chat\+\_\+service\+::services\+::terminal\+\_\+chat\+::run}}
+\subsubsection{\texorpdfstring{config\+\_\+path}{config\_path}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+terminal\+\_\+chat.\+run.\+config\+\_\+path = opt.\+get(\textquotesingle{}config\+\_\+path\textquotesingle{})}
+
+
+
+Definition at line 50 of file run.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1terminal__chat_1_1run_adf4dc01fedda1351bb784c41bc2b21cc}\label{namespaceparlai_1_1chat__service_1_1services_1_1terminal__chat_1_1run_adf4dc01fedda1351bb784c41bc2b21cc}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::terminal\+\_\+chat\+::run@{parlai\+::chat\+\_\+service\+::services\+::terminal\+\_\+chat\+::run}!opt@{opt}}
+\index{opt@{opt}!parlai\+::chat\+\_\+service\+::services\+::terminal\+\_\+chat\+::run@{parlai\+::chat\+\_\+service\+::services\+::terminal\+\_\+chat\+::run}}
+\subsubsection{\texorpdfstring{opt}{opt}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+terminal\+\_\+chat.\+run.\+opt = \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1terminal__chat_1_1run_a644a131d95fe6a2053b91eddd022fbf6}{setup\+\_\+args}()}
+
+
+
+Definition at line 49 of file run.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1terminal__chat_1_1run_a29cff218e4a1bce1a042cb80e19a3393}\label{namespaceparlai_1_1chat__service_1_1services_1_1terminal__chat_1_1run_a29cff218e4a1bce1a042cb80e19a3393}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::terminal\+\_\+chat\+::run@{parlai\+::chat\+\_\+service\+::services\+::terminal\+\_\+chat\+::run}!S\+E\+R\+V\+I\+C\+E\+\_\+\+N\+A\+ME@{S\+E\+R\+V\+I\+C\+E\+\_\+\+N\+A\+ME}}
+\index{S\+E\+R\+V\+I\+C\+E\+\_\+\+N\+A\+ME@{S\+E\+R\+V\+I\+C\+E\+\_\+\+N\+A\+ME}!parlai\+::chat\+\_\+service\+::services\+::terminal\+\_\+chat\+::run@{parlai\+::chat\+\_\+service\+::services\+::terminal\+\_\+chat\+::run}}
+\subsubsection{\texorpdfstring{S\+E\+R\+V\+I\+C\+E\+\_\+\+N\+A\+ME}{SERVICE\_NAME}}
+{\footnotesize\ttfamily string parlai.\+chat\+\_\+service.\+services.\+terminal\+\_\+chat.\+run.\+S\+E\+R\+V\+I\+C\+E\+\_\+\+N\+A\+ME = \textquotesingle{}terminal\textquotesingle{}}
+
+
+
+Definition at line 17 of file run.\+py.
+

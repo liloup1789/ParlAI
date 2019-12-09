@@ -1,0 +1,266 @@
+\hypertarget{namespacelight__chat__eval_1_1run}{}\section{light\+\_\+chat\+\_\+eval.\+run Namespace Reference}
+\label{namespacelight__chat__eval_1_1run}\index{light\+\_\+chat\+\_\+eval.\+run@{light\+\_\+chat\+\_\+eval.\+run}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacelight__chat__eval_1_1run_a6f95134244efdc98f98e673ae68c8037}{main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacelight__chat__eval_1_1run_a6f95134244efdc98f98e673ae68c8037}\label{namespacelight__chat__eval_1_1run_a6f95134244efdc98f98e673ae68c8037}} 
+\index{light\+\_\+chat\+\_\+eval\+::run@{light\+\_\+chat\+\_\+eval\+::run}!main@{main}}
+\index{main@{main}!light\+\_\+chat\+\_\+eval\+::run@{light\+\_\+chat\+\_\+eval\+::run}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def light\+\_\+chat\+\_\+eval.\+run.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Main script for running an eval task against the LIGHT dataset.
+
+special CLI arguments are
+  --light-eval-task-type [speech, emote, action]
+  --light-eval-unseen [False, True]
+
+This launches a task that, on a workers first attempt pairs with an entry
+from the training set. Then based on if the worker performs above a
+specified benchmark, they will either be soft blocked from evaluating or
+allowed to try against the test set.
+\end{DoxyVerb}
+ 
+
+Definition at line 20 of file run.\+py.
+
+
+\begin{DoxyCode}
+20 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1run_ad3ab2c71f8083c3112815c0b363d316b}{main}():
+21     \textcolor{stringliteral}{"""}
+22 \textcolor{stringliteral}{    Main script for running an eval task against the LIGHT dataset.}
+23 \textcolor{stringliteral}{}
+24 \textcolor{stringliteral}{    special CLI arguments are}
+25 \textcolor{stringliteral}{      --light-eval-task-type [speech, emote, action]}
+26 \textcolor{stringliteral}{      --light-eval-unseen [False, True]}
+27 \textcolor{stringliteral}{}
+28 \textcolor{stringliteral}{    This launches a task that, on a workers first attempt pairs with an entry}
+29 \textcolor{stringliteral}{    from the training set. Then based on if the worker performs above a}
+30 \textcolor{stringliteral}{    specified benchmark, they will either be soft blocked from evaluating or}
+31 \textcolor{stringliteral}{    allowed to try against the test set.}
+32 \textcolor{stringliteral}{    """}
+33     \textcolor{comment}{# Get relevant arguments}
+34     argparser = ParlaiParser(\textcolor{keyword}{False}, \textcolor{keyword}{False})
+35     argparser.add\_parlai\_data\_path()
+36     argparser.add\_mturk\_args()
+37     argparser.set\_defaults(datatype=\textcolor{stringliteral}{'test:stream'})
+38     argparser.add\_argument(
+39         \textcolor{stringliteral}{'--light-eval-task-type'}, default=\textcolor{stringliteral}{'speech'}, help=\textcolor{stringliteral}{'Type of task to be evaluating'}
+40     )
+41     argparser.add\_argument(
+42         \textcolor{stringliteral}{'--light-eval-unseen'},
+43         default=\textcolor{keyword}{False},
+44         type=\textcolor{stringliteral}{'bool'},
+45         help=\textcolor{stringliteral}{'Evaluate against the unseen test rather than the seen test'},
+46     )
+47     opt = argparser.parse\_args()
+48 
+49     task\_opt = opt.copy()
+50     task\_opt[\textcolor{stringliteral}{'task'}] = \textcolor{stringliteral}{'light\_dialog'}
+51     \textcolor{keyword}{assert} opt[\textcolor{stringliteral}{'light\_eval\_task\_type'}] \textcolor{keywordflow}{in} [
+52         \textcolor{stringliteral}{'speech'},
+53         \textcolor{stringliteral}{'emote'},
+54         \textcolor{stringliteral}{'action'},
+55     ], \textcolor{stringliteral}{'--light-eval-task-type must be one of speech, emote, or action'}
+56     LABEL\_TYPE = opt[\textcolor{stringliteral}{'light\_eval\_task\_type'}]  \textcolor{comment}{# speech, emote, action}
+57     TRAIN\_TURNS = 7
+58     TRAININGS = 1
+59     MAX\_WRONG = 1
+60     \textcolor{keywordflow}{if} LABEL\_TYPE != \textcolor{stringliteral}{'speech'}:
+61         TRAIN\_TURNS = 3
+62         TRAININGS = 2
+63         MAX\_WRONG = 3 \textcolor{keywordflow}{if} LABEL\_TYPE == \textcolor{stringliteral}{'emote'} \textcolor{keywordflow}{else} 2
+64     task\_opt[\textcolor{stringliteral}{'light\_label\_type'}] = LABEL\_TYPE
+65     task\_opt[\textcolor{stringliteral}{'light\_use\_action'}] = \textcolor{stringliteral}{'all'}
+66     task\_opt[\textcolor{stringliteral}{'light\_use\_cands'}] = \textcolor{stringliteral}{'20'}
+67     task\_opt[\textcolor{stringliteral}{'light\_use\_emote'}] = \textcolor{stringliteral}{'all'}
+68     task\_opt[\textcolor{stringliteral}{'light\_use\_objects'}] = \textcolor{keyword}{True}
+69     task\_opt[\textcolor{stringliteral}{'light\_use\_person\_names'}] = \textcolor{keyword}{True}
+70     task\_opt[\textcolor{stringliteral}{'light\_use\_persona'}] = \textcolor{stringliteral}{'self'}
+71     task\_opt[\textcolor{stringliteral}{'light\_use\_repeat'}] = \textcolor{stringliteral}{'none'}
+72     task\_opt[\textcolor{stringliteral}{'light\_use\_setting'}] = \textcolor{keyword}{True}
+73     task\_opt[\textcolor{stringliteral}{'light\_use\_speech'}] = \textcolor{stringliteral}{'all'}
+74     task\_opt[\textcolor{stringliteral}{'light\_use\_current\_self\_output'}] = \textcolor{stringliteral}{'all'}
+75     task\_opt[\textcolor{stringliteral}{'light\_use\_clip\_cands'}] = 10000
+76     task\_opt[\textcolor{stringliteral}{'light\_unseen\_test'}] = task\_opt[\textcolor{stringliteral}{'light\_eval\_unseen'}]
+77 
+78     random.seed(10)
+79     agent = RepeatLabelAgent(task\_opt)
+80     world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(task\_opt, agent)
+81 
+82     \textcolor{comment}{# Populate dialogues from the LIGHT dataset}
+83     samples = []
+84     curr\_sample = []
+85     \textcolor{keywordflow}{while} \textcolor{keyword}{True}:
+86         world.parley()
+87         curr\_sample.append(world.acts[0].copy())
+88         \textcolor{keywordflow}{if} world.acts[0][\textcolor{stringliteral}{'episode\_done'}]:
+89             \textcolor{keywordflow}{if} len(curr\_sample) >= TRAIN\_TURNS:
+90                 samples.append(curr\_sample)
+91             curr\_sample = []
+92         \textcolor{keywordflow}{if} world.epoch\_done():
+93             \textcolor{keywordflow}{break}
+94 
+95     train\_samples = []
+96     task\_opt[\textcolor{stringliteral}{'datatype'}] = \textcolor{stringliteral}{'train:stream'}
+97     task\_opt[\textcolor{stringliteral}{'light\_unseen\_test'}] = \textcolor{keyword}{False}
+98     agent = RepeatLabelAgent(task\_opt)
+99     world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(task\_opt, agent)
+100     curr\_sample = []
+101     \textcolor{keywordflow}{while} \textcolor{keyword}{True}:
+102         world.parley()
+103         curr\_sample.append(world.acts[0].copy())
+104         \textcolor{keywordflow}{if} world.acts[0][\textcolor{stringliteral}{'episode\_done'}]:
+105             \textcolor{keywordflow}{if} len(curr\_sample) >= TRAIN\_TURNS:
+106                 train\_samples.append(curr\_sample)
+107             curr\_sample = []
+108         \textcolor{keywordflow}{if} world.epoch\_done() \textcolor{keywordflow}{or} len(train\_samples) > 2000:
+109             \textcolor{keywordflow}{break}
+110 
+111     \textcolor{comment}{# Set up temporary pools to pull tasks from}
+112     use\_train\_samples = train\_samples.copy()
+113     use\_samples = train\_samples.copy()
+114 
+115     \textcolor{comment}{# Set the task name to be the folder name}
+116     opt[\textcolor{stringliteral}{'task'}] = os.path.basename(os.path.dirname(os.path.abspath(\_\_file\_\_)))
+117 
+118     \textcolor{comment}{# append the contents of task\_config.py to the configuration}
+119     opt.update(task\_config)
+120 
+121     \textcolor{comment}{# Select an agent\_id that worker agents will be assigned in their world}
+122     mturk\_agent\_roles = [LABEL\_TYPE]
+123 
+124     opt[\textcolor{stringliteral}{'assignment\_duration\_in\_seconds'}] = 20 * 60
+125 
+126     \textcolor{comment}{# Instantiate an MTurkManager with the given options and a maximum number}
+127     \textcolor{comment}{# of agents per world of 1 (based on the length of mturk\_agent\_ids)}
+128     mturk\_manager = MTurkManager(
+129         opt=opt, mturk\_agent\_ids=mturk\_agent\_roles, use\_db=\textcolor{keyword}{True}
+130     )
+131     mturk\_manager.setup\_server(
+132         task\_directory\_path=os.path.dirname(os.path.abspath(\_\_file\_\_))
+133     )
+134 
+135     \textcolor{comment}{# Create an onboard\_function, which will be run for workers who have}
+136     \textcolor{comment}{# accepted your task and must be completed before they are put in the}
+137     \textcolor{comment}{# queue for a task world.}
+138     completed\_agents = []
+139 
+140     completed\_train = \{\}
+141 
+142     \textcolor{keyword}{def }run\_onboard(worker):
+143         nonlocal completed\_agents
+144         \textcolor{keywordflow}{if} worker.worker\_id \textcolor{keywordflow}{in} completed\_agents:
+145             \textcolor{keywordflow}{return}
+146         \textcolor{keywordflow}{else}:
+147             world = LightEvalTestWorld(opt=opt, mturk\_agent=worker)
+148             \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} world.episode\_done():
+149                 world.parley()
+150             \textcolor{keywordflow}{if} world.did\_complete:
+151                 completed\_agents.append(worker.worker\_id)
+152             \textcolor{keywordflow}{else}:
+153                 print(worker.worker\_id, \textcolor{stringliteral}{'Failed the onboarding'})
+154             world.shutdown()
+155             \textcolor{keywordflow}{return} world.prep\_save\_data([worker])
+156 
+157     mturk\_manager.set\_onboard\_function(onboard\_function=run\_onboard)
+158 
+159     \textcolor{keywordflow}{try}:
+160         \textcolor{comment}{# Initialize run information}
+161         mturk\_manager.start\_new\_run()
+162 
+163         \textcolor{comment}{# Set up the sockets and threads to recieve workers}
+164         mturk\_manager.ready\_to\_accept\_workers()
+165 
+166         \textcolor{comment}{# Create the hits as specified by command line arguments}
+167         mturk\_manager.create\_hits(qualifications=[])
+168 
+169         \textcolor{comment}{# Check workers eligiblity acts as a filter, and should return}
+170         \textcolor{comment}{# the list of all workers currently eligible to work on the task}
+171         \textcolor{comment}{# Can be used to pair workers that meet certain criterea}
+172         \textcolor{keyword}{def }check\_workers\_eligibility(workers):
+173             \textcolor{keywordflow}{return} workers
+174 
+175         eligibility\_function = \{\textcolor{stringliteral}{'func'}: check\_workers\_eligibility, \textcolor{stringliteral}{'multiple'}: \textcolor{keyword}{True}\}
+176 
+177         \textcolor{comment}{# Assign worker roles is used to determine what the role each worker}
+178         \textcolor{comment}{# in the given worker list will play. Setting `id` to None will return}
+179         \textcolor{comment}{# the worker to the pool rather than putting them in a given task,}
+180         \textcolor{comment}{# which is useful for having tasks with different possible worker}
+181         \textcolor{comment}{# counts.}
+182         \textcolor{keyword}{def }assign\_worker\_roles(workers):
+183             workers[0].id = LABEL\_TYPE
+184 
+185         \textcolor{comment}{# Define the task function, which will be run with workers that are}
+186         \textcolor{comment}{# as the main task.}
+187         \textcolor{keyword}{global} run\_conversation
+188 
+189         \textcolor{keyword}{def }run\_conversation(mturk\_manager, opt, workers):
+190             nonlocal completed\_train
+191             nonlocal use\_samples
+192             nonlocal use\_train\_samples
+193             worker\_id = workers[0].worker\_id
+194             use\_train = \textcolor{keyword}{True}
+195             \textcolor{keywordflow}{if} worker\_id \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} completed\_train:
+196                 completed\_train[worker\_id] = 0
+197             \textcolor{keywordflow}{if} completed\_train[worker\_id] >= TRAININGS:
+198                 use\_train = \textcolor{keyword}{False}
+199 
+200             \textcolor{comment}{# Create the real task world}
+201             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} use\_train:
+202                 \textcolor{keywordflow}{if} len(use\_samples) == 0:
+203                     \textcolor{comment}{# reset the pool if none are left}
+204                     use\_samples = samples.copy()
+205                 sample = use\_samples.pop()
+206             \textcolor{keywordflow}{else}:
+207                 \textcolor{keywordflow}{if} len(use\_train\_samples) == 0:
+208                     \textcolor{comment}{# reset the pool if none are left}
+209                     use\_train\_samples = train\_samples.copy()
+210                 sample = train\_samples.pop()
+211 
+212             world = LightEvalTaskWorld(
+213                 opt=opt,
+214                 mturk\_agents=workers,
+215                 sample=sample,
+216                 use\_train=use\_train,
+217                 max\_wrong=MAX\_WRONG,
+218             )
+219             \textcolor{comment}{# run the world to completion}
+220             \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} world.episode\_done():
+221                 world.parley()
+222 
+223             \textcolor{comment}{# shutdown and review the work}
+224             world.shutdown()
+225             world.review\_work()
+226 
+227             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} world.completed \textcolor{keywordflow}{and} \textcolor{keywordflow}{not} use\_train:
+228                 samples.append(sample)
+229             \textcolor{keywordflow}{if} use\_train \textcolor{keywordflow}{and} world.completed:
+230                 completed\_train[worker\_id] += 1
+231                 print(\textcolor{stringliteral}{'Worker passed train: '}, worker\_id)
+232 
+233             \textcolor{comment}{# Return the contents for saving}
+234             \textcolor{keywordflow}{return} world.prep\_save\_data(workers)
+235 
+236         \textcolor{comment}{# Begin the task, allowing mturk\_manager to start running the task}
+237         \textcolor{comment}{# world on any workers who connect}
+238         mturk\_manager.start\_task(
+239             eligibility\_function=eligibility\_function,
+240             assign\_role\_function=assign\_worker\_roles,
+241             task\_function=run\_conversation,
+242         )
+243 
+244     \textcolor{keywordflow}{except} BaseException:
+245         \textcolor{keywordflow}{raise}
+246     \textcolor{keywordflow}{finally}:
+247         print(\textcolor{stringliteral}{'Accepted agents:'}, repr(completed\_agents))
+248         \textcolor{comment}{# Shutdown the manager and free all related resources}
+249         mturk\_manager.shutdown()
+250 
+251 
+\end{DoxyCode}

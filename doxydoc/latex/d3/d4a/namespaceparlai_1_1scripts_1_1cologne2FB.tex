@@ -1,0 +1,283 @@
+\hypertarget{namespaceparlai_1_1scripts_1_1cologne2FB}{}\section{parlai.\+scripts.\+cologne2\+FB Namespace Reference}
+\label{namespaceparlai_1_1scripts_1_1cologne2FB}\index{parlai.\+scripts.\+cologne2\+FB@{parlai.\+scripts.\+cologne2\+FB}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1cologne2FB_ac3f89c025290a81b76a7573f7c1e5d7a}{reader} (filepath)
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1cologne2FB_a8a2fb9f6897ef06ab2421d6682dca667}{cleaner} (string, mode=\textquotesingle{}name\textquotesingle{})
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1cologne2FB_a3d8c5febb71cafe49cc8a5a71c4ba2c5}{parser} (conv)
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1cologne2FB_a82c4edd06c5b6498faa16f8481278be4}{printer} (conversations)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceparlai_1_1scripts_1_1cologne2FB_ae4ca5aa12315e73670c9f97f56d4f355}{parser}
+\item 
+\hyperlink{namespaceparlai_1_1scripts_1_1cologne2FB_a9df96294db981e8d5f78b55326277cad}{description}
+\item 
+\hyperlink{namespaceparlai_1_1scripts_1_1cologne2FB_a63548cb270a13793932d035e97e5c85d}{type}
+\item 
+\hyperlink{namespaceparlai_1_1scripts_1_1cologne2FB_aee25ee82cc84a4eb26e63f3c59013ca4}{str}
+\item 
+\hyperlink{namespaceparlai_1_1scripts_1_1cologne2FB_a84b7007d3ed49d5b3a17544e5f6fa78e}{nargs}
+\item 
+string \hyperlink{namespaceparlai_1_1scripts_1_1cologne2FB_ade34f9304b39eda1beb7c097d6395840}{help} = \textquotesingle{}input datafile\textquotesingle{})
+\item 
+\hyperlink{namespaceparlai_1_1scripts_1_1cologne2FB_a5f672b8f854fe6a7d69411a32a620f70}{args} = parser.\+parse\+\_\+args()
+\item 
+\hyperlink{namespaceparlai_1_1scripts_1_1cologne2FB_a9fb0e1be0c8c3b931027b2dba74bfa4c}{input\+\_\+f} = args.\+input\mbox{[}0\mbox{]}
+\item 
+def \hyperlink{namespaceparlai_1_1scripts_1_1cologne2FB_a10488f760ce47c1eb227df595dd0831b}{convs} = \hyperlink{namespaceparlai_1_1scripts_1_1cologne2FB_ac3f89c025290a81b76a7573f7c1e5d7a}{reader}(\hyperlink{namespaceparlai_1_1scripts_1_1cologne2FB_a9fb0e1be0c8c3b931027b2dba74bfa4c}{input\+\_\+f})
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1cologne2FB_a8a2fb9f6897ef06ab2421d6682dca667}\label{namespaceparlai_1_1scripts_1_1cologne2FB_a8a2fb9f6897ef06ab2421d6682dca667}} 
+\index{parlai\+::scripts\+::cologne2\+FB@{parlai\+::scripts\+::cologne2\+FB}!cleaner@{cleaner}}
+\index{cleaner@{cleaner}!parlai\+::scripts\+::cologne2\+FB@{parlai\+::scripts\+::cologne2\+FB}}
+\subsubsection{\texorpdfstring{cleaner()}{cleaner()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+cologne2\+F\+B.\+cleaner (\begin{DoxyParamCaption}\item[{}]{string,  }\item[{}]{mode = {\ttfamily \textquotesingle{}name\textquotesingle{}} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 68 of file cologne2\+F\+B.\+py.
+
+
+\begin{DoxyCode}
+68 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1cologne2FB_a8a2fb9f6897ef06ab2421d6682dca667}{cleaner}(string,mode ='name') : 
+69 
+70     \textcolor{keywordflow}{if} mode == \textcolor{stringliteral}{'name'}
+71         \textcolor{keywordflow}{return} string.replace(\textcolor{stringliteral}{" "},\textcolor{stringliteral}{""}).replace(\textcolor{stringliteral}{":"},\textcolor{stringliteral}{""})
+72     \textcolor{keywordflow}{elif} mode == \textcolor{stringliteral}{"utterance"} : 
+73         \textcolor{keywordflow}{return} string.split(p.match(string).group(1))[1].split(p.match(string).group(2))[1]
+74 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1cologne2FB_a3d8c5febb71cafe49cc8a5a71c4ba2c5}\label{namespaceparlai_1_1scripts_1_1cologne2FB_a3d8c5febb71cafe49cc8a5a71c4ba2c5}} 
+\index{parlai\+::scripts\+::cologne2\+FB@{parlai\+::scripts\+::cologne2\+FB}!parser@{parser}}
+\index{parser@{parser}!parlai\+::scripts\+::cologne2\+FB@{parlai\+::scripts\+::cologne2\+FB}}
+\subsubsection{\texorpdfstring{parser()}{parser()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+cologne2\+F\+B.\+parser (\begin{DoxyParamCaption}\item[{}]{conv }\end{DoxyParamCaption})}
+
+
+
+Definition at line 75 of file cologne2\+F\+B.\+py.
+
+
+\begin{DoxyCode}
+75 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1cologne2FB_a3d8c5febb71cafe49cc8a5a71c4ba2c5}{parser} (conv) : 
+76 
+77     conversation = []
+78     turn = \textcolor{stringliteral}{""}
+79     bot = \textcolor{stringliteral}{""}
+80     user = \textcolor{stringliteral}{""}
+81     beginning = conv[1]
+82     second = conv[2]
+83     p = re.compile(\textcolor{stringliteral}{r"(^\(\backslash\)(\(\backslash\)d+:\(\backslash\)d+\(\backslash\))) ([a-zA-zéâêîôûàç]+ ?:)"})
+84     bot = p.match(beginning).group(2)
+85     \textcolor{keywordflow}{try} : 
+86         user = p.match(second).group(2)
+87     \textcolor{keywordflow}{except} AttributeError : 
+88         user = \textcolor{stringliteral}{"Unknwown"}
+89     bot = \hyperlink{namespaceparlai_1_1scripts_1_1cologne2FB_a8a2fb9f6897ef06ab2421d6682dca667}{cleaner}(bot)
+90     user = \hyperlink{namespaceparlai_1_1scripts_1_1cologne2FB_a8a2fb9f6897ef06ab2421d6682dca667}{cleaner}(user)
+91     conversation.append(\textcolor{stringliteral}{'<SILENCE>\(\backslash\)t'}+beginning.split(p.match(beginning).group(1))[1].split(p.match(
+      beginning).group(2))[1])
+92     turn = []
+93     cpt = 0
+94     \textcolor{keywordflow}{for} utterance \textcolor{keywordflow}{in} conv : 
+95         \textcolor{keywordflow}{if} cpt == 0 : 
+96             turn = [\hyperlink{namespaceparlai_1_1scripts_1_1cologne2FB_a8a2fb9f6897ef06ab2421d6682dca667}{cleaner}(utterance,\textcolor{stringliteral}{'utterance'})]
+97             cpt += 1 
+98             current = user
+99         \textcolor{keywordflow}{else} : 
+100             \textcolor{keywordflow}{if} turn :
+101                 new = \hyperlink{namespaceparlai_1_1scripts_1_1cologne2FB_a8a2fb9f6897ef06ab2421d6682dca667}{cleaner}(p.match(utterance).group(2))
+102                 \textcolor{keywordflow}{if} current != new : 
+103                         turn.append(\hyperlink{namespaceparlai_1_1scripts_1_1cologne2FB_a8a2fb9f6897ef06ab2421d6682dca667}{cleaner}(utterance,\textcolor{stringliteral}{'utterance'}))
+104                         conversation.append(turn)
+105                         turn = []
+106                     \textcolor{keywordflow}{else} : 
+107 
+108 
+109 
+110 
+111 
+112 
+113 
+114 
+115     \textcolor{comment}{# for i in range(3,len(conv)) : }
+116 
+117 
+118 
+119     \textcolor{comment}{# locutor = re.search(be)}
+120 
+121 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1cologne2FB_a82c4edd06c5b6498faa16f8481278be4}\label{namespaceparlai_1_1scripts_1_1cologne2FB_a82c4edd06c5b6498faa16f8481278be4}} 
+\index{parlai\+::scripts\+::cologne2\+FB@{parlai\+::scripts\+::cologne2\+FB}!printer@{printer}}
+\index{printer@{printer}!parlai\+::scripts\+::cologne2\+FB@{parlai\+::scripts\+::cologne2\+FB}}
+\subsubsection{\texorpdfstring{printer()}{printer()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+cologne2\+F\+B.\+printer (\begin{DoxyParamCaption}\item[{}]{conversations }\end{DoxyParamCaption})}
+
+
+
+Definition at line 122 of file cologne2\+F\+B.\+py.
+
+
+\begin{DoxyCode}
+122 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1cologne2FB_a82c4edd06c5b6498faa16f8481278be4}{printer}(conversations) : 
+123 
+124     \textcolor{keywordflow}{for} conversation \textcolor{keywordflow}{in} conversations : 
+125         pprint(conversation)
+126 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1cologne2FB_ac3f89c025290a81b76a7573f7c1e5d7a}\label{namespaceparlai_1_1scripts_1_1cologne2FB_ac3f89c025290a81b76a7573f7c1e5d7a}} 
+\index{parlai\+::scripts\+::cologne2\+FB@{parlai\+::scripts\+::cologne2\+FB}!reader@{reader}}
+\index{reader@{reader}!parlai\+::scripts\+::cologne2\+FB@{parlai\+::scripts\+::cologne2\+FB}}
+\subsubsection{\texorpdfstring{reader()}{reader()}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+cologne2\+F\+B.\+reader (\begin{DoxyParamCaption}\item[{}]{filepath }\end{DoxyParamCaption})}
+
+
+
+Definition at line 27 of file cologne2\+F\+B.\+py.
+
+
+\begin{DoxyCode}
+27 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1cologne2FB_ac3f89c025290a81b76a7573f7c1e5d7a}{reader}(filepath) : 
+28 
+29     f = open(filepath,\textcolor{stringliteral}{'r',encoding='}utf-8')
+30     conversations = []
+31     conversation = \{\}
+32     x = 0
+33     turn = \textcolor{stringliteral}{""}
+34     p = re.compile(\textcolor{stringliteral}{r"^\(\backslash\)(\(\backslash\)d+:\(\backslash\)d+\(\backslash\))"})
+35     \textcolor{keywordflow}{for} line \textcolor{keywordflow}{in} f.readlines() :
+36         \textcolor{keywordflow}{if} \textcolor{stringliteral}{"real\_time\_queue\_name"} \textcolor{keywordflow}{in} line : 
+37             print(\textcolor{stringliteral}{"new conver"})
+38             \textcolor{keywordflow}{if} conversation :
+39 
+40                 x += 1 
+41                 conversation[x] = turn
+42 
+43                 conversations.append(conversation)
+44             x = 0
+45             conversation = \{\}
+46             turn = \textcolor{stringliteral}{""}
+47         \textcolor{keywordflow}{else} : 
+48             \textcolor{keywordflow}{if} p.match(line) : 
+49                 \textcolor{keywordflow}{if} turn : 
+50                     x += 1 
+51                     \textcolor{keywordflow}{if} x \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} conversation : 
+52                         conversation[x] = turn
+53                     turn = line
+54 
+55                 \textcolor{keywordflow}{else} : 
+56                     turn += line    
+57             \textcolor{keywordflow}{elif} \textcolor{stringliteral}{'"Chat Parfums'} \textcolor{keywordflow}{in} line \textcolor{keywordflow}{or} re.compile(\textcolor{stringliteral}{r'\(\backslash\)"(;\(\backslash\)d*)+'}).match(line) : 
+58                 \textcolor{keywordflow}{pass}
+59 
+60             \textcolor{keywordflow}{else} : 
+61                 turn += line
+62     \textcolor{keywordflow}{if} conversation : 
+63         x += 1 
+64         conversation[x] = turn
+65         conversations.append(conversation)
+66     \textcolor{keywordflow}{return} conversations
+67 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1cologne2FB_a5f672b8f854fe6a7d69411a32a620f70}\label{namespaceparlai_1_1scripts_1_1cologne2FB_a5f672b8f854fe6a7d69411a32a620f70}} 
+\index{parlai\+::scripts\+::cologne2\+FB@{parlai\+::scripts\+::cologne2\+FB}!args@{args}}
+\index{args@{args}!parlai\+::scripts\+::cologne2\+FB@{parlai\+::scripts\+::cologne2\+FB}}
+\subsubsection{\texorpdfstring{args}{args}}
+{\footnotesize\ttfamily parlai.\+scripts.\+cologne2\+F\+B.\+args = parser.\+parse\+\_\+args()}
+
+
+
+Definition at line 23 of file cologne2\+F\+B.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1cologne2FB_a10488f760ce47c1eb227df595dd0831b}\label{namespaceparlai_1_1scripts_1_1cologne2FB_a10488f760ce47c1eb227df595dd0831b}} 
+\index{parlai\+::scripts\+::cologne2\+FB@{parlai\+::scripts\+::cologne2\+FB}!convs@{convs}}
+\index{convs@{convs}!parlai\+::scripts\+::cologne2\+FB@{parlai\+::scripts\+::cologne2\+FB}}
+\subsubsection{\texorpdfstring{convs}{convs}}
+{\footnotesize\ttfamily def parlai.\+scripts.\+cologne2\+F\+B.\+convs = \hyperlink{namespaceparlai_1_1scripts_1_1cologne2FB_ac3f89c025290a81b76a7573f7c1e5d7a}{reader}(\hyperlink{namespaceparlai_1_1scripts_1_1cologne2FB_a9fb0e1be0c8c3b931027b2dba74bfa4c}{input\+\_\+f})}
+
+
+
+Definition at line 129 of file cologne2\+F\+B.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1cologne2FB_a9df96294db981e8d5f78b55326277cad}\label{namespaceparlai_1_1scripts_1_1cologne2FB_a9df96294db981e8d5f78b55326277cad}} 
+\index{parlai\+::scripts\+::cologne2\+FB@{parlai\+::scripts\+::cologne2\+FB}!description@{description}}
+\index{description@{description}!parlai\+::scripts\+::cologne2\+FB@{parlai\+::scripts\+::cologne2\+FB}}
+\subsubsection{\texorpdfstring{description}{description}}
+{\footnotesize\ttfamily parlai.\+scripts.\+cologne2\+F\+B.\+description}
+
+
+
+Definition at line 18 of file cologne2\+F\+B.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1cologne2FB_ade34f9304b39eda1beb7c097d6395840}\label{namespaceparlai_1_1scripts_1_1cologne2FB_ade34f9304b39eda1beb7c097d6395840}} 
+\index{parlai\+::scripts\+::cologne2\+FB@{parlai\+::scripts\+::cologne2\+FB}!help@{help}}
+\index{help@{help}!parlai\+::scripts\+::cologne2\+FB@{parlai\+::scripts\+::cologne2\+FB}}
+\subsubsection{\texorpdfstring{help}{help}}
+{\footnotesize\ttfamily string parlai.\+scripts.\+cologne2\+F\+B.\+help = \textquotesingle{}input datafile\textquotesingle{})}
+
+
+
+Definition at line 20 of file cologne2\+F\+B.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1cologne2FB_a9fb0e1be0c8c3b931027b2dba74bfa4c}\label{namespaceparlai_1_1scripts_1_1cologne2FB_a9fb0e1be0c8c3b931027b2dba74bfa4c}} 
+\index{parlai\+::scripts\+::cologne2\+FB@{parlai\+::scripts\+::cologne2\+FB}!input\+\_\+f@{input\+\_\+f}}
+\index{input\+\_\+f@{input\+\_\+f}!parlai\+::scripts\+::cologne2\+FB@{parlai\+::scripts\+::cologne2\+FB}}
+\subsubsection{\texorpdfstring{input\+\_\+f}{input\_f}}
+{\footnotesize\ttfamily parlai.\+scripts.\+cologne2\+F\+B.\+input\+\_\+f = args.\+input\mbox{[}0\mbox{]}}
+
+
+
+Definition at line 25 of file cologne2\+F\+B.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1cologne2FB_a84b7007d3ed49d5b3a17544e5f6fa78e}\label{namespaceparlai_1_1scripts_1_1cologne2FB_a84b7007d3ed49d5b3a17544e5f6fa78e}} 
+\index{parlai\+::scripts\+::cologne2\+FB@{parlai\+::scripts\+::cologne2\+FB}!nargs@{nargs}}
+\index{nargs@{nargs}!parlai\+::scripts\+::cologne2\+FB@{parlai\+::scripts\+::cologne2\+FB}}
+\subsubsection{\texorpdfstring{nargs}{nargs}}
+{\footnotesize\ttfamily parlai.\+scripts.\+cologne2\+F\+B.\+nargs}
+
+
+
+Definition at line 19 of file cologne2\+F\+B.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1cologne2FB_ae4ca5aa12315e73670c9f97f56d4f355}\label{namespaceparlai_1_1scripts_1_1cologne2FB_ae4ca5aa12315e73670c9f97f56d4f355}} 
+\index{parlai\+::scripts\+::cologne2\+FB@{parlai\+::scripts\+::cologne2\+FB}!parser@{parser}}
+\index{parser@{parser}!parlai\+::scripts\+::cologne2\+FB@{parlai\+::scripts\+::cologne2\+FB}}
+\subsubsection{\texorpdfstring{parser}{parser}}
+{\footnotesize\ttfamily parlai.\+scripts.\+cologne2\+F\+B.\+parser}
+
+
+
+Definition at line 18 of file cologne2\+F\+B.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1cologne2FB_aee25ee82cc84a4eb26e63f3c59013ca4}\label{namespaceparlai_1_1scripts_1_1cologne2FB_aee25ee82cc84a4eb26e63f3c59013ca4}} 
+\index{parlai\+::scripts\+::cologne2\+FB@{parlai\+::scripts\+::cologne2\+FB}!str@{str}}
+\index{str@{str}!parlai\+::scripts\+::cologne2\+FB@{parlai\+::scripts\+::cologne2\+FB}}
+\subsubsection{\texorpdfstring{str}{str}}
+{\footnotesize\ttfamily parlai.\+scripts.\+cologne2\+F\+B.\+str}
+
+
+
+Definition at line 19 of file cologne2\+F\+B.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1cologne2FB_a63548cb270a13793932d035e97e5c85d}\label{namespaceparlai_1_1scripts_1_1cologne2FB_a63548cb270a13793932d035e97e5c85d}} 
+\index{parlai\+::scripts\+::cologne2\+FB@{parlai\+::scripts\+::cologne2\+FB}!type@{type}}
+\index{type@{type}!parlai\+::scripts\+::cologne2\+FB@{parlai\+::scripts\+::cologne2\+FB}}
+\subsubsection{\texorpdfstring{type}{type}}
+{\footnotesize\ttfamily parlai.\+scripts.\+cologne2\+F\+B.\+type}
+
+
+
+Definition at line 19 of file cologne2\+F\+B.\+py.
+

@@ -1,0 +1,106 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1mutualfriends_1_1build}{}\section{parlai.\+tasks.\+mutualfriends.\+build Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1mutualfriends_1_1build}\index{parlai.\+tasks.\+mutualfriends.\+build@{parlai.\+tasks.\+mutualfriends.\+build}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1mutualfriends_1_1build_ab42304948cd357bcb503986b9e4bae7a}{build} (opt)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceparlai_1_1tasks_1_1mutualfriends_1_1build_a3f910f7699f7aa46c45ca749f51c0177}{R\+E\+S\+O\+U\+R\+C\+ES}
+\item 
+bool \hyperlink{namespaceparlai_1_1tasks_1_1mutualfriends_1_1build_a7608ecb31d5f4d7f0c95cabe80f2234e}{zipped} = False,
+\item 
+\hyperlink{namespaceparlai_1_1tasks_1_1mutualfriends_1_1build_a4fa5507e4ea8c9dcb38d7fbef38d3dfc}{U\+R\+LS}
+\item 
+\hyperlink{namespaceparlai_1_1tasks_1_1mutualfriends_1_1build_a72b8fc7fca28e8cc2479b811900b9901}{F\+I\+L\+E\+\_\+\+N\+A\+M\+ES}
+\item 
+\hyperlink{namespaceparlai_1_1tasks_1_1mutualfriends_1_1build_a36845d0798c66a3dd5965034d0702aab}{S\+H\+A256}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1mutualfriends_1_1build_ab42304948cd357bcb503986b9e4bae7a}\label{namespaceparlai_1_1tasks_1_1mutualfriends_1_1build_ab42304948cd357bcb503986b9e4bae7a}} 
+\index{parlai\+::tasks\+::mutualfriends\+::build@{parlai\+::tasks\+::mutualfriends\+::build}!build@{build}}
+\index{build@{build}!parlai\+::tasks\+::mutualfriends\+::build@{parlai\+::tasks\+::mutualfriends\+::build}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+mutualfriends.\+build.\+build (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 28 of file build.\+py.
+
+
+\begin{DoxyCode}
+28 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
+29     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'MutualFriends'})
+30     version = \textcolor{keywordtype}{None}
+31 
+32     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version\_string=version):
+33         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+34         \textcolor{keywordflow}{if} build\_data.built(dpath):
+35             \textcolor{comment}{# An older version exists, so remove these outdated files.}
+36             build\_data.remove\_dir(dpath)
+37         build\_data.make\_dir(dpath)
+38 
+39         \textcolor{comment}{# Download the data.}
+40         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES:
+41             downloadable\_file.download\_file(dpath)
+42 
+43         \textcolor{comment}{# Mark the data as built.}
+44         build\_data.mark\_done(dpath, version\_string=version)
+45 \end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1mutualfriends_1_1build_a72b8fc7fca28e8cc2479b811900b9901}\label{namespaceparlai_1_1tasks_1_1mutualfriends_1_1build_a72b8fc7fca28e8cc2479b811900b9901}} 
+\index{parlai\+::tasks\+::mutualfriends\+::build@{parlai\+::tasks\+::mutualfriends\+::build}!F\+I\+L\+E\+\_\+\+N\+A\+M\+ES@{F\+I\+L\+E\+\_\+\+N\+A\+M\+ES}}
+\index{F\+I\+L\+E\+\_\+\+N\+A\+M\+ES@{F\+I\+L\+E\+\_\+\+N\+A\+M\+ES}!parlai\+::tasks\+::mutualfriends\+::build@{parlai\+::tasks\+::mutualfriends\+::build}}
+\subsubsection{\texorpdfstring{F\+I\+L\+E\+\_\+\+N\+A\+M\+ES}{FILE\_NAMES}}
+{\footnotesize\ttfamily parlai.\+tasks.\+mutualfriends.\+build.\+F\+I\+L\+E\+\_\+\+N\+A\+M\+ES}
+
+
+
+Definition at line 24 of file build.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1mutualfriends_1_1build_a3f910f7699f7aa46c45ca749f51c0177}\label{namespaceparlai_1_1tasks_1_1mutualfriends_1_1build_a3f910f7699f7aa46c45ca749f51c0177}} 
+\index{parlai\+::tasks\+::mutualfriends\+::build@{parlai\+::tasks\+::mutualfriends\+::build}!R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}}
+\index{R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}!parlai\+::tasks\+::mutualfriends\+::build@{parlai\+::tasks\+::mutualfriends\+::build}}
+\subsubsection{\texorpdfstring{R\+E\+S\+O\+U\+R\+C\+ES}{RESOURCES}}
+{\footnotesize\ttfamily parlai.\+tasks.\+mutualfriends.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
+
+
+
+Definition at line 12 of file build.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1mutualfriends_1_1build_a36845d0798c66a3dd5965034d0702aab}\label{namespaceparlai_1_1tasks_1_1mutualfriends_1_1build_a36845d0798c66a3dd5965034d0702aab}} 
+\index{parlai\+::tasks\+::mutualfriends\+::build@{parlai\+::tasks\+::mutualfriends\+::build}!S\+H\+A256@{S\+H\+A256}}
+\index{S\+H\+A256@{S\+H\+A256}!parlai\+::tasks\+::mutualfriends\+::build@{parlai\+::tasks\+::mutualfriends\+::build}}
+\subsubsection{\texorpdfstring{S\+H\+A256}{SHA256}}
+{\footnotesize\ttfamily parlai.\+tasks.\+mutualfriends.\+build.\+S\+H\+A256}
+
+
+
+Definition at line 25 of file build.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1mutualfriends_1_1build_a4fa5507e4ea8c9dcb38d7fbef38d3dfc}\label{namespaceparlai_1_1tasks_1_1mutualfriends_1_1build_a4fa5507e4ea8c9dcb38d7fbef38d3dfc}} 
+\index{parlai\+::tasks\+::mutualfriends\+::build@{parlai\+::tasks\+::mutualfriends\+::build}!U\+R\+LS@{U\+R\+LS}}
+\index{U\+R\+LS@{U\+R\+LS}!parlai\+::tasks\+::mutualfriends\+::build@{parlai\+::tasks\+::mutualfriends\+::build}}
+\subsubsection{\texorpdfstring{U\+R\+LS}{URLS}}
+{\footnotesize\ttfamily parlai.\+tasks.\+mutualfriends.\+build.\+U\+R\+LS}
+
+
+
+Definition at line 21 of file build.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1mutualfriends_1_1build_a7608ecb31d5f4d7f0c95cabe80f2234e}\label{namespaceparlai_1_1tasks_1_1mutualfriends_1_1build_a7608ecb31d5f4d7f0c95cabe80f2234e}} 
+\index{parlai\+::tasks\+::mutualfriends\+::build@{parlai\+::tasks\+::mutualfriends\+::build}!zipped@{zipped}}
+\index{zipped@{zipped}!parlai\+::tasks\+::mutualfriends\+::build@{parlai\+::tasks\+::mutualfriends\+::build}}
+\subsubsection{\texorpdfstring{zipped}{zipped}}
+{\footnotesize\ttfamily bool parlai.\+tasks.\+mutualfriends.\+build.\+zipped = False,}
+
+
+
+Definition at line 17 of file build.\+py.
+

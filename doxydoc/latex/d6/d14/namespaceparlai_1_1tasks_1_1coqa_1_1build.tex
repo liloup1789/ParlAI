@@ -1,0 +1,178 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1coqa_1_1build}{}\section{parlai.\+tasks.\+coqa.\+build Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1coqa_1_1build}\index{parlai.\+tasks.\+coqa.\+build@{parlai.\+tasks.\+coqa.\+build}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1coqa_1_1build_ae2bc52f1ecab4681f1c2ebf013629aec}{make\+\_\+parlai\+\_\+format} (outpath, dtype, data)
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1coqa_1_1build_ae49969fbac6726d7510f9cefd4b8450a}{build} (opt)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+string \hyperlink{namespaceparlai_1_1tasks_1_1coqa_1_1build_acfdb0f28d99e915a52ffeaa441f932f4}{V\+E\+R\+S\+I\+ON} = \textquotesingle{}1.\+0\textquotesingle{}
+\item 
+list \hyperlink{namespaceparlai_1_1tasks_1_1coqa_1_1build_a637aa09169ca463f7944e7ec9554f0e0}{U\+R\+LS}
+\item 
+list \hyperlink{namespaceparlai_1_1tasks_1_1coqa_1_1build_a1b34234fb0de0c56b0fec8db98b9e230}{F\+I\+L\+E\+\_\+\+N\+A\+M\+ES} = \mbox{[}\textquotesingle{}coqa-\/train-\/v1.\+0.\+json\textquotesingle{}, \textquotesingle{}coqa-\/dev-\/v1.\+0.\+json\textquotesingle{}\mbox{]}
+\item 
+list \hyperlink{namespaceparlai_1_1tasks_1_1coqa_1_1build_abac5f27f3ac9554a50b41b0088ec3fbb}{S\+H\+A256} = \mbox{[}$\,$\mbox{]}
+\item 
+list \hyperlink{namespaceparlai_1_1tasks_1_1coqa_1_1build_a7bb45b9538e95720878022ca1db0c715}{R\+E\+S\+O\+U\+R\+C\+ES}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1coqa_1_1build_ae49969fbac6726d7510f9cefd4b8450a}\label{namespaceparlai_1_1tasks_1_1coqa_1_1build_ae49969fbac6726d7510f9cefd4b8450a}} 
+\index{parlai\+::tasks\+::coqa\+::build@{parlai\+::tasks\+::coqa\+::build}!build@{build}}
+\index{build@{build}!parlai\+::tasks\+::coqa\+::build@{parlai\+::tasks\+::coqa\+::build}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+coqa.\+build.\+build (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 62 of file build.\+py.
+
+
+\begin{DoxyCode}
+62 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
+63     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'CoQA'})
+64     version = VERSION
+65 
+66     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version\_string=version):
+67         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+68         \textcolor{keywordflow}{if} build\_data.built(dpath):
+69             \textcolor{comment}{# An older version exists, so remove these outdated files.}
+70             build\_data.remove\_dir(dpath)
+71         build\_data.make\_dir(dpath)
+72 
+73         \textcolor{comment}{# Download the data.}
+74         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES:
+75             downloadable\_file.download\_file(dpath)
+76 
+77         with open(os.path.join(dpath, \textcolor{stringliteral}{'coqa-train-v1.0.json'})) \textcolor{keyword}{as} f:
+78             data = json.load(f)[\textcolor{stringliteral}{'data'}]
+79             \hyperlink{namespaceparlai_1_1tasks_1_1quac_1_1build_a08c212462b5c58cde91192d35f24f0cc}{make\_parlai\_format}(dpath, \textcolor{stringliteral}{'train'}, data)
+80 
+81         with open(os.path.join(dpath, \textcolor{stringliteral}{'coqa-dev-v1.0.json'})) \textcolor{keyword}{as} f:
+82             data = json.load(f)[\textcolor{stringliteral}{'data'}]
+83             \hyperlink{namespaceparlai_1_1tasks_1_1quac_1_1build_a08c212462b5c58cde91192d35f24f0cc}{make\_parlai\_format}(dpath, \textcolor{stringliteral}{'valid'}, data)
+84 
+85         \textcolor{comment}{# Mark the data as built.}
+86         build\_data.mark\_done(dpath, version\_string=version)
+87 \end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1coqa_1_1build_ae2bc52f1ecab4681f1c2ebf013629aec}\label{namespaceparlai_1_1tasks_1_1coqa_1_1build_ae2bc52f1ecab4681f1c2ebf013629aec}} 
+\index{parlai\+::tasks\+::coqa\+::build@{parlai\+::tasks\+::coqa\+::build}!make\+\_\+parlai\+\_\+format@{make\+\_\+parlai\+\_\+format}}
+\index{make\+\_\+parlai\+\_\+format@{make\+\_\+parlai\+\_\+format}!parlai\+::tasks\+::coqa\+::build@{parlai\+::tasks\+::coqa\+::build}}
+\subsubsection{\texorpdfstring{make\+\_\+parlai\+\_\+format()}{make\_parlai\_format()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+coqa.\+build.\+make\+\_\+parlai\+\_\+format (\begin{DoxyParamCaption}\item[{}]{outpath,  }\item[{}]{dtype,  }\item[{}]{data }\end{DoxyParamCaption})}
+
+
+
+Definition at line 37 of file build.\+py.
+
+
+\begin{DoxyCode}
+37 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1quac_1_1build_a08c212462b5c58cde91192d35f24f0cc}{make\_parlai\_format}(outpath, dtype, data):
+38     print(\textcolor{stringliteral}{'building parlai:'} + dtype)
+39     with open(os.path.join(outpath, dtype + \textcolor{stringliteral}{'.txt'}), \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} fout:
+40         \textcolor{keywordflow}{for} each \textcolor{keywordflow}{in} data:
+41             output = []
+42             story = each[\textcolor{stringliteral}{'story'}].replace(\textcolor{stringliteral}{'\(\backslash\)n'}, \textcolor{stringliteral}{'\(\backslash\)\(\backslash\)n'})
+43             \textcolor{keywordflow}{for} question, ans \textcolor{keywordflow}{in} zip(each[\textcolor{stringliteral}{'questions'}], each[\textcolor{stringliteral}{'answers'}]):
+44                 question\_txt = \textcolor{stringliteral}{''}
+45                 \textcolor{keywordflow}{if} question[\textcolor{stringliteral}{'turn\_id'}] == 1:
+46                     \textcolor{comment}{# include the context in the very first turn}
+47                     question\_txt = story + \textcolor{stringliteral}{'\(\backslash\)\(\backslash\)n'} + question[\textcolor{stringliteral}{'input\_text'}]
+48                 \textcolor{keywordflow}{else}:
+49                     question\_txt = question[\textcolor{stringliteral}{'input\_text'}]
+50                 output.append(
+51                     \textcolor{stringliteral}{'text:\{question\}\(\backslash\)tlabels:\{labels\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+52                         question=question\_txt,
+53                         labels=ans[\textcolor{stringliteral}{'input\_text'}].replace(\textcolor{stringliteral}{'|'}, \textcolor{stringliteral}{' \_\_PIPE\_\_ '}),
+54                     )
+55                 )
+56                 \textcolor{keywordflow}{if} question[\textcolor{stringliteral}{'turn\_id'}] < len(each[\textcolor{stringliteral}{'questions'}]):
+57                     output.append(\textcolor{stringliteral}{'\(\backslash\)n'})
+58             output.append(\textcolor{stringliteral}{'\(\backslash\)t\(\backslash\)tepisode\_done:True\(\backslash\)n'})
+59             fout.write(\textcolor{stringliteral}{''}.join(output))
+60 
+61 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1coqa_1_1build_a1b34234fb0de0c56b0fec8db98b9e230}\label{namespaceparlai_1_1tasks_1_1coqa_1_1build_a1b34234fb0de0c56b0fec8db98b9e230}} 
+\index{parlai\+::tasks\+::coqa\+::build@{parlai\+::tasks\+::coqa\+::build}!F\+I\+L\+E\+\_\+\+N\+A\+M\+ES@{F\+I\+L\+E\+\_\+\+N\+A\+M\+ES}}
+\index{F\+I\+L\+E\+\_\+\+N\+A\+M\+ES@{F\+I\+L\+E\+\_\+\+N\+A\+M\+ES}!parlai\+::tasks\+::coqa\+::build@{parlai\+::tasks\+::coqa\+::build}}
+\subsubsection{\texorpdfstring{F\+I\+L\+E\+\_\+\+N\+A\+M\+ES}{FILE\_NAMES}}
+{\footnotesize\ttfamily list parlai.\+tasks.\+coqa.\+build.\+F\+I\+L\+E\+\_\+\+N\+A\+M\+ES = \mbox{[}\textquotesingle{}coqa-\/train-\/v1.\+0.\+json\textquotesingle{}, \textquotesingle{}coqa-\/dev-\/v1.\+0.\+json\textquotesingle{}\mbox{]}}
+
+
+
+Definition at line 18 of file build.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1coqa_1_1build_a7bb45b9538e95720878022ca1db0c715}\label{namespaceparlai_1_1tasks_1_1coqa_1_1build_a7bb45b9538e95720878022ca1db0c715}} 
+\index{parlai\+::tasks\+::coqa\+::build@{parlai\+::tasks\+::coqa\+::build}!R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}}
+\index{R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}!parlai\+::tasks\+::coqa\+::build@{parlai\+::tasks\+::coqa\+::build}}
+\subsubsection{\texorpdfstring{R\+E\+S\+O\+U\+R\+C\+ES}{RESOURCES}}
+{\footnotesize\ttfamily list parlai.\+tasks.\+coqa.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+1 =  [
+2     DownloadableFile(
+3         \textcolor{stringliteral}{'https://nlp.stanford.edu/data/coqa/coqa-train-v1.0.json'},
+4         \textcolor{stringliteral}{'coqa-train-v1.0.json'},
+5         \textcolor{stringliteral}{'b0fdb2bc1bd38dd3ca2ce5fa2ac3e02c6288ac914f241ac409a655ffb6619fa6'},
+6         zipped=\textcolor{keyword}{False},
+7     ),
+8     DownloadableFile(
+9         \textcolor{stringliteral}{'https://nlp.stanford.edu/data/coqa/coqa-dev-v1.0.json'},
+10         \textcolor{stringliteral}{'coqa-dev-v1.0.json'},
+11         \textcolor{stringliteral}{'dfa367a9733ce53222918d0231d9b3bedc2b8ee831a2845f62dfc70701f2540a'},
+12         zipped=\textcolor{keyword}{False},
+13     ),
+14 ]
+\end{DoxyCode}
+
+
+Definition at line 21 of file build.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1coqa_1_1build_abac5f27f3ac9554a50b41b0088ec3fbb}\label{namespaceparlai_1_1tasks_1_1coqa_1_1build_abac5f27f3ac9554a50b41b0088ec3fbb}} 
+\index{parlai\+::tasks\+::coqa\+::build@{parlai\+::tasks\+::coqa\+::build}!S\+H\+A256@{S\+H\+A256}}
+\index{S\+H\+A256@{S\+H\+A256}!parlai\+::tasks\+::coqa\+::build@{parlai\+::tasks\+::coqa\+::build}}
+\subsubsection{\texorpdfstring{S\+H\+A256}{SHA256}}
+{\footnotesize\ttfamily list parlai.\+tasks.\+coqa.\+build.\+S\+H\+A256 = \mbox{[}$\,$\mbox{]}}
+
+
+
+Definition at line 19 of file build.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1coqa_1_1build_a637aa09169ca463f7944e7ec9554f0e0}\label{namespaceparlai_1_1tasks_1_1coqa_1_1build_a637aa09169ca463f7944e7ec9554f0e0}} 
+\index{parlai\+::tasks\+::coqa\+::build@{parlai\+::tasks\+::coqa\+::build}!U\+R\+LS@{U\+R\+LS}}
+\index{U\+R\+LS@{U\+R\+LS}!parlai\+::tasks\+::coqa\+::build@{parlai\+::tasks\+::coqa\+::build}}
+\subsubsection{\texorpdfstring{U\+R\+LS}{URLS}}
+{\footnotesize\ttfamily list parlai.\+tasks.\+coqa.\+build.\+U\+R\+LS}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+1 =  [
+2     \textcolor{stringliteral}{'https://nlp.stanford.edu/data/coqa/coqa-train-v1.0.json'},
+3     \textcolor{stringliteral}{'https://nlp.stanford.edu/data/coqa/coqa-dev-v1.0.json'},
+4 ]
+\end{DoxyCode}
+
+
+Definition at line 14 of file build.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1coqa_1_1build_acfdb0f28d99e915a52ffeaa441f932f4}\label{namespaceparlai_1_1tasks_1_1coqa_1_1build_acfdb0f28d99e915a52ffeaa441f932f4}} 
+\index{parlai\+::tasks\+::coqa\+::build@{parlai\+::tasks\+::coqa\+::build}!V\+E\+R\+S\+I\+ON@{V\+E\+R\+S\+I\+ON}}
+\index{V\+E\+R\+S\+I\+ON@{V\+E\+R\+S\+I\+ON}!parlai\+::tasks\+::coqa\+::build@{parlai\+::tasks\+::coqa\+::build}}
+\subsubsection{\texorpdfstring{V\+E\+R\+S\+I\+ON}{VERSION}}
+{\footnotesize\ttfamily string parlai.\+tasks.\+coqa.\+build.\+V\+E\+R\+S\+I\+ON = \textquotesingle{}1.\+0\textquotesingle{}}
+
+
+
+Definition at line 13 of file build.\+py.
+

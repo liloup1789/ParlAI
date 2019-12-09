@@ -1,0 +1,259 @@
+\hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention}{}\section{parlai.\+agents.\+transformer.\+modules.\+Multi\+Head\+Attention Class Reference}
+\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention}\index{parlai.\+agents.\+transformer.\+modules.\+Multi\+Head\+Attention@{parlai.\+agents.\+transformer.\+modules.\+Multi\+Head\+Attention}}
+
+
+Inheritance diagram for parlai.\+agents.\+transformer.\+modules.\+Multi\+Head\+Attention\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{da/dc0/classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+agents.\+transformer.\+modules.\+Multi\+Head\+Attention\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{df/d8e/classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention_a427b8cfaac6d37141555616d9cee8b74}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention_aa28ff3887a718bb96a9bd27c938a0baf}{n\+\_\+heads}, \hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention_a0ffd2e0d89db2f682561af438aaa1eb5}{dim}, dropout=0)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention_a0685acda3d791bccfb9a6f4ff2c3680f}{forward} (self, query, key=None, value=None, mask=None)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention_aa28ff3887a718bb96a9bd27c938a0baf}{n\+\_\+heads}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention_a0ffd2e0d89db2f682561af438aaa1eb5}{dim}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention_ac1c0169222b929c580d1a786479d7ed2}{attn\+\_\+dropout}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention_a84ab720bc232bb48e8f61e37e7c52323}{q\+\_\+lin}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention_a1e86cacd8fe8129222fe04c41c48655d}{k\+\_\+lin}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention_a1b1c33915c80f894221dfd4f0a0a2896}{v\+\_\+lin}
+\item 
+\hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention_a495812bb583389a5f5dae989a22bda19}{out\+\_\+lin}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Implements MultiHeadAttention; this is the core workhorse of the Transformer.
+
+See Vaswani (2017) for an extensive description.
+\end{DoxyVerb}
+ 
+
+Definition at line 939 of file modules.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention_a427b8cfaac6d37141555616d9cee8b74}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention_a427b8cfaac6d37141555616d9cee8b74}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention@{parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention@{parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+modules.\+Multi\+Head\+Attention.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{n\+\_\+heads,  }\item[{}]{dim,  }\item[{}]{dropout = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 946 of file modules.\+py.
+
+
+\begin{DoxyCode}
+946     \textcolor{keyword}{def }\_\_init\_\_(self, n\_heads, dim, dropout=0):
+947         super(MultiHeadAttention, self).\_\_init\_\_()
+948         self.n\_heads = n\_heads
+949         self.dim = dim
+950 
+951         self.attn\_dropout = nn.Dropout(p=dropout)  \textcolor{comment}{# --attention-dropout}
+952         self.q\_lin = nn.Linear(dim, dim)
+953         self.k\_lin = nn.Linear(dim, dim)
+954         self.v\_lin = nn.Linear(dim, dim)
+955         \textcolor{comment}{# TODO: merge for the initialization step}
+956         nn.init.xavier\_normal\_(self.q\_lin.weight)
+957         nn.init.xavier\_normal\_(self.k\_lin.weight)
+958         nn.init.xavier\_normal\_(self.v\_lin.weight)
+959         \textcolor{comment}{# and set biases to 0}
+960         self.out\_lin = nn.Linear(dim, dim)
+961 
+962         nn.init.xavier\_normal\_(self.out\_lin.weight)
+963 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention_a0685acda3d791bccfb9a6f4ff2c3680f}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention_a0685acda3d791bccfb9a6f4ff2c3680f}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention@{parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention}!forward@{forward}}
+\index{forward@{forward}!parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention@{parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention}}
+\subsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+modules.\+Multi\+Head\+Attention.\+forward (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{query,  }\item[{}]{key = {\ttfamily None},  }\item[{}]{value = {\ttfamily None},  }\item[{}]{mask = {\ttfamily None} }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Forward pass.
+\end{DoxyVerb}
+ 
+
+Definition at line 964 of file modules.\+py.
+
+
+\begin{DoxyCode}
+964     \textcolor{keyword}{def }forward(self, query, key=None, value=None, mask=None):
+965         \textcolor{stringliteral}{"""}
+966 \textcolor{stringliteral}{        Forward pass.}
+967 \textcolor{stringliteral}{        """}
+968         \textcolor{comment}{# TODO: there are a lot of parameters to document here.}
+969 
+970         \textcolor{comment}{# Input is [B, query\_len, dim]}
+971         \textcolor{comment}{# Mask is [B, key\_len] (selfattn) or [B, key\_len, key\_len] (enc attn)}
+972         batch\_size, query\_len, dim = query.size()
+973         \textcolor{keyword}{assert} (
+974             dim == self.dim
+975         ), \textcolor{stringliteral}{'Dimensions do not match: \{\} query vs \{\} configured'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(dim, self.dim)
+976         \textcolor{keyword}{assert} mask \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}, \textcolor{stringliteral}{'Mask is None, please specify a mask'}
+977         n\_heads = self.n\_heads
+978         dim\_per\_head = dim // n\_heads
+979         scale = math.sqrt(dim\_per\_head)
+980 
+981         \textcolor{keyword}{def }prepare\_head(tensor):
+982             \textcolor{comment}{# input is [batch\_size, seq\_len, n\_heads * dim\_per\_head]}
+983             \textcolor{comment}{# output is [batch\_size * n\_heads, seq\_len, dim\_per\_head]}
+984             bsz, seq\_len, \_ = tensor.size()
+985             tensor = tensor.view(batch\_size, tensor.size(1), n\_heads, dim\_per\_head)
+986             tensor = (
+987                 tensor.transpose(1, 2)
+988                 .contiguous()
+989                 .view(batch\_size * n\_heads, seq\_len, dim\_per\_head)
+990             )
+991             \textcolor{keywordflow}{return} tensor
+992 
+993         \textcolor{comment}{# q, k, v are the transformed values}
+994         \textcolor{keywordflow}{if} key \textcolor{keywordflow}{is} \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} value \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+995             \textcolor{comment}{# self attention}
+996             key = value = query
+997         \textcolor{keywordflow}{elif} value \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+998             \textcolor{comment}{# key and value are the same, but query differs}
+999             \textcolor{comment}{# self attention}
+1000             value = key
+1001         \_, key\_len, dim = key.size()
+1002 
+1003         q = prepare\_head(self.q\_lin(query))
+1004         k = prepare\_head(self.k\_lin(key))
+1005         v = prepare\_head(self.v\_lin(value))
+1006 
+1007         dot\_prod = q.div\_(scale).bmm(k.transpose(1, 2))
+1008         \textcolor{comment}{# [B * n\_heads, query\_len, key\_len]}
+1009         attn\_mask = (
+1010             (mask == 0)
+1011             .view(batch\_size, 1, -1, key\_len)
+1012             .\hyperlink{namespacerepeat}{repeat}(1, n\_heads, 1, 1)
+1013             .expand(batch\_size, n\_heads, query\_len, key\_len)
+1014             .view(batch\_size * n\_heads, query\_len, key\_len)
+1015         )
+1016         \textcolor{keyword}{assert} attn\_mask.shape == dot\_prod.shape
+1017         dot\_prod.masked\_fill\_(attn\_mask, \hyperlink{namespaceparlai_1_1utils_1_1misc_a68c44ca571de7149b683539db659c330}{neginf}(dot\_prod.dtype))
+1018 
+1019         attn\_weights = F.softmax(dot\_prod, dim=-1).type\_as(query)
+1020         attn\_weights = self.attn\_dropout(attn\_weights)  \textcolor{comment}{# --attention-dropout}
+1021 
+1022         attentioned = attn\_weights.bmm(v)
+1023         attentioned = (
+1024             attentioned.type\_as(query)
+1025             .view(batch\_size, n\_heads, query\_len, dim\_per\_head)
+1026             .transpose(1, 2)
+1027             .contiguous()
+1028             .view(batch\_size, query\_len, dim)
+1029         )
+1030 
+1031         out = self.out\_lin(attentioned)
+1032 
+1033         \textcolor{keywordflow}{return} out
+1034 
+1035 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention_ac1c0169222b929c580d1a786479d7ed2}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention_ac1c0169222b929c580d1a786479d7ed2}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention@{parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention}!attn\+\_\+dropout@{attn\+\_\+dropout}}
+\index{attn\+\_\+dropout@{attn\+\_\+dropout}!parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention@{parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention}}
+\subsubsection{\texorpdfstring{attn\+\_\+dropout}{attn\_dropout}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+Multi\+Head\+Attention.\+attn\+\_\+dropout}
+
+
+
+Definition at line 951 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention_a0ffd2e0d89db2f682561af438aaa1eb5}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention_a0ffd2e0d89db2f682561af438aaa1eb5}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention@{parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention}!dim@{dim}}
+\index{dim@{dim}!parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention@{parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention}}
+\subsubsection{\texorpdfstring{dim}{dim}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+Multi\+Head\+Attention.\+dim}
+
+
+
+Definition at line 949 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention_a1e86cacd8fe8129222fe04c41c48655d}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention_a1e86cacd8fe8129222fe04c41c48655d}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention@{parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention}!k\+\_\+lin@{k\+\_\+lin}}
+\index{k\+\_\+lin@{k\+\_\+lin}!parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention@{parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention}}
+\subsubsection{\texorpdfstring{k\+\_\+lin}{k\_lin}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+Multi\+Head\+Attention.\+k\+\_\+lin}
+
+
+
+Definition at line 953 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention_aa28ff3887a718bb96a9bd27c938a0baf}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention_aa28ff3887a718bb96a9bd27c938a0baf}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention@{parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention}!n\+\_\+heads@{n\+\_\+heads}}
+\index{n\+\_\+heads@{n\+\_\+heads}!parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention@{parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention}}
+\subsubsection{\texorpdfstring{n\+\_\+heads}{n\_heads}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+Multi\+Head\+Attention.\+n\+\_\+heads}
+
+
+
+Definition at line 948 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention_a495812bb583389a5f5dae989a22bda19}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention_a495812bb583389a5f5dae989a22bda19}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention@{parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention}!out\+\_\+lin@{out\+\_\+lin}}
+\index{out\+\_\+lin@{out\+\_\+lin}!parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention@{parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention}}
+\subsubsection{\texorpdfstring{out\+\_\+lin}{out\_lin}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+Multi\+Head\+Attention.\+out\+\_\+lin}
+
+
+
+Definition at line 960 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention_a84ab720bc232bb48e8f61e37e7c52323}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention_a84ab720bc232bb48e8f61e37e7c52323}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention@{parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention}!q\+\_\+lin@{q\+\_\+lin}}
+\index{q\+\_\+lin@{q\+\_\+lin}!parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention@{parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention}}
+\subsubsection{\texorpdfstring{q\+\_\+lin}{q\_lin}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+Multi\+Head\+Attention.\+q\+\_\+lin}
+
+
+
+Definition at line 952 of file modules.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention_a1b1c33915c80f894221dfd4f0a0a2896}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1MultiHeadAttention_a1b1c33915c80f894221dfd4f0a0a2896}} 
+\index{parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention@{parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention}!v\+\_\+lin@{v\+\_\+lin}}
+\index{v\+\_\+lin@{v\+\_\+lin}!parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention@{parlai\+::agents\+::transformer\+::modules\+::\+Multi\+Head\+Attention}}
+\subsubsection{\texorpdfstring{v\+\_\+lin}{v\_lin}}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+Multi\+Head\+Attention.\+v\+\_\+lin}
+
+
+
+Definition at line 954 of file modules.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/agents/transformer/\hyperlink{parlai_2agents_2transformer_2modules_8py}{modules.\+py}\end{DoxyCompactItemize}

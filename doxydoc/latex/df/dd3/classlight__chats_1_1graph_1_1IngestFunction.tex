@@ -1,0 +1,189 @@
+\hypertarget{classlight__chats_1_1graph_1_1IngestFunction}{}\section{light\+\_\+chats.\+graph.\+Ingest\+Function Class Reference}
+\label{classlight__chats_1_1graph_1_1IngestFunction}\index{light\+\_\+chats.\+graph.\+Ingest\+Function@{light\+\_\+chats.\+graph.\+Ingest\+Function}}
+
+
+Inheritance diagram for light\+\_\+chats.\+graph.\+Ingest\+Function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/dc5/classlight__chats_1_1graph_1_1IngestFunction__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for light\+\_\+chats.\+graph.\+Ingest\+Function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{de/d75/classlight__chats_1_1graph_1_1IngestFunction__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1IngestFunction_ad4e544e64b77af820462e71260a067d5}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, function\+\_\+name=\textquotesingle{}ingest\textquotesingle{}, \hyperlink{classlight__chats_1_1graph_1_1IngestFunction_a622f30ce7ef9f3c210c1881eab7c2744}{action}=\textquotesingle{}ingested\textquotesingle{}, additional\+\_\+constraints=None)
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1IngestFunction_acf3afc20e4e55a9bd2783d2bad592a88}{func} (self, graph, args)
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1IngestFunction_aae6cb9fc171d5a59c3d2bafae9ed58b7}{get\+\_\+find\+\_\+fail\+\_\+text} (self, arg\+\_\+idx)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classlight__chats_1_1graph_1_1IngestFunction_af639522820335d377bf31825afe21584}{formats}
+\item 
+\hyperlink{classlight__chats_1_1graph_1_1IngestFunction_a622f30ce7ef9f3c210c1881eab7c2744}{action}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}[Actor, object actor is carrying]
+\end{DoxyVerb}
+ 
+
+Definition at line 1742 of file graph.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1IngestFunction_ad4e544e64b77af820462e71260a067d5}\label{classlight__chats_1_1graph_1_1IngestFunction_ad4e544e64b77af820462e71260a067d5}} 
+\index{light\+\_\+chats\+::graph\+::\+Ingest\+Function@{light\+\_\+chats\+::graph\+::\+Ingest\+Function}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!light\+\_\+chats\+::graph\+::\+Ingest\+Function@{light\+\_\+chats\+::graph\+::\+Ingest\+Function}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Ingest\+Function.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{function\+\_\+name = {\ttfamily \textquotesingle{}ingest\textquotesingle{}},  }\item[{}]{action = {\ttfamily \textquotesingle{}ingested\textquotesingle{}},  }\item[{}]{additional\+\_\+constraints = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1749 of file graph.\+py.
+
+
+\begin{DoxyCode}
+1749     ):
+1750         \textcolor{keywordflow}{if} additional\_constraints \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+1751             additional\_constraints = []
+1752         super().\_\_init\_\_(
+1753             function\_name=function\_name,
+1754             possible\_arg\_nums=[2],
+1755             arg\_split\_words=[],
+1756             arg\_find\_type=[\{\}, \{\textcolor{stringliteral}{'type'}: \textcolor{stringliteral}{'carrying'}, \textcolor{stringliteral}{'from'}: 0\}],
+1757             arg\_constraints=[[], \hyperlink{namespacelight__chats_1_1graph_aa0be6ee7e9f549a7195bea9dfb962ad6}{is\_held\_item}(1) + additional\_constraints],
+1758             func\_constraints=[],
+1759             callback\_triggers=[
+1760                 \{\textcolor{stringliteral}{'action'}: \textcolor{stringliteral}{'agent\_'} + action, \textcolor{stringliteral}{'args'}: [0, 1]\},
+1761                 \{\textcolor{stringliteral}{'action'}: action + \textcolor{stringliteral}{'\_by'}, \textcolor{stringliteral}{'args'}: [1, 0]\},
+1762             ],
+1763         )
+1764         self.formats = \{
+1765             action: \textcolor{stringliteral}{'\{0\} '} + action + \textcolor{stringliteral}{' \{1\}. '},
+1766             \textcolor{stringliteral}{'failed'}: \textcolor{stringliteral}{'\{0\} couldn\(\backslash\)'t '} + function\_name + \textcolor{stringliteral}{' that. '},
+1767         \}
+1768         self.action = action
+1769 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1IngestFunction_acf3afc20e4e55a9bd2783d2bad592a88}\label{classlight__chats_1_1graph_1_1IngestFunction_acf3afc20e4e55a9bd2783d2bad592a88}} 
+\index{light\+\_\+chats\+::graph\+::\+Ingest\+Function@{light\+\_\+chats\+::graph\+::\+Ingest\+Function}!func@{func}}
+\index{func@{func}!light\+\_\+chats\+::graph\+::\+Ingest\+Function@{light\+\_\+chats\+::graph\+::\+Ingest\+Function}}
+\subsubsection{\texorpdfstring{func()}{func()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Ingest\+Function.\+func (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{graph,  }\item[{}]{args }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}<Actor> consumes <object>
+\end{DoxyVerb}
+ 
+
+Definition at line 1770 of file graph.\+py.
+
+
+\begin{DoxyCode}
+1770     \textcolor{keyword}{def }func(self, graph, args):
+1771         \textcolor{stringliteral}{"""}
+1772 \textcolor{stringliteral}{        <Actor> consumes <object>}
+1773 \textcolor{stringliteral}{        """}
+1774         agent\_id, object\_id = args[0], args[1]
+1775         fe = graph.get\_prop(object\_id, \textcolor{stringliteral}{'food\_energy'})
+1776         thing\_desc = graph.node\_to\_desc(object\_id, use\_the=\textcolor{keyword}{True})
+1777         room\_id = graph.location(agent\_id)
+1778         graph.delete\_node(object\_id)
+1779         ingest\_action = \{
+1780             \textcolor{stringliteral}{'caller'}: self.get\_name(),
+1781             \textcolor{stringliteral}{'name'}: self.action,
+1782             \textcolor{stringliteral}{'room\_id'}: room\_id,
+1783             \textcolor{stringliteral}{'actors'}: [agent\_id],
+1784             \textcolor{stringliteral}{'add\_descs'}: [thing\_desc],
+1785         \}
+1786         graph.broadcast\_to\_room(ingest\_action)
+1787         \textcolor{keywordflow}{if} fe >= 0:
+1788             graph.send\_msg(agent\_id, \textcolor{stringliteral}{"Yum.\(\backslash\)n"})
+1789         \textcolor{keywordflow}{else}:
+1790             graph.send\_msg(agent\_id, \textcolor{stringliteral}{"Gross!\(\backslash\)n"})
+1791 
+1792         energy = graph.get\_prop(agent\_id, \textcolor{stringliteral}{'health'})
+1793         \textcolor{keywordflow}{if} energy < 8:
+1794             prev\_health = graph.health(agent\_id)
+1795             energy = energy + fe
+1796             graph.set\_prop(agent\_id, \textcolor{stringliteral}{'health'}, energy)
+1797             new\_health = graph.health(agent\_id)
+1798             \textcolor{keywordflow}{if} energy <= 0:
+1799                 self.die(agent\_id)
+1800             \textcolor{keywordflow}{elif} prev\_health != new\_health:
+1801                 health\_action = \{
+1802                     \textcolor{stringliteral}{'caller'}: \textcolor{stringliteral}{'health'},
+1803                     \textcolor{stringliteral}{'name'}: \textcolor{stringliteral}{'changed'},
+1804                     \textcolor{stringliteral}{'room\_id'}: room\_id,
+1805                     \textcolor{stringliteral}{'actors'}: [args[0]],
+1806                     \textcolor{stringliteral}{'add\_descs'}: [prev\_health, new\_health],
+1807                 \}
+1808                 graph.broadcast\_to\_room(health\_action)
+1809         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+1810 
+\end{DoxyCode}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1IngestFunction_aae6cb9fc171d5a59c3d2bafae9ed58b7}\label{classlight__chats_1_1graph_1_1IngestFunction_aae6cb9fc171d5a59c3d2bafae9ed58b7}} 
+\index{light\+\_\+chats\+::graph\+::\+Ingest\+Function@{light\+\_\+chats\+::graph\+::\+Ingest\+Function}!get\+\_\+find\+\_\+fail\+\_\+text@{get\+\_\+find\+\_\+fail\+\_\+text}}
+\index{get\+\_\+find\+\_\+fail\+\_\+text@{get\+\_\+find\+\_\+fail\+\_\+text}!light\+\_\+chats\+::graph\+::\+Ingest\+Function@{light\+\_\+chats\+::graph\+::\+Ingest\+Function}}
+\subsubsection{\texorpdfstring{get\+\_\+find\+\_\+fail\+\_\+text()}{get\_find\_fail\_text()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Ingest\+Function.\+get\+\_\+find\+\_\+fail\+\_\+text (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{arg\+\_\+idx }\end{DoxyParamCaption})}
+
+
+
+Definition at line 1811 of file graph.\+py.
+
+
+\begin{DoxyCode}
+1811     \textcolor{keyword}{def }get\_find\_fail\_text(self, arg\_idx):
+1812         \textcolor{keywordflow}{return} \textcolor{stringliteral}{'You don\(\backslash\)'t have that.'}
+1813 
+1814 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1IngestFunction_a622f30ce7ef9f3c210c1881eab7c2744}\label{classlight__chats_1_1graph_1_1IngestFunction_a622f30ce7ef9f3c210c1881eab7c2744}} 
+\index{light\+\_\+chats\+::graph\+::\+Ingest\+Function@{light\+\_\+chats\+::graph\+::\+Ingest\+Function}!action@{action}}
+\index{action@{action}!light\+\_\+chats\+::graph\+::\+Ingest\+Function@{light\+\_\+chats\+::graph\+::\+Ingest\+Function}}
+\subsubsection{\texorpdfstring{action}{action}}
+{\footnotesize\ttfamily light\+\_\+chats.\+graph.\+Ingest\+Function.\+action}
+
+
+
+Definition at line 1768 of file graph.\+py.
+
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1IngestFunction_af639522820335d377bf31825afe21584}\label{classlight__chats_1_1graph_1_1IngestFunction_af639522820335d377bf31825afe21584}} 
+\index{light\+\_\+chats\+::graph\+::\+Ingest\+Function@{light\+\_\+chats\+::graph\+::\+Ingest\+Function}!formats@{formats}}
+\index{formats@{formats}!light\+\_\+chats\+::graph\+::\+Ingest\+Function@{light\+\_\+chats\+::graph\+::\+Ingest\+Function}}
+\subsubsection{\texorpdfstring{formats}{formats}}
+{\footnotesize\ttfamily light\+\_\+chats.\+graph.\+Ingest\+Function.\+formats}
+
+
+
+Definition at line 1764 of file graph.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/mturk/tasks/light/light\+\_\+chats/\hyperlink{parlai_2mturk_2tasks_2light_2light__chats_2graph_8py}{graph.\+py}\end{DoxyCompactItemize}

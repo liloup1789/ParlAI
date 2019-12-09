@@ -1,0 +1,122 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1mwsc_1_1build}{}\section{parlai.\+tasks.\+mwsc.\+build Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1mwsc_1_1build}\index{parlai.\+tasks.\+mwsc.\+build@{parlai.\+tasks.\+mwsc.\+build}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1mwsc_1_1build_a21fb0afba67df57037a48b4250337077}{build} (opt)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceparlai_1_1tasks_1_1mwsc_1_1build_a7b7842b18b674a1b523b16617f65908a}{R\+E\+S\+O\+U\+R\+C\+ES}
+\item 
+bool \hyperlink{namespaceparlai_1_1tasks_1_1mwsc_1_1build_aa47e77bae482dfa924fdb05fd14084fd}{zipped} = False,
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1mwsc_1_1build_a21fb0afba67df57037a48b4250337077}\label{namespaceparlai_1_1tasks_1_1mwsc_1_1build_a21fb0afba67df57037a48b4250337077}} 
+\index{parlai\+::tasks\+::mwsc\+::build@{parlai\+::tasks\+::mwsc\+::build}!build@{build}}
+\index{build@{build}!parlai\+::tasks\+::mwsc\+::build@{parlai\+::tasks\+::mwsc\+::build}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+mwsc.\+build.\+build (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 25 of file build.\+py.
+
+
+\begin{DoxyCode}
+25 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
+26     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'MWSC'})
+27     version = \textcolor{stringliteral}{'None'}
+28 
+29     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version\_string=version):
+30         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+31         \textcolor{keywordflow}{if} build\_data.built(dpath):
+32             \textcolor{comment}{# An older version exists, so remove these outdated files.}
+33             build\_data.remove\_dir(dpath)
+34         build\_data.make\_dir(dpath)
+35 
+36         \textcolor{comment}{# Download the data.}
+37         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES:
+38             downloadable\_file.download\_file(dpath)
+39 
+40         pattern = \textcolor{stringliteral}{'\(\backslash\)\(\backslash\)[.*\(\backslash\)\(\backslash\)]'}
+41 
+42         \textcolor{keyword}{def }get\_both\_schema(context):
+43             variations = [x[1:-1].split(\textcolor{stringliteral}{'/'}) \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} re.findall(pattern, context)]
+44             splits = re.split(pattern, context)
+45             results = []
+46             \textcolor{keywordflow}{for} which\_schema \textcolor{keywordflow}{in} range(2):
+47                 vs = [v[which\_schema] \textcolor{keywordflow}{for} v \textcolor{keywordflow}{in} variations]
+48                 context = \textcolor{stringliteral}{''}
+49                 \textcolor{keywordflow}{for} idx \textcolor{keywordflow}{in} range(len(splits)):
+50                     context += splits[idx]
+51                     \textcolor{keywordflow}{if} idx < len(vs):
+52                         context += vs[idx]
+53                 results.append(context)
+54             \textcolor{keywordflow}{return} results
+55 
+56         schemas = []
+57         with open(os.path.join(dpath, RESOURCES[0].file\_name)) \textcolor{keyword}{as} schema\_file:
+58             schema = []
+59             \textcolor{keywordflow}{for} line \textcolor{keywordflow}{in} schema\_file:
+60                 \textcolor{keywordflow}{if} len(line.split()) == 0:
+61                     schemas.append(schema)
+62                     schema = []
+63                     \textcolor{keywordflow}{continue}
+64                 \textcolor{keywordflow}{else}:
+65                     schema.append(line.strip())
+66 
+67         examples = []
+68         \textcolor{keywordflow}{for} schema \textcolor{keywordflow}{in} schemas:
+69             context, question, answer = schema
+70             contexts = get\_both\_schema(context)
+71             questions = get\_both\_schema(question)
+72             answers = answer.split(\textcolor{stringliteral}{'/'})
+73             \textcolor{keywordflow}{for} idx \textcolor{keywordflow}{in} range(2):
+74                 answer = answers[idx]
+75                 question = questions[idx] + \textcolor{stringliteral}{' \{\} or \{\}?'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(answers[0], answers[1])
+76                 examples.append(
+77                     \{\textcolor{stringliteral}{'context'}: contexts[idx], \textcolor{stringliteral}{'question'}: question, \textcolor{stringliteral}{'answer'}: answer\}
+78                 )
+79 
+80         traindev = examples[:-100]
+81         test = examples[-100:]
+82         train = traindev[:80]
+83         dev = traindev[80:]
+84 
+85         splits = [\textcolor{stringliteral}{'train'}, \textcolor{stringliteral}{'validation'}, \textcolor{stringliteral}{'test'}]
+86         \textcolor{keywordflow}{for} split, examples \textcolor{keywordflow}{in} zip(splits, [train, dev, test]):
+87             split\_fname = \textcolor{stringliteral}{'\{\}.json'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(split)
+88             with open(os.path.join(dpath, split\_fname), \textcolor{stringliteral}{'a'}) \textcolor{keyword}{as} split\_file:
+89                 \textcolor{keywordflow}{for} ex \textcolor{keywordflow}{in} examples:
+90                     split\_file.write(json.dumps(ex) + \textcolor{stringliteral}{'\(\backslash\)n'})
+91 
+92         \textcolor{comment}{# Mark the data as built.}
+93         build\_data.mark\_done(dpath, version\_string=version)
+94 \end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1mwsc_1_1build_a7b7842b18b674a1b523b16617f65908a}\label{namespaceparlai_1_1tasks_1_1mwsc_1_1build_a7b7842b18b674a1b523b16617f65908a}} 
+\index{parlai\+::tasks\+::mwsc\+::build@{parlai\+::tasks\+::mwsc\+::build}!R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}}
+\index{R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}!parlai\+::tasks\+::mwsc\+::build@{parlai\+::tasks\+::mwsc\+::build}}
+\subsubsection{\texorpdfstring{R\+E\+S\+O\+U\+R\+C\+ES}{RESOURCES}}
+{\footnotesize\ttfamily parlai.\+tasks.\+mwsc.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
+
+
+
+Definition at line 15 of file build.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1mwsc_1_1build_aa47e77bae482dfa924fdb05fd14084fd}\label{namespaceparlai_1_1tasks_1_1mwsc_1_1build_aa47e77bae482dfa924fdb05fd14084fd}} 
+\index{parlai\+::tasks\+::mwsc\+::build@{parlai\+::tasks\+::mwsc\+::build}!zipped@{zipped}}
+\index{zipped@{zipped}!parlai\+::tasks\+::mwsc\+::build@{parlai\+::tasks\+::mwsc\+::build}}
+\subsubsection{\texorpdfstring{zipped}{zipped}}
+{\footnotesize\ttfamily bool parlai.\+tasks.\+mwsc.\+build.\+zipped = False,}
+
+
+
+Definition at line 20 of file build.\+py.
+

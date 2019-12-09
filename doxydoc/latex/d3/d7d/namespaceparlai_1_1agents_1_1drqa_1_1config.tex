@@ -1,0 +1,268 @@
+\hypertarget{namespaceparlai_1_1agents_1_1drqa_1_1config}{}\section{parlai.\+agents.\+drqa.\+config Namespace Reference}
+\label{namespaceparlai_1_1agents_1_1drqa_1_1config}\index{parlai.\+agents.\+drqa.\+config@{parlai.\+agents.\+drqa.\+config}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\+\_\+cmdline\+\_\+args} (parser)
+\item 
+def \hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a8cc825bafeff299794cba6e2a8b65da2}{set\+\_\+defaults} (opt)
+\item 
+def \hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a0fd9c7cd1129e5b4a7c0315b9f03c31a}{override\+\_\+args} (opt, override\+\_\+opt)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}\label{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}} 
+\index{parlai\+::agents\+::drqa\+::config@{parlai\+::agents\+::drqa\+::config}!add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}}
+\index{add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}!parlai\+::agents\+::drqa\+::config@{parlai\+::agents\+::drqa\+::config}}
+\subsubsection{\texorpdfstring{add\+\_\+cmdline\+\_\+args()}{add\_cmdline\_args()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+drqa.\+config.\+add\+\_\+cmdline\+\_\+args (\begin{DoxyParamCaption}\item[{}]{parser }\end{DoxyParamCaption})}
+
+
+
+Definition at line 10 of file config.\+py.
+
+
+\begin{DoxyCode}
+10 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(parser):
+11     \textcolor{comment}{# Runtime environment}
+12     agent = parser.add\_argument\_group(\textcolor{stringliteral}{'DrQA Arguments'})
+13     agent.add\_argument(\textcolor{stringliteral}{'--no\_cuda'}, type=\textcolor{stringliteral}{'bool'}, default=\textcolor{keyword}{False})
+14     agent.add\_argument(\textcolor{stringliteral}{'--gpu'}, type=int, default=-1)
+15     agent.add\_argument(\textcolor{stringliteral}{'--random\_seed'}, type=int, default=1013)
+16 
+17     \textcolor{comment}{# Basics}
+18     agent.add\_argument(
+19         \textcolor{stringliteral}{'--embedding\_file'},
+20         type=str,
+21         default=\textcolor{keywordtype}{None},
+22         help=\textcolor{stringliteral}{'file of space separated embeddings: w e1 ... ed'},
+23     )
+24     agent.add\_argument(
+25         \textcolor{stringliteral}{'--init\_model'},
+26         type=str,
+27         default=\textcolor{keywordtype}{None},
+28         help=\textcolor{stringliteral}{'Load dict/features/weights/opts from this file'},
+29     )
+30     agent.add\_argument(\textcolor{stringliteral}{'--log\_file'}, type=str, default=\textcolor{keywordtype}{None})
+31 
+32     \textcolor{comment}{# Model details}
+33     agent.add\_argument(\textcolor{stringliteral}{'--fix\_embeddings'}, type=\textcolor{stringliteral}{'bool'}, default=\textcolor{keyword}{True})
+34     agent.add\_argument(
+35         \textcolor{stringliteral}{'--tune\_partial'},
+36         type=int,
+37         default=0,
+38         help=\textcolor{stringliteral}{'Train the K most frequent word embeddings'},
+39     )
+40     agent.add\_argument(
+41         \textcolor{stringliteral}{'--embedding\_dim'},
+42         type=int,
+43         default=300,
+44         help=(\textcolor{stringliteral}{'Default embedding size if '} \textcolor{stringliteral}{'embedding\_file is not given'}),
+45     )
+46     agent.add\_argument(
+47         \textcolor{stringliteral}{'--hidden\_size'}, type=int, default=128, help=\textcolor{stringliteral}{'Hidden size of RNN units'}
+48     )
+49     agent.add\_argument(
+50         \textcolor{stringliteral}{'--doc\_layers'}, type=int, default=3, help=\textcolor{stringliteral}{'Number of RNN layers for passage'}
+51     )
+52     agent.add\_argument(
+53         \textcolor{stringliteral}{'--question\_layers'},
+54         type=int,
+55         default=3,
+56         help=\textcolor{stringliteral}{'Number of RNN layers for question'},
+57     )
+58     agent.add\_argument(
+59         \textcolor{stringliteral}{'--rnn\_type'},
+60         type=str,
+61         default=\textcolor{stringliteral}{'lstm'},
+62         help=\textcolor{stringliteral}{'RNN type: lstm (default), gru, or rnn'},
+63     )
+64 
+65     \textcolor{comment}{# Optimization details}
+66     agent.add\_argument(
+67         \textcolor{stringliteral}{'--valid\_metric'},
+68         type=str,
+69         choices=[\textcolor{stringliteral}{'accuracy'}, \textcolor{stringliteral}{'f1'}],
+70         default=\textcolor{stringliteral}{'f1'},
+71         help=\textcolor{stringliteral}{'Metric for choosing best valid model'},
+72     )
+73     agent.add\_argument(
+74         \textcolor{stringliteral}{'--max\_len'}, type=int, default=15, help=\textcolor{stringliteral}{'The max span allowed during decoding'}
+75     )
+76     agent.add\_argument(\textcolor{stringliteral}{'--rnn\_padding'}, type=\textcolor{stringliteral}{'bool'}, default=\textcolor{keyword}{False})
+77     agent.add\_argument(
+78         \textcolor{stringliteral}{'--display\_iter'},
+79         type=int,
+80         default=10,
+81         help=\textcolor{stringliteral}{'Print train error after every'} \textcolor{stringliteral}{'<display\_iter> epoches (default 10)'},
+82     )
+83     agent.add\_argument(
+84         \textcolor{stringliteral}{'--dropout\_emb'},
+85         type=float,
+86         default=0.4,
+87         help=\textcolor{stringliteral}{'Dropout rate for word embeddings'},
+88     )
+89     agent.add\_argument(
+90         \textcolor{stringliteral}{'--dropout\_rnn'}, type=float, default=0.4, help=\textcolor{stringliteral}{'Dropout rate for RNN states'}
+91     )
+92     agent.add\_argument(
+93         \textcolor{stringliteral}{'--dropout\_rnn\_output'},
+94         type=\textcolor{stringliteral}{'bool'},
+95         default=\textcolor{keyword}{True},
+96         help=\textcolor{stringliteral}{'Whether to dropout the RNN output'},
+97     )
+98     agent.add\_argument(
+99         \textcolor{stringliteral}{'--optimizer'},
+100         type=str,
+101         default=\textcolor{stringliteral}{'adamax'},
+102         help=\textcolor{stringliteral}{'Optimizer: sgd or adamax (default)'},
+103     )
+104     agent.add\_argument(
+105         \textcolor{stringliteral}{'--learning\_rate'},
+106         \textcolor{stringliteral}{'-lr'},
+107         type=float,
+108         default=0.1,
+109         help=\textcolor{stringliteral}{'Learning rate for SGD (default 0.1)'},
+110     )
+111     agent.add\_argument(
+112         \textcolor{stringliteral}{'--grad\_clipping'},
+113         type=float,
+114         default=10,
+115         help=\textcolor{stringliteral}{'Gradient clipping (default 10.0)'},
+116     )
+117     agent.add\_argument(
+118         \textcolor{stringliteral}{'--weight\_decay'}, type=float, default=0, help=\textcolor{stringliteral}{'Weight decay (default 0)'}
+119     )
+120     agent.add\_argument(\textcolor{stringliteral}{'--momentum'}, type=float, default=0, help=\textcolor{stringliteral}{'Momentum (default 0)'})
+121     agent.add\_argument(
+122         \textcolor{stringliteral}{'--subsample-docs'},
+123         type=int,
+124         default=0,
+125         help=\textcolor{stringliteral}{'When given paragraphs (separated by \(\backslash\)n) will take '}
+126         \textcolor{stringliteral}{'only a subset of them, including the one with the '}
+127         \textcolor{stringliteral}{'answer for training.'},
+128     )
+129 
+130     \textcolor{comment}{# Model-specific}
+131     agent.add\_argument(\textcolor{stringliteral}{'--concat\_rnn\_layers'}, type=\textcolor{stringliteral}{'bool'}, default=\textcolor{keyword}{True})
+132     agent.add\_argument(
+133         \textcolor{stringliteral}{'--question\_merge'},
+134         type=str,
+135         default=\textcolor{stringliteral}{'self\_attn'},
+136         help=\textcolor{stringliteral}{'The way of computing question representation'},
+137     )
+138     agent.add\_argument(
+139         \textcolor{stringliteral}{'--use\_qemb'},
+140         type=\textcolor{stringliteral}{'bool'},
+141         default=\textcolor{keyword}{True},
+142         help=\textcolor{stringliteral}{'Whether to use weighted question embeddings'},
+143     )
+144     agent.add\_argument(
+145         \textcolor{stringliteral}{'--use\_in\_question'},
+146         type=\textcolor{stringliteral}{'bool'},
+147         default=\textcolor{keyword}{True},
+148         help=\textcolor{stringliteral}{'Whether to use in\_question features'},
+149     )
+150     agent.add\_argument(
+151         \textcolor{stringliteral}{'--use\_tf'}, type=\textcolor{stringliteral}{'bool'}, default=\textcolor{keyword}{True}, help=\textcolor{stringliteral}{'Whether to use tf features'}
+152     )
+153     agent.add\_argument(
+154         \textcolor{stringliteral}{'--use\_time'},
+155         type=int,
+156         default=0,
+157         help=\textcolor{stringliteral}{'Time features marking how recent word was said'},
+158     )
+159 
+160 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1agents_1_1drqa_1_1config_a0fd9c7cd1129e5b4a7c0315b9f03c31a}\label{namespaceparlai_1_1agents_1_1drqa_1_1config_a0fd9c7cd1129e5b4a7c0315b9f03c31a}} 
+\index{parlai\+::agents\+::drqa\+::config@{parlai\+::agents\+::drqa\+::config}!override\+\_\+args@{override\+\_\+args}}
+\index{override\+\_\+args@{override\+\_\+args}!parlai\+::agents\+::drqa\+::config@{parlai\+::agents\+::drqa\+::config}}
+\subsubsection{\texorpdfstring{override\+\_\+args()}{override\_args()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+drqa.\+config.\+override\+\_\+args (\begin{DoxyParamCaption}\item[{}]{opt,  }\item[{}]{override\+\_\+opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 200 of file config.\+py.
+
+
+\begin{DoxyCode}
+200 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a0fd9c7cd1129e5b4a7c0315b9f03c31a}{override\_args}(opt, override\_opt):
+201     \textcolor{comment}{# Major model args are reset to the values in override\_opt.}
+202     \textcolor{comment}{# Non-architecture args (like dropout) are kept.}
+203     args = set(
+204         [
+205             \textcolor{stringliteral}{'embedding\_file'},
+206             \textcolor{stringliteral}{'embedding\_dim'},
+207             \textcolor{stringliteral}{'hidden\_size'},
+208             \textcolor{stringliteral}{'doc\_layers'},
+209             \textcolor{stringliteral}{'question\_layers'},
+210             \textcolor{stringliteral}{'rnn\_type'},
+211             \textcolor{stringliteral}{'optimizer'},
+212             \textcolor{stringliteral}{'concat\_rnn\_layers'},
+213             \textcolor{stringliteral}{'question\_merge'},
+214             \textcolor{stringliteral}{'use\_qemb'},
+215             \textcolor{stringliteral}{'use\_in\_question'},
+216             \textcolor{stringliteral}{'use\_tf'},
+217             \textcolor{stringliteral}{'vocab\_size'},
+218             \textcolor{stringliteral}{'num\_features'},
+219             \textcolor{stringliteral}{'use\_time'},
+220         ]
+221     )
+222     \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} override\_opt.items():
+223         \textcolor{keywordflow}{if} k \textcolor{keywordflow}{in} args:
+224             opt[k] = v
+225 \end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1agents_1_1drqa_1_1config_a8cc825bafeff299794cba6e2a8b65da2}\label{namespaceparlai_1_1agents_1_1drqa_1_1config_a8cc825bafeff299794cba6e2a8b65da2}} 
+\index{parlai\+::agents\+::drqa\+::config@{parlai\+::agents\+::drqa\+::config}!set\+\_\+defaults@{set\+\_\+defaults}}
+\index{set\+\_\+defaults@{set\+\_\+defaults}!parlai\+::agents\+::drqa\+::config@{parlai\+::agents\+::drqa\+::config}}
+\subsubsection{\texorpdfstring{set\+\_\+defaults()}{set\_defaults()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+drqa.\+config.\+set\+\_\+defaults (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 161 of file config.\+py.
+
+
+\begin{DoxyCode}
+161 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a8cc825bafeff299794cba6e2a8b65da2}{set\_defaults}(opt):
+162     init\_model = \textcolor{keywordtype}{None}
+163     \textcolor{comment}{# check first for 'init\_model' for loading model from file}
+164     \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'init\_model'}) \textcolor{keywordflow}{and} os.path.isfile(opt[\textcolor{stringliteral}{'init\_model'}]):
+165         init\_model = opt[\textcolor{stringliteral}{'init\_model'}]
+166     \textcolor{comment}{# next check for 'model\_file', this would override init\_model}
+167     \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'model\_file'}) \textcolor{keywordflow}{and} os.path.isfile(opt[\textcolor{stringliteral}{'model\_file'}]):
+168         init\_model = opt[\textcolor{stringliteral}{'model\_file'}]
+169 
+170     \textcolor{keywordflow}{if} init\_model \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+171         \textcolor{comment}{# Embeddings options}
+172         opt[\textcolor{stringliteral}{'embedding\_file'}] = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_a5fbd3301b67f00d6d146fb01c7cd7626}{modelzoo\_path}(
+173             opt.get(\textcolor{stringliteral}{'datapath'}), opt[\textcolor{stringliteral}{'embedding\_file'}]
+174         )
+175         \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'embedding\_file'}):
+176             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.isfile(opt[\textcolor{stringliteral}{'embedding\_file'}]):
+177                 \textcolor{keywordflow}{raise} IOError(\textcolor{stringliteral}{'No such file: %s'} % opt[\textcolor{stringliteral}{'embedding\_file'}])
+178             with open(opt[\textcolor{stringliteral}{'embedding\_file'}]) \textcolor{keyword}{as} f:
+179                 dim = len(f.readline().strip().split(\textcolor{stringliteral}{' '})) - 1
+180                 \textcolor{keywordflow}{if} dim == 1:
+181                     \textcolor{comment}{# first line was a dud}
+182                     dim = len(f.readline().strip().split(\textcolor{stringliteral}{' '})) - 1
+183             opt[\textcolor{stringliteral}{'embedding\_dim'}] = dim
+184         \textcolor{keywordflow}{elif} \textcolor{keywordflow}{not} opt.get(\textcolor{stringliteral}{'embedding\_dim'}):
+185             \textcolor{keywordflow}{raise} RuntimeError(
+186                 (\textcolor{stringliteral}{'Either embedding\_file or embedding\_dim '} \textcolor{stringliteral}{'needs to be specified.'})
+187             )
+188 
+189         \textcolor{comment}{# Make sure tune\_partial and fix\_embeddings are consistent}
+190         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'tune\_partial'}] > 0 \textcolor{keywordflow}{and} opt[\textcolor{stringliteral}{'fix\_embeddings'}]:
+191             print(\textcolor{stringliteral}{'Setting fix\_embeddings to False as tune\_partial > 0.'})
+192             opt[\textcolor{stringliteral}{'fix\_embeddings'}] = \textcolor{keyword}{False}
+193 
+194         \textcolor{comment}{# Make sure fix\_embeddings and embedding\_file are consistent}
+195         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'fix\_embeddings'}] \textcolor{keywordflow}{and} \textcolor{keywordflow}{not} opt.get(\textcolor{stringliteral}{'embedding\_file'}):
+196             print(\textcolor{stringliteral}{'Setting fix\_embeddings to False as embeddings are random.'})
+197             opt[\textcolor{stringliteral}{'fix\_embeddings'}] = \textcolor{keyword}{False}
+198 
+199 
+\end{DoxyCode}

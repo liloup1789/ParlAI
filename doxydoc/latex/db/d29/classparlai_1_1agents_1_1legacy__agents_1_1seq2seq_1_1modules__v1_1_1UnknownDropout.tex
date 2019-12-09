@@ -1,0 +1,138 @@
+\hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1UnknownDropout}{}\section{parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+modules\+\_\+v1.\+Unknown\+Dropout Class Reference}
+\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1UnknownDropout}\index{parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+modules\+\_\+v1.\+Unknown\+Dropout@{parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+modules\+\_\+v1.\+Unknown\+Dropout}}
+
+
+Inheritance diagram for parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+modules\+\_\+v1.\+Unknown\+Dropout\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{d0/d9f/classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1UnknownDropout__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+modules\+\_\+v1.\+Unknown\+Dropout\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{db/d2b/classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1UnknownDropout__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1UnknownDropout_a7063d1866221608f272c2c6697d4b98b}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1UnknownDropout_a7c6fe2c4afa06bf542c36ea9821b243f}{unknown\+\_\+idx}, probability)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1UnknownDropout_a4527e73a4211e888db806e4526c0126e}{forward} (self, input)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1UnknownDropout_a7c6fe2c4afa06bf542c36ea9821b243f}{unknown\+\_\+idx}
+\item 
+\hyperlink{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1UnknownDropout_a7d5b061b69c0857aec6dfe3f3f5cd9ed}{prob}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}With set frequency, replaces tokens with unknown token.
+
+This layer can be used right before an embedding layer to make the model more robust
+to unknown words at test time.
+\end{DoxyVerb}
+ 
+
+Definition at line 382 of file modules\+\_\+v1.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1UnknownDropout_a7063d1866221608f272c2c6697d4b98b}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1UnknownDropout_a7063d1866221608f272c2c6697d4b98b}} 
+\index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Unknown\+Dropout@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Unknown\+Dropout}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Unknown\+Dropout@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Unknown\+Dropout}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+modules\+\_\+v1.\+Unknown\+Dropout.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{unknown\+\_\+idx,  }\item[{}]{probability }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initialize layer.
+
+:param unknown_idx: index of unknown token, replace tokens with this
+:param probability: during training, replaces tokens with unknown token
+            at this rate.
+\end{DoxyVerb}
+ 
+
+Definition at line 390 of file modules\+\_\+v1.\+py.
+
+
+\begin{DoxyCode}
+390     \textcolor{keyword}{def }\_\_init\_\_(self, unknown\_idx, probability):
+391         \textcolor{stringliteral}{"""}
+392 \textcolor{stringliteral}{        Initialize layer.}
+393 \textcolor{stringliteral}{}
+394 \textcolor{stringliteral}{        :param unknown\_idx: index of unknown token, replace tokens with this}
+395 \textcolor{stringliteral}{        :param probability: during training, replaces tokens with unknown token}
+396 \textcolor{stringliteral}{                            at this rate.}
+397 \textcolor{stringliteral}{        """}
+398         super().\_\_init\_\_()
+399         self.unknown\_idx = unknown\_idx
+400         self.prob = probability
+401 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1UnknownDropout_a4527e73a4211e888db806e4526c0126e}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1UnknownDropout_a4527e73a4211e888db806e4526c0126e}} 
+\index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Unknown\+Dropout@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Unknown\+Dropout}!forward@{forward}}
+\index{forward@{forward}!parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Unknown\+Dropout@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Unknown\+Dropout}}
+\subsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+modules\+\_\+v1.\+Unknown\+Dropout.\+forward (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{input }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}If training and dropout rate > 0, masks input with unknown token.
+\end{DoxyVerb}
+ 
+
+Definition at line 402 of file modules\+\_\+v1.\+py.
+
+
+\begin{DoxyCode}
+402     \textcolor{keyword}{def }forward(self, input):
+403         \textcolor{stringliteral}{"""}
+404 \textcolor{stringliteral}{        If training and dropout rate > 0, masks input with unknown token.}
+405 \textcolor{stringliteral}{        """}
+406         \textcolor{keywordflow}{if} self.training \textcolor{keywordflow}{and} self.prob > 0:
+407             mask = input.new(input.size()).\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}().uniform\_(0, 1) < self.prob
+408             input.masked\_fill\_(mask, self.unknown\_idx)
+409         \textcolor{keywordflow}{return} input
+410 
+411 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1UnknownDropout_a7d5b061b69c0857aec6dfe3f3f5cd9ed}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1UnknownDropout_a7d5b061b69c0857aec6dfe3f3f5cd9ed}} 
+\index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Unknown\+Dropout@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Unknown\+Dropout}!prob@{prob}}
+\index{prob@{prob}!parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Unknown\+Dropout@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Unknown\+Dropout}}
+\subsubsection{\texorpdfstring{prob}{prob}}
+{\footnotesize\ttfamily parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+modules\+\_\+v1.\+Unknown\+Dropout.\+prob}
+
+
+
+Definition at line 400 of file modules\+\_\+v1.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1UnknownDropout_a7c6fe2c4afa06bf542c36ea9821b243f}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_1_1UnknownDropout_a7c6fe2c4afa06bf542c36ea9821b243f}} 
+\index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Unknown\+Dropout@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Unknown\+Dropout}!unknown\+\_\+idx@{unknown\+\_\+idx}}
+\index{unknown\+\_\+idx@{unknown\+\_\+idx}!parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Unknown\+Dropout@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::modules\+\_\+v1\+::\+Unknown\+Dropout}}
+\subsubsection{\texorpdfstring{unknown\+\_\+idx}{unknown\_idx}}
+{\footnotesize\ttfamily parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+modules\+\_\+v1.\+Unknown\+Dropout.\+unknown\+\_\+idx}
+
+
+
+Definition at line 399 of file modules\+\_\+v1.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/agents/legacy\+\_\+agents/seq2seq/\hyperlink{modules__v1_8py}{modules\+\_\+v1.\+py}\end{DoxyCompactItemize}

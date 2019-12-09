@@ -1,0 +1,67 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1dialog__babi__plus_1_1build}{}\section{parlai.\+tasks.\+dialog\+\_\+babi\+\_\+plus.\+build Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1dialog__babi__plus_1_1build}\index{parlai.\+tasks.\+dialog\+\_\+babi\+\_\+plus.\+build@{parlai.\+tasks.\+dialog\+\_\+babi\+\_\+plus.\+build}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1dialog__babi__plus_1_1build_a744abaf2c667658a3bc25beae9477b94}{build} (opt)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+list \hyperlink{namespaceparlai_1_1tasks_1_1dialog__babi__plus_1_1build_a1bb4d3fa841149fd8c1d8c16c67cc1da}{R\+E\+S\+O\+U\+R\+C\+ES}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1dialog__babi__plus_1_1build_a744abaf2c667658a3bc25beae9477b94}\label{namespaceparlai_1_1tasks_1_1dialog__babi__plus_1_1build_a744abaf2c667658a3bc25beae9477b94}} 
+\index{parlai\+::tasks\+::dialog\+\_\+babi\+\_\+plus\+::build@{parlai\+::tasks\+::dialog\+\_\+babi\+\_\+plus\+::build}!build@{build}}
+\index{build@{build}!parlai\+::tasks\+::dialog\+\_\+babi\+\_\+plus\+::build@{parlai\+::tasks\+::dialog\+\_\+babi\+\_\+plus\+::build}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+dialog\+\_\+babi\+\_\+plus.\+build.\+build (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 20 of file build.\+py.
+
+
+\begin{DoxyCode}
+20 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
+21     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'dialog-bAbI-plus'})
+22     version = \textcolor{keywordtype}{None}
+23 
+24     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version\_string=version):
+25         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+26         \textcolor{keywordflow}{if} build\_data.built(dpath):
+27             \textcolor{comment}{# An older version exists, so remove these outdated files.}
+28             build\_data.remove\_dir(dpath)
+29         build\_data.make\_dir(dpath)
+30 
+31         \textcolor{comment}{# Download the data.}
+32         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES:
+33             downloadable\_file.download\_file(dpath)
+34 
+35         build\_data.mark\_done(dpath, version)
+36 \end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1dialog__babi__plus_1_1build_a1bb4d3fa841149fd8c1d8c16c67cc1da}\label{namespaceparlai_1_1tasks_1_1dialog__babi__plus_1_1build_a1bb4d3fa841149fd8c1d8c16c67cc1da}} 
+\index{parlai\+::tasks\+::dialog\+\_\+babi\+\_\+plus\+::build@{parlai\+::tasks\+::dialog\+\_\+babi\+\_\+plus\+::build}!R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}}
+\index{R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}!parlai\+::tasks\+::dialog\+\_\+babi\+\_\+plus\+::build@{parlai\+::tasks\+::dialog\+\_\+babi\+\_\+plus\+::build}}
+\subsubsection{\texorpdfstring{R\+E\+S\+O\+U\+R\+C\+ES}{RESOURCES}}
+{\footnotesize\ttfamily list parlai.\+tasks.\+dialog\+\_\+babi\+\_\+plus.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+1 =  [
+2     DownloadableFile(
+3         \textcolor{stringliteral}{'https://drive.google.com/uc?export=download&id=0B2MvoQfXtqZmMTJqclpBdGN2bmc'},
+4         \textcolor{stringliteral}{'dialog-bAbI-plus.zip'},
+5         \textcolor{stringliteral}{'e67dfecbde5e6250833143a6148150a313204237b765d39e7b8ebc111cb3204e'},
+6     )
+7 ]
+\end{DoxyCode}
+
+
+Definition at line 11 of file build.\+py.
+

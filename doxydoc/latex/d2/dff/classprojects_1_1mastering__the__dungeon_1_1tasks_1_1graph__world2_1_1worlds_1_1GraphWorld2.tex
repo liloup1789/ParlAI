@@ -1,0 +1,127 @@
+\hypertarget{classprojects_1_1mastering__the__dungeon_1_1tasks_1_1graph__world2_1_1worlds_1_1GraphWorld2}{}\section{projects.\+mastering\+\_\+the\+\_\+dungeon.\+tasks.\+graph\+\_\+world2.\+worlds.\+Graph\+World2 Class Reference}
+\label{classprojects_1_1mastering__the__dungeon_1_1tasks_1_1graph__world2_1_1worlds_1_1GraphWorld2}\index{projects.\+mastering\+\_\+the\+\_\+dungeon.\+tasks.\+graph\+\_\+world2.\+worlds.\+Graph\+World2@{projects.\+mastering\+\_\+the\+\_\+dungeon.\+tasks.\+graph\+\_\+world2.\+worlds.\+Graph\+World2}}
+
+
+Inheritance diagram for projects.\+mastering\+\_\+the\+\_\+dungeon.\+tasks.\+graph\+\_\+world2.\+worlds.\+Graph\+World2\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{dd/d2a/classprojects_1_1mastering__the__dungeon_1_1tasks_1_1graph__world2_1_1worlds_1_1GraphWorld2__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for projects.\+mastering\+\_\+the\+\_\+dungeon.\+tasks.\+graph\+\_\+world2.\+worlds.\+Graph\+World2\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{df/dbd/classprojects_1_1mastering__the__dungeon_1_1tasks_1_1graph__world2_1_1worlds_1_1GraphWorld2__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classprojects_1_1mastering__the__dungeon_1_1tasks_1_1graph__world2_1_1worlds_1_1GraphWorld2_a5a0c4a11d2e572bfbe476f9c5d3fbf03}{init\+\_\+world} (self)
+\item 
+def \hyperlink{classprojects_1_1mastering__the__dungeon_1_1tasks_1_1graph__world2_1_1worlds_1_1GraphWorld2_a3a97aa60f79764ae4525cc4df85180e5}{observe} (self, agent, act)
+\item 
+def \hyperlink{classprojects_1_1mastering__the__dungeon_1_1tasks_1_1graph__world2_1_1worlds_1_1GraphWorld2_a5b99d2c00a74a0fd782df6505a12180d}{execute} (self, agent, act)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classprojects_1_1mastering__the__dungeon_1_1tasks_1_1graph__world2_1_1worlds_1_1GraphWorld2_a3df3da0c9fe46e780d274bb455003f37}{g}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 12 of file worlds.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classprojects_1_1mastering__the__dungeon_1_1tasks_1_1graph__world2_1_1worlds_1_1GraphWorld2_a5b99d2c00a74a0fd782df6505a12180d}\label{classprojects_1_1mastering__the__dungeon_1_1tasks_1_1graph__world2_1_1worlds_1_1GraphWorld2_a5b99d2c00a74a0fd782df6505a12180d}} 
+\index{projects\+::mastering\+\_\+the\+\_\+dungeon\+::tasks\+::graph\+\_\+world2\+::worlds\+::\+Graph\+World2@{projects\+::mastering\+\_\+the\+\_\+dungeon\+::tasks\+::graph\+\_\+world2\+::worlds\+::\+Graph\+World2}!execute@{execute}}
+\index{execute@{execute}!projects\+::mastering\+\_\+the\+\_\+dungeon\+::tasks\+::graph\+\_\+world2\+::worlds\+::\+Graph\+World2@{projects\+::mastering\+\_\+the\+\_\+dungeon\+::tasks\+::graph\+\_\+world2\+::worlds\+::\+Graph\+World2}}
+\subsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily def projects.\+mastering\+\_\+the\+\_\+dungeon.\+tasks.\+graph\+\_\+world2.\+worlds.\+Graph\+World2.\+execute (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{agent,  }\item[{}]{act }\end{DoxyParamCaption})}
+
+
+
+Definition at line 29 of file worlds.\+py.
+
+
+\begin{DoxyCode}
+29     \textcolor{keyword}{def }execute(self, agent, act):
+30         \textcolor{comment}{# Execute action from agent. We also send an update to all other agents}
+31         \textcolor{comment}{# that can observe the change.}
+32         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'text'} \textcolor{keywordflow}{in} act:
+33             valid = self.g.parse\_exec(agent.id, act[\textcolor{stringliteral}{'text'}])
+34             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} valid:
+35                 self.g.send\_msg(agent.id, \textcolor{stringliteral}{'Invalid action.\(\backslash\)n'})
+36         self.g.update\_world()  \textcolor{comment}{# other NPCs can move, etc.}
+37 \end{DoxyCode}
+\mbox{\Hypertarget{classprojects_1_1mastering__the__dungeon_1_1tasks_1_1graph__world2_1_1worlds_1_1GraphWorld2_a5a0c4a11d2e572bfbe476f9c5d3fbf03}\label{classprojects_1_1mastering__the__dungeon_1_1tasks_1_1graph__world2_1_1worlds_1_1GraphWorld2_a5a0c4a11d2e572bfbe476f9c5d3fbf03}} 
+\index{projects\+::mastering\+\_\+the\+\_\+dungeon\+::tasks\+::graph\+\_\+world2\+::worlds\+::\+Graph\+World2@{projects\+::mastering\+\_\+the\+\_\+dungeon\+::tasks\+::graph\+\_\+world2\+::worlds\+::\+Graph\+World2}!init\+\_\+world@{init\+\_\+world}}
+\index{init\+\_\+world@{init\+\_\+world}!projects\+::mastering\+\_\+the\+\_\+dungeon\+::tasks\+::graph\+\_\+world2\+::worlds\+::\+Graph\+World2@{projects\+::mastering\+\_\+the\+\_\+dungeon\+::tasks\+::graph\+\_\+world2\+::worlds\+::\+Graph\+World2}}
+\subsubsection{\texorpdfstring{init\+\_\+world()}{init\_world()}}
+{\footnotesize\ttfamily def projects.\+mastering\+\_\+the\+\_\+dungeon.\+tasks.\+graph\+\_\+world2.\+worlds.\+Graph\+World2.\+init\+\_\+world (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 13 of file worlds.\+py.
+
+
+\begin{DoxyCode}
+13     \textcolor{keyword}{def }init\_world(self):
+14         self.g = \hyperlink{namespaceprojects_1_1mastering__the__dungeon_1_1tasks_1_1graph__world2_1_1graph_a5cd70dc74f0447a0dda626d8c524b4c9}{construct\_graph}(self.opt)
+15         \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} self.agents:
+16             self.g.new\_agent(a.id)
+17 
+\end{DoxyCode}
+\mbox{\Hypertarget{classprojects_1_1mastering__the__dungeon_1_1tasks_1_1graph__world2_1_1worlds_1_1GraphWorld2_a3a97aa60f79764ae4525cc4df85180e5}\label{classprojects_1_1mastering__the__dungeon_1_1tasks_1_1graph__world2_1_1worlds_1_1GraphWorld2_a3a97aa60f79764ae4525cc4df85180e5}} 
+\index{projects\+::mastering\+\_\+the\+\_\+dungeon\+::tasks\+::graph\+\_\+world2\+::worlds\+::\+Graph\+World2@{projects\+::mastering\+\_\+the\+\_\+dungeon\+::tasks\+::graph\+\_\+world2\+::worlds\+::\+Graph\+World2}!observe@{observe}}
+\index{observe@{observe}!projects\+::mastering\+\_\+the\+\_\+dungeon\+::tasks\+::graph\+\_\+world2\+::worlds\+::\+Graph\+World2@{projects\+::mastering\+\_\+the\+\_\+dungeon\+::tasks\+::graph\+\_\+world2\+::worlds\+::\+Graph\+World2}}
+\subsubsection{\texorpdfstring{observe()}{observe()}}
+{\footnotesize\ttfamily def projects.\+mastering\+\_\+the\+\_\+dungeon.\+tasks.\+graph\+\_\+world2.\+worlds.\+Graph\+World2.\+observe (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{agent,  }\item[{}]{act }\end{DoxyParamCaption})}
+
+
+
+Definition at line 18 of file worlds.\+py.
+
+
+\begin{DoxyCode}
+18     \textcolor{keyword}{def }observe(self, agent, act):
+19         \textcolor{keywordflow}{if} agent.id == act[\textcolor{stringliteral}{'id'}]:
+20             msg = \{\}
+21             msg[\textcolor{stringliteral}{'text'}] = self.g.get\_text(agent.id).rstrip(\textcolor{stringliteral}{'\(\backslash\)n'})
+22             msg[\textcolor{stringliteral}{'id'}] = \textcolor{stringliteral}{'world'}
+23             msg[\textcolor{stringliteral}{'graph'}] = self.g  \textcolor{comment}{# preferably agents don't use the graph directly,}
+24             \textcolor{comment}{# but we make available here.}
+25             \textcolor{keywordflow}{return} msg
+26         \textcolor{keywordflow}{else}:
+27             \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}
+28 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classprojects_1_1mastering__the__dungeon_1_1tasks_1_1graph__world2_1_1worlds_1_1GraphWorld2_a3df3da0c9fe46e780d274bb455003f37}\label{classprojects_1_1mastering__the__dungeon_1_1tasks_1_1graph__world2_1_1worlds_1_1GraphWorld2_a3df3da0c9fe46e780d274bb455003f37}} 
+\index{projects\+::mastering\+\_\+the\+\_\+dungeon\+::tasks\+::graph\+\_\+world2\+::worlds\+::\+Graph\+World2@{projects\+::mastering\+\_\+the\+\_\+dungeon\+::tasks\+::graph\+\_\+world2\+::worlds\+::\+Graph\+World2}!g@{g}}
+\index{g@{g}!projects\+::mastering\+\_\+the\+\_\+dungeon\+::tasks\+::graph\+\_\+world2\+::worlds\+::\+Graph\+World2@{projects\+::mastering\+\_\+the\+\_\+dungeon\+::tasks\+::graph\+\_\+world2\+::worlds\+::\+Graph\+World2}}
+\subsubsection{\texorpdfstring{g}{g}}
+{\footnotesize\ttfamily projects.\+mastering\+\_\+the\+\_\+dungeon.\+tasks.\+graph\+\_\+world2.\+worlds.\+Graph\+World2.\+g}
+
+
+
+Definition at line 14 of file worlds.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+projects/mastering\+\_\+the\+\_\+dungeon/tasks/graph\+\_\+world2/\hyperlink{projects_2mastering__the__dungeon_2tasks_2graph__world2_2worlds_8py}{worlds.\+py}\end{DoxyCompactItemize}

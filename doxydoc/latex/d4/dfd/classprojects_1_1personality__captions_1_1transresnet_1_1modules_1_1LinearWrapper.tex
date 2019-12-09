@@ -1,0 +1,117 @@
+\hypertarget{classprojects_1_1personality__captions_1_1transresnet_1_1modules_1_1LinearWrapper}{}\section{projects.\+personality\+\_\+captions.\+transresnet.\+modules.\+Linear\+Wrapper Class Reference}
+\label{classprojects_1_1personality__captions_1_1transresnet_1_1modules_1_1LinearWrapper}\index{projects.\+personality\+\_\+captions.\+transresnet.\+modules.\+Linear\+Wrapper@{projects.\+personality\+\_\+captions.\+transresnet.\+modules.\+Linear\+Wrapper}}
+
+
+Inheritance diagram for projects.\+personality\+\_\+captions.\+transresnet.\+modules.\+Linear\+Wrapper\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=233pt]{de/d81/classprojects_1_1personality__captions_1_1transresnet_1_1modules_1_1LinearWrapper__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for projects.\+personality\+\_\+captions.\+transresnet.\+modules.\+Linear\+Wrapper\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=233pt]{d3/dee/classprojects_1_1personality__captions_1_1transresnet_1_1modules_1_1LinearWrapper__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classprojects_1_1personality__captions_1_1transresnet_1_1modules_1_1LinearWrapper_a2e10c4bb01e3df60871dc6b0ac5c88a7}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, in\+\_\+dim, out\+\_\+dim, dropout)
+\item 
+def \hyperlink{classprojects_1_1personality__captions_1_1transresnet_1_1modules_1_1LinearWrapper_a01b6a807a29f852bbd6109ce1f105f6b}{forward} (self, input)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classprojects_1_1personality__captions_1_1transresnet_1_1modules_1_1LinearWrapper_a8411866655bcc0a2d1f81872d690f0bd}{lin}
+\item 
+\hyperlink{classprojects_1_1personality__captions_1_1transresnet_1_1modules_1_1LinearWrapper_a82d3bfca084c402ccc7d94e8db852610}{dp}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Linear layer with dropout.
+\end{DoxyVerb}
+ 
+
+Definition at line 588 of file modules.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classprojects_1_1personality__captions_1_1transresnet_1_1modules_1_1LinearWrapper_a2e10c4bb01e3df60871dc6b0ac5c88a7}\label{classprojects_1_1personality__captions_1_1transresnet_1_1modules_1_1LinearWrapper_a2e10c4bb01e3df60871dc6b0ac5c88a7}} 
+\index{projects\+::personality\+\_\+captions\+::transresnet\+::modules\+::\+Linear\+Wrapper@{projects\+::personality\+\_\+captions\+::transresnet\+::modules\+::\+Linear\+Wrapper}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!projects\+::personality\+\_\+captions\+::transresnet\+::modules\+::\+Linear\+Wrapper@{projects\+::personality\+\_\+captions\+::transresnet\+::modules\+::\+Linear\+Wrapper}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def projects.\+personality\+\_\+captions.\+transresnet.\+modules.\+Linear\+Wrapper.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{in\+\_\+dim,  }\item[{}]{out\+\_\+dim,  }\item[{}]{dropout }\end{DoxyParamCaption})}
+
+
+
+Definition at line 593 of file modules.\+py.
+
+
+\begin{DoxyCode}
+593     \textcolor{keyword}{def }\_\_init\_\_(self, in\_dim, out\_dim, dropout):
+594         super(LinearWrapper, self).\_\_init\_\_()
+595         self.lin = nn.Linear(in\_dim, out\_dim)
+596         self.dp = nn.Dropout(dropout)
+597 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classprojects_1_1personality__captions_1_1transresnet_1_1modules_1_1LinearWrapper_a01b6a807a29f852bbd6109ce1f105f6b}\label{classprojects_1_1personality__captions_1_1transresnet_1_1modules_1_1LinearWrapper_a01b6a807a29f852bbd6109ce1f105f6b}} 
+\index{projects\+::personality\+\_\+captions\+::transresnet\+::modules\+::\+Linear\+Wrapper@{projects\+::personality\+\_\+captions\+::transresnet\+::modules\+::\+Linear\+Wrapper}!forward@{forward}}
+\index{forward@{forward}!projects\+::personality\+\_\+captions\+::transresnet\+::modules\+::\+Linear\+Wrapper@{projects\+::personality\+\_\+captions\+::transresnet\+::modules\+::\+Linear\+Wrapper}}
+\subsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily def projects.\+personality\+\_\+captions.\+transresnet.\+modules.\+Linear\+Wrapper.\+forward (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{input }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Forward pass.
+\end{DoxyVerb}
+ 
+
+Definition at line 598 of file modules.\+py.
+
+
+\begin{DoxyCode}
+598     \textcolor{keyword}{def }forward(self, input):
+599         \textcolor{stringliteral}{"""}
+600 \textcolor{stringliteral}{        Forward pass.}
+601 \textcolor{stringliteral}{        """}
+602         \textcolor{keywordflow}{return} self.lin(self.dp(input))
+603 \end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classprojects_1_1personality__captions_1_1transresnet_1_1modules_1_1LinearWrapper_a82d3bfca084c402ccc7d94e8db852610}\label{classprojects_1_1personality__captions_1_1transresnet_1_1modules_1_1LinearWrapper_a82d3bfca084c402ccc7d94e8db852610}} 
+\index{projects\+::personality\+\_\+captions\+::transresnet\+::modules\+::\+Linear\+Wrapper@{projects\+::personality\+\_\+captions\+::transresnet\+::modules\+::\+Linear\+Wrapper}!dp@{dp}}
+\index{dp@{dp}!projects\+::personality\+\_\+captions\+::transresnet\+::modules\+::\+Linear\+Wrapper@{projects\+::personality\+\_\+captions\+::transresnet\+::modules\+::\+Linear\+Wrapper}}
+\subsubsection{\texorpdfstring{dp}{dp}}
+{\footnotesize\ttfamily projects.\+personality\+\_\+captions.\+transresnet.\+modules.\+Linear\+Wrapper.\+dp}
+
+
+
+Definition at line 596 of file modules.\+py.
+
+\mbox{\Hypertarget{classprojects_1_1personality__captions_1_1transresnet_1_1modules_1_1LinearWrapper_a8411866655bcc0a2d1f81872d690f0bd}\label{classprojects_1_1personality__captions_1_1transresnet_1_1modules_1_1LinearWrapper_a8411866655bcc0a2d1f81872d690f0bd}} 
+\index{projects\+::personality\+\_\+captions\+::transresnet\+::modules\+::\+Linear\+Wrapper@{projects\+::personality\+\_\+captions\+::transresnet\+::modules\+::\+Linear\+Wrapper}!lin@{lin}}
+\index{lin@{lin}!projects\+::personality\+\_\+captions\+::transresnet\+::modules\+::\+Linear\+Wrapper@{projects\+::personality\+\_\+captions\+::transresnet\+::modules\+::\+Linear\+Wrapper}}
+\subsubsection{\texorpdfstring{lin}{lin}}
+{\footnotesize\ttfamily projects.\+personality\+\_\+captions.\+transresnet.\+modules.\+Linear\+Wrapper.\+lin}
+
+
+
+Definition at line 595 of file modules.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+projects/personality\+\_\+captions/transresnet/\hyperlink{projects_2personality__captions_2transresnet_2modules_8py}{modules.\+py}\end{DoxyCompactItemize}

@@ -1,0 +1,138 @@
+\hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1modules_1_1UnknownDropout}{}\section{projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+modules.\+Unknown\+Dropout Class Reference}
+\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1modules_1_1UnknownDropout}\index{projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+modules.\+Unknown\+Dropout@{projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+modules.\+Unknown\+Dropout}}
+
+
+Inheritance diagram for projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+modules.\+Unknown\+Dropout\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=257pt]{d3/dc8/classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1modules_1_1UnknownDropout__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+modules.\+Unknown\+Dropout\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=257pt]{d0/dd9/classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1modules_1_1UnknownDropout__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1modules_1_1UnknownDropout_a372e777d8028c259002dccd0477c6714}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1modules_1_1UnknownDropout_a5e7e2f4a3eb4ae3893445b792ce94f20}{unknown\+\_\+idx}, probability)
+\item 
+def \hyperlink{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1modules_1_1UnknownDropout_aff3bc451d1729384ba040a0ea1e5443c}{forward} (self, input)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1modules_1_1UnknownDropout_a5e7e2f4a3eb4ae3893445b792ce94f20}{unknown\+\_\+idx}
+\item 
+\hyperlink{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1modules_1_1UnknownDropout_a1563638f138b25ea2911b07ba089c800}{prob}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}With set frequency, replaces tokens with unknown token.
+
+This layer can be used right before an embedding layer to make the model more robust
+to unknown words at test time.
+\end{DoxyVerb}
+ 
+
+Definition at line 452 of file modules.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1modules_1_1UnknownDropout_a372e777d8028c259002dccd0477c6714}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1modules_1_1UnknownDropout_a372e777d8028c259002dccd0477c6714}} 
+\index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::modules\+::\+Unknown\+Dropout@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::modules\+::\+Unknown\+Dropout}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::modules\+::\+Unknown\+Dropout@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::modules\+::\+Unknown\+Dropout}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+modules.\+Unknown\+Dropout.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{unknown\+\_\+idx,  }\item[{}]{probability }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Initialize layer.
+
+:param unknown_idx: index of unknown token, replace tokens with this
+:param probability: during training, replaces tokens with unknown token
+            at this rate.
+\end{DoxyVerb}
+ 
+
+Definition at line 460 of file modules.\+py.
+
+
+\begin{DoxyCode}
+460     \textcolor{keyword}{def }\_\_init\_\_(self, unknown\_idx, probability):
+461         \textcolor{stringliteral}{"""}
+462 \textcolor{stringliteral}{        Initialize layer.}
+463 \textcolor{stringliteral}{}
+464 \textcolor{stringliteral}{        :param unknown\_idx: index of unknown token, replace tokens with this}
+465 \textcolor{stringliteral}{        :param probability: during training, replaces tokens with unknown token}
+466 \textcolor{stringliteral}{                            at this rate.}
+467 \textcolor{stringliteral}{        """}
+468         super().\_\_init\_\_()
+469         self.unknown\_idx = unknown\_idx
+470         self.prob = probability
+471 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1modules_1_1UnknownDropout_aff3bc451d1729384ba040a0ea1e5443c}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1modules_1_1UnknownDropout_aff3bc451d1729384ba040a0ea1e5443c}} 
+\index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::modules\+::\+Unknown\+Dropout@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::modules\+::\+Unknown\+Dropout}!forward@{forward}}
+\index{forward@{forward}!projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::modules\+::\+Unknown\+Dropout@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::modules\+::\+Unknown\+Dropout}}
+\subsubsection{\texorpdfstring{forward()}{forward()}}
+{\footnotesize\ttfamily def projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+modules.\+Unknown\+Dropout.\+forward (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{input }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}If training and dropout rate > 0, masks input with unknown token.
+\end{DoxyVerb}
+ 
+
+Definition at line 472 of file modules.\+py.
+
+
+\begin{DoxyCode}
+472     \textcolor{keyword}{def }forward(self, input):
+473         \textcolor{stringliteral}{"""}
+474 \textcolor{stringliteral}{        If training and dropout rate > 0, masks input with unknown token.}
+475 \textcolor{stringliteral}{        """}
+476         \textcolor{keywordflow}{if} self.training \textcolor{keywordflow}{and} self.prob > 0:
+477             mask = input.new(input.size()).\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}().uniform\_(0, 1) < self.prob
+478             input.masked\_fill\_(mask, self.unknown\_idx)
+479         \textcolor{keywordflow}{return} input
+480 
+481 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1modules_1_1UnknownDropout_a1563638f138b25ea2911b07ba089c800}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1modules_1_1UnknownDropout_a1563638f138b25ea2911b07ba089c800}} 
+\index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::modules\+::\+Unknown\+Dropout@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::modules\+::\+Unknown\+Dropout}!prob@{prob}}
+\index{prob@{prob}!projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::modules\+::\+Unknown\+Dropout@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::modules\+::\+Unknown\+Dropout}}
+\subsubsection{\texorpdfstring{prob}{prob}}
+{\footnotesize\ttfamily projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+modules.\+Unknown\+Dropout.\+prob}
+
+
+
+Definition at line 470 of file modules.\+py.
+
+\mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1modules_1_1UnknownDropout_a5e7e2f4a3eb4ae3893445b792ce94f20}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1modules_1_1UnknownDropout_a5e7e2f4a3eb4ae3893445b792ce94f20}} 
+\index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::modules\+::\+Unknown\+Dropout@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::modules\+::\+Unknown\+Dropout}!unknown\+\_\+idx@{unknown\+\_\+idx}}
+\index{unknown\+\_\+idx@{unknown\+\_\+idx}!projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::modules\+::\+Unknown\+Dropout@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::modules\+::\+Unknown\+Dropout}}
+\subsubsection{\texorpdfstring{unknown\+\_\+idx}{unknown\_idx}}
+{\footnotesize\ttfamily projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+modules.\+Unknown\+Dropout.\+unknown\+\_\+idx}
+
+
+
+Definition at line 469 of file modules.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+projects/controllable\+\_\+dialogue/controllable\+\_\+seq2seq/\hyperlink{projects_2controllable__dialogue_2controllable__seq2seq_2modules_8py}{modules.\+py}\end{DoxyCompactItemize}

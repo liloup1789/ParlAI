@@ -1,0 +1,84 @@
+\hypertarget{classtests_1_1test__teachers_1_1TestAbstractImageTeacher}{}\section{tests.\+test\+\_\+teachers.\+Test\+Abstract\+Image\+Teacher Class Reference}
+\label{classtests_1_1test__teachers_1_1TestAbstractImageTeacher}\index{tests.\+test\+\_\+teachers.\+Test\+Abstract\+Image\+Teacher@{tests.\+test\+\_\+teachers.\+Test\+Abstract\+Image\+Teacher}}
+
+
+Inheritance diagram for tests.\+test\+\_\+teachers.\+Test\+Abstract\+Image\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=203pt]{de/d9d/classtests_1_1test__teachers_1_1TestAbstractImageTeacher__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for tests.\+test\+\_\+teachers.\+Test\+Abstract\+Image\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=203pt]{d2/d10/classtests_1_1test__teachers_1_1TestAbstractImageTeacher__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classtests_1_1test__teachers_1_1TestAbstractImageTeacher_a7858e68d96209268ee2cfcf23030b7b7}{test\+\_\+display\+\_\+data} (self)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Test AbstractImageTeacher.
+\end{DoxyVerb}
+ 
+
+Definition at line 18 of file test\+\_\+teachers.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtests_1_1test__teachers_1_1TestAbstractImageTeacher_a7858e68d96209268ee2cfcf23030b7b7}\label{classtests_1_1test__teachers_1_1TestAbstractImageTeacher_a7858e68d96209268ee2cfcf23030b7b7}} 
+\index{tests\+::test\+\_\+teachers\+::\+Test\+Abstract\+Image\+Teacher@{tests\+::test\+\_\+teachers\+::\+Test\+Abstract\+Image\+Teacher}!test\+\_\+display\+\_\+data@{test\+\_\+display\+\_\+data}}
+\index{test\+\_\+display\+\_\+data@{test\+\_\+display\+\_\+data}!tests\+::test\+\_\+teachers\+::\+Test\+Abstract\+Image\+Teacher@{tests\+::test\+\_\+teachers\+::\+Test\+Abstract\+Image\+Teacher}}
+\subsubsection{\texorpdfstring{test\+\_\+display\+\_\+data()}{test\_display\_data()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+teachers.\+Test\+Abstract\+Image\+Teacher.\+test\+\_\+display\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Test that, with pre-loaded image features, all examples are different.
+\end{DoxyVerb}
+ 
+
+Definition at line 23 of file test\+\_\+teachers.\+py.
+
+
+\begin{DoxyCode}
+23     \textcolor{keyword}{def }test\_display\_data(self):
+24         \textcolor{stringliteral}{"""}
+25 \textcolor{stringliteral}{        Test that, with pre-loaded image features, all examples are different.}
+26 \textcolor{stringliteral}{        """}
+27 
+28         \textcolor{keyword}{def }\_test\_display\_output(opt):
+29             output = testing\_utils.display\_data(opt)
+30             train\_labels = re.findall(\textcolor{stringliteral}{r"\(\backslash\)[labels: .*\(\backslash\)]"}, output[0])
+31             valid\_labels = re.findall(\textcolor{stringliteral}{r"\(\backslash\)[eval\_labels: .*\(\backslash\)]"}, output[1])
+32             test\_labels = re.findall(\textcolor{stringliteral}{r"\(\backslash\)[eval\_labels: .*\(\backslash\)]"}, output[2])
+33 
+34             \textcolor{keywordflow}{for} i, lbls \textcolor{keywordflow}{in} enumerate([train\_labels, valid\_labels, test\_labels]):
+35                 self.assertGreater(len(lbls), 0, \textcolor{stringliteral}{'DisplayData failed'})
+36                 self.assertEqual(len(lbls), len(set(lbls)), output[i])
+37 
+38         with testing\_utils.tempdir() \textcolor{keyword}{as} tmpdir:
+39             data\_path = tmpdir
+40             os.makedirs(os.path.join(data\_path, \textcolor{stringliteral}{'ImageTeacher'}))
+41 
+42             opt = \{\textcolor{stringliteral}{'task'}: \textcolor{stringliteral}{'integration\_tests:ImageTeacher'}, \textcolor{stringliteral}{'datapath'}: data\_path\}
+43             \textcolor{keywordflow}{for} image\_mode \textcolor{keywordflow}{in} [\textcolor{stringliteral}{'resnet152'}, \textcolor{stringliteral}{'no\_image\_model'}]:
+44                 opt[\textcolor{stringliteral}{'image\_mode'}] = image\_mode
+45                 \_test\_display\_output(opt)
+46 
+47 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+tests/\hyperlink{test__teachers_8py}{test\+\_\+teachers.\+py}\end{DoxyCompactItemize}

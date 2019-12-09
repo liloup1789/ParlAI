@@ -1,0 +1,145 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1mctest_1_1build}{}\section{parlai.\+tasks.\+mctest.\+build Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1mctest_1_1build}\index{parlai.\+tasks.\+mctest.\+build@{parlai.\+tasks.\+mctest.\+build}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1mctest_1_1build_a7d827f19f83b7d60f4ed1dbabade06cf}{create\+\_\+fb\+\_\+format} (outpath, dtype, inpath, inpath2)
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1mctest_1_1build_aed15e288ff3209606d79f5cbfee86b5a}{build} (opt)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceparlai_1_1tasks_1_1mctest_1_1build_a388900d6870ee80c4977f22e1782037f}{R\+E\+S\+O\+U\+R\+C\+ES}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1mctest_1_1build_aed15e288ff3209606d79f5cbfee86b5a}\label{namespaceparlai_1_1tasks_1_1mctest_1_1build_aed15e288ff3209606d79f5cbfee86b5a}} 
+\index{parlai\+::tasks\+::mctest\+::build@{parlai\+::tasks\+::mctest\+::build}!build@{build}}
+\index{build@{build}!parlai\+::tasks\+::mctest\+::build@{parlai\+::tasks\+::mctest\+::build}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+mctest.\+build.\+build (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 68 of file build.\+py.
+
+
+\begin{DoxyCode}
+68 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
+69     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'MCTest'})
+70     version = \textcolor{keywordtype}{None}
+71 
+72     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version\_string=version):
+73         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+74         \textcolor{keywordflow}{if} build\_data.built(dpath):
+75             \textcolor{comment}{# An older version exists, so remove these outdated files.}
+76             build\_data.remove\_dir(dpath)
+77         build\_data.make\_dir(dpath)
+78 
+79         \textcolor{comment}{# Download the data.}
+80         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES:
+81             downloadable\_file.download\_file(dpath)
+82 
+83         dpext = os.path.join(dpath, \textcolor{stringliteral}{'mctest'})
+84         \hyperlink{namespaceparlai_1_1tasks_1_1wikiqa_1_1build_a554828702769592403db58c955d1dfe3}{create\_fb\_format}(
+85             dpath, \textcolor{stringliteral}{'train160'}, os.path.join(dpext, \textcolor{stringliteral}{'MCTest'}, \textcolor{stringliteral}{'mc160.train'}), \textcolor{keywordtype}{None}
+86         )
+87         \hyperlink{namespaceparlai_1_1tasks_1_1wikiqa_1_1build_a554828702769592403db58c955d1dfe3}{create\_fb\_format}(
+88             dpath, \textcolor{stringliteral}{'valid160'}, os.path.join(dpext, \textcolor{stringliteral}{'MCTest'}, \textcolor{stringliteral}{'mc160.dev'}), \textcolor{keywordtype}{None}
+89         )
+90         \hyperlink{namespaceparlai_1_1tasks_1_1wikiqa_1_1build_a554828702769592403db58c955d1dfe3}{create\_fb\_format}(
+91             dpath,
+92             \textcolor{stringliteral}{'test160'},
+93             os.path.join(dpext, \textcolor{stringliteral}{'MCTest'}, \textcolor{stringliteral}{'mc160.test'}),
+94             os.path.join(dpext, \textcolor{stringliteral}{'MCTestAnswers'}, \textcolor{stringliteral}{'mc160.test.ans'}),
+95         )
+96         \hyperlink{namespaceparlai_1_1tasks_1_1wikiqa_1_1build_a554828702769592403db58c955d1dfe3}{create\_fb\_format}(
+97             dpath, \textcolor{stringliteral}{'train500'}, os.path.join(dpext, \textcolor{stringliteral}{'MCTest'}, \textcolor{stringliteral}{'mc500.train'}), \textcolor{keywordtype}{None}
+98         )
+99         \hyperlink{namespaceparlai_1_1tasks_1_1wikiqa_1_1build_a554828702769592403db58c955d1dfe3}{create\_fb\_format}(
+100             dpath, \textcolor{stringliteral}{'valid500'}, os.path.join(dpext, \textcolor{stringliteral}{'MCTest'}, \textcolor{stringliteral}{'mc500.dev'}), \textcolor{keywordtype}{None}
+101         )
+102         \hyperlink{namespaceparlai_1_1tasks_1_1wikiqa_1_1build_a554828702769592403db58c955d1dfe3}{create\_fb\_format}(
+103             dpath,
+104             \textcolor{stringliteral}{'test500'},
+105             os.path.join(dpext, \textcolor{stringliteral}{'MCTest'}, \textcolor{stringliteral}{'mc500.test'}),
+106             os.path.join(dpext, \textcolor{stringliteral}{'MCTestAnswers'}, \textcolor{stringliteral}{'mc500.test.ans'}),
+107         )
+108 
+109         \textcolor{comment}{# Mark the data as built.}
+110         build\_data.mark\_done(dpath, version\_string=version)
+111 \end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1mctest_1_1build_a7d827f19f83b7d60f4ed1dbabade06cf}\label{namespaceparlai_1_1tasks_1_1mctest_1_1build_a7d827f19f83b7d60f4ed1dbabade06cf}} 
+\index{parlai\+::tasks\+::mctest\+::build@{parlai\+::tasks\+::mctest\+::build}!create\+\_\+fb\+\_\+format@{create\+\_\+fb\+\_\+format}}
+\index{create\+\_\+fb\+\_\+format@{create\+\_\+fb\+\_\+format}!parlai\+::tasks\+::mctest\+::build@{parlai\+::tasks\+::mctest\+::build}}
+\subsubsection{\texorpdfstring{create\+\_\+fb\+\_\+format()}{create\_fb\_format()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+mctest.\+build.\+create\+\_\+fb\+\_\+format (\begin{DoxyParamCaption}\item[{}]{outpath,  }\item[{}]{dtype,  }\item[{}]{inpath,  }\item[{}]{inpath2 }\end{DoxyParamCaption})}
+
+
+
+Definition at line 22 of file build.\+py.
+
+
+\begin{DoxyCode}
+22 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1wikiqa_1_1build_a554828702769592403db58c955d1dfe3}{create\_fb\_format}(outpath, dtype, inpath, inpath2):
+23     print(\textcolor{stringliteral}{'building fbformat:'} + dtype)
+24     fout = open(os.path.join(outpath, dtype + \textcolor{stringliteral}{'.txt'}), \textcolor{stringliteral}{'w'})
+25     with open(inpath + \textcolor{stringliteral}{'.tsv'}) \textcolor{keyword}{as} f:
+26         lines = [line.strip(\textcolor{stringliteral}{'\(\backslash\)n'}) \textcolor{keywordflow}{for} line \textcolor{keywordflow}{in} f]
+27     \textcolor{keywordflow}{if} inpath2 \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+28         fname\_ans = inpath + \textcolor{stringliteral}{'.ans'}
+29     \textcolor{keywordflow}{else}:
+30         fname\_ans = inpath2
+31     with open(fname\_ans) \textcolor{keyword}{as} f:
+32         ans = [line.strip(\textcolor{stringliteral}{'\(\backslash\)n'}) \textcolor{keywordflow}{for} line \textcolor{keywordflow}{in} f]
+33     \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(lines)):
+34         l = lines[i].split(\textcolor{stringliteral}{'\(\backslash\)t'})
+35         off = 3
+36         \textcolor{keywordflow}{for} j \textcolor{keywordflow}{in} range(4):
+37             ai = ans[i].split(\textcolor{stringliteral}{'\(\backslash\)t'})[j]
+38             \textcolor{keywordflow}{if} ai == \textcolor{stringliteral}{'A'}:
+39                 ai = 0
+40             \textcolor{keywordflow}{if} ai == \textcolor{stringliteral}{'B'}:
+41                 ai = 1
+42             \textcolor{keywordflow}{if} ai == \textcolor{stringliteral}{'C'}:
+43                 ai = 2
+44             \textcolor{keywordflow}{if} ai == \textcolor{stringliteral}{'D'}:
+45                 ai = 3
+46             a = l[off + 1 + ai]
+47             s = (
+48                 \textcolor{stringliteral}{'1 '}
+49                 + l[2]
+50                 + \textcolor{stringliteral}{' '}
+51                 + l[off]
+52                 + \textcolor{stringliteral}{'\(\backslash\)t'}
+53                 + a
+54                 + \textcolor{stringliteral}{'\(\backslash\)t\(\backslash\)t'}
+55                 + l[off + 1]
+56                 + \textcolor{stringliteral}{'|'}
+57                 + l[off + 2]
+58                 + \textcolor{stringliteral}{'|'}
+59                 + l[off + 3]
+60                 + \textcolor{stringliteral}{'|'}
+61                 + l[off + 4]
+62             )
+63             off = off + 5
+64             fout.write(s + \textcolor{stringliteral}{'\(\backslash\)n'})
+65     fout.close()
+66 
+67 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1mctest_1_1build_a388900d6870ee80c4977f22e1782037f}\label{namespaceparlai_1_1tasks_1_1mctest_1_1build_a388900d6870ee80c4977f22e1782037f}} 
+\index{parlai\+::tasks\+::mctest\+::build@{parlai\+::tasks\+::mctest\+::build}!R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}}
+\index{R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}!parlai\+::tasks\+::mctest\+::build@{parlai\+::tasks\+::mctest\+::build}}
+\subsubsection{\texorpdfstring{R\+E\+S\+O\+U\+R\+C\+ES}{RESOURCES}}
+{\footnotesize\ttfamily parlai.\+tasks.\+mctest.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
+
+
+
+Definition at line 13 of file build.\+py.
+

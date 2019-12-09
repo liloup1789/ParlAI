@@ -1,0 +1,82 @@
+\hypertarget{namespaceprojects_1_1convai_1_1convai__bot}{}\section{projects.\+convai.\+convai\+\_\+bot Namespace Reference}
+\label{namespaceprojects_1_1convai_1_1convai__bot}\index{projects.\+convai.\+convai\+\_\+bot@{projects.\+convai.\+convai\+\_\+bot}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classprojects_1_1convai_1_1convai__bot_1_1ConvAISampleAgent}{Conv\+A\+I\+Sample\+Agent}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceprojects_1_1convai_1_1convai__bot_abb3f83d4277a55c3f972f0f77d9066a7}{setup\+\_\+args} ()
+\item 
+def \hyperlink{namespaceprojects_1_1convai_1_1convai__bot_a370a74521f78bc526eb9264aeb289f65}{run\+\_\+convai\+\_\+bot} (opt)
+\item 
+def \hyperlink{namespaceprojects_1_1convai_1_1convai__bot_a20f231e61b1255f9d9a5de5e77f063bf}{main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceprojects_1_1convai_1_1convai__bot_a20f231e61b1255f9d9a5de5e77f063bf}\label{namespaceprojects_1_1convai_1_1convai__bot_a20f231e61b1255f9d9a5de5e77f063bf}} 
+\index{projects\+::convai\+::convai\+\_\+bot@{projects\+::convai\+::convai\+\_\+bot}!main@{main}}
+\index{main@{main}!projects\+::convai\+::convai\+\_\+bot@{projects\+::convai\+::convai\+\_\+bot}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily def projects.\+convai.\+convai\+\_\+bot.\+main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 70 of file convai\+\_\+bot.\+py.
+
+
+\begin{DoxyCode}
+70 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1convai_1_1convai__bot_a20f231e61b1255f9d9a5de5e77f063bf}{main}():
+71     parser = \hyperlink{namespaceprojects_1_1convai_1_1convai__bot_abb3f83d4277a55c3f972f0f77d9066a7}{setup\_args}()
+72     parser.set\_params(model=\textcolor{stringliteral}{'projects.convai.convai\_bot:ConvAISampleAgent'})
+73     opt = parser.parse\_args()
+74     print(\textcolor{stringliteral}{'Run ConvAI bot in inifinite loop...'})
+75     \hyperlink{namespaceprojects_1_1convai_1_1convai__bot_a370a74521f78bc526eb9264aeb289f65}{run\_convai\_bot}(opt)
+76 
+77 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceprojects_1_1convai_1_1convai__bot_a370a74521f78bc526eb9264aeb289f65}\label{namespaceprojects_1_1convai_1_1convai__bot_a370a74521f78bc526eb9264aeb289f65}} 
+\index{projects\+::convai\+::convai\+\_\+bot@{projects\+::convai\+::convai\+\_\+bot}!run\+\_\+convai\+\_\+bot@{run\+\_\+convai\+\_\+bot}}
+\index{run\+\_\+convai\+\_\+bot@{run\+\_\+convai\+\_\+bot}!projects\+::convai\+::convai\+\_\+bot@{projects\+::convai\+::convai\+\_\+bot}}
+\subsubsection{\texorpdfstring{run\+\_\+convai\+\_\+bot()}{run\_convai\_bot()}}
+{\footnotesize\ttfamily def projects.\+convai.\+convai\+\_\+bot.\+run\+\_\+convai\+\_\+bot (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 60 of file convai\+\_\+bot.\+py.
+
+
+\begin{DoxyCode}
+60 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1convai_1_1convai__bot_a370a74521f78bc526eb9264aeb289f65}{run\_convai\_bot}(opt):
+61     agent = \hyperlink{namespaceparlai_1_1core_1_1agents_ad0d54074d4bcc148bb415ab5515a53b5}{create\_agent}(opt)
+62     world = ConvAIWorld(opt, [agent])
+63     \textcolor{keywordflow}{while} \textcolor{keyword}{True}:
+64         \textcolor{keywordflow}{try}:
+65             world.parley()
+66         \textcolor{keywordflow}{except} Exception \textcolor{keyword}{as} e:
+67             print(\textcolor{stringliteral}{'Exception: \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(e))
+68 
+69 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceprojects_1_1convai_1_1convai__bot_abb3f83d4277a55c3f972f0f77d9066a7}\label{namespaceprojects_1_1convai_1_1convai__bot_abb3f83d4277a55c3f972f0f77d9066a7}} 
+\index{projects\+::convai\+::convai\+\_\+bot@{projects\+::convai\+::convai\+\_\+bot}!setup\+\_\+args@{setup\+\_\+args}}
+\index{setup\+\_\+args@{setup\+\_\+args}!projects\+::convai\+::convai\+\_\+bot@{projects\+::convai\+::convai\+\_\+bot}}
+\subsubsection{\texorpdfstring{setup\+\_\+args()}{setup\_args()}}
+{\footnotesize\ttfamily def projects.\+convai.\+convai\+\_\+bot.\+setup\+\_\+args (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 54 of file convai\+\_\+bot.\+py.
+
+
+\begin{DoxyCode}
+54 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1convai_1_1convai__bot_abb3f83d4277a55c3f972f0f77d9066a7}{setup\_args}():
+55     parser = ParlaiParser(\textcolor{keyword}{True}, \textcolor{keyword}{True})
+56     ConvAIWorld.add\_cmdline\_args(parser)
+57     \textcolor{keywordflow}{return} parser
+58 
+59 
+\end{DoxyCode}

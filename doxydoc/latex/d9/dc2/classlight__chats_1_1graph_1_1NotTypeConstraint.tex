@@ -1,0 +1,147 @@
+\hypertarget{classlight__chats_1_1graph_1_1NotTypeConstraint}{}\section{light\+\_\+chats.\+graph.\+Not\+Type\+Constraint Class Reference}
+\label{classlight__chats_1_1graph_1_1NotTypeConstraint}\index{light\+\_\+chats.\+graph.\+Not\+Type\+Constraint@{light\+\_\+chats.\+graph.\+Not\+Type\+Constraint}}
+
+
+Inheritance diagram for light\+\_\+chats.\+graph.\+Not\+Type\+Constraint\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=245pt]{d5/d60/classlight__chats_1_1graph_1_1NotTypeConstraint__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for light\+\_\+chats.\+graph.\+Not\+Type\+Constraint\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=245pt]{d4/d66/classlight__chats_1_1graph_1_1NotTypeConstraint__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1NotTypeConstraint_a006f37da6afe1dd06db790a6d19b07db}{get\+\_\+failure\+\_\+action} (self, graph, args, spec\+\_\+fail=\textquotesingle{}failed\textquotesingle{})
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1NotTypeConstraint_a5676df24e75c1823bd7b555a266de5f3}{get\+\_\+action\+\_\+observation\+\_\+format} (self, action, descs)
+\item 
+def \hyperlink{classlight__chats_1_1graph_1_1NotTypeConstraint_a14b047c243e378910ac24f6a2e7571e9}{evaluate\+\_\+constraint} (self, graph, args)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classlight__chats_1_1graph_1_1NotTypeConstraint_ad6119b9dbdfc0d1049e91e3f46832601}{name}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Determining if an object has inherited a particular type.
+\end{DoxyVerb}
+ 
+
+Definition at line 2485 of file graph.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1NotTypeConstraint_a14b047c243e378910ac24f6a2e7571e9}\label{classlight__chats_1_1graph_1_1NotTypeConstraint_a14b047c243e378910ac24f6a2e7571e9}} 
+\index{light\+\_\+chats\+::graph\+::\+Not\+Type\+Constraint@{light\+\_\+chats\+::graph\+::\+Not\+Type\+Constraint}!evaluate\+\_\+constraint@{evaluate\+\_\+constraint}}
+\index{evaluate\+\_\+constraint@{evaluate\+\_\+constraint}!light\+\_\+chats\+::graph\+::\+Not\+Type\+Constraint@{light\+\_\+chats\+::graph\+::\+Not\+Type\+Constraint}}
+\subsubsection{\texorpdfstring{evaluate\+\_\+constraint()}{evaluate\_constraint()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Not\+Type\+Constraint.\+evaluate\+\_\+constraint (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{graph,  }\item[{}]{args }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Return true or false for whether the object has any wanted class.
+
+args are:     0 => actor_id     1 => found_id     2 => expected_class/es     3
+=> alternate failure text
+\end{DoxyVerb}
+ 
+
+Definition at line 2511 of file graph.\+py.
+
+
+\begin{DoxyCode}
+2511     \textcolor{keyword}{def }evaluate\_constraint(self, graph, args):
+2512         \textcolor{stringliteral}{"""}
+2513 \textcolor{stringliteral}{        Return true or false for whether the object has any wanted class.}
+2514 \textcolor{stringliteral}{}
+2515 \textcolor{stringliteral}{        args are:     0 => actor\_id     1 => found\_id     2 => expected\_class/es     3}
+2516 \textcolor{stringliteral}{        => alternate failure text}
+2517 \textcolor{stringliteral}{        """}
+2518         found\_id = args[1]
+2519         expected\_classes = args[2]
+2520         \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(expected\_classes) \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} list:
+2521             expected\_classes = [expected\_classes]
+2522         obj\_classes = graph.get\_prop(found\_id, \textcolor{stringliteral}{'classes'})
+2523         \textcolor{keywordflow}{for} want\_class \textcolor{keywordflow}{in} expected\_classes:
+2524             \textcolor{keywordflow}{if} want\_class \textcolor{keywordflow}{in} obj\_classes:
+2525                 \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+2526         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+2527 
+2528 
+\end{DoxyCode}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1NotTypeConstraint_a5676df24e75c1823bd7b555a266de5f3}\label{classlight__chats_1_1graph_1_1NotTypeConstraint_a5676df24e75c1823bd7b555a266de5f3}} 
+\index{light\+\_\+chats\+::graph\+::\+Not\+Type\+Constraint@{light\+\_\+chats\+::graph\+::\+Not\+Type\+Constraint}!get\+\_\+action\+\_\+observation\+\_\+format@{get\+\_\+action\+\_\+observation\+\_\+format}}
+\index{get\+\_\+action\+\_\+observation\+\_\+format@{get\+\_\+action\+\_\+observation\+\_\+format}!light\+\_\+chats\+::graph\+::\+Not\+Type\+Constraint@{light\+\_\+chats\+::graph\+::\+Not\+Type\+Constraint}}
+\subsubsection{\texorpdfstring{get\+\_\+action\+\_\+observation\+\_\+format()}{get\_action\_observation\_format()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Not\+Type\+Constraint.\+get\+\_\+action\+\_\+observation\+\_\+format (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{action,  }\item[{}]{descs }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2503 of file graph.\+py.
+
+
+\begin{DoxyCode}
+2503     \textcolor{keyword}{def }get\_action\_observation\_format(self, action, descs):
+2504         \textcolor{keywordflow}{if} len(descs) == 3:
+2505             \textcolor{keywordflow}{return} descs[2]
+2506         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'past'} \textcolor{keywordflow}{in} action:
+2507             \textcolor{keywordflow}{return} \textcolor{stringliteral}{'I couldn\(\backslash\)'t find that. '}
+2508         \textcolor{keywordflow}{else}:
+2509             \textcolor{keywordflow}{return} \textcolor{stringliteral}{'You couldn\(\backslash\)'t find that. '}
+2510 
+\end{DoxyCode}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1NotTypeConstraint_a006f37da6afe1dd06db790a6d19b07db}\label{classlight__chats_1_1graph_1_1NotTypeConstraint_a006f37da6afe1dd06db790a6d19b07db}} 
+\index{light\+\_\+chats\+::graph\+::\+Not\+Type\+Constraint@{light\+\_\+chats\+::graph\+::\+Not\+Type\+Constraint}!get\+\_\+failure\+\_\+action@{get\+\_\+failure\+\_\+action}}
+\index{get\+\_\+failure\+\_\+action@{get\+\_\+failure\+\_\+action}!light\+\_\+chats\+::graph\+::\+Not\+Type\+Constraint@{light\+\_\+chats\+::graph\+::\+Not\+Type\+Constraint}}
+\subsubsection{\texorpdfstring{get\+\_\+failure\+\_\+action()}{get\_failure\_action()}}
+{\footnotesize\ttfamily def light\+\_\+chats.\+graph.\+Not\+Type\+Constraint.\+get\+\_\+failure\+\_\+action (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{graph,  }\item[{}]{args,  }\item[{}]{spec\+\_\+fail = {\ttfamily \textquotesingle{}failed\textquotesingle{}} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 2492 of file graph.\+py.
+
+
+\begin{DoxyCode}
+2492     \textcolor{keyword}{def }get\_failure\_action(self, graph, args, spec\_fail='failed'):
+2493         action = \{
+2494             \textcolor{stringliteral}{'caller'}: self.name,
+2495             \textcolor{stringliteral}{'name'}: spec\_fail,
+2496             \textcolor{stringliteral}{'room\_id'}: graph.location(args[0]),
+2497             \textcolor{stringliteral}{'actors'}: args[:2],
+2498         \}
+2499         \textcolor{keywordflow}{if} len(args) == 4:
+2500             action[\textcolor{stringliteral}{'add\_descs'}] = [args[3]]
+2501         \textcolor{keywordflow}{return} action
+2502 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classlight__chats_1_1graph_1_1NotTypeConstraint_ad6119b9dbdfc0d1049e91e3f46832601}\label{classlight__chats_1_1graph_1_1NotTypeConstraint_ad6119b9dbdfc0d1049e91e3f46832601}} 
+\index{light\+\_\+chats\+::graph\+::\+Not\+Type\+Constraint@{light\+\_\+chats\+::graph\+::\+Not\+Type\+Constraint}!name@{name}}
+\index{name@{name}!light\+\_\+chats\+::graph\+::\+Not\+Type\+Constraint@{light\+\_\+chats\+::graph\+::\+Not\+Type\+Constraint}}
+\subsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily light\+\_\+chats.\+graph.\+Not\+Type\+Constraint.\+name\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 2490 of file graph.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/mturk/tasks/light/light\+\_\+chats/\hyperlink{parlai_2mturk_2tasks_2light_2light__chats_2graph_8py}{graph.\+py}\end{DoxyCompactItemize}
