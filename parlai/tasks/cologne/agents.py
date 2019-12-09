@@ -9,26 +9,48 @@
 
 from parlai.core.teachers import FbDialogTeacher, ParlAIDialogTeacher
 
-import copy
-import os
+import copy, os
 
 from .build import build
 
 def _path(opt, filtered):
-    # build the data if it does not exist
+# build the data if it does not exist
     build(opt)
 
     # set up path to data (specific to each dataset)
     print(opt['datapath'])
     dt = opt['datatype'].split(':')[0]
     print(dt)
-    print(os.path.join(opt['datapath'], 'cologne', 'pmctestparlai.txt'))
+    # print(os.path.join(opt['datapath'], 'cologne', 'pmctestparlai.txt'))
     return os.path.join(opt['datapath'], 'cologne', 'pmctestparlai.txt')
 
+class CologneTeacher(ParlAIDialogTeacher):
+    """
+    This module provides access to data in the ParlAI Text Dialog format.
 
-class DefaultTeacher(ParlAIDialogTeacher):
+    See core/teachers.py for more info about the format.
+    """
+
+
     def __init__(self, opt, shared=None):
+
         super().__init__(opt, shared)
+
+        opt = copy.deepcopy(opt)
+
+        datafile = _path(opt, '')
+        print(datafile)
+
+        if shared is None:
+            self._setup_data(datafile)
+        # self.id = datafile
+        # self.reset()
+        print(self.id)
+        
+class DefaultTeacher(CologneTeacher):
+
+    def init(self, opt, shared=None):
+        super().init(opt, shared)
         opt = copy.deepcopy(opt)
 
         # get datafile

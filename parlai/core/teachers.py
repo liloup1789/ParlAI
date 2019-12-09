@@ -258,6 +258,7 @@ class FixedDialogTeacher(Teacher):
         """
         if num_eps is None:
             num_eps = self.num_episodes()
+            print(num_eps)
         if loop is None:
             loop = self.training
         if self.random:
