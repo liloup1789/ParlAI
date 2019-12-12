@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # Copyright (c) Facebook, Inc. and its affiliates.
 # This source code is licensed under the MIT license found in the
@@ -410,11 +410,11 @@ def display_data(opt):
     return (train_output.getvalue(), valid_output.getvalue(), test_output.getvalue())
 
 
-def display_model(opt) -> Tuple[str, str]:
+def display_model(opt) -> Tuple[str, str, str]:
     """
     Run display_model.py.
 
-    :return: (stdout_valid, stdout_test)
+    :return: (stdout_train, stdout_valid, stdout_test)
     """
     import parlai.scripts.display_model as dm
 
