@@ -374,7 +374,7 @@ class TorchRankerAgent(TorchAgent):
         )
         self.model.train()
         self.zero_grad()
-
+        print(self.candidates)
         cands, cand_vecs, label_inds = self._build_candidates(
             batch, source=self.candidates, mode='train'
         )
@@ -641,9 +641,10 @@ class TorchRankerAgent(TorchAgent):
 
         elif source == 'inline':
             warn_once(
-                '[ Executing {} mode with provided inline set of candidates ]'
-                ''.format(mode)
+                '[ Executing mode with provided inline set of candidates ]'
             )
+            warn_once(mode)
+            print(batch.candidates)
             if batch.candidate_vecs is None:
                 raise ValueError(
                     "If using candidate source 'inline', then batch.candidate_vecs "

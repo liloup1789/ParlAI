@@ -100,6 +100,17 @@ task_list = [
             "https://ai.google/tools/datasets/coached-conversational-preference-elicitation"
         ),
     },
+
+    {
+        "id": "cologne",
+        "display_name": "PMC french dialogs dataset",
+        "task": "cologne",
+        "tags": ["All", "Goal"],
+        "description": (
+            "A dataset consisting of 28K dialogs not annotated yet "
+            "utterances between a user and an commercial agent about perfumes "
+        ),
+    },
     {
         "id": "COPA",
         "display_name": "Choice of Plausible Alternatives",
