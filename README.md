@@ -15,6 +15,8 @@
 
 - ** Le framework derrière tous les agents d'apprentissage est PyTorch, il y'a d'ailleurs une classe TorchAgent dont la plupart des agents héritent. Dont le MemNN Agent.
 
+### Tu peux trouver les scripts que j'ai faits entièrement from scratch dans /parlai/tasks/cologne. les données sont dans /data/cologne
+
 <p align="center"><img width="70%" src="docs/source/\_static/img/parlai.png" /></p>
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/facebookresearch/ParlAI/blob/master/LICENSE) [![CircleCI](https://circleci.com/gh/facebookresearch/ParlAI.svg?style=shield)](https://circleci.com/gh/facebookresearch/ParlAI/tree/master) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/facebookresearch/ParlAI/blob/master/CONTRIBUTING.md) [![Twitter](https://img.shields.io/twitter/follow/parlai_parley?label=Twitter&style=social)](https://twitter.com/parlai_parley)
