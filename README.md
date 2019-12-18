@@ -1,7 +1,18 @@
 
-## Parlai tuto 
-# Fonctionnement minimal : 
+# Parlai tuto 
+## Fonctionnement minimal : 
+### Créer une tâche -> build.py pour télécharger le corpus et l'installer dans le répertoire /data. Si déjà présent, ne rien faire.  -> agents.py qui crée les teachers : ce sont eux qui parsent les données (en mode entraînement, ils stockent le text + les labels) et qui se mettent automatiquement en mode question-answering, ou dialogue. Ce sont eux qui vont jouer le rôle de l'utilisateur pour entraîner les agents. ParlAI fournit tout un tas de teachers, le nôtre est une classe fille de ParlAIDIalogTeacher, je te laisse regarder la doc. 
+### Utiliser ParlAI -> dans le répertoire /examples il y'a tout un tas de scripts (relativement bourrins) qui servent à comprendre comment marche le système de monde. display_data est un bon exemple : 
 
+- ** On crée un monde qui, par défaut, s'accorde avec nos données (class DialogueWorld (World)), cela implémente la méthode world.parlai() -> agent1 ( le teacher).act() / agent2 (l'apprenant).observe() / agent2.act / agent1.observe. 
+
+- ** les méthodes act et observe sont propres à chaque agent. Dans le cas du teacher, nous utilisons celles par défaut. Là où c'est intéressant c'est pour l'apprenant. 
+
+- ** Pour charger un agent apprenant, ParlAI implémente un certain nombre de modèles d'agents. Nous utilisons pour display_data l'agent ReapeatLabel Agent, qui lit ce que lui donne le teacher et le recrache tel un perroquet des îles. Dans le script train_data.py nous utilisons l'exemple MemNNAgent (aka memoryNetwork Agent) qui va se comporter d'une façon particulière par rapport à d'autres agents d'apprentissage. Les résultats de l'apprentissage sont sauvegardés dans un fichier de modèle. 
+
+- ** dans le main, une boucle while not "EPOCH DONE" enveloppe world.parlai. Tant que tous les dialogues ne sont pas appris, cela continue. 
+
+- ** Le framework derrière tous les agents d'apprentissage est PyTorch, il y'a d'ailleurs une classe TorchAgent dont la plupart des agents héritent. Dont le MemNN Agent.
 
 <p align="center"><img width="70%" src="docs/source/\_static/img/parlai.png" /></p>
 
