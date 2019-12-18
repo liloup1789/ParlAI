@@ -8,7 +8,8 @@
 
 - ** les méthodes act et observe sont propres à chaque agent. Dans le cas du teacher, nous utilisons celles par défaut. Là où c'est intéressant c'est pour l'apprenant. 
 
-- ** Pour charger un agent apprenant, ParlAI implémente un certain nombre de modèles d'agents. Nous utilisons pour display_data l'agent ReapeatLabel Agent, qui lit ce que lui donne le teacher et le recrache tel un perroquet des îles. Dans le script train_data.py nous utilisons l'exemple MemNNAgent (aka memoryNetwork Agent) qui va se comporter d'une façon particulière par rapport à d'autres agents d'apprentissage. Les résultats de l'apprentissage sont sauvegardés dans un fichier de modèle. 
+- ** Pour charger un agent apprenant, ParlAI implémente un certain nombre de modèles d'agents. Nous utilisons pour display_data l'agent ReapeatLabel Agent, qui lit ce que lui donne le teacher et le recrache tel un perroquet des îles. 
+###Dans le script train_data.py nous utilisons l'exemple MemNNAgent (aka memoryNetwork Agent) qui va se comporter d'une façon particulière par rapport à d'autres agents d'apprentissage. Les résultats de l'apprentissage sont sauvegardés dans un fichier de modèle. 
 
 - ** dans le main, une boucle while not "EPOCH DONE" enveloppe world.parlai. Tant que tous les dialogues ne sont pas appris, cela continue. 
 
