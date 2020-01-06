@@ -42,22 +42,25 @@ All worlds are initialized with the following parameters:
 """
 
 import copy
-import importlib
 import random
 import time
 
 from functools import lru_cache
+from typing import List, Dict, Any
 
 try:
     from torch.multiprocessing import Process, Value, Condition, Semaphore
 except ImportError:
     from multiprocessing import Process, Value, Semaphore, Condition  # noqa: F401
+
 from parlai.core.agents import (
     create_agents_from_shared,
     create_task_agent_from_taskname,
 )
+from parlai.core.loader import load_task_module, load_world_module
 from parlai.core.metrics import aggregate_metrics
 from parlai.utils.misc import Timer, display_messages
+from parlai.core.opt import Opt
 from parlai.tasks.tasks import ids_to_tasks
 
 
@@ -78,7 +81,7 @@ class World(object):
     All children can override these to provide more detailed functionality.
     """
 
-    def __init__(self, opt, agents=None, shared=None):
+    def __init__(self, opt: Opt, agents=None, shared=None):
         self.id = opt['task']
         self.opt = copy.deepcopy(opt)
         if shared:
@@ -294,7 +297,7 @@ class DialogPartnerWorld(World):
     chance to speak per turn and passing that back to the other one.
     """
 
-    def __init__(self, opt, agents, shared=None):
+    def __init__(self, opt: Opt, agents, shared=None):
         super().__init__(opt)
         if shared:
             # Create agents based on shared data.
@@ -401,7 +404,7 @@ class MultiAgentDialogWorld(World):
     Each agent receives as input the actions of all other agents since its last `act()`.
     """
 
-    def __init__(self, opt, agents, shared=None):
+    def __init__(self, opt: Opt, agents, shared=None):
         super().__init__(opt)
         if shared:
             # Create agents based on shared data.
@@ -485,7 +488,7 @@ class ExecutableWorld(MultiAgentDialogWorld):
     simulation can be implemented rather than just dialogue between agents.
     """
 
-    def __init__(self, opt, agents=None, shared=None):
+    def __init__(self, opt: Opt, agents=None, shared=None):
         super().__init__(opt, agents, shared)
         self.init_world()
 
@@ -549,9 +552,9 @@ class MultiWorld(World):
     agents according to the task that world represents.
     """
 
-    def __init__(self, opt, agents=None, shared=None, default_world=None):
+    def __init__(self, opt: Opt, agents=None, shared=None, default_world=None):
         super().__init__(opt)
-        self.worlds = []
+        self.worlds: List[World] = []
         for index, k in enumerate(opt['task'].split(',')):
             k = k.strip()
             if k:
@@ -763,12 +766,12 @@ class BatchWorld(World):
     ``MultiWorld``.
     """
 
-    def __init__(self, opt, world):
+    def __init__(self, opt: Opt, world):
         super().__init__(opt)
         self.opt = opt
         self.random = opt.get('datatype', None) == 'train'
         self.world = world
-        self.worlds = []
+        self.worlds: List[World] = []
         for i in range(opt['batchsize']):
             # make sure that any opt dicts in shared have batchindex set to i
             # this lets all shared agents know which batchindex they have,
@@ -985,7 +988,7 @@ class HogwildProcess(Process):
     Each ``HogwildProcess`` contain its own unique ``World``.
     """
 
-    def __init__(self, tid, opt, shared, sync):
+    def __init__(self, tid, opt: Opt, shared, sync):
         self.numthreads = opt['numthreads']
         opt = copy.deepcopy(opt)
         opt['numthreads'] = 1  # don't let threads create more threads!
@@ -1072,12 +1075,12 @@ class HogwildWorld(World):
       once the processing is complete).
     """
 
-    def __init__(self, opt, world):
+    def __init__(self, opt: Opt, world):
         super().__init__(opt)
         self.inner_world = world
         self.numthreads = opt['numthreads']
 
-        self.sync = {  # syncronization primitives
+        self.sync: Dict[str, Any] = {  # syncronization primitives
             # semaphores for counting queued examples
             'queued_sem': Semaphore(0),  # counts num exs to be processed
             'threads_sem': Semaphore(0),  # counts threads
@@ -1090,7 +1093,7 @@ class HogwildWorld(World):
             'total_parleys': Value('l', 0),  # number of parleys in threads
         }
 
-        self.threads = []
+        self.threads: List[HogwildProcess] = []
         for i in range(self.numthreads):
             self.threads.append(HogwildProcess(i, opt, world.share(), self.sync))
             time.sleep(0.05)  # delay can help prevent deadlock in thread launches
@@ -1101,7 +1104,7 @@ class HogwildWorld(World):
             # wait for threads to launch
             # this makes sure that no threads get examples before all are set up
             # otherwise they might reset one another after processing some exs
-            self.sync['threads_sem'].acquire()
+            self.sync['threads_sem'].acquire()  # type: ignore
 
         print(f'[ {self.numthreads} threads initialized ]')
 
@@ -1252,7 +1255,7 @@ class HogwildWorld(World):
 ################################################################################
 # Functions for creating tasks/worlds given options.
 ################################################################################
-def _create_task_agents(opt):
+def _create_task_agents(opt: Opt):
     """
     Create task agent(s) for the given task name.
 
@@ -1261,28 +1264,11 @@ def _create_task_agents(opt):
     defined by the task name directly.  (This saves the task creator bothering to define
     the create_agents function when it is not needed.)
     """
-    sp = opt['task'].strip()
-    repo = 'parlai'
-    if sp.startswith('internal:'):
-        # To switch to local repo, useful for non-public projects
-        # (make a directory called 'parlai_internal' with your private agents)
-        repo = 'parlai_internal'
-        sp = sp[9:]
-    sp = sp.split(':')
-    if '.' in sp[0]:
-        # The case of opt['task'] = 'parlai.tasks.squad.agents:DefaultTeacher'
-        # (i.e. specifying your own path directly)
-        module_name = sp[0]
-    elif sp[0] == 'pytorch_teacher':
-        module_name = 'parlai.core.pytorch_data_teacher'
-    else:
-        task = sp[0].lower()
-        module_name = "%s.tasks.%s.agents" % (repo, task)
-    my_module = importlib.import_module(module_name)
+    my_module = load_task_module(opt['task'])
     try:
         # Tries to call the create_agent function in agents.py
-        task = sp[0].lower()
-        task_agents = my_module.create_agents(opt, task)
+        task_agents = my_module.create_agents(opt)  # type: ignore
+
     except AttributeError:
         # Create_agent not found, so try to create the teacher directly.
         return create_task_agent_from_taskname(opt)
@@ -1291,65 +1277,24 @@ def _create_task_agents(opt):
     return task_agents
 
 
-def _get_task_world(opt, user_agents, default_world=None):
-    task_agents = _create_task_agents(opt)
-    sp = opt['task'].strip()
-    repo = 'parlai'
-    if sp.startswith('internal:'):
-        # To switch to local repo, useful for non-public projects
-        # (make a directory called 'parlai_internal' with your private agents)
-        repo = 'parlai_internal'
-        sp = sp[9:]
-    sp = sp.split(':')
-    if '.' in sp[0]:
-        # The case of opt['task'] = 'parlai.tasks.squad.agents:DefaultTeacher'
-        # (i.e. specifying your own path directly, assumes DialogPartnerWorld)
-        if default_world is not None:
-            world_class = default_world
-        elif len(task_agents + user_agents) == 2:
-            world_class = DialogPartnerWorld
-        else:
-            world_class = MultiAgentDialogWorld
-    else:
-        task = sp[0].lower()
-        if len(sp) > 1:
-            sp[1] = sp[1][0].upper() + sp[1][1:]
-            world_name = sp[1] + "World"
-            if opt.get('interactive_task', False):
-                world_name = "Interactive" + world_name
-        else:
-            if opt.get('interactive_task', False):
-                world_name = "InteractiveWorld"
-            else:
-                world_name = "DefaultWorld"
-        module_name = "%s.tasks.%s.worlds" % (repo, task)
-        try:
-            my_module = importlib.import_module(module_name)
-            world_class = getattr(my_module, world_name)
-        except (ModuleNotFoundError, AttributeError):
-            # Defaults to this if you did not specify a world for your task.
-            if default_world is not None:
-                world_class = default_world
-            elif len(task_agents + user_agents) == 2:
-                world_class = DialogPartnerWorld
-            else:
-                world_class = MultiAgentDialogWorld
-    return world_class, task_agents
-
-
-def create_task_world(opt, user_agents, default_world=None):
+def create_task_world(opt: Opt, user_agents, default_world=None):
     """
     Instantiate a world with the supplied options and user agents.
 
     (A world factory.)
     """
-    world_class, task_agents = _get_task_world(
-        opt, user_agents, default_world=default_world
+    task_agents = _create_task_agents(opt)
+    world_class = load_world_module(
+        opt['task'],
+        opt.get('interactive_task', False),
+        len(user_agents + task_agents),
+        default_world=default_world,
     )
+
     return world_class(opt, task_agents + user_agents)
 
 
-def create_task(opt, user_agents, default_world=None):
+def create_task(opt: Opt, user_agents, default_world=None):
     """
     Create a world + task_agents (aka a task).
 
