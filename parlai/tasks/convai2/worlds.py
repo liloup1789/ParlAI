@@ -4,13 +4,15 @@
 # This source code is licensed under the MIT license found in the
 # LICENSE file in the root directory of this source tree.
 
+from copy import deepcopy
+
 from parlai.core.worlds import create_task
 from parlai.core.worlds import DialogPartnerWorld, validate
 from parlai.agents.repeat_label.repeat_label import RepeatLabelAgent
-from parlai.tasks.self_chat.worlds import InteractiveWorld as SelfChatBaseWorld
+from parlai.tasks.self_chat.worlds import SelfChatBaseWorld
 
-from copy import deepcopy
 import random
+from typing import List
 
 
 def load_personas(opt):
@@ -117,7 +119,7 @@ class InteractiveSelfchatWorld(SelfChatBaseWorld):
     def init_contexts(self):
         self.personas_list = load_personas(self.opt)
 
-    def get_contexts(self):
+    def get_contexts(self, episode_num: int) -> List[str]:
         random.seed()
         personas_1 = random.choice(self.personas_list)
         personas_2 = random.choice(self.personas_list)
