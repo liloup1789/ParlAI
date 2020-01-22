@@ -13,7 +13,7 @@ TODO : build a Converter() abst class and inherit the ConverterCologne
 """
 import re
 
-from abc import ABC, abstractmethod
+from abc import  abstractmethod
 
 
 class Conversation(object):
@@ -84,19 +84,23 @@ class SpeakingTurn(object):
         return self.__speaking
 
     def getSpeaker(self):
-        return re.search(self.__pattern2, self.__speaking).group(0)
-
+        try :
+            return re.search(self.__pattern2, self.__speaking).group(0).replace(" ","").replace(':','')
+        except AttributeError :
+            return 'userX'
 
 class CologneConversation(Conversation):
 
     def __init__(self, fic):
 
-        print(fic)
         self.__conversation = []
         for line in  open(fic, 'r', encoding='utf-8').readlines () :
-            print(line)
-            self.__conversation.append(line)
-        print(self.__conversation)
+            self.__conversation.append(line.rstrip())
+        self.__conversation = self.__conversation[:-1]
+
+        if not self.__conversation :
+
+            self.__conversation = ["(00:00) userX : empty"]
 
         self.__globalSatisfaction = 1
 
@@ -108,87 +112,122 @@ class CologneConversation(Conversation):
 
         self.__pattern1 = '\\(\\d\\d:\\d\\d\\) '
 
-        self.__pattern2 = re.compile('(?<=(%s))\\w+' % self.__pattern1)
+        self.__pattern2 = re.compile('(?<=(%s))\\w+\s?:' % self.__pattern1)
 
         for elem in self.__conversation:
             self.speakingTurns.append(SpeakingTurn(self.__pattern1, self.__pattern2, elem))
 
         self.__agent = SpeakingTurn.getSpeaker(self.speakingTurns[0])
+        self.__agent = self.__agent.replace(' ','')
+        self.__agent = self.__agent.replace(':', '')
 
-        for turn in self.speakingTurns:
+        first_user = ""
+        x = 0
+        if self.__speakingturnsnumber < 3 :
+            self.__user = 'userX'
+        else :
+            for turn in self.speakingTurns[1:]:
+                if not SpeakingTurn.getSpeaker(turn) :
+                    self.__user = 'userX'
+                if SpeakingTurn.getSpeaker(turn) != self.__agent and first_user == "" :
+                    first_user = SpeakingTurn.getSpeaker(turn)
+                    print("first user = {}".format(first_user))
+                    continue
+                elif SpeakingTurn.getSpeaker(turn) == self.__agent :
+                    x += 1
+                    if x > 2 :
+                        self.__user ='userX'
+                        break
+                    else :
+                        continue
+                if SpeakingTurn.getSpeaker(turn) != "" and SpeakingTurn.getSpeaker(turn) != first_user  and SpeakingTurn.getSpeaker(turn) != self.__agent :
+                    print("user inconnu")
+                    self.__user = "userX"
+                    break
+                else :
+                    self.__user = SpeakingTurn.getSpeaker(turn)
+                    self.__user = self.__user.replace(' ', '')
+                    self.__user = self.__user.replace(':', '')
+                    break
+        if not hasattr(self ,'__user') :
+            self.__user = 'userX'
+        print(self.__agent)
+        print(self.__user)
+        print(self.__pattern1)
+        print(self.speakingTurns[0].getSpeaking())
+        print(self.speakingTurns[-1].getSpeaking())
+        self.__startTime = re.match(re.compile(self.__pattern1), self.speakingTurns[0].getSpeaking()).group(0)
+        print(re.findall(re.compile(self.__pattern1), "(19:41):)")[0])
+        self.__endTime = re.match(re.compile(self.__pattern1), self.speakingTurns[-1].getSpeaking()).group(0)
 
-            if SpeakingTurn.getSpeaker(turn) != self.__agent:
-                self.__user = SpeakingTurn.getSpeaker(turn)
+    def pattern2time(time):
 
-                break
+        new_time = time.replace('(', '')
+        new_time = time.replace(')', '')
+        return [int(i) for i in new_time.split(':')]
 
-        self.__startTime = re.match(re.compile(self.__pattern1), self.speakingTurns[0])
+    def getUser(self):
 
-        self.__endTime = re.match(re.compile(self.__pattern1), self.speakingTurns[-1]).group(0)
+        return self.__user
 
-        def pattern2time(time):
+    def getAgent(self):
 
-            new_time = time.replace('(', '')
-            new_time = time.replace(')', '')
-            return [int(i) for i in new_time.split(':')]
+        return self.__agent
 
-        def getUser(self):
+    def getPattern1(self):
 
-            return self.__user
+        return self.__pattern1
 
-        def getAgent(self):
+    def getPattern2(self):
 
-            return self.__agent
+        return self.__pattern2
 
-        def getPattern1(self):
+    def setPattern1(self, p1):
 
-            return self.__pattern1
+        if isinstance(p1, str):
+            self.__pattern1 = p1
+        else:
+            raise ValueError("pattern must be string")
 
-        def getPattern2(self):
+    def setPattern2(self, p2):
 
-            return self.__pattern2
+        if isinstance(p2, type(self.__pattern2)):
+            self.__pattern2 = p2
+        else:
+            raise ValueError("pattern must be RE")
 
-        def setPattern1(self, p1):
+    def getSpeakingTurnsNumber(self):
 
-            if isinstance(p1, str):
-                self.__pattern1 = p1
-            else:
-                raise ValueError("pattern must be string")
+        return self.__speakingturnsnumber
 
-        def setPattern2(self, p2):
+    def getConversationString(self):
 
-            if isinstance(p2, '_sre.SRE_Pattern'):
-                self.__pattern2 = p2
-            else:
-                raise ValueError("pattern must be RE")
+        return '\n'.join([elem.getSpeaking() for elem in  self.speakingTurns])
 
-        def getSpeakingTurnsNumber(self):
+    def getConversationArray(self):
 
-            return self.__speakingturnsnumber
+        return self.__conversation
 
-        def getConversation(self):
+    def getLengthConv(self):
 
-            return '\n'.join(self.speakingTurns)
+        start = CologneConversation.pattern2time(CologneConversation.__startTime)
+        end = CologneConversation.pattern2time(CologneConversation.__endTime)
 
-        def getLengthConv(self):
+        return str(60 * (end[0] - start[0]) + (end[1] - start[1]))
 
-            start = pattern2time(self.__startTime)
-            end = pattern2time(self.__endTime)
+    def FirstSpeakingTurn(self):
 
-            return str(60 * (end[0] - start[0]) + (end[1] - start[1]))
+        return self.speakingTurns[0]
 
-        def FirstSpeakingTurn():
+    def LastSpeakingTurn(self):
 
-            return self.speakingTurns[0]
+        return self.speakingTurns[-1]
 
-        def LastSpeakingTurn():
-
-            return self.speakingTurns[-1]
-
-if __name__ == '__main__':
+#if __name__ == '__main__':
 
 
-    fic = "/home/tf/Documents/Leon/dev_gil/PMC/data/clean/conv1"
-    conv = CologneConversation(fic)
-    print(conv)
-   # conversation = conv.getConversation()
+    #fic = "/home/tf/Documents/Leon/dev_gil/PMC/data/clean/conv1"
+    #conv = CologneConversation(fic)
+    #conversation = conv.getConversationString()
+    #print(conversation)
+    #print(conv.getConversationArray())
