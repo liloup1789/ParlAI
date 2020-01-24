@@ -12,13 +12,13 @@ def \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1ext
 \item 
 \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_a2fb2b0b8c441a0bc67e8b431a15091c8}{parser}
 \item 
-string \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_a3fce90fe49035faff8bd88981fed7287}{default} = \textquotesingle{}both\textquotesingle{},
+\hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_a3fce90fe49035faff8bd88981fed7287}{default}
 \item 
-\hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_a3e46443fe5da2c4afc89e7bba7e6c342}{type} = str,
+\hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_a3e46443fe5da2c4afc89e7bba7e6c342}{type}
 \item 
-list \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_a97a557266316a9d1bbb85316c3c68f8a}{choices} = \mbox{[}\textquotesingle{}both\textquotesingle{}, \textquotesingle{}self\textquotesingle{}, \textquotesingle{}other\textquotesingle{}\mbox{]},
+\hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_a437642672add9070476f2acec19c1622}{choices}
 \item 
-string \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_a91661b1682a641a454f205c324b1b045}{help} = \textquotesingle{}Which \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_a64d4a363d552b208b9e9e4a0ac5e9376}{personas} to load from personachat\textquotesingle{},
+\hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_a91661b1682a641a454f205c324b1b045}{help}
 \item 
 \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_aa9f8209bcbcc9884499c7e6dcb4536bd}{False}
 \item 
@@ -37,46 +37,46 @@ string \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1
 
 
 
-Definition at line 11 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
+Definition at line 12 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
 
 
 \begin{DoxyCode}
-11 \textcolor{keyword}{def }\hyperlink{namespacepersonachat__eval_1_1extract__and__save__personas_a7bae99c34a0b3f49cbce1328146926fd}{extract\_and\_save}(opt, save=True):
-12     agent = RepeatLabelAgent(opt)
-13     world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(opt, agent)
-14     teacher = world.agents[0]
-15 
-16     personas\_path = opt.get(\textcolor{stringliteral}{'personas\_path'})
-17     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.exists(personas\_path):
-18         os.makedirs(personas\_path)
-19 
-20     new\_episode = \textcolor{keyword}{True}
-21     personas = []
-22     \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} teacher.epoch\_done():
-23         act = teacher.act()
-24         \textcolor{keywordflow}{if} new\_episode:
-25             persona\_text = act[\textcolor{stringliteral}{'text'}].split(\textcolor{stringliteral}{'\(\backslash\)n'})[:-1]
-26             \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'persona\_type'}) == \textcolor{stringliteral}{'both'}:
-27                 persona\_1 = [p \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} persona\_text \textcolor{keywordflow}{if} \textcolor{stringliteral}{'your persona:'} \textcolor{keywordflow}{in} p]
-28                 persona\_2 = [p \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} persona\_text \textcolor{keywordflow}{if} \textcolor{stringliteral}{'partner\(\backslash\)'s persona:'} \textcolor{keywordflow}{in} p]
-29                 persona\_1 = [p[p.find(\textcolor{stringliteral}{':'}) + 1 :] \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} persona\_1]
-30                 persona\_2 = [p[p.find(\textcolor{stringliteral}{':'}) + 1 :] \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} persona\_2]
-31                 personas += [persona\_1, persona\_2]
-32             \textcolor{keywordflow}{else}:
-33                 persona = [p \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} persona\_text \textcolor{keywordflow}{if} \textcolor{stringliteral}{'persona:'} \textcolor{keywordflow}{in} p]
-34                 persona = [p[p.find(\textcolor{stringliteral}{':'}) + 1 :] \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} persona]
-35                 personas.append(persona)
-36             new\_episode = act.get(\textcolor{stringliteral}{'episode\_done'})
-37         \textcolor{keywordflow}{else}:
-38             new\_episode = act.get(\textcolor{stringliteral}{'episode\_done'})
-39     \textcolor{keywordflow}{if} save:
-40         \textcolor{keywordflow}{for} idx, persona \textcolor{keywordflow}{in} enumerate(personas):
-41             with open(\textcolor{stringliteral}{'\{\}/\{\}.pkl'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(personas\_path, idx), \textcolor{stringliteral}{'wb'}) \textcolor{keyword}{as} f:
-42                 pickle.dump(persona, f)
-43         print(\textcolor{stringliteral}{'---Finished extracting and saving personas, to \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(personas\_path))
-44     \textcolor{keywordflow}{return} personas
-45 
+12 \textcolor{keyword}{def }\hyperlink{namespacepersonachat__eval_1_1extract__and__save__personas_a7bae99c34a0b3f49cbce1328146926fd}{extract\_and\_save}(opt, save=True):
+13     agent = RepeatLabelAgent(opt)
+14     world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a79969c7ba76d4b3c500f5bb776444dc6}{create\_task}(opt, agent)
+15     teacher = world.agents[0]
+16 
+17     personas\_path = opt.get(\textcolor{stringliteral}{'personas\_path'})
+18     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.exists(personas\_path):
+19         os.makedirs(personas\_path)
+20 
+21     new\_episode = \textcolor{keyword}{True}
+22     personas = []
+23     \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} teacher.epoch\_done():
+24         act = teacher.act()
+25         \textcolor{keywordflow}{if} new\_episode:
+26             persona\_text = act[\textcolor{stringliteral}{'text'}].split(\textcolor{stringliteral}{'\(\backslash\)n'})[:-1]
+27             \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'persona\_type'}) == \textcolor{stringliteral}{'both'}:
+28                 persona\_1 = [p \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} persona\_text \textcolor{keywordflow}{if} \textcolor{stringliteral}{'your persona:'} \textcolor{keywordflow}{in} p]
+29                 persona\_2 = [p \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} persona\_text \textcolor{keywordflow}{if} \textcolor{stringliteral}{'partner\(\backslash\)'s persona:'} \textcolor{keywordflow}{in} p]
+30                 persona\_1 = [p[p.find(\textcolor{stringliteral}{':'}) + 1 :] \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} persona\_1]
+31                 persona\_2 = [p[p.find(\textcolor{stringliteral}{':'}) + 1 :] \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} persona\_2]
+32                 personas += [persona\_1, persona\_2]
+33             \textcolor{keywordflow}{else}:
+34                 persona = [p \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} persona\_text \textcolor{keywordflow}{if} \textcolor{stringliteral}{'persona:'} \textcolor{keywordflow}{in} p]
+35                 persona = [p[p.find(\textcolor{stringliteral}{':'}) + 1 :] \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} persona]
+36                 personas.append(persona)
+37             new\_episode = act.get(\textcolor{stringliteral}{'episode\_done'})
+38         \textcolor{keywordflow}{else}:
+39             new\_episode = act.get(\textcolor{stringliteral}{'episode\_done'})
+40     \textcolor{keywordflow}{if} save:
+41         \textcolor{keywordflow}{for} idx, persona \textcolor{keywordflow}{in} enumerate(personas):
+42             with open(\textcolor{stringliteral}{'\{\}/\{\}.pkl'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(personas\_path, idx), \textcolor{stringliteral}{'wb'}) \textcolor{keyword}{as} f:
+43                 pickle.dump(persona, f)
+44         print(\textcolor{stringliteral}{'---Finished extracting and saving personas, to \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(personas\_path))
+45     \textcolor{keywordflow}{return} personas
 46 
+47 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_a8760b04b46dbe7ee79bd15ae3b20761c}\label{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_a8760b04b46dbe7ee79bd15ae3b20761c}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::extract\+\_\+and\+\_\+save\+\_\+personas@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::extract\+\_\+and\+\_\+save\+\_\+personas}!main@{main}}
@@ -86,50 +86,50 @@ Definition at line 11 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
 
 
 
-Definition at line 47 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
+Definition at line 48 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
 
 
 \begin{DoxyCode}
-47 \textcolor{keyword}{def }\hyperlink{namespacepersonachat__eval_1_1extract__and__save__personas_aa39f496bc78dfa28c1fbc2c4129a915c}{main}(opt):
-48     print(\textcolor{stringliteral}{'---Extracting and saving personas---'})
-49     teacher\_name = \textcolor{stringliteral}{'personachat:\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(opt.get(\textcolor{stringliteral}{'persona\_type'}))
-50     teacher\_name += \textcolor{stringliteral}{'Revised'} \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'revised'}) \textcolor{keywordflow}{else} \textcolor{stringliteral}{'Original'}
-51     opt[\textcolor{stringliteral}{'task'}] = teacher\_name
-52     \textcolor{keywordflow}{if} \textcolor{stringliteral}{'personas\_path'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} opt:
-53         personas\_path = \textcolor{stringliteral}{'\{\}/data/wizard\_of\_perZOna/personas-\{\}/'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
-54             os.getcwd(), opt[\textcolor{stringliteral}{'task'}]
-55         )
-56         opt[\textcolor{stringliteral}{'personas\_path'}] = personas\_path
-57     opt[\textcolor{stringliteral}{'datatype'}] = \textcolor{stringliteral}{'train:ordered:stream'}
-58     opt[\textcolor{stringliteral}{'numthreads'}] = 1
-59     opt[\textcolor{stringliteral}{'batchsize'}] = 1
-60     personas = \hyperlink{namespacepersonachat__eval_1_1extract__and__save__personas_a7bae99c34a0b3f49cbce1328146926fd}{extract\_and\_save}(opt)
-61     \textcolor{keywordflow}{return} personas
-62 
+48 \textcolor{keyword}{def }\hyperlink{namespacepersonachat__eval_1_1extract__and__save__personas_aa39f496bc78dfa28c1fbc2c4129a915c}{main}(opt):
+49     print(\textcolor{stringliteral}{'---Extracting and saving personas---'})
+50     teacher\_name = \textcolor{stringliteral}{'personachat:\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(opt.get(\textcolor{stringliteral}{'persona\_type'}))
+51     teacher\_name += \textcolor{stringliteral}{'Revised'} \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'revised'}) \textcolor{keywordflow}{else} \textcolor{stringliteral}{'Original'}
+52     opt[\textcolor{stringliteral}{'task'}] = teacher\_name
+53     \textcolor{keywordflow}{if} \textcolor{stringliteral}{'personas\_path'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} opt:
+54         personas\_path = \textcolor{stringliteral}{'\{\}/data/wizard\_of\_perZOna/personas-\{\}/'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+55             os.getcwd(), opt[\textcolor{stringliteral}{'task'}]
+56         )
+57         opt[\textcolor{stringliteral}{'personas\_path'}] = personas\_path
+58     opt[\textcolor{stringliteral}{'datatype'}] = \textcolor{stringliteral}{'train:ordered:stream'}
+59     opt[\textcolor{stringliteral}{'numthreads'}] = 1
+60     opt[\textcolor{stringliteral}{'batchsize'}] = 1
+61     personas = \hyperlink{namespacepersonachat__eval_1_1extract__and__save__personas_a7bae99c34a0b3f49cbce1328146926fd}{extract\_and\_save}(opt)
+62     \textcolor{keywordflow}{return} personas
 63 
+64 
 \end{DoxyCode}
 
 
 \subsection{Variable Documentation}
-\mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_a97a557266316a9d1bbb85316c3c68f8a}\label{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_a97a557266316a9d1bbb85316c3c68f8a}} 
+\mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_a437642672add9070476f2acec19c1622}\label{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_a437642672add9070476f2acec19c1622}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::extract\+\_\+and\+\_\+save\+\_\+personas@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::extract\+\_\+and\+\_\+save\+\_\+personas}!choices@{choices}}
 \index{choices@{choices}!parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::extract\+\_\+and\+\_\+save\+\_\+personas@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::extract\+\_\+and\+\_\+save\+\_\+personas}}
 \subsubsection{\texorpdfstring{choices}{choices}}
-{\footnotesize\ttfamily list parlai.\+mturk.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+extract\+\_\+and\+\_\+save\+\_\+personas.\+choices = \mbox{[}\textquotesingle{}both\textquotesingle{}, \textquotesingle{}self\textquotesingle{}, \textquotesingle{}other\textquotesingle{}\mbox{]},}
+{\footnotesize\ttfamily parlai.\+mturk.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+extract\+\_\+and\+\_\+save\+\_\+personas.\+choices}
 
 
 
-Definition at line 70 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
+Definition at line 71 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
 
 \mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_a3fce90fe49035faff8bd88981fed7287}\label{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_a3fce90fe49035faff8bd88981fed7287}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::extract\+\_\+and\+\_\+save\+\_\+personas@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::extract\+\_\+and\+\_\+save\+\_\+personas}!default@{default}}
 \index{default@{default}!parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::extract\+\_\+and\+\_\+save\+\_\+personas@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::extract\+\_\+and\+\_\+save\+\_\+personas}}
 \subsubsection{\texorpdfstring{default}{default}}
-{\footnotesize\ttfamily parlai.\+mturk.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+extract\+\_\+and\+\_\+save\+\_\+personas.\+default = \textquotesingle{}both\textquotesingle{},}
+{\footnotesize\ttfamily parlai.\+mturk.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+extract\+\_\+and\+\_\+save\+\_\+personas.\+default}
 
 
 
-Definition at line 68 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
+Definition at line 69 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
 
 \mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_aa9f8209bcbcc9884499c7e6dcb4536bd}\label{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_aa9f8209bcbcc9884499c7e6dcb4536bd}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::extract\+\_\+and\+\_\+save\+\_\+personas@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::extract\+\_\+and\+\_\+save\+\_\+personas}!False@{False}}
@@ -139,17 +139,17 @@ Definition at line 68 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
 
 
 
-Definition at line 74 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
+Definition at line 75 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
 
 \mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_a91661b1682a641a454f205c324b1b045}\label{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_a91661b1682a641a454f205c324b1b045}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::extract\+\_\+and\+\_\+save\+\_\+personas@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::extract\+\_\+and\+\_\+save\+\_\+personas}!help@{help}}
 \index{help@{help}!parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::extract\+\_\+and\+\_\+save\+\_\+personas@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::extract\+\_\+and\+\_\+save\+\_\+personas}}
 \subsubsection{\texorpdfstring{help}{help}}
-{\footnotesize\ttfamily parlai.\+mturk.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+extract\+\_\+and\+\_\+save\+\_\+personas.\+help = \textquotesingle{}Which \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_a64d4a363d552b208b9e9e4a0ac5e9376}{personas} to load from personachat\textquotesingle{},}
+{\footnotesize\ttfamily parlai.\+mturk.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+extract\+\_\+and\+\_\+save\+\_\+personas.\+help}
 
 
 
-Definition at line 71 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
+Definition at line 72 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
 
 \mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_af9d0aef8b6fb53e14c74a449cf3c8a63}\label{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_af9d0aef8b6fb53e14c74a449cf3c8a63}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::extract\+\_\+and\+\_\+save\+\_\+personas@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::extract\+\_\+and\+\_\+save\+\_\+personas}!opt@{opt}}
@@ -159,7 +159,7 @@ Definition at line 71 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
 
 
 
-Definition at line 76 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
+Definition at line 77 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
 
 \mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_a2fb2b0b8c441a0bc67e8b431a15091c8}\label{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_a2fb2b0b8c441a0bc67e8b431a15091c8}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::extract\+\_\+and\+\_\+save\+\_\+personas@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::extract\+\_\+and\+\_\+save\+\_\+personas}!parser@{parser}}
@@ -169,7 +169,7 @@ Definition at line 76 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
 
 
 
-Definition at line 65 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
+Definition at line 66 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
 
 \mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_a64d4a363d552b208b9e9e4a0ac5e9376}\label{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_a64d4a363d552b208b9e9e4a0ac5e9376}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::extract\+\_\+and\+\_\+save\+\_\+personas@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::extract\+\_\+and\+\_\+save\+\_\+personas}!personas@{personas}}
@@ -179,15 +179,15 @@ Definition at line 65 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
 
 
 
-Definition at line 77 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
+Definition at line 78 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
 
 \mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_a3e46443fe5da2c4afc89e7bba7e6c342}\label{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1extract__and__save__personas_a3e46443fe5da2c4afc89e7bba7e6c342}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::extract\+\_\+and\+\_\+save\+\_\+personas@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::extract\+\_\+and\+\_\+save\+\_\+personas}!type@{type}}
 \index{type@{type}!parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::extract\+\_\+and\+\_\+save\+\_\+personas@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::extract\+\_\+and\+\_\+save\+\_\+personas}}
 \subsubsection{\texorpdfstring{type}{type}}
-{\footnotesize\ttfamily parlai.\+mturk.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+extract\+\_\+and\+\_\+save\+\_\+personas.\+type = str,}
+{\footnotesize\ttfamily parlai.\+mturk.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+extract\+\_\+and\+\_\+save\+\_\+personas.\+type}
 
 
 
-Definition at line 69 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
+Definition at line 70 of file extract\+\_\+and\+\_\+save\+\_\+personas.\+py.
 

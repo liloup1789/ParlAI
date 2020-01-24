@@ -1,0 +1,60 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1onecommon_1_1build}{}\section{parlai.\+tasks.\+onecommon.\+build Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1onecommon_1_1build}\index{parlai.\+tasks.\+onecommon.\+build@{parlai.\+tasks.\+onecommon.\+build}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1onecommon_1_1build_a5346bc6e3ac1dc0813da2747f877c03b}{build} (opt)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceparlai_1_1tasks_1_1onecommon_1_1build_ac96c78cd9c65edd3fcdb7ac7c6ac5872}{R\+E\+S\+O\+U\+R\+C\+ES}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1onecommon_1_1build_a5346bc6e3ac1dc0813da2747f877c03b}\label{namespaceparlai_1_1tasks_1_1onecommon_1_1build_a5346bc6e3ac1dc0813da2747f877c03b}} 
+\index{parlai\+::tasks\+::onecommon\+::build@{parlai\+::tasks\+::onecommon\+::build}!build@{build}}
+\index{build@{build}!parlai\+::tasks\+::onecommon\+::build@{parlai\+::tasks\+::onecommon\+::build}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+onecommon.\+build.\+build (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 20 of file build.\+py.
+
+
+\begin{DoxyCode}
+20 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
+21     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'onecommon'})
+22     version = \textcolor{keywordtype}{None}
+23 
+24     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version\_string=version):
+25         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+26 
+27         \textcolor{comment}{# make a clean directory if needed}
+28         \textcolor{keywordflow}{if} build\_data.built(dpath):
+29             \textcolor{comment}{# an older version exists, so remove these outdated files.}
+30             build\_data.remove\_dir(dpath)
+31         build\_data.make\_dir(dpath)
+32 
+33         \textcolor{comment}{# Download the data.}
+34         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES:
+35             downloadable\_file.download\_file(dpath)
+36 
+37         \textcolor{comment}{# Mark as done}
+38         build\_data.mark\_done(dpath, version\_string=version)
+39 \end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1onecommon_1_1build_ac96c78cd9c65edd3fcdb7ac7c6ac5872}\label{namespaceparlai_1_1tasks_1_1onecommon_1_1build_ac96c78cd9c65edd3fcdb7ac7c6ac5872}} 
+\index{parlai\+::tasks\+::onecommon\+::build@{parlai\+::tasks\+::onecommon\+::build}!R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}}
+\index{R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}!parlai\+::tasks\+::onecommon\+::build@{parlai\+::tasks\+::onecommon\+::build}}
+\subsubsection{\texorpdfstring{R\+E\+S\+O\+U\+R\+C\+ES}{RESOURCES}}
+{\footnotesize\ttfamily parlai.\+tasks.\+onecommon.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
+
+
+
+Definition at line 11 of file build.\+py.
+

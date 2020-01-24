@@ -2,8 +2,7 @@
 \label{classparlai_1_1core_1_1torch__generator__agent_1_1TorchGeneratorModel}\index{parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Torch\+Generator\+Model@{parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Torch\+Generator\+Model}}
 
 
-Inheritance diagram for parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Torch\+Generator\+Model\+:
-\nopagebreak
+Inheritance diagram for parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Torch\+Generator\+Model\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Torch\
 \end{figure}
 
 
-Collaboration diagram for parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Torch\+Generator\+Model\+:
-\nopagebreak
+Collaboration diagram for parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Torch\+Generator\+Model\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -60,7 +58,7 @@ This interface expects you to implement model with the following reqs:
 \end{DoxyVerb}
  
 
-Definition at line 45 of file torch\+\_\+generator\+\_\+agent.\+py.
+Definition at line 56 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 
@@ -73,17 +71,17 @@ Definition at line 45 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 
-Definition at line 69 of file torch\+\_\+generator\+\_\+agent.\+py.
+Definition at line 80 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 \begin{DoxyCode}
-69     ):
-70         super().\_\_init\_\_()
-71         self.NULL\_IDX = padding\_idx
-72         self.END\_IDX = end\_idx
-73         self.register\_buffer(\textcolor{stringliteral}{'START'}, torch.LongTensor([start\_idx]))
-74         self.longest\_label = longest\_label
-75 
+80     ):
+81         super().\_\_init\_\_()
+82         self.NULL\_IDX = padding\_idx
+83         self.END\_IDX = end\_idx
+84         self.register\_buffer(\textcolor{stringliteral}{'START'}, torch.LongTensor([start\_idx]))
+85         self.longest\_label = longest\_label
+86 
 \end{DoxyCode}
 
 
@@ -118,43 +116,43 @@ Useful for training, or ranking fixed candidates.
 \end{DoxyVerb}
  
 
-Definition at line 76 of file torch\+\_\+generator\+\_\+agent.\+py.
+Definition at line 87 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 \begin{DoxyCode}
-76     \textcolor{keyword}{def }decode\_forced(self, encoder\_states, ys):
-77         \textcolor{stringliteral}{"""}
-78 \textcolor{stringliteral}{        Decode with a fixed, true sequence, computing loss.}
-79 \textcolor{stringliteral}{}
-80 \textcolor{stringliteral}{        Useful for training, or ranking fixed candidates.}
-81 \textcolor{stringliteral}{}
-82 \textcolor{stringliteral}{        :param ys:}
-83 \textcolor{stringliteral}{            the prediction targets. Contains both the start and end tokens.}
-84 \textcolor{stringliteral}{}
-85 \textcolor{stringliteral}{        :type ys:}
-86 \textcolor{stringliteral}{            LongTensor[bsz, time]}
-87 \textcolor{stringliteral}{}
-88 \textcolor{stringliteral}{        :param encoder\_states:}
-89 \textcolor{stringliteral}{            Output of the encoder. Model specific types.}
+87     \textcolor{keyword}{def }decode\_forced(self, encoder\_states, ys):
+88         \textcolor{stringliteral}{"""}
+89 \textcolor{stringliteral}{        Decode with a fixed, true sequence, computing loss.}
 90 \textcolor{stringliteral}{}
-91 \textcolor{stringliteral}{        :type encoder\_states:}
-92 \textcolor{stringliteral}{            model specific}
-93 \textcolor{stringliteral}{}
-94 \textcolor{stringliteral}{        :return:}
-95 \textcolor{stringliteral}{            pair (logits, choices) containing the logits and MLE predictions}
-96 \textcolor{stringliteral}{}
-97 \textcolor{stringliteral}{        :rtype:}
-98 \textcolor{stringliteral}{            (FloatTensor[bsz, ys, vocab], LongTensor[bsz, ys])}
-99 \textcolor{stringliteral}{        """}
-100         bsz = ys.size(0)
-101         seqlen = ys.size(1)
-102         inputs = ys.narrow(1, 0, seqlen - 1)
-103         inputs = torch.cat([self.START.detach().expand(bsz, 1), inputs], 1)
-104         latent, \_ = self.decoder(inputs, encoder\_states)
-105         logits = self.output(latent)
-106         \_, preds = logits.max(dim=2)
-107         \textcolor{keywordflow}{return} logits, preds
-108 
+91 \textcolor{stringliteral}{        Useful for training, or ranking fixed candidates.}
+92 \textcolor{stringliteral}{}
+93 \textcolor{stringliteral}{        :param ys:}
+94 \textcolor{stringliteral}{            the prediction targets. Contains both the start and end tokens.}
+95 \textcolor{stringliteral}{}
+96 \textcolor{stringliteral}{        :type ys:}
+97 \textcolor{stringliteral}{            LongTensor[bsz, time]}
+98 \textcolor{stringliteral}{}
+99 \textcolor{stringliteral}{        :param encoder\_states:}
+100 \textcolor{stringliteral}{            Output of the encoder. Model specific types.}
+101 \textcolor{stringliteral}{}
+102 \textcolor{stringliteral}{        :type encoder\_states:}
+103 \textcolor{stringliteral}{            model specific}
+104 \textcolor{stringliteral}{}
+105 \textcolor{stringliteral}{        :return:}
+106 \textcolor{stringliteral}{            pair (logits, choices) containing the logits and MLE predictions}
+107 \textcolor{stringliteral}{}
+108 \textcolor{stringliteral}{        :rtype:}
+109 \textcolor{stringliteral}{            (FloatTensor[bsz, ys, vocab], LongTensor[bsz, ys])}
+110 \textcolor{stringliteral}{        """}
+111         bsz = ys.size(0)
+112         seqlen = ys.size(1)
+113         inputs = ys.narrow(1, 0, seqlen - 1)
+114         inputs = torch.cat([self.START.detach().expand(bsz, 1), inputs], 1)
+115         latent, \_ = self.decoder(inputs, encoder\_states)
+116         logits = self.output(latent)
+117         \_, preds = logits.max(dim=2)
+118         \textcolor{keywordflow}{return} logits, preds
+119 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1torch__generator__agent_1_1TorchGeneratorModel_a5f1915200b6a8c6518fe17889d2b7cdc}\label{classparlai_1_1core_1_1torch__generator__agent_1_1TorchGeneratorModel_a5f1915200b6a8c6518fe17889d2b7cdc}} 
 \index{parlai\+::core\+::torch\+\_\+generator\+\_\+agent\+::\+Torch\+Generator\+Model@{parlai\+::core\+::torch\+\_\+generator\+\_\+agent\+::\+Torch\+Generator\+Model}!forward@{forward}}
@@ -196,59 +194,59 @@ Definition at line 76 of file torch\+\_\+generator\+\_\+agent.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 191 of file torch\+\_\+generator\+\_\+agent.\+py.
+Definition at line 202 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 \begin{DoxyCode}
-191     \textcolor{keyword}{def }forward(self, *xs, ys=None, prev\_enc=None, maxlen=None, bsz=None):
-192         \textcolor{stringliteral}{"""}
-193 \textcolor{stringliteral}{        Get output predictions from the model.}
-194 \textcolor{stringliteral}{}
-195 \textcolor{stringliteral}{        :param xs:}
-196 \textcolor{stringliteral}{            input to the encoder}
-197 \textcolor{stringliteral}{        :type xs:}
-198 \textcolor{stringliteral}{            LongTensor[bsz, seqlen]}
-199 \textcolor{stringliteral}{        :param ys:}
-200 \textcolor{stringliteral}{            Expected output from the decoder. Used}
-201 \textcolor{stringliteral}{            for teacher forcing to calculate loss.}
-202 \textcolor{stringliteral}{        :type ys:}
-203 \textcolor{stringliteral}{            LongTensor[bsz, outlen]}
-204 \textcolor{stringliteral}{        :param prev\_enc:}
-205 \textcolor{stringliteral}{            if you know you'll pass in the same xs multiple times, you can pass}
-206 \textcolor{stringliteral}{            in the encoder output from the last forward pass to skip}
-207 \textcolor{stringliteral}{            recalcuating the same encoder output.}
-208 \textcolor{stringliteral}{        :param maxlen:}
-209 \textcolor{stringliteral}{            max number of tokens to decode. if not set, will use the length of}
-210 \textcolor{stringliteral}{            the longest label this model has seen. ignored when ys is not None.}
-211 \textcolor{stringliteral}{        :param bsz:}
-212 \textcolor{stringliteral}{            if ys is not provided, then you must specify the bsz for greedy}
-213 \textcolor{stringliteral}{            decoding.}
-214 \textcolor{stringliteral}{}
-215 \textcolor{stringliteral}{        :return:}
-216 \textcolor{stringliteral}{            (scores, candidate\_scores, encoder\_states) tuple}
-217 \textcolor{stringliteral}{}
-218 \textcolor{stringliteral}{            - scores contains the model's predicted token scores.}
-219 \textcolor{stringliteral}{              (FloatTensor[bsz, seqlen, num\_features])}
-220 \textcolor{stringliteral}{            - candidate\_scores are the score the model assigned to each candidate.}
-221 \textcolor{stringliteral}{              (FloatTensor[bsz, num\_cands])}
-222 \textcolor{stringliteral}{            - encoder\_states are the output of model.encoder. Model specific types.}
-223 \textcolor{stringliteral}{              Feed this back in to skip encoding on the next call.}
-224 \textcolor{stringliteral}{        """}
-225         \textcolor{keyword}{assert} ys \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}, \textcolor{stringliteral}{"Greedy decoding in TGModel.forward no longer supported."}
-226         \textcolor{comment}{# TODO: get rid of longest\_label}
-227         \textcolor{comment}{# keep track of longest label we've ever seen}
-228         \textcolor{comment}{# we'll never produce longer ones than that during prediction}
-229         self.longest\_label = max(self.longest\_label, ys.size(1))
-230 
-231         \textcolor{comment}{# use cached encoding if available}
-232         encoder\_states = prev\_enc \textcolor{keywordflow}{if} prev\_enc \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{else} self.encoder(*xs)
-233 
-234         \textcolor{comment}{# use teacher forcing}
-235         scores, preds = self.decode\_forced(encoder\_states, ys)
-236 
-237         \textcolor{keywordflow}{return} scores, preds, encoder\_states
-238 
-239 
+202     \textcolor{keyword}{def }forward(self, *xs, ys=None, prev\_enc=None, maxlen=None, bsz=None):
+203         \textcolor{stringliteral}{"""}
+204 \textcolor{stringliteral}{        Get output predictions from the model.}
+205 \textcolor{stringliteral}{}
+206 \textcolor{stringliteral}{        :param xs:}
+207 \textcolor{stringliteral}{            input to the encoder}
+208 \textcolor{stringliteral}{        :type xs:}
+209 \textcolor{stringliteral}{            LongTensor[bsz, seqlen]}
+210 \textcolor{stringliteral}{        :param ys:}
+211 \textcolor{stringliteral}{            Expected output from the decoder. Used}
+212 \textcolor{stringliteral}{            for teacher forcing to calculate loss.}
+213 \textcolor{stringliteral}{        :type ys:}
+214 \textcolor{stringliteral}{            LongTensor[bsz, outlen]}
+215 \textcolor{stringliteral}{        :param prev\_enc:}
+216 \textcolor{stringliteral}{            if you know you'll pass in the same xs multiple times, you can pass}
+217 \textcolor{stringliteral}{            in the encoder output from the last forward pass to skip}
+218 \textcolor{stringliteral}{            recalcuating the same encoder output.}
+219 \textcolor{stringliteral}{        :param maxlen:}
+220 \textcolor{stringliteral}{            max number of tokens to decode. if not set, will use the length of}
+221 \textcolor{stringliteral}{            the longest label this model has seen. ignored when ys is not None.}
+222 \textcolor{stringliteral}{        :param bsz:}
+223 \textcolor{stringliteral}{            if ys is not provided, then you must specify the bsz for greedy}
+224 \textcolor{stringliteral}{            decoding.}
+225 \textcolor{stringliteral}{}
+226 \textcolor{stringliteral}{        :return:}
+227 \textcolor{stringliteral}{            (scores, candidate\_scores, encoder\_states) tuple}
+228 \textcolor{stringliteral}{}
+229 \textcolor{stringliteral}{            - scores contains the model's predicted token scores.}
+230 \textcolor{stringliteral}{              (FloatTensor[bsz, seqlen, num\_features])}
+231 \textcolor{stringliteral}{            - candidate\_scores are the score the model assigned to each candidate.}
+232 \textcolor{stringliteral}{              (FloatTensor[bsz, num\_cands])}
+233 \textcolor{stringliteral}{            - encoder\_states are the output of model.encoder. Model specific types.}
+234 \textcolor{stringliteral}{              Feed this back in to skip encoding on the next call.}
+235 \textcolor{stringliteral}{        """}
+236         \textcolor{keyword}{assert} ys \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}, \textcolor{stringliteral}{"Greedy decoding in TGModel.forward no longer supported."}
+237         \textcolor{comment}{# TODO: get rid of longest\_label}
+238         \textcolor{comment}{# keep track of longest label we've ever seen}
+239         \textcolor{comment}{# we'll never produce longer ones than that during prediction}
+240         self.longest\_label = max(self.longest\_label, ys.size(1))
+241 
+242         \textcolor{comment}{# use cached encoding if available}
+243         encoder\_states = prev\_enc \textcolor{keywordflow}{if} prev\_enc \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{else} self.encoder(*xs)
+244 
+245         \textcolor{comment}{# use teacher forcing}
+246         scores, preds = self.decode\_forced(encoder\_states, ys)
+247 
+248         \textcolor{keywordflow}{return} scores, preds, encoder\_states
+249 
+250 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1torch__generator__agent_1_1TorchGeneratorModel_a828d2881fb73ead7d27691c73d1f6f36}\label{classparlai_1_1core_1_1torch__generator__agent_1_1TorchGeneratorModel_a828d2881fb73ead7d27691c73d1f6f36}} 
 \index{parlai\+::core\+::torch\+\_\+generator\+\_\+agent\+::\+Torch\+Generator\+Model@{parlai\+::core\+::torch\+\_\+generator\+\_\+agent\+::\+Torch\+Generator\+Model}!reorder\+\_\+decoder\+\_\+incremental\+\_\+state@{reorder\+\_\+decoder\+\_\+incremental\+\_\+state}}
@@ -286,42 +284,42 @@ method.
 \end{DoxyVerb}
  
 
-Definition at line 159 of file torch\+\_\+generator\+\_\+agent.\+py.
+Definition at line 170 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 \begin{DoxyCode}
-159     \textcolor{keyword}{def }reorder\_decoder\_incremental\_state(self, incremental\_state, inds):
-160         \textcolor{stringliteral}{"""}
-161 \textcolor{stringliteral}{        Reorder incremental state for the decoder.}
-162 \textcolor{stringliteral}{}
-163 \textcolor{stringliteral}{        Used to expand selected beams in beam search. Unlike reorder\_encoder\_states,}
-164 \textcolor{stringliteral}{        implementing this method is optional. However, without incremental decoding,}
-165 \textcolor{stringliteral}{        decoding a single beam becomes O(n^2) instead of O(n), which can make}
-166 \textcolor{stringliteral}{        beam search impractically slow.}
-167 \textcolor{stringliteral}{}
-168 \textcolor{stringliteral}{        In order to fall back to non-incremental decoding, just return None from this}
-169 \textcolor{stringliteral}{        method.}
-170 \textcolor{stringliteral}{}
-171 \textcolor{stringliteral}{        :param incremental\_state:}
-172 \textcolor{stringliteral}{            second output of model.decoder}
-173 \textcolor{stringliteral}{        :type incremental\_state:}
-174 \textcolor{stringliteral}{            model specific}
-175 \textcolor{stringliteral}{        :param inds:}
-176 \textcolor{stringliteral}{            indices to select and reorder over.}
-177 \textcolor{stringliteral}{        :type inds:}
-178 \textcolor{stringliteral}{            LongTensor[n]}
-179 \textcolor{stringliteral}{}
-180 \textcolor{stringliteral}{        :return:}
-181 \textcolor{stringliteral}{            The re-ordered decoder incremental states. It should be the same}
-182 \textcolor{stringliteral}{            type as incremental\_state, and usable as an input to the decoder.}
-183 \textcolor{stringliteral}{            This method should return None if the model does not support}
-184 \textcolor{stringliteral}{            incremental decoding.}
-185 \textcolor{stringliteral}{}
-186 \textcolor{stringliteral}{        :rtype:}
-187 \textcolor{stringliteral}{            model specific}
-188 \textcolor{stringliteral}{        """}
-189         \textcolor{keywordflow}{pass}
-190 
+170     \textcolor{keyword}{def }reorder\_decoder\_incremental\_state(self, incremental\_state, inds):
+171         \textcolor{stringliteral}{"""}
+172 \textcolor{stringliteral}{        Reorder incremental state for the decoder.}
+173 \textcolor{stringliteral}{}
+174 \textcolor{stringliteral}{        Used to expand selected beams in beam search. Unlike reorder\_encoder\_states,}
+175 \textcolor{stringliteral}{        implementing this method is optional. However, without incremental decoding,}
+176 \textcolor{stringliteral}{        decoding a single beam becomes O(n^2) instead of O(n), which can make}
+177 \textcolor{stringliteral}{        beam search impractically slow.}
+178 \textcolor{stringliteral}{}
+179 \textcolor{stringliteral}{        In order to fall back to non-incremental decoding, just return None from this}
+180 \textcolor{stringliteral}{        method.}
+181 \textcolor{stringliteral}{}
+182 \textcolor{stringliteral}{        :param incremental\_state:}
+183 \textcolor{stringliteral}{            second output of model.decoder}
+184 \textcolor{stringliteral}{        :type incremental\_state:}
+185 \textcolor{stringliteral}{            model specific}
+186 \textcolor{stringliteral}{        :param inds:}
+187 \textcolor{stringliteral}{            indices to select and reorder over.}
+188 \textcolor{stringliteral}{        :type inds:}
+189 \textcolor{stringliteral}{            LongTensor[n]}
+190 \textcolor{stringliteral}{}
+191 \textcolor{stringliteral}{        :return:}
+192 \textcolor{stringliteral}{            The re-ordered decoder incremental states. It should be the same}
+193 \textcolor{stringliteral}{            type as incremental\_state, and usable as an input to the decoder.}
+194 \textcolor{stringliteral}{            This method should return None if the model does not support}
+195 \textcolor{stringliteral}{            incremental decoding.}
+196 \textcolor{stringliteral}{}
+197 \textcolor{stringliteral}{        :rtype:}
+198 \textcolor{stringliteral}{            model specific}
+199 \textcolor{stringliteral}{        """}
+200         \textcolor{keywordflow}{pass}
+201 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1torch__generator__agent_1_1TorchGeneratorModel_a9ed5aecabe977856b4c385ba74fa6107}\label{classparlai_1_1core_1_1torch__generator__agent_1_1TorchGeneratorModel_a9ed5aecabe977856b4c385ba74fa6107}} 
 \index{parlai\+::core\+::torch\+\_\+generator\+\_\+agent\+::\+Torch\+Generator\+Model@{parlai\+::core\+::torch\+\_\+generator\+\_\+agent\+::\+Torch\+Generator\+Model}!reorder\+\_\+encoder\+\_\+states@{reorder\+\_\+encoder\+\_\+states}}
@@ -375,58 +373,58 @@ then the output will be
 \end{DoxyVerb}
  
 
-Definition at line 110 of file torch\+\_\+generator\+\_\+agent.\+py.
+Definition at line 121 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 \begin{DoxyCode}
-110     \textcolor{keyword}{def }reorder\_encoder\_states(self, encoder\_states, indices):
-111         \textcolor{stringliteral}{"""}
-112 \textcolor{stringliteral}{        Reorder encoder states according to a new set of indices.}
-113 \textcolor{stringliteral}{}
-114 \textcolor{stringliteral}{        This is an abstract method, and *must* be implemented by the user.}
-115 \textcolor{stringliteral}{}
-116 \textcolor{stringliteral}{        Its purpose is to provide beam search with a model-agnostic interface for}
-117 \textcolor{stringliteral}{        beam search. For example, this method is used to sort hypotheses,}
-118 \textcolor{stringliteral}{        expand beams, etc.}
-119 \textcolor{stringliteral}{}
-120 \textcolor{stringliteral}{        For example, assume that encoder\_states is an bsz x 1 tensor of values}
-121 \textcolor{stringliteral}{}
-122 \textcolor{stringliteral}{        .. code-block:: python}
-123 \textcolor{stringliteral}{}
-124 \textcolor{stringliteral}{            indices = [0, 2, 2]}
-125 \textcolor{stringliteral}{            encoder\_states = [[0.1]}
-126 \textcolor{stringliteral}{                              [0.2]}
-127 \textcolor{stringliteral}{                              [0.3]]}
-128 \textcolor{stringliteral}{}
-129 \textcolor{stringliteral}{        then the output will be}
+121     \textcolor{keyword}{def }reorder\_encoder\_states(self, encoder\_states, indices):
+122         \textcolor{stringliteral}{"""}
+123 \textcolor{stringliteral}{        Reorder encoder states according to a new set of indices.}
+124 \textcolor{stringliteral}{}
+125 \textcolor{stringliteral}{        This is an abstract method, and *must* be implemented by the user.}
+126 \textcolor{stringliteral}{}
+127 \textcolor{stringliteral}{        Its purpose is to provide beam search with a model-agnostic interface for}
+128 \textcolor{stringliteral}{        beam search. For example, this method is used to sort hypotheses,}
+129 \textcolor{stringliteral}{        expand beams, etc.}
 130 \textcolor{stringliteral}{}
-131 \textcolor{stringliteral}{        .. code-block:: python}
+131 \textcolor{stringliteral}{        For example, assume that encoder\_states is an bsz x 1 tensor of values}
 132 \textcolor{stringliteral}{}
-133 \textcolor{stringliteral}{            output = [[0.1]}
-134 \textcolor{stringliteral}{                      [0.3]}
-135 \textcolor{stringliteral}{                      [0.3]]}
-136 \textcolor{stringliteral}{}
-137 \textcolor{stringliteral}{        :param encoder\_states:}
-138 \textcolor{stringliteral}{            output from encoder. type is model specific.}
+133 \textcolor{stringliteral}{        .. code-block:: python}
+134 \textcolor{stringliteral}{}
+135 \textcolor{stringliteral}{            indices = [0, 2, 2]}
+136 \textcolor{stringliteral}{            encoder\_states = [[0.1]}
+137 \textcolor{stringliteral}{                              [0.2]}
+138 \textcolor{stringliteral}{                              [0.3]]}
 139 \textcolor{stringliteral}{}
-140 \textcolor{stringliteral}{        :type encoder\_states:}
-141 \textcolor{stringliteral}{            model specific}
-142 \textcolor{stringliteral}{}
-143 \textcolor{stringliteral}{        :param indices:}
-144 \textcolor{stringliteral}{            the indices to select over. The user must support non-tensor}
-145 \textcolor{stringliteral}{            inputs.}
-146 \textcolor{stringliteral}{}
-147 \textcolor{stringliteral}{        :type indices: list[int]}
-148 \textcolor{stringliteral}{}
-149 \textcolor{stringliteral}{        :return:}
-150 \textcolor{stringliteral}{            The re-ordered encoder states. It should be of the same type as}
-151 \textcolor{stringliteral}{            encoder states, and it must be a valid input to the decoder.}
-152 \textcolor{stringliteral}{}
-153 \textcolor{stringliteral}{        :rtype:}
-154 \textcolor{stringliteral}{            model specific}
-155 \textcolor{stringliteral}{        """}
-156         \textcolor{keywordflow}{pass}
-157 
+140 \textcolor{stringliteral}{        then the output will be}
+141 \textcolor{stringliteral}{}
+142 \textcolor{stringliteral}{        .. code-block:: python}
+143 \textcolor{stringliteral}{}
+144 \textcolor{stringliteral}{            output = [[0.1]}
+145 \textcolor{stringliteral}{                      [0.3]}
+146 \textcolor{stringliteral}{                      [0.3]]}
+147 \textcolor{stringliteral}{}
+148 \textcolor{stringliteral}{        :param encoder\_states:}
+149 \textcolor{stringliteral}{            output from encoder. type is model specific.}
+150 \textcolor{stringliteral}{}
+151 \textcolor{stringliteral}{        :type encoder\_states:}
+152 \textcolor{stringliteral}{            model specific}
+153 \textcolor{stringliteral}{}
+154 \textcolor{stringliteral}{        :param indices:}
+155 \textcolor{stringliteral}{            the indices to select over. The user must support non-tensor}
+156 \textcolor{stringliteral}{            inputs.}
+157 \textcolor{stringliteral}{}
+158 \textcolor{stringliteral}{        :type indices: list[int]}
+159 \textcolor{stringliteral}{}
+160 \textcolor{stringliteral}{        :return:}
+161 \textcolor{stringliteral}{            The re-ordered encoder states. It should be of the same type as}
+162 \textcolor{stringliteral}{            encoder states, and it must be a valid input to the decoder.}
+163 \textcolor{stringliteral}{}
+164 \textcolor{stringliteral}{        :rtype:}
+165 \textcolor{stringliteral}{            model specific}
+166 \textcolor{stringliteral}{        """}
+167         \textcolor{keywordflow}{pass}
+168 
 \end{DoxyCode}
 
 
@@ -439,7 +437,7 @@ Definition at line 110 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 
-Definition at line 72 of file torch\+\_\+generator\+\_\+agent.\+py.
+Definition at line 83 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1torch__generator__agent_1_1TorchGeneratorModel_a14dcf5ba14c4438bb4919565ebd30fa8}\label{classparlai_1_1core_1_1torch__generator__agent_1_1TorchGeneratorModel_a14dcf5ba14c4438bb4919565ebd30fa8}} 
 \index{parlai\+::core\+::torch\+\_\+generator\+\_\+agent\+::\+Torch\+Generator\+Model@{parlai\+::core\+::torch\+\_\+generator\+\_\+agent\+::\+Torch\+Generator\+Model}!longest\+\_\+label@{longest\+\_\+label}}
@@ -449,7 +447,7 @@ Definition at line 72 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 
-Definition at line 74 of file torch\+\_\+generator\+\_\+agent.\+py.
+Definition at line 85 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1torch__generator__agent_1_1TorchGeneratorModel_a686d4c12ada077cbf2b9c57544cbbe20}\label{classparlai_1_1core_1_1torch__generator__agent_1_1TorchGeneratorModel_a686d4c12ada077cbf2b9c57544cbbe20}} 
 \index{parlai\+::core\+::torch\+\_\+generator\+\_\+agent\+::\+Torch\+Generator\+Model@{parlai\+::core\+::torch\+\_\+generator\+\_\+agent\+::\+Torch\+Generator\+Model}!N\+U\+L\+L\+\_\+\+I\+DX@{N\+U\+L\+L\+\_\+\+I\+DX}}
@@ -459,7 +457,7 @@ Definition at line 74 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 
-Definition at line 71 of file torch\+\_\+generator\+\_\+agent.\+py.
+Definition at line 82 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 

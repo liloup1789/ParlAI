@@ -2,8 +2,7 @@
 \label{classparlai_1_1mturk_1_1webapp_1_1server_1_1RejectionHandler}\index{parlai.\+mturk.\+webapp.\+server.\+Rejection\+Handler@{parlai.\+mturk.\+webapp.\+server.\+Rejection\+Handler}}
 
 
-Inheritance diagram for parlai.\+mturk.\+webapp.\+server.\+Rejection\+Handler\+:
-\nopagebreak
+Inheritance diagram for parlai.\+mturk.\+webapp.\+server.\+Rejection\+Handler\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+mturk.\+webapp.\+server.\+Rejection\+Handler\+:
 \end{figure}
 
 
-Collaboration diagram for parlai.\+mturk.\+webapp.\+server.\+Rejection\+Handler\+:
-\nopagebreak
+Collaboration diagram for parlai.\+mturk.\+webapp.\+server.\+Rejection\+Handler\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -37,7 +35,7 @@ def \hyperlink{classparlai_1_1mturk_1_1webapp_1_1server_1_1RejectionHandler_ab53
 \subsection{Detailed Description}
 
 
-Definition at line 462 of file server.\+py.
+Definition at line 467 of file server.\+py.
 
 
 
@@ -50,13 +48,13 @@ Definition at line 462 of file server.\+py.
 
 
 
-Definition at line 463 of file server.\+py.
+Definition at line 468 of file server.\+py.
 
 
 \begin{DoxyCode}
-463     \textcolor{keyword}{def }initialize(self, app):
-464         self.mturk\_manager = app.mturk\_manager
-465 
+468     \textcolor{keyword}{def }initialize(self, app):
+469         self.mturk\_manager = app.mturk\_manager
+470 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1RejectionHandler_ab53a292bed562b166bd63ef81ae38a43}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1RejectionHandler_ab53a292bed562b166bd63ef81ae38a43}} 
 \index{parlai\+::mturk\+::webapp\+::server\+::\+Rejection\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Rejection\+Handler}!post@{post}}
@@ -66,19 +64,19 @@ Definition at line 463 of file server.\+py.
 
 
 
-Definition at line 466 of file server.\+py.
+Definition at line 471 of file server.\+py.
 
 
 \begin{DoxyCode}
-466     \textcolor{keyword}{def }post(self, assignment\_target):
-467         data = tornado.escape.json\_decode(self.request.body)
-468         reason = data[\textcolor{stringliteral}{'reason'}]
-469         self.mturk\_manager.reject\_work(assignment\_target, reason)
-470         print(\textcolor{stringliteral}{'Rejected \{\} for reason \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(assignment\_target, reason))
-471         data = \{\textcolor{stringliteral}{'status'}: \textcolor{keyword}{True}\}
-472         self.write(json.dumps(data))
-473 
-474 
+471     \textcolor{keyword}{def }post(self, assignment\_target):
+472         data = tornado.escape.json\_decode(self.request.body)
+473         reason = data[\textcolor{stringliteral}{'reason'}]
+474         self.mturk\_manager.reject\_work(assignment\_target, reason)
+475         print(\textcolor{stringliteral}{'Rejected \{\} for reason \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(assignment\_target, reason))
+476         data = \{\textcolor{stringliteral}{'status'}: \textcolor{keyword}{True}\}
+477         self.write(json.dumps(data))
+478 
+479 
 \end{DoxyCode}
 
 
@@ -91,7 +89,7 @@ Definition at line 466 of file server.\+py.
 
 
 
-Definition at line 464 of file server.\+py.
+Definition at line 469 of file server.\+py.
 
 
 

@@ -8,7 +8,9 @@ def \hyperlink{namespaceparlai_1_1tasks_1_1ccpe_1_1build_a3c36666a37a2334071b637
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-list \hyperlink{namespaceparlai_1_1tasks_1_1ccpe_1_1build_a5df2747fef648c490cbe2ac949f6648e}{R\+E\+S\+O\+U\+R\+C\+ES}
+\hyperlink{namespaceparlai_1_1tasks_1_1ccpe_1_1build_a6a7c15b8accd9c13dc5a4781226de210}{R\+E\+S\+O\+U\+R\+C\+ES}
+\item 
+\hyperlink{namespaceparlai_1_1tasks_1_1ccpe_1_1build_a53415c3070df90c98065a01b2cc77606}{zipped}
 \end{DoxyCompactItemize}
 
 
@@ -21,49 +23,48 @@ list \hyperlink{namespaceparlai_1_1tasks_1_1ccpe_1_1build_a5df2747fef648c490cbe2
 
 
 
-Definition at line 20 of file build.\+py.
+Definition at line 21 of file build.\+py.
 
 
 \begin{DoxyCode}
-20 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
-21     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'CCPE'})
-22     version = \textcolor{stringliteral}{'1.0'}
-23 
-24     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version\_string=version):
-25         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
-26         \textcolor{keywordflow}{if} build\_data.built(dpath):
-27             \textcolor{comment}{# An older version exists, so remove these outdated files.}
-28             build\_data.remove\_dir(dpath)
-29         build\_data.make\_dir(dpath)
-30 
-31         \textcolor{comment}{# Download the data.}
-32         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES:
-33             downloadable\_file.download\_file(dpath)
-34 
-35         \textcolor{comment}{# Mark the data as built.}
-36         build\_data.mark\_done(dpath, version\_string=version)
-37 \end{DoxyCode}
+21 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
+22     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'CCPE'})
+23     version = \textcolor{stringliteral}{'1.0'}
+24 
+25     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version\_string=version):
+26         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+27         \textcolor{keywordflow}{if} build\_data.built(dpath):
+28             \textcolor{comment}{# An older version exists, so remove these outdated files.}
+29             build\_data.remove\_dir(dpath)
+30         build\_data.make\_dir(dpath)
+31 
+32         \textcolor{comment}{# Download the data.}
+33         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES:
+34             downloadable\_file.download\_file(dpath)
+35 
+36         \textcolor{comment}{# Mark the data as built.}
+37         build\_data.mark\_done(dpath, version\_string=version)
+38 \end{DoxyCode}
 
 
 \subsection{Variable Documentation}
-\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1ccpe_1_1build_a5df2747fef648c490cbe2ac949f6648e}\label{namespaceparlai_1_1tasks_1_1ccpe_1_1build_a5df2747fef648c490cbe2ac949f6648e}} 
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1ccpe_1_1build_a6a7c15b8accd9c13dc5a4781226de210}\label{namespaceparlai_1_1tasks_1_1ccpe_1_1build_a6a7c15b8accd9c13dc5a4781226de210}} 
 \index{parlai\+::tasks\+::ccpe\+::build@{parlai\+::tasks\+::ccpe\+::build}!R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}}
 \index{R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}!parlai\+::tasks\+::ccpe\+::build@{parlai\+::tasks\+::ccpe\+::build}}
 \subsubsection{\texorpdfstring{R\+E\+S\+O\+U\+R\+C\+ES}{RESOURCES}}
-{\footnotesize\ttfamily list parlai.\+tasks.\+ccpe.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
-
-{\bfseries Initial value\+:}
-\begin{DoxyCode}
-1 =  [
-2     DownloadableFile(
-3         \textcolor{stringliteral}{'https://storage.googleapis.com/dialog-data-corpus/CCPE-M-2019/data.json'},
-4         \textcolor{stringliteral}{'ccpe.json'},
-5         \textcolor{stringliteral}{'4ff051ea7ea60cf0f480c911c7e2cfed56434e2e2c9ea8965ac5e26365773f0a'},
-6         zipped=\textcolor{keyword}{False},
-7     )
-8 ]
-\end{DoxyCode}
+{\footnotesize\ttfamily parlai.\+tasks.\+ccpe.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
 
 
-Definition at line 10 of file build.\+py.
+
+Definition at line 11 of file build.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1ccpe_1_1build_a53415c3070df90c98065a01b2cc77606}\label{namespaceparlai_1_1tasks_1_1ccpe_1_1build_a53415c3070df90c98065a01b2cc77606}} 
+\index{parlai\+::tasks\+::ccpe\+::build@{parlai\+::tasks\+::ccpe\+::build}!zipped@{zipped}}
+\index{zipped@{zipped}!parlai\+::tasks\+::ccpe\+::build@{parlai\+::tasks\+::ccpe\+::build}}
+\subsubsection{\texorpdfstring{zipped}{zipped}}
+{\footnotesize\ttfamily parlai.\+tasks.\+ccpe.\+build.\+zipped}
+
+
+
+Definition at line 16 of file build.\+py.
 

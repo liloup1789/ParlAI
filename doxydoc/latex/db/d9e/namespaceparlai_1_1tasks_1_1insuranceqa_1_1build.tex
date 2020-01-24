@@ -17,7 +17,7 @@ def \hyperlink{namespaceparlai_1_1tasks_1_1insuranceqa_1_1build_ae48219c5a8158e6
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-list \hyperlink{namespaceparlai_1_1tasks_1_1insuranceqa_1_1build_ab0ec3ef6da60bb6f79d7345f2fe18985}{R\+E\+S\+O\+U\+R\+C\+ES}
+\hyperlink{namespaceparlai_1_1tasks_1_1insuranceqa_1_1build_aded34e650b79ad5271e4685269ba6051}{R\+E\+S\+O\+U\+R\+C\+ES}
 \end{DoxyCompactItemize}
 
 
@@ -30,51 +30,41 @@ list \hyperlink{namespaceparlai_1_1tasks_1_1insuranceqa_1_1build_ab0ec3ef6da60bb
 
 
 
-Definition at line 222 of file build.\+py.
+Definition at line 224 of file build.\+py.
 
 
 \begin{DoxyCode}
-222 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
-223     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'InsuranceQA'})
-224     version = \textcolor{stringliteral}{'1'}
-225 
-226     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version\_string=version):
-227         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
-228         \textcolor{keywordflow}{if} build\_data.built(dpath):
-229             \textcolor{comment}{# An older version exists, so remove these outdated files.}
-230             build\_data.remove\_dir(dpath)
-231         build\_data.make\_dir(dpath)
-232 
-233         \textcolor{comment}{# Download the data.}
-234         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES:
-235             downloadable\_file.download\_file(dpath)
-236 
-237         ParseInsuranceQAV1.build(dpath)
-238         ParseInsuranceQAV2.build(dpath)
-239 
-240         \textcolor{comment}{# Mark the data as built.}
-241         build\_data.mark\_done(dpath, version\_string=version)
-242 \end{DoxyCode}
+224 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
+225     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'InsuranceQA'})
+226     version = \textcolor{stringliteral}{'1'}
+227 
+228     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version\_string=version):
+229         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+230         \textcolor{keywordflow}{if} build\_data.built(dpath):
+231             \textcolor{comment}{# An older version exists, so remove these outdated files.}
+232             build\_data.remove\_dir(dpath)
+233         build\_data.make\_dir(dpath)
+234 
+235         \textcolor{comment}{# Download the data.}
+236         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES:
+237             downloadable\_file.download\_file(dpath)
+238 
+239         ParseInsuranceQAV1.build(dpath)
+240         ParseInsuranceQAV2.build(dpath)
+241 
+242         \textcolor{comment}{# Mark the data as built.}
+243         build\_data.mark\_done(dpath, version\_string=version)
+244 \end{DoxyCode}
 
 
 \subsection{Variable Documentation}
-\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1insuranceqa_1_1build_ab0ec3ef6da60bb6f79d7345f2fe18985}\label{namespaceparlai_1_1tasks_1_1insuranceqa_1_1build_ab0ec3ef6da60bb6f79d7345f2fe18985}} 
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1insuranceqa_1_1build_aded34e650b79ad5271e4685269ba6051}\label{namespaceparlai_1_1tasks_1_1insuranceqa_1_1build_aded34e650b79ad5271e4685269ba6051}} 
 \index{parlai\+::tasks\+::insuranceqa\+::build@{parlai\+::tasks\+::insuranceqa\+::build}!R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}}
 \index{R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}!parlai\+::tasks\+::insuranceqa\+::build@{parlai\+::tasks\+::insuranceqa\+::build}}
 \subsubsection{\texorpdfstring{R\+E\+S\+O\+U\+R\+C\+ES}{RESOURCES}}
-{\footnotesize\ttfamily list parlai.\+tasks.\+insuranceqa.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
-
-{\bfseries Initial value\+:}
-\begin{DoxyCode}
-1 =  [
-2     DownloadableFile(
-3         \textcolor{stringliteral}{'https://github.com/shuzi/insuranceQA/archive/master.zip'},
-4         \textcolor{stringliteral}{'insuranceqa.zip'},
-5         \textcolor{stringliteral}{'53e1c4a68734c6a0955dcba50d5a2a9926004d4cd4cda2e988cc7b990a250fbf'},
-6     )
-7 ]
-\end{DoxyCode}
+{\footnotesize\ttfamily parlai.\+tasks.\+insuranceqa.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
 
 
-Definition at line 213 of file build.\+py.
+
+Definition at line 215 of file build.\+py.
 

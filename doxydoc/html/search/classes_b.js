@@ -16,7 +16,7 @@ var searchData=
   ['lockableconstraint',['LockableConstraint',['../da/da9/classlight__chats_1_1graph_1_1LockableConstraint.html',1,'light_chats::graph']]],
   ['lockedconstraint',['LockedConstraint',['../d7/dea/classlight__chats_1_1graph_1_1LockedConstraint.html',1,'light_chats::graph']]],
   ['lockedwithconstraint',['LockedWithConstraint',['../d1/dde/classlight__chats_1_1graph_1_1LockedWithConstraint.html',1,'light_chats::graph']]],
-  ['lockfile',['LockFile',['../df/dd0/classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1LockFile.html',1,'parlai.mturk.core.mturk_manager.LockFile'],['../df/d49/classparlai_1_1mturk_1_1core_1_1dev_1_1mturk__manager_1_1LockFile.html',1,'parlai.mturk.core.dev.mturk_manager.LockFile'],['../d7/de8/classparlai_1_1mturk_1_1core_1_1legacy__2018_1_1mturk__manager_1_1LockFile.html',1,'parlai.mturk.core.legacy_2018.mturk_manager.LockFile']]],
+  ['lockfile',['LockFile',['../d7/de8/classparlai_1_1mturk_1_1core_1_1legacy__2018_1_1mturk__manager_1_1LockFile.html',1,'parlai.mturk.core.legacy_2018.mturk_manager.LockFile'],['../df/dd0/classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1LockFile.html',1,'parlai.mturk.core.mturk_manager.LockFile'],['../df/d49/classparlai_1_1mturk_1_1core_1_1dev_1_1mturk__manager_1_1LockFile.html',1,'parlai.mturk.core.dev.mturk_manager.LockFile']]],
   ['lockfunction',['LockFunction',['../d8/df4/classlight__chats_1_1graph_1_1LockFunction.html',1,'light_chats::graph']]],
   ['lookfunction',['LookFunction',['../d2/d65/classlight__chats_1_1graph_1_1LookFunction.html',1,'light_chats::graph']]]
 ];

@@ -2,8 +2,7 @@
 \label{classparlai_1_1core_1_1torch__generator__agent_1_1NucleusSampling}\index{parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Nucleus\+Sampling@{parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Nucleus\+Sampling}}
 
 
-Inheritance diagram for parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Nucleus\+Sampling\+:
-\nopagebreak
+Inheritance diagram for parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Nucleus\+Sampling\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Nucleu
 \end{figure}
 
 
-Collaboration diagram for parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Nucleus\+Sampling\+:
-\nopagebreak
+Collaboration diagram for parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Nucleus\+Sampling\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -47,7 +45,7 @@ See https://arxiv.org/abs/1904.09751 for details.
 \end{DoxyVerb}
  
 
-Definition at line 1406 of file torch\+\_\+generator\+\_\+agent.\+py.
+Definition at line 1398 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 
@@ -60,14 +58,14 @@ Definition at line 1406 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 
-Definition at line 1418 of file torch\+\_\+generator\+\_\+agent.\+py.
+Definition at line 1410 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 \begin{DoxyCode}
-1418     \textcolor{keyword}{def }\_\_init\_\_(self, p, *args, **kwargs):
-1419         super().\_\_init\_\_(*args, **kwargs)
-1420         self.p = p
-1421 
+1410     \textcolor{keyword}{def }\_\_init\_\_(self, p, *args, **kwargs):
+1411         super().\_\_init\_\_(*args, **kwargs)
+1412         self.p = p
+1413 
 \end{DoxyCode}
 
 
@@ -80,29 +78,29 @@ Definition at line 1418 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 
-Definition at line 1422 of file torch\+\_\+generator\+\_\+agent.\+py.
+Definition at line 1414 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 \begin{DoxyCode}
-1422     \textcolor{keyword}{def }select\_paths(self, logprobs, prior\_scores):
-1423         \textcolor{comment}{# Unlike the other treesearch methods, we have to switch to linspace}
-1424         \textcolor{comment}{# for the probabilities in order to compute the CDF.}
-1425         probs = torch.softmax(logprobs, dim=-1)
-1426         sprobs, sinds = probs.sort(dim=-1, descending=\textcolor{keyword}{True})
-1427         \textcolor{comment}{# The subtraction here is so that we always include the first word to}
-1428         \textcolor{comment}{# go over p. For example, if the most probable token has a prob of 0.5, and}
-1429         \textcolor{comment}{# p = 0.3, then we need still need to include that first token.}
-1430         mask = (sprobs.cumsum(dim=-1) - sprobs[:, :1]) >= self.p
-1431         sprobs[mask] = 0
-1432         sprobs.div\_(sprobs.sum(dim=-1).unsqueeze(1))
-1433         choices = torch.multinomial(sprobs, 1)[:, 0]
-1434         hyp\_ids = torch.arange(logprobs.size(0)).to(logprobs.device)
-1435         tok\_ids = sinds[hyp\_ids, choices]
-1436         \textcolor{comment}{# Convert back to logspace.}
-1437         scores = sprobs[hyp\_ids, choices].log()
-1438         best\_scores = prior\_scores.expand\_as(scores) + scores
-1439         \textcolor{keywordflow}{return} (hyp\_ids, tok\_ids, best\_scores)
-1440 \end{DoxyCode}
+1414     \textcolor{keyword}{def }select\_paths(self, logprobs, prior\_scores):
+1415         \textcolor{comment}{# Unlike the other treesearch methods, we have to switch to linspace}
+1416         \textcolor{comment}{# for the probabilities in order to compute the CDF.}
+1417         probs = torch.softmax(logprobs, dim=-1)
+1418         sprobs, sinds = probs.sort(dim=-1, descending=\textcolor{keyword}{True})
+1419         \textcolor{comment}{# The subtraction here is so that we always include the first word to}
+1420         \textcolor{comment}{# go over p. For example, if the most probable token has a prob of 0.5, and}
+1421         \textcolor{comment}{# p = 0.3, then we need still need to include that first token.}
+1422         mask = (sprobs.cumsum(dim=-1) - sprobs[:, :1]) >= self.p
+1423         sprobs[mask] = 0
+1424         sprobs.div\_(sprobs.sum(dim=-1).unsqueeze(1))
+1425         choices = torch.multinomial(sprobs, 1)[:, 0]
+1426         hyp\_ids = torch.arange(logprobs.size(0)).to(logprobs.device)
+1427         tok\_ids = sinds[hyp\_ids, choices]
+1428         \textcolor{comment}{# Convert back to logspace.}
+1429         scores = sprobs[hyp\_ids, choices].log()
+1430         best\_scores = prior\_scores.expand\_as(scores) + scores
+1431         \textcolor{keywordflow}{return} (hyp\_ids, tok\_ids, best\_scores)
+1432 \end{DoxyCode}
 
 
 \subsection{Member Data Documentation}
@@ -114,7 +112,7 @@ Definition at line 1422 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 
-Definition at line 1420 of file torch\+\_\+generator\+\_\+agent.\+py.
+Definition at line 1412 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 

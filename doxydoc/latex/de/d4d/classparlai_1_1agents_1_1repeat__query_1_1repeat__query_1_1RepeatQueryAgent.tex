@@ -2,8 +2,7 @@
 \label{classparlai_1_1agents_1_1repeat__query_1_1repeat__query_1_1RepeatQueryAgent}\index{parlai.\+agents.\+repeat\+\_\+query.\+repeat\+\_\+query.\+Repeat\+Query\+Agent@{parlai.\+agents.\+repeat\+\_\+query.\+repeat\+\_\+query.\+Repeat\+Query\+Agent}}
 
 
-Inheritance diagram for parlai.\+agents.\+repeat\+\_\+query.\+repeat\+\_\+query.\+Repeat\+Query\+Agent\+:
-\nopagebreak
+Inheritance diagram for parlai.\+agents.\+repeat\+\_\+query.\+repeat\+\_\+query.\+Repeat\+Query\+Agent\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+agents.\+repeat\+\_\+query.\+repeat\+\_\+query.
 \end{figure}
 
 
-Collaboration diagram for parlai.\+agents.\+repeat\+\_\+query.\+repeat\+\_\+query.\+Repeat\+Query\+Agent\+:
-\nopagebreak
+Collaboration diagram for parlai.\+agents.\+repeat\+\_\+query.\+repeat\+\_\+query.\+Repeat\+Query\+Agent\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -37,7 +35,7 @@ def \hyperlink{classparlai_1_1agents_1_1repeat__query_1_1repeat__query_1_1Repeat
 \subsection{Detailed Description}
 
 
-Definition at line 15 of file repeat\+\_\+query.\+py.
+Definition at line 16 of file repeat\+\_\+query.\+py.
 
 
 
@@ -50,14 +48,14 @@ Definition at line 15 of file repeat\+\_\+query.\+py.
 
 
 
-Definition at line 16 of file repeat\+\_\+query.\+py.
+Definition at line 17 of file repeat\+\_\+query.\+py.
 
 
 \begin{DoxyCode}
-16     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
-17         super().\_\_init\_\_(opt)
-18         self.id = \textcolor{stringliteral}{'RepeatQueryAgent'}
-19 
+17     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
+18         super().\_\_init\_\_(opt)
+19         self.id = \textcolor{stringliteral}{'RepeatQueryAgent'}
+20 
 \end{DoxyCode}
 
 
@@ -70,21 +68,24 @@ Definition at line 16 of file repeat\+\_\+query.\+py.
 
 
 
-Definition at line 20 of file repeat\+\_\+query.\+py.
+Definition at line 21 of file repeat\+\_\+query.\+py.
 
 
 \begin{DoxyCode}
-20     \textcolor{keyword}{def }act(self):
-21         obs = self.observation
-22         \textcolor{keywordflow}{if} obs \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-23             \textcolor{keywordflow}{return} \{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'Nothing to repeat yet.'}\}
-24         reply = \{\}
-25         reply[\textcolor{stringliteral}{'id'}] = self.getID()
-26         query = obs.get(\textcolor{stringliteral}{'text'}, \textcolor{stringliteral}{"I don't know"})
-27         \textcolor{comment}{# Take last line if there are multiple lines.}
-28         reply[\textcolor{stringliteral}{'text'}] = query.split(\textcolor{stringliteral}{'\(\backslash\)n'})[-1]
-29         \textcolor{keywordflow}{return} reply
-30 \end{DoxyCode}
+21     \textcolor{keyword}{def }act(self):
+22         obs = self.observation
+23         \textcolor{keywordflow}{if} obs \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+24             \textcolor{keywordflow}{return} Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'Nothing to repeat yet.'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{False}\})
+25         reply = \{\}
+26         reply[\textcolor{stringliteral}{'id'}] = self.getID()
+27         query = obs.get(\textcolor{stringliteral}{'text'}, \textcolor{stringliteral}{"I don't know"})
+28         \textcolor{comment}{# Take last line if there are multiple lines.}
+29         reply[\textcolor{stringliteral}{'text'}] = query.split(\textcolor{stringliteral}{'\(\backslash\)n'})[-1]
+30         \textcolor{keywordflow}{if} reply[\textcolor{stringliteral}{'text'}] == \textcolor{stringliteral}{''}:
+31             reply[\textcolor{stringliteral}{'text'}] = \textcolor{stringliteral}{'Nothing to repeat yet.'}
+32         reply[\textcolor{stringliteral}{'episode\_done'}] = \textcolor{keyword}{False}
+33         \textcolor{keywordflow}{return} Message(reply)
+34 \end{DoxyCode}
 
 
 \subsection{Member Data Documentation}
@@ -96,7 +97,7 @@ Definition at line 20 of file repeat\+\_\+query.\+py.
 
 
 
-Definition at line 18 of file repeat\+\_\+query.\+py.
+Definition at line 19 of file repeat\+\_\+query.\+py.
 
 
 

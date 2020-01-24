@@ -74,15 +74,11 @@ $(function() {
 Inheritance diagram for parlai.agents.transformer.modules.TransformerResponseWrapper:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../de/d08/classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerResponseWrapper__inherit__graph.png" border="0" usemap="#parlai_8agents_8transformer_8modules_8TransformerResponseWrapper_inherit__map" alt="Inheritance graph"/></div>
-<map name="parlai_8agents_8transformer_8modules_8TransformerResponseWrapper_inherit__map" id="parlai_8agents_8transformer_8modules_8TransformerResponseWrapper_inherit__map">
-</map>
 <center><span class="legend">[<a href="../../graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for parlai.agents.transformer.modules.TransformerResponseWrapper:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d2/dfe/classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerResponseWrapper__coll__graph.png" border="0" usemap="#parlai_8agents_8transformer_8modules_8TransformerResponseWrapper_coll__map" alt="Collaboration graph"/></div>
-<map name="parlai_8agents_8transformer_8modules_8TransformerResponseWrapper_coll__map" id="parlai_8agents_8transformer_8modules_8TransformerResponseWrapper_coll__map">
-</map>
 <center><span class="legend">[<a href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -104,7 +100,7 @@ Public Attributes</h2></td></tr>
 
 Pushes input through transformer and MLP.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00301">301</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00303">303</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab078bf40bb275ebd56b4e205923ab827"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab078bf40bb275ebd56b4e205923ab827">&#9670;&nbsp;</a></span>__init__()</h2>
@@ -138,8 +134,8 @@ Pushes input through transformer and MLP.
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00308">308</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <span class="keyword">def </span>__init__(self, transformer, hdim):</div><div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        super(TransformerResponseWrapper, self).__init__()</div><div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;        dim = transformer.out_dim</div><div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        self.transformer = transformer</div><div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        self.mlp = nn.Sequential(</div><div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;            nn.Linear(dim, hdim),</div><div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;            nn.ReLU(),  <span class="comment"># TODO: should this also be gelu?</span></div><div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;            nn.Linear(hdim, dim),</div><div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;        )</div><div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;</div></div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00310">310</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="keyword">def </span>__init__(self, transformer, hdim):</div><div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;        super(TransformerResponseWrapper, self).__init__()</div><div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;        dim = transformer.out_dim</div><div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;        self.transformer = transformer</div><div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;        self.mlp = nn.Sequential(</div><div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;            nn.Linear(dim, hdim),</div><div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;            nn.ReLU(),  <span class="comment"># TODO: should this also be gelu?</span></div><div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;            nn.Linear(hdim, dim),</div><div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;        )</div><div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -170,8 +166,8 @@ Pushes input through transformer and MLP.
 </div><div class="memdoc">
 <pre class="fragment">Forward pass.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00318">318</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <span class="keyword">def </span>forward(self, *args):</div><div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;<span class="stringliteral">        Forward pass.</span></div><div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;<span class="stringliteral">        &quot;&quot;&quot;</span></div><div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;        <span class="keywordflow">return</span> self.mlp(self.transformer(*args))</div><div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;</div><div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;</div></div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00320">320</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    <span class="keyword">def </span>forward(self, *args):</div><div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;<span class="stringliteral">        Forward pass.</span></div><div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;<span class="stringliteral">        &quot;&quot;&quot;</span></div><div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;        <span class="keywordflow">return</span> self.mlp(self.transformer(*args))</div><div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;</div><div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -187,7 +183,7 @@ Pushes input through transformer and MLP.
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00312">312</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00314">314</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
 
 </div>
 </div>
@@ -203,7 +199,7 @@ Pushes input through transformer and MLP.
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00311">311</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00313">313</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
 
 </div>
 </div>

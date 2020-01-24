@@ -2,8 +2,7 @@
 \label{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper}\index{parlai.\+agents.\+bert\+\_\+ranker.\+helpers.\+Bert\+Wrapper@{parlai.\+agents.\+bert\+\_\+ranker.\+helpers.\+Bert\+Wrapper}}
 
 
-Inheritance diagram for parlai.\+agents.\+bert\+\_\+ranker.\+helpers.\+Bert\+Wrapper\+:
-\nopagebreak
+Inheritance diagram for parlai.\+agents.\+bert\+\_\+ranker.\+helpers.\+Bert\+Wrapper\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+agents.\+bert\+\_\+ranker.\+helpers.\+Bert\+Wra
 \end{figure}
 
 
-Collaboration diagram for parlai.\+agents.\+bert\+\_\+ranker.\+helpers.\+Bert\+Wrapper\+:
-\nopagebreak
+Collaboration diagram for parlai.\+agents.\+bert\+\_\+ranker.\+helpers.\+Bert\+Wrapper\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -49,7 +47,7 @@ def \hyperlink{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_a
 \end{DoxyVerb}
  
 
-Definition at line 100 of file helpers.\+py.
+Definition at line 99 of file helpers.\+py.
 
 
 
@@ -62,30 +60,30 @@ Definition at line 100 of file helpers.\+py.
 
 
 
-Definition at line 112 of file helpers.\+py.
+Definition at line 111 of file helpers.\+py.
 
 
 \begin{DoxyCode}
-112     ):
-113         super(BertWrapper, self).\_\_init\_\_()
-114         self.layer\_pulled = layer\_pulled
-115         self.aggregation = aggregation
-116         self.add\_transformer\_layer = add\_transformer\_layer
-117         \textcolor{comment}{# deduce bert output dim from the size of embeddings}
-118         bert\_output\_dim = bert\_model.embeddings.word\_embeddings.weight.size(1)
-119 
-120         \textcolor{keywordflow}{if} add\_transformer\_layer:
-121             config\_for\_one\_layer = BertConfig(
-122                 0,
-123                 hidden\_size=bert\_output\_dim,
-124                 num\_attention\_heads=\hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(bert\_output\_dim / 64),
-125                 intermediate\_size=3072,
-126                 hidden\_act=\textcolor{stringliteral}{'gelu'},
-127             )
-128             self.additional\_transformer\_layer = BertLayer(config\_for\_one\_layer)
-129         self.additional\_linear\_layer = torch.nn.Linear(bert\_output\_dim, output\_dim)
-130         self.bert\_model = bert\_model
-131 
+111     ):
+112         super(BertWrapper, self).\_\_init\_\_()
+113         self.layer\_pulled = layer\_pulled
+114         self.aggregation = aggregation
+115         self.add\_transformer\_layer = add\_transformer\_layer
+116         \textcolor{comment}{# deduce bert output dim from the size of embeddings}
+117         bert\_output\_dim = bert\_model.embeddings.word\_embeddings.weight.size(1)
+118 
+119         \textcolor{keywordflow}{if} add\_transformer\_layer:
+120             config\_for\_one\_layer = BertConfig(
+121                 0,
+122                 hidden\_size=bert\_output\_dim,
+123                 num\_attention\_heads=\hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(bert\_output\_dim / 64),
+124                 intermediate\_size=3072,
+125                 hidden\_act=\textcolor{stringliteral}{'gelu'},
+126             )
+127             self.additional\_transformer\_layer = BertLayer(config\_for\_one\_layer)
+128         self.additional\_linear\_layer = torch.nn.Linear(bert\_output\_dim, output\_dim)
+129         self.bert\_model = bert\_model
+130 
 \end{DoxyCode}
 
 
@@ -100,61 +98,61 @@ Definition at line 112 of file helpers.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 132 of file helpers.\+py.
+Definition at line 131 of file helpers.\+py.
 
 
 \begin{DoxyCode}
-132     \textcolor{keyword}{def }forward(self, token\_ids, segment\_ids, attention\_mask):
-133         \textcolor{stringliteral}{"""}
-134 \textcolor{stringliteral}{        Forward pass.}
-135 \textcolor{stringliteral}{        """}
-136         output\_bert, output\_pooler = self.bert\_model(
-137             token\_ids, segment\_ids, attention\_mask
-138         )
-139         \textcolor{comment}{# output\_bert is a list of 12 (for bert base) layers.}
-140         layer\_of\_interest = output\_bert[self.layer\_pulled]
-141         dtype = next(self.parameters()).dtype
-142         \textcolor{keywordflow}{if} self.add\_transformer\_layer:
-143             \textcolor{comment}{# Follow up by yet another transformer layer}
-144             extended\_attention\_mask = attention\_mask.unsqueeze(1).unsqueeze(2)
-145             extended\_attention\_mask = (~extended\_attention\_mask).to(dtype) * 
-      \hyperlink{namespaceparlai_1_1utils_1_1misc_a68c44ca571de7149b683539db659c330}{neginf}(
-146                 dtype
-147             )
-148             embedding\_layer = self.additional\_transformer\_layer(
-149                 layer\_of\_interest, extended\_attention\_mask
-150             )
-151         \textcolor{keywordflow}{else}:
-152             embedding\_layer = layer\_of\_interest
-153 
-154         \textcolor{keywordflow}{if} self.aggregation == \textcolor{stringliteral}{"mean"}:
-155             \textcolor{comment}{#  consider the average of all the output except CLS.}
-156             \textcolor{comment}{# obviously ignores masked elements}
-157             outputs\_of\_interest = embedding\_layer[:, 1:, :]
-158             mask = attention\_mask[:, 1:].type\_as(embedding\_layer).unsqueeze(2)
-159             sumed\_embeddings = torch.sum(outputs\_of\_interest * mask, dim=1)
-160             nb\_elems = torch.sum(attention\_mask[:, 1:].\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(dtype), dim=1).unsqueeze(1)
-161             embeddings = sumed\_embeddings / nb\_elems
-162         \textcolor{keywordflow}{elif} self.aggregation == \textcolor{stringliteral}{"max"}:
-163             \textcolor{comment}{#  consider the max of all the output except CLS}
-164             outputs\_of\_interest = embedding\_layer[:, 1:, :]
-165             mask = (~attention\_mask[:, 1:]).\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(dtype).unsqueeze(2) * 
-      \hyperlink{namespaceparlai_1_1utils_1_1misc_a68c44ca571de7149b683539db659c330}{neginf}(dtype)
-166             embeddings, \_ = torch.max(outputs\_of\_interest + mask, dim=1)
-167         \textcolor{keywordflow}{else}:
-168             \textcolor{comment}{# easiest, we consider the output of "CLS" as the embedding}
-169             embeddings = embedding\_layer[:, 0, :]
-170 
-171         \textcolor{comment}{# We need this in case of dimensionality reduction}
-172         result = self.additional\_linear\_layer(embeddings)
-173 
-174         \textcolor{comment}{# Sort of hack to make it work with distributed: this way the pooler layer}
-175         \textcolor{comment}{# is used for grad computation, even though it does not change anything...}
-176         \textcolor{comment}{# in practice, it just adds a very (768*768) x (768*batchsize) matmul}
-177         result += 0 * torch.sum(output\_pooler)
-178         \textcolor{keywordflow}{return} result
+131     \textcolor{keyword}{def }forward(self, token\_ids, segment\_ids, attention\_mask):
+132         \textcolor{stringliteral}{"""}
+133 \textcolor{stringliteral}{        Forward pass.}
+134 \textcolor{stringliteral}{        """}
+135         output\_bert, output\_pooler = self.bert\_model(
+136             token\_ids, segment\_ids, attention\_mask
+137         )
+138         \textcolor{comment}{# output\_bert is a list of 12 (for bert base) layers.}
+139         layer\_of\_interest = output\_bert[self.layer\_pulled]
+140         dtype = next(self.parameters()).dtype
+141         \textcolor{keywordflow}{if} self.add\_transformer\_layer:
+142             \textcolor{comment}{# Follow up by yet another transformer layer}
+143             extended\_attention\_mask = attention\_mask.unsqueeze(1).unsqueeze(2)
+144             extended\_attention\_mask = (~extended\_attention\_mask).to(dtype) * 
+      \hyperlink{namespaceparlai_1_1utils_1_1torch_a6c6e25115353dba479cd72dc31dc76ae}{neginf}(
+145                 dtype
+146             )
+147             embedding\_layer = self.additional\_transformer\_layer(
+148                 layer\_of\_interest, extended\_attention\_mask
+149             )
+150         \textcolor{keywordflow}{else}:
+151             embedding\_layer = layer\_of\_interest
+152 
+153         \textcolor{keywordflow}{if} self.aggregation == \textcolor{stringliteral}{"mean"}:
+154             \textcolor{comment}{#  consider the average of all the output except CLS.}
+155             \textcolor{comment}{# obviously ignores masked elements}
+156             outputs\_of\_interest = embedding\_layer[:, 1:, :]
+157             mask = attention\_mask[:, 1:].type\_as(embedding\_layer).unsqueeze(2)
+158             sumed\_embeddings = torch.sum(outputs\_of\_interest * mask, dim=1)
+159             nb\_elems = torch.sum(attention\_mask[:, 1:].\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(dtype), dim=1).unsqueeze(1)
+160             embeddings = sumed\_embeddings / nb\_elems
+161         \textcolor{keywordflow}{elif} self.aggregation == \textcolor{stringliteral}{"max"}:
+162             \textcolor{comment}{#  consider the max of all the output except CLS}
+163             outputs\_of\_interest = embedding\_layer[:, 1:, :]
+164             mask = (~attention\_mask[:, 1:]).\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(dtype).unsqueeze(2) * 
+      \hyperlink{namespaceparlai_1_1utils_1_1torch_a6c6e25115353dba479cd72dc31dc76ae}{neginf}(dtype)
+165             embeddings, \_ = torch.max(outputs\_of\_interest + mask, dim=1)
+166         \textcolor{keywordflow}{else}:
+167             \textcolor{comment}{# easiest, we consider the output of "CLS" as the embedding}
+168             embeddings = embedding\_layer[:, 0, :]
+169 
+170         \textcolor{comment}{# We need this in case of dimensionality reduction}
+171         result = self.additional\_linear\_layer(embeddings)
+172 
+173         \textcolor{comment}{# Sort of hack to make it work with distributed: this way the pooler layer}
+174         \textcolor{comment}{# is used for grad computation, even though it does not change anything...}
+175         \textcolor{comment}{# in practice, it just adds a very (768*768) x (768*batchsize) matmul}
+176         result += 0 * torch.sum(output\_pooler)
+177         \textcolor{keywordflow}{return} result
+178 
 179 
-180 
 \end{DoxyCode}
 
 
@@ -167,7 +165,7 @@ Definition at line 132 of file helpers.\+py.
 
 
 
-Definition at line 116 of file helpers.\+py.
+Definition at line 115 of file helpers.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_a9c1172be102ac64b708d99aaff6bd442}\label{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_a9c1172be102ac64b708d99aaff6bd442}} 
 \index{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper@{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper}!additional\+\_\+linear\+\_\+layer@{additional\+\_\+linear\+\_\+layer}}
@@ -177,7 +175,7 @@ Definition at line 116 of file helpers.\+py.
 
 
 
-Definition at line 129 of file helpers.\+py.
+Definition at line 128 of file helpers.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_ac94b4da508521ec992bfe9a5f43fd339}\label{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_ac94b4da508521ec992bfe9a5f43fd339}} 
 \index{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper@{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper}!additional\+\_\+transformer\+\_\+layer@{additional\+\_\+transformer\+\_\+layer}}
@@ -187,7 +185,7 @@ Definition at line 129 of file helpers.\+py.
 
 
 
-Definition at line 128 of file helpers.\+py.
+Definition at line 127 of file helpers.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_a8943b309044ab440e4ff53e8a1f7e404}\label{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_a8943b309044ab440e4ff53e8a1f7e404}} 
 \index{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper@{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper}!aggregation@{aggregation}}
@@ -197,7 +195,7 @@ Definition at line 128 of file helpers.\+py.
 
 
 
-Definition at line 115 of file helpers.\+py.
+Definition at line 114 of file helpers.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_a0a706d97aa94500a65154f1ce58c598b}\label{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_a0a706d97aa94500a65154f1ce58c598b}} 
 \index{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper@{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper}!bert\+\_\+model@{bert\+\_\+model}}
@@ -207,7 +205,7 @@ Definition at line 115 of file helpers.\+py.
 
 
 
-Definition at line 130 of file helpers.\+py.
+Definition at line 129 of file helpers.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_a9223033165d667d6449fdc463d268fe4}\label{classparlai_1_1agents_1_1bert__ranker_1_1helpers_1_1BertWrapper_a9223033165d667d6449fdc463d268fe4}} 
 \index{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper@{parlai\+::agents\+::bert\+\_\+ranker\+::helpers\+::\+Bert\+Wrapper}!layer\+\_\+pulled@{layer\+\_\+pulled}}
@@ -217,7 +215,7 @@ Definition at line 130 of file helpers.\+py.
 
 
 
-Definition at line 114 of file helpers.\+py.
+Definition at line 113 of file helpers.\+py.
 
 
 

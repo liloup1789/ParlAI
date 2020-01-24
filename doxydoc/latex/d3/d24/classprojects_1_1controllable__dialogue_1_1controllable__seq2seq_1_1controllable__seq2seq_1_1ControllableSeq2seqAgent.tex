@@ -2,8 +2,7 @@
 \label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent}\index{projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+controllable\+\_\+seq2seq.\+Controllable\+Seq2seq\+Agent@{projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+controllable\+\_\+seq2seq.\+Controllable\+Seq2seq\+Agent}}
 
 
-Inheritance diagram for projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+controllable\+\_\+seq2seq.\+Controllable\+Seq2seq\+Agent\+:
-\nopagebreak
+Inheritance diagram for projects.\+controllable\+\_\+dialogue.\+controllable\+\_\+seq2seq.\+controllable\+\_\+seq2seq.\+Controllable\+Seq2seq\+Agent\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -17,7 +16,7 @@ Collaboration diagram for projects.\+controllable\+\_\+dialogue.\+controllable\+
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=318pt]{de/d6e/classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1Con19d93f1a2a924e8b6c8b2d9d045183f4}
+\includegraphics[width=268pt]{de/d6e/classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1Con19d93f1a2a924e8b6c8b2d9d045183f4}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -112,7 +111,7 @@ human judgments" https://arxiv.org/pdf/1902.08654.pdf
 \end{DoxyVerb}
  
 
-Definition at line 49 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 50 of file controllable\+\_\+seq2seq.\+py.
 
 
 
@@ -127,110 +126,110 @@ Definition at line 49 of file controllable\+\_\+seq2seq.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 272 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 273 of file controllable\+\_\+seq2seq.\+py.
 
 
 \begin{DoxyCode}
-272     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
-273         \textcolor{stringliteral}{"""}
-274 \textcolor{stringliteral}{        Set up model.}
-275 \textcolor{stringliteral}{        """}
-276         init\_model = \textcolor{keywordtype}{None}
-277         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} shared:  \textcolor{comment}{# only do this on first setup}
-278             \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controls_aafbe257df1791349439cc63c99de8b5e}{initialize\_control\_information}(opt)
-279             \textcolor{comment}{# first check load path in case we need to override paths}
-280             \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'init\_model'}) \textcolor{keywordflow}{and} os.path.isfile(opt[\textcolor{stringliteral}{'init\_model'}]):
-281                 \textcolor{comment}{# check first for 'init\_model' for loading model from file}
-282                 init\_model = opt[\textcolor{stringliteral}{'init\_model'}]
-283             \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'model\_file'}) \textcolor{keywordflow}{and} os.path.isfile(opt[\textcolor{stringliteral}{'model\_file'}]):
-284                 \textcolor{comment}{# next check for 'model\_file', this would override init\_model}
-285                 init\_model = opt[\textcolor{stringliteral}{'model\_file'}]
-286 
-287             \textcolor{keywordflow}{if} init\_model \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-288                 \textcolor{comment}{# if we are loading a model, should load its dict too}
-289                 \textcolor{keywordflow}{if} os.path.isfile(init\_model + \textcolor{stringliteral}{'.dict'}) \textcolor{keywordflow}{or} opt[\textcolor{stringliteral}{'dict\_file'}] \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-290                     opt[\textcolor{stringliteral}{'dict\_file'}] = init\_model + \textcolor{stringliteral}{'.dict'}
-291         super().\_\_init\_\_(opt, shared)
-292         opt = self.opt
-293         \textcolor{keyword}{assert} opt[\textcolor{stringliteral}{'person\_tokens'}]  \textcolor{comment}{# want this for ConvAI2}
-294         \textcolor{keyword}{assert} opt[\textcolor{stringliteral}{'add\_p1\_after\_newln'}]  \textcolor{comment}{# want this for ConvAI2}
-295 
-296         \textcolor{comment}{# all instances may need some params}
-297         self.id = \textcolor{stringliteral}{'Seq2Seq'}
-298         self.multigpu = (
-299             opt.get(\textcolor{stringliteral}{'multigpu'}) \textcolor{keywordflow}{and} self.use\_cuda \textcolor{keywordflow}{and} (opt.get(\textcolor{stringliteral}{'batchsize'}) > 1)
-300         )
-301         states = \{\}
-302 
-303         self.beam\_dot\_log = opt.get(\textcolor{stringliteral}{'beam\_dot\_log'}, \textcolor{keyword}{False})
-304         self.beam\_size = opt.get(\textcolor{stringliteral}{'beam\_size'}, 1)
-305         self.beam\_min\_n\_best = opt.get(\textcolor{stringliteral}{'beam\_min\_n\_best'}, 3)
-306         self.beam\_min\_length = opt.get(\textcolor{stringliteral}{'beam\_min\_length'}, 3)
-307         self.beam\_block\_ngram = opt.get(\textcolor{stringliteral}{'beam\_block\_ngram'}, 0)
-308 
-309         self.\_init\_controls()
-310 
-311         \textcolor{keywordflow}{if} shared:
-312             \textcolor{comment}{# set up shared properties}
-313             self.model = shared[\textcolor{stringliteral}{'model'}]
-314             self.metrics = shared[\textcolor{stringliteral}{'metrics'}]
-315             states = shared.get(\textcolor{stringliteral}{'states'}, \{\})
-316         \textcolor{keywordflow}{else}:
-317             self.metrics = \{
-318                 \textcolor{stringliteral}{'loss'}: 0.0,
-319                 \textcolor{stringliteral}{'num\_tokens'}: 0,
-320                 \textcolor{stringliteral}{'correct\_tokens'}: 0,
-321                 \textcolor{stringliteral}{'total\_skipped\_batches'}: 0,
-322             \}
-323             \textcolor{comment}{# this is not a shared instance of this class, so do full init}
-324             \textcolor{keywordflow}{if} self.beam\_dot\_log:
-325                 self.beam\_dot\_dir = tempfile.mkdtemp(
-326                     prefix=\textcolor{stringliteral}{'\{\}-beamdot-beamsize-\{\}-'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
-327                         os.path.basename(opt.get(\textcolor{stringliteral}{'model\_file'})), self.beam\_size
-328                     )
-329                 )
-330                 print(\textcolor{stringliteral}{'[ Saving dot beam logs in \{\} ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.beam\_dot\_dir))
-331             \textcolor{keywordflow}{if} init\_model \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-332                 \textcolor{comment}{# load model parameters if available}
-333                 print(\textcolor{stringliteral}{'[ Loading existing model params from \{\} ]'} \textcolor{stringliteral}{''}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(init\_model))
-334                 states = self.load(init\_model)
-335 
-336             self.model = self.build\_model(states=states)
-337             \textcolor{keywordflow}{if} self.use\_cuda:
-338                 self.model.cuda()
-339                 \textcolor{keywordflow}{if} self.multigpu:
-340                     self.model = torch.nn.DataParallel(self.model)
-341                     self.model.encoder = self.model.module.encoder
-342                     self.model.decoder = self.model.module.decoder
-343                     self.model.longest\_label = self.model.module.longest\_label
-344                     self.model.output = self.model.module.output
-345 
-346         \textcolor{comment}{# set up criteria}
-347         \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'numsoftmax'}, 1) > 1:
-348             self.criterion = nn.NLLLoss(ignore\_index=self.NULL\_IDX, reduction=\textcolor{stringliteral}{'sum'})
-349         \textcolor{keywordflow}{else}:
-350             self.criterion = nn.CrossEntropyLoss(
-351                 ignore\_index=self.NULL\_IDX, reduction=\textcolor{stringliteral}{'sum'}
-352             )
-353 
-354         \textcolor{keywordflow}{if} self.use\_cuda:
-355             self.criterion.cuda()
-356 
-357         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'train'} \textcolor{keywordflow}{in} opt.get(\textcolor{stringliteral}{'datatype'}, \textcolor{stringliteral}{''}):
-358             self.init\_optim(
-359                 [p \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} self.model.parameters() \textcolor{keywordflow}{if} p.requires\_grad],
-360                 optim\_states=states.get(\textcolor{stringliteral}{'optimizer'}),
-361                 saved\_optim\_type=states.get(\textcolor{stringliteral}{'optimizer\_type'}),
-362             )
-363 
-364         self.reset()
-365 
-366         \textcolor{comment}{# If we are adding parameters for new CT controls, save and exit}
-367         \textcolor{keywordflow}{if} self.opt[\textcolor{stringliteral}{'add\_control'}]:
-368             self.save()
-369             print(\textcolor{stringliteral}{'Finished adding CT control parameters. Saved model. Quitting.'})
-370             exit()
-371 
+273     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
+274         \textcolor{stringliteral}{"""}
+275 \textcolor{stringliteral}{        Set up model.}
+276 \textcolor{stringliteral}{        """}
+277         init\_model = \textcolor{keywordtype}{None}
+278         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} shared:  \textcolor{comment}{# only do this on first setup}
+279             \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controls_aafbe257df1791349439cc63c99de8b5e}{initialize\_control\_information}(opt)
+280             \textcolor{comment}{# first check load path in case we need to override paths}
+281             \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'init\_model'}) \textcolor{keywordflow}{and} os.path.isfile(opt[\textcolor{stringliteral}{'init\_model'}]):
+282                 \textcolor{comment}{# check first for 'init\_model' for loading model from file}
+283                 init\_model = opt[\textcolor{stringliteral}{'init\_model'}]
+284             \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'model\_file'}) \textcolor{keywordflow}{and} os.path.isfile(opt[\textcolor{stringliteral}{'model\_file'}]):
+285                 \textcolor{comment}{# next check for 'model\_file', this would override init\_model}
+286                 init\_model = opt[\textcolor{stringliteral}{'model\_file'}]
+287 
+288             \textcolor{keywordflow}{if} init\_model \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+289                 \textcolor{comment}{# if we are loading a model, should load its dict too}
+290                 \textcolor{keywordflow}{if} os.path.isfile(init\_model + \textcolor{stringliteral}{'.dict'}) \textcolor{keywordflow}{or} opt[\textcolor{stringliteral}{'dict\_file'}] \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+291                     opt[\textcolor{stringliteral}{'dict\_file'}] = init\_model + \textcolor{stringliteral}{'.dict'}
+292         super().\_\_init\_\_(opt, shared)
+293         opt = self.opt
+294         \textcolor{keyword}{assert} opt[\textcolor{stringliteral}{'person\_tokens'}]  \textcolor{comment}{# want this for ConvAI2}
+295         \textcolor{keyword}{assert} opt[\textcolor{stringliteral}{'add\_p1\_after\_newln'}]  \textcolor{comment}{# want this for ConvAI2}
+296 
+297         \textcolor{comment}{# all instances may need some params}
+298         self.id = \textcolor{stringliteral}{'Seq2Seq'}
+299         self.multigpu = (
+300             opt.get(\textcolor{stringliteral}{'multigpu'}) \textcolor{keywordflow}{and} self.use\_cuda \textcolor{keywordflow}{and} (opt.get(\textcolor{stringliteral}{'batchsize'}) > 1)
+301         )
+302         states = \{\}
+303 
+304         self.beam\_dot\_log = opt.get(\textcolor{stringliteral}{'beam\_dot\_log'}, \textcolor{keyword}{False})
+305         self.beam\_size = opt.get(\textcolor{stringliteral}{'beam\_size'}, 1)
+306         self.beam\_min\_n\_best = opt.get(\textcolor{stringliteral}{'beam\_min\_n\_best'}, 3)
+307         self.beam\_min\_length = opt.get(\textcolor{stringliteral}{'beam\_min\_length'}, 3)
+308         self.beam\_block\_ngram = opt.get(\textcolor{stringliteral}{'beam\_block\_ngram'}, 0)
+309 
+310         self.\_init\_controls()
+311 
+312         \textcolor{keywordflow}{if} shared:
+313             \textcolor{comment}{# set up shared properties}
+314             self.model = shared[\textcolor{stringliteral}{'model'}]
+315             self.metrics = shared[\textcolor{stringliteral}{'metrics'}]
+316             states = shared.get(\textcolor{stringliteral}{'states'}, \{\})
+317         \textcolor{keywordflow}{else}:
+318             self.metrics = \{
+319                 \textcolor{stringliteral}{'loss'}: 0.0,
+320                 \textcolor{stringliteral}{'num\_tokens'}: 0,
+321                 \textcolor{stringliteral}{'correct\_tokens'}: 0,
+322                 \textcolor{stringliteral}{'total\_skipped\_batches'}: 0,
+323             \}
+324             \textcolor{comment}{# this is not a shared instance of this class, so do full init}
+325             \textcolor{keywordflow}{if} self.beam\_dot\_log:
+326                 self.beam\_dot\_dir = tempfile.mkdtemp(
+327                     prefix=\textcolor{stringliteral}{'\{\}-beamdot-beamsize-\{\}-'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+328                         os.path.basename(opt.get(\textcolor{stringliteral}{'model\_file'})), self.beam\_size
+329                     )
+330                 )
+331                 print(\textcolor{stringliteral}{'[ Saving dot beam logs in \{\} ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.beam\_dot\_dir))
+332             \textcolor{keywordflow}{if} init\_model \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+333                 \textcolor{comment}{# load model parameters if available}
+334                 print(\textcolor{stringliteral}{'[ Loading existing model params from \{\} ]'} \textcolor{stringliteral}{''}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(init\_model))
+335                 states = self.load(init\_model)
+336 
+337             self.model = self.build\_model(states=states)
+338             \textcolor{keywordflow}{if} self.use\_cuda:
+339                 self.model.cuda()
+340                 \textcolor{keywordflow}{if} self.multigpu:
+341                     self.model = torch.nn.DataParallel(self.model)
+342                     self.model.encoder = self.model.module.encoder
+343                     self.model.decoder = self.model.module.decoder
+344                     self.model.longest\_label = self.model.module.longest\_label
+345                     self.model.output = self.model.module.output
+346 
+347         \textcolor{comment}{# set up criteria}
+348         \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'numsoftmax'}, 1) > 1:
+349             self.criterion = nn.NLLLoss(ignore\_index=self.NULL\_IDX, reduction=\textcolor{stringliteral}{'sum'})
+350         \textcolor{keywordflow}{else}:
+351             self.criterion = nn.CrossEntropyLoss(
+352                 ignore\_index=self.NULL\_IDX, reduction=\textcolor{stringliteral}{'sum'}
+353             )
+354 
+355         \textcolor{keywordflow}{if} self.use\_cuda:
+356             self.criterion.cuda()
+357 
+358         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'train'} \textcolor{keywordflow}{in} opt.get(\textcolor{stringliteral}{'datatype'}, \textcolor{stringliteral}{''}):
+359             self.init\_optim(
+360                 [p \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} self.model.parameters() \textcolor{keywordflow}{if} p.requires\_grad],
+361                 optim\_states=states.get(\textcolor{stringliteral}{'optimizer'}),
+362                 saved\_optim\_type=states.get(\textcolor{stringliteral}{'optimizer\_type'}),
+363             )
+364 
+365         self.reset()
+366 
+367         \textcolor{comment}{# If we are adding parameters for new CT controls, save and exit}
+368         \textcolor{keywordflow}{if} self.opt[\textcolor{stringliteral}{'add\_control'}]:
+369             self.save()
+370             print(\textcolor{stringliteral}{'Finished adding CT control parameters. Saved model. Quitting.'})
+371             exit()
+372 
 \end{DoxyCode}
 
 
@@ -245,213 +244,213 @@ Definition at line 272 of file controllable\+\_\+seq2seq.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 58 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 59 of file controllable\+\_\+seq2seq.\+py.
 
 
 \begin{DoxyCode}
-58     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(cls, argparser):
-59         \textcolor{stringliteral}{"""}
-60 \textcolor{stringliteral}{        Add command-line arguments specifically for this agent.}
-61 \textcolor{stringliteral}{        """}
-62         agent = argparser.add\_argument\_group(\textcolor{stringliteral}{'ControllableSeq2seqAgent Arguments'})
-63         agent.add\_argument(
-64             \textcolor{stringliteral}{'--init-model'},
-65             type=str,
-66             default=\textcolor{keywordtype}{None},
-67             help=\textcolor{stringliteral}{'load dict/model/opts from this path'},
-68         )
-69         agent.add\_argument(
-70             \textcolor{stringliteral}{'-hs'},
-71             \textcolor{stringliteral}{'--hiddensize'},
-72             type=int,
-73             default=128,
-74             help=\textcolor{stringliteral}{'size of the hidden layers'},
-75         )
-76         agent.add\_argument(
-77             \textcolor{stringliteral}{'-esz'},
-78             \textcolor{stringliteral}{'--embeddingsize'},
-79             type=int,
-80             default=128,
-81             help=\textcolor{stringliteral}{'size of the token embeddings'},
-82         )
-83         agent.add\_argument(
-84             \textcolor{stringliteral}{'-nl'}, \textcolor{stringliteral}{'--numlayers'}, type=int, default=2, help=\textcolor{stringliteral}{'number of hidden layers'}
-85         )
-86         agent.add\_argument(
-87             \textcolor{stringliteral}{'-dr'}, \textcolor{stringliteral}{'--dropout'}, type=float, default=0.1, help=\textcolor{stringliteral}{'dropout rate'}
-88         )
-89         agent.add\_argument(
-90             \textcolor{stringliteral}{'-bi'},
-91             \textcolor{stringliteral}{'--bidirectional'},
-92             type=\textcolor{stringliteral}{'bool'},
-93             default=\textcolor{keyword}{False},
-94             help=\textcolor{stringliteral}{'whether to encode the context with a '} \textcolor{stringliteral}{'bidirectional rnn'},
-95         )
-96         agent.add\_argument(
-97             \textcolor{stringliteral}{'-att'},
-98             \textcolor{stringliteral}{'--attention'},
-99             default=\textcolor{stringliteral}{'none'},
-100             choices=[\textcolor{stringliteral}{'none'}, \textcolor{stringliteral}{'concat'}, \textcolor{stringliteral}{'general'}, \textcolor{stringliteral}{'dot'}, \textcolor{stringliteral}{'local'}],
-101             help=\textcolor{stringliteral}{'Choices: none, concat, general, local. '}
-102             \textcolor{stringliteral}{'If set local, also set attention-length. '}
-103             \textcolor{stringliteral}{'(see arxiv.org/abs/1508.04025)'},
-104         )
-105         agent.add\_argument(
-106             \textcolor{stringliteral}{'-attl'},
-107             \textcolor{stringliteral}{'--attention-length'},
-108             default=48,
-109             type=int,
-110             help=\textcolor{stringliteral}{'Length of local attention.'},
-111         )
-112         agent.add\_argument(
-113             \textcolor{stringliteral}{'--attention-time'},
-114             default=\textcolor{stringliteral}{'post'},
-115             choices=[\textcolor{stringliteral}{'pre'}, \textcolor{stringliteral}{'post'}],
-116             help=\textcolor{stringliteral}{'Whether to apply attention before or after '} \textcolor{stringliteral}{'decoding.'},
-117         )
-118         agent.add\_argument(
-119             \textcolor{stringliteral}{'-rnn'},
-120             \textcolor{stringliteral}{'--rnn-class'},
-121             default=\textcolor{stringliteral}{'lstm'},
-122             choices=Seq2seq.RNN\_OPTS.keys(),
-123             help=\textcolor{stringliteral}{'Choose between different types of RNNs.'},
-124         )
-125         agent.add\_argument(
-126             \textcolor{stringliteral}{'-dec'},
-127             \textcolor{stringliteral}{'--decoder'},
-128             default=\textcolor{stringliteral}{'same'},
-129             choices=[\textcolor{stringliteral}{'same'}, \textcolor{stringliteral}{'shared'}],
-130             help=\textcolor{stringliteral}{'Choose between different decoder modules. '}
-131             \textcolor{stringliteral}{'Default "same" uses same class as encoder, '}
-132             \textcolor{stringliteral}{'while "shared" also uses the same weights. '}
-133             \textcolor{stringliteral}{'Note that shared disabled some encoder '}
-134             \textcolor{stringliteral}{'options--in particular, bidirectionality.'},
-135         )
-136         agent.add\_argument(
-137             \textcolor{stringliteral}{'-lt'},
-138             \textcolor{stringliteral}{'--lookuptable'},
-139             default=\textcolor{stringliteral}{'unique'},
-140             choices=[\textcolor{stringliteral}{'unique'}, \textcolor{stringliteral}{'enc\_dec'}, \textcolor{stringliteral}{'dec\_out'}, \textcolor{stringliteral}{'all'}],
-141             help=\textcolor{stringliteral}{'The encoder, decoder, and output modules can '}
-142             \textcolor{stringliteral}{'share weights, or not. '}
-143             \textcolor{stringliteral}{'Unique has independent embeddings for each. '}
-144             \textcolor{stringliteral}{'Enc\_dec shares the embedding for the encoder '}
-145             \textcolor{stringliteral}{'and decoder. '}
-146             \textcolor{stringliteral}{'Dec\_out shares decoder embedding and output '}
-147             \textcolor{stringliteral}{'weights. '}
-148             \textcolor{stringliteral}{'All shares all three weights.'},
-149         )
-150         agent.add\_argument(
-151             \textcolor{stringliteral}{'-soft'},
-152             \textcolor{stringliteral}{'--numsoftmax'},
-153             default=1,
-154             type=int,
-155             help=\textcolor{stringliteral}{'default 1, if greater then uses mixture of '}
-156             \textcolor{stringliteral}{'softmax (see arxiv.org/abs/1711.03953).'},
-157         )
-158         agent.add\_argument(
-159             \textcolor{stringliteral}{'--beam-size'},
-160             type=int,
-161             default=1,
-162             help=\textcolor{stringliteral}{'Beam size, if 1 then greedy search'},
-163         )
-164         agent.add\_argument(
-165             \textcolor{stringliteral}{'--beam-dot-log'},
-166             type=\textcolor{stringliteral}{'bool'},
-167             default=\textcolor{keyword}{False},
-168             help=\textcolor{stringliteral}{'Dump beam trees as png dot images into /tmp folder'},
-169         )
-170         agent.add\_argument(
-171             \textcolor{stringliteral}{'--beam-min-n-best'},
-172             type=int,
-173             default=3,
-174             help=\textcolor{stringliteral}{'Minimum number of nbest candidates to achieve '}
-175             \textcolor{stringliteral}{'during the beam search'},
-176         )
-177         agent.add\_argument(
-178             \textcolor{stringliteral}{'--beam-min-length'},
-179             type=int,
-180             default=3,
-181             help=\textcolor{stringliteral}{'Minimum length of prediction to be generated by '} \textcolor{stringliteral}{'the beam search'},
-182         )
-183         agent.add\_argument(
-184             \textcolor{stringliteral}{'-idr'},
-185             \textcolor{stringliteral}{'--input-dropout'},
-186             type=float,
-187             default=0.0,
-188             help=\textcolor{stringliteral}{'Each token from the input will be masked with'}
-189             \textcolor{stringliteral}{' \_\_unk\_\_ token with this probability.'},
-190         )
-191         agent.add\_argument(
-192             \textcolor{stringliteral}{'--beam-block-ngram'},
-193             type=int,
-194             default=0,
-195             help=\textcolor{stringliteral}{'Block all repeating ngrams up to history length n-1'},
-196         )
-197         agent.add\_argument(
-198             \textcolor{stringliteral}{'-cv'},
-199             \textcolor{stringliteral}{'--control-vars'},
-200             type=str,
-201             default=\textcolor{stringliteral}{''},
-202             help=\textcolor{stringliteral}{'Comma-separated list of control variables to use'},
-203         )
-204         agent.add\_argument(
-205             \textcolor{stringliteral}{'-cnb'},
-206             \textcolor{stringliteral}{'--control-num-buckets'},
-207             type=str,
-208             default=\textcolor{stringliteral}{''},
-209             help=\textcolor{stringliteral}{'Number of buckets for each of the control variables'},
-210         )
-211         agent.add\_argument(
-212             \textcolor{stringliteral}{'-cesz'},
-213             \textcolor{stringliteral}{'--control-embeddingsize'},
-214             type=str,
-215             default=\textcolor{stringliteral}{''},
-216             help=\textcolor{stringliteral}{'Sizes for the control variable embeddings'},
-217         )
-218         agent.add\_argument(
-219             \textcolor{stringliteral}{'--add-control'},
-220             type=\textcolor{stringliteral}{'bool'},
-221             default=\textcolor{keyword}{False},
-222             help=\textcolor{stringliteral}{'If True, takes an existing saved model, adds necessary'}
-223             \textcolor{stringliteral}{'parameters for new CT controls, and saves in a new model '}
-224             \textcolor{stringliteral}{'file'},
-225         )
-226         agent.add\_argument(
-227             \textcolor{stringliteral}{'--set-controls'},
-228             type=str,
-229             default=\textcolor{stringliteral}{''},
-230             help=\textcolor{stringliteral}{'Specify fixed settings for CT control variables. '}
-231             \textcolor{stringliteral}{'For example, avg\_niwf:6'},
-232         )
-233         agent.add\_argument(
-234             \textcolor{stringliteral}{'--beam-reorder'},
-235             default=\textcolor{stringliteral}{'none'},
-236             choices=[\textcolor{stringliteral}{'none'}, \textcolor{stringliteral}{'best\_extrep2gram\_qn'}],
-237             help=\textcolor{stringliteral}{'Choices: none, best\_extrep2gram\_qn.'}
-238             \textcolor{stringliteral}{'Apply the specified function for reordering the '}
-239             \textcolor{stringliteral}{'n-best beam search candidates. '}
-240             \textcolor{stringliteral}{'If best\_extrep2gram\_qn, then pick candidate which '}
-241             \textcolor{stringliteral}{'contains question mark and has lowest extrep\_2gram'},
-242         )
-243         agent.add\_argument(
-244             \textcolor{stringliteral}{'-wd'},
-245             \textcolor{stringliteral}{'--weighted-decoding'},
-246             type=str,
-247             default=\textcolor{stringliteral}{''},
-248             help=\textcolor{stringliteral}{'List of WD features and their corresponding weights '}
-249             \textcolor{stringliteral}{'For example, intrep\_word:-1,extrep\_2gram:-1,nidf:3'},
-250         )
-251         agent.add\_argument(
-252             \textcolor{stringliteral}{'--verbose'},
-253             type=\textcolor{stringliteral}{'bool'},
-254             default=\textcolor{keyword}{False},
-255             help=\textcolor{stringliteral}{'If true, print out beam search info'},
-256         )
-257         TorchAgent.add\_cmdline\_args(argparser)
-258         ControllableSeq2seqAgent.dictionary\_class().\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(argparser)
-259         \textcolor{keywordflow}{return} agent
-260 
+59     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(cls, argparser):
+60         \textcolor{stringliteral}{"""}
+61 \textcolor{stringliteral}{        Add command-line arguments specifically for this agent.}
+62 \textcolor{stringliteral}{        """}
+63         agent = argparser.add\_argument\_group(\textcolor{stringliteral}{'ControllableSeq2seqAgent Arguments'})
+64         agent.add\_argument(
+65             \textcolor{stringliteral}{'--init-model'},
+66             type=str,
+67             default=\textcolor{keywordtype}{None},
+68             help=\textcolor{stringliteral}{'load dict/model/opts from this path'},
+69         )
+70         agent.add\_argument(
+71             \textcolor{stringliteral}{'-hs'},
+72             \textcolor{stringliteral}{'--hiddensize'},
+73             type=int,
+74             default=128,
+75             help=\textcolor{stringliteral}{'size of the hidden layers'},
+76         )
+77         agent.add\_argument(
+78             \textcolor{stringliteral}{'-esz'},
+79             \textcolor{stringliteral}{'--embeddingsize'},
+80             type=int,
+81             default=128,
+82             help=\textcolor{stringliteral}{'size of the token embeddings'},
+83         )
+84         agent.add\_argument(
+85             \textcolor{stringliteral}{'-nl'}, \textcolor{stringliteral}{'--numlayers'}, type=int, default=2, help=\textcolor{stringliteral}{'number of hidden layers'}
+86         )
+87         agent.add\_argument(
+88             \textcolor{stringliteral}{'-dr'}, \textcolor{stringliteral}{'--dropout'}, type=float, default=0.1, help=\textcolor{stringliteral}{'dropout rate'}
+89         )
+90         agent.add\_argument(
+91             \textcolor{stringliteral}{'-bi'},
+92             \textcolor{stringliteral}{'--bidirectional'},
+93             type=\textcolor{stringliteral}{'bool'},
+94             default=\textcolor{keyword}{False},
+95             help=\textcolor{stringliteral}{'whether to encode the context with a '} \textcolor{stringliteral}{'bidirectional rnn'},
+96         )
+97         agent.add\_argument(
+98             \textcolor{stringliteral}{'-att'},
+99             \textcolor{stringliteral}{'--attention'},
+100             default=\textcolor{stringliteral}{'none'},
+101             choices=[\textcolor{stringliteral}{'none'}, \textcolor{stringliteral}{'concat'}, \textcolor{stringliteral}{'general'}, \textcolor{stringliteral}{'dot'}, \textcolor{stringliteral}{'local'}],
+102             help=\textcolor{stringliteral}{'Choices: none, concat, general, local. '}
+103             \textcolor{stringliteral}{'If set local, also set attention-length. '}
+104             \textcolor{stringliteral}{'(see arxiv.org/abs/1508.04025)'},
+105         )
+106         agent.add\_argument(
+107             \textcolor{stringliteral}{'-attl'},
+108             \textcolor{stringliteral}{'--attention-length'},
+109             default=48,
+110             type=int,
+111             help=\textcolor{stringliteral}{'Length of local attention.'},
+112         )
+113         agent.add\_argument(
+114             \textcolor{stringliteral}{'--attention-time'},
+115             default=\textcolor{stringliteral}{'post'},
+116             choices=[\textcolor{stringliteral}{'pre'}, \textcolor{stringliteral}{'post'}],
+117             help=\textcolor{stringliteral}{'Whether to apply attention before or after '} \textcolor{stringliteral}{'decoding.'},
+118         )
+119         agent.add\_argument(
+120             \textcolor{stringliteral}{'-rnn'},
+121             \textcolor{stringliteral}{'--rnn-class'},
+122             default=\textcolor{stringliteral}{'lstm'},
+123             choices=Seq2seq.RNN\_OPTS.keys(),
+124             help=\textcolor{stringliteral}{'Choose between different types of RNNs.'},
+125         )
+126         agent.add\_argument(
+127             \textcolor{stringliteral}{'-dec'},
+128             \textcolor{stringliteral}{'--decoder'},
+129             default=\textcolor{stringliteral}{'same'},
+130             choices=[\textcolor{stringliteral}{'same'}, \textcolor{stringliteral}{'shared'}],
+131             help=\textcolor{stringliteral}{'Choose between different decoder modules. '}
+132             \textcolor{stringliteral}{'Default "same" uses same class as encoder, '}
+133             \textcolor{stringliteral}{'while "shared" also uses the same weights. '}
+134             \textcolor{stringliteral}{'Note that shared disabled some encoder '}
+135             \textcolor{stringliteral}{'options--in particular, bidirectionality.'},
+136         )
+137         agent.add\_argument(
+138             \textcolor{stringliteral}{'-lt'},
+139             \textcolor{stringliteral}{'--lookuptable'},
+140             default=\textcolor{stringliteral}{'unique'},
+141             choices=[\textcolor{stringliteral}{'unique'}, \textcolor{stringliteral}{'enc\_dec'}, \textcolor{stringliteral}{'dec\_out'}, \textcolor{stringliteral}{'all'}],
+142             help=\textcolor{stringliteral}{'The encoder, decoder, and output modules can '}
+143             \textcolor{stringliteral}{'share weights, or not. '}
+144             \textcolor{stringliteral}{'Unique has independent embeddings for each. '}
+145             \textcolor{stringliteral}{'Enc\_dec shares the embedding for the encoder '}
+146             \textcolor{stringliteral}{'and decoder. '}
+147             \textcolor{stringliteral}{'Dec\_out shares decoder embedding and output '}
+148             \textcolor{stringliteral}{'weights. '}
+149             \textcolor{stringliteral}{'All shares all three weights.'},
+150         )
+151         agent.add\_argument(
+152             \textcolor{stringliteral}{'-soft'},
+153             \textcolor{stringliteral}{'--numsoftmax'},
+154             default=1,
+155             type=int,
+156             help=\textcolor{stringliteral}{'default 1, if greater then uses mixture of '}
+157             \textcolor{stringliteral}{'softmax (see arxiv.org/abs/1711.03953).'},
+158         )
+159         agent.add\_argument(
+160             \textcolor{stringliteral}{'--beam-size'},
+161             type=int,
+162             default=1,
+163             help=\textcolor{stringliteral}{'Beam size, if 1 then greedy search'},
+164         )
+165         agent.add\_argument(
+166             \textcolor{stringliteral}{'--beam-dot-log'},
+167             type=\textcolor{stringliteral}{'bool'},
+168             default=\textcolor{keyword}{False},
+169             help=\textcolor{stringliteral}{'Dump beam trees as png dot images into /tmp folder'},
+170         )
+171         agent.add\_argument(
+172             \textcolor{stringliteral}{'--beam-min-n-best'},
+173             type=int,
+174             default=3,
+175             help=\textcolor{stringliteral}{'Minimum number of nbest candidates to achieve '}
+176             \textcolor{stringliteral}{'during the beam search'},
+177         )
+178         agent.add\_argument(
+179             \textcolor{stringliteral}{'--beam-min-length'},
+180             type=int,
+181             default=3,
+182             help=\textcolor{stringliteral}{'Minimum length of prediction to be generated by '} \textcolor{stringliteral}{'the beam search'},
+183         )
+184         agent.add\_argument(
+185             \textcolor{stringliteral}{'-idr'},
+186             \textcolor{stringliteral}{'--input-dropout'},
+187             type=float,
+188             default=0.0,
+189             help=\textcolor{stringliteral}{'Each token from the input will be masked with'}
+190             \textcolor{stringliteral}{' \_\_unk\_\_ token with this probability.'},
+191         )
+192         agent.add\_argument(
+193             \textcolor{stringliteral}{'--beam-block-ngram'},
+194             type=int,
+195             default=0,
+196             help=\textcolor{stringliteral}{'Block all repeating ngrams up to history length n-1'},
+197         )
+198         agent.add\_argument(
+199             \textcolor{stringliteral}{'-cv'},
+200             \textcolor{stringliteral}{'--control-vars'},
+201             type=str,
+202             default=\textcolor{stringliteral}{''},
+203             help=\textcolor{stringliteral}{'Comma-separated list of control variables to use'},
+204         )
+205         agent.add\_argument(
+206             \textcolor{stringliteral}{'-cnb'},
+207             \textcolor{stringliteral}{'--control-num-buckets'},
+208             type=str,
+209             default=\textcolor{stringliteral}{''},
+210             help=\textcolor{stringliteral}{'Number of buckets for each of the control variables'},
+211         )
+212         agent.add\_argument(
+213             \textcolor{stringliteral}{'-cesz'},
+214             \textcolor{stringliteral}{'--control-embeddingsize'},
+215             type=str,
+216             default=\textcolor{stringliteral}{''},
+217             help=\textcolor{stringliteral}{'Sizes for the control variable embeddings'},
+218         )
+219         agent.add\_argument(
+220             \textcolor{stringliteral}{'--add-control'},
+221             type=\textcolor{stringliteral}{'bool'},
+222             default=\textcolor{keyword}{False},
+223             help=\textcolor{stringliteral}{'If True, takes an existing saved model, adds necessary'}
+224             \textcolor{stringliteral}{'parameters for new CT controls, and saves in a new model '}
+225             \textcolor{stringliteral}{'file'},
+226         )
+227         agent.add\_argument(
+228             \textcolor{stringliteral}{'--set-controls'},
+229             type=str,
+230             default=\textcolor{stringliteral}{''},
+231             help=\textcolor{stringliteral}{'Specify fixed settings for CT control variables. '}
+232             \textcolor{stringliteral}{'For example, avg\_niwf:6'},
+233         )
+234         agent.add\_argument(
+235             \textcolor{stringliteral}{'--beam-reorder'},
+236             default=\textcolor{stringliteral}{'none'},
+237             choices=[\textcolor{stringliteral}{'none'}, \textcolor{stringliteral}{'best\_extrep2gram\_qn'}],
+238             help=\textcolor{stringliteral}{'Choices: none, best\_extrep2gram\_qn.'}
+239             \textcolor{stringliteral}{'Apply the specified function for reordering the '}
+240             \textcolor{stringliteral}{'n-best beam search candidates. '}
+241             \textcolor{stringliteral}{'If best\_extrep2gram\_qn, then pick candidate which '}
+242             \textcolor{stringliteral}{'contains question mark and has lowest extrep\_2gram'},
+243         )
+244         agent.add\_argument(
+245             \textcolor{stringliteral}{'-wd'},
+246             \textcolor{stringliteral}{'--weighted-decoding'},
+247             type=str,
+248             default=\textcolor{stringliteral}{''},
+249             help=\textcolor{stringliteral}{'List of WD features and their corresponding weights '}
+250             \textcolor{stringliteral}{'For example, intrep\_word:-1,extrep\_2gram:-1,nidf:3'},
+251         )
+252         agent.add\_argument(
+253             \textcolor{stringliteral}{'--verbose'},
+254             type=\textcolor{stringliteral}{'bool'},
+255             default=\textcolor{keyword}{False},
+256             help=\textcolor{stringliteral}{'If true, print out beam search info'},
+257         )
+258         TorchAgent.add\_cmdline\_args(argparser)
+259         ControllableSeq2seqAgent.dictionary\_class().\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(argparser)
+260         \textcolor{keywordflow}{return} agent
+261 
 \end{DoxyCode}
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a9d31c040b479d9cfeaeecc19a98985ee}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a9d31c040b479d9cfeaeecc19a98985ee}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!batchify@{batchify}}
@@ -463,66 +462,66 @@ Definition at line 58 of file controllable\+\_\+seq2seq.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 652 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 653 of file controllable\+\_\+seq2seq.\+py.
 
 
 \begin{DoxyCode}
-652     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_aca22dd97c5b6dcda2a7479c1cb22ef1e}{batchify}(self, *args, **kwargs):
-653         \textcolor{stringliteral}{"""}
-654 \textcolor{stringliteral}{        Override batchify options for seq2seq.}
-655 \textcolor{stringliteral}{        """}
-656         kwargs[\textcolor{stringliteral}{'sort'}] = \textcolor{keyword}{True}  \textcolor{comment}{# need sorted for pack\_padded}
-657         batch = super().\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_aca22dd97c5b6dcda2a7479c1cb22ef1e}{batchify}(*args, **kwargs)
-658 
-659         \textcolor{comment}{# Get some args needed for batchify}
-660         obs\_batch = args[0]
-661         sort = kwargs[\textcolor{stringliteral}{'sort'}]
-662         is\_valid = (
-663             \textcolor{keyword}{lambda} obs: \textcolor{stringliteral}{'text\_vec'} \textcolor{keywordflow}{in} obs \textcolor{keywordflow}{or} \textcolor{stringliteral}{'image'} \textcolor{keywordflow}{in} obs
-664         )  \textcolor{comment}{# from TorchAgent.batchify}
-665 
-666         \textcolor{comment}{# Run this part of TorchAgent's batchify to get exs in correct order}
-667 
-668         \textcolor{comment}{# ==================== START COPIED FROM TORCHAGENT ===================}
-669         \textcolor{keywordflow}{if} len(obs\_batch) == 0:
-670             \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1torch__agent__v1_a74cfde390a2b9861179ac0fcd59da28c}{Batch}()
-671 
-672         valid\_obs = [(i, ex) \textcolor{keywordflow}{for} i, ex \textcolor{keywordflow}{in} enumerate(obs\_batch) \textcolor{keywordflow}{if} is\_valid(ex)]
-673 
-674         \textcolor{keywordflow}{if} len(valid\_obs) == 0:
-675             \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1torch__agent__v1_a74cfde390a2b9861179ac0fcd59da28c}{Batch}()
-676 
-677         valid\_inds, exs = zip(*valid\_obs)
-678 
-679         \textcolor{comment}{# TEXT}
-680         xs, x\_lens = \textcolor{keywordtype}{None}, \textcolor{keywordtype}{None}
-681         \textcolor{keywordflow}{if} any(\textcolor{stringliteral}{'text\_vec'} \textcolor{keywordflow}{in} ex \textcolor{keywordflow}{for} ex \textcolor{keywordflow}{in} exs):
-682             \_xs = [ex.get(\textcolor{stringliteral}{'text\_vec'}, self.EMPTY) \textcolor{keywordflow}{for} ex \textcolor{keywordflow}{in} exs]
-683             xs, x\_lens = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v1_adb5a414ae439f14c54e8c760b91cc4c8}{padded\_tensor}(\_xs, self.NULL\_IDX, self.use\_cuda)
-684             \textcolor{keywordflow}{if} sort:
-685                 sort = \textcolor{keyword}{False}  \textcolor{comment}{# now we won't sort on labels}
-686                 xs, x\_lens, valid\_inds, exs = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v1_a1521e559b740f741ebb47b8755202bb2}{argsort}(
-687                     x\_lens, xs, x\_lens, valid\_inds, exs, descending=\textcolor{keyword}{True}
-688                 )
-689 
-690         \textcolor{comment}{# ======== END COPIED FROM TORCHAGENT ========}
-691 
-692         \textcolor{comment}{# Add history to the batch}
-693         history = [ConvAI2History(ex[\textcolor{stringliteral}{'full\_text'}], dictionary=self.dict) \textcolor{keywordflow}{for} ex \textcolor{keywordflow}{in} exs]
-694 
-695         \textcolor{comment}{# Add CT control vars to batch}
-696         ctrl\_vec = \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controls_a3057eb90e6aeff3fbf2c89c7e003aea0}{get\_ctrl\_vec}(exs, history, self.control\_settings)  \textcolor{comment}{# tensor or None}
-697         \textcolor{keywordflow}{if} self.use\_cuda \textcolor{keywordflow}{and} ctrl\_vec \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-698             ctrl\_vec = ctrl\_vec.cuda()
-699 
-700         \textcolor{comment}{# Replace the old namedtuple with a new one that includes ctrl\_vec and history}
-701         ControlBatch = namedtuple(
-702             \textcolor{stringliteral}{'Batch'}, tuple(batch.keys()) + (\textcolor{stringliteral}{'ctrl\_vec'}, \textcolor{stringliteral}{'history'})
-703         )
-704         batch = ControlBatch(ctrl\_vec=ctrl\_vec, history=history, **dict(batch))
-705 
-706         \textcolor{keywordflow}{return} batch
-707 
+653     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_aca22dd97c5b6dcda2a7479c1cb22ef1e}{batchify}(self, *args, **kwargs):
+654         \textcolor{stringliteral}{"""}
+655 \textcolor{stringliteral}{        Override batchify options for seq2seq.}
+656 \textcolor{stringliteral}{        """}
+657         kwargs[\textcolor{stringliteral}{'sort'}] = \textcolor{keyword}{True}  \textcolor{comment}{# need sorted for pack\_padded}
+658         batch = super().\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_aca22dd97c5b6dcda2a7479c1cb22ef1e}{batchify}(*args, **kwargs)
+659 
+660         \textcolor{comment}{# Get some args needed for batchify}
+661         obs\_batch = args[0]
+662         sort = kwargs[\textcolor{stringliteral}{'sort'}]
+663         is\_valid = (
+664             \textcolor{keyword}{lambda} obs: \textcolor{stringliteral}{'text\_vec'} \textcolor{keywordflow}{in} obs \textcolor{keywordflow}{or} \textcolor{stringliteral}{'image'} \textcolor{keywordflow}{in} obs
+665         )  \textcolor{comment}{# from TorchAgent.batchify}
+666 
+667         \textcolor{comment}{# Run this part of TorchAgent's batchify to get exs in correct order}
+668 
+669         \textcolor{comment}{# ==================== START COPIED FROM TORCHAGENT ===================}
+670         \textcolor{keywordflow}{if} len(obs\_batch) == 0:
+671             \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1torch__agent__v1_a74cfde390a2b9861179ac0fcd59da28c}{Batch}()
+672 
+673         valid\_obs = [(i, ex) \textcolor{keywordflow}{for} i, ex \textcolor{keywordflow}{in} enumerate(obs\_batch) \textcolor{keywordflow}{if} is\_valid(ex)]
+674 
+675         \textcolor{keywordflow}{if} len(valid\_obs) == 0:
+676             \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1torch__agent__v1_a74cfde390a2b9861179ac0fcd59da28c}{Batch}()
+677 
+678         valid\_inds, exs = zip(*valid\_obs)
+679 
+680         \textcolor{comment}{# TEXT}
+681         xs, x\_lens = \textcolor{keywordtype}{None}, \textcolor{keywordtype}{None}
+682         \textcolor{keywordflow}{if} any(\textcolor{stringliteral}{'text\_vec'} \textcolor{keywordflow}{in} ex \textcolor{keywordflow}{for} ex \textcolor{keywordflow}{in} exs):
+683             \_xs = [ex.get(\textcolor{stringliteral}{'text\_vec'}, self.EMPTY) \textcolor{keywordflow}{for} ex \textcolor{keywordflow}{in} exs]
+684             xs, x\_lens = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v1_adb5a414ae439f14c54e8c760b91cc4c8}{padded\_tensor}(\_xs, self.NULL\_IDX, self.use\_cuda)
+685             \textcolor{keywordflow}{if} sort:
+686                 sort = \textcolor{keyword}{False}  \textcolor{comment}{# now we won't sort on labels}
+687                 xs, x\_lens, valid\_inds, exs = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v1_a1521e559b740f741ebb47b8755202bb2}{argsort}(
+688                     x\_lens, xs, x\_lens, valid\_inds, exs, descending=\textcolor{keyword}{True}
+689                 )
+690 
+691         \textcolor{comment}{# ======== END COPIED FROM TORCHAGENT ========}
+692 
+693         \textcolor{comment}{# Add history to the batch}
+694         history = [ConvAI2History(ex[\textcolor{stringliteral}{'full\_text'}], dictionary=self.dict) \textcolor{keywordflow}{for} ex \textcolor{keywordflow}{in} exs]
+695 
+696         \textcolor{comment}{# Add CT control vars to batch}
+697         ctrl\_vec = \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controls_a3057eb90e6aeff3fbf2c89c7e003aea0}{get\_ctrl\_vec}(exs, history, self.control\_settings)  \textcolor{comment}{# tensor or None}
+698         \textcolor{keywordflow}{if} self.use\_cuda \textcolor{keywordflow}{and} ctrl\_vec \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+699             ctrl\_vec = ctrl\_vec.cuda()
+700 
+701         \textcolor{comment}{# Replace the old namedtuple with a new one that includes ctrl\_vec and history}
+702         ControlBatch = namedtuple(
+703             \textcolor{stringliteral}{'Batch'}, tuple(batch.keys()) + (\textcolor{stringliteral}{'ctrl\_vec'}, \textcolor{stringliteral}{'history'})
+704         )
+705         batch = ControlBatch(ctrl\_vec=ctrl\_vec, history=history, **dict(batch))
+706 
+707         \textcolor{keywordflow}{return} batch
+708 
 \end{DoxyCode}
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_aabb638a2dd4fd89320f1904d5b0579f1}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_aabb638a2dd4fd89320f1904d5b0579f1}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!beam\+\_\+search@{beam\+\_\+search}}
@@ -561,203 +560,203 @@ This function uses model with the following reqs:
 \end{DoxyVerb}
  
 
-Definition at line 839 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 840 of file controllable\+\_\+seq2seq.\+py.
 
 
 \begin{DoxyCode}
-839     ):
-840         \textcolor{stringliteral}{"""}
-841 \textcolor{stringliteral}{        Beam search given the model and Batch.}
-842 \textcolor{stringliteral}{}
-843 \textcolor{stringliteral}{        This function uses model with the following reqs:}
-844 \textcolor{stringliteral}{}
-845 \textcolor{stringliteral}{        - model.encoder takes input returns tuple (enc\_out, enc\_hidden, attn\_mask)}
-846 \textcolor{stringliteral}{        - model.decoder takes decoder params and returns decoder outputs after attn}
-847 \textcolor{stringliteral}{        - model.output takes decoder outputs and returns distr over dictionary}
-848 \textcolor{stringliteral}{}
-849 \textcolor{stringliteral}{        :param model: nn.Module, here defined in modules.py}
-850 \textcolor{stringliteral}{        :param batch: Batch structure with input and labels}
-851 \textcolor{stringliteral}{        :param beam\_size: Size of each beam during the search}
-852 \textcolor{stringliteral}{        :param start: start of sequence token}
-853 \textcolor{stringliteral}{        :param end: end of sequence token}
-854 \textcolor{stringliteral}{        :param pad: padding token}
-855 \textcolor{stringliteral}{        :param min\_length: minimum length of the decoded sequence}
-856 \textcolor{stringliteral}{        :param min\_n\_best: minimum number of completed hypothesis generated}
-857 \textcolor{stringliteral}{            from each beam}
-858 \textcolor{stringliteral}{        :param max\_ts: the maximum length of the decoded sequence}
-859 \textcolor{stringliteral}{        :param wd\_features: list of strings, the WD features to use}
-860 \textcolor{stringliteral}{        :param wd\_weights: list of floats, the WD weights to use}
-861 \textcolor{stringliteral}{}
-862 \textcolor{stringliteral}{        :return:}
-863 \textcolor{stringliteral}{            - beam\_preds\_scores : list of tuples (prediction, score) for each}
-864 \textcolor{stringliteral}{              sample in Batch}
-865 \textcolor{stringliteral}{            - n\_best\_preds\_scores : list of n\_best list of tuples (prediction,}
-866 \textcolor{stringliteral}{              score) for each sample from Batch}
-867 \textcolor{stringliteral}{            - beams : list of Beam instances defined in Beam class, can be used}
-868 \textcolor{stringliteral}{              for any following postprocessing, e.g. dot logging.}
-869 \textcolor{stringliteral}{        """}
-870         \textcolor{keywordflow}{if} wd\_features \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-871             wd\_features = []
-872         \textcolor{keywordflow}{if} wd\_wts \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-873             wd\_wts = []
-874         encoder\_states = model.encoder(batch.text\_vec)
-875         enc\_out = encoder\_states[0]
-876         enc\_hidden = encoder\_states[1]
-877         attn\_mask = encoder\_states[2]
-878         current\_device = encoder\_states[0][0].device
-879         vocab\_size = len(dictionary)
-880 
-881         batch\_size = len(batch.text\_lengths)
-882         beams = [
-883             Beam(
-884                 beam\_size,
-885                 min\_length=min\_length,
-886                 padding\_token=pad,
-887                 bos\_token=start,
-888                 eos\_token=end,
-889                 min\_n\_best=min\_n\_best,
-890                 cuda=current\_device,
-891                 block\_ngram=block\_ngram,
-892             )
-893             \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(batch\_size)
-894         ]
-895         decoder\_input = (
-896             torch.Tensor([start])
-897             .detach()
-898             .expand(batch\_size, 1)
-899             .long()
-900             .to(current\_device)
-901         )
-902         \textcolor{comment}{# repeat encoder\_outputs, hiddens, attn\_mask}
-903         decoder\_input = decoder\_input.repeat(1, beam\_size).view(
-904             beam\_size * batch\_size, -1
-905         )
-906 
-907         \textcolor{comment}{# ctrl\_input is shape (bsz, num\_controls)}
-908         \textcolor{comment}{# we want it to be (bsz*beam\_size, num\_controls)}
-909         ctrl\_input = batch.ctrl\_vec
-910         \textcolor{keywordflow}{if} batch.ctrl\_vec \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-911             ctrl\_input = batch.ctrl\_vec.repeat(beam\_size, 1)
-912 
-913         enc\_out = (
-914             enc\_out.unsqueeze(1)
-915             .\hyperlink{namespacerepeat}{repeat}(1, beam\_size, 1, 1)
-916             .view(batch\_size * beam\_size, -1, enc\_out.size(-1))
-917         )
-918         attn\_mask = (
-919             encoder\_states[2]
-920             .\hyperlink{namespacerepeat}{repeat}(1, beam\_size)
-921             .view(attn\_mask.size(0) * beam\_size, -1)
-922         )
-923         repeated\_hiddens = []
-924         \textcolor{keywordflow}{if} isinstance(enc\_hidden, tuple):  \textcolor{comment}{# LSTM}
-925             \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(enc\_hidden)):
-926                 repeated\_hiddens.append(
-927                     enc\_hidden[i].unsqueeze(2).\hyperlink{namespacerepeat}{repeat}(1, 1, beam\_size, 1)
-928                 )
-929             num\_layers = enc\_hidden[0].size(0)
-930             hidden\_size = enc\_hidden[0].size(-1)
-931             enc\_hidden = tuple(
-932                 [
-933                     repeated\_hiddens[i].view(
-934                         num\_layers, batch\_size * beam\_size, hidden\_size
-935                     )
-936                     \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(repeated\_hiddens))
-937                 ]
-938             )
-939         \textcolor{keywordflow}{else}:  \textcolor{comment}{# GRU}
-940             num\_layers = enc\_hidden.size(0)
-941             hidden\_size = enc\_hidden.size(-1)
-942             enc\_hidden = (
-943                 enc\_hidden.unsqueeze(2)
-944                 .\hyperlink{namespacerepeat}{repeat}(1, 1, beam\_size, 1)
-945                 .view(num\_layers, batch\_size * beam\_size, hidden\_size)
-946             )
-947 
-948         hidden = enc\_hidden
-949         \textcolor{keywordflow}{for} ts \textcolor{keywordflow}{in} range(max\_ts):
-950             \textcolor{keywordflow}{if} all((b.done() \textcolor{keywordflow}{for} b \textcolor{keywordflow}{in} beams)):
-951                 \textcolor{keywordflow}{break}
-952             output, hidden = model.decoder(
-953                 decoder\_input, ctrl\_input, hidden, (enc\_out, attn\_mask)
-954             )
-955             score = model.output(output)
-956             \textcolor{comment}{# score contains softmax scores for batch\_size * beam\_size samples}
-957             score = score.view(batch\_size, beam\_size, -1)
-958             score = F.log\_softmax(score, dim=-1)
-959             \textcolor{keywordflow}{for} i, b \textcolor{keywordflow}{in} enumerate(beams):
-960                 \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} b.done():
-961                     scores\_in = score[i]
-962 
-963                     \textcolor{comment}{# If using WD, update scores\_in to reflect the WD features}
-964                     \textcolor{keywordflow}{if} len(wd\_features) > 0:
-965 
-966                         \textcolor{comment}{# Obtain wd\_feat\_vecs, the sum of the weighted features}
-967                         \textcolor{comment}{# across the whole vocabulary}
-968                         wd\_feat\_vecs = torch.zeros((beam\_size, vocab\_size))
-969                         \textcolor{keywordflow}{for} hyp\_idx \textcolor{keywordflow}{in} range(beam\_size):  \textcolor{comment}{# For each hypothesis}
-970 
-971                             \textcolor{comment}{# Get the partial hypothesis (None if first timestep)}
-972                             partial\_hyp = b.partial\_hyps[hyp\_idx] \textcolor{keywordflow}{if} ts > 0 \textcolor{keywordflow}{else} \textcolor{keywordtype}{None}
-973 
-974                             \textcolor{comment}{# Get the WD feature vector (a tensor) for this hypothesis}
-975                             wd\_feat\_vec = \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controls_a0324491b8ecb07aaf415e47d6575cbac}{get\_wd\_features}(
-976                                 dictionary,
-977                                 partial\_hyp,
-978                                 batch.history[i],
-979                                 wd\_features,
-980                                 wd\_wts,
-981                             )  \textcolor{comment}{# shape (vocab\_size)}
-982 
-983                             wd\_feat\_vecs[hyp\_idx, :] = wd\_feat\_vec
-984                         wd\_feat\_vecs = wd\_feat\_vecs.to(current\_device)
-985 
-986                         \textcolor{comment}{# Add the WD features to the log probability scores}
-987                         scores\_in = scores\_in + wd\_feat\_vecs
-988 
-989                     \textcolor{comment}{# Update the beam as usual}
-990                     b.advance(scores\_in)
-991 
-992             decoder\_input = torch.cat(
-993                 [b.get\_output\_from\_current\_step() \textcolor{keywordflow}{for} b \textcolor{keywordflow}{in} beams]
-994             ).unsqueeze(-1)
-995             permute\_hidden\_idx = torch.cat(
-996                 [
-997                     beam\_size * i + b.get\_backtrack\_from\_current\_step()
-998                     \textcolor{keywordflow}{for} i, b \textcolor{keywordflow}{in} enumerate(beams)
-999                 ]
-1000             )
-1001             \textcolor{comment}{# permute decoder hiddens with respect to chosen hypothesis now}
-1002             \textcolor{keywordflow}{if} isinstance(hidden, tuple):  \textcolor{comment}{# LSTM}
-1003                 \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(hidden)):
-1004                     hidden[i].data.copy\_(
-1005                         hidden[i].data.index\_select(dim=1, index=permute\_hidden\_idx)
-1006                     )
-1007             \textcolor{keywordflow}{else}:  \textcolor{comment}{# GRU}
-1008                 hidden.data.copy\_(
-1009                     hidden.data.index\_select(dim=1, index=permute\_hidden\_idx)
-1010                 )
-1011         \textcolor{keywordflow}{for} b \textcolor{keywordflow}{in} beams:
-1012             b.check\_finished()
-1013 
-1014         beam\_preds\_scores = [list(b.get\_top\_hyp()) \textcolor{keywordflow}{for} b \textcolor{keywordflow}{in} beams]
-1015         \textcolor{keywordflow}{for} pair \textcolor{keywordflow}{in} beam\_preds\_scores:
-1016             pair[0] = Beam.get\_pretty\_hypothesis(pair[0])
-1017 
-1018         n\_best\_beams = [b.get\_rescored\_finished(n\_best=min\_n\_best) \textcolor{keywordflow}{for} b \textcolor{keywordflow}{in} beams]
-1019         n\_best\_beam\_preds\_scores = []
-1020         \textcolor{keywordflow}{for} i, beamhyp \textcolor{keywordflow}{in} enumerate(n\_best\_beams):
-1021             this\_beam = []
-1022             \textcolor{keywordflow}{for} hyp \textcolor{keywordflow}{in} beamhyp:
-1023                 pred = beams[i].get\_pretty\_hypothesis(
-1024                     beams[i].get\_hyp\_from\_finished(hyp)
-1025                 )
-1026                 score = hyp.score
-1027                 this\_beam.append((pred, score))
-1028             n\_best\_beam\_preds\_scores.append(this\_beam)
-1029 
-1030         \textcolor{keywordflow}{return} beam\_preds\_scores, n\_best\_beam\_preds\_scores, beams
-1031 
+840     ):
+841         \textcolor{stringliteral}{"""}
+842 \textcolor{stringliteral}{        Beam search given the model and Batch.}
+843 \textcolor{stringliteral}{}
+844 \textcolor{stringliteral}{        This function uses model with the following reqs:}
+845 \textcolor{stringliteral}{}
+846 \textcolor{stringliteral}{        - model.encoder takes input returns tuple (enc\_out, enc\_hidden, attn\_mask)}
+847 \textcolor{stringliteral}{        - model.decoder takes decoder params and returns decoder outputs after attn}
+848 \textcolor{stringliteral}{        - model.output takes decoder outputs and returns distr over dictionary}
+849 \textcolor{stringliteral}{}
+850 \textcolor{stringliteral}{        :param model: nn.Module, here defined in modules.py}
+851 \textcolor{stringliteral}{        :param batch: Batch structure with input and labels}
+852 \textcolor{stringliteral}{        :param beam\_size: Size of each beam during the search}
+853 \textcolor{stringliteral}{        :param start: start of sequence token}
+854 \textcolor{stringliteral}{        :param end: end of sequence token}
+855 \textcolor{stringliteral}{        :param pad: padding token}
+856 \textcolor{stringliteral}{        :param min\_length: minimum length of the decoded sequence}
+857 \textcolor{stringliteral}{        :param min\_n\_best: minimum number of completed hypothesis generated}
+858 \textcolor{stringliteral}{            from each beam}
+859 \textcolor{stringliteral}{        :param max\_ts: the maximum length of the decoded sequence}
+860 \textcolor{stringliteral}{        :param wd\_features: list of strings, the WD features to use}
+861 \textcolor{stringliteral}{        :param wd\_weights: list of floats, the WD weights to use}
+862 \textcolor{stringliteral}{}
+863 \textcolor{stringliteral}{        :return:}
+864 \textcolor{stringliteral}{            - beam\_preds\_scores : list of tuples (prediction, score) for each}
+865 \textcolor{stringliteral}{              sample in Batch}
+866 \textcolor{stringliteral}{            - n\_best\_preds\_scores : list of n\_best list of tuples (prediction,}
+867 \textcolor{stringliteral}{              score) for each sample from Batch}
+868 \textcolor{stringliteral}{            - beams : list of Beam instances defined in Beam class, can be used}
+869 \textcolor{stringliteral}{              for any following postprocessing, e.g. dot logging.}
+870 \textcolor{stringliteral}{        """}
+871         \textcolor{keywordflow}{if} wd\_features \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+872             wd\_features = []
+873         \textcolor{keywordflow}{if} wd\_wts \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+874             wd\_wts = []
+875         encoder\_states = model.encoder(batch.text\_vec)
+876         enc\_out = encoder\_states[0]
+877         enc\_hidden = encoder\_states[1]
+878         attn\_mask = encoder\_states[2]
+879         current\_device = encoder\_states[0][0].device
+880         vocab\_size = len(dictionary)
+881 
+882         batch\_size = len(batch.text\_lengths)
+883         beams = [
+884             Beam(
+885                 beam\_size,
+886                 min\_length=min\_length,
+887                 padding\_token=pad,
+888                 bos\_token=start,
+889                 eos\_token=end,
+890                 min\_n\_best=min\_n\_best,
+891                 cuda=current\_device,
+892                 block\_ngram=block\_ngram,
+893             )
+894             \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(batch\_size)
+895         ]
+896         decoder\_input = (
+897             torch.Tensor([start])
+898             .detach()
+899             .expand(batch\_size, 1)
+900             .long()
+901             .to(current\_device)
+902         )
+903         \textcolor{comment}{# repeat encoder\_outputs, hiddens, attn\_mask}
+904         decoder\_input = decoder\_input.repeat(1, beam\_size).view(
+905             beam\_size * batch\_size, -1
+906         )
+907 
+908         \textcolor{comment}{# ctrl\_input is shape (bsz, num\_controls)}
+909         \textcolor{comment}{# we want it to be (bsz*beam\_size, num\_controls)}
+910         ctrl\_input = batch.ctrl\_vec
+911         \textcolor{keywordflow}{if} batch.ctrl\_vec \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+912             ctrl\_input = batch.ctrl\_vec.repeat(beam\_size, 1)
+913 
+914         enc\_out = (
+915             enc\_out.unsqueeze(1)
+916             .\hyperlink{namespacerepeat}{repeat}(1, beam\_size, 1, 1)
+917             .view(batch\_size * beam\_size, -1, enc\_out.size(-1))
+918         )
+919         attn\_mask = (
+920             encoder\_states[2]
+921             .\hyperlink{namespacerepeat}{repeat}(1, beam\_size)
+922             .view(attn\_mask.size(0) * beam\_size, -1)
+923         )
+924         repeated\_hiddens = []
+925         \textcolor{keywordflow}{if} isinstance(enc\_hidden, tuple):  \textcolor{comment}{# LSTM}
+926             \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(enc\_hidden)):
+927                 repeated\_hiddens.append(
+928                     enc\_hidden[i].unsqueeze(2).\hyperlink{namespacerepeat}{repeat}(1, 1, beam\_size, 1)
+929                 )
+930             num\_layers = enc\_hidden[0].size(0)
+931             hidden\_size = enc\_hidden[0].size(-1)
+932             enc\_hidden = tuple(
+933                 [
+934                     repeated\_hiddens[i].view(
+935                         num\_layers, batch\_size * beam\_size, hidden\_size
+936                     )
+937                     \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(repeated\_hiddens))
+938                 ]
+939             )
+940         \textcolor{keywordflow}{else}:  \textcolor{comment}{# GRU}
+941             num\_layers = enc\_hidden.size(0)
+942             hidden\_size = enc\_hidden.size(-1)
+943             enc\_hidden = (
+944                 enc\_hidden.unsqueeze(2)
+945                 .\hyperlink{namespacerepeat}{repeat}(1, 1, beam\_size, 1)
+946                 .view(num\_layers, batch\_size * beam\_size, hidden\_size)
+947             )
+948 
+949         hidden = enc\_hidden
+950         \textcolor{keywordflow}{for} ts \textcolor{keywordflow}{in} range(max\_ts):
+951             \textcolor{keywordflow}{if} all((b.done() \textcolor{keywordflow}{for} b \textcolor{keywordflow}{in} beams)):
+952                 \textcolor{keywordflow}{break}
+953             output, hidden = model.decoder(
+954                 decoder\_input, ctrl\_input, hidden, (enc\_out, attn\_mask)
+955             )
+956             score = model.output(output)
+957             \textcolor{comment}{# score contains softmax scores for batch\_size * beam\_size samples}
+958             score = score.view(batch\_size, beam\_size, -1)
+959             score = F.log\_softmax(score, dim=-1)
+960             \textcolor{keywordflow}{for} i, b \textcolor{keywordflow}{in} enumerate(beams):
+961                 \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} b.done():
+962                     scores\_in = score[i]
+963 
+964                     \textcolor{comment}{# If using WD, update scores\_in to reflect the WD features}
+965                     \textcolor{keywordflow}{if} len(wd\_features) > 0:
+966 
+967                         \textcolor{comment}{# Obtain wd\_feat\_vecs, the sum of the weighted features}
+968                         \textcolor{comment}{# across the whole vocabulary}
+969                         wd\_feat\_vecs = torch.zeros((beam\_size, vocab\_size))
+970                         \textcolor{keywordflow}{for} hyp\_idx \textcolor{keywordflow}{in} range(beam\_size):  \textcolor{comment}{# For each hypothesis}
+971 
+972                             \textcolor{comment}{# Get the partial hypothesis (None if first timestep)}
+973                             partial\_hyp = b.partial\_hyps[hyp\_idx] \textcolor{keywordflow}{if} ts > 0 \textcolor{keywordflow}{else} \textcolor{keywordtype}{None}
+974 
+975                             \textcolor{comment}{# Get the WD feature vector (a tensor) for this hypothesis}
+976                             wd\_feat\_vec = \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controls_a0324491b8ecb07aaf415e47d6575cbac}{get\_wd\_features}(
+977                                 dictionary,
+978                                 partial\_hyp,
+979                                 batch.history[i],
+980                                 wd\_features,
+981                                 wd\_wts,
+982                             )  \textcolor{comment}{# shape (vocab\_size)}
+983 
+984                             wd\_feat\_vecs[hyp\_idx, :] = wd\_feat\_vec
+985                         wd\_feat\_vecs = wd\_feat\_vecs.to(current\_device)
+986 
+987                         \textcolor{comment}{# Add the WD features to the log probability scores}
+988                         scores\_in = scores\_in + wd\_feat\_vecs
+989 
+990                     \textcolor{comment}{# Update the beam as usual}
+991                     b.advance(scores\_in)
+992 
+993             decoder\_input = torch.cat(
+994                 [b.get\_output\_from\_current\_step() \textcolor{keywordflow}{for} b \textcolor{keywordflow}{in} beams]
+995             ).unsqueeze(-1)
+996             permute\_hidden\_idx = torch.cat(
+997                 [
+998                     beam\_size * i + b.get\_backtrack\_from\_current\_step()
+999                     \textcolor{keywordflow}{for} i, b \textcolor{keywordflow}{in} enumerate(beams)
+1000                 ]
+1001             )
+1002             \textcolor{comment}{# permute decoder hiddens with respect to chosen hypothesis now}
+1003             \textcolor{keywordflow}{if} isinstance(hidden, tuple):  \textcolor{comment}{# LSTM}
+1004                 \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(hidden)):
+1005                     hidden[i].data.copy\_(
+1006                         hidden[i].data.index\_select(dim=1, index=permute\_hidden\_idx)
+1007                     )
+1008             \textcolor{keywordflow}{else}:  \textcolor{comment}{# GRU}
+1009                 hidden.data.copy\_(
+1010                     hidden.data.index\_select(dim=1, index=permute\_hidden\_idx)
+1011                 )
+1012         \textcolor{keywordflow}{for} b \textcolor{keywordflow}{in} beams:
+1013             b.check\_finished()
+1014 
+1015         beam\_preds\_scores = [list(b.get\_top\_hyp()) \textcolor{keywordflow}{for} b \textcolor{keywordflow}{in} beams]
+1016         \textcolor{keywordflow}{for} pair \textcolor{keywordflow}{in} beam\_preds\_scores:
+1017             pair[0] = Beam.get\_pretty\_hypothesis(pair[0])
+1018 
+1019         n\_best\_beams = [b.get\_rescored\_finished(n\_best=min\_n\_best) \textcolor{keywordflow}{for} b \textcolor{keywordflow}{in} beams]
+1020         n\_best\_beam\_preds\_scores = []
+1021         \textcolor{keywordflow}{for} i, beamhyp \textcolor{keywordflow}{in} enumerate(n\_best\_beams):
+1022             this\_beam = []
+1023             \textcolor{keywordflow}{for} hyp \textcolor{keywordflow}{in} beamhyp:
+1024                 pred = beams[i].get\_pretty\_hypothesis(
+1025                     beams[i].get\_hyp\_from\_finished(hyp)
+1026                 )
+1027                 score = hyp.score
+1028                 this\_beam.append((pred, score))
+1029             n\_best\_beam\_preds\_scores.append(this\_beam)
+1030 
+1031         \textcolor{keywordflow}{return} beam\_preds\_scores, n\_best\_beam\_preds\_scores, beams
+1032 
 \end{DoxyCode}
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a4cecd20886ef127bbab1a756bb49fb75}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a4cecd20886ef127bbab1a756bb49fb75}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!build\+\_\+model@{build\+\_\+model}}
@@ -769,56 +768,56 @@ Definition at line 839 of file controllable\+\_\+seq2seq.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 397 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 398 of file controllable\+\_\+seq2seq.\+py.
 
 
 \begin{DoxyCode}
-397     \textcolor{keyword}{def }build\_model(self, states=None):
-398         \textcolor{stringliteral}{"""}
-399 \textcolor{stringliteral}{        Initialize model, override to change model setup.}
-400 \textcolor{stringliteral}{        """}
-401         opt = self.opt
-402 
-403         kwargs = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_af13e3733abb5828b0c0a75d95833441c}{opt\_to\_kwargs}(opt)
-404         model = Seq2seq(
-405             len(self.dict),
-406             opt[\textcolor{stringliteral}{'embeddingsize'}],
-407             opt[\textcolor{stringliteral}{'hiddensize'}],
-408             padding\_idx=self.NULL\_IDX,
-409             start\_idx=self.START\_IDX,
-410             unknown\_idx=self.dict[self.dict.unk\_token],
-411             longest\_label=states.get(\textcolor{stringliteral}{'longest\_label'}, 1),
-412             control\_settings=self.control\_settings,
-413             **kwargs,
-414         )
-415 
-416         \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'dict\_tokenizer'}) == \textcolor{stringliteral}{'bpe'} \textcolor{keywordflow}{and} opt[\textcolor{stringliteral}{'embedding\_type'}] != \textcolor{stringliteral}{'random'}:
-417             print(\textcolor{stringliteral}{'skipping preinitialization of embeddings for bpe'})
-418         \textcolor{keywordflow}{elif} \textcolor{keywordflow}{not} states \textcolor{keywordflow}{and} opt[\textcolor{stringliteral}{'embedding\_type'}] != \textcolor{stringliteral}{'random'}:
-419             \textcolor{comment}{# `not states`: only set up embeddings if not loading model}
-420             self.\_copy\_embeddings(model.decoder.lt.weight, opt[\textcolor{stringliteral}{'embedding\_type'}])
-421             \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'lookuptable'}] \textcolor{keywordflow}{in} [\textcolor{stringliteral}{'unique'}, \textcolor{stringliteral}{'dec\_out'}]:
-422                 \textcolor{comment}{# also set encoder lt, since it's not shared}
-423                 self.\_copy\_embeddings(
-424                     model.encoder.lt.weight, opt[\textcolor{stringliteral}{'embedding\_type'}], log=\textcolor{keyword}{False}
-425                 )
-426 
-427         \textcolor{keywordflow}{if} states:
-428             \textcolor{keywordflow}{if} self.opt[\textcolor{stringliteral}{'add\_control'}]:  \textcolor{comment}{# Add parameters for new CT controls}
-429                 self.\_add\_control(states)
-430 
-431             \textcolor{comment}{# set loaded states if applicable}
-432             model.load\_state\_dict(states[\textcolor{stringliteral}{'model'}])
-433 
-434         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'embedding\_type'}].endswith(\textcolor{stringliteral}{'fixed'}):
-435             print(\textcolor{stringliteral}{'Seq2seq: fixing embedding weights.'})
-436             model.decoder.lt.weight.requires\_grad = \textcolor{keyword}{False}
-437             model.encoder.lt.weight.requires\_grad = \textcolor{keyword}{False}
-438             \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'lookuptable'}] \textcolor{keywordflow}{in} [\textcolor{stringliteral}{'dec\_out'}, \textcolor{stringliteral}{'all'}]:
-439                 model.decoder.output.e2s.weight.requires\_grad = \textcolor{keyword}{False}
-440 
-441         \textcolor{keywordflow}{return} model
-442 
+398     \textcolor{keyword}{def }build\_model(self, states=None):
+399         \textcolor{stringliteral}{"""}
+400 \textcolor{stringliteral}{        Initialize model, override to change model setup.}
+401 \textcolor{stringliteral}{        """}
+402         opt = self.opt
+403 
+404         kwargs = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1modules__v1_af13e3733abb5828b0c0a75d95833441c}{opt\_to\_kwargs}(opt)
+405         model = Seq2seq(
+406             len(self.dict),
+407             opt[\textcolor{stringliteral}{'embeddingsize'}],
+408             opt[\textcolor{stringliteral}{'hiddensize'}],
+409             padding\_idx=self.NULL\_IDX,
+410             start\_idx=self.START\_IDX,
+411             unknown\_idx=self.dict[self.dict.unk\_token],
+412             longest\_label=states.get(\textcolor{stringliteral}{'longest\_label'}, 1),
+413             control\_settings=self.control\_settings,
+414             **kwargs,
+415         )
+416 
+417         \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'dict\_tokenizer'}) == \textcolor{stringliteral}{'bpe'} \textcolor{keywordflow}{and} opt[\textcolor{stringliteral}{'embedding\_type'}] != \textcolor{stringliteral}{'random'}:
+418             print(\textcolor{stringliteral}{'skipping preinitialization of embeddings for bpe'})
+419         \textcolor{keywordflow}{elif} \textcolor{keywordflow}{not} states \textcolor{keywordflow}{and} opt[\textcolor{stringliteral}{'embedding\_type'}] != \textcolor{stringliteral}{'random'}:
+420             \textcolor{comment}{# `not states`: only set up embeddings if not loading model}
+421             self.\_copy\_embeddings(model.decoder.lt.weight, opt[\textcolor{stringliteral}{'embedding\_type'}])
+422             \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'lookuptable'}] \textcolor{keywordflow}{in} [\textcolor{stringliteral}{'unique'}, \textcolor{stringliteral}{'dec\_out'}]:
+423                 \textcolor{comment}{# also set encoder lt, since it's not shared}
+424                 self.\_copy\_embeddings(
+425                     model.encoder.lt.weight, opt[\textcolor{stringliteral}{'embedding\_type'}], log=\textcolor{keyword}{False}
+426                 )
+427 
+428         \textcolor{keywordflow}{if} states:
+429             \textcolor{keywordflow}{if} self.opt[\textcolor{stringliteral}{'add\_control'}]:  \textcolor{comment}{# Add parameters for new CT controls}
+430                 self.\_add\_control(states)
+431 
+432             \textcolor{comment}{# set loaded states if applicable}
+433             model.load\_state\_dict(states[\textcolor{stringliteral}{'model'}])
+434 
+435         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'embedding\_type'}].endswith(\textcolor{stringliteral}{'fixed'}):
+436             print(\textcolor{stringliteral}{'Seq2seq: fixing embedding weights.'})
+437             model.decoder.lt.weight.requires\_grad = \textcolor{keyword}{False}
+438             model.encoder.lt.weight.requires\_grad = \textcolor{keyword}{False}
+439             \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'lookuptable'}] \textcolor{keywordflow}{in} [\textcolor{stringliteral}{'dec\_out'}, \textcolor{stringliteral}{'all'}]:
+440                 model.decoder.output.e2s.weight.requires\_grad = \textcolor{keyword}{False}
+441 
+442         \textcolor{keywordflow}{return} model
+443 
 \end{DoxyCode}
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a531943b5d1caee714bba77decbc93161}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a531943b5d1caee714bba77decbc93161}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!eval\+\_\+step@{eval\+\_\+step}}
@@ -830,112 +829,112 @@ Definition at line 397 of file controllable\+\_\+seq2seq.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1077 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 1078 of file controllable\+\_\+seq2seq.\+py.
 
 
 \begin{DoxyCode}
-1077     \textcolor{keyword}{def }eval\_step(self, batch):
-1078         \textcolor{stringliteral}{"""}
-1079 \textcolor{stringliteral}{        Evaluate a single batch of examples.}
-1080 \textcolor{stringliteral}{        """}
-1081         \textcolor{keywordflow}{if} batch.text\_vec \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-1082             \textcolor{keywordflow}{return}
-1083         orig\_batch = batch  \textcolor{comment}{# save for evaluation}
-1084         needs\_truncation = self.multigpu \textcolor{keywordflow}{and} batch.text\_vec.size(0) % 2 != 0
-1085         \textcolor{keywordflow}{if} needs\_truncation:
-1086             \textcolor{comment}{# for multigpu, we need to split evenly across gpus}
-1087             batch = self.extend\_input(batch)
-1088         self.model.eval()
-1089         cand\_scores = \textcolor{keywordtype}{None}
-1090         \textcolor{keywordflow}{if} self.beam\_size == 1:
-1091             out, cand\_params = self.greedy\_search(batch)
-1092             \textcolor{keywordflow}{if} needs\_truncation:
-1093                 out = self.truncate\_output(out)
-1094                 \textcolor{keywordflow}{if} cand\_params[0] \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-1095                     cand\_params = (cand\_params[0][:-1], cand\_params[1][:-1])
-1096             scores, cand\_scores = out[0], out[1]
-1097             \_, preds = scores.max(2)
-1098         \textcolor{keywordflow}{elif} self.beam\_size > 1:
-1099             out = ControllableSeq2seqAgent.beam\_search(
-1100                 self.model,
-1101                 batch,
-1102                 self.beam\_size,
-1103                 self.dict,
-1104                 start=self.START\_IDX,
-1105                 end=self.END\_IDX,
-1106                 pad=self.NULL\_IDX,
-1107                 min\_length=self.beam\_min\_length,
-1108                 min\_n\_best=self.beam\_min\_n\_best,
-1109                 block\_ngram=self.beam\_block\_ngram,
-1110                 wd\_features=self.wd\_features,
-1111                 wd\_wts=self.wd\_wts,
-1112             )
-1113             \textcolor{keywordflow}{if} needs\_truncation:
-1114                 out = self.truncate\_output(out)
-1115             beam\_preds\_scores, n\_best\_preds\_scores, beams = out
-1116 
-1117             \textcolor{comment}{# Optionally print out the n-best beam search candidates}
-1118             \textcolor{keywordflow}{if} self.opt[\textcolor{stringliteral}{'verbose'}]:
-1119                 \textcolor{keywordflow}{for} cands, hist \textcolor{keywordflow}{in} zip(n\_best\_preds\_scores, batch.history):
-1120                     \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1util_ad8bee76107b49379c621746db6fd7d4e}{show\_beam\_cands}(cands, hist, self.dict)
-1121 
-1122             \textcolor{comment}{# If we have a special reordering function, apply it to choose the best}
-1123             \textcolor{comment}{# one of the candidates.}
-1124             \textcolor{keywordflow}{if} self.opt[\textcolor{stringliteral}{'beam\_reorder'}] == \textcolor{stringliteral}{'best\_extrep2gram\_qn'}:
-1125                 beam\_preds\_scores = [
-1126                     \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1util_aa1ba917d170af0191d23b033358bc9eb}{reorder\_extrep2gram\_qn}(cands, hist, self.dict, self.opt[\textcolor{stringliteral}{'verbose'}
+1078     \textcolor{keyword}{def }eval\_step(self, batch):
+1079         \textcolor{stringliteral}{"""}
+1080 \textcolor{stringliteral}{        Evaluate a single batch of examples.}
+1081 \textcolor{stringliteral}{        """}
+1082         \textcolor{keywordflow}{if} batch.text\_vec \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+1083             \textcolor{keywordflow}{return}
+1084         orig\_batch = batch  \textcolor{comment}{# save for evaluation}
+1085         needs\_truncation = self.multigpu \textcolor{keywordflow}{and} batch.text\_vec.size(0) % 2 != 0
+1086         \textcolor{keywordflow}{if} needs\_truncation:
+1087             \textcolor{comment}{# for multigpu, we need to split evenly across gpus}
+1088             batch = self.extend\_input(batch)
+1089         self.model.eval()
+1090         cand\_scores = \textcolor{keywordtype}{None}
+1091         \textcolor{keywordflow}{if} self.beam\_size == 1:
+1092             out, cand\_params = self.greedy\_search(batch)
+1093             \textcolor{keywordflow}{if} needs\_truncation:
+1094                 out = self.truncate\_output(out)
+1095                 \textcolor{keywordflow}{if} cand\_params[0] \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+1096                     cand\_params = (cand\_params[0][:-1], cand\_params[1][:-1])
+1097             scores, cand\_scores = out[0], out[1]
+1098             \_, preds = scores.max(2)
+1099         \textcolor{keywordflow}{elif} self.beam\_size > 1:
+1100             out = ControllableSeq2seqAgent.beam\_search(
+1101                 self.model,
+1102                 batch,
+1103                 self.beam\_size,
+1104                 self.dict,
+1105                 start=self.START\_IDX,
+1106                 end=self.END\_IDX,
+1107                 pad=self.NULL\_IDX,
+1108                 min\_length=self.beam\_min\_length,
+1109                 min\_n\_best=self.beam\_min\_n\_best,
+1110                 block\_ngram=self.beam\_block\_ngram,
+1111                 wd\_features=self.wd\_features,
+1112                 wd\_wts=self.wd\_wts,
+1113             )
+1114             \textcolor{keywordflow}{if} needs\_truncation:
+1115                 out = self.truncate\_output(out)
+1116             beam\_preds\_scores, n\_best\_preds\_scores, beams = out
+1117 
+1118             \textcolor{comment}{# Optionally print out the n-best beam search candidates}
+1119             \textcolor{keywordflow}{if} self.opt[\textcolor{stringliteral}{'verbose'}]:
+1120                 \textcolor{keywordflow}{for} cands, hist \textcolor{keywordflow}{in} zip(n\_best\_preds\_scores, batch.history):
+1121                     \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1util_ad8bee76107b49379c621746db6fd7d4e}{show\_beam\_cands}(cands, hist, self.dict)
+1122 
+1123             \textcolor{comment}{# If we have a special reordering function, apply it to choose the best}
+1124             \textcolor{comment}{# one of the candidates.}
+1125             \textcolor{keywordflow}{if} self.opt[\textcolor{stringliteral}{'beam\_reorder'}] == \textcolor{stringliteral}{'best\_extrep2gram\_qn'}:
+1126                 beam\_preds\_scores = [
+1127                     \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1util_aa1ba917d170af0191d23b033358bc9eb}{reorder\_extrep2gram\_qn}(cands, hist, self.dict, self.opt[\textcolor{stringliteral}{'verbose'}
       ])
-1127                     \textcolor{keywordflow}{for} cands, hist \textcolor{keywordflow}{in} zip(n\_best\_preds\_scores, batch.history)
-1128                 ]
-1129 
-1130             preds, scores = (
-1131                 [p[0] \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} beam\_preds\_scores],
-1132                 [p[1] \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} beam\_preds\_scores],
-1133             )
-1134             \textcolor{keywordflow}{if} self.beam\_dot\_log \textcolor{keywordflow}{is} \textcolor{keyword}{True}:
-1135                 \textcolor{keywordflow}{for} i, b \textcolor{keywordflow}{in} enumerate(beams):
-1136                     dot\_graph = b.get\_beam\_dot(dictionary=self.dict, n\_best=3)
-1137                     image\_name = (
-1138                         self.\_v2t(batch.text\_vec[i, -20:])
-1139                         .replace(\textcolor{stringliteral}{' '}, \textcolor{stringliteral}{'-'})
-1140                         .replace(\textcolor{stringliteral}{'\_\_null\_\_'}, \textcolor{stringliteral}{''})
-1141                     )
-1142                     dot\_graph.write\_png(
-1143                         os.path.join(self.beam\_dot\_dir, \textcolor{stringliteral}{"\{\}.png"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(image\_name))
-1144                     )
-1145 
-1146         \textcolor{keywordflow}{if} batch.label\_vec \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-1147             \textcolor{comment}{# calculate loss on targets with teacher forcing}
-1148             seq\_len = \textcolor{keywordtype}{None} \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.multigpu \textcolor{keywordflow}{else} batch.text\_vec.size(1)
-1149             out = self.model(
-1150                 batch.text\_vec, batch.ctrl\_vec, batch.label\_vec, seq\_len=seq\_len
-1151             )
-1152             \textcolor{keywordflow}{if} needs\_truncation:
-1153                 out = self.truncate\_output(out)
-1154             f\_scores = out[0]  \textcolor{comment}{# forced scores}
-1155             \_, f\_preds = f\_scores.max(2)  \textcolor{comment}{# forced preds}
-1156             score\_view = f\_scores.view(-1, f\_scores.size(-1))
-1157             loss = self.criterion(score\_view, orig\_batch.label\_vec.view(-1))
-1158             \textcolor{comment}{# save loss to metrics}
-1159             notnull = orig\_batch.label\_vec.ne(self.NULL\_IDX)
-1160             target\_tokens = notnull.long().sum().item()
-1161             correct = ((orig\_batch.label\_vec == f\_preds) * notnull).sum().item()
-1162             self.metrics[\textcolor{stringliteral}{'correct\_tokens'}] += correct
-1163             self.metrics[\textcolor{stringliteral}{'loss'}] += loss.item()
-1164             self.metrics[\textcolor{stringliteral}{'num\_tokens'}] += target\_tokens
-1165 
-1166         cand\_choices = \textcolor{keywordtype}{None}
-1167         \textcolor{keywordflow}{if} cand\_scores \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-1168             cand\_preds = cand\_scores.sort(1, descending=\textcolor{keyword}{True})[1]
-1169             \textcolor{comment}{# now select the text of the cands based on their scores}
-1170             cand\_choices = self.\_pick\_cands(
-1171                 cand\_preds, cand\_params[1], orig\_batch.candidates
-1172             )
-1173 
-1174         text = [self.\_v2t(p) \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} preds]
-1175 
-1176         \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1torch__agent__v1_a2689006ea97d09413fb242f984bd8016}{Output}(text, cand\_choices)
-1177 
+1128                     \textcolor{keywordflow}{for} cands, hist \textcolor{keywordflow}{in} zip(n\_best\_preds\_scores, batch.history)
+1129                 ]
+1130 
+1131             preds, scores = (
+1132                 [p[0] \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} beam\_preds\_scores],
+1133                 [p[1] \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} beam\_preds\_scores],
+1134             )
+1135             \textcolor{keywordflow}{if} self.beam\_dot\_log \textcolor{keywordflow}{is} \textcolor{keyword}{True}:
+1136                 \textcolor{keywordflow}{for} i, b \textcolor{keywordflow}{in} enumerate(beams):
+1137                     dot\_graph = b.get\_beam\_dot(dictionary=self.dict, n\_best=3)
+1138                     image\_name = (
+1139                         self.\_v2t(batch.text\_vec[i, -20:])
+1140                         .replace(\textcolor{stringliteral}{' '}, \textcolor{stringliteral}{'-'})
+1141                         .replace(\textcolor{stringliteral}{'\_\_null\_\_'}, \textcolor{stringliteral}{''})
+1142                     )
+1143                     dot\_graph.write\_png(
+1144                         os.path.join(self.beam\_dot\_dir, \textcolor{stringliteral}{"\{\}.png"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(image\_name))
+1145                     )
+1146 
+1147         \textcolor{keywordflow}{if} batch.label\_vec \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+1148             \textcolor{comment}{# calculate loss on targets with teacher forcing}
+1149             seq\_len = \textcolor{keywordtype}{None} \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.multigpu \textcolor{keywordflow}{else} batch.text\_vec.size(1)
+1150             out = self.model(
+1151                 batch.text\_vec, batch.ctrl\_vec, batch.label\_vec, seq\_len=seq\_len
+1152             )
+1153             \textcolor{keywordflow}{if} needs\_truncation:
+1154                 out = self.truncate\_output(out)
+1155             f\_scores = out[0]  \textcolor{comment}{# forced scores}
+1156             \_, f\_preds = f\_scores.max(2)  \textcolor{comment}{# forced preds}
+1157             score\_view = f\_scores.view(-1, f\_scores.size(-1))
+1158             loss = self.criterion(score\_view, orig\_batch.label\_vec.view(-1))
+1159             \textcolor{comment}{# save loss to metrics}
+1160             notnull = orig\_batch.label\_vec.ne(self.NULL\_IDX)
+1161             target\_tokens = notnull.long().sum().item()
+1162             correct = ((orig\_batch.label\_vec == f\_preds) * notnull).sum().item()
+1163             self.metrics[\textcolor{stringliteral}{'correct\_tokens'}] += correct
+1164             self.metrics[\textcolor{stringliteral}{'loss'}] += loss.item()
+1165             self.metrics[\textcolor{stringliteral}{'num\_tokens'}] += target\_tokens
+1166 
+1167         cand\_choices = \textcolor{keywordtype}{None}
+1168         \textcolor{keywordflow}{if} cand\_scores \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+1169             cand\_preds = cand\_scores.sort(1, descending=\textcolor{keyword}{True})[1]
+1170             \textcolor{comment}{# now select the text of the cands based on their scores}
+1171             cand\_choices = self.\_pick\_cands(
+1172                 cand\_preds, cand\_params[1], orig\_batch.candidates
+1173             )
+1174 
+1175         text = [self.\_v2t(p) \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} preds]
+1176 
+1177         \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1torch__agent__v1_a2689006ea97d09413fb242f984bd8016}{Output}(text, cand\_choices)
+1178 
 \end{DoxyCode}
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a836e91446f995a74cce113051991711a}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a836e91446f995a74cce113051991711a}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!extend\+\_\+input@{extend\+\_\+input}}
@@ -947,34 +946,34 @@ Definition at line 1077 of file controllable\+\_\+seq2seq.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1032 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 1033 of file controllable\+\_\+seq2seq.\+py.
 
 
 \begin{DoxyCode}
-1032     \textcolor{keyword}{def }extend\_input(self, batch):
-1033         \textcolor{stringliteral}{"""}
-1034 \textcolor{stringliteral}{        Extend the input.}
-1035 \textcolor{stringliteral}{        """}
-1036         \textcolor{comment}{# add pad tensor to text vec}
-1037         pad\_tensor = torch.zeros(1, batch.text\_vec.size(1)).long().cuda()
-1038         text\_vec = torch.cat([batch.text\_vec, pad\_tensor], 0)
-1039         batch = batch.\_replace(text\_vec=text\_vec)
-1040         \textcolor{keywordflow}{if} batch.label\_vec \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-1041             \textcolor{comment}{# add pad tensor to label vec}
-1042             pad\_tensor = torch.zeros(1, batch.label\_vec.size(1)).long().cuda()
-1043             label\_vec = torch.cat([batch.label\_vec, pad\_tensor], 0)
-1044             batch = batch.\_replace(label\_vec=label\_vec)
-1045         \textcolor{keywordflow}{if} batch.candidates \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-1046             \textcolor{comment}{# add dummy candidates list}
-1047             dummy\_list = [[\textcolor{stringliteral}{'None'}] \textcolor{keywordflow}{for} \_ \textcolor{keywordflow}{in} range(len(batch.candidates[0]))]
-1048             batch = batch.\_replace(candidates=batch.candidates + [dummy\_list])
-1049             \textcolor{comment}{# add pad tensor to candidate\_vecs}
-1050             new\_vecs = batch.candidate\_vecs + [
-1051                 [torch.zeros(1).long() \textcolor{keywordflow}{for} \_ \textcolor{keywordflow}{in} range(len(batch.candidate\_vecs[0]))]
-1052             ]
-1053             batch = batch.\_replace(candidate\_vecs=new\_vecs)
-1054         \textcolor{keywordflow}{return} batch
-1055 
+1033     \textcolor{keyword}{def }extend\_input(self, batch):
+1034         \textcolor{stringliteral}{"""}
+1035 \textcolor{stringliteral}{        Extend the input.}
+1036 \textcolor{stringliteral}{        """}
+1037         \textcolor{comment}{# add pad tensor to text vec}
+1038         pad\_tensor = torch.zeros(1, batch.text\_vec.size(1)).long().cuda()
+1039         text\_vec = torch.cat([batch.text\_vec, pad\_tensor], 0)
+1040         batch = batch.\_replace(text\_vec=text\_vec)
+1041         \textcolor{keywordflow}{if} batch.label\_vec \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+1042             \textcolor{comment}{# add pad tensor to label vec}
+1043             pad\_tensor = torch.zeros(1, batch.label\_vec.size(1)).long().cuda()
+1044             label\_vec = torch.cat([batch.label\_vec, pad\_tensor], 0)
+1045             batch = batch.\_replace(label\_vec=label\_vec)
+1046         \textcolor{keywordflow}{if} batch.candidates \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+1047             \textcolor{comment}{# add dummy candidates list}
+1048             dummy\_list = [[\textcolor{stringliteral}{'None'}] \textcolor{keywordflow}{for} \_ \textcolor{keywordflow}{in} range(len(batch.candidates[0]))]
+1049             batch = batch.\_replace(candidates=batch.candidates + [dummy\_list])
+1050             \textcolor{comment}{# add pad tensor to candidate\_vecs}
+1051             new\_vecs = batch.candidate\_vecs + [
+1052                 [torch.zeros(1).long() \textcolor{keywordflow}{for} \_ \textcolor{keywordflow}{in} range(len(batch.candidate\_vecs[0]))]
+1053             ]
+1054             batch = batch.\_replace(candidate\_vecs=new\_vecs)
+1055         \textcolor{keywordflow}{return} batch
+1056 
 \end{DoxyCode}
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_ac416a9eb7ee7b0b1984468a4ec0b057c}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_ac416a9eb7ee7b0b1984468a4ec0b057c}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!greedy\+\_\+search@{greedy\+\_\+search}}
@@ -986,25 +985,25 @@ Definition at line 1032 of file controllable\+\_\+seq2seq.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 809 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 810 of file controllable\+\_\+seq2seq.\+py.
 
 
 \begin{DoxyCode}
-809     \textcolor{keyword}{def }greedy\_search(self, batch):
-810         \textcolor{stringliteral}{"""}
-811 \textcolor{stringliteral}{        Perform greedy search.}
-812 \textcolor{stringliteral}{        """}
-813         cand\_params = self.\_build\_cands(batch)
-814         seq\_len = \textcolor{keywordtype}{None} \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.multigpu \textcolor{keywordflow}{else} batch.text\_vec.size(1)
-815         out = self.model(
-816             batch.text\_vec,
-817             batch.ctrl\_vec,
-818             ys=\textcolor{keywordtype}{None},
-819             cands=cand\_params[0],
-820             seq\_len=seq\_len,
-821         )
-822         \textcolor{keywordflow}{return} out, cand\_params
-823 
+810     \textcolor{keyword}{def }greedy\_search(self, batch):
+811         \textcolor{stringliteral}{"""}
+812 \textcolor{stringliteral}{        Perform greedy search.}
+813 \textcolor{stringliteral}{        """}
+814         cand\_params = self.\_build\_cands(batch)
+815         seq\_len = \textcolor{keywordtype}{None} \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.multigpu \textcolor{keywordflow}{else} batch.text\_vec.size(1)
+816         out = self.model(
+817             batch.text\_vec,
+818             batch.ctrl\_vec,
+819             ys=\textcolor{keywordtype}{None},
+820             cands=cand\_params[0],
+821             seq\_len=seq\_len,
+822         )
+823         \textcolor{keywordflow}{return} out, cand\_params
+824 
 \end{DoxyCode}
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a938d6646b76eaf838ddcd54ee71aa5d9}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a938d6646b76eaf838ddcd54ee71aa5d9}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!load@{load}}
@@ -1016,33 +1015,33 @@ Definition at line 809 of file controllable\+\_\+seq2seq.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1200 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 1201 of file controllable\+\_\+seq2seq.\+py.
 
 
 \begin{DoxyCode}
-1200     \textcolor{keyword}{def }load(self, path):
-1201         \textcolor{stringliteral}{"""}
-1202 \textcolor{stringliteral}{        Return opt and model states.}
-1203 \textcolor{stringliteral}{        """}
-1204         states = torch.load(path, map\_location=\textcolor{keyword}{lambda} cpu, \_: cpu)
-1205 
-1206         \textcolor{comment}{# check opt file for multigpu}
-1207         with open(path + \textcolor{stringliteral}{".opt"}, \textcolor{stringliteral}{'r') as handle:}
-1208 \textcolor{stringliteral}{            saved\_opt = json.load(handle)}
-1209 \textcolor{stringliteral}{        }\textcolor{keywordflow}{if} saved\_opt.get(\textcolor{stringliteral}{'multigpu'}):
-1210             \textcolor{comment}{# create new OrderedDict that does not contain `module.`}
-1211             \textcolor{keyword}{from} collections \textcolor{keyword}{import} OrderedDict
-1212 
-1213             new\_state\_dict = OrderedDict()
-1214             \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} states[\textcolor{stringliteral}{'model'}].items():
-1215                 \textcolor{keywordflow}{if} k.startswith(\textcolor{stringliteral}{'module'}):
-1216                     name = k[7:]  \textcolor{comment}{# remove `module.`}
-1217                     new\_state\_dict[name] = v
-1218             states[\textcolor{stringliteral}{'model'}] = new\_state\_dict
-1219 
-1220         \textcolor{keywordflow}{return} states
-1221 
+1201     \textcolor{keyword}{def }load(self, path):
+1202         \textcolor{stringliteral}{"""}
+1203 \textcolor{stringliteral}{        Return opt and model states.}
+1204 \textcolor{stringliteral}{        """}
+1205         states = torch.load(path, map\_location=\textcolor{keyword}{lambda} cpu, \_: cpu)
+1206 
+1207         \textcolor{comment}{# check opt file for multigpu}
+1208         with open(path + \textcolor{stringliteral}{".opt"}, \textcolor{stringliteral}{'r') as handle:}
+1209 \textcolor{stringliteral}{            saved\_opt = json.load(handle)}
+1210 \textcolor{stringliteral}{        }\textcolor{keywordflow}{if} saved\_opt.get(\textcolor{stringliteral}{'multigpu'}):
+1211             \textcolor{comment}{# create new OrderedDict that does not contain `module.`}
+1212             \textcolor{keyword}{from} collections \textcolor{keyword}{import} OrderedDict
+1213 
+1214             new\_state\_dict = OrderedDict()
+1215             \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} states[\textcolor{stringliteral}{'model'}].items():
+1216                 \textcolor{keywordflow}{if} k.startswith(\textcolor{stringliteral}{'module'}):
+1217                     name = k[7:]  \textcolor{comment}{# remove `module.`}
+1218                     new\_state\_dict[name] = v
+1219             states[\textcolor{stringliteral}{'model'}] = new\_state\_dict
+1220 
+1221         \textcolor{keywordflow}{return} states
 1222 
+1223 
 \end{DoxyCode}
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_ab10efe928769fe5a7d398930e1d5174c}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_ab10efe928769fe5a7d398930e1d5174c}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!model\+\_\+version@{model\+\_\+version}}
@@ -1058,20 +1057,20 @@ version 0 on Aug 29, 2018. To use version 0, use --model legacy:seq2seq:0
 \end{DoxyVerb}
  
 
-Definition at line 262 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 263 of file controllable\+\_\+seq2seq.\+py.
 
 
 \begin{DoxyCode}
-262     \textcolor{keyword}{def }model\_version():
-263         \textcolor{stringliteral}{"""}
-264 \textcolor{stringliteral}{        Return current version of this model, counting up from 0.}
-265 \textcolor{stringliteral}{}
-266 \textcolor{stringliteral}{        Models may not be backwards-compatible with older versions. Version 1 split from}
-267 \textcolor{stringliteral}{        version 0 on Aug 29, 2018. To use version 0, use --model legacy:seq2seq:0}
-268 \textcolor{stringliteral}{        (legacy agent code is located in parlai/agents/legacy\_agents).}
-269 \textcolor{stringliteral}{        """}
-270         \textcolor{keywordflow}{return} 1
-271 
+263     \textcolor{keyword}{def }model\_version():
+264         \textcolor{stringliteral}{"""}
+265 \textcolor{stringliteral}{        Return current version of this model, counting up from 0.}
+266 \textcolor{stringliteral}{}
+267 \textcolor{stringliteral}{        Models may not be backwards-compatible with older versions. Version 1 split from}
+268 \textcolor{stringliteral}{        version 0 on Aug 29, 2018. To use version 0, use --model legacy:seq2seq:0}
+269 \textcolor{stringliteral}{        (legacy agent code is located in parlai/agents/legacy\_agents).}
+270 \textcolor{stringliteral}{        """}
+271         \textcolor{keywordflow}{return} 1
+272 
 \end{DoxyCode}
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_aa976447be9a59cdba202d947bb5dafbb}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_aa976447be9a59cdba202d947bb5dafbb}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!report@{report}}
@@ -1086,34 +1085,34 @@ from a truly independent measurement.
 \end{DoxyVerb}
  
 
-Definition at line 600 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 601 of file controllable\+\_\+seq2seq.\+py.
 
 
 \begin{DoxyCode}
-600     \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}(self):
-601         \textcolor{stringliteral}{"""}
-602 \textcolor{stringliteral}{        Report loss and perplexity from model's perspective.}
-603 \textcolor{stringliteral}{}
-604 \textcolor{stringliteral}{        Note that this includes predicting \_\_END\_\_ and \_\_UNK\_\_ tokens and may differ}
-605 \textcolor{stringliteral}{        from a truly independent measurement.}
-606 \textcolor{stringliteral}{        """}
-607         m = \{\}
-608         num\_tok = self.metrics[\textcolor{stringliteral}{'num\_tokens'}]
-609         \textcolor{keywordflow}{if} num\_tok > 0:
-610             \textcolor{keywordflow}{if} self.metrics[\textcolor{stringliteral}{'correct\_tokens'}] > 0:
-611                 m[\textcolor{stringliteral}{'token\_acc'}] = self.metrics[\textcolor{stringliteral}{'correct\_tokens'}] / num\_tok
-612             m[\textcolor{stringliteral}{'loss'}] = self.metrics[\textcolor{stringliteral}{'loss'}] / num\_tok
-613             \textcolor{keywordflow}{try}:
-614                 m[\textcolor{stringliteral}{'ppl'}] = math.exp(m[\textcolor{stringliteral}{'loss'}])
-615             \textcolor{keywordflow}{except} OverflowError:
-616                 m[\textcolor{stringliteral}{'ppl'}] = \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(\textcolor{stringliteral}{'inf'})
-617         \textcolor{keywordflow}{if} self.metrics[\textcolor{stringliteral}{'total\_skipped\_batches'}] > 0:
-618             m[\textcolor{stringliteral}{'total\_skipped\_batches'}] = self.metrics[\textcolor{stringliteral}{'total\_skipped\_batches'}]
-619         \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} m.items():
-620             \textcolor{comment}{# clean up: rounds to sigfigs and converts tensors to floats}
-621             m[k] = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_af377ec61bfc0423461e7b409ffc883b9}{round\_sigfigs}(v, 4)
-622         \textcolor{keywordflow}{return} m
-623 
+601     \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}(self):
+602         \textcolor{stringliteral}{"""}
+603 \textcolor{stringliteral}{        Report loss and perplexity from model's perspective.}
+604 \textcolor{stringliteral}{}
+605 \textcolor{stringliteral}{        Note that this includes predicting \_\_END\_\_ and \_\_UNK\_\_ tokens and may differ}
+606 \textcolor{stringliteral}{        from a truly independent measurement.}
+607 \textcolor{stringliteral}{        """}
+608         m = \{\}
+609         num\_tok = self.metrics[\textcolor{stringliteral}{'num\_tokens'}]
+610         \textcolor{keywordflow}{if} num\_tok > 0:
+611             \textcolor{keywordflow}{if} self.metrics[\textcolor{stringliteral}{'correct\_tokens'}] > 0:
+612                 m[\textcolor{stringliteral}{'token\_acc'}] = self.metrics[\textcolor{stringliteral}{'correct\_tokens'}] / num\_tok
+613             m[\textcolor{stringliteral}{'loss'}] = self.metrics[\textcolor{stringliteral}{'loss'}] / num\_tok
+614             \textcolor{keywordflow}{try}:
+615                 m[\textcolor{stringliteral}{'ppl'}] = math.exp(m[\textcolor{stringliteral}{'loss'}])
+616             \textcolor{keywordflow}{except} OverflowError:
+617                 m[\textcolor{stringliteral}{'ppl'}] = \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(\textcolor{stringliteral}{'inf'})
+618         \textcolor{keywordflow}{if} self.metrics[\textcolor{stringliteral}{'total\_skipped\_batches'}] > 0:
+619             m[\textcolor{stringliteral}{'total\_skipped\_batches'}] = self.metrics[\textcolor{stringliteral}{'total\_skipped\_batches'}]
+620         \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} m.items():
+621             \textcolor{comment}{# clean up: rounds to sigfigs and converts tensors to floats}
+622             m[k] = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_af377ec61bfc0423461e7b409ffc883b9}{round\_sigfigs}(v, 4)
+623         \textcolor{keywordflow}{return} m
+624 
 \end{DoxyCode}
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a14bac616741ac0249f9c469db915ebd1}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a14bac616741ac0249f9c469db915ebd1}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!reset\+\_\+metrics@{reset\+\_\+metrics}}
@@ -1125,19 +1124,19 @@ Definition at line 600 of file controllable\+\_\+seq2seq.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 591 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 592 of file controllable\+\_\+seq2seq.\+py.
 
 
 \begin{DoxyCode}
-591     \textcolor{keyword}{def }reset\_metrics(self):
-592         \textcolor{stringliteral}{"""}
-593 \textcolor{stringliteral}{        Reset metrics for reporting loss and perplexity.}
-594 \textcolor{stringliteral}{        """}
-595         super().reset\_metrics()
-596         self.metrics[\textcolor{stringliteral}{'loss'}] = 0.0
-597         self.metrics[\textcolor{stringliteral}{'num\_tokens'}] = 0
-598         self.metrics[\textcolor{stringliteral}{'correct\_tokens'}] = 0
-599 
+592     \textcolor{keyword}{def }reset\_metrics(self):
+593         \textcolor{stringliteral}{"""}
+594 \textcolor{stringliteral}{        Reset metrics for reporting loss and perplexity.}
+595 \textcolor{stringliteral}{        """}
+596         super().reset\_metrics()
+597         self.metrics[\textcolor{stringliteral}{'loss'}] = 0.0
+598         self.metrics[\textcolor{stringliteral}{'num\_tokens'}] = 0
+599         self.metrics[\textcolor{stringliteral}{'correct\_tokens'}] = 0
+600 
 \end{DoxyCode}
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_ad219fac39e0fb97c881c65d1ddfc6c32}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_ad219fac39e0fb97c881c65d1ddfc6c32}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!save@{save}}
@@ -1149,32 +1148,32 @@ Definition at line 591 of file controllable\+\_\+seq2seq.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1178 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 1179 of file controllable\+\_\+seq2seq.\+py.
 
 
 \begin{DoxyCode}
-1178     \textcolor{keyword}{def }save(self, path=None):
-1179         \textcolor{stringliteral}{"""}
-1180 \textcolor{stringliteral}{        Save model parameters if model\_file is set.}
-1181 \textcolor{stringliteral}{        """}
-1182         path = self.opt.get(\textcolor{stringliteral}{'model\_file'}, \textcolor{keywordtype}{None}) \textcolor{keywordflow}{if} path \textcolor{keywordflow}{is} \textcolor{keywordtype}{None} \textcolor{keywordflow}{else} path
-1183 
-1184         \textcolor{keywordflow}{if} path \textcolor{keywordflow}{and} hasattr(self, \textcolor{stringliteral}{'model'}):
-1185             model = \{\}
-1186             model[\textcolor{stringliteral}{'model'}] = self.model.state\_dict()
-1187             model[\textcolor{stringliteral}{'longest\_label'}] = self.model.longest\_label
-1188             model[\textcolor{stringliteral}{'optimizer'}] = self.optimizer.state\_dict()
-1189             model[\textcolor{stringliteral}{'optimizer\_type'}] = self.opt[\textcolor{stringliteral}{'optimizer'}]
-1190 
-1191             with open(path, \textcolor{stringliteral}{'wb'}) \textcolor{keyword}{as} write:
-1192                 torch.save(model, write)
-1193 
-1194             \textcolor{comment}{# save opt file}
-1195             with open(path + \textcolor{stringliteral}{'.opt'}, \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} handle:
-1196                 \textcolor{comment}{# save version string}
-1197                 self.opt[\textcolor{stringliteral}{'model\_version'}] = self.model\_version()
-1198                 json.dump(self.opt, handle)
-1199 
+1179     \textcolor{keyword}{def }save(self, path=None):
+1180         \textcolor{stringliteral}{"""}
+1181 \textcolor{stringliteral}{        Save model parameters if model\_file is set.}
+1182 \textcolor{stringliteral}{        """}
+1183         path = self.opt.get(\textcolor{stringliteral}{'model\_file'}, \textcolor{keywordtype}{None}) \textcolor{keywordflow}{if} path \textcolor{keywordflow}{is} \textcolor{keywordtype}{None} \textcolor{keywordflow}{else} path
+1184 
+1185         \textcolor{keywordflow}{if} path \textcolor{keywordflow}{and} hasattr(self, \textcolor{stringliteral}{'model'}):
+1186             model = \{\}
+1187             model[\textcolor{stringliteral}{'model'}] = self.model.state\_dict()
+1188             model[\textcolor{stringliteral}{'longest\_label'}] = self.model.longest\_label
+1189             model[\textcolor{stringliteral}{'optimizer'}] = self.optimizer.state\_dict()
+1190             model[\textcolor{stringliteral}{'optimizer\_type'}] = self.opt[\textcolor{stringliteral}{'optimizer'}]
+1191 
+1192             with open(path, \textcolor{stringliteral}{'wb'}) \textcolor{keyword}{as} write:
+1193                 torch.save(model, write)
+1194 
+1195             \textcolor{comment}{# save opt file}
+1196             with open(path + \textcolor{stringliteral}{'.opt'}, \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} handle:
+1197                 \textcolor{comment}{# save version string}
+1198                 self.opt[\textcolor{stringliteral}{'model\_version'}] = self.model\_version()
+1199                 json.dump(self.opt, handle)
+1200 
 \end{DoxyCode}
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_ae9da32042638a1a69fe2911ad42d4d08}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_ae9da32042638a1a69fe2911ad42d4d08}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!share@{share}}
@@ -1186,30 +1185,30 @@ Definition at line 1178 of file controllable\+\_\+seq2seq.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 624 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 625 of file controllable\+\_\+seq2seq.\+py.
 
 
 \begin{DoxyCode}
-624     \textcolor{keyword}{def }share(self):
-625         \textcolor{stringliteral}{"""}
-626 \textcolor{stringliteral}{        Share internal states between parent and child instances.}
-627 \textcolor{stringliteral}{        """}
-628         shared = super().share()
-629         shared[\textcolor{stringliteral}{'model'}] = self.model
-630         \textcolor{keywordflow}{if} self.opt.get(\textcolor{stringliteral}{'numthreads'}, 1) > 1:
-631             \textcolor{comment}{# we're doing hogwild so share the model too}
-632             \textcolor{keywordflow}{if} isinstance(self.metrics, dict):
-633                 \textcolor{comment}{# move metrics and model to shared memory}
-634                 self.metrics = SharedTable(self.metrics)
-635                 self.model.share\_memory()
-636             shared[\textcolor{stringliteral}{'states'}] = \{  \textcolor{comment}{# don't share optimizer states}
-637                 \textcolor{stringliteral}{'optimizer\_type'}: self.opt[\textcolor{stringliteral}{'optimizer'}]
-638             \}
-639         shared[\textcolor{stringliteral}{'metrics'}] = self.metrics  \textcolor{comment}{# do after numthreads check}
-640         \textcolor{keywordflow}{if} self.beam\_dot\_log \textcolor{keywordflow}{is} \textcolor{keyword}{True}:
-641             shared[\textcolor{stringliteral}{'beam\_dot\_dir'}] = self.beam\_dot\_dir
-642         \textcolor{keywordflow}{return} shared
-643 
+625     \textcolor{keyword}{def }share(self):
+626         \textcolor{stringliteral}{"""}
+627 \textcolor{stringliteral}{        Share internal states between parent and child instances.}
+628 \textcolor{stringliteral}{        """}
+629         shared = super().share()
+630         shared[\textcolor{stringliteral}{'model'}] = self.model
+631         \textcolor{keywordflow}{if} self.opt.get(\textcolor{stringliteral}{'numthreads'}, 1) > 1:
+632             \textcolor{comment}{# we're doing hogwild so share the model too}
+633             \textcolor{keywordflow}{if} isinstance(self.metrics, dict):
+634                 \textcolor{comment}{# move metrics and model to shared memory}
+635                 self.metrics = SharedTable(self.metrics)
+636                 self.model.share\_memory()
+637             shared[\textcolor{stringliteral}{'states'}] = \{  \textcolor{comment}{# don't share optimizer states}
+638                 \textcolor{stringliteral}{'optimizer\_type'}: self.opt[\textcolor{stringliteral}{'optimizer'}]
+639             \}
+640         shared[\textcolor{stringliteral}{'metrics'}] = self.metrics  \textcolor{comment}{# do after numthreads check}
+641         \textcolor{keywordflow}{if} self.beam\_dot\_log \textcolor{keywordflow}{is} \textcolor{keyword}{True}:
+642             shared[\textcolor{stringliteral}{'beam\_dot\_dir'}] = self.beam\_dot\_dir
+643         \textcolor{keywordflow}{return} shared
+644 
 \end{DoxyCode}
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a656ea2270ec3d407d67782754ead5f87}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a656ea2270ec3d407d67782754ead5f87}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!train\+\_\+step@{train\+\_\+step}}
@@ -1221,59 +1220,59 @@ Definition at line 624 of file controllable\+\_\+seq2seq.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 738 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 739 of file controllable\+\_\+seq2seq.\+py.
 
 
 \begin{DoxyCode}
-738     \textcolor{keyword}{def }train\_step(self, batch):
-739         \textcolor{stringliteral}{"""}
-740 \textcolor{stringliteral}{        Train on a single batch of examples.}
-741 \textcolor{stringliteral}{        """}
-742         batchsize = batch.text\_vec.size(0)
-743         \textcolor{keywordflow}{if} self.multigpu \textcolor{keywordflow}{and} batchsize % 2 != 0:
-744             \textcolor{comment}{# throw out one training example}
-745             batch = self.truncate\_input(batch)
-746         \textcolor{comment}{# helps with memory usage}
-747         self.\_init\_cuda\_buffer(
-748             self.model, self.criterion, batchsize, self.truncate \textcolor{keywordflow}{or} 180
-749         )
-750         self.model.\hyperlink{namespaceprojects_1_1mastering__the__dungeon_1_1mturk_1_1tasks_1_1MTD_1_1run_a36a5f4f6f9df0611a6818610518d2cf0}{train}()
-751         self.zero\_grad()
-752 
-753         \textcolor{keywordflow}{try}:
-754             seq\_len = \textcolor{keywordtype}{None} \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.multigpu \textcolor{keywordflow}{else} batch.text\_vec.size(1)
-755             out = self.model(
-756                 batch.text\_vec, batch.ctrl\_vec, batch.label\_vec, seq\_len=seq\_len
-757             )
-758 
-759             \textcolor{comment}{# generated response}
-760             scores = out[0]
-761             \_, preds = scores.max(2)
-762 
-763             score\_view = scores.view(-1, scores.size(-1))
-764             loss = self.criterion(score\_view, batch.label\_vec.view(-1))
-765             \textcolor{comment}{# save loss to metrics}
-766             notnull = batch.label\_vec.ne(self.NULL\_IDX)
-767             target\_tokens = notnull.long().sum().item()
-768             correct = ((batch.label\_vec == preds) * notnull).sum().item()
-769             self.metrics[\textcolor{stringliteral}{'correct\_tokens'}] += correct
-770             self.metrics[\textcolor{stringliteral}{'loss'}] += loss.item()
-771             self.metrics[\textcolor{stringliteral}{'num\_tokens'}] += target\_tokens
-772             loss /= target\_tokens  \textcolor{comment}{# average loss per token}
-773             loss.backward()
-774             self.update\_params()
-775         \textcolor{keywordflow}{except} RuntimeError \textcolor{keyword}{as} e:
-776             \textcolor{comment}{# catch out of memory exceptions during fwd/bck (skip batch)}
-777             \textcolor{keywordflow}{if} \textcolor{stringliteral}{'out of memory'} \textcolor{keywordflow}{in} \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(e):
-778                 print(
-779                     \textcolor{stringliteral}{'| WARNING: ran out of memory, skipping batch. '}
-780                     \textcolor{stringliteral}{'if this happens frequently, decrease batchsize or '}
-781                     \textcolor{stringliteral}{'truncate the inputs to the model.'}
-782                 )
-783                 self.metrics[\textcolor{stringliteral}{'total\_skipped\_batches'}] += 1
-784             \textcolor{keywordflow}{else}:
-785                 \textcolor{keywordflow}{raise} e
-786 
+739     \textcolor{keyword}{def }train\_step(self, batch):
+740         \textcolor{stringliteral}{"""}
+741 \textcolor{stringliteral}{        Train on a single batch of examples.}
+742 \textcolor{stringliteral}{        """}
+743         batchsize = batch.text\_vec.size(0)
+744         \textcolor{keywordflow}{if} self.multigpu \textcolor{keywordflow}{and} batchsize % 2 != 0:
+745             \textcolor{comment}{# throw out one training example}
+746             batch = self.truncate\_input(batch)
+747         \textcolor{comment}{# helps with memory usage}
+748         self.\_init\_cuda\_buffer(
+749             self.model, self.criterion, batchsize, self.truncate \textcolor{keywordflow}{or} 180
+750         )
+751         self.model.\hyperlink{namespaceprojects_1_1mastering__the__dungeon_1_1mturk_1_1tasks_1_1MTD_1_1run_a36a5f4f6f9df0611a6818610518d2cf0}{train}()
+752         self.zero\_grad()
+753 
+754         \textcolor{keywordflow}{try}:
+755             seq\_len = \textcolor{keywordtype}{None} \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.multigpu \textcolor{keywordflow}{else} batch.text\_vec.size(1)
+756             out = self.model(
+757                 batch.text\_vec, batch.ctrl\_vec, batch.label\_vec, seq\_len=seq\_len
+758             )
+759 
+760             \textcolor{comment}{# generated response}
+761             scores = out[0]
+762             \_, preds = scores.max(2)
+763 
+764             score\_view = scores.view(-1, scores.size(-1))
+765             loss = self.criterion(score\_view, batch.label\_vec.view(-1))
+766             \textcolor{comment}{# save loss to metrics}
+767             notnull = batch.label\_vec.ne(self.NULL\_IDX)
+768             target\_tokens = notnull.long().sum().item()
+769             correct = ((batch.label\_vec == preds) * notnull).sum().item()
+770             self.metrics[\textcolor{stringliteral}{'correct\_tokens'}] += correct
+771             self.metrics[\textcolor{stringliteral}{'loss'}] += loss.item()
+772             self.metrics[\textcolor{stringliteral}{'num\_tokens'}] += target\_tokens
+773             loss /= target\_tokens  \textcolor{comment}{# average loss per token}
+774             loss.backward()
+775             self.update\_params()
+776         \textcolor{keywordflow}{except} RuntimeError \textcolor{keyword}{as} e:
+777             \textcolor{comment}{# catch out of memory exceptions during fwd/bck (skip batch)}
+778             \textcolor{keywordflow}{if} \textcolor{stringliteral}{'out of memory'} \textcolor{keywordflow}{in} \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(e):
+779                 print(
+780                     \textcolor{stringliteral}{'| WARNING: ran out of memory, skipping batch. '}
+781                     \textcolor{stringliteral}{'if this happens frequently, decrease batchsize or '}
+782                     \textcolor{stringliteral}{'truncate the inputs to the model.'}
+783                 )
+784                 self.metrics[\textcolor{stringliteral}{'total\_skipped\_batches'}] += 1
+785             \textcolor{keywordflow}{else}:
+786                 \textcolor{keywordflow}{raise} e
+787 
 \end{DoxyCode}
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_ab3039a805f06b601cb1116702cbca7c2}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_ab3039a805f06b601cb1116702cbca7c2}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!truncate\+\_\+input@{truncate\+\_\+input}}
@@ -1285,22 +1284,22 @@ Definition at line 738 of file controllable\+\_\+seq2seq.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1056 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 1057 of file controllable\+\_\+seq2seq.\+py.
 
 
 \begin{DoxyCode}
-1056     \textcolor{keyword}{def }truncate\_input(self, batch):
-1057         \textcolor{stringliteral}{"""}
-1058 \textcolor{stringliteral}{        Truncate the input.}
-1059 \textcolor{stringliteral}{        """}
-1060         \textcolor{comment}{# truncate batch for multigpu}
-1061         text\_vec = batch.text\_vec[:-1]
-1062         batch = batch.\_replace(text\_vec=text\_vec)
-1063         \textcolor{keywordflow}{if} batch.label\_vec \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-1064             label\_vec = batch.label\_vec[:-1]
-1065             batch = batch.\_replace(label\_vec=label\_vec)
-1066         \textcolor{keywordflow}{return} batch
-1067 
+1057     \textcolor{keyword}{def }truncate\_input(self, batch):
+1058         \textcolor{stringliteral}{"""}
+1059 \textcolor{stringliteral}{        Truncate the input.}
+1060 \textcolor{stringliteral}{        """}
+1061         \textcolor{comment}{# truncate batch for multigpu}
+1062         text\_vec = batch.text\_vec[:-1]
+1063         batch = batch.\_replace(text\_vec=text\_vec)
+1064         \textcolor{keywordflow}{if} batch.label\_vec \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+1065             label\_vec = batch.label\_vec[:-1]
+1066             batch = batch.\_replace(label\_vec=label\_vec)
+1067         \textcolor{keywordflow}{return} batch
+1068 
 \end{DoxyCode}
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a4b656f8d8634a71088b3cb9e719f3629}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a4b656f8d8634a71088b3cb9e719f3629}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!truncate\+\_\+output@{truncate\+\_\+output}}
@@ -1312,19 +1311,19 @@ Definition at line 1056 of file controllable\+\_\+seq2seq.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1068 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 1069 of file controllable\+\_\+seq2seq.\+py.
 
 
 \begin{DoxyCode}
-1068     \textcolor{keyword}{def }truncate\_output(self, out):
-1069         \textcolor{stringliteral}{"""}
-1070 \textcolor{stringliteral}{        Truncate the output.}
-1071 \textcolor{stringliteral}{        """}
-1072         new\_out\_0 = out[0][:-1]
-1073         new\_out\_1 = \textcolor{keywordtype}{None} \textcolor{keywordflow}{if} out[1] \textcolor{keywordflow}{is} \textcolor{keywordtype}{None} \textcolor{keywordflow}{else} out[1][:-1]
-1074         new\_out\_2 = [vec[:-1] \textcolor{keywordflow}{for} vec \textcolor{keywordflow}{in} out[2]]
-1075         \textcolor{keywordflow}{return} tuple([new\_out\_0, new\_out\_1, new\_out\_2])
-1076 
+1069     \textcolor{keyword}{def }truncate\_output(self, out):
+1070         \textcolor{stringliteral}{"""}
+1071 \textcolor{stringliteral}{        Truncate the output.}
+1072 \textcolor{stringliteral}{        """}
+1073         new\_out\_0 = out[0][:-1]
+1074         new\_out\_1 = \textcolor{keywordtype}{None} \textcolor{keywordflow}{if} out[1] \textcolor{keywordflow}{is} \textcolor{keywordtype}{None} \textcolor{keywordflow}{else} out[1][:-1]
+1075         new\_out\_2 = [vec[:-1] \textcolor{keywordflow}{for} vec \textcolor{keywordflow}{in} out[2]]
+1076         \textcolor{keywordflow}{return} tuple([new\_out\_0, new\_out\_1, new\_out\_2])
+1077 
 \end{DoxyCode}
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a9d5a1ac61fa3ebf363a8b15106a7e08b}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a9d5a1ac61fa3ebf363a8b15106a7e08b}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!update\+\_\+params@{update\+\_\+params}}
@@ -1336,20 +1335,20 @@ Definition at line 1068 of file controllable\+\_\+seq2seq.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 581 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 582 of file controllable\+\_\+seq2seq.\+py.
 
 
 \begin{DoxyCode}
-581     \textcolor{keyword}{def }update\_params(self):
-582         \textcolor{stringliteral}{"""}
-583 \textcolor{stringliteral}{        Do one optimization step.}
-584 \textcolor{stringliteral}{        """}
-585         \textcolor{keywordflow}{if} self.opt[\textcolor{stringliteral}{'gradient\_clip'}] > 0:
-586             torch.nn.utils.clip\_grad\_norm\_(
-587                 self.model.parameters(), self.opt[\textcolor{stringliteral}{'gradient\_clip'}]
-588             )
-589         self.optimizer.step()
-590 
+582     \textcolor{keyword}{def }update\_params(self):
+583         \textcolor{stringliteral}{"""}
+584 \textcolor{stringliteral}{        Do one optimization step.}
+585 \textcolor{stringliteral}{        """}
+586         \textcolor{keywordflow}{if} self.opt[\textcolor{stringliteral}{'gradient\_clip'}] > 0:
+587             torch.nn.utils.clip\_grad\_norm\_(
+588                 self.model.parameters(), self.opt[\textcolor{stringliteral}{'gradient\_clip'}]
+589             )
+590         self.optimizer.step()
+591 
 \end{DoxyCode}
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_aae1b61b5d838205753a872e34e0c8c34}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_aae1b61b5d838205753a872e34e0c8c34}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!vectorize@{vectorize}}
@@ -1361,18 +1360,18 @@ Definition at line 581 of file controllable\+\_\+seq2seq.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 644 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 645 of file controllable\+\_\+seq2seq.\+py.
 
 
 \begin{DoxyCode}
-644     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_a5c76cc39e3014c7bcf9199d566dbdc0f}{vectorize}(self, *args, **kwargs):
-645         \textcolor{stringliteral}{"""}
-646 \textcolor{stringliteral}{        Override vectorize for seq2seq.}
-647 \textcolor{stringliteral}{        """}
-648         kwargs[\textcolor{stringliteral}{'add\_start'}] = \textcolor{keyword}{False}  \textcolor{comment}{# model does this in module code}
-649         kwargs[\textcolor{stringliteral}{'add\_end'}] = \textcolor{keyword}{True}  \textcolor{comment}{# we do want this}
-650         \textcolor{keywordflow}{return} super().\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_a5c76cc39e3014c7bcf9199d566dbdc0f}{vectorize}(*args, **kwargs)
-651 
+645     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_a5c76cc39e3014c7bcf9199d566dbdc0f}{vectorize}(self, *args, **kwargs):
+646         \textcolor{stringliteral}{"""}
+647 \textcolor{stringliteral}{        Override vectorize for seq2seq.}
+648 \textcolor{stringliteral}{        """}
+649         kwargs[\textcolor{stringliteral}{'add\_start'}] = \textcolor{keyword}{False}  \textcolor{comment}{# model does this in module code}
+650         kwargs[\textcolor{stringliteral}{'add\_end'}] = \textcolor{keyword}{True}  \textcolor{comment}{# we do want this}
+651         \textcolor{keywordflow}{return} super().\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_a5c76cc39e3014c7bcf9199d566dbdc0f}{vectorize}(*args, **kwargs)
+652 
 \end{DoxyCode}
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a72b442a0dfa9d106f7a82624823cb73e}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a72b442a0dfa9d106f7a82624823cb73e}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!zero\+\_\+grad@{zero\+\_\+grad}}
@@ -1384,16 +1383,16 @@ Definition at line 644 of file controllable\+\_\+seq2seq.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 575 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 576 of file controllable\+\_\+seq2seq.\+py.
 
 
 \begin{DoxyCode}
-575     \textcolor{keyword}{def }zero\_grad(self):
-576         \textcolor{stringliteral}{"""}
-577 \textcolor{stringliteral}{        Zero out optimizer.}
-578 \textcolor{stringliteral}{        """}
-579         self.optimizer.zero\_grad()
-580 
+576     \textcolor{keyword}{def }zero\_grad(self):
+577         \textcolor{stringliteral}{"""}
+578 \textcolor{stringliteral}{        Zero out optimizer.}
+579 \textcolor{stringliteral}{        """}
+580         self.optimizer.zero\_grad()
+581 
 \end{DoxyCode}
 
 
@@ -1406,7 +1405,7 @@ Definition at line 575 of file controllable\+\_\+seq2seq.\+py.
 
 
 
-Definition at line 307 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 308 of file controllable\+\_\+seq2seq.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a5979974bea74f03b178f1e060c068f7e}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a5979974bea74f03b178f1e060c068f7e}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!beam\+\_\+dot\+\_\+dir@{beam\+\_\+dot\+\_\+dir}}
@@ -1416,7 +1415,7 @@ Definition at line 307 of file controllable\+\_\+seq2seq.\+py.
 
 
 
-Definition at line 325 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 326 of file controllable\+\_\+seq2seq.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_aaa40c3f61f6b3c343af814b66e337fd1}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_aaa40c3f61f6b3c343af814b66e337fd1}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!beam\+\_\+dot\+\_\+log@{beam\+\_\+dot\+\_\+log}}
@@ -1426,7 +1425,7 @@ Definition at line 325 of file controllable\+\_\+seq2seq.\+py.
 
 
 
-Definition at line 303 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 304 of file controllable\+\_\+seq2seq.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_ad3d2699ffde7252a8a817e286937f75c}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_ad3d2699ffde7252a8a817e286937f75c}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!beam\+\_\+min\+\_\+length@{beam\+\_\+min\+\_\+length}}
@@ -1436,7 +1435,7 @@ Definition at line 303 of file controllable\+\_\+seq2seq.\+py.
 
 
 
-Definition at line 306 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 307 of file controllable\+\_\+seq2seq.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_af48faf0b6fd7baa960fba7f90a4a1503}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_af48faf0b6fd7baa960fba7f90a4a1503}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!beam\+\_\+min\+\_\+n\+\_\+best@{beam\+\_\+min\+\_\+n\+\_\+best}}
@@ -1446,7 +1445,7 @@ Definition at line 306 of file controllable\+\_\+seq2seq.\+py.
 
 
 
-Definition at line 305 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 306 of file controllable\+\_\+seq2seq.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a3bdf0be087cbd26a34badd3cb619e480}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a3bdf0be087cbd26a34badd3cb619e480}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!beam\+\_\+size@{beam\+\_\+size}}
@@ -1456,7 +1455,7 @@ Definition at line 305 of file controllable\+\_\+seq2seq.\+py.
 
 
 
-Definition at line 304 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 305 of file controllable\+\_\+seq2seq.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_af675df0b6aa0c683d5da13151a82abe4}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_af675df0b6aa0c683d5da13151a82abe4}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!buffer\+\_\+initialized@{buffer\+\_\+initialized}}
@@ -1466,7 +1465,7 @@ Definition at line 304 of file controllable\+\_\+seq2seq.\+py.
 
 
 
-Definition at line 726 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 727 of file controllable\+\_\+seq2seq.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a10e17fad8f2e68b1610f64dc7d262d1a}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a10e17fad8f2e68b1610f64dc7d262d1a}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!control\+\_\+settings@{control\+\_\+settings}}
@@ -1476,7 +1475,7 @@ Definition at line 726 of file controllable\+\_\+seq2seq.\+py.
 
 
 
-Definition at line 510 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 511 of file controllable\+\_\+seq2seq.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a60964f1450ffcd6b3ab7696a64e48cd5}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a60964f1450ffcd6b3ab7696a64e48cd5}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!control\+\_\+vars@{control\+\_\+vars}}
@@ -1486,7 +1485,7 @@ Definition at line 510 of file controllable\+\_\+seq2seq.\+py.
 
 
 
-Definition at line 464 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 465 of file controllable\+\_\+seq2seq.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a883779e425cddd8e9c960d0e60b03de1}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a883779e425cddd8e9c960d0e60b03de1}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!criterion@{criterion}}
@@ -1496,7 +1495,7 @@ Definition at line 464 of file controllable\+\_\+seq2seq.\+py.
 
 
 
-Definition at line 348 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 349 of file controllable\+\_\+seq2seq.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a812e52cf25c679d7e6868eab04fb7da8}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a812e52cf25c679d7e6868eab04fb7da8}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!id@{id}}
@@ -1506,7 +1505,7 @@ Definition at line 348 of file controllable\+\_\+seq2seq.\+py.
 
 
 
-Definition at line 297 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 298 of file controllable\+\_\+seq2seq.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a5f37636e9f8eda06f6393bb21072a516}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a5f37636e9f8eda06f6393bb21072a516}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!metrics@{metrics}}
@@ -1516,7 +1515,7 @@ Definition at line 297 of file controllable\+\_\+seq2seq.\+py.
 
 
 
-Definition at line 314 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 315 of file controllable\+\_\+seq2seq.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_ad3004224cdb878412a74b89f7f00412e}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_ad3004224cdb878412a74b89f7f00412e}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!model@{model}}
@@ -1526,7 +1525,7 @@ Definition at line 314 of file controllable\+\_\+seq2seq.\+py.
 
 
 
-Definition at line 313 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 314 of file controllable\+\_\+seq2seq.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_af2988d23c581d2d186ec2ce527e92a6d}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_af2988d23c581d2d186ec2ce527e92a6d}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!multigpu@{multigpu}}
@@ -1536,7 +1535,7 @@ Definition at line 313 of file controllable\+\_\+seq2seq.\+py.
 
 
 
-Definition at line 298 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 299 of file controllable\+\_\+seq2seq.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_ae7d42c61a184691bb15d1ea65aee4c72}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_ae7d42c61a184691bb15d1ea65aee4c72}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!wd\+\_\+features@{wd\+\_\+features}}
@@ -1546,7 +1545,7 @@ Definition at line 298 of file controllable\+\_\+seq2seq.\+py.
 
 
 
-Definition at line 550 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 551 of file controllable\+\_\+seq2seq.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a74800af89333cc27f221ed70dff41e4e}\label{classprojects_1_1controllable__dialogue_1_1controllable__seq2seq_1_1controllable__seq2seq_1_1ControllableSeq2seqAgent_a74800af89333cc27f221ed70dff41e4e}} 
 \index{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent@{projects\+::controllable\+\_\+dialogue\+::controllable\+\_\+seq2seq\+::controllable\+\_\+seq2seq\+::\+Controllable\+Seq2seq\+Agent}!wd\+\_\+wts@{wd\+\_\+wts}}
@@ -1556,7 +1555,7 @@ Definition at line 550 of file controllable\+\_\+seq2seq.\+py.
 
 
 
-Definition at line 557 of file controllable\+\_\+seq2seq.\+py.
+Definition at line 558 of file controllable\+\_\+seq2seq.\+py.
 
 
 

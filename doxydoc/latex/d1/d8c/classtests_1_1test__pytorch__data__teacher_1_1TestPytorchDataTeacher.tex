@@ -2,8 +2,7 @@
 \label{classtests_1_1test__pytorch__data__teacher_1_1TestPytorchDataTeacher}\index{tests.\+test\+\_\+pytorch\+\_\+data\+\_\+teacher.\+Test\+Pytorch\+Data\+Teacher@{tests.\+test\+\_\+pytorch\+\_\+data\+\_\+teacher.\+Test\+Pytorch\+Data\+Teacher}}
 
 
-Inheritance diagram for tests.\+test\+\_\+pytorch\+\_\+data\+\_\+teacher.\+Test\+Pytorch\+Data\+Teacher\+:
-\nopagebreak
+Inheritance diagram for tests.\+test\+\_\+pytorch\+\_\+data\+\_\+teacher.\+Test\+Pytorch\+Data\+Teacher\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for tests.\+test\+\_\+pytorch\+\_\+data\+\_\+teacher.\+Test\
 \end{figure}
 
 
-Collaboration diagram for tests.\+test\+\_\+pytorch\+\_\+data\+\_\+teacher.\+Test\+Pytorch\+Data\+Teacher\+:
-\nopagebreak
+Collaboration diagram for tests.\+test\+\_\+pytorch\+\_\+data\+\_\+teacher.\+Test\+Pytorch\+Data\+Teacher\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -103,8 +101,8 @@ Definition at line 226 of file test\+\_\+pytorch\+\_\+data\+\_\+teacher.\+py.
 247                 parser.set\_defaults(**defaults)
 248                 opt = parser.parse\_args()
 249                 \hyperlink{namespacebuild__dict}{build\_dict}(opt)
-250                 agent = \hyperlink{namespaceparlai_1_1core_1_1agents_ad0d54074d4bcc148bb415ab5515a53b5}{create\_agent}(opt)
-251                 world\_data = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(opt, agent)
+250                 agent = \hyperlink{namespaceparlai_1_1core_1_1agents_a00d77a7e26fb89e8bd900f7b2a02982a}{create\_agent}(opt)
+251                 world\_data = \hyperlink{namespaceparlai_1_1core_1_1worlds_a79969c7ba76d4b3c500f5bb776444dc6}{create\_task}(opt, agent)
 252                 batch\_sort\_acts = []
 253                 \textcolor{comment}{# first epoch}
 254                 \textcolor{keywordflow}{while} len(batch\_sort\_acts) < 900 / 50:
@@ -311,8 +309,8 @@ Definition at line 108 of file test\+\_\+pytorch\+\_\+data\+\_\+teacher.\+py.
 120             opt = parser.parse\_args()
 121             \hyperlink{namespacebuild__dict}{build\_dict}(opt)
 122             with testing\_utils.capture\_output() \textcolor{keyword}{as} \_:
-123                 teacher = \hyperlink{namespaceparlai_1_1core_1_1agents_ab4473fa54af02b5ab385b41b51dacd10}{create\_task\_agent\_from\_taskname}(opt)[0]
-124             agent = \hyperlink{namespaceparlai_1_1core_1_1agents_ad0d54074d4bcc148bb415ab5515a53b5}{create\_agent}(opt)
+123                 teacher = \hyperlink{namespaceparlai_1_1core_1_1agents_a76269fb567532a8fb7f29edcc20a6e47}{create\_task\_agent\_from\_taskname}(opt)[0]
+124             agent = \hyperlink{namespaceparlai_1_1core_1_1agents_a00d77a7e26fb89e8bd900f7b2a02982a}{create\_agent}(opt)
 125             act = teacher.act()
 126             \textcolor{keywordflow}{if} teacher\_processed:
 127                 \textcolor{keywordflow}{return} act, agent
@@ -464,7 +462,7 @@ Definition at line 372 of file test\+\_\+pytorch\+\_\+data\+\_\+teacher.\+py.
 384             del defaults[\textcolor{stringliteral}{'pytorch\_teacher\_task'}]
 385             parser.set\_defaults(**defaults)
 386             opt = parser.parse\_args()
-387             teacher = \hyperlink{namespaceparlai_1_1core_1_1agents_ab4473fa54af02b5ab385b41b51dacd10}{create\_task\_agent\_from\_taskname}(opt)[0]
+387             teacher = \hyperlink{namespaceparlai_1_1core_1_1agents_a76269fb567532a8fb7f29edcc20a6e47}{create\_task\_agent\_from\_taskname}(opt)[0]
 388             pytorch\_teacher\_act = teacher.act()
 389 
 390             parser = display\_setup\_args()
@@ -472,7 +470,7 @@ Definition at line 372 of file test\+\_\+pytorch\+\_\+data\+\_\+teacher.\+py.
 392             del defaults[\textcolor{stringliteral}{'pytorch\_teacher\_dataset'}]
 393             parser.set\_defaults(**defaults)
 394             opt = parser.parse\_args()
-395             teacher = \hyperlink{namespaceparlai_1_1core_1_1agents_ab4473fa54af02b5ab385b41b51dacd10}{create\_task\_agent\_from\_taskname}(opt)[0]
+395             teacher = \hyperlink{namespaceparlai_1_1core_1_1agents_a76269fb567532a8fb7f29edcc20a6e47}{create\_task\_agent\_from\_taskname}(opt)[0]
 396             regular\_teacher\_act = teacher.act()
 397 
 398         keys = set(pytorch\_teacher\_act.keys()).intersection(
@@ -525,7 +523,7 @@ Definition at line 69 of file test\+\_\+pytorch\+\_\+data\+\_\+teacher.\+py.
 87                         parser = display\_setup\_args()
 88                         parser.set\_defaults(**opt\_defaults)
 89                         opt = parser.parse\_args()
-90                         teacher = \hyperlink{namespaceparlai_1_1core_1_1agents_ab4473fa54af02b5ab385b41b51dacd10}{create\_task\_agent\_from\_taskname}(opt)[0]
+90                         teacher = \hyperlink{namespaceparlai_1_1core_1_1agents_a76269fb567532a8fb7f29edcc20a6e47}{create\_task\_agent\_from\_taskname}(opt)[0]
 91                         \textcolor{keywordflow}{if} (
 92                             \textcolor{stringliteral}{'ordered'} \textcolor{keywordflow}{in} datatype
 93                             \textcolor{keywordflow}{or} (\textcolor{stringliteral}{'stream'} \textcolor{keywordflow}{in} datatype \textcolor{keywordflow}{and} \textcolor{keywordflow}{not} opt.get(\textcolor{stringliteral}{'shuffle'}))
@@ -570,8 +568,8 @@ Definition at line 159 of file test\+\_\+pytorch\+\_\+data\+\_\+teacher.\+py.
 167             parser.set\_defaults(**defaults)
 168             opt = parser.parse\_args()
 169             \hyperlink{namespacebuild__dict}{build\_dict}(opt)
-170             agent = \hyperlink{namespaceparlai_1_1core_1_1agents_ad0d54074d4bcc148bb415ab5515a53b5}{create\_agent}(opt)
-171             world\_data = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(opt, agent)
+170             agent = \hyperlink{namespaceparlai_1_1core_1_1agents_a00d77a7e26fb89e8bd900f7b2a02982a}{create\_agent}(opt)
+171             world\_data = \hyperlink{namespaceparlai_1_1core_1_1worlds_a79969c7ba76d4b3c500f5bb776444dc6}{create\_task}(opt, agent)
 172             acts\_epoch\_1 = []
 173             acts\_epoch\_2 = []
 174             \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} world\_data.epoch\_done():

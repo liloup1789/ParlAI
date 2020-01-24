@@ -13,23 +13,21 @@ def \hyperlink{namespaceparlai_1_1scripts_1_1interactive__web_abeab09cab4f9e6007
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-string \hyperlink{namespaceparlai_1_1scripts_1_1interactive__web_ac440a61641ae161806beba8dbb9d39b8}{H\+O\+S\+T\+\_\+\+N\+A\+ME} = \textquotesingle{}localhost\textquotesingle{}
+\hyperlink{namespaceparlai_1_1scripts_1_1interactive__web_a1be4376232ba5fb34748515c98894038}{H\+O\+S\+T\+\_\+\+N\+A\+ME}
 \item 
-int \hyperlink{namespaceparlai_1_1scripts_1_1interactive__web_adab4200a8fab70115b4a5c6592ba596a}{P\+O\+RT} = 8080
+\hyperlink{namespaceparlai_1_1scripts_1_1interactive__web_ad1ac15c0fba2939e2421dfcc793f3659}{P\+O\+RT}
 \item 
-dictionary \hyperlink{namespaceparlai_1_1scripts_1_1interactive__web_a86b356c6390faf2398bdbde02a6664d6}{S\+H\+A\+R\+ED} = \{\}
+\hyperlink{namespaceparlai_1_1scripts_1_1interactive__web_a7ef47952fffbf40ad8526e0513fc3484}{S\+T\+Y\+L\+E\+\_\+\+S\+H\+E\+ET}
 \item 
-string \hyperlink{namespaceparlai_1_1scripts_1_1interactive__web_a337c6d5539295b610d84bd51e40e7122}{S\+T\+Y\+L\+E\+\_\+\+S\+H\+E\+ET} = \char`\"{}https\+://cdnjs.\+cloudflare.\+com/ajax/libs/bulma/0.\+7.\+4/css/bulma.\+css\char`\"{}
+\hyperlink{namespaceparlai_1_1scripts_1_1interactive__web_a57f348eaa99e66b04a8aeb54762adcfd}{F\+O\+N\+T\+\_\+\+A\+W\+E\+S\+O\+ME}
 \item 
-string \hyperlink{namespaceparlai_1_1scripts_1_1interactive__web_aac64fc5183abcbf6b44570b3a16ba911}{F\+O\+N\+T\+\_\+\+A\+W\+E\+S\+O\+ME} = \char`\"{}https\+://use.\+fontawesome.\+com/releases/v5.\+3.\+1/js/all.\+js\char`\"{}
+\hyperlink{namespaceparlai_1_1scripts_1_1interactive__web_af3bf0959c45adea28e896999ca4cbf48}{W\+E\+B\+\_\+\+H\+T\+ML}
 \item 
-string \hyperlink{namespaceparlai_1_1scripts_1_1interactive__web_a85a34a78e56c0f8deaf960a2df2bcfc8}{W\+E\+B\+\_\+\+H\+T\+ML}
-\item 
-def \hyperlink{namespaceparlai_1_1scripts_1_1interactive__web_a022cc4d0c500e7a2ba643446d3b0e6ef}{opt} = \hyperlink{namespaceparlai_1_1scripts_1_1interactive__web_abeab09cab4f9e60077ffd5050bff36ef}{setup\+\_\+interactive}(\hyperlink{namespaceparlai_1_1scripts_1_1interactive__web_a86b356c6390faf2398bdbde02a6664d6}{S\+H\+A\+R\+ED})
+\hyperlink{namespaceparlai_1_1scripts_1_1interactive__web_a500c0505acc64a8a9fc5d63999064b89}{opt}
 \item 
 \hyperlink{namespaceparlai_1_1scripts_1_1interactive__web_a8a3d9062157e9703a21ded9885420c12}{protocol\+\_\+version}
 \item 
-\hyperlink{namespaceparlai_1_1scripts_1_1interactive__web_af01d14f8f733bc94f7aaab006021b83b}{httpd} = H\+T\+T\+P\+Server((\hyperlink{namespaceparlai_1_1scripts_1_1interactive__web_ac440a61641ae161806beba8dbb9d39b8}{H\+O\+S\+T\+\_\+\+N\+A\+ME}, \hyperlink{namespaceparlai_1_1scripts_1_1interactive__web_a022cc4d0c500e7a2ba643446d3b0e6ef}{opt}\mbox{[}\textquotesingle{}port\textquotesingle{}\mbox{]}), \hyperlink{classparlai_1_1scripts_1_1interactive__web_1_1MyHandler}{My\+Handler})
+\hyperlink{namespaceparlai_1_1scripts_1_1interactive__web_af01d14f8f733bc94f7aaab006021b83b}{httpd}
 \end{DoxyCompactItemize}
 
 
@@ -44,84 +42,84 @@ def \hyperlink{namespaceparlai_1_1scripts_1_1interactive__web_a022cc4d0c500e7a2b
 \end{DoxyVerb}
  
 
-Definition at line 314 of file interactive\+\_\+web.\+py.
+Definition at line 315 of file interactive\+\_\+web.\+py.
 
 
 \begin{DoxyCode}
-314 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1interactive__web_abeab09cab4f9e60077ffd5050bff36ef}{setup\_interactive}(shared):
-315     \textcolor{stringliteral}{"""}
-316 \textcolor{stringliteral}{    Build and parse CLI opts.}
-317 \textcolor{stringliteral}{    """}
-318     parser = \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1run_a17bafea2534d593de1fbf1e0724e5b67}{setup\_args}()
-319     parser.add\_argument(\textcolor{stringliteral}{'--port'}, type=int, default=PORT, help=\textcolor{stringliteral}{'Port to listen on.'})
-320     SHARED[\textcolor{stringliteral}{'opt'}] = parser.parse\_args(print\_args=\textcolor{keyword}{False})
-321 
-322     SHARED[\textcolor{stringliteral}{'opt'}][\textcolor{stringliteral}{'task'}] = \textcolor{stringliteral}{'parlai.agents.local\_human.local\_human:LocalHumanAgent'}
-323 
-324     \textcolor{comment}{# Create model and assign it to the specified task}
-325     agent = \hyperlink{namespaceparlai_1_1core_1_1agents_ad0d54074d4bcc148bb415ab5515a53b5}{create\_agent}(SHARED.get(\textcolor{stringliteral}{'opt'}), requireModelExists=\textcolor{keyword}{True})
-326     SHARED[\textcolor{stringliteral}{'agent'}] = agent
-327     SHARED[\textcolor{stringliteral}{'world'}] = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(SHARED.get(\textcolor{stringliteral}{'opt'}), SHARED[\textcolor{stringliteral}{'agent'}])
-328 
-329     \textcolor{comment}{# show args after loading model}
-330     parser.opt = agent.opt
-331     parser.print\_args()
-332     \textcolor{keywordflow}{return} agent.opt
-333 
+315 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1interactive__web_abeab09cab4f9e60077ffd5050bff36ef}{setup\_interactive}(shared):
+316     \textcolor{stringliteral}{"""}
+317 \textcolor{stringliteral}{    Build and parse CLI opts.}
+318 \textcolor{stringliteral}{    """}
+319     parser = \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1browser__chat_1_1client_a20c9862417d1f1a61b06551de0820ee4}{setup\_args}()
+320     parser.add\_argument(\textcolor{stringliteral}{'--port'}, type=int, default=PORT, help=\textcolor{stringliteral}{'Port to listen on.'})
+321     SHARED[\textcolor{stringliteral}{'opt'}] = parser.parse\_args(print\_args=\textcolor{keyword}{False})
+322 
+323     SHARED[\textcolor{stringliteral}{'opt'}][\textcolor{stringliteral}{'task'}] = \textcolor{stringliteral}{'parlai.agents.local\_human.local\_human:LocalHumanAgent'}
+324 
+325     \textcolor{comment}{# Create model and assign it to the specified task}
+326     agent = \hyperlink{namespaceparlai_1_1core_1_1agents_a00d77a7e26fb89e8bd900f7b2a02982a}{create\_agent}(SHARED.get(\textcolor{stringliteral}{'opt'}), requireModelExists=\textcolor{keyword}{True})
+327     SHARED[\textcolor{stringliteral}{'agent'}] = agent
+328     SHARED[\textcolor{stringliteral}{'world'}] = \hyperlink{namespaceparlai_1_1core_1_1worlds_a79969c7ba76d4b3c500f5bb776444dc6}{create\_task}(SHARED.get(\textcolor{stringliteral}{'opt'}), SHARED[\textcolor{stringliteral}{'agent'}])
+329 
+330     \textcolor{comment}{# show args after loading model}
+331     parser.opt = agent.opt
+332     parser.print\_args()
+333     \textcolor{keywordflow}{return} agent.opt
 334 
+335 
 \end{DoxyCode}
 
 
 \subsection{Variable Documentation}
-\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1interactive__web_aac64fc5183abcbf6b44570b3a16ba911}\label{namespaceparlai_1_1scripts_1_1interactive__web_aac64fc5183abcbf6b44570b3a16ba911}} 
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1interactive__web_a57f348eaa99e66b04a8aeb54762adcfd}\label{namespaceparlai_1_1scripts_1_1interactive__web_a57f348eaa99e66b04a8aeb54762adcfd}} 
 \index{parlai\+::scripts\+::interactive\+\_\+web@{parlai\+::scripts\+::interactive\+\_\+web}!F\+O\+N\+T\+\_\+\+A\+W\+E\+S\+O\+ME@{F\+O\+N\+T\+\_\+\+A\+W\+E\+S\+O\+ME}}
 \index{F\+O\+N\+T\+\_\+\+A\+W\+E\+S\+O\+ME@{F\+O\+N\+T\+\_\+\+A\+W\+E\+S\+O\+ME}!parlai\+::scripts\+::interactive\+\_\+web@{parlai\+::scripts\+::interactive\+\_\+web}}
 \subsubsection{\texorpdfstring{F\+O\+N\+T\+\_\+\+A\+W\+E\+S\+O\+ME}{FONT\_AWESOME}}
-{\footnotesize\ttfamily string parlai.\+scripts.\+interactive\+\_\+web.\+F\+O\+N\+T\+\_\+\+A\+W\+E\+S\+O\+ME = \char`\"{}https\+://use.\+fontawesome.\+com/releases/v5.\+3.\+1/js/all.\+js\char`\"{}}
+{\footnotesize\ttfamily parlai.\+scripts.\+interactive\+\_\+web.\+F\+O\+N\+T\+\_\+\+A\+W\+E\+S\+O\+ME}
 
 
 
-Definition at line 22 of file interactive\+\_\+web.\+py.
+Definition at line 23 of file interactive\+\_\+web.\+py.
 
-\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1interactive__web_ac440a61641ae161806beba8dbb9d39b8}\label{namespaceparlai_1_1scripts_1_1interactive__web_ac440a61641ae161806beba8dbb9d39b8}} 
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1interactive__web_a1be4376232ba5fb34748515c98894038}\label{namespaceparlai_1_1scripts_1_1interactive__web_a1be4376232ba5fb34748515c98894038}} 
 \index{parlai\+::scripts\+::interactive\+\_\+web@{parlai\+::scripts\+::interactive\+\_\+web}!H\+O\+S\+T\+\_\+\+N\+A\+ME@{H\+O\+S\+T\+\_\+\+N\+A\+ME}}
 \index{H\+O\+S\+T\+\_\+\+N\+A\+ME@{H\+O\+S\+T\+\_\+\+N\+A\+ME}!parlai\+::scripts\+::interactive\+\_\+web@{parlai\+::scripts\+::interactive\+\_\+web}}
 \subsubsection{\texorpdfstring{H\+O\+S\+T\+\_\+\+N\+A\+ME}{HOST\_NAME}}
-{\footnotesize\ttfamily string parlai.\+scripts.\+interactive\+\_\+web.\+H\+O\+S\+T\+\_\+\+N\+A\+ME = \textquotesingle{}localhost\textquotesingle{}}
+{\footnotesize\ttfamily parlai.\+scripts.\+interactive\+\_\+web.\+H\+O\+S\+T\+\_\+\+N\+A\+ME}
 
 
 
-Definition at line 18 of file interactive\+\_\+web.\+py.
+Definition at line 19 of file interactive\+\_\+web.\+py.
 
 \mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1interactive__web_af01d14f8f733bc94f7aaab006021b83b}\label{namespaceparlai_1_1scripts_1_1interactive__web_af01d14f8f733bc94f7aaab006021b83b}} 
 \index{parlai\+::scripts\+::interactive\+\_\+web@{parlai\+::scripts\+::interactive\+\_\+web}!httpd@{httpd}}
 \index{httpd@{httpd}!parlai\+::scripts\+::interactive\+\_\+web@{parlai\+::scripts\+::interactive\+\_\+web}}
 \subsubsection{\texorpdfstring{httpd}{httpd}}
-{\footnotesize\ttfamily parlai.\+scripts.\+interactive\+\_\+web.\+httpd = H\+T\+T\+P\+Server((\hyperlink{namespaceparlai_1_1scripts_1_1interactive__web_ac440a61641ae161806beba8dbb9d39b8}{H\+O\+S\+T\+\_\+\+N\+A\+ME}, \hyperlink{namespaceparlai_1_1scripts_1_1interactive__web_a022cc4d0c500e7a2ba643446d3b0e6ef}{opt}\mbox{[}\textquotesingle{}port\textquotesingle{}\mbox{]}), \hyperlink{classparlai_1_1scripts_1_1interactive__web_1_1MyHandler}{My\+Handler})}
+{\footnotesize\ttfamily parlai.\+scripts.\+interactive\+\_\+web.\+httpd}
 
 
 
-Definition at line 338 of file interactive\+\_\+web.\+py.
+Definition at line 339 of file interactive\+\_\+web.\+py.
 
-\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1interactive__web_a022cc4d0c500e7a2ba643446d3b0e6ef}\label{namespaceparlai_1_1scripts_1_1interactive__web_a022cc4d0c500e7a2ba643446d3b0e6ef}} 
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1interactive__web_a500c0505acc64a8a9fc5d63999064b89}\label{namespaceparlai_1_1scripts_1_1interactive__web_a500c0505acc64a8a9fc5d63999064b89}} 
 \index{parlai\+::scripts\+::interactive\+\_\+web@{parlai\+::scripts\+::interactive\+\_\+web}!opt@{opt}}
 \index{opt@{opt}!parlai\+::scripts\+::interactive\+\_\+web@{parlai\+::scripts\+::interactive\+\_\+web}}
 \subsubsection{\texorpdfstring{opt}{opt}}
-{\footnotesize\ttfamily def parlai.\+scripts.\+interactive\+\_\+web.\+opt = \hyperlink{namespaceparlai_1_1scripts_1_1interactive__web_abeab09cab4f9e60077ffd5050bff36ef}{setup\+\_\+interactive}(\hyperlink{namespaceparlai_1_1scripts_1_1interactive__web_a86b356c6390faf2398bdbde02a6664d6}{S\+H\+A\+R\+ED})}
+{\footnotesize\ttfamily parlai.\+scripts.\+interactive\+\_\+web.\+opt}
 
 
 
-Definition at line 336 of file interactive\+\_\+web.\+py.
+Definition at line 337 of file interactive\+\_\+web.\+py.
 
-\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1interactive__web_adab4200a8fab70115b4a5c6592ba596a}\label{namespaceparlai_1_1scripts_1_1interactive__web_adab4200a8fab70115b4a5c6592ba596a}} 
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1interactive__web_ad1ac15c0fba2939e2421dfcc793f3659}\label{namespaceparlai_1_1scripts_1_1interactive__web_ad1ac15c0fba2939e2421dfcc793f3659}} 
 \index{parlai\+::scripts\+::interactive\+\_\+web@{parlai\+::scripts\+::interactive\+\_\+web}!P\+O\+RT@{P\+O\+RT}}
 \index{P\+O\+RT@{P\+O\+RT}!parlai\+::scripts\+::interactive\+\_\+web@{parlai\+::scripts\+::interactive\+\_\+web}}
 \subsubsection{\texorpdfstring{P\+O\+RT}{PORT}}
-{\footnotesize\ttfamily int parlai.\+scripts.\+interactive\+\_\+web.\+P\+O\+RT = 8080}
+{\footnotesize\ttfamily parlai.\+scripts.\+interactive\+\_\+web.\+P\+O\+RT}
 
 
 
-Definition at line 19 of file interactive\+\_\+web.\+py.
+Definition at line 20 of file interactive\+\_\+web.\+py.
 
 \mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1interactive__web_a8a3d9062157e9703a21ded9885420c12}\label{namespaceparlai_1_1scripts_1_1interactive__web_a8a3d9062157e9703a21ded9885420c12}} 
 \index{parlai\+::scripts\+::interactive\+\_\+web@{parlai\+::scripts\+::interactive\+\_\+web}!protocol\+\_\+version@{protocol\+\_\+version}}
@@ -131,35 +129,25 @@ Definition at line 19 of file interactive\+\_\+web.\+py.
 
 
 
-Definition at line 337 of file interactive\+\_\+web.\+py.
+Definition at line 338 of file interactive\+\_\+web.\+py.
 
-\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1interactive__web_a86b356c6390faf2398bdbde02a6664d6}\label{namespaceparlai_1_1scripts_1_1interactive__web_a86b356c6390faf2398bdbde02a6664d6}} 
-\index{parlai\+::scripts\+::interactive\+\_\+web@{parlai\+::scripts\+::interactive\+\_\+web}!S\+H\+A\+R\+ED@{S\+H\+A\+R\+ED}}
-\index{S\+H\+A\+R\+ED@{S\+H\+A\+R\+ED}!parlai\+::scripts\+::interactive\+\_\+web@{parlai\+::scripts\+::interactive\+\_\+web}}
-\subsubsection{\texorpdfstring{S\+H\+A\+R\+ED}{SHARED}}
-{\footnotesize\ttfamily dictionary parlai.\+scripts.\+interactive\+\_\+web.\+S\+H\+A\+R\+ED = \{\}}
-
-
-
-Definition at line 20 of file interactive\+\_\+web.\+py.
-
-\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1interactive__web_a337c6d5539295b610d84bd51e40e7122}\label{namespaceparlai_1_1scripts_1_1interactive__web_a337c6d5539295b610d84bd51e40e7122}} 
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1interactive__web_a7ef47952fffbf40ad8526e0513fc3484}\label{namespaceparlai_1_1scripts_1_1interactive__web_a7ef47952fffbf40ad8526e0513fc3484}} 
 \index{parlai\+::scripts\+::interactive\+\_\+web@{parlai\+::scripts\+::interactive\+\_\+web}!S\+T\+Y\+L\+E\+\_\+\+S\+H\+E\+ET@{S\+T\+Y\+L\+E\+\_\+\+S\+H\+E\+ET}}
 \index{S\+T\+Y\+L\+E\+\_\+\+S\+H\+E\+ET@{S\+T\+Y\+L\+E\+\_\+\+S\+H\+E\+ET}!parlai\+::scripts\+::interactive\+\_\+web@{parlai\+::scripts\+::interactive\+\_\+web}}
 \subsubsection{\texorpdfstring{S\+T\+Y\+L\+E\+\_\+\+S\+H\+E\+ET}{STYLE\_SHEET}}
-{\footnotesize\ttfamily string parlai.\+scripts.\+interactive\+\_\+web.\+S\+T\+Y\+L\+E\+\_\+\+S\+H\+E\+ET = \char`\"{}https\+://cdnjs.\+cloudflare.\+com/ajax/libs/bulma/0.\+7.\+4/css/bulma.\+css\char`\"{}}
+{\footnotesize\ttfamily parlai.\+scripts.\+interactive\+\_\+web.\+S\+T\+Y\+L\+E\+\_\+\+S\+H\+E\+ET}
 
 
 
-Definition at line 21 of file interactive\+\_\+web.\+py.
+Definition at line 22 of file interactive\+\_\+web.\+py.
 
-\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1interactive__web_a85a34a78e56c0f8deaf960a2df2bcfc8}\label{namespaceparlai_1_1scripts_1_1interactive__web_a85a34a78e56c0f8deaf960a2df2bcfc8}} 
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1interactive__web_af3bf0959c45adea28e896999ca4cbf48}\label{namespaceparlai_1_1scripts_1_1interactive__web_af3bf0959c45adea28e896999ca4cbf48}} 
 \index{parlai\+::scripts\+::interactive\+\_\+web@{parlai\+::scripts\+::interactive\+\_\+web}!W\+E\+B\+\_\+\+H\+T\+ML@{W\+E\+B\+\_\+\+H\+T\+ML}}
 \index{W\+E\+B\+\_\+\+H\+T\+ML@{W\+E\+B\+\_\+\+H\+T\+ML}!parlai\+::scripts\+::interactive\+\_\+web@{parlai\+::scripts\+::interactive\+\_\+web}}
 \subsubsection{\texorpdfstring{W\+E\+B\+\_\+\+H\+T\+ML}{WEB\_HTML}}
-{\footnotesize\ttfamily string parlai.\+scripts.\+interactive\+\_\+web.\+W\+E\+B\+\_\+\+H\+T\+ML}
+{\footnotesize\ttfamily parlai.\+scripts.\+interactive\+\_\+web.\+W\+E\+B\+\_\+\+H\+T\+ML}
 
 
 
-Definition at line 23 of file interactive\+\_\+web.\+py.
+Definition at line 24 of file interactive\+\_\+web.\+py.
 

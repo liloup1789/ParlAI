@@ -2,8 +2,7 @@
 \label{classprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1worlds_1_1TopicsGenerator}\index{projects.\+wizard\+\_\+of\+\_\+wikipedia.\+mturk\+\_\+evaluation\+\_\+task.\+worlds.\+Topics\+Generator@{projects.\+wizard\+\_\+of\+\_\+wikipedia.\+mturk\+\_\+evaluation\+\_\+task.\+worlds.\+Topics\+Generator}}
 
 
-Inheritance diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+mturk\+\_\+evaluation\+\_\+task.\+worlds.\+Topics\+Generator\+:
-\nopagebreak
+Inheritance diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+mturk\+\_\+evaluation\+\_\+task.\+worlds.\+Topics\+Generator\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+mturk\+\_\+ev
 \end{figure}
 
 
-Collaboration diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+mturk\+\_\+evaluation\+\_\+task.\+worlds.\+Topics\+Generator\+:
-\nopagebreak
+Collaboration diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+mturk\+\_\+evaluation\+\_\+task.\+worlds.\+Topics\+Generator\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -47,7 +45,7 @@ def \hyperlink{classprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task
 \subsection{Detailed Description}
 
 
-Definition at line 69 of file worlds.\+py.
+Definition at line 73 of file worlds.\+py.
 
 
 
@@ -60,17 +58,17 @@ Definition at line 69 of file worlds.\+py.
 
 
 
-Definition at line 70 of file worlds.\+py.
+Definition at line 74 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-70     \textcolor{keyword}{def }\_\_init\_\_(self, opt):
-71         self.opt = opt
-72         self.topics\_path = os.path.join(
-73             opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'wizard\_of\_wikipedia/topic\_splits.json'}
-74         )
-75         self.load\_topics()
-76 
+74     \textcolor{keyword}{def }\_\_init\_\_(self, opt):
+75         self.opt = opt
+76         self.topics\_path = os.path.join(
+77             opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'wizard\_of\_wikipedia/topic\_splits.json'}
+78         )
+79         self.load\_topics()
+80 
 \end{DoxyCode}
 
 
@@ -83,16 +81,16 @@ Definition at line 70 of file worlds.\+py.
 
 
 
-Definition at line 86 of file worlds.\+py.
+Definition at line 90 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-86     \textcolor{keyword}{def }get\_topics(self, seen=True, num=3):
-87         \textcolor{keywordflow}{if} seen:
-88             \textcolor{keywordflow}{return} random.sample(self.seen\_topics, num)
-89         \textcolor{keywordflow}{return} random.sample(self.unseen\_topics, num)
-90 
-91 
+90     \textcolor{keyword}{def }get\_topics(self, seen=True, num=3):
+91         \textcolor{keywordflow}{if} seen:
+92             \textcolor{keywordflow}{return} random.sample(self.seen\_topics, num)
+93         \textcolor{keywordflow}{return} random.sample(self.unseen\_topics, num)
+94 
+95 
 \end{DoxyCode}
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1worlds_1_1TopicsGenerator_a19eb72588e1025eb43d8c24ea9b91593}\label{classprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1worlds_1_1TopicsGenerator_a19eb72588e1025eb43d8c24ea9b91593}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::mturk\+\_\+evaluation\+\_\+task\+::worlds\+::\+Topics\+Generator@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::mturk\+\_\+evaluation\+\_\+task\+::worlds\+::\+Topics\+Generator}!load\+\_\+topics@{load\+\_\+topics}}
@@ -102,19 +100,19 @@ Definition at line 86 of file worlds.\+py.
 
 
 
-Definition at line 77 of file worlds.\+py.
+Definition at line 81 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-77     \textcolor{keyword}{def }load\_topics(self):
-78         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.isfile(self.topics\_path):
-79             \textcolor{comment}{# download the wizard of wikipedia data}
-80             \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1talkthewalk_1_1download_a8c0fbb9b6dfe127cb8c1bd6e7c4e33fd}{build}(self.opt)
-81         with open(self.topics\_path) \textcolor{keyword}{as} f:
-82             self.data = json.load(f)
-83         self.seen\_topics = self.data[\textcolor{stringliteral}{'train'}]
-84         self.unseen\_topics = self.data[\textcolor{stringliteral}{'valid'}] + self.data[\textcolor{stringliteral}{'test'}]
-85 
+81     \textcolor{keyword}{def }load\_topics(self):
+82         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.isfile(self.topics\_path):
+83             \textcolor{comment}{# download the wizard of wikipedia data}
+84             \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1talkthewalk_1_1download_a8c0fbb9b6dfe127cb8c1bd6e7c4e33fd}{build}(self.opt)
+85         with open(self.topics\_path) \textcolor{keyword}{as} f:
+86             self.data = json.load(f)
+87         self.seen\_topics = self.data[\textcolor{stringliteral}{'train'}]
+88         self.unseen\_topics = self.data[\textcolor{stringliteral}{'valid'}] + self.data[\textcolor{stringliteral}{'test'}]
+89 
 \end{DoxyCode}
 
 
@@ -127,7 +125,7 @@ Definition at line 77 of file worlds.\+py.
 
 
 
-Definition at line 82 of file worlds.\+py.
+Definition at line 86 of file worlds.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1worlds_1_1TopicsGenerator_a069f85cf871b5e326575e94730872786}\label{classprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1worlds_1_1TopicsGenerator_a069f85cf871b5e326575e94730872786}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::mturk\+\_\+evaluation\+\_\+task\+::worlds\+::\+Topics\+Generator@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::mturk\+\_\+evaluation\+\_\+task\+::worlds\+::\+Topics\+Generator}!opt@{opt}}
@@ -137,7 +135,7 @@ Definition at line 82 of file worlds.\+py.
 
 
 
-Definition at line 71 of file worlds.\+py.
+Definition at line 75 of file worlds.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1worlds_1_1TopicsGenerator_aa6face03045e7bcc82847b93d6e2b2f0}\label{classprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1worlds_1_1TopicsGenerator_aa6face03045e7bcc82847b93d6e2b2f0}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::mturk\+\_\+evaluation\+\_\+task\+::worlds\+::\+Topics\+Generator@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::mturk\+\_\+evaluation\+\_\+task\+::worlds\+::\+Topics\+Generator}!seen\+\_\+topics@{seen\+\_\+topics}}
@@ -147,7 +145,7 @@ Definition at line 71 of file worlds.\+py.
 
 
 
-Definition at line 83 of file worlds.\+py.
+Definition at line 87 of file worlds.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1worlds_1_1TopicsGenerator_a573fa066c488ab3a4251408c85cef7f7}\label{classprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1worlds_1_1TopicsGenerator_a573fa066c488ab3a4251408c85cef7f7}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::mturk\+\_\+evaluation\+\_\+task\+::worlds\+::\+Topics\+Generator@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::mturk\+\_\+evaluation\+\_\+task\+::worlds\+::\+Topics\+Generator}!topics\+\_\+path@{topics\+\_\+path}}
@@ -157,7 +155,7 @@ Definition at line 83 of file worlds.\+py.
 
 
 
-Definition at line 72 of file worlds.\+py.
+Definition at line 76 of file worlds.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1worlds_1_1TopicsGenerator_a1c81736776ac55ce8fc2b5bd72a58e78}\label{classprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1worlds_1_1TopicsGenerator_a1c81736776ac55ce8fc2b5bd72a58e78}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::mturk\+\_\+evaluation\+\_\+task\+::worlds\+::\+Topics\+Generator@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::mturk\+\_\+evaluation\+\_\+task\+::worlds\+::\+Topics\+Generator}!unseen\+\_\+topics@{unseen\+\_\+topics}}
@@ -167,7 +165,7 @@ Definition at line 72 of file worlds.\+py.
 
 
 
-Definition at line 84 of file worlds.\+py.
+Definition at line 88 of file worlds.\+py.
 
 
 

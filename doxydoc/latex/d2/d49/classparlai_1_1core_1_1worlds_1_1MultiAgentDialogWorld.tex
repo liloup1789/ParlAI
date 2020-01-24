@@ -2,8 +2,7 @@
 \label{classparlai_1_1core_1_1worlds_1_1MultiAgentDialogWorld}\index{parlai.\+core.\+worlds.\+Multi\+Agent\+Dialog\+World@{parlai.\+core.\+worlds.\+Multi\+Agent\+Dialog\+World}}
 
 
-Inheritance diagram for parlai.\+core.\+worlds.\+Multi\+Agent\+Dialog\+World\+:
-\nopagebreak
+Inheritance diagram for parlai.\+core.\+worlds.\+Multi\+Agent\+Dialog\+World\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+core.\+worlds.\+Multi\+Agent\+Dialog\+World\+:
 \end{figure}
 
 
-Collaboration diagram for parlai.\+core.\+worlds.\+Multi\+Agent\+Dialog\+World\+:
-\nopagebreak
+Collaboration diagram for parlai.\+core.\+worlds.\+Multi\+Agent\+Dialog\+World\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -23,7 +21,7 @@ Collaboration diagram for parlai.\+core.\+worlds.\+Multi\+Agent\+Dialog\+World\+
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-def \hyperlink{classparlai_1_1core_1_1worlds_1_1MultiAgentDialogWorld_a228cc89020ff34ec71bed43fd5115941}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1core_1_1worlds_1_1World_a3640d92718acd3e6942a28c1ab3678bd}{opt}, \hyperlink{classparlai_1_1core_1_1worlds_1_1MultiAgentDialogWorld_a05fc93525cb86edef121980fc55f9926}{agents}, shared=None)
+def \hyperlink{classparlai_1_1core_1_1worlds_1_1MultiAgentDialogWorld_a3c952cc9deaa918119027a5accc36e65}{\+\_\+\+\_\+init\+\_\+\+\_\+}
 \item 
 def \hyperlink{classparlai_1_1core_1_1worlds_1_1MultiAgentDialogWorld_a2b41d3026bc5afa04e7f874ba097b721}{parley} (self)
 \item 
@@ -53,33 +51,33 @@ Each agent receives as input the actions of all other agents since its last `act
 \end{DoxyVerb}
  
 
-Definition at line 393 of file worlds.\+py.
+Definition at line 400 of file worlds.\+py.
 
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1MultiAgentDialogWorld_a228cc89020ff34ec71bed43fd5115941}\label{classparlai_1_1core_1_1worlds_1_1MultiAgentDialogWorld_a228cc89020ff34ec71bed43fd5115941}} 
+\mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1MultiAgentDialogWorld_a3c952cc9deaa918119027a5accc36e65}\label{classparlai_1_1core_1_1worlds_1_1MultiAgentDialogWorld_a3c952cc9deaa918119027a5accc36e65}} 
 \index{parlai\+::core\+::worlds\+::\+Multi\+Agent\+Dialog\+World@{parlai\+::core\+::worlds\+::\+Multi\+Agent\+Dialog\+World}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
 \index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::core\+::worlds\+::\+Multi\+Agent\+Dialog\+World@{parlai\+::core\+::worlds\+::\+Multi\+Agent\+Dialog\+World}}
 \subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
-{\footnotesize\ttfamily def parlai.\+core.\+worlds.\+Multi\+Agent\+Dialog\+World.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{agents,  }\item[{}]{shared = {\ttfamily None} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily def parlai.\+core.\+worlds.\+Multi\+Agent\+Dialog\+World.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt }\end{DoxyParamCaption})}
 
 
 
-Definition at line 400 of file worlds.\+py.
+Definition at line 407 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-400     \textcolor{keyword}{def }\_\_init\_\_(self, opt, agents, shared=None):
-401         super().\_\_init\_\_(opt)
-402         \textcolor{keywordflow}{if} shared:
-403             \textcolor{comment}{# Create agents based on shared data.}
-404             self.agents = \hyperlink{namespaceparlai_1_1core_1_1agents_a5600530545f5e60a79e2d657b5af1d8c}{create\_agents\_from\_shared}(shared[\textcolor{stringliteral}{'agents'}])
-405         \textcolor{keywordflow}{else}:
-406             \textcolor{comment}{# Add passed in agents directly.}
-407             self.agents = agents
-408         self.acts = [\textcolor{keywordtype}{None}] * len(self.agents)
-409 
+407     \textcolor{keyword}{def }\_\_init\_\_(self, opt: Opt, agents, shared=\textcolor{keywordtype}{None}):
+408         super().\_\_init\_\_(opt)
+409         \textcolor{keywordflow}{if} shared:
+410             \textcolor{comment}{# Create agents based on shared data.}
+411             self.agents = \hyperlink{namespaceparlai_1_1core_1_1agents_a5600530545f5e60a79e2d657b5af1d8c}{create\_agents\_from\_shared}(shared[\textcolor{stringliteral}{'agents'}])
+412         \textcolor{keywordflow}{else}:
+413             \textcolor{comment}{# Add passed in agents directly.}
+414             self.agents = agents
+415         self.acts = [\textcolor{keywordtype}{None}] * len(self.agents)
+416 
 \end{DoxyCode}
 
 
@@ -94,20 +92,20 @@ Definition at line 400 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 441 of file worlds.\+py.
+Definition at line 448 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-441     \textcolor{keyword}{def }episode\_done(self):
-442         \textcolor{stringliteral}{"""}
-443 \textcolor{stringliteral}{        Return if the episode is done for any subagent.}
-444 \textcolor{stringliteral}{        """}
-445         done = \textcolor{keyword}{False}
-446         \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} self.agents:
-447             \textcolor{keywordflow}{if} a.episode\_done():
-448                 done = \textcolor{keyword}{True}
-449         \textcolor{keywordflow}{return} done
-450 
+448     \textcolor{keyword}{def }episode\_done(self):
+449         \textcolor{stringliteral}{"""}
+450 \textcolor{stringliteral}{        Return if the episode is done for any subagent.}
+451 \textcolor{stringliteral}{        """}
+452         done = \textcolor{keyword}{False}
+453         \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} self.agents:
+454             \textcolor{keywordflow}{if} a.episode\_done():
+455                 done = \textcolor{keyword}{True}
+456         \textcolor{keywordflow}{return} done
+457 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1MultiAgentDialogWorld_ade057311db0368be26ac8b196619b862}\label{classparlai_1_1core_1_1worlds_1_1MultiAgentDialogWorld_ade057311db0368be26ac8b196619b862}} 
 \index{parlai\+::core\+::worlds\+::\+Multi\+Agent\+Dialog\+World@{parlai\+::core\+::worlds\+::\+Multi\+Agent\+Dialog\+World}!epoch\+\_\+done@{epoch\+\_\+done}}
@@ -119,20 +117,20 @@ Definition at line 441 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 431 of file worlds.\+py.
+Definition at line 438 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-431     \textcolor{keyword}{def }epoch\_done(self):
-432         \textcolor{stringliteral}{"""}
-433 \textcolor{stringliteral}{        Return if the epoch is done for any subagent.}
-434 \textcolor{stringliteral}{        """}
-435         done = \textcolor{keyword}{False}
-436         \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} self.agents:
-437             \textcolor{keywordflow}{if} a.epoch\_done():
-438                 done = \textcolor{keyword}{True}
-439         \textcolor{keywordflow}{return} done
-440 
+438     \textcolor{keyword}{def }epoch\_done(self):
+439         \textcolor{stringliteral}{"""}
+440 \textcolor{stringliteral}{        Return if the epoch is done for any subagent.}
+441 \textcolor{stringliteral}{        """}
+442         done = \textcolor{keyword}{False}
+443         \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} self.agents:
+444             \textcolor{keywordflow}{if} a.epoch\_done():
+445                 done = \textcolor{keyword}{True}
+446         \textcolor{keywordflow}{return} done
+447 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1MultiAgentDialogWorld_a58ea065f63c441f27c97b6cb649ccf53}\label{classparlai_1_1core_1_1worlds_1_1MultiAgentDialogWorld_a58ea065f63c441f27c97b6cb649ccf53}} 
 \index{parlai\+::core\+::worlds\+::\+Multi\+Agent\+Dialog\+World@{parlai\+::core\+::worlds\+::\+Multi\+Agent\+Dialog\+World}!get\+\_\+task\+\_\+agent@{get\+\_\+task\+\_\+agent}}
@@ -144,16 +142,16 @@ Definition at line 431 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 425 of file worlds.\+py.
+Definition at line 432 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-425     \textcolor{keyword}{def }get\_task\_agent(self):
-426         \textcolor{stringliteral}{"""}
-427 \textcolor{stringliteral}{        Return task agent.}
-428 \textcolor{stringliteral}{        """}
-429         \textcolor{keywordflow}{return} self.get\_agents()[0]
-430 
+432     \textcolor{keyword}{def }get\_task\_agent(self):
+433         \textcolor{stringliteral}{"""}
+434 \textcolor{stringliteral}{        Return task agent.}
+435 \textcolor{stringliteral}{        """}
+436         \textcolor{keywordflow}{return} self.get\_agents()[0]
+437 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1MultiAgentDialogWorld_a2b41d3026bc5afa04e7f874ba097b721}\label{classparlai_1_1core_1_1worlds_1_1MultiAgentDialogWorld_a2b41d3026bc5afa04e7f874ba097b721}} 
 \index{parlai\+::core\+::worlds\+::\+Multi\+Agent\+Dialog\+World@{parlai\+::core\+::worlds\+::\+Multi\+Agent\+Dialog\+World}!parley@{parley}}
@@ -168,25 +166,25 @@ took. Then take an action yourself.
 \end{DoxyVerb}
  
 
-Definition at line 410 of file worlds.\+py.
+Definition at line 417 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-410     \textcolor{keyword}{def }parley(self):
-411         \textcolor{stringliteral}{"""}
-412 \textcolor{stringliteral}{        Perform a turn for every agent.}
-413 \textcolor{stringliteral}{}
-414 \textcolor{stringliteral}{        For each agent, get an observation of the last action each of the other agents}
-415 \textcolor{stringliteral}{        took. Then take an action yourself.}
-416 \textcolor{stringliteral}{        """}
-417         acts = self.acts
-418         \textcolor{keywordflow}{for} index, agent \textcolor{keywordflow}{in} enumerate(self.agents):
-419             acts[index] = agent.act()
-420             \textcolor{keywordflow}{for} other\_agent \textcolor{keywordflow}{in} self.agents:
-421                 \textcolor{keywordflow}{if} other\_agent != agent:
-422                     other\_agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(acts[index]))
-423         self.update\_counters()
-424 
+417     \textcolor{keyword}{def }parley(self):
+418         \textcolor{stringliteral}{"""}
+419 \textcolor{stringliteral}{        Perform a turn for every agent.}
+420 \textcolor{stringliteral}{}
+421 \textcolor{stringliteral}{        For each agent, get an observation of the last action each of the other agents}
+422 \textcolor{stringliteral}{        took. Then take an action yourself.}
+423 \textcolor{stringliteral}{        """}
+424         acts = self.acts
+425         \textcolor{keywordflow}{for} index, agent \textcolor{keywordflow}{in} enumerate(self.agents):
+426             acts[index] = agent.act()
+427             \textcolor{keywordflow}{for} other\_agent \textcolor{keywordflow}{in} self.agents:
+428                 \textcolor{keywordflow}{if} other\_agent != agent:
+429                     other\_agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(acts[index]))
+430         self.update\_counters()
+431 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1MultiAgentDialogWorld_a686b237998ede0e9431dd58bca2b34c1}\label{classparlai_1_1core_1_1worlds_1_1MultiAgentDialogWorld_a686b237998ede0e9431dd58bca2b34c1}} 
 \index{parlai\+::core\+::worlds\+::\+Multi\+Agent\+Dialog\+World@{parlai\+::core\+::worlds\+::\+Multi\+Agent\+Dialog\+World}!report@{report}}
@@ -198,27 +196,27 @@ Definition at line 410 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 451 of file worlds.\+py.
+Definition at line 458 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-451     \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}(self):
-452         \textcolor{stringliteral}{"""}
-453 \textcolor{stringliteral}{        Report metrics for all subagents.}
-454 \textcolor{stringliteral}{        """}
-455         metrics = \{\}
-456         \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} self.agents:
-457             \textcolor{keywordflow}{if} hasattr(a, \textcolor{stringliteral}{'report'}):
-458                 m = a.report()
-459                 \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} m.items():
-460                     \textcolor{keywordflow}{if} k \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} metrics:
-461                         \textcolor{comment}{# first agent gets priority in settings values for keys}
-462                         \textcolor{comment}{# this way model can't e.g. override accuracy to 100%}
-463                         metrics[k] = v
-464         \textcolor{keywordflow}{if} metrics:
-465             self.total\_exs += metrics.get(\textcolor{stringliteral}{'exs'}, 0)
-466             \textcolor{keywordflow}{return} metrics
-467 
+458     \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}(self):
+459         \textcolor{stringliteral}{"""}
+460 \textcolor{stringliteral}{        Report metrics for all subagents.}
+461 \textcolor{stringliteral}{        """}
+462         metrics = \{\}
+463         \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} self.agents:
+464             \textcolor{keywordflow}{if} hasattr(a, \textcolor{stringliteral}{'report'}):
+465                 m = a.report()
+466                 \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} m.items():
+467                     \textcolor{keywordflow}{if} k \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} metrics:
+468                         \textcolor{comment}{# first agent gets priority in settings values for keys}
+469                         \textcolor{comment}{# this way model can't e.g. override accuracy to 100%}
+470                         metrics[k] = v
+471         \textcolor{keywordflow}{if} metrics:
+472             self.total\_exs += metrics.get(\textcolor{stringliteral}{'exs'}, 0)
+473             \textcolor{keywordflow}{return} metrics
+474 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1MultiAgentDialogWorld_a02b4cbd9d41fde087fb4f0b11d6479a5}\label{classparlai_1_1core_1_1worlds_1_1MultiAgentDialogWorld_a02b4cbd9d41fde087fb4f0b11d6479a5}} 
 \index{parlai\+::core\+::worlds\+::\+Multi\+Agent\+Dialog\+World@{parlai\+::core\+::worlds\+::\+Multi\+Agent\+Dialog\+World}!shutdown@{shutdown}}
@@ -230,18 +228,18 @@ Definition at line 451 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 468 of file worlds.\+py.
+Definition at line 475 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-468     \textcolor{keyword}{def }shutdown(self):
-469         \textcolor{stringliteral}{"""}
-470 \textcolor{stringliteral}{        Shutdown each agent.}
-471 \textcolor{stringliteral}{        """}
-472         \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} self.agents:
-473             a.shutdown()
-474 
-475 
+475     \textcolor{keyword}{def }shutdown(self):
+476         \textcolor{stringliteral}{"""}
+477 \textcolor{stringliteral}{        Shutdown each agent.}
+478 \textcolor{stringliteral}{        """}
+479         \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} self.agents:
+480             a.shutdown()
+481 
+482 
 \end{DoxyCode}
 
 
@@ -254,7 +252,7 @@ Definition at line 468 of file worlds.\+py.
 
 
 
-Definition at line 408 of file worlds.\+py.
+Definition at line 415 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1MultiAgentDialogWorld_a05fc93525cb86edef121980fc55f9926}\label{classparlai_1_1core_1_1worlds_1_1MultiAgentDialogWorld_a05fc93525cb86edef121980fc55f9926}} 
 \index{parlai\+::core\+::worlds\+::\+Multi\+Agent\+Dialog\+World@{parlai\+::core\+::worlds\+::\+Multi\+Agent\+Dialog\+World}!agents@{agents}}
@@ -264,7 +262,7 @@ Definition at line 408 of file worlds.\+py.
 
 
 
-Definition at line 404 of file worlds.\+py.
+Definition at line 411 of file worlds.\+py.
 
 
 

@@ -2,8 +2,7 @@
 \label{classtests_1_1test__torch__agent_1_1TestTorchAgent}\index{tests.\+test\+\_\+torch\+\_\+agent.\+Test\+Torch\+Agent@{tests.\+test\+\_\+torch\+\_\+agent.\+Test\+Torch\+Agent}}
 
 
-Inheritance diagram for tests.\+test\+\_\+torch\+\_\+agent.\+Test\+Torch\+Agent\+:
-\nopagebreak
+Inheritance diagram for tests.\+test\+\_\+torch\+\_\+agent.\+Test\+Torch\+Agent\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for tests.\+test\+\_\+torch\+\_\+agent.\+Test\+Torch\+Agent\
 \end{figure}
 
 
-Collaboration diagram for tests.\+test\+\_\+torch\+\_\+agent.\+Test\+Torch\+Agent\+:
-\nopagebreak
+Collaboration diagram for tests.\+test\+\_\+torch\+\_\+agent.\+Test\+Torch\+Agent\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -41,13 +39,13 @@ def \hyperlink{classtests_1_1test__torch__agent_1_1TestTorchAgent_a81c474c311d18
 \item 
 def \hyperlink{classtests_1_1test__torch__agent_1_1TestTorchAgent_a3c5504828399a2bb0d776baf1a744f71}{test\+\_\+history} (self)
 \item 
-def \hyperlink{classtests_1_1test__torch__agent_1_1TestTorchAgent_a7c1c12023294608a146271f4fe1574ea}{test\+\_\+last\+\_\+reply} (self)
-\item 
 def \hyperlink{classtests_1_1test__torch__agent_1_1TestTorchAgent_ae3b6e4145176ba5d5e9179756d064332}{test\+\_\+observe} (self)
 \item 
 def \hyperlink{classtests_1_1test__torch__agent_1_1TestTorchAgent_aed82743e884c933453d912cfa8c7ec7f}{test\+\_\+batch\+\_\+act} (self)
 \item 
 def \hyperlink{classtests_1_1test__torch__agent_1_1TestTorchAgent_aadf263b222e27bfd83d568148683a8e0}{test\+\_\+interactive\+\_\+mode} (self)
+\item 
+def \hyperlink{classtests_1_1test__torch__agent_1_1TestTorchAgent_a10ba6e3fdb49b540bc4663d9c7a30eab}{test\+\_\+use\+\_\+reply} (self)
 \item 
 def \hyperlink{classtests_1_1test__torch__agent_1_1TestTorchAgent_a9954f92efc8cc7a9770f90f3a297d397}{test\+\_\+mturk\+\_\+racehistory} (self)
 \item 
@@ -244,80 +242,80 @@ Definition at line 68 of file test\+\_\+torch\+\_\+agent.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 813 of file test\+\_\+torch\+\_\+agent.\+py.
+Definition at line 778 of file test\+\_\+torch\+\_\+agent.\+py.
 
 
 \begin{DoxyCode}
-813     \textcolor{keyword}{def }test\_batch\_act(self):
-814         \textcolor{stringliteral}{"""}
-815 \textcolor{stringliteral}{        Make sure batch act calls the right step.}
-816 \textcolor{stringliteral}{        """}
-817         agent = \hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\_agent}()
-818 
-819         obs\_labs = [
-820             Message(
-821                 \{
-822                     \textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{"It's only a flesh wound."},
-823                     \textcolor{stringliteral}{'labels'}: [\textcolor{stringliteral}{'Yield!'}],
-824                     \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True},
-825                 \}
-826             ),
-827             Message(
-828                 \{
-829                     \textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'The needs of the many outweigh...'},
-830                     \textcolor{stringliteral}{'labels'}: [\textcolor{stringliteral}{'The needs of the few.'}],
-831                     \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True},
-832                 \}
-833             ),
-834             Message(
-835                 \{
-836                     \textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'Hello there.'},
-837                     \textcolor{stringliteral}{'labels'}: [\textcolor{stringliteral}{'General Kenobi.'}],
-838                     \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True},
-839                 \}
-840             ),
-841         ]
-842         obs\_labs\_vecs = []
-843         \textcolor{keywordflow}{for} o \textcolor{keywordflow}{in} obs\_labs:
-844             agent.history.reset()
-845             agent.history.update\_history(o)
-846             obs\_labs\_vecs.append(agent.vectorize(o, agent.history))
-847         reply = agent.batch\_act(obs\_labs\_vecs)
-848         \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(obs\_labs\_vecs)):
-849             self.assertEqual(reply[i][\textcolor{stringliteral}{'text'}], \textcolor{stringliteral}{'Training \{\}!'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(i))
-850 
-851         obs\_elabs = [
-852             Message(
-853                 \{
-854                     \textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{"It's only a flesh wound."},
-855                     \textcolor{stringliteral}{'eval\_labels'}: [\textcolor{stringliteral}{'Yield!'}],
-856                     \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True},
-857                 \}
-858             ),
-859             Message(
-860                 \{
-861                     \textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'The needs of the many outweigh...'},
-862                     \textcolor{stringliteral}{'eval\_labels'}: [\textcolor{stringliteral}{'The needs of the few.'}],
-863                     \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True},
-864                 \}
-865             ),
-866             Message(
-867                 \{
-868                     \textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'Hello there.'},
-869                     \textcolor{stringliteral}{'eval\_labels'}: [\textcolor{stringliteral}{'General Kenobi.'}],
-870                     \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True},
-871                 \}
-872             ),
-873         ]
-874         obs\_elabs\_vecs = []
-875         \textcolor{keywordflow}{for} o \textcolor{keywordflow}{in} obs\_elabs:
-876             agent.history.reset()
-877             agent.history.update\_history(o)
-878             obs\_elabs\_vecs.append(agent.vectorize(o, agent.history))
-879         reply = agent.batch\_act(obs\_elabs\_vecs)
-880         \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(obs\_elabs\_vecs)):
-881             self.assertIn(\textcolor{stringliteral}{'Evaluating \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(i), reply[i][\textcolor{stringliteral}{'text'}])
-882 
+778     \textcolor{keyword}{def }test\_batch\_act(self):
+779         \textcolor{stringliteral}{"""}
+780 \textcolor{stringliteral}{        Make sure batch act calls the right step.}
+781 \textcolor{stringliteral}{        """}
+782         agent = \hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\_agent}()
+783 
+784         obs\_labs = [
+785             Message(
+786                 \{
+787                     \textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{"It's only a flesh wound."},
+788                     \textcolor{stringliteral}{'labels'}: [\textcolor{stringliteral}{'Yield!'}],
+789                     \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True},
+790                 \}
+791             ),
+792             Message(
+793                 \{
+794                     \textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'The needs of the many outweigh...'},
+795                     \textcolor{stringliteral}{'labels'}: [\textcolor{stringliteral}{'The needs of the few.'}],
+796                     \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True},
+797                 \}
+798             ),
+799             Message(
+800                 \{
+801                     \textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'Hello there.'},
+802                     \textcolor{stringliteral}{'labels'}: [\textcolor{stringliteral}{'General Kenobi.'}],
+803                     \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True},
+804                 \}
+805             ),
+806         ]
+807         obs\_labs\_vecs = []
+808         \textcolor{keywordflow}{for} o \textcolor{keywordflow}{in} obs\_labs:
+809             agent.history.reset()
+810             agent.history.update\_history(o)
+811             obs\_labs\_vecs.append(agent.vectorize(o, agent.history))
+812         reply = agent.batch\_act(obs\_labs\_vecs)
+813         \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(obs\_labs\_vecs)):
+814             self.assertEqual(reply[i][\textcolor{stringliteral}{'text'}], \textcolor{stringliteral}{'Training \{\}!'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(i))
+815 
+816         obs\_elabs = [
+817             Message(
+818                 \{
+819                     \textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{"It's only a flesh wound."},
+820                     \textcolor{stringliteral}{'eval\_labels'}: [\textcolor{stringliteral}{'Yield!'}],
+821                     \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True},
+822                 \}
+823             ),
+824             Message(
+825                 \{
+826                     \textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'The needs of the many outweigh...'},
+827                     \textcolor{stringliteral}{'eval\_labels'}: [\textcolor{stringliteral}{'The needs of the few.'}],
+828                     \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True},
+829                 \}
+830             ),
+831             Message(
+832                 \{
+833                     \textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'Hello there.'},
+834                     \textcolor{stringliteral}{'eval\_labels'}: [\textcolor{stringliteral}{'General Kenobi.'}],
+835                     \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True},
+836                 \}
+837             ),
+838         ]
+839         obs\_elabs\_vecs = []
+840         \textcolor{keywordflow}{for} o \textcolor{keywordflow}{in} obs\_elabs:
+841             agent.history.reset()
+842             agent.history.update\_history(o)
+843             obs\_elabs\_vecs.append(agent.vectorize(o, agent.history))
+844         reply = agent.batch\_act(obs\_elabs\_vecs)
+845         \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(obs\_elabs\_vecs)):
+846             self.assertIn(\textcolor{stringliteral}{'Evaluating \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(i), reply[i][\textcolor{stringliteral}{'text'}])
+847 
 \end{DoxyCode}
 \mbox{\Hypertarget{classtests_1_1test__torch__agent_1_1TestTorchAgent_aad1075dad0c291b524d84ec9526177dd}\label{classtests_1_1test__torch__agent_1_1TestTorchAgent_aad1075dad0c291b524d84ec9526177dd}} 
 \index{tests\+::test\+\_\+torch\+\_\+agent\+::\+Test\+Torch\+Agent@{tests\+::test\+\_\+torch\+\_\+agent\+::\+Test\+Torch\+Agent}!test\+\_\+batchify@{test\+\_\+batchify}}
@@ -583,127 +581,123 @@ Definition at line 612 of file test\+\_\+torch\+\_\+agent.\+py.
 627         text = agent.history.get\_history\_str()
 628         self.assertEqual(text, \textcolor{stringliteral}{'I am Groot.\(\backslash\)nI am Groot.'})
 629 
-630         \textcolor{comment}{# include reply and set episode\_done to clear history after this one}
-631         end\_obs = obs.copy()
-632         end\_obs[\textcolor{stringliteral}{'episode\_done'}] = \textcolor{keyword}{True}
-633         agent.history.update\_history(end\_obs, add\_next=\textcolor{stringliteral}{'I am Groot?'})
-634         text = agent.history.get\_history\_str()
-635         self.assertEqual(text, \textcolor{stringliteral}{'I am Groot.\(\backslash\)nI am Groot.\(\backslash\)nI am Groot?\(\backslash\)nI am Groot.'})
-636 
-637         \textcolor{comment}{# because of episode\_done, should be same as first exchange}
+630         \textcolor{comment}{# include reply}
+631         agent.history.add\_reply(\textcolor{stringliteral}{'I am Groot?'})
+632         agent.history.update\_history(obs)
+633         text = agent.history.get\_history\_str()
+634         self.assertEqual(text, \textcolor{stringliteral}{'I am Groot.\(\backslash\)nI am Groot.\(\backslash\)nI am Groot?\(\backslash\)nI am Groot.'})
+635 
+636         \textcolor{comment}{# on reset should be same as first exchange}
+637         agent.history.reset()
 638         agent.history.update\_history(obs)
 639         text = agent.history.get\_history\_str()
 640         self.assertEqual(text, \textcolor{stringliteral}{'I am Groot.'})
 641 
 642         \textcolor{comment}{# now try with history size = 1}
 643         agent = \hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\_agent}(history\_size=1)
-644 
-645         \textcolor{comment}{# first exchange}
-646         agent.history.update\_history(obs)
-647         text = agent.history.get\_history\_str()
-648         self.assertEqual(text, \textcolor{stringliteral}{'I am Groot.'})
-649 
-650         \textcolor{comment}{# second exchange should change nothing}
-651         agent.history.update\_history(obs)
-652         text = agent.history.get\_history\_str()
-653         self.assertEqual(text, \textcolor{stringliteral}{'I am Groot.'})
-654 
-655         \textcolor{comment}{# third exchange with reply should change nothing}
-656         agent.history.update\_history(obs)
-657         text = agent.history.get\_history\_str()
-658         self.assertEqual(text, \textcolor{stringliteral}{'I am Groot.'})
-659 
-660         \textcolor{comment}{# now try with history size = 2}
-661         agent = \hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\_agent}(history\_size=2)
-662 
-663         \textcolor{comment}{# first exchange}
-664         agent.history.update\_history(obs)
-665         text = agent.history.get\_history\_str()
-666         self.assertEqual(text, \textcolor{stringliteral}{'I am Groot.'})
-667 
-668         \textcolor{comment}{# second exchange with reply should contain reply}
-669         agent.history.update\_history(obs, add\_next=\textcolor{stringliteral}{'I am Groot?'})
-670         text = agent.history.get\_history\_str()
-671         self.assertEqual(text, \textcolor{stringliteral}{'I am Groot?\(\backslash\)nI am Groot.'})
-672 
-673         \textcolor{comment}{# third exchange without reply should have two inputs}
-674         agent.history.update\_history(obs)
-675         text = agent.history.get\_history\_str()
-676         self.assertEqual(text, \textcolor{stringliteral}{'I am Groot.\(\backslash\)nI am Groot.'})
-677 
-678         \textcolor{comment}{# now try with history size = 3}
-679         agent = \hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\_agent}(history\_size=3)
-680 
-681         \textcolor{comment}{# first exchange}
-682         agent.history.update\_history(obs)
-683         text = agent.history.get\_history\_str()
-684         self.assertEqual(text, \textcolor{stringliteral}{'I am Groot.'})
-685 
-686         \textcolor{comment}{# second exchange with reply should contain reply and input}
-687         agent.history.update\_history(obs, add\_next=\textcolor{stringliteral}{'I am Groot?'})
-688         text = agent.history.get\_history\_str()
-689         self.assertEqual(text, \textcolor{stringliteral}{'I am Groot.\(\backslash\)nI am Groot?\(\backslash\)nI am Groot.'})
-690 
-691         \textcolor{comment}{# now test add\_person\_tokens}
-692         agent = \hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\_agent}(history\_size=3, person\_tokens=\textcolor{keyword}{True})
-693         agent.history.update\_history(obs)
-694         text = agent.history.get\_history\_str()
-695         self.assertEqual(text, \textcolor{stringliteral}{'\{\} I am Groot.'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(agent.P1\_TOKEN))
-696 
-697         \textcolor{comment}{# second exchange, history should still contain the tokens}
-698         agent.history.update\_history(obs, add\_next=\textcolor{stringliteral}{'I am Groot?'})
-699         text = agent.history.get\_history\_str()
-700         self.assertEqual(
-701             text,
-702             \textcolor{stringliteral}{'\{\} I am Groot.\(\backslash\)n\{\} I am Groot?\(\backslash\)n\{\} I am Groot.'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
-703                 agent.P1\_TOKEN, agent.P2\_TOKEN, agent.P1\_TOKEN
-704             ),
-705         )
-706 
-707         \textcolor{comment}{# now add add\_p1\_after\_newln}
-708         agent = \hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\_agent}(history\_size=3, person\_tokens=\textcolor{keyword}{True}, add\_p1\_after\_newln=\textcolor{keyword}{True})
-709         ctx\_obs = obs.copy()  \textcolor{comment}{# context then utterance in this text field}
-710         ctx\_obs[\textcolor{stringliteral}{'text'}] = \textcolor{stringliteral}{'Groot is Groot.\(\backslash\)nI am Groot.'}
-711         agent.history.update\_history(ctx\_obs)
-712         text = agent.history.get\_history\_str()
-713         self.assertEqual(text, \textcolor{stringliteral}{'Groot is Groot.\(\backslash\)n\{\} I am Groot.'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(agent.P1\_TOKEN))
-714 
-715         \textcolor{comment}{# second exchange, history should still contain context text}
-716         agent.history.update\_history(obs, add\_next=\textcolor{stringliteral}{'I am Groot?'})
-717         text = agent.history.get\_history\_str()
-718         self.assertEqual(
-719             text,
-720             \textcolor{stringliteral}{'Groot is Groot.\(\backslash\)n\{\} I am Groot.\(\backslash\)n\{\} I am Groot?\(\backslash\)n\{\} I am Groot.'}.
+644         \textcolor{comment}{# first exchange}
+645         agent.history.update\_history(obs)
+646         text = agent.history.get\_history\_str()
+647         self.assertEqual(text, \textcolor{stringliteral}{'I am Groot.'})
+648         \textcolor{comment}{# second exchange should change nothing}
+649         agent.history.update\_history(obs)
+650         text = agent.history.get\_history\_str()
+651         self.assertEqual(text, \textcolor{stringliteral}{'I am Groot.'})
+652         \textcolor{comment}{# third exchange with reply should change nothing}
+653         agent.history.update\_history(obs)
+654         text = agent.history.get\_history\_str()
+655         self.assertEqual(text, \textcolor{stringliteral}{'I am Groot.'})
+656         \textcolor{comment}{# now if we add the reply, we should only have the reply left}
+657         agent.history.add\_reply(obs[\textcolor{stringliteral}{'labels'}][0])
+658         text = agent.history.get\_history\_str()
+659         self.assertEqual(text, \textcolor{stringliteral}{'I am Groot?'})
+660 
+661         \textcolor{comment}{# now try with history size = 2}
+662         agent = \hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\_agent}(history\_size=2)
+663 
+664         \textcolor{comment}{# first exchange}
+665         agent.history.update\_history(obs)
+666         text = agent.history.get\_history\_str()
+667         self.assertEqual(text, \textcolor{stringliteral}{'I am Groot.'})
+668 
+669         \textcolor{comment}{# second exchange with reply should contain reply}
+670         agent.history.add\_reply(\textcolor{stringliteral}{'I am Groot?'})
+671         agent.history.update\_history(obs)
+672         text = agent.history.get\_history\_str()
+673         self.assertEqual(text, \textcolor{stringliteral}{'I am Groot?\(\backslash\)nI am Groot.'})
+674 
+675         \textcolor{comment}{# now try with history size = 3}
+676         agent = \hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\_agent}(history\_size=3)
+677         \textcolor{comment}{# first exchange}
+678         agent.history.update\_history(obs)
+679         text = agent.history.get\_history\_str()
+680         self.assertEqual(text, \textcolor{stringliteral}{'I am Groot.'})
+681         \textcolor{comment}{# second exchange with reply should contain reply and input}
+682         agent.history.add\_reply(\textcolor{stringliteral}{'I am Groot?'})
+683         agent.history.update\_history(obs)
+684         text = agent.history.get\_history\_str()
+685         self.assertEqual(text, \textcolor{stringliteral}{'I am Groot.\(\backslash\)nI am Groot?\(\backslash\)nI am Groot.'})
+686 
+687         \textcolor{comment}{# now test add\_person\_tokens}
+688         agent = \hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\_agent}(history\_size=3, person\_tokens=\textcolor{keyword}{True})
+689         agent.history.update\_history(obs)
+690         text = agent.history.get\_history\_str()
+691         self.assertEqual(text, \textcolor{stringliteral}{'\{\} I am Groot.'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(agent.P1\_TOKEN))
+692         \textcolor{comment}{# second exchange, history should still contain the tokens}
+693         agent.history.add\_reply(\textcolor{stringliteral}{'I am Groot?'})
+694         agent.history.update\_history(obs)
+695         text = agent.history.get\_history\_str()
+696         self.assertEqual(
+697             text,
+698             \textcolor{stringliteral}{'\{\} I am Groot.\(\backslash\)n\{\} I am Groot?\(\backslash\)n\{\} I am Groot.'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+699                 agent.P1\_TOKEN, agent.P2\_TOKEN, agent.P1\_TOKEN
+700             ),
+701         )
+702 
+703         \textcolor{comment}{# now add add\_p1\_after\_newln}
+704         agent = \hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\_agent}(history\_size=3, person\_tokens=\textcolor{keyword}{True}, add\_p1\_after\_newln=\textcolor{keyword}{True})
+705         ctx\_obs = obs.copy()  \textcolor{comment}{# context then utterance in this text field}
+706         ctx\_obs[\textcolor{stringliteral}{'text'}] = \textcolor{stringliteral}{'Groot is Groot.\(\backslash\)nI am Groot.'}
+707         agent.history.update\_history(ctx\_obs)
+708         text = agent.history.get\_history\_str()
+709         self.assertEqual(text, \textcolor{stringliteral}{'Groot is Groot.\(\backslash\)n\{\} I am Groot.'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(agent.P1\_TOKEN))
+710         \textcolor{comment}{# second exchange, history should still contain context text}
+711         agent.history.add\_reply(\textcolor{stringliteral}{'I am Groot?'})
+712         agent.history.update\_history(obs)
+713         text = agent.history.get\_history\_str()
+714         self.assertEqual(
+715             text,
+716             \textcolor{stringliteral}{'Groot is Groot.\(\backslash\)n\{\} I am Groot.\(\backslash\)n\{\} I am Groot?\(\backslash\)n\{\} I am Groot.'}.
       \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
-721                 agent.P1\_TOKEN, agent.P2\_TOKEN, agent.P1\_TOKEN
-722             ),
-723         )
-724 
-725         \textcolor{comment}{# test history vecs}
-726         agent.history.reset()
-727         agent.history.update\_history(obs)
-728         vec = agent.history.get\_history\_vec()
-729         self.assertEqual(vec, deque([2001, 1, 2, 3]))
-730 
-731         \textcolor{comment}{# test history vec list}
-732         agent.history.update\_history(obs)
-733         vecs = agent.history.get\_history\_vec\_list()
-734         self.assertEqual(vecs, [[2001, 1, 2, 3], [2001, 1, 2, 3]])
-735 
-736         \textcolor{comment}{# test clearing history}
-737         agent.history.reset()
-738         text = agent.history.get\_history\_str()
-739         self.assertIsNone(text)
-740         vecs = agent.history.get\_history\_vec\_list()
-741         self.assertEqual(vecs, [])
-742 
-743         \textcolor{comment}{# test delimiter}
-744         agent = \hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\_agent}(history\_size=-1, delimiter=\textcolor{stringliteral}{' Groot! '})
-745         agent.history.update\_history(obs)
-746         agent.history.update\_history(obs)
-747         text = agent.history.get\_history\_str()
-748         self.assertEqual(text, \textcolor{stringliteral}{'I am Groot. Groot! I am Groot.'})
-749 
+717                 agent.P1\_TOKEN, agent.P2\_TOKEN, agent.P1\_TOKEN
+718             ),
+719         )
+720 
+721         \textcolor{comment}{# test history vecs}
+722         agent.history.reset()
+723         agent.history.update\_history(obs)
+724         vec = agent.history.get\_history\_vec()
+725         self.assertEqual(vec, deque([2001, 1, 2, 3]))
+726 
+727         \textcolor{comment}{# test history vec list}
+728         agent.history.update\_history(obs)
+729         vecs = agent.history.get\_history\_vec\_list()
+730         self.assertEqual(vecs, [[2001, 1, 2, 3], [2001, 1, 2, 3]])
+731 
+732         \textcolor{comment}{# test clearing history}
+733         agent.history.reset()
+734         text = agent.history.get\_history\_str()
+735         self.assertIsNone(text)
+736         vecs = agent.history.get\_history\_vec\_list()
+737         self.assertEqual(vecs, [])
+738 
+739         \textcolor{comment}{# test delimiter}
+740         agent = \hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\_agent}(history\_size=-1, delimiter=\textcolor{stringliteral}{' Groot! '})
+741         agent.history.update\_history(obs)
+742         agent.history.update\_history(obs)
+743         text = agent.history.get\_history\_str()
+744         self.assertEqual(text, \textcolor{stringliteral}{'I am Groot. Groot! I am Groot.'})
+745 
 \end{DoxyCode}
 \mbox{\Hypertarget{classtests_1_1test__torch__agent_1_1TestTorchAgent_aadf263b222e27bfd83d568148683a8e0}\label{classtests_1_1test__torch__agent_1_1TestTorchAgent_aadf263b222e27bfd83d568148683a8e0}} 
 \index{tests\+::test\+\_\+torch\+\_\+agent\+::\+Test\+Torch\+Agent@{tests\+::test\+\_\+torch\+\_\+agent\+::\+Test\+Torch\+Agent}!test\+\_\+interactive\+\_\+mode@{test\+\_\+interactive\+\_\+mode}}
@@ -715,114 +709,70 @@ Definition at line 612 of file test\+\_\+torch\+\_\+agent.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 883 of file test\+\_\+torch\+\_\+agent.\+py.
+Definition at line 848 of file test\+\_\+torch\+\_\+agent.\+py.
 
 
 \begin{DoxyCode}
-883     \textcolor{keyword}{def }test\_interactive\_mode(self):
-884         \textcolor{stringliteral}{"""}
-885 \textcolor{stringliteral}{        Test if conversation history is destroyed in MTurk mode.}
-886 \textcolor{stringliteral}{        """}
-887         \textcolor{comment}{# both manually setting bs to 1 and interactive mode true}
-888         agent = \hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\_agent}(batchsize=1, interactive\_mode=\textcolor{keyword}{True})
-889         agent.observe(Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'foo'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}))
-890         response = agent.act()
-891         self.assertIn(
-892             \textcolor{stringliteral}{'Evaluating 0'}, response[\textcolor{stringliteral}{'text'}], \textcolor{stringliteral}{'Incorrect output in single act()'}
-893         )
-894         shared = \hyperlink{namespaceparlai_1_1core_1_1agents_aa5af5dd1d2f9da491b60348d479b849f}{create\_agent\_from\_shared}(agent.share())
-895         shared.observe(Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'bar'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}))
-896         response = shared.act()
-897         self.assertIn(
-898             \textcolor{stringliteral}{'Evaluating 0'}, response[\textcolor{stringliteral}{'text'}], \textcolor{stringliteral}{'Incorrect output in single act()'}
-899         )
-900 
-901         \textcolor{comment}{# now just bs 1}
-902         agent = \hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\_agent}(batchsize=1, interactive\_mode=\textcolor{keyword}{False})
-903         agent.observe(Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'foo'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}))
-904         response = agent.act()
-905         self.assertIn(
-906             \textcolor{stringliteral}{'Evaluating 0'}, response[\textcolor{stringliteral}{'text'}], \textcolor{stringliteral}{'Incorrect output in single act()'}
-907         )
-908         shared = \hyperlink{namespaceparlai_1_1core_1_1agents_aa5af5dd1d2f9da491b60348d479b849f}{create\_agent\_from\_shared}(agent.share())
-909         shared.observe(Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'bar'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}))
-910         response = shared.act()
-911         self.assertIn(
-912             \textcolor{stringliteral}{'Evaluating 0'}, response[\textcolor{stringliteral}{'text'}], \textcolor{stringliteral}{'Incorrect output in single act()'}
-913         )
-914 
-915         \textcolor{comment}{# now just interactive}
-916         shared = \hyperlink{namespaceparlai_1_1core_1_1agents_aa5af5dd1d2f9da491b60348d479b849f}{create\_agent\_from\_shared}(agent.share())
-917         agent.observe(Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'foo'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}))
-918         response = agent.act()
-919         self.assertIn(
-920             \textcolor{stringliteral}{'Evaluating 0'}, response[\textcolor{stringliteral}{'text'}], \textcolor{stringliteral}{'Incorrect output in single act()'}
-921         )
-922         shared = \hyperlink{namespaceparlai_1_1core_1_1agents_aa5af5dd1d2f9da491b60348d479b849f}{create\_agent\_from\_shared}(agent.share())
-923         shared.observe(Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'bar'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}))
-924         response = shared.act()
-925         self.assertIn(
-926             \textcolor{stringliteral}{'Evaluating 0'}, response[\textcolor{stringliteral}{'text'}], \textcolor{stringliteral}{'Incorrect output in single act()'}
-927         )
-928 
-929         \textcolor{comment}{# finally, the expected failure}
-930         with self.assertRaises(RuntimeError):
-931             agent = \hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\_agent}(batchsize=16, interactive\_mode=\textcolor{keyword}{False})
-932             agent.observe(Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'foo'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}))
-933             response = agent.act()
-934             shared = \hyperlink{namespaceparlai_1_1core_1_1agents_aa5af5dd1d2f9da491b60348d479b849f}{create\_agent\_from\_shared}(agent.share())
-935             shared.observe(Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'bar'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}))
-936             response = shared.act()
-937 
-\end{DoxyCode}
-\mbox{\Hypertarget{classtests_1_1test__torch__agent_1_1TestTorchAgent_a7c1c12023294608a146271f4fe1574ea}\label{classtests_1_1test__torch__agent_1_1TestTorchAgent_a7c1c12023294608a146271f4fe1574ea}} 
-\index{tests\+::test\+\_\+torch\+\_\+agent\+::\+Test\+Torch\+Agent@{tests\+::test\+\_\+torch\+\_\+agent\+::\+Test\+Torch\+Agent}!test\+\_\+last\+\_\+reply@{test\+\_\+last\+\_\+reply}}
-\index{test\+\_\+last\+\_\+reply@{test\+\_\+last\+\_\+reply}!tests\+::test\+\_\+torch\+\_\+agent\+::\+Test\+Torch\+Agent@{tests\+::test\+\_\+torch\+\_\+agent\+::\+Test\+Torch\+Agent}}
-\subsubsection{\texorpdfstring{test\+\_\+last\+\_\+reply()}{test\_last\_reply()}}
-{\footnotesize\ttfamily def tests.\+test\+\_\+torch\+\_\+agent.\+Test\+Torch\+Agent.\+test\+\_\+last\+\_\+reply (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
-
-\begin{DoxyVerb}Make sure last reply returns expected values.
-\end{DoxyVerb}
- 
-
-Definition at line 750 of file test\+\_\+torch\+\_\+agent.\+py.
-
-
-\begin{DoxyCode}
-750     \textcolor{keyword}{def }test\_last\_reply(self):
-751         \textcolor{stringliteral}{"""}
-752 \textcolor{stringliteral}{        Make sure last reply returns expected values.}
-753 \textcolor{stringliteral}{        """}
-754         agent = \hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\_agent}()
-755         \textcolor{comment}{# nothing to retrieve}
-756         self.assertIsNone(agent.last\_reply())
-757         \textcolor{comment}{# set agent's generated replies}
-758         agent.replies = \{
-759             \textcolor{stringliteral}{'batch\_reply'}: [\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'It\(\backslash\)'s okay! I\(\backslash\)'m a leaf on the wind.'}\}]
-760         \}
-761         \textcolor{comment}{# If the observation was previously an episode end, we shouldn't have any}
-762         \textcolor{comment}{# older reply}
-763         self.assertEqual(agent.last\_reply(), \textcolor{keywordtype}{None})
-764         \textcolor{comment}{# now agent should remember what it said}
-765         agent.observation = \{\textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{False}\}
-766         self.assertEqual(agent.last\_reply(), \textcolor{stringliteral}{'It\(\backslash\)'s okay! I\(\backslash\)'m a leaf on the wind.'})
-767         \textcolor{comment}{# now set true observation}
-768         agent.observation = \{
-769             \textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'Will that work?'},
-770             \textcolor{stringliteral}{'labels'}: [\textcolor{stringliteral}{'I\(\backslash\)'m a leaf on the wind. Watch how I soar.'}],
-771             \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{False},
-772         \}
-773         \textcolor{comment}{# now agent should remember true label}
-774         self.assertEqual(
-775             agent.last\_reply(), \textcolor{stringliteral}{'I\(\backslash\)'m a leaf on the wind. Watch how I soar.'}
-776         )
-777         \textcolor{comment}{# but not if we tell to use the model reply}
-778         self.assertEqual(
-779             agent.last\_reply(use\_reply=\textcolor{stringliteral}{'model'}), \textcolor{stringliteral}{'It\(\backslash\)'s okay! I\(\backslash\)'m a leaf on the wind.'}
-780         )
-781         \textcolor{comment}{# if we don't want to use the last reply at all, it should be None}
-782         self.assertIsNone(agent.last\_reply(use\_reply=\textcolor{stringliteral}{'none'}))
-783 
+848     \textcolor{keyword}{def }test\_interactive\_mode(self):
+849         \textcolor{stringliteral}{"""}
+850 \textcolor{stringliteral}{        Test if conversation history is destroyed in MTurk mode.}
+851 \textcolor{stringliteral}{        """}
+852         \textcolor{comment}{# both manually setting bs to 1 and interactive mode true}
+853         agent = \hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\_agent}(batchsize=1, interactive\_mode=\textcolor{keyword}{True})
+854         agent.observe(Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'foo'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}))
+855         response = agent.act()
+856         self.assertIn(
+857             \textcolor{stringliteral}{'Evaluating 0'}, response[\textcolor{stringliteral}{'text'}], \textcolor{stringliteral}{'Incorrect output in single act()'}
+858         )
+859         shared = \hyperlink{namespaceparlai_1_1core_1_1agents_aa5af5dd1d2f9da491b60348d479b849f}{create\_agent\_from\_shared}(agent.share())
+860         shared.observe(Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'bar'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}))
+861         response = shared.act()
+862         self.assertIn(
+863             \textcolor{stringliteral}{'Evaluating 0'}, response[\textcolor{stringliteral}{'text'}], \textcolor{stringliteral}{'Incorrect output in single act()'}
+864         )
+865 
+866         \textcolor{comment}{# now just bs 1}
+867         agent = \hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\_agent}(batchsize=1, interactive\_mode=\textcolor{keyword}{False})
+868         agent.observe(Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'foo'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}))
+869         response = agent.act()
+870         self.assertIn(
+871             \textcolor{stringliteral}{'Evaluating 0'}, response[\textcolor{stringliteral}{'text'}], \textcolor{stringliteral}{'Incorrect output in single act()'}
+872         )
+873         shared = \hyperlink{namespaceparlai_1_1core_1_1agents_aa5af5dd1d2f9da491b60348d479b849f}{create\_agent\_from\_shared}(agent.share())
+874         shared.observe(Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'bar'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}))
+875         response = shared.act()
+876         self.assertIn(
+877             \textcolor{stringliteral}{'Evaluating 0'}, response[\textcolor{stringliteral}{'text'}], \textcolor{stringliteral}{'Incorrect output in single act()'}
+878         )
+879 
+880         \textcolor{comment}{# now just interactive}
+881         shared = \hyperlink{namespaceparlai_1_1core_1_1agents_aa5af5dd1d2f9da491b60348d479b849f}{create\_agent\_from\_shared}(agent.share())
+882         agent.observe(Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'foo'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}))
+883         response = agent.act()
+884         self.assertIn(
+885             \textcolor{stringliteral}{'Evaluating 0'}, response[\textcolor{stringliteral}{'text'}], \textcolor{stringliteral}{'Incorrect output in single act()'}
+886         )
+887         shared = \hyperlink{namespaceparlai_1_1core_1_1agents_aa5af5dd1d2f9da491b60348d479b849f}{create\_agent\_from\_shared}(agent.share())
+888         shared.observe(Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'bar'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}))
+889         response = shared.act()
+890         self.assertIn(
+891             \textcolor{stringliteral}{'Evaluating 0'}, response[\textcolor{stringliteral}{'text'}], \textcolor{stringliteral}{'Incorrect output in single act()'}
+892         )
+893 
+894         \textcolor{comment}{# finally, actively attempt to sabotage}
+895         agent = \hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\_agent}(batchsize=16, interactive\_mode=\textcolor{keyword}{False})
+896         agent.observe(Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'foo'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}))
+897         response = agent.act()
+898         self.assertIn(
+899             \textcolor{stringliteral}{'Evaluating 0'}, response[\textcolor{stringliteral}{'text'}], \textcolor{stringliteral}{'Incorrect output in single act()'}
+900         )
+901         shared = \hyperlink{namespaceparlai_1_1core_1_1agents_aa5af5dd1d2f9da491b60348d479b849f}{create\_agent\_from\_shared}(agent.share())
+902         shared.observe(Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'bar'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}))
+903         response = shared.act()
+904         self.assertIn(
+905             \textcolor{stringliteral}{'Evaluating 0'}, response[\textcolor{stringliteral}{'text'}], \textcolor{stringliteral}{'Incorrect output in single act()'}
+906         )
+907 
 \end{DoxyCode}
 \mbox{\Hypertarget{classtests_1_1test__torch__agent_1_1TestTorchAgent_abe59ca8c2f6927c0ba6f0e5ce7d3a4f2}\label{classtests_1_1test__torch__agent_1_1TestTorchAgent_abe59ca8c2f6927c0ba6f0e5ce7d3a4f2}} 
 \index{tests\+::test\+\_\+torch\+\_\+agent\+::\+Test\+Torch\+Agent@{tests\+::test\+\_\+torch\+\_\+agent\+::\+Test\+Torch\+Agent}!test\+\_\+match\+\_\+batch@{test\+\_\+match\+\_\+batch}}
@@ -982,36 +932,36 @@ Definition at line 53 of file test\+\_\+torch\+\_\+agent.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 938 of file test\+\_\+torch\+\_\+agent.\+py.
+Definition at line 942 of file test\+\_\+torch\+\_\+agent.\+py.
 
 
 \begin{DoxyCode}
-938     \textcolor{keyword}{def }test\_mturk\_racehistory(self):
-939         \textcolor{stringliteral}{"""}
-940 \textcolor{stringliteral}{        Emulate a setting where batch\_act misappropriately handles mturk.}
-941 \textcolor{stringliteral}{        """}
-942         agent = \hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\_agent}(batchsize=16, interactive\_mode=\textcolor{keyword}{True}, echo=\textcolor{keyword}{True})
-943         share1 = \hyperlink{namespaceparlai_1_1core_1_1agents_aa5af5dd1d2f9da491b60348d479b849f}{create\_agent\_from\_shared}(agent.share())
-944 
-945         share1.observe(Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'thread1-msg1'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{False}\}))
-946         share2 = \hyperlink{namespaceparlai_1_1core_1_1agents_aa5af5dd1d2f9da491b60348d479b849f}{create\_agent\_from\_shared}(agent.share())
-947         share2.observe(Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'thread2-msg1'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{False}\}))
-948         share1.act()
-949         share2.act()
-950 
-951         share1.observe(Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'thread1-msg2'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{False}\}))
-952         share2.observe(Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'thread2-msg2'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{False}\}))
+942     \textcolor{keyword}{def }test\_mturk\_racehistory(self):
+943         \textcolor{stringliteral}{"""}
+944 \textcolor{stringliteral}{        Emulate a setting where batch\_act misappropriately handles mturk.}
+945 \textcolor{stringliteral}{        """}
+946         agent = \hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\_agent}(batchsize=16, interactive\_mode=\textcolor{keyword}{True}, echo=\textcolor{keyword}{True})
+947         share1 = \hyperlink{namespaceparlai_1_1core_1_1agents_aa5af5dd1d2f9da491b60348d479b849f}{create\_agent\_from\_shared}(agent.share())
+948 
+949         share1.observe(Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'thread1-msg1'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{False}\}))
+950         share2 = \hyperlink{namespaceparlai_1_1core_1_1agents_aa5af5dd1d2f9da491b60348d479b849f}{create\_agent\_from\_shared}(agent.share())
+951         share2.observe(Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'thread2-msg1'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{False}\}))
+952         share1.act()
 953         share2.act()
-954         share1.act()
-955 
-956         share2.observe(Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'thread2-msg3'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{False}\}))
-957         share1.observe(Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'thread1-msg3'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{False}\}))
-958 
-959         self.assertNotIn(\textcolor{stringliteral}{'thread1-msg1'}, share2.history.get\_history\_str())
-960         self.assertNotIn(\textcolor{stringliteral}{'thread2-msg1'}, share1.history.get\_history\_str())
-961         self.assertNotIn(\textcolor{stringliteral}{'thread1-msg2'}, share2.history.get\_history\_str())
-962         self.assertNotIn(\textcolor{stringliteral}{'thread2-msg2'}, share1.history.get\_history\_str())
-963 
+954 
+955         share1.observe(Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'thread1-msg2'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{False}\}))
+956         share2.observe(Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'thread2-msg2'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{False}\}))
+957         share2.act()
+958         share1.act()
+959 
+960         share2.observe(Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'thread2-msg3'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{False}\}))
+961         share1.observe(Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'thread1-msg3'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{False}\}))
+962 
+963         self.assertNotIn(\textcolor{stringliteral}{'thread1-msg1'}, share2.history.get\_history\_str())
+964         self.assertNotIn(\textcolor{stringliteral}{'thread2-msg1'}, share1.history.get\_history\_str())
+965         self.assertNotIn(\textcolor{stringliteral}{'thread1-msg2'}, share2.history.get\_history\_str())
+966         self.assertNotIn(\textcolor{stringliteral}{'thread2-msg2'}, share1.history.get\_history\_str())
+967 
 \end{DoxyCode}
 \mbox{\Hypertarget{classtests_1_1test__torch__agent_1_1TestTorchAgent_ae3b6e4145176ba5d5e9179756d064332}\label{classtests_1_1test__torch__agent_1_1TestTorchAgent_ae3b6e4145176ba5d5e9179756d064332}} 
 \index{tests\+::test\+\_\+torch\+\_\+agent\+::\+Test\+Torch\+Agent@{tests\+::test\+\_\+torch\+\_\+agent\+::\+Test\+Torch\+Agent}!test\+\_\+observe@{test\+\_\+observe}}
@@ -1023,39 +973,42 @@ Definition at line 938 of file test\+\_\+torch\+\_\+agent.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 784 of file test\+\_\+torch\+\_\+agent.\+py.
+Definition at line 746 of file test\+\_\+torch\+\_\+agent.\+py.
 
 
 \begin{DoxyCode}
-784     \textcolor{keyword}{def }test\_observe(self):
-785         \textcolor{stringliteral}{"""}
-786 \textcolor{stringliteral}{        Make sure agent stores and returns observation.}
-787 \textcolor{stringliteral}{        """}
-788         agent = \hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\_agent}()
-789         \textcolor{comment}{# text could be none}
-790         obs = \{\textcolor{stringliteral}{'text'}: \textcolor{keywordtype}{None}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}
-791         out = agent.observe(obs.copy())
-792         self.assertIsNotNone(out)
-793         obs = \{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{"I'll be back."}, \textcolor{stringliteral}{'labels'}: [\textcolor{stringliteral}{"I'm back."}], \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}
-794         out = agent.observe(obs.copy())
-795         self.assertIsNotNone(out)
-796         self.assertIsNotNone(agent.observation)
-797         self.assertEqual(out[\textcolor{stringliteral}{'text'}], \textcolor{stringliteral}{"I'll be back."})
-798         \textcolor{comment}{# episode was done so shouldn't remember history}
-799         out = agent.observe(obs.copy())
-800         self.assertEqual(out[\textcolor{stringliteral}{'text'}], \textcolor{stringliteral}{"I'll be back."})
-801         self.assertTrue(\textcolor{stringliteral}{'text\_vec'} \textcolor{keywordflow}{in} out, \textcolor{stringliteral}{'Text should be vectorized.'})
-802 
-803         \textcolor{comment}{# now try with episode not done}
-804         obs[\textcolor{stringliteral}{'episode\_done'}] = \textcolor{keyword}{False}
-805         out = agent.observe(obs.copy())
-806         self.assertIsNotNone(out)
-807         self.assertIsNotNone(agent.observation)
-808         self.assertEqual(out[\textcolor{stringliteral}{'text'}], \textcolor{stringliteral}{"I'll be back."})
-809         \textcolor{comment}{# should remember history}
-810         out = agent.observe(obs.copy())
-811         self.assertEqual(out[\textcolor{stringliteral}{'full\_text'}], \textcolor{stringliteral}{"I'll be back.\(\backslash\)nI'm back.\(\backslash\)nI'll be back."})
-812 
+746     \textcolor{keyword}{def }test\_observe(self):
+747         \textcolor{stringliteral}{"""}
+748 \textcolor{stringliteral}{        Make sure agent stores and returns observation.}
+749 \textcolor{stringliteral}{        """}
+750         agent = \hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\_agent}()
+751         \textcolor{comment}{# text could be none}
+752         obs = \{\textcolor{stringliteral}{'text'}: \textcolor{keywordtype}{None}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}
+753         out = agent.observe(obs.copy())
+754         self.assertIsNotNone(out)
+755         \textcolor{comment}{# make sure we throw an exception for having an episode done without a reset}
+756         obs = \{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{"I'll be back."}, \textcolor{stringliteral}{'labels'}: [\textcolor{stringliteral}{"I'm back."}], \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}
+757         with self.assertRaises(RuntimeError):
+758             agent.observe(obs.copy())
+759         \textcolor{comment}{# okay, let's do it properly now}
+760         agent.reset()
+761         obs = \{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{"I'll be back."}, \textcolor{stringliteral}{'labels'}: [\textcolor{stringliteral}{"I'm back."}], \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}
+762         out = agent.observe(obs.copy())
+763         self.assertIsNotNone(out)
+764         self.assertIsNotNone(agent.observation)
+765         self.assertEqual(out[\textcolor{stringliteral}{'text'}], \textcolor{stringliteral}{"I'll be back."})
+766         \textcolor{comment}{# now try with episode not done}
+767         agent = \hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\_agent}()
+768         obs[\textcolor{stringliteral}{'episode\_done'}] = \textcolor{keyword}{False}
+769         out = agent.observe(obs.copy())
+770         self.assertIsNotNone(out)
+771         self.assertIsNotNone(agent.observation)
+772         self.assertEqual(out[\textcolor{stringliteral}{'text'}], \textcolor{stringliteral}{"I'll be back."})
+773         \textcolor{comment}{# should remember history}
+774         agent.act()
+775         out = agent.observe(obs.copy())
+776         self.assertEqual(out[\textcolor{stringliteral}{'full\_text'}], \textcolor{stringliteral}{"I'll be back.\(\backslash\)nI'm back.\(\backslash\)nI'll be back."})
+777 
 \end{DoxyCode}
 \mbox{\Hypertarget{classtests_1_1test__torch__agent_1_1TestTorchAgent_a7135ee3421b1d0fc98f0202718910482}\label{classtests_1_1test__torch__agent_1_1TestTorchAgent_a7135ee3421b1d0fc98f0202718910482}} 
 \index{tests\+::test\+\_\+torch\+\_\+agent\+::\+Test\+Torch\+Agent@{tests\+::test\+\_\+torch\+\_\+agent\+::\+Test\+Torch\+Agent}!test\+\_\+resume\+\_\+checkpoint@{test\+\_\+resume\+\_\+checkpoint}}
@@ -1069,63 +1022,63 @@ Copy train_model from testing_utils to directly access agent.
 \end{DoxyVerb}
  
 
-Definition at line 964 of file test\+\_\+torch\+\_\+agent.\+py.
+Definition at line 968 of file test\+\_\+torch\+\_\+agent.\+py.
 
 
 \begin{DoxyCode}
-964     \textcolor{keyword}{def }test\_resume\_checkpoint(self):
-965         \textcolor{stringliteral}{"""}
-966 \textcolor{stringliteral}{        Make sure when resuming training that model uses appropriate mf.}
-967 \textcolor{stringliteral}{}
-968 \textcolor{stringliteral}{        Copy train\_model from testing\_utils to directly access agent.}
-969 \textcolor{stringliteral}{        """}
-970         \textcolor{keyword}{import} \hyperlink{namespaceparlai_1_1scripts_1_1train__model}{parlai.scripts.train\_model} \textcolor{keyword}{as} tms
-971 
-972         \textcolor{keyword}{def }get\_popt\_and\_tl(opt):
-973             parser = tms.setup\_args()
-974             parser.set\_params(**opt)
-975             popt = parser.parse\_args(print\_args=\textcolor{keyword}{False})
-976             \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} opt.items():
-977                 popt[k] = v
-978             \textcolor{keywordflow}{return} popt, tms.TrainLoop(popt)
-979 
-980         \textcolor{keyword}{def }get\_opt(init\_mf, mf):
-981             \textcolor{keywordflow}{return} \{
-982                 \textcolor{stringliteral}{'task'}: \textcolor{stringliteral}{'integration\_tests'},
-983                 \textcolor{stringliteral}{'init\_model'}: init\_mf,
-984                 \textcolor{stringliteral}{'model'}: \textcolor{stringliteral}{'parlai.agents.test\_agents.dummy\_torch\_agent:MockTorchAgent'},
-985                 \textcolor{stringliteral}{'model\_file'}: mf,
-986                 \textcolor{stringliteral}{'num\_epochs'}: 3,
-987                 \textcolor{stringliteral}{'validation\_every\_n\_epochs'}: 1,
-988                 \textcolor{stringliteral}{'save\_after\_valid'}: \textcolor{keyword}{True},
-989                 \textcolor{stringliteral}{'log\_every\_n\_secs'}: 10,
-990             \}
-991 
-992         with \hyperlink{namespaceparlai_1_1utils_1_1testing_ab00d4d693202afab92c06387aa50699b}{capture\_output}():
-993             with \hyperlink{namespaceparlai_1_1utils_1_1testing_a0945b769a10c0c844b29c02ff26445a5}{tempdir}() \textcolor{keyword}{as} tmpdir:
-994                 \textcolor{comment}{# First train model with init\_model path set}
-995                 mf = os.path.join(tmpdir, \textcolor{stringliteral}{'model'})
-996                 init\_mf = os.path.join(tmpdir, \textcolor{stringliteral}{'init\_model'})
-997                 with open(init\_mf, \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} f:
-998                     f.write(\textcolor{stringliteral}{' '})
-999                 opt = get\_opt(init\_mf, mf)
-1000                 popt, tl = get\_popt\_and\_tl(opt)
-1001                 agent = tl.agent
-1002                 \textcolor{comment}{# init model file should be set appropriately}
-1003                 init\_model\_file, is\_finetune = agent.\_get\_init\_model(popt, \textcolor{keywordtype}{None})
-1004                 self.assertEqual(init\_model\_file, init\_mf)
-1005                 self.assertTrue(is\_finetune)
-1006                 valid, test = tl.train()
-1007                 \textcolor{comment}{# now, train the model for another epoch}
-1008                 opt = get\_opt(\textcolor{stringliteral}{'\{\}.checkpoint'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(mf), mf)
-1009                 opt[\textcolor{stringliteral}{'load\_from\_checkpoint'}] = \textcolor{keyword}{True}
-1010                 popt, tl = get\_popt\_and\_tl(opt)
-1011                 agent = tl.agent
-1012                 init\_model\_file, is\_finetune = agent.\_get\_init\_model(popt, \textcolor{keywordtype}{None})
-1013                 self.assertEqual(init\_model\_file, \textcolor{stringliteral}{'\{\}.checkpoint'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(mf))
-1014                 self.assertFalse(is\_finetune)
-1015 
-1016 
+968     \textcolor{keyword}{def }test\_resume\_checkpoint(self):
+969         \textcolor{stringliteral}{"""}
+970 \textcolor{stringliteral}{        Make sure when resuming training that model uses appropriate mf.}
+971 \textcolor{stringliteral}{}
+972 \textcolor{stringliteral}{        Copy train\_model from testing\_utils to directly access agent.}
+973 \textcolor{stringliteral}{        """}
+974         \textcolor{keyword}{import} \hyperlink{namespaceparlai_1_1scripts_1_1train__model}{parlai.scripts.train\_model} \textcolor{keyword}{as} tms
+975 
+976         \textcolor{keyword}{def }get\_popt\_and\_tl(opt):
+977             parser = tms.setup\_args()
+978             parser.set\_params(**opt)
+979             popt = parser.parse\_args(print\_args=\textcolor{keyword}{False})
+980             \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} opt.items():
+981                 popt[k] = v
+982             \textcolor{keywordflow}{return} popt, tms.TrainLoop(popt)
+983 
+984         \textcolor{keyword}{def }get\_opt(init\_mf, mf):
+985             \textcolor{keywordflow}{return} \{
+986                 \textcolor{stringliteral}{'task'}: \textcolor{stringliteral}{'integration\_tests'},
+987                 \textcolor{stringliteral}{'init\_model'}: init\_mf,
+988                 \textcolor{stringliteral}{'model'}: \textcolor{stringliteral}{'parlai.agents.test\_agents.dummy\_torch\_agent:MockTorchAgent'},
+989                 \textcolor{stringliteral}{'model\_file'}: mf,
+990                 \textcolor{stringliteral}{'num\_epochs'}: 3,
+991                 \textcolor{stringliteral}{'validation\_every\_n\_epochs'}: 1,
+992                 \textcolor{stringliteral}{'save\_after\_valid'}: \textcolor{keyword}{True},
+993                 \textcolor{stringliteral}{'log\_every\_n\_secs'}: 10,
+994             \}
+995 
+996         with \hyperlink{namespaceparlai_1_1utils_1_1testing_ab00d4d693202afab92c06387aa50699b}{capture\_output}():
+997             with \hyperlink{namespaceparlai_1_1utils_1_1testing_a0945b769a10c0c844b29c02ff26445a5}{tempdir}() \textcolor{keyword}{as} tmpdir:
+998                 \textcolor{comment}{# First train model with init\_model path set}
+999                 mf = os.path.join(tmpdir, \textcolor{stringliteral}{'model'})
+1000                 init\_mf = os.path.join(tmpdir, \textcolor{stringliteral}{'init\_model'})
+1001                 with open(init\_mf, \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} f:
+1002                     f.write(\textcolor{stringliteral}{' '})
+1003                 opt = get\_opt(init\_mf, mf)
+1004                 popt, tl = get\_popt\_and\_tl(opt)
+1005                 agent = tl.agent
+1006                 \textcolor{comment}{# init model file should be set appropriately}
+1007                 init\_model\_file, is\_finetune = agent.\_get\_init\_model(popt, \textcolor{keywordtype}{None})
+1008                 self.assertEqual(init\_model\_file, init\_mf)
+1009                 self.assertTrue(is\_finetune)
+1010                 valid, test = tl.train()
+1011                 \textcolor{comment}{# now, train the model for another epoch}
+1012                 opt = get\_opt(\textcolor{stringliteral}{'\{\}.checkpoint'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(mf), mf)
+1013                 opt[\textcolor{stringliteral}{'load\_from\_checkpoint'}] = \textcolor{keyword}{True}
+1014                 popt, tl = get\_popt\_and\_tl(opt)
+1015                 agent = tl.agent
+1016                 init\_model\_file, is\_finetune = agent.\_get\_init\_model(popt, \textcolor{keywordtype}{None})
+1017                 self.assertEqual(init\_model\_file, \textcolor{stringliteral}{'\{\}.checkpoint'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(mf))
+1018                 self.assertFalse(is\_finetune)
+1019 
+1020 
 \end{DoxyCode}
 \mbox{\Hypertarget{classtests_1_1test__torch__agent_1_1TestTorchAgent_af3d1c7681a30a06684117464ccefb15d}\label{classtests_1_1test__torch__agent_1_1TestTorchAgent_af3d1c7681a30a06684117464ccefb15d}} 
 \index{tests\+::test\+\_\+torch\+\_\+agent\+::\+Test\+Torch\+Agent@{tests\+::test\+\_\+torch\+\_\+agent\+::\+Test\+Torch\+Agent}!test\+\_\+share@{test\+\_\+share}}
@@ -1149,6 +1102,55 @@ Definition at line 60 of file test\+\_\+torch\+\_\+agent.\+py.
 65         shared = agent.share()
 66         self.assertTrue(\textcolor{stringliteral}{'dict'} \textcolor{keywordflow}{in} shared)
 67 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__torch__agent_1_1TestTorchAgent_a10ba6e3fdb49b540bc4663d9c7a30eab}\label{classtests_1_1test__torch__agent_1_1TestTorchAgent_a10ba6e3fdb49b540bc4663d9c7a30eab}} 
+\index{tests\+::test\+\_\+torch\+\_\+agent\+::\+Test\+Torch\+Agent@{tests\+::test\+\_\+torch\+\_\+agent\+::\+Test\+Torch\+Agent}!test\+\_\+use\+\_\+reply@{test\+\_\+use\+\_\+reply}}
+\index{test\+\_\+use\+\_\+reply@{test\+\_\+use\+\_\+reply}!tests\+::test\+\_\+torch\+\_\+agent\+::\+Test\+Torch\+Agent@{tests\+::test\+\_\+torch\+\_\+agent\+::\+Test\+Torch\+Agent}}
+\subsubsection{\texorpdfstring{test\+\_\+use\+\_\+reply()}{test\_use\_reply()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+torch\+\_\+agent.\+Test\+Torch\+Agent.\+test\+\_\+use\+\_\+reply (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Check that self-observe is correctly acting on labels.
+\end{DoxyVerb}
+ 
+
+Definition at line 908 of file test\+\_\+torch\+\_\+agent.\+py.
+
+
+\begin{DoxyCode}
+908     \textcolor{keyword}{def }test\_use\_reply(self):
+909         \textcolor{stringliteral}{"""}
+910 \textcolor{stringliteral}{        Check that self-observe is correctly acting on labels.}
+911 \textcolor{stringliteral}{        """}
+912         \textcolor{comment}{# default is hybrid label-model, which uses the label if it's available, and}
+913         \textcolor{comment}{# otherwise the label}
+914         \textcolor{comment}{# first check if there is a label available}
+915         agent = \hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\_agent}()
+916         obs = Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'Call'}, \textcolor{stringliteral}{'labels'}: [\textcolor{stringliteral}{'Response'}], \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{False}\})
+917         agent.observe(obs)
+918         \_ = agent.act()
+919         self.assertEqual(agent.history.get\_history\_str(), \textcolor{stringliteral}{'Call\(\backslash\)nResponse'})
+920         \textcolor{comment}{# check if there is no label}
+921         agent.reset()
+922         obs = Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'Call'}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{False}\})
+923         agent.observe(obs)
+924         \_ = agent.act()
+925         self.assertEqual(
+926             agent.history.get\_history\_str(), \textcolor{stringliteral}{'Call\(\backslash\)nEvaluating 0 (responding to Call)!'}
+927         )
+928         \textcolor{comment}{# now some of the other possible values of --use-reply}
+929         \textcolor{comment}{# --use-reply model. even if there is a label, we should see the model's out}
+930         agent = \hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\_agent}(use\_reply=\textcolor{stringliteral}{'model'})
+931         obs = Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'Call'}, \textcolor{stringliteral}{'labels'}: [\textcolor{stringliteral}{'Response'}], \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{False}\})
+932         agent.observe(obs)
+933         \_ = agent.act()
+934         self.assertEqual(agent.history.get\_history\_str(), \textcolor{stringliteral}{'Call\(\backslash\)nTraining 0!'})
+935         \textcolor{comment}{# --use-reply none doesn't hear itself}
+936         agent = \hyperlink{namespacetests_1_1test__torch__agent_ae929d109305aaea29fbfa13ecf1f32e9}{get\_agent}(use\_reply=\textcolor{stringliteral}{'none'})
+937         obs = Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'Call'}, \textcolor{stringliteral}{'labels'}: [\textcolor{stringliteral}{'Response'}], \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{False}\})
+938         agent.observe(obs)
+939         agent.act()
+940         self.assertEqual(agent.history.get\_history\_str(), \textcolor{stringliteral}{'Call'})
+941 
 \end{DoxyCode}
 \mbox{\Hypertarget{classtests_1_1test__torch__agent_1_1TestTorchAgent_a551847086a9d8bf6bc04ea1efeacf608}\label{classtests_1_1test__torch__agent_1_1TestTorchAgent_a551847086a9d8bf6bc04ea1efeacf608}} 
 \index{tests\+::test\+\_\+torch\+\_\+agent\+::\+Test\+Torch\+Agent@{tests\+::test\+\_\+torch\+\_\+agent\+::\+Test\+Torch\+Agent}!test\+\_\+vectorize@{test\+\_\+vectorize}}

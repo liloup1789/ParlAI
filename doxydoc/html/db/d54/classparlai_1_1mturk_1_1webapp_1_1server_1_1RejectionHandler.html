@@ -109,7 +109,7 @@ Public Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="../../d3/d95/server_8py_source.html#l00462">462</a> of file <a class="el" href="../../d3/d95/server_8py_source.html">server.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d95/server_8py_source.html#l00467">467</a> of file <a class="el" href="../../d3/d95/server_8py_source.html">server.py</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="af55902f1aecca9cde35328c8356525ce"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af55902f1aecca9cde35328c8356525ce">&#9670;&nbsp;</a></span>initialize()</h2>
@@ -137,8 +137,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d95/server_8py_source.html#l00463">463</a> of file <a class="el" href="../../d3/d95/server_8py_source.html">server.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    <span class="keyword">def </span>initialize(self, app):</div><div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;        self.mturk_manager = app.mturk_manager</div><div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;</div></div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d3/d95/server_8py_source.html#l00468">468</a> of file <a class="el" href="../../d3/d95/server_8py_source.html">server.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;    <span class="keyword">def </span>initialize(self, app):</div><div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;        self.mturk_manager = app.mturk_manager</div><div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;</div></div><!-- fragment -->
 </div>
 </div>
 <a id="ab53a292bed562b166bd63ef81ae38a43"></a>
@@ -167,8 +167,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d95/server_8py_source.html#l00466">466</a> of file <a class="el" href="../../d3/d95/server_8py_source.html">server.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;    <span class="keyword">def </span>post(self, assignment_target):</div><div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;        data = tornado.escape.json_decode(self.request.body)</div><div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;        reason = data[<span class="stringliteral">&#39;reason&#39;</span>]</div><div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;        self.mturk_manager.reject_work(assignment_target, reason)</div><div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;        print(<span class="stringliteral">&#39;Rejected {} for reason {}&#39;</span>.<a class="code" href="../../d4/d94/namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils.html#a32e2e2022b824fbaf80c747160b52a76">format</a>(assignment_target, reason))</div><div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;        data = {<span class="stringliteral">&#39;status&#39;</span>: <span class="keyword">True</span>}</div><div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;        self.write(json.dumps(data))</div><div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;</div><div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;</div><div class="ttc" id="namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_html_a32e2e2022b824fbaf80c747160b52a76"><div class="ttname"><a href="../../d4/d94/namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils.html#a32e2e2022b824fbaf80c747160b52a76">parlai.chat_service.services.messenger.shared_utils.format</a></div><div class="ttdeci">format</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/da3/chat__service_2services_2messenger_2shared__utils_8py_source.html#l00029">shared_utils.py:29</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../d3/d95/server_8py_source.html#l00471">471</a> of file <a class="el" href="../../d3/d95/server_8py_source.html">server.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;    <span class="keyword">def </span>post(self, assignment_target):</div><div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;        data = tornado.escape.json_decode(self.request.body)</div><div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;        reason = data[<span class="stringliteral">&#39;reason&#39;</span>]</div><div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;        self.mturk_manager.reject_work(assignment_target, reason)</div><div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;        print(<span class="stringliteral">&#39;Rejected {} for reason {}&#39;</span>.<a class="code" href="../../d4/d94/namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils.html#a32e2e2022b824fbaf80c747160b52a76">format</a>(assignment_target, reason))</div><div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;        data = {<span class="stringliteral">&#39;status&#39;</span>: <span class="keyword">True</span>}</div><div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;        self.write(json.dumps(data))</div><div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;</div><div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;</div><div class="ttc" id="namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_html_a32e2e2022b824fbaf80c747160b52a76"><div class="ttname"><a href="../../d4/d94/namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils.html#a32e2e2022b824fbaf80c747160b52a76">parlai.chat_service.services.messenger.shared_utils.format</a></div><div class="ttdeci">format</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/da3/chat__service_2services_2messenger_2shared__utils_8py_source.html#l00029">shared_utils.py:29</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -185,7 +185,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d95/server_8py_source.html#l00464">464</a> of file <a class="el" href="../../d3/d95/server_8py_source.html">server.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d95/server_8py_source.html#l00469">469</a> of file <a class="el" href="../../d3/d95/server_8py_source.html">server.py</a>.</p>
 
 </div>
 </div>

@@ -35,7 +35,7 @@ Definition at line 70 of file build\+\_\+pytorch\+\_\+data.\+py.
 76     \textcolor{keywordflow}{if} \textcolor{stringliteral}{'dict\_maxexs'} \textcolor{keywordflow}{in} opt:
 77         \textcolor{comment}{# Note: only build dictionary if dict loop args specified}
 78         dictionary = \hyperlink{namespacebuild__dict}{build\_dict}(opt, skip\_if\_built=\textcolor{keyword}{True})
-79     agent = \hyperlink{namespaceparlai_1_1core_1_1agents_ad0d54074d4bcc148bb415ab5515a53b5}{create\_agent}(opt)
+79     agent = \hyperlink{namespaceparlai_1_1core_1_1agents_a00d77a7e26fb89e8bd900f7b2a02982a}{create\_agent}(opt)
 80     \textcolor{comment}{# If build teacher not specified, we are simply looking for the file}
 81     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} opt.get(\textcolor{stringliteral}{'pytorch\_teacher\_task'}, \textcolor{keywordtype}{None}):
 82         df = opt.get(\textcolor{stringliteral}{'pytorch\_datapath'})
@@ -64,7 +64,7 @@ Definition at line 70 of file build\+\_\+pytorch\+\_\+data.\+py.
 105     ordered\_opt[\textcolor{stringliteral}{'task'}] = ordered\_opt[\textcolor{stringliteral}{'pytorch\_teacher\_task'}]
 106     ordered\_opt.pop(\textcolor{stringliteral}{'pytorch\_teacher\_dataset'})
 107     ordered\_opt[\textcolor{stringliteral}{'no\_cuda'}] = \textcolor{keyword}{True}
-108     world\_data = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(ordered\_opt, agent)
+108     world\_data = \hyperlink{namespaceparlai_1_1core_1_1worlds_a79969c7ba76d4b3c500f5bb776444dc6}{create\_task}(ordered\_opt, agent)
 109     teacher = world\_data.get\_task\_agent()
 110     agent = world\_data.agents[1]
 111     datapath = os.path.join(
@@ -122,28 +122,34 @@ Definition at line 70 of file build\+\_\+pytorch\+\_\+data.\+py.
 162                     ex = agent.observe(ex)
 163                     ex.pop(\textcolor{stringliteral}{'label\_candidates'}, \textcolor{stringliteral}{''})
 164                     ex[\textcolor{stringliteral}{'preprocessed'}] = \textcolor{keyword}{True}
-165                 num\_eps += 1
-166                 num\_exs += 1
-167                 pbar.update(1)
-168                 ex\_len = pytorch\_data.write(json.dumps(\hyperlink{namespaceparlai_1_1scripts_1_1build__pytorch__data_a1c8f4633b7dc8e990a3e1f6c3e92bd3f}{make\_serializable}(ex)) + \textcolor{stringliteral}{"\(\backslash\)n"})
-169                 idx\_to\_char.append(cumulative\_char\_len)
-170                 cumulative\_char\_len += ex\_len
-171             \textcolor{comment}{# reset}
-172             episode\_done = \textcolor{keyword}{False}
-173             current.clear()
-174             context.clear()
-175     pbar.close()
-176     with open(os.path.join(datapath, \textcolor{stringliteral}{'char\_index'}), \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} char\_index:
-177         json.dump(idx\_to\_char, char\_index)
-178     with open(os.path.join(datapath, \textcolor{stringliteral}{'data\_length'}), \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} pytorch\_data\_len:
-179         pytorch\_data\_len.write(json.dumps(\{\textcolor{stringliteral}{'num\_eps'}: num\_eps, \textcolor{stringliteral}{'num\_exs'}: num\_exs\}))
-180     \textcolor{keywordflow}{if} dictionary:
-181         dictionary.save(\hyperlink{namespaceparlai_1_1scripts_1_1build__pytorch__data_a6ec85a5842150af78f5178d75075b0cc}{get\_pyt\_dict\_file}(opt), sort=\textcolor{keyword}{True})
-182 
-183     print(\textcolor{stringliteral}{'[ pytorch data built. ]'})
-184     \textcolor{keywordflow}{return} datapath
-185 
-186 
+165                     \textcolor{keywordflow}{if} hasattr(agent, \textcolor{stringliteral}{'self\_observe'}) \textcolor{keywordflow}{and} \textcolor{stringliteral}{'labels'} \textcolor{keywordflow}{in} ex:
+166                         \textcolor{comment}{# Lie to the agent and tell it that it spoke the gold label}
+167                         agent.self\_observe(
+168                             Message(\{\textcolor{stringliteral}{'text'}: random.choice(ex[\textcolor{stringliteral}{'labels'}])\})
+169                         )
+170                 num\_eps += 1
+171                 num\_exs += 1
+172                 pbar.update(1)
+173                 ex\_len = pytorch\_data.write(json.dumps(\hyperlink{namespaceparlai_1_1scripts_1_1build__pytorch__data_a1c8f4633b7dc8e990a3e1f6c3e92bd3f}{make\_serializable}(ex)) + \textcolor{stringliteral}{"\(\backslash\)n"})
+174                 idx\_to\_char.append(cumulative\_char\_len)
+175                 cumulative\_char\_len += ex\_len
+176             \textcolor{comment}{# reset}
+177             episode\_done = \textcolor{keyword}{False}
+178             current.clear()
+179             context.clear()
+180             agent.reset()
+181     pbar.close()
+182     with open(os.path.join(datapath, \textcolor{stringliteral}{'char\_index'}), \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} char\_index:
+183         json.dump(idx\_to\_char, char\_index)
+184     with open(os.path.join(datapath, \textcolor{stringliteral}{'data\_length'}), \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} pytorch\_data\_len:
+185         pytorch\_data\_len.write(json.dumps(\{\textcolor{stringliteral}{'num\_eps'}: num\_eps, \textcolor{stringliteral}{'num\_exs'}: num\_exs\}))
+186     \textcolor{keywordflow}{if} dictionary:
+187         dictionary.save(\hyperlink{namespaceparlai_1_1scripts_1_1build__pytorch__data_a6ec85a5842150af78f5178d75075b0cc}{get\_pyt\_dict\_file}(opt), sort=\textcolor{keyword}{True})
+188 
+189     print(\textcolor{stringliteral}{'[ pytorch data built. ]'})
+190     \textcolor{keywordflow}{return} datapath
+191 
+192 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1build__pytorch__data_a6ec85a5842150af78f5178d75075b0cc}\label{namespaceparlai_1_1scripts_1_1build__pytorch__data_a6ec85a5842150af78f5178d75075b0cc}} 
 \index{parlai\+::scripts\+::build\+\_\+pytorch\+\_\+data@{parlai\+::scripts\+::build\+\_\+pytorch\+\_\+data}!get\+\_\+pyt\+\_\+dict\+\_\+file@{get\+\_\+pyt\+\_\+dict\+\_\+file}}

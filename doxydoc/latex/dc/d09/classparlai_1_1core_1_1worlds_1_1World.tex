@@ -23,7 +23,7 @@ Collaboration diagram for parlai.\+core.\+worlds.\+World\+:
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-def \hyperlink{classparlai_1_1core_1_1worlds_1_1World_a8824b02453596976aab9389d2cae2a2f}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1core_1_1worlds_1_1World_a3640d92718acd3e6942a28c1ab3678bd}{opt}, \hyperlink{classparlai_1_1core_1_1worlds_1_1World_a728f75194cc26ea4035047c46cf62608}{agents}=None, shared=None)
+def \hyperlink{classparlai_1_1core_1_1worlds_1_1World_a6e346d06369a49c753f568b7694c9439}{\+\_\+\+\_\+init\+\_\+\+\_\+}
 \item 
 def \hyperlink{classparlai_1_1core_1_1worlds_1_1World_ac7e23e08adad68116e72162cd419786b}{parley} (self)
 \item 
@@ -93,38 +93,38 @@ All children can override these to provide more detailed functionality.
 \end{DoxyVerb}
  
 
-Definition at line 74 of file worlds.\+py.
+Definition at line 77 of file worlds.\+py.
 
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1World_a8824b02453596976aab9389d2cae2a2f}\label{classparlai_1_1core_1_1worlds_1_1World_a8824b02453596976aab9389d2cae2a2f}} 
+\mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1World_a6e346d06369a49c753f568b7694c9439}\label{classparlai_1_1core_1_1worlds_1_1World_a6e346d06369a49c753f568b7694c9439}} 
 \index{parlai\+::core\+::worlds\+::\+World@{parlai\+::core\+::worlds\+::\+World}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
 \index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::core\+::worlds\+::\+World@{parlai\+::core\+::worlds\+::\+World}}
 \subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
-{\footnotesize\ttfamily def parlai.\+core.\+worlds.\+World.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{agents = {\ttfamily None},  }\item[{}]{shared = {\ttfamily None} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily def parlai.\+core.\+worlds.\+World.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt }\end{DoxyParamCaption})}
 
 
 
-Definition at line 81 of file worlds.\+py.
+Definition at line 84 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-81     \textcolor{keyword}{def }\_\_init\_\_(self, opt, agents=None, shared=None):
-82         self.id = opt[\textcolor{stringliteral}{'task'}]
-83         self.opt = copy.deepcopy(opt)
-84         \textcolor{keywordflow}{if} shared:
-85             \textcolor{comment}{# Create agents based on shared data.}
-86             self.agents = \hyperlink{namespaceparlai_1_1core_1_1agents_a5600530545f5e60a79e2d657b5af1d8c}{create\_agents\_from\_shared}(shared[\textcolor{stringliteral}{'agents'}])
-87         \textcolor{keywordflow}{else}:
-88             \textcolor{comment}{# Add passed in agents to world directly.}
-89             self.agents = agents
-90         self.max\_exs = \textcolor{keywordtype}{None}
-91         self.total\_exs = 0
-92         self.total\_epochs = 0
-93         self.total\_parleys = 0
-94         self.time = Timer()
-95 
+84     \textcolor{keyword}{def }\_\_init\_\_(self, opt: Opt, agents=\textcolor{keywordtype}{None}, shared=\textcolor{keywordtype}{None}):
+85         self.id = opt[\textcolor{stringliteral}{'task'}]
+86         self.opt = copy.deepcopy(opt)
+87         \textcolor{keywordflow}{if} shared:
+88             \textcolor{comment}{# Create agents based on shared data.}
+89             self.agents = \hyperlink{namespaceparlai_1_1core_1_1agents_a5600530545f5e60a79e2d657b5af1d8c}{create\_agents\_from\_shared}(shared[\textcolor{stringliteral}{'agents'}])
+90         \textcolor{keywordflow}{else}:
+91             \textcolor{comment}{# Add passed in agents to world directly.}
+92             self.agents = agents
+93         self.max\_exs = \textcolor{keywordtype}{None}
+94         self.total\_exs = 0
+95         self.total\_epochs = 0
+96         self.total\_parleys = 0
+97         self.time = Timer()
+98 
 \end{DoxyCode}
 
 
@@ -147,24 +147,24 @@ for n in range(10):
 \end{DoxyVerb}
  
 
-Definition at line 200 of file worlds.\+py.
+Definition at line 203 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-200     \textcolor{keyword}{def }\_\_enter\_\_(self):
-201         \textcolor{stringliteral}{"""}
-202 \textcolor{stringliteral}{        Empty enter provided for use with ``with`` statement.}
-203 \textcolor{stringliteral}{}
-204 \textcolor{stringliteral}{        e.g:}
-205 \textcolor{stringliteral}{}
-206 \textcolor{stringliteral}{        .. code-block:: python}
-207 \textcolor{stringliteral}{}
-208 \textcolor{stringliteral}{            with World() as world:}
-209 \textcolor{stringliteral}{                for n in range(10):}
-210 \textcolor{stringliteral}{                    n.parley()}
-211 \textcolor{stringliteral}{        """}
-212         \textcolor{keywordflow}{return} self
-213 
+203     \textcolor{keyword}{def }\_\_enter\_\_(self):
+204         \textcolor{stringliteral}{"""}
+205 \textcolor{stringliteral}{        Empty enter provided for use with ``with`` statement.}
+206 \textcolor{stringliteral}{}
+207 \textcolor{stringliteral}{        e.g:}
+208 \textcolor{stringliteral}{}
+209 \textcolor{stringliteral}{        .. code-block:: python}
+210 \textcolor{stringliteral}{}
+211 \textcolor{stringliteral}{            with World() as world:}
+212 \textcolor{stringliteral}{                for n in range(10):}
+213 \textcolor{stringliteral}{                    n.parley()}
+214 \textcolor{stringliteral}{        """}
+215         \textcolor{keywordflow}{return} self
+216 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1World_ae2b8ea006564cbefbe8520f45fb71040}\label{classparlai_1_1core_1_1worlds_1_1World_ae2b8ea006564cbefbe8520f45fb71040}} 
 \index{parlai\+::core\+::worlds\+::\+World@{parlai\+::core\+::worlds\+::\+World}!\+\_\+\+\_\+exit\+\_\+\+\_\+@{\+\_\+\+\_\+exit\+\_\+\+\_\+}}
@@ -176,17 +176,17 @@ Definition at line 200 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 214 of file worlds.\+py.
+Definition at line 217 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-214     \textcolor{keyword}{def }\_\_exit\_\_(self, exc\_type, exc\_value, exc\_traceback):
-215         \textcolor{stringliteral}{"""}
-216 \textcolor{stringliteral}{        After ``with`` statement, call shutdown.}
-217 \textcolor{stringliteral}{        """}
-218         self.shutdown()
-219         \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-220 
+217     \textcolor{keyword}{def }\_\_exit\_\_(self, exc\_type, exc\_value, exc\_traceback):
+218         \textcolor{stringliteral}{"""}
+219 \textcolor{stringliteral}{        After ``with`` statement, call shutdown.}
+220 \textcolor{stringliteral}{        """}
+221         self.shutdown()
+222         \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+223 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1World_a147371097765449933ca963215eba603}\label{classparlai_1_1core_1_1worlds_1_1World_a147371097765449933ca963215eba603}} 
 \index{parlai\+::core\+::worlds\+::\+World@{parlai\+::core\+::worlds\+::\+World}!display@{display}}
@@ -201,26 +201,26 @@ the agents.
 \end{DoxyVerb}
  
 
-Definition at line 111 of file worlds.\+py.
+Definition at line 114 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-111     \textcolor{keyword}{def }display(self):
-112         \textcolor{stringliteral}{"""}
-113 \textcolor{stringliteral}{        Return a string describing the current state of the world.}
-114 \textcolor{stringliteral}{}
-115 \textcolor{stringliteral}{        Useful for monitoring and debugging. By default, display the messages between}
-116 \textcolor{stringliteral}{        the agents.}
-117 \textcolor{stringliteral}{        """}
-118         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} hasattr(self, \textcolor{stringliteral}{'acts'}):
-119             \textcolor{keywordflow}{return} \textcolor{stringliteral}{''}
-120         \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1utils_1_1misc_a146f303a4c4b34993458968c74b55d2f}{display\_messages}(
-121             self.acts,
-122             ignore\_fields=self.opt.get(\textcolor{stringliteral}{'display\_ignore\_fields'}, \textcolor{stringliteral}{''}),
-123             prettify=self.opt.get(\textcolor{stringliteral}{'display\_prettify'}, \textcolor{keyword}{False}),
-124             max\_len=self.opt.get(\textcolor{stringliteral}{'max\_display\_len'}, 1000),
-125         )
-126 
+114     \textcolor{keyword}{def }display(self):
+115         \textcolor{stringliteral}{"""}
+116 \textcolor{stringliteral}{        Return a string describing the current state of the world.}
+117 \textcolor{stringliteral}{}
+118 \textcolor{stringliteral}{        Useful for monitoring and debugging. By default, display the messages between}
+119 \textcolor{stringliteral}{        the agents.}
+120 \textcolor{stringliteral}{        """}
+121         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} hasattr(self, \textcolor{stringliteral}{'acts'}):
+122             \textcolor{keywordflow}{return} \textcolor{stringliteral}{''}
+123         \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1utils_1_1misc_a7c86f996f4b55a960da46c1142a2c507}{display\_messages}(
+124             self.acts,
+125             ignore\_fields=self.opt.get(\textcolor{stringliteral}{'display\_ignore\_fields'}, \textcolor{stringliteral}{''}),
+126             prettify=self.opt.get(\textcolor{stringliteral}{'display\_prettify'}, \textcolor{keyword}{False}),
+127             max\_len=self.opt.get(\textcolor{stringliteral}{'max\_display\_len'}, 1000),
+128         )
+129 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1World_aaaef76f5bae4cdbe8f78241f8cd7c3a3}\label{classparlai_1_1core_1_1worlds_1_1World_aaaef76f5bae4cdbe8f78241f8cd7c3a3}} 
 \index{parlai\+::core\+::worlds\+::\+World@{parlai\+::core\+::worlds\+::\+World}!episode\+\_\+done@{episode\+\_\+done}}
@@ -232,16 +232,16 @@ Definition at line 111 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 127 of file worlds.\+py.
+Definition at line 130 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-127     \textcolor{keyword}{def }episode\_done(self):
-128         \textcolor{stringliteral}{"""}
-129 \textcolor{stringliteral}{        Whether the episode is done or not.}
-130 \textcolor{stringliteral}{        """}
-131         \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-132 
+130     \textcolor{keyword}{def }episode\_done(self):
+131         \textcolor{stringliteral}{"""}
+132 \textcolor{stringliteral}{        Whether the episode is done or not.}
+133 \textcolor{stringliteral}{        """}
+134         \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+135 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1World_aa8a3ab5345bbfa1d485dec974ed28b53}\label{classparlai_1_1core_1_1worlds_1_1World_aa8a3ab5345bbfa1d485dec974ed28b53}} 
 \index{parlai\+::core\+::worlds\+::\+World@{parlai\+::core\+::worlds\+::\+World}!epoch\+\_\+done@{epoch\+\_\+done}}
@@ -256,19 +256,19 @@ training, validation or test sets.
 \end{DoxyVerb}
  
 
-Definition at line 133 of file worlds.\+py.
+Definition at line 136 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-133     \textcolor{keyword}{def }epoch\_done(self):
-134         \textcolor{stringliteral}{"""}
-135 \textcolor{stringliteral}{        Whether the epoch is done or not.}
-136 \textcolor{stringliteral}{}
-137 \textcolor{stringliteral}{        Not all worlds have the notion of an epoch, but this is useful for fixed}
-138 \textcolor{stringliteral}{        training, validation or test sets.}
-139 \textcolor{stringliteral}{        """}
-140         \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-141 
+136     \textcolor{keyword}{def }epoch\_done(self):
+137         \textcolor{stringliteral}{"""}
+138 \textcolor{stringliteral}{        Whether the epoch is done or not.}
+139 \textcolor{stringliteral}{}
+140 \textcolor{stringliteral}{        Not all worlds have the notion of an epoch, but this is useful for fixed}
+141 \textcolor{stringliteral}{        training, validation or test sets.}
+142 \textcolor{stringliteral}{        """}
+143         \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+144 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1World_aa1d3c0cc946f5ade27373f7dc0bd77b5}\label{classparlai_1_1core_1_1worlds_1_1World_aa1d3c0cc946f5ade27373f7dc0bd77b5}} 
 \index{parlai\+::core\+::worlds\+::\+World@{parlai\+::core\+::worlds\+::\+World}!get\+\_\+acts@{get\+\_\+acts}}
@@ -280,16 +280,16 @@ Definition at line 133 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 176 of file worlds.\+py.
+Definition at line 179 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-176     \textcolor{keyword}{def }get\_acts(self):
-177         \textcolor{stringliteral}{"""}
-178 \textcolor{stringliteral}{        Return the last act of each agent.}
-179 \textcolor{stringliteral}{        """}
-180         \textcolor{keywordflow}{return} self.acts
-181 
+179     \textcolor{keyword}{def }get\_acts(self):
+180         \textcolor{stringliteral}{"""}
+181 \textcolor{stringliteral}{        Return the last act of each agent.}
+182 \textcolor{stringliteral}{        """}
+183         \textcolor{keywordflow}{return} self.acts
+184 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1World_a1c74e607d064c5823e56b23b21ce17f0}\label{classparlai_1_1core_1_1worlds_1_1World_a1c74e607d064c5823e56b23b21ce17f0}} 
 \index{parlai\+::core\+::worlds\+::\+World@{parlai\+::core\+::worlds\+::\+World}!get\+\_\+agents@{get\+\_\+agents}}
@@ -301,16 +301,16 @@ Definition at line 176 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 164 of file worlds.\+py.
+Definition at line 167 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-164     \textcolor{keyword}{def }get\_agents(self):
-165         \textcolor{stringliteral}{"""}
-166 \textcolor{stringliteral}{        Return the list of agents.}
-167 \textcolor{stringliteral}{        """}
-168         \textcolor{keywordflow}{return} self.agents
-169 
+167     \textcolor{keyword}{def }get\_agents(self):
+168         \textcolor{stringliteral}{"""}
+169 \textcolor{stringliteral}{        Return the list of agents.}
+170 \textcolor{stringliteral}{        """}
+171         \textcolor{keywordflow}{return} self.agents
+172 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1World_a25ccd7740aa992bb7055bf6549574a07}\label{classparlai_1_1core_1_1worlds_1_1World_a25ccd7740aa992bb7055bf6549574a07}} 
 \index{parlai\+::core\+::worlds\+::\+World@{parlai\+::core\+::worlds\+::\+World}!get\+\_\+task\+\_\+agent@{get\+\_\+task\+\_\+agent}}
@@ -322,16 +322,16 @@ Definition at line 164 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 170 of file worlds.\+py.
+Definition at line 173 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-170     \textcolor{keyword}{def }get\_task\_agent(self):
-171         \textcolor{stringliteral}{"""}
-172 \textcolor{stringliteral}{        Return task agent, if applicable.}
-173 \textcolor{stringliteral}{        """}
-174         \textcolor{keywordflow}{raise} NotImplementedError(\textcolor{stringliteral}{'Implement in subworld'})
-175 
+173     \textcolor{keyword}{def }get\_task\_agent(self):
+174         \textcolor{stringliteral}{"""}
+175 \textcolor{stringliteral}{        Return task agent, if applicable.}
+176 \textcolor{stringliteral}{        """}
+177         \textcolor{keywordflow}{raise} NotImplementedError(\textcolor{stringliteral}{'Implement in subworld'})
+178 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1World_a621ed405ee96d67bc4bab781145a3daa}\label{classparlai_1_1core_1_1worlds_1_1World_a621ed405ee96d67bc4bab781145a3daa}} 
 \index{parlai\+::core\+::worlds\+::\+World@{parlai\+::core\+::worlds\+::\+World}!get\+\_\+time@{get\+\_\+time}}
@@ -343,16 +343,16 @@ Definition at line 170 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 182 of file worlds.\+py.
+Definition at line 185 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-182     \textcolor{keyword}{def }get\_time(self):
-183         \textcolor{stringliteral}{"""}
-184 \textcolor{stringliteral}{        Return total training time.}
-185 \textcolor{stringliteral}{        """}
-186         \textcolor{keywordflow}{return} self.time.time()
-187 
+185     \textcolor{keyword}{def }get\_time(self):
+186         \textcolor{stringliteral}{"""}
+187 \textcolor{stringliteral}{        Return total training time.}
+188 \textcolor{stringliteral}{        """}
+189         \textcolor{keywordflow}{return} self.time.time()
+190 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1World_acf90b0f1a9ec1314b905159559b4d4ab}\label{classparlai_1_1core_1_1worlds_1_1World_acf90b0f1a9ec1314b905159559b4d4ab}} 
 \index{parlai\+::core\+::worlds\+::\+World@{parlai\+::core\+::worlds\+::\+World}!get\+\_\+total\+\_\+epochs@{get\+\_\+total\+\_\+epochs}}
@@ -364,16 +364,16 @@ Definition at line 182 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 194 of file worlds.\+py.
+Definition at line 197 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-194     \textcolor{keyword}{def }get\_total\_epochs(self):
-195         \textcolor{stringliteral}{"""}
-196 \textcolor{stringliteral}{        Return total amount of epochs on which the world has trained.}
-197 \textcolor{stringliteral}{        """}
-198         \textcolor{keywordflow}{return} self.total\_epochs
-199 
+197     \textcolor{keyword}{def }get\_total\_epochs(self):
+198         \textcolor{stringliteral}{"""}
+199 \textcolor{stringliteral}{        Return total amount of epochs on which the world has trained.}
+200 \textcolor{stringliteral}{        """}
+201         \textcolor{keywordflow}{return} self.total\_epochs
+202 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1World_a0f9926a92069bfb833a6c4a531d99b70}\label{classparlai_1_1core_1_1worlds_1_1World_a0f9926a92069bfb833a6c4a531d99b70}} 
 \index{parlai\+::core\+::worlds\+::\+World@{parlai\+::core\+::worlds\+::\+World}!get\+\_\+total\+\_\+exs@{get\+\_\+total\+\_\+exs}}
@@ -385,16 +385,16 @@ Definition at line 194 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 188 of file worlds.\+py.
+Definition at line 191 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-188     \textcolor{keyword}{def }get\_total\_exs(self):
-189         \textcolor{stringliteral}{"""}
-190 \textcolor{stringliteral}{        Return total amount of examples seen by world.}
-191 \textcolor{stringliteral}{        """}
-192         \textcolor{keywordflow}{return} self.total\_exs
-193 
+191     \textcolor{keyword}{def }get\_total\_exs(self):
+192         \textcolor{stringliteral}{"""}
+193 \textcolor{stringliteral}{        Return total amount of examples seen by world.}
+194 \textcolor{stringliteral}{        """}
+195         \textcolor{keywordflow}{return} self.total\_exs
+196 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1World_a5ef8bd0bc50edb86ef87e4a3e72b6192}\label{classparlai_1_1core_1_1worlds_1_1World_a5ef8bd0bc50edb86ef87e4a3e72b6192}} 
 \index{parlai\+::core\+::worlds\+::\+World@{parlai\+::core\+::worlds\+::\+World}!get\+ID@{get\+ID}}
@@ -406,16 +406,16 @@ Definition at line 188 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 105 of file worlds.\+py.
+Definition at line 108 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-105     \textcolor{keyword}{def }getID(self):
-106         \textcolor{stringliteral}{"""}
-107 \textcolor{stringliteral}{        Return the name of the world, typically the task the world encodes.}
-108 \textcolor{stringliteral}{        """}
-109         \textcolor{keywordflow}{return} self.id
-110 
+108     \textcolor{keyword}{def }getID(self):
+109         \textcolor{stringliteral}{"""}
+110 \textcolor{stringliteral}{        Return the name of the world, typically the task the world encodes.}
+111 \textcolor{stringliteral}{        """}
+112         \textcolor{keywordflow}{return} self.id
+113 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1World_a7c7258c4ad6a6bdfc76287832876a25d}\label{classparlai_1_1core_1_1worlds_1_1World_a7c7258c4ad6a6bdfc76287832876a25d}} 
 \index{parlai\+::core\+::worlds\+::\+World@{parlai\+::core\+::worlds\+::\+World}!num\+\_\+episodes@{num\+\_\+episodes}}
@@ -429,19 +429,19 @@ Always 0 in the abstract world.
 \end{DoxyVerb}
  
 
-Definition at line 230 of file worlds.\+py.
+Definition at line 233 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-230     \textcolor{keyword}{def }num\_episodes(self):
-231         \textcolor{stringliteral}{"""}
-232 \textcolor{stringliteral}{        Return the number of episodes.}
-233 \textcolor{stringliteral}{}
-234 \textcolor{stringliteral}{        Always 0 in the abstract world.}
-235 \textcolor{stringliteral}{        """}
-236         \textcolor{comment}{# TODO: mark as abstract?}
-237         \textcolor{keywordflow}{return} 0
-238 
+233     \textcolor{keyword}{def }num\_episodes(self):
+234         \textcolor{stringliteral}{"""}
+235 \textcolor{stringliteral}{        Return the number of episodes.}
+236 \textcolor{stringliteral}{}
+237 \textcolor{stringliteral}{        Always 0 in the abstract world.}
+238 \textcolor{stringliteral}{        """}
+239         \textcolor{comment}{# TODO: mark as abstract?}
+240         \textcolor{keywordflow}{return} 0
+241 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1World_a0402b615564d760fac542b8c5a504be5}\label{classparlai_1_1core_1_1worlds_1_1World_a0402b615564d760fac542b8c5a504be5}} 
 \index{parlai\+::core\+::worlds\+::\+World@{parlai\+::core\+::worlds\+::\+World}!num\+\_\+examples@{num\+\_\+examples}}
@@ -455,19 +455,19 @@ Always 0 in the abstract world.
 \end{DoxyVerb}
  
 
-Definition at line 221 of file worlds.\+py.
+Definition at line 224 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-221     \textcolor{keyword}{def }num\_examples(self):
-222         \textcolor{stringliteral}{"""}
-223 \textcolor{stringliteral}{        Return the number of examples.}
-224 \textcolor{stringliteral}{}
-225 \textcolor{stringliteral}{        Always 0 in the abstract world.}
-226 \textcolor{stringliteral}{        """}
-227         \textcolor{comment}{# TODO: mark as abstract?}
-228         \textcolor{keywordflow}{return} 0
-229 
+224     \textcolor{keyword}{def }num\_examples(self):
+225         \textcolor{stringliteral}{"""}
+226 \textcolor{stringliteral}{        Return the number of examples.}
+227 \textcolor{stringliteral}{}
+228 \textcolor{stringliteral}{        Always 0 in the abstract world.}
+229 \textcolor{stringliteral}{        """}
+230         \textcolor{comment}{# TODO: mark as abstract?}
+231         \textcolor{keywordflow}{return} 0
+232 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1World_ac7e23e08adad68116e72162cd419786b}\label{classparlai_1_1core_1_1worlds_1_1World_ac7e23e08adad68116e72162cd419786b}} 
 \index{parlai\+::core\+::worlds\+::\+World@{parlai\+::core\+::worlds\+::\+World}!parley@{parley}}
@@ -481,19 +481,19 @@ This is empty in the base class.
 \end{DoxyVerb}
  
 
-Definition at line 96 of file worlds.\+py.
+Definition at line 99 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-96     \textcolor{keyword}{def }parley(self):
-97         \textcolor{stringliteral}{"""}
-98 \textcolor{stringliteral}{        Perform one step of actions for the agents in the world.}
-99 \textcolor{stringliteral}{}
-100 \textcolor{stringliteral}{        This is empty in the base class.}
-101 \textcolor{stringliteral}{        """}
-102         \textcolor{comment}{# TODO: mark as abstract?}
-103         \textcolor{keywordflow}{pass}
-104 
+99     \textcolor{keyword}{def }parley(self):
+100         \textcolor{stringliteral}{"""}
+101 \textcolor{stringliteral}{        Perform one step of actions for the agents in the world.}
+102 \textcolor{stringliteral}{}
+103 \textcolor{stringliteral}{        This is empty in the base class.}
+104 \textcolor{stringliteral}{        """}
+105         \textcolor{comment}{# TODO: mark as abstract?}
+106         \textcolor{keywordflow}{pass}
+107 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1World_a363cc32add41645e1ba405808fafb5b4}\label{classparlai_1_1core_1_1worlds_1_1World_a363cc32add41645e1ba405808fafb5b4}} 
 \index{parlai\+::core\+::worlds\+::\+World@{parlai\+::core\+::worlds\+::\+World}!reset@{reset}}
@@ -505,22 +505,22 @@ Definition at line 96 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 239 of file worlds.\+py.
+Definition at line 242 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-239     \textcolor{keyword}{def }reset(self):
-240         \textcolor{stringliteral}{"""}
-241 \textcolor{stringliteral}{        Reset all agents in the world, and world statistics.}
-242 \textcolor{stringliteral}{        """}
-243         \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} self.agents:
-244             a.reset()
-245         self.max\_exs = \textcolor{keywordtype}{None}
-246         self.total\_exs = 0
-247         self.total\_epochs = 0
-248         self.total\_parleys = 0
-249         self.time.reset()
-250 
+242     \textcolor{keyword}{def }reset(self):
+243         \textcolor{stringliteral}{"""}
+244 \textcolor{stringliteral}{        Reset all agents in the world, and world statistics.}
+245 \textcolor{stringliteral}{        """}
+246         \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} self.agents:
+247             a.reset()
+248         self.max\_exs = \textcolor{keywordtype}{None}
+249         self.total\_exs = 0
+250         self.total\_epochs = 0
+251         self.total\_parleys = 0
+252         self.time.reset()
+253 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1World_af26e2aacab6282f8ef19f278d638adea}\label{classparlai_1_1core_1_1worlds_1_1World_af26e2aacab6282f8ef19f278d638adea}} 
 \index{parlai\+::core\+::worlds\+::\+World@{parlai\+::core\+::worlds\+::\+World}!reset\+\_\+metrics@{reset\+\_\+metrics}}
@@ -532,17 +532,17 @@ Definition at line 239 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 251 of file worlds.\+py.
+Definition at line 254 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-251     \textcolor{keyword}{def }reset\_metrics(self):
-252         \textcolor{stringliteral}{"""}
-253 \textcolor{stringliteral}{        Reset metrics for all agents.}
-254 \textcolor{stringliteral}{        """}
-255         \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} self.agents:
-256             a.reset\_metrics()
-257 
+254     \textcolor{keyword}{def }reset\_metrics(self):
+255         \textcolor{stringliteral}{"""}
+256 \textcolor{stringliteral}{        Reset metrics for all agents.}
+257 \textcolor{stringliteral}{        """}
+258         \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} self.agents:
+259             a.reset\_metrics()
+260 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1World_a08d9212397f136cbc52ee224bcb0bc4e}\label{classparlai_1_1core_1_1worlds_1_1World_a08d9212397f136cbc52ee224bcb0bc4e}} 
 \index{parlai\+::core\+::worlds\+::\+World@{parlai\+::core\+::worlds\+::\+World}!share@{share}}
@@ -554,20 +554,20 @@ Definition at line 251 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 142 of file worlds.\+py.
+Definition at line 145 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-142     \textcolor{keyword}{def }share(self):
-143         \textcolor{stringliteral}{"""}
-144 \textcolor{stringliteral}{        Share the world.}
-145 \textcolor{stringliteral}{        """}
-146         shared\_data = \{\}
-147         shared\_data[\textcolor{stringliteral}{'world\_class'}] = \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(self)
-148         shared\_data[\textcolor{stringliteral}{'opt'}] = self.opt
-149         shared\_data[\textcolor{stringliteral}{'agents'}] = self.\_share\_agents()
-150         \textcolor{keywordflow}{return} shared\_data
-151 
+145     \textcolor{keyword}{def }share(self):
+146         \textcolor{stringliteral}{"""}
+147 \textcolor{stringliteral}{        Share the world.}
+148 \textcolor{stringliteral}{        """}
+149         shared\_data = \{\}
+150         shared\_data[\textcolor{stringliteral}{'world\_class'}] = \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(self)
+151         shared\_data[\textcolor{stringliteral}{'opt'}] = self.opt
+152         shared\_data[\textcolor{stringliteral}{'agents'}] = self.\_share\_agents()
+153         \textcolor{keywordflow}{return} shared\_data
+154 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1World_a7e7e5a27569323dd334b87df6fef31e6}\label{classparlai_1_1core_1_1worlds_1_1World_a7e7e5a27569323dd334b87df6fef31e6}} 
 \index{parlai\+::core\+::worlds\+::\+World@{parlai\+::core\+::worlds\+::\+World}!shutdown@{shutdown}}
@@ -579,16 +579,16 @@ Definition at line 142 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 258 of file worlds.\+py.
+Definition at line 261 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-258     \textcolor{keyword}{def }shutdown(self):
-259         \textcolor{stringliteral}{"""}
-260 \textcolor{stringliteral}{        Perform any cleanup, if appropriate.}
-261 \textcolor{stringliteral}{        """}
-262         \textcolor{keywordflow}{pass}
-263 
+261     \textcolor{keyword}{def }shutdown(self):
+262         \textcolor{stringliteral}{"""}
+263 \textcolor{stringliteral}{        Perform any cleanup, if appropriate.}
+264 \textcolor{stringliteral}{        """}
+265         \textcolor{keywordflow}{pass}
+266 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1World_a77730e92a331274ab7b6ea3e7b99d1a4}\label{classparlai_1_1core_1_1worlds_1_1World_a77730e92a331274ab7b6ea3e7b99d1a4}} 
 \index{parlai\+::core\+::worlds\+::\+World@{parlai\+::core\+::worlds\+::\+World}!update\+\_\+counters@{update\+\_\+counters}}
@@ -600,34 +600,34 @@ Definition at line 258 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 264 of file worlds.\+py.
+Definition at line 267 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-264     \textcolor{keyword}{def }update\_counters(self):
-265         \textcolor{stringliteral}{"""}
-266 \textcolor{stringliteral}{        Update how many epochs have completed.}
-267 \textcolor{stringliteral}{        """}
-268         self.total\_parleys += 1
-269         \textcolor{keywordflow}{if} self.max\_exs \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-270             \textcolor{keywordflow}{if} \textcolor{stringliteral}{'num\_epochs'} \textcolor{keywordflow}{in} self.opt \textcolor{keywordflow}{and} self.opt[\textcolor{stringliteral}{'num\_epochs'}] > 0:
-271                 \textcolor{keywordflow}{if} self.num\_examples:
-272                     self.max\_exs = self.num\_examples() * self.opt[\textcolor{stringliteral}{'num\_epochs'}]
-273                 \textcolor{keywordflow}{else}:
-274                     self.max\_exs = -1
-275             \textcolor{keywordflow}{else}:
-276                 self.max\_exs = -1
-277         \textcolor{comment}{# when we know the size of the data}
-278         \textcolor{keywordflow}{if} self.max\_exs > 0 \textcolor{keywordflow}{or} self.num\_examples():
-279             self.total\_epochs = (
-280                 self.total\_parleys * self.opt.get(\textcolor{stringliteral}{'batchsize'}, 1) / self.num\_examples()
-281             )
-282         \textcolor{comment}{# when we do not know the size of the data}
-283         \textcolor{keywordflow}{else}:
-284             \textcolor{keywordflow}{if} self.epoch\_done():
-285                 self.total\_epochs += 1
-286 
-287 
+267     \textcolor{keyword}{def }update\_counters(self):
+268         \textcolor{stringliteral}{"""}
+269 \textcolor{stringliteral}{        Update how many epochs have completed.}
+270 \textcolor{stringliteral}{        """}
+271         self.total\_parleys += 1
+272         \textcolor{keywordflow}{if} self.max\_exs \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+273             \textcolor{keywordflow}{if} \textcolor{stringliteral}{'num\_epochs'} \textcolor{keywordflow}{in} self.opt \textcolor{keywordflow}{and} self.opt[\textcolor{stringliteral}{'num\_epochs'}] > 0:
+274                 \textcolor{keywordflow}{if} self.num\_examples:
+275                     self.max\_exs = self.num\_examples() * self.opt[\textcolor{stringliteral}{'num\_epochs'}]
+276                 \textcolor{keywordflow}{else}:
+277                     self.max\_exs = -1
+278             \textcolor{keywordflow}{else}:
+279                 self.max\_exs = -1
+280         \textcolor{comment}{# when we know the size of the data}
+281         \textcolor{keywordflow}{if} self.max\_exs > 0 \textcolor{keywordflow}{or} self.num\_examples():
+282             self.total\_epochs = (
+283                 self.total\_parleys * self.opt.get(\textcolor{stringliteral}{'batchsize'}, 1) / self.num\_examples()
+284             )
+285         \textcolor{comment}{# when we do not know the size of the data}
+286         \textcolor{keywordflow}{else}:
+287             \textcolor{keywordflow}{if} self.epoch\_done():
+288                 self.total\_epochs += 1
+289 
+290 
 \end{DoxyCode}
 
 
@@ -640,7 +640,7 @@ Definition at line 264 of file worlds.\+py.
 
 
 
-Definition at line 86 of file worlds.\+py.
+Definition at line 89 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1World_a568184e1c2ccaff10d9a0b69ecb8115a}\label{classparlai_1_1core_1_1worlds_1_1World_a568184e1c2ccaff10d9a0b69ecb8115a}} 
 \index{parlai\+::core\+::worlds\+::\+World@{parlai\+::core\+::worlds\+::\+World}!id@{id}}
@@ -650,7 +650,7 @@ Definition at line 86 of file worlds.\+py.
 
 
 
-Definition at line 82 of file worlds.\+py.
+Definition at line 85 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1World_a1fd36ad5eb83d8ac70bd20c0b3752b37}\label{classparlai_1_1core_1_1worlds_1_1World_a1fd36ad5eb83d8ac70bd20c0b3752b37}} 
 \index{parlai\+::core\+::worlds\+::\+World@{parlai\+::core\+::worlds\+::\+World}!max\+\_\+exs@{max\+\_\+exs}}
@@ -660,7 +660,7 @@ Definition at line 82 of file worlds.\+py.
 
 
 
-Definition at line 90 of file worlds.\+py.
+Definition at line 93 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1World_a3640d92718acd3e6942a28c1ab3678bd}\label{classparlai_1_1core_1_1worlds_1_1World_a3640d92718acd3e6942a28c1ab3678bd}} 
 \index{parlai\+::core\+::worlds\+::\+World@{parlai\+::core\+::worlds\+::\+World}!opt@{opt}}
@@ -670,7 +670,7 @@ Definition at line 90 of file worlds.\+py.
 
 
 
-Definition at line 83 of file worlds.\+py.
+Definition at line 86 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1World_a3246107ea5a86b97cef9164286b39925}\label{classparlai_1_1core_1_1worlds_1_1World_a3246107ea5a86b97cef9164286b39925}} 
 \index{parlai\+::core\+::worlds\+::\+World@{parlai\+::core\+::worlds\+::\+World}!time@{time}}
@@ -680,7 +680,7 @@ Definition at line 83 of file worlds.\+py.
 
 
 
-Definition at line 94 of file worlds.\+py.
+Definition at line 97 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1World_a296f0478da2696d33dde49adb135fa17}\label{classparlai_1_1core_1_1worlds_1_1World_a296f0478da2696d33dde49adb135fa17}} 
 \index{parlai\+::core\+::worlds\+::\+World@{parlai\+::core\+::worlds\+::\+World}!total\+\_\+epochs@{total\+\_\+epochs}}
@@ -690,7 +690,7 @@ Definition at line 94 of file worlds.\+py.
 
 
 
-Definition at line 92 of file worlds.\+py.
+Definition at line 95 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1World_acadde6b5d84d54b912aab56ec38d24dd}\label{classparlai_1_1core_1_1worlds_1_1World_acadde6b5d84d54b912aab56ec38d24dd}} 
 \index{parlai\+::core\+::worlds\+::\+World@{parlai\+::core\+::worlds\+::\+World}!total\+\_\+exs@{total\+\_\+exs}}
@@ -700,7 +700,7 @@ Definition at line 92 of file worlds.\+py.
 
 
 
-Definition at line 91 of file worlds.\+py.
+Definition at line 94 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1World_ac23951eebe5c495ab2c79e57c960d681}\label{classparlai_1_1core_1_1worlds_1_1World_ac23951eebe5c495ab2c79e57c960d681}} 
 \index{parlai\+::core\+::worlds\+::\+World@{parlai\+::core\+::worlds\+::\+World}!total\+\_\+parleys@{total\+\_\+parleys}}
@@ -710,7 +710,7 @@ Definition at line 91 of file worlds.\+py.
 
 
 
-Definition at line 93 of file worlds.\+py.
+Definition at line 96 of file worlds.\+py.
 
 
 

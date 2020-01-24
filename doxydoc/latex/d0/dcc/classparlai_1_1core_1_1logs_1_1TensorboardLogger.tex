@@ -2,8 +2,7 @@
 \label{classparlai_1_1core_1_1logs_1_1TensorboardLogger}\index{parlai.\+core.\+logs.\+Tensorboard\+Logger@{parlai.\+core.\+logs.\+Tensorboard\+Logger}}
 
 
-Inheritance diagram for parlai.\+core.\+logs.\+Tensorboard\+Logger\+:
-\nopagebreak
+Inheritance diagram for parlai.\+core.\+logs.\+Tensorboard\+Logger\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+core.\+logs.\+Tensorboard\+Logger\+:
 \end{figure}
 
 
-Collaboration diagram for parlai.\+core.\+logs.\+Tensorboard\+Logger\+:
-\nopagebreak
+Collaboration diagram for parlai.\+core.\+logs.\+Tensorboard\+Logger\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -23,7 +21,7 @@ Collaboration diagram for parlai.\+core.\+logs.\+Tensorboard\+Logger\+:
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-def \hyperlink{classparlai_1_1core_1_1logs_1_1TensorboardLogger_a771ea3df52af2ad82a038446fb15fdf3}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, opt)
+def \hyperlink{classparlai_1_1core_1_1logs_1_1TensorboardLogger_a32a693076ca10238b30d06743c841ab4}{\+\_\+\+\_\+init\+\_\+\+\_\+}
 \item 
 def \hyperlink{classparlai_1_1core_1_1logs_1_1TensorboardLogger_adf20c983722dcd7ff933aaf9dab672f4}{log\+\_\+metrics} (self, setting, step, report)
 \end{DoxyCompactItemize}
@@ -44,12 +42,12 @@ def \hyperlink{classparlai_1_1core_1_1logs_1_1TensorboardLogger_a22488a4b41a75dc
 \end{DoxyVerb}
  
 
-Definition at line 27 of file logs.\+py.
+Definition at line 28 of file logs.\+py.
 
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classparlai_1_1core_1_1logs_1_1TensorboardLogger_a771ea3df52af2ad82a038446fb15fdf3}\label{classparlai_1_1core_1_1logs_1_1TensorboardLogger_a771ea3df52af2ad82a038446fb15fdf3}} 
+\mbox{\Hypertarget{classparlai_1_1core_1_1logs_1_1TensorboardLogger_a32a693076ca10238b30d06743c841ab4}\label{classparlai_1_1core_1_1logs_1_1TensorboardLogger_a32a693076ca10238b30d06743c841ab4}} 
 \index{parlai\+::core\+::logs\+::\+Tensorboard\+Logger@{parlai\+::core\+::logs\+::\+Tensorboard\+Logger}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
 \index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::core\+::logs\+::\+Tensorboard\+Logger@{parlai\+::core\+::logs\+::\+Tensorboard\+Logger}}
 \subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
@@ -57,20 +55,20 @@ Definition at line 27 of file logs.\+py.
 
 
 
-Definition at line 47 of file logs.\+py.
+Definition at line 48 of file logs.\+py.
 
 
 \begin{DoxyCode}
-47     \textcolor{keyword}{def }\_\_init\_\_(self, opt):
-48         \textcolor{keywordflow}{if} SummaryWriter \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-49             \textcolor{keywordflow}{raise} ImportError(\textcolor{stringliteral}{'Please run `pip install tensorboard tensorboardX`.'})
-50 
-51         tbpath = opt[\textcolor{stringliteral}{'model\_file'}] + \textcolor{stringliteral}{'.tensorboard'}
-52         print(\textcolor{stringliteral}{'[ Saving tensorboard logs to: \{\} ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(tbpath))
-53         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.exists(tbpath):
-54             os.makedirs(tbpath)
-55         self.writer = \hyperlink{namespaceparlai_1_1core_1_1logs_a214c91224d7834e7962d77d49f17bbc4}{SummaryWriter}(tbpath, comment=json.dumps(opt))
-56 
+48     \textcolor{keyword}{def }\_\_init\_\_(self, opt: Opt):
+49         \textcolor{keywordflow}{if} SummaryWriter \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+50             \textcolor{keywordflow}{raise} ImportError(\textcolor{stringliteral}{'Please run `pip install tensorboard tensorboardX`.'})
+51 
+52         tbpath = opt[\textcolor{stringliteral}{'model\_file'}] + \textcolor{stringliteral}{'.tensorboard'}
+53         print(\textcolor{stringliteral}{'[ Saving tensorboard logs to: \{\} ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(tbpath))
+54         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.exists(tbpath):
+55             os.makedirs(tbpath)
+56         self.writer = \hyperlink{namespaceparlai_1_1core_1_1logs_a214c91224d7834e7962d77d49f17bbc4}{SummaryWriter}(tbpath, comment=json.dumps(opt))
+57 
 \end{DoxyCode}
 
 
@@ -85,24 +83,24 @@ Definition at line 47 of file logs.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 33 of file logs.\+py.
+Definition at line 34 of file logs.\+py.
 
 
 \begin{DoxyCode}
-33     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(argparser):
-34         \textcolor{stringliteral}{"""}
-35 \textcolor{stringliteral}{        Add tensorboard CLI args.}
-36 \textcolor{stringliteral}{        """}
-37         logger = argparser.add\_argument\_group(\textcolor{stringliteral}{'Tensorboard Arguments'})
-38         logger.add\_argument(
-39             \textcolor{stringliteral}{'-tblog'},
-40             \textcolor{stringliteral}{'--tensorboard-log'},
-41             type=\textcolor{stringliteral}{'bool'},
-42             default=\textcolor{keyword}{False},
-43             help=\textcolor{stringliteral}{"Tensorboard logging of metrics, default is %(default)s"},
-44             hidden=\textcolor{keyword}{False},
-45         )
-46 
+34     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(argparser):
+35         \textcolor{stringliteral}{"""}
+36 \textcolor{stringliteral}{        Add tensorboard CLI args.}
+37 \textcolor{stringliteral}{        """}
+38         logger = argparser.add\_argument\_group(\textcolor{stringliteral}{'Tensorboard Arguments'})
+39         logger.add\_argument(
+40             \textcolor{stringliteral}{'-tblog'},
+41             \textcolor{stringliteral}{'--tensorboard-log'},
+42             type=\textcolor{stringliteral}{'bool'},
+43             default=\textcolor{keyword}{False},
+44             help=\textcolor{stringliteral}{"Tensorboard logging of metrics, default is %(default)s"},
+45             hidden=\textcolor{keyword}{False},
+46         )
+47 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1logs_1_1TensorboardLogger_adf20c983722dcd7ff933aaf9dab672f4}\label{classparlai_1_1core_1_1logs_1_1TensorboardLogger_adf20c983722dcd7ff933aaf9dab672f4}} 
 \index{parlai\+::core\+::logs\+::\+Tensorboard\+Logger@{parlai\+::core\+::logs\+::\+Tensorboard\+Logger}!log\+\_\+metrics@{log\+\_\+metrics}}
@@ -121,27 +119,27 @@ Definition at line 33 of file logs.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 57 of file logs.\+py.
+Definition at line 58 of file logs.\+py.
 
 
 \begin{DoxyCode}
-57     \textcolor{keyword}{def }log\_metrics(self, setting, step, report):
-58         \textcolor{stringliteral}{"""}
-59 \textcolor{stringliteral}{        Add all metrics from tensorboard\_metrics opt key.}
-60 \textcolor{stringliteral}{}
-61 \textcolor{stringliteral}{        :param setting:}
-62 \textcolor{stringliteral}{            One of train/valid/test. Will be used as the title for the graph.}
-63 \textcolor{stringliteral}{        :param step:}
-64 \textcolor{stringliteral}{            Number of parleys}
-65 \textcolor{stringliteral}{        :param report:}
-66 \textcolor{stringliteral}{            The report to log}
-67 \textcolor{stringliteral}{        """}
-68         \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} report.items():
-69             \textcolor{keywordflow}{if} isinstance(v, numbers.Number):
-70                 self.writer.add\_scalar(f\textcolor{stringliteral}{'\{setting\}/\{k\}'}, v, global\_step=step)
-71             \textcolor{keywordflow}{else}:
-72                 print(f\textcolor{stringliteral}{'k \{k\} v \{v\} is not a number'})
-73 \end{DoxyCode}
+58     \textcolor{keyword}{def }log\_metrics(self, setting, step, report):
+59         \textcolor{stringliteral}{"""}
+60 \textcolor{stringliteral}{        Add all metrics from tensorboard\_metrics opt key.}
+61 \textcolor{stringliteral}{}
+62 \textcolor{stringliteral}{        :param setting:}
+63 \textcolor{stringliteral}{            One of train/valid/test. Will be used as the title for the graph.}
+64 \textcolor{stringliteral}{        :param step:}
+65 \textcolor{stringliteral}{            Number of parleys}
+66 \textcolor{stringliteral}{        :param report:}
+67 \textcolor{stringliteral}{            The report to log}
+68 \textcolor{stringliteral}{        """}
+69         \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} report.items():
+70             \textcolor{keywordflow}{if} isinstance(v, numbers.Number):
+71                 self.writer.add\_scalar(f\textcolor{stringliteral}{'\{setting\}/\{k\}'}, v, global\_step=step)
+72             \textcolor{keywordflow}{else}:
+73                 print(f\textcolor{stringliteral}{'k \{k\} v \{v\} is not a number'})
+74 \end{DoxyCode}
 
 
 \subsection{Member Data Documentation}
@@ -153,7 +151,7 @@ Definition at line 57 of file logs.\+py.
 
 
 
-Definition at line 55 of file logs.\+py.
+Definition at line 56 of file logs.\+py.
 
 
 

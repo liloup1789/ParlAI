@@ -1,0 +1,84 @@
+\hypertarget{classparlai_1_1tasks_1_1dstc7_1_1agents_1_1DSTC7TeacherAugmented}{}\section{parlai.\+tasks.\+dstc7.\+agents.\+D\+S\+T\+C7\+Teacher\+Augmented Class Reference}
+\label{classparlai_1_1tasks_1_1dstc7_1_1agents_1_1DSTC7TeacherAugmented}\index{parlai.\+tasks.\+dstc7.\+agents.\+D\+S\+T\+C7\+Teacher\+Augmented@{parlai.\+tasks.\+dstc7.\+agents.\+D\+S\+T\+C7\+Teacher\+Augmented}}
+
+
+Inheritance diagram for parlai.\+tasks.\+dstc7.\+agents.\+D\+S\+T\+C7\+Teacher\+Augmented\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{dd/d6d/classparlai_1_1tasks_1_1dstc7_1_1agents_1_1DSTC7TeacherAugmented__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+tasks.\+dstc7.\+agents.\+D\+S\+T\+C7\+Teacher\+Augmented\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{dd/d68/classparlai_1_1tasks_1_1dstc7_1_1agents_1_1DSTC7TeacherAugmented__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1dstc7_1_1agents_1_1DSTC7TeacherAugmented_aa14c386712516ba60af7af0ee7cadbf5}{get\+\_\+suffix} (self)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Augmented Data.
+
+To mimic the way ParlAI generally handles dialogue datasets, the data associated
+with this teacher is presented in a format such that a single "episode" is split
+across multiple entries.
+
+I.e., suppose we have the following dialogue between speakers 1 and 2:
+utterances: [A, B, C, D, E],
+label: F
+
+The data in this file is split such that we have the following episodes:
+
+ep1:
+    utterances: [A],
+    label: B
+ep2:
+    utterances [A, B, C]
+    label: D
+ep3:
+    utterances: [A, B, C, D, E],
+    label: F
+\end{DoxyVerb}
+ 
+
+Definition at line 102 of file agents.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1dstc7_1_1agents_1_1DSTC7TeacherAugmented_aa14c386712516ba60af7af0ee7cadbf5}\label{classparlai_1_1tasks_1_1dstc7_1_1agents_1_1DSTC7TeacherAugmented_aa14c386712516ba60af7af0ee7cadbf5}} 
+\index{parlai\+::tasks\+::dstc7\+::agents\+::\+D\+S\+T\+C7\+Teacher\+Augmented@{parlai\+::tasks\+::dstc7\+::agents\+::\+D\+S\+T\+C7\+Teacher\+Augmented}!get\+\_\+suffix@{get\+\_\+suffix}}
+\index{get\+\_\+suffix@{get\+\_\+suffix}!parlai\+::tasks\+::dstc7\+::agents\+::\+D\+S\+T\+C7\+Teacher\+Augmented@{parlai\+::tasks\+::dstc7\+::agents\+::\+D\+S\+T\+C7\+Teacher\+Augmented}}
+\subsubsection{\texorpdfstring{get\+\_\+suffix()}{get\_suffix()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+dstc7.\+agents.\+D\+S\+T\+C7\+Teacher\+Augmented.\+get\+\_\+suffix (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 127 of file agents.\+py.
+
+
+\begin{DoxyCode}
+127     \textcolor{keyword}{def }get\_suffix(self):
+128         \textcolor{keywordflow}{if} self.split != \textcolor{stringliteral}{"train"}:
+129             \textcolor{keywordflow}{return} \textcolor{stringliteral}{""}
+130         \textcolor{keywordflow}{return} \textcolor{stringliteral}{"\_augmented"}
+131 
+132 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/tasks/dstc7/\hyperlink{parlai_2tasks_2dstc7_2agents_8py}{agents.\+py}\end{DoxyCompactItemize}

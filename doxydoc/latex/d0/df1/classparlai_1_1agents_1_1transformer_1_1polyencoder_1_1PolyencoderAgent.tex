@@ -2,8 +2,7 @@
 \label{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent}\index{parlai.\+agents.\+transformer.\+polyencoder.\+Polyencoder\+Agent@{parlai.\+agents.\+transformer.\+polyencoder.\+Polyencoder\+Agent}}
 
 
-Inheritance diagram for parlai.\+agents.\+transformer.\+polyencoder.\+Polyencoder\+Agent\+:
-\nopagebreak
+Inheritance diagram for parlai.\+agents.\+transformer.\+polyencoder.\+Polyencoder\+Agent\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -17,7 +16,7 @@ Collaboration diagram for parlai.\+agents.\+transformer.\+polyencoder.\+Polyenco
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=318pt]{d5/d11/classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent__coll__graph}
+\includegraphics[width=282pt]{d5/d11/classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -59,7 +58,7 @@ rely on an external library (hugging face).
 \end{DoxyVerb}
  
 
-Definition at line 18 of file polyencoder.\+py.
+Definition at line 19 of file polyencoder.\+py.
 
 
 
@@ -72,24 +71,24 @@ Definition at line 18 of file polyencoder.\+py.
 
 
 
-Definition at line 98 of file polyencoder.\+py.
+Definition at line 99 of file polyencoder.\+py.
 
 
 \begin{DoxyCode}
-98     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
-99         super().\_\_init\_\_(opt, shared)
-100         self.rank\_loss = torch.nn.CrossEntropyLoss(reduce=\textcolor{keyword}{True}, size\_average=\textcolor{keyword}{True})
-101         \textcolor{keywordflow}{if} self.use\_cuda:
-102             self.rank\_loss.cuda()
-103         self.data\_parallel = opt.get(\textcolor{stringliteral}{'data\_parallel'}) \textcolor{keywordflow}{and} self.use\_cuda
-104         \textcolor{keywordflow}{if} self.data\_parallel:
-105             \textcolor{keyword}{from} \hyperlink{namespaceparlai_1_1utils_1_1distributed}{parlai.utils.distributed} \textcolor{keyword}{import} is\_distributed
-106 
-107             \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a023acb5e3b66e1f27e21247c35661279}{is\_distributed}():
-108                 \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{'Cannot combine --data-parallel and distributed mode'})
-109             \textcolor{keywordflow}{if} shared \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-110                 self.model = torch.nn.DataParallel(self.model)
-111 
+99     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
+100         super().\_\_init\_\_(opt, shared)
+101         self.rank\_loss = torch.nn.CrossEntropyLoss(reduce=\textcolor{keyword}{True}, size\_average=\textcolor{keyword}{True})
+102         \textcolor{keywordflow}{if} self.use\_cuda:
+103             self.rank\_loss.cuda()
+104         self.data\_parallel = opt.get(\textcolor{stringliteral}{'data\_parallel'}) \textcolor{keywordflow}{and} self.use\_cuda
+105         \textcolor{keywordflow}{if} self.data\_parallel:
+106             \textcolor{keyword}{from} \hyperlink{namespaceparlai_1_1utils_1_1distributed}{parlai.utils.distributed} \textcolor{keyword}{import} is\_distributed
+107 
+108             \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a023acb5e3b66e1f27e21247c35661279}{is\_distributed}():
+109                 \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{'Cannot combine --data-parallel and distributed mode'})
+110             \textcolor{keywordflow}{if} shared \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+111                 self.model = torch.nn.DataParallel(self.model)
+112 
 \end{DoxyCode}
 
 
@@ -104,81 +103,81 @@ Definition at line 98 of file polyencoder.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 27 of file polyencoder.\+py.
+Definition at line 28 of file polyencoder.\+py.
 
 
 \begin{DoxyCode}
-27     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(cls, argparser):
-28         \textcolor{stringliteral}{"""}
-29 \textcolor{stringliteral}{        Add command-line arguments specifically for this agent.}
-30 \textcolor{stringliteral}{        """}
-31         TransformerRankerAgent.add\_cmdline\_args(argparser)
-32         agent = argparser.add\_argument\_group(\textcolor{stringliteral}{'Polyencoder Arguments'})
-33         agent.add\_argument(
-34             \textcolor{stringliteral}{'--polyencoder-type'},
-35             type=str,
-36             default=\textcolor{stringliteral}{'codes'},
-37             choices=[\textcolor{stringliteral}{'codes'}, \textcolor{stringliteral}{'n\_first'}],
-38             help=\textcolor{stringliteral}{'Type of polyencoder, either we compute'}
-39             \textcolor{stringliteral}{'vectors using codes + attention, or we '}
-40             \textcolor{stringliteral}{'simply take the first N vectors.'},
-41             recommended=\textcolor{stringliteral}{'codes'},
-42         )
-43         agent.add\_argument(
-44             \textcolor{stringliteral}{'--poly-n-codes'},
-45             type=int,
-46             default=64,
-47             help=\textcolor{stringliteral}{'number of vectors used to represent the context'}
-48             \textcolor{stringliteral}{'in the case of n\_first, those are the number'}
-49             \textcolor{stringliteral}{'of vectors that are considered.'},
-50             recommended=64,
-51         )
-52         agent.add\_argument(
-53             \textcolor{stringliteral}{'--poly-attention-type'},
-54             type=str,
-55             default=\textcolor{stringliteral}{'basic'},
-56             choices=[\textcolor{stringliteral}{'basic'}, \textcolor{stringliteral}{'sqrt'}, \textcolor{stringliteral}{'multihead'}],
-57             help=\textcolor{stringliteral}{'Type of the top aggregation layer of the poly-'}
-58             \textcolor{stringliteral}{'encoder (where the candidate representation is'}
-59             \textcolor{stringliteral}{'the key)'},
-60             recommended=\textcolor{stringliteral}{'basic'},
-61         )
-62         agent.add\_argument(
-63             \textcolor{stringliteral}{'--polyencoder-attention-keys'},
-64             type=str,
-65             default=\textcolor{stringliteral}{'context'},
-66             choices=[\textcolor{stringliteral}{'context'}, \textcolor{stringliteral}{'position'}],
-67             help=\textcolor{stringliteral}{'Input emb vectors for the first level of attention. '}
-68             \textcolor{stringliteral}{'Context refers to the context outputs; position refers to the '}
-69             \textcolor{stringliteral}{'computed position embeddings.'},
-70             recommended=\textcolor{stringliteral}{'context'},
-71         )
-72         agent.add\_argument(
-73             \textcolor{stringliteral}{'--poly-attention-num-heads'},
-74             type=int,
-75             default=4,
-76             help=\textcolor{stringliteral}{'In case poly-attention-type is multihead, '}
-77             \textcolor{stringliteral}{'specify the number of heads'},
-78         )
-79 
-80         \textcolor{comment}{# Those arguments are here in case where polyencoder type is 'code'}
-81         agent.add\_argument(
-82             \textcolor{stringliteral}{'--codes-attention-type'},
-83             type=str,
-84             default=\textcolor{stringliteral}{'basic'},
-85             choices=[\textcolor{stringliteral}{'basic'}, \textcolor{stringliteral}{'sqrt'}, \textcolor{stringliteral}{'multihead'}],
-86             help=\textcolor{stringliteral}{'Type '},
-87             recommended=\textcolor{stringliteral}{'basic'},
-88         )
-89         agent.add\_argument(
-90             \textcolor{stringliteral}{'--codes-attention-num-heads'},
-91             type=int,
-92             default=4,
-93             help=\textcolor{stringliteral}{'In case codes-attention-type is multihead, '}
-94             \textcolor{stringliteral}{'specify the number of heads'},
-95         )
-96         \textcolor{keywordflow}{return} agent
-97 
+28     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(cls, argparser):
+29         \textcolor{stringliteral}{"""}
+30 \textcolor{stringliteral}{        Add command-line arguments specifically for this agent.}
+31 \textcolor{stringliteral}{        """}
+32         TransformerRankerAgent.add\_cmdline\_args(argparser)
+33         agent = argparser.add\_argument\_group(\textcolor{stringliteral}{'Polyencoder Arguments'})
+34         agent.add\_argument(
+35             \textcolor{stringliteral}{'--polyencoder-type'},
+36             type=str,
+37             default=\textcolor{stringliteral}{'codes'},
+38             choices=[\textcolor{stringliteral}{'codes'}, \textcolor{stringliteral}{'n\_first'}],
+39             help=\textcolor{stringliteral}{'Type of polyencoder, either we compute'}
+40             \textcolor{stringliteral}{'vectors using codes + attention, or we '}
+41             \textcolor{stringliteral}{'simply take the first N vectors.'},
+42             recommended=\textcolor{stringliteral}{'codes'},
+43         )
+44         agent.add\_argument(
+45             \textcolor{stringliteral}{'--poly-n-codes'},
+46             type=int,
+47             default=64,
+48             help=\textcolor{stringliteral}{'number of vectors used to represent the context'}
+49             \textcolor{stringliteral}{'in the case of n\_first, those are the number'}
+50             \textcolor{stringliteral}{'of vectors that are considered.'},
+51             recommended=64,
+52         )
+53         agent.add\_argument(
+54             \textcolor{stringliteral}{'--poly-attention-type'},
+55             type=str,
+56             default=\textcolor{stringliteral}{'basic'},
+57             choices=[\textcolor{stringliteral}{'basic'}, \textcolor{stringliteral}{'sqrt'}, \textcolor{stringliteral}{'multihead'}],
+58             help=\textcolor{stringliteral}{'Type of the top aggregation layer of the poly-'}
+59             \textcolor{stringliteral}{'encoder (where the candidate representation is'}
+60             \textcolor{stringliteral}{'the key)'},
+61             recommended=\textcolor{stringliteral}{'basic'},
+62         )
+63         agent.add\_argument(
+64             \textcolor{stringliteral}{'--polyencoder-attention-keys'},
+65             type=str,
+66             default=\textcolor{stringliteral}{'context'},
+67             choices=[\textcolor{stringliteral}{'context'}, \textcolor{stringliteral}{'position'}],
+68             help=\textcolor{stringliteral}{'Input emb vectors for the first level of attention. '}
+69             \textcolor{stringliteral}{'Context refers to the context outputs; position refers to the '}
+70             \textcolor{stringliteral}{'computed position embeddings.'},
+71             recommended=\textcolor{stringliteral}{'context'},
+72         )
+73         agent.add\_argument(
+74             \textcolor{stringliteral}{'--poly-attention-num-heads'},
+75             type=int,
+76             default=4,
+77             help=\textcolor{stringliteral}{'In case poly-attention-type is multihead, '}
+78             \textcolor{stringliteral}{'specify the number of heads'},
+79         )
+80 
+81         \textcolor{comment}{# Those arguments are here in case where polyencoder type is 'code'}
+82         agent.add\_argument(
+83             \textcolor{stringliteral}{'--codes-attention-type'},
+84             type=str,
+85             default=\textcolor{stringliteral}{'basic'},
+86             choices=[\textcolor{stringliteral}{'basic'}, \textcolor{stringliteral}{'sqrt'}, \textcolor{stringliteral}{'multihead'}],
+87             help=\textcolor{stringliteral}{'Type '},
+88             recommended=\textcolor{stringliteral}{'basic'},
+89         )
+90         agent.add\_argument(
+91             \textcolor{stringliteral}{'--codes-attention-num-heads'},
+92             type=int,
+93             default=4,
+94             help=\textcolor{stringliteral}{'In case codes-attention-type is multihead, '}
+95             \textcolor{stringliteral}{'specify the number of heads'},
+96         )
+97         \textcolor{keywordflow}{return} agent
+98 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a50c59f1b745560d8883c1f9b65dce10a}\label{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a50c59f1b745560d8883c1f9b65dce10a}} 
 \index{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}!build\+\_\+model@{build\+\_\+model}}
@@ -190,16 +189,16 @@ Definition at line 27 of file polyencoder.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 112 of file polyencoder.\+py.
+Definition at line 113 of file polyencoder.\+py.
 
 
 \begin{DoxyCode}
-112     \textcolor{keyword}{def }build\_model(self, states=None):
-113         \textcolor{stringliteral}{"""}
-114 \textcolor{stringliteral}{        Return built model.}
-115 \textcolor{stringliteral}{        """}
-116         \textcolor{keywordflow}{return} PolyEncoderModule(self.opt, self.dict, self.NULL\_IDX)
-117 
+113     \textcolor{keyword}{def }build\_model(self, states=None):
+114         \textcolor{stringliteral}{"""}
+115 \textcolor{stringliteral}{        Return built model.}
+116 \textcolor{stringliteral}{        """}
+117         \textcolor{keywordflow}{return} PolyEncoderModule(self.opt, self.dict, self.NULL\_IDX)
+118 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_ae73fe8d98b46a7ef18ef7115f29c999d}\label{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_ae73fe8d98b46a7ef18ef7115f29c999d}} 
 \index{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}!encode\+\_\+candidates@{encode\+\_\+candidates}}
@@ -211,18 +210,18 @@ Definition at line 112 of file polyencoder.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 161 of file polyencoder.\+py.
+Definition at line 162 of file polyencoder.\+py.
 
 
 \begin{DoxyCode}
-161     \textcolor{keyword}{def }encode\_candidates(self, padded\_cands):
-162         \textcolor{stringliteral}{"""}
-163 \textcolor{stringliteral}{        Encode candidates.}
-164 \textcolor{stringliteral}{        """}
-165         padded\_cands = padded\_cands.unsqueeze(1)
-166         \_, \_, \_, cand\_rep = self.model(cand\_tokens=padded\_cands)
-167         \textcolor{keywordflow}{return} cand\_rep
-168 
+162     \textcolor{keyword}{def }encode\_candidates(self, padded\_cands):
+163         \textcolor{stringliteral}{"""}
+164 \textcolor{stringliteral}{        Encode candidates.}
+165 \textcolor{stringliteral}{        """}
+166         padded\_cands = padded\_cands.unsqueeze(1)
+167         \_, \_, \_, cand\_rep = self.model(cand\_tokens=padded\_cands)
+168         \textcolor{keywordflow}{return} cand\_rep
+169 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a4b6301664c0a7e98e9c688cc75ca79dc}\label{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a4b6301664c0a7e98e9c688cc75ca79dc}} 
 \index{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}!load\+\_\+state\+\_\+dict@{load\+\_\+state\+\_\+dict}}
@@ -234,19 +233,19 @@ Definition at line 161 of file polyencoder.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 201 of file polyencoder.\+py.
+Definition at line 202 of file polyencoder.\+py.
 
 
 \begin{DoxyCode}
-201     \textcolor{keyword}{def }load\_state\_dict(self, state\_dict):
-202         \textcolor{stringliteral}{"""}
-203 \textcolor{stringliteral}{        Override to account for codes.}
-204 \textcolor{stringliteral}{        """}
-205         \textcolor{keywordflow}{if} self.model.type == \textcolor{stringliteral}{'codes'} \textcolor{keywordflow}{and} \textcolor{stringliteral}{'codes'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} state\_dict:
-206             state\_dict[\textcolor{stringliteral}{'codes'}] = self.model.codes
-207         super().load\_state\_dict(state\_dict)
-208 
+202     \textcolor{keyword}{def }load\_state\_dict(self, state\_dict):
+203         \textcolor{stringliteral}{"""}
+204 \textcolor{stringliteral}{        Override to account for codes.}
+205 \textcolor{stringliteral}{        """}
+206         \textcolor{keywordflow}{if} self.model.type == \textcolor{stringliteral}{'codes'} \textcolor{keywordflow}{and} \textcolor{stringliteral}{'codes'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} state\_dict:
+207             state\_dict[\textcolor{stringliteral}{'codes'}] = self.model.codes
+208         super().load\_state\_dict(state\_dict)
 209 
+210 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_ad75794f4004267ab538258bc2571235f}\label{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_ad75794f4004267ab538258bc2571235f}} 
 \index{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}!score\+\_\+candidates@{score\+\_\+candidates}}
@@ -261,42 +260,42 @@ model applies additional attention before ultimately scoring a candidate.
 \end{DoxyVerb}
  
 
-Definition at line 169 of file polyencoder.\+py.
+Definition at line 170 of file polyencoder.\+py.
 
 
 \begin{DoxyCode}
-169     \textcolor{keyword}{def }score\_candidates(self, batch, cand\_vecs, cand\_encs=None):
-170         \textcolor{stringliteral}{"""}
-171 \textcolor{stringliteral}{        Score candidates.}
-172 \textcolor{stringliteral}{}
-173 \textcolor{stringliteral}{        The Poly-encoder encodes the candidate and context independently. Then, the}
-174 \textcolor{stringliteral}{        model applies additional attention before ultimately scoring a candidate.}
-175 \textcolor{stringliteral}{        """}
-176         bsz = batch.text\_vec.size(0)
-177         ctxt\_rep, ctxt\_rep\_mask, ctxt\_pos, \_ = self.model(ctxt\_tokens=batch.text\_vec)
-178 
-179         \textcolor{keywordflow}{if} cand\_encs \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-180             \textcolor{keywordflow}{if} bsz == 1:
-181                 cand\_rep = cand\_encs
-182             \textcolor{keywordflow}{else}:
-183                 cand\_rep = cand\_encs.expand(bsz, cand\_encs.size(1), -1)
-184         \textcolor{comment}{# bsz x num cands x seq len}
-185         \textcolor{keywordflow}{elif} len(cand\_vecs.shape) == 3:
-186             \_, \_, \_, cand\_rep = self.model(cand\_tokens=cand\_vecs)
-187         \textcolor{comment}{# bsz x seq len (if batch cands) or num\_cands x seq len (if fixed cands)}
-188         \textcolor{keywordflow}{elif} len(cand\_vecs.shape) == 2:
-189             \_, \_, \_, cand\_rep = self.model(cand\_tokens=cand\_vecs.unsqueeze(1))
-190             num\_cands = cand\_rep.size(0)  \textcolor{comment}{# will be bsz if using batch cands}
-191             cand\_rep = cand\_rep.expand(num\_cands, bsz, -1).transpose(0, 1).contiguous()
-192 
-193         scores = self.model(
-194             ctxt\_rep=ctxt\_rep,
-195             ctxt\_rep\_mask=ctxt\_rep\_mask,
-196             cand\_rep=cand\_rep,
-197             ctxt\_pos=ctxt\_pos,
-198         )
-199         \textcolor{keywordflow}{return} scores
-200 
+170     \textcolor{keyword}{def }score\_candidates(self, batch, cand\_vecs, cand\_encs=None):
+171         \textcolor{stringliteral}{"""}
+172 \textcolor{stringliteral}{        Score candidates.}
+173 \textcolor{stringliteral}{}
+174 \textcolor{stringliteral}{        The Poly-encoder encodes the candidate and context independently. Then, the}
+175 \textcolor{stringliteral}{        model applies additional attention before ultimately scoring a candidate.}
+176 \textcolor{stringliteral}{        """}
+177         bsz = batch.text\_vec.size(0)
+178         ctxt\_rep, ctxt\_rep\_mask, ctxt\_pos, \_ = self.model(ctxt\_tokens=batch.text\_vec)
+179 
+180         \textcolor{keywordflow}{if} cand\_encs \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+181             \textcolor{keywordflow}{if} bsz == 1:
+182                 cand\_rep = cand\_encs
+183             \textcolor{keywordflow}{else}:
+184                 cand\_rep = cand\_encs.expand(bsz, cand\_encs.size(1), -1)
+185         \textcolor{comment}{# bsz x num cands x seq len}
+186         \textcolor{keywordflow}{elif} len(cand\_vecs.shape) == 3:
+187             \_, \_, \_, cand\_rep = self.model(cand\_tokens=cand\_vecs)
+188         \textcolor{comment}{# bsz x seq len (if batch cands) or num\_cands x seq len (if fixed cands)}
+189         \textcolor{keywordflow}{elif} len(cand\_vecs.shape) == 2:
+190             \_, \_, \_, cand\_rep = self.model(cand\_tokens=cand\_vecs.unsqueeze(1))
+191             num\_cands = cand\_rep.size(0)  \textcolor{comment}{# will be bsz if using batch cands}
+192             cand\_rep = cand\_rep.expand(num\_cands, bsz, -1).transpose(0, 1).contiguous()
+193 
+194         scores = self.model(
+195             ctxt\_rep=ctxt\_rep,
+196             ctxt\_rep\_mask=ctxt\_rep\_mask,
+197             cand\_rep=cand\_rep,
+198             ctxt\_pos=ctxt\_pos,
+199         )
+200         \textcolor{keywordflow}{return} scores
+201 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a02cea5573a5135f5a7201c49296abded}\label{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a02cea5573a5135f5a7201c49296abded}} 
 \index{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}!vectorize@{vectorize}}
@@ -308,19 +307,19 @@ Definition at line 169 of file polyencoder.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 118 of file polyencoder.\+py.
+Definition at line 119 of file polyencoder.\+py.
 
 
 \begin{DoxyCode}
-118     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_a5c76cc39e3014c7bcf9199d566dbdc0f}{vectorize}(self, *args, **kwargs):
-119         \textcolor{stringliteral}{"""}
-120 \textcolor{stringliteral}{        Add the start and end token to the labels.}
-121 \textcolor{stringliteral}{        """}
-122         kwargs[\textcolor{stringliteral}{'add\_start'}] = \textcolor{keyword}{True}
-123         kwargs[\textcolor{stringliteral}{'add\_end'}] = \textcolor{keyword}{True}
-124         obs = super().\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_a5c76cc39e3014c7bcf9199d566dbdc0f}{vectorize}(*args, **kwargs)
-125         \textcolor{keywordflow}{return} obs
-126 
+119     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_a5c76cc39e3014c7bcf9199d566dbdc0f}{vectorize}(self, *args, **kwargs):
+120         \textcolor{stringliteral}{"""}
+121 \textcolor{stringliteral}{        Add the start and end token to the labels.}
+122 \textcolor{stringliteral}{        """}
+123         kwargs[\textcolor{stringliteral}{'add\_start'}] = \textcolor{keyword}{True}
+124         kwargs[\textcolor{stringliteral}{'add\_end'}] = \textcolor{keyword}{True}
+125         obs = super().\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_a5c76cc39e3014c7bcf9199d566dbdc0f}{vectorize}(*args, **kwargs)
+126         \textcolor{keywordflow}{return} obs
+127 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_ad002f52bc5bfbe8269983bbfc0988f98}\label{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_ad002f52bc5bfbe8269983bbfc0988f98}} 
 \index{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}!vectorize\+\_\+fixed\+\_\+candidates@{vectorize\+\_\+fixed\+\_\+candidates}}
@@ -335,21 +334,21 @@ interactive mode.
 \end{DoxyVerb}
  
 
-Definition at line 139 of file polyencoder.\+py.
+Definition at line 140 of file polyencoder.\+py.
 
 
 \begin{DoxyCode}
-139     \textcolor{keyword}{def }vectorize\_fixed\_candidates(self, *args, **kwargs):
-140         \textcolor{stringliteral}{"""}
-141 \textcolor{stringliteral}{        Vectorize fixed candidates.}
-142 \textcolor{stringliteral}{}
-143 \textcolor{stringliteral}{        Override to add start and end token when computing the candidate encodings in}
-144 \textcolor{stringliteral}{        interactive mode.}
-145 \textcolor{stringliteral}{        """}
-146         kwargs[\textcolor{stringliteral}{'add\_start'}] = \textcolor{keyword}{True}
-147         kwargs[\textcolor{stringliteral}{'add\_end'}] = \textcolor{keyword}{True}
-148         \textcolor{keywordflow}{return} super().vectorize\_fixed\_candidates(*args, **kwargs)
-149 
+140     \textcolor{keyword}{def }vectorize\_fixed\_candidates(self, *args, **kwargs):
+141         \textcolor{stringliteral}{"""}
+142 \textcolor{stringliteral}{        Vectorize fixed candidates.}
+143 \textcolor{stringliteral}{}
+144 \textcolor{stringliteral}{        Override to add start and end token when computing the candidate encodings in}
+145 \textcolor{stringliteral}{        interactive mode.}
+146 \textcolor{stringliteral}{        """}
+147         kwargs[\textcolor{stringliteral}{'add\_start'}] = \textcolor{keyword}{True}
+148         kwargs[\textcolor{stringliteral}{'add\_end'}] = \textcolor{keyword}{True}
+149         \textcolor{keywordflow}{return} super().vectorize\_fixed\_candidates(*args, **kwargs)
+150 
 \end{DoxyCode}
 
 
@@ -362,7 +361,7 @@ Definition at line 139 of file polyencoder.\+py.
 
 
 
-Definition at line 103 of file polyencoder.\+py.
+Definition at line 104 of file polyencoder.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a1b3a89e114cfe44d7601a47d62c78861}\label{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a1b3a89e114cfe44d7601a47d62c78861}} 
 \index{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}!model@{model}}
@@ -372,7 +371,7 @@ Definition at line 103 of file polyencoder.\+py.
 
 
 
-Definition at line 110 of file polyencoder.\+py.
+Definition at line 111 of file polyencoder.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a20e36e9eb037ae6f71ae661e94bb6445}\label{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyencoderAgent_a20e36e9eb037ae6f71ae661e94bb6445}} 
 \index{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Polyencoder\+Agent}!rank\+\_\+loss@{rank\+\_\+loss}}
@@ -382,7 +381,7 @@ Definition at line 110 of file polyencoder.\+py.
 
 
 
-Definition at line 100 of file polyencoder.\+py.
+Definition at line 101 of file polyencoder.\+py.
 
 
 

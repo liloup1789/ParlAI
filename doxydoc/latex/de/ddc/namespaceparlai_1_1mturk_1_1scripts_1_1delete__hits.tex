@@ -169,13 +169,13 @@ Definition at line 13 of file delete\+\_\+hits.\+py.
 153     )
 154 
 155     \textcolor{keywordflow}{while} \textcolor{keyword}{True}:
-156         task\_group\_id = \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1test_1_1test__full__system_a1e1817cd65688fb90f827834d1fb4567}{input}(\textcolor{stringliteral}{"Enter task group id: "})
+156         task\_group\_id = input(\textcolor{stringliteral}{"Enter task group id: "})
 157         \textcolor{keywordflow}{if} len(task\_group\_id) == 0:
 158             \textcolor{keywordflow}{break}
 159         \textcolor{keywordflow}{elif} task\_group\_id \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} task\_group\_ids:
 160             print(\textcolor{stringliteral}{'Sorry, the id you entered was not found, try again'})
 161         \textcolor{keywordflow}{else}:
-162             num\_hits = \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1test_1_1test__full__system_a1e1817cd65688fb90f827834d1fb4567}{input}(
+162             num\_hits = input(
 163                 \textcolor{stringliteral}{'Confirm by entering the number of HITs that will be deleted: '}
 164             )
 165             \textcolor{keywordflow}{if} \textcolor{stringliteral}{'\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(len(group\_to\_hit[task\_group\_id])) == num\_hits:

@@ -1,0 +1,205 @@
+\hypertarget{classparlai_1_1agents_1_1examples_1_1seq2seq_1_1ExampleModel}{}\section{parlai.\+agents.\+examples.\+seq2seq.\+Example\+Model Class Reference}
+\label{classparlai_1_1agents_1_1examples_1_1seq2seq_1_1ExampleModel}\index{parlai.\+agents.\+examples.\+seq2seq.\+Example\+Model@{parlai.\+agents.\+examples.\+seq2seq.\+Example\+Model}}
+
+
+Inheritance diagram for parlai.\+agents.\+examples.\+seq2seq.\+Example\+Model\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{de/d53/classparlai_1_1agents_1_1examples_1_1seq2seq_1_1ExampleModel__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+agents.\+examples.\+seq2seq.\+Example\+Model\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=240pt]{db/d08/classparlai_1_1agents_1_1examples_1_1seq2seq_1_1ExampleModel__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1agents_1_1examples_1_1seq2seq_1_1ExampleModel_a5288fbc80f0ba4e333c16febb9695a12}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, dictionary, esz=256, hidden\+\_\+size=1024)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1examples_1_1seq2seq_1_1ExampleModel_a22843705775faa14eca6871c0a681147}{output} (self, decoder\+\_\+output)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1examples_1_1seq2seq_1_1ExampleModel_adfb376efc6b36f7008281570a2a2ec9d}{reorder\+\_\+encoder\+\_\+states} (self, encoder\+\_\+states, indices)
+\item 
+def \hyperlink{classparlai_1_1agents_1_1examples_1_1seq2seq_1_1ExampleModel_a4ca40e49a069cce1f07eee55666b2b05}{reorder\+\_\+decoder\+\_\+incremental\+\_\+state} (self, incr\+\_\+state, indices)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1agents_1_1examples_1_1seq2seq_1_1ExampleModel_a98cc5d5376e027de1f7a4380745be560}{embeddings}
+\item 
+\hyperlink{classparlai_1_1agents_1_1examples_1_1seq2seq_1_1ExampleModel_a533964dd8bb334071264e445a2b943ab}{encoder}
+\item 
+\hyperlink{classparlai_1_1agents_1_1examples_1_1seq2seq_1_1ExampleModel_a52e8840bc136b8355566d7af8f2f2fa3}{decoder}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}ExampleModel implements the abstract methods of TorchGeneratorModel to define how to
+re-order encoder states and decoder incremental states.
+
+It also instantiates the embedding table, encoder, and decoder, and defines the
+final output layer.
+\end{DoxyVerb}
+ 
+
+Definition at line 129 of file seq2seq.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1examples_1_1seq2seq_1_1ExampleModel_a5288fbc80f0ba4e333c16febb9695a12}\label{classparlai_1_1agents_1_1examples_1_1seq2seq_1_1ExampleModel_a5288fbc80f0ba4e333c16febb9695a12}} 
+\index{parlai\+::agents\+::examples\+::seq2seq\+::\+Example\+Model@{parlai\+::agents\+::examples\+::seq2seq\+::\+Example\+Model}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::agents\+::examples\+::seq2seq\+::\+Example\+Model@{parlai\+::agents\+::examples\+::seq2seq\+::\+Example\+Model}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+examples.\+seq2seq.\+Example\+Model.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{dictionary,  }\item[{}]{esz = {\ttfamily 256},  }\item[{}]{hidden\+\_\+size = {\ttfamily 1024} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 138 of file seq2seq.\+py.
+
+
+\begin{DoxyCode}
+138     \textcolor{keyword}{def }\_\_init\_\_(self, dictionary, esz=256, hidden\_size=1024):
+139         super().\_\_init\_\_(
+140             padding\_idx=dictionary[dictionary.null\_token],
+141             start\_idx=dictionary[dictionary.start\_token],
+142             end\_idx=dictionary[dictionary.end\_token],
+143             unknown\_idx=dictionary[dictionary.unk\_token],
+144         )
+145         self.embeddings = nn.Embedding(len(dictionary), esz)
+146         self.encoder = Encoder(self.embeddings, hidden\_size)
+147         self.decoder = Decoder(self.embeddings, hidden\_size)
+148 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1examples_1_1seq2seq_1_1ExampleModel_a22843705775faa14eca6871c0a681147}\label{classparlai_1_1agents_1_1examples_1_1seq2seq_1_1ExampleModel_a22843705775faa14eca6871c0a681147}} 
+\index{parlai\+::agents\+::examples\+::seq2seq\+::\+Example\+Model@{parlai\+::agents\+::examples\+::seq2seq\+::\+Example\+Model}!output@{output}}
+\index{output@{output}!parlai\+::agents\+::examples\+::seq2seq\+::\+Example\+Model@{parlai\+::agents\+::examples\+::seq2seq\+::\+Example\+Model}}
+\subsubsection{\texorpdfstring{output()}{output()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+examples.\+seq2seq.\+Example\+Model.\+output (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{decoder\+\_\+output }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Perform the final output -> logits transformation.
+\end{DoxyVerb}
+ 
+
+Definition at line 149 of file seq2seq.\+py.
+
+
+\begin{DoxyCode}
+149     \textcolor{keyword}{def }output(self, decoder\_output):
+150         \textcolor{stringliteral}{"""}
+151 \textcolor{stringliteral}{        Perform the final output -> logits transformation.}
+152 \textcolor{stringliteral}{        """}
+153         \textcolor{keywordflow}{return} F.linear(decoder\_output, self.embeddings.weight)
+154 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1examples_1_1seq2seq_1_1ExampleModel_a4ca40e49a069cce1f07eee55666b2b05}\label{classparlai_1_1agents_1_1examples_1_1seq2seq_1_1ExampleModel_a4ca40e49a069cce1f07eee55666b2b05}} 
+\index{parlai\+::agents\+::examples\+::seq2seq\+::\+Example\+Model@{parlai\+::agents\+::examples\+::seq2seq\+::\+Example\+Model}!reorder\+\_\+decoder\+\_\+incremental\+\_\+state@{reorder\+\_\+decoder\+\_\+incremental\+\_\+state}}
+\index{reorder\+\_\+decoder\+\_\+incremental\+\_\+state@{reorder\+\_\+decoder\+\_\+incremental\+\_\+state}!parlai\+::agents\+::examples\+::seq2seq\+::\+Example\+Model@{parlai\+::agents\+::examples\+::seq2seq\+::\+Example\+Model}}
+\subsubsection{\texorpdfstring{reorder\+\_\+decoder\+\_\+incremental\+\_\+state()}{reorder\_decoder\_incremental\_state()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+examples.\+seq2seq.\+Example\+Model.\+reorder\+\_\+decoder\+\_\+incremental\+\_\+state (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{incr\+\_\+state,  }\item[{}]{indices }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Reorder the decoder states to select only the given batch indices.
+
+This method can be a stub which always returns None; this will result in the
+decoder doing a complete forward pass for every single token, making generation
+O(n^2). However, if any state can be cached, then this method should be
+implemented to reduce the generation complexity to O(n).
+\end{DoxyVerb}
+ 
+
+Definition at line 165 of file seq2seq.\+py.
+
+
+\begin{DoxyCode}
+165     \textcolor{keyword}{def }reorder\_decoder\_incremental\_state(self, incr\_state, indices):
+166         \textcolor{stringliteral}{"""}
+167 \textcolor{stringliteral}{        Reorder the decoder states to select only the given batch indices.}
+168 \textcolor{stringliteral}{}
+169 \textcolor{stringliteral}{        This method can be a stub which always returns None; this will result in the}
+170 \textcolor{stringliteral}{        decoder doing a complete forward pass for every single token, making generation}
+171 \textcolor{stringliteral}{        O(n^2). However, if any state can be cached, then this method should be}
+172 \textcolor{stringliteral}{        implemented to reduce the generation complexity to O(n).}
+173 \textcolor{stringliteral}{        """}
+174         h, c = incr\_state
+175         \textcolor{keywordflow}{return} h[:, indices, :], c[:, indices, :]
+176 
+177 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1examples_1_1seq2seq_1_1ExampleModel_adfb376efc6b36f7008281570a2a2ec9d}\label{classparlai_1_1agents_1_1examples_1_1seq2seq_1_1ExampleModel_adfb376efc6b36f7008281570a2a2ec9d}} 
+\index{parlai\+::agents\+::examples\+::seq2seq\+::\+Example\+Model@{parlai\+::agents\+::examples\+::seq2seq\+::\+Example\+Model}!reorder\+\_\+encoder\+\_\+states@{reorder\+\_\+encoder\+\_\+states}}
+\index{reorder\+\_\+encoder\+\_\+states@{reorder\+\_\+encoder\+\_\+states}!parlai\+::agents\+::examples\+::seq2seq\+::\+Example\+Model@{parlai\+::agents\+::examples\+::seq2seq\+::\+Example\+Model}}
+\subsubsection{\texorpdfstring{reorder\+\_\+encoder\+\_\+states()}{reorder\_encoder\_states()}}
+{\footnotesize\ttfamily def parlai.\+agents.\+examples.\+seq2seq.\+Example\+Model.\+reorder\+\_\+encoder\+\_\+states (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{encoder\+\_\+states,  }\item[{}]{indices }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Reorder the encoder states to select only the given batch indices.
+
+Since encoder_state can be arbitrary, you must implement this yourself.
+Typically you will just want to index select on the batch dimension.
+\end{DoxyVerb}
+ 
+
+Definition at line 155 of file seq2seq.\+py.
+
+
+\begin{DoxyCode}
+155     \textcolor{keyword}{def }reorder\_encoder\_states(self, encoder\_states, indices):
+156         \textcolor{stringliteral}{"""}
+157 \textcolor{stringliteral}{        Reorder the encoder states to select only the given batch indices.}
+158 \textcolor{stringliteral}{}
+159 \textcolor{stringliteral}{        Since encoder\_state can be arbitrary, you must implement this yourself.}
+160 \textcolor{stringliteral}{        Typically you will just want to index select on the batch dimension.}
+161 \textcolor{stringliteral}{        """}
+162         h, c = encoder\_states
+163         \textcolor{keywordflow}{return} h[:, indices, :], c[:, indices, :]
+164 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1agents_1_1examples_1_1seq2seq_1_1ExampleModel_a52e8840bc136b8355566d7af8f2f2fa3}\label{classparlai_1_1agents_1_1examples_1_1seq2seq_1_1ExampleModel_a52e8840bc136b8355566d7af8f2f2fa3}} 
+\index{parlai\+::agents\+::examples\+::seq2seq\+::\+Example\+Model@{parlai\+::agents\+::examples\+::seq2seq\+::\+Example\+Model}!decoder@{decoder}}
+\index{decoder@{decoder}!parlai\+::agents\+::examples\+::seq2seq\+::\+Example\+Model@{parlai\+::agents\+::examples\+::seq2seq\+::\+Example\+Model}}
+\subsubsection{\texorpdfstring{decoder}{decoder}}
+{\footnotesize\ttfamily parlai.\+agents.\+examples.\+seq2seq.\+Example\+Model.\+decoder}
+
+
+
+Definition at line 147 of file seq2seq.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1examples_1_1seq2seq_1_1ExampleModel_a98cc5d5376e027de1f7a4380745be560}\label{classparlai_1_1agents_1_1examples_1_1seq2seq_1_1ExampleModel_a98cc5d5376e027de1f7a4380745be560}} 
+\index{parlai\+::agents\+::examples\+::seq2seq\+::\+Example\+Model@{parlai\+::agents\+::examples\+::seq2seq\+::\+Example\+Model}!embeddings@{embeddings}}
+\index{embeddings@{embeddings}!parlai\+::agents\+::examples\+::seq2seq\+::\+Example\+Model@{parlai\+::agents\+::examples\+::seq2seq\+::\+Example\+Model}}
+\subsubsection{\texorpdfstring{embeddings}{embeddings}}
+{\footnotesize\ttfamily parlai.\+agents.\+examples.\+seq2seq.\+Example\+Model.\+embeddings}
+
+
+
+Definition at line 145 of file seq2seq.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1agents_1_1examples_1_1seq2seq_1_1ExampleModel_a533964dd8bb334071264e445a2b943ab}\label{classparlai_1_1agents_1_1examples_1_1seq2seq_1_1ExampleModel_a533964dd8bb334071264e445a2b943ab}} 
+\index{parlai\+::agents\+::examples\+::seq2seq\+::\+Example\+Model@{parlai\+::agents\+::examples\+::seq2seq\+::\+Example\+Model}!encoder@{encoder}}
+\index{encoder@{encoder}!parlai\+::agents\+::examples\+::seq2seq\+::\+Example\+Model@{parlai\+::agents\+::examples\+::seq2seq\+::\+Example\+Model}}
+\subsubsection{\texorpdfstring{encoder}{encoder}}
+{\footnotesize\ttfamily parlai.\+agents.\+examples.\+seq2seq.\+Example\+Model.\+encoder}
+
+
+
+Definition at line 146 of file seq2seq.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/agents/examples/\hyperlink{agents_2examples_2seq2seq_8py}{seq2seq.\+py}\end{DoxyCompactItemize}

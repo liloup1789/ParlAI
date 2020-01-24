@@ -139,44 +139,44 @@ Definition at line 131 of file mturk\+\_\+data\+\_\+handler.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 196 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 197 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-196     \textcolor{keyword}{def }create\_default\_tables(self):
-197         \textcolor{stringliteral}{"""}
-198 \textcolor{stringliteral}{        Prepares the default tables in the database if they don't exist.}
-199 \textcolor{stringliteral}{        """}
-200         with self.table\_access\_condition:
-201             conn = self.\_get\_connection()
-202             c = conn.cursor()
-203             c.execute(CREATE\_RUN\_DATA\_SQL\_TABLE)
-204             c.execute(CREATE\_WORKER\_DATA\_SQL\_TABLE)
-205             c.execute(CREATE\_HIT\_DATA\_SQL\_TABLE)
-206             c.execute(CREATE\_ASSIGN\_DATA\_SQL\_TABLE)
-207             c.execute(CREATE\_PAIRING\_DATA\_SQL\_TABLE)
-208 
-209             \textcolor{comment}{# TODO move to versioning and migrations}
-210             \textcolor{comment}{# attempt to add new fields one by one to update old versions}
-211             updates = [
-212                 \textcolor{stringliteral}{'''ALTER TABLE pairings}
-213 \textcolor{stringliteral}{                   ADD COLUMN onboarding\_id TEXT default null'''},
-214                 \textcolor{stringliteral}{'''ALTER TABLE runs}
-215 \textcolor{stringliteral}{                   ADD COLUMN taskname TEXT default null'''},
-216                 \textcolor{stringliteral}{'''ALTER TABLE runs}
-217 \textcolor{stringliteral}{                   ADD COLUMN launch\_time int default 0'''},
-218                 \textcolor{stringliteral}{'''ALTER TABLE pairings}
-219 \textcolor{stringliteral}{                   ADD COLUMN extra\_bonus\_amount INT default 0'''},
-220                 \textcolor{stringliteral}{'''ALTER TABLE pairings}
-221 \textcolor{stringliteral}{                   ADD COLUMN extra\_bonus\_text TEXT default '';'''},
-222             ]
-223             \textcolor{keywordflow}{for} update \textcolor{keywordflow}{in} updates:
-224                 \textcolor{keywordflow}{try}:
-225                     c.execute(update)
-226                 \textcolor{keywordflow}{except} sqlite3.Error:
-227                     \textcolor{keywordflow}{pass}
-228             conn.commit()
-229 
+197     \textcolor{keyword}{def }create\_default\_tables(self):
+198         \textcolor{stringliteral}{"""}
+199 \textcolor{stringliteral}{        Prepares the default tables in the database if they don't exist.}
+200 \textcolor{stringliteral}{        """}
+201         with self.table\_access\_condition:
+202             conn = self.\_get\_connection()
+203             c = conn.cursor()
+204             c.execute(CREATE\_RUN\_DATA\_SQL\_TABLE)
+205             c.execute(CREATE\_WORKER\_DATA\_SQL\_TABLE)
+206             c.execute(CREATE\_HIT\_DATA\_SQL\_TABLE)
+207             c.execute(CREATE\_ASSIGN\_DATA\_SQL\_TABLE)
+208             c.execute(CREATE\_PAIRING\_DATA\_SQL\_TABLE)
+209 
+210             \textcolor{comment}{# TODO move to versioning and migrations}
+211             \textcolor{comment}{# attempt to add new fields one by one to update old versions}
+212             updates = [
+213                 \textcolor{stringliteral}{'''ALTER TABLE pairings}
+214 \textcolor{stringliteral}{                   ADD COLUMN onboarding\_id TEXT default null'''},
+215                 \textcolor{stringliteral}{'''ALTER TABLE runs}
+216 \textcolor{stringliteral}{                   ADD COLUMN taskname TEXT default null'''},
+217                 \textcolor{stringliteral}{'''ALTER TABLE runs}
+218 \textcolor{stringliteral}{                   ADD COLUMN launch\_time int default 0'''},
+219                 \textcolor{stringliteral}{'''ALTER TABLE pairings}
+220 \textcolor{stringliteral}{                   ADD COLUMN extra\_bonus\_amount INT default 0'''},
+221                 \textcolor{stringliteral}{'''ALTER TABLE pairings}
+222 \textcolor{stringliteral}{                   ADD COLUMN extra\_bonus\_text TEXT default '';'''},
+223             ]
+224             \textcolor{keywordflow}{for} update \textcolor{keywordflow}{in} updates:
+225                 \textcolor{keywordflow}{try}:
+226                     c.execute(update)
+227                 \textcolor{keywordflow}{except} sqlite3.Error:
+228                     \textcolor{keywordflow}{pass}
+229             conn.commit()
+230 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a13d0c1ca0cf41f7f7aca992c995da261}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a13d0c1ca0cf41f7f7aca992c995da261}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!get\+\_\+all\+\_\+assignments\+\_\+for\+\_\+worker@{get\+\_\+all\+\_\+assignments\+\_\+for\+\_\+worker}}
@@ -188,21 +188,21 @@ Definition at line 196 of file mturk\+\_\+data\+\_\+handler.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 863 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 864 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-863     \textcolor{keyword}{def }get\_all\_assignments\_for\_worker(self, worker\_id):
-864         \textcolor{stringliteral}{"""}
-865 \textcolor{stringliteral}{        get all assignments associated with a particular worker\_id.}
-866 \textcolor{stringliteral}{        """}
-867         with self.table\_access\_condition:
-868             conn = self.\_get\_connection()
-869             c = conn.cursor()
-870             c.execute(\textcolor{stringliteral}{"SELECT * FROM assignments WHERE worker\_id = ?;"}, (worker\_id,))
-871             results = c.fetchall()
-872             \textcolor{keywordflow}{return} results
-873 
+864     \textcolor{keyword}{def }get\_all\_assignments\_for\_worker(self, worker\_id):
+865         \textcolor{stringliteral}{"""}
+866 \textcolor{stringliteral}{        get all assignments associated with a particular worker\_id.}
+867 \textcolor{stringliteral}{        """}
+868         with self.table\_access\_condition:
+869             conn = self.\_get\_connection()
+870             c = conn.cursor()
+871             c.execute(\textcolor{stringliteral}{"SELECT * FROM assignments WHERE worker\_id = ?;"}, (worker\_id,))
+872             results = c.fetchall()
+873             \textcolor{keywordflow}{return} results
+874 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_af115126a912672f030143d16b281c1d3}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_af115126a912672f030143d16b281c1d3}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!get\+\_\+all\+\_\+pairings\+\_\+for\+\_\+worker@{get\+\_\+all\+\_\+pairings\+\_\+for\+\_\+worker}}
@@ -214,21 +214,21 @@ Definition at line 863 of file mturk\+\_\+data\+\_\+handler.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 874 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 875 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-874     \textcolor{keyword}{def }get\_all\_pairings\_for\_worker(self, worker\_id):
-875         \textcolor{stringliteral}{"""}
-876 \textcolor{stringliteral}{        get all pairings associated with a particular worker\_id.}
-877 \textcolor{stringliteral}{        """}
-878         with self.table\_access\_condition:
-879             conn = self.\_get\_connection()
-880             c = conn.cursor()
-881             c.execute(\textcolor{stringliteral}{'SELECT * FROM pairings WHERE worker\_id = ?;'}, (worker\_id,))
-882             results = c.fetchall()
-883             \textcolor{keywordflow}{return} results
-884 
+875     \textcolor{keyword}{def }get\_all\_pairings\_for\_worker(self, worker\_id):
+876         \textcolor{stringliteral}{"""}
+877 \textcolor{stringliteral}{        get all pairings associated with a particular worker\_id.}
+878 \textcolor{stringliteral}{        """}
+879         with self.table\_access\_condition:
+880             conn = self.\_get\_connection()
+881             c = conn.cursor()
+882             c.execute(\textcolor{stringliteral}{'SELECT * FROM pairings WHERE worker\_id = ?;'}, (worker\_id,))
+883             results = c.fetchall()
+884             \textcolor{keywordflow}{return} results
+885 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a260b4003fe27797a7e49547db992d06e}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a260b4003fe27797a7e49547db992d06e}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!get\+\_\+all\+\_\+run\+\_\+data@{get\+\_\+all\+\_\+run\+\_\+data}}
@@ -240,21 +240,21 @@ Definition at line 874 of file mturk\+\_\+data\+\_\+handler.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 774 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 775 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-774     \textcolor{keyword}{def }get\_all\_run\_data(self, start=0, count=1000):
-775         \textcolor{stringliteral}{"""}
-776 \textcolor{stringliteral}{        get all the run data for all task\_group\_ids.}
-777 \textcolor{stringliteral}{        """}
-778         with self.table\_access\_condition:
-779             conn = self.\_get\_connection()
-780             c = conn.cursor()
-781             c.execute(\textcolor{stringliteral}{'SELECT * FROM runs LIMIT ?,?;'}, (start, start + count))
-782             results = c.fetchall()
-783             \textcolor{keywordflow}{return} results
-784 
+775     \textcolor{keyword}{def }get\_all\_run\_data(self, start=0, count=1000):
+776         \textcolor{stringliteral}{"""}
+777 \textcolor{stringliteral}{        get all the run data for all task\_group\_ids.}
+778 \textcolor{stringliteral}{        """}
+779         with self.table\_access\_condition:
+780             conn = self.\_get\_connection()
+781             c = conn.cursor()
+782             c.execute(\textcolor{stringliteral}{'SELECT * FROM runs LIMIT ?,?;'}, (start, start + count))
+783             results = c.fetchall()
+784             \textcolor{keywordflow}{return} results
+785 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a6ad4b37c9393559d29d7e0e7a1b93027}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a6ad4b37c9393559d29d7e0e7a1b93027}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!get\+\_\+all\+\_\+task\+\_\+assignments\+\_\+for\+\_\+worker@{get\+\_\+all\+\_\+task\+\_\+assignments\+\_\+for\+\_\+worker}}
@@ -267,32 +267,32 @@ and task_group_id.
 \end{DoxyVerb}
  
 
-Definition at line 885 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 886 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-885     \textcolor{keyword}{def }get\_all\_task\_assignments\_for\_worker(self, worker\_id, task\_group\_id=None):
-886         \textcolor{stringliteral}{"""}
-887 \textcolor{stringliteral}{        get all assignments for a particular worker within a particular run by worker\_id}
-888 \textcolor{stringliteral}{        and task\_group\_id.}
-889 \textcolor{stringliteral}{        """}
-890         task\_group\_id = self.\_force\_task\_group\_id(task\_group\_id)
-891         with self.table\_access\_condition:
-892             conn = self.\_get\_connection()
-893             c = conn.cursor()
-894             c.execute(
-895                 \textcolor{stringliteral}{"""SELECT assignments.assignment\_id, assignments.status,}
-896 \textcolor{stringliteral}{                         assignments.approve\_time, assignments.worker\_id,}
-897 \textcolor{stringliteral}{                         assignments.hit\_id}
-898 \textcolor{stringliteral}{                         FROM assignments}
-899 \textcolor{stringliteral}{                         INNER JOIN hits on assignments.hit\_id = hits.hit\_id}
-900 \textcolor{stringliteral}{                         WHERE assignments.worker\_id = ? AND hits.run\_id = ?;}
-901 \textcolor{stringliteral}{                         """},
-902                 (worker\_id, task\_group\_id),
-903             )
-904             results = c.fetchall()
-905             \textcolor{keywordflow}{return} results
-906 
+886     \textcolor{keyword}{def }get\_all\_task\_assignments\_for\_worker(self, worker\_id, task\_group\_id=None):
+887         \textcolor{stringliteral}{"""}
+888 \textcolor{stringliteral}{        get all assignments for a particular worker within a particular run by worker\_id}
+889 \textcolor{stringliteral}{        and task\_group\_id.}
+890 \textcolor{stringliteral}{        """}
+891         task\_group\_id = self.\_force\_task\_group\_id(task\_group\_id)
+892         with self.table\_access\_condition:
+893             conn = self.\_get\_connection()
+894             c = conn.cursor()
+895             c.execute(
+896                 \textcolor{stringliteral}{"""SELECT assignments.assignment\_id, assignments.status,}
+897 \textcolor{stringliteral}{                         assignments.approve\_time, assignments.worker\_id,}
+898 \textcolor{stringliteral}{                         assignments.hit\_id}
+899 \textcolor{stringliteral}{                         FROM assignments}
+900 \textcolor{stringliteral}{                         INNER JOIN hits on assignments.hit\_id = hits.hit\_id}
+901 \textcolor{stringliteral}{                         WHERE assignments.worker\_id = ? AND hits.run\_id = ?;}
+902 \textcolor{stringliteral}{                         """},
+903                 (worker\_id, task\_group\_id),
+904             )
+905             results = c.fetchall()
+906             \textcolor{keywordflow}{return} results
+907 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a6077d39b847f52f65dc7cedc709ea25c}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a6077d39b847f52f65dc7cedc709ea25c}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!get\+\_\+all\+\_\+task\+\_\+pairings\+\_\+for\+\_\+worker@{get\+\_\+all\+\_\+task\+\_\+pairings\+\_\+for\+\_\+worker}}
@@ -305,27 +305,27 @@ and task_group_id.
 \end{DoxyVerb}
  
 
-Definition at line 907 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 908 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-907     \textcolor{keyword}{def }get\_all\_task\_pairings\_for\_worker(self, worker\_id, task\_group\_id=None):
-908         \textcolor{stringliteral}{"""}
-909 \textcolor{stringliteral}{        get all pairings for a particular worker within a particular run by worker\_id}
-910 \textcolor{stringliteral}{        and task\_group\_id.}
-911 \textcolor{stringliteral}{        """}
-912         task\_group\_id = self.\_force\_task\_group\_id(task\_group\_id)
-913         with self.table\_access\_condition:
-914             conn = self.\_get\_connection()
-915             c = conn.cursor()
-916             c.execute(
-917                 \textcolor{stringliteral}{"""SELECT * FROM pairings WHERE worker\_id = ?}
-918 \textcolor{stringliteral}{                         AND run\_id = ?;"""},
-919                 (worker\_id, task\_group\_id),
-920             )
-921             results = c.fetchall()
-922             \textcolor{keywordflow}{return} results
-923 
+908     \textcolor{keyword}{def }get\_all\_task\_pairings\_for\_worker(self, worker\_id, task\_group\_id=None):
+909         \textcolor{stringliteral}{"""}
+910 \textcolor{stringliteral}{        get all pairings for a particular worker within a particular run by worker\_id}
+911 \textcolor{stringliteral}{        and task\_group\_id.}
+912 \textcolor{stringliteral}{        """}
+913         task\_group\_id = self.\_force\_task\_group\_id(task\_group\_id)
+914         with self.table\_access\_condition:
+915             conn = self.\_get\_connection()
+916             c = conn.cursor()
+917             c.execute(
+918                 \textcolor{stringliteral}{"""SELECT * FROM pairings WHERE worker\_id = ?}
+919 \textcolor{stringliteral}{                         AND run\_id = ?;"""},
+920                 (worker\_id, task\_group\_id),
+921             )
+922             results = c.fetchall()
+923             \textcolor{keywordflow}{return} results
+924 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a188c46e50f06129a289a065809290bf3}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a188c46e50f06129a289a065809290bf3}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!get\+\_\+all\+\_\+worker\+\_\+data@{get\+\_\+all\+\_\+worker\+\_\+data}}
@@ -337,21 +337,21 @@ Definition at line 907 of file mturk\+\_\+data\+\_\+handler.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 706 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 707 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-706     \textcolor{keyword}{def }get\_all\_worker\_data(self, start=0, count=100):
-707         \textcolor{stringliteral}{"""}
-708 \textcolor{stringliteral}{        get all the worker data for all worker\_ids.}
-709 \textcolor{stringliteral}{        """}
-710         with self.table\_access\_condition:
-711             conn = self.\_get\_connection()
-712             c = conn.cursor()
-713             c.execute(\textcolor{stringliteral}{'SELECT * FROM workers LIMIT ?,?;'}, (start, start + count))
-714             results = c.fetchall()
-715             \textcolor{keywordflow}{return} results
-716 
+707     \textcolor{keyword}{def }get\_all\_worker\_data(self, start=0, count=100):
+708         \textcolor{stringliteral}{"""}
+709 \textcolor{stringliteral}{        get all the worker data for all worker\_ids.}
+710 \textcolor{stringliteral}{        """}
+711         with self.table\_access\_condition:
+712             conn = self.\_get\_connection()
+713             c = conn.cursor()
+714             c.execute(\textcolor{stringliteral}{'SELECT * FROM workers LIMIT ?,?;'}, (start, start + count))
+715             results = c.fetchall()
+716             \textcolor{keywordflow}{return} results
+717 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_ab41299fc55cf09e4d0921aac63889a86}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_ab41299fc55cf09e4d0921aac63889a86}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!get\+\_\+assignment\+\_\+data@{get\+\_\+assignment\+\_\+data}}
@@ -363,23 +363,23 @@ Definition at line 706 of file mturk\+\_\+data\+\_\+handler.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 746 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 747 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-746     \textcolor{keyword}{def }get\_assignment\_data(self, assignment\_id):
-747         \textcolor{stringliteral}{"""}
-748 \textcolor{stringliteral}{        get assignment data for a particular assignment by assignment\_id.}
-749 \textcolor{stringliteral}{        """}
-750         with self.table\_access\_condition:
-751             conn = self.\_get\_connection()
-752             c = conn.cursor()
-753             c.execute(
-754                 \textcolor{stringliteral}{'SELECT * FROM assignments WHERE assignment\_id = ?;'}, (assignment\_id,)
-755             )
-756             results = c.fetchone()
-757             \textcolor{keywordflow}{return} results
-758 
+747     \textcolor{keyword}{def }get\_assignment\_data(self, assignment\_id):
+748         \textcolor{stringliteral}{"""}
+749 \textcolor{stringliteral}{        get assignment data for a particular assignment by assignment\_id.}
+750 \textcolor{stringliteral}{        """}
+751         with self.table\_access\_condition:
+752             conn = self.\_get\_connection()
+753             c = conn.cursor()
+754             c.execute(
+755                 \textcolor{stringliteral}{'SELECT * FROM assignments WHERE assignment\_id = ?;'}, (assignment\_id,)
+756             )
+757             results = c.fetchone()
+758             \textcolor{keywordflow}{return} results
+759 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_ad08412db3d132299e287f182fef8b6dc}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_ad08412db3d132299e287f182fef8b6dc}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!get\+\_\+assignments\+\_\+for\+\_\+run@{get\+\_\+assignments\+\_\+for\+\_\+run}}
@@ -391,28 +391,28 @@ Definition at line 746 of file mturk\+\_\+data\+\_\+handler.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 728 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 729 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-728     \textcolor{keyword}{def }get\_assignments\_for\_run(self, task\_group\_id):
-729         \textcolor{stringliteral}{"""}
-730 \textcolor{stringliteral}{        get all assignments for a particular run by task\_group\_id.}
-731 \textcolor{stringliteral}{        """}
-732         with self.table\_access\_condition:
-733             conn = self.\_get\_connection()
-734             c = conn.cursor()
-735             c.execute(
-736                 \textcolor{stringliteral}{"""SELECT assignments.* FROM assignments}
-737 \textcolor{stringliteral}{                         WHERE assignments.hit\_id IN (}
-738 \textcolor{stringliteral}{                           SELECT hits.hit\_id FROM hits}
-739 \textcolor{stringliteral}{                           WHERE hits.run\_id = ?}
-740 \textcolor{stringliteral}{                         );"""},
-741                 (task\_group\_id,),
-742             )
-743             results = c.fetchall()
-744             \textcolor{keywordflow}{return} results
-745 
+729     \textcolor{keyword}{def }get\_assignments\_for\_run(self, task\_group\_id):
+730         \textcolor{stringliteral}{"""}
+731 \textcolor{stringliteral}{        get all assignments for a particular run by task\_group\_id.}
+732 \textcolor{stringliteral}{        """}
+733         with self.table\_access\_condition:
+734             conn = self.\_get\_connection()
+735             c = conn.cursor()
+736             c.execute(
+737                 \textcolor{stringliteral}{"""SELECT assignments.* FROM assignments}
+738 \textcolor{stringliteral}{                         WHERE assignments.hit\_id IN (}
+739 \textcolor{stringliteral}{                           SELECT hits.hit\_id FROM hits}
+740 \textcolor{stringliteral}{                           WHERE hits.run\_id = ?}
+741 \textcolor{stringliteral}{                         );"""},
+742                 (task\_group\_id,),
+743             )
+744             results = c.fetchall()
+745             \textcolor{keywordflow}{return} results
+746 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a0a245b58629056030d5eedfce5c5a985}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a0a245b58629056030d5eedfce5c5a985}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!get\+\_\+conversation\+\_\+data@{get\+\_\+conversation\+\_\+data}}
@@ -424,48 +424,48 @@ Definition at line 728 of file mturk\+\_\+data\+\_\+handler.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 925 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 926 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-925     \textcolor{keyword}{def }get\_conversation\_data(task\_group\_id, conv\_id, worker\_id, is\_sandbox):
-926         \textcolor{stringliteral}{"""}
-927 \textcolor{stringliteral}{        A poorly named function that gets conversation data for a worker.}
-928 \textcolor{stringliteral}{        """}
-929         result = \{
-930             \textcolor{stringliteral}{'had\_data\_dir'}: \textcolor{keyword}{False},
-931             \textcolor{stringliteral}{'had\_run\_dir'}: \textcolor{keyword}{False},
-932             \textcolor{stringliteral}{'had\_conversation\_dir'}: \textcolor{keyword}{False},
-933             \textcolor{stringliteral}{'had\_worker\_dir'}: \textcolor{keyword}{False},
-934             \textcolor{stringliteral}{'had\_worker\_file'}: \textcolor{keyword}{False},
-935             \textcolor{stringliteral}{'data'}: \textcolor{keywordtype}{None},
-936         \}
-937         target = \textcolor{stringliteral}{'sandbox'} \textcolor{keywordflow}{if} is\_sandbox \textcolor{keywordflow}{else} \textcolor{stringliteral}{'live'}
-938         search\_dir = os.path.join(data\_dir, target)
-939         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.exists(search\_dir):
-940             \textcolor{keywordflow}{return} result
-941         result[\textcolor{stringliteral}{'had\_data\_dir'}] = \textcolor{keyword}{True}
-942         search\_dir = os.path.join(search\_dir, task\_group\_id)
-943         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.exists(search\_dir):
-944             \textcolor{keywordflow}{return} result
-945         result[\textcolor{stringliteral}{'had\_run\_dir'}] = \textcolor{keyword}{True}
-946         search\_dir = os.path.join(search\_dir, conv\_id)
-947         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.exists(search\_dir):
-948             \textcolor{keywordflow}{return} result
-949         result[\textcolor{stringliteral}{'had\_conversation\_dir'}] = \textcolor{keyword}{True}
-950         search\_dir = os.path.join(search\_dir, \textcolor{stringliteral}{'workers'})
-951         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.exists(search\_dir):
-952             \textcolor{keywordflow}{return} result
-953         result[\textcolor{stringliteral}{'had\_worker\_dir'}] = \textcolor{keyword}{True}
-954         target\_filename = os.path.join(search\_dir, \textcolor{stringliteral}{'\{\}.json'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(worker\_id))
-955         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.exists(target\_filename):
-956             \textcolor{keywordflow}{return} result
-957         result[\textcolor{stringliteral}{'had\_worker\_file'}] = \textcolor{keyword}{True}
-958         with open(target\_filename, \textcolor{stringliteral}{'r') as target\_file:}
-959 \textcolor{stringliteral}{            result['data'}] = json.load(target\_file)
-960 
-961         \textcolor{keywordflow}{return} result
-962 
+926     \textcolor{keyword}{def }get\_conversation\_data(task\_group\_id, conv\_id, worker\_id, is\_sandbox):
+927         \textcolor{stringliteral}{"""}
+928 \textcolor{stringliteral}{        A poorly named function that gets conversation data for a worker.}
+929 \textcolor{stringliteral}{        """}
+930         result = \{
+931             \textcolor{stringliteral}{'had\_data\_dir'}: \textcolor{keyword}{False},
+932             \textcolor{stringliteral}{'had\_run\_dir'}: \textcolor{keyword}{False},
+933             \textcolor{stringliteral}{'had\_conversation\_dir'}: \textcolor{keyword}{False},
+934             \textcolor{stringliteral}{'had\_worker\_dir'}: \textcolor{keyword}{False},
+935             \textcolor{stringliteral}{'had\_worker\_file'}: \textcolor{keyword}{False},
+936             \textcolor{stringliteral}{'data'}: \textcolor{keywordtype}{None},
+937         \}
+938         target = \textcolor{stringliteral}{'sandbox'} \textcolor{keywordflow}{if} is\_sandbox \textcolor{keywordflow}{else} \textcolor{stringliteral}{'live'}
+939         search\_dir = os.path.join(data\_dir, target)
+940         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.exists(search\_dir):
+941             \textcolor{keywordflow}{return} result
+942         result[\textcolor{stringliteral}{'had\_data\_dir'}] = \textcolor{keyword}{True}
+943         search\_dir = os.path.join(search\_dir, task\_group\_id)
+944         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.exists(search\_dir):
+945             \textcolor{keywordflow}{return} result
+946         result[\textcolor{stringliteral}{'had\_run\_dir'}] = \textcolor{keyword}{True}
+947         search\_dir = os.path.join(search\_dir, conv\_id)
+948         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.exists(search\_dir):
+949             \textcolor{keywordflow}{return} result
+950         result[\textcolor{stringliteral}{'had\_conversation\_dir'}] = \textcolor{keyword}{True}
+951         search\_dir = os.path.join(search\_dir, \textcolor{stringliteral}{'workers'})
+952         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.exists(search\_dir):
+953             \textcolor{keywordflow}{return} result
+954         result[\textcolor{stringliteral}{'had\_worker\_dir'}] = \textcolor{keyword}{True}
+955         target\_filename = os.path.join(search\_dir, \textcolor{stringliteral}{'\{\}.json'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(worker\_id))
+956         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.exists(target\_filename):
+957             \textcolor{keywordflow}{return} result
+958         result[\textcolor{stringliteral}{'had\_worker\_file'}] = \textcolor{keyword}{True}
+959         with open(target\_filename, \textcolor{stringliteral}{'r') as target\_file:}
+960 \textcolor{stringliteral}{            result['data'}] = json.load(target\_file)
+961 
+962         \textcolor{keywordflow}{return} result
+963 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_aac3142a54b238e4d6b976ce657b5f7ac}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_aac3142a54b238e4d6b976ce657b5f7ac}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!get\+\_\+full\+\_\+conversation\+\_\+data@{get\+\_\+full\+\_\+conversation\+\_\+data}}
@@ -477,39 +477,39 @@ Definition at line 925 of file mturk\+\_\+data\+\_\+handler.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 964 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 965 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-964     \textcolor{keyword}{def }get\_full\_conversation\_data(task\_group\_id, conv\_id, is\_sandbox):
-965         \textcolor{stringliteral}{"""}
-966 \textcolor{stringliteral}{        Gets all conversation data saved for a world.}
-967 \textcolor{stringliteral}{        """}
-968         target = \textcolor{stringliteral}{'sandbox'} \textcolor{keywordflow}{if} is\_sandbox \textcolor{keywordflow}{else} \textcolor{stringliteral}{'live'}
-969         return\_data = \{\textcolor{stringliteral}{'custom\_data'}: \{\}, \textcolor{stringliteral}{'worker\_data'}: \{\}\}
-970 
-971         target\_dir = os.path.join(data\_dir, target, task\_group\_id, conv\_id)
-972         target\_dir\_custom = os.path.join(target\_dir, \textcolor{stringliteral}{'custom'})
-973         custom\_file = os.path.join(target\_dir\_custom, \textcolor{stringliteral}{'data.json'})
-974         \textcolor{keywordflow}{if} os.path.exists(custom\_file):
-975             custom\_data = \{\}
-976             with open(custom\_file, \textcolor{stringliteral}{'r') as infile:}
-977 \textcolor{stringliteral}{                custom\_data = json.load(infile)}
-978 \textcolor{stringliteral}{            pickle\_file = os.path.join(target\_dir\_custom, 'data.pickle'})
-979             \textcolor{keywordflow}{if} os.path.exists(pickle\_file):
-980                 with open(pickle\_file, \textcolor{stringliteral}{'rb'}) \textcolor{keyword}{as} infile:
-981                     custom\_data[\textcolor{stringliteral}{'needs-pickle'}] = pickle.load(infile)
-982             return\_data[\textcolor{stringliteral}{'custom\_data'}] = custom\_data
-983 
-984         target\_dir\_workers = os.path.join(target\_dir, \textcolor{stringliteral}{'workers'})
-985         \textcolor{keywordflow}{for} w\_file \textcolor{keywordflow}{in} os.listdir(target\_dir\_workers):
-986             w\_id = w\_file.split(\textcolor{stringliteral}{'.json'})[0]
-987             worker\_file = os.path.join(target\_dir\_workers, w\_file)
-988             with open(worker\_file, \textcolor{stringliteral}{'r') as infile:}
-989 \textcolor{stringliteral}{                return\_data['worker\_data'}][w\_id] = json.load(infile)
-990 
-991         \textcolor{keywordflow}{return} return\_data
-992 \end{DoxyCode}
+965     \textcolor{keyword}{def }get\_full\_conversation\_data(task\_group\_id, conv\_id, is\_sandbox):
+966         \textcolor{stringliteral}{"""}
+967 \textcolor{stringliteral}{        Gets all conversation data saved for a world.}
+968 \textcolor{stringliteral}{        """}
+969         target = \textcolor{stringliteral}{'sandbox'} \textcolor{keywordflow}{if} is\_sandbox \textcolor{keywordflow}{else} \textcolor{stringliteral}{'live'}
+970         return\_data = \{\textcolor{stringliteral}{'custom\_data'}: \{\}, \textcolor{stringliteral}{'worker\_data'}: \{\}\}
+971 
+972         target\_dir = os.path.join(data\_dir, target, task\_group\_id, conv\_id)
+973         target\_dir\_custom = os.path.join(target\_dir, \textcolor{stringliteral}{'custom'})
+974         custom\_file = os.path.join(target\_dir\_custom, \textcolor{stringliteral}{'data.json'})
+975         \textcolor{keywordflow}{if} os.path.exists(custom\_file):
+976             custom\_data = \{\}
+977             with open(custom\_file, \textcolor{stringliteral}{'r') as infile:}
+978 \textcolor{stringliteral}{                custom\_data = json.load(infile)}
+979 \textcolor{stringliteral}{            pickle\_file = os.path.join(target\_dir\_custom, 'data.pickle'})
+980             \textcolor{keywordflow}{if} os.path.exists(pickle\_file):
+981                 with open(pickle\_file, \textcolor{stringliteral}{'rb'}) \textcolor{keyword}{as} infile:
+982                     custom\_data[\textcolor{stringliteral}{'needs-pickle'}] = pickle.load(infile)
+983             return\_data[\textcolor{stringliteral}{'custom\_data'}] = custom\_data
+984 
+985         target\_dir\_workers = os.path.join(target\_dir, \textcolor{stringliteral}{'workers'})
+986         \textcolor{keywordflow}{for} w\_file \textcolor{keywordflow}{in} os.listdir(target\_dir\_workers):
+987             w\_id = w\_file.split(\textcolor{stringliteral}{'.json'})[0]
+988             worker\_file = os.path.join(target\_dir\_workers, w\_file)
+989             with open(worker\_file, \textcolor{stringliteral}{'r') as infile:}
+990 \textcolor{stringliteral}{                return\_data['worker\_data'}][w\_id] = json.load(infile)
+991 
+992         \textcolor{keywordflow}{return} return\_data
+993 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a753c4a107539e6085fb2fd8402ed35e2}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a753c4a107539e6085fb2fd8402ed35e2}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!get\+\_\+hit\+\_\+data@{get\+\_\+hit\+\_\+data}}
 \index{get\+\_\+hit\+\_\+data@{get\+\_\+hit\+\_\+data}!parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}}
@@ -520,21 +520,21 @@ Definition at line 964 of file mturk\+\_\+data\+\_\+handler.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 807 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 808 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-807     \textcolor{keyword}{def }get\_hit\_data(self, hit\_id):
-808         \textcolor{stringliteral}{"""}
-809 \textcolor{stringliteral}{        get the hit data for the given hit\_id, return None if not.}
-810 \textcolor{stringliteral}{        """}
-811         with self.table\_access\_condition:
-812             conn = self.\_get\_connection()
-813             c = conn.cursor()
-814             c.execute(\textcolor{stringliteral}{"SELECT * FROM hits WHERE hit\_id = ?;"}, (hit\_id,))
-815             results = c.fetchone()
-816             \textcolor{keywordflow}{return} results
-817 
+808     \textcolor{keyword}{def }get\_hit\_data(self, hit\_id):
+809         \textcolor{stringliteral}{"""}
+810 \textcolor{stringliteral}{        get the hit data for the given hit\_id, return None if not.}
+811 \textcolor{stringliteral}{        """}
+812         with self.table\_access\_condition:
+813             conn = self.\_get\_connection()
+814             c = conn.cursor()
+815             c.execute(\textcolor{stringliteral}{"SELECT * FROM hits WHERE hit\_id = ?;"}, (hit\_id,))
+816             results = c.fetchone()
+817             \textcolor{keywordflow}{return} results
+818 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a9f4e9c9bec7d5d47efd4492dfb751b5c}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a9f4e9c9bec7d5d47efd4492dfb751b5c}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!get\+\_\+hits\+\_\+for\+\_\+run@{get\+\_\+hits\+\_\+for\+\_\+run}}
@@ -546,21 +546,21 @@ Definition at line 807 of file mturk\+\_\+data\+\_\+handler.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 796 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 797 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-796     \textcolor{keyword}{def }get\_hits\_for\_run(self, run\_id):
-797         \textcolor{stringliteral}{"""}
-798 \textcolor{stringliteral}{        Get the full list of HITs for the given run\_id.}
-799 \textcolor{stringliteral}{        """}
-800         with self.table\_access\_condition:
-801             conn = self.\_get\_connection()
-802             c = conn.cursor()
-803             c.execute(\textcolor{stringliteral}{"SELECT * FROM hits WHERE run\_id = ?;"}, (run\_id,))
-804             results = c.fetchall()
-805             \textcolor{keywordflow}{return} results
-806 
+797     \textcolor{keyword}{def }get\_hits\_for\_run(self, run\_id):
+798         \textcolor{stringliteral}{"""}
+799 \textcolor{stringliteral}{        Get the full list of HITs for the given run\_id.}
+800 \textcolor{stringliteral}{        """}
+801         with self.table\_access\_condition:
+802             conn = self.\_get\_connection()
+803             c = conn.cursor()
+804             c.execute(\textcolor{stringliteral}{"SELECT * FROM hits WHERE run\_id = ?;"}, (run\_id,))
+805             results = c.fetchall()
+806             \textcolor{keywordflow}{return} results
+807 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a092a03e29a20f0b40b9d33e1e002395a}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a092a03e29a20f0b40b9d33e1e002395a}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!get\+\_\+pairings\+\_\+for\+\_\+assignment@{get\+\_\+pairings\+\_\+for\+\_\+assignment}}
@@ -572,23 +572,23 @@ Definition at line 796 of file mturk\+\_\+data\+\_\+handler.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 818 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 819 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-818     \textcolor{keyword}{def }get\_pairings\_for\_assignment(self, assignment\_id):
-819         \textcolor{stringliteral}{"""}
-820 \textcolor{stringliteral}{        get all pairings attached to a particular assignment\_id.}
-821 \textcolor{stringliteral}{        """}
-822         with self.table\_access\_condition:
-823             conn = self.\_get\_connection()
-824             c = conn.cursor()
-825             c.execute(
-826                 \textcolor{stringliteral}{"SELECT * FROM pairings WHERE assignment\_id = ?;"}, (assignment\_id,)
-827             )
-828             results = c.fetchall()
-829             \textcolor{keywordflow}{return} results
-830 
+819     \textcolor{keyword}{def }get\_pairings\_for\_assignment(self, assignment\_id):
+820         \textcolor{stringliteral}{"""}
+821 \textcolor{stringliteral}{        get all pairings attached to a particular assignment\_id.}
+822 \textcolor{stringliteral}{        """}
+823         with self.table\_access\_condition:
+824             conn = self.\_get\_connection()
+825             c = conn.cursor()
+826             c.execute(
+827                 \textcolor{stringliteral}{"SELECT * FROM pairings WHERE assignment\_id = ?;"}, (assignment\_id,)
+828             )
+829             results = c.fetchall()
+830             \textcolor{keywordflow}{return} results
+831 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a7456a75caea9fb681067dee584567f27}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a7456a75caea9fb681067dee584567f27}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!get\+\_\+pairings\+\_\+for\+\_\+conversation@{get\+\_\+pairings\+\_\+for\+\_\+conversation}}
@@ -601,27 +601,27 @@ task_group_id.
 \end{DoxyVerb}
  
 
-Definition at line 846 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 847 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-846     \textcolor{keyword}{def }get\_pairings\_for\_conversation(self, conversation\_id, task\_group\_id=None):
-847         \textcolor{stringliteral}{"""}
-848 \textcolor{stringliteral}{        get all pairings for a singular conversation in a run by conversation\_id and}
-849 \textcolor{stringliteral}{        task\_group\_id.}
-850 \textcolor{stringliteral}{        """}
-851         task\_group\_id = self.\_force\_task\_group\_id(task\_group\_id)
-852         with self.table\_access\_condition:
-853             conn = self.\_get\_connection()
-854             c = conn.cursor()
-855             c.execute(
-856                 \textcolor{stringliteral}{"""SELECT * FROM pairings WHERE conversation\_id = ?}
-857 \textcolor{stringliteral}{                         AND run\_id = ?;"""},
-858                 (conversation\_id, task\_group\_id),
-859             )
-860             results = c.fetchall()
-861             \textcolor{keywordflow}{return} results
-862 
+847     \textcolor{keyword}{def }get\_pairings\_for\_conversation(self, conversation\_id, task\_group\_id=None):
+848         \textcolor{stringliteral}{"""}
+849 \textcolor{stringliteral}{        get all pairings for a singular conversation in a run by conversation\_id and}
+850 \textcolor{stringliteral}{        task\_group\_id.}
+851 \textcolor{stringliteral}{        """}
+852         task\_group\_id = self.\_force\_task\_group\_id(task\_group\_id)
+853         with self.table\_access\_condition:
+854             conn = self.\_get\_connection()
+855             c = conn.cursor()
+856             c.execute(
+857                 \textcolor{stringliteral}{"""SELECT * FROM pairings WHERE conversation\_id = ?}
+858 \textcolor{stringliteral}{                         AND run\_id = ?;"""},
+859                 (conversation\_id, task\_group\_id),
+860             )
+861             results = c.fetchall()
+862             \textcolor{keywordflow}{return} results
+863 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a546d30ff4b76188f71e5309f7a881ab2}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a546d30ff4b76188f71e5309f7a881ab2}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!get\+\_\+pairings\+\_\+for\+\_\+run@{get\+\_\+pairings\+\_\+for\+\_\+run}}
@@ -633,25 +633,25 @@ Definition at line 846 of file mturk\+\_\+data\+\_\+handler.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 831 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 832 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-831     \textcolor{keyword}{def }get\_pairings\_for\_run(self, task\_group\_id):
-832         \textcolor{stringliteral}{"""}
-833 \textcolor{stringliteral}{        get all pairings from a particular run by task\_group\_id.}
-834 \textcolor{stringliteral}{        """}
-835         with self.table\_access\_condition:
-836             conn = self.\_get\_connection()
-837             c = conn.cursor()
-838             c.execute(
-839                 \textcolor{stringliteral}{"""SELECT * FROM pairings}
-840 \textcolor{stringliteral}{                         WHERE run\_id = ?;"""},
-841                 (task\_group\_id,),
-842             )
-843             results = c.fetchall()
-844             \textcolor{keywordflow}{return} results
-845 
+832     \textcolor{keyword}{def }get\_pairings\_for\_run(self, task\_group\_id):
+833         \textcolor{stringliteral}{"""}
+834 \textcolor{stringliteral}{        get all pairings from a particular run by task\_group\_id.}
+835 \textcolor{stringliteral}{        """}
+836         with self.table\_access\_condition:
+837             conn = self.\_get\_connection()
+838             c = conn.cursor()
+839             c.execute(
+840                 \textcolor{stringliteral}{"""SELECT * FROM pairings}
+841 \textcolor{stringliteral}{                         WHERE run\_id = ?;"""},
+842                 (task\_group\_id,),
+843             )
+844             results = c.fetchall()
+845             \textcolor{keywordflow}{return} results
+846 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a3ded92bcc9f19027c452489e2b06d837}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a3ded92bcc9f19027c452489e2b06d837}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!get\+\_\+run\+\_\+data@{get\+\_\+run\+\_\+data}}
@@ -663,21 +663,21 @@ Definition at line 831 of file mturk\+\_\+data\+\_\+handler.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 785 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 786 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-785     \textcolor{keyword}{def }get\_run\_data(self, task\_group\_id):
-786         \textcolor{stringliteral}{"""}
-787 \textcolor{stringliteral}{        get the run data for the given task\_group\_id, return None if not found.}
-788 \textcolor{stringliteral}{        """}
-789         with self.table\_access\_condition:
-790             conn = self.\_get\_connection()
-791             c = conn.cursor()
-792             c.execute(\textcolor{stringliteral}{'SELECT * FROM runs WHERE run\_id = ?;'}, (task\_group\_id,))
-793             results = c.fetchone()
-794             \textcolor{keywordflow}{return} results
-795 
+786     \textcolor{keyword}{def }get\_run\_data(self, task\_group\_id):
+787         \textcolor{stringliteral}{"""}
+788 \textcolor{stringliteral}{        get the run data for the given task\_group\_id, return None if not found.}
+789 \textcolor{stringliteral}{        """}
+790         with self.table\_access\_condition:
+791             conn = self.\_get\_connection()
+792             c = conn.cursor()
+793             c.execute(\textcolor{stringliteral}{'SELECT * FROM runs WHERE run\_id = ?;'}, (task\_group\_id,))
+794             results = c.fetchone()
+795             \textcolor{keywordflow}{return} results
+796 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a91ba12c1bce3f3af8b760eaf1384a8b9}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a91ba12c1bce3f3af8b760eaf1384a8b9}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!get\+\_\+worker\+\_\+assignment\+\_\+pairing@{get\+\_\+worker\+\_\+assignment\+\_\+pairing}}
@@ -689,25 +689,25 @@ Definition at line 785 of file mturk\+\_\+data\+\_\+handler.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 759 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 760 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-759     \textcolor{keyword}{def }get\_worker\_assignment\_pairing(self, worker\_id, assignment\_id):
-760         \textcolor{stringliteral}{"""}
-761 \textcolor{stringliteral}{        get a pairing data structure between a worker and an assignment.}
-762 \textcolor{stringliteral}{        """}
-763         with self.table\_access\_condition:
-764             conn = self.\_get\_connection()
-765             c = conn.cursor()
-766             c.execute(
-767                 \textcolor{stringliteral}{"""SELECT * FROM pairings WHERE worker\_id = ?}
-768 \textcolor{stringliteral}{                         AND assignment\_id = ?;"""},
-769                 (worker\_id, assignment\_id),
-770             )
-771             results = c.fetchone()
-772             \textcolor{keywordflow}{return} results
-773 
+760     \textcolor{keyword}{def }get\_worker\_assignment\_pairing(self, worker\_id, assignment\_id):
+761         \textcolor{stringliteral}{"""}
+762 \textcolor{stringliteral}{        get a pairing data structure between a worker and an assignment.}
+763 \textcolor{stringliteral}{        """}
+764         with self.table\_access\_condition:
+765             conn = self.\_get\_connection()
+766             c = conn.cursor()
+767             c.execute(
+768                 \textcolor{stringliteral}{"""SELECT * FROM pairings WHERE worker\_id = ?}
+769 \textcolor{stringliteral}{                         AND assignment\_id = ?;"""},
+770                 (worker\_id, assignment\_id),
+771             )
+772             results = c.fetchone()
+773             \textcolor{keywordflow}{return} results
+774 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a45c012ee9fa36a52f9286ccc3ab1be3a}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a45c012ee9fa36a52f9286ccc3ab1be3a}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!get\+\_\+worker\+\_\+data@{get\+\_\+worker\+\_\+data}}
@@ -719,21 +719,21 @@ Definition at line 759 of file mturk\+\_\+data\+\_\+handler.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 717 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 718 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-717     \textcolor{keyword}{def }get\_worker\_data(self, worker\_id):
-718         \textcolor{stringliteral}{"""}
-719 \textcolor{stringliteral}{        get all worker data for a particular worker\_id.}
-720 \textcolor{stringliteral}{        """}
-721         with self.table\_access\_condition:
-722             conn = self.\_get\_connection()
-723             c = conn.cursor()
-724             c.execute(\textcolor{stringliteral}{'SELECT * FROM workers WHERE worker\_id = ?;'}, (worker\_id,))
-725             results = c.fetchone()
-726             \textcolor{keywordflow}{return} results
-727 
+718     \textcolor{keyword}{def }get\_worker\_data(self, worker\_id):
+719         \textcolor{stringliteral}{"""}
+720 \textcolor{stringliteral}{        get all worker data for a particular worker\_id.}
+721 \textcolor{stringliteral}{        """}
+722         with self.table\_access\_condition:
+723             conn = self.\_get\_connection()
+724             c = conn.cursor()
+725             c.execute(\textcolor{stringliteral}{'SELECT * FROM workers WHERE worker\_id = ?;'}, (worker\_id,))
+726             results = c.fetchone()
+727             \textcolor{keywordflow}{return} results
+728 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_ab4a4d10fa1923efc5dfdcf2e451c816f}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_ab4a4d10fa1923efc5dfdcf2e451c816f}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!log\+\_\+abandon\+\_\+assignment@{log\+\_\+abandon\+\_\+assignment}}
@@ -745,31 +745,31 @@ Definition at line 717 of file mturk\+\_\+data\+\_\+handler.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 479 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 480 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-479     \textcolor{keyword}{def }log\_abandon\_assignment(self, worker\_id, assignment\_id):
-480         \textcolor{stringliteral}{"""}
-481 \textcolor{stringliteral}{        To be called whenever a worker returns a hit.}
-482 \textcolor{stringliteral}{        """}
-483         with self.table\_access\_condition:
-484             conn = self.\_get\_connection()
-485             c = conn.cursor()
-486             \textcolor{comment}{# update the assignment status to reviewable}
-487             c.execute(
-488                 \textcolor{stringliteral}{"""UPDATE assignments SET status = ?}
-489 \textcolor{stringliteral}{                         WHERE assignment\_id = ?;"""},
-490                 (\textcolor{stringliteral}{'Abandoned'}, assignment\_id),
-491             )
-492             \textcolor{comment}{# Increment worker completed}
-493             c.execute(
-494                 \textcolor{stringliteral}{"""UPDATE workers SET disconnected = disconnected + 1}
-495 \textcolor{stringliteral}{                         WHERE worker\_id = ?;"""},
-496                 (worker\_id,),
-497             )
-498             conn.commit()
-499 
+480     \textcolor{keyword}{def }log\_abandon\_assignment(self, worker\_id, assignment\_id):
+481         \textcolor{stringliteral}{"""}
+482 \textcolor{stringliteral}{        To be called whenever a worker returns a hit.}
+483 \textcolor{stringliteral}{        """}
+484         with self.table\_access\_condition:
+485             conn = self.\_get\_connection()
+486             c = conn.cursor()
+487             \textcolor{comment}{# update the assignment status to reviewable}
+488             c.execute(
+489                 \textcolor{stringliteral}{"""UPDATE assignments SET status = ?}
+490 \textcolor{stringliteral}{                         WHERE assignment\_id = ?;"""},
+491                 (\textcolor{stringliteral}{'Abandoned'}, assignment\_id),
+492             )
+493             \textcolor{comment}{# Increment worker completed}
+494             c.execute(
+495                 \textcolor{stringliteral}{"""UPDATE workers SET disconnected = disconnected + 1}
+496 \textcolor{stringliteral}{                         WHERE worker\_id = ?;"""},
+497                 (worker\_id,),
+498             )
+499             conn.commit()
+500 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_adfbc9d075e9c0ffe22fc203676ad0a77}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_adfbc9d075e9c0ffe22fc203676ad0a77}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!log\+\_\+approve\+\_\+assignment@{log\+\_\+approve\+\_\+assignment}}
@@ -782,54 +782,54 @@ number of accepted assignments.
 \end{DoxyVerb}
  
 
-Definition at line 612 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 613 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-612     \textcolor{keyword}{def }log\_approve\_assignment(self, assignment\_id):
-613         \textcolor{stringliteral}{"""}
-614 \textcolor{stringliteral}{        Update assignment state to reflect approval, update worker state to increment}
-615 \textcolor{stringliteral}{        number of accepted assignments.}
-616 \textcolor{stringliteral}{        """}
-617         with self.table\_access\_condition:
-618             conn = self.\_get\_connection()
-619             c = conn.cursor()
-620 
-621             c.execute(
-622                 \textcolor{stringliteral}{'SELECT * FROM assignments WHERE assignment\_id = ?;'}, (assignment\_id,)
-623             )
-624             assignment = c.fetchone()
-625             \textcolor{keywordflow}{if} assignment \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-626                 \textcolor{keywordflow}{return}
-627             status = assignment[\textcolor{stringliteral}{'status'}]
-628             worker\_id = assignment[\textcolor{stringliteral}{'worker\_id'}]
-629             \textcolor{keywordflow}{if} status == \textcolor{stringliteral}{'Approved'}:
-630                 \textcolor{keywordflow}{return}  \textcolor{comment}{# assign already approved}
-631 
-632             \textcolor{comment}{# handle the approving part}
-633             c.execute(
-634                 \textcolor{stringliteral}{"""UPDATE assignments SET status = ?}
-635 \textcolor{stringliteral}{                         WHERE assignment\_id = ?;"""},
-636                 (\textcolor{stringliteral}{'Approved'}, assignment\_id),
-637             )
-638 
-639             \textcolor{comment}{# This was a rejection override}
-640             \textcolor{keywordflow}{if} status == \textcolor{stringliteral}{'Rejected'}:
-641                 c.execute(
-642                     \textcolor{stringliteral}{"""UPDATE workers SET approved = approved + 1,}
-643 \textcolor{stringliteral}{                             rejected = rejected - 1}
-644 \textcolor{stringliteral}{                             WHERE worker\_id = ?;"""},
-645                     (worker\_id,),
-646                 )
-647             \textcolor{keywordflow}{else}:
-648                 c.execute(
-649                     \textcolor{stringliteral}{"""UPDATE workers SET approved = approved + 1}
-650 \textcolor{stringliteral}{                             WHERE worker\_id = ?;"""},
-651                     (worker\_id,),
-652                 )
-653 
-654             conn.commit()
-655 
+613     \textcolor{keyword}{def }log\_approve\_assignment(self, assignment\_id):
+614         \textcolor{stringliteral}{"""}
+615 \textcolor{stringliteral}{        Update assignment state to reflect approval, update worker state to increment}
+616 \textcolor{stringliteral}{        number of accepted assignments.}
+617 \textcolor{stringliteral}{        """}
+618         with self.table\_access\_condition:
+619             conn = self.\_get\_connection()
+620             c = conn.cursor()
+621 
+622             c.execute(
+623                 \textcolor{stringliteral}{'SELECT * FROM assignments WHERE assignment\_id = ?;'}, (assignment\_id,)
+624             )
+625             assignment = c.fetchone()
+626             \textcolor{keywordflow}{if} assignment \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+627                 \textcolor{keywordflow}{return}
+628             status = assignment[\textcolor{stringliteral}{'status'}]
+629             worker\_id = assignment[\textcolor{stringliteral}{'worker\_id'}]
+630             \textcolor{keywordflow}{if} status == \textcolor{stringliteral}{'Approved'}:
+631                 \textcolor{keywordflow}{return}  \textcolor{comment}{# assign already approved}
+632 
+633             \textcolor{comment}{# handle the approving part}
+634             c.execute(
+635                 \textcolor{stringliteral}{"""UPDATE assignments SET status = ?}
+636 \textcolor{stringliteral}{                         WHERE assignment\_id = ?;"""},
+637                 (\textcolor{stringliteral}{'Approved'}, assignment\_id),
+638             )
+639 
+640             \textcolor{comment}{# This was a rejection override}
+641             \textcolor{keywordflow}{if} status == \textcolor{stringliteral}{'Rejected'}:
+642                 c.execute(
+643                     \textcolor{stringliteral}{"""UPDATE workers SET approved = approved + 1,}
+644 \textcolor{stringliteral}{                             rejected = rejected - 1}
+645 \textcolor{stringliteral}{                             WHERE worker\_id = ?;"""},
+646                     (worker\_id,),
+647                 )
+648             \textcolor{keywordflow}{else}:
+649                 c.execute(
+650                     \textcolor{stringliteral}{"""UPDATE workers SET approved = approved + 1}
+651 \textcolor{stringliteral}{                             WHERE worker\_id = ?;"""},
+652                     (worker\_id,),
+653                 )
+654 
+655             conn.commit()
+656 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a399c5d70b0e2509b061f0d0f627a3f01}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a399c5d70b0e2509b061f0d0f627a3f01}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!log\+\_\+award\+\_\+amount@{log\+\_\+award\+\_\+amount}}
@@ -843,30 +843,30 @@ To be used for automatic evaluation bonuses
 \end{DoxyVerb}
  
 
-Definition at line 556 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 557 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-556     \textcolor{keyword}{def }log\_award\_amount(self, worker\_id, assignment\_id, amount, reason):
-557         \textcolor{stringliteral}{"""}
-558 \textcolor{stringliteral}{        Update a pairing state to add a task bonus to be paid, appends reason.}
-559 \textcolor{stringliteral}{}
-560 \textcolor{stringliteral}{        To be used for automatic evaluation bonuses}
-561 \textcolor{stringliteral}{        """}
-562         with self.table\_access\_condition:
-563             conn = self.\_get\_connection()
-564             c = conn.cursor()
-565             reason = \textcolor{stringliteral}{"$\{\} for \{\}\(\backslash\)n"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(amount, reason)
-566             \textcolor{comment}{# Bonus amount is stored in a cents int in the SQL table}
-567             cent\_amount = \hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(amount * 100)
-568             c.execute(
-569                 \textcolor{stringliteral}{"""UPDATE pairings SET bonus\_amount = bonus\_amount + ?,}
-570 \textcolor{stringliteral}{                        bonus\_text = bonus\_text || ?}
-571 \textcolor{stringliteral}{                         WHERE worker\_id = ? AND assignment\_id = ?;"""},
-572                 (cent\_amount, reason, worker\_id, assignment\_id),
-573             )
-574             conn.commit()
-575 
+557     \textcolor{keyword}{def }log\_award\_amount(self, worker\_id, assignment\_id, amount, reason):
+558         \textcolor{stringliteral}{"""}
+559 \textcolor{stringliteral}{        Update a pairing state to add a task bonus to be paid, appends reason.}
+560 \textcolor{stringliteral}{}
+561 \textcolor{stringliteral}{        To be used for automatic evaluation bonuses}
+562 \textcolor{stringliteral}{        """}
+563         with self.table\_access\_condition:
+564             conn = self.\_get\_connection()
+565             c = conn.cursor()
+566             reason = \textcolor{stringliteral}{"$\{\} for \{\}\(\backslash\)n"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(amount, reason)
+567             \textcolor{comment}{# Bonus amount is stored in a cents int in the SQL table}
+568             cent\_amount = \hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(amount * 100)
+569             c.execute(
+570                 \textcolor{stringliteral}{"""UPDATE pairings SET bonus\_amount = bonus\_amount + ?,}
+571 \textcolor{stringliteral}{                        bonus\_text = bonus\_text || ?}
+572 \textcolor{stringliteral}{                         WHERE worker\_id = ? AND assignment\_id = ?;"""},
+573                 (cent\_amount, reason, worker\_id, assignment\_id),
+574             )
+575             conn.commit()
+576 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_af62327d533f06297786cd37c8833289a}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_af62327d533f06297786cd37c8833289a}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!log\+\_\+bonus\+\_\+paid@{log\+\_\+bonus\+\_\+paid}}
@@ -879,25 +879,25 @@ been paid.
 \end{DoxyVerb}
  
 
-Definition at line 597 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 598 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-597     \textcolor{keyword}{def }log\_bonus\_paid(self, worker\_id, assignment\_id):
-598         \textcolor{stringliteral}{"""}
-599 \textcolor{stringliteral}{        Update to show that the intended bonus amount awarded for work in the task has}
-600 \textcolor{stringliteral}{        been paid.}
-601 \textcolor{stringliteral}{        """}
-602         with self.table\_access\_condition:
-603             conn = self.\_get\_connection()
-604             c = conn.cursor()
-605             c.execute(
-606                 \textcolor{stringliteral}{"""UPDATE pairings SET bonus\_paid = ?}
-607 \textcolor{stringliteral}{                         WHERE worker\_id = ? AND assignment\_id = ?;"""},
-608                 (\textcolor{keyword}{True}, worker\_id, assignment\_id),
-609             )
-610             conn.commit()
-611 
+598     \textcolor{keyword}{def }log\_bonus\_paid(self, worker\_id, assignment\_id):
+599         \textcolor{stringliteral}{"""}
+600 \textcolor{stringliteral}{        Update to show that the intended bonus amount awarded for work in the task has}
+601 \textcolor{stringliteral}{        been paid.}
+602 \textcolor{stringliteral}{        """}
+603         with self.table\_access\_condition:
+604             conn = self.\_get\_connection()
+605             c = conn.cursor()
+606             c.execute(
+607                 \textcolor{stringliteral}{"""UPDATE pairings SET bonus\_paid = ?}
+608 \textcolor{stringliteral}{                         WHERE worker\_id = ? AND assignment\_id = ?;"""},
+609                 (\textcolor{keyword}{True}, worker\_id, assignment\_id),
+610             )
+611             conn.commit()
+612 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a78a1aacc3cce8b8afd0153ad68c09baf}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a78a1aacc3cce8b8afd0153ad68c09baf}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!log\+\_\+complete\+\_\+assignment@{log\+\_\+complete\+\_\+assignment}}
@@ -909,47 +909,47 @@ Definition at line 597 of file mturk\+\_\+data\+\_\+handler.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 346 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 347 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-346     ):
-347         \textcolor{stringliteral}{"""}
-348 \textcolor{stringliteral}{        Note that an assignment was completed.}
-349 \textcolor{stringliteral}{        """}
-350         task\_group\_id = self.\_force\_task\_group\_id(task\_group\_id)
-351         with self.table\_access\_condition:
-352             conn = self.\_get\_connection()
-353             c = conn.cursor()
-354             \textcolor{comment}{# Update assign data to completed}
-355             c.execute(
-356                 \textcolor{stringliteral}{"""UPDATE assignments SET status = ?, approve\_time = ?}
-357 \textcolor{stringliteral}{                         WHERE assignment\_id = ?;"""},
-358                 (\textcolor{stringliteral}{'Completed'}, approve\_time, assignment\_id),
-359             )
-360 
-361             \textcolor{comment}{# Increment worker completed}
-362             c.execute(
-363                 \textcolor{stringliteral}{"""UPDATE workers SET completed = completed + 1}
-364 \textcolor{stringliteral}{                         WHERE worker\_id = ?;"""},
-365                 (worker\_id,),
-366             )
-367 
-368             \textcolor{comment}{# update the payment data status}
-369             c.execute(
-370                 \textcolor{stringliteral}{"""UPDATE pairings SET status = ?, task\_end = ?}
-371 \textcolor{stringliteral}{                         WHERE worker\_id = ? AND assignment\_id = ?;"""},
-372                 (complete\_type, time.time(), worker\_id, assignment\_id),
-373             )
-374 
-375             \textcolor{comment}{# Update run data to have another completed}
-376             c.execute(
-377                 \textcolor{stringliteral}{"""UPDATE runs SET completed = completed + 1}
-378 \textcolor{stringliteral}{                         WHERE run\_id = ?;"""},
-379                 (task\_group\_id,),
-380             )
-381             conn.commit()
-382 
+347     ):
+348         \textcolor{stringliteral}{"""}
+349 \textcolor{stringliteral}{        Note that an assignment was completed.}
+350 \textcolor{stringliteral}{        """}
+351         task\_group\_id = self.\_force\_task\_group\_id(task\_group\_id)
+352         with self.table\_access\_condition:
+353             conn = self.\_get\_connection()
+354             c = conn.cursor()
+355             \textcolor{comment}{# Update assign data to completed}
+356             c.execute(
+357                 \textcolor{stringliteral}{"""UPDATE assignments SET status = ?, approve\_time = ?}
+358 \textcolor{stringliteral}{                         WHERE assignment\_id = ?;"""},
+359                 (\textcolor{stringliteral}{'Completed'}, approve\_time, assignment\_id),
+360             )
+361 
+362             \textcolor{comment}{# Increment worker completed}
+363             c.execute(
+364                 \textcolor{stringliteral}{"""UPDATE workers SET completed = completed + 1}
+365 \textcolor{stringliteral}{                         WHERE worker\_id = ?;"""},
+366                 (worker\_id,),
+367             )
+368 
+369             \textcolor{comment}{# update the payment data status}
+370             c.execute(
+371                 \textcolor{stringliteral}{"""UPDATE pairings SET status = ?, task\_end = ?}
+372 \textcolor{stringliteral}{                         WHERE worker\_id = ? AND assignment\_id = ?;"""},
+373                 (complete\_type, time.time(), worker\_id, assignment\_id),
+374             )
+375 
+376             \textcolor{comment}{# Update run data to have another completed}
+377             c.execute(
+378                 \textcolor{stringliteral}{"""UPDATE runs SET completed = completed + 1}
+379 \textcolor{stringliteral}{                         WHERE run\_id = ?;"""},
+380                 (task\_group\_id,),
+381             )
+382             conn.commit()
+383 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_ac4dc07d7412b426c29678b517daf6094}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_ac4dc07d7412b426c29678b517daf6094}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!log\+\_\+disconnect\+\_\+assignment@{log\+\_\+disconnect\+\_\+assignment}}
@@ -961,47 +961,47 @@ Definition at line 346 of file mturk\+\_\+data\+\_\+handler.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 390 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 391 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-390     ):
-391         \textcolor{stringliteral}{"""}
-392 \textcolor{stringliteral}{        Note that an assignment was disconnected from.}
-393 \textcolor{stringliteral}{        """}
-394         task\_group\_id = self.\_force\_task\_group\_id(task\_group\_id)
-395         with self.table\_access\_condition:
-396             conn = self.\_get\_connection()
-397             c = conn.cursor()
-398 
-399             \textcolor{comment}{# Update assign data to completed for this task (we can't track)}
-400             c.execute(
-401                 \textcolor{stringliteral}{"""UPDATE assignments SET status = ?, approve\_time = ?}
-402 \textcolor{stringliteral}{                         WHERE assignment\_id = ?;"""},
-403                 (\textcolor{stringliteral}{'Disconnected'}, approve\_time, assignment\_id),
-404             )
-405 
-406             \textcolor{comment}{# Increment worker disconnected}
-407             c.execute(
-408                 \textcolor{stringliteral}{"""UPDATE workers SET disconnected = disconnected + 1}
-409 \textcolor{stringliteral}{                         WHERE worker\_id = ?;"""},
-410                 (worker\_id,),
-411             )
-412 
-413             \textcolor{comment}{# update the pairing status}
-414             c.execute(
-415                 \textcolor{stringliteral}{"""UPDATE pairings SET status = ?, task\_end = ?}
-416 \textcolor{stringliteral}{                         WHERE worker\_id = ? AND assignment\_id = ?;"""},
-417                 (disconnect\_type, time.time(), worker\_id, assignment\_id),
-418             )
-419 
-420             \textcolor{comment}{# Update run data to have another completed}
-421             c.execute(
-422                 \textcolor{stringliteral}{'UPDATE runs SET failed = failed + 1 WHERE run\_id = ?;'},
-423                 (task\_group\_id,),
-424             )
-425             conn.commit()
-426 
+391     ):
+392         \textcolor{stringliteral}{"""}
+393 \textcolor{stringliteral}{        Note that an assignment was disconnected from.}
+394 \textcolor{stringliteral}{        """}
+395         task\_group\_id = self.\_force\_task\_group\_id(task\_group\_id)
+396         with self.table\_access\_condition:
+397             conn = self.\_get\_connection()
+398             c = conn.cursor()
+399 
+400             \textcolor{comment}{# Update assign data to completed for this task (we can't track)}
+401             c.execute(
+402                 \textcolor{stringliteral}{"""UPDATE assignments SET status = ?, approve\_time = ?}
+403 \textcolor{stringliteral}{                         WHERE assignment\_id = ?;"""},
+404                 (\textcolor{stringliteral}{'Disconnected'}, approve\_time, assignment\_id),
+405             )
+406 
+407             \textcolor{comment}{# Increment worker disconnected}
+408             c.execute(
+409                 \textcolor{stringliteral}{"""UPDATE workers SET disconnected = disconnected + 1}
+410 \textcolor{stringliteral}{                         WHERE worker\_id = ?;"""},
+411                 (worker\_id,),
+412             )
+413 
+414             \textcolor{comment}{# update the pairing status}
+415             c.execute(
+416                 \textcolor{stringliteral}{"""UPDATE pairings SET status = ?, task\_end = ?}
+417 \textcolor{stringliteral}{                         WHERE worker\_id = ? AND assignment\_id = ?;"""},
+418                 (disconnect\_type, time.time(), worker\_id, assignment\_id),
+419             )
+420 
+421             \textcolor{comment}{# Update run data to have another completed}
+422             c.execute(
+423                 \textcolor{stringliteral}{'UPDATE runs SET failed = failed + 1 WHERE run\_id = ?;'},
+424                 (task\_group\_id,),
+425             )
+426             conn.commit()
+427 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a9395320d0c2a2f00416acd381b5ae0ba}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a9395320d0c2a2f00416acd381b5ae0ba}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!log\+\_\+expire\+\_\+assignment@{log\+\_\+expire\+\_\+assignment}}
@@ -1013,47 +1013,47 @@ Definition at line 390 of file mturk\+\_\+data\+\_\+handler.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 427 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 428 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-427     \textcolor{keyword}{def }log\_expire\_assignment(self, worker\_id, assignment\_id, task\_group\_id=None):
-428         \textcolor{stringliteral}{"""}
-429 \textcolor{stringliteral}{        Note that an assignment was expired by us.}
-430 \textcolor{stringliteral}{        """}
-431         task\_group\_id = self.\_force\_task\_group\_id(task\_group\_id)
-432         with self.table\_access\_condition:
-433             conn = self.\_get\_connection()
-434             c = conn.cursor()
-435 
-436             \textcolor{comment}{# Update assign data to expired}
-437             c.execute(
-438                 \textcolor{stringliteral}{"""UPDATE assignments SET status = ?}
-439 \textcolor{stringliteral}{                         WHERE assignment\_id = ?;"""},
-440                 (\textcolor{stringliteral}{'Expired'}, assignment\_id),
-441             )
-442 
-443             \textcolor{comment}{# Increment worker completed}
-444             c.execute(
-445                 \textcolor{stringliteral}{"""UPDATE workers SET expired = expired + 1}
-446 \textcolor{stringliteral}{                         WHERE worker\_id = ?;"""},
-447                 (worker\_id,),
-448             )
-449 
-450             \textcolor{comment}{# update the pairing status}
-451             c.execute(
-452                 \textcolor{stringliteral}{"""UPDATE pairings SET status = ?, task\_end = ?}
-453 \textcolor{stringliteral}{                         WHERE worker\_id = ? AND assignment\_id = ?;"""},
-454                 (AssignState.STATUS\_EXPIRED, time.time(), worker\_id, assignment\_id),
-455             )
-456 
-457             \textcolor{comment}{# Update run data to have another completed}
-458             c.execute(
-459                 \textcolor{stringliteral}{'UPDATE runs SET failed = failed + 1 WHERE run\_id = ?;'},
-460                 (task\_group\_id,),
-461             )
-462             conn.commit()
-463 
+428     \textcolor{keyword}{def }log\_expire\_assignment(self, worker\_id, assignment\_id, task\_group\_id=None):
+429         \textcolor{stringliteral}{"""}
+430 \textcolor{stringliteral}{        Note that an assignment was expired by us.}
+431 \textcolor{stringliteral}{        """}
+432         task\_group\_id = self.\_force\_task\_group\_id(task\_group\_id)
+433         with self.table\_access\_condition:
+434             conn = self.\_get\_connection()
+435             c = conn.cursor()
+436 
+437             \textcolor{comment}{# Update assign data to expired}
+438             c.execute(
+439                 \textcolor{stringliteral}{"""UPDATE assignments SET status = ?}
+440 \textcolor{stringliteral}{                         WHERE assignment\_id = ?;"""},
+441                 (\textcolor{stringliteral}{'Expired'}, assignment\_id),
+442             )
+443 
+444             \textcolor{comment}{# Increment worker completed}
+445             c.execute(
+446                 \textcolor{stringliteral}{"""UPDATE workers SET expired = expired + 1}
+447 \textcolor{stringliteral}{                         WHERE worker\_id = ?;"""},
+448                 (worker\_id,),
+449             )
+450 
+451             \textcolor{comment}{# update the pairing status}
+452             c.execute(
+453                 \textcolor{stringliteral}{"""UPDATE pairings SET status = ?, task\_end = ?}
+454 \textcolor{stringliteral}{                         WHERE worker\_id = ? AND assignment\_id = ?;"""},
+455                 (AssignState.STATUS\_EXPIRED, time.time(), worker\_id, assignment\_id),
+456             )
+457 
+458             \textcolor{comment}{# Update run data to have another completed}
+459             c.execute(
+460                 \textcolor{stringliteral}{'UPDATE runs SET failed = failed + 1 WHERE run\_id = ?;'},
+461                 (task\_group\_id,),
+462             )
+463             conn.commit()
+464 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a2e2a4005391d49b70050c73315424f5a}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a2e2a4005391d49b70050c73315424f5a}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!log\+\_\+finish\+\_\+onboard@{log\+\_\+finish\+\_\+onboard}}
@@ -1065,24 +1065,24 @@ Definition at line 427 of file mturk\+\_\+data\+\_\+handler.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 521 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 522 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-521     \textcolor{keyword}{def }log\_finish\_onboard(self, worker\_id, assignment\_id):
-522         \textcolor{stringliteral}{"""}
-523 \textcolor{stringliteral}{        Update a pairing state to reflect waiting status.}
-524 \textcolor{stringliteral}{        """}
-525         with self.table\_access\_condition:
-526             conn = self.\_get\_connection()
-527             c = conn.cursor()
-528             c.execute(
-529                 \textcolor{stringliteral}{"""UPDATE pairings SET status = ?, onboarding\_end = ?}
-530 \textcolor{stringliteral}{                         WHERE worker\_id = ? AND assignment\_id = ?;"""},
-531                 (AssignState.STATUS\_WAITING, time.time(), worker\_id, assignment\_id),
-532             )
-533             conn.commit()
-534 
+522     \textcolor{keyword}{def }log\_finish\_onboard(self, worker\_id, assignment\_id):
+523         \textcolor{stringliteral}{"""}
+524 \textcolor{stringliteral}{        Update a pairing state to reflect waiting status.}
+525 \textcolor{stringliteral}{        """}
+526         with self.table\_access\_condition:
+527             conn = self.\_get\_connection()
+528             c = conn.cursor()
+529             c.execute(
+530                 \textcolor{stringliteral}{"""UPDATE pairings SET status = ?, onboarding\_end = ?}
+531 \textcolor{stringliteral}{                         WHERE worker\_id = ? AND assignment\_id = ?;"""},
+532                 (AssignState.STATUS\_WAITING, time.time(), worker\_id, assignment\_id),
+533             )
+534             conn.commit()
+535 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_acfa910fb6805c19a8693b7688f1fb133}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_acfa910fb6805c19a8693b7688f1fb133}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!log\+\_\+hit\+\_\+status@{log\+\_\+hit\+\_\+status}}
@@ -1094,49 +1094,49 @@ Definition at line 521 of file mturk\+\_\+data\+\_\+handler.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 244 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 245 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-244     \textcolor{keyword}{def }log\_hit\_status(self, mturk\_hit\_creation\_response, task\_group\_id=None):
-245         \textcolor{stringliteral}{"""}
-246 \textcolor{stringliteral}{        Create or update an entry in the hit status table.}
-247 \textcolor{stringliteral}{        """}
-248         task\_group\_id = self.\_force\_task\_group\_id(task\_group\_id)
-249 
-250         hit\_details = mturk\_hit\_creation\_response[\textcolor{stringliteral}{'HIT'}]
-251         id = hit\_details[\textcolor{stringliteral}{'HITId'}]
-252         expiration = time.mktime(hit\_details[\textcolor{stringliteral}{'Expiration'}].timetuple())
-253         status = hit\_details[\textcolor{stringliteral}{'HITStatus'}]
-254         assignments\_pending = hit\_details[\textcolor{stringliteral}{'NumberOfAssignmentsPending'}]
-255         assignments\_available = hit\_details[\textcolor{stringliteral}{'NumberOfAssignmentsAvailable'}]
-256         assignments\_complete = hit\_details[\textcolor{stringliteral}{'NumberOfAssignmentsCompleted'}]
-257         with self.table\_access\_condition:
-258             conn = self.\_get\_connection()
-259             c = conn.cursor()
-260             c.execute(\textcolor{stringliteral}{'SELECT COUNT(*) FROM hits WHERE hit\_id = ?;'}, (id,))
-261             is\_new\_hit = c.fetchone()[0] == 0
-262             \textcolor{keywordflow}{if} is\_new\_hit:
-263                 c.execute(
-264                     \textcolor{stringliteral}{"""UPDATE runs SET created = created + 1}
-265 \textcolor{stringliteral}{                             WHERE run\_id = ?;"""},
-266                     (task\_group\_id,),
-267                 )
-268 
-269             c.execute(
-270                 \textcolor{stringliteral}{'REPLACE INTO hits VALUES (?,?,?,?,?,?,?);'},
-271                 (
-272                     id,
-273                     expiration,
-274                     status,
-275                     assignments\_pending,
-276                     assignments\_available,
-277                     assignments\_complete,
-278                     task\_group\_id,
-279                 ),
-280             )
-281             conn.commit()
-282 
+245     \textcolor{keyword}{def }log\_hit\_status(self, mturk\_hit\_creation\_response, task\_group\_id=None):
+246         \textcolor{stringliteral}{"""}
+247 \textcolor{stringliteral}{        Create or update an entry in the hit status table.}
+248 \textcolor{stringliteral}{        """}
+249         task\_group\_id = self.\_force\_task\_group\_id(task\_group\_id)
+250 
+251         hit\_details = mturk\_hit\_creation\_response[\textcolor{stringliteral}{'HIT'}]
+252         id = hit\_details[\textcolor{stringliteral}{'HITId'}]
+253         expiration = time.mktime(hit\_details[\textcolor{stringliteral}{'Expiration'}].timetuple())
+254         status = hit\_details[\textcolor{stringliteral}{'HITStatus'}]
+255         assignments\_pending = hit\_details[\textcolor{stringliteral}{'NumberOfAssignmentsPending'}]
+256         assignments\_available = hit\_details[\textcolor{stringliteral}{'NumberOfAssignmentsAvailable'}]
+257         assignments\_complete = hit\_details[\textcolor{stringliteral}{'NumberOfAssignmentsCompleted'}]
+258         with self.table\_access\_condition:
+259             conn = self.\_get\_connection()
+260             c = conn.cursor()
+261             c.execute(\textcolor{stringliteral}{'SELECT COUNT(*) FROM hits WHERE hit\_id = ?;'}, (id,))
+262             is\_new\_hit = c.fetchone()[0] == 0
+263             \textcolor{keywordflow}{if} is\_new\_hit:
+264                 c.execute(
+265                     \textcolor{stringliteral}{"""UPDATE runs SET created = created + 1}
+266 \textcolor{stringliteral}{                             WHERE run\_id = ?;"""},
+267                     (task\_group\_id,),
+268                 )
+269 
+270             c.execute(
+271                 \textcolor{stringliteral}{'REPLACE INTO hits VALUES (?,?,?,?,?,?,?);'},
+272                 (
+273                     id,
+274                     expiration,
+275                     status,
+276                     assignments\_pending,
+277                     assignments\_available,
+278                     assignments\_complete,
+279                     task\_group\_id,
+280                 ),
+281             )
+282             conn.commit()
+283 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a33facd12d38fa532a28a113b909073a6}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a33facd12d38fa532a28a113b909073a6}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!log\+\_\+new\+\_\+run@{log\+\_\+new\+\_\+run}}
@@ -1148,24 +1148,24 @@ Definition at line 244 of file mturk\+\_\+data\+\_\+handler.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 230 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 231 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-230     \textcolor{keyword}{def }log\_new\_run(self, target\_hits, taskname, task\_group\_id=None):
-231         \textcolor{stringliteral}{"""}
-232 \textcolor{stringliteral}{        Add a new run to the runs table.}
-233 \textcolor{stringliteral}{        """}
-234         with self.table\_access\_condition:
-235             task\_group\_id = self.\_force\_task\_group\_id(task\_group\_id)
-236             conn = self.\_get\_connection()
-237             c = conn.cursor()
-238             c.execute(
-239                 \textcolor{stringliteral}{'INSERT INTO runs VALUES (?,?,?,?,?,?,?);'},
-240                 (task\_group\_id, 0, target\_hits, 0, 0, taskname, time.time()),
-241             )
-242             conn.commit()
-243 
+231     \textcolor{keyword}{def }log\_new\_run(self, target\_hits, taskname, task\_group\_id=None):
+232         \textcolor{stringliteral}{"""}
+233 \textcolor{stringliteral}{        Add a new run to the runs table.}
+234 \textcolor{stringliteral}{        """}
+235         with self.table\_access\_condition:
+236             task\_group\_id = self.\_force\_task\_group\_id(task\_group\_id)
+237             conn = self.\_get\_connection()
+238             c = conn.cursor()
+239             c.execute(
+240                 \textcolor{stringliteral}{'INSERT INTO runs VALUES (?,?,?,?,?,?,?);'},
+241                 (task\_group\_id, 0, target\_hits, 0, 0, taskname, time.time()),
+242             )
+243             conn.commit()
+244 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a8924cb67f6d2e884091eadc0235dd209}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a8924cb67f6d2e884091eadc0235dd209}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!log\+\_\+pay\+\_\+extra\+\_\+bonus@{log\+\_\+pay\+\_\+extra\+\_\+bonus}}
@@ -1179,31 +1179,31 @@ To be used for extra bonuses awarded at the discretion of the requester
 \end{DoxyVerb}
  
 
-Definition at line 576 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 577 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-576     \textcolor{keyword}{def }log\_pay\_extra\_bonus(self, worker\_id, assignment\_id, amount, reason):
-577         \textcolor{stringliteral}{"""}
-578 \textcolor{stringliteral}{        Update a pairing state to add a bonus to be paid, appends reason.}
-579 \textcolor{stringliteral}{}
-580 \textcolor{stringliteral}{        To be used for extra bonuses awarded at the discretion of the requester}
-581 \textcolor{stringliteral}{        """}
-582         with self.table\_access\_condition:
-583             conn = self.\_get\_connection()
-584             c = conn.cursor()
-585             reason = \textcolor{stringliteral}{"$\{\} for \{\}\(\backslash\)n"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(amount, reason)
-586             \textcolor{comment}{# Bonus amount is stored in a cents int in the SQL table}
-587             cent\_amount = \hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(amount * 100)
-588             c.execute(
-589                 \textcolor{stringliteral}{"""UPDATE pairings}
-590 \textcolor{stringliteral}{                        SET extra\_bonus\_amount = extra\_bonus\_amount + ?,}
-591 \textcolor{stringliteral}{                        extra\_bonus\_text = extra\_bonus\_text || ?}
-592 \textcolor{stringliteral}{                         WHERE worker\_id = ? AND assignment\_id = ?;"""},
-593                 (cent\_amount, reason, worker\_id, assignment\_id),
-594             )
-595             conn.commit()
-596 
+577     \textcolor{keyword}{def }log\_pay\_extra\_bonus(self, worker\_id, assignment\_id, amount, reason):
+578         \textcolor{stringliteral}{"""}
+579 \textcolor{stringliteral}{        Update a pairing state to add a bonus to be paid, appends reason.}
+580 \textcolor{stringliteral}{}
+581 \textcolor{stringliteral}{        To be used for extra bonuses awarded at the discretion of the requester}
+582 \textcolor{stringliteral}{        """}
+583         with self.table\_access\_condition:
+584             conn = self.\_get\_connection()
+585             c = conn.cursor()
+586             reason = \textcolor{stringliteral}{"$\{\} for \{\}\(\backslash\)n"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(amount, reason)
+587             \textcolor{comment}{# Bonus amount is stored in a cents int in the SQL table}
+588             cent\_amount = \hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(amount * 100)
+589             c.execute(
+590                 \textcolor{stringliteral}{"""UPDATE pairings}
+591 \textcolor{stringliteral}{                        SET extra\_bonus\_amount = extra\_bonus\_amount + ?,}
+592 \textcolor{stringliteral}{                        extra\_bonus\_text = extra\_bonus\_text || ?}
+593 \textcolor{stringliteral}{                         WHERE worker\_id = ? AND assignment\_id = ?;"""},
+594                 (cent\_amount, reason, worker\_id, assignment\_id),
+595             )
+596             conn.commit()
+597 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a9bf202898899acbf690a2633a32b89da}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a9bf202898899acbf690a2633a32b89da}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!log\+\_\+reject\+\_\+assignment@{log\+\_\+reject\+\_\+assignment}}
@@ -1216,40 +1216,40 @@ number of rejected assignments.
 \end{DoxyVerb}
  
 
-Definition at line 656 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 657 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-656     \textcolor{keyword}{def }log\_reject\_assignment(self, assignment\_id):
-657         \textcolor{stringliteral}{"""}
-658 \textcolor{stringliteral}{        Update assignment state to reflect rejection, update worker state to increment}
-659 \textcolor{stringliteral}{        number of rejected assignments.}
-660 \textcolor{stringliteral}{        """}
-661         with self.table\_access\_condition:
-662             conn = self.\_get\_connection()
-663             c = conn.cursor()
-664             c.execute(
-665                 \textcolor{stringliteral}{"""UPDATE assignments SET status = ?}
-666 \textcolor{stringliteral}{                         WHERE assignment\_id = ? AND status != ?;"""},
-667                 (\textcolor{stringliteral}{'Rejected'}, assignment\_id, \textcolor{stringliteral}{'Rejected'}),
-668             )
-669             \textcolor{comment}{# If this reject actually happened, update worker's rejections}
-670             \textcolor{keywordflow}{if} c.rowcount > 0:
-671                 c.execute(
-672                     \textcolor{stringliteral}{'SELECT * FROM assignments WHERE assignment\_id = ?;'},
-673                     (assignment\_id,),
-674                 )
-675                 assignment = c.fetchone()
-676                 \textcolor{keywordflow}{if} assignment \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-677                     \textcolor{keywordflow}{return}
-678                 worker\_id = assignment[\textcolor{stringliteral}{'worker\_id'}]
-679                 c.execute(
-680                     \textcolor{stringliteral}{"""UPDATE workers SET rejected = rejected + 1}
-681 \textcolor{stringliteral}{                             WHERE worker\_id = ?;"""},
-682                     (worker\_id,),
-683                 )
-684             conn.commit()
-685 
+657     \textcolor{keyword}{def }log\_reject\_assignment(self, assignment\_id):
+658         \textcolor{stringliteral}{"""}
+659 \textcolor{stringliteral}{        Update assignment state to reflect rejection, update worker state to increment}
+660 \textcolor{stringliteral}{        number of rejected assignments.}
+661 \textcolor{stringliteral}{        """}
+662         with self.table\_access\_condition:
+663             conn = self.\_get\_connection()
+664             c = conn.cursor()
+665             c.execute(
+666                 \textcolor{stringliteral}{"""UPDATE assignments SET status = ?}
+667 \textcolor{stringliteral}{                         WHERE assignment\_id = ? AND status != ?;"""},
+668                 (\textcolor{stringliteral}{'Rejected'}, assignment\_id, \textcolor{stringliteral}{'Rejected'}),
+669             )
+670             \textcolor{comment}{# If this reject actually happened, update worker's rejections}
+671             \textcolor{keywordflow}{if} c.rowcount > 0:
+672                 c.execute(
+673                     \textcolor{stringliteral}{'SELECT * FROM assignments WHERE assignment\_id = ?;'},
+674                     (assignment\_id,),
+675                 )
+676                 assignment = c.fetchone()
+677                 \textcolor{keywordflow}{if} assignment \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+678                     \textcolor{keywordflow}{return}
+679                 worker\_id = assignment[\textcolor{stringliteral}{'worker\_id'}]
+680                 c.execute(
+681                     \textcolor{stringliteral}{"""UPDATE workers SET rejected = rejected + 1}
+682 \textcolor{stringliteral}{                             WHERE worker\_id = ?;"""},
+683                     (worker\_id,),
+684                 )
+685             conn.commit()
+686 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a532f8c2794a6eccf008e7ed9c945e2cb}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a532f8c2794a6eccf008e7ed9c945e2cb}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!log\+\_\+start\+\_\+onboard@{log\+\_\+start\+\_\+onboard}}
@@ -1261,31 +1261,31 @@ Definition at line 656 of file mturk\+\_\+data\+\_\+handler.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 500 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 501 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-500     \textcolor{keyword}{def }log\_start\_onboard(self, worker\_id, assignment\_id, conversation\_id):
-501         \textcolor{stringliteral}{"""}
-502 \textcolor{stringliteral}{        Update a pairing state to reflect onboarding status.}
-503 \textcolor{stringliteral}{        """}
-504         with self.table\_access\_condition:
-505             conn = self.\_get\_connection()
-506             c = conn.cursor()
-507             c.execute(
-508                 \textcolor{stringliteral}{'''UPDATE pairings SET status = ?, onboarding\_start = ?,}
-509 \textcolor{stringliteral}{                         onboarding\_id = ?}
-510 \textcolor{stringliteral}{                         WHERE worker\_id = ? AND assignment\_id = ?;'''},
-511                 (
-512                     AssignState.STATUS\_ONBOARDING,
-513                     time.time(),
-514                     conversation\_id,
-515                     worker\_id,
-516                     assignment\_id,
-517                 ),
-518             )
-519             conn.commit()
-520 
+501     \textcolor{keyword}{def }log\_start\_onboard(self, worker\_id, assignment\_id, conversation\_id):
+502         \textcolor{stringliteral}{"""}
+503 \textcolor{stringliteral}{        Update a pairing state to reflect onboarding status.}
+504 \textcolor{stringliteral}{        """}
+505         with self.table\_access\_condition:
+506             conn = self.\_get\_connection()
+507             c = conn.cursor()
+508             c.execute(
+509                 \textcolor{stringliteral}{'''UPDATE pairings SET status = ?, onboarding\_start = ?,}
+510 \textcolor{stringliteral}{                         onboarding\_id = ?}
+511 \textcolor{stringliteral}{                         WHERE worker\_id = ? AND assignment\_id = ?;'''},
+512                 (
+513                     AssignState.STATUS\_ONBOARDING,
+514                     time.time(),
+515                     conversation\_id,
+516                     worker\_id,
+517                     assignment\_id,
+518                 ),
+519             )
+520             conn.commit()
+521 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a373fe84924d3235c1b461f679c9a0926}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a373fe84924d3235c1b461f679c9a0926}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!log\+\_\+start\+\_\+task@{log\+\_\+start\+\_\+task}}
@@ -1297,31 +1297,31 @@ Definition at line 500 of file mturk\+\_\+data\+\_\+handler.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 535 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 536 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-535     \textcolor{keyword}{def }log\_start\_task(self, worker\_id, assignment\_id, conversation\_id):
-536         \textcolor{stringliteral}{"""}
-537 \textcolor{stringliteral}{        Update a pairing state to reflect in\_task status.}
-538 \textcolor{stringliteral}{        """}
-539         with self.table\_access\_condition:
-540             conn = self.\_get\_connection()
-541             c = conn.cursor()
-542             c.execute(
-543                 \textcolor{stringliteral}{"""UPDATE pairings SET status = ?, task\_start = ?,}
-544 \textcolor{stringliteral}{                         conversation\_id = ? WHERE worker\_id = ?}
-545 \textcolor{stringliteral}{                         AND assignment\_id = ?;"""},
-546                 (
-547                     AssignState.STATUS\_IN\_TASK,
-548                     time.time(),
-549                     conversation\_id,
-550                     worker\_id,
-551                     assignment\_id,
-552                 ),
-553             )
-554             conn.commit()
-555 
+536     \textcolor{keyword}{def }log\_start\_task(self, worker\_id, assignment\_id, conversation\_id):
+537         \textcolor{stringliteral}{"""}
+538 \textcolor{stringliteral}{        Update a pairing state to reflect in\_task status.}
+539 \textcolor{stringliteral}{        """}
+540         with self.table\_access\_condition:
+541             conn = self.\_get\_connection()
+542             c = conn.cursor()
+543             c.execute(
+544                 \textcolor{stringliteral}{"""UPDATE pairings SET status = ?, task\_start = ?,}
+545 \textcolor{stringliteral}{                         conversation\_id = ? WHERE worker\_id = ?}
+546 \textcolor{stringliteral}{                         AND assignment\_id = ?;"""},
+547                 (
+548                     AssignState.STATUS\_IN\_TASK,
+549                     time.time(),
+550                     conversation\_id,
+551                     worker\_id,
+552                     assignment\_id,
+553                 ),
+554             )
+555             conn.commit()
+556 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a2cebff3c6da14d643bd2bfedce73ba4a}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a2cebff3c6da14d643bd2bfedce73ba4a}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!log\+\_\+submit\+\_\+assignment@{log\+\_\+submit\+\_\+assignment}}
@@ -1333,25 +1333,25 @@ Definition at line 535 of file mturk\+\_\+data\+\_\+handler.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 464 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 465 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-464     \textcolor{keyword}{def }log\_submit\_assignment(self, worker\_id, assignment\_id):
-465         \textcolor{stringliteral}{"""}
-466 \textcolor{stringliteral}{        To be called whenever a worker hits the "submit hit" button.}
-467 \textcolor{stringliteral}{        """}
-468         with self.table\_access\_condition:
-469             conn = self.\_get\_connection()
-470             c = conn.cursor()
-471             \textcolor{comment}{# update the assignment status to reviewable}
-472             c.execute(
-473                 \textcolor{stringliteral}{"""UPDATE assignments SET status = ?}
-474 \textcolor{stringliteral}{                         WHERE assignment\_id = ?;"""},
-475                 (\textcolor{stringliteral}{'Reviewable'}, assignment\_id),
-476             )
-477             conn.commit()
-478 
+465     \textcolor{keyword}{def }log\_submit\_assignment(self, worker\_id, assignment\_id):
+466         \textcolor{stringliteral}{"""}
+467 \textcolor{stringliteral}{        To be called whenever a worker hits the "submit hit" button.}
+468 \textcolor{stringliteral}{        """}
+469         with self.table\_access\_condition:
+470             conn = self.\_get\_connection()
+471             c = conn.cursor()
+472             \textcolor{comment}{# update the assignment status to reviewable}
+473             c.execute(
+474                 \textcolor{stringliteral}{"""UPDATE assignments SET status = ?}
+475 \textcolor{stringliteral}{                         WHERE assignment\_id = ?;"""},
+476                 (\textcolor{stringliteral}{'Reviewable'}, assignment\_id),
+477             )
+478             conn.commit()
+479 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a080c2ffbf861cfe6175491a7a0bdd0ce}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a080c2ffbf861cfe6175491a7a0bdd0ce}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!log\+\_\+worker\+\_\+accept\+\_\+assignment@{log\+\_\+worker\+\_\+accept\+\_\+assignment}}
@@ -1364,69 +1364,69 @@ acceptance.
 \end{DoxyVerb}
  
 
-Definition at line 285 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 286 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-285     ):
-286         \textcolor{stringliteral}{"""}
-287 \textcolor{stringliteral}{        Log a worker accept, update assignment state and pairings to match the}
-288 \textcolor{stringliteral}{        acceptance.}
-289 \textcolor{stringliteral}{        """}
-290         task\_group\_id = self.\_force\_task\_group\_id(task\_group\_id)
-291         with self.table\_access\_condition:
-292             conn = self.\_get\_connection()
-293             c = conn.cursor()
-294 
-295             \textcolor{comment}{# Ensure worker exists, mark the accepted assignment}
-296             c.execute(\textcolor{stringliteral}{'SELECT COUNT(*) FROM workers WHERE worker\_id = ?;'}, (worker\_id,))
-297             has\_worker = c.fetchone()[0] > 0
-298             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} has\_worker:
-299                 \textcolor{comment}{# Must instert a new worker into the database}
-300                 c.execute(
-301                     \textcolor{stringliteral}{'INSERT INTO workers VALUES (?,?,?,?,?,?,?);'},
-302                     (worker\_id, 1, 0, 0, 0, 0, 0),
-303                 )
-304             \textcolor{keywordflow}{else}:
-305                 \textcolor{comment}{# Increment number of assignments the worker has accepted}
-306                 c.execute(
-307                     \textcolor{stringliteral}{"""UPDATE workers SET accepted = accepted + 1}
-308 \textcolor{stringliteral}{                             WHERE worker\_id = ?;"""},
-309                     (worker\_id,),
-310                 )
-311 
-312             \textcolor{comment}{# Ensure the assignment exists, mark the current worker}
-313             c.execute(
-314                 \textcolor{stringliteral}{'REPLACE INTO assignments VALUES (?,?,?,?,?)'},
-315                 (assignment\_id, \textcolor{stringliteral}{'Accepted'}, \textcolor{keywordtype}{None}, worker\_id, hit\_id),
-316             )
-317 
-318             \textcolor{comment}{# Create tracking for this specific pairing, as the assignment}
-319             \textcolor{comment}{# may be reassigned}
-320             c.execute(
-321                 \textcolor{stringliteral}{"""INSERT INTO pairings}
-322 \textcolor{stringliteral}{                         VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"""},
-323                 (
-324                     AssignState.STATUS\_NONE,
-325                     \textcolor{keywordtype}{None},
+286     ):
+287         \textcolor{stringliteral}{"""}
+288 \textcolor{stringliteral}{        Log a worker accept, update assignment state and pairings to match the}
+289 \textcolor{stringliteral}{        acceptance.}
+290 \textcolor{stringliteral}{        """}
+291         task\_group\_id = self.\_force\_task\_group\_id(task\_group\_id)
+292         with self.table\_access\_condition:
+293             conn = self.\_get\_connection()
+294             c = conn.cursor()
+295 
+296             \textcolor{comment}{# Ensure worker exists, mark the accepted assignment}
+297             c.execute(\textcolor{stringliteral}{'SELECT COUNT(*) FROM workers WHERE worker\_id = ?;'}, (worker\_id,))
+298             has\_worker = c.fetchone()[0] > 0
+299             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} has\_worker:
+300                 \textcolor{comment}{# Must instert a new worker into the database}
+301                 c.execute(
+302                     \textcolor{stringliteral}{'INSERT INTO workers VALUES (?,?,?,?,?,?,?);'},
+303                     (worker\_id, 1, 0, 0, 0, 0, 0),
+304                 )
+305             \textcolor{keywordflow}{else}:
+306                 \textcolor{comment}{# Increment number of assignments the worker has accepted}
+307                 c.execute(
+308                     \textcolor{stringliteral}{"""UPDATE workers SET accepted = accepted + 1}
+309 \textcolor{stringliteral}{                             WHERE worker\_id = ?;"""},
+310                     (worker\_id,),
+311                 )
+312 
+313             \textcolor{comment}{# Ensure the assignment exists, mark the current worker}
+314             c.execute(
+315                 \textcolor{stringliteral}{'REPLACE INTO assignments VALUES (?,?,?,?,?)'},
+316                 (assignment\_id, \textcolor{stringliteral}{'Accepted'}, \textcolor{keywordtype}{None}, worker\_id, hit\_id),
+317             )
+318 
+319             \textcolor{comment}{# Create tracking for this specific pairing, as the assignment}
+320             \textcolor{comment}{# may be reassigned}
+321             c.execute(
+322                 \textcolor{stringliteral}{"""INSERT INTO pairings}
+323 \textcolor{stringliteral}{                         VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"""},
+324                 (
+325                     AssignState.STATUS\_NONE,
 326                     \textcolor{keywordtype}{None},
 327                     \textcolor{keywordtype}{None},
 328                     \textcolor{keywordtype}{None},
 329                     \textcolor{keywordtype}{None},
-330                     0,
-331                     \textcolor{stringliteral}{''},
-332                     \textcolor{keyword}{False},
-333                     \textcolor{stringliteral}{''},
-334                     worker\_id,
-335                     assignment\_id,
-336                     task\_group\_id,
-337                     \textcolor{keywordtype}{None},
-338                     0,
-339                     \textcolor{stringliteral}{''},
-340                 ),
-341             )
-342             conn.commit()
-343 
+330                     \textcolor{keywordtype}{None},
+331                     0,
+332                     \textcolor{stringliteral}{''},
+333                     \textcolor{keyword}{False},
+334                     \textcolor{stringliteral}{''},
+335                     worker\_id,
+336                     assignment\_id,
+337                     task\_group\_id,
+338                     \textcolor{keywordtype}{None},
+339                     0,
+340                     \textcolor{stringliteral}{''},
+341                 ),
+342             )
+343             conn.commit()
+344 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a1cd561165b5924033cc44eaf69c3425c}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a1cd561165b5924033cc44eaf69c3425c}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!log\+\_\+worker\+\_\+note@{log\+\_\+worker\+\_\+note}}
@@ -1440,30 +1440,30 @@ Adds newline to the note.
 \end{DoxyVerb}
  
 
-Definition at line 686 of file mturk\+\_\+data\+\_\+handler.\+py.
+Definition at line 687 of file mturk\+\_\+data\+\_\+handler.\+py.
 
 
 \begin{DoxyCode}
-686     \textcolor{keyword}{def }log\_worker\_note(self, worker\_id, assignment\_id, note):
-687         \textcolor{stringliteral}{"""}
-688 \textcolor{stringliteral}{        Append a note to the worker notes for a particular worker-assignment pairing.}
-689 \textcolor{stringliteral}{}
-690 \textcolor{stringliteral}{        Adds newline to the note.}
-691 \textcolor{stringliteral}{        """}
-692         note += \textcolor{stringliteral}{'\(\backslash\)n'}
-693         with self.table\_access\_condition:
-694             \textcolor{keywordflow}{try}:
-695                 conn = self.\_get\_connection()
-696                 c = conn.cursor()
-697                 c.execute(
-698                     \textcolor{stringliteral}{"""UPDATE pairings SET notes = notes || ?}
-699 \textcolor{stringliteral}{                             WHERE worker\_id = ? AND assignment\_id = ?;"""},
-700                     (note, worker\_id, assignment\_id),
-701                 )
-702                 conn.commit()
-703             \textcolor{keywordflow}{except} Exception \textcolor{keyword}{as} e:
-704                 print(repr(e))
-705 
+687     \textcolor{keyword}{def }log\_worker\_note(self, worker\_id, assignment\_id, note):
+688         \textcolor{stringliteral}{"""}
+689 \textcolor{stringliteral}{        Append a note to the worker notes for a particular worker-assignment pairing.}
+690 \textcolor{stringliteral}{}
+691 \textcolor{stringliteral}{        Adds newline to the note.}
+692 \textcolor{stringliteral}{        """}
+693         note += \textcolor{stringliteral}{'\(\backslash\)n'}
+694         with self.table\_access\_condition:
+695             \textcolor{keywordflow}{try}:
+696                 conn = self.\_get\_connection()
+697                 c = conn.cursor()
+698                 c.execute(
+699                     \textcolor{stringliteral}{"""UPDATE pairings SET notes = notes || ?}
+700 \textcolor{stringliteral}{                             WHERE worker\_id = ? AND assignment\_id = ?;"""},
+701                     (note, worker\_id, assignment\_id),
+702                 )
+703                 conn.commit()
+704             \textcolor{keywordflow}{except} Exception \textcolor{keyword}{as} e:
+705                 print(repr(e))
+706 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a500ef3c8e0c9b94d7759436da43a1a62}\label{classparlai_1_1mturk_1_1core_1_1mturk__data__handler_1_1MTurkDataHandler_a500ef3c8e0c9b94d7759436da43a1a62}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler@{parlai\+::mturk\+::core\+::mturk\+\_\+data\+\_\+handler\+::\+M\+Turk\+Data\+Handler}!save\+\_\+world\+\_\+data@{save\+\_\+world\+\_\+data}}
@@ -1501,9 +1501,10 @@ Definition at line 141 of file mturk\+\_\+data\+\_\+handler.\+py.
 162         \textcolor{keywordflow}{for} worker\_id, w\_data \textcolor{keywordflow}{in} worker\_data.items():
 163             worker\_file = os.path.join(target\_dir\_workers, \textcolor{stringliteral}{'\{\}.json'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(worker\_id))
 164             \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1mturk__data__handler_a28ec50366a486cded72d95c9be461c2f}{force\_dir}(worker\_file)
-165             with open(worker\_file, \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} outfile:
-166                 json.dump(w\_data, outfile)
-167 
+165             print(\textcolor{stringliteral}{'Saving data to \{\}.'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(worker\_file))
+166             with open(worker\_file, \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} outfile:
+167                 json.dump(w\_data, outfile)
+168 
 \end{DoxyCode}
 
 

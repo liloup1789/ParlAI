@@ -24,112 +24,107 @@ class \hyperlink{classparlai_1_1core_1_1worlds_1_1World}{World}
 \item 
 def \hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate} (observation)
 \item 
-def \hyperlink{namespaceparlai_1_1core_1_1worlds_a055ee493c9ed03ecff4832f52b408f8c}{create\+\_\+task\+\_\+world} (opt, user\+\_\+agents, default\+\_\+world=None)
+def \hyperlink{namespaceparlai_1_1core_1_1worlds_ae4ed098adcaad6ec7563e665485ccdcf}{create\+\_\+task\+\_\+world}
 \item 
-def \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\+\_\+task} (opt, user\+\_\+agents, default\+\_\+world=None)
+def \hyperlink{namespaceparlai_1_1core_1_1worlds_a79969c7ba76d4b3c500f5bb776444dc6}{create\+\_\+task}
 \end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
-\mbox{\Hypertarget{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}\label{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}} 
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1worlds_a79969c7ba76d4b3c500f5bb776444dc6}\label{namespaceparlai_1_1core_1_1worlds_a79969c7ba76d4b3c500f5bb776444dc6}} 
 \index{parlai\+::core\+::worlds@{parlai\+::core\+::worlds}!create\+\_\+task@{create\+\_\+task}}
 \index{create\+\_\+task@{create\+\_\+task}!parlai\+::core\+::worlds@{parlai\+::core\+::worlds}}
 \subsubsection{\texorpdfstring{create\+\_\+task()}{create\_task()}}
-{\footnotesize\ttfamily def parlai.\+core.\+worlds.\+create\+\_\+task (\begin{DoxyParamCaption}\item[{}]{opt,  }\item[{}]{user\+\_\+agents,  }\item[{}]{default\+\_\+world = {\ttfamily None} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily def parlai.\+core.\+worlds.\+create\+\_\+task (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
 
-\begin{DoxyVerb}Create a world + task_agents (aka a task).
 
-Assuming ``opt['task']="task_dir:teacher_class:options"`` e.g. ``"babi:Task1k:1"``
-or ``"#babi-1k"`` or ``"#QA"``, see ``parlai/tasks/tasks.py`` and see
-``parlai/tasks/task_list.py`` for list of tasks.
-\end{DoxyVerb}
- 
 
-Definition at line 1340 of file worlds.\+py.
+Definition at line 1297 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-1340 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(opt, user\_agents, default\_world=None):
-1341     \textcolor{stringliteral}{"""}
-1342 \textcolor{stringliteral}{    Create a world + task\_agents (aka a task).}
-1343 \textcolor{stringliteral}{}
-1344 \textcolor{stringliteral}{    Assuming ``opt['task']="task\_dir:teacher\_class:options"`` e.g. ``"babi:Task1k:1"``}
-1345 \textcolor{stringliteral}{    or ``"#babi-1k"`` or ``"#QA"``, see ``parlai/tasks/tasks.py`` and see}
-1346 \textcolor{stringliteral}{    ``parlai/tasks/task\_list.py`` for list of tasks.}
-1347 \textcolor{stringliteral}{    """}
-1348     task = opt.get(\textcolor{stringliteral}{'task'})
-1349     pyt\_task = opt.get(\textcolor{stringliteral}{'pytorch\_teacher\_task'})
-1350     pyt\_dataset = opt.get(\textcolor{stringliteral}{'pytorch\_teacher\_dataset'})
-1351     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} (task \textcolor{keywordflow}{or} pyt\_task \textcolor{keywordflow}{or} pyt\_dataset):
-1352         \textcolor{keywordflow}{raise} RuntimeError(
-1353             \textcolor{stringliteral}{'No task specified. Please select a task with '} + \textcolor{stringliteral}{'--task \{task\_name\}.'}
-1354         )
-1355     \textcolor{comment}{# When building pytorch data, there is a point where task and pyt\_task}
-1356     \textcolor{comment}{# are the same; make sure we discount that case.}
-1357     pyt\_multitask = task \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} (
-1358         (pyt\_task \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} pyt\_task != task)
-1359         \textcolor{keywordflow}{or} (pyt\_dataset \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} pyt\_dataset != task)
-1360     )
-1361     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} task:
-1362         opt[\textcolor{stringliteral}{'task'}] = \textcolor{stringliteral}{'pytorch\_teacher'}
-1363     \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(user\_agents) != list:
-1364         user\_agents = [user\_agents]
-1365 
-1366     \textcolor{comment}{# Convert any hashtag task labels to task directory path names.}
-1367     \textcolor{comment}{# (e.g. "#QA" to the list of tasks that are QA tasks).}
-1368     opt = copy.deepcopy(opt)
-1369     opt[\textcolor{stringliteral}{'task'}] = \hyperlink{namespaceparlai_1_1tasks_1_1tasks_ad536d1295ca5ba2ecf3a48635b482087}{ids\_to\_tasks}(opt[\textcolor{stringliteral}{'task'}])
-1370     \textcolor{keywordflow}{if} pyt\_multitask \textcolor{keywordflow}{and} \textcolor{stringliteral}{'pytorch\_teacher'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} opt[\textcolor{stringliteral}{'task'}]:
-1371         opt[\textcolor{stringliteral}{'task'}] += \textcolor{stringliteral}{',pytorch\_teacher'}
-1372     print(\textcolor{stringliteral}{'[creating task(s): '} + opt[\textcolor{stringliteral}{'task'}] + \textcolor{stringliteral}{']'})
-1373 
-1374     \textcolor{comment}{# check if single or multithreaded, and single-example or batched examples}
-1375     \textcolor{keywordflow}{if} \textcolor{stringliteral}{','} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} opt[\textcolor{stringliteral}{'task'}]:
-1376         \textcolor{comment}{# Single task}
-1377         world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a055ee493c9ed03ecff4832f52b408f8c}{create\_task\_world}(opt, user\_agents, default\_world=default\_world)
-1378     \textcolor{keywordflow}{else}:
-1379         \textcolor{comment}{# Multitask teacher/agent}
-1380         \textcolor{comment}{# TODO: remove and replace with multiteachers only?}
-1381         world = MultiWorld(opt, user\_agents, default\_world=default\_world)
-1382 
-1383     \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'numthreads'}, 1) > 1:
-1384         \textcolor{comment}{# use hogwild world if more than one thread requested}
-1385         \textcolor{comment}{# hogwild world will create sub batch worlds as well if bsz > 1}
-1386         world = HogwildWorld(opt, world)
-1387     \textcolor{keywordflow}{elif} opt.get(\textcolor{stringliteral}{'batchsize'}, 1) > 1:
-1388         \textcolor{comment}{# otherwise check if should use batchworld}
-1389         world = BatchWorld(opt, world)
-1390 
-1391     \textcolor{keywordflow}{return} world
-1392 \end{DoxyCode}
-\mbox{\Hypertarget{namespaceparlai_1_1core_1_1worlds_a055ee493c9ed03ecff4832f52b408f8c}\label{namespaceparlai_1_1core_1_1worlds_a055ee493c9ed03ecff4832f52b408f8c}} 
+1297 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1worlds_a79969c7ba76d4b3c500f5bb776444dc6}{create\_task}(opt: Opt, user\_agents, default\_world=\textcolor{keywordtype}{None}):
+1298     \textcolor{stringliteral}{"""}
+1299 \textcolor{stringliteral}{    Create a world + task\_agents (aka a task).}
+1300 \textcolor{stringliteral}{}
+1301 \textcolor{stringliteral}{    Assuming ``opt['task']="task\_dir:teacher\_class:options"`` e.g. ``"babi:Task1k:1"``}
+1302 \textcolor{stringliteral}{    or ``"#babi-1k"`` or ``"#QA"``, see ``parlai/tasks/tasks.py`` and see}
+1303 \textcolor{stringliteral}{    ``parlai/tasks/task\_list.py`` for list of tasks.}
+1304 \textcolor{stringliteral}{    """}
+1305     task = opt.get(\textcolor{stringliteral}{'task'})
+1306     pyt\_task = opt.get(\textcolor{stringliteral}{'pytorch\_teacher\_task'})
+1307     pyt\_dataset = opt.get(\textcolor{stringliteral}{'pytorch\_teacher\_dataset'})
+1308     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} (task \textcolor{keywordflow}{or} pyt\_task \textcolor{keywordflow}{or} pyt\_dataset):
+1309         \textcolor{keywordflow}{raise} RuntimeError(
+1310             \textcolor{stringliteral}{'No task specified. Please select a task with '} + \textcolor{stringliteral}{'--task \{task\_name\}.'}
+1311         )
+1312     \textcolor{comment}{# When building pytorch data, there is a point where task and pyt\_task}
+1313     \textcolor{comment}{# are the same; make sure we discount that case.}
+1314     pyt\_multitask = task \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} (
+1315         (pyt\_task \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} pyt\_task != task)
+1316         \textcolor{keywordflow}{or} (pyt\_dataset \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} pyt\_dataset != task)
+1317     )
+1318     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} task:
+1319         opt[\textcolor{stringliteral}{'task'}] = \textcolor{stringliteral}{'pytorch\_teacher'}
+1320     \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(user\_agents) != list:
+1321         user\_agents = [user\_agents]
+1322 
+1323     \textcolor{comment}{# Convert any hashtag task labels to task directory path names.}
+1324     \textcolor{comment}{# (e.g. "#QA" to the list of tasks that are QA tasks).}
+1325     opt = copy.deepcopy(opt)
+1326     opt[\textcolor{stringliteral}{'task'}] = \hyperlink{namespaceparlai_1_1tasks_1_1tasks_ad536d1295ca5ba2ecf3a48635b482087}{ids\_to\_tasks}(opt[\textcolor{stringliteral}{'task'}])
+1327     \textcolor{keywordflow}{if} pyt\_multitask \textcolor{keywordflow}{and} \textcolor{stringliteral}{'pytorch\_teacher'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} opt[\textcolor{stringliteral}{'task'}]:
+1328         opt[\textcolor{stringliteral}{'task'}] += \textcolor{stringliteral}{',pytorch\_teacher'}
+1329     print(\textcolor{stringliteral}{'[creating task(s): '} + opt[\textcolor{stringliteral}{'task'}] + \textcolor{stringliteral}{']'})
+1330 
+1331     \textcolor{comment}{# check if single or multithreaded, and single-example or batched examples}
+1332     \textcolor{keywordflow}{if} \textcolor{stringliteral}{','} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} opt[\textcolor{stringliteral}{'task'}]:
+1333         \textcolor{comment}{# Single task}
+1334         world = \hyperlink{namespaceparlai_1_1core_1_1worlds_ae4ed098adcaad6ec7563e665485ccdcf}{create\_task\_world}(opt, user\_agents, default\_world=default\_world)
+1335     \textcolor{keywordflow}{else}:
+1336         \textcolor{comment}{# Multitask teacher/agent}
+1337         \textcolor{comment}{# TODO: remove and replace with multiteachers only?}
+1338         world = MultiWorld(opt, user\_agents, default\_world=default\_world)
+1339 
+1340     \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'numthreads'}, 1) > 1:
+1341         \textcolor{comment}{# use hogwild world if more than one thread requested}
+1342         \textcolor{comment}{# hogwild world will create sub batch worlds as well if bsz > 1}
+1343         world = HogwildWorld(opt, world)
+1344     \textcolor{keywordflow}{elif} opt.get(\textcolor{stringliteral}{'batchsize'}, 1) > 1:
+1345         \textcolor{comment}{# otherwise check if should use batchworld}
+1346         world = BatchWorld(opt, world)
+1347 
+1348     \textcolor{keywordflow}{return} world
+1349 \end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1worlds_ae4ed098adcaad6ec7563e665485ccdcf}\label{namespaceparlai_1_1core_1_1worlds_ae4ed098adcaad6ec7563e665485ccdcf}} 
 \index{parlai\+::core\+::worlds@{parlai\+::core\+::worlds}!create\+\_\+task\+\_\+world@{create\+\_\+task\+\_\+world}}
 \index{create\+\_\+task\+\_\+world@{create\+\_\+task\+\_\+world}!parlai\+::core\+::worlds@{parlai\+::core\+::worlds}}
 \subsubsection{\texorpdfstring{create\+\_\+task\+\_\+world()}{create\_task\_world()}}
-{\footnotesize\ttfamily def parlai.\+core.\+worlds.\+create\+\_\+task\+\_\+world (\begin{DoxyParamCaption}\item[{}]{opt,  }\item[{}]{user\+\_\+agents,  }\item[{}]{default\+\_\+world = {\ttfamily None} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily def parlai.\+core.\+worlds.\+create\+\_\+task\+\_\+world (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
 
-\begin{DoxyVerb}Instantiate a world with the supplied options and user agents.
 
-(A world factory.)
-\end{DoxyVerb}
- 
 
-Definition at line 1328 of file worlds.\+py.
+Definition at line 1280 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-1328 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1worlds_a055ee493c9ed03ecff4832f52b408f8c}{create\_task\_world}(opt, user\_agents, default\_world=None):
-1329     \textcolor{stringliteral}{"""}
-1330 \textcolor{stringliteral}{    Instantiate a world with the supplied options and user agents.}
-1331 \textcolor{stringliteral}{}
-1332 \textcolor{stringliteral}{    (A world factory.)}
-1333 \textcolor{stringliteral}{    """}
-1334     world\_class, task\_agents = \_get\_task\_world(
-1335         opt, user\_agents, default\_world=default\_world
-1336     )
-1337     \textcolor{keywordflow}{return} world\_class(opt, task\_agents + user\_agents)
-1338 
-1339 
+1280 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1worlds_ae4ed098adcaad6ec7563e665485ccdcf}{create\_task\_world}(opt: Opt, user\_agents, default\_world=\textcolor{keywordtype}{None}):
+1281     \textcolor{stringliteral}{"""}
+1282 \textcolor{stringliteral}{    Instantiate a world with the supplied options and user agents.}
+1283 \textcolor{stringliteral}{}
+1284 \textcolor{stringliteral}{    (A world factory.)}
+1285 \textcolor{stringliteral}{    """}
+1286     task\_agents = \_create\_task\_agents(opt)
+1287     world\_class = \hyperlink{namespaceparlai_1_1core_1_1loader_adb9c272f49c31c45dcbc61d8e8c6316d}{load\_world\_module}(
+1288         opt[\textcolor{stringliteral}{'task'}],
+1289         opt.get(\textcolor{stringliteral}{'interactive\_task'}, \textcolor{keyword}{False}),
+1290         len(user\_agents + task\_agents),
+1291         default\_world=default\_world,
+1292     )
+1293 
+1294     \textcolor{keywordflow}{return} world\_class(opt, task\_agents + user\_agents)
+1295 
+1296 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}\label{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}} 
 \index{parlai\+::core\+::worlds@{parlai\+::core\+::worlds}!validate@{validate}}
@@ -141,18 +136,18 @@ Definition at line 1328 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 64 of file worlds.\+py.
+Definition at line 67 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-64 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(observation):
-65     \textcolor{stringliteral}{"""}
-66 \textcolor{stringliteral}{    Make sure the observation table is valid, or raise an error.}
-67 \textcolor{stringliteral}{    """}
-68     \textcolor{keywordflow}{if} observation \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} isinstance(observation, dict):
-69         \textcolor{keywordflow}{return} observation
-70     \textcolor{keywordflow}{else}:
-71         \textcolor{keywordflow}{raise} RuntimeError(\textcolor{stringliteral}{'Must return dictionary or Message object from act().'})
-72 
-73 
+67 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(observation):
+68     \textcolor{stringliteral}{"""}
+69 \textcolor{stringliteral}{    Make sure the observation table is valid, or raise an error.}
+70 \textcolor{stringliteral}{    """}
+71     \textcolor{keywordflow}{if} observation \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} isinstance(observation, dict):
+72         \textcolor{keywordflow}{return} observation
+73     \textcolor{keywordflow}{else}:
+74         \textcolor{keywordflow}{raise} RuntimeError(\textcolor{stringliteral}{'Must return dictionary or Message object from act().'})
+75 
+76 
 \end{DoxyCode}

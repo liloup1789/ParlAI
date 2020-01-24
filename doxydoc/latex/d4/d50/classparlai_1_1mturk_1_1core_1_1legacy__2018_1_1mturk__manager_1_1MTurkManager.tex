@@ -2,8 +2,7 @@
 \label{classparlai_1_1mturk_1_1core_1_1legacy__2018_1_1mturk__manager_1_1MTurkManager}\index{parlai.\+mturk.\+core.\+legacy\+\_\+2018.\+mturk\+\_\+manager.\+M\+Turk\+Manager@{parlai.\+mturk.\+core.\+legacy\+\_\+2018.\+mturk\+\_\+manager.\+M\+Turk\+Manager}}
 
 
-Inheritance diagram for parlai.\+mturk.\+core.\+legacy\+\_\+2018.\+mturk\+\_\+manager.\+M\+Turk\+Manager\+:
-\nopagebreak
+Inheritance diagram for parlai.\+mturk.\+core.\+legacy\+\_\+2018.\+mturk\+\_\+manager.\+M\+Turk\+Manager\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -1487,7 +1486,7 @@ Definition at line 948 of file mturk\+\_\+manager.\+py.
 979                 \textcolor{stringliteral}{''}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.hit\_mult, fin\_word),
 980                 should\_print=\textcolor{keyword}{True},
 981             )
-982         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1test_1_1test__full__system_a1e1817cd65688fb90f827834d1fb4567}{input}(\textcolor{stringliteral}{'Please press Enter to continue... '})
+982         input(\textcolor{stringliteral}{'Please press Enter to continue... '})
 983         shared\_utils.print\_and\_log(logging.NOTSET, \textcolor{stringliteral}{''}, \textcolor{keyword}{True})
 984 
 985         \textcolor{keywordflow}{if} self.opt[\textcolor{stringliteral}{'local'}] \textcolor{keywordflow}{is} \textcolor{keyword}{True}:
@@ -1501,7 +1500,7 @@ Definition at line 948 of file mturk\+\_\+manager.\+py.
 993                 \textcolor{stringliteral}{"traffic routed to it."},
 994                 should\_print=\textcolor{keyword}{True},
 995             )
-996             \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1test_1_1test__full__system_a1e1817cd65688fb90f827834d1fb4567}{input}(\textcolor{stringliteral}{'Please press Enter to continue... '})
+996             input(\textcolor{stringliteral}{'Please press Enter to continue... '})
 997 
 998         mturk\_utils.setup\_aws\_credentials()
 999 
@@ -1539,7 +1538,7 @@ Definition at line 948 of file mturk\+\_\+manager.\+py.
 1031                 ),
 1032                 should\_print=\textcolor{keyword}{True},
 1033             )
-1034             check = \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1test_1_1test__full__system_a1e1817cd65688fb90f827834d1fb4567}{input}(\textcolor{stringliteral}{'Enter here: '})
+1034             check = input(\textcolor{stringliteral}{'Enter here: '})
 1035             \textcolor{keywordflow}{if} check != confirm\_string \textcolor{keywordflow}{and} (\textcolor{stringliteral}{'$'} + check) != confirm\_string:
 1036                 \textcolor{keywordflow}{raise} SystemExit(\textcolor{stringliteral}{'Cancelling'})
 1037 
@@ -1564,12 +1563,12 @@ Definition at line 948 of file mturk\+\_\+manager.\+py.
 1056                 warnings = resp.json()
 1057                 \textcolor{keywordflow}{for} warn \textcolor{keywordflow}{in} warnings:
 1058                     print(\textcolor{stringliteral}{'Notice: '} + warn)
-1059                     accept = \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1test_1_1test__full__system_a1e1817cd65688fb90f827834d1fb4567}{input}(\textcolor{stringliteral}{'Continue? (Y/n): '})
+1059                     accept = input(\textcolor{stringliteral}{'Continue? (Y/n): '})
 1060                     \textcolor{keywordflow}{if} accept == \textcolor{stringliteral}{'n'}:
 1061                         \textcolor{keywordflow}{raise} SystemExit(\textcolor{stringliteral}{'Additional notice was rejected.'})
 1062             \textcolor{keywordflow}{except} Exception:
 1063                 print(\textcolor{stringliteral}{'Unable to query warnings from the parl.ai website.'})
-1064                 accept = \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1test_1_1test__full__system_a1e1817cd65688fb90f827834d1fb4567}{input}(\textcolor{stringliteral}{'Continue without checking warnings? (Y/n): '})
+1064                 accept = input(\textcolor{stringliteral}{'Continue without checking warnings? (Y/n): '})
 1065                 \textcolor{keywordflow}{if} accept == \textcolor{stringliteral}{'n'}:
 1066                     \textcolor{keywordflow}{raise} SystemExit(\textcolor{stringliteral}{'Aborted.'})
 1067 

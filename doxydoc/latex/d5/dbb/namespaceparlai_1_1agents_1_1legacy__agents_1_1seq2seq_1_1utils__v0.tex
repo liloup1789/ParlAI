@@ -31,18 +31,18 @@ def \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__
 
 
 
-Definition at line 747 of file utils\+\_\+v0.\+py.
+Definition at line 748 of file utils\+\_\+v0.\+py.
 
 
 \begin{DoxyCode}
-747 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_a96c8bd68b645f94b1257c37f8c5646f5}{is\_tensor}(v):
-748     \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(v).\_\_module\_\_.startswith(\textcolor{stringliteral}{'torch'}):
-749         \textcolor{keyword}{import} torch
-750 
-751         \textcolor{keywordflow}{return} torch.is\_tensor(v)
-752     \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-753 
+748 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_a96c8bd68b645f94b1257c37f8c5646f5}{is\_tensor}(v):
+749     \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(v).\_\_module\_\_.startswith(\textcolor{stringliteral}{'torch'}):
+750         \textcolor{keyword}{import} torch
+751 
+752         \textcolor{keywordflow}{return} torch.is\_tensor(v)
+753     \textcolor{keywordflow}{return} \textcolor{keyword}{False}
 754 
+755 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_ac7cb3ffae208474d6e67f37ecfe07f64}\label{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_ac7cb3ffae208474d6e67f37ecfe07f64}} 
 \index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::utils\+\_\+v0@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::utils\+\_\+v0}!maintain\+\_\+dialog\+\_\+history@{maintain\+\_\+dialog\+\_\+history}}
@@ -56,68 +56,68 @@ Either includes replies from the labels, model, or not all using param 'replies'
 \end{DoxyVerb}
  
 
-Definition at line 337 of file utils\+\_\+v0.\+py.
+Definition at line 338 of file utils\+\_\+v0.\+py.
 
 
 \begin{DoxyCode}
-337 ):
-338     \textcolor{stringliteral}{"""}
-339 \textcolor{stringliteral}{    Keeps track of dialog history, up to a truncation length.}
-340 \textcolor{stringliteral}{}
-341 \textcolor{stringliteral}{    Either includes replies from the labels, model, or not all using param 'replies'.}
-342 \textcolor{stringliteral}{    """}
-343 
-344     \textcolor{keyword}{def }parse(txt, splitSentences):
-345         \textcolor{keywordflow}{if} dict \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-346             \textcolor{keywordflow}{if} splitSentences:
-347                 vec = [dict.txt2vec(t) \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} txt.split(\textcolor{stringliteral}{'\(\backslash\)n'})]
-348             \textcolor{keywordflow}{else}:
-349                 vec = dict.txt2vec(txt)
-350             \textcolor{keywordflow}{return} vec
-351         \textcolor{keywordflow}{else}:
-352             \textcolor{keywordflow}{return} [txt]
-353 
-354     \textcolor{keywordflow}{if} \textcolor{stringliteral}{'dialog'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} history:
-355         history[\textcolor{stringliteral}{'dialog'}] = deque(maxlen=historyLength)
-356         history[\textcolor{stringliteral}{'episode\_done'}] = \textcolor{keyword}{False}
-357         history[\textcolor{stringliteral}{'labels'}] = []
-358 
-359     \textcolor{keywordflow}{if} history[\textcolor{stringliteral}{'episode\_done'}]:
-360         history[\textcolor{stringliteral}{'dialog'}].clear()
-361         history[\textcolor{stringliteral}{'labels'}] = []
-362         useReplies = \textcolor{stringliteral}{'none'}
-363         history[\textcolor{stringliteral}{'episode\_done'}] = \textcolor{keyword}{False}
-364 
-365     \textcolor{keywordflow}{if} useReplies != \textcolor{stringliteral}{'none'}:
-366         \textcolor{keywordflow}{if} useReplies == \textcolor{stringliteral}{'model'} \textcolor{keywordflow}{or} (
-367             useReplies == \textcolor{stringliteral}{'label\_else\_model'} \textcolor{keywordflow}{and} len(history[\textcolor{stringliteral}{'labels'}]) == 0
-368         ):
-369             \textcolor{keywordflow}{if} reply:
-370                 \textcolor{keywordflow}{if} useStartEndIndices:
-371                     reply = dict.start\_token + \textcolor{stringliteral}{' '} + reply
-372                 history[\textcolor{stringliteral}{'dialog'}].extend(parse(reply, splitSentences))
-373         \textcolor{keywordflow}{elif} len(history[\textcolor{stringliteral}{'labels'}]) > 0:
-374             r = history[\textcolor{stringliteral}{'labels'}][0]
-375             history[\textcolor{stringliteral}{'dialog'}].extend(parse(r, splitSentences))
-376 
-377     obs = observation
-378     \textcolor{keywordflow}{if} \textcolor{stringliteral}{'text'} \textcolor{keywordflow}{in} obs:
-379         \textcolor{keywordflow}{if} useStartEndIndices:
-380             obs[\textcolor{stringliteral}{'text'}] = dict.end\_token + \textcolor{stringliteral}{' '} + obs[\textcolor{stringliteral}{'text'}]
-381         history[\textcolor{stringliteral}{'dialog'}].extend(parse(obs[\textcolor{stringliteral}{'text'}], splitSentences))
-382 
-383     history[\textcolor{stringliteral}{'episode\_done'}] = obs[\textcolor{stringliteral}{'episode\_done'}]
-384 
-385     labels = obs.get(\textcolor{stringliteral}{'labels'}, obs.get(\textcolor{stringliteral}{'eval\_labels'}, \textcolor{keywordtype}{None}))
-386     \textcolor{keywordflow}{if} labels \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-387         \textcolor{keywordflow}{if} useStartEndIndices:
-388             history[\textcolor{stringliteral}{'labels'}] = [dict.start\_token + \textcolor{stringliteral}{' '} + l \textcolor{keywordflow}{for} l \textcolor{keywordflow}{in} labels]
-389         \textcolor{keywordflow}{else}:
-390             history[\textcolor{stringliteral}{'labels'}] = labels
-391 
-392     \textcolor{keywordflow}{return} history[\textcolor{stringliteral}{'dialog'}]
-393 
+338 ):
+339     \textcolor{stringliteral}{"""}
+340 \textcolor{stringliteral}{    Keeps track of dialog history, up to a truncation length.}
+341 \textcolor{stringliteral}{}
+342 \textcolor{stringliteral}{    Either includes replies from the labels, model, or not all using param 'replies'.}
+343 \textcolor{stringliteral}{    """}
+344 
+345     \textcolor{keyword}{def }parse(txt, splitSentences):
+346         \textcolor{keywordflow}{if} dict \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+347             \textcolor{keywordflow}{if} splitSentences:
+348                 vec = [dict.txt2vec(t) \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} txt.split(\textcolor{stringliteral}{'\(\backslash\)n'})]
+349             \textcolor{keywordflow}{else}:
+350                 vec = dict.txt2vec(txt)
+351             \textcolor{keywordflow}{return} vec
+352         \textcolor{keywordflow}{else}:
+353             \textcolor{keywordflow}{return} [txt]
+354 
+355     \textcolor{keywordflow}{if} \textcolor{stringliteral}{'dialog'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} history:
+356         history[\textcolor{stringliteral}{'dialog'}] = deque(maxlen=historyLength)
+357         history[\textcolor{stringliteral}{'episode\_done'}] = \textcolor{keyword}{False}
+358         history[\textcolor{stringliteral}{'labels'}] = []
+359 
+360     \textcolor{keywordflow}{if} history[\textcolor{stringliteral}{'episode\_done'}]:
+361         history[\textcolor{stringliteral}{'dialog'}].clear()
+362         history[\textcolor{stringliteral}{'labels'}] = []
+363         useReplies = \textcolor{stringliteral}{'none'}
+364         history[\textcolor{stringliteral}{'episode\_done'}] = \textcolor{keyword}{False}
+365 
+366     \textcolor{keywordflow}{if} useReplies != \textcolor{stringliteral}{'none'}:
+367         \textcolor{keywordflow}{if} useReplies == \textcolor{stringliteral}{'model'} \textcolor{keywordflow}{or} (
+368             useReplies == \textcolor{stringliteral}{'label\_else\_model'} \textcolor{keywordflow}{and} len(history[\textcolor{stringliteral}{'labels'}]) == 0
+369         ):
+370             \textcolor{keywordflow}{if} reply:
+371                 \textcolor{keywordflow}{if} useStartEndIndices:
+372                     reply = dict.start\_token + \textcolor{stringliteral}{' '} + reply
+373                 history[\textcolor{stringliteral}{'dialog'}].extend(parse(reply, splitSentences))
+374         \textcolor{keywordflow}{elif} len(history[\textcolor{stringliteral}{'labels'}]) > 0:
+375             r = history[\textcolor{stringliteral}{'labels'}][0]
+376             history[\textcolor{stringliteral}{'dialog'}].extend(parse(r, splitSentences))
+377 
+378     obs = observation
+379     \textcolor{keywordflow}{if} \textcolor{stringliteral}{'text'} \textcolor{keywordflow}{in} obs:
+380         \textcolor{keywordflow}{if} useStartEndIndices:
+381             obs[\textcolor{stringliteral}{'text'}] = dict.end\_token + \textcolor{stringliteral}{' '} + obs[\textcolor{stringliteral}{'text'}]
+382         history[\textcolor{stringliteral}{'dialog'}].extend(parse(obs[\textcolor{stringliteral}{'text'}], splitSentences))
+383 
+384     history[\textcolor{stringliteral}{'episode\_done'}] = obs[\textcolor{stringliteral}{'episode\_done'}]
+385 
+386     labels = obs.get(\textcolor{stringliteral}{'labels'}, obs.get(\textcolor{stringliteral}{'eval\_labels'}, \textcolor{keywordtype}{None}))
+387     \textcolor{keywordflow}{if} labels \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+388         \textcolor{keywordflow}{if} useStartEndIndices:
+389             history[\textcolor{stringliteral}{'labels'}] = [dict.start\_token + \textcolor{stringliteral}{' '} + l \textcolor{keywordflow}{for} l \textcolor{keywordflow}{in} labels]
+390         \textcolor{keywordflow}{else}:
+391             history[\textcolor{stringliteral}{'labels'}] = labels
+392 
+393     \textcolor{keywordflow}{return} history[\textcolor{stringliteral}{'dialog'}]
 394 
+395 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_a5fbd3301b67f00d6d146fb01c7cd7626}\label{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_a5fbd3301b67f00d6d146fb01c7cd7626}} 
 \index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::utils\+\_\+v0@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::utils\+\_\+v0}!modelzoo\+\_\+path@{modelzoo\+\_\+path}}
@@ -132,31 +132,30 @@ We download models from the model zoo if they are not here yet.
 \end{DoxyVerb}
  
 
-Definition at line 755 of file utils\+\_\+v0.\+py.
+Definition at line 756 of file utils\+\_\+v0.\+py.
 
 
 \begin{DoxyCode}
-755 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_a5fbd3301b67f00d6d146fb01c7cd7626}{modelzoo\_path}(datapath, path):
-756     \textcolor{stringliteral}{"""}
-757 \textcolor{stringliteral}{    If path starts with 'models', then we remap it to the model zoo path within the data}
-758 \textcolor{stringliteral}{    directory (default is ParlAI/data/models).}
-759 \textcolor{stringliteral}{}
-760 \textcolor{stringliteral}{    We download models from the model zoo if they are not here yet.}
-761 \textcolor{stringliteral}{    """}
-762     \textcolor{keywordflow}{if} path \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-763         \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}
-764     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} path.startswith(\textcolor{stringliteral}{'models:'}):
-765         \textcolor{keywordflow}{return} path
-766     \textcolor{keywordflow}{else}:
-767         \textcolor{comment}{# Check if we need to download the model}
-768         animal = path[7 : path.rfind(\textcolor{stringliteral}{'/'})].replace(\textcolor{stringliteral}{'/'}, \textcolor{stringliteral}{'.'})
-769         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'.'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} animal:
-770             animal += \textcolor{stringliteral}{'.build'}
-771         module\_name = \textcolor{stringliteral}{'parlai.zoo.\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(animal)
-772         \textcolor{keywordflow}{try}:
-773             my\_module = importlib.import\_module(module\_name)
-774             download = getattr(my\_module, \textcolor{stringliteral}{'download'})
-775             \hyperlink{namespaceparlai_1_1core_1_1build__data_ab74f0e428f05e5d91fa93c8afb367622}{download}(datapath)
+756 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_a5fbd3301b67f00d6d146fb01c7cd7626}{modelzoo\_path}(datapath, path):
+757     \textcolor{stringliteral}{"""}
+758 \textcolor{stringliteral}{    If path starts with 'models', then we remap it to the model zoo path within the data}
+759 \textcolor{stringliteral}{    directory (default is ParlAI/data/models).}
+760 \textcolor{stringliteral}{}
+761 \textcolor{stringliteral}{    We download models from the model zoo if they are not here yet.}
+762 \textcolor{stringliteral}{    """}
+763     \textcolor{keywordflow}{if} path \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+764         \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}
+765     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} path.startswith(\textcolor{stringliteral}{'models:'}):
+766         \textcolor{keywordflow}{return} path
+767     \textcolor{keywordflow}{else}:
+768         \textcolor{comment}{# Check if we need to download the model}
+769         animal = path[7 : path.rfind(\textcolor{stringliteral}{'/'})].replace(\textcolor{stringliteral}{'/'}, \textcolor{stringliteral}{'.'})
+770         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'.'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} animal:
+771             animal += \textcolor{stringliteral}{'.build'}
+772         module\_name = \textcolor{stringliteral}{'parlai.zoo.\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(animal)
+773         \textcolor{keywordflow}{try}:
+774             my\_module = importlib.import\_module(module\_name)
+775             my\_module.download(datapath)
 776         \textcolor{keywordflow}{except} (ImportError, AttributeError):
 777             \textcolor{keywordflow}{pass}
 778 
@@ -170,27 +169,27 @@ Definition at line 755 of file utils\+\_\+v0.\+py.
 
 
 
-Definition at line 395 of file utils\+\_\+v0.\+py.
+Definition at line 396 of file utils\+\_\+v0.\+py.
 
 
 \begin{DoxyCode}
-395 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_af377ec61bfc0423461e7b409ffc883b9}{round\_sigfigs}(x, sigfigs=4):
-396     \textcolor{keywordflow}{try}:
-397         \textcolor{keywordflow}{if} x == 0:
-398             \textcolor{keywordflow}{return} 0
-399         \textcolor{keywordflow}{return} round(x, -math.floor(math.log10(abs(x)) - sigfigs + 1))
-400     \textcolor{keywordflow}{except} (RuntimeError, TypeError):
-401         \textcolor{comment}{# handle 1D torch tensors}
-402         \textcolor{comment}{# if anything else breaks here please file an issue on Github}
-403         \textcolor{keywordflow}{if} hasattr(x, \textcolor{stringliteral}{'item'}):
-404             \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_af377ec61bfc0423461e7b409ffc883b9}{round\_sigfigs}(x.item(), sigfigs)
-405         \textcolor{keywordflow}{else}:
-406             \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_af377ec61bfc0423461e7b409ffc883b9}{round\_sigfigs}(x[0], sigfigs)
-407     \textcolor{keywordflow}{except} (ValueError, OverflowError) \textcolor{keyword}{as} ex:
-408         \textcolor{keywordflow}{if} x \textcolor{keywordflow}{in} [\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(\textcolor{stringliteral}{'inf'}), \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(\textcolor{stringliteral}{'-inf'})] \textcolor{keywordflow}{or} x != x:  \textcolor{comment}{# inf or nan}
-409             \textcolor{keywordflow}{return} x
-410         \textcolor{keywordflow}{else}:
-411             \textcolor{keywordflow}{raise} ex
-412 
+396 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_af377ec61bfc0423461e7b409ffc883b9}{round\_sigfigs}(x, sigfigs=4):
+397     \textcolor{keywordflow}{try}:
+398         \textcolor{keywordflow}{if} x == 0:
+399             \textcolor{keywordflow}{return} 0
+400         \textcolor{keywordflow}{return} round(x, -math.floor(math.log10(abs(x)) - sigfigs + 1))
+401     \textcolor{keywordflow}{except} (RuntimeError, TypeError):
+402         \textcolor{comment}{# handle 1D torch tensors}
+403         \textcolor{comment}{# if anything else breaks here please file an issue on Github}
+404         \textcolor{keywordflow}{if} hasattr(x, \textcolor{stringliteral}{'item'}):
+405             \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_af377ec61bfc0423461e7b409ffc883b9}{round\_sigfigs}(x.item(), sigfigs)
+406         \textcolor{keywordflow}{else}:
+407             \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_af377ec61bfc0423461e7b409ffc883b9}{round\_sigfigs}(x[0], sigfigs)
+408     \textcolor{keywordflow}{except} (ValueError, OverflowError) \textcolor{keyword}{as} ex:
+409         \textcolor{keywordflow}{if} x \textcolor{keywordflow}{in} [\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(\textcolor{stringliteral}{'inf'}), \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(\textcolor{stringliteral}{'-inf'})] \textcolor{keywordflow}{or} x != x:  \textcolor{comment}{# inf or nan}
+410             \textcolor{keywordflow}{return} x
+411         \textcolor{keywordflow}{else}:
+412             \textcolor{keywordflow}{raise} ex
 413 
+414 
 \end{DoxyCode}

@@ -25,258 +25,295 @@ They are assigned a topic and asked to chat.
 \end{DoxyVerb}
  
 
-Definition at line 27 of file run.\+py.
+Definition at line 32 of file run.\+py.
 
 
 \begin{DoxyCode}
-27 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1run_ad3ab2c71f8083c3112815c0b363d316b}{main}():
-28     \textcolor{stringliteral}{"""}
-29 \textcolor{stringliteral}{    This task consists of an MTurk agent evaluating a wizard model.}
-30 \textcolor{stringliteral}{}
-31 \textcolor{stringliteral}{    They are assigned a topic and asked to chat.}
-32 \textcolor{stringliteral}{    """}
-33     start\_time = datetime.datetime.today().strftime(\textcolor{stringliteral}{'%Y-%m-%d-%H-%M'})
-34     argparser = ParlaiParser(\textcolor{keyword}{False}, add\_model\_args=\textcolor{keyword}{True})
-35     argparser.add\_parlai\_data\_path()
-36     argparser.add\_mturk\_args()
-37     argparser.add\_argument(
-38         \textcolor{stringliteral}{'-mt'}, \textcolor{stringliteral}{'--max-turns'}, default=10, type=int, help=\textcolor{stringliteral}{'maximal number of chat turns'}
-39     )
-40     argparser.add\_argument(
-41         \textcolor{stringliteral}{'--max-resp-time'},
-42         default=240,
-43         type=int,
-44         help=\textcolor{stringliteral}{'time limit for entering a dialog message'},
-45     )
-46     argparser.add\_argument(
-47         \textcolor{stringliteral}{'--max-choice-time'},
+32 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1run_ad3ab2c71f8083c3112815c0b363d316b}{main}():
+33     \textcolor{stringliteral}{"""}
+34 \textcolor{stringliteral}{    This task consists of an MTurk agent evaluating a wizard model.}
+35 \textcolor{stringliteral}{}
+36 \textcolor{stringliteral}{    They are assigned a topic and asked to chat.}
+37 \textcolor{stringliteral}{    """}
+38     start\_time = datetime.datetime.today().strftime(\textcolor{stringliteral}{'%Y-%m-%d-%H-%M'})
+39     argparser = ParlaiParser(\textcolor{keyword}{False}, add\_model\_args=\textcolor{keyword}{True})
+40     argparser.add\_parlai\_data\_path()
+41     argparser.add\_mturk\_args()
+42     argparser.add\_argument(
+43         \textcolor{stringliteral}{'-mt'}, \textcolor{stringliteral}{'--max-turns'}, default=10, type=int, help=\textcolor{stringliteral}{'maximal number of chat turns'}
+44     )
+45     argparser.add\_argument(
+46         \textcolor{stringliteral}{'--max-resp-time'},
+47         default=240,
 48         type=int,
-49         default=300,
-50         help=\textcolor{stringliteral}{'time limit for turker'} \textcolor{stringliteral}{'choosing the topic'},
-51     )
-52     argparser.add\_argument(
-53         \textcolor{stringliteral}{'--ag-shutdown-time'},
-54         default=120,
-55         type=int,
-56         help=\textcolor{stringliteral}{'time limit for entering a dialog message'},
-57     )
-58     argparser.add\_argument(
-59         \textcolor{stringliteral}{'-rt'}, \textcolor{stringliteral}{'--range-turn'}, default=\textcolor{stringliteral}{'3,5'}, help=\textcolor{stringliteral}{'sample range of number of turns'}
-60     )
-61     argparser.add\_argument(
-62         \textcolor{stringliteral}{'--human-eval'},
-63         type=\textcolor{stringliteral}{'bool'},
-64         default=\textcolor{keyword}{False},
-65         help=\textcolor{stringliteral}{'human vs human eval, no models involved'},
-66     )
-67     argparser.add\_argument(
-68         \textcolor{stringliteral}{'--auto-approve-delay'},
-69         type=int,
-70         default=3600 * 24 * 1,
-71         help=\textcolor{stringliteral}{'how long to wait for auto approval'},
-72     )
-73     argparser.add\_argument(
-74         \textcolor{stringliteral}{'--only-masters'},
-75         type=\textcolor{stringliteral}{'bool'},
-76         default=\textcolor{keyword}{False},
-77         help=\textcolor{stringliteral}{'Set to true to use only master turks for '} \textcolor{stringliteral}{'this test eval'},
-78     )
-79     argparser.add\_argument(
-80         \textcolor{stringliteral}{'--unique-workers'},
-81         type=\textcolor{stringliteral}{'bool'},
-82         default=\textcolor{keyword}{False},
-83         help=\textcolor{stringliteral}{'Each worker must be unique'},
-84     )
-85     argparser.add\_argument(
-86         \textcolor{stringliteral}{'--mturk-log'},
-87         type=str,
-88         default=\textcolor{stringliteral}{'data/mturklogs/wizard\_of\_wikipedia/\{\}.log'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(start\_time),
-89     )
-90 
-91     \textcolor{keyword}{def }inject\_override(opt, override\_dict):
-92         opt[\textcolor{stringliteral}{'override'}] = override\_dict
-93         \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} override\_dict.items():
-94             opt[k] = v
-95 
-96     \textcolor{keyword}{def }get\_logger(opt):
-97         fmt = \textcolor{stringliteral}{'%(asctime)s: [ %(message)s ]'}
-98         logfile = \textcolor{keywordtype}{None}
-99         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'mturk\_log'} \textcolor{keywordflow}{in} opt:
-100             logfile = opt[\textcolor{stringliteral}{'mturk\_log'}]
-101             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.isdir(os.path.dirname(logfile)):
-102                 os.makedirs(os.path.dirname(logfile))
-103         logger = ParlaiLogger(
-104             \textcolor{stringliteral}{"mturk\_woz"},
-105             console\_level=INFO,
-106             file\_level=INFO,
-107             console\_format=fmt,
-108             file\_format=fmt,
-109             filename=logfile,
-110         )
-111         logger.info(\textcolor{stringliteral}{'COMMAND: %s'} % \textcolor{stringliteral}{' '}.join(sys.argv))
-112         logger.info(\textcolor{stringliteral}{'-'} * 100)
-113         logger.info(\textcolor{stringliteral}{'CONFIG:\(\backslash\)n%s'} % json.dumps(opt, indent=4, sort\_keys=\textcolor{keyword}{True}))
-114 
-115         \textcolor{keywordflow}{return} logger
-116 
-117     \textcolor{comment}{# MODEL CONFIG}
-118     \textcolor{comment}{# NOTE: please edit this to test your own models}
-119     config = \{
-120         \textcolor{stringliteral}{'model'}: \textcolor{stringliteral}{'projects:wizard\_of\_wikipedia:interactive\_retrieval'},
-121         \textcolor{stringliteral}{'retriever\_model\_file'}: \textcolor{stringliteral}{'models:wikipedia\_full/tfidf\_retriever/model'},
-122         \textcolor{stringliteral}{'responder\_model\_file'}: \textcolor{stringliteral}{'models:wizard\_of\_wikipedia/full\_dialogue\_retrieval\_model/model'},
-123     \}
-124 
-125     argparser.add\_model\_subargs(config[\textcolor{stringliteral}{'model'}])  \textcolor{comment}{# add model args to opt}
-126     start\_opt = argparser.parse\_args()
-127 
-128     inject\_override(start\_opt, config)
-129 
-130     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} start\_opt.get(\textcolor{stringliteral}{'human\_eval'}):
-131         bot = \hyperlink{namespaceparlai_1_1core_1_1agents_ad0d54074d4bcc148bb415ab5515a53b5}{create\_agent}(start\_opt)
-132         shared\_bot\_params = bot.share()
-133     \textcolor{keywordflow}{else}:
-134         shared\_bot\_params = \textcolor{keywordtype}{None}
-135 
-136     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} start\_opt[\textcolor{stringliteral}{'human\_eval'}]:
-137         get\_logger(bot.opt)
-138     \textcolor{keywordflow}{else}:
-139         get\_logger(start\_opt)
-140 
-141     \textcolor{keywordflow}{if} start\_opt[\textcolor{stringliteral}{'human\_eval'}]:
-142         folder\_name = \textcolor{stringliteral}{'human\_eval-\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(start\_time)
-143     \textcolor{keywordflow}{else}:
-144         folder\_name = \textcolor{stringliteral}{'\{\}-\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(start\_opt[\textcolor{stringliteral}{'model'}], start\_time)
+49         help=\textcolor{stringliteral}{'time limit for entering a dialog message'},
+50     )
+51     argparser.add\_argument(
+52         \textcolor{stringliteral}{'--generative-setup'},
+53         default=\textcolor{keyword}{False},
+54         help=\textcolor{stringliteral}{'mimic setup for the WoW generator task (use knowledge token)'},
+55     )
+56     argparser.add\_argument(
+57         \textcolor{stringliteral}{'--max-choice-time'},
+58         type=int,
+59         default=300,
+60         help=\textcolor{stringliteral}{'time limit for turker'} \textcolor{stringliteral}{'choosing the topic'},
+61     )
+62     argparser.add\_argument(
+63         \textcolor{stringliteral}{'--ag-shutdown-time'},
+64         default=120,
+65         type=int,
+66         help=\textcolor{stringliteral}{'time limit for entering a dialog message'},
+67     )
+68     argparser.add\_argument(
+69         \textcolor{stringliteral}{'-rt'}, \textcolor{stringliteral}{'--range-turn'}, default=\textcolor{stringliteral}{'3,5'}, help=\textcolor{stringliteral}{'sample range of number of turns'}
+70     )
+71     argparser.add\_argument(
+72         \textcolor{stringliteral}{'--human-eval'},
+73         type=\textcolor{stringliteral}{'bool'},
+74         default=\textcolor{keyword}{False},
+75         help=\textcolor{stringliteral}{'human vs human eval, no models involved'},
+76     )
+77     argparser.add\_argument(
+78         \textcolor{stringliteral}{'--auto-approve-delay'},
+79         type=int,
+80         default=3600 * 24 * 1,
+81         help=\textcolor{stringliteral}{'how long to wait for auto approval'},
+82     )
+83     argparser.add\_argument(
+84         \textcolor{stringliteral}{'--only-masters'},
+85         type=\textcolor{stringliteral}{'bool'},
+86         default=\textcolor{keyword}{False},
+87         help=\textcolor{stringliteral}{'Set to true to use only master turks for '} \textcolor{stringliteral}{'this test eval'},
+88     )
+89     argparser.add\_argument(
+90         \textcolor{stringliteral}{'--unique-workers'},
+91         type=\textcolor{stringliteral}{'bool'},
+92         default=\textcolor{keyword}{False},
+93         help=\textcolor{stringliteral}{'Each worker must be unique'},
+94     )
+95     argparser.add\_argument(
+96         \textcolor{stringliteral}{'--prepend-gold-knowledge'},
+97         type=\textcolor{stringliteral}{'bool'},
+98         default=\textcolor{keyword}{False},
+99         help=\textcolor{stringliteral}{'Add the gold knowledge to the input text from the human for '}
+100         \textcolor{stringliteral}{'the model observation.'},
+101     )
+102     argparser.add\_argument(
+103         \textcolor{stringliteral}{'--mturk-log'},
+104         type=str,
+105         default=\textcolor{stringliteral}{'data/mturklogs/wizard\_of\_wikipedia/\{\}.log'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(start\_time),
+106     )
+107 
+108     \textcolor{keyword}{def }inject\_override(opt, override\_dict):
+109         opt[\textcolor{stringliteral}{'override'}] = override\_dict
+110         \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} override\_dict.items():
+111             opt[k] = v
+112 
+113     \textcolor{keyword}{def }get\_logger(opt):
+114         fmt = \textcolor{stringliteral}{'%(asctime)s: [ %(message)s ]'}
+115         logfile = \textcolor{keywordtype}{None}
+116         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'mturk\_log'} \textcolor{keywordflow}{in} opt:
+117             logfile = opt[\textcolor{stringliteral}{'mturk\_log'}]
+118             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.isdir(os.path.dirname(logfile)):
+119                 os.makedirs(os.path.dirname(logfile))
+120         logger = ParlaiLogger(
+121             \textcolor{stringliteral}{"mturk\_woz"},
+122             console\_level=INFO,
+123             file\_level=INFO,
+124             console\_format=fmt,
+125             file\_format=fmt,
+126             filename=logfile,
+127         )
+128         logger.info(\textcolor{stringliteral}{'COMMAND: %s'} % \textcolor{stringliteral}{' '}.join(sys.argv))
+129         logger.info(\textcolor{stringliteral}{'-'} * 100)
+130         logger.info(\textcolor{stringliteral}{'CONFIG:\(\backslash\)n%s'} % json.dumps(opt, indent=4, sort\_keys=\textcolor{keyword}{True}))
+131 
+132         \textcolor{keywordflow}{return} logger
+133 
+134     \textcolor{comment}{# MODEL CONFIG}
+135     \textcolor{comment}{# NOTE: please edit this to test your own models}
+136     config = \{
+137         \textcolor{stringliteral}{'model\_file'}: \textcolor{stringliteral}{'models:wizard\_of\_wikipedia/end2end\_generator/model'},
+138         \textcolor{stringliteral}{'generative\_setup'}: \textcolor{keyword}{True},
+139         \textcolor{stringliteral}{'prepend\_gold\_knowledge'}: \textcolor{keyword}{True},
+140         \textcolor{stringliteral}{'model'}: \textcolor{stringliteral}{'projects:wizard\_of\_wikipedia:generator'},
+141         \textcolor{stringliteral}{'beam\_size'}: 10,  \textcolor{comment}{# add inference arguments here}
+142         \textcolor{stringliteral}{'inference'}: \textcolor{stringliteral}{'beam'},
+143         \textcolor{stringliteral}{'beam\_block\_ngram'}: 3,
+144     \}
 145 
-146     start\_opt[\textcolor{stringliteral}{'task'}] = os.path.basename(os.path.dirname(os.path.abspath(\_\_file\_\_)))
-147     \textcolor{keywordflow}{if} \textcolor{stringliteral}{'data\_path'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} start\_opt:
-148         start\_opt[\textcolor{stringliteral}{'data\_path'}] = os.path.join(
-149             os.getcwd(), \textcolor{stringliteral}{'data'}, \textcolor{stringliteral}{'wizard\_eval'}, folder\_name
-150         )
-151     start\_opt.update(task\_config)
-152 
-153     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} start\_opt.get(\textcolor{stringliteral}{'human\_eval'}):
-154         mturk\_agent\_ids = [\textcolor{stringliteral}{'PERSON\_1'}]
-155     \textcolor{keywordflow}{else}:
-156         mturk\_agent\_ids = [\textcolor{stringliteral}{'PERSON\_1'}, \textcolor{stringliteral}{'PERSON\_2'}]
-157 
-158     mturk\_manager = MTurkManager(opt=start\_opt, mturk\_agent\_ids=mturk\_agent\_ids)
-159 
-160     topics\_generator = TopicsGenerator(start\_opt)
-161     directory\_path = os.path.dirname(os.path.abspath(\_\_file\_\_))
-162     mturk\_manager.setup\_server(task\_directory\_path=directory\_path)
-163     worker\_roles = \{\}
-164     connect\_counter = AttrDict(value=0)
-165 
-166     \textcolor{keywordflow}{try}:
-167         mturk\_manager.start\_new\_run()
-168         agent\_qualifications = []
-169         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} start\_opt[\textcolor{stringliteral}{'is\_sandbox'}]:
-170             \textcolor{comment}{# assign qualifications}
-171             \textcolor{keywordflow}{if} start\_opt[\textcolor{stringliteral}{'only\_masters'}]:
-172                 agent\_qualifications.append(MASTER\_QUALIF)
-173             \textcolor{keywordflow}{if} start\_opt[\textcolor{stringliteral}{'unique\_workers'}]:
-174                 qual\_name = \textcolor{stringliteral}{'UniqueChatEval'}
-175                 qual\_desc = (
-176                     \textcolor{stringliteral}{'Qualification to ensure each worker completes a maximum '}
-177                     \textcolor{stringliteral}{'of one of these chat/eval HITs'}
-178                 )
-179                 qualification\_id = mturk\_utils.find\_or\_create\_qualification(
-180                     qual\_name, qual\_desc, \textcolor{keyword}{False}
-181                 )
-182                 print(\textcolor{stringliteral}{'Created qualification: '}, qualification\_id)
-183                 UNIQUE\_QUALIF = \{
-184                     \textcolor{stringliteral}{'QualificationTypeId'}: qualification\_id,
-185                     \textcolor{stringliteral}{'Comparator'}: \textcolor{stringliteral}{'DoesNotExist'},
-186                     \textcolor{stringliteral}{'RequiredToPreview'}: \textcolor{keyword}{True},
-187                 \}
-188                 start\_opt[\textcolor{stringliteral}{'unique\_qualif\_id'}] = qualification\_id
-189                 agent\_qualifications.append(UNIQUE\_QUALIF)
-190         mturk\_manager.create\_hits(qualifications=agent\_qualifications)
-191 
-192         \textcolor{keyword}{def }run\_onboard(worker):
-193             \textcolor{keywordflow}{if} start\_opt[\textcolor{stringliteral}{'human\_eval'}]:
-194                 role = mturk\_agent\_ids[connect\_counter.value % len(mturk\_agent\_ids)]
-195                 connect\_counter.value += 1
-196                 worker\_roles[worker.worker\_id] = role
-197             \textcolor{keywordflow}{else}:
-198                 role = \textcolor{stringliteral}{'PERSON\_1'}
-199             worker.topics\_generator = topics\_generator
-200             world = TopicChooseWorld(start\_opt, worker, role=role)
-201             world.parley()
-202             world.shutdown()
-203 
-204         mturk\_manager.set\_onboard\_function(onboard\_function=run\_onboard)
-205         mturk\_manager.ready\_to\_accept\_workers()
+146     \textcolor{comment}{# add dialogue model args}
+147     argparser.add\_model\_subargs(config[\textcolor{stringliteral}{'model'}])
+148     \textcolor{comment}{# add knowledge retriever args}
+149     argparser.add\_model\_subargs(\textcolor{stringliteral}{'projects:wizard\_of\_wikipedia:knowledge\_retriever'})
+150     start\_opt = argparser.parse\_args()
+151 
+152     inject\_override(start\_opt, config)
+153 
+154     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} start\_opt.get(\textcolor{stringliteral}{'human\_eval'}):
+155         \textcolor{comment}{# make dialogue responder model}
+156         bot = \hyperlink{namespaceparlai_1_1core_1_1agents_a00d77a7e26fb89e8bd900f7b2a02982a}{create\_agent}(start\_opt)
+157         shared\_bot\_params = bot.share()
+158         \textcolor{comment}{# make knowledge retriever}
+159         knowledge\_opt = \{
+160             \textcolor{stringliteral}{'model'}: \textcolor{stringliteral}{'projects:wizard\_of\_wikipedia:knowledge\_retriever'},
+161             \textcolor{stringliteral}{'add\_token\_knowledge'}: \textcolor{keywordflow}{not} start\_opt[\textcolor{stringliteral}{'generative\_setup'}],
+162             \textcolor{stringliteral}{'datapath'}: start\_opt[\textcolor{stringliteral}{'datapath'}],
+163             \textcolor{stringliteral}{'interactive\_mode'}: \textcolor{keyword}{False},  \textcolor{comment}{# interactive mode automatically sets fixed cands}
+164         \}
+165         \textcolor{comment}{# add all existing opt to the knowledge opt, without overriding}
+166         \textcolor{comment}{# the above arguments}
+167         \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} start\_opt.items():
+168             \textcolor{keywordflow}{if} k \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} knowledge\_opt \textcolor{keywordflow}{and} k \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} config:
+169                 knowledge\_opt[k] = v
+170 
+171         knowledge\_agent = KnowledgeRetrieverAgent(knowledge\_opt)
+172         knowledge\_agent\_shared\_params = knowledge\_agent.share()
+173 
+174     \textcolor{keywordflow}{else}:
+175         shared\_bot\_params = \textcolor{keywordtype}{None}
+176 
+177     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} start\_opt[\textcolor{stringliteral}{'human\_eval'}]:
+178         get\_logger(bot.opt)
+179     \textcolor{keywordflow}{else}:
+180         get\_logger(start\_opt)
+181 
+182     \textcolor{keywordflow}{if} start\_opt[\textcolor{stringliteral}{'human\_eval'}]:
+183         folder\_name = \textcolor{stringliteral}{'human\_eval-\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(start\_time)
+184     \textcolor{keywordflow}{else}:
+185         folder\_name = \textcolor{stringliteral}{'\{\}-\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(start\_opt[\textcolor{stringliteral}{'model'}], start\_time)
+186 
+187     start\_opt[\textcolor{stringliteral}{'task'}] = os.path.basename(os.path.dirname(os.path.abspath(\_\_file\_\_)))
+188     \textcolor{keywordflow}{if} \textcolor{stringliteral}{'data\_path'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} start\_opt:
+189         start\_opt[\textcolor{stringliteral}{'data\_path'}] = os.path.join(
+190             os.getcwd(), \textcolor{stringliteral}{'data'}, \textcolor{stringliteral}{'wizard\_eval'}, folder\_name
+191         )
+192     start\_opt.update(task\_config)
+193 
+194     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} start\_opt.get(\textcolor{stringliteral}{'human\_eval'}):
+195         mturk\_agent\_ids = [\textcolor{stringliteral}{'PERSON\_1'}]
+196     \textcolor{keywordflow}{else}:
+197         mturk\_agent\_ids = [\textcolor{stringliteral}{'PERSON\_1'}, \textcolor{stringliteral}{'PERSON\_2'}]
+198 
+199     mturk\_manager = MTurkManager(opt=start\_opt, mturk\_agent\_ids=mturk\_agent\_ids)
+200 
+201     topics\_generator = TopicsGenerator(start\_opt)
+202     directory\_path = os.path.dirname(os.path.abspath(\_\_file\_\_))
+203     mturk\_manager.setup\_server(task\_directory\_path=directory\_path)
+204     worker\_roles = \{\}
+205     connect\_counter = AttrDict(value=0)
 206 
-207         \textcolor{keyword}{def }check\_single\_worker\_eligibility(worker):
-208             \textcolor{keywordflow}{return} \textcolor{keyword}{True}
-209 
-210         \textcolor{keyword}{def }check\_multiple\_workers\_eligibility(workers):
-211             valid\_workers = \{\}
-212             \textcolor{keywordflow}{for} worker \textcolor{keywordflow}{in} workers:
-213                 worker\_id = worker.worker\_id
-214                 \textcolor{keywordflow}{if} worker\_id \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} worker\_roles:
-215                     print(\textcolor{stringliteral}{'Something went wrong'})
-216                     \textcolor{keywordflow}{continue}
-217                 role = worker\_roles[worker\_id]
-218                 \textcolor{keywordflow}{if} role \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} valid\_workers:
-219                     valid\_workers[role] = worker
-220                 \textcolor{keywordflow}{if} len(valid\_workers) == 2:
-221                     \textcolor{keywordflow}{break}
-222             \textcolor{keywordflow}{return} valid\_workers.values() \textcolor{keywordflow}{if} len(valid\_workers) == 2 \textcolor{keywordflow}{else} []
-223 
-224         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} start\_opt[\textcolor{stringliteral}{'human\_eval'}]:
-225             eligibility\_function = \{
-226                 \textcolor{stringliteral}{'func'}: check\_single\_worker\_eligibility,
-227                 \textcolor{stringliteral}{'multiple'}: \textcolor{keyword}{False},
-228             \}
-229         \textcolor{keywordflow}{else}:
-230             eligibility\_function = \{
-231                 \textcolor{stringliteral}{'func'}: check\_multiple\_workers\_eligibility,
-232                 \textcolor{stringliteral}{'multiple'}: \textcolor{keyword}{True},
-233             \}
-234 
-235         \textcolor{keyword}{def }assign\_worker\_roles(workers):
-236             \textcolor{keywordflow}{if} start\_opt[\textcolor{stringliteral}{'human\_eval'}]:
-237                 \textcolor{keywordflow}{for} worker \textcolor{keywordflow}{in} workers:
-238                     worker.id = worker\_roles[worker.worker\_id]
-239             \textcolor{keywordflow}{else}:
-240                 \textcolor{keywordflow}{for} index, worker \textcolor{keywordflow}{in} enumerate(workers):
-241                     worker.id = mturk\_agent\_ids[index % len(mturk\_agent\_ids)]
-242 
-243         \textcolor{keyword}{def }run\_conversation(mturk\_manager, opt, workers):
-244             conv\_idx = mturk\_manager.conversation\_index
-245             world = WizardEval(
-246                 opt=start\_opt,
-247                 agents=workers,
-248                 range\_turn=[\hyperlink{namespaceprojects_1_1mastering__the__dungeon_1_1mturk_1_1tasks_1_1MTD_1_1run_a693eb03afbb820bbfe8b47b12e69e519}{int}(s) \textcolor{keywordflow}{for} s \textcolor{keywordflow}{in} start\_opt[\textcolor{stringliteral}{'range\_turn'}].split(\textcolor{stringliteral}{','})],
-249                 max\_turn=start\_opt[\textcolor{stringliteral}{'max\_turns'}],
-250                 max\_resp\_time=start\_opt[\textcolor{stringliteral}{'max\_resp\_time'}],
-251                 model\_agent\_opt=shared\_bot\_params,
-252                 world\_tag=\textcolor{stringliteral}{'conversation t\_\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(conv\_idx),
-253                 agent\_timeout\_shutdown=opt[\textcolor{stringliteral}{'ag\_shutdown\_time'}],
-254             )
-255             \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} world.episode\_done():
-256                 world.parley()
-257             world.save\_data()
-258 
-259             world.shutdown()
-260             gc.collect()
-261 
-262         mturk\_manager.start\_task(
-263             eligibility\_function=eligibility\_function,
-264             assign\_role\_function=assign\_worker\_roles,
-265             task\_function=run\_conversation,
-266         )
-267 
-268     \textcolor{keywordflow}{except} BaseException:
-269         \textcolor{keywordflow}{raise}
-270     \textcolor{keywordflow}{finally}:
-271         mturk\_manager.expire\_all\_unassigned\_hits()
-272         mturk\_manager.shutdown()
-273 
-274 
+207     \textcolor{keywordflow}{try}:
+208         mturk\_manager.start\_new\_run()
+209         agent\_qualifications = []
+210         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} start\_opt[\textcolor{stringliteral}{'is\_sandbox'}]:
+211             \textcolor{comment}{# assign qualifications}
+212             \textcolor{keywordflow}{if} start\_opt[\textcolor{stringliteral}{'only\_masters'}]:
+213                 agent\_qualifications.append(MASTER\_QUALIF)
+214             \textcolor{keywordflow}{if} start\_opt[\textcolor{stringliteral}{'unique\_workers'}]:
+215                 qual\_name = \textcolor{stringliteral}{'UniqueChatEval'}
+216                 qual\_desc = (
+217                     \textcolor{stringliteral}{'Qualification to ensure each worker completes a maximum '}
+218                     \textcolor{stringliteral}{'of one of these chat/eval HITs'}
+219                 )
+220                 qualification\_id = mturk\_utils.find\_or\_create\_qualification(
+221                     qual\_name, qual\_desc, \textcolor{keyword}{False}
+222                 )
+223                 print(\textcolor{stringliteral}{'Created qualification: '}, qualification\_id)
+224                 UNIQUE\_QUALIF = \{
+225                     \textcolor{stringliteral}{'QualificationTypeId'}: qualification\_id,
+226                     \textcolor{stringliteral}{'Comparator'}: \textcolor{stringliteral}{'DoesNotExist'},
+227                     \textcolor{stringliteral}{'RequiredToPreview'}: \textcolor{keyword}{True},
+228                 \}
+229                 start\_opt[\textcolor{stringliteral}{'unique\_qualif\_id'}] = qualification\_id
+230                 agent\_qualifications.append(UNIQUE\_QUALIF)
+231         mturk\_manager.create\_hits(qualifications=agent\_qualifications)
+232 
+233         \textcolor{keyword}{def }run\_onboard(worker):
+234             \textcolor{keywordflow}{if} start\_opt[\textcolor{stringliteral}{'human\_eval'}]:
+235                 role = mturk\_agent\_ids[connect\_counter.value % len(mturk\_agent\_ids)]
+236                 connect\_counter.value += 1
+237                 worker\_roles[worker.worker\_id] = role
+238             \textcolor{keywordflow}{else}:
+239                 role = \textcolor{stringliteral}{'PERSON\_1'}
+240             worker.topics\_generator = topics\_generator
+241             world = TopicChooseWorld(start\_opt, worker, role=role)
+242             world.parley()
+243             world.shutdown()
+244 
+245         mturk\_manager.set\_onboard\_function(onboard\_function=run\_onboard)
+246         mturk\_manager.ready\_to\_accept\_workers()
+247 
+248         \textcolor{keyword}{def }check\_single\_worker\_eligibility(worker):
+249             \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+250 
+251         \textcolor{keyword}{def }check\_multiple\_workers\_eligibility(workers):
+252             valid\_workers = \{\}
+253             \textcolor{keywordflow}{for} worker \textcolor{keywordflow}{in} workers:
+254                 worker\_id = worker.worker\_id
+255                 \textcolor{keywordflow}{if} worker\_id \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} worker\_roles:
+256                     print(\textcolor{stringliteral}{'Something went wrong'})
+257                     \textcolor{keywordflow}{continue}
+258                 role = worker\_roles[worker\_id]
+259                 \textcolor{keywordflow}{if} role \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} valid\_workers:
+260                     valid\_workers[role] = worker
+261                 \textcolor{keywordflow}{if} len(valid\_workers) == 2:
+262                     \textcolor{keywordflow}{break}
+263             \textcolor{keywordflow}{return} valid\_workers.values() \textcolor{keywordflow}{if} len(valid\_workers) == 2 \textcolor{keywordflow}{else} []
+264 
+265         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} start\_opt[\textcolor{stringliteral}{'human\_eval'}]:
+266             eligibility\_function = \{
+267                 \textcolor{stringliteral}{'func'}: check\_single\_worker\_eligibility,
+268                 \textcolor{stringliteral}{'multiple'}: \textcolor{keyword}{False},
+269             \}
+270         \textcolor{keywordflow}{else}:
+271             eligibility\_function = \{
+272                 \textcolor{stringliteral}{'func'}: check\_multiple\_workers\_eligibility,
+273                 \textcolor{stringliteral}{'multiple'}: \textcolor{keyword}{True},
+274             \}
+275 
+276         \textcolor{keyword}{def }assign\_worker\_roles(workers):
+277             \textcolor{keywordflow}{if} start\_opt[\textcolor{stringliteral}{'human\_eval'}]:
+278                 \textcolor{keywordflow}{for} worker \textcolor{keywordflow}{in} workers:
+279                     worker.id = worker\_roles[worker.worker\_id]
+280             \textcolor{keywordflow}{else}:
+281                 \textcolor{keywordflow}{for} index, worker \textcolor{keywordflow}{in} enumerate(workers):
+282                     worker.id = mturk\_agent\_ids[index % len(mturk\_agent\_ids)]
+283 
+284         \textcolor{keyword}{def }run\_conversation(mturk\_manager, opt, workers):
+285             conv\_idx = mturk\_manager.conversation\_index
+286             world = WizardEval(
+287                 opt=start\_opt,
+288                 agents=workers,
+289                 range\_turn=[\hyperlink{namespaceprojects_1_1mastering__the__dungeon_1_1mturk_1_1tasks_1_1MTD_1_1run_a693eb03afbb820bbfe8b47b12e69e519}{int}(s) \textcolor{keywordflow}{for} s \textcolor{keywordflow}{in} start\_opt[\textcolor{stringliteral}{'range\_turn'}].split(\textcolor{stringliteral}{','})],
+290                 max\_turn=start\_opt[\textcolor{stringliteral}{'max\_turns'}],
+291                 max\_resp\_time=start\_opt[\textcolor{stringliteral}{'max\_resp\_time'}],
+292                 model\_agent\_opt=shared\_bot\_params,
+293                 world\_tag=\textcolor{stringliteral}{'conversation t\_\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(conv\_idx),
+294                 agent\_timeout\_shutdown=opt[\textcolor{stringliteral}{'ag\_shutdown\_time'}],
+295                 knowledge\_retriever\_opt=knowledge\_agent\_shared\_params,
+296             )
+297             \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} world.episode\_done():
+298                 world.parley()
+299             world.save\_data()
+300 
+301             world.shutdown()
+302             gc.collect()
+303 
+304         mturk\_manager.start\_task(
+305             eligibility\_function=eligibility\_function,
+306             assign\_role\_function=assign\_worker\_roles,
+307             task\_function=run\_conversation,
+308         )
+309 
+310     \textcolor{keywordflow}{except} BaseException:
+311         \textcolor{keywordflow}{raise}
+312     \textcolor{keywordflow}{finally}:
+313         mturk\_manager.expire\_all\_unassigned\_hits()
+314         mturk\_manager.shutdown()
+315 
+316 
 \end{DoxyCode}
 
 
@@ -289,5 +326,5 @@ Definition at line 27 of file run.\+py.
 
 
 
-Definition at line 20 of file run.\+py.
+Definition at line 25 of file run.\+py.
 

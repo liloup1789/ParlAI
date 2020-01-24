@@ -2,8 +2,7 @@
 \label{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager}\index{parlai.\+mturk.\+core.\+mturk\+\_\+manager.\+M\+Turk\+Manager@{parlai.\+mturk.\+core.\+mturk\+\_\+manager.\+M\+Turk\+Manager}}
 
 
-Inheritance diagram for parlai.\+mturk.\+core.\+mturk\+\_\+manager.\+M\+Turk\+Manager\+:
-\nopagebreak
+Inheritance diagram for parlai.\+mturk.\+core.\+mturk\+\_\+manager.\+M\+Turk\+Manager\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -298,22 +297,22 @@ Definition at line 112 of file mturk\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1809 of file mturk\+\_\+manager.\+py.
+Definition at line 1816 of file mturk\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-1809     \textcolor{keyword}{def }approve\_assignments\_for\_hit(self, hit\_id, override\_rejection=False):
-1810         \textcolor{stringliteral}{"""}
-1811 \textcolor{stringliteral}{        Approve work for assignments associated with a given hit, through mturk client.}
-1812 \textcolor{stringliteral}{        """}
-1813         client = mturk\_utils.get\_mturk\_client(self.is\_sandbox)
-1814         assignments = self.get\_assignments\_for\_hit(hit\_id)
-1815         \textcolor{keywordflow}{for} assignment \textcolor{keywordflow}{in} assignments:
-1816             assignment\_id = assignment[\textcolor{stringliteral}{'AssignmentId'}]
-1817             client.approve\_assignment(
-1818                 AssignmentId=assignment\_id, OverrideRejection=override\_rejection
-1819             )
-1820 
+1816     \textcolor{keyword}{def }approve\_assignments\_for\_hit(self, hit\_id, override\_rejection=False):
+1817         \textcolor{stringliteral}{"""}
+1818 \textcolor{stringliteral}{        Approve work for assignments associated with a given hit, through mturk client.}
+1819 \textcolor{stringliteral}{        """}
+1820         client = mturk\_utils.get\_mturk\_client(self.is\_sandbox)
+1821         assignments = self.get\_assignments\_for\_hit(hit\_id)
+1822         \textcolor{keywordflow}{for} assignment \textcolor{keywordflow}{in} assignments:
+1823             assignment\_id = assignment[\textcolor{stringliteral}{'AssignmentId'}]
+1824             client.approve\_assignment(
+1825                 AssignmentId=assignment\_id, OverrideRejection=override\_rejection
+1826             )
+1827 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_a0accb6612484648ec2666c01a3597cf8}\label{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_a0accb6612484648ec2666c01a3597cf8}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager@{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager}!approve\+\_\+work@{approve\+\_\+work}}
@@ -325,24 +324,24 @@ Definition at line 1809 of file mturk\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1782 of file mturk\+\_\+manager.\+py.
+Definition at line 1789 of file mturk\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-1782     \textcolor{keyword}{def }approve\_work(self, assignment\_id, override\_rejection=False):
-1783         \textcolor{stringliteral}{"""}
-1784 \textcolor{stringliteral}{        approve work for a given assignment through the mturk client.}
-1785 \textcolor{stringliteral}{        """}
-1786         client = mturk\_utils.get\_mturk\_client(self.is\_sandbox)
-1787         client.approve\_assignment(
-1788             AssignmentId=assignment\_id, OverrideRejection=override\_rejection
-1789         )
-1790         \textcolor{keywordflow}{if} self.db\_logger \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-1791             self.db\_logger.log\_approve\_assignment(assignment\_id)
-1792         shared\_utils.print\_and\_log(
-1793             logging.INFO, \textcolor{stringliteral}{'Assignment \{\} approved.'} \textcolor{stringliteral}{''}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(assignment\_id)
-1794         )
-1795 
+1789     \textcolor{keyword}{def }approve\_work(self, assignment\_id, override\_rejection=False):
+1790         \textcolor{stringliteral}{"""}
+1791 \textcolor{stringliteral}{        approve work for a given assignment through the mturk client.}
+1792 \textcolor{stringliteral}{        """}
+1793         client = mturk\_utils.get\_mturk\_client(self.is\_sandbox)
+1794         client.approve\_assignment(
+1795             AssignmentId=assignment\_id, OverrideRejection=override\_rejection
+1796         )
+1797         \textcolor{keywordflow}{if} self.db\_logger \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+1798             self.db\_logger.log\_approve\_assignment(assignment\_id)
+1799         shared\_utils.print\_and\_log(
+1800             logging.INFO, \textcolor{stringliteral}{'Assignment \{\} approved.'} \textcolor{stringliteral}{''}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(assignment\_id)
+1801         )
+1802 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_a10c0ba44b2e46b1644620e2d496458af}\label{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_a10c0ba44b2e46b1644620e2d496458af}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager@{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager}!block\+\_\+worker@{block\+\_\+worker}}
@@ -354,21 +353,21 @@ Definition at line 1782 of file mturk\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1821 of file mturk\+\_\+manager.\+py.
+Definition at line 1828 of file mturk\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-1821     \textcolor{keyword}{def }block\_worker(self, worker\_id, reason):
-1822         \textcolor{stringliteral}{"""}
-1823 \textcolor{stringliteral}{        Block a worker by id using the mturk client, passes reason along.}
-1824 \textcolor{stringliteral}{        """}
-1825         client = mturk\_utils.get\_mturk\_client(self.is\_sandbox)
-1826         client.create\_worker\_block(WorkerId=worker\_id, Reason=reason)
-1827         shared\_utils.print\_and\_log(
-1828             logging.INFO,
-1829             \textcolor{stringliteral}{'Worker \{\} blocked for reason \{\}.'} \textcolor{stringliteral}{''}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(worker\_id, reason),
-1830         )
-1831 
+1828     \textcolor{keyword}{def }block\_worker(self, worker\_id, reason):
+1829         \textcolor{stringliteral}{"""}
+1830 \textcolor{stringliteral}{        Block a worker by id using the mturk client, passes reason along.}
+1831 \textcolor{stringliteral}{        """}
+1832         client = mturk\_utils.get\_mturk\_client(self.is\_sandbox)
+1833         client.create\_worker\_block(WorkerId=worker\_id, Reason=reason)
+1834         shared\_utils.print\_and\_log(
+1835             logging.INFO,
+1836             \textcolor{stringliteral}{'Worker \{\} blocked for reason \{\}.'} \textcolor{stringliteral}{''}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(worker\_id, reason),
+1837         )
+1838 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_ae192d527cf9dcf694d8111fb283aa5d7}\label{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_ae192d527cf9dcf694d8111fb283aa5d7}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager@{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager}!create\+\_\+additional\+\_\+hits@{create\+\_\+additional\+\_\+hits}}
@@ -381,63 +380,63 @@ into the hit_id_list.
 \end{DoxyVerb}
  
 
-Definition at line 1645 of file mturk\+\_\+manager.\+py.
+Definition at line 1652 of file mturk\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-1645     \textcolor{keyword}{def }create\_additional\_hits(self, num\_hits, qualifications=None):
-1646         \textcolor{stringliteral}{"""}
-1647 \textcolor{stringliteral}{        Handle creation for a specific number of hits/assignments Put created HIT ids}
-1648 \textcolor{stringliteral}{        into the hit\_id\_list.}
-1649 \textcolor{stringliteral}{        """}
-1650         shared\_utils.print\_and\_log(logging.INFO, \textcolor{stringliteral}{'Creating \{\} hits...'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(num\_hits))
-1651 
-1652         qualifications = self.get\_qualification\_list(qualifications)
-1653 
-1654         self.opt[\textcolor{stringliteral}{'assignment\_duration\_in\_seconds'}] = self.opt.get(
-1655             \textcolor{stringliteral}{'assignment\_duration\_in\_seconds'}, 30 * 60
-1656         )
-1657         hit\_type\_id = mturk\_utils.create\_hit\_type(
-1658             hit\_title=self.opt[\textcolor{stringliteral}{'hit\_title'}],
-1659             hit\_description=\textcolor{stringliteral}{'\{\} (ID: \{\})'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
-1660                 self.opt[\textcolor{stringliteral}{'hit\_description'}], self.task\_group\_id
-1661             ),
-1662             hit\_keywords=self.opt[\textcolor{stringliteral}{'hit\_keywords'}],
-1663             hit\_reward=self.opt[\textcolor{stringliteral}{'reward'}],
-1664             \textcolor{comment}{# Set to 30 minutes by default}
-1665             assignment\_duration\_in\_seconds=self.opt.get(
-1666                 \textcolor{stringliteral}{'assignment\_duration\_in\_seconds'}, 30 * 60
-1667             ),
-1668             is\_sandbox=self.opt[\textcolor{stringliteral}{'is\_sandbox'}],
-1669             qualifications=qualifications,
-1670             auto\_approve\_delay=self.auto\_approve\_delay,
-1671         )
-1672         mturk\_chat\_url = \textcolor{stringliteral}{'\{\}/chat\_index?task\_group\_id=\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
-1673             self.server\_url, self.task\_group\_id
-1674         )
-1675         shared\_utils.print\_and\_log(logging.INFO, mturk\_chat\_url)
-1676         mturk\_page\_url = \textcolor{keywordtype}{None}
-1677 
-1678         \textcolor{keywordflow}{if} self.topic\_arn \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-1679             mturk\_utils.subscribe\_to\_hits(hit\_type\_id, self.is\_sandbox, self.topic\_arn)
-1680 
-1681         \textcolor{keywordflow}{for} \_i \textcolor{keywordflow}{in} range(num\_hits):
-1682             (
-1683                 mturk\_page\_url,
-1684                 hit\_id,
-1685                 mturk\_response,
-1686             ) = mturk\_utils.create\_hit\_with\_hit\_type(
-1687                 opt=self.opt,
-1688                 page\_url=mturk\_chat\_url,
-1689                 hit\_type\_id=hit\_type\_id,
-1690                 num\_assignments=1,
-1691                 is\_sandbox=self.is\_sandbox,
-1692             )
-1693             \textcolor{keywordflow}{if} self.db\_logger \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-1694                 self.db\_logger.log\_hit\_status(mturk\_response)
-1695             self.hit\_id\_list.append(hit\_id)
-1696         \textcolor{keywordflow}{return} mturk\_page\_url
-1697 
+1652     \textcolor{keyword}{def }create\_additional\_hits(self, num\_hits, qualifications=None):
+1653         \textcolor{stringliteral}{"""}
+1654 \textcolor{stringliteral}{        Handle creation for a specific number of hits/assignments Put created HIT ids}
+1655 \textcolor{stringliteral}{        into the hit\_id\_list.}
+1656 \textcolor{stringliteral}{        """}
+1657         shared\_utils.print\_and\_log(logging.INFO, \textcolor{stringliteral}{'Creating \{\} hits...'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(num\_hits))
+1658 
+1659         qualifications = self.get\_qualification\_list(qualifications)
+1660 
+1661         self.opt[\textcolor{stringliteral}{'assignment\_duration\_in\_seconds'}] = self.opt.get(
+1662             \textcolor{stringliteral}{'assignment\_duration\_in\_seconds'}, 30 * 60
+1663         )
+1664         hit\_type\_id = mturk\_utils.create\_hit\_type(
+1665             hit\_title=self.opt[\textcolor{stringliteral}{'hit\_title'}],
+1666             hit\_description=\textcolor{stringliteral}{'\{\} (ID: \{\})'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+1667                 self.opt[\textcolor{stringliteral}{'hit\_description'}], self.task\_group\_id
+1668             ),
+1669             hit\_keywords=self.opt[\textcolor{stringliteral}{'hit\_keywords'}],
+1670             hit\_reward=self.opt[\textcolor{stringliteral}{'reward'}],
+1671             \textcolor{comment}{# Set to 30 minutes by default}
+1672             assignment\_duration\_in\_seconds=self.opt.get(
+1673                 \textcolor{stringliteral}{'assignment\_duration\_in\_seconds'}, 30 * 60
+1674             ),
+1675             is\_sandbox=self.opt[\textcolor{stringliteral}{'is\_sandbox'}],
+1676             qualifications=qualifications,
+1677             auto\_approve\_delay=self.auto\_approve\_delay,
+1678         )
+1679         mturk\_chat\_url = \textcolor{stringliteral}{'\{\}/chat\_index?task\_group\_id=\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+1680             self.server\_url, self.task\_group\_id
+1681         )
+1682         shared\_utils.print\_and\_log(logging.INFO, mturk\_chat\_url)
+1683         mturk\_page\_url = \textcolor{keywordtype}{None}
+1684 
+1685         \textcolor{keywordflow}{if} self.topic\_arn \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+1686             mturk\_utils.subscribe\_to\_hits(hit\_type\_id, self.is\_sandbox, self.topic\_arn)
+1687 
+1688         \textcolor{keywordflow}{for} \_i \textcolor{keywordflow}{in} range(num\_hits):
+1689             (
+1690                 mturk\_page\_url,
+1691                 hit\_id,
+1692                 mturk\_response,
+1693             ) = mturk\_utils.create\_hit\_with\_hit\_type(
+1694                 opt=self.opt,
+1695                 page\_url=mturk\_chat\_url,
+1696                 hit\_type\_id=hit\_type\_id,
+1697                 num\_assignments=1,
+1698                 is\_sandbox=self.is\_sandbox,
+1699             )
+1700             \textcolor{keywordflow}{if} self.db\_logger \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+1701                 self.db\_logger.log\_hit\_status(mturk\_response)
+1702             self.hit\_id\_list.append(hit\_id)
+1703         \textcolor{keywordflow}{return} mturk\_page\_url
+1704 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_acd01b6d3cd60d04e679b2bdab7b0a09d}\label{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_acd01b6d3cd60d04e679b2bdab7b0a09d}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager@{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager}!create\+\_\+hits@{create\+\_\+hits}}
@@ -449,47 +448,47 @@ Definition at line 1645 of file mturk\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1698 of file mturk\+\_\+manager.\+py.
+Definition at line 1705 of file mturk\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-1698     \textcolor{keyword}{def }create\_hits(self, qualifications=None):
-1699         \textcolor{stringliteral}{"""}
-1700 \textcolor{stringliteral}{        Create hits based on the managers current config, return hit url.}
-1701 \textcolor{stringliteral}{        """}
-1702         shared\_utils.print\_and\_log(logging.INFO, \textcolor{stringliteral}{'Creating HITs...'}, \textcolor{keyword}{True})
-1703 
-1704         \textcolor{keywordflow}{if} self.task\_state < self.STATE\_ACCEPTING\_WORKERS:
-1705             shared\_utils.print\_and\_log(
-1706                 logging.WARN,
-1707                 \textcolor{stringliteral}{'You should be calling `ready\_to\_accept\_workers` before '}
-1708                 \textcolor{stringliteral}{'`create\_hits` to ensure that the socket is connected before'}
-1709                 \textcolor{stringliteral}{'hits are added. This will be enforced in future versions.'},
-1710                 \textcolor{keyword}{True},
-1711             )
-1712 
-1713         \textcolor{keywordflow}{if} self.opt[\textcolor{stringliteral}{'max\_connections'}] == 0:
-1714             mturk\_page\_url = self.create\_additional\_hits(
-1715                 num\_hits=self.required\_hits, qualifications=qualifications
-1716             )
-1717         \textcolor{keywordflow}{else}:
-1718             mturk\_page\_url = self.create\_additional\_hits(
-1719                 num\_hits=min(self.required\_hits, self.opt[\textcolor{stringliteral}{'max\_connections'}]),
-1720                 qualifications=qualifications,
-1721             )
-1722 
-1723         shared\_utils.print\_and\_log(
-1724             logging.INFO, \textcolor{stringliteral}{'Link to HIT: \{\}\(\backslash\)n'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(mturk\_page\_url), should\_print=\textcolor{keyword}{True}
-1725         )
-1726         shared\_utils.print\_and\_log(
-1727             logging.INFO,
-1728             \textcolor{stringliteral}{'Waiting for Turkers to respond... (Please don\(\backslash\)'t close'}
-1729             \textcolor{stringliteral}{' your laptop or put your computer into sleep or standby mode.)\(\backslash\)n'},
-1730             should\_print=\textcolor{keyword}{True},
-1731         )
-1732         self.task\_state = self.STATE\_HITS\_MADE
-1733         \textcolor{keywordflow}{return} mturk\_page\_url
-1734 
+1705     \textcolor{keyword}{def }create\_hits(self, qualifications=None):
+1706         \textcolor{stringliteral}{"""}
+1707 \textcolor{stringliteral}{        Create hits based on the managers current config, return hit url.}
+1708 \textcolor{stringliteral}{        """}
+1709         shared\_utils.print\_and\_log(logging.INFO, \textcolor{stringliteral}{'Creating HITs...'}, \textcolor{keyword}{True})
+1710 
+1711         \textcolor{keywordflow}{if} self.task\_state < self.STATE\_ACCEPTING\_WORKERS:
+1712             shared\_utils.print\_and\_log(
+1713                 logging.WARN,
+1714                 \textcolor{stringliteral}{'You should be calling `ready\_to\_accept\_workers` before '}
+1715                 \textcolor{stringliteral}{'`create\_hits` to ensure that the socket is connected before'}
+1716                 \textcolor{stringliteral}{'hits are added. This will be enforced in future versions.'},
+1717                 \textcolor{keyword}{True},
+1718             )
+1719 
+1720         \textcolor{keywordflow}{if} self.opt[\textcolor{stringliteral}{'max\_connections'}] == 0:
+1721             mturk\_page\_url = self.create\_additional\_hits(
+1722                 num\_hits=self.required\_hits, qualifications=qualifications
+1723             )
+1724         \textcolor{keywordflow}{else}:
+1725             mturk\_page\_url = self.create\_additional\_hits(
+1726                 num\_hits=min(self.required\_hits, self.opt[\textcolor{stringliteral}{'max\_connections'}]),
+1727                 qualifications=qualifications,
+1728             )
+1729 
+1730         shared\_utils.print\_and\_log(
+1731             logging.INFO, \textcolor{stringliteral}{'Link to HIT: \{\}\(\backslash\)n'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(mturk\_page\_url), should\_print=\textcolor{keyword}{True}
+1732         )
+1733         shared\_utils.print\_and\_log(
+1734             logging.INFO,
+1735             \textcolor{stringliteral}{'Waiting for Turkers to respond... (Please don\(\backslash\)'t close'}
+1736             \textcolor{stringliteral}{' your laptop or put your computer into sleep or standby mode.)\(\backslash\)n'},
+1737             should\_print=\textcolor{keyword}{True},
+1738         )
+1739         self.task\_state = self.STATE\_HITS\_MADE
+1740         \textcolor{keywordflow}{return} mturk\_page\_url
+1741 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_a663af5f8cfa1c984439c2344d528f223}\label{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_a663af5f8cfa1c984439c2344d528f223}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager@{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager}!create\+\_\+qualification@{create\+\_\+qualification}}
@@ -504,33 +503,33 @@ than throw an error
 \end{DoxyVerb}
  
 
-Definition at line 1908 of file mturk\+\_\+manager.\+py.
+Definition at line 1915 of file mturk\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-1908     \textcolor{keyword}{def }create\_qualification(self, qualification\_name, description, can\_exist=True):
-1909         \textcolor{stringliteral}{"""}
-1910 \textcolor{stringliteral}{        Create a new qualification.}
-1911 \textcolor{stringliteral}{}
-1912 \textcolor{stringliteral}{        If can\_exist is set, simply return the ID of the existing qualification rather}
-1913 \textcolor{stringliteral}{        than throw an error}
-1914 \textcolor{stringliteral}{        """}
-1915         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} can\_exist:
-1916             qual\_id = mturk\_utils.find\_qualification(
-1917                 qualification\_name, self.is\_sandbox
-1918             )
-1919             \textcolor{keywordflow}{if} qual\_id \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-1920                 shared\_utils.print\_and\_log(
-1921                     logging.WARN,
-1922                     \textcolor{stringliteral}{'Could not create qualification \{\}, as it existed'}
-1923                     \textcolor{stringliteral}{''}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(qualification\_name),
-1924                     should\_print=\textcolor{keyword}{True},
-1925                 )
-1926                 \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}
-1927         \textcolor{keywordflow}{return} mturk\_utils.find\_or\_create\_qualification(
-1928             qualification\_name, description, self.is\_sandbox
-1929         )
-1930 
+1915     \textcolor{keyword}{def }create\_qualification(self, qualification\_name, description, can\_exist=True):
+1916         \textcolor{stringliteral}{"""}
+1917 \textcolor{stringliteral}{        Create a new qualification.}
+1918 \textcolor{stringliteral}{}
+1919 \textcolor{stringliteral}{        If can\_exist is set, simply return the ID of the existing qualification rather}
+1920 \textcolor{stringliteral}{        than throw an error}
+1921 \textcolor{stringliteral}{        """}
+1922         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} can\_exist:
+1923             qual\_id = mturk\_utils.find\_qualification(
+1924                 qualification\_name, self.is\_sandbox
+1925             )
+1926             \textcolor{keywordflow}{if} qual\_id \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+1927                 shared\_utils.print\_and\_log(
+1928                     logging.WARN,
+1929                     \textcolor{stringliteral}{'Could not create qualification \{\}, as it existed'}
+1930                     \textcolor{stringliteral}{''}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(qualification\_name),
+1931                     should\_print=\textcolor{keyword}{True},
+1932                 )
+1933                 \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}
+1934         \textcolor{keywordflow}{return} mturk\_utils.find\_or\_create\_qualification(
+1935             qualification\_name, description, self.is\_sandbox
+1936         )
+1937 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_afd2e53ad36f1975af45cc64c0940a41f}\label{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_afd2e53ad36f1975af45cc64c0940a41f}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager@{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager}!email\+\_\+worker@{email\+\_\+worker}}
@@ -542,27 +541,27 @@ Definition at line 1908 of file mturk\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1972 of file mturk\+\_\+manager.\+py.
+Definition at line 1979 of file mturk\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-1972     \textcolor{keyword}{def }email\_worker(self, worker\_id, subject, message\_text):
-1973         \textcolor{stringliteral}{"""}
-1974 \textcolor{stringliteral}{        Send an email to a worker through the mturk client.}
-1975 \textcolor{stringliteral}{        """}
-1976         client = mturk\_utils.get\_mturk\_client(self.is\_sandbox)
-1977         response = client.notify\_workers(
-1978             Subject=subject, MessageText=message\_text, WorkerIds=[worker\_id]
-1979         )
-1980         \textcolor{keywordflow}{if} len(response[\textcolor{stringliteral}{'NotifyWorkersFailureStatuses'}]) > 0:
-1981             failure\_message = response[\textcolor{stringliteral}{'NotifyWorkersFailureStatuses'}][0]
-1982             \textcolor{keywordflow}{return} \{\textcolor{stringliteral}{'failure'}: failure\_message[\textcolor{stringliteral}{'NotifyWorkersFailureMessage'}]\}
-1983         \textcolor{keywordflow}{else}:
-1984             \textcolor{keywordflow}{return} \{\textcolor{stringliteral}{'success'}: \textcolor{keyword}{True}\}
-1985 
-1986 
-1987 \textcolor{comment}{# TODO consolidate base functionality out of this class and above into a}
-1988 \textcolor{comment}{# base\_crowd\_manager and then expand out from there.}
+1979     \textcolor{keyword}{def }email\_worker(self, worker\_id, subject, message\_text):
+1980         \textcolor{stringliteral}{"""}
+1981 \textcolor{stringliteral}{        Send an email to a worker through the mturk client.}
+1982 \textcolor{stringliteral}{        """}
+1983         client = mturk\_utils.get\_mturk\_client(self.is\_sandbox)
+1984         response = client.notify\_workers(
+1985             Subject=subject, MessageText=message\_text, WorkerIds=[worker\_id]
+1986         )
+1987         \textcolor{keywordflow}{if} len(response[\textcolor{stringliteral}{'NotifyWorkersFailureStatuses'}]) > 0:
+1988             failure\_message = response[\textcolor{stringliteral}{'NotifyWorkersFailureStatuses'}][0]
+1989             \textcolor{keywordflow}{return} \{\textcolor{stringliteral}{'failure'}: failure\_message[\textcolor{stringliteral}{'NotifyWorkersFailureMessage'}]\}
+1990         \textcolor{keywordflow}{else}:
+1991             \textcolor{keywordflow}{return} \{\textcolor{stringliteral}{'success'}: \textcolor{keyword}{True}\}
+1992 
+1993 
+1994 \textcolor{comment}{# TODO consolidate base functionality out of this class and above into a}
+1995 \textcolor{comment}{# base\_crowd\_manager and then expand out from there.}
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_a063250ea0ea08fe75ab3bb5aee637138}\label{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_a063250ea0ea08fe75ab3bb5aee637138}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager@{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager}!expire\+\_\+all\+\_\+unassigned\+\_\+hits@{expire\+\_\+all\+\_\+unassigned\+\_\+hits}}
@@ -575,27 +574,27 @@ only immediately expires those that aren't assigned.
 \end{DoxyVerb}
  
 
-Definition at line 1765 of file mturk\+\_\+manager.\+py.
+Definition at line 1772 of file mturk\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-1765     \textcolor{keyword}{def }expire\_all\_unassigned\_hits(self):
-1766         \textcolor{stringliteral}{"""}
-1767 \textcolor{stringliteral}{        Move through the whole hit\_id list and attempt to expire the HITs, though this}
-1768 \textcolor{stringliteral}{        only immediately expires those that aren't assigned.}
-1769 \textcolor{stringliteral}{        """}
-1770         \textcolor{comment}{# TODO note and mark assigned hits as ones to be expired later}
-1771         shared\_utils.print\_and\_log(
-1772             logging.INFO,
-1773             \textcolor{stringliteral}{'Expiring all unassigned HITs...'},
-1774             should\_print=\textcolor{keywordflow}{not} self.is\_test,
-1775         )
-1776         completed\_ids = self.worker\_manager.get\_complete\_hits()
-1777         \textcolor{keywordflow}{for} hit\_id \textcolor{keywordflow}{in} self.hit\_id\_list:
-1778             \textcolor{keywordflow}{if} hit\_id \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} completed\_ids:
-1779                 \textcolor{comment}{# TODO get confirmation that the HIT is acutally expired}
-1780                 mturk\_utils.expire\_hit(self.is\_sandbox, hit\_id)
-1781 
+1772     \textcolor{keyword}{def }expire\_all\_unassigned\_hits(self):
+1773         \textcolor{stringliteral}{"""}
+1774 \textcolor{stringliteral}{        Move through the whole hit\_id list and attempt to expire the HITs, though this}
+1775 \textcolor{stringliteral}{        only immediately expires those that aren't assigned.}
+1776 \textcolor{stringliteral}{        """}
+1777         \textcolor{comment}{# TODO note and mark assigned hits as ones to be expired later}
+1778         shared\_utils.print\_and\_log(
+1779             logging.INFO,
+1780             \textcolor{stringliteral}{'Expiring all unassigned HITs...'},
+1781             should\_print=\textcolor{keywordflow}{not} self.is\_test,
+1782         )
+1783         completed\_ids = self.worker\_manager.get\_complete\_hits()
+1784         \textcolor{keywordflow}{for} hit\_id \textcolor{keywordflow}{in} self.hit\_id\_list:
+1785             \textcolor{keywordflow}{if} hit\_id \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} completed\_ids:
+1786                 \textcolor{comment}{# TODO get confirmation that the HIT is acutally expired}
+1787                 mturk\_utils.expire\_hit(self.is\_sandbox, hit\_id)
+1788 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_aed4375d01be65944318d695adbac88af}\label{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_aed4375d01be65944318d695adbac88af}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager@{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager}!force\+\_\+expire\+\_\+hit@{force\+\_\+expire\+\_\+hit}}
@@ -696,19 +695,19 @@ Only works if the assignment is in a completed state
 \end{DoxyVerb}
  
 
-Definition at line 1748 of file mturk\+\_\+manager.\+py.
+Definition at line 1755 of file mturk\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-1748     \textcolor{keyword}{def }get\_assignment(self, assignment\_id):
-1749         \textcolor{stringliteral}{"""}
-1750 \textcolor{stringliteral}{        Gets assignment from mturk by assignment\_id.}
-1751 \textcolor{stringliteral}{}
-1752 \textcolor{stringliteral}{        Only works if the assignment is in a completed state}
-1753 \textcolor{stringliteral}{        """}
-1754         client = mturk\_utils.get\_mturk\_client(self.is\_sandbox)
-1755         \textcolor{keywordflow}{return} client.get\_assignment(AssignmentId=assignment\_id)
-1756 
+1755     \textcolor{keyword}{def }get\_assignment(self, assignment\_id):
+1756         \textcolor{stringliteral}{"""}
+1757 \textcolor{stringliteral}{        Gets assignment from mturk by assignment\_id.}
+1758 \textcolor{stringliteral}{}
+1759 \textcolor{stringliteral}{        Only works if the assignment is in a completed state}
+1760 \textcolor{stringliteral}{        """}
+1761         client = mturk\_utils.get\_mturk\_client(self.is\_sandbox)
+1762         \textcolor{keywordflow}{return} client.get\_assignment(AssignmentId=assignment\_id)
+1763 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_a87d3096941e232227de762b3a8260f3d}\label{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_a87d3096941e232227de762b3a8260f3d}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager@{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager}!get\+\_\+assignments\+\_\+for\+\_\+hit@{get\+\_\+assignments\+\_\+for\+\_\+hit}}
@@ -720,18 +719,18 @@ Definition at line 1748 of file mturk\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1757 of file mturk\+\_\+manager.\+py.
+Definition at line 1764 of file mturk\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-1757     \textcolor{keyword}{def }get\_assignments\_for\_hit(self, hit\_id):
-1758         \textcolor{stringliteral}{"""}
-1759 \textcolor{stringliteral}{        Get completed assignments for a hit.}
-1760 \textcolor{stringliteral}{        """}
-1761         client = mturk\_utils.get\_mturk\_client(self.is\_sandbox)
-1762         assignments\_info = client.list\_assignments\_for\_hit(HITId=hit\_id)
-1763         \textcolor{keywordflow}{return} assignments\_info.get(\textcolor{stringliteral}{'Assignments'}, [])
-1764 
+1764     \textcolor{keyword}{def }get\_assignments\_for\_hit(self, hit\_id):
+1765         \textcolor{stringliteral}{"""}
+1766 \textcolor{stringliteral}{        Get completed assignments for a hit.}
+1767 \textcolor{stringliteral}{        """}
+1768         client = mturk\_utils.get\_mturk\_client(self.is\_sandbox)
+1769         assignments\_info = client.list\_assignments\_for\_hit(HITId=hit\_id)
+1770         \textcolor{keywordflow}{return} assignments\_info.get(\textcolor{stringliteral}{'Assignments'}, [])
+1771 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_ab4276a818e7845b08f9f4c08920050dc}\label{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_ab4276a818e7845b08f9f4c08920050dc}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager@{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager}!get\+\_\+hit@{get\+\_\+hit}}
@@ -743,23 +742,23 @@ Definition at line 1757 of file mturk\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1735 of file mturk\+\_\+manager.\+py.
+Definition at line 1742 of file mturk\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-1735     \textcolor{keyword}{def }get\_hit(self, hit\_id):
-1736         \textcolor{stringliteral}{"""}
-1737 \textcolor{stringliteral}{        Get hit from mturk by hit\_id.}
-1738 \textcolor{stringliteral}{        """}
-1739         client = mturk\_utils.get\_mturk\_client(self.is\_sandbox)
-1740         hit = client.get\_hit(HITId=hit\_id)
-1741         \textcolor{keywordflow}{if} self.db\_logger \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-1742             \textcolor{keywordflow}{try}:
-1743                 self.db\_logger.log\_hit\_status(hit)
-1744             \textcolor{keywordflow}{except} Exception:
-1745                 \textcolor{keywordflow}{pass}
-1746         \textcolor{keywordflow}{return} hit
-1747 
+1742     \textcolor{keyword}{def }get\_hit(self, hit\_id):
+1743         \textcolor{stringliteral}{"""}
+1744 \textcolor{stringliteral}{        Get hit from mturk by hit\_id.}
+1745 \textcolor{stringliteral}{        """}
+1746         client = mturk\_utils.get\_mturk\_client(self.is\_sandbox)
+1747         hit = client.get\_hit(HITId=hit\_id)
+1748         \textcolor{keywordflow}{if} self.db\_logger \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+1749             \textcolor{keywordflow}{try}:
+1750                 self.db\_logger.log\_hit\_status(hit)
+1751             \textcolor{keywordflow}{except} Exception:
+1752                 \textcolor{keywordflow}{pass}
+1753         \textcolor{keywordflow}{return} hit
+1754 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_a3466e2c936edfc55727d1bd3ac71cfb6}\label{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_a3466e2c936edfc55727d1bd3ac71cfb6}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager@{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager}!get\+\_\+qualification\+\_\+list@{get\+\_\+qualification\+\_\+list}}
@@ -873,9 +872,16 @@ Definition at line 1542 of file mturk\+\_\+manager.\+py.
 1639                 \}
 1640             )
 1641 
-1642         self.qualifications = qualifications
-1643         \textcolor{keywordflow}{return} qualifications.copy()
-1644 
+1642         \textcolor{keywordflow}{if} self.is\_sandbox \textcolor{keywordflow}{and} \textcolor{keywordflow}{not} self.is\_test:
+1643             \textcolor{comment}{# Qualifications are not set in sandbox mode.}
+1644             \textcolor{comment}{# We still create the qualifications above (if requested) so that}
+1645             \textcolor{comment}{# assigning these qualifications to users works.}
+1646             shared\_utils.print\_and\_log(\textcolor{stringliteral}{'Qualifications are not set in sandbox mode.'})
+1647             qualifications = []
+1648 
+1649         self.qualifications = qualifications
+1650         \textcolor{keywordflow}{return} qualifications.copy()
+1651 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_a6df9024b28007db08c481a218e6b4fca}\label{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_a6df9024b28007db08c481a218e6b4fca}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager@{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager}!give\+\_\+worker\+\_\+qualification@{give\+\_\+worker\+\_\+qualification}}
@@ -887,33 +893,33 @@ Definition at line 1542 of file mturk\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1853 of file mturk\+\_\+manager.\+py.
+Definition at line 1860 of file mturk\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-1853     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1mturk__utils_a631fbce36ff4d09422f29513460bc744}{give\_worker\_qualification}(self, worker\_id, qual\_name, qual\_value=None):
-1854         \textcolor{stringliteral}{"""}
-1855 \textcolor{stringliteral}{        Give a worker a particular qualification.}
-1856 \textcolor{stringliteral}{        """}
-1857         qual\_id = mturk\_utils.find\_qualification(qual\_name, self.is\_sandbox)
-1858         \textcolor{keywordflow}{if} qual\_id \textcolor{keywordflow}{is} \textcolor{keyword}{False} \textcolor{keywordflow}{or} qual\_id \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-1859             shared\_utils.print\_and\_log(
-1860                 logging.WARN,
-1861                 \textcolor{stringliteral}{'Could not give worker \{\} qualification \{\}, as the '}
-1862                 \textcolor{stringliteral}{'qualification could not be found to exist.'}
-1863                 \textcolor{stringliteral}{''}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(worker\_id, qual\_name),
-1864                 should\_print=\textcolor{keyword}{True},
-1865             )
-1866             \textcolor{keywordflow}{return}
-1867         mturk\_utils.give\_worker\_qualification(
-1868             worker\_id, qual\_id, qual\_value, self.is\_sandbox
-1869         )
-1870         shared\_utils.print\_and\_log(
-1871             logging.INFO,
-1872             \textcolor{stringliteral}{'gave \{\} qualification \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(worker\_id, qual\_name),
-1873             should\_print=\textcolor{keyword}{True},
-1874         )
-1875 
+1860     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1mturk__utils_a631fbce36ff4d09422f29513460bc744}{give\_worker\_qualification}(self, worker\_id, qual\_name, qual\_value=None):
+1861         \textcolor{stringliteral}{"""}
+1862 \textcolor{stringliteral}{        Give a worker a particular qualification.}
+1863 \textcolor{stringliteral}{        """}
+1864         qual\_id = mturk\_utils.find\_qualification(qual\_name, self.is\_sandbox)
+1865         \textcolor{keywordflow}{if} qual\_id \textcolor{keywordflow}{is} \textcolor{keyword}{False} \textcolor{keywordflow}{or} qual\_id \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+1866             shared\_utils.print\_and\_log(
+1867                 logging.WARN,
+1868                 \textcolor{stringliteral}{'Could not give worker \{\} qualification \{\}, as the '}
+1869                 \textcolor{stringliteral}{'qualification could not be found to exist.'}
+1870                 \textcolor{stringliteral}{''}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(worker\_id, qual\_name),
+1871                 should\_print=\textcolor{keyword}{True},
+1872             )
+1873             \textcolor{keywordflow}{return}
+1874         mturk\_utils.give\_worker\_qualification(
+1875             worker\_id, qual\_id, qual\_value, self.is\_sandbox
+1876         )
+1877         shared\_utils.print\_and\_log(
+1878             logging.INFO,
+1879             \textcolor{stringliteral}{'gave \{\} qualification \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(worker\_id, qual\_name),
+1880             should\_print=\textcolor{keyword}{True},
+1881         )
+1882 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_ab93fd934d00fbf971ca299e77db152d5}\label{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_ab93fd934d00fbf971ca299e77db152d5}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager@{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager}!handle\+\_\+turker\+\_\+timeout@{handle\+\_\+turker\+\_\+timeout}}
@@ -1083,49 +1089,49 @@ Returns True on success and False on failure
 \end{DoxyVerb}
  
 
-Definition at line 1933 of file mturk\+\_\+manager.\+py.
+Definition at line 1940 of file mturk\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-1933     ):
-1934         \textcolor{stringliteral}{"""}
-1935 \textcolor{stringliteral}{        Handles paying bonus to a turker, fails for insufficient funds.}
-1936 \textcolor{stringliteral}{}
-1937 \textcolor{stringliteral}{        Returns True on success and False on failure}
-1938 \textcolor{stringliteral}{        """}
-1939         total\_cost = mturk\_utils.calculate\_mturk\_cost(
-1940             payment\_opt=\{\textcolor{stringliteral}{'type'}: \textcolor{stringliteral}{'bonus'}, \textcolor{stringliteral}{'amount'}: bonus\_amount\}
-1941         )
-1942         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} mturk\_utils.check\_mturk\_balance(
-1943             balance\_needed=total\_cost, is\_sandbox=self.is\_sandbox
-1944         ):
-1945             shared\_utils.print\_and\_log(
-1946                 logging.WARN,
-1947                 \textcolor{stringliteral}{'Cannot pay bonus. Reason: Insufficient '}
-1948                 \textcolor{stringliteral}{'funds in your MTurk account.'},
-1949                 should\_print=\textcolor{keyword}{True},
-1950             )
-1951             \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-1952 
-1953         client = mturk\_utils.get\_mturk\_client(self.is\_sandbox)
-1954         \textcolor{comment}{# unique\_request\_token may be useful for handling future network errors}
-1955         client.send\_bonus(
-1956             WorkerId=worker\_id,
-1957             BonusAmount=\hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(bonus\_amount),
-1958             AssignmentId=assignment\_id,
-1959             Reason=reason,
-1960             UniqueRequestToken=unique\_request\_token,
-1961         )
-1962         \textcolor{keywordflow}{if} self.db\_logger \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-1963             self.db\_logger.log\_pay\_extra\_bonus(
-1964                 worker\_id, assignment\_id, bonus\_amount, reason
-1965             )
-1966         shared\_utils.print\_and\_log(
-1967             logging.INFO,
-1968             \textcolor{stringliteral}{'Paid $\{\} bonus to WorkerId: \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(bonus\_amount, worker\_id),
-1969         )
-1970         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
-1971 
+1940     ):
+1941         \textcolor{stringliteral}{"""}
+1942 \textcolor{stringliteral}{        Handles paying bonus to a turker, fails for insufficient funds.}
+1943 \textcolor{stringliteral}{}
+1944 \textcolor{stringliteral}{        Returns True on success and False on failure}
+1945 \textcolor{stringliteral}{        """}
+1946         total\_cost = mturk\_utils.calculate\_mturk\_cost(
+1947             payment\_opt=\{\textcolor{stringliteral}{'type'}: \textcolor{stringliteral}{'bonus'}, \textcolor{stringliteral}{'amount'}: bonus\_amount\}
+1948         )
+1949         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} mturk\_utils.check\_mturk\_balance(
+1950             balance\_needed=total\_cost, is\_sandbox=self.is\_sandbox
+1951         ):
+1952             shared\_utils.print\_and\_log(
+1953                 logging.WARN,
+1954                 \textcolor{stringliteral}{'Cannot pay bonus. Reason: Insufficient '}
+1955                 \textcolor{stringliteral}{'funds in your MTurk account.'},
+1956                 should\_print=\textcolor{keyword}{True},
+1957             )
+1958             \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+1959 
+1960         client = mturk\_utils.get\_mturk\_client(self.is\_sandbox)
+1961         \textcolor{comment}{# unique\_request\_token may be useful for handling future network errors}
+1962         client.send\_bonus(
+1963             WorkerId=worker\_id,
+1964             BonusAmount=\hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(bonus\_amount),
+1965             AssignmentId=assignment\_id,
+1966             Reason=reason,
+1967             UniqueRequestToken=unique\_request\_token,
+1968         )
+1969         \textcolor{keywordflow}{if} self.db\_logger \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+1970             self.db\_logger.log\_pay\_extra\_bonus(
+1971                 worker\_id, assignment\_id, bonus\_amount, reason
+1972             )
+1973         shared\_utils.print\_and\_log(
+1974             logging.INFO,
+1975             \textcolor{stringliteral}{'Paid $\{\} bonus to WorkerId: \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(bonus\_amount, worker\_id),
+1976         )
+1977         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+1978 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_a0db9fb228caa9632dac18268f380771f}\label{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_a0db9fb228caa9632dac18268f380771f}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager@{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager}!populate\+\_\+legacy\+\_\+task\+\_\+files@{populate\+\_\+legacy\+\_\+task\+\_\+files}}
@@ -1262,23 +1268,23 @@ Definition at line 1158 of file mturk\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1796 of file mturk\+\_\+manager.\+py.
+Definition at line 1803 of file mturk\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-1796     \textcolor{keyword}{def }reject\_work(self, assignment\_id, reason):
-1797         \textcolor{stringliteral}{"""}
-1798 \textcolor{stringliteral}{        reject work for a given assignment through the mturk client.}
-1799 \textcolor{stringliteral}{        """}
-1800         client = mturk\_utils.get\_mturk\_client(self.is\_sandbox)
-1801         client.reject\_assignment(AssignmentId=assignment\_id, RequesterFeedback=reason)
-1802         \textcolor{keywordflow}{if} self.db\_logger \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-1803             self.db\_logger.log\_reject\_assignment(assignment\_id)
-1804         shared\_utils.print\_and\_log(
-1805             logging.INFO,
-1806             \textcolor{stringliteral}{'Assignment \{\} rejected for reason \{\}.'} \textcolor{stringliteral}{''}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(assignment\_id, reason),
-1807         )
-1808 
+1803     \textcolor{keyword}{def }reject\_work(self, assignment\_id, reason):
+1804         \textcolor{stringliteral}{"""}
+1805 \textcolor{stringliteral}{        reject work for a given assignment through the mturk client.}
+1806 \textcolor{stringliteral}{        """}
+1807         client = mturk\_utils.get\_mturk\_client(self.is\_sandbox)
+1808         client.reject\_assignment(AssignmentId=assignment\_id, RequesterFeedback=reason)
+1809         \textcolor{keywordflow}{if} self.db\_logger \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+1810             self.db\_logger.log\_reject\_assignment(assignment\_id)
+1811         shared\_utils.print\_and\_log(
+1812             logging.INFO,
+1813             \textcolor{stringliteral}{'Assignment \{\} rejected for reason \{\}.'} \textcolor{stringliteral}{''}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(assignment\_id, reason),
+1814         )
+1815 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_aa96771f455f9e041b4d0105ef20de99a}\label{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_aa96771f455f9e041b4d0105ef20de99a}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager@{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager}!remove\+\_\+worker\+\_\+qualification@{remove\+\_\+worker\+\_\+qualification}}
@@ -1290,42 +1296,42 @@ Definition at line 1796 of file mturk\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1876 of file mturk\+\_\+manager.\+py.
+Definition at line 1883 of file mturk\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-1876     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1mturk__utils_abc2c057b91641179f7c4bb50dd916488}{remove\_worker\_qualification}(self, worker\_id, qual\_name, reason=''):
-1877         \textcolor{stringliteral}{"""}
-1878 \textcolor{stringliteral}{        Remove a qualification from a worker.}
-1879 \textcolor{stringliteral}{        """}
-1880         qual\_id = mturk\_utils.find\_qualification(qual\_name, self.is\_sandbox)
-1881         \textcolor{keywordflow}{if} qual\_id \textcolor{keywordflow}{is} \textcolor{keyword}{False} \textcolor{keywordflow}{or} qual\_id \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-1882             shared\_utils.print\_and\_log(
-1883                 logging.WARN,
-1884                 \textcolor{stringliteral}{'Could not remove from worker \{\} qualification \{\}, as the '}
-1885                 \textcolor{stringliteral}{'qualification could not be found to exist.'}
-1886                 \textcolor{stringliteral}{''}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(worker\_id, qual\_name),
-1887                 should\_print=\textcolor{keyword}{True},
-1888             )
-1889             \textcolor{keywordflow}{return}
-1890         \textcolor{keywordflow}{try}:
-1891             mturk\_utils.remove\_worker\_qualification(
-1892                 worker\_id, qual\_id, self.is\_sandbox, reason
-1893             )
-1894             shared\_utils.print\_and\_log(
-1895                 logging.INFO,
-1896                 \textcolor{stringliteral}{'removed \{\}\(\backslash\)'s qualification \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(worker\_id, qual\_name),
-1897                 should\_print=\textcolor{keyword}{True},
-1898             )
-1899         \textcolor{keywordflow}{except} Exception \textcolor{keyword}{as} e:
-1900             shared\_utils.print\_and\_log(
-1901                 logging.WARN \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.has\_time\_limit \textcolor{keywordflow}{else} logging.INFO,
-1902                 \textcolor{stringliteral}{'removing \{\}\(\backslash\)'s qualification \{\} failed with error \{\}. This '}
-1903                 \textcolor{stringliteral}{'can be because the worker didn\(\backslash\)'t have that qualification.'}
-1904                 \textcolor{stringliteral}{''}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(worker\_id, qual\_name, repr(e)),
-1905                 should\_print=\textcolor{keyword}{True},
-1906             )
-1907 
+1883     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1mturk__utils_abc2c057b91641179f7c4bb50dd916488}{remove\_worker\_qualification}(self, worker\_id, qual\_name, reason=''):
+1884         \textcolor{stringliteral}{"""}
+1885 \textcolor{stringliteral}{        Remove a qualification from a worker.}
+1886 \textcolor{stringliteral}{        """}
+1887         qual\_id = mturk\_utils.find\_qualification(qual\_name, self.is\_sandbox)
+1888         \textcolor{keywordflow}{if} qual\_id \textcolor{keywordflow}{is} \textcolor{keyword}{False} \textcolor{keywordflow}{or} qual\_id \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+1889             shared\_utils.print\_and\_log(
+1890                 logging.WARN,
+1891                 \textcolor{stringliteral}{'Could not remove from worker \{\} qualification \{\}, as the '}
+1892                 \textcolor{stringliteral}{'qualification could not be found to exist.'}
+1893                 \textcolor{stringliteral}{''}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(worker\_id, qual\_name),
+1894                 should\_print=\textcolor{keyword}{True},
+1895             )
+1896             \textcolor{keywordflow}{return}
+1897         \textcolor{keywordflow}{try}:
+1898             mturk\_utils.remove\_worker\_qualification(
+1899                 worker\_id, qual\_id, self.is\_sandbox, reason
+1900             )
+1901             shared\_utils.print\_and\_log(
+1902                 logging.INFO,
+1903                 \textcolor{stringliteral}{'removed \{\}\(\backslash\)'s qualification \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(worker\_id, qual\_name),
+1904                 should\_print=\textcolor{keyword}{True},
+1905             )
+1906         \textcolor{keywordflow}{except} Exception \textcolor{keyword}{as} e:
+1907             shared\_utils.print\_and\_log(
+1908                 logging.WARN \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.has\_time\_limit \textcolor{keywordflow}{else} logging.INFO,
+1909                 \textcolor{stringliteral}{'removing \{\}\(\backslash\)'s qualification \{\} failed with error \{\}. This '}
+1910                 \textcolor{stringliteral}{'can be because the worker didn\(\backslash\)'t have that qualification.'}
+1911                 \textcolor{stringliteral}{''}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(worker\_id, qual\_name, repr(e)),
+1912                 should\_print=\textcolor{keyword}{True},
+1913             )
+1914 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_aee5b70ddae99ec326b6c512c29f740a3}\label{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_aee5b70ddae99ec326b6c512c29f740a3}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager@{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager}!send\+\_\+command@{send\+\_\+command}}
@@ -1486,7 +1492,7 @@ Definition at line 958 of file mturk\+\_\+manager.\+py.
 989                 \textcolor{stringliteral}{''}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.hit\_mult, fin\_word),
 990                 should\_print=\textcolor{keyword}{True},
 991             )
-992         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1test_1_1test__full__system_a1e1817cd65688fb90f827834d1fb4567}{input}(\textcolor{stringliteral}{'Please press Enter to continue... '})
+992         input(\textcolor{stringliteral}{'Please press Enter to continue... '})
 993         shared\_utils.print\_and\_log(logging.NOTSET, \textcolor{stringliteral}{''}, \textcolor{keyword}{True})
 994 
 995         \textcolor{keywordflow}{if} self.opt[\textcolor{stringliteral}{'local'}] \textcolor{keywordflow}{is} \textcolor{keyword}{True}:
@@ -1500,7 +1506,7 @@ Definition at line 958 of file mturk\+\_\+manager.\+py.
 1003                 \textcolor{stringliteral}{"traffic routed to it."},
 1004                 should\_print=\textcolor{keyword}{True},
 1005             )
-1006             \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1test_1_1test__full__system_a1e1817cd65688fb90f827834d1fb4567}{input}(\textcolor{stringliteral}{'Please press Enter to continue... '})
+1006             input(\textcolor{stringliteral}{'Please press Enter to continue... '})
 1007 
 1008         mturk\_utils.setup\_aws\_credentials()
 1009 
@@ -1538,7 +1544,7 @@ Definition at line 958 of file mturk\+\_\+manager.\+py.
 1041                 ),
 1042                 should\_print=\textcolor{keyword}{True},
 1043             )
-1044             check = \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1test_1_1test__full__system_a1e1817cd65688fb90f827834d1fb4567}{input}(\textcolor{stringliteral}{'Enter here: '})
+1044             check = input(\textcolor{stringliteral}{'Enter here: '})
 1045             \textcolor{keywordflow}{if} check != confirm\_string \textcolor{keywordflow}{and} (\textcolor{stringliteral}{'$'} + check) != confirm\_string:
 1046                 \textcolor{keywordflow}{raise} SystemExit(\textcolor{stringliteral}{'Cancelling'})
 1047 
@@ -1563,12 +1569,12 @@ Definition at line 958 of file mturk\+\_\+manager.\+py.
 1066                 warnings = resp.json()
 1067                 \textcolor{keywordflow}{for} warn \textcolor{keywordflow}{in} warnings:
 1068                     print(\textcolor{stringliteral}{'Notice: '} + warn)
-1069                     accept = \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1test_1_1test__full__system_a1e1817cd65688fb90f827834d1fb4567}{input}(\textcolor{stringliteral}{'Continue? (Y/n): '})
+1069                     accept = input(\textcolor{stringliteral}{'Continue? (Y/n): '})
 1070                     \textcolor{keywordflow}{if} accept == \textcolor{stringliteral}{'n'}:
 1071                         \textcolor{keywordflow}{raise} SystemExit(\textcolor{stringliteral}{'Additional notice was rejected.'})
 1072             \textcolor{keywordflow}{except} Exception:
 1073                 print(\textcolor{stringliteral}{'Unable to query warnings from the parl.ai website.'})
-1074                 accept = \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1test_1_1test__full__system_a1e1817cd65688fb90f827834d1fb4567}{input}(\textcolor{stringliteral}{'Continue without checking warnings? (Y/n): '})
+1074                 accept = input(\textcolor{stringliteral}{'Continue without checking warnings? (Y/n): '})
 1075                 \textcolor{keywordflow}{if} accept == \textcolor{stringliteral}{'n'}:
 1076                     \textcolor{keywordflow}{raise} SystemExit(\textcolor{stringliteral}{'Aborted.'})
 1077 
@@ -1687,20 +1693,20 @@ Definition at line 1346 of file mturk\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1832 of file mturk\+\_\+manager.\+py.
+Definition at line 1839 of file mturk\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-1832     \textcolor{keyword}{def }soft\_block\_worker(self, worker\_id, qual='block\_qualification'):
-1833         \textcolor{stringliteral}{"""}
-1834 \textcolor{stringliteral}{        Soft block a worker by giving the worker the block qualification.}
-1835 \textcolor{stringliteral}{        """}
-1836         qual\_name = self.opt.get(qual, \textcolor{keywordtype}{None})
-1837         \textcolor{keyword}{assert} (
-1838             qual\_name \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}
-1839         ), \textcolor{stringliteral}{'No qualification \{\} has been specified'} \textcolor{stringliteral}{'in opt'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(qual)
-1840         self.give\_worker\_qualification(worker\_id, qual\_name)
-1841 
+1839     \textcolor{keyword}{def }soft\_block\_worker(self, worker\_id, qual='block\_qualification'):
+1840         \textcolor{stringliteral}{"""}
+1841 \textcolor{stringliteral}{        Soft block a worker by giving the worker the block qualification.}
+1842 \textcolor{stringliteral}{        """}
+1843         qual\_name = self.opt.get(qual, \textcolor{keywordtype}{None})
+1844         \textcolor{keyword}{assert} (
+1845             qual\_name \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}
+1846         ), \textcolor{stringliteral}{'No qualification \{\} has been specified'} \textcolor{stringliteral}{'in opt'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(qual)
+1847         self.give\_worker\_qualification(worker\_id, qual\_name)
+1848 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_a02acff72f25ec7a77edca9489fe3b804}\label{classparlai_1_1mturk_1_1core_1_1mturk__manager_1_1MTurkManager_a02acff72f25ec7a77edca9489fe3b804}} 
 \index{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager@{parlai\+::mturk\+::core\+::mturk\+\_\+manager\+::\+M\+Turk\+Manager}!start\+\_\+new\+\_\+run@{start\+\_\+new\+\_\+run}}
@@ -1930,21 +1936,21 @@ worker.
 \end{DoxyVerb}
  
 
-Definition at line 1842 of file mturk\+\_\+manager.\+py.
+Definition at line 1849 of file mturk\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-1842     \textcolor{keyword}{def }un\_soft\_block\_worker(self, worker\_id, qual='block\_qualification'):
-1843         \textcolor{stringliteral}{"""}
-1844 \textcolor{stringliteral}{        Remove a soft block from a worker by removing a block qualification from the}
-1845 \textcolor{stringliteral}{        worker.}
-1846 \textcolor{stringliteral}{        """}
-1847         qual\_name = self.opt.get(qual, \textcolor{keywordtype}{None})
-1848         \textcolor{keyword}{assert} (
-1849             qual\_name \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}
-1850         ), \textcolor{stringliteral}{'No qualification \{\} has been specified'} \textcolor{stringliteral}{'in opt'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(qual)
-1851         self.remove\_worker\_qualification(worker\_id, qual\_name)
-1852 
+1849     \textcolor{keyword}{def }un\_soft\_block\_worker(self, worker\_id, qual='block\_qualification'):
+1850         \textcolor{stringliteral}{"""}
+1851 \textcolor{stringliteral}{        Remove a soft block from a worker by removing a block qualification from the}
+1852 \textcolor{stringliteral}{        worker.}
+1853 \textcolor{stringliteral}{        """}
+1854         qual\_name = self.opt.get(qual, \textcolor{keywordtype}{None})
+1855         \textcolor{keyword}{assert} (
+1856             qual\_name \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}
+1857         ), \textcolor{stringliteral}{'No qualification \{\} has been specified'} \textcolor{stringliteral}{'in opt'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(qual)
+1858         self.remove\_worker\_qualification(worker\_id, qual\_name)
+1859 
 \end{DoxyCode}
 
 

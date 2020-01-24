@@ -2,8 +2,7 @@
 \label{classpersonality__captions_1_1worlds_1_1RoleOnboardWorld}\index{personality\+\_\+captions.\+worlds.\+Role\+Onboard\+World@{personality\+\_\+captions.\+worlds.\+Role\+Onboard\+World}}
 
 
-Inheritance diagram for personality\+\_\+captions.\+worlds.\+Role\+Onboard\+World\+:
-\nopagebreak
+Inheritance diagram for personality\+\_\+captions.\+worlds.\+Role\+Onboard\+World\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for personality\+\_\+captions.\+worlds.\+Role\+Onboard\+Worl
 \end{figure}
 
 
-Collaboration diagram for personality\+\_\+captions.\+worlds.\+Role\+Onboard\+World\+:
-\nopagebreak
+Collaboration diagram for personality\+\_\+captions.\+worlds.\+Role\+Onboard\+World\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -46,7 +44,7 @@ instructions during onboarding.
 \end{DoxyVerb}
  
 
-Definition at line 216 of file worlds.\+py.
+Definition at line 217 of file worlds.\+py.
 
 
 
@@ -59,16 +57,16 @@ Definition at line 216 of file worlds.\+py.
 
 
 
-Definition at line 222 of file worlds.\+py.
+Definition at line 223 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-222     \textcolor{keyword}{def }\_\_init\_\_(self, opt, mturk\_agent):
-223         self.task\_type = \textcolor{stringliteral}{'sandbox'} \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'is\_sandbox'}] \textcolor{keywordflow}{else} \textcolor{stringliteral}{'live'}
-224         self.max\_onboard\_time = opt[\textcolor{stringliteral}{'max\_onboard\_time'}]
-225         self.config = TASK\_TYPE\_TO\_CONFIG[opt[\textcolor{stringliteral}{'task\_type'}]]
-226         super().\_\_init\_\_(opt, mturk\_agent)
-227 
+223     \textcolor{keyword}{def }\_\_init\_\_(self, opt, mturk\_agent):
+224         self.task\_type = \textcolor{stringliteral}{'sandbox'} \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'is\_sandbox'}] \textcolor{keywordflow}{else} \textcolor{stringliteral}{'live'}
+225         self.max\_onboard\_time = opt[\textcolor{stringliteral}{'max\_onboard\_time'}]
+226         self.config = TASK\_TYPE\_TO\_CONFIG[opt[\textcolor{stringliteral}{'task\_type'}]]
+227         super().\_\_init\_\_(opt, mturk\_agent)
+228 
 \end{DoxyCode}
 
 
@@ -81,30 +79,30 @@ Definition at line 222 of file worlds.\+py.
 
 
 
-Definition at line 228 of file worlds.\+py.
+Definition at line 229 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-228     \textcolor{keyword}{def }parley(self):
-229         onboard\_msg = \{\textcolor{stringliteral}{'id'}: \textcolor{stringliteral}{'SYSTEM'}, \textcolor{stringliteral}{'show\_personality'}: \textcolor{keyword}{True}, \textcolor{stringliteral}{'text'}: ONBOARD\_MSG\}
-230 
-231         onboard\_msg[\textcolor{stringliteral}{'task\_description'}] = self.config[\textcolor{stringliteral}{'task\_description'}]
-232         self.mturk\_agent.observe(onboard\_msg)
-233 
-234         act = self.mturk\_agent.act(timeout=self.max\_onboard\_time)
-235 
-236         \textcolor{comment}{# timeout}
-237         \textcolor{keywordflow}{if} act[\textcolor{stringliteral}{'episode\_done'}] \textcolor{keywordflow}{or} ((\textcolor{stringliteral}{'text'} \textcolor{keywordflow}{in} act \textcolor{keywordflow}{and} act[\textcolor{stringliteral}{'text'}] == TIMEOUT\_MESSAGE)):
-238 
-239             self.episodeDone = \textcolor{keyword}{True}
-240             \textcolor{keywordflow}{return}
-241 
-242         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'text'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} act:
-243             control\_msg = \{\textcolor{stringliteral}{'id'}: \textcolor{stringliteral}{'SYSTEM'}, \textcolor{stringliteral}{'text'}: WAITING\_MSG\}
-244             self.mturk\_agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
-245             self.episodeDone = \textcolor{keyword}{True}
-246 
+229     \textcolor{keyword}{def }parley(self):
+230         onboard\_msg = \{\textcolor{stringliteral}{'id'}: \textcolor{stringliteral}{'SYSTEM'}, \textcolor{stringliteral}{'show\_personality'}: \textcolor{keyword}{True}, \textcolor{stringliteral}{'text'}: ONBOARD\_MSG\}
+231 
+232         onboard\_msg[\textcolor{stringliteral}{'task\_description'}] = self.config[\textcolor{stringliteral}{'task\_description'}]
+233         self.mturk\_agent.observe(onboard\_msg)
+234 
+235         act = self.mturk\_agent.act(timeout=self.max\_onboard\_time)
+236 
+237         \textcolor{comment}{# timeout}
+238         \textcolor{keywordflow}{if} act[\textcolor{stringliteral}{'episode\_done'}] \textcolor{keywordflow}{or} ((\textcolor{stringliteral}{'text'} \textcolor{keywordflow}{in} act \textcolor{keywordflow}{and} act[\textcolor{stringliteral}{'text'}] == TIMEOUT\_MESSAGE)):
+239 
+240             self.episodeDone = \textcolor{keyword}{True}
+241             \textcolor{keywordflow}{return}
+242 
+243         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'text'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} act:
+244             control\_msg = \{\textcolor{stringliteral}{'id'}: \textcolor{stringliteral}{'SYSTEM'}, \textcolor{stringliteral}{'text'}: WAITING\_MSG\}
+245             self.mturk\_agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
+246             self.episodeDone = \textcolor{keyword}{True}
 247 
+248 
 \end{DoxyCode}
 
 
@@ -117,7 +115,7 @@ Definition at line 228 of file worlds.\+py.
 
 
 
-Definition at line 225 of file worlds.\+py.
+Definition at line 226 of file worlds.\+py.
 
 \mbox{\Hypertarget{classpersonality__captions_1_1worlds_1_1RoleOnboardWorld_a6f13341d6fc898dc7701a7e99133b885}\label{classpersonality__captions_1_1worlds_1_1RoleOnboardWorld_a6f13341d6fc898dc7701a7e99133b885}} 
 \index{personality\+\_\+captions\+::worlds\+::\+Role\+Onboard\+World@{personality\+\_\+captions\+::worlds\+::\+Role\+Onboard\+World}!episode\+Done@{episode\+Done}}
@@ -127,7 +125,7 @@ Definition at line 225 of file worlds.\+py.
 
 
 
-Definition at line 239 of file worlds.\+py.
+Definition at line 240 of file worlds.\+py.
 
 \mbox{\Hypertarget{classpersonality__captions_1_1worlds_1_1RoleOnboardWorld_aa6108733e26c2d1761e8155a65c2df12}\label{classpersonality__captions_1_1worlds_1_1RoleOnboardWorld_aa6108733e26c2d1761e8155a65c2df12}} 
 \index{personality\+\_\+captions\+::worlds\+::\+Role\+Onboard\+World@{personality\+\_\+captions\+::worlds\+::\+Role\+Onboard\+World}!max\+\_\+onboard\+\_\+time@{max\+\_\+onboard\+\_\+time}}
@@ -137,7 +135,7 @@ Definition at line 239 of file worlds.\+py.
 
 
 
-Definition at line 224 of file worlds.\+py.
+Definition at line 225 of file worlds.\+py.
 
 \mbox{\Hypertarget{classpersonality__captions_1_1worlds_1_1RoleOnboardWorld_a6cf6206af24cf6a9402f23f620d4e365}\label{classpersonality__captions_1_1worlds_1_1RoleOnboardWorld_a6cf6206af24cf6a9402f23f620d4e365}} 
 \index{personality\+\_\+captions\+::worlds\+::\+Role\+Onboard\+World@{personality\+\_\+captions\+::worlds\+::\+Role\+Onboard\+World}!task\+\_\+type@{task\+\_\+type}}
@@ -147,7 +145,7 @@ Definition at line 224 of file worlds.\+py.
 
 
 
-Definition at line 223 of file worlds.\+py.
+Definition at line 224 of file worlds.\+py.
 
 
 

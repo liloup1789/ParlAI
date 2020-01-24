@@ -1,0 +1,98 @@
+\hypertarget{namespaceparlai_1_1tasks_1_1amazon__qa_1_1build}{}\section{parlai.\+tasks.\+amazon\+\_\+qa.\+build Namespace Reference}
+\label{namespaceparlai_1_1tasks_1_1amazon__qa_1_1build}\index{parlai.\+tasks.\+amazon\+\_\+qa.\+build@{parlai.\+tasks.\+amazon\+\_\+qa.\+build}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1amazon__qa_1_1build_a4dc970e3684ff021439ed7e158c4da35}{parse\+\_\+gzip} (path)
+\item 
+def \hyperlink{namespaceparlai_1_1tasks_1_1amazon__qa_1_1build_af4967ce0e07a39c04a279d99e037124d}{build} (opt)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceparlai_1_1tasks_1_1amazon__qa_1_1build_a59f5bdb6195436f1309146ea17e7ff07}{R\+E\+S\+O\+U\+R\+C\+ES}
+\item 
+\hyperlink{namespaceparlai_1_1tasks_1_1amazon__qa_1_1build_a5579717834de5ddc11ed13cd425e8cbe}{zipped}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1amazon__qa_1_1build_af4967ce0e07a39c04a279d99e037124d}\label{namespaceparlai_1_1tasks_1_1amazon__qa_1_1build_af4967ce0e07a39c04a279d99e037124d}} 
+\index{parlai\+::tasks\+::amazon\+\_\+qa\+::build@{parlai\+::tasks\+::amazon\+\_\+qa\+::build}!build@{build}}
+\index{build@{build}!parlai\+::tasks\+::amazon\+\_\+qa\+::build@{parlai\+::tasks\+::amazon\+\_\+qa\+::build}}
+\subsubsection{\texorpdfstring{build()}{build()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+amazon\+\_\+qa.\+build.\+build (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 246 of file build.\+py.
+
+
+\begin{DoxyCode}
+246 \textcolor{keyword}{def }\hyperlink{namespacedialog__babi__feedback_1_1build_a7a9d289f7493a5ded13c4b7f071b6184}{build}(opt):
+247     dpath = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'AmazonQA'})
+248     version = \textcolor{keywordtype}{None}
+249 
+250     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} build\_data.built(dpath, version\_string=version):
+251         print(\textcolor{stringliteral}{'[building data: '} + dpath + \textcolor{stringliteral}{']'})
+252 
+253         \textcolor{keywordflow}{if} build\_data.built(dpath):
+254             \textcolor{comment}{# an older version exists, so remove these outdated files.}
+255             build\_data.remove\_dir(dpath)
+256         build\_data.make\_dir(dpath)
+257 
+258         \textcolor{comment}{# Download the data.}
+259         \textcolor{keywordflow}{for} downloadable\_file \textcolor{keywordflow}{in} RESOURCES:
+260             downloadable\_file.download\_file(dpath)
+261             new\_filename = downloadable\_file.file\_name[:-3]
+262             print(\textcolor{stringliteral}{'[ unpacking data: '} + downloadable\_file.file\_name + \textcolor{stringliteral}{' ]'})
+263             f = open(dpath + \textcolor{stringliteral}{'/'} + new\_filename, \textcolor{stringliteral}{'w'})
+264             \textcolor{keywordflow}{for} l \textcolor{keywordflow}{in} \hyperlink{namespaceparlai_1_1tasks_1_1amazon__qa_1_1build_a4dc970e3684ff021439ed7e158c4da35}{parse\_gzip}(dpath + \textcolor{stringliteral}{'/'} + downloadable\_file.file\_name):
+265                 f.write(l + \textcolor{stringliteral}{'\(\backslash\)n'})
+266             os.remove(dpath + \textcolor{stringliteral}{'/'} + downloadable\_file.file\_name)
+267 
+268         \textcolor{comment}{# mark the data as built}
+269         build\_data.mark\_done(dpath, version\_string=version)
+270 \end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1amazon__qa_1_1build_a4dc970e3684ff021439ed7e158c4da35}\label{namespaceparlai_1_1tasks_1_1amazon__qa_1_1build_a4dc970e3684ff021439ed7e158c4da35}} 
+\index{parlai\+::tasks\+::amazon\+\_\+qa\+::build@{parlai\+::tasks\+::amazon\+\_\+qa\+::build}!parse\+\_\+gzip@{parse\+\_\+gzip}}
+\index{parse\+\_\+gzip@{parse\+\_\+gzip}!parlai\+::tasks\+::amazon\+\_\+qa\+::build@{parlai\+::tasks\+::amazon\+\_\+qa\+::build}}
+\subsubsection{\texorpdfstring{parse\+\_\+gzip()}{parse\_gzip()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+amazon\+\_\+qa.\+build.\+parse\+\_\+gzip (\begin{DoxyParamCaption}\item[{}]{path }\end{DoxyParamCaption})}
+
+
+
+Definition at line 240 of file build.\+py.
+
+
+\begin{DoxyCode}
+240 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1amazon__qa_1_1build_a4dc970e3684ff021439ed7e158c4da35}{parse\_gzip}(path):
+241     g = gzip.open(path, \textcolor{stringliteral}{'r')}
+242 \textcolor{stringliteral}{    }\textcolor{keywordflow}{for} l \textcolor{keywordflow}{in} g:
+243         \textcolor{keywordflow}{yield} json.dumps(eval(l))
+244 
+245 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1amazon__qa_1_1build_a59f5bdb6195436f1309146ea17e7ff07}\label{namespaceparlai_1_1tasks_1_1amazon__qa_1_1build_a59f5bdb6195436f1309146ea17e7ff07}} 
+\index{parlai\+::tasks\+::amazon\+\_\+qa\+::build@{parlai\+::tasks\+::amazon\+\_\+qa\+::build}!R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}}
+\index{R\+E\+S\+O\+U\+R\+C\+ES@{R\+E\+S\+O\+U\+R\+C\+ES}!parlai\+::tasks\+::amazon\+\_\+qa\+::build@{parlai\+::tasks\+::amazon\+\_\+qa\+::build}}
+\subsubsection{\texorpdfstring{R\+E\+S\+O\+U\+R\+C\+ES}{RESOURCES}}
+{\footnotesize\ttfamily parlai.\+tasks.\+amazon\+\_\+qa.\+build.\+R\+E\+S\+O\+U\+R\+C\+ES}
+
+
+
+Definition at line 14 of file build.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1tasks_1_1amazon__qa_1_1build_a5579717834de5ddc11ed13cd425e8cbe}\label{namespaceparlai_1_1tasks_1_1amazon__qa_1_1build_a5579717834de5ddc11ed13cd425e8cbe}} 
+\index{parlai\+::tasks\+::amazon\+\_\+qa\+::build@{parlai\+::tasks\+::amazon\+\_\+qa\+::build}!zipped@{zipped}}
+\index{zipped@{zipped}!parlai\+::tasks\+::amazon\+\_\+qa\+::build@{parlai\+::tasks\+::amazon\+\_\+qa\+::build}}
+\subsubsection{\texorpdfstring{zipped}{zipped}}
+{\footnotesize\ttfamily parlai.\+tasks.\+amazon\+\_\+qa.\+build.\+zipped}
+
+
+
+Definition at line 19 of file build.\+py.
+

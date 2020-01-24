@@ -24,36 +24,36 @@ def \hyperlink{namespaceparlai_1_1scripts_1_1multiprocessing__train_aa7b2a133561
 \end{DoxyVerb}
  
 
-Definition at line 97 of file multiprocessing\+\_\+train.\+py.
+Definition at line 90 of file multiprocessing\+\_\+train.\+py.
 
 
 \begin{DoxyCode}
-97 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1multiprocessing__train_a5dc8df166f1c025b54f7420a1ab2f812}{launch\_and\_train}(opt, port):
-98     \textcolor{stringliteral}{"""}
-99 \textcolor{stringliteral}{    Perform a fork() to many processes.}
-100 \textcolor{stringliteral}{    """}
-101     \textcolor{comment}{# Launch multiple subprocesses}
-102     spawncontext = torch.multiprocessing.spawn(
-103         multiprocess\_train,
-104         \textcolor{comment}{# need to give rank offset as 1 to cover the fact that the main}
-105         \textcolor{comment}{# process is rank 0, but that spawn() doesn't let you control rank}
-106         (opt, port, 1),
-107         nprocs=opt[\textcolor{stringliteral}{'distributed\_world\_size'}] - 1,  \textcolor{comment}{# main proc will also run loop}
-108         join=\textcolor{keyword}{False},
-109     )
-110 
-111     \textcolor{keywordflow}{try}:
-112         retval = \hyperlink{namespaceparlai_1_1scripts_1_1multiprocessing__train_aa979267c9eb44bbdfcd25a6d69a58cc4}{multiprocess\_train}(0, opt, port)
-113         spawncontext.join()
-114         \textcolor{keywordflow}{return} retval
-115     \textcolor{keywordflow}{except} KeyboardInterrupt:
-116         \textcolor{comment}{# tell the subprocesses to stop too}
-117         \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} spawncontext.processes:
-118             \textcolor{keywordflow}{if} p.is\_alive():
-119                 os.kill(p.pid, signal.SIGINT)
-120         \textcolor{keywordflow}{raise}
-121 
-122 
+90 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1multiprocessing__train_a5dc8df166f1c025b54f7420a1ab2f812}{launch\_and\_train}(opt, port):
+91     \textcolor{stringliteral}{"""}
+92 \textcolor{stringliteral}{    Perform a fork() to many processes.}
+93 \textcolor{stringliteral}{    """}
+94     \textcolor{comment}{# Launch multiple subprocesses}
+95     spawncontext = torch.multiprocessing.spawn(
+96         multiprocess\_train,
+97         \textcolor{comment}{# need to give rank offset as 1 to cover the fact that the main}
+98         \textcolor{comment}{# process is rank 0, but that spawn() doesn't let you control rank}
+99         (opt, port, 1),
+100         nprocs=opt[\textcolor{stringliteral}{'distributed\_world\_size'}] - 1,  \textcolor{comment}{# main proc will also run loop}
+101         join=\textcolor{keyword}{False},
+102     )
+103 
+104     \textcolor{keywordflow}{try}:
+105         retval = \hyperlink{namespaceparlai_1_1scripts_1_1multiprocessing__train_aa979267c9eb44bbdfcd25a6d69a58cc4}{multiprocess\_train}(0, opt, port)
+106         spawncontext.join()
+107         \textcolor{keywordflow}{return} retval
+108     \textcolor{keywordflow}{except} KeyboardInterrupt:
+109         \textcolor{comment}{# tell the subprocesses to stop too}
+110         \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} spawncontext.processes:
+111             \textcolor{keywordflow}{if} p.is\_alive():
+112                 os.kill(p.pid, signal.SIGINT)
+113         \textcolor{keywordflow}{raise}
+114 
+115 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1multiprocessing__train_aa7b2a133561ac5212f3ee9814a645522}\label{namespaceparlai_1_1scripts_1_1multiprocessing__train_aa7b2a133561ac5212f3ee9814a645522}} 
 \index{parlai\+::scripts\+::multiprocessing\+\_\+train@{parlai\+::scripts\+::multiprocessing\+\_\+train}!main@{main}}
@@ -63,16 +63,16 @@ Definition at line 97 of file multiprocessing\+\_\+train.\+py.
 
 
 
-Definition at line 130 of file multiprocessing\+\_\+train.\+py.
+Definition at line 123 of file multiprocessing\+\_\+train.\+py.
 
 
 \begin{DoxyCode}
-130 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1multiprocessing__train_aa7b2a133561ac5212f3ee9814a645522}{main}():
-131     opt = \hyperlink{namespaceparlai_1_1scripts_1_1multiprocessing__train_a1ee26bddeb470040cfbceb5ee7a9fa08}{setup\_args}().parse\_args()
-132     port = random.randint(32000, 48000)
-133     \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1scripts_1_1multiprocessing__train_a5dc8df166f1c025b54f7420a1ab2f812}{launch\_and\_train}(opt, port)
-134 
-135 
+123 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1multiprocessing__train_aa7b2a133561ac5212f3ee9814a645522}{main}():
+124     opt = \hyperlink{namespaceparlai_1_1scripts_1_1multiprocessing__train_a1ee26bddeb470040cfbceb5ee7a9fa08}{setup\_args}().parse\_args()
+125     port = random.randint(32000, 48000)
+126     \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1scripts_1_1multiprocessing__train_a5dc8df166f1c025b54f7420a1ab2f812}{launch\_and\_train}(opt, port)
+127 
+128 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1multiprocessing__train_aa979267c9eb44bbdfcd25a6d69a58cc4}\label{namespaceparlai_1_1scripts_1_1multiprocessing__train_aa979267c9eb44bbdfcd25a6d69a58cc4}} 
 \index{parlai\+::scripts\+::multiprocessing\+\_\+train@{parlai\+::scripts\+::multiprocessing\+\_\+train}!multiprocess\+\_\+train@{multiprocess\+\_\+train}}
@@ -95,69 +95,69 @@ or via srun.
 \end{DoxyVerb}
  
 
-Definition at line 38 of file multiprocessing\+\_\+train.\+py.
+Definition at line 31 of file multiprocessing\+\_\+train.\+py.
 
 
 \begin{DoxyCode}
-38 ):
-39     \textcolor{stringliteral}{"""}
-40 \textcolor{stringliteral}{    Subprocess which initializes distributed training, and begins training.}
-41 \textcolor{stringliteral}{}
-42 \textcolor{stringliteral}{    This should be launched n times for n GPUs; this is handled either in main}
-43 \textcolor{stringliteral}{    or via srun.}
-44 \textcolor{stringliteral}{}
-45 \textcolor{stringliteral}{    :param int rank: This process's rank - 1. (Starts at -1 ... n - 2). See comments.}
-46 \textcolor{stringliteral}{    :param opt: command line options}
-47 \textcolor{stringliteral}{    :param int port: A TCP port to use. This will need to be changed to run}
-48 \textcolor{stringliteral}{        multiple distributed training setups on the same machine.}
-49 \textcolor{stringliteral}{    :param int gpu: Which GPU to use. Defaults to using rank and local devices,}
-50 \textcolor{stringliteral}{        but must be manually specified when using many-hosts.}
-51 \textcolor{stringliteral}{    :param str hostname: Hostname of the main server.}
-52 \textcolor{stringliteral}{    """}
-53     \textcolor{comment}{# Set per-host options}
-54     opt = copy.deepcopy(opt)
-55     \textcolor{comment}{# we need to manually adjust the rank differently in multiprocessing}
-56     \textcolor{comment}{# and distributed train}
-57     rank = rank + rank\_offset
-58     opt[\textcolor{stringliteral}{'rank'}] = rank
-59     \textcolor{keywordflow}{if} gpu \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-60         \textcolor{comment}{# default assumption is local GPUs}
-61         gpu = rank % torch.cuda.device\_count()
-62     opt[\textcolor{stringliteral}{'gpu'}] = gpu
-63     \textcolor{comment}{# make sure we don't just use whatever GPU was saved in the model file}
-64     \textcolor{keywordflow}{if} \textcolor{stringliteral}{'override'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} opt:
-65         opt[\textcolor{stringliteral}{'override'}] = \{\}
-66     opt[\textcolor{stringliteral}{'override'}][\textcolor{stringliteral}{'gpu'}] = gpu
+31 ):
+32     \textcolor{stringliteral}{"""}
+33 \textcolor{stringliteral}{    Subprocess which initializes distributed training, and begins training.}
+34 \textcolor{stringliteral}{}
+35 \textcolor{stringliteral}{    This should be launched n times for n GPUs; this is handled either in main}
+36 \textcolor{stringliteral}{    or via srun.}
+37 \textcolor{stringliteral}{}
+38 \textcolor{stringliteral}{    :param int rank: This process's rank - 1. (Starts at -1 ... n - 2). See comments.}
+39 \textcolor{stringliteral}{    :param opt: command line options}
+40 \textcolor{stringliteral}{    :param int port: A TCP port to use. This will need to be changed to run}
+41 \textcolor{stringliteral}{        multiple distributed training setups on the same machine.}
+42 \textcolor{stringliteral}{    :param int gpu: Which GPU to use. Defaults to using rank and local devices,}
+43 \textcolor{stringliteral}{        but must be manually specified when using many-hosts.}
+44 \textcolor{stringliteral}{    :param str hostname: Hostname of the main server.}
+45 \textcolor{stringliteral}{    """}
+46     \textcolor{comment}{# Set per-host options}
+47     opt = copy.deepcopy(opt)
+48     \textcolor{comment}{# we need to manually adjust the rank differently in multiprocessing}
+49     \textcolor{comment}{# and distributed train}
+50     rank = rank + rank\_offset
+51     opt[\textcolor{stringliteral}{'rank'}] = rank
+52     \textcolor{keywordflow}{if} gpu \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+53         \textcolor{comment}{# default assumption is local GPUs}
+54         gpu = rank % torch.cuda.device\_count()
+55     opt[\textcolor{stringliteral}{'gpu'}] = gpu
+56     \textcolor{comment}{# make sure we don't just use whatever GPU was saved in the model file}
+57     \textcolor{keywordflow}{if} \textcolor{stringliteral}{'override'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} opt:
+58         opt[\textcolor{stringliteral}{'override'}] = \{\}
+59     opt[\textcolor{stringliteral}{'override'}][\textcolor{stringliteral}{'gpu'}] = gpu
+60 
+61     \textcolor{comment}{# Suppress output of workers except the main host.}
+62     \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'verbose'}) \textcolor{keywordflow}{or} rank != 0:
+63         print\_prefix = \textcolor{stringliteral}{'[rank:\{:3d\}]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(rank)
+64     \textcolor{keywordflow}{else}:
+65         print\_prefix = \textcolor{keywordtype}{None}
+66     suppress\_output = \textcolor{keywordflow}{not} opt.get(\textcolor{stringliteral}{'verbose'}) \textcolor{keywordflow}{and} rank != 0
 67 
-68     \textcolor{comment}{# Suppress output of workers except the main host.}
-69     \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'verbose'}) \textcolor{keywordflow}{or} rank != 0:
-70         print\_prefix = \textcolor{stringliteral}{'[rank:\{:3d\}]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(rank)
-71     \textcolor{keywordflow}{else}:
-72         print\_prefix = \textcolor{keywordtype}{None}
-73     suppress\_output = \textcolor{keywordflow}{not} opt.get(\textcolor{stringliteral}{'verbose'}) \textcolor{keywordflow}{and} rank != 0
-74 
-75     with distributed\_utils.override\_print(suppress\_output, print\_prefix):
-76         \textcolor{comment}{# perform distributed setup, ensuring all hosts are ready}
-77         torch.cuda.set\_device(opt[\textcolor{stringliteral}{'gpu'}])
-78         dist.init\_process\_group(
-79             backend=\textcolor{stringliteral}{"nccl"},
-80             init\_method=\textcolor{stringliteral}{"tcp://\{\}:\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(hostname, port),
-81             world\_size=opt[\textcolor{stringliteral}{'distributed\_world\_size'}],
-82             rank=rank,
-83         )
-84         print(\textcolor{stringliteral}{"Distributed group initialized"})
+68     with distributed\_utils.override\_print(suppress\_output, print\_prefix):
+69         \textcolor{comment}{# perform distributed setup, ensuring all hosts are ready}
+70         torch.cuda.set\_device(opt[\textcolor{stringliteral}{'gpu'}])
+71         dist.init\_process\_group(
+72             backend=\textcolor{stringliteral}{"nccl"},
+73             init\_method=\textcolor{stringliteral}{"tcp://\{\}:\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(hostname, port),
+74             world\_size=opt[\textcolor{stringliteral}{'distributed\_world\_size'}],
+75             rank=rank,
+76         )
+77         print(\textcolor{stringliteral}{"Distributed group initialized"})
+78 
+79         \textcolor{comment}{# manual\_seed can be a noop without this}
+80         torch.cuda.init()
+81         \textcolor{comment}{# make sure all parameters will be in sync}
+82         torch.manual\_seed(42)
+83         \textcolor{comment}{# force a sync so that no one gets ahead, and all are seeded together}
+84         distributed\_utils.sync\_object(\textcolor{keywordtype}{None})
 85 
-86         \textcolor{comment}{# manual\_seed can be a noop without this}
-87         torch.cuda.init()
-88         \textcolor{comment}{# make sure all parameters will be in sync}
-89         torch.manual\_seed(42)
-90         \textcolor{comment}{# force a sync so that no one gets ahead, and all are seeded together}
-91         distributed\_utils.sync\_object(\textcolor{keywordtype}{None})
-92 
-93         \textcolor{comment}{# Run the actual training}
-94         \textcolor{keywordflow}{return} single\_train.TrainLoop(opt).\hyperlink{namespaceprojects_1_1mastering__the__dungeon_1_1mturk_1_1tasks_1_1MTD_1_1run_a36a5f4f6f9df0611a6818610518d2cf0}{train}()
-95 
-96 
+86         \textcolor{comment}{# Run the actual training}
+87         \textcolor{keywordflow}{return} single\_train.TrainLoop(opt).\hyperlink{namespaceprojects_1_1mastering__the__dungeon_1_1mturk_1_1tasks_1_1MTD_1_1run_a36a5f4f6f9df0611a6818610518d2cf0}{train}()
+88 
+89 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1multiprocessing__train_a1ee26bddeb470040cfbceb5ee7a9fa08}\label{namespaceparlai_1_1scripts_1_1multiprocessing__train_a1ee26bddeb470040cfbceb5ee7a9fa08}} 
 \index{parlai\+::scripts\+::multiprocessing\+\_\+train@{parlai\+::scripts\+::multiprocessing\+\_\+train}!setup\+\_\+args@{setup\+\_\+args}}
@@ -167,15 +167,15 @@ Definition at line 38 of file multiprocessing\+\_\+train.\+py.
 
 
 
-Definition at line 123 of file multiprocessing\+\_\+train.\+py.
+Definition at line 116 of file multiprocessing\+\_\+train.\+py.
 
 
 \begin{DoxyCode}
-123 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1multiprocessing__train_a1ee26bddeb470040cfbceb5ee7a9fa08}{setup\_args}():
-124     parser = single\_train.setup\_args()
-125     parser.add\_distributed\_training\_args()
-126     parser.set\_defaults(distributed\_world\_size=torch.cuda.device\_count())
-127     \textcolor{keywordflow}{return} parser
-128 
-129 
+116 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1multiprocessing__train_a1ee26bddeb470040cfbceb5ee7a9fa08}{setup\_args}():
+117     parser = single\_train.setup\_args()
+118     parser.add\_distributed\_training\_args()
+119     parser.set\_defaults(distributed\_world\_size=torch.cuda.device\_count())
+120     \textcolor{keywordflow}{return} parser
+121 
+122 
 \end{DoxyCode}

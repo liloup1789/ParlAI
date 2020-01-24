@@ -2,8 +2,7 @@
 \label{classparlai_1_1scripts_1_1interactive__web_1_1MyHandler}\index{parlai.\+scripts.\+interactive\+\_\+web.\+My\+Handler@{parlai.\+scripts.\+interactive\+\_\+web.\+My\+Handler}}
 
 
-Inheritance diagram for parlai.\+scripts.\+interactive\+\_\+web.\+My\+Handler\+:
-\nopagebreak
+Inheritance diagram for parlai.\+scripts.\+interactive\+\_\+web.\+My\+Handler\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+scripts.\+interactive\+\_\+web.\+My\+Handler\+:
 \end{figure}
 
 
-Collaboration diagram for parlai.\+scripts.\+interactive\+\_\+web.\+My\+Handler\+:
-\nopagebreak
+Collaboration diagram for parlai.\+scripts.\+interactive\+\_\+web.\+My\+Handler\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -41,7 +39,7 @@ def \hyperlink{classparlai_1_1scripts_1_1interactive__web_1_1MyHandler_aacb5ca9c
 \end{DoxyVerb}
  
 
-Definition at line 245 of file interactive\+\_\+web.\+py.
+Definition at line 246 of file interactive\+\_\+web.\+py.
 
 
 
@@ -56,23 +54,23 @@ Definition at line 245 of file interactive\+\_\+web.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 289 of file interactive\+\_\+web.\+py.
+Definition at line 290 of file interactive\+\_\+web.\+py.
 
 
 \begin{DoxyCode}
-289     \textcolor{keyword}{def }do\_GET(self):
-290         \textcolor{stringliteral}{"""}
-291 \textcolor{stringliteral}{        Respond to GET request, especially the initial load.}
-292 \textcolor{stringliteral}{        """}
-293         paths = \{
-294             \textcolor{stringliteral}{'/'}: \{\textcolor{stringliteral}{'status'}: 200\},
-295             \textcolor{stringliteral}{'/favicon.ico'}: \{\textcolor{stringliteral}{'status'}: 202\},  \textcolor{comment}{# Need for chrome}
-296         \}
-297         \textcolor{keywordflow}{if} self.path \textcolor{keywordflow}{in} paths:
-298             self.\_respond(paths[self.path])
-299         \textcolor{keywordflow}{else}:
-300             self.\_respond(\{\textcolor{stringliteral}{'status'}: 500\})
-301 
+290     \textcolor{keyword}{def }do\_GET(self):
+291         \textcolor{stringliteral}{"""}
+292 \textcolor{stringliteral}{        Respond to GET request, especially the initial load.}
+293 \textcolor{stringliteral}{        """}
+294         paths = \{
+295             \textcolor{stringliteral}{'/'}: \{\textcolor{stringliteral}{'status'}: 200\},
+296             \textcolor{stringliteral}{'/favicon.ico'}: \{\textcolor{stringliteral}{'status'}: 202\},  \textcolor{comment}{# Need for chrome}
+297         \}
+298         \textcolor{keywordflow}{if} self.path \textcolor{keywordflow}{in} paths:
+299             self.\_respond(paths[self.path])
+300         \textcolor{keywordflow}{else}:
+301             self.\_respond(\{\textcolor{stringliteral}{'status'}: 500\})
+302 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1scripts_1_1interactive__web_1_1MyHandler_a2231328696ebba922f2e5e1d9b8ebb56}\label{classparlai_1_1scripts_1_1interactive__web_1_1MyHandler_a2231328696ebba922f2e5e1d9b8ebb56}} 
 \index{parlai\+::scripts\+::interactive\+\_\+web\+::\+My\+Handler@{parlai\+::scripts\+::interactive\+\_\+web\+::\+My\+Handler}!do\+\_\+\+H\+E\+AD@{do\+\_\+\+H\+E\+AD}}
@@ -84,18 +82,18 @@ Definition at line 289 of file interactive\+\_\+web.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 256 of file interactive\+\_\+web.\+py.
+Definition at line 257 of file interactive\+\_\+web.\+py.
 
 
 \begin{DoxyCode}
-256     \textcolor{keyword}{def }do\_HEAD(self):
-257         \textcolor{stringliteral}{"""}
-258 \textcolor{stringliteral}{        Handle HEAD requests.}
-259 \textcolor{stringliteral}{        """}
-260         self.send\_response(200)
-261         self.send\_header(\textcolor{stringliteral}{'Content-type'}, \textcolor{stringliteral}{'text/html'})
-262         self.end\_headers()
-263 
+257     \textcolor{keyword}{def }do\_HEAD(self):
+258         \textcolor{stringliteral}{"""}
+259 \textcolor{stringliteral}{        Handle HEAD requests.}
+260 \textcolor{stringliteral}{        """}
+261         self.send\_response(200)
+262         self.send\_header(\textcolor{stringliteral}{'Content-type'}, \textcolor{stringliteral}{'text/html'})
+263         self.end\_headers()
+264 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1scripts_1_1interactive__web_1_1MyHandler_abea6bbf8b4439489c05a388fa615506c}\label{classparlai_1_1scripts_1_1interactive__web_1_1MyHandler_abea6bbf8b4439489c05a388fa615506c}} 
 \index{parlai\+::scripts\+::interactive\+\_\+web\+::\+My\+Handler@{parlai\+::scripts\+::interactive\+\_\+web\+::\+My\+Handler}!do\+\_\+\+P\+O\+ST@{do\+\_\+\+P\+O\+ST}}
@@ -107,35 +105,35 @@ Definition at line 256 of file interactive\+\_\+web.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 264 of file interactive\+\_\+web.\+py.
+Definition at line 265 of file interactive\+\_\+web.\+py.
 
 
 \begin{DoxyCode}
-264     \textcolor{keyword}{def }do\_POST(self):
-265         \textcolor{stringliteral}{"""}
-266 \textcolor{stringliteral}{        Handle POST request, especially replying to a chat message.}
-267 \textcolor{stringliteral}{        """}
-268         \textcolor{keywordflow}{if} self.path == \textcolor{stringliteral}{'/interact'}:
-269             content\_length = \hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(self.headers[\textcolor{stringliteral}{'Content-Length'}])
-270             body = self.rfile.read(content\_length)
-271             model\_response = self.\_interactive\_running(
-272                 SHARED.get(\textcolor{stringliteral}{'opt'}), body.decode(\textcolor{stringliteral}{'utf-8'})
-273             )
-274 
-275             self.send\_response(200)
-276             self.send\_header(\textcolor{stringliteral}{'Content-type'}, \textcolor{stringliteral}{'application/json'})
-277             self.end\_headers()
-278             json\_str = json.dumps(model\_response)
-279             self.wfile.write(bytes(json\_str, \textcolor{stringliteral}{'utf-8'}))
-280         \textcolor{keywordflow}{elif} self.path == \textcolor{stringliteral}{'/reset'}:
-281             self.send\_response(200)
-282             self.send\_header(\textcolor{stringliteral}{'Content-type'}, \textcolor{stringliteral}{'application/json'})
-283             self.end\_headers()
-284             SHARED[\textcolor{stringliteral}{'agent'}].reset()
-285             self.wfile.write(bytes(\textcolor{stringliteral}{"\{\}"}, \textcolor{stringliteral}{'utf-8'}))
-286         \textcolor{keywordflow}{else}:
-287             \textcolor{keywordflow}{return} self.\_respond(\{\textcolor{stringliteral}{'status'}: 500\})
-288 
+265     \textcolor{keyword}{def }do\_POST(self):
+266         \textcolor{stringliteral}{"""}
+267 \textcolor{stringliteral}{        Handle POST request, especially replying to a chat message.}
+268 \textcolor{stringliteral}{        """}
+269         \textcolor{keywordflow}{if} self.path == \textcolor{stringliteral}{'/interact'}:
+270             content\_length = \hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(self.headers[\textcolor{stringliteral}{'Content-Length'}])
+271             body = self.rfile.read(content\_length)
+272             model\_response = self.\_interactive\_running(
+273                 SHARED.get(\textcolor{stringliteral}{'opt'}), body.decode(\textcolor{stringliteral}{'utf-8'})
+274             )
+275 
+276             self.send\_response(200)
+277             self.send\_header(\textcolor{stringliteral}{'Content-type'}, \textcolor{stringliteral}{'application/json'})
+278             self.end\_headers()
+279             json\_str = json.dumps(model\_response)
+280             self.wfile.write(bytes(json\_str, \textcolor{stringliteral}{'utf-8'}))
+281         \textcolor{keywordflow}{elif} self.path == \textcolor{stringliteral}{'/reset'}:
+282             self.send\_response(200)
+283             self.send\_header(\textcolor{stringliteral}{'Content-type'}, \textcolor{stringliteral}{'application/json'})
+284             self.end\_headers()
+285             SHARED[\textcolor{stringliteral}{'agent'}].reset()
+286             self.wfile.write(bytes(\textcolor{stringliteral}{"\{\}"}, \textcolor{stringliteral}{'utf-8'}))
+287         \textcolor{keywordflow}{else}:
+288             \textcolor{keywordflow}{return} self.\_respond(\{\textcolor{stringliteral}{'status'}: 500\})
+289 
 \end{DoxyCode}
 
 
@@ -148,7 +146,7 @@ Definition at line 264 of file interactive\+\_\+web.\+py.
 
 
 
-Definition at line 268 of file interactive\+\_\+web.\+py.
+Definition at line 269 of file interactive\+\_\+web.\+py.
 
 
 

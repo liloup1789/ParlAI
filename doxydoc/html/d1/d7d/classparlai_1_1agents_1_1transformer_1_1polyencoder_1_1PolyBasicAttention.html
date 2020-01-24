@@ -122,7 +122,7 @@ Public Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><pre class="fragment">Override basic attention to account for edge case for polyencoder.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../dd/ddc/polyencoder_8py_source.html#l00469">469</a> of file <a class="el" href="../../dd/ddc/polyencoder_8py_source.html">polyencoder.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/ddc/polyencoder_8py_source.html#l00470">470</a> of file <a class="el" href="../../dd/ddc/polyencoder_8py_source.html">polyencoder.py</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a421bbb5dad363d0d16be9ab49b13a4e3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a421bbb5dad363d0d16be9ab49b13a4e3">&#9670;&nbsp;</a></span>__init__()</h2>
@@ -168,8 +168,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/ddc/polyencoder_8py_source.html#l00474">474</a> of file <a class="el" href="../../dd/ddc/polyencoder_8py_source.html">polyencoder.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;    <span class="keyword">def </span>__init__(self, poly_type, n_codes, *args, **kwargs):</div><div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;        super().__init__(*args, **kwargs)</div><div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;        self.poly_type = poly_type</div><div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;        self.n_codes = n_codes</div><div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;</div></div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../dd/ddc/polyencoder_8py_source.html#l00475">475</a> of file <a class="el" href="../../dd/ddc/polyencoder_8py_source.html">polyencoder.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;    <span class="keyword">def </span>__init__(self, poly_type, n_codes, *args, **kwargs):</div><div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;        super().__init__(*args, **kwargs)</div><div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;        self.poly_type = poly_type</div><div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;        self.n_codes = n_codes</div><div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -209,8 +209,8 @@ Public Attributes</h2></td></tr>
 Account for accidental dimensionality reduction when num_codes is 1 and the
 polyencoder type is 'codes'
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../dd/ddc/polyencoder_8py_source.html#l00479">479</a> of file <a class="el" href="../../dd/ddc/polyencoder_8py_source.html">polyencoder.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;    <span class="keyword">def </span>forward(self, *args, **kwargs):</div><div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;<span class="stringliteral">        Forward pass.</span></div><div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;<span class="stringliteral"></span></div><div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;<span class="stringliteral">        Account for accidental dimensionality reduction when num_codes is 1 and the</span></div><div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;<span class="stringliteral">        polyencoder type is &#39;codes&#39;</span></div><div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;<span class="stringliteral">        &quot;&quot;&quot;</span></div><div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;        lhs_emb = super().forward(*args, **kwargs)</div><div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;        <span class="keywordflow">if</span> self.poly_type == <span class="stringliteral">&#39;codes&#39;</span> <span class="keywordflow">and</span> self.n_codes == 1 <span class="keywordflow">and</span> len(lhs_emb.shape) == 2:</div><div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;            lhs_emb = lhs_emb.unsqueeze(self.dim - 1)</div><div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;        <span class="keywordflow">return</span> lhs_emb</div><div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;</div><div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;</div></div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../dd/ddc/polyencoder_8py_source.html#l00480">480</a> of file <a class="el" href="../../dd/ddc/polyencoder_8py_source.html">polyencoder.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;    <span class="keyword">def </span>forward(self, *args, **kwargs):</div><div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;<span class="stringliteral">        Forward pass.</span></div><div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;<span class="stringliteral"></span></div><div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;<span class="stringliteral">        Account for accidental dimensionality reduction when num_codes is 1 and the</span></div><div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;<span class="stringliteral">        polyencoder type is &#39;codes&#39;</span></div><div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;<span class="stringliteral">        &quot;&quot;&quot;</span></div><div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;        lhs_emb = super().forward(*args, **kwargs)</div><div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;        <span class="keywordflow">if</span> self.poly_type == <span class="stringliteral">&#39;codes&#39;</span> <span class="keywordflow">and</span> self.n_codes == 1 <span class="keywordflow">and</span> len(lhs_emb.shape) == 2:</div><div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;            lhs_emb = lhs_emb.unsqueeze(self.dim - 1)</div><div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;        <span class="keywordflow">return</span> lhs_emb</div><div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;</div><div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -226,7 +226,7 @@ polyencoder type is 'codes'
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/ddc/polyencoder_8py_source.html#l00477">477</a> of file <a class="el" href="../../dd/ddc/polyencoder_8py_source.html">polyencoder.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/ddc/polyencoder_8py_source.html#l00478">478</a> of file <a class="el" href="../../dd/ddc/polyencoder_8py_source.html">polyencoder.py</a>.</p>
 
 </div>
 </div>
@@ -242,7 +242,7 @@ polyencoder type is 'codes'
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../dd/ddc/polyencoder_8py_source.html#l00476">476</a> of file <a class="el" href="../../dd/ddc/polyencoder_8py_source.html">polyencoder.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../dd/ddc/polyencoder_8py_source.html#l00477">477</a> of file <a class="el" href="../../dd/ddc/polyencoder_8py_source.html">polyencoder.py</a>.</p>
 
 </div>
 </div>

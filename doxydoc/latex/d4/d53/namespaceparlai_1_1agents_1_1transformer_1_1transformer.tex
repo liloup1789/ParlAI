@@ -5,6 +5,8 @@
 \item 
 class \hyperlink{classparlai_1_1agents_1_1transformer_1_1transformer_1_1Transformer}{Transformer}
 \item 
+class \hyperlink{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerClassifierAgent}{Transformer\+Classifier\+Agent}
+\item 
 class \hyperlink{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerGeneratorAgent}{Transformer\+Generator\+Agent}
 \item 
 class \hyperlink{classparlai_1_1agents_1_1transformer_1_1transformer_1_1TransformerRankerAgent}{Transformer\+Ranker\+Agent}
@@ -27,92 +29,92 @@ def \hyperlink{namespaceparlai_1_1agents_1_1transformer_1_1transformer_a916bc49d
 \end{DoxyVerb}
  
 
-Definition at line 18 of file transformer.\+py.
+Definition at line 23 of file transformer.\+py.
 
 
 \begin{DoxyCode}
-18 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1transformer_1_1transformer_a916bc49d43dc0e244d24c47956c621ca}{add\_common\_cmdline\_args}(argparser):
-19     \textcolor{stringliteral}{"""}
-20 \textcolor{stringliteral}{    Add common command line args.}
-21 \textcolor{stringliteral}{    """}
-22     argparser.add\_argument(
-23         \textcolor{stringliteral}{'-esz'},
-24         \textcolor{stringliteral}{'--embedding-size'},
-25         type=int,
-26         default=300,
-27         help=\textcolor{stringliteral}{'Size of all embedding layers'},
-28     )
-29     argparser.add\_argument(\textcolor{stringliteral}{'-nl'}, \textcolor{stringliteral}{'--n-layers'}, type=int, default=2)
-30     argparser.add\_argument(
-31         \textcolor{stringliteral}{'-hid'},
-32         \textcolor{stringliteral}{'--ffn-size'},
-33         type=int,
-34         default=300,
-35         help=\textcolor{stringliteral}{'Hidden size of the FFN layers'},
-36     )
-37     argparser.add\_argument(
-38         \textcolor{stringliteral}{'--dropout'}, type=float, default=0.0, help=\textcolor{stringliteral}{'Dropout used in Vaswani 2017.'}
-39     )
-40     argparser.add\_argument(
-41         \textcolor{stringliteral}{'--attention-dropout'},
-42         type=float,
-43         default=0.0,
-44         help=\textcolor{stringliteral}{'Dropout used after attention softmax.'},
-45     )
-46     argparser.add\_argument(
-47         \textcolor{stringliteral}{'--relu-dropout'},
-48         type=float,
-49         default=0.0,
-50         help=\textcolor{stringliteral}{'Dropout used after ReLU. From tensor2tensor.'},
-51     )
-52     argparser.add\_argument(
-53         \textcolor{stringliteral}{'--n-heads'}, type=int, default=2, help=\textcolor{stringliteral}{'Number of multihead attention heads'}
-54     )
-55     argparser.add\_argument(\textcolor{stringliteral}{'--learn-positional-embeddings'}, type=\textcolor{stringliteral}{'bool'}, default=\textcolor{keyword}{False})
-56     argparser.add\_argument(\textcolor{stringliteral}{'--embeddings-scale'}, type=\textcolor{stringliteral}{'bool'}, default=\textcolor{keyword}{True})
+23 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1transformer_1_1transformer_a916bc49d43dc0e244d24c47956c621ca}{add\_common\_cmdline\_args}(argparser):
+24     \textcolor{stringliteral}{"""}
+25 \textcolor{stringliteral}{    Add common command line args.}
+26 \textcolor{stringliteral}{    """}
+27     argparser.add\_argument(
+28         \textcolor{stringliteral}{'-esz'},
+29         \textcolor{stringliteral}{'--embedding-size'},
+30         type=int,
+31         default=300,
+32         help=\textcolor{stringliteral}{'Size of all embedding layers'},
+33     )
+34     argparser.add\_argument(\textcolor{stringliteral}{'-nl'}, \textcolor{stringliteral}{'--n-layers'}, type=int, default=2)
+35     argparser.add\_argument(
+36         \textcolor{stringliteral}{'-hid'},
+37         \textcolor{stringliteral}{'--ffn-size'},
+38         type=int,
+39         default=300,
+40         help=\textcolor{stringliteral}{'Hidden size of the FFN layers'},
+41     )
+42     argparser.add\_argument(
+43         \textcolor{stringliteral}{'--dropout'}, type=float, default=0.0, help=\textcolor{stringliteral}{'Dropout used in Vaswani 2017.'}
+44     )
+45     argparser.add\_argument(
+46         \textcolor{stringliteral}{'--attention-dropout'},
+47         type=float,
+48         default=0.0,
+49         help=\textcolor{stringliteral}{'Dropout used after attention softmax.'},
+50     )
+51     argparser.add\_argument(
+52         \textcolor{stringliteral}{'--relu-dropout'},
+53         type=float,
+54         default=0.0,
+55         help=\textcolor{stringliteral}{'Dropout used after ReLU. From tensor2tensor.'},
+56     )
 57     argparser.add\_argument(
-58         \textcolor{stringliteral}{'--n-positions'},
-59         type=int,
-60         default=\textcolor{keywordtype}{None},
-61         hidden=\textcolor{keyword}{True},
-62         help=\textcolor{stringliteral}{'Number of positional embeddings to learn. Defaults '}
-63         \textcolor{stringliteral}{'to truncate or 1024 if not provided.'},
-64     )
-65     argparser.add\_argument(
-66         \textcolor{stringliteral}{'--n-segments'},
-67         type=int,
-68         default=0,
-69         help=\textcolor{stringliteral}{'The number of segments that support the model. '}
-70         \textcolor{stringliteral}{'If zero no segment and no langs\_embedding.'},
-71     )
-72     argparser.add\_argument(
-73         \textcolor{stringliteral}{'--variant'},
-74         choices=\{\textcolor{stringliteral}{'aiayn'}, \textcolor{stringliteral}{'xlm'}\},
-75         default=\textcolor{stringliteral}{'aiayn'},
-76         help=\textcolor{stringliteral}{'Chooses locations of layer norms, etc.'},
-77         recommended=\textcolor{stringliteral}{'xlm'},
-78     )
-79     argparser.add\_argument(
-80         \textcolor{stringliteral}{'--activation'},
-81         choices=\{\textcolor{stringliteral}{'relu'}, \textcolor{stringliteral}{'gelu'}\},
-82         default=\textcolor{stringliteral}{'relu'},
-83         help=\textcolor{stringliteral}{'Nonlinear activation to use. AIAYN uses relu, but '}
-84         \textcolor{stringliteral}{'more recent papers prefer gelu.'},
-85         recommended=\textcolor{stringliteral}{'gelu'},
-86     )
-87     argparser.add\_argument(
-88         \textcolor{stringliteral}{'--output-scaling'},
-89         type=float,
-90         default=1.0,
-91         help=\textcolor{stringliteral}{'scale the output of every transformer by this quantity.'},
-92     )
-93     argparser.add\_argument(
-94         \textcolor{stringliteral}{'--share-word-embeddings'},
-95         type=\textcolor{stringliteral}{'bool'},
-96         default=\textcolor{keyword}{True},
-97         help=\textcolor{stringliteral}{'Share word embeddings table for candidate and context'}
-98         \textcolor{stringliteral}{'in the memory network'},
-99     )
-100 
-101 
+58         \textcolor{stringliteral}{'--n-heads'}, type=int, default=2, help=\textcolor{stringliteral}{'Number of multihead attention heads'}
+59     )
+60     argparser.add\_argument(\textcolor{stringliteral}{'--learn-positional-embeddings'}, type=\textcolor{stringliteral}{'bool'}, default=\textcolor{keyword}{False})
+61     argparser.add\_argument(\textcolor{stringliteral}{'--embeddings-scale'}, type=\textcolor{stringliteral}{'bool'}, default=\textcolor{keyword}{True})
+62     argparser.add\_argument(
+63         \textcolor{stringliteral}{'--n-positions'},
+64         type=int,
+65         default=\textcolor{keywordtype}{None},
+66         hidden=\textcolor{keyword}{True},
+67         help=\textcolor{stringliteral}{'Number of positional embeddings to learn. Defaults '}
+68         \textcolor{stringliteral}{'to truncate or 1024 if not provided.'},
+69     )
+70     argparser.add\_argument(
+71         \textcolor{stringliteral}{'--n-segments'},
+72         type=int,
+73         default=0,
+74         help=\textcolor{stringliteral}{'The number of segments that support the model. '}
+75         \textcolor{stringliteral}{'If zero no segment and no langs\_embedding.'},
+76     )
+77     argparser.add\_argument(
+78         \textcolor{stringliteral}{'--variant'},
+79         choices=\{\textcolor{stringliteral}{'aiayn'}, \textcolor{stringliteral}{'xlm'}\},
+80         default=\textcolor{stringliteral}{'aiayn'},
+81         help=\textcolor{stringliteral}{'Chooses locations of layer norms, etc.'},
+82         recommended=\textcolor{stringliteral}{'xlm'},
+83     )
+84     argparser.add\_argument(
+85         \textcolor{stringliteral}{'--activation'},
+86         choices=\{\textcolor{stringliteral}{'relu'}, \textcolor{stringliteral}{'gelu'}\},
+87         default=\textcolor{stringliteral}{'relu'},
+88         help=\textcolor{stringliteral}{'Nonlinear activation to use. AIAYN uses relu, but '}
+89         \textcolor{stringliteral}{'more recent papers prefer gelu.'},
+90         recommended=\textcolor{stringliteral}{'gelu'},
+91     )
+92     argparser.add\_argument(
+93         \textcolor{stringliteral}{'--output-scaling'},
+94         type=float,
+95         default=1.0,
+96         help=\textcolor{stringliteral}{'scale the output of every transformer by this quantity.'},
+97     )
+98     argparser.add\_argument(
+99         \textcolor{stringliteral}{'--share-word-embeddings'},
+100         type=\textcolor{stringliteral}{'bool'},
+101         default=\textcolor{keyword}{True},
+102         help=\textcolor{stringliteral}{'Share word embeddings table for candidate and context'}
+103         \textcolor{stringliteral}{'in the memory network'},
+104     )
+105 
+106 
 \end{DoxyCode}

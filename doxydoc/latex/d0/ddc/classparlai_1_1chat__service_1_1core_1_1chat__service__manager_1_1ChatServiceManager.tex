@@ -7,7 +7,7 @@ Inheritance diagram for parlai.\+chat\+\_\+service.\+core.\+chat\+\_\+service\+\
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=319pt]{d6/d02/classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager__inherit__graph}
+\includegraphics[width=350pt]{d6/d02/classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager__inherit__graph}
 \end{center}
 \end{figure}
 
@@ -32,7 +32,7 @@ def \hyperlink{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_
 \item 
 def \hyperlink{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_acf204463db3ea8e4a3929d5191890cbc}{parse\+\_\+additional\+\_\+args} (self, \hyperlink{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a418cecffd5c3e0d6a00919eaa837d0e2}{opt})
 \item 
-def \hyperlink{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a49a2a816f16454f0acb26e178cb104c8}{restructure\+\_\+message} ()
+def \hyperlink{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a68e25213509b2bd287ae8a69fd9a726f}{restructure\+\_\+message} (self)
 \item 
 def \hyperlink{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a496b0f51b79bc2cd1a9be8fdc4cdd93d}{add\+\_\+agent\+\_\+to\+\_\+pool} (self, agent, world\+\_\+type=\textquotesingle{}default\textquotesingle{})
 \item 
@@ -200,26 +200,26 @@ Definition at line 132 of file chat\+\_\+service\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 415 of file chat\+\_\+service\+\_\+manager.\+py.
+Definition at line 416 of file chat\+\_\+service\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-415     \textcolor{keyword}{def }add\_agent\_to\_pool(self, agent, world\_type='default'):
-416         \textcolor{stringliteral}{"""}
-417 \textcolor{stringliteral}{        Add the agent to pool.}
-418 \textcolor{stringliteral}{}
-419 \textcolor{stringliteral}{        :param agent:}
-420 \textcolor{stringliteral}{            MessengerAgent object}
-421 \textcolor{stringliteral}{        :param world\_type:}
-422 \textcolor{stringliteral}{            Name of world whose pool should now contain agent}
-423 \textcolor{stringliteral}{        """}
-424         with self.agent\_pool\_change\_condition:
-425             self.\_log\_debug(\textcolor{stringliteral}{'Adding agent \{\} to pool...'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(agent.service\_id))
-426             \textcolor{comment}{# time agent entered agent\_pool}
-427             agent.time\_in\_pool.setdefault(world\_type, time.time())
-428             \textcolor{comment}{# add agent to pool}
-429             self.agent\_pool.setdefault(world\_type, []).append(agent)
-430 
+416     \textcolor{keyword}{def }add\_agent\_to\_pool(self, agent, world\_type='default'):
+417         \textcolor{stringliteral}{"""}
+418 \textcolor{stringliteral}{        Add the agent to pool.}
+419 \textcolor{stringliteral}{}
+420 \textcolor{stringliteral}{        :param agent:}
+421 \textcolor{stringliteral}{            MessengerAgent object}
+422 \textcolor{stringliteral}{        :param world\_type:}
+423 \textcolor{stringliteral}{            Name of world whose pool should now contain agent}
+424 \textcolor{stringliteral}{        """}
+425         with self.agent\_pool\_change\_condition:
+426             self.\_log\_debug(\textcolor{stringliteral}{'Adding agent \{\} to pool...'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(agent.service\_id))
+427             \textcolor{comment}{# time agent entered agent\_pool}
+428             agent.time\_in\_pool.setdefault(world\_type, time.time())
+429             \textcolor{comment}{# add agent to pool}
+430             self.agent\_pool.setdefault(world\_type, []).append(agent)
+431 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a928461831de4bdb9fb240ae538d0b841}\label{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a928461831de4bdb9fb240ae538d0b841}} 
 \index{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager@{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager}!after\+\_\+agent\+\_\+removed@{after\+\_\+agent\+\_\+removed}}
@@ -233,18 +233,18 @@ override if extra bookkeeping must be done when removing agent
 \end{DoxyVerb}
  
 
-Definition at line 735 of file chat\+\_\+service\+\_\+manager.\+py.
+Definition at line 736 of file chat\+\_\+service\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-735     \textcolor{keyword}{def }after\_agent\_removed(self, agent\_id):
-736         \textcolor{stringliteral}{"""}
-737 \textcolor{stringliteral}{        Perform any changes to metadata on agent removal.}
-738 \textcolor{stringliteral}{}
-739 \textcolor{stringliteral}{        override if extra bookkeeping must be done when removing agent}
-740 \textcolor{stringliteral}{        """}
-741         \textcolor{keywordflow}{pass}
-742 
+736     \textcolor{keyword}{def }after\_agent\_removed(self, agent\_id):
+737         \textcolor{stringliteral}{"""}
+738 \textcolor{stringliteral}{        Perform any changes to metadata on agent removal.}
+739 \textcolor{stringliteral}{}
+740 \textcolor{stringliteral}{        override if extra bookkeeping must be done when removing agent}
+741 \textcolor{stringliteral}{        """}
+742         \textcolor{keywordflow}{pass}
+743 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a92c91891bbc88de69040bc979e9da468}\label{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a92c91891bbc88de69040bc979e9da468}} 
 \index{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager@{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager}!check\+\_\+timeout\+\_\+in\+\_\+pool@{check\+\_\+timeout\+\_\+in\+\_\+pool}}
@@ -265,55 +265,55 @@ Definition at line 735 of file chat\+\_\+service\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 533 of file chat\+\_\+service\+\_\+manager.\+py.
+Definition at line 534 of file chat\+\_\+service\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-533     ):
-534         \textcolor{stringliteral}{"""}
-535 \textcolor{stringliteral}{        Check for timed-out agents in pool.}
-536 \textcolor{stringliteral}{}
-537 \textcolor{stringliteral}{        :param world\_type:}
-538 \textcolor{stringliteral}{            string world type}
-539 \textcolor{stringliteral}{        :param agent\_pool:}
-540 \textcolor{stringliteral}{            list of ``AgentState``s}
-541 \textcolor{stringliteral}{        :param max\_time\_in\_pool:}
-542 \textcolor{stringliteral}{            int maximum time allowed for agent to be in pool}
-543 \textcolor{stringliteral}{        :param backup\_task:}
-544 \textcolor{stringliteral}{            string backup\_task to start if we reach a timeout in the original pool}
-545 \textcolor{stringliteral}{        """}
-546         \textcolor{keywordflow}{for} agent\_state \textcolor{keywordflow}{in} agent\_pool:
-547             time\_in\_pool = agent\_state.time\_in\_pool.get(world\_type)
-548             \textcolor{keywordflow}{if} time\_in\_pool \textcolor{keywordflow}{and} time.time() - time\_in\_pool > max\_time\_in\_pool:
-549                 \textcolor{comment}{# remove agent from agent\_pool}
-550                 self.remove\_agent\_from\_pool(agent\_state, world\_type)
-551                 \textcolor{comment}{# put agent back in overworld}
-552                 agent\_state.set\_active\_agent(agent\_state.get\_overworld\_agent())
-553 
-554                 agent\_state.stored\_data[\textcolor{stringliteral}{'removed\_after\_timeout'}] = \textcolor{keyword}{True}
-555                 self.after\_agent\_removed(agent\_state.service\_id)
-556 
-557                 \textcolor{keywordflow}{if} backup\_task \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-558                     self.add\_agent\_to\_pool(agent\_state, backup\_task)
-559 
-560                 \textcolor{comment}{# reset wait message state}
-561                 agent\_state.stored\_data[\textcolor{stringliteral}{'seen\_wait\_message'}] = \textcolor{keyword}{False}
-562 
-563             \textcolor{keywordflow}{elif} time\_in\_pool \textcolor{keywordflow}{and} time.time() - time\_in\_pool > 30:
-564                 \textcolor{comment}{# tell agent that a match is taking longer than}
-565                 \textcolor{comment}{# expected}
-566                 \textcolor{keywordflow}{if} (
-567                     \textcolor{keywordflow}{not} agent\_state.stored\_data.get(\textcolor{stringliteral}{'seen\_wait\_message'})
-568                     \textcolor{keywordflow}{or} \textcolor{keywordflow}{not} agent\_state.stored\_data[\textcolor{stringliteral}{'seen\_wait\_message'}]
-569                 ):
-570                     self.observe\_message(
-571                         agent\_state.service\_id,
-572                         \textcolor{stringliteral}{'Pairing is taking longer than expected. '}
-573                         \textcolor{stringliteral}{'If you wish to exit, type *EXIT*.'},
-574                     )
-575                     self.message\_sender.typing\_on(agent\_state.service\_id)
-576                     agent\_state.stored\_data[\textcolor{stringliteral}{'seen\_wait\_message'}] = \textcolor{keyword}{True}
-577 
+534     ):
+535         \textcolor{stringliteral}{"""}
+536 \textcolor{stringliteral}{        Check for timed-out agents in pool.}
+537 \textcolor{stringliteral}{}
+538 \textcolor{stringliteral}{        :param world\_type:}
+539 \textcolor{stringliteral}{            string world type}
+540 \textcolor{stringliteral}{        :param agent\_pool:}
+541 \textcolor{stringliteral}{            list of ``AgentState``s}
+542 \textcolor{stringliteral}{        :param max\_time\_in\_pool:}
+543 \textcolor{stringliteral}{            int maximum time allowed for agent to be in pool}
+544 \textcolor{stringliteral}{        :param backup\_task:}
+545 \textcolor{stringliteral}{            string backup\_task to start if we reach a timeout in the original pool}
+546 \textcolor{stringliteral}{        """}
+547         \textcolor{keywordflow}{for} agent\_state \textcolor{keywordflow}{in} agent\_pool:
+548             time\_in\_pool = agent\_state.time\_in\_pool.get(world\_type)
+549             \textcolor{keywordflow}{if} time\_in\_pool \textcolor{keywordflow}{and} time.time() - time\_in\_pool > max\_time\_in\_pool:
+550                 \textcolor{comment}{# remove agent from agent\_pool}
+551                 self.remove\_agent\_from\_pool(agent\_state, world\_type)
+552                 \textcolor{comment}{# put agent back in overworld}
+553                 agent\_state.set\_active\_agent(agent\_state.get\_overworld\_agent())
+554 
+555                 agent\_state.stored\_data[\textcolor{stringliteral}{'removed\_after\_timeout'}] = \textcolor{keyword}{True}
+556                 self.after\_agent\_removed(agent\_state.service\_id)
+557 
+558                 \textcolor{keywordflow}{if} backup\_task \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+559                     self.add\_agent\_to\_pool(agent\_state, backup\_task)
+560 
+561                 \textcolor{comment}{# reset wait message state}
+562                 agent\_state.stored\_data[\textcolor{stringliteral}{'seen\_wait\_message'}] = \textcolor{keyword}{False}
+563 
+564             \textcolor{keywordflow}{elif} time\_in\_pool \textcolor{keywordflow}{and} time.time() - time\_in\_pool > 30:
+565                 \textcolor{comment}{# tell agent that a match is taking longer than}
+566                 \textcolor{comment}{# expected}
+567                 \textcolor{keywordflow}{if} (
+568                     \textcolor{keywordflow}{not} agent\_state.stored\_data.get(\textcolor{stringliteral}{'seen\_wait\_message'})
+569                     \textcolor{keywordflow}{or} \textcolor{keywordflow}{not} agent\_state.stored\_data[\textcolor{stringliteral}{'seen\_wait\_message'}]
+570                 ):
+571                     self.observe\_message(
+572                         agent\_state.service\_id,
+573                         \textcolor{stringliteral}{'Pairing is taking longer than expected. '}
+574                         \textcolor{stringliteral}{'If you wish to exit, type *EXIT*.'},
+575                     )
+576                     self.sender.typing\_on(agent\_state.service\_id)
+577                     agent\_state.stored\_data[\textcolor{stringliteral}{'seen\_wait\_message'}] = \textcolor{keyword}{True}
+578 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_ac88107eb2a55878dad8ceb4c90acff5b}\label{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_ac88107eb2a55878dad8ceb4c90acff5b}} 
 \index{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager@{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager}!get\+\_\+agent\+\_\+state@{get\+\_\+agent\+\_\+state}}
@@ -331,24 +331,24 @@ Definition at line 533 of file chat\+\_\+service\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 485 of file chat\+\_\+service\+\_\+manager.\+py.
+Definition at line 486 of file chat\+\_\+service\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-485     \textcolor{keyword}{def }get\_agent\_state(self, agent\_id):
-486         \textcolor{stringliteral}{"""}
-487 \textcolor{stringliteral}{        Return agent state.}
-488 \textcolor{stringliteral}{}
-489 \textcolor{stringliteral}{        :param agent\_id:}
-490 \textcolor{stringliteral}{            int agent identifier}
-491 \textcolor{stringliteral}{}
-492 \textcolor{stringliteral}{        :return:}
-493 \textcolor{stringliteral}{            AgentState object if agent\_id is being tracked, else None}
-494 \textcolor{stringliteral}{        """}
-495         \textcolor{keywordflow}{if} agent\_id \textcolor{keywordflow}{in} self.messenger\_agent\_states:
-496             \textcolor{keywordflow}{return} self.messenger\_agent\_states[agent\_id]
-497         \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}
-498 
+486     \textcolor{keyword}{def }get\_agent\_state(self, agent\_id):
+487         \textcolor{stringliteral}{"""}
+488 \textcolor{stringliteral}{        Return agent state.}
+489 \textcolor{stringliteral}{}
+490 \textcolor{stringliteral}{        :param agent\_id:}
+491 \textcolor{stringliteral}{            int agent identifier}
+492 \textcolor{stringliteral}{}
+493 \textcolor{stringliteral}{        :return:}
+494 \textcolor{stringliteral}{            AgentState object if agent\_id is being tracked, else None}
+495 \textcolor{stringliteral}{        """}
+496         \textcolor{keywordflow}{if} agent\_id \textcolor{keywordflow}{in} self.messenger\_agent\_states:
+497             \textcolor{keywordflow}{return} self.messenger\_agent\_states[agent\_id]
+498         \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}
+499 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a4aa33c8155ac0850476037f8809c8f22}\label{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a4aa33c8155ac0850476037f8809c8f22}} 
 \index{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager@{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager}!init\+\_\+new\+\_\+state@{init\+\_\+new\+\_\+state}}
@@ -362,21 +362,21 @@ Initialize everything in the agent, task, and thread states
 \end{DoxyVerb}
  
 
-Definition at line 513 of file chat\+\_\+service\+\_\+manager.\+py.
+Definition at line 514 of file chat\+\_\+service\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-513     \textcolor{keyword}{def }init\_new\_state(self):
-514         \textcolor{stringliteral}{"""}
-515 \textcolor{stringliteral}{        Prepare for new run.}
-516 \textcolor{stringliteral}{}
-517 \textcolor{stringliteral}{        Initialize everything in the agent, task, and thread states}
-518 \textcolor{stringliteral}{        """}
-519         self.agent\_pool = \{\}
-520         self.messenger\_agent\_states = \{\}
-521         self.task\_to\_agent\_ids = \{\}
-522         self.agent\_id\_to\_overworld\_future = \{\}
-523 
+514     \textcolor{keyword}{def }init\_new\_state(self):
+515         \textcolor{stringliteral}{"""}
+516 \textcolor{stringliteral}{        Prepare for new run.}
+517 \textcolor{stringliteral}{}
+518 \textcolor{stringliteral}{        Initialize everything in the agent, task, and thread states}
+519 \textcolor{stringliteral}{        """}
+520         self.agent\_pool = \{\}
+521         self.messenger\_agent\_states = \{\}
+522         self.task\_to\_agent\_ids = \{\}
+523         self.agent\_id\_to\_overworld\_future = \{\}
+524 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_acd647091b75f07e2d3744b0d895c9d8c}\label{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_acd647091b75f07e2d3744b0d895c9d8c}} 
 \index{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager@{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager}!mark\+\_\+removed@{mark\+\_\+removed}}
@@ -395,23 +395,23 @@ Can be overriden to change other metadata linked to agent removal.
 \end{DoxyVerb}
  
 
-Definition at line 722 of file chat\+\_\+service\+\_\+manager.\+py.
+Definition at line 723 of file chat\+\_\+service\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-722     \textcolor{keyword}{def }mark\_removed(self, agent\_id, pageid):
-723         \textcolor{stringliteral}{"""}
-724 \textcolor{stringliteral}{        Mark the agent as removed from the pool.}
-725 \textcolor{stringliteral}{}
-726 \textcolor{stringliteral}{        Can be overriden to change other metadata linked to agent removal.}
-727 \textcolor{stringliteral}{}
-728 \textcolor{stringliteral}{        :param agent\_id:}
-729 \textcolor{stringliteral}{            int agent psid}
-730 \textcolor{stringliteral}{        :param pageid:}
-731 \textcolor{stringliteral}{            int page id}
-732 \textcolor{stringliteral}{        """}
-733         \textcolor{keywordflow}{pass}
-734 
+723     \textcolor{keyword}{def }mark\_removed(self, agent\_id, pageid):
+724         \textcolor{stringliteral}{"""}
+725 \textcolor{stringliteral}{        Mark the agent as removed from the pool.}
+726 \textcolor{stringliteral}{}
+727 \textcolor{stringliteral}{        Can be overriden to change other metadata linked to agent removal.}
+728 \textcolor{stringliteral}{}
+729 \textcolor{stringliteral}{        :param agent\_id:}
+730 \textcolor{stringliteral}{            int agent psid}
+731 \textcolor{stringliteral}{        :param pageid:}
+732 \textcolor{stringliteral}{            int page id}
+733 \textcolor{stringliteral}{        """}
+734         \textcolor{keywordflow}{pass}
+735 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a9e1d99a460b0e21ec47e9a3ae09d73a0}\label{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a9e1d99a460b0e21ec47e9a3ae09d73a0}} 
 \index{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager@{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager}!observe\+\_\+message@{observe\+\_\+message}}
@@ -432,24 +432,24 @@ Definition at line 722 of file chat\+\_\+service\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 700 of file chat\+\_\+service\+\_\+manager.\+py.
+Definition at line 701 of file chat\+\_\+service\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-700     \textcolor{keyword}{def }observe\_message(self, receiver\_id, text, quick\_replies=None, persona\_id=None):
-701         \textcolor{stringliteral}{"""}
-702 \textcolor{stringliteral}{        Send a message through the message manager.}
-703 \textcolor{stringliteral}{}
-704 \textcolor{stringliteral}{        :param receiver\_id:}
-705 \textcolor{stringliteral}{            int identifier for agent to send message to}
-706 \textcolor{stringliteral}{        :param text:}
-707 \textcolor{stringliteral}{            string text to send}
-708 \textcolor{stringliteral}{        :param quick\_replies:}
-709 \textcolor{stringliteral}{            list of quick replies}
-710 \textcolor{stringliteral}{        :param persona\_id:}
-711 \textcolor{stringliteral}{            identifier of persona}
-712 \textcolor{stringliteral}{        """}
-713 
+701     \textcolor{keyword}{def }observe\_message(self, receiver\_id, text, quick\_replies=None, persona\_id=None):
+702         \textcolor{stringliteral}{"""}
+703 \textcolor{stringliteral}{        Send a message through the message manager.}
+704 \textcolor{stringliteral}{}
+705 \textcolor{stringliteral}{        :param receiver\_id:}
+706 \textcolor{stringliteral}{            int identifier for agent to send message to}
+707 \textcolor{stringliteral}{        :param text:}
+708 \textcolor{stringliteral}{            string text to send}
+709 \textcolor{stringliteral}{        :param quick\_replies:}
+710 \textcolor{stringliteral}{            list of quick replies}
+711 \textcolor{stringliteral}{        :param persona\_id:}
+712 \textcolor{stringliteral}{            identifier of persona}
+713 \textcolor{stringliteral}{        """}
+714 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_ae4aa62ecd0ff74a95a9d259f2297eace}\label{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_ae4aa62ecd0ff74a95a9d259f2297eace}} 
 \index{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager@{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager}!observe\+\_\+payload@{observe\+\_\+payload}}
@@ -470,25 +470,25 @@ Definition at line 700 of file chat\+\_\+service\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 745 of file chat\+\_\+service\+\_\+manager.\+py.
+Definition at line 746 of file chat\+\_\+service\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-745     \textcolor{keyword}{def }observe\_payload(self, receiver\_id, data, quick\_replies=None, persona\_id=None):
-746         \textcolor{stringliteral}{"""}
-747 \textcolor{stringliteral}{        Send a payload through the message manager.}
-748 \textcolor{stringliteral}{}
-749 \textcolor{stringliteral}{        :param receiver\_id:}
-750 \textcolor{stringliteral}{            int identifier for agent to send message to}
-751 \textcolor{stringliteral}{        :param data:}
-752 \textcolor{stringliteral}{            object data to send}
-753 \textcolor{stringliteral}{        :param quick\_replies:}
-754 \textcolor{stringliteral}{            list of quick replies}
-755 \textcolor{stringliteral}{        :param persona\_id:}
-756 \textcolor{stringliteral}{            identifier of persona}
-757 \textcolor{stringliteral}{        """}
-758         \textcolor{keywordflow}{pass}
-759 
+746     \textcolor{keyword}{def }observe\_payload(self, receiver\_id, data, quick\_replies=None, persona\_id=None):
+747         \textcolor{stringliteral}{"""}
+748 \textcolor{stringliteral}{        Send a payload through the message manager.}
+749 \textcolor{stringliteral}{}
+750 \textcolor{stringliteral}{        :param receiver\_id:}
+751 \textcolor{stringliteral}{            int identifier for agent to send message to}
+752 \textcolor{stringliteral}{        :param data:}
+753 \textcolor{stringliteral}{            object data to send}
+754 \textcolor{stringliteral}{        :param quick\_replies:}
+755 \textcolor{stringliteral}{            list of quick replies}
+756 \textcolor{stringliteral}{        :param persona\_id:}
+757 \textcolor{stringliteral}{            identifier of persona}
+758 \textcolor{stringliteral}{        """}
+759         \textcolor{keywordflow}{pass}
+760 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_acf204463db3ea8e4a3929d5191890cbc}\label{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_acf204463db3ea8e4a3929d5191890cbc}} 
 \index{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager@{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager}!parse\+\_\+additional\+\_\+args@{parse\+\_\+additional\+\_\+args}}
@@ -500,16 +500,16 @@ Definition at line 745 of file chat\+\_\+service\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 191 of file chat\+\_\+service\+\_\+manager.\+py.
+Definition at line 192 of file chat\+\_\+service\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-191     \textcolor{keyword}{def }parse\_additional\_args(self, opt):
-192         \textcolor{stringliteral}{"""}
-193 \textcolor{stringliteral}{        Parse any other service specific args here.}
-194 \textcolor{stringliteral}{        """}
-195         \textcolor{comment}{# page id for messenger to be obtained here}
-196 
+192     \textcolor{keyword}{def }parse\_additional\_args(self, opt):
+193         \textcolor{stringliteral}{"""}
+194 \textcolor{stringliteral}{        Parse any other service specific args here.}
+195 \textcolor{stringliteral}{        """}
+196         \textcolor{comment}{# page id for messenger to be obtained here}
+197 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a926a7c35369cb78cc81839cf2c7c1321}\label{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a926a7c35369cb78cc81839cf2c7c1321}} 
 \index{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager@{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager}!remove\+\_\+agent\+\_\+from\+\_\+pool@{remove\+\_\+agent\+\_\+from\+\_\+pool}}
@@ -528,54 +528,54 @@ Definition at line 191 of file chat\+\_\+service\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 431 of file chat\+\_\+service\+\_\+manager.\+py.
+Definition at line 432 of file chat\+\_\+service\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-431     \textcolor{keyword}{def }remove\_agent\_from\_pool(self, agent, world\_type='default', mark\_removed=True):
-432         \textcolor{stringliteral}{"""}
-433 \textcolor{stringliteral}{        Remove agent from the pool.}
-434 \textcolor{stringliteral}{}
-435 \textcolor{stringliteral}{        :param agent:}
-436 \textcolor{stringliteral}{            Agent object}
-437 \textcolor{stringliteral}{        :param world\_type:}
-438 \textcolor{stringliteral}{            string, world name}
-439 \textcolor{stringliteral}{        :param mark\_removed:}
-440 \textcolor{stringliteral}{            bool, whether to mark an agent as removed from the pool}
-441 \textcolor{stringliteral}{        """}
-442         with self.agent\_pool\_change\_condition:
-443             self.\_log\_debug(\textcolor{stringliteral}{'Removing agent \{\} from pool...'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(agent.service\_id))
-444             \textcolor{keywordflow}{if} world\_type \textcolor{keywordflow}{in} self.agent\_pool \textcolor{keywordflow}{and} agent \textcolor{keywordflow}{in} self.agent\_pool[world\_type]:
-445                 self.agent\_pool[world\_type].remove(agent)
-446                 \textcolor{comment}{# reset agent's time\_in\_pool}
-447                 \textcolor{keywordflow}{if} world\_type \textcolor{keywordflow}{in} agent.time\_in\_pool:
-448                     del agent.time\_in\_pool[world\_type]
-449                 \textcolor{comment}{# maybe mark agent as removed}
-450                 \textcolor{keywordflow}{if} mark\_removed:
-451                     agent.stored\_data[\textcolor{stringliteral}{'removed\_from\_pool'}] = \textcolor{keyword}{True}
-452                     \textcolor{keywordflow}{if} self.service\_reference\_id \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-453                         self.mark\_removed(agent.service\_id, self.service\_reference\_id)
-454 
+432     \textcolor{keyword}{def }remove\_agent\_from\_pool(self, agent, world\_type='default', mark\_removed=True):
+433         \textcolor{stringliteral}{"""}
+434 \textcolor{stringliteral}{        Remove agent from the pool.}
+435 \textcolor{stringliteral}{}
+436 \textcolor{stringliteral}{        :param agent:}
+437 \textcolor{stringliteral}{            Agent object}
+438 \textcolor{stringliteral}{        :param world\_type:}
+439 \textcolor{stringliteral}{            string, world name}
+440 \textcolor{stringliteral}{        :param mark\_removed:}
+441 \textcolor{stringliteral}{            bool, whether to mark an agent as removed from the pool}
+442 \textcolor{stringliteral}{        """}
+443         with self.agent\_pool\_change\_condition:
+444             self.\_log\_debug(\textcolor{stringliteral}{'Removing agent \{\} from pool...'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(agent.service\_id))
+445             \textcolor{keywordflow}{if} world\_type \textcolor{keywordflow}{in} self.agent\_pool \textcolor{keywordflow}{and} agent \textcolor{keywordflow}{in} self.agent\_pool[world\_type]:
+446                 self.agent\_pool[world\_type].remove(agent)
+447                 \textcolor{comment}{# reset agent's time\_in\_pool}
+448                 \textcolor{keywordflow}{if} world\_type \textcolor{keywordflow}{in} agent.time\_in\_pool:
+449                     del agent.time\_in\_pool[world\_type]
+450                 \textcolor{comment}{# maybe mark agent as removed}
+451                 \textcolor{keywordflow}{if} mark\_removed:
+452                     agent.stored\_data[\textcolor{stringliteral}{'removed\_from\_pool'}] = \textcolor{keyword}{True}
+453                     \textcolor{keywordflow}{if} self.service\_reference\_id \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+454                         self.mark\_removed(agent.service\_id, self.service\_reference\_id)
+455 
 \end{DoxyCode}
-\mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a49a2a816f16454f0acb26e178cb104c8}\label{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a49a2a816f16454f0acb26e178cb104c8}} 
+\mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a68e25213509b2bd287ae8a69fd9a726f}\label{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a68e25213509b2bd287ae8a69fd9a726f}} 
 \index{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager@{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager}!restructure\+\_\+message@{restructure\+\_\+message}}
 \index{restructure\+\_\+message@{restructure\+\_\+message}!parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager@{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager}}
 \subsubsection{\texorpdfstring{restructure\+\_\+message()}{restructure\_message()}}
-{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+core.\+chat\+\_\+service\+\_\+manager.\+Chat\+Service\+Manager.\+restructure\+\_\+message (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+core.\+chat\+\_\+service\+\_\+manager.\+Chat\+Service\+Manager.\+restructure\+\_\+message (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
 
 \begin{DoxyVerb}Use this function to restructure the message into the provided format.
 \end{DoxyVerb}
  
 
-Definition at line 278 of file chat\+\_\+service\+\_\+manager.\+py.
+Definition at line 279 of file chat\+\_\+service\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-278     \textcolor{keyword}{def }restructure\_message():
-279         \textcolor{stringliteral}{"""}
-280 \textcolor{stringliteral}{        Use this function to restructure the message into the provided format.}
-281 \textcolor{stringliteral}{        """}
-282 
+279     \textcolor{keyword}{def }restructure\_message(self):
+280         \textcolor{stringliteral}{"""}
+281 \textcolor{stringliteral}{        Use this function to restructure the message into the provided format.}
+282 \textcolor{stringliteral}{        """}
+283 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a147d73ca0427e9571a3c462d75412536}\label{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a147d73ca0427e9571a3c462d75412536}} 
 \index{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager@{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager}!setup\+\_\+server@{setup\+\_\+server}}
@@ -587,16 +587,16 @@ Definition at line 278 of file chat\+\_\+service\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 500 of file chat\+\_\+service\+\_\+manager.\+py.
+Definition at line 501 of file chat\+\_\+service\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-500     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_afb56b04206cd0f42384438f1ac6d9cda}{setup\_server}(self):
-501         \textcolor{stringliteral}{"""}
-502 \textcolor{stringliteral}{        Prepare the Chat Service server for handling messages.}
-503 \textcolor{stringliteral}{        """}
-504         \textcolor{keywordflow}{pass}
-505 
+501     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_afb56b04206cd0f42384438f1ac6d9cda}{setup\_server}(self):
+502         \textcolor{stringliteral}{"""}
+503 \textcolor{stringliteral}{        Prepare the Chat Service server for handling messages.}
+504 \textcolor{stringliteral}{        """}
+505         \textcolor{keywordflow}{pass}
+506 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a167613812d6f3eaaa0fb1b36bf98be09}\label{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a167613812d6f3eaaa0fb1b36bf98be09}} 
 \index{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager@{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager}!setup\+\_\+socket@{setup\+\_\+socket}}
@@ -608,16 +608,16 @@ Definition at line 500 of file chat\+\_\+service\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 507 of file chat\+\_\+service\+\_\+manager.\+py.
+Definition at line 508 of file chat\+\_\+service\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-507     \textcolor{keyword}{def }setup\_socket(self):
-508         \textcolor{stringliteral}{"""}
-509 \textcolor{stringliteral}{        Set up socket to start communicating to workers.}
-510 \textcolor{stringliteral}{        """}
-511         \textcolor{keywordflow}{pass}
-512 
+508     \textcolor{keyword}{def }setup\_socket(self):
+509         \textcolor{stringliteral}{"""}
+510 \textcolor{stringliteral}{        Set up socket to start communicating to workers.}
+511 \textcolor{stringliteral}{        """}
+512         \textcolor{keywordflow}{pass}
+513 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_af2ba119314976bd2ae1524967fe9b1f1}\label{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_af2ba119314976bd2ae1524967fe9b1f1}} 
 \index{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager@{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager}!shutdown@{shutdown}}
@@ -629,27 +629,27 @@ Definition at line 507 of file chat\+\_\+service\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 682 of file chat\+\_\+service\+\_\+manager.\+py.
+Definition at line 683 of file chat\+\_\+service\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-682     \textcolor{keyword}{def }shutdown(self):
-683         \textcolor{stringliteral}{"""}
-684 \textcolor{stringliteral}{        Handle any client shutdown cleanup.}
-685 \textcolor{stringliteral}{        """}
-686         \textcolor{keywordflow}{try}:
-687             self.is\_running = \textcolor{keyword}{False}
-688             self.world\_runner.shutdown()
-689             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.bypass\_server\_setup:
-690                 self.message\_socket.keep\_running = \textcolor{keyword}{False}
-691             self.\_expire\_all\_conversations()
-692         \textcolor{keywordflow}{except} BaseException \textcolor{keyword}{as} e:
-693             shared\_utils.print\_and\_log(logging.ERROR, f\textcolor{stringliteral}{'world ended in error: \{e\}'})
-694 
-695         \textcolor{keywordflow}{finally}:
-696             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.bypass\_server\_setup:
-697                 server\_utils.delete\_server(self.server\_task\_name, self.opt[\textcolor{stringliteral}{'local'}])
-698 
+683     \textcolor{keyword}{def }shutdown(self):
+684         \textcolor{stringliteral}{"""}
+685 \textcolor{stringliteral}{        Handle any client shutdown cleanup.}
+686 \textcolor{stringliteral}{        """}
+687         \textcolor{keywordflow}{try}:
+688             self.is\_running = \textcolor{keyword}{False}
+689             self.world\_runner.shutdown()
+690             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.bypass\_server\_setup:
+691                 self.socket.keep\_running = \textcolor{keyword}{False}
+692             self.\_expire\_all\_conversations()
+693         \textcolor{keywordflow}{except} BaseException \textcolor{keyword}{as} e:
+694             shared\_utils.print\_and\_log(logging.ERROR, f\textcolor{stringliteral}{'world ended in error: \{e\}'})
+695 
+696         \textcolor{keywordflow}{finally}:
+697             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.bypass\_server\_setup:
+698                 server\_utils.delete\_server(self.server\_task\_name, self.opt[\textcolor{stringliteral}{'local'}])
+699 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a1a41f5cd5f08e44605cb73fbb6b7e310}\label{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a1a41f5cd5f08e44605cb73fbb6b7e310}} 
 \index{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager@{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager}!start\+\_\+new\+\_\+run@{start\+\_\+new\+\_\+run}}
@@ -661,17 +661,17 @@ Definition at line 682 of file chat\+\_\+service\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 524 of file chat\+\_\+service\+\_\+manager.\+py.
+Definition at line 525 of file chat\+\_\+service\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-524     \textcolor{keyword}{def }start\_new\_run(self):
-525         \textcolor{stringliteral}{"""}
-526 \textcolor{stringliteral}{        Begin new run.}
-527 \textcolor{stringliteral}{        """}
-528         self.run\_id = \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(\hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(time.time()))
-529         self.task\_group\_id = \textcolor{stringliteral}{'\{\}\_\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.opt[\textcolor{stringliteral}{'task'}], self.run\_id)
-530 
+525     \textcolor{keyword}{def }start\_new\_run(self):
+526         \textcolor{stringliteral}{"""}
+527 \textcolor{stringliteral}{        Begin new run.}
+528 \textcolor{stringliteral}{        """}
+529         self.run\_id = \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(\hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(time.time()))
+530         self.task\_group\_id = \textcolor{stringliteral}{'\{\}\_\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.opt[\textcolor{stringliteral}{'task'}], self.run\_id)
+531 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a207c63f2a66acae0dc8b04c528036e8b}\label{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a207c63f2a66acae0dc8b04c528036e8b}} 
 \index{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager@{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager}!start\+\_\+task@{start\+\_\+task}}
@@ -687,114 +687,114 @@ conversations is had.
 \end{DoxyVerb}
  
 
-Definition at line 578 of file chat\+\_\+service\+\_\+manager.\+py.
+Definition at line 579 of file chat\+\_\+service\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-578     \textcolor{keyword}{def }start\_task(self):
-579         \textcolor{stringliteral}{"""}
-580 \textcolor{stringliteral}{        Begin handling task.}
-581 \textcolor{stringliteral}{}
-582 \textcolor{stringliteral}{        Periodically check to see when enough agents are in the agent pool to start an}
-583 \textcolor{stringliteral}{        instance of the task. Continue doing this until the desired number of}
-584 \textcolor{stringliteral}{        conversations is had.}
-585 \textcolor{stringliteral}{        """}
-586 
-587         \textcolor{keyword}{def }\_done\_callback(fut):
-588             \textcolor{stringliteral}{"""}
-589 \textcolor{stringliteral}{            Log and raise exception of task world, if there is one.}
-590 \textcolor{stringliteral}{}
-591 \textcolor{stringliteral}{            Additionally, set active agent to overworld agent.}
-592 \textcolor{stringliteral}{            """}
-593             e = fut.exception()
-594             \textcolor{keywordflow}{if} e \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-595                 shared\_utils.print\_and\_log(
-596                     logging.ERROR,
-597                     \textcolor{stringliteral}{'World \{\} had error \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(world\_type, repr(e)),
-598                     should\_print=\textcolor{keyword}{True},
-599                 )
-600                 traceback.print\_exc(file=sys.stdout)
-601                 \textcolor{keywordflow}{for} agent \textcolor{keywordflow}{in} agents:
-602                     self.observe\_message(
-603                         agent.id, \textcolor{stringliteral}{'Sorry, this world closed. Returning to overworld.'}
-604                     )
-605             \textcolor{keywordflow}{else}:
-606                 shared\_utils.print\_and\_log(
-607                     logging.INFO,
-608                     \textcolor{stringliteral}{'World \{\} had no error'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(world\_type),
-609                     should\_print=\textcolor{keyword}{True},
-610                 )
-611             self.active\_worlds[task\_id] = \textcolor{keywordtype}{None}
-612             \textcolor{keywordflow}{for} agent \textcolor{keywordflow}{in} agents:
-613                 self.after\_agent\_removed(agent.id)
-614                 agent\_state = self.get\_agent\_state(agent.id)
-615                 agent\_state.set\_active\_agent(agent\_state.get\_overworld\_agent())
-616 
-617         self.running = \textcolor{keyword}{True}
-618         \textcolor{keywordflow}{while} self.running:
-619             \textcolor{comment}{# Loop forever until the server is shut down}
-620             with self.agent\_pool\_change\_condition:
-621                 valid\_pools = self.\_get\_unique\_pool()
-622                 \textcolor{keywordflow}{for} world\_type, agent\_pool \textcolor{keywordflow}{in} valid\_pools.items():
-623                     \textcolor{comment}{# check if agent has exceeded max time in pool}
-624                     world\_config = self.task\_configs[world\_type]
-625                     \textcolor{keywordflow}{if} world\_config.max\_time\_in\_pool \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-626                         self.check\_timeout\_in\_pool(
-627                             world\_type,
-628                             agent\_pool,
-629                             world\_config.max\_time\_in\_pool,
-630                             world\_config.backup\_task,
-631                         )
-632 
-633                     needed\_agents = self.max\_agents\_for[world\_type]
-634                     \textcolor{keywordflow}{if} len(agent\_pool) >= needed\_agents:
-635                         shared\_utils.print\_and\_log(
-636                             logging.INFO, \textcolor{stringliteral}{'starting pool'}, should\_print=\textcolor{keyword}{True}
-637                         )
-638                         \textcolor{comment}{# enough agents in pool to start new conversation}
-639                         self.conversation\_index += 1
-640                         task\_id = \textcolor{stringliteral}{'t\_\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.conversation\_index)
-641 
-642                         \textcolor{comment}{# Add the required number of valid agents to the conv}
-643                         agent\_states = [w \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} agent\_pool[:needed\_agents]]
-644                         agents = []
-645                         \textcolor{keywordflow}{for} state \textcolor{keywordflow}{in} agent\_states:
-646                             agent = self.\_create\_agent(task\_id, state.get\_id())
-647                             agent.onboard\_data = state.onboard\_data
-648                             state.assign\_agent\_to\_task(agent, task\_id)
-649                             state.set\_active\_agent(agent)
-650                             agents.append(agent)
-651                             \textcolor{comment}{# reset wait message state}
-652                             state.stored\_data[\textcolor{stringliteral}{'seen\_wait\_message'}] = \textcolor{keyword}{False}
-653                         assign\_role\_function = shared\_utils.get\_assign\_roles\_fn(
-654                             self.world\_module, self.taskworld\_map[world\_type]
-655                         )
-656                         \textcolor{keywordflow}{if} assign\_role\_function \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-657                             assign\_role\_function = shared\_utils.default\_assign\_roles\_fn
-658                         assign\_role\_function(agents)
-659                         \textcolor{comment}{# Allow task creator to filter out workers and run}
-660                         \textcolor{comment}{# versions of the task that require fewer agents}
-661                         agents = [a \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} agents \textcolor{keywordflow}{if} a.disp\_id \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}]
-662                         \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} agents:
-663                             \textcolor{comment}{# Remove selected workers from the agent pool}
-664                             self.remove\_agent\_from\_pool(
-665                                 self.get\_agent\_state(a.id),
-666                                 world\_type=world\_type,
-667                                 mark\_removed=\textcolor{keyword}{False},
-668                             )
-669                         \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} agents:
-670                             partner\_list = agents.copy()
-671                             partner\_list.remove(a)
-672                             a.message\_partners = partner\_list
-673                         \textcolor{comment}{# launch task world.}
-674                         future = self.world\_runner.launch\_task\_world(
-675                             task\_id, self.taskworld\_map[world\_type], agents
-676                         )
-677                         future.add\_done\_callback(\_done\_callback)
-678                         self.active\_worlds[task\_id] = future
-679 
-680             time.sleep(shared\_utils.THREAD\_MEDIUM\_SLEEP)
-681 
+579     \textcolor{keyword}{def }start\_task(self):
+580         \textcolor{stringliteral}{"""}
+581 \textcolor{stringliteral}{        Begin handling task.}
+582 \textcolor{stringliteral}{}
+583 \textcolor{stringliteral}{        Periodically check to see when enough agents are in the agent pool to start an}
+584 \textcolor{stringliteral}{        instance of the task. Continue doing this until the desired number of}
+585 \textcolor{stringliteral}{        conversations is had.}
+586 \textcolor{stringliteral}{        """}
+587 
+588         \textcolor{keyword}{def }\_done\_callback(fut):
+589             \textcolor{stringliteral}{"""}
+590 \textcolor{stringliteral}{            Log and raise exception of task world, if there is one.}
+591 \textcolor{stringliteral}{}
+592 \textcolor{stringliteral}{            Additionally, set active agent to overworld agent.}
+593 \textcolor{stringliteral}{            """}
+594             e = fut.exception()
+595             \textcolor{keywordflow}{if} e \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+596                 shared\_utils.print\_and\_log(
+597                     logging.ERROR,
+598                     \textcolor{stringliteral}{'World \{\} had error \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(world\_type, repr(e)),
+599                     should\_print=\textcolor{keyword}{True},
+600                 )
+601                 traceback.print\_exc(file=sys.stdout)
+602                 \textcolor{keywordflow}{for} agent \textcolor{keywordflow}{in} agents:
+603                     self.observe\_message(
+604                         agent.id, \textcolor{stringliteral}{'Sorry, this world closed. Returning to overworld.'}
+605                     )
+606             \textcolor{keywordflow}{else}:
+607                 shared\_utils.print\_and\_log(
+608                     logging.INFO,
+609                     \textcolor{stringliteral}{'World \{\} had no error'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(world\_type),
+610                     should\_print=\textcolor{keyword}{True},
+611                 )
+612             self.active\_worlds[task\_id] = \textcolor{keywordtype}{None}
+613             \textcolor{keywordflow}{for} agent \textcolor{keywordflow}{in} agents:
+614                 self.after\_agent\_removed(agent.id)
+615                 agent\_state = self.get\_agent\_state(agent.id)
+616                 agent\_state.set\_active\_agent(agent\_state.get\_overworld\_agent())
+617 
+618         self.running = \textcolor{keyword}{True}
+619         \textcolor{keywordflow}{while} self.running:
+620             \textcolor{comment}{# Loop forever until the server is shut down}
+621             with self.agent\_pool\_change\_condition:
+622                 valid\_pools = self.\_get\_unique\_pool()
+623                 \textcolor{keywordflow}{for} world\_type, agent\_pool \textcolor{keywordflow}{in} valid\_pools.items():
+624                     \textcolor{comment}{# check if agent has exceeded max time in pool}
+625                     world\_config = self.task\_configs[world\_type]
+626                     \textcolor{keywordflow}{if} world\_config.max\_time\_in\_pool \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+627                         self.check\_timeout\_in\_pool(
+628                             world\_type,
+629                             agent\_pool,
+630                             world\_config.max\_time\_in\_pool,
+631                             world\_config.backup\_task,
+632                         )
+633 
+634                     needed\_agents = self.max\_agents\_for[world\_type]
+635                     \textcolor{keywordflow}{if} len(agent\_pool) >= needed\_agents:
+636                         shared\_utils.print\_and\_log(
+637                             logging.INFO, \textcolor{stringliteral}{'starting pool'}, should\_print=\textcolor{keyword}{True}
+638                         )
+639                         \textcolor{comment}{# enough agents in pool to start new conversation}
+640                         self.conversation\_index += 1
+641                         task\_id = \textcolor{stringliteral}{'t\_\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.conversation\_index)
+642 
+643                         \textcolor{comment}{# Add the required number of valid agents to the conv}
+644                         agent\_states = [w \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} agent\_pool[:needed\_agents]]
+645                         agents = []
+646                         \textcolor{keywordflow}{for} state \textcolor{keywordflow}{in} agent\_states:
+647                             agent = self.\_create\_agent(task\_id, state.get\_id())
+648                             agent.onboard\_data = state.onboard\_data
+649                             state.assign\_agent\_to\_task(agent, task\_id)
+650                             state.set\_active\_agent(agent)
+651                             agents.append(agent)
+652                             \textcolor{comment}{# reset wait message state}
+653                             state.stored\_data[\textcolor{stringliteral}{'seen\_wait\_message'}] = \textcolor{keyword}{False}
+654                         assign\_role\_function = shared\_utils.get\_assign\_roles\_fn(
+655                             self.world\_module, self.taskworld\_map[world\_type]
+656                         )
+657                         \textcolor{keywordflow}{if} assign\_role\_function \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+658                             assign\_role\_function = shared\_utils.default\_assign\_roles\_fn
+659                         assign\_role\_function(agents)
+660                         \textcolor{comment}{# Allow task creator to filter out workers and run}
+661                         \textcolor{comment}{# versions of the task that require fewer agents}
+662                         agents = [a \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} agents \textcolor{keywordflow}{if} a.disp\_id \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}]
+663                         \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} agents:
+664                             \textcolor{comment}{# Remove selected workers from the agent pool}
+665                             self.remove\_agent\_from\_pool(
+666                                 self.get\_agent\_state(a.id),
+667                                 world\_type=world\_type,
+668                                 mark\_removed=\textcolor{keyword}{False},
+669                             )
+670                         \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} agents:
+671                             partner\_list = agents.copy()
+672                             partner\_list.remove(a)
+673                             a.message\_partners = partner\_list
+674                         \textcolor{comment}{# launch task world.}
+675                         future = self.world\_runner.launch\_task\_world(
+676                             task\_id, self.taskworld\_map[world\_type], agents
+677                         )
+678                         future.add\_done\_callback(\_done\_callback)
+679                         self.active\_worlds[task\_id] = future
+680 
+681             time.sleep(shared\_utils.THREAD\_MEDIUM\_SLEEP)
+682 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a7e2ef8f0e63e1078cbffccbcaa6719b0}\label{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a7e2ef8f0e63e1078cbffccbcaa6719b0}} 
 \index{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager@{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager}!upload\+\_\+attachment@{upload\+\_\+attachment}}
@@ -813,23 +813,23 @@ For example,
 \end{DoxyVerb}
  
 
-Definition at line 760 of file chat\+\_\+service\+\_\+manager.\+py.
+Definition at line 761 of file chat\+\_\+service\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-760     \textcolor{keyword}{def }upload\_attachment(self, payload):
-761         \textcolor{stringliteral}{"""}
-762 \textcolor{stringliteral}{        Upload an attachment and return an attachment ID.}
-763 \textcolor{stringliteral}{}
-764 \textcolor{stringliteral}{        :param payload:}
-765 \textcolor{stringliteral}{            dict with the following format:}
-766 \textcolor{stringliteral}{                \{'type': <TYPE>, 'url': <URL>\} or}
-767 \textcolor{stringliteral}{                \{'type': <TYPE>, 'filename': <FILENAME>, 'format': <FILEFORMAT>\}.}
-768 \textcolor{stringliteral}{                For example,}
-769 \textcolor{stringliteral}{                \{'type': 'image', 'filename': 'test.png', 'format': 'png'\}}
-770 \textcolor{stringliteral}{        """}
-771         \textcolor{keywordflow}{pass}
-772 \end{DoxyCode}
+761     \textcolor{keyword}{def }upload\_attachment(self, payload):
+762         \textcolor{stringliteral}{"""}
+763 \textcolor{stringliteral}{        Upload an attachment and return an attachment ID.}
+764 \textcolor{stringliteral}{}
+765 \textcolor{stringliteral}{        :param payload:}
+766 \textcolor{stringliteral}{            dict with the following format:}
+767 \textcolor{stringliteral}{                \{'type': <TYPE>, 'url': <URL>\} or}
+768 \textcolor{stringliteral}{                \{'type': <TYPE>, 'filename': <FILENAME>, 'format': <FILEFORMAT>\}.}
+769 \textcolor{stringliteral}{                For example,}
+770 \textcolor{stringliteral}{                \{'type': 'image', 'filename': 'test.png', 'format': 'png'\}}
+771 \textcolor{stringliteral}{        """}
+772         \textcolor{keywordflow}{pass}
+773 \end{DoxyCode}
 
 
 \subsection{Member Data Documentation}
@@ -851,7 +851,7 @@ Definition at line 141 of file chat\+\_\+service\+\_\+manager.\+py.
 
 
 
-Definition at line 522 of file chat\+\_\+service\+\_\+manager.\+py.
+Definition at line 523 of file chat\+\_\+service\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_ab982b846a998e063c07a0edc5f8d34ef}\label{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_ab982b846a998e063c07a0edc5f8d34ef}} 
 \index{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager@{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager}!agent\+\_\+pool@{agent\+\_\+pool}}
@@ -861,7 +861,7 @@ Definition at line 522 of file chat\+\_\+service\+\_\+manager.\+py.
 
 
 
-Definition at line 519 of file chat\+\_\+service\+\_\+manager.\+py.
+Definition at line 520 of file chat\+\_\+service\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_ab98d0910f1569bba83504cc83818f311}\label{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_ab98d0910f1569bba83504cc83818f311}} 
 \index{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager@{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager}!agent\+\_\+pool\+\_\+change\+\_\+condition@{agent\+\_\+pool\+\_\+change\+\_\+condition}}
@@ -941,7 +941,7 @@ Definition at line 153 of file chat\+\_\+service\+\_\+manager.\+py.
 
 
 
-Definition at line 687 of file chat\+\_\+service\+\_\+manager.\+py.
+Definition at line 688 of file chat\+\_\+service\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a9f41f363fcd18a968cf500f6b6f2e384}\label{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a9f41f363fcd18a968cf500f6b6f2e384}} 
 \index{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager@{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager}!max\+\_\+agents\+\_\+for@{max\+\_\+agents\+\_\+for}}
@@ -971,7 +971,7 @@ Definition at line 173 of file chat\+\_\+service\+\_\+manager.\+py.
 
 
 
-Definition at line 520 of file chat\+\_\+service\+\_\+manager.\+py.
+Definition at line 521 of file chat\+\_\+service\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a03febcdeeae95b1cd8bbd22b5e233a94}\label{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a03febcdeeae95b1cd8bbd22b5e233a94}} 
 \index{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager@{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager}!onboard\+\_\+map@{onboard\+\_\+map}}
@@ -1021,7 +1021,7 @@ Definition at line 139 of file chat\+\_\+service\+\_\+manager.\+py.
 
 
 
-Definition at line 528 of file chat\+\_\+service\+\_\+manager.\+py.
+Definition at line 529 of file chat\+\_\+service\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a83840a87ecf69e02a8c63031fcaf8cfb}\label{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a83840a87ecf69e02a8c63031fcaf8cfb}} 
 \index{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager@{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager}!runner\+\_\+opt@{runner\+\_\+opt}}
@@ -1071,7 +1071,7 @@ Definition at line 138 of file chat\+\_\+service\+\_\+manager.\+py.
 
 
 
-Definition at line 321 of file chat\+\_\+service\+\_\+manager.\+py.
+Definition at line 189 of file chat\+\_\+service\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_afa37746d3f66c529ecc64157ce50041a}\label{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_afa37746d3f66c529ecc64157ce50041a}} 
 \index{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager@{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager}!shutting\+\_\+down@{shutting\+\_\+down}}
@@ -1111,7 +1111,7 @@ Definition at line 172 of file chat\+\_\+service\+\_\+manager.\+py.
 
 
 
-Definition at line 529 of file chat\+\_\+service\+\_\+manager.\+py.
+Definition at line 530 of file chat\+\_\+service\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a88fb563c2ecbcc29ec35efc35243ec74}\label{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_a88fb563c2ecbcc29ec35efc35243ec74}} 
 \index{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager@{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager}!task\+\_\+to\+\_\+agent\+\_\+ids@{task\+\_\+to\+\_\+agent\+\_\+ids}}
@@ -1121,7 +1121,7 @@ Definition at line 529 of file chat\+\_\+service\+\_\+manager.\+py.
 
 
 
-Definition at line 521 of file chat\+\_\+service\+\_\+manager.\+py.
+Definition at line 522 of file chat\+\_\+service\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_aebfefd750e2b1bc9f0bbf629467735bd}\label{classparlai_1_1chat__service_1_1core_1_1chat__service__manager_1_1ChatServiceManager_aebfefd750e2b1bc9f0bbf629467735bd}} 
 \index{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager@{parlai\+::chat\+\_\+service\+::core\+::chat\+\_\+service\+\_\+manager\+::\+Chat\+Service\+Manager}!taskworld\+\_\+map@{taskworld\+\_\+map}}

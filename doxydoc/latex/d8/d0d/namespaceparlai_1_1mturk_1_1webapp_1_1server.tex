@@ -91,8 +91,6 @@ def \hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a1919be0d74781c0b9f5
 \item 
 \hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a3cd1097e113507291bebff8bccaf3e6f}{here}
 \item 
-\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a9c1e280a0e70547519ea048b72ce29f4}{tasks}
-\item 
 \hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a68ebf686092c5adab8c84111b8723ae5}{tornado\+\_\+settings}
 \end{DoxyCompactItemize}
 
@@ -106,17 +104,17 @@ def \hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a1919be0d74781c0b9f5
 
 
 
-Definition at line 155 of file server.\+py.
+Definition at line 160 of file server.\+py.
 
 
 \begin{DoxyCode}
-155 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_aff248adb38d13b62a05e7d5649321d64}{broadcast\_msg}(handler, msg, target\_subs=None):
-156     \textcolor{keywordflow}{if} target\_subs \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-157         target\_subs = handler.subs.values()
-158     \textcolor{keywordflow}{for} sub \textcolor{keywordflow}{in} target\_subs:
-159         sub.write\_message(json.dumps(msg))
-160 
-161 
+160 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_aff248adb38d13b62a05e7d5649321d64}{broadcast\_msg}(handler, msg, target\_subs=None):
+161     \textcolor{keywordflow}{if} target\_subs \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+162         target\_subs = handler.subs.values()
+163     \textcolor{keywordflow}{for} sub \textcolor{keywordflow}{in} target\_subs:
+164         sub.write\_message(json.dumps(msg))
+165 
+166 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1webapp_1_1server_a0f5381b2282125d20fe12c40f6ed2ad3}\label{namespaceparlai_1_1mturk_1_1webapp_1_1server_a0f5381b2282125d20fe12c40f6ed2ad3}} 
 \index{parlai\+::mturk\+::webapp\+::server@{parlai\+::mturk\+::webapp\+::server}!crawl\+\_\+dir\+\_\+for\+\_\+tasks@{crawl\+\_\+dir\+\_\+for\+\_\+tasks}}
@@ -126,23 +124,23 @@ Definition at line 155 of file server.\+py.
 
 
 
-Definition at line 655 of file server.\+py.
+Definition at line 660 of file server.\+py.
 
 
 \begin{DoxyCode}
-655 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a0f5381b2282125d20fe12c40f6ed2ad3}{crawl\_dir\_for\_tasks}(search\_dir):
-656     found\_dirs = \{\}  \textcolor{comment}{# taskname -> task directory}
-657     contents = os.listdir(search\_dir)
-658     \textcolor{keywordflow}{for} sub\_dir \textcolor{keywordflow}{in} contents:
-659         full\_sub\_dir = os.path.join(search\_dir, sub\_dir)
-660         \textcolor{keywordflow}{if} os.path.exists(os.path.join(full\_sub\_dir, \textcolor{stringliteral}{'run.py'})):
-661             \textcolor{comment}{# assume this is a task}
-662             found\_dirs[sub\_dir] = full\_sub\_dir
-663         \textcolor{keywordflow}{if} os.path.isdir(full\_sub\_dir):
-664             found\_dirs.update(\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a0f5381b2282125d20fe12c40f6ed2ad3}{crawl\_dir\_for\_tasks}(full\_sub\_dir))
-665     \textcolor{keywordflow}{return} found\_dirs
-666 
-667 
+660 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a0f5381b2282125d20fe12c40f6ed2ad3}{crawl\_dir\_for\_tasks}(search\_dir):
+661     found\_dirs = \{\}  \textcolor{comment}{# taskname -> task directory}
+662     contents = os.listdir(search\_dir)
+663     \textcolor{keywordflow}{for} sub\_dir \textcolor{keywordflow}{in} contents:
+664         full\_sub\_dir = os.path.join(search\_dir, sub\_dir)
+665         \textcolor{keywordflow}{if} os.path.exists(os.path.join(full\_sub\_dir, \textcolor{stringliteral}{'run.py'})):
+666             \textcolor{comment}{# assume this is a task}
+667             found\_dirs[sub\_dir] = full\_sub\_dir
+668         \textcolor{keywordflow}{if} os.path.isdir(full\_sub\_dir):
+669             found\_dirs.update(\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a0f5381b2282125d20fe12c40f6ed2ad3}{crawl\_dir\_for\_tasks}(full\_sub\_dir))
+670     \textcolor{keywordflow}{return} found\_dirs
+671 
+672 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1webapp_1_1server_a493aeecfa7d5201aa13a7f03cdbc59cf}\label{namespaceparlai_1_1mturk_1_1webapp_1_1server_a493aeecfa7d5201aa13a7f03cdbc59cf}} 
 \index{parlai\+::mturk\+::webapp\+::server@{parlai\+::mturk\+::webapp\+::server}!force\+\_\+dir@{force\+\_\+dir}}
@@ -154,17 +152,17 @@ Definition at line 655 of file server.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 69 of file server.\+py.
+Definition at line 74 of file server.\+py.
 
 
 \begin{DoxyCode}
-69 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a493aeecfa7d5201aa13a7f03cdbc59cf}{force\_dir}(path):
-70     \textcolor{stringliteral}{"""}
-71 \textcolor{stringliteral}{    Make sure the parent dir exists for path so we can write a file.}
-72 \textcolor{stringliteral}{    """}
-73     os.makedirs(os.path.dirname(path), exist\_ok=\textcolor{keyword}{True})
-74 
-75 
+74 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a493aeecfa7d5201aa13a7f03cdbc59cf}{force\_dir}(path):
+75     \textcolor{stringliteral}{"""}
+76 \textcolor{stringliteral}{    Make sure the parent dir exists for path so we can write a file.}
+77 \textcolor{stringliteral}{    """}
+78     os.makedirs(os.path.dirname(path), exist\_ok=\textcolor{keyword}{True})
+79 
+80 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1webapp_1_1server_aee065cfdb6346d4815762ae793427f1e}\label{namespaceparlai_1_1mturk_1_1webapp_1_1server_aee065cfdb6346d4815762ae793427f1e}} 
 \index{parlai\+::mturk\+::webapp\+::server@{parlai\+::mturk\+::webapp\+::server}!get\+\_\+config\+\_\+module@{get\+\_\+config\+\_\+module}}
@@ -174,14 +172,14 @@ Definition at line 69 of file server.\+py.
 
 
 
-Definition at line 101 of file server.\+py.
+Definition at line 106 of file server.\+py.
 
 
 \begin{DoxyCode}
-101 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_aee065cfdb6346d4815762ae793427f1e}{get\_config\_module}(task\_name):
-102     \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a0c7e088cb9401f94297c2ae96dce3ec2}{get\_mturk\_task\_module}(task\_name, \textcolor{stringliteral}{'\{\}.task\_config'})
-103 
-104 
+106 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_aee065cfdb6346d4815762ae793427f1e}{get\_config\_module}(task\_name):
+107     \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a0c7e088cb9401f94297c2ae96dce3ec2}{get\_mturk\_task\_module}(task\_name, \textcolor{stringliteral}{'\{\}.task\_config'})
+108 
+109 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1webapp_1_1server_a0c7e088cb9401f94297c2ae96dce3ec2}\label{namespaceparlai_1_1mturk_1_1webapp_1_1server_a0c7e088cb9401f94297c2ae96dce3ec2}} 
 \index{parlai\+::mturk\+::webapp\+::server@{parlai\+::mturk\+::webapp\+::server}!get\+\_\+mturk\+\_\+task\+\_\+module@{get\+\_\+mturk\+\_\+task\+\_\+module}}
@@ -191,23 +189,23 @@ Definition at line 101 of file server.\+py.
 
 
 
-Definition at line 84 of file server.\+py.
+Definition at line 89 of file server.\+py.
 
 
 \begin{DoxyCode}
-84 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a0c7e088cb9401f94297c2ae96dce3ec2}{get\_mturk\_task\_module}(task\_name, target\_module):
-85     full\_location = tasks[task\_name]
-86     guess\_loc = full\_location.split(\textcolor{stringliteral}{'tasks/'})[1]
-87     guess\_class = \textcolor{stringliteral}{'.'}.join(guess\_loc.split(\textcolor{stringliteral}{'/'}))
-88     task\_module = target\_module.format(guess\_class)
-89     base\_format = \textcolor{stringliteral}{'parlai.mturk.tasks.\{\}'}
-90     \textcolor{keywordflow}{if} \textcolor{stringliteral}{'parlai\_internal'} \textcolor{keywordflow}{in} full\_location:
-91         base\_format = \textcolor{stringliteral}{'parlai\_internal.mturk.tasks.\{\}'}
-92     find\_location = base\_format.format(task\_module)
-93     \textcolor{comment}{# Try to find the task at specified location}
-94     \textcolor{keywordflow}{return} importlib.import\_module(find\_location)
-95 
-96 
+89 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a0c7e088cb9401f94297c2ae96dce3ec2}{get\_mturk\_task\_module}(task\_name, target\_module):
+90     full\_location = tasks[task\_name]
+91     guess\_loc = full\_location.split(\textcolor{stringliteral}{'tasks/'})[1]
+92     guess\_class = \textcolor{stringliteral}{'.'}.join(guess\_loc.split(\textcolor{stringliteral}{'/'}))
+93     task\_module = target\_module.format(guess\_class)
+94     base\_format = \textcolor{stringliteral}{'parlai.mturk.tasks.\{\}'}
+95     \textcolor{keywordflow}{if} \textcolor{stringliteral}{'parlai\_internal'} \textcolor{keywordflow}{in} full\_location:
+96         base\_format = \textcolor{stringliteral}{'parlai\_internal.mturk.tasks.\{\}'}
+97     find\_location = base\_format.format(task\_module)
+98     \textcolor{comment}{# Try to find the task at specified location}
+99     \textcolor{keywordflow}{return} importlib.import\_module(find\_location)
+100 
+101 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1webapp_1_1server_abf5dde99069f271f98bd20e7fb7cdccd}\label{namespaceparlai_1_1mturk_1_1webapp_1_1server_abf5dde99069f271f98bd20e7fb7cdccd}} 
 \index{parlai\+::mturk\+::webapp\+::server@{parlai\+::mturk\+::webapp\+::server}!get\+\_\+path@{get\+\_\+path}}
@@ -219,18 +217,18 @@ Definition at line 84 of file server.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 76 of file server.\+py.
+Definition at line 81 of file server.\+py.
 
 
 \begin{DoxyCode}
-76 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_abf5dde99069f271f98bd20e7fb7cdccd}{get\_path}(filename):
-77     \textcolor{stringliteral}{"""}
-78 \textcolor{stringliteral}{    Get the path to an asset.}
-79 \textcolor{stringliteral}{    """}
-80     cwd = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
-81     \textcolor{keywordflow}{return} os.path.join(cwd, filename)
-82 
-83 
+81 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_abf5dde99069f271f98bd20e7fb7cdccd}{get\_path}(filename):
+82     \textcolor{stringliteral}{"""}
+83 \textcolor{stringliteral}{    Get the path to an asset.}
+84 \textcolor{stringliteral}{    """}
+85     cwd = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
+86     \textcolor{keywordflow}{return} os.path.join(cwd, filename)
+87 
+88 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1webapp_1_1server_a762795ce59d6dbcb111fd9162a870f9f}\label{namespaceparlai_1_1mturk_1_1webapp_1_1server_a762795ce59d6dbcb111fd9162a870f9f}} 
 \index{parlai\+::mturk\+::webapp\+::server@{parlai\+::mturk\+::webapp\+::server}!get\+\_\+rand\+\_\+id@{get\+\_\+rand\+\_\+id}}
@@ -240,14 +238,14 @@ Definition at line 76 of file server.\+py.
 
 
 
-Definition at line 65 of file server.\+py.
+Definition at line 70 of file server.\+py.
 
 
 \begin{DoxyCode}
-65 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a762795ce59d6dbcb111fd9162a870f9f}{get\_rand\_id}():
-66     \textcolor{keywordflow}{return} \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(hex(\hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(time.time() * 10000000))[2:])
-67 
-68 
+70 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a762795ce59d6dbcb111fd9162a870f9f}{get\_rand\_id}():
+71     \textcolor{keywordflow}{return} \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(hex(\hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(time.time() * 10000000))[2:])
+72 
+73 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1webapp_1_1server_a49eb9835228f9f47f9aa55bc6369c23f}\label{namespaceparlai_1_1mturk_1_1webapp_1_1server_a49eb9835228f9f47f9aa55bc6369c23f}} 
 \index{parlai\+::mturk\+::webapp\+::server@{parlai\+::mturk\+::webapp\+::server}!get\+\_\+run\+\_\+module@{get\+\_\+run\+\_\+module}}
@@ -257,14 +255,14 @@ Definition at line 65 of file server.\+py.
 
 
 
-Definition at line 97 of file server.\+py.
+Definition at line 102 of file server.\+py.
 
 
 \begin{DoxyCode}
-97 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a49eb9835228f9f47f9aa55bc6369c23f}{get\_run\_module}(task\_name):
-98     \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a0c7e088cb9401f94297c2ae96dce3ec2}{get\_mturk\_task\_module}(task\_name, \textcolor{stringliteral}{'\{\}.run'})
-99 
-100 
+102 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a49eb9835228f9f47f9aa55bc6369c23f}{get\_run\_module}(task\_name):
+103     \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a0c7e088cb9401f94297c2ae96dce3ec2}{get\_mturk\_task\_module}(task\_name, \textcolor{stringliteral}{'\{\}.run'})
+104 
+105 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1webapp_1_1server_a1919be0d74781c0b9f579daf974d9f53}\label{namespaceparlai_1_1mturk_1_1webapp_1_1server_a1919be0d74781c0b9f579daf974d9f53}} 
 \index{parlai\+::mturk\+::webapp\+::server@{parlai\+::mturk\+::webapp\+::server}!main@{main}}
@@ -274,68 +272,68 @@ Definition at line 97 of file server.\+py.
 
 
 
-Definition at line 762 of file server.\+py.
+Definition at line 767 of file server.\+py.
 
 
 \begin{DoxyCode}
-762 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a1919be0d74781c0b9f579daf974d9f53}{main}():
-763     parser = argparse.ArgumentParser(
-764         description=\textcolor{stringliteral}{'Start the ParlAI-MTurk task managing server.'}
-765     )
-766     parser.add\_argument(
-767         \textcolor{stringliteral}{'--port'},
-768         metavar=\textcolor{stringliteral}{'port'},
-769         type=int,
-770         default=DEFAULT\_PORT,
-771         help=\textcolor{stringliteral}{'port to run the server on.'},
-772     )
-773     parser.add\_argument(
-774         \textcolor{stringliteral}{'--hostname'},
-775         metavar=\textcolor{stringliteral}{'hostname'},
-776         type=str,
-777         default=DEFAULT\_HOSTNAME,
-778         help=\textcolor{stringliteral}{'host to run the server on.'},
-779     )
-780     parser.add\_argument(
-781         \textcolor{stringliteral}{'--sandbox'},
-782         dest=\textcolor{stringliteral}{'sandbox'},
-783         action=\textcolor{stringliteral}{'store\_true'},
-784         default=\textcolor{keyword}{False},
-785         help=\textcolor{stringliteral}{'Run the server using sandbox data'},
-786     )
-787     parser.add\_argument(
-788         \textcolor{stringliteral}{'--db\_file'},
-789         metavar=\textcolor{stringliteral}{'db\_file'},
-790         type=str,
-791         default=DEFAULT\_DB\_FILE,
-792         help=\textcolor{stringliteral}{'name of database to use (in core/run\_data)'},
-793     )
-794     parser.add\_argument(
-795         \textcolor{stringliteral}{'--logging\_level'},
-796         metavar=\textcolor{stringliteral}{'logger\_level'},
-797         default=\textcolor{stringliteral}{'INFO'},
-798         help=\textcolor{stringliteral}{'logging level (default = INFO). Can take logging'}
-799         \textcolor{stringliteral}{' level name or int (example: 20)'},
-800     )
-801     FLAGS = parser.parse\_args()
-802 
-803     \textcolor{keywordflow}{if} FLAGS.sandbox:
-804         \textcolor{keywordflow}{if} FLAGS.db\_file == DEFAULT\_DB\_FILE:
-805             FLAGS.db\_file = DEFAULT\_SB\_DB\_FILE
-806 
-807     logging\_level = logging.\_checkLevel(FLAGS.logging\_level)
-808     logging.getLogger().setLevel(logging\_level)
-809 
-810     \hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a0ce17c85e37b7734ab2fbaca711cb45f}{rebuild\_source}()
+767 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a1919be0d74781c0b9f579daf974d9f53}{main}():
+768     parser = argparse.ArgumentParser(
+769         description=\textcolor{stringliteral}{'Start the ParlAI-MTurk task managing server.'}
+770     )
+771     parser.add\_argument(
+772         \textcolor{stringliteral}{'--port'},
+773         metavar=\textcolor{stringliteral}{'port'},
+774         type=int,
+775         default=DEFAULT\_PORT,
+776         help=\textcolor{stringliteral}{'port to run the server on.'},
+777     )
+778     parser.add\_argument(
+779         \textcolor{stringliteral}{'--hostname'},
+780         metavar=\textcolor{stringliteral}{'hostname'},
+781         type=str,
+782         default=DEFAULT\_HOSTNAME,
+783         help=\textcolor{stringliteral}{'host to run the server on.'},
+784     )
+785     parser.add\_argument(
+786         \textcolor{stringliteral}{'--sandbox'},
+787         dest=\textcolor{stringliteral}{'sandbox'},
+788         action=\textcolor{stringliteral}{'store\_true'},
+789         default=\textcolor{keyword}{False},
+790         help=\textcolor{stringliteral}{'Run the server using sandbox data'},
+791     )
+792     parser.add\_argument(
+793         \textcolor{stringliteral}{'--db\_file'},
+794         metavar=\textcolor{stringliteral}{'db\_file'},
+795         type=str,
+796         default=DEFAULT\_DB\_FILE,
+797         help=\textcolor{stringliteral}{'name of database to use (in core/run\_data)'},
+798     )
+799     parser.add\_argument(
+800         \textcolor{stringliteral}{'--logging\_level'},
+801         metavar=\textcolor{stringliteral}{'logger\_level'},
+802         default=\textcolor{stringliteral}{'INFO'},
+803         help=\textcolor{stringliteral}{'logging level (default = INFO). Can take logging'}
+804         \textcolor{stringliteral}{' level name or int (example: 20)'},
+805     )
+806     FLAGS = parser.parse\_args()
+807 
+808     \textcolor{keywordflow}{if} FLAGS.sandbox:
+809         \textcolor{keywordflow}{if} FLAGS.db\_file == DEFAULT\_DB\_FILE:
+810             FLAGS.db\_file = DEFAULT\_SB\_DB\_FILE
 811 
-812     \hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a3faf7a84baf92a6b0863ab87a0015c41}{start\_server}(
-813         port=FLAGS.port,
-814         hostname=FLAGS.hostname,
-815         db\_file=FLAGS.db\_file,
-816         is\_sandbox=FLAGS.sandbox,
-817     )
-818 
-819 
+812     logging\_level = logging.\_checkLevel(FLAGS.logging\_level)
+813     logging.getLogger().setLevel(logging\_level)
+814 
+815     \hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a0ce17c85e37b7734ab2fbaca711cb45f}{rebuild\_source}()
+816 
+817     \hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a3faf7a84baf92a6b0863ab87a0015c41}{start\_server}(
+818         port=FLAGS.port,
+819         hostname=FLAGS.hostname,
+820         db\_file=FLAGS.db\_file,
+821         is\_sandbox=FLAGS.sandbox,
+822     )
+823 
+824 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1webapp_1_1server_abe6ddbf97d0e5c26315fa927ed076489}\label{namespaceparlai_1_1mturk_1_1webapp_1_1server_abe6ddbf97d0e5c26315fa927ed076489}} 
 \index{parlai\+::mturk\+::webapp\+::server@{parlai\+::mturk\+::webapp\+::server}!merge\+\_\+assignments\+\_\+with\+\_\+pairings@{merge\+\_\+assignments\+\_\+with\+\_\+pairings}}
@@ -345,29 +343,29 @@ Definition at line 762 of file server.\+py.
 
 
 
-Definition at line 277 of file server.\+py.
+Definition at line 282 of file server.\+py.
 
 
 \begin{DoxyCode}
-277 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_abe6ddbf97d0e5c26315fa927ed076489}{merge\_assignments\_with\_pairings}(assignments, pairings, log\_id):
-278     processed\_assignments = \{\}
-279     \textcolor{keywordflow}{for} res \textcolor{keywordflow}{in} assignments:
-280         assign\_dict = \hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a92be47964fa33a4b6a14d4069d091c7d}{row\_to\_dict}(res)
-281         processed\_assignments[assign\_dict[\textcolor{stringliteral}{'assignment\_id'}]] = assign\_dict
-282     \textcolor{keywordflow}{for} res \textcolor{keywordflow}{in} pairings:
-283         pairing\_dict = \hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a92be47964fa33a4b6a14d4069d091c7d}{row\_to\_dict}(res)
-284         assign\_id = pairing\_dict[\textcolor{stringliteral}{'assignment\_id'}]
-285         \textcolor{keywordflow}{if} assign\_id \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} processed\_assignments:
-286             print(
-287                 \textcolor{stringliteral}{'assignment \{\} missing from assign table for \{\}'}
-288                 \textcolor{stringliteral}{''}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(assign\_id, log\_id)
-289             )
-290         pairing\_dict[\textcolor{stringliteral}{'world\_status'}] = pairing\_dict[\textcolor{stringliteral}{'status'}]
-291         del pairing\_dict[\textcolor{stringliteral}{'status'}]
-292         processed\_assignments[assign\_id].update(pairing\_dict)
-293     \textcolor{keywordflow}{return} list(processed\_assignments.values())
-294 
-295 
+282 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_abe6ddbf97d0e5c26315fa927ed076489}{merge\_assignments\_with\_pairings}(assignments, pairings, log\_id):
+283     processed\_assignments = \{\}
+284     \textcolor{keywordflow}{for} res \textcolor{keywordflow}{in} assignments:
+285         assign\_dict = \hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a92be47964fa33a4b6a14d4069d091c7d}{row\_to\_dict}(res)
+286         processed\_assignments[assign\_dict[\textcolor{stringliteral}{'assignment\_id'}]] = assign\_dict
+287     \textcolor{keywordflow}{for} res \textcolor{keywordflow}{in} pairings:
+288         pairing\_dict = \hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a92be47964fa33a4b6a14d4069d091c7d}{row\_to\_dict}(res)
+289         assign\_id = pairing\_dict[\textcolor{stringliteral}{'assignment\_id'}]
+290         \textcolor{keywordflow}{if} assign\_id \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} processed\_assignments:
+291             print(
+292                 \textcolor{stringliteral}{'assignment \{\} missing from assign table for \{\}'}
+293                 \textcolor{stringliteral}{''}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(assign\_id, log\_id)
+294             )
+295         pairing\_dict[\textcolor{stringliteral}{'world\_status'}] = pairing\_dict[\textcolor{stringliteral}{'status'}]
+296         del pairing\_dict[\textcolor{stringliteral}{'status'}]
+297         processed\_assignments[assign\_id].update(pairing\_dict)
+298     \textcolor{keywordflow}{return} list(processed\_assignments.values())
+299 
+300 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1webapp_1_1server_a0ce17c85e37b7734ab2fbaca711cb45f}\label{namespaceparlai_1_1mturk_1_1webapp_1_1server_a0ce17c85e37b7734ab2fbaca711cb45f}} 
 \index{parlai\+::mturk\+::webapp\+::server@{parlai\+::mturk\+::webapp\+::server}!rebuild\+\_\+source@{rebuild\+\_\+source}}
@@ -377,104 +375,104 @@ Definition at line 277 of file server.\+py.
 
 
 
-Definition at line 668 of file server.\+py.
+Definition at line 673 of file server.\+py.
 
 
 \begin{DoxyCode}
-668 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a0ce17c85e37b7734ab2fbaca711cb45f}{rebuild\_source}():
-669     \textcolor{comment}{# TODO move task parsing to its own helper file}
-670     \textcolor{comment}{# Copy files to the correct locations,}
-671     \textcolor{keywordflow}{if} os.path.exists(\textcolor{stringliteral}{'dev/task\_components'}):
-672         print(\textcolor{stringliteral}{'removing old build'})
-673         sh.rm(shlex.split(\textcolor{stringliteral}{'-rf \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(\textcolor{stringliteral}{'dev/task\_components'})))
-674     os.mkdir(\textcolor{stringliteral}{'dev/task\_components'})
-675 
-676     copy\_dirs = \{\}
-677     parlai\_task\_dir = os.path.join(parlai\_path, \textcolor{stringliteral}{'mturk'}, \textcolor{stringliteral}{'tasks'})
-678     tasks.update(\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a0f5381b2282125d20fe12c40f6ed2ad3}{crawl\_dir\_for\_tasks}(parlai\_task\_dir))
-679 
-680     \textcolor{keywordflow}{if} parlai\_int\_path \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-681         parlai\_internal\_task\_dir = os.path.join(parlai\_int\_path, \textcolor{stringliteral}{'mturk'}, \textcolor{stringliteral}{'tasks'})
-682         tasks.update(\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a0f5381b2282125d20fe12c40f6ed2ad3}{crawl\_dir\_for\_tasks}(parlai\_internal\_task\_dir))
-683 
-684     \textcolor{keywordflow}{for} task, task\_dir \textcolor{keywordflow}{in} tasks.items():
-685         \textcolor{keywordflow}{if} os.path.exists(os.path.join(task\_dir, \textcolor{stringliteral}{'frontend'})):
-686             copy\_dirs[task] = os.path.join(task\_dir, \textcolor{stringliteral}{'frontend'})
-687 
-688     \textcolor{keywordflow}{for} task, task\_dir \textcolor{keywordflow}{in} copy\_dirs.items():
-689         was\_built = \textcolor{keyword}{False}
-690         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'package.json'} \textcolor{keywordflow}{in} os.listdir(task\_dir):
-691             \textcolor{comment}{# need to build this component first}
-692             os.chdir(task\_dir)
-693             packages\_installed = subprocess.call([\textcolor{stringliteral}{'npm'}, \textcolor{stringliteral}{'install'}])
-694             \textcolor{keywordflow}{if} packages\_installed != 0:
-695                 \textcolor{keywordflow}{raise} Exception(
-696                     \textcolor{stringliteral}{'please make sure npm is installed, otherwise '}
-697                     \textcolor{stringliteral}{'view the above error for more info.'}
-698                 )
-699 
-700             webpack\_complete = subprocess.call([\textcolor{stringliteral}{'npm'}, \textcolor{stringliteral}{'run'}, \textcolor{stringliteral}{'dev'}])
-701             \textcolor{keywordflow}{if} webpack\_complete != 0:
-702                 \textcolor{keywordflow}{raise} Exception(
-703                     \textcolor{stringliteral}{'Webpack appears to have failed to build your '}
-704                     \textcolor{stringliteral}{'frontend. See the above error for more '}
-705                     \textcolor{stringliteral}{'information.'}
-706                 )
-707             was\_built = \textcolor{keyword}{True}
-708 
-709         os.chdir(here)
-710         output\_dir = os.path.join(\textcolor{stringliteral}{'dev/task\_components'}, task)
-711         shutil.copytree(task\_dir, output\_dir)
-712         \textcolor{comment}{# need to move built custom.jsx back into components}
-713         \textcolor{keywordflow}{if} was\_built:
-714             shutil.copy2(
-715                 os.path.join(output\_dir, \textcolor{stringliteral}{'dist'}, \textcolor{stringliteral}{'custom.jsx'}),
-716                 os.path.join(output\_dir, \textcolor{stringliteral}{'components'}, \textcolor{stringliteral}{'custom.jsx'}),
-717             )
-718         \textcolor{comment}{# Need to give a copy of core\_components to have same dir}
-719         shutil.copy2(
-720             os.path.join(
-721                 parlai\_path,
-722                 \textcolor{stringliteral}{'mturk'},
-723                 \textcolor{stringliteral}{'core'},
-724                 \textcolor{stringliteral}{'react\_server'},
-725                 \textcolor{stringliteral}{'dev'},
-726                 \textcolor{stringliteral}{'components'},
-727                 \textcolor{stringliteral}{'core\_components.jsx'},
-728             ),
-729             os.path.join(output\_dir, \textcolor{stringliteral}{'components'}),
-730         )
-731 
-732     \textcolor{comment}{# Grab up to date version of core components}
-733     shutil.copy2(
-734         os.path.join(
-735             parlai\_path,
-736             \textcolor{stringliteral}{'mturk'},
-737             \textcolor{stringliteral}{'core'},
-738             \textcolor{stringliteral}{'react\_server'},
-739             \textcolor{stringliteral}{'dev'},
-740             \textcolor{stringliteral}{'components'},
-741             \textcolor{stringliteral}{'core\_components.jsx'},
-742         ),
-743         \textcolor{stringliteral}{'dev/task\_components'},
-744     )
-745 
-746     \textcolor{comment}{# build the full react server}
-747     packages\_installed = subprocess.call([\textcolor{stringliteral}{'npm'}, \textcolor{stringliteral}{'install'}])
-748     \textcolor{keywordflow}{if} packages\_installed != 0:
-749         \textcolor{keywordflow}{raise} Exception(
-750             \textcolor{stringliteral}{'please make sure npm is installed, otherwise view '}
-751             \textcolor{stringliteral}{'the above error for more info.'}
-752         )
-753 
-754     webpack\_complete = subprocess.call([\textcolor{stringliteral}{'npm'}, \textcolor{stringliteral}{'run'}, \textcolor{stringliteral}{'dev'}])
-755     \textcolor{keywordflow}{if} webpack\_complete != 0:
-756         \textcolor{keywordflow}{raise} Exception(
-757             \textcolor{stringliteral}{'Webpack appears to have failed to build your '}
-758             \textcolor{stringliteral}{'frontend. See the above error for more information.'}
-759         )
-760 
-761 
+673 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a0ce17c85e37b7734ab2fbaca711cb45f}{rebuild\_source}():
+674     \textcolor{comment}{# TODO move task parsing to its own helper file}
+675     \textcolor{comment}{# Copy files to the correct locations,}
+676     \textcolor{keywordflow}{if} os.path.exists(\textcolor{stringliteral}{'dev/task\_components'}):
+677         print(\textcolor{stringliteral}{'removing old build'})
+678         sh.rm(shlex.split(\textcolor{stringliteral}{'-rf \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(\textcolor{stringliteral}{'dev/task\_components'})))
+679     os.mkdir(\textcolor{stringliteral}{'dev/task\_components'})
+680 
+681     copy\_dirs = \{\}
+682     parlai\_task\_dir = os.path.join(parlai\_path, \textcolor{stringliteral}{'mturk'}, \textcolor{stringliteral}{'tasks'})
+683     tasks.update(\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a0f5381b2282125d20fe12c40f6ed2ad3}{crawl\_dir\_for\_tasks}(parlai\_task\_dir))
+684 
+685     \textcolor{keywordflow}{if} parlai\_int\_path \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+686         parlai\_internal\_task\_dir = os.path.join(parlai\_int\_path, \textcolor{stringliteral}{'mturk'}, \textcolor{stringliteral}{'tasks'})
+687         tasks.update(\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a0f5381b2282125d20fe12c40f6ed2ad3}{crawl\_dir\_for\_tasks}(parlai\_internal\_task\_dir))
+688 
+689     \textcolor{keywordflow}{for} task, task\_dir \textcolor{keywordflow}{in} tasks.items():
+690         \textcolor{keywordflow}{if} os.path.exists(os.path.join(task\_dir, \textcolor{stringliteral}{'frontend'})):
+691             copy\_dirs[task] = os.path.join(task\_dir, \textcolor{stringliteral}{'frontend'})
+692 
+693     \textcolor{keywordflow}{for} task, task\_dir \textcolor{keywordflow}{in} copy\_dirs.items():
+694         was\_built = \textcolor{keyword}{False}
+695         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'package.json'} \textcolor{keywordflow}{in} os.listdir(task\_dir):
+696             \textcolor{comment}{# need to build this component first}
+697             os.chdir(task\_dir)
+698             packages\_installed = subprocess.call([\textcolor{stringliteral}{'npm'}, \textcolor{stringliteral}{'install'}])
+699             \textcolor{keywordflow}{if} packages\_installed != 0:
+700                 \textcolor{keywordflow}{raise} Exception(
+701                     \textcolor{stringliteral}{'please make sure npm is installed, otherwise '}
+702                     \textcolor{stringliteral}{'view the above error for more info.'}
+703                 )
+704 
+705             webpack\_complete = subprocess.call([\textcolor{stringliteral}{'npm'}, \textcolor{stringliteral}{'run'}, \textcolor{stringliteral}{'dev'}])
+706             \textcolor{keywordflow}{if} webpack\_complete != 0:
+707                 \textcolor{keywordflow}{raise} Exception(
+708                     \textcolor{stringliteral}{'Webpack appears to have failed to build your '}
+709                     \textcolor{stringliteral}{'frontend. See the above error for more '}
+710                     \textcolor{stringliteral}{'information.'}
+711                 )
+712             was\_built = \textcolor{keyword}{True}
+713 
+714         os.chdir(here)
+715         output\_dir = os.path.join(\textcolor{stringliteral}{'dev/task\_components'}, task)
+716         shutil.copytree(task\_dir, output\_dir)
+717         \textcolor{comment}{# need to move built custom.jsx back into components}
+718         \textcolor{keywordflow}{if} was\_built:
+719             shutil.copy2(
+720                 os.path.join(output\_dir, \textcolor{stringliteral}{'dist'}, \textcolor{stringliteral}{'custom.jsx'}),
+721                 os.path.join(output\_dir, \textcolor{stringliteral}{'components'}, \textcolor{stringliteral}{'custom.jsx'}),
+722             )
+723         \textcolor{comment}{# Need to give a copy of core\_components to have same dir}
+724         shutil.copy2(
+725             os.path.join(
+726                 parlai\_path,
+727                 \textcolor{stringliteral}{'mturk'},
+728                 \textcolor{stringliteral}{'core'},
+729                 \textcolor{stringliteral}{'react\_server'},
+730                 \textcolor{stringliteral}{'dev'},
+731                 \textcolor{stringliteral}{'components'},
+732                 \textcolor{stringliteral}{'core\_components.jsx'},
+733             ),
+734             os.path.join(output\_dir, \textcolor{stringliteral}{'components'}),
+735         )
+736 
+737     \textcolor{comment}{# Grab up to date version of core components}
+738     shutil.copy2(
+739         os.path.join(
+740             parlai\_path,
+741             \textcolor{stringliteral}{'mturk'},
+742             \textcolor{stringliteral}{'core'},
+743             \textcolor{stringliteral}{'react\_server'},
+744             \textcolor{stringliteral}{'dev'},
+745             \textcolor{stringliteral}{'components'},
+746             \textcolor{stringliteral}{'core\_components.jsx'},
+747         ),
+748         \textcolor{stringliteral}{'dev/task\_components'},
+749     )
+750 
+751     \textcolor{comment}{# build the full react server}
+752     packages\_installed = subprocess.call([\textcolor{stringliteral}{'npm'}, \textcolor{stringliteral}{'install'}])
+753     \textcolor{keywordflow}{if} packages\_installed != 0:
+754         \textcolor{keywordflow}{raise} Exception(
+755             \textcolor{stringliteral}{'please make sure npm is installed, otherwise view '}
+756             \textcolor{stringliteral}{'the above error for more info.'}
+757         )
+758 
+759     webpack\_complete = subprocess.call([\textcolor{stringliteral}{'npm'}, \textcolor{stringliteral}{'run'}, \textcolor{stringliteral}{'dev'}])
+760     \textcolor{keywordflow}{if} webpack\_complete != 0:
+761         \textcolor{keywordflow}{raise} Exception(
+762             \textcolor{stringliteral}{'Webpack appears to have failed to build your '}
+763             \textcolor{stringliteral}{'frontend. See the above error for more information.'}
+764         )
+765 
+766 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1webapp_1_1server_a92be47964fa33a4b6a14d4069d091c7d}\label{namespaceparlai_1_1mturk_1_1webapp_1_1server_a92be47964fa33a4b6a14d4069d091c7d}} 
 \index{parlai\+::mturk\+::webapp\+::server@{parlai\+::mturk\+::webapp\+::server}!row\+\_\+to\+\_\+dict@{row\+\_\+to\+\_\+dict}}
@@ -484,14 +482,14 @@ Definition at line 668 of file server.\+py.
 
 
 
-Definition at line 61 of file server.\+py.
+Definition at line 66 of file server.\+py.
 
 
 \begin{DoxyCode}
-61 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a92be47964fa33a4b6a14d4069d091c7d}{row\_to\_dict}(row):
-62     \textcolor{keywordflow}{return} dict(zip(row.keys(), row))
-63 
-64 
+66 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a92be47964fa33a4b6a14d4069d091c7d}{row\_to\_dict}(row):
+67     \textcolor{keywordflow}{return} dict(zip(row.keys(), row))
+68 
+69 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1webapp_1_1server_a12f6bdadae00003ac87686d5fd7a26df}\label{namespaceparlai_1_1mturk_1_1webapp_1_1server_a12f6bdadae00003ac87686d5fd7a26df}} 
 \index{parlai\+::mturk\+::webapp\+::server@{parlai\+::mturk\+::webapp\+::server}!send\+\_\+to\+\_\+sources@{send\+\_\+to\+\_\+sources}}
@@ -501,16 +499,16 @@ Definition at line 61 of file server.\+py.
 
 
 
-Definition at line 162 of file server.\+py.
+Definition at line 167 of file server.\+py.
 
 
 \begin{DoxyCode}
-162 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a12f6bdadae00003ac87686d5fd7a26df}{send\_to\_sources}(handler, msg):
-163     target\_sources = handler.sources.values()
-164     \textcolor{keywordflow}{for} source \textcolor{keywordflow}{in} target\_sources:
-165         source.write\_message(json.dumps(msg))
-166 
-167 
+167 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a12f6bdadae00003ac87686d5fd7a26df}{send\_to\_sources}(handler, msg):
+168     target\_sources = handler.sources.values()
+169     \textcolor{keywordflow}{for} source \textcolor{keywordflow}{in} target\_sources:
+170         source.write\_message(json.dumps(msg))
+171 
+172 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1webapp_1_1server_a3faf7a84baf92a6b0863ab87a0015c41}\label{namespaceparlai_1_1mturk_1_1webapp_1_1server_a3faf7a84baf92a6b0863ab87a0015c41}} 
 \index{parlai\+::mturk\+::webapp\+::server@{parlai\+::mturk\+::webapp\+::server}!start\+\_\+server@{start\+\_\+server}}
@@ -520,24 +518,24 @@ Definition at line 162 of file server.\+py.
 
 
 
-Definition at line 641 of file server.\+py.
+Definition at line 646 of file server.\+py.
 
 
 \begin{DoxyCode}
-641 ):
-642     print(\textcolor{stringliteral}{"It's Alive!"})
-643     app = Application(port=port, db\_file=db\_file, is\_sandbox=is\_sandbox)
-644     app.listen(port, max\_buffer\_size=1024 ** 3)
-645     logging.info(\textcolor{stringliteral}{"Application Started"})
-646 
-647     \textcolor{keywordflow}{if} \textcolor{stringliteral}{"HOSTNAME"} \textcolor{keywordflow}{in} os.environ \textcolor{keywordflow}{and} hostname == DEFAULT\_HOSTNAME:
-648         hostname = os.environ[\textcolor{stringliteral}{"HOSTNAME"}]
-649     \textcolor{keywordflow}{else}:
-650         hostname = hostname
-651     print(\textcolor{stringliteral}{"You can navigate to http://%s:%s"} % (hostname, port))
-652     tornado.ioloop.IOLoop.current().start()
-653 
-654 
+646 ):
+647     print(\textcolor{stringliteral}{"It's Alive!"})
+648     app = Application(port=port, db\_file=db\_file, is\_sandbox=is\_sandbox)
+649     app.listen(port, max\_buffer\_size=1024 ** 3)
+650     logging.info(\textcolor{stringliteral}{"Application Started"})
+651 
+652     \textcolor{keywordflow}{if} \textcolor{stringliteral}{"HOSTNAME"} \textcolor{keywordflow}{in} os.environ \textcolor{keywordflow}{and} hostname == DEFAULT\_HOSTNAME:
+653         hostname = os.environ[\textcolor{stringliteral}{"HOSTNAME"}]
+654     \textcolor{keywordflow}{else}:
+655         hostname = hostname
+656     print(\textcolor{stringliteral}{"You can navigate to http://%s:%s"} % (hostname, port))
+657     tornado.ioloop.IOLoop.current().start()
+658 
+659 
 \end{DoxyCode}
 
 
@@ -550,7 +548,7 @@ Definition at line 641 of file server.\+py.
 
 
 
-Definition at line 52 of file server.\+py.
+Definition at line 57 of file server.\+py.
 
 \mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1webapp_1_1server_a2550c6dcb402e3b6b2f52229e848d6a7}\label{namespaceparlai_1_1mturk_1_1webapp_1_1server_a2550c6dcb402e3b6b2f52229e848d6a7}} 
 \index{parlai\+::mturk\+::webapp\+::server@{parlai\+::mturk\+::webapp\+::server}!D\+E\+F\+A\+U\+L\+T\+\_\+\+H\+O\+S\+T\+N\+A\+ME@{D\+E\+F\+A\+U\+L\+T\+\_\+\+H\+O\+S\+T\+N\+A\+ME}}
@@ -560,7 +558,7 @@ Definition at line 52 of file server.\+py.
 
 
 
-Definition at line 51 of file server.\+py.
+Definition at line 56 of file server.\+py.
 
 \mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1webapp_1_1server_ab2dbe49416f69522010b6c9a211af0e3}\label{namespaceparlai_1_1mturk_1_1webapp_1_1server_ab2dbe49416f69522010b6c9a211af0e3}} 
 \index{parlai\+::mturk\+::webapp\+::server@{parlai\+::mturk\+::webapp\+::server}!D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+O\+RT@{D\+E\+F\+A\+U\+L\+T\+\_\+\+P\+O\+RT}}
@@ -570,7 +568,7 @@ Definition at line 51 of file server.\+py.
 
 
 
-Definition at line 50 of file server.\+py.
+Definition at line 55 of file server.\+py.
 
 \mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1webapp_1_1server_a1e2912cd1c7a432b62f8871c8c26ffeb}\label{namespaceparlai_1_1mturk_1_1webapp_1_1server_a1e2912cd1c7a432b62f8871c8c26ffeb}} 
 \index{parlai\+::mturk\+::webapp\+::server@{parlai\+::mturk\+::webapp\+::server}!D\+E\+F\+A\+U\+L\+T\+\_\+\+S\+B\+\_\+\+D\+B\+\_\+\+F\+I\+LE@{D\+E\+F\+A\+U\+L\+T\+\_\+\+S\+B\+\_\+\+D\+B\+\_\+\+F\+I\+LE}}
@@ -580,7 +578,7 @@ Definition at line 50 of file server.\+py.
 
 
 
-Definition at line 53 of file server.\+py.
+Definition at line 58 of file server.\+py.
 
 \mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1webapp_1_1server_a3cd1097e113507291bebff8bccaf3e6f}\label{namespaceparlai_1_1mturk_1_1webapp_1_1server_a3cd1097e113507291bebff8bccaf3e6f}} 
 \index{parlai\+::mturk\+::webapp\+::server@{parlai\+::mturk\+::webapp\+::server}!here@{here}}
@@ -590,7 +588,7 @@ Definition at line 53 of file server.\+py.
 
 
 
-Definition at line 56 of file server.\+py.
+Definition at line 61 of file server.\+py.
 
 \mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1webapp_1_1server_a14a39cf63e8f3578e7c5f56f4482c679}\label{namespaceparlai_1_1mturk_1_1webapp_1_1server_a14a39cf63e8f3578e7c5f56f4482c679}} 
 \index{parlai\+::mturk\+::webapp\+::server@{parlai\+::mturk\+::webapp\+::server}!I\+S\+\_\+\+D\+E\+B\+UG@{I\+S\+\_\+\+D\+E\+B\+UG}}
@@ -600,7 +598,7 @@ Definition at line 56 of file server.\+py.
 
 
 
-Definition at line 54 of file server.\+py.
+Definition at line 59 of file server.\+py.
 
 \mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1webapp_1_1server_a39ddfeedd8f299afd3950be1bb5f0e2a}\label{namespaceparlai_1_1mturk_1_1webapp_1_1server_a39ddfeedd8f299afd3950be1bb5f0e2a}} 
 \index{parlai\+::mturk\+::webapp\+::server@{parlai\+::mturk\+::webapp\+::server}!parlai\+\_\+int\+\_\+path@{parlai\+\_\+int\+\_\+path}}
@@ -610,7 +608,7 @@ Definition at line 54 of file server.\+py.
 
 
 
-Definition at line 45 of file server.\+py.
+Definition at line 50 of file server.\+py.
 
 \mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1webapp_1_1server_a4655c0f281c309ebedea7bb5c2553a37}\label{namespaceparlai_1_1mturk_1_1webapp_1_1server_a4655c0f281c309ebedea7bb5c2553a37}} 
 \index{parlai\+::mturk\+::webapp\+::server@{parlai\+::mturk\+::webapp\+::server}!parlai\+\_\+path@{parlai\+\_\+path}}
@@ -620,17 +618,7 @@ Definition at line 45 of file server.\+py.
 
 
 
-Definition at line 40 of file server.\+py.
-
-\mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1webapp_1_1server_a9c1e280a0e70547519ea048b72ce29f4}\label{namespaceparlai_1_1mturk_1_1webapp_1_1server_a9c1e280a0e70547519ea048b72ce29f4}} 
-\index{parlai\+::mturk\+::webapp\+::server@{parlai\+::mturk\+::webapp\+::server}!tasks@{tasks}}
-\index{tasks@{tasks}!parlai\+::mturk\+::webapp\+::server@{parlai\+::mturk\+::webapp\+::server}}
-\subsubsection{\texorpdfstring{tasks}{tasks}}
-{\footnotesize\ttfamily parlai.\+mturk.\+webapp.\+server.\+tasks}
-
-
-
-Definition at line 58 of file server.\+py.
+Definition at line 44 of file server.\+py.
 
 \mbox{\Hypertarget{namespaceparlai_1_1mturk_1_1webapp_1_1server_a68ebf686092c5adab8c84111b8723ae5}\label{namespaceparlai_1_1mturk_1_1webapp_1_1server_a68ebf686092c5adab8c84111b8723ae5}} 
 \index{parlai\+::mturk\+::webapp\+::server@{parlai\+::mturk\+::webapp\+::server}!tornado\+\_\+settings@{tornado\+\_\+settings}}
@@ -640,5 +628,5 @@ Definition at line 58 of file server.\+py.
 
 
 
-Definition at line 105 of file server.\+py.
+Definition at line 110 of file server.\+py.
 

@@ -2,8 +2,7 @@
 \label{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld}\index{stack\+\_\+rank\+\_\+evals.\+worlds.\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World@{stack\+\_\+rank\+\_\+evals.\+worlds.\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World}}
 
 
-Inheritance diagram for stack\+\_\+rank\+\_\+evals.\+worlds.\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World\+:
-\nopagebreak
+Inheritance diagram for stack\+\_\+rank\+\_\+evals.\+worlds.\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for stack\+\_\+rank\+\_\+evals.\+worlds.\+M\+Turk\+Personali
 \end{figure}
 
 
-Collaboration diagram for stack\+\_\+rank\+\_\+evals.\+worlds.\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World\+:
-\nopagebreak
+Collaboration diagram for stack\+\_\+rank\+\_\+evals.\+worlds.\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -74,7 +72,7 @@ the more engaging comment.
 \end{DoxyVerb}
  
 
-Definition at line 120 of file worlds.\+py.
+Definition at line 121 of file worlds.\+py.
 
 
 
@@ -87,29 +85,29 @@ Definition at line 120 of file worlds.\+py.
 
 
 
-Definition at line 126 of file worlds.\+py.
+Definition at line 127 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-126     \textcolor{keyword}{def }\_\_init\_\_(self, opt, agents=None, shared=None, world\_tag='NONE'):
-127         self.turn\_idx = 0
-128         self.task\_type = \textcolor{stringliteral}{'sandbox'} \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'is\_sandbox'}] \textcolor{keywordflow}{else} \textcolor{stringliteral}{'live'}
-129         self.chat\_done = \textcolor{keyword}{False}
-130         self.world\_tag = world\_tag
-131         self.max\_resp\_time = opt[\textcolor{stringliteral}{'max\_resp\_time'}]  \textcolor{comment}{# in secs}
-132         super().\_\_init\_\_(opt, agents, shared)
-133         self.agents = agents
-134         self.agent = agents[0]
-135         self.data = []
-136         self.num\_images = opt[\textcolor{stringliteral}{'num\_images'}]
-137         self.ck1 = opt.get(\textcolor{stringliteral}{'compare\_key\_1'})
-138         self.ck2 = opt.get(\textcolor{stringliteral}{'compare\_key\_2'})
-139         self.show\_personality = opt.get(\textcolor{stringliteral}{'show\_personality'})
-140         \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'yfcc\_path'}):
-141             self.image\_path = opt[\textcolor{stringliteral}{'yfcc\_path'}]
-142         \textcolor{keywordflow}{else}:
-143             self.image\_path = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'yfcc\_images'})
-144 
+127     \textcolor{keyword}{def }\_\_init\_\_(self, opt, agents=None, shared=None, world\_tag='NONE'):
+128         self.turn\_idx = 0
+129         self.task\_type = \textcolor{stringliteral}{'sandbox'} \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'is\_sandbox'}] \textcolor{keywordflow}{else} \textcolor{stringliteral}{'live'}
+130         self.chat\_done = \textcolor{keyword}{False}
+131         self.world\_tag = world\_tag
+132         self.max\_resp\_time = opt[\textcolor{stringliteral}{'max\_resp\_time'}]  \textcolor{comment}{# in secs}
+133         super().\_\_init\_\_(opt, agents, shared)
+134         self.agents = agents
+135         self.agent = agents[0]
+136         self.data = []
+137         self.num\_images = opt[\textcolor{stringliteral}{'num\_images'}]
+138         self.ck1 = opt.get(\textcolor{stringliteral}{'compare\_key\_1'})
+139         self.ck2 = opt.get(\textcolor{stringliteral}{'compare\_key\_2'})
+140         self.show\_personality = opt.get(\textcolor{stringliteral}{'show\_personality'})
+141         \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'yfcc\_path'}):
+142             self.image\_path = opt[\textcolor{stringliteral}{'yfcc\_path'}]
+143         \textcolor{keywordflow}{else}:
+144             self.image\_path = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'yfcc\_images'})
+145 
 \end{DoxyCode}
 
 
@@ -122,26 +120,26 @@ Definition at line 126 of file worlds.\+py.
 
 
 
-Definition at line 215 of file worlds.\+py.
+Definition at line 216 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-215     \textcolor{keyword}{def }check\_timeout(self, act):
-216         \textcolor{keywordflow}{if} act[\textcolor{stringliteral}{'text'}] == \textcolor{stringliteral}{'[TIMEOUT]'} \textcolor{keywordflow}{and} act[\textcolor{stringliteral}{'episode\_done'}]:
-217             control\_msg = \{\textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}
-218             control\_msg[\textcolor{stringliteral}{'id'}] = \textcolor{stringliteral}{'SYSTEM'}
-219             control\_msg[\textcolor{stringliteral}{'text'}] = TIMEOUT\_MSG
-220             \textcolor{keywordflow}{for} ag \textcolor{keywordflow}{in} self.agents:
-221                 \textcolor{keywordflow}{if} ag.id != act[\textcolor{stringliteral}{'id'}]:
-222                     ag.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
-223             self.chat\_done = \textcolor{keyword}{True}
-224             \textcolor{keywordflow}{return} \textcolor{keyword}{True}
-225         \textcolor{keywordflow}{elif} act[\textcolor{stringliteral}{'text'}] == \textcolor{stringliteral}{'[DISCONNECT]'}:
-226             self.chat\_done = \textcolor{keyword}{True}
-227             \textcolor{keywordflow}{return} \textcolor{keyword}{True}
-228         \textcolor{keywordflow}{else}:
-229             \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-230 
+216     \textcolor{keyword}{def }check\_timeout(self, act):
+217         \textcolor{keywordflow}{if} act[\textcolor{stringliteral}{'text'}] == \textcolor{stringliteral}{'[TIMEOUT]'} \textcolor{keywordflow}{and} act[\textcolor{stringliteral}{'episode\_done'}]:
+218             control\_msg = \{\textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}
+219             control\_msg[\textcolor{stringliteral}{'id'}] = \textcolor{stringliteral}{'SYSTEM'}
+220             control\_msg[\textcolor{stringliteral}{'text'}] = TIMEOUT\_MSG
+221             \textcolor{keywordflow}{for} ag \textcolor{keywordflow}{in} self.agents:
+222                 \textcolor{keywordflow}{if} ag.id != act[\textcolor{stringliteral}{'id'}]:
+223                     ag.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
+224             self.chat\_done = \textcolor{keyword}{True}
+225             \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+226         \textcolor{keywordflow}{elif} act[\textcolor{stringliteral}{'text'}] == \textcolor{stringliteral}{'[DISCONNECT]'}:
+227             self.chat\_done = \textcolor{keyword}{True}
+228             \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+229         \textcolor{keywordflow}{else}:
+230             \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+231 
 \end{DoxyCode}
 \mbox{\Hypertarget{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_ac1e7487bde15df0e0dafd706495a9d10}\label{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_ac1e7487bde15df0e0dafd706495a9d10}} 
 \index{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World@{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World}!episode\+\_\+done@{episode\+\_\+done}}
@@ -151,13 +149,13 @@ Definition at line 215 of file worlds.\+py.
 
 
 
-Definition at line 145 of file worlds.\+py.
+Definition at line 146 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-145     \textcolor{keyword}{def }episode\_done(self):
-146         \textcolor{keywordflow}{return} self.chat\_done
-147 
+146     \textcolor{keyword}{def }episode\_done(self):
+147         \textcolor{keywordflow}{return} self.chat\_done
+148 
 \end{DoxyCode}
 \mbox{\Hypertarget{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_a41817ec1f909df958b73f3b5d810299e}\label{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_a41817ec1f909df958b73f3b5d810299e}} 
 \index{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World@{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World}!parley@{parley}}
@@ -170,77 +168,77 @@ engaging comment.
 \end{DoxyVerb}
  
 
-Definition at line 148 of file worlds.\+py.
+Definition at line 149 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-148     \textcolor{keyword}{def }parley(self):
-149         \textcolor{stringliteral}{"""}
-150 \textcolor{stringliteral}{        CHOOSER is given an image and 2 comments/captions, and is asked to choose more}
-151 \textcolor{stringliteral}{        engaging comment.}
-152 \textcolor{stringliteral}{        """}
-153         \textcolor{comment}{# Initial Message Value}
-154         control\_msg = \{\textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{False}\}
-155         control\_msg[\textcolor{stringliteral}{'id'}] = \textcolor{stringliteral}{'SYSTEM'}
-156 
-157         \textcolor{stringliteral}{"""We only have to worry about 1 agent"""}
-158         agent = self.agents[0]
-159 
-160         \textcolor{stringliteral}{"""First, we give CHOOSER the image}
-161 \textcolor{stringliteral}{        """}
-162         \textcolor{keywordflow}{while} self.turn\_idx < self.num\_images:
-163             print(self.world\_tag + \textcolor{stringliteral}{' is at turn \{\}...'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.turn\_idx))
-164             \textcolor{comment}{# Send image to turker}
-165             control\_msg[\textcolor{stringliteral}{'description'}] = config[\textcolor{stringliteral}{'task\_description'}]
-166             self.example\_num, example = self.agent.example\_generator.pop\_example()
-167             img = \hyperlink{namespacepersonality__captions_1_1worlds_a2863737d97a8e8c5a1ebe9029d0d2293}{load\_image}(
-168                 os.path.join(self.image\_path, \textcolor{stringliteral}{'\{\}.jpg'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(example[\textcolor{stringliteral}{'image\_hash'}]))
-169             )
-170             buffered = BytesIO()
-171             img.save(buffered, format=\textcolor{stringliteral}{"JPEG"})
-172             encoded = \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(base64.b64encode(buffered.getvalue()).decode(\textcolor{stringliteral}{'ascii'}))
-173             control\_msg[\textcolor{stringliteral}{'image'}] = encoded
-174             \textcolor{stringliteral}{"""}
-175 \textcolor{stringliteral}{                Setup comments for ranking}
-176 \textcolor{stringliteral}{            """}
-177             comments = [(ck, example[ck]) \textcolor{keywordflow}{for} ck \textcolor{keywordflow}{in} [self.ck1, self.ck2]]
-178             random.shuffle(comments)
-179             control\_msg[\textcolor{stringliteral}{'comments'}] = [c[1] \textcolor{keywordflow}{for} c \textcolor{keywordflow}{in} comments]
-180             \textcolor{keywordflow}{if} self.show\_personality:
-181                 control\_msg[\textcolor{stringliteral}{'personality'}] = (
-182                     \textcolor{stringliteral}{'<b><span style="color:blue">'}
-183                     \textcolor{stringliteral}{'\{\}\(\backslash\)n</span></b>'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(example[\textcolor{stringliteral}{'personality'}].strip())
-184                 )
-185 
-186             best\_pick = \textcolor{keywordtype}{None}
-187             control\_msg[\textcolor{stringliteral}{'text'}] = PICK\_BEST\_MSG.format(self.turn\_idx + 1)
-188             control\_msg[\textcolor{stringliteral}{'new\_eval'}] = \textcolor{keyword}{True}
-189             agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
-190             time.sleep(1)
-191             act = agent.act(timeout=self.max\_resp\_time)
-192             \textcolor{comment}{# First timeout check}
-193             self.check\_timeout(act)
-194             \textcolor{keywordflow}{if} self.chat\_done:
-195                 \textcolor{keywordflow}{break}
-196             \textcolor{keywordflow}{try}:
-197                 best\_idx = \hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(act[\textcolor{stringliteral}{'chosen'}])
-198                 reason = act[\textcolor{stringliteral}{'text'}]
-199                 best\_pick = comments[best\_idx]
-200             \textcolor{keywordflow}{except} Exception:
-201                 \textcolor{comment}{# Agent disconnected}
-202                 \textcolor{keywordflow}{break}
-203             example[\textcolor{stringliteral}{'choices'}] = comments
-204             example[\textcolor{stringliteral}{'best\_pick'}] = best\_pick
-205             example[\textcolor{stringliteral}{'reason'}] = reason
-206             self.data.append(example)
-207             self.turn\_idx += 1
-208 
-209         \textcolor{keywordflow}{if} self.turn\_idx == self.num\_images:
-210             control\_msg[\textcolor{stringliteral}{'text'}] = CHAT\_ENDED\_MSG.format(self.num\_images)
-211             agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
-212         self.chat\_done = \textcolor{keyword}{True}
-213         \textcolor{keywordflow}{return}
-214 
+149     \textcolor{keyword}{def }parley(self):
+150         \textcolor{stringliteral}{"""}
+151 \textcolor{stringliteral}{        CHOOSER is given an image and 2 comments/captions, and is asked to choose more}
+152 \textcolor{stringliteral}{        engaging comment.}
+153 \textcolor{stringliteral}{        """}
+154         \textcolor{comment}{# Initial Message Value}
+155         control\_msg = \{\textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{False}\}
+156         control\_msg[\textcolor{stringliteral}{'id'}] = \textcolor{stringliteral}{'SYSTEM'}
+157 
+158         \textcolor{stringliteral}{"""We only have to worry about 1 agent"""}
+159         agent = self.agents[0]
+160 
+161         \textcolor{stringliteral}{"""First, we give CHOOSER the image}
+162 \textcolor{stringliteral}{        """}
+163         \textcolor{keywordflow}{while} self.turn\_idx < self.num\_images:
+164             print(self.world\_tag + \textcolor{stringliteral}{' is at turn \{\}...'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.turn\_idx))
+165             \textcolor{comment}{# Send image to turker}
+166             control\_msg[\textcolor{stringliteral}{'description'}] = config[\textcolor{stringliteral}{'task\_description'}]
+167             self.example\_num, example = self.agent.example\_generator.pop\_example()
+168             img = \hyperlink{namespacepersonality__captions_1_1worlds_a2863737d97a8e8c5a1ebe9029d0d2293}{load\_image}(
+169                 os.path.join(self.image\_path, \textcolor{stringliteral}{'\{\}.jpg'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(example[\textcolor{stringliteral}{'image\_hash'}]))
+170             )
+171             buffered = BytesIO()
+172             img.save(buffered, format=\textcolor{stringliteral}{"JPEG"})
+173             encoded = \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(base64.b64encode(buffered.getvalue()).decode(\textcolor{stringliteral}{'ascii'}))
+174             control\_msg[\textcolor{stringliteral}{'image'}] = encoded
+175             \textcolor{stringliteral}{"""}
+176 \textcolor{stringliteral}{                Setup comments for ranking}
+177 \textcolor{stringliteral}{            """}
+178             comments = [(ck, example[ck]) \textcolor{keywordflow}{for} ck \textcolor{keywordflow}{in} [self.ck1, self.ck2]]
+179             random.shuffle(comments)
+180             control\_msg[\textcolor{stringliteral}{'comments'}] = [c[1] \textcolor{keywordflow}{for} c \textcolor{keywordflow}{in} comments]
+181             \textcolor{keywordflow}{if} self.show\_personality:
+182                 control\_msg[\textcolor{stringliteral}{'personality'}] = (
+183                     \textcolor{stringliteral}{'<b><span style="color:blue">'}
+184                     \textcolor{stringliteral}{'\{\}\(\backslash\)n</span></b>'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(example[\textcolor{stringliteral}{'personality'}].strip())
+185                 )
+186 
+187             best\_pick = \textcolor{keywordtype}{None}
+188             control\_msg[\textcolor{stringliteral}{'text'}] = PICK\_BEST\_MSG.format(self.turn\_idx + 1)
+189             control\_msg[\textcolor{stringliteral}{'new\_eval'}] = \textcolor{keyword}{True}
+190             agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
+191             time.sleep(1)
+192             act = agent.act(timeout=self.max\_resp\_time)
+193             \textcolor{comment}{# First timeout check}
+194             self.check\_timeout(act)
+195             \textcolor{keywordflow}{if} self.chat\_done:
+196                 \textcolor{keywordflow}{break}
+197             \textcolor{keywordflow}{try}:
+198                 best\_idx = \hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(act[\textcolor{stringliteral}{'chosen'}])
+199                 reason = act[\textcolor{stringliteral}{'text'}]
+200                 best\_pick = comments[best\_idx]
+201             \textcolor{keywordflow}{except} Exception:
+202                 \textcolor{comment}{# Agent disconnected}
+203                 \textcolor{keywordflow}{break}
+204             example[\textcolor{stringliteral}{'choices'}] = comments
+205             example[\textcolor{stringliteral}{'best\_pick'}] = best\_pick
+206             example[\textcolor{stringliteral}{'reason'}] = reason
+207             self.data.append(example)
+208             self.turn\_idx += 1
+209 
+210         \textcolor{keywordflow}{if} self.turn\_idx == self.num\_images:
+211             control\_msg[\textcolor{stringliteral}{'text'}] = CHAT\_ENDED\_MSG.format(self.num\_images)
+212             agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
+213         self.chat\_done = \textcolor{keyword}{True}
+214         \textcolor{keywordflow}{return}
+215 
 \end{DoxyCode}
 \mbox{\Hypertarget{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_a2dd08f9107fee17e2833a529681d76db}\label{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_a2dd08f9107fee17e2833a529681d76db}} 
 \index{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World@{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World}!review\+\_\+work@{review\+\_\+work}}
@@ -250,20 +248,20 @@ Definition at line 148 of file worlds.\+py.
 
 
 
-Definition at line 277 of file worlds.\+py.
+Definition at line 278 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-277     \textcolor{keyword}{def }review\_work(self):
-278         \textcolor{keyword}{global} review\_agent
-279 
-280         \textcolor{keyword}{def }review\_agent(ag):
-281             \textcolor{keywordflow}{pass}  \textcolor{comment}{# auto approve 5 days}
-282 
-283         Parallel(n\_jobs=len(self.agents), backend=\textcolor{stringliteral}{'threading'})(
-284             delayed(review\_agent)(agent) \textcolor{keywordflow}{for} agent \textcolor{keywordflow}{in} self.agents
-285         )
-286 
+278     \textcolor{keyword}{def }review\_work(self):
+279         \textcolor{keyword}{global} review\_agent
+280 
+281         \textcolor{keyword}{def }review\_agent(ag):
+282             \textcolor{keywordflow}{pass}  \textcolor{comment}{# auto approve 5 days}
+283 
+284         Parallel(n\_jobs=len(self.agents), backend=\textcolor{stringliteral}{'threading'})(
+285             delayed(review\_agent)(agent) \textcolor{keywordflow}{for} agent \textcolor{keywordflow}{in} self.agents
+286         )
+287 
 \end{DoxyCode}
 \mbox{\Hypertarget{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_a2ee07e4a6c5485756dcec60afe91a430}\label{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_a2ee07e4a6c5485756dcec60afe91a430}} 
 \index{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World@{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World}!save\+\_\+data@{save\+\_\+data}}
@@ -273,56 +271,56 @@ Definition at line 277 of file worlds.\+py.
 
 
 
-Definition at line 231 of file worlds.\+py.
+Definition at line 232 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-231     \textcolor{keyword}{def }save\_data(self):
-232         convo\_finished = \textcolor{keyword}{True}
-233         \textcolor{keywordflow}{for} ag \textcolor{keywordflow}{in} self.agents:
-234             \textcolor{keywordflow}{if} (
-235                 ag.hit\_is\_abandoned
-236                 \textcolor{keywordflow}{or} ag.hit\_is\_returned
-237                 \textcolor{keywordflow}{or} ag.disconnected
-238                 \textcolor{keywordflow}{or} ag.hit\_is\_expired
-239             ):
-240                 convo\_finished = \textcolor{keyword}{False}
-241         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} convo\_finished:
-242             ag.example\_generator.push\_example(self.example\_num)
-243             print(\textcolor{stringliteral}{"\(\backslash\)n**Push image \{\} back to stack. **\(\backslash\)n"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.example\_num))
-244         self.agents[0].example\_generator.save\_idx\_stack()
-245         data\_path = self.opt[\textcolor{stringliteral}{'data\_path'}]
-246         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.exists(data\_path):
-247             os.makedirs(data\_path)
-248         \textcolor{keywordflow}{if} convo\_finished:
-249             filename = os.path.join(
-250                 data\_path,
-251                 \textcolor{stringliteral}{'\{\}\_\{\}\_\{\}.pkl'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
-252                     time.strftime(\textcolor{stringliteral}{"%Y%m%d-%H%M%S"}),
-253                     np.random.randint(0, 1000),
-254                     self.task\_type,
-255                 ),
-256             )
-257         \textcolor{keywordflow}{else}:
-258             filename = os.path.join(
-259                 data\_path,
-260                 \textcolor{stringliteral}{'\{\}\_\{\}\_\{\}\_incomplete.pkl'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
-261                     time.strftime(\textcolor{stringliteral}{"%Y%m%d-%H%M%S"}),
-262                     np.random.randint(0, 1000),
-263                     self.task\_type,
-264                 ),
-265             )
-266         pickle.dump(
-267             \{
-268                 \textcolor{stringliteral}{'data'}: self.data,
-269                 \textcolor{stringliteral}{'worker'}: self.agents[0].worker\_id,
-270                 \textcolor{stringliteral}{'hit\_id'}: self.agents[0].hit\_id,
-271                 \textcolor{stringliteral}{'assignment\_id'}: self.agents[0].assignment\_id,
-272             \},
-273             open(filename, \textcolor{stringliteral}{'wb'}),
-274         )
-275         print(\textcolor{stringliteral}{'\{\}: Data successfully saved at \{\}.'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.world\_tag, filename))
-276 
+232     \textcolor{keyword}{def }save\_data(self):
+233         convo\_finished = \textcolor{keyword}{True}
+234         \textcolor{keywordflow}{for} ag \textcolor{keywordflow}{in} self.agents:
+235             \textcolor{keywordflow}{if} (
+236                 ag.hit\_is\_abandoned
+237                 \textcolor{keywordflow}{or} ag.hit\_is\_returned
+238                 \textcolor{keywordflow}{or} ag.disconnected
+239                 \textcolor{keywordflow}{or} ag.hit\_is\_expired
+240             ):
+241                 convo\_finished = \textcolor{keyword}{False}
+242         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} convo\_finished:
+243             ag.example\_generator.push\_example(self.example\_num)
+244             print(\textcolor{stringliteral}{"\(\backslash\)n**Push image \{\} back to stack. **\(\backslash\)n"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.example\_num))
+245         self.agents[0].example\_generator.save\_idx\_stack()
+246         data\_path = self.opt[\textcolor{stringliteral}{'data\_path'}]
+247         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.exists(data\_path):
+248             os.makedirs(data\_path)
+249         \textcolor{keywordflow}{if} convo\_finished:
+250             filename = os.path.join(
+251                 data\_path,
+252                 \textcolor{stringliteral}{'\{\}\_\{\}\_\{\}.pkl'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+253                     time.strftime(\textcolor{stringliteral}{"%Y%m%d-%H%M%S"}),
+254                     np.random.randint(0, 1000),
+255                     self.task\_type,
+256                 ),
+257             )
+258         \textcolor{keywordflow}{else}:
+259             filename = os.path.join(
+260                 data\_path,
+261                 \textcolor{stringliteral}{'\{\}\_\{\}\_\{\}\_incomplete.pkl'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+262                     time.strftime(\textcolor{stringliteral}{"%Y%m%d-%H%M%S"}),
+263                     np.random.randint(0, 1000),
+264                     self.task\_type,
+265                 ),
+266             )
+267         pickle.dump(
+268             \{
+269                 \textcolor{stringliteral}{'data'}: self.data,
+270                 \textcolor{stringliteral}{'worker'}: self.agents[0].worker\_id,
+271                 \textcolor{stringliteral}{'hit\_id'}: self.agents[0].hit\_id,
+272                 \textcolor{stringliteral}{'assignment\_id'}: self.agents[0].assignment\_id,
+273             \},
+274             open(filename, \textcolor{stringliteral}{'wb'}),
+275         )
+276         print(\textcolor{stringliteral}{'\{\}: Data successfully saved at \{\}.'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.world\_tag, filename))
+277 
 \end{DoxyCode}
 \mbox{\Hypertarget{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_a17e8b57fa31006dcb12852a791a676f9}\label{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_a17e8b57fa31006dcb12852a791a676f9}} 
 \index{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World@{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World}!shutdown@{shutdown}}
@@ -335,24 +333,24 @@ disconnected then it could prevent other mturk agents from completing.
 \end{DoxyVerb}
  
 
-Definition at line 287 of file worlds.\+py.
+Definition at line 288 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-287     \textcolor{keyword}{def }shutdown(self):
-288         \textcolor{stringliteral}{"""}
-289 \textcolor{stringliteral}{        Shutdown all mturk agents in parallel, otherwise if one mturk agent is}
-290 \textcolor{stringliteral}{        disconnected then it could prevent other mturk agents from completing.}
-291 \textcolor{stringliteral}{        """}
-292         \textcolor{keyword}{global} shutdown\_agent
-293 
-294         \textcolor{keyword}{def }shutdown\_agent(agent):
-295             agent.shutdown()
-296 
-297         Parallel(n\_jobs=len(self.agents), backend=\textcolor{stringliteral}{'threading'})(
-298             delayed(shutdown\_agent)(agent) \textcolor{keywordflow}{for} agent \textcolor{keywordflow}{in} self.agents
-299         )
-300 \end{DoxyCode}
+288     \textcolor{keyword}{def }shutdown(self):
+289         \textcolor{stringliteral}{"""}
+290 \textcolor{stringliteral}{        Shutdown all mturk agents in parallel, otherwise if one mturk agent is}
+291 \textcolor{stringliteral}{        disconnected then it could prevent other mturk agents from completing.}
+292 \textcolor{stringliteral}{        """}
+293         \textcolor{keyword}{global} shutdown\_agent
+294 
+295         \textcolor{keyword}{def }shutdown\_agent(agent):
+296             agent.shutdown()
+297 
+298         Parallel(n\_jobs=len(self.agents), backend=\textcolor{stringliteral}{'threading'})(
+299             delayed(shutdown\_agent)(agent) \textcolor{keywordflow}{for} agent \textcolor{keywordflow}{in} self.agents
+300         )
+301 \end{DoxyCode}
 
 
 \subsection{Member Data Documentation}
@@ -364,7 +362,7 @@ Definition at line 287 of file worlds.\+py.
 
 
 
-Definition at line 134 of file worlds.\+py.
+Definition at line 135 of file worlds.\+py.
 
 \mbox{\Hypertarget{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_a7f77bf2a4335b5ecf7ba13e0cbe22e25}\label{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_a7f77bf2a4335b5ecf7ba13e0cbe22e25}} 
 \index{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World@{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World}!agents@{agents}}
@@ -374,7 +372,7 @@ Definition at line 134 of file worlds.\+py.
 
 
 
-Definition at line 133 of file worlds.\+py.
+Definition at line 134 of file worlds.\+py.
 
 \mbox{\Hypertarget{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_a88873cd2ea02ec7c78eee38d13d10664}\label{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_a88873cd2ea02ec7c78eee38d13d10664}} 
 \index{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World@{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World}!chat\+\_\+done@{chat\+\_\+done}}
@@ -384,7 +382,7 @@ Definition at line 133 of file worlds.\+py.
 
 
 
-Definition at line 129 of file worlds.\+py.
+Definition at line 130 of file worlds.\+py.
 
 \mbox{\Hypertarget{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_a9b42f10d26500b54807e44f9340dd207}\label{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_a9b42f10d26500b54807e44f9340dd207}} 
 \index{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World@{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World}!ck1@{ck1}}
@@ -394,7 +392,7 @@ Definition at line 129 of file worlds.\+py.
 
 
 
-Definition at line 137 of file worlds.\+py.
+Definition at line 138 of file worlds.\+py.
 
 \mbox{\Hypertarget{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_aa81bc52d3b2c22cc942a4fc33f96a387}\label{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_aa81bc52d3b2c22cc942a4fc33f96a387}} 
 \index{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World@{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World}!ck2@{ck2}}
@@ -404,7 +402,7 @@ Definition at line 137 of file worlds.\+py.
 
 
 
-Definition at line 138 of file worlds.\+py.
+Definition at line 139 of file worlds.\+py.
 
 \mbox{\Hypertarget{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_a5b436af081e6c4d58166d254558c8067}\label{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_a5b436af081e6c4d58166d254558c8067}} 
 \index{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World@{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World}!data@{data}}
@@ -414,7 +412,7 @@ Definition at line 138 of file worlds.\+py.
 
 
 
-Definition at line 135 of file worlds.\+py.
+Definition at line 136 of file worlds.\+py.
 
 \mbox{\Hypertarget{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_a661ad47f448ac14939018d6d164a1e9b}\label{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_a661ad47f448ac14939018d6d164a1e9b}} 
 \index{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World@{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World}!image\+\_\+path@{image\+\_\+path}}
@@ -424,7 +422,7 @@ Definition at line 135 of file worlds.\+py.
 
 
 
-Definition at line 141 of file worlds.\+py.
+Definition at line 142 of file worlds.\+py.
 
 \mbox{\Hypertarget{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_a81f83b129eedcba3368cb1e134b10e26}\label{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_a81f83b129eedcba3368cb1e134b10e26}} 
 \index{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World@{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World}!max\+\_\+resp\+\_\+time@{max\+\_\+resp\+\_\+time}}
@@ -434,7 +432,7 @@ Definition at line 141 of file worlds.\+py.
 
 
 
-Definition at line 131 of file worlds.\+py.
+Definition at line 132 of file worlds.\+py.
 
 \mbox{\Hypertarget{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_a7ea4232327466929526fd93f4e9fe679}\label{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_a7ea4232327466929526fd93f4e9fe679}} 
 \index{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World@{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World}!num\+\_\+images@{num\+\_\+images}}
@@ -444,7 +442,7 @@ Definition at line 131 of file worlds.\+py.
 
 
 
-Definition at line 136 of file worlds.\+py.
+Definition at line 137 of file worlds.\+py.
 
 \mbox{\Hypertarget{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_a35ff53a8a0146d38bf50bdb4449f49e8}\label{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_a35ff53a8a0146d38bf50bdb4449f49e8}} 
 \index{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World@{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World}!show\+\_\+personality@{show\+\_\+personality}}
@@ -454,7 +452,7 @@ Definition at line 136 of file worlds.\+py.
 
 
 
-Definition at line 139 of file worlds.\+py.
+Definition at line 140 of file worlds.\+py.
 
 \mbox{\Hypertarget{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_ac44a9f8d74e8ee219d853317a1beff1d}\label{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_ac44a9f8d74e8ee219d853317a1beff1d}} 
 \index{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World@{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World}!task\+\_\+type@{task\+\_\+type}}
@@ -464,7 +462,7 @@ Definition at line 139 of file worlds.\+py.
 
 
 
-Definition at line 128 of file worlds.\+py.
+Definition at line 129 of file worlds.\+py.
 
 \mbox{\Hypertarget{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_a18989404966ba686a9b698e4d7d5fe39}\label{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_a18989404966ba686a9b698e4d7d5fe39}} 
 \index{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World@{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World}!turn\+\_\+idx@{turn\+\_\+idx}}
@@ -474,7 +472,7 @@ Definition at line 128 of file worlds.\+py.
 
 
 
-Definition at line 127 of file worlds.\+py.
+Definition at line 128 of file worlds.\+py.
 
 \mbox{\Hypertarget{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_a4e5521465cddfe352b897ca6b7d36ae5}\label{classstack__rank__evals_1_1worlds_1_1MTurkPersonalityCaptionsStackRankWorld_a4e5521465cddfe352b897ca6b7d36ae5}} 
 \index{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World@{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+M\+Turk\+Personality\+Captions\+Stack\+Rank\+World}!world\+\_\+tag@{world\+\_\+tag}}
@@ -484,7 +482,7 @@ Definition at line 127 of file worlds.\+py.
 
 
 
-Definition at line 130 of file worlds.\+py.
+Definition at line 131 of file worlds.\+py.
 
 
 

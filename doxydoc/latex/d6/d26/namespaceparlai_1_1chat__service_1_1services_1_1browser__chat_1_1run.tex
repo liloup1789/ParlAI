@@ -1,0 +1,127 @@
+\hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1browser__chat_1_1run}{}\section{parlai.\+chat\+\_\+service.\+services.\+browser\+\_\+chat.\+run Namespace Reference}
+\label{namespaceparlai_1_1chat__service_1_1services_1_1browser__chat_1_1run}\index{parlai.\+chat\+\_\+service.\+services.\+browser\+\_\+chat.\+run@{parlai.\+chat\+\_\+service.\+services.\+browser\+\_\+chat.\+run}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1browser__chat_1_1run_a4c6727a6d621a62295a39de7ecb804f7}{setup\+\_\+args} ()
+\item 
+def \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1browser__chat_1_1run_ac2e6b9d5c874de55da8f5c16f59fe7e6}{run} (\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1browser__chat_1_1run_ac4c9f1982c7e4ce152192d0f7bf5bf7d}{opt})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1browser__chat_1_1run_a1df6780997790387ac4f30996edd0f66}{S\+E\+R\+V\+I\+C\+E\+\_\+\+N\+A\+ME}
+\item 
+\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1browser__chat_1_1run_ac4c9f1982c7e4ce152192d0f7bf5bf7d}{opt}
+\item 
+\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1browser__chat_1_1run_a59347589836f32bb41705f1eb7b54e62}{config\+\_\+path}
+\item 
+\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1browser__chat_1_1run_aeb1c1b0dde4fbc5d8a57e4224e68c616}{config}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1browser__chat_1_1run_ac2e6b9d5c874de55da8f5c16f59fe7e6}\label{namespaceparlai_1_1chat__service_1_1services_1_1browser__chat_1_1run_ac2e6b9d5c874de55da8f5c16f59fe7e6}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::browser\+\_\+chat\+::run@{parlai\+::chat\+\_\+service\+::services\+::browser\+\_\+chat\+::run}!run@{run}}
+\index{run@{run}!parlai\+::chat\+\_\+service\+::services\+::browser\+\_\+chat\+::run@{parlai\+::chat\+\_\+service\+::services\+::browser\+\_\+chat\+::run}}
+\subsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+browser\+\_\+chat.\+run.\+run (\begin{DoxyParamCaption}\item[{}]{opt }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Run BrowserManager.
+\end{DoxyVerb}
+ 
+
+Definition at line 36 of file run.\+py.
+
+
+\begin{DoxyCode}
+36 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1talkthewalk_1_1run_a0a1ec08b8196cb008e4df83468c67e5b}{run}(opt):
+37     \textcolor{stringliteral}{"""}
+38 \textcolor{stringliteral}{    Run BrowserManager.}
+39 \textcolor{stringliteral}{    """}
+40     opt[\textcolor{stringliteral}{'service'}] = SERVICE\_NAME
+41     manager = BrowserManager(opt)
+42     \textcolor{keywordflow}{try}:
+43         manager.start\_task()
+44     \textcolor{keywordflow}{finally}:
+45         manager.shutdown()
+46 
+47 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1browser__chat_1_1run_a4c6727a6d621a62295a39de7ecb804f7}\label{namespaceparlai_1_1chat__service_1_1services_1_1browser__chat_1_1run_a4c6727a6d621a62295a39de7ecb804f7}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::browser\+\_\+chat\+::run@{parlai\+::chat\+\_\+service\+::services\+::browser\+\_\+chat\+::run}!setup\+\_\+args@{setup\+\_\+args}}
+\index{setup\+\_\+args@{setup\+\_\+args}!parlai\+::chat\+\_\+service\+::services\+::browser\+\_\+chat\+::run@{parlai\+::chat\+\_\+service\+::services\+::browser\+\_\+chat\+::run}}
+\subsubsection{\texorpdfstring{setup\+\_\+args()}{setup\_args()}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+browser\+\_\+chat.\+run.\+setup\+\_\+args (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Set up args.
+
+:return: A parser that takes in command line arguments for chat services (debug, config-path, password), and a port.
+\end{DoxyVerb}
+ 
+
+Definition at line 20 of file run.\+py.
+
+
+\begin{DoxyCode}
+20 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1talkthewalk_1_1run_a3534e8afa0a4dc25a6e02740fa35ac84}{setup\_args}():
+21     \textcolor{stringliteral}{"""}
+22 \textcolor{stringliteral}{    Set up args.}
+23 \textcolor{stringliteral}{}
+24 \textcolor{stringliteral}{    :return: A parser that takes in command line arguments for chat services (debug, config-path,
+       password), and a port.}
+25 \textcolor{stringliteral}{    """}
+26     parser = ParlaiParser(\textcolor{keyword}{False}, \textcolor{keyword}{False})
+27     parser.add\_parlai\_data\_path()
+28     parser.add\_chatservice\_args()
+29     parser\_grp = parser.add\_argument\_group(\textcolor{stringliteral}{'Browser Chat'})
+30     parser\_grp.add\_argument(
+31         \textcolor{stringliteral}{'--port'}, default=35496, type=int, help=\textcolor{stringliteral}{'Port to run the browser chat server'}
+32     )
+33     \textcolor{keywordflow}{return} parser.parse\_args()
+34 
+35 
+\end{DoxyCode}
+
+
+\subsection{Variable Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1browser__chat_1_1run_aeb1c1b0dde4fbc5d8a57e4224e68c616}\label{namespaceparlai_1_1chat__service_1_1services_1_1browser__chat_1_1run_aeb1c1b0dde4fbc5d8a57e4224e68c616}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::browser\+\_\+chat\+::run@{parlai\+::chat\+\_\+service\+::services\+::browser\+\_\+chat\+::run}!config@{config}}
+\index{config@{config}!parlai\+::chat\+\_\+service\+::services\+::browser\+\_\+chat\+::run@{parlai\+::chat\+\_\+service\+::services\+::browser\+\_\+chat\+::run}}
+\subsubsection{\texorpdfstring{config}{config}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+services.\+browser\+\_\+chat.\+run.\+config}
+
+
+
+Definition at line 51 of file run.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1browser__chat_1_1run_a59347589836f32bb41705f1eb7b54e62}\label{namespaceparlai_1_1chat__service_1_1services_1_1browser__chat_1_1run_a59347589836f32bb41705f1eb7b54e62}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::browser\+\_\+chat\+::run@{parlai\+::chat\+\_\+service\+::services\+::browser\+\_\+chat\+::run}!config\+\_\+path@{config\+\_\+path}}
+\index{config\+\_\+path@{config\+\_\+path}!parlai\+::chat\+\_\+service\+::services\+::browser\+\_\+chat\+::run@{parlai\+::chat\+\_\+service\+::services\+::browser\+\_\+chat\+::run}}
+\subsubsection{\texorpdfstring{config\+\_\+path}{config\_path}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+services.\+browser\+\_\+chat.\+run.\+config\+\_\+path}
+
+
+
+Definition at line 50 of file run.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1browser__chat_1_1run_ac4c9f1982c7e4ce152192d0f7bf5bf7d}\label{namespaceparlai_1_1chat__service_1_1services_1_1browser__chat_1_1run_ac4c9f1982c7e4ce152192d0f7bf5bf7d}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::browser\+\_\+chat\+::run@{parlai\+::chat\+\_\+service\+::services\+::browser\+\_\+chat\+::run}!opt@{opt}}
+\index{opt@{opt}!parlai\+::chat\+\_\+service\+::services\+::browser\+\_\+chat\+::run@{parlai\+::chat\+\_\+service\+::services\+::browser\+\_\+chat\+::run}}
+\subsubsection{\texorpdfstring{opt}{opt}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+services.\+browser\+\_\+chat.\+run.\+opt}
+
+
+
+Definition at line 49 of file run.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1chat__service_1_1services_1_1browser__chat_1_1run_a1df6780997790387ac4f30996edd0f66}\label{namespaceparlai_1_1chat__service_1_1services_1_1browser__chat_1_1run_a1df6780997790387ac4f30996edd0f66}} 
+\index{parlai\+::chat\+\_\+service\+::services\+::browser\+\_\+chat\+::run@{parlai\+::chat\+\_\+service\+::services\+::browser\+\_\+chat\+::run}!S\+E\+R\+V\+I\+C\+E\+\_\+\+N\+A\+ME@{S\+E\+R\+V\+I\+C\+E\+\_\+\+N\+A\+ME}}
+\index{S\+E\+R\+V\+I\+C\+E\+\_\+\+N\+A\+ME@{S\+E\+R\+V\+I\+C\+E\+\_\+\+N\+A\+ME}!parlai\+::chat\+\_\+service\+::services\+::browser\+\_\+chat\+::run@{parlai\+::chat\+\_\+service\+::services\+::browser\+\_\+chat\+::run}}
+\subsubsection{\texorpdfstring{S\+E\+R\+V\+I\+C\+E\+\_\+\+N\+A\+ME}{SERVICE\_NAME}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+services.\+browser\+\_\+chat.\+run.\+S\+E\+R\+V\+I\+C\+E\+\_\+\+N\+A\+ME}
+
+
+
+Definition at line 17 of file run.\+py.
+

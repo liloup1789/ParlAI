@@ -2,8 +2,7 @@
 \label{classparlai_1_1core_1_1params_1_1ParlaiParser}\index{parlai.\+core.\+params.\+Parlai\+Parser@{parlai.\+core.\+params.\+Parlai\+Parser}}
 
 
-Inheritance diagram for parlai.\+core.\+params.\+Parlai\+Parser\+:
-\nopagebreak
+Inheritance diagram for parlai.\+core.\+params.\+Parlai\+Parser\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+core.\+params.\+Parlai\+Parser\+:
 \end{figure}
 
 
-Collaboration diagram for parlai.\+core.\+params.\+Parlai\+Parser\+:
-\nopagebreak
+Collaboration diagram for parlai.\+core.\+params.\+Parlai\+Parser\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -46,6 +44,8 @@ def \hyperlink{classparlai_1_1core_1_1params_1_1ParlaiParser_af05d40e27abb074094
 def \hyperlink{classparlai_1_1core_1_1params_1_1ParlaiParser_a46c57cd479d8780c4c22aecb3135d5fe}{add\+\_\+model\+\_\+subargs} (self, model)
 \item 
 def \hyperlink{classparlai_1_1core_1_1params_1_1ParlaiParser_a61ff766a70bd11365cbcbf71431ce527}{add\+\_\+task\+\_\+args} (self, task)
+\item 
+def \hyperlink{classparlai_1_1core_1_1params_1_1ParlaiParser_adb8c8064530f9cf9be57ab533360079c}{add\+\_\+world\+\_\+args} (self, task, interactive\+\_\+task)
 \item 
 def \hyperlink{classparlai_1_1core_1_1params_1_1ParlaiParser_a7d85a5e2fac2c1e8f0f75a4255850b9b}{add\+\_\+pyt\+\_\+dataset\+\_\+args} (self, \hyperlink{classparlai_1_1core_1_1params_1_1ParlaiParser_aa7c461e146b468d033fea1d1dcd92bcf}{opt})
 \item 
@@ -166,19 +166,19 @@ Definition at line 226 of file params.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1131 of file params.\+py.
+Definition at line 1149 of file params.\+py.
 
 
 \begin{DoxyCode}
-1131     \textcolor{keyword}{def }add\_argument(self, *args, **kwargs):
-1132         \textcolor{stringliteral}{"""}
-1133 \textcolor{stringliteral}{        Override to convert underscores to hyphens for consistency.}
-1134 \textcolor{stringliteral}{        """}
-1135         kwargs = self.\_augment\_help\_msg(kwargs)
-1136         \textcolor{keywordflow}{return} super().add\_argument(
-1137             *\hyperlink{namespaceparlai_1_1core_1_1params_afe2837a1dc21017be30cc7e3cb3696b8}{fix\_underscores}(args), **self.\_handle\_hidden\_args(kwargs)
-1138         )
-1139 
+1149     \textcolor{keyword}{def }add\_argument(self, *args, **kwargs):
+1150         \textcolor{stringliteral}{"""}
+1151 \textcolor{stringliteral}{        Override to convert underscores to hyphens for consistency.}
+1152 \textcolor{stringliteral}{        """}
+1153         kwargs = self.\_augment\_help\_msg(kwargs)
+1154         \textcolor{keywordflow}{return} super().add\_argument(
+1155             *\hyperlink{namespaceparlai_1_1core_1_1params_afe2837a1dc21017be30cc7e3cb3696b8}{fix\_underscores}(args), **self.\_handle\_hidden\_args(kwargs)
+1156         )
+1157 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1params_1_1ParlaiParser_a2855a5676bf638bfc9491577e603eee3}\label{classparlai_1_1core_1_1params_1_1ParlaiParser_a2855a5676bf638bfc9491577e603eee3}} 
 \index{parlai\+::core\+::params\+::\+Parlai\+Parser@{parlai\+::core\+::params\+::\+Parlai\+Parser}!add\+\_\+argument\+\_\+group@{add\+\_\+argument\+\_\+group}}
@@ -190,27 +190,27 @@ Definition at line 1131 of file params.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1140 of file params.\+py.
+Definition at line 1158 of file params.\+py.
 
 
 \begin{DoxyCode}
-1140     \textcolor{keyword}{def }add\_argument\_group(self, *args, **kwargs):
-1141         \textcolor{stringliteral}{"""}
-1142 \textcolor{stringliteral}{        Override to make arg groups also convert underscores to hyphens.}
-1143 \textcolor{stringliteral}{        """}
-1144         arg\_group = super().add\_argument\_group(*args, **kwargs)
-1145         original\_add\_arg = arg\_group.add\_argument
-1146 
-1147         \textcolor{keyword}{def }ag\_add\_argument(*args, **kwargs):
-1148             kwargs = self.\_augment\_help\_msg(kwargs)
-1149             \textcolor{keywordflow}{return} original\_add\_arg(
-1150                 *\hyperlink{namespaceparlai_1_1core_1_1params_afe2837a1dc21017be30cc7e3cb3696b8}{fix\_underscores}(args), **self.\_handle\_hidden\_args(kwargs)
-1151             )
-1152 
-1153         arg\_group.add\_argument = ag\_add\_argument  \textcolor{comment}{# override \_ => -}
-1154         arg\_group.add\_argument\_group = self.add\_argument\_group
-1155         \textcolor{keywordflow}{return} arg\_group
-1156 
+1158     \textcolor{keyword}{def }add\_argument\_group(self, *args, **kwargs):
+1159         \textcolor{stringliteral}{"""}
+1160 \textcolor{stringliteral}{        Override to make arg groups also convert underscores to hyphens.}
+1161 \textcolor{stringliteral}{        """}
+1162         arg\_group = super().add\_argument\_group(*args, **kwargs)
+1163         original\_add\_arg = arg\_group.add\_argument
+1164 
+1165         \textcolor{keyword}{def }ag\_add\_argument(*args, **kwargs):
+1166             kwargs = self.\_augment\_help\_msg(kwargs)
+1167             \textcolor{keywordflow}{return} original\_add\_arg(
+1168                 *\hyperlink{namespaceparlai_1_1core_1_1params_afe2837a1dc21017be30cc7e3cb3696b8}{fix\_underscores}(args), **self.\_handle\_hidden\_args(kwargs)
+1169             )
+1170 
+1171         arg\_group.add\_argument = ag\_add\_argument  \textcolor{comment}{# override \_ => -}
+1172         arg\_group.add\_argument\_group = self.add\_argument\_group
+1173         \textcolor{keywordflow}{return} arg\_group
+1174 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1params_1_1ParlaiParser_a63d7f06b4e1222783cb5864cf9a7e782}\label{classparlai_1_1core_1_1params_1_1ParlaiParser_a63d7f06b4e1222783cb5864cf9a7e782}} 
 \index{parlai\+::core\+::params\+::\+Parlai\+Parser@{parlai\+::core\+::params\+::\+Parlai\+Parser}!add\+\_\+chatservice\+\_\+args@{add\+\_\+chatservice\+\_\+args}}
@@ -294,57 +294,63 @@ Definition at line 639 of file params.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 859 of file params.\+py.
+Definition at line 871 of file params.\+py.
 
 
 \begin{DoxyCode}
-859     \textcolor{keyword}{def }add\_extra\_args(self, args=None):
-860         \textcolor{stringliteral}{"""}
-861 \textcolor{stringliteral}{        Add more args depending on how known args are set.}
-862 \textcolor{stringliteral}{        """}
-863         parsed = vars(self.parse\_known\_args(args, nohelp=\textcolor{keyword}{True})[0])
-864         \textcolor{comment}{# Also load extra args options if a file is given.}
-865         \textcolor{keywordflow}{if} parsed.get(\textcolor{stringliteral}{'init\_opt'}, \textcolor{keywordtype}{None}) \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-866             self.\_load\_known\_opts(parsed.get(\textcolor{stringliteral}{'init\_opt'}), parsed)
-867         parsed = self.\_infer\_datapath(parsed)
-868 
-869         \textcolor{comment}{# find which image mode specified if any, and add additional arguments}
-870         image\_mode = parsed.get(\textcolor{stringliteral}{'image\_mode'}, \textcolor{keywordtype}{None})
-871         \textcolor{keywordflow}{if} image\_mode \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} image\_mode != \textcolor{stringliteral}{'no\_image\_model'}:
-872             self.add\_image\_args(image\_mode)
-873 
-874         \textcolor{comment}{# find which task specified if any, and add its specific arguments}
-875         task = parsed.get(\textcolor{stringliteral}{'task'}, \textcolor{keywordtype}{None})
-876         \textcolor{keywordflow}{if} task \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-877             self.add\_task\_args(task)
-878         evaltask = parsed.get(\textcolor{stringliteral}{'evaltask'}, \textcolor{keywordtype}{None})
-879         \textcolor{keywordflow}{if} evaltask \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-880             self.add\_task\_args(evaltask)
-881 
-882         \textcolor{comment}{# find pytorch teacher task if specified, add its specific arguments}
-883         pytorch\_teacher\_task = parsed.get(\textcolor{stringliteral}{'pytorch\_teacher\_task'}, \textcolor{keywordtype}{None})
-884         \textcolor{keywordflow}{if} pytorch\_teacher\_task \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-885             self.add\_task\_args(pytorch\_teacher\_task)
-886 
-887         \textcolor{comment}{# find pytorch dataset if specified, add its specific arguments}
-888         pytorch\_teacher\_dataset = parsed.get(\textcolor{stringliteral}{'pytorch\_teacher\_dataset'}, \textcolor{keywordtype}{None})
-889         \textcolor{keywordflow}{if} pytorch\_teacher\_dataset \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-890             self.add\_pyt\_dataset\_args(parsed)
-891 
-892         \textcolor{comment}{# find which model specified if any, and add its specific arguments}
-893         model = \hyperlink{namespaceparlai_1_1core_1_1params_a6d160324f6af84562334fd0698141074}{get\_model\_name}(parsed)
-894         \textcolor{keywordflow}{if} model \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-895             self.add\_model\_subargs(model)
-896 
-897         \textcolor{comment}{# reset parser-level defaults over any model-level defaults}
-898         \textcolor{keywordflow}{try}:
-899             self.set\_defaults(**self.\_defaults)
-900         \textcolor{keywordflow}{except} AttributeError:
-901             \textcolor{keywordflow}{raise} RuntimeError(
-902                 \textcolor{stringliteral}{'Please file an issue on github that argparse '}
-903                 \textcolor{stringliteral}{'got an attribute error when parsing.'}
-904             )
-905 
+871     \textcolor{keyword}{def }add\_extra\_args(self, args=None):
+872         \textcolor{stringliteral}{"""}
+873 \textcolor{stringliteral}{        Add more args depending on how known args are set.}
+874 \textcolor{stringliteral}{        """}
+875         parsed = vars(self.parse\_known\_args(args, nohelp=\textcolor{keyword}{True})[0])
+876         \textcolor{comment}{# Also load extra args options if a file is given.}
+877         \textcolor{keywordflow}{if} parsed.get(\textcolor{stringliteral}{'init\_opt'}, \textcolor{keywordtype}{None}) \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+878             self.\_load\_known\_opts(parsed.get(\textcolor{stringliteral}{'init\_opt'}), parsed)
+879         parsed = self.\_infer\_datapath(parsed)
+880 
+881         \textcolor{comment}{# find which image mode specified if any, and add additional arguments}
+882         image\_mode = parsed.get(\textcolor{stringliteral}{'image\_mode'}, \textcolor{keywordtype}{None})
+883         \textcolor{keywordflow}{if} image\_mode \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} image\_mode != \textcolor{stringliteral}{'no\_image\_model'}:
+884             self.add\_image\_args(image\_mode)
+885 
+886         \textcolor{comment}{# find which task specified if any, and add its specific arguments}
+887         task = parsed.get(\textcolor{stringliteral}{'task'}, \textcolor{keywordtype}{None})
+888         \textcolor{keywordflow}{if} task \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+889             self.add\_task\_args(task)
+890         evaltask = parsed.get(\textcolor{stringliteral}{'evaltask'}, \textcolor{keywordtype}{None})
+891         \textcolor{keywordflow}{if} evaltask \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+892             self.add\_task\_args(evaltask)
+893 
+894         \textcolor{comment}{# find pytorch teacher task if specified, add its specific arguments}
+895         pytorch\_teacher\_task = parsed.get(\textcolor{stringliteral}{'pytorch\_teacher\_task'}, \textcolor{keywordtype}{None})
+896         \textcolor{keywordflow}{if} pytorch\_teacher\_task \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+897             self.add\_task\_args(pytorch\_teacher\_task)
+898 
+899         \textcolor{comment}{# find pytorch dataset if specified, add its specific arguments}
+900         pytorch\_teacher\_dataset = parsed.get(\textcolor{stringliteral}{'pytorch\_teacher\_dataset'}, \textcolor{keywordtype}{None})
+901         \textcolor{keywordflow}{if} pytorch\_teacher\_dataset \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+902             self.add\_pyt\_dataset\_args(parsed)
+903 
+904         \textcolor{comment}{# find which model specified if any, and add its specific arguments}
+905         model = \hyperlink{namespaceparlai_1_1core_1_1params_a6d160324f6af84562334fd0698141074}{get\_model\_name}(parsed)
+906         \textcolor{keywordflow}{if} model \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+907             self.add\_model\_subargs(model)
+908 
+909         \textcolor{comment}{# add world args, if we know a priori which world is being used}
+910         \textcolor{keywordflow}{if} task \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+911             self.add\_world\_args(
+912                 task, parsed.get(\textcolor{stringliteral}{'interactive\_task'}, \textcolor{keyword}{False}),
+913             )
+914 
+915         \textcolor{comment}{# reset parser-level defaults over any model-level defaults}
+916         \textcolor{keywordflow}{try}:
+917             self.set\_defaults(**self.\_defaults)
+918         \textcolor{keywordflow}{except} AttributeError:
+919             \textcolor{keywordflow}{raise} RuntimeError(
+920                 \textcolor{stringliteral}{'Please file an issue on github that argparse '}
+921                 \textcolor{stringliteral}{'got an attribute error when parsing.'}
+922             )
+923 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1params_1_1ParlaiParser_a33d186a0cd665df88726b96f1bc3d88e}\label{classparlai_1_1core_1_1params_1_1ParlaiParser_a33d186a0cd665df88726b96f1bc3d88e}} 
 \index{parlai\+::core\+::params\+::\+Parlai\+Parser@{parlai\+::core\+::params\+::\+Parlai\+Parser}!add\+\_\+image\+\_\+args@{add\+\_\+image\+\_\+args}}
@@ -356,34 +362,34 @@ Definition at line 859 of file params.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 835 of file params.\+py.
+Definition at line 847 of file params.\+py.
 
 
 \begin{DoxyCode}
-835     \textcolor{keyword}{def }add\_image\_args(self, image\_mode):
-836         \textcolor{stringliteral}{"""}
-837 \textcolor{stringliteral}{        Add additional arguments for handling images.}
-838 \textcolor{stringliteral}{        """}
-839         \textcolor{keywordflow}{try}:
-840             parlai = self.add\_argument\_group(\textcolor{stringliteral}{'ParlAI Image Preprocessing Arguments'})
-841             parlai.add\_argument(
-842                 \textcolor{stringliteral}{'--image-size'},
-843                 type=int,
-844                 default=256,
-845                 help=\textcolor{stringliteral}{'resizing dimension for images'},
-846                 hidden=\textcolor{keyword}{True},
-847             )
-848             parlai.add\_argument(
-849                 \textcolor{stringliteral}{'--image-cropsize'},
-850                 type=int,
-851                 default=224,
-852                 help=\textcolor{stringliteral}{'crop dimension for images'},
-853                 hidden=\textcolor{keyword}{True},
-854             )
-855         \textcolor{keywordflow}{except} argparse.ArgumentError:
-856             \textcolor{comment}{# already added}
-857             \textcolor{keywordflow}{pass}
-858 
+847     \textcolor{keyword}{def }add\_image\_args(self, image\_mode):
+848         \textcolor{stringliteral}{"""}
+849 \textcolor{stringliteral}{        Add additional arguments for handling images.}
+850 \textcolor{stringliteral}{        """}
+851         \textcolor{keywordflow}{try}:
+852             parlai = self.add\_argument\_group(\textcolor{stringliteral}{'ParlAI Image Preprocessing Arguments'})
+853             parlai.add\_argument(
+854                 \textcolor{stringliteral}{'--image-size'},
+855                 type=int,
+856                 default=256,
+857                 help=\textcolor{stringliteral}{'resizing dimension for images'},
+858                 hidden=\textcolor{keyword}{True},
+859             )
+860             parlai.add\_argument(
+861                 \textcolor{stringliteral}{'--image-cropsize'},
+862                 type=int,
+863                 default=224,
+864                 help=\textcolor{stringliteral}{'crop dimension for images'},
+865                 hidden=\textcolor{keyword}{True},
+866             )
+867         \textcolor{keywordflow}{except} argparse.ArgumentError:
+868             \textcolor{comment}{# already added}
+869             \textcolor{keywordflow}{pass}
+870 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1params_1_1ParlaiParser_aed38c7346112f11851969224cb25ad1e}\label{classparlai_1_1core_1_1params_1_1ParlaiParser_aed38c7346112f11851969224cb25ad1e}} 
 \index{parlai\+::core\+::params\+::\+Parlai\+Parser@{parlai\+::core\+::params\+::\+Parlai\+Parser}!add\+\_\+messenger\+\_\+args@{add\+\_\+messenger\+\_\+args}}
@@ -509,7 +515,7 @@ Definition at line 788 of file params.\+py.
 789         \textcolor{stringliteral}{"""}
 790 \textcolor{stringliteral}{        Add arguments specific to a particular model.}
 791 \textcolor{stringliteral}{        """}
-792         agent = \hyperlink{namespaceparlai_1_1core_1_1agents_a14a9d134d76ffd0509e50703d0f2c949}{get\_agent\_module}(model)
+792         agent = \hyperlink{namespaceparlai_1_1core_1_1loader_a8e6a8f524cba24b80e9bd157c2e0ab8b}{load\_agent\_module}(model)
 793         \textcolor{keywordflow}{try}:
 794             \textcolor{keywordflow}{if} hasattr(agent, \textcolor{stringliteral}{'add\_cmdline\_args'}):
 795                 agent.add\_cmdline\_args(self)
@@ -885,25 +891,25 @@ Definition at line 254 of file params.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 820 of file params.\+py.
+Definition at line 832 of file params.\+py.
 
 
 \begin{DoxyCode}
-820     \textcolor{keyword}{def }add\_pyt\_dataset\_args(self, opt):
-821         \textcolor{stringliteral}{"""}
-822 \textcolor{stringliteral}{        Add arguments specific to specified pytorch dataset.}
-823 \textcolor{stringliteral}{        """}
-824         \textcolor{keyword}{from} \hyperlink{namespaceparlai_1_1core_1_1pytorch__data__teacher}{parlai.core.pytorch\_data\_teacher} \textcolor{keyword}{import} get\_dataset\_classes
-825 
-826         dataset\_classes = \hyperlink{namespaceparlai_1_1core_1_1pytorch__data__teacher_acd56d9ac5d68831c1e91690f26eb2328}{get\_dataset\_classes}(opt)
-827         \textcolor{keywordflow}{for} dataset, \_, \_ \textcolor{keywordflow}{in} dataset\_classes:
-828             \textcolor{keywordflow}{try}:
-829                 \textcolor{keywordflow}{if} hasattr(dataset, \textcolor{stringliteral}{'add\_cmdline\_args'}):
-830                     dataset.add\_cmdline\_args(self)
-831             \textcolor{keywordflow}{except} argparse.ArgumentError:
-832                 \textcolor{comment}{# already added}
-833                 \textcolor{keywordflow}{pass}
-834 
+832     \textcolor{keyword}{def }add\_pyt\_dataset\_args(self, opt):
+833         \textcolor{stringliteral}{"""}
+834 \textcolor{stringliteral}{        Add arguments specific to specified pytorch dataset.}
+835 \textcolor{stringliteral}{        """}
+836         \textcolor{keyword}{from} \hyperlink{namespaceparlai_1_1core_1_1pytorch__data__teacher}{parlai.core.pytorch\_data\_teacher} \textcolor{keyword}{import} get\_dataset\_classes
+837 
+838         dataset\_classes = \hyperlink{namespaceparlai_1_1core_1_1pytorch__data__teacher_acd56d9ac5d68831c1e91690f26eb2328}{get\_dataset\_classes}(opt)
+839         \textcolor{keywordflow}{for} dataset, \_, \_ \textcolor{keywordflow}{in} dataset\_classes:
+840             \textcolor{keywordflow}{try}:
+841                 \textcolor{keywordflow}{if} hasattr(dataset, \textcolor{stringliteral}{'add\_cmdline\_args'}):
+842                     dataset.add\_cmdline\_args(self)
+843             \textcolor{keywordflow}{except} argparse.ArgumentError:
+844                 \textcolor{comment}{# already added}
+845                 \textcolor{keywordflow}{pass}
+846 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1params_1_1ParlaiParser_a037989eca768126b981270b2bdf06b0c}\label{classparlai_1_1core_1_1params_1_1ParlaiParser_a037989eca768126b981270b2bdf06b0c}} 
 \index{parlai\+::core\+::params\+::\+Parlai\+Parser@{parlai\+::core\+::params\+::\+Parlai\+Parser}!add\+\_\+pytorch\+\_\+datateacher\+\_\+args@{add\+\_\+pytorch\+\_\+datateacher\+\_\+args}}
@@ -1040,7 +1046,7 @@ Definition at line 807 of file params.\+py.
 809 \textcolor{stringliteral}{        Add arguments specific to the specified task.}
 810 \textcolor{stringliteral}{        """}
 811         \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} \hyperlink{namespaceparlai_1_1tasks_1_1tasks_ad536d1295ca5ba2ecf3a48635b482087}{ids\_to\_tasks}(task).split(\textcolor{stringliteral}{','}):
-812             agent = \hyperlink{namespaceparlai_1_1core_1_1agents_a530b987b67a802a8e9c5fa3c24ae942f}{get\_task\_module}(t)
+812             agent = \hyperlink{namespaceparlai_1_1core_1_1loader_a9eed9fa0f15170da9d4de24c2c3d4e2a}{load\_teacher\_module}(t)
 813             \textcolor{keywordflow}{try}:
 814                 \textcolor{keywordflow}{if} hasattr(agent, \textcolor{stringliteral}{'add\_cmdline\_args'}):
 815                     agent.add\_cmdline\_args(self)
@@ -1074,6 +1080,33 @@ Definition at line 488 of file params.\+py.
 496         )
 497 
 \end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1core_1_1params_1_1ParlaiParser_adb8c8064530f9cf9be57ab533360079c}\label{classparlai_1_1core_1_1params_1_1ParlaiParser_adb8c8064530f9cf9be57ab533360079c}} 
+\index{parlai\+::core\+::params\+::\+Parlai\+Parser@{parlai\+::core\+::params\+::\+Parlai\+Parser}!add\+\_\+world\+\_\+args@{add\+\_\+world\+\_\+args}}
+\index{add\+\_\+world\+\_\+args@{add\+\_\+world\+\_\+args}!parlai\+::core\+::params\+::\+Parlai\+Parser@{parlai\+::core\+::params\+::\+Parlai\+Parser}}
+\subsubsection{\texorpdfstring{add\+\_\+world\+\_\+args()}{add\_world\_args()}}
+{\footnotesize\ttfamily def parlai.\+core.\+params.\+Parlai\+Parser.\+add\+\_\+world\+\_\+args (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{task,  }\item[{}]{interactive\+\_\+task }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Add arguments specific to the world.
+\end{DoxyVerb}
+ 
+
+Definition at line 820 of file params.\+py.
+
+
+\begin{DoxyCode}
+820     \textcolor{keyword}{def }add\_world\_args(self, task, interactive\_task):
+821         \textcolor{stringliteral}{"""}
+822 \textcolor{stringliteral}{        Add arguments specific to the world.}
+823 \textcolor{stringliteral}{        """}
+824         world\_class = \hyperlink{namespaceparlai_1_1core_1_1loader_adb9c272f49c31c45dcbc61d8e8c6316d}{load\_world\_module}(task, interactive\_task)
+825         \textcolor{keywordflow}{if} world\_class \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} hasattr(world\_class, \textcolor{stringliteral}{'add\_cmdline\_args'}):
+826             \textcolor{keywordflow}{try}:
+827                 world\_class.add\_cmdline\_args(self)
+828             \textcolor{keywordflow}{except} argparse.ArgumentError:
+829                 \textcolor{comment}{# already added}
+830                 \textcolor{keywordflow}{pass}
+831 
+\end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1params_1_1ParlaiParser_a8d0cb15ecc35f82c94b5a19c2a6a9d12}\label{classparlai_1_1core_1_1params_1_1ParlaiParser_a8d0cb15ecc35f82c94b5a19c2a6a9d12}} 
 \index{parlai\+::core\+::params\+::\+Parlai\+Parser@{parlai\+::core\+::params\+::\+Parlai\+Parser}!error@{error}}
 \index{error@{error}!parlai\+::core\+::params\+::\+Parlai\+Parser@{parlai\+::core\+::params\+::\+Parlai\+Parser}}
@@ -1084,18 +1117,18 @@ Definition at line 488 of file params.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1157 of file params.\+py.
+Definition at line 1175 of file params.\+py.
 
 
 \begin{DoxyCode}
-1157     \textcolor{keyword}{def }error(self, message):
-1158         \textcolor{stringliteral}{"""}
-1159 \textcolor{stringliteral}{        Override to print custom error message.}
-1160 \textcolor{stringliteral}{        """}
-1161         self.print\_help()
-1162         \_sys.stderr.write(\textcolor{stringliteral}{'\(\backslash\)nParse Error: %s\(\backslash\)n'} % message)
-1163         \_sys.exit(2)
-1164 \end{DoxyCode}
+1175     \textcolor{keyword}{def }error(self, message):
+1176         \textcolor{stringliteral}{"""}
+1177 \textcolor{stringliteral}{        Override to print custom error message.}
+1178 \textcolor{stringliteral}{        """}
+1179         self.print\_help()
+1180         \_sys.stderr.write(\textcolor{stringliteral}{'\(\backslash\)nParse Error: %s\(\backslash\)n'} % message)
+1181         \_sys.exit(2)
+1182 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1params_1_1ParlaiParser_a0409771a420d08fb51a792a089806c70}\label{classparlai_1_1core_1_1params_1_1ParlaiParser_a0409771a420d08fb51a792a089806c70}} 
 \index{parlai\+::core\+::params\+::\+Parlai\+Parser@{parlai\+::core\+::params\+::\+Parlai\+Parser}!parse\+\_\+and\+\_\+process\+\_\+known\+\_\+args@{parse\+\_\+and\+\_\+process\+\_\+known\+\_\+args}}
 \index{parse\+\_\+and\+\_\+process\+\_\+known\+\_\+args@{parse\+\_\+and\+\_\+process\+\_\+known\+\_\+args}!parlai\+::core\+::params\+::\+Parlai\+Parser@{parlai\+::core\+::params\+::\+Parlai\+Parser}}
@@ -1110,22 +1143,22 @@ doesn't know what to do with.
 \end{DoxyVerb}
  
 
-Definition at line 1035 of file params.\+py.
+Definition at line 1053 of file params.\+py.
 
 
 \begin{DoxyCode}
-1035     \textcolor{keyword}{def }parse\_and\_process\_known\_args(self, args=None):
-1036         \textcolor{stringliteral}{"""}
-1037 \textcolor{stringliteral}{        Parse provided arguments and return parlai opts and unknown arg list.}
-1038 \textcolor{stringliteral}{}
-1039 \textcolor{stringliteral}{        Runs the same arg->opt parsing that parse\_args does, but doesn't throw an error}
-1040 \textcolor{stringliteral}{        if the args being parsed include additional command line arguments that parlai}
-1041 \textcolor{stringliteral}{        doesn't know what to do with.}
-1042 \textcolor{stringliteral}{        """}
-1043         self.args, unknowns = super().parse\_known\_args(args=args)
-1044         self.\_process\_args\_to\_opts(args)
-1045         \textcolor{keywordflow}{return} self.opt, unknowns
-1046 
+1053     \textcolor{keyword}{def }parse\_and\_process\_known\_args(self, args=None):
+1054         \textcolor{stringliteral}{"""}
+1055 \textcolor{stringliteral}{        Parse provided arguments and return parlai opts and unknown arg list.}
+1056 \textcolor{stringliteral}{}
+1057 \textcolor{stringliteral}{        Runs the same arg->opt parsing that parse\_args does, but doesn't throw an error}
+1058 \textcolor{stringliteral}{        if the args being parsed include additional command line arguments that parlai}
+1059 \textcolor{stringliteral}{        doesn't know what to do with.}
+1060 \textcolor{stringliteral}{        """}
+1061         self.args, unknowns = super().parse\_known\_args(args=args)
+1062         self.\_process\_args\_to\_opts(args)
+1063         \textcolor{keywordflow}{return} self.opt, unknowns
+1064 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1params_1_1ParlaiParser_ad549d75e2808d63fbc5c5d0e30682f18}\label{classparlai_1_1core_1_1params_1_1ParlaiParser_ad549d75e2808d63fbc5c5d0e30682f18}} 
 \index{parlai\+::core\+::params\+::\+Parlai\+Parser@{parlai\+::core\+::params\+::\+Parlai\+Parser}!parse\+\_\+args@{parse\+\_\+args}}
@@ -1140,29 +1173,29 @@ style ``opt.get(key, default)``, which would otherwise return ``None``.
 \end{DoxyVerb}
  
 
-Definition at line 1047 of file params.\+py.
+Definition at line 1065 of file params.\+py.
 
 
 \begin{DoxyCode}
-1047     \textcolor{keyword}{def }parse\_args(self, args=None, namespace=None, print\_args=True):
-1048         \textcolor{stringliteral}{"""}
-1049 \textcolor{stringliteral}{        Parse the provided arguments and returns a dictionary of the ``args``.}
-1050 \textcolor{stringliteral}{}
-1051 \textcolor{stringliteral}{        We specifically remove items with ``None`` as values in order to support the}
-1052 \textcolor{stringliteral}{        style ``opt.get(key, default)``, which would otherwise return ``None``.}
-1053 \textcolor{stringliteral}{        """}
-1054         self.add\_extra\_args(args)
-1055         self.args = super().parse\_args(args=args)
-1056 
-1057         self.\_process\_args\_to\_opts(args)
-1058 
-1059         \textcolor{keywordflow}{if} print\_args:
-1060             self.print\_args()
-1061             \hyperlink{namespaceparlai_1_1core_1_1params_ac8624bf16ab6b2df0f2869f29a92c90b}{print\_git\_commit}()
-1062             \hyperlink{namespaceparlai_1_1core_1_1params_afd1a47c94990168ea9e70d894a79bd2c}{print\_announcements}(self.opt)
-1063 
-1064         \textcolor{keywordflow}{return} self.opt
-1065 
+1065     \textcolor{keyword}{def }parse\_args(self, args=None, namespace=None, print\_args=True):
+1066         \textcolor{stringliteral}{"""}
+1067 \textcolor{stringliteral}{        Parse the provided arguments and returns a dictionary of the ``args``.}
+1068 \textcolor{stringliteral}{}
+1069 \textcolor{stringliteral}{        We specifically remove items with ``None`` as values in order to support the}
+1070 \textcolor{stringliteral}{        style ``opt.get(key, default)``, which would otherwise return ``None``.}
+1071 \textcolor{stringliteral}{        """}
+1072         self.add\_extra\_args(args)
+1073         self.args = super().parse\_args(args=args)
+1074 
+1075         self.\_process\_args\_to\_opts(args)
+1076 
+1077         \textcolor{keywordflow}{if} print\_args:
+1078             self.print\_args()
+1079             \hyperlink{namespaceparlai_1_1core_1_1params_ac8624bf16ab6b2df0f2869f29a92c90b}{print\_git\_commit}()
+1080             \hyperlink{namespaceparlai_1_1core_1_1params_afd1a47c94990168ea9e70d894a79bd2c}{print\_announcements}(self.opt)
+1081 
+1082         \textcolor{keywordflow}{return} self.opt
+1083 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1params_1_1ParlaiParser_a2a98c07f7393108ad67773951038f191}\label{classparlai_1_1core_1_1params_1_1ParlaiParser_a2a98c07f7393108ad67773951038f191}} 
 \index{parlai\+::core\+::params\+::\+Parlai\+Parser@{parlai\+::core\+::params\+::\+Parlai\+Parser}!parse\+\_\+known\+\_\+args@{parse\+\_\+known\+\_\+args}}
@@ -1174,24 +1207,24 @@ Definition at line 1047 of file params.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 906 of file params.\+py.
+Definition at line 924 of file params.\+py.
 
 
 \begin{DoxyCode}
-906     \textcolor{keyword}{def }parse\_known\_args(self, args=None, namespace=None, nohelp=False):
-907         \textcolor{stringliteral}{"""}
-908 \textcolor{stringliteral}{        Parse known args to ignore help flag.}
-909 \textcolor{stringliteral}{        """}
-910         \textcolor{keywordflow}{if} args \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-911             \textcolor{comment}{# args default to the system args}
-912             args = \_sys.argv[1:]
-913         args = \hyperlink{namespaceparlai_1_1core_1_1params_afe2837a1dc21017be30cc7e3cb3696b8}{fix\_underscores}(args)
-914 
-915         \textcolor{keywordflow}{if} nohelp:
-916             \textcolor{comment}{# ignore help}
-917             args = [a \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} args \textcolor{keywordflow}{if} a != \textcolor{stringliteral}{'-h'} \textcolor{keywordflow}{and} a != \textcolor{stringliteral}{'--help'}]
-918         \textcolor{keywordflow}{return} super().parse\_known\_args(args, namespace)
-919 
+924     \textcolor{keyword}{def }parse\_known\_args(self, args=None, namespace=None, nohelp=False):
+925         \textcolor{stringliteral}{"""}
+926 \textcolor{stringliteral}{        Parse known args to ignore help flag.}
+927 \textcolor{stringliteral}{        """}
+928         \textcolor{keywordflow}{if} args \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+929             \textcolor{comment}{# args default to the system args}
+930             args = \_sys.argv[1:]
+931         args = \hyperlink{namespaceparlai_1_1core_1_1params_afe2837a1dc21017be30cc7e3cb3696b8}{fix\_underscores}(args)
+932 
+933         \textcolor{keywordflow}{if} nohelp:
+934             \textcolor{comment}{# ignore help}
+935             args = [a \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} args \textcolor{keywordflow}{if} a != \textcolor{stringliteral}{'-h'} \textcolor{keywordflow}{and} a != \textcolor{stringliteral}{'--help'}]
+936         \textcolor{keywordflow}{return} super().parse\_known\_args(args, namespace)
+937 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1params_1_1ParlaiParser_adb1dec3d3433b40209bb2c24722df335}\label{classparlai_1_1core_1_1params_1_1ParlaiParser_adb1dec3d3433b40209bb2c24722df335}} 
 \index{parlai\+::core\+::params\+::\+Parlai\+Parser@{parlai\+::core\+::params\+::\+Parlai\+Parser}!print\+\_\+args@{print\+\_\+args}}
@@ -1203,32 +1236,32 @@ Definition at line 906 of file params.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1066 of file params.\+py.
+Definition at line 1084 of file params.\+py.
 
 
 \begin{DoxyCode}
-1066     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1talkthewalk_1_1run_aaaa6dd17c737d50be241dc6844bfc581}{print\_args}(self):
-1067         \textcolor{stringliteral}{"""}
-1068 \textcolor{stringliteral}{        Print out all the arguments in this parser.}
-1069 \textcolor{stringliteral}{        """}
-1070         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.opt:
-1071             self.parse\_args(print\_args=\textcolor{keyword}{False})
-1072         values = \{\}
-1073         \textcolor{keywordflow}{for} key, value \textcolor{keywordflow}{in} self.opt.items():
-1074             values[\hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(key)] = \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(value)
-1075         \textcolor{keywordflow}{for} group \textcolor{keywordflow}{in} self.\_action\_groups:
-1076             group\_dict = \{
-1077                 a.dest: getattr(self.args, a.dest, \textcolor{keywordtype}{None}) \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} group.\_group\_actions
-1078             \}
-1079             namespace = argparse.Namespace(**group\_dict)
-1080             count = 0
-1081             \textcolor{keywordflow}{for} key \textcolor{keywordflow}{in} sorted(namespace.\_\_dict\_\_):
-1082                 \textcolor{keywordflow}{if} key \textcolor{keywordflow}{in} values:
-1083                     \textcolor{keywordflow}{if} count == 0:
-1084                         print(\textcolor{stringliteral}{'[ '} + group.title + \textcolor{stringliteral}{': ] '})
-1085                     count += 1
-1086                     print(\textcolor{stringliteral}{'[  '} + key + \textcolor{stringliteral}{': '} + values[key] + \textcolor{stringliteral}{' ]'})
-1087 
+1084     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1scripts_1_1data__stats_a56b1df909ab791a73bd6c2d5d4776531}{print\_args}(self):
+1085         \textcolor{stringliteral}{"""}
+1086 \textcolor{stringliteral}{        Print out all the arguments in this parser.}
+1087 \textcolor{stringliteral}{        """}
+1088         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.opt:
+1089             self.parse\_args(print\_args=\textcolor{keyword}{False})
+1090         values = \{\}
+1091         \textcolor{keywordflow}{for} key, value \textcolor{keywordflow}{in} self.opt.items():
+1092             values[\hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(key)] = \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(value)
+1093         \textcolor{keywordflow}{for} group \textcolor{keywordflow}{in} self.\_action\_groups:
+1094             group\_dict = \{
+1095                 a.dest: getattr(self.args, a.dest, \textcolor{keywordtype}{None}) \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} group.\_group\_actions
+1096             \}
+1097             namespace = argparse.Namespace(**group\_dict)
+1098             count = 0
+1099             \textcolor{keywordflow}{for} key \textcolor{keywordflow}{in} sorted(namespace.\_\_dict\_\_):
+1100                 \textcolor{keywordflow}{if} key \textcolor{keywordflow}{in} values:
+1101                     \textcolor{keywordflow}{if} count == 0:
+1102                         print(\textcolor{stringliteral}{'[ '} + group.title + \textcolor{stringliteral}{': ] '})
+1103                     count += 1
+1104                     print(\textcolor{stringliteral}{'[  '} + key + \textcolor{stringliteral}{': '} + values[key] + \textcolor{stringliteral}{' ]'})
+1105 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1params_1_1ParlaiParser_a6f1dc42e86af57a7fc4ef9a4c68ca247}\label{classparlai_1_1core_1_1params_1_1ParlaiParser_a6f1dc42e86af57a7fc4ef9a4c68ca247}} 
 \index{parlai\+::core\+::params\+::\+Parlai\+Parser@{parlai\+::core\+::params\+::\+Parlai\+Parser}!set\+\_\+params@{set\+\_\+params}}
@@ -1240,18 +1273,18 @@ Definition at line 1066 of file params.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1088 of file params.\+py.
+Definition at line 1106 of file params.\+py.
 
 
 \begin{DoxyCode}
-1088     \textcolor{keyword}{def }set\_params(self, **kwargs):
-1089         \textcolor{stringliteral}{"""}
-1090 \textcolor{stringliteral}{        Set overridable kwargs.}
-1091 \textcolor{stringliteral}{        """}
-1092         self.set\_defaults(**kwargs)
-1093         \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} kwargs.items():
-1094             self.overridable[k] = v
-1095 
+1106     \textcolor{keyword}{def }set\_params(self, **kwargs):
+1107         \textcolor{stringliteral}{"""}
+1108 \textcolor{stringliteral}{        Set overridable kwargs.}
+1109 \textcolor{stringliteral}{        """}
+1110         self.set\_defaults(**kwargs)
+1111         \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} kwargs.items():
+1112             self.overridable[k] = v
+1113 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1params_1_1ParlaiParser_a3a75bdeee002ed5a50706f1a6c9797c8}\label{classparlai_1_1core_1_1params_1_1ParlaiParser_a3a75bdeee002ed5a50706f1a6c9797c8}} 
 \index{parlai\+::core\+::params\+::\+Parlai\+Parser@{parlai\+::core\+::params\+::\+Parlai\+Parser}!show\+\_\+advanced\+\_\+args@{show\+\_\+advanced\+\_\+args}}
@@ -1263,23 +1296,23 @@ Definition at line 1088 of file params.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1097 of file params.\+py.
+Definition at line 1115 of file params.\+py.
 
 
 \begin{DoxyCode}
-1097     \textcolor{keyword}{def }show\_advanced\_args(self):
-1098         \textcolor{stringliteral}{"""}
-1099 \textcolor{stringliteral}{        Check if we should show arguments marked as hidden.}
-1100 \textcolor{stringliteral}{        """}
-1101         \textcolor{keywordflow}{if} hasattr(self, \textcolor{stringliteral}{'\_show\_advanced\_args'}):
-1102             \textcolor{keywordflow}{return} self.\_show\_advanced\_args
-1103         known\_args, \_ = self.parse\_known\_args(nohelp=\textcolor{keyword}{True})
-1104         \textcolor{keywordflow}{if} hasattr(known\_args, \textcolor{stringliteral}{'show\_advanced\_args'}):
-1105             self.\_show\_advanced\_args = known\_args.show\_advanced\_args
-1106         \textcolor{keywordflow}{else}:
-1107             self.\_show\_advanced\_args = \textcolor{keyword}{True}
-1108         \textcolor{keywordflow}{return} self.\_show\_advanced\_args
-1109 
+1115     \textcolor{keyword}{def }show\_advanced\_args(self):
+1116         \textcolor{stringliteral}{"""}
+1117 \textcolor{stringliteral}{        Check if we should show arguments marked as hidden.}
+1118 \textcolor{stringliteral}{        """}
+1119         \textcolor{keywordflow}{if} hasattr(self, \textcolor{stringliteral}{'\_show\_advanced\_args'}):
+1120             \textcolor{keywordflow}{return} self.\_show\_advanced\_args
+1121         known\_args, \_ = self.parse\_known\_args(nohelp=\textcolor{keyword}{True})
+1122         \textcolor{keywordflow}{if} hasattr(known\_args, \textcolor{stringliteral}{'show\_advanced\_args'}):
+1123             self.\_show\_advanced\_args = known\_args.show\_advanced\_args
+1124         \textcolor{keywordflow}{else}:
+1125             self.\_show\_advanced\_args = \textcolor{keyword}{True}
+1126         \textcolor{keywordflow}{return} self.\_show\_advanced\_args
+1127 
 \end{DoxyCode}
 
 
@@ -1302,7 +1335,7 @@ Definition at line 244 of file params.\+py.
 
 
 
-Definition at line 1055 of file params.\+py.
+Definition at line 1073 of file params.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1params_1_1ParlaiParser_aa7c461e146b468d033fea1d1dcd92bcf}\label{classparlai_1_1core_1_1params_1_1ParlaiParser_aa7c461e146b468d033fea1d1dcd92bcf}} 
 \index{parlai\+::core\+::params\+::\+Parlai\+Parser@{parlai\+::core\+::params\+::\+Parlai\+Parser}!opt@{opt}}
@@ -1312,7 +1345,7 @@ Definition at line 1055 of file params.\+py.
 
 
 
-Definition at line 971 of file params.\+py.
+Definition at line 989 of file params.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1params_1_1ParlaiParser_a553d6c6c3576b217b0602befa0325e6a}\label{classparlai_1_1core_1_1params_1_1ParlaiParser_a553d6c6c3576b217b0602befa0325e6a}} 
 \index{parlai\+::core\+::params\+::\+Parlai\+Parser@{parlai\+::core\+::params\+::\+Parlai\+Parser}!overridable@{overridable}}

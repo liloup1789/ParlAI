@@ -2,8 +2,7 @@
 \label{classparlai_1_1agents_1_1transformer_1_1modules_1_1BasicAttention}\index{parlai.\+agents.\+transformer.\+modules.\+Basic\+Attention@{parlai.\+agents.\+transformer.\+modules.\+Basic\+Attention}}
 
 
-Inheritance diagram for parlai.\+agents.\+transformer.\+modules.\+Basic\+Attention\+:
-\nopagebreak
+Inheritance diagram for parlai.\+agents.\+transformer.\+modules.\+Basic\+Attention\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+agents.\+transformer.\+modules.\+Basic\+Attenti
 \end{figure}
 
 
-Collaboration diagram for parlai.\+agents.\+transformer.\+modules.\+Basic\+Attention\+:
-\nopagebreak
+Collaboration diagram for parlai.\+agents.\+transformer.\+modules.\+Basic\+Attention\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -49,7 +47,7 @@ def \hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1BasicAttention
 \end{DoxyVerb}
  
 
-Definition at line 882 of file modules.\+py.
+Definition at line 946 of file modules.\+py.
 
 
 
@@ -62,20 +60,20 @@ Definition at line 882 of file modules.\+py.
 
 
 
-Definition at line 887 of file modules.\+py.
+Definition at line 951 of file modules.\+py.
 
 
 \begin{DoxyCode}
-887     \textcolor{keyword}{def }\_\_init\_\_(self, dim=1, attn='cosine', residual=False, get\_weights=True):
-888         super().\_\_init\_\_()
-889         self.softmax = nn.Softmax(dim=dim)
-890         \textcolor{keywordflow}{if} attn == \textcolor{stringliteral}{'cosine'}:
-891             self.cosine = nn.CosineSimilarity(dim=dim)
-892         self.attn = attn
-893         self.dim = dim
-894         self.get\_weights = get\_weights
-895         self.residual = residual
-896 
+951     \textcolor{keyword}{def }\_\_init\_\_(self, dim=1, attn='cosine', residual=False, get\_weights=True):
+952         super().\_\_init\_\_()
+953         self.softmax = nn.Softmax(dim=dim)
+954         \textcolor{keywordflow}{if} attn == \textcolor{stringliteral}{'cosine'}:
+955             self.cosine = nn.CosineSimilarity(dim=dim)
+956         self.attn = attn
+957         self.dim = dim
+958         self.get\_weights = get\_weights
+959         self.residual = residual
+960 
 \end{DoxyCode}
 
 
@@ -99,52 +97,52 @@ Args:
 \end{DoxyVerb}
  
 
-Definition at line 897 of file modules.\+py.
+Definition at line 961 of file modules.\+py.
 
 
 \begin{DoxyCode}
-897     \textcolor{keyword}{def }forward(self, xs, ys, mask\_ys=None, values=None):
-898         \textcolor{stringliteral}{"""}
-899 \textcolor{stringliteral}{        Compute attention.}
-900 \textcolor{stringliteral}{}
-901 \textcolor{stringliteral}{        Attend over ys with query xs to obtain weights, then apply weights to}
-902 \textcolor{stringliteral}{        values (ys if yalues is None)}
-903 \textcolor{stringliteral}{}
-904 \textcolor{stringliteral}{        Args:}
-905 \textcolor{stringliteral}{            xs: B x query\_len x dim (queries)}
-906 \textcolor{stringliteral}{            ys: B x key\_len x dim (keys)}
-907 \textcolor{stringliteral}{            mask\_ys: B x key\_len (mask)}
-908 \textcolor{stringliteral}{            values: B x value\_len x dim (values); if None, default to ys}
-909 \textcolor{stringliteral}{        """}
-910         bsz = xs.size(0)
-911         y\_len = ys.size(1)
-912         x\_len = xs.size(1)
-913         \textcolor{keywordflow}{if} self.attn == \textcolor{stringliteral}{'cosine'}:
-914             l1 = self.cosine(xs, ys).unsqueeze(self.dim - 1)
-915         \textcolor{keywordflow}{else}:
-916             l1 = torch.bmm(xs, ys.transpose(1, 2))
-917             \textcolor{keywordflow}{if} self.attn == \textcolor{stringliteral}{'sqrt'}:
-918                 d\_k = ys.size(-1)
-919                 l1 = l1 / math.sqrt(d\_k)
-920         \textcolor{keywordflow}{if} mask\_ys \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-921             attn\_mask = (mask\_ys == 0).view(bsz, 1, y\_len)
-922             attn\_mask = attn\_mask.repeat(1, x\_len, 1)
-923             l1.masked\_fill\_(attn\_mask, -\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(\textcolor{stringliteral}{'inf'}))
-924         l2 = self.softmax(l1)
-925         \textcolor{keywordflow}{if} values \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-926             values = ys
-927         lhs\_emb = torch.bmm(l2, values)
-928 
-929         \textcolor{comment}{# # add back the query}
-930         \textcolor{keywordflow}{if} self.residual:
-931             lhs\_emb = lhs\_emb.add(xs)
-932 
-933         \textcolor{keywordflow}{if} self.get\_weights:
-934             \textcolor{keywordflow}{return} lhs\_emb.squeeze(self.dim - 1), l2
-935         \textcolor{keywordflow}{else}:
-936             \textcolor{keywordflow}{return} lhs\_emb.squeeze(self.dim - 1)
-937 
-938 
+961     \textcolor{keyword}{def }forward(self, xs, ys, mask\_ys=None, values=None):
+962         \textcolor{stringliteral}{"""}
+963 \textcolor{stringliteral}{        Compute attention.}
+964 \textcolor{stringliteral}{}
+965 \textcolor{stringliteral}{        Attend over ys with query xs to obtain weights, then apply weights to}
+966 \textcolor{stringliteral}{        values (ys if yalues is None)}
+967 \textcolor{stringliteral}{}
+968 \textcolor{stringliteral}{        Args:}
+969 \textcolor{stringliteral}{            xs: B x query\_len x dim (queries)}
+970 \textcolor{stringliteral}{            ys: B x key\_len x dim (keys)}
+971 \textcolor{stringliteral}{            mask\_ys: B x key\_len (mask)}
+972 \textcolor{stringliteral}{            values: B x value\_len x dim (values); if None, default to ys}
+973 \textcolor{stringliteral}{        """}
+974         bsz = xs.size(0)
+975         y\_len = ys.size(1)
+976         x\_len = xs.size(1)
+977         \textcolor{keywordflow}{if} self.attn == \textcolor{stringliteral}{'cosine'}:
+978             l1 = self.cosine(xs, ys).unsqueeze(self.dim - 1)
+979         \textcolor{keywordflow}{else}:
+980             l1 = torch.bmm(xs, ys.transpose(1, 2))
+981             \textcolor{keywordflow}{if} self.attn == \textcolor{stringliteral}{'sqrt'}:
+982                 d\_k = ys.size(-1)
+983                 l1 = l1 / math.sqrt(d\_k)
+984         \textcolor{keywordflow}{if} mask\_ys \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+985             attn\_mask = (mask\_ys == 0).view(bsz, 1, y\_len)
+986             attn\_mask = attn\_mask.repeat(1, x\_len, 1)
+987             l1.masked\_fill\_(attn\_mask, -\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(\textcolor{stringliteral}{'inf'}))
+988         l2 = self.softmax(l1)
+989         \textcolor{keywordflow}{if} values \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+990             values = ys
+991         lhs\_emb = torch.bmm(l2, values)
+992 
+993         \textcolor{comment}{# # add back the query}
+994         \textcolor{keywordflow}{if} self.residual:
+995             lhs\_emb = lhs\_emb.add(xs)
+996 
+997         \textcolor{keywordflow}{if} self.get\_weights:
+998             \textcolor{keywordflow}{return} lhs\_emb.squeeze(self.dim - 1), l2
+999         \textcolor{keywordflow}{else}:
+1000             \textcolor{keywordflow}{return} lhs\_emb.squeeze(self.dim - 1)
+1001 
+1002 
 \end{DoxyCode}
 
 
@@ -157,7 +155,7 @@ Definition at line 897 of file modules.\+py.
 
 
 
-Definition at line 892 of file modules.\+py.
+Definition at line 956 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1BasicAttention_abed26e42fa2293f14cbbcf51c090794c}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1BasicAttention_abed26e42fa2293f14cbbcf51c090794c}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Basic\+Attention@{parlai\+::agents\+::transformer\+::modules\+::\+Basic\+Attention}!cosine@{cosine}}
@@ -167,7 +165,7 @@ Definition at line 892 of file modules.\+py.
 
 
 
-Definition at line 891 of file modules.\+py.
+Definition at line 955 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1BasicAttention_ad0beb8f8b3e4514139b08555cf739d55}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1BasicAttention_ad0beb8f8b3e4514139b08555cf739d55}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Basic\+Attention@{parlai\+::agents\+::transformer\+::modules\+::\+Basic\+Attention}!dim@{dim}}
@@ -177,7 +175,7 @@ Definition at line 891 of file modules.\+py.
 
 
 
-Definition at line 893 of file modules.\+py.
+Definition at line 957 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1BasicAttention_a98d54b38fac0a88d46eba7adf6ac542c}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1BasicAttention_a98d54b38fac0a88d46eba7adf6ac542c}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Basic\+Attention@{parlai\+::agents\+::transformer\+::modules\+::\+Basic\+Attention}!get\+\_\+weights@{get\+\_\+weights}}
@@ -187,7 +185,7 @@ Definition at line 893 of file modules.\+py.
 
 
 
-Definition at line 894 of file modules.\+py.
+Definition at line 958 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1BasicAttention_a98c0f263db25cf305c333e04f8a0843d}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1BasicAttention_a98c0f263db25cf305c333e04f8a0843d}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Basic\+Attention@{parlai\+::agents\+::transformer\+::modules\+::\+Basic\+Attention}!residual@{residual}}
@@ -197,7 +195,7 @@ Definition at line 894 of file modules.\+py.
 
 
 
-Definition at line 895 of file modules.\+py.
+Definition at line 959 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1BasicAttention_a669fa3f4cd988703371fc127a4943f07}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1BasicAttention_a669fa3f4cd988703371fc127a4943f07}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Basic\+Attention@{parlai\+::agents\+::transformer\+::modules\+::\+Basic\+Attention}!softmax@{softmax}}
@@ -207,7 +205,7 @@ Definition at line 895 of file modules.\+py.
 
 
 
-Definition at line 889 of file modules.\+py.
+Definition at line 953 of file modules.\+py.
 
 
 

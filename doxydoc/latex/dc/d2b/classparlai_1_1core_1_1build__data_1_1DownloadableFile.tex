@@ -49,7 +49,7 @@ An object of this class needs to be created with:
 \end{DoxyVerb}
  
 
-Definition at line 27 of file build\+\_\+data.\+py.
+Definition at line 31 of file build\+\_\+data.\+py.
 
 
 
@@ -62,17 +62,17 @@ Definition at line 27 of file build\+\_\+data.\+py.
 
 
 
-Definition at line 50 of file build\+\_\+data.\+py.
+Definition at line 54 of file build\+\_\+data.\+py.
 
 
 \begin{DoxyCode}
-50     \textcolor{keyword}{def }\_\_init\_\_(self, url, file\_name, hashcode, zipped=True, from\_google=False):
-51         self.url = url
-52         self.file\_name = file\_name
-53         self.hashcode = hashcode
-54         self.zipped = zipped
-55         self.from\_google = from\_google
-56 
+54     \textcolor{keyword}{def }\_\_init\_\_(self, url, file\_name, hashcode, zipped=True, from\_google=False):
+55         self.url = url
+56         self.file\_name = file\_name
+57         self.hashcode = hashcode
+58         self.zipped = zipped
+59         self.from\_google = from\_google
+60 
 \end{DoxyCode}
 
 
@@ -87,30 +87,30 @@ Definition at line 50 of file build\+\_\+data.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 87 of file build\+\_\+data.\+py.
+Definition at line 91 of file build\+\_\+data.\+py.
 
 
 \begin{DoxyCode}
-87     \textcolor{keyword}{def }check\_header(self):
-88         \textcolor{stringliteral}{"""}
-89 \textcolor{stringliteral}{        Performs a HEAD request to check if the URL / Google Drive ID is live.}
-90 \textcolor{stringliteral}{        """}
-91         session = requests.Session()
-92         \textcolor{keywordflow}{if} self.from\_google:
-93             URL = \textcolor{stringliteral}{'https://docs.google.com/uc?export=download'}
-94             response = session.head(URL, params=\{\textcolor{stringliteral}{'id'}: self.url\}, stream=\textcolor{keyword}{True})
-95         \textcolor{keywordflow}{else}:
-96             headers = \{
-97                 \textcolor{stringliteral}{'User-Agent'}: \textcolor{stringliteral}{'Mozilla/5.0 (Macintosh; Intel Mac OS X 10\_13\_6) AppleWebKit/537.36 (KHTML,
+91     \textcolor{keyword}{def }check\_header(self):
+92         \textcolor{stringliteral}{"""}
+93 \textcolor{stringliteral}{        Performs a HEAD request to check if the URL / Google Drive ID is live.}
+94 \textcolor{stringliteral}{        """}
+95         session = requests.Session()
+96         \textcolor{keywordflow}{if} self.from\_google:
+97             URL = \textcolor{stringliteral}{'https://docs.google.com/uc?export=download'}
+98             response = session.head(URL, params=\{\textcolor{stringliteral}{'id'}: self.url\}, stream=\textcolor{keyword}{True})
+99         \textcolor{keywordflow}{else}:
+100             headers = \{
+101                 \textcolor{stringliteral}{'User-Agent'}: \textcolor{stringliteral}{'Mozilla/5.0 (Macintosh; Intel Mac OS X 10\_13\_6) AppleWebKit/537.36 (KHTML,
        like Gecko) Chrome/77.0.3865.90 Safari/537.36'}
-98             \}
-99             response = session.head(self.url, allow\_redirects=\textcolor{keyword}{True}, headers=headers)
-100         status = response.status\_code
-101         session.close()
-102 
-103         \textcolor{keyword}{assert} status == 200
-104 
-105 
+102             \}
+103             response = session.head(self.url, allow\_redirects=\textcolor{keyword}{True}, headers=headers)
+104         status = response.status\_code
+105         session.close()
+106 
+107         \textcolor{keyword}{assert} status == 200
+108 
+109 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1build__data_1_1DownloadableFile_aa69730e15f7f4a535e01e126ceb87f9d}\label{classparlai_1_1core_1_1build__data_1_1DownloadableFile_aa69730e15f7f4a535e01e126ceb87f9d}} 
 \index{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}!checksum@{checksum}}
@@ -124,29 +124,29 @@ Definition at line 87 of file build\+\_\+data.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 57 of file build\+\_\+data.\+py.
+Definition at line 61 of file build\+\_\+data.\+py.
 
 
 \begin{DoxyCode}
-57     \textcolor{keyword}{def }checksum(self, dpath):
-58         \textcolor{stringliteral}{"""}
-59 \textcolor{stringliteral}{        Checksum on a given file.}
-60 \textcolor{stringliteral}{}
-61 \textcolor{stringliteral}{        :param dpath: path to the downloaded file.}
-62 \textcolor{stringliteral}{        """}
-63         sha256\_hash = hashlib.sha256()
-64         with open(os.path.join(dpath, self.file\_name), \textcolor{stringliteral}{"rb"}) \textcolor{keyword}{as} f:
-65             \textcolor{keywordflow}{for} byte\_block \textcolor{keywordflow}{in} iter(\textcolor{keyword}{lambda}: f.read(65536), b\textcolor{stringliteral}{""}):
-66                 sha256\_hash.update(byte\_block)
-67             \textcolor{keywordflow}{if} sha256\_hash.hexdigest() != self.hashcode:
-68                 \textcolor{comment}{# remove\_dir(dpath)}
-69                 \textcolor{keywordflow}{raise} AssertionError(
-70                     f\textcolor{stringliteral}{"[ Checksum for \{self.file\_name\} from \(\backslash\)n\{self.url\}\(\backslash\)n"}
-71                     \textcolor{stringliteral}{"does not match the expected checksum. Please try again. ]"}
-72                 )
-73             \textcolor{keywordflow}{else}:
-74                 print(\textcolor{stringliteral}{"[ Checksum Successful ]"})
-75 
+61     \textcolor{keyword}{def }checksum(self, dpath):
+62         \textcolor{stringliteral}{"""}
+63 \textcolor{stringliteral}{        Checksum on a given file.}
+64 \textcolor{stringliteral}{}
+65 \textcolor{stringliteral}{        :param dpath: path to the downloaded file.}
+66 \textcolor{stringliteral}{        """}
+67         sha256\_hash = hashlib.sha256()
+68         with open(os.path.join(dpath, self.file\_name), \textcolor{stringliteral}{"rb"}) \textcolor{keyword}{as} f:
+69             \textcolor{keywordflow}{for} byte\_block \textcolor{keywordflow}{in} iter(\textcolor{keyword}{lambda}: f.read(65536), b\textcolor{stringliteral}{""}):
+70                 sha256\_hash.update(byte\_block)
+71             \textcolor{keywordflow}{if} sha256\_hash.hexdigest() != self.hashcode:
+72                 \textcolor{comment}{# remove\_dir(dpath)}
+73                 \textcolor{keywordflow}{raise} AssertionError(
+74                     f\textcolor{stringliteral}{"[ Checksum for \{self.file\_name\} from \(\backslash\)n\{self.url\}\(\backslash\)n"}
+75                     \textcolor{stringliteral}{"does not match the expected checksum. Please try again. ]"}
+76                 )
+77             \textcolor{keywordflow}{else}:
+78                 print(\textcolor{stringliteral}{"[ Checksum Successful ]"})
+79 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a2d7ae322b78f070c78050cbb41636bd4}\label{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a2d7ae322b78f070c78050cbb41636bd4}} 
 \index{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}!download\+\_\+file@{download\+\_\+file}}
@@ -156,22 +156,22 @@ Definition at line 57 of file build\+\_\+data.\+py.
 
 
 
-Definition at line 76 of file build\+\_\+data.\+py.
+Definition at line 80 of file build\+\_\+data.\+py.
 
 
 \begin{DoxyCode}
-76     \textcolor{keyword}{def }download\_file(self, dpath):
-77         \textcolor{keywordflow}{if} self.from\_google:
-78             \hyperlink{namespaceparlai_1_1core_1_1build__data_ac9224da5c4e4ce9d1f4ab05e837c1f45}{download\_from\_google\_drive}(self.url, os.path.join(dpath, self.
+80     \textcolor{keyword}{def }download\_file(self, dpath):
+81         \textcolor{keywordflow}{if} self.from\_google:
+82             \hyperlink{namespaceparlai_1_1core_1_1build__data_ac9224da5c4e4ce9d1f4ab05e837c1f45}{download\_from\_google\_drive}(self.url, os.path.join(dpath, self.
       file\_name))
-79         \textcolor{keywordflow}{else}:
-80             \hyperlink{namespaceparlai_1_1core_1_1build__data_ab74f0e428f05e5d91fa93c8afb367622}{download}(self.url, dpath, self.file\_name)
-81 
-82         self.checksum(dpath)
-83 
-84         \textcolor{keywordflow}{if} self.zipped:
-85             \hyperlink{namespaceparlai_1_1core_1_1build__data_a4d33f97932682a8513904022d852f3cf}{untar}(dpath, self.file\_name)
-86 
+83         \textcolor{keywordflow}{else}:
+84             \hyperlink{namespaceparlai_1_1core_1_1build__data_ab74f0e428f05e5d91fa93c8afb367622}{download}(self.url, dpath, self.file\_name)
+85 
+86         self.checksum(dpath)
+87 
+88         \textcolor{keywordflow}{if} self.zipped:
+89             \hyperlink{namespaceparlai_1_1core_1_1build__data_a4d33f97932682a8513904022d852f3cf}{untar}(dpath, self.file\_name)
+90 
 \end{DoxyCode}
 
 
@@ -184,7 +184,7 @@ Definition at line 76 of file build\+\_\+data.\+py.
 
 
 
-Definition at line 52 of file build\+\_\+data.\+py.
+Definition at line 56 of file build\+\_\+data.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a7217a744f70ba99fac9306eea01c5a08}\label{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a7217a744f70ba99fac9306eea01c5a08}} 
 \index{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}!from\+\_\+google@{from\+\_\+google}}
@@ -194,7 +194,7 @@ Definition at line 52 of file build\+\_\+data.\+py.
 
 
 
-Definition at line 55 of file build\+\_\+data.\+py.
+Definition at line 59 of file build\+\_\+data.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1build__data_1_1DownloadableFile_aa161aa3a965714db66528f7af11a1613}\label{classparlai_1_1core_1_1build__data_1_1DownloadableFile_aa161aa3a965714db66528f7af11a1613}} 
 \index{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}!hashcode@{hashcode}}
@@ -204,7 +204,7 @@ Definition at line 55 of file build\+\_\+data.\+py.
 
 
 
-Definition at line 53 of file build\+\_\+data.\+py.
+Definition at line 57 of file build\+\_\+data.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1build__data_1_1DownloadableFile_acb91fb3fd6168d4188ac901ed8c2453a}\label{classparlai_1_1core_1_1build__data_1_1DownloadableFile_acb91fb3fd6168d4188ac901ed8c2453a}} 
 \index{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}!url@{url}}
@@ -214,7 +214,7 @@ Definition at line 53 of file build\+\_\+data.\+py.
 
 
 
-Definition at line 51 of file build\+\_\+data.\+py.
+Definition at line 55 of file build\+\_\+data.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a07640d0af013bbecf9db015754b66dbe}\label{classparlai_1_1core_1_1build__data_1_1DownloadableFile_a07640d0af013bbecf9db015754b66dbe}} 
 \index{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File@{parlai\+::core\+::build\+\_\+data\+::\+Downloadable\+File}!zipped@{zipped}}
@@ -224,7 +224,7 @@ Definition at line 51 of file build\+\_\+data.\+py.
 
 
 
-Definition at line 54 of file build\+\_\+data.\+py.
+Definition at line 58 of file build\+\_\+data.\+py.
 
 
 

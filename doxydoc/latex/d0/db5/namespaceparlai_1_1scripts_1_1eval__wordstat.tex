@@ -3,7 +3,7 @@
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-def \hyperlink{namespaceparlai_1_1scripts_1_1eval__wordstat_af41cd95533433b93e7383bc6dab04963}{setup\+\_\+args} (\hyperlink{namespaceparlai_1_1scripts_1_1eval__wordstat_a78304b921cd79a0fe7c659ed87bad685}{parser}=None)
+def \hyperlink{namespaceparlai_1_1scripts_1_1eval__wordstat_af41cd95533433b93e7383bc6dab04963}{setup\+\_\+args} (\hyperlink{namespaceparlai_1_1scripts_1_1eval__wordstat_ac40c7c216653465e991454ad0f2f7925}{parser}=None)
 \item 
 def \hyperlink{namespaceparlai_1_1scripts_1_1eval__wordstat_ab2d96b5ac07c988934a0320739fc3c60}{get\+\_\+word\+\_\+stats} (text, agent\+\_\+dict, bins=(0, 100, 1000, 100000))
 \item 
@@ -12,7 +12,9 @@ def \hyperlink{namespaceparlai_1_1scripts_1_1eval__wordstat_abdad0c3df5ffa1768c0
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-def \hyperlink{namespaceparlai_1_1scripts_1_1eval__wordstat_a78304b921cd79a0fe7c659ed87bad685}{parser} = \hyperlink{namespaceparlai_1_1scripts_1_1eval__wordstat_af41cd95533433b93e7383bc6dab04963}{setup\+\_\+args}()
+\hyperlink{namespaceparlai_1_1scripts_1_1eval__wordstat_ac40c7c216653465e991454ad0f2f7925}{parser}
+\item 
+\hyperlink{namespaceparlai_1_1scripts_1_1eval__wordstat_a743654c019524601e6d80586405ade64}{print\+\_\+args}
 \item 
 \hyperlink{namespaceparlai_1_1scripts_1_1eval__wordstat_a3425702146738eb147346873ecda1983}{print\+\_\+parser}
 \end{DoxyCompactItemize}
@@ -48,8 +50,8 @@ Definition at line 108 of file eval\+\_\+wordstat.\+py.
 116     random.seed(42)
 117 
 118     \textcolor{comment}{# Create model and assign it to the specified task}
-119     agent = \hyperlink{namespaceparlai_1_1core_1_1agents_ad0d54074d4bcc148bb415ab5515a53b5}{create\_agent}(opt, requireModelExists=\textcolor{keyword}{True})
-120     world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(opt, agent)
+119     agent = \hyperlink{namespaceparlai_1_1core_1_1agents_a00d77a7e26fb89e8bd900f7b2a02982a}{create\_agent}(opt, requireModelExists=\textcolor{keyword}{True})
+120     world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a79969c7ba76d4b3c500f5bb776444dc6}{create\_task}(opt, agent)
 121 
 122     \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'external\_dict'}):
 123         print(\textcolor{stringliteral}{'[ Using external dictionary from: \{\} ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(opt[\textcolor{stringliteral}{'external\_dict'}]))
@@ -80,128 +82,134 @@ Definition at line 108 of file eval\+\_\+wordstat.\+py.
 148         \textcolor{stringliteral}{'pred\_list'}: [],
 149         \textcolor{stringliteral}{'pure\_pred\_list'}: [],
 150         \textcolor{stringliteral}{'context\_list'}: [],
-151     \}
-152     bins = [\hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(i) \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} opt[\textcolor{stringliteral}{'freq\_bins'}].split(\textcolor{stringliteral}{','})]
-153 
-154     \textcolor{keyword}{def }process\_prediction(prediction, word\_statistics):
-155         word\_statistics[\textcolor{stringliteral}{'pred\_list'}].append(\hyperlink{namespaceparlai_1_1core_1_1metrics_ae7769a6b628f41081e0f43043d52031a}{normalize\_answer}(prediction))
-156         freqs, \_cnt, wlength, clength = \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_af8f7aeddab4a5c7f0a5597bdb09f40ae}{get\_word\_stats}(
-157             prediction, dictionary, bins=bins
-158         )
-159         word\_statistics[\textcolor{stringliteral}{'word\_cnt'}] += \_cnt
-160         word\_statistics[\textcolor{stringliteral}{'mean\_wlength'}].append(wlength)
-161         word\_statistics[\textcolor{stringliteral}{'mean\_clength'}].append(clength)
-162         word\_statistics[\textcolor{stringliteral}{'freqs\_cnt'}] += Counter(freqs)
-163         \textcolor{keywordflow}{return} word\_statistics
-164 
-165     \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} world.epoch\_done():
-166         world.parley()
-167         \textcolor{keywordflow}{if} batch\_size == 1:
-168             cnt += 1
-169             prediction = world.acts[-1][\textcolor{stringliteral}{'text'}]
-170             word\_statistics[\textcolor{stringliteral}{'context\_list'}].append(world.acts[0][\textcolor{stringliteral}{'text'}])
-171             word\_statistics[\textcolor{stringliteral}{'pure\_pred\_list'}].append(prediction)
-172             word\_statistics = process\_prediction(prediction, word\_statistics)
-173         \textcolor{keywordflow}{else}:
-174             \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} world.worlds:
-175                 \textcolor{keywordflow}{try}:
-176                     prediction = w.acts[-1][\textcolor{stringliteral}{'text'}]
-177                     word\_statistics[\textcolor{stringliteral}{'context\_list'}].append(w.acts[0][\textcolor{stringliteral}{'text'}])
-178                     word\_statistics[\textcolor{stringliteral}{'pure\_pred\_list'}].append(prediction)
-179                 \textcolor{keywordflow}{except} IndexError:
-180                     \textcolor{keywordflow}{continue}
-181                 cnt += 1
-182                 word\_statistics = process\_prediction(prediction, word\_statistics)
-183 
-184         \textcolor{keywordflow}{if} log\_time.time() > log\_every\_n\_secs:
-185             report = world.report()
-186             text, report = log\_time.log(report[\textcolor{stringliteral}{'exs'}], world.num\_examples(), report)
-187             print(text)
-188             stat\_str = \textcolor{stringliteral}{'total\_words: \{\}, '}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(word\_statistics[\textcolor{stringliteral}{'word\_cnt'}])
-189             stat\_str += \textcolor{stringliteral}{', '}.join(
-190                 [
-191                     \textcolor{stringliteral}{'<\{\}:\{\} (\{:.\{prec\}f\}%)'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
-192                         b,
-193                         word\_statistics[\textcolor{stringliteral}{'freqs\_cnt'}].get(b, 0),
-194                         (
-195                             word\_statistics[\textcolor{stringliteral}{'freqs\_cnt'}].get(b, 0)
-196                             / word\_statistics[\textcolor{stringliteral}{'word\_cnt'}]
-197                         )
-198                         * 100,
-199                         prec=2,
-200                     )
-201                     \textcolor{keywordflow}{for} b \textcolor{keywordflow}{in} bins
-202                 ]
-203             )
-204             print(
-205                 \textcolor{stringliteral}{"Word statistics: \{\}, avg\_word\_length: \{:.\{prec\}f\}, "}
-206                 \textcolor{stringliteral}{"avg\_char\_length: \{:.\{prec\}f\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
-207                     stat\_str,
-208                     numpy.array(word\_statistics[\textcolor{stringliteral}{'mean\_wlength'}]).mean(),
-209                     numpy.array(word\_statistics[\textcolor{stringliteral}{'mean\_clength'}]).mean(),
-210                     prec=2,
-211                 )
-212             )
-213         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'num\_examples'}] > 0 \textcolor{keywordflow}{and} cnt >= opt[\textcolor{stringliteral}{'num\_examples'}]:
-214             \textcolor{keywordflow}{break}
-215     \textcolor{keywordflow}{if} world.epoch\_done():
-216         print(\textcolor{stringliteral}{"EPOCH DONE"})
-217 
-218     \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'compute\_unique'}] \textcolor{keywordflow}{is} \textcolor{keyword}{True}:
-219         unique\_list = []
-220         cntr = Counter(word\_statistics[\textcolor{stringliteral}{'pred\_list'}])
-221         \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} cntr.items():
-222             \textcolor{keywordflow}{if} v == 1:
-223                 unique\_list.append(k)
-224         print(
-225             \textcolor{stringliteral}{"Unique responses: \{:.\{prec\}f\}%"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
-226                 len(unique\_list) / len(word\_statistics[\textcolor{stringliteral}{'pred\_list'}]) * 100, prec=2
-227             )
-228         )
-229 
-230     \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'dump\_predictions\_path'}] \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-231         with open(opt[\textcolor{stringliteral}{'dump\_predictions\_path'}], \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} f:
-232             f.writelines(
-233                 [
-234                     \textcolor{stringliteral}{'CONTEXT: \{\}\(\backslash\)nPREDICTION:\{\}\(\backslash\)n\(\backslash\)n'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(c, p)
-235                     \textcolor{keywordflow}{for} c, p \textcolor{keywordflow}{in} zip(
-236                         word\_statistics[\textcolor{stringliteral}{'context\_list'}],
-237                         word\_statistics[\textcolor{stringliteral}{'pure\_pred\_list'}],
-238                     )
-239                 ]
-240             )
-241         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'compute\_unique'}] \textcolor{keywordflow}{is} \textcolor{keyword}{True}:
-242             with open(opt[\textcolor{stringliteral}{'dump\_predictions\_path'}] + \textcolor{stringliteral}{'\_unique'}, \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} f:
-243                 f.writelines([\textcolor{stringliteral}{'\{\}\(\backslash\)n'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(i) \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} unique\_list])
-244 
-245     stat\_str = \textcolor{stringliteral}{'total\_words: \{\}, '}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(word\_statistics[\textcolor{stringliteral}{'word\_cnt'}])
-246     stat\_str += \textcolor{stringliteral}{', '}.join(
-247         [
-248             \textcolor{stringliteral}{'<\{\}:\{\} (\{:.\{prec\}f\}%)'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
-249                 b,
-250                 word\_statistics[\textcolor{stringliteral}{'freqs\_cnt'}].get(b, 0),
-251                 (word\_statistics[\textcolor{stringliteral}{'freqs\_cnt'}].get(b, 0) / word\_statistics[\textcolor{stringliteral}{'word\_cnt'}])
-252                 * 100,
-253                 prec=2,
-254             )
-255             \textcolor{keywordflow}{for} b \textcolor{keywordflow}{in} bins
-256         ]
-257     )
-258     print(
-259         \textcolor{stringliteral}{"Word statistics: \{\}, avg\_word\_length: \{:.\{prec\}f\}, "}
-260         \textcolor{stringliteral}{"avg\_char\_length: \{:.\{prec\}f\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
-261             stat\_str,
-262             numpy.array(word\_statistics[\textcolor{stringliteral}{'mean\_wlength'}]).mean(),
-263             numpy.array(word\_statistics[\textcolor{stringliteral}{'mean\_clength'}]).mean(),
-264             prec=2,
-265         )
-266     )
-267 
-268     report = world.report()
-269     print(report)
-270     \textcolor{keywordflow}{return} report
-271 
-272 
+151         \textcolor{stringliteral}{'unique\_words'}: set(),
+152     \}
+153     bins = [\hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(i) \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} opt[\textcolor{stringliteral}{'freq\_bins'}].split(\textcolor{stringliteral}{','})]
+154 
+155     \textcolor{keyword}{def }process\_prediction(prediction, word\_statistics):
+156         normalized = \hyperlink{namespaceparlai_1_1core_1_1metrics_ae7769a6b628f41081e0f43043d52031a}{normalize\_answer}(prediction)
+157         word\_statistics[\textcolor{stringliteral}{'pred\_list'}].append(normalized)
+158         freqs, \_cnt, wlength, clength = \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1eval__wordstat_af8f7aeddab4a5c7f0a5597bdb09f40ae}{get\_word\_stats}(
+159             prediction, dictionary, bins=bins
+160         )
+161         word\_statistics[\textcolor{stringliteral}{'word\_cnt'}] += \_cnt
+162         word\_statistics[\textcolor{stringliteral}{'mean\_wlength'}].append(wlength)
+163         word\_statistics[\textcolor{stringliteral}{'mean\_clength'}].append(clength)
+164         word\_statistics[\textcolor{stringliteral}{'freqs\_cnt'}] += Counter(freqs)
+165         word\_statistics[\textcolor{stringliteral}{'unique\_words'}] |= set(normalized.split(\textcolor{stringliteral}{" "}))
+166         \textcolor{keywordflow}{return} word\_statistics
+167 
+168     \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} world.epoch\_done():
+169         world.parley()
+170         \textcolor{keywordflow}{if} batch\_size == 1:
+171             cnt += 1
+172             prediction = world.acts[-1][\textcolor{stringliteral}{'text'}]
+173             word\_statistics[\textcolor{stringliteral}{'context\_list'}].append(world.acts[0][\textcolor{stringliteral}{'text'}])
+174             word\_statistics[\textcolor{stringliteral}{'pure\_pred\_list'}].append(prediction)
+175             word\_statistics = process\_prediction(prediction, word\_statistics)
+176         \textcolor{keywordflow}{else}:
+177             \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} world.worlds:
+178                 \textcolor{keywordflow}{try}:
+179                     \textcolor{keywordflow}{if} \textcolor{stringliteral}{'text'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} w.acts[-1]:
+180                         \textcolor{keywordflow}{continue}
+181                     prediction = w.acts[-1][\textcolor{stringliteral}{'text'}]
+182                     word\_statistics[\textcolor{stringliteral}{'context\_list'}].append(w.acts[0][\textcolor{stringliteral}{'text'}])
+183                     word\_statistics[\textcolor{stringliteral}{'pure\_pred\_list'}].append(prediction)
+184                 \textcolor{keywordflow}{except} IndexError:
+185                     \textcolor{keywordflow}{continue}
+186                 cnt += 1
+187                 word\_statistics = process\_prediction(prediction, word\_statistics)
+188 
+189         \textcolor{keywordflow}{if} log\_time.time() > log\_every\_n\_secs:
+190             report = world.report()
+191             text, report = log\_time.log(report[\textcolor{stringliteral}{'exs'}], world.num\_examples(), report)
+192             print(text)
+193             stat\_str = \textcolor{stringliteral}{'total\_words: \{\}, '}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(word\_statistics[\textcolor{stringliteral}{'word\_cnt'}])
+194             stat\_str += \textcolor{stringliteral}{', '}.join(
+195                 [
+196                     \textcolor{stringliteral}{'<\{\}:\{\} (\{:.\{prec\}f\}%)'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+197                         b,
+198                         word\_statistics[\textcolor{stringliteral}{'freqs\_cnt'}].get(b, 0),
+199                         (
+200                             word\_statistics[\textcolor{stringliteral}{'freqs\_cnt'}].get(b, 0)
+201                             / word\_statistics[\textcolor{stringliteral}{'word\_cnt'}]
+202                         )
+203                         * 100,
+204                         prec=2,
+205                     )
+206                     \textcolor{keywordflow}{for} b \textcolor{keywordflow}{in} bins
+207                 ]
+208             )
+209             print(
+210                 \textcolor{stringliteral}{"Word statistics: \{\}, avg\_word\_length: \{:.\{prec\}f\}, "}
+211                 \textcolor{stringliteral}{"avg\_char\_length: \{:.\{prec\}f\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+212                     stat\_str,
+213                     numpy.array(word\_statistics[\textcolor{stringliteral}{'mean\_wlength'}]).mean(),
+214                     numpy.array(word\_statistics[\textcolor{stringliteral}{'mean\_clength'}]).mean(),
+215                     prec=2,
+216                 )
+217             )
+218         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'num\_examples'}] > 0 \textcolor{keywordflow}{and} cnt >= opt[\textcolor{stringliteral}{'num\_examples'}]:
+219             \textcolor{keywordflow}{break}
+220     \textcolor{keywordflow}{if} world.epoch\_done():
+221         print(\textcolor{stringliteral}{"EPOCH DONE"})
+222 
+223     \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'compute\_unique'}] \textcolor{keywordflow}{is} \textcolor{keyword}{True}:
+224         unique\_list = []
+225         cntr = Counter(word\_statistics[\textcolor{stringliteral}{'pred\_list'}])
+226         \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} cntr.items():
+227             \textcolor{keywordflow}{if} v == 1:
+228                 unique\_list.append(k)
+229         print(
+230             \textcolor{stringliteral}{"Unique responses: \{:.\{prec\}f\}%"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+231                 len(unique\_list) / len(word\_statistics[\textcolor{stringliteral}{'pred\_list'}]) * 100, prec=2
+232             )
+233         )
+234     print(\textcolor{stringliteral}{"Total unique tokens:"}, len(word\_statistics[\textcolor{stringliteral}{'unique\_words'}]))
+235 
+236     \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'dump\_predictions\_path'}] \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+237         with open(opt[\textcolor{stringliteral}{'dump\_predictions\_path'}], \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} f:
+238             f.writelines(
+239                 [
+240                     \textcolor{stringliteral}{'CONTEXT: \{\}\(\backslash\)nPREDICTION:\{\}\(\backslash\)n\(\backslash\)n'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(c, p)
+241                     \textcolor{keywordflow}{for} c, p \textcolor{keywordflow}{in} zip(
+242                         word\_statistics[\textcolor{stringliteral}{'context\_list'}],
+243                         word\_statistics[\textcolor{stringliteral}{'pure\_pred\_list'}],
+244                     )
+245                 ]
+246             )
+247         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'compute\_unique'}] \textcolor{keywordflow}{is} \textcolor{keyword}{True}:
+248             with open(opt[\textcolor{stringliteral}{'dump\_predictions\_path'}] + \textcolor{stringliteral}{'\_unique'}, \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} f:
+249                 f.writelines([\textcolor{stringliteral}{'\{\}\(\backslash\)n'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(i) \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} unique\_list])
+250 
+251     stat\_str = \textcolor{stringliteral}{'total\_words: \{\}, '}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(word\_statistics[\textcolor{stringliteral}{'word\_cnt'}])
+252     stat\_str += \textcolor{stringliteral}{', '}.join(
+253         [
+254             \textcolor{stringliteral}{'<\{\}:\{\} (\{:.\{prec\}f\}%)'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+255                 b,
+256                 word\_statistics[\textcolor{stringliteral}{'freqs\_cnt'}].get(b, 0),
+257                 (word\_statistics[\textcolor{stringliteral}{'freqs\_cnt'}].get(b, 0) / word\_statistics[\textcolor{stringliteral}{'word\_cnt'}])
+258                 * 100,
+259                 prec=2,
+260             )
+261             \textcolor{keywordflow}{for} b \textcolor{keywordflow}{in} bins
+262         ]
+263     )
+264     print(
+265         \textcolor{stringliteral}{"Word statistics: \{\}, avg\_word\_length: \{:.\{prec\}f\}, "}
+266         \textcolor{stringliteral}{"avg\_char\_length: \{:.\{prec\}f\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+267             stat\_str,
+268             numpy.array(word\_statistics[\textcolor{stringliteral}{'mean\_wlength'}]).mean(),
+269             numpy.array(word\_statistics[\textcolor{stringliteral}{'mean\_clength'}]).mean(),
+270             prec=2,
+271         )
+272     )
+273 
+274     report = world.report()
+275     print(report)
+276     \textcolor{keywordflow}{return} report
+277 
+278 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1eval__wordstat_ab2d96b5ac07c988934a0320739fc3c60}\label{namespaceparlai_1_1scripts_1_1eval__wordstat_ab2d96b5ac07c988934a0320739fc3c60}} 
 \index{parlai\+::scripts\+::eval\+\_\+wordstat@{parlai\+::scripts\+::eval\+\_\+wordstat}!get\+\_\+word\+\_\+stats@{get\+\_\+word\+\_\+stats}}
@@ -292,7 +300,7 @@ Definition at line 43 of file eval\+\_\+wordstat.\+py.
 72     parser.add\_argument(
 73         \textcolor{stringliteral}{'-cun'},
 74         \textcolor{stringliteral}{'--compute-unique'},
-75         type=bool,
+75         type=\textcolor{stringliteral}{'bool'},
 76         default=\textcolor{keyword}{True},
 77         help=\textcolor{stringliteral}{'Compute %% of unique responses from the model'},
 78     )
@@ -305,15 +313,25 @@ Definition at line 43 of file eval\+\_\+wordstat.\+py.
 
 
 \subsection{Variable Documentation}
-\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1eval__wordstat_a78304b921cd79a0fe7c659ed87bad685}\label{namespaceparlai_1_1scripts_1_1eval__wordstat_a78304b921cd79a0fe7c659ed87bad685}} 
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1eval__wordstat_ac40c7c216653465e991454ad0f2f7925}\label{namespaceparlai_1_1scripts_1_1eval__wordstat_ac40c7c216653465e991454ad0f2f7925}} 
 \index{parlai\+::scripts\+::eval\+\_\+wordstat@{parlai\+::scripts\+::eval\+\_\+wordstat}!parser@{parser}}
 \index{parser@{parser}!parlai\+::scripts\+::eval\+\_\+wordstat@{parlai\+::scripts\+::eval\+\_\+wordstat}}
 \subsubsection{\texorpdfstring{parser}{parser}}
-{\footnotesize\ttfamily def parlai.\+scripts.\+eval\+\_\+wordstat.\+parser = \hyperlink{namespaceparlai_1_1scripts_1_1eval__wordstat_af41cd95533433b93e7383bc6dab04963}{setup\+\_\+args}()}
+{\footnotesize\ttfamily parlai.\+scripts.\+eval\+\_\+wordstat.\+parser}
 
 
 
-Definition at line 274 of file eval\+\_\+wordstat.\+py.
+Definition at line 280 of file eval\+\_\+wordstat.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1eval__wordstat_a743654c019524601e6d80586405ade64}\label{namespaceparlai_1_1scripts_1_1eval__wordstat_a743654c019524601e6d80586405ade64}} 
+\index{parlai\+::scripts\+::eval\+\_\+wordstat@{parlai\+::scripts\+::eval\+\_\+wordstat}!print\+\_\+args@{print\+\_\+args}}
+\index{print\+\_\+args@{print\+\_\+args}!parlai\+::scripts\+::eval\+\_\+wordstat@{parlai\+::scripts\+::eval\+\_\+wordstat}}
+\subsubsection{\texorpdfstring{print\+\_\+args}{print\_args}}
+{\footnotesize\ttfamily parlai.\+scripts.\+eval\+\_\+wordstat.\+print\+\_\+args}
+
+
+
+Definition at line 281 of file eval\+\_\+wordstat.\+py.
 
 \mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1eval__wordstat_a3425702146738eb147346873ecda1983}\label{namespaceparlai_1_1scripts_1_1eval__wordstat_a3425702146738eb147346873ecda1983}} 
 \index{parlai\+::scripts\+::eval\+\_\+wordstat@{parlai\+::scripts\+::eval\+\_\+wordstat}!print\+\_\+parser@{print\+\_\+parser}}
@@ -323,5 +341,5 @@ Definition at line 274 of file eval\+\_\+wordstat.\+py.
 
 
 
-Definition at line 275 of file eval\+\_\+wordstat.\+py.
+Definition at line 281 of file eval\+\_\+wordstat.\+py.
 

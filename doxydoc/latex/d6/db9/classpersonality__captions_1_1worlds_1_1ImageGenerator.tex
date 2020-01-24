@@ -2,8 +2,7 @@
 \label{classpersonality__captions_1_1worlds_1_1ImageGenerator}\index{personality\+\_\+captions.\+worlds.\+Image\+Generator@{personality\+\_\+captions.\+worlds.\+Image\+Generator}}
 
 
-Inheritance diagram for personality\+\_\+captions.\+worlds.\+Image\+Generator\+:
-\nopagebreak
+Inheritance diagram for personality\+\_\+captions.\+worlds.\+Image\+Generator\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for personality\+\_\+captions.\+worlds.\+Image\+Generator\+:
 \end{figure}
 
 
-Collaboration diagram for personality\+\_\+captions.\+worlds.\+Image\+Generator\+:
-\nopagebreak
+Collaboration diagram for personality\+\_\+captions.\+worlds.\+Image\+Generator\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -51,7 +49,7 @@ def \hyperlink{classpersonality__captions_1_1worlds_1_1ImageGenerator_a1a62516fa
 \end{DoxyVerb}
  
 
-Definition at line 173 of file worlds.\+py.
+Definition at line 174 of file worlds.\+py.
 
 
 
@@ -64,26 +62,26 @@ Definition at line 173 of file worlds.\+py.
 
 
 
-Definition at line 178 of file worlds.\+py.
+Definition at line 179 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-178     \textcolor{keyword}{def }\_\_init\_\_(self, opt):
-179         self.images\_idx\_stack\_path = os.path.join(os.getcwd(), \textcolor{stringliteral}{'./images\_idx\_stack.pkl'})
-180         \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'yfcc\_path'}):
-181             self.image\_path = opt[\textcolor{stringliteral}{'yfcc\_path'}]
-182         \textcolor{keywordflow}{else}:
-183             self.image\_path = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'yfcc\_images'})
-184         self.images = [im \textcolor{keywordflow}{for} im \textcolor{keywordflow}{in} os.listdir(self.image\_path) \textcolor{keywordflow}{if} \textcolor{stringliteral}{'.jpg'} \textcolor{keywordflow}{in} im]
-185 
-186         \textcolor{keywordflow}{if} os.path.exists(self.images\_idx\_stack\_path):
-187             with open(self.images\_idx\_stack\_path, \textcolor{stringliteral}{'rb'}) \textcolor{keyword}{as} handle:
-188                 self.idx\_stack = pickle.load(handle)
-189         \textcolor{keywordflow}{else}:
-190             self.idx\_stack = []
-191             self.add\_idx\_stack()
-192             self.save\_idx\_stack()
-193 
+179     \textcolor{keyword}{def }\_\_init\_\_(self, opt):
+180         self.images\_idx\_stack\_path = os.path.join(os.getcwd(), \textcolor{stringliteral}{'./images\_idx\_stack.pkl'})
+181         \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'yfcc\_path'}):
+182             self.image\_path = opt[\textcolor{stringliteral}{'yfcc\_path'}]
+183         \textcolor{keywordflow}{else}:
+184             self.image\_path = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'yfcc\_images'})
+185         self.images = [im \textcolor{keywordflow}{for} im \textcolor{keywordflow}{in} os.listdir(self.image\_path) \textcolor{keywordflow}{if} \textcolor{stringliteral}{'.jpg'} \textcolor{keywordflow}{in} im]
+186 
+187         \textcolor{keywordflow}{if} os.path.exists(self.images\_idx\_stack\_path):
+188             with open(self.images\_idx\_stack\_path, \textcolor{stringliteral}{'rb'}) \textcolor{keyword}{as} handle:
+189                 self.idx\_stack = pickle.load(handle)
+190         \textcolor{keywordflow}{else}:
+191             self.idx\_stack = []
+192             self.add\_idx\_stack()
+193             self.save\_idx\_stack()
+194 
 \end{DoxyCode}
 
 
@@ -96,16 +94,16 @@ Definition at line 178 of file worlds.\+py.
 
 
 
-Definition at line 194 of file worlds.\+py.
+Definition at line 195 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-194     \textcolor{keyword}{def }add\_idx\_stack(self):
-195         stack = self.images
-196         random.seed()
-197         random.shuffle(stack)
-198         self.idx\_stack = stack + self.idx\_stack
-199 
+195     \textcolor{keyword}{def }add\_idx\_stack(self):
+196         stack = self.images
+197         random.seed()
+198         random.shuffle(stack)
+199         self.idx\_stack = stack + self.idx\_stack
+200 
 \end{DoxyCode}
 \mbox{\Hypertarget{classpersonality__captions_1_1worlds_1_1ImageGenerator_a3ed9513ae59885f39f95a65d610b9b54}\label{classpersonality__captions_1_1worlds_1_1ImageGenerator_a3ed9513ae59885f39f95a65d610b9b54}} 
 \index{personality\+\_\+captions\+::worlds\+::\+Image\+Generator@{personality\+\_\+captions\+::worlds\+::\+Image\+Generator}!pop\+\_\+image@{pop\+\_\+image}}
@@ -115,18 +113,18 @@ Definition at line 194 of file worlds.\+py.
 
 
 
-Definition at line 200 of file worlds.\+py.
+Definition at line 201 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-200     \textcolor{keyword}{def }pop\_image(self):
-201         \textcolor{keywordflow}{if} len(self.idx\_stack) == 0:
-202             self.add\_idx\_stack()
-203         idx = self.idx\_stack.pop()
-204         data = os.path.join(self.image\_path, idx)
-205         print(data)
-206         \textcolor{keywordflow}{return} (idx, data)
-207 
+201     \textcolor{keyword}{def }pop\_image(self):
+202         \textcolor{keywordflow}{if} len(self.idx\_stack) == 0:
+203             self.add\_idx\_stack()
+204         idx = self.idx\_stack.pop()
+205         data = os.path.join(self.image\_path, idx)
+206         print(data)
+207         \textcolor{keywordflow}{return} (idx, data)
+208 
 \end{DoxyCode}
 \mbox{\Hypertarget{classpersonality__captions_1_1worlds_1_1ImageGenerator_a78705bbcfdb530dc94ff25cc0aa7fd65}\label{classpersonality__captions_1_1worlds_1_1ImageGenerator_a78705bbcfdb530dc94ff25cc0aa7fd65}} 
 \index{personality\+\_\+captions\+::worlds\+::\+Image\+Generator@{personality\+\_\+captions\+::worlds\+::\+Image\+Generator}!push\+\_\+image@{push\+\_\+image}}
@@ -136,13 +134,13 @@ Definition at line 200 of file worlds.\+py.
 
 
 
-Definition at line 208 of file worlds.\+py.
+Definition at line 209 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-208     \textcolor{keyword}{def }push\_image(self, idx):
-209         self.idx\_stack.append(idx)
-210 
+209     \textcolor{keyword}{def }push\_image(self, idx):
+210         self.idx\_stack.append(idx)
+211 
 \end{DoxyCode}
 \mbox{\Hypertarget{classpersonality__captions_1_1worlds_1_1ImageGenerator_a1a62516fa0aad79a400d8824f7353d42}\label{classpersonality__captions_1_1worlds_1_1ImageGenerator_a1a62516fa0aad79a400d8824f7353d42}} 
 \index{personality\+\_\+captions\+::worlds\+::\+Image\+Generator@{personality\+\_\+captions\+::worlds\+::\+Image\+Generator}!save\+\_\+idx\+\_\+stack@{save\+\_\+idx\+\_\+stack}}
@@ -152,15 +150,15 @@ Definition at line 208 of file worlds.\+py.
 
 
 
-Definition at line 211 of file worlds.\+py.
+Definition at line 212 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-211     \textcolor{keyword}{def }save\_idx\_stack(self):
-212         with open(self.images\_idx\_stack\_path, \textcolor{stringliteral}{'wb'}) \textcolor{keyword}{as} handle:
-213             pickle.dump(self.idx\_stack, handle)
-214 
+212     \textcolor{keyword}{def }save\_idx\_stack(self):
+213         with open(self.images\_idx\_stack\_path, \textcolor{stringliteral}{'wb'}) \textcolor{keyword}{as} handle:
+214             pickle.dump(self.idx\_stack, handle)
 215 
+216 
 \end{DoxyCode}
 
 
@@ -173,7 +171,7 @@ Definition at line 211 of file worlds.\+py.
 
 
 
-Definition at line 188 of file worlds.\+py.
+Definition at line 189 of file worlds.\+py.
 
 \mbox{\Hypertarget{classpersonality__captions_1_1worlds_1_1ImageGenerator_a2f6d917895f5fa19821b69f793dc1dd7}\label{classpersonality__captions_1_1worlds_1_1ImageGenerator_a2f6d917895f5fa19821b69f793dc1dd7}} 
 \index{personality\+\_\+captions\+::worlds\+::\+Image\+Generator@{personality\+\_\+captions\+::worlds\+::\+Image\+Generator}!image\+\_\+path@{image\+\_\+path}}
@@ -183,7 +181,7 @@ Definition at line 188 of file worlds.\+py.
 
 
 
-Definition at line 181 of file worlds.\+py.
+Definition at line 182 of file worlds.\+py.
 
 \mbox{\Hypertarget{classpersonality__captions_1_1worlds_1_1ImageGenerator_a28a704ac1a923cc558c63ac4bcf2bb65}\label{classpersonality__captions_1_1worlds_1_1ImageGenerator_a28a704ac1a923cc558c63ac4bcf2bb65}} 
 \index{personality\+\_\+captions\+::worlds\+::\+Image\+Generator@{personality\+\_\+captions\+::worlds\+::\+Image\+Generator}!images@{images}}
@@ -193,7 +191,7 @@ Definition at line 181 of file worlds.\+py.
 
 
 
-Definition at line 184 of file worlds.\+py.
+Definition at line 185 of file worlds.\+py.
 
 \mbox{\Hypertarget{classpersonality__captions_1_1worlds_1_1ImageGenerator_a3cb7292fe4be4bd3e9c1e16e763da509}\label{classpersonality__captions_1_1worlds_1_1ImageGenerator_a3cb7292fe4be4bd3e9c1e16e763da509}} 
 \index{personality\+\_\+captions\+::worlds\+::\+Image\+Generator@{personality\+\_\+captions\+::worlds\+::\+Image\+Generator}!images\+\_\+idx\+\_\+stack\+\_\+path@{images\+\_\+idx\+\_\+stack\+\_\+path}}
@@ -203,7 +201,7 @@ Definition at line 184 of file worlds.\+py.
 
 
 
-Definition at line 179 of file worlds.\+py.
+Definition at line 180 of file worlds.\+py.
 
 
 

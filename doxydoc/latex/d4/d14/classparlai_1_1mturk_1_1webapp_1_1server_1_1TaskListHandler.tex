@@ -2,8 +2,7 @@
 \label{classparlai_1_1mturk_1_1webapp_1_1server_1_1TaskListHandler}\index{parlai.\+mturk.\+webapp.\+server.\+Task\+List\+Handler@{parlai.\+mturk.\+webapp.\+server.\+Task\+List\+Handler}}
 
 
-Inheritance diagram for parlai.\+mturk.\+webapp.\+server.\+Task\+List\+Handler\+:
-\nopagebreak
+Inheritance diagram for parlai.\+mturk.\+webapp.\+server.\+Task\+List\+Handler\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+mturk.\+webapp.\+server.\+Task\+List\+Handler\+
 \end{figure}
 
 
-Collaboration diagram for parlai.\+mturk.\+webapp.\+server.\+Task\+List\+Handler\+:
-\nopagebreak
+Collaboration diagram for parlai.\+mturk.\+webapp.\+server.\+Task\+List\+Handler\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -45,7 +43,7 @@ def \hyperlink{classparlai_1_1mturk_1_1webapp_1_1server_1_1TaskListHandler_ab7ff
 \subsection{Detailed Description}
 
 
-Definition at line 243 of file server.\+py.
+Definition at line 248 of file server.\+py.
 
 
 
@@ -58,36 +56,36 @@ Definition at line 243 of file server.\+py.
 
 
 
-Definition at line 251 of file server.\+py.
+Definition at line 256 of file server.\+py.
 
 
 \begin{DoxyCode}
-251     \textcolor{keyword}{def }get(self):
-252         results = \{t: \{\textcolor{stringliteral}{'task\_name'}: t, \textcolor{stringliteral}{'dir'}: v\} \textcolor{keywordflow}{for} t, v \textcolor{keywordflow}{in} tasks.items()\}
-253         \textcolor{keywordflow}{for} task\_name, directory \textcolor{keywordflow}{in} tasks.items():
-254             results[task\_name][\textcolor{stringliteral}{'internal'}] = \textcolor{stringliteral}{'parlai\_internal'} \textcolor{keywordflow}{in} directory
-255             results[task\_name][\textcolor{stringliteral}{'has\_custom'}] = \textcolor{keyword}{False}
-256             results[task\_name][\textcolor{stringliteral}{'react\_frontend'}] = \textcolor{keyword}{False}
-257             \textcolor{keywordflow}{try}:
-258                 config = \hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_aee065cfdb6346d4815762ae793427f1e}{get\_config\_module}(task\_name)
-259                 frontend\_version = config.task\_config.get(\textcolor{stringliteral}{'frontend\_version'})
-260                 \textcolor{keywordflow}{if} frontend\_version \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} frontend\_version >= 1:
-261                     results[task\_name][\textcolor{stringliteral}{'react\_frontend'}] = \textcolor{keyword}{True}
-262                 \textcolor{keywordflow}{if} os.path.isfile(
-263                     os.path.join(directory, \textcolor{stringliteral}{'frontend'}, \textcolor{stringliteral}{'components'}, \textcolor{stringliteral}{'custom.jsx'})
-264                 ):
-265                     results[task\_name][\textcolor{stringliteral}{'has\_custom'}] = \textcolor{keyword}{True}
-266             \textcolor{keywordflow}{except} Exception \textcolor{keyword}{as} e:
-267                 print(
-268                     \textcolor{stringliteral}{'Exception \{\} when loading task details for \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(e, task\_name)
-269                 )
-270                 \textcolor{keywordflow}{pass}
-271             results[task\_name][\textcolor{stringliteral}{'active\_runs'}] = \textcolor{stringliteral}{'unimplemented'}  \textcolor{comment}{# TODO}
-272             results[task\_name][\textcolor{stringliteral}{'all\_runs'}] = \textcolor{stringliteral}{'unimplemented'}  \textcolor{comment}{# TODO}
-273 
-274         self.write(json.dumps(list(results.values())))
-275 
-276 
+256     \textcolor{keyword}{def }get(self):
+257         results = \{t: \{\textcolor{stringliteral}{'task\_name'}: t, \textcolor{stringliteral}{'dir'}: v\} \textcolor{keywordflow}{for} t, v \textcolor{keywordflow}{in} tasks.items()\}
+258         \textcolor{keywordflow}{for} task\_name, directory \textcolor{keywordflow}{in} tasks.items():
+259             results[task\_name][\textcolor{stringliteral}{'internal'}] = \textcolor{stringliteral}{'parlai\_internal'} \textcolor{keywordflow}{in} directory
+260             results[task\_name][\textcolor{stringliteral}{'has\_custom'}] = \textcolor{keyword}{False}
+261             results[task\_name][\textcolor{stringliteral}{'react\_frontend'}] = \textcolor{keyword}{False}
+262             \textcolor{keywordflow}{try}:
+263                 config = \hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_aee065cfdb6346d4815762ae793427f1e}{get\_config\_module}(task\_name)
+264                 frontend\_version = config.task\_config.get(\textcolor{stringliteral}{'frontend\_version'})
+265                 \textcolor{keywordflow}{if} frontend\_version \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} frontend\_version >= 1:
+266                     results[task\_name][\textcolor{stringliteral}{'react\_frontend'}] = \textcolor{keyword}{True}
+267                 \textcolor{keywordflow}{if} os.path.isfile(
+268                     os.path.join(directory, \textcolor{stringliteral}{'frontend'}, \textcolor{stringliteral}{'components'}, \textcolor{stringliteral}{'custom.jsx'})
+269                 ):
+270                     results[task\_name][\textcolor{stringliteral}{'has\_custom'}] = \textcolor{keyword}{True}
+271             \textcolor{keywordflow}{except} Exception \textcolor{keyword}{as} e:
+272                 print(
+273                     \textcolor{stringliteral}{'Exception \{\} when loading task details for \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(e, task\_name)
+274                 )
+275                 \textcolor{keywordflow}{pass}
+276             results[task\_name][\textcolor{stringliteral}{'active\_runs'}] = \textcolor{stringliteral}{'unimplemented'}  \textcolor{comment}{# TODO}
+277             results[task\_name][\textcolor{stringliteral}{'all\_runs'}] = \textcolor{stringliteral}{'unimplemented'}  \textcolor{comment}{# TODO}
+278 
+279         self.write(json.dumps(list(results.values())))
+280 
+281 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1TaskListHandler_a65f561e308d076bc129463480e83ffe5}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1TaskListHandler_a65f561e308d076bc129463480e83ffe5}} 
 \index{parlai\+::mturk\+::webapp\+::server\+::\+Task\+List\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Task\+List\+Handler}!initialize@{initialize}}
@@ -97,17 +95,17 @@ Definition at line 251 of file server.\+py.
 
 
 
-Definition at line 244 of file server.\+py.
+Definition at line 249 of file server.\+py.
 
 
 \begin{DoxyCode}
-244     \textcolor{keyword}{def }initialize(self, app):
-245         self.state = app.state
-246         self.subs = app.subs
-247         self.sources = app.sources
-248         self.port = app.port
-249         self.data\_handler = app.data\_handler
-250 
+249     \textcolor{keyword}{def }initialize(self, app):
+250         self.state = app.state
+251         self.subs = app.subs
+252         self.sources = app.sources
+253         self.port = app.port
+254         self.data\_handler = app.data\_handler
+255 
 \end{DoxyCode}
 
 
@@ -120,7 +118,7 @@ Definition at line 244 of file server.\+py.
 
 
 
-Definition at line 249 of file server.\+py.
+Definition at line 254 of file server.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1TaskListHandler_aeb14ed26510ea0b82bb22608b4073709}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1TaskListHandler_aeb14ed26510ea0b82bb22608b4073709}} 
 \index{parlai\+::mturk\+::webapp\+::server\+::\+Task\+List\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Task\+List\+Handler}!port@{port}}
@@ -130,7 +128,7 @@ Definition at line 249 of file server.\+py.
 
 
 
-Definition at line 248 of file server.\+py.
+Definition at line 253 of file server.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1TaskListHandler_a7ebaf2e0e17b3caa6052a3ca975dbda9}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1TaskListHandler_a7ebaf2e0e17b3caa6052a3ca975dbda9}} 
 \index{parlai\+::mturk\+::webapp\+::server\+::\+Task\+List\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Task\+List\+Handler}!sources@{sources}}
@@ -140,7 +138,7 @@ Definition at line 248 of file server.\+py.
 
 
 
-Definition at line 247 of file server.\+py.
+Definition at line 252 of file server.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1TaskListHandler_a130bda83b244ddc1ef7c461a10d90ce9}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1TaskListHandler_a130bda83b244ddc1ef7c461a10d90ce9}} 
 \index{parlai\+::mturk\+::webapp\+::server\+::\+Task\+List\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Task\+List\+Handler}!state@{state}}
@@ -150,7 +148,7 @@ Definition at line 247 of file server.\+py.
 
 
 
-Definition at line 245 of file server.\+py.
+Definition at line 250 of file server.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1TaskListHandler_a9cbeab910d93da1b08334339c3a93bdf}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1TaskListHandler_a9cbeab910d93da1b08334339c3a93bdf}} 
 \index{parlai\+::mturk\+::webapp\+::server\+::\+Task\+List\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Task\+List\+Handler}!subs@{subs}}
@@ -160,7 +158,7 @@ Definition at line 245 of file server.\+py.
 
 
 
-Definition at line 246 of file server.\+py.
+Definition at line 251 of file server.\+py.
 
 
 

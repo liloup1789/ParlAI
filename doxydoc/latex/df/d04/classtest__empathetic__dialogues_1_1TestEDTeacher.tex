@@ -1,0 +1,531 @@
+\hypertarget{classtest__empathetic__dialogues_1_1TestEDTeacher}{}\section{test\+\_\+empathetic\+\_\+dialogues.\+Test\+E\+D\+Teacher Class Reference}
+\label{classtest__empathetic__dialogues_1_1TestEDTeacher}\index{test\+\_\+empathetic\+\_\+dialogues.\+Test\+E\+D\+Teacher@{test\+\_\+empathetic\+\_\+dialogues.\+Test\+E\+D\+Teacher}}
+
+
+Inheritance diagram for test\+\_\+empathetic\+\_\+dialogues.\+Test\+E\+D\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{d0/d4d/classtest__empathetic__dialogues_1_1TestEDTeacher__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for test\+\_\+empathetic\+\_\+dialogues.\+Test\+E\+D\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{df/d8c/classtest__empathetic__dialogues_1_1TestEDTeacher__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classtest__empathetic__dialogues_1_1TestEDTeacher_a7c4ed6219d6095fca68c1140fe087d05}{test\+\_\+counts} (self)
+\item 
+def \hyperlink{classtest__empathetic__dialogues_1_1TestEDTeacher_a51cf9a7b2adb6521bcedde034d8b8efb}{test\+\_\+check\+\_\+examples} (self)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Basic tests to count the number of examples/episodes and to check a few utterances.
+
+# Counting num episodes (from the original internal copy of the data)
+cat /checkpoint/parlai/tasks/empathetic_dialogues/train.csv | grep -E '^hit:[0-9]+_conv:[0-9]+,2' | wc  # 19531
+cat /checkpoint/parlai/tasks/empathetic_dialogues/train.csv | grep -E '^hit:[0-9]+_conv:[0-9]+,(2|3)' | wc  # 39057
+cat /checkpoint/parlai/tasks/empathetic_dialogues/valid_random_cands.csv | grep -E '^hit:[0-9]+_conv:[0-9]+,2' | wc  # 2769
+cat /checkpoint/parlai/tasks/empathetic_dialogues/test_random_cands.csv | grep -E '^hit:[0-9]+_conv:[0-9]+,2' | wc  # 2547
+# We count the number of lines with turn_idx=2 because this means that we have at
+# least one full utterance in the conversation. For train_experiencer_only==False,
+# we also include turn_idx=3 to count the Listener-based conversations in the same
+# manner.
+
+# Count num examples (from the original internal copy of the data)
+grep -E 'hit:[0-9]+_conv:[0-9]+,(2|4|6|8|10|12),' /checkpoint/parlai/tasks/empathetic_dialogues/train.csv | wc  # 40254
+grep -E 'hit:[0-9]+_conv:[0-9]+,(2|3|4|5|6|7|8|9|10|11|12),' /checkpoint/parlai/tasks/empathetic_dialogues/train.csv | wc  # 64636 (--train-experiencer-only False)
+grep -E 'hit:[0-9]+_conv:[0-9]+,(2|4|6|8|10|12),' /checkpoint/parlai/tasks/empathetic_dialogues/valid_random_cands.csv | wc  # 5738
+grep -E 'hit:[0-9]+_conv:[0-9]+,(2|4|6|8|10|12),' /checkpoint/parlai/tasks/empathetic_dialogues/test_random_cands.csv | wc  # 5259
+\end{DoxyVerb}
+ 
+
+Definition at line 32 of file test\+\_\+empathetic\+\_\+dialogues.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtest__empathetic__dialogues_1_1TestEDTeacher_a51cf9a7b2adb6521bcedde034d8b8efb}\label{classtest__empathetic__dialogues_1_1TestEDTeacher_a51cf9a7b2adb6521bcedde034d8b8efb}} 
+\index{test\+\_\+empathetic\+\_\+dialogues\+::\+Test\+E\+D\+Teacher@{test\+\_\+empathetic\+\_\+dialogues\+::\+Test\+E\+D\+Teacher}!test\+\_\+check\+\_\+examples@{test\+\_\+check\+\_\+examples}}
+\index{test\+\_\+check\+\_\+examples@{test\+\_\+check\+\_\+examples}!test\+\_\+empathetic\+\_\+dialogues\+::\+Test\+E\+D\+Teacher@{test\+\_\+empathetic\+\_\+dialogues\+::\+Test\+E\+D\+Teacher}}
+\subsubsection{\texorpdfstring{test\+\_\+check\+\_\+examples()}{test\_check\_examples()}}
+{\footnotesize\ttfamily def test\+\_\+empathetic\+\_\+dialogues.\+Test\+E\+D\+Teacher.\+test\+\_\+check\+\_\+examples (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 113 of file test\+\_\+empathetic\+\_\+dialogues.\+py.
+
+
+\begin{DoxyCode}
+113     \textcolor{keyword}{def }test\_check\_examples(self):
+114 
+115         with testing\_utils.tempdir() \textcolor{keyword}{as} tmpdir:
+116             data\_path = tmpdir
+117 
+118             \textcolor{comment}{# Check EmpatheticDialoguesTeacher}
+119             opts\_and\_examples = [
+120                 (
+121                     \{\textcolor{stringliteral}{'datatype'}: \textcolor{stringliteral}{'train'}, \textcolor{stringliteral}{'train\_experiencer\_only'}: \textcolor{keyword}{True}\},
+122                     \{
+123                         \textcolor{stringliteral}{'situation'}: \textcolor{stringliteral}{' i used to scare for darkness'},
+124                         \textcolor{stringliteral}{'emotion'}: \textcolor{stringliteral}{'afraid'},
+125                         \textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'dont you feel so.. its a wonder '},
+126                         \textcolor{stringliteral}{'labels'}: [
+127                             \textcolor{stringliteral}{'I do actually hit blank walls a lot of times but i get by'}
+128                         ],
+129                         \textcolor{stringliteral}{'prepend\_ctx'}: \textcolor{keywordtype}{None},
+130                         \textcolor{stringliteral}{'prepend\_cand'}: \textcolor{keywordtype}{None},
+131                         \textcolor{stringliteral}{'deepmoji\_ctx'}: \textcolor{keywordtype}{None},
+132                         \textcolor{stringliteral}{'deepmoji\_cand'}: \textcolor{keywordtype}{None},
+133                         \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{False},
+134                         \textcolor{stringliteral}{'label\_candidates'}: [],
+135                     \},
+136                 ),
+137                 (
+138                     \{\textcolor{stringliteral}{'datatype'}: \textcolor{stringliteral}{'train'}, \textcolor{stringliteral}{'train\_experiencer\_only'}: \textcolor{keyword}{False}\},
+139                     \{
+140                         \textcolor{stringliteral}{'situation'}: \textcolor{stringliteral}{'I remember going to the fireworks with my best friend. There was a
+       lot of people, but it only felt like us in the world.'},
+141                         \textcolor{stringliteral}{'emotion'}: \textcolor{stringliteral}{'sentimental'},
+142                         \textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'Where has she gone?'},
+143                         \textcolor{stringliteral}{'labels'}: [\textcolor{stringliteral}{'We no longer talk.'}],
+144                         \textcolor{stringliteral}{'prepend\_ctx'}: \textcolor{keywordtype}{None},
+145                         \textcolor{stringliteral}{'prepend\_cand'}: \textcolor{keywordtype}{None},
+146                         \textcolor{stringliteral}{'deepmoji\_ctx'}: \textcolor{keywordtype}{None},
+147                         \textcolor{stringliteral}{'deepmoji\_cand'}: \textcolor{keywordtype}{None},
+148                         \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True},
+149                         \textcolor{stringliteral}{'label\_candidates'}: [],
+150                     \},
+151                 ),
+152                 (
+153                     \{\textcolor{stringliteral}{'datatype'}: \textcolor{stringliteral}{'valid'}\},
+154                     \{
+155                         \textcolor{stringliteral}{'situation'}: \textcolor{stringliteral}{'I was walking through my hallway a few week ago, and my son was
+       hiding under the table and grabbed my ankle. I thought i was got. '},
+156                         \textcolor{stringliteral}{'emotion'}: \textcolor{stringliteral}{'surprised'},
+157                         \textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'I may have let out a scream that will have him question my manhood for the
+       rest of our lives, lol. '},
+158                         \textcolor{stringliteral}{'labels'}: [\textcolor{stringliteral}{'I would probably scream also.'}],
+159                         \textcolor{stringliteral}{'prepend\_ctx'}: \textcolor{keywordtype}{None},
+160                         \textcolor{stringliteral}{'prepend\_cand'}: \textcolor{keywordtype}{None},
+161                         \textcolor{stringliteral}{'deepmoji\_ctx'}: \textcolor{keywordtype}{None},
+162                         \textcolor{stringliteral}{'deepmoji\_cand'}: \textcolor{keywordtype}{None},
+163                         \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True},
+164                         \textcolor{stringliteral}{'label\_candidates'}: [
+165                             \textcolor{stringliteral}{"That really does make it special. I'm glad you have that. "},
+166                             \textcolor{stringliteral}{"It must've have been. Glad they are okay now."},
+167                             \textcolor{stringliteral}{"Well sometimes companies make mistakes. I doubt it's anything you did."},
+168                             \textcolor{stringliteral}{"Oh no, I'm so so sorry. I've always had at least one pet throughout my life,
+       and they're truly part of the family."},
+169                             \textcolor{stringliteral}{'Wow. That must suck. Do you like the band incubus? I missed them a couple of
+       times but I saw them this year'},
+170                             \textcolor{stringliteral}{"I can't play those kinds of games. Too spooky for me."},
+171                             \textcolor{stringliteral}{'I think your boss should give you more recognition in that case!'},
+172                             \textcolor{stringliteral}{"That's always a good thing. It means you should get on great with your
+       neighbors."},
+173                             \textcolor{stringliteral}{"Yeah, I had my Commodore 64 and Amiga in the late 80's. Still, the games were
+       great when they worked!"},
+174                             \textcolor{stringliteral}{"That's ok, you did the right thing. It probably happens to lots of people."},
+175                             \textcolor{stringliteral}{"That's good. Now you don't have to worry about it."},
+176                             \textcolor{stringliteral}{'Hopefully one day you will be willing to explore a relationship in a serious
+       way.'},
+177                             \textcolor{stringliteral}{"I'm sorry, things will get better."},
+178                             \textcolor{stringliteral}{'Oh, okay. Maybe you should ask your teacher for some extra help or find a
+       study buddy. i hope you do better next time.'},
+179                             \textcolor{stringliteral}{'Why? What did she do?'},
+180                             \textcolor{stringliteral}{'I do enjoy the zoo and the animals. I think they could be just as good.'},
+181                             \textcolor{stringliteral}{'Well at least you managed to save him!'},
+182                             \textcolor{stringliteral}{'That sucks, how much is it?'},
+183                             \textcolor{stringliteral}{'Yeah, that is a hard one to deal with.  Maybe you should give it back so you
+       will not feel bad about yourself.'},
+184                             \textcolor{stringliteral}{'HAve you been practicing? Do you have note cards?'},
+185                             \textcolor{stringliteral}{"That's good news at least. I hope you are feeling better now. And don't be
+       hard on yourself, accidents happen."},
+186                             \textcolor{stringliteral}{'Oops. I hate when that happens. Did they say anything to you?'},
+187                             \textcolor{stringliteral}{'no its not'},
+188                             \textcolor{stringliteral}{'Yes, my friends are coming with me. :)'},
+189                             \textcolor{stringliteral}{"Oh my gosh! I'm sorry! haha Thats funny. Atleast you have them a story to
+       always remember.;)"},
+190                             \textcolor{stringliteral}{'I am so happy for you! All of your hard work paid off!'},
+191                             \textcolor{stringliteral}{'Wow, thats a nice car'},
+192                             \textcolor{stringliteral}{"Does it make you feel like you're living in an alternate reality?"},
+193                             \textcolor{stringliteral}{'glade all was well'},
+194                             \textcolor{stringliteral}{'ah, crisis averted! that could have been a lot worse'},
+195                             \textcolor{stringliteral}{"Maybe if we weren't so attached to being creatures of comfort. Some things we
+       just can't let go of, wouldn't exist without some poor shmuck having to do the dirty work. I guess we're all
+       that shmuck to someone, someway or another."},
+196                             \textcolor{stringliteral}{"That's awesome! You're going to be rolling in the dough with those skills"},
+197                             \textcolor{stringliteral}{"Don't worry, from what you said it doesn't sound like you almost ruined it. It
+       wasn't something on purpose at least."},
+198                             \textcolor{stringliteral}{'Have you tried yoga? It can help in the meanwhile till you get a proper
+       vacation.'},
+199                             \textcolor{stringliteral}{"I wish my insurance would give me something like that! It's good to go
+       anyways."},
+200                             \textcolor{stringliteral}{'I bet you are pretty anxious and excited at the same time.'},
+201                             \textcolor{stringliteral}{'Do you honk at them?'},
+202                             \textcolor{stringliteral}{"That's a bad supervisor. Did you call him/her out on it?"},
+203                             \textcolor{stringliteral}{"Geniuses don't do chores my friend."},
+204                             \textcolor{stringliteral}{'Which country? that sounds fun, are you guys doing anything fun there?'},
+205                             \textcolor{stringliteral}{'oh that is so exciting!!! good for you man!'},
+206                             \textcolor{stringliteral}{'Wow! Any way they can get out? Did they call someone?'},
+207                             \textcolor{stringliteral}{'I love that nostalgic feeling. '},
+208                             \textcolor{stringliteral}{'Congratulations. You have done great!'},
+209                             \textcolor{stringliteral}{'hahaha I definitely admire your courage to have done that.'},
+210                             \textcolor{stringliteral}{'wait til she leaves and continue'},
+211                             \textcolor{stringliteral}{'I do too.  I am so sorry you are going through this'},
+212                             \textcolor{stringliteral}{'That is awesome. Congratulations. Im sure you earned every penny.'},
+213                             \textcolor{stringliteral}{'I want some of whatever you had for breakfast. You seem very happy.'},
+214                             \textcolor{stringliteral}{'Oh wow! I am so sorry that happened to you.'},
+215                             \textcolor{stringliteral}{'Well, hopefully there will be nothing but great things for him in his future.'}
+      ,
+216                             \textcolor{stringliteral}{'Oh that was so nice of them! I bet you were relieved!'},
+217                             \textcolor{stringliteral}{'how was it ?'},
+218                             \textcolor{stringliteral}{"Nice! Why do you like it more than other places you've lived?"},
+219                             \textcolor{stringliteral}{'It must be difficult, do you think she will come back ever?'},
+220                             \textcolor{stringliteral}{"That's so messed up! Why was he doing that?"},
+221                             \textcolor{stringliteral}{'Did you try therapy at all or counseling?'},
+222                             \textcolor{stringliteral}{'Did you reconnect and promise to keep in touch?'},
+223                             \textcolor{stringliteral}{'I am so sorry for you. Perhaps you can hang with her after your workdays?'},
+224                             \textcolor{stringliteral}{"That's good that you found happiness. That's what were all in the pursuit of
+       right?"},
+225                             \textcolor{stringliteral}{'I hope these feelings last for you!'},
+226                             \textcolor{stringliteral}{'you have eyes too'},
+227                             \textcolor{stringliteral}{"Wow, that's rude! He won't last long..."},
+228                             \textcolor{stringliteral}{"Hopefully the person learned what they had to do so they don't hold the line
+       up in the future."},
+229                             \textcolor{stringliteral}{'Oh no that must have been a terrible experience, I hope no one got hurt from
+       the shattered glass.'},
+230                             \textcolor{stringliteral}{"Congrats!, I'm sure you must be very happy!"},
+231                             \textcolor{stringliteral}{"That's good to know!  You all have a lot to be thankful for!"},
+232                             \textcolor{stringliteral}{'It depends, if you love her, you could try to work it out.  Or you could cheat
+       on her too'},
+233                             \textcolor{stringliteral}{"I'm sorry to hear that, I'm pretty terrified of the dentist myself. Ask for
+       gas! Good luck, I'm sure everything will be just fine."},
+234                             \textcolor{stringliteral}{'That makes sense, you are a good older sibling!'},
+235                             \textcolor{stringliteral}{'They say dogs are mans best friend. '},
+236                             \textcolor{stringliteral}{'I would probably scream also.'},
+237                             \textcolor{stringliteral}{'Well I hope he gets to felling better.'},
+238                             \textcolor{stringliteral}{"If I had a bag of M&M's right now I would eat them for sure!"},
+239                             \textcolor{stringliteral}{'Yep. Happy and healthy is a blessing'},
+240                             \textcolor{stringliteral}{'Wow was it a scam or was it legit?'},
+241                             \textcolor{stringliteral}{'that is good to hear, it was a motivation to succeed, a great character
+       building '},
+242                             \textcolor{stringliteral}{'Its not time to get over it, you arent doing any wrong its okay to "feel"
+       things. I hope people around you give you a lot of love! '},
+243                             \textcolor{stringliteral}{'Awww. Did you keep it?'},
+244                             \textcolor{stringliteral}{"Oh I see.. Well that's a pretty positive talent then, huh? Maybe you should
+       encourage him to keep doing it. Maybe he misses it. You could get him a present for his birthday or Christmas
+       that was related to drawing tools/pencils and all that."},
+245                             \textcolor{stringliteral}{"You learn a lot about someone when you move in with them, so if you feel
+       comfortable in your relationship I think that's actually rather prudent."},
+246                             \textcolor{stringliteral}{'That is terrible. How long have you had this pet?'},
+247                             \textcolor{stringliteral}{'Oh that sucks...did she explain herself yet'},
+248                             \textcolor{stringliteral}{"8 Miles!? That's very impressive.  I bet I could barely make it a mile!"},
+249                             \textcolor{stringliteral}{'That stuff is pretty expensive. Maybe you can sell it on eBay or something.'},
+250                             \textcolor{stringliteral}{'Its horrible to have to got through things like thaty'},
+251                             \textcolor{stringliteral}{'Oh god.. so sorry to hear that.. May i ask how did Tom pass?'},
+252                             \textcolor{stringliteral}{'Like a paranormal type fear or a human with intent to harm type fear?'},
+253                             \textcolor{stringliteral}{'I bet you cant wait.  WHere are going for your vacation?'},
+254                             \textcolor{stringliteral}{'Aw, that sucks. Did you give her a proper burial?'},
+255                             \textcolor{stringliteral}{'Awesome! What are you going to see?'},
+256                             \textcolor{stringliteral}{'What kind of food does it serve? Sounds wonderful!'},
+257                             \textcolor{stringliteral}{"Oh no! What's wrong with your dad?"},
+258                             \textcolor{stringliteral}{'oh god yes i know what you mean, any ideas what you wanna do ?'},
+259                             \textcolor{stringliteral}{"Hopefully you'll able to get it all sorted out soon.  I'm sure when it's done
+       it'll be a beautiful house."},
+260                             \textcolor{stringliteral}{'That would be bad you should double check before you leave'},
+261                             \textcolor{stringliteral}{'I hope he continues to do well.'},
+262                             \textcolor{stringliteral}{"You can only do so much.  Next time I'd just let him drink on his own."},
+263                             \textcolor{stringliteral}{'I am sure you will meet them'},
+264                             \textcolor{stringliteral}{'Wow thats nice.  What do you drive?'},
+265                         ],
+266                     \},
+267                 ),
+268                 (
+269                     \{\textcolor{stringliteral}{'datatype'}: \textcolor{stringliteral}{'test'}\},
+270                     \{
+271                         \textcolor{stringliteral}{'situation'}: \textcolor{stringliteral}{'My mother stopped by my house one day and said she saw 3 dogs on the
+       road, down from our house. They were starving, with ribs showing, and it was a mother dog and her two small
+       puppies. Of course, my daughter wanted to bring them to our house, so we could feed and help them. We did,
+       and my heart went out to them, as they were so sweet, but really were in a bad shape.'},
+272                         \textcolor{stringliteral}{'emotion'}: \textcolor{stringliteral}{'caring'},
+273                         \textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{"Oh my goodness, that's very scary! I hope you are okay now and the drunk
+       driver was punished for his actions?"},
+274                         \textcolor{stringliteral}{'labels'}: [\textcolor{stringliteral}{'Yeah he was punished hes in jail still'}],
+275                         \textcolor{stringliteral}{'prepend\_ctx'}: \textcolor{keywordtype}{None},
+276                         \textcolor{stringliteral}{'prepend\_cand'}: \textcolor{keywordtype}{None},
+277                         \textcolor{stringliteral}{'deepmoji\_ctx'}: \textcolor{keywordtype}{None},
+278                         \textcolor{stringliteral}{'deepmoji\_cand'}: \textcolor{keywordtype}{None},
+279                         \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True},
+280                         \textcolor{stringliteral}{'label\_candidates'}: [
+281                             \textcolor{stringliteral}{"Are you really able to work from home? Finding a gig is so difficult, I'm glad
+       that it is working for you."},
+282                             \textcolor{stringliteral}{"Oh no. That's quite unfortunate for the deer. Did you just drive past it?"},
+283                             \textcolor{stringliteral}{'Wow, you must have felt jealous'},
+284                             \textcolor{stringliteral}{'I can only imagine! How is he now?'},
+285                             \textcolor{stringliteral}{'Oh goodness, what happened for the past 3 weeks?'},
+286                             \textcolor{stringliteral}{'LOL i hate that'},
+287                             \textcolor{stringliteral}{'I love a warm fire outside while camping! Sounds like a great time.'},
+288                             \textcolor{stringliteral}{'Yeah he was punished hes in jail still'},
+289                             \textcolor{stringliteral}{'Was he upset?'},
+290                             \textcolor{stringliteral}{"Wow that's awesome! Are you on a team?"},
+291                             \textcolor{stringliteral}{'Oh man that is just crazy! Feel bad for the person who has to clean it.'},
+292                             \textcolor{stringliteral}{'im sorry, thats awful. its a shame his parents arent being more supportive'},
+293                             \textcolor{stringliteral}{'I bet that was scary. Did he surprise you with something?'},
+294                             \textcolor{stringliteral}{'That sounds pretty stressful. Are you moving soon?'},
+295                             \textcolor{stringliteral}{"Well, if I were you, I'd keep it up, whether or not my spouse laughed at me,
+       or a new girlfriend/boyfriend, whatever. It's not childish to me. Life is stressful enough. Let us snuggle
+       what we want."},
+296                             \textcolor{stringliteral}{"That's hilarious! Is he usually down for a good prank?"},
+297                             \textcolor{stringliteral}{'Oh I love seeing kids achieve things! Adorable. Good for her! :) '},
+298                             \textcolor{stringliteral}{'that makes two of us! i am terrified of all snakes'},
+299                             \textcolor{stringliteral}{'that is dangerous, glad that both of your are okay'},
+300                             \textcolor{stringliteral}{"That's good to hear. I hope I meet someone that will do that for me."},
+301                             \textcolor{stringliteral}{"Well that's good."},
+302                             \textcolor{stringliteral}{'We need more people like you in the world.  Theres always someone out there
+       who needs a helping hand and could use a friend.'},
+303                             \textcolor{stringliteral}{'How ever so exciting! is this your first cruise?'},
+304                             \textcolor{stringliteral}{'Do you feel any less nervous?  Job interviews are always nerve-wracking '},
+305                             \textcolor{stringliteral}{'Maybe you could try to better that?'},
+306                             \textcolor{stringliteral}{"That's what matters most, that you had a good time and made memories!"},
+307                             \textcolor{stringliteral}{'Oh man! I hear you. I rescue animals and it is VERY hard to potty train them!'}
+      ,
+308                             \textcolor{stringliteral}{'Hopefully they will give him a better shift.'},
+309                             \textcolor{stringliteral}{"That's a big step. I hope it works out for you."},
+310                             \textcolor{stringliteral}{"Hiking is probably a tough environment to meet people! LA is real nice, but I
+       hear the people there aren't/"},
+311                             \textcolor{stringliteral}{'I hope things turn out better for you. Keep fighting.'},
+312                             \textcolor{stringliteral}{"please don't lol i'm a man, I appreciate what you women go through when you're
+       pregnant or on your period but i'm okay with not knowing details"},
+313                             \textcolor{stringliteral}{'I wish refrigerators would have a warranty that replaced food when they went
+       bad. '},
+314                             \textcolor{stringliteral}{'Seeing old friends that you have not contacted in so long is a nice feeling. '}
+      ,
+315                             \textcolor{stringliteral}{'Cool. Will you leave it there forever?'},
+316                             \textcolor{stringliteral}{'Oh wow. How far away did you move??'},
+317                             \textcolor{stringliteral}{'So inconsiderate! It reminds me of my neighbours doing building work one
+       morning at 6AM!'},
+318                             \textcolor{stringliteral}{'Oh no, did they do something embarrasing?'},
+319                             \textcolor{stringliteral}{'That is awesome!  Is there a particular reason you are so happy?'},
+320                             \textcolor{stringliteral}{'Did you buy all the essential items the dog will need? '},
+321                             \textcolor{stringliteral}{'Fantastic, now do you have a job lined up?'},
+322                             \textcolor{stringliteral}{'Better luck next time!  I love to scratch!'},
+323                             \textcolor{stringliteral}{'Thats neat. Do you guys make a lot of money?'},
+324                             \textcolor{stringliteral}{'I would be furious.  What did you do?'},
+325                             \textcolor{stringliteral}{"Well hopefully you're able to familiarize yourself quickly. Good luck!"},
+326                             \textcolor{stringliteral}{'Oh thats good for your friend, but it sounds like you really would like to
+       live there! I can imagine feeling jealous'},
+327                             \textcolor{stringliteral}{"That's unfortunate.  What are you doing now?"},
+328                             \textcolor{stringliteral}{'Oh no. I rent also so I know your pain. My last landlord was awful.  How did
+       your landlord react?'},
+329                             \textcolor{stringliteral}{'Im sorry to hear that, how long did you have him?'},
+330                             \textcolor{stringliteral}{'Lovely.  What did you do together?'},
+331                             \textcolor{stringliteral}{'Have you thought about getting another dog? '},
+332                             \textcolor{stringliteral}{'Oh yeah?  Do you still look awesome like you did back then?'},
+333                             \textcolor{stringliteral}{'Do you dress up when the new movies come out also?'},
+334                             \textcolor{stringliteral}{"That's a shame. I hate it when a place doesn't live up to the hype."},
+335                             \textcolor{stringliteral}{"Sometimes life isn't very fair. I like to think of it as motivation to get a
+       better job."},
+336                             \textcolor{stringliteral}{'Well at least you have a plan. Are you planning to start the renovation soon?'}
+      ,
+337                             \textcolor{stringliteral}{"Kids pick those things up quickly.  And it'll help with her hand-eye
+       coordination, reading - all sorts of things!  "},
+338                             \textcolor{stringliteral}{'did you enjoy yourself '},
+339                             \textcolor{stringliteral}{'Haha, how did she feel when she found out?'},
+340                             \textcolor{stringliteral}{'that would really help if it was a permanent solution'},
+341                             \textcolor{stringliteral}{"Wow that must have been frustrating.  I hope it didn't cost too much."},
+342                             \textcolor{stringliteral}{'How nice of her. You must have been so happy to see her.'},
+343                             \textcolor{stringliteral}{"I know it's hard, but practice makes perfect! Keep trying and I am sure you
+       will get it!"},
+344                             \textcolor{stringliteral}{'Do they live in a different state than you?'},
+345                             \textcolor{stringliteral}{"It reallyi s the best way to do things. That way even if you forget something
+       you've got time to remember and remedy the situation"},
+346                             \textcolor{stringliteral}{'Wow, must have been rather frightening. Glad you are ok!'},
+347                             \textcolor{stringliteral}{'That was really nice!  What a wonderful surprise!  This act of kindness helps
+       to restore my faith in humanity.'},
+348                             \textcolor{stringliteral}{"It's located in a small farming town in Vermont. I went on a tour of their
+       factory once and it was interesting to see the cheese being made."},
+349                             \textcolor{stringliteral}{"Poor guy was just nervous, I'm sure the more you take him the more he will
+       venture away from you and have some fun!"},
+350                             \textcolor{stringliteral}{'How did he scare you?'},
+351                             \textcolor{stringliteral}{"Isn't that what sisters are for?  What were you guys upset about?"},
+352                             \textcolor{stringliteral}{'That is a long time to be in the car for sure.'},
+353                             \textcolor{stringliteral}{"I'm glad to hear... Weddings can be stressful"},
+354                             \textcolor{stringliteral}{"That sounds amazing! How'd you guys meet?"},
+355                             \textcolor{stringliteral}{"Getting out of town and way from all of everday life's struggles always sounds
+       like a great time.  Did you leave you cell phone at home while you weer away to 'really' get away from
+       everything for a minute?"},
+356                             \textcolor{stringliteral}{'Man that is scary! Granted i like to hear things about that. '},
+357                             \textcolor{stringliteral}{'Yikes! Was anything damaged? '},
+358                             \textcolor{stringliteral}{'Ouch, I would try and wear something on your neck next time you go in there.'},
+359                             \textcolor{stringliteral}{'awesome! was it hold em?'},
+360                             \textcolor{stringliteral}{'Not me! haha I love them all!'},
+361                             \textcolor{stringliteral}{"Oh that's nice, I love doing that. Did the cat seem happy?"},
+362                             \textcolor{stringliteral}{"Yeah, I can imagine. At least it's only one week!"},
+363                             \textcolor{stringliteral}{'Ew, I hate spiders. We are in the process of getting them out of our garage.'},
+364                             \textcolor{stringliteral}{"That's great news. I don't know what I would do if my mom passed."},
+365                             \textcolor{stringliteral}{'Is that like the child equivalent of under the bed?'},
+366                             \textcolor{stringliteral}{"That's really fantastic!  I'm glad to hear you turned your life around.  "},
+367                             \textcolor{stringliteral}{'What kind of work do you do?'},
+368                             \textcolor{stringliteral}{'Ah ok I undestand.'},
+369                             \textcolor{stringliteral}{'Very sad to hear. You have a good heart and are very caring, that is something
+       to atleast be proud of!'},
+370                             \textcolor{stringliteral}{'Man that sounds really stressful...'},
+371                             \textcolor{stringliteral}{'You are so strong!  Please thank your husband for his service and thank you
+       for being his support, no matter the miles between you.  Take care of yourself and get out with friends when
+       you can!'},
+372                             \textcolor{stringliteral}{'I see. Is it your favorite food now? :p'},
+373                             \textcolor{stringliteral}{'YAY! good job! He/she is going to be beautiful'},
+374                             \textcolor{stringliteral}{'Nothing went wrong, we just have different lives in different places. I go
+       visit every now and then.'},
+375                             \textcolor{stringliteral}{"A spelling bee - what fun! I'm sure you will win - I bet you've worked hard
+       toward your goal."},
+376                             \textcolor{stringliteral}{'You should install security cameras outside your house.'},
+377                             \textcolor{stringliteral}{'Border collie. She was great!'},
+378                             \textcolor{stringliteral}{'Oh dear me.. So sorry to hear that! what did you do?'},
+379                             \textcolor{stringliteral}{'Praise God man! He really is amazing and we should always be grateful for we
+       have '},
+380                             \textcolor{stringliteral}{'Oh no.. Did he pass away?'},
+381                         ],
+382                     \},
+383                 ),
+384             ]
+385             \textcolor{keywordflow}{for} opt, example \textcolor{keywordflow}{in} opts\_and\_examples:
+386                 full\_opt = Opt(\{**opt, \textcolor{stringliteral}{'datapath'}: data\_path\})
+387                 teacher = EmpatheticDialoguesTeacher(full\_opt)
+388                 self.assertEqual(teacher.get(episode\_idx=1, entry\_idx=1), example)
+389 
+390             \textcolor{comment}{# Check EmotionClassificationSituationTeacher}
+391             opts\_and\_examples = [
+392                 (
+393                     \{\textcolor{stringliteral}{'datatype'}: \textcolor{stringliteral}{'train'}, \textcolor{stringliteral}{'train\_experiencer\_only'}: \textcolor{keyword}{True}\},
+394                     \{
+395                         \textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{' i used to scare for darkness'},
+396                         \textcolor{stringliteral}{'labels'}: [\textcolor{stringliteral}{'afraid'}],
+397                         \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True},
+398                     \},
+399                 ),
+400                 (
+401                     \{\textcolor{stringliteral}{'datatype'}: \textcolor{stringliteral}{'train'}, \textcolor{stringliteral}{'train\_experiencer\_only'}: \textcolor{keyword}{False}\},
+402                     \{
+403                         \textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{' i used to scare for darkness'},
+404                         \textcolor{stringliteral}{'labels'}: [\textcolor{stringliteral}{'afraid'}],
+405                         \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True},
+406                     \},
+407                 ),
+408                 (
+409                     \{\textcolor{stringliteral}{'datatype'}: \textcolor{stringliteral}{'valid'}\},
+410                     \{
+411                         \textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'I was walking through my hallway a few week ago, and my son was hiding
+       under the table and grabbed my ankle. I thought i was got. '},
+412                         \textcolor{stringliteral}{'labels'}: [\textcolor{stringliteral}{'surprised'}],
+413                         \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True},
+414                     \},
+415                 ),
+416                 (
+417                     \{\textcolor{stringliteral}{'datatype'}: \textcolor{stringliteral}{'test'}\},
+418                     \{
+419                         \textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{"My mother stopped by my house one day and said she saw 3 dogs on the road,
+       down from our house. They were starving, with ribs showing, and it was a mother dog and her two small
+       puppies. Of course, my daughter wanted to bring them to our house, so we could feed and help them. We did, and my
+       heart went out to them, as they were so sweet, but really were in a bad shape."},
+420                         \textcolor{stringliteral}{'labels'}: [\textcolor{stringliteral}{'caring'}],
+421                         \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True},
+422                     \},
+423                 ),
+424             ]
+425             \textcolor{keywordflow}{for} opt, example \textcolor{keywordflow}{in} opts\_and\_examples:
+426                 full\_opt = Opt(\{**opt, \textcolor{stringliteral}{'datapath'}: data\_path\})
+427                 teacher = EmotionClassificationSituationTeacher(full\_opt)
+428                 self.assertEqual(teacher.get(episode\_idx=1), example)
+429 
+430 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtest__empathetic__dialogues_1_1TestEDTeacher_a7c4ed6219d6095fca68c1140fe087d05}\label{classtest__empathetic__dialogues_1_1TestEDTeacher_a7c4ed6219d6095fca68c1140fe087d05}} 
+\index{test\+\_\+empathetic\+\_\+dialogues\+::\+Test\+E\+D\+Teacher@{test\+\_\+empathetic\+\_\+dialogues\+::\+Test\+E\+D\+Teacher}!test\+\_\+counts@{test\+\_\+counts}}
+\index{test\+\_\+counts@{test\+\_\+counts}!test\+\_\+empathetic\+\_\+dialogues\+::\+Test\+E\+D\+Teacher@{test\+\_\+empathetic\+\_\+dialogues\+::\+Test\+E\+D\+Teacher}}
+\subsubsection{\texorpdfstring{test\+\_\+counts()}{test\_counts()}}
+{\footnotesize\ttfamily def test\+\_\+empathetic\+\_\+dialogues.\+Test\+E\+D\+Teacher.\+test\+\_\+counts (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 53 of file test\+\_\+empathetic\+\_\+dialogues.\+py.
+
+
+\begin{DoxyCode}
+53     \textcolor{keyword}{def }test\_counts(self):
+54 
+55         with testing\_utils.tempdir() \textcolor{keyword}{as} tmpdir:
+56             data\_path = tmpdir
+57 
+58             \textcolor{comment}{# Check EmpatheticDialoguesTeacher, with multiple examples per episode}
+59             opts\_episodes\_and\_examples = [
+60                 (
+61                     \{\textcolor{stringliteral}{'datatype'}: \textcolor{stringliteral}{'train'}\},
+62                     EPISODE\_COUNTS[\textcolor{stringliteral}{'train\_both\_sides'}],
+63                     EXAMPLE\_COUNTS[\textcolor{stringliteral}{'train\_both\_sides'}],
+64                 ),  \textcolor{comment}{# Test the default mode}
+65                 (
+66                     \{\textcolor{stringliteral}{'datatype'}: \textcolor{stringliteral}{'train'}, \textcolor{stringliteral}{'train\_experiencer\_only'}: \textcolor{keyword}{True}\},
+67                     EPISODE\_COUNTS[\textcolor{stringliteral}{'train\_experiencer\_only'}],
+68                     EXAMPLE\_COUNTS[\textcolor{stringliteral}{'train\_experiencer\_only'}],
+69                 ),
+70                 (
+71                     \{\textcolor{stringliteral}{'datatype'}: \textcolor{stringliteral}{'train'}, \textcolor{stringliteral}{'train\_experiencer\_only'}: \textcolor{keyword}{False}\},
+72                     EPISODE\_COUNTS[\textcolor{stringliteral}{'train\_both\_sides'}],
+73                     EXAMPLE\_COUNTS[\textcolor{stringliteral}{'train\_both\_sides'}],
+74                 ),
+75                 (
+76                     \{\textcolor{stringliteral}{'datatype'}: \textcolor{stringliteral}{'valid'}\},
+77                     EPISODE\_COUNTS[\textcolor{stringliteral}{'valid'}],
+78                     EXAMPLE\_COUNTS[\textcolor{stringliteral}{'valid'}],
+79                 ),
+80                 (\{\textcolor{stringliteral}{'datatype'}: \textcolor{stringliteral}{'test'}\}, EPISODE\_COUNTS[\textcolor{stringliteral}{'test'}], EXAMPLE\_COUNTS[\textcolor{stringliteral}{'test'}]),
+81             ]
+82             \textcolor{keywordflow}{for} teacher\_class \textcolor{keywordflow}{in} [EmpatheticDialoguesTeacher]:
+83                 \textcolor{keywordflow}{for} opt, num\_episodes, num\_examples \textcolor{keywordflow}{in} opts\_episodes\_and\_examples:
+84                     full\_opt = Opt(\{**opt, \textcolor{stringliteral}{'datapath'}: data\_path\})
+85                     teacher = teacher\_class(full\_opt)
+86                     self.assertEqual(teacher.num\_episodes(), num\_episodes)
+87                     self.assertEqual(teacher.num\_examples(), num\_examples)
+88 
+89             \textcolor{comment}{# Check EmotionClassificationSituationTeacher, with one example per episode}
+90             train\_episode\_count = EPISODE\_COUNTS[\textcolor{stringliteral}{'train\_experiencer\_only'}]
+91             \textcolor{comment}{# For the situation classifier, we only want to have one episode per train}
+92             \textcolor{comment}{# conversation}
+93             opts\_episodes = [
+94                 (\{\textcolor{stringliteral}{'datatype'}: \textcolor{stringliteral}{'train'}\}, train\_episode\_count),  \textcolor{comment}{# Test the default mode}
+95                 (
+96                     \{\textcolor{stringliteral}{'datatype'}: \textcolor{stringliteral}{'train'}, \textcolor{stringliteral}{'train\_experiencer\_only'}: \textcolor{keyword}{True}\},
+97                     train\_episode\_count,
+98                 ),
+99                 (
+100                     \{\textcolor{stringliteral}{'datatype'}: \textcolor{stringliteral}{'train'}, \textcolor{stringliteral}{'train\_experiencer\_only'}: \textcolor{keyword}{False}\},
+101                     train\_episode\_count,
+102                 ),
+103                 (\{\textcolor{stringliteral}{'datatype'}: \textcolor{stringliteral}{'valid'}\}, EPISODE\_COUNTS[\textcolor{stringliteral}{'valid'}]),
+104                 (\{\textcolor{stringliteral}{'datatype'}: \textcolor{stringliteral}{'test'}\}, EPISODE\_COUNTS[\textcolor{stringliteral}{'test'}]),
+105             ]
+106             \textcolor{keywordflow}{for} teacher\_class \textcolor{keywordflow}{in} [EmotionClassificationSituationTeacher]:
+107                 \textcolor{keywordflow}{for} opt, num\_episodes \textcolor{keywordflow}{in} opts\_episodes:
+108                     full\_opt = Opt(\{**opt, \textcolor{stringliteral}{'datapath'}: data\_path\})
+109                     teacher = teacher\_class(full\_opt)
+110                     self.assertEqual(teacher.num\_episodes(), num\_episodes)
+111                     self.assertEqual(teacher.num\_examples(), num\_episodes)
+112 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+tests/tasks/\hyperlink{test__empathetic__dialogues_8py}{test\+\_\+empathetic\+\_\+dialogues.\+py}\end{DoxyCompactItemize}

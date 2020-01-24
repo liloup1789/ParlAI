@@ -21,123 +21,123 @@ with which the worker should continue the conversation.
 \end{DoxyVerb}
  
 
-Definition at line 19 of file run.\+py.
+Definition at line 20 of file run.\+py.
 
 
 \begin{DoxyCode}
-19 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1run_ad3ab2c71f8083c3112815c0b363d316b}{main}():
-20     \textcolor{stringliteral}{"""}
-21 \textcolor{stringliteral}{    Image Chat data collection task.}
-22 \textcolor{stringliteral}{}
-23 \textcolor{stringliteral}{    A worker is shown an image and part of a conversation, and is given a personality}
-24 \textcolor{stringliteral}{    with which the worker should continue the conversation.}
-25 \textcolor{stringliteral}{    """}
-26     argparser = ParlaiParser(\textcolor{keyword}{False}, \textcolor{keyword}{False})
-27     argparser.add\_parlai\_data\_path()
-28     argparser.add\_mturk\_args()
-29     argparser.add\_argument(
-30         \textcolor{stringliteral}{'-min\_t'}, \textcolor{stringliteral}{'--min\_turns'}, default=3, type=int, help=\textcolor{stringliteral}{'minimum number of turns'}
-31     )
-32     argparser.add\_argument(
-33         \textcolor{stringliteral}{'-mt'}, \textcolor{stringliteral}{'--max\_turns'}, default=5, type=int, help=\textcolor{stringliteral}{'maximal number of chat turns'}
-34     )
-35     argparser.add\_argument(
-36         \textcolor{stringliteral}{'-mx\_rsp\_time'},
-37         \textcolor{stringliteral}{'--max\_resp\_time'},
-38         default=1800,
-39         type=int,
-40         help=\textcolor{stringliteral}{'time limit for entering a dialog message'},
-41     )
-42     argparser.add\_argument(
-43         \textcolor{stringliteral}{'-mx\_onb\_time'},
-44         \textcolor{stringliteral}{'--max\_onboard\_time'},
-45         type=int,
-46         default=300,
-47         help=\textcolor{stringliteral}{'time limit for turker'} \textcolor{stringliteral}{'in onboarding'},
-48     )
-49     argparser.add\_argument(
-50         \textcolor{stringliteral}{'-ni'},
-51         \textcolor{stringliteral}{'--num\_images'},
-52         type=int,
-53         default=10,
-54         help=\textcolor{stringliteral}{'number of images to show \(\backslash\)}
-55 \textcolor{stringliteral}{                           to turker'},
-56     )
-57     argparser.add\_argument(
-58         \textcolor{stringliteral}{'--auto-approve-delay'},
-59         type=int,
-60         default=3600 * 24 * 5,
-61         help=\textcolor{stringliteral}{'how long to wait for  \(\backslash\)}
-62 \textcolor{stringliteral}{                           auto approval'},
-63     )
-64     argparser.add\_argument(
-65         \textcolor{stringliteral}{'--second-response'},
-66         type=\textcolor{stringliteral}{'bool'},
-67         default=\textcolor{keyword}{False},
-68         help=\textcolor{stringliteral}{'Specify if getting responses \(\backslash\)}
-69 \textcolor{stringliteral}{                           to responses to original comment'},
-70     )
-71     ImageChatTeacher.add\_cmdline\_args(argparser)
-72 
-73     opt = argparser.parse\_args()
-74     directory\_path = os.path.dirname(os.path.abspath(\_\_file\_\_))
-75     opt[\textcolor{stringliteral}{'task'}] = os.path.basename(directory\_path)
-76     \textcolor{keywordflow}{if} \textcolor{stringliteral}{'data\_path'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} opt:
-77         opt[\textcolor{stringliteral}{'data\_path'}] = os.getcwd() + \textcolor{stringliteral}{'/data/'} + opt[\textcolor{stringliteral}{'task'}]
-78     opt.update(config\_second \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'second\_response'}] \textcolor{keywordflow}{else} config\_first)
-79 
-80     mturk\_agent\_ids = [RESPONDER]
-81     mturk\_manager = MTurkManager(opt=opt, mturk\_agent\_ids=mturk\_agent\_ids)
-82 
-83     personality\_generator = PersonalityGenerator(opt)
-84     example\_generator = ExampleGenerator(opt)
-85     mturk\_manager.setup\_server(task\_directory\_path=directory\_path)
-86 
-87     \textcolor{keywordflow}{try}:
-88         mturk\_manager.start\_new\_run()
-89         mturk\_manager.ready\_to\_accept\_workers()
-90 
-91         \textcolor{keyword}{def }run\_onboard(worker):
-92             worker.personality\_generator = personality\_generator
-93             worker.example\_generator = example\_generator
-94             world = RoleOnboardWorld(opt, worker)
-95             world.parley()
-96             world.shutdown()
-97 
-98         mturk\_manager.set\_onboard\_function(onboard\_function=run\_onboard)
-99         mturk\_manager.create\_hits()
-100 
-101         \textcolor{keyword}{def }check\_worker\_eligibility(worker):
-102             \textcolor{keywordflow}{return} \textcolor{keyword}{True}
-103 
-104         \textcolor{keyword}{def }assign\_worker\_roles(workers):
-105             \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} workers:
-106                 w.id = mturk\_agent\_ids[0]
-107 
-108         \textcolor{keyword}{def }run\_conversation(mturk\_manager, opt, workers):
-109             agents = workers[:]
-110             conv\_idx = mturk\_manager.conversation\_index
-111             world = MTurkImageChatWorld(
-112                 opt, agents=agents, world\_tag=\textcolor{stringliteral}{'conversation t\_\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(conv\_idx)
-113             )
-114             \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} world.episode\_done():
-115                 world.parley()
-116             world.save\_data()
-117 
-118             world.shutdown()
-119             world.review\_work()
-120 
-121         mturk\_manager.start\_task(
-122             eligibility\_function=check\_worker\_eligibility,
-123             assign\_role\_function=assign\_worker\_roles,
-124             task\_function=run\_conversation,
-125         )
-126 
-127     \textcolor{keywordflow}{except} BaseException:
-128         \textcolor{keywordflow}{raise}
-129     \textcolor{keywordflow}{finally}:
-130         mturk\_manager.expire\_all\_unassigned\_hits()
-131         mturk\_manager.shutdown()
-132 
+20 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1run_ad3ab2c71f8083c3112815c0b363d316b}{main}():
+21     \textcolor{stringliteral}{"""}
+22 \textcolor{stringliteral}{    Image Chat data collection task.}
+23 \textcolor{stringliteral}{}
+24 \textcolor{stringliteral}{    A worker is shown an image and part of a conversation, and is given a personality}
+25 \textcolor{stringliteral}{    with which the worker should continue the conversation.}
+26 \textcolor{stringliteral}{    """}
+27     argparser = ParlaiParser(\textcolor{keyword}{False}, \textcolor{keyword}{False})
+28     argparser.add\_parlai\_data\_path()
+29     argparser.add\_mturk\_args()
+30     argparser.add\_argument(
+31         \textcolor{stringliteral}{'-min\_t'}, \textcolor{stringliteral}{'--min\_turns'}, default=3, type=int, help=\textcolor{stringliteral}{'minimum number of turns'}
+32     )
+33     argparser.add\_argument(
+34         \textcolor{stringliteral}{'-mt'}, \textcolor{stringliteral}{'--max\_turns'}, default=5, type=int, help=\textcolor{stringliteral}{'maximal number of chat turns'}
+35     )
+36     argparser.add\_argument(
+37         \textcolor{stringliteral}{'-mx\_rsp\_time'},
+38         \textcolor{stringliteral}{'--max\_resp\_time'},
+39         default=1800,
+40         type=int,
+41         help=\textcolor{stringliteral}{'time limit for entering a dialog message'},
+42     )
+43     argparser.add\_argument(
+44         \textcolor{stringliteral}{'-mx\_onb\_time'},
+45         \textcolor{stringliteral}{'--max\_onboard\_time'},
+46         type=int,
+47         default=300,
+48         help=\textcolor{stringliteral}{'time limit for turker'} \textcolor{stringliteral}{'in onboarding'},
+49     )
+50     argparser.add\_argument(
+51         \textcolor{stringliteral}{'-ni'},
+52         \textcolor{stringliteral}{'--num\_images'},
+53         type=int,
+54         default=10,
+55         help=\textcolor{stringliteral}{'number of images to show \(\backslash\)}
+56 \textcolor{stringliteral}{                           to turker'},
+57     )
+58     argparser.add\_argument(
+59         \textcolor{stringliteral}{'--auto-approve-delay'},
+60         type=int,
+61         default=3600 * 24 * 5,
+62         help=\textcolor{stringliteral}{'how long to wait for  \(\backslash\)}
+63 \textcolor{stringliteral}{                           auto approval'},
+64     )
+65     argparser.add\_argument(
+66         \textcolor{stringliteral}{'--second-response'},
+67         type=\textcolor{stringliteral}{'bool'},
+68         default=\textcolor{keyword}{False},
+69         help=\textcolor{stringliteral}{'Specify if getting responses \(\backslash\)}
+70 \textcolor{stringliteral}{                           to responses to original comment'},
+71     )
+72     ImageChatTeacher.add\_cmdline\_args(argparser)
+73 
+74     opt = argparser.parse\_args()
+75     directory\_path = os.path.dirname(os.path.abspath(\_\_file\_\_))
+76     opt[\textcolor{stringliteral}{'task'}] = os.path.basename(directory\_path)
+77     \textcolor{keywordflow}{if} \textcolor{stringliteral}{'data\_path'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} opt:
+78         opt[\textcolor{stringliteral}{'data\_path'}] = os.getcwd() + \textcolor{stringliteral}{'/data/'} + opt[\textcolor{stringliteral}{'task'}]
+79     opt.update(config\_second \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'second\_response'}] \textcolor{keywordflow}{else} config\_first)
+80 
+81     mturk\_agent\_ids = [RESPONDER]
+82     mturk\_manager = MTurkManager(opt=opt, mturk\_agent\_ids=mturk\_agent\_ids)
+83 
+84     personality\_generator = PersonalityGenerator(opt)
+85     example\_generator = ExampleGenerator(opt)
+86     mturk\_manager.setup\_server(task\_directory\_path=directory\_path)
+87 
+88     \textcolor{keywordflow}{try}:
+89         mturk\_manager.start\_new\_run()
+90         mturk\_manager.ready\_to\_accept\_workers()
+91 
+92         \textcolor{keyword}{def }run\_onboard(worker):
+93             worker.personality\_generator = personality\_generator
+94             worker.example\_generator = example\_generator
+95             world = RoleOnboardWorld(opt, worker)
+96             world.parley()
+97             world.shutdown()
+98 
+99         mturk\_manager.set\_onboard\_function(onboard\_function=run\_onboard)
+100         mturk\_manager.create\_hits()
+101 
+102         \textcolor{keyword}{def }check\_worker\_eligibility(worker):
+103             \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+104 
+105         \textcolor{keyword}{def }assign\_worker\_roles(workers):
+106             \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} workers:
+107                 w.id = mturk\_agent\_ids[0]
+108 
+109         \textcolor{keyword}{def }run\_conversation(mturk\_manager, opt, workers):
+110             agents = workers[:]
+111             conv\_idx = mturk\_manager.conversation\_index
+112             world = MTurkImageChatWorld(
+113                 opt, agents=agents, world\_tag=\textcolor{stringliteral}{'conversation t\_\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(conv\_idx)
+114             )
+115             \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} world.episode\_done():
+116                 world.parley()
+117             world.save\_data()
+118 
+119             world.shutdown()
+120             world.review\_work()
+121 
+122         mturk\_manager.start\_task(
+123             eligibility\_function=check\_worker\_eligibility,
+124             assign\_role\_function=assign\_worker\_roles,
+125             task\_function=run\_conversation,
+126         )
+127 
+128     \textcolor{keywordflow}{except} BaseException:
+129         \textcolor{keywordflow}{raise}
+130     \textcolor{keywordflow}{finally}:
+131         mturk\_manager.expire\_all\_unassigned\_hits()
+132         mturk\_manager.shutdown()
 133 
+134 
 \end{DoxyCode}

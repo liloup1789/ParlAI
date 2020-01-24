@@ -2,8 +2,7 @@
 \label{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld}\index{parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+worlds.\+Interactive\+World@{parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+worlds.\+Interactive\+World}}
 
 
-Inheritance diagram for parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+worlds.\+Interactive\+World\+:
-\nopagebreak
+Inheritance diagram for parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+worlds.\+Interactive\+World\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+worlds.
 \end{figure}
 
 
-Collaboration diagram for parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+worlds.\+Interactive\+World\+:
-\nopagebreak
+Collaboration diagram for parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+worlds.\+Interactive\+World\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -25,14 +23,17 @@ Collaboration diagram for parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+world
 \item 
 def \hyperlink{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_a17330f1fd256bd53eafea1c7e119d77d}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1core_1_1worlds_1_1World_a3640d92718acd3e6942a28c1ab3678bd}{opt}, \hyperlink{classparlai_1_1core_1_1worlds_1_1DialogPartnerWorld_a04185d1d55ca86c96c796f12f2226fc9}{agents}, shared=None)
 \item 
-def \hyperlink{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_af4efe25e565dbf73a46d1559eb425243}{load\+\_\+topics} (self, \hyperlink{classparlai_1_1core_1_1worlds_1_1World_a3640d92718acd3e6942a28c1ab3678bd}{opt})
-\item 
-def \hyperlink{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_a01cde3e1317b31cf52024283f061fdf6}{get\+\_\+new\+\_\+topic} (self)
-\item 
 def \hyperlink{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_afcda29202fc3fd773522edbd3c40e4a4}{parley} (self)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_abff35233d98cd0a20cd49fef57f0f0bd}{add\+\_\+cmdline\+\_\+args} (argparser)
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_a47e0bc96c0be028cc4732a499662040d}{opt}
 \item 
 \hyperlink{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_a32f2d277a7892c9e8c7c64c12a8f4ba7}{num\+\_\+topics}
 \item 
@@ -41,6 +42,10 @@ def \hyperlink{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1Intera
 \hyperlink{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_a54ecd8d0f7c5dd064d0c2b511f9ac03b}{human\+\_\+agent}
 \item 
 \hyperlink{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_abc5413fa516f7fb0cc4e0c52d918d572}{model\+\_\+agent}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_a8e347c355d835228d970a4e8464dad1e}{print\+\_\+checked\+\_\+sentence}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_ab9fa4bee853c91a06ab29dff852dd95e}{knowledge\+\_\+agent}
 \item 
 \hyperlink{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_ad323b2b928a31a0b048059a1569ae8f2}{topic\+\_\+list}
 \item 
@@ -54,9 +59,16 @@ def \hyperlink{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1Intera
 
 
 \subsection{Detailed Description}
+\begin{DoxyVerb}Interactive world for wizard of wikipedia.
 
+Used for models trained on the task `-t wizard_of_wikipedia`. Automatically
+retrieves knowledge from Wikipedia based on the conversation history using a TF-IDF
+retriever. Then uses a Transformer-based model to select a checked sentence from
+these retrieved passages.
+\end{DoxyVerb}
+ 
 
-Definition at line 21 of file worlds.\+py.
+Definition at line 29 of file worlds.\+py.
 
 
 
@@ -69,28 +81,33 @@ Definition at line 21 of file worlds.\+py.
 
 
 
-Definition at line 22 of file worlds.\+py.
+Definition at line 49 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-22     \textcolor{keyword}{def }\_\_init\_\_(self, opt, agents, shared=None):
-23         super().\_\_init\_\_(opt, agents, shared)
-24         print(\textcolor{stringliteral}{'[ loading topics.. ]'})
-25         self.load\_topics(opt)
-26         self.num\_topics = opt[\textcolor{stringliteral}{'num\_topics'}]
-27         self.cnt = 0
-28         self.human\_agent = self.agents[0]
-29         self.model\_agent = self.agents[1]
-30 
+49     \textcolor{keyword}{def }\_\_init\_\_(self, opt, agents, shared=None):
+50         super().\_\_init\_\_(opt, agents, shared)
+51         print(\textcolor{stringliteral}{'[ loading topics.. ]'})
+52         self.opt = opt
+53         self.\_load\_topics(opt)
+54         self.num\_topics = opt[\textcolor{stringliteral}{'num\_topics'}]
+55         self.cnt = 0
+56         self.human\_agent = self.agents[0]
+57         self.model\_agent = self.agents[1]
+58 
+59         self.\_set\_up\_knowledge\_agent(opt.get(\textcolor{stringliteral}{'add\_token\_knowledge'}, \textcolor{keyword}{False}))
+60 
+61         self.print\_checked\_sentence = opt[\textcolor{stringliteral}{'print\_checked\_sentence'}]
+62 
 \end{DoxyCode}
 
 
 \subsection{Member Function Documentation}
-\mbox{\Hypertarget{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_a01cde3e1317b31cf52024283f061fdf6}\label{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_a01cde3e1317b31cf52024283f061fdf6}} 
-\index{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World}!get\+\_\+new\+\_\+topic@{get\+\_\+new\+\_\+topic}}
-\index{get\+\_\+new\+\_\+topic@{get\+\_\+new\+\_\+topic}!parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World}}
-\subsubsection{\texorpdfstring{get\+\_\+new\+\_\+topic()}{get\_new\_topic()}}
-{\footnotesize\ttfamily def parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+worlds.\+Interactive\+World.\+get\+\_\+new\+\_\+topic (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_abff35233d98cd0a20cd49fef57f0f0bd}\label{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_abff35233d98cd0a20cd49fef57f0f0bd}} 
+\index{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World}!add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}}
+\index{add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}!parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World}}
+\subsubsection{\texorpdfstring{add\+\_\+cmdline\+\_\+args()}{add\_cmdline\_args()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+worlds.\+Interactive\+World.\+add\+\_\+cmdline\+\_\+args (\begin{DoxyParamCaption}\item[{}]{argparser }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
@@ -98,57 +115,15 @@ Definition at line 40 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-40     \textcolor{keyword}{def }get\_new\_topic(self):
-41         random.seed()
-42         topics = random.sample(self.topic\_list, self.num\_topics - 1)
-43         topics.append(NO\_TOPIC)
-44         letters = list(string.ascii\_uppercase)[: self.num\_topics]
-45         topic\_list = \{x: y \textcolor{keywordflow}{for} x, y \textcolor{keywordflow}{in} zip(letters, topics)\}
-46         topic\_text = \textcolor{stringliteral}{'\(\backslash\)n'}.join([\textcolor{stringliteral}{'\{\}: \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(k, v) \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} topic\_list.items()])
-47 
-48         done = \textcolor{keyword}{False}
-49         \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} done:
-50             self.human\_agent.observe(
-51                 \{
-52                     \textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'\(\backslash\)nPlease choose one of the following topics by typing '}
-53                     \textcolor{stringliteral}{'A, B, C, ..., etc. : \(\backslash\)n\(\backslash\)n\{\}\(\backslash\)n'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(topic\_text)
-54                 \}
-55             )
-56             topic\_act = self.human\_agent.act()
-57             choice = topic\_act[\textcolor{stringliteral}{'text'}][0].upper()
-58             \textcolor{keywordflow}{if} choice \textcolor{keywordflow}{in} topic\_list:
-59                 done = \textcolor{keyword}{True}
-60             \textcolor{keywordflow}{else}:
-61                 self.human\_agent.observe(
-62                     \{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{'Invalid response, please try again.'}\}
-63                 )
-64 
-65         chosen\_topic = topic\_list[choice]
-66         print(\textcolor{stringliteral}{'[ Your chosen topic is: \{\} ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(chosen\_topic))
-67         \textcolor{keywordflow}{return} chosen\_topic
-68 
-\end{DoxyCode}
-\mbox{\Hypertarget{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_af4efe25e565dbf73a46d1559eb425243}\label{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_af4efe25e565dbf73a46d1559eb425243}} 
-\index{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World}!load\+\_\+topics@{load\+\_\+topics}}
-\index{load\+\_\+topics@{load\+\_\+topics}!parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World}}
-\subsubsection{\texorpdfstring{load\+\_\+topics()}{load\_topics()}}
-{\footnotesize\ttfamily def parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+worlds.\+Interactive\+World.\+load\+\_\+topics (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt }\end{DoxyParamCaption})}
-
-
-
-Definition at line 31 of file worlds.\+py.
-
-
-\begin{DoxyCode}
-31     \textcolor{keyword}{def }load\_topics(self, opt):
-32         \textcolor{comment}{# Load possible chosen topics}
-33         topics\_path = os.path.join(
-34             opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'wizard\_of\_wikipedia'}, \textcolor{stringliteral}{'topic\_splits.json'}
-35         )
-36         \textcolor{comment}{# Get training set topics}
-37         datatype = opt[\textcolor{stringliteral}{'datatype'}].split(\textcolor{stringliteral}{':'})[0]
-38         self.topic\_list = json.load(open(topics\_path, \textcolor{stringliteral}{'rb'}))[datatype]
-39 
+40     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(argparser):
+41         parser = argparser.add\_argument\_group(\textcolor{stringliteral}{'WoW Interactive World Args'})
+42         parser.add\_argument(
+43             \textcolor{stringliteral}{'--print-checked-sentence'},
+44             type=\textcolor{stringliteral}{'bool'},
+45             default=\textcolor{keyword}{True},
+46             help=\textcolor{stringliteral}{'Print sentence that the model checks.'},
+47         )
+48 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_afcda29202fc3fd773522edbd3c40e4a4}\label{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_afcda29202fc3fd773522edbd3c40e4a4}} 
 \index{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World}!parley@{parley}}
@@ -156,49 +131,69 @@ Definition at line 31 of file worlds.\+py.
 \subsubsection{\texorpdfstring{parley()}{parley()}}
 {\footnotesize\ttfamily def parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+worlds.\+Interactive\+World.\+parley (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
 
+\begin{DoxyVerb}Loop between wizard and apprentice.
 
+Adds knowledge to the wizard observations. Assumes that the model agent is the
+wizard model.
+\end{DoxyVerb}
+ 
 
-Definition at line 69 of file worlds.\+py.
+Definition at line 127 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-69     \textcolor{keyword}{def }parley(self):
-70         \textcolor{keywordflow}{if} self.cnt == 0:
-71             self.topic = self.get\_new\_topic()
-72             self.acts = [\textcolor{keywordtype}{None}, \textcolor{keywordtype}{None}]
-73             self.human\_first = random.choice([0, 1])
-74 
-75         \textcolor{comment}{# possibly get human act first}
-76         \textcolor{keywordflow}{if} self.cnt == 0 \textcolor{keywordflow}{and} \textcolor{keywordflow}{not} self.human\_first:
-77             self.acts[0] = act = Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{''}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{False}\})
-78             act = self.acts[0]
-79         \textcolor{keywordflow}{else}:
-80             self.acts[0] = self.human\_agent.act()
-81             act = deepcopy(self.acts[0])
-82 
-83         \textcolor{comment}{# model agent observe}
-84         \textcolor{keywordflow}{if} self.cnt == 0 \textcolor{keywordflow}{and} self.topic != NO\_TOPIC:
-85             \textcolor{comment}{# add the chosen\_topic to the message}
-86             act[\textcolor{stringliteral}{'chosen\_topic'}] = self.topic
-87             act.force\_set(\textcolor{stringliteral}{'text'}, \textcolor{stringliteral}{'\(\backslash\)n'}.join([self.topic, act.get(\textcolor{stringliteral}{'text'}, \textcolor{stringliteral}{'hi'})]))
-88         self.model\_agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(act))
-89 
-90         \textcolor{comment}{# model agent act}
-91         self.acts[1] = self.model\_agent.act()
-92 
-93         \textcolor{comment}{# human agent observe}
-94         self.human\_agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(self.acts[1]))
-95 
-96         self.update\_counters()
-97         self.cnt += 1
-98 
-99         \textcolor{keywordflow}{if} self.episode\_done():
-100             print(\textcolor{stringliteral}{'[ CHAT DONE ]'})
-101             print(\textcolor{stringliteral}{'\(\backslash\)n[ Preparing new chat... ]\(\backslash\)n'})
-102             self.cnt = 0
-103             self.model\_agent.reset()
-104 
-105 
+127     \textcolor{keyword}{def }parley(self):
+128         \textcolor{stringliteral}{"""}
+129 \textcolor{stringliteral}{        Loop between wizard and apprentice.}
+130 \textcolor{stringliteral}{}
+131 \textcolor{stringliteral}{        Adds knowledge to the wizard observations. Assumes that the model agent is the}
+132 \textcolor{stringliteral}{        wizard model.}
+133 \textcolor{stringliteral}{        """}
+134 
+135         \textcolor{keywordflow}{if} self.cnt == 0:
+136             self.topic = self.\_get\_new\_topic()
+137             self.acts = [\textcolor{keywordtype}{None}, \textcolor{keywordtype}{None}]
+138             self.human\_first = random.choice([0, 1])
+139 
+140         \textcolor{comment}{# possibly get human act first}
+141         \textcolor{keywordflow}{if} self.cnt == 0 \textcolor{keywordflow}{and} \textcolor{keywordflow}{not} self.human\_first:
+142             self.acts[0] = act = Message(\{\textcolor{stringliteral}{'text'}: \textcolor{stringliteral}{''}, \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{False}\})
+143             act = self.acts[0]
+144         \textcolor{keywordflow}{else}:
+145             self.acts[0] = self.human\_agent.act()
+146             act = deepcopy(self.acts[0])
+147 
+148         \textcolor{comment}{# model agent observe}
+149         \textcolor{keywordflow}{if} self.cnt == 0 \textcolor{keywordflow}{and} self.topic != NO\_TOPIC:
+150             \textcolor{comment}{# add the chosen\_topic to the message}
+151             act[\textcolor{stringliteral}{'chosen\_topic'}] = self.topic
+152             act.force\_set(\textcolor{stringliteral}{'text'}, \textcolor{stringliteral}{'\(\backslash\)n'}.join([self.topic, act.get(\textcolor{stringliteral}{'text'}, \textcolor{stringliteral}{'hi'})]))
+153 
+154         \textcolor{comment}{# add knowledge to the model observation}
+155         act = self.\_add\_knowledge\_to\_act(act)
+156 
+157         \textcolor{comment}{# model observes knowledge and human (apprentice) act}
+158         self.model\_agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(act))
+159 
+160         \textcolor{comment}{# model agent act}
+161         self.acts[1] = self.model\_agent.act()
+162 
+163         \textcolor{comment}{# add the model reply to the knowledge retriever's dialogue history}
+164         self.knowledge\_agent.observe(self.acts[1], actor\_id=\textcolor{stringliteral}{'wizard'})
+165 
+166         \textcolor{comment}{# human (apprentice) agent observes model act}
+167         self.human\_agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(self.acts[1]))
+168 
+169         self.update\_counters()
+170         self.cnt += 1
+171 
+172         \textcolor{keywordflow}{if} self.episode\_done():
+173             print(\textcolor{stringliteral}{'[ CHAT DONE ]'})
+174             print(\textcolor{stringliteral}{'\(\backslash\)n[ Preparing new chat... ]\(\backslash\)n'})
+175             self.cnt = 0
+176             self.model\_agent.reset()
+177 
+178 
 \end{DoxyCode}
 
 
@@ -211,7 +206,7 @@ Definition at line 69 of file worlds.\+py.
 
 
 
-Definition at line 72 of file worlds.\+py.
+Definition at line 137 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_ac89fdf4af0e037452e4e965560b68eea}\label{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_ac89fdf4af0e037452e4e965560b68eea}} 
 \index{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World}!cnt@{cnt}}
@@ -221,7 +216,7 @@ Definition at line 72 of file worlds.\+py.
 
 
 
-Definition at line 27 of file worlds.\+py.
+Definition at line 55 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_a54ecd8d0f7c5dd064d0c2b511f9ac03b}\label{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_a54ecd8d0f7c5dd064d0c2b511f9ac03b}} 
 \index{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World}!human\+\_\+agent@{human\+\_\+agent}}
@@ -231,13 +226,23 @@ Definition at line 27 of file worlds.\+py.
 
 
 
-Definition at line 28 of file worlds.\+py.
+Definition at line 56 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_a8a0ba61c930502f811dd033a6e52c327}\label{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_a8a0ba61c930502f811dd033a6e52c327}} 
 \index{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World}!human\+\_\+first@{human\+\_\+first}}
 \index{human\+\_\+first@{human\+\_\+first}!parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World}}
 \subsubsection{\texorpdfstring{human\+\_\+first}{human\_first}}
 {\footnotesize\ttfamily parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+worlds.\+Interactive\+World.\+human\+\_\+first}
+
+
+
+Definition at line 138 of file worlds.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_ab9fa4bee853c91a06ab29dff852dd95e}\label{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_ab9fa4bee853c91a06ab29dff852dd95e}} 
+\index{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World}!knowledge\+\_\+agent@{knowledge\+\_\+agent}}
+\index{knowledge\+\_\+agent@{knowledge\+\_\+agent}!parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World}}
+\subsubsection{\texorpdfstring{knowledge\+\_\+agent}{knowledge\_agent}}
+{\footnotesize\ttfamily parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+worlds.\+Interactive\+World.\+knowledge\+\_\+agent}
 
 
 
@@ -251,7 +256,7 @@ Definition at line 73 of file worlds.\+py.
 
 
 
-Definition at line 29 of file worlds.\+py.
+Definition at line 57 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_a32f2d277a7892c9e8c7c64c12a8f4ba7}\label{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_a32f2d277a7892c9e8c7c64c12a8f4ba7}} 
 \index{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World}!num\+\_\+topics@{num\+\_\+topics}}
@@ -261,7 +266,27 @@ Definition at line 29 of file worlds.\+py.
 
 
 
-Definition at line 26 of file worlds.\+py.
+Definition at line 54 of file worlds.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_a47e0bc96c0be028cc4732a499662040d}\label{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_a47e0bc96c0be028cc4732a499662040d}} 
+\index{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World}!opt@{opt}}
+\index{opt@{opt}!parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World}}
+\subsubsection{\texorpdfstring{opt}{opt}}
+{\footnotesize\ttfamily parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+worlds.\+Interactive\+World.\+opt}
+
+
+
+Definition at line 52 of file worlds.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_a8e347c355d835228d970a4e8464dad1e}\label{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_a8e347c355d835228d970a4e8464dad1e}} 
+\index{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World}!print\+\_\+checked\+\_\+sentence@{print\+\_\+checked\+\_\+sentence}}
+\index{print\+\_\+checked\+\_\+sentence@{print\+\_\+checked\+\_\+sentence}!parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World}}
+\subsubsection{\texorpdfstring{print\+\_\+checked\+\_\+sentence}{print\_checked\_sentence}}
+{\footnotesize\ttfamily parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+worlds.\+Interactive\+World.\+print\+\_\+checked\+\_\+sentence}
+
+
+
+Definition at line 61 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_ad248b70f56a67f58e7799eb126315169}\label{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_ad248b70f56a67f58e7799eb126315169}} 
 \index{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World}!topic@{topic}}
@@ -271,7 +296,7 @@ Definition at line 26 of file worlds.\+py.
 
 
 
-Definition at line 71 of file worlds.\+py.
+Definition at line 136 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_ad323b2b928a31a0b048059a1569ae8f2}\label{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1InteractiveWorld_ad323b2b928a31a0b048059a1569ae8f2}} 
 \index{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+Interactive\+World}!topic\+\_\+list@{topic\+\_\+list}}
@@ -281,7 +306,7 @@ Definition at line 71 of file worlds.\+py.
 
 
 
-Definition at line 38 of file worlds.\+py.
+Definition at line 82 of file worlds.\+py.
 
 
 

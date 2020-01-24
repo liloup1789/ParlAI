@@ -2,8 +2,7 @@
 \label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager}\index{parlai.\+mturk.\+core.\+socket\+\_\+manager.\+Socket\+Manager@{parlai.\+mturk.\+core.\+socket\+\_\+manager.\+Socket\+Manager}}
 
 
-Inheritance diagram for parlai.\+mturk.\+core.\+socket\+\_\+manager.\+Socket\+Manager\+:
-\nopagebreak
+Inheritance diagram for parlai.\+mturk.\+core.\+socket\+\_\+manager.\+Socket\+Manager\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -97,13 +96,9 @@ def \hyperlink{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_
 \subsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_ad170381c2941af2fc6273559402ff22f}{A\+C\+K\+\_\+\+T\+I\+ME}
+\hyperlink{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a04445fa5e12057459d0f1edbe622cc90}{int}
 \item 
-\hyperlink{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a057fdcc6941e8aef40af1b12d7a24572}{D\+E\+F\+\_\+\+M\+I\+S\+S\+E\+D\+\_\+\+P\+O\+N\+GS}
-\item 
-\hyperlink{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a397c2f186e18af9a720f084047b66672}{H\+E\+A\+R\+T\+B\+E\+A\+T\+\_\+\+R\+A\+TE}
-\item 
-\hyperlink{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_aa33dad44c7c32e6ed95a868c39dc727e}{D\+E\+F\+\_\+\+D\+E\+A\+D\+\_\+\+T\+I\+ME}
+\hyperlink{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a4e9e1aac15e9b4e0143e508167c27fbe}{float}
 \end{DoxyCompactItemize}
 
 
@@ -115,7 +110,7 @@ the connections it forms
 \end{DoxyVerb}
  
 
-Definition at line 199 of file socket\+\_\+manager.\+py.
+Definition at line 201 of file socket\+\_\+manager.\+py.
 
 
 
@@ -140,65 +135,65 @@ socket_dead_timeout:  time to wait between heartbeats before dying
 \end{DoxyVerb}
  
 
-Definition at line 225 of file socket\+\_\+manager.\+py.
+Definition at line 230 of file socket\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-225     ):
-226         \textcolor{stringliteral}{"""}
-227 \textcolor{stringliteral}{        server\_url:           url at which the server is to be run}
-228 \textcolor{stringliteral}{        port:                 port for the socket to operate on}
-229 \textcolor{stringliteral}{        alive\_callback:       function to be called on alive Packets, defined}
-230 \textcolor{stringliteral}{                               alive\_callback(self, pkt)}
-231 \textcolor{stringliteral}{        message\_callback:     function to be called on message Packets, defined}
-232 \textcolor{stringliteral}{                               message\_callback(self, pkt)}
-233 \textcolor{stringliteral}{        socket\_dead\_callback: function to be called when a socket dies, should}
-234 \textcolor{stringliteral}{                              return false if the socket\_manager should ignore}
-235 \textcolor{stringliteral}{                              the death and treat the socket as alive defined}
-236 \textcolor{stringliteral}{                               on\_socket\_dead(self, worker\_id, assignment\_id)}
-237 \textcolor{stringliteral}{        socket\_dead\_timeout:  time to wait between heartbeats before dying}
-238 \textcolor{stringliteral}{        """}
-239         self.server\_url = server\_url
-240         self.port = port
-241         self.alive\_callback = alive\_callback
-242         self.message\_callback = message\_callback
-243         self.socket\_dead\_callback = socket\_dead\_callback
-244         self.server\_death\_callback = server\_death\_callback
-245         \textcolor{keywordflow}{if} socket\_dead\_timeout \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-246             self.missed\_pongs = 1 + socket\_dead\_timeout / self.HEARTBEAT\_RATE
-247         \textcolor{keywordflow}{else}:
-248             self.missed\_pongs = self.DEF\_MISSED\_PONGS
-249         self.task\_group\_id = task\_group\_id
-250 
-251         self.ws = \textcolor{keywordtype}{None}
-252         self.keep\_running = \textcolor{keyword}{True}
-253 
-254         \textcolor{comment}{# initialize the state}
-255         self.listen\_thread = \textcolor{keywordtype}{None}
-256         self.send\_thread = \textcolor{keywordtype}{None}
-257         self.queues = \{\}
-258         self.blocking\_packets = \{\}  \textcolor{comment}{# connection\_id to blocking packet map}
-259         self.threads = \{\}
-260         self.run = \{\}
-261         self.last\_sent\_heartbeat\_time = \{\}  \textcolor{comment}{# time of last heartbeat sent}
-262         self.last\_received\_heartbeat = \{\}  \textcolor{comment}{# actual last received heartbeat}
-263         self.pongs\_without\_heartbeat = \{\}
-264         \textcolor{comment}{# TODO update processed packets to *ensure* only one execution per}
-265         \textcolor{comment}{# packet, as right now two threads can be spawned to process the}
-266         \textcolor{comment}{# same packet at the same time, as the packet is only added to this}
-267         \textcolor{comment}{# set after processing is complete.}
-268         self.processed\_packets = set()
-269         self.packet\_map = \{\}
-270         self.alive = \textcolor{keyword}{False}
-271         self.is\_shutdown = \textcolor{keyword}{False}
-272         self.send\_lock = threading.Condition()
-273         self.packet\_map\_lock = threading.Condition()
-274         self.thread\_shutdown\_lock = threading.Condition()
-275         self.worker\_assign\_ids = \{\}  \textcolor{comment}{# mapping from connection id to pair}
-276 
-277         \textcolor{comment}{# setup the socket}
-278         self.\_setup\_socket()
-279 
+230     ):
+231         \textcolor{stringliteral}{"""}
+232 \textcolor{stringliteral}{        server\_url:           url at which the server is to be run}
+233 \textcolor{stringliteral}{        port:                 port for the socket to operate on}
+234 \textcolor{stringliteral}{        alive\_callback:       function to be called on alive Packets, defined}
+235 \textcolor{stringliteral}{                               alive\_callback(self, pkt)}
+236 \textcolor{stringliteral}{        message\_callback:     function to be called on message Packets, defined}
+237 \textcolor{stringliteral}{                               message\_callback(self, pkt)}
+238 \textcolor{stringliteral}{        socket\_dead\_callback: function to be called when a socket dies, should}
+239 \textcolor{stringliteral}{                              return false if the socket\_manager should ignore}
+240 \textcolor{stringliteral}{                              the death and treat the socket as alive defined}
+241 \textcolor{stringliteral}{                               on\_socket\_dead(self, worker\_id, assignment\_id)}
+242 \textcolor{stringliteral}{        socket\_dead\_timeout:  time to wait between heartbeats before dying}
+243 \textcolor{stringliteral}{        """}
+244         self.server\_url = server\_url
+245         self.port = port
+246         self.alive\_callback = alive\_callback
+247         self.message\_callback = message\_callback
+248         self.socket\_dead\_callback = socket\_dead\_callback
+249         self.server\_death\_callback = server\_death\_callback
+250         \textcolor{keywordflow}{if} socket\_dead\_timeout \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+251             self.missed\_pongs = 1 + socket\_dead\_timeout / self.HEARTBEAT\_RATE
+252         \textcolor{keywordflow}{else}:
+253             self.missed\_pongs = self.DEF\_MISSED\_PONGS
+254         self.task\_group\_id = task\_group\_id
+255 
+256         self.ws = \textcolor{keywordtype}{None}
+257         self.keep\_running = \textcolor{keyword}{True}
+258 
+259         \textcolor{comment}{# initialize the state}
+260         self.listen\_thread = \textcolor{keywordtype}{None}
+261         self.send\_thread = \textcolor{keywordtype}{None}
+262         self.queues = \{\}
+263         self.blocking\_packets = \{\}  \textcolor{comment}{# connection\_id to blocking packet map}
+264         self.threads = \{\}
+265         self.run = \{\}
+266         self.last\_sent\_heartbeat\_time = \{\}  \textcolor{comment}{# time of last heartbeat sent}
+267         self.last\_received\_heartbeat = \{\}  \textcolor{comment}{# actual last received heartbeat}
+268         self.pongs\_without\_heartbeat = \{\}
+269         \textcolor{comment}{# TODO update processed packets to *ensure* only one execution per}
+270         \textcolor{comment}{# packet, as right now two threads can be spawned to process the}
+271         \textcolor{comment}{# same packet at the same time, as the packet is only added to this}
+272         \textcolor{comment}{# set after processing is complete.}
+273         self.processed\_packets = set()
+274         self.packet\_map = \{\}
+275         self.alive = \textcolor{keyword}{False}
+276         self.is\_shutdown = \textcolor{keyword}{False}
+277         self.send\_lock = threading.Condition()
+278         self.packet\_map\_lock = threading.Condition()
+279         self.thread\_shutdown\_lock = threading.Condition()
+280         self.worker\_assign\_ids = \{\}  \textcolor{comment}{# mapping from connection id to pair}
+281 
+282         \textcolor{comment}{# setup the socket}
+283         self.\_setup\_socket()
+284 
 \end{DoxyCode}
 
 
@@ -213,77 +208,77 @@ Definition at line 225 of file socket\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 614 of file socket\+\_\+manager.\+py.
+Definition at line 619 of file socket\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-614     \textcolor{keyword}{def }channel\_thread(self):
-615         \textcolor{stringliteral}{"""}
-616 \textcolor{stringliteral}{        Handler thread for monitoring all channels.}
-617 \textcolor{stringliteral}{        """}
-618         \textcolor{comment}{# while the thread is still alive}
-619         \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} self.is\_shutdown:
-620             \textcolor{keywordflow}{if} self.ws \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-621                 \textcolor{comment}{# Waiting for websocket to come back alive}
-622                 time.sleep(shared\_utils.THREAD\_SHORT\_SLEEP)
-623                 \textcolor{keywordflow}{continue}
-624             \textcolor{keywordflow}{for} connection\_id \textcolor{keywordflow}{in} self.run.copy():
-625                 \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.run[connection\_id]:
-626                     \textcolor{keywordflow}{continue}
-627                 \textcolor{keywordflow}{try}:
-628                     \textcolor{comment}{# Send a heartbeat if needed}
-629                     self.\_send\_needed\_heartbeat(connection\_id)
-630                     \textcolor{comment}{# Check if client is still alive}
-631                     \textcolor{keywordflow}{if} self.pongs\_without\_heartbeat[connection\_id] > self.missed\_pongs:
-632                         self.run[connection\_id] = \textcolor{keyword}{False}
-633                         \textcolor{comment}{# Setup and run the channel sending thread}
-634                         self.threads[connection\_id] = threading.Thread(
-635                             target=self.socket\_dead\_callback,
-636                             name=\textcolor{stringliteral}{'Socket-dead-\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(connection\_id),
-637                             args=self.worker\_assign\_ids[connection\_id],
-638                         )
-639                         self.threads[connection\_id].daemon = \textcolor{keyword}{True}
-640                         self.threads[connection\_id].start()
-641 
-642                     \textcolor{comment}{# Make sure the queue still exists}
-643                     \textcolor{keywordflow}{if} connection\_id \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.queues:
-644                         self.run[connection\_id] = \textcolor{keyword}{False}
-645                         \textcolor{keywordflow}{break}
-646                     \textcolor{keywordflow}{if} self.blocking\_packets.get(connection\_id) \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-647                         packet\_item = self.blocking\_packets[connection\_id]
-648                         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.packet\_should\_block(packet\_item):
-649                             self.blocking\_packets[connection\_id] = \textcolor{keywordtype}{None}
-650                         \textcolor{keywordflow}{else}:
-651                             \textcolor{keywordflow}{continue}
-652                     \textcolor{keywordflow}{try}:
-653                         \textcolor{comment}{# Get first item in the queue, check if can send it yet}
-654                         item = self.queues[connection\_id].get(block=\textcolor{keyword}{False})
-655                         t = item[0]
-656                         \textcolor{keywordflow}{if} time.time() < t:
-657                             \textcolor{comment}{# Put the item back into the queue,}
-658                             \textcolor{comment}{# it's not time to pop yet}
-659                             self.\_safe\_put(connection\_id, item)
-660                         \textcolor{keywordflow}{else}:
-661                             \textcolor{comment}{# Try to send the packet}
-662                             packet = item[1]
-663                             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} packet:
-664                                 \textcolor{comment}{# This packet was deleted out from under us}
-665                                 \textcolor{keywordflow}{continue}
-666                             \textcolor{keywordflow}{if} packet.status \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} Packet.STATUS\_ACK:
-667                                 \textcolor{comment}{# either need to send initial packet}
-668                                 \textcolor{comment}{# or resend not-acked packet}
-669                                 self.\_send\_packet(packet, connection\_id, t)
-670                     \textcolor{keywordflow}{except} Empty:
-671                         \textcolor{keywordflow}{pass}
-672                 \textcolor{keywordflow}{except} Exception \textcolor{keyword}{as} e:
-673                     shared\_utils.print\_and\_log(
-674                         logging.WARN,
-675                         \textcolor{stringliteral}{'Unexpected error occurred in socket handling thread: '}
-676                         \textcolor{stringliteral}{'\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(repr(e)),
-677                         should\_print=\textcolor{keyword}{True},
-678                     )
-679             time.sleep(shared\_utils.THREAD\_SHORT\_SLEEP)
-680 
+619     \textcolor{keyword}{def }channel\_thread(self):
+620         \textcolor{stringliteral}{"""}
+621 \textcolor{stringliteral}{        Handler thread for monitoring all channels.}
+622 \textcolor{stringliteral}{        """}
+623         \textcolor{comment}{# while the thread is still alive}
+624         \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} self.is\_shutdown:
+625             \textcolor{keywordflow}{if} self.ws \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+626                 \textcolor{comment}{# Waiting for websocket to come back alive}
+627                 time.sleep(shared\_utils.THREAD\_SHORT\_SLEEP)
+628                 \textcolor{keywordflow}{continue}
+629             \textcolor{keywordflow}{for} connection\_id \textcolor{keywordflow}{in} self.run.copy():
+630                 \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.run[connection\_id]:
+631                     \textcolor{keywordflow}{continue}
+632                 \textcolor{keywordflow}{try}:
+633                     \textcolor{comment}{# Send a heartbeat if needed}
+634                     self.\_send\_needed\_heartbeat(connection\_id)
+635                     \textcolor{comment}{# Check if client is still alive}
+636                     \textcolor{keywordflow}{if} self.pongs\_without\_heartbeat[connection\_id] > self.missed\_pongs:
+637                         self.run[connection\_id] = \textcolor{keyword}{False}
+638                         \textcolor{comment}{# Setup and run the channel sending thread}
+639                         self.threads[connection\_id] = threading.Thread(
+640                             target=self.socket\_dead\_callback,
+641                             name=\textcolor{stringliteral}{'Socket-dead-\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(connection\_id),
+642                             args=self.worker\_assign\_ids[connection\_id],
+643                         )
+644                         self.threads[connection\_id].daemon = \textcolor{keyword}{True}
+645                         self.threads[connection\_id].start()
+646 
+647                     \textcolor{comment}{# Make sure the queue still exists}
+648                     \textcolor{keywordflow}{if} connection\_id \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.queues:
+649                         self.run[connection\_id] = \textcolor{keyword}{False}
+650                         \textcolor{keywordflow}{break}
+651                     \textcolor{keywordflow}{if} self.blocking\_packets.get(connection\_id) \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+652                         packet\_item = self.blocking\_packets[connection\_id]
+653                         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.packet\_should\_block(packet\_item):
+654                             self.blocking\_packets[connection\_id] = \textcolor{keywordtype}{None}
+655                         \textcolor{keywordflow}{else}:
+656                             \textcolor{keywordflow}{continue}
+657                     \textcolor{keywordflow}{try}:
+658                         \textcolor{comment}{# Get first item in the queue, check if can send it yet}
+659                         item = self.queues[connection\_id].get(block=\textcolor{keyword}{False})
+660                         t = item[0]
+661                         \textcolor{keywordflow}{if} time.time() < t:
+662                             \textcolor{comment}{# Put the item back into the queue,}
+663                             \textcolor{comment}{# it's not time to pop yet}
+664                             self.\_safe\_put(connection\_id, item)
+665                         \textcolor{keywordflow}{else}:
+666                             \textcolor{comment}{# Try to send the packet}
+667                             packet = item[1]
+668                             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} packet:
+669                                 \textcolor{comment}{# This packet was deleted out from under us}
+670                                 \textcolor{keywordflow}{continue}
+671                             \textcolor{keywordflow}{if} packet.status \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} Packet.STATUS\_ACK:
+672                                 \textcolor{comment}{# either need to send initial packet}
+673                                 \textcolor{comment}{# or resend not-acked packet}
+674                                 self.\_send\_packet(packet, connection\_id, t)
+675                     \textcolor{keywordflow}{except} Empty:
+676                         \textcolor{keywordflow}{pass}
+677                 \textcolor{keywordflow}{except} Exception \textcolor{keyword}{as} e:
+678                     shared\_utils.print\_and\_log(
+679                         logging.WARN,
+680                         \textcolor{stringliteral}{'Unexpected error occurred in socket handling thread: '}
+681                         \textcolor{stringliteral}{'\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(repr(e)),
+682                         should\_print=\textcolor{keyword}{True},
+683                     )
+684             time.sleep(shared\_utils.THREAD\_SHORT\_SLEEP)
+685 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a9a2c04d9512e6866dfda33397d8f363c}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a9a2c04d9512e6866dfda33397d8f363c}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!close\+\_\+all\+\_\+channels@{close\+\_\+all\+\_\+channels}}
@@ -295,19 +290,19 @@ Definition at line 614 of file socket\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 733 of file socket\+\_\+manager.\+py.
+Definition at line 738 of file socket\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-733     \textcolor{keyword}{def }close\_all\_channels(self):
-734         \textcolor{stringliteral}{"""}
-735 \textcolor{stringliteral}{        Closes all channels by clearing the list of channels.}
-736 \textcolor{stringliteral}{        """}
-737         shared\_utils.print\_and\_log(logging.DEBUG, \textcolor{stringliteral}{'Closing all channels'})
-738         connection\_ids = list(self.queues.keys())
-739         \textcolor{keywordflow}{for} connection\_id \textcolor{keywordflow}{in} connection\_ids:
-740             self.close\_channel(connection\_id)
-741 
+738     \textcolor{keyword}{def }close\_all\_channels(self):
+739         \textcolor{stringliteral}{"""}
+740 \textcolor{stringliteral}{        Closes all channels by clearing the list of channels.}
+741 \textcolor{stringliteral}{        """}
+742         shared\_utils.print\_and\_log(logging.DEBUG, \textcolor{stringliteral}{'Closing all channels'})
+743         connection\_ids = list(self.queues.keys())
+744         \textcolor{keywordflow}{for} connection\_id \textcolor{keywordflow}{in} connection\_ids:
+745             self.close\_channel(connection\_id)
+746 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_ae079bc95ebedcab4e52325253db490cf}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_ae079bc95ebedcab4e52325253db490cf}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!close\+\_\+channel@{close\+\_\+channel}}
@@ -319,44 +314,44 @@ Definition at line 733 of file socket\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 699 of file socket\+\_\+manager.\+py.
+Definition at line 704 of file socket\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-699     \textcolor{keyword}{def }close\_channel(self, connection\_id):
-700         \textcolor{stringliteral}{"""}
-701 \textcolor{stringliteral}{        Closes a channel by connection\_id.}
-702 \textcolor{stringliteral}{        """}
-703         shared\_utils.print\_and\_log(
-704             logging.DEBUG, \textcolor{stringliteral}{'Closing channel \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(connection\_id)
-705         )
-706         self.run[connection\_id] = \textcolor{keyword}{False}
-707         with self.thread\_shutdown\_lock:
-708             \textcolor{keywordflow}{if} connection\_id \textcolor{keywordflow}{in} self.queues:
-709                 \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} self.queues[connection\_id].empty():  \textcolor{comment}{# Empty queue}
-710                     \textcolor{keywordflow}{try}:
-711                         item = self.queues[connection\_id].get(block=\textcolor{keyword}{False})
-712                         t = item[0]
-713                         packet = item[1]
-714                         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} packet:
-715                             \textcolor{keywordflow}{continue}
-716                         packet.requires\_ack = \textcolor{keyword}{False}
-717                         packet.blocking = \textcolor{keyword}{False}
-718                         \textcolor{keywordflow}{if} packet.status \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} Packet.STATUS\_ACK:
-719                             self.\_send\_packet(packet, connection\_id, t)
-720                     \textcolor{keywordflow}{except} Empty:
-721                         \textcolor{keywordflow}{break}
-722                 \textcolor{comment}{# Clean up packets}
-723                 with self.packet\_map\_lock:
-724                     packet\_ids = list(self.packet\_map.keys())
-725                     \textcolor{keywordflow}{for} packet\_id \textcolor{keywordflow}{in} packet\_ids:
-726                         packet = self.packet\_map[packet\_id]
-727                         packet\_conn\_id = packet.get\_receiver\_connection\_id()
-728                         \textcolor{keywordflow}{if} connection\_id == packet\_conn\_id:
-729                             del self.packet\_map[packet\_id]
-730                 \textcolor{comment}{# Clean up other resources}
-731                 del self.queues[connection\_id]
-732 
+704     \textcolor{keyword}{def }close\_channel(self, connection\_id):
+705         \textcolor{stringliteral}{"""}
+706 \textcolor{stringliteral}{        Closes a channel by connection\_id.}
+707 \textcolor{stringliteral}{        """}
+708         shared\_utils.print\_and\_log(
+709             logging.DEBUG, \textcolor{stringliteral}{'Closing channel \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(connection\_id)
+710         )
+711         self.run[connection\_id] = \textcolor{keyword}{False}
+712         with self.thread\_shutdown\_lock:
+713             \textcolor{keywordflow}{if} connection\_id \textcolor{keywordflow}{in} self.queues:
+714                 \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} self.queues[connection\_id].empty():  \textcolor{comment}{# Empty queue}
+715                     \textcolor{keywordflow}{try}:
+716                         item = self.queues[connection\_id].get(block=\textcolor{keyword}{False})
+717                         t = item[0]
+718                         packet = item[1]
+719                         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} packet:
+720                             \textcolor{keywordflow}{continue}
+721                         packet.requires\_ack = \textcolor{keyword}{False}
+722                         packet.blocking = \textcolor{keyword}{False}
+723                         \textcolor{keywordflow}{if} packet.status \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} Packet.STATUS\_ACK:
+724                             self.\_send\_packet(packet, connection\_id, t)
+725                     \textcolor{keywordflow}{except} Empty:
+726                         \textcolor{keywordflow}{break}
+727                 \textcolor{comment}{# Clean up packets}
+728                 with self.packet\_map\_lock:
+729                     packet\_ids = list(self.packet\_map.keys())
+730                     \textcolor{keywordflow}{for} packet\_id \textcolor{keywordflow}{in} packet\_ids:
+731                         packet = self.packet\_map[packet\_id]
+732                         packet\_conn\_id = packet.get\_receiver\_connection\_id()
+733                         \textcolor{keywordflow}{if} connection\_id == packet\_conn\_id:
+734                             del self.packet\_map[packet\_id]
+735                 \textcolor{comment}{# Clean up other resources}
+736                 del self.queues[connection\_id]
+737 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a17a6ebab4a3c0e2882ba01398f2e9df1}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a17a6ebab4a3c0e2882ba01398f2e9df1}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!get\+\_\+my\+\_\+sender\+\_\+id@{get\+\_\+my\+\_\+sender\+\_\+id}}
@@ -368,16 +363,16 @@ Definition at line 699 of file socket\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 280 of file socket\+\_\+manager.\+py.
+Definition at line 285 of file socket\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-280     \textcolor{keyword}{def }get\_my\_sender\_id(self):
-281         \textcolor{stringliteral}{"""}
-282 \textcolor{stringliteral}{        Gives the name that this socket manager should use for its world.}
-283 \textcolor{stringliteral}{        """}
-284         \textcolor{keywordflow}{return} \textcolor{stringliteral}{'[World\_\{\}]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.task\_group\_id)
-285 
+285     \textcolor{keyword}{def }get\_my\_sender\_id(self):
+286         \textcolor{stringliteral}{"""}
+287 \textcolor{stringliteral}{        Gives the name that this socket manager should use for its world.}
+288 \textcolor{stringliteral}{        """}
+289         \textcolor{keywordflow}{return} \textcolor{stringliteral}{'[World\_\{\}]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.task\_group\_id)
+290 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_ad14d75f5b3a3e41a9133de9cd1611b8b}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_ad14d75f5b3a3e41a9133de9cd1611b8b}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!get\+\_\+status@{get\+\_\+status}}
@@ -389,19 +384,19 @@ Definition at line 280 of file socket\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 770 of file socket\+\_\+manager.\+py.
+Definition at line 775 of file socket\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-770     \textcolor{keyword}{def }get\_status(self, packet\_id):
-771         \textcolor{stringliteral}{"""}
-772 \textcolor{stringliteral}{        Returns the status of a particular packet by id.}
-773 \textcolor{stringliteral}{        """}
-774         with self.packet\_map\_lock:
-775             \textcolor{keywordflow}{if} packet\_id \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.packet\_map:
-776                 \textcolor{keywordflow}{return} Packet.STATUS\_NONE
-777             \textcolor{keywordflow}{return} self.packet\_map[packet\_id].status
-778 
+775     \textcolor{keyword}{def }get\_status(self, packet\_id):
+776         \textcolor{stringliteral}{"""}
+777 \textcolor{stringliteral}{        Returns the status of a particular packet by id.}
+778 \textcolor{stringliteral}{        """}
+779         with self.packet\_map\_lock:
+780             \textcolor{keywordflow}{if} packet\_id \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.packet\_map:
+781                 \textcolor{keywordflow}{return} Packet.STATUS\_NONE
+782             \textcolor{keywordflow}{return} self.packet\_map[packet\_id].status
+783 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_aa970567ac565617328cd1a07548b1427}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_aa970567ac565617328cd1a07548b1427}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!open\+\_\+channel@{open\+\_\+channel}}
@@ -414,28 +409,28 @@ channel is already open.
 \end{DoxyVerb}
  
 
-Definition at line 681 of file socket\+\_\+manager.\+py.
+Definition at line 686 of file socket\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-681     \textcolor{keyword}{def }open\_channel(self, worker\_id, assignment\_id):
-682         \textcolor{stringliteral}{"""}
-683 \textcolor{stringliteral}{        Opens a channel for a worker on a given assignment, doesn't re-open if the}
-684 \textcolor{stringliteral}{        channel is already open.}
-685 \textcolor{stringliteral}{        """}
-686         connection\_id = \textcolor{stringliteral}{'\{\}\_\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(worker\_id, assignment\_id)
-687         \textcolor{keywordflow}{if} connection\_id \textcolor{keywordflow}{in} self.queues \textcolor{keywordflow}{and} self.run[connection\_id]:
-688             shared\_utils.print\_and\_log(
-689                 logging.DEBUG, \textcolor{stringliteral}{'Channel (\{\}) already open'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(connection\_id)
-690             )
-691             \textcolor{keywordflow}{return}
-692         self.run[connection\_id] = \textcolor{keyword}{True}
-693         self.queues[connection\_id] = PriorityQueue()
-694         self.last\_sent\_heartbeat\_time[connection\_id] = 0
-695         self.pongs\_without\_heartbeat[connection\_id] = 0
-696         self.last\_received\_heartbeat[connection\_id] = \textcolor{keywordtype}{None}
-697         self.worker\_assign\_ids[connection\_id] = (worker\_id, assignment\_id)
-698 
+686     \textcolor{keyword}{def }open\_channel(self, worker\_id, assignment\_id):
+687         \textcolor{stringliteral}{"""}
+688 \textcolor{stringliteral}{        Opens a channel for a worker on a given assignment, doesn't re-open if the}
+689 \textcolor{stringliteral}{        channel is already open.}
+690 \textcolor{stringliteral}{        """}
+691         connection\_id = \textcolor{stringliteral}{'\{\}\_\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(worker\_id, assignment\_id)
+692         \textcolor{keywordflow}{if} connection\_id \textcolor{keywordflow}{in} self.queues \textcolor{keywordflow}{and} self.run[connection\_id]:
+693             shared\_utils.print\_and\_log(
+694                 logging.DEBUG, \textcolor{stringliteral}{'Channel (\{\}) already open'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(connection\_id)
+695             )
+696             \textcolor{keywordflow}{return}
+697         self.run[connection\_id] = \textcolor{keyword}{True}
+698         self.queues[connection\_id] = PriorityQueue()
+699         self.last\_sent\_heartbeat\_time[connection\_id] = 0
+700         self.pongs\_without\_heartbeat[connection\_id] = 0
+701         self.last\_received\_heartbeat[connection\_id] = \textcolor{keywordtype}{None}
+702         self.worker\_assign\_ids[connection\_id] = (worker\_id, assignment\_id)
+703 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a7b41199438da8694cc9c8d9b3e58da85}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a7b41199438da8694cc9c8d9b3e58da85}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!packet\+\_\+should\+\_\+block@{packet\+\_\+should\+\_\+block}}
@@ -447,21 +442,21 @@ Definition at line 681 of file socket\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 603 of file socket\+\_\+manager.\+py.
+Definition at line 608 of file socket\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-603     \textcolor{keyword}{def }packet\_should\_block(self, packet\_item):
-604         \textcolor{stringliteral}{"""}
-605 \textcolor{stringliteral}{        Helper function to determine if a packet is still blocking.}
-606 \textcolor{stringliteral}{        """}
-607         t, packet = packet\_item
-608         \textcolor{keywordflow}{if} time.time() > t:
-609             \textcolor{keywordflow}{return} \textcolor{keyword}{False}  \textcolor{comment}{# Exceeded blocking time}
-610         \textcolor{keywordflow}{if} packet.status \textcolor{keywordflow}{in} [Packet.STATUS\_ACK, Packet.STATUS\_FAIL]:
-611             \textcolor{keywordflow}{return} \textcolor{keyword}{False}  \textcolor{comment}{# No longer in blocking status}
-612         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
-613 
+608     \textcolor{keyword}{def }packet\_should\_block(self, packet\_item):
+609         \textcolor{stringliteral}{"""}
+610 \textcolor{stringliteral}{        Helper function to determine if a packet is still blocking.}
+611 \textcolor{stringliteral}{        """}
+612         t, packet = packet\_item
+613         \textcolor{keywordflow}{if} time.time() > t:
+614             \textcolor{keywordflow}{return} \textcolor{keyword}{False}  \textcolor{comment}{# Exceeded blocking time}
+615         \textcolor{keywordflow}{if} packet.status \textcolor{keywordflow}{in} [Packet.STATUS\_ACK, Packet.STATUS\_FAIL]:
+616             \textcolor{keywordflow}{return} \textcolor{keyword}{False}  \textcolor{comment}{# No longer in blocking status}
+617         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+618 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a91c7216d011823f1c6c4963d863638c8}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a91c7216d011823f1c6c4963d863638c8}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!queue\+\_\+packet@{queue\+\_\+packet}}
@@ -474,35 +469,35 @@ successfully and False if there is no such worker (anymore)
 \end{DoxyVerb}
  
 
-Definition at line 745 of file socket\+\_\+manager.\+py.
+Definition at line 750 of file socket\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-745     \textcolor{keyword}{def }queue\_packet(self, packet):
-746         \textcolor{stringliteral}{"""}
-747 \textcolor{stringliteral}{        Queues sending a packet to its intended owner, returns True if queued}
-748 \textcolor{stringliteral}{        successfully and False if there is no such worker (anymore)}
-749 \textcolor{stringliteral}{        """}
-750         connection\_id = packet.get\_receiver\_connection\_id()
-751         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.socket\_is\_open(connection\_id):
-752             \textcolor{comment}{# Warn if there is no socket to send through for the expected recip}
-753             shared\_utils.print\_and\_log(
-754                 logging.WARN,
-755                 \textcolor{stringliteral}{'Can not send packet to worker\_id \{\}: packet queue not found. '}
-756                 \textcolor{stringliteral}{'Message: \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(connection\_id, packet.data),
-757             )
-758             \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-759         shared\_utils.print\_and\_log(
-760             logging.DEBUG,
-761             \textcolor{stringliteral}{'Put packet (\{\}) in queue (\{\})'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(packet.id, connection\_id),
-762         )
-763         \textcolor{comment}{# Get the current time to put packet into the priority queue}
-764         with self.packet\_map\_lock:
-765             self.packet\_map[packet.id] = packet
-766         item = (time.time(), packet)
-767         self.\_safe\_put(connection\_id, item)
-768         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
-769 
+750     \textcolor{keyword}{def }queue\_packet(self, packet):
+751         \textcolor{stringliteral}{"""}
+752 \textcolor{stringliteral}{        Queues sending a packet to its intended owner, returns True if queued}
+753 \textcolor{stringliteral}{        successfully and False if there is no such worker (anymore)}
+754 \textcolor{stringliteral}{        """}
+755         connection\_id = packet.get\_receiver\_connection\_id()
+756         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.socket\_is\_open(connection\_id):
+757             \textcolor{comment}{# Warn if there is no socket to send through for the expected recip}
+758             shared\_utils.print\_and\_log(
+759                 logging.WARN,
+760                 \textcolor{stringliteral}{'Can not send packet to worker\_id \{\}: packet queue not found. '}
+761                 \textcolor{stringliteral}{'Message: \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(connection\_id, packet.data),
+762             )
+763             \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+764         shared\_utils.print\_and\_log(
+765             logging.DEBUG,
+766             \textcolor{stringliteral}{'Put packet (\{\}) in queue (\{\})'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(packet.id, connection\_id),
+767         )
+768         \textcolor{comment}{# Get the current time to put packet into the priority queue}
+769         with self.packet\_map\_lock:
+770             self.packet\_map[packet.id] = packet
+771         item = (time.time(), packet)
+772         self.\_safe\_put(connection\_id, item)
+773         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+774 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_ac98d9330dbc0bcfad53a7a66c09fb56a}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_ac98d9330dbc0bcfad53a7a66c09fb56a}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!shutdown@{shutdown}}
@@ -514,22 +509,22 @@ Definition at line 745 of file socket\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 793 of file socket\+\_\+manager.\+py.
+Definition at line 798 of file socket\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-793     \textcolor{keyword}{def }shutdown(self):
-794         \textcolor{stringliteral}{"""}
-795 \textcolor{stringliteral}{        marks the socket manager as closing, shuts down all channels.}
-796 \textcolor{stringliteral}{        """}
-797         self.is\_shutdown = \textcolor{keyword}{True}
-798         self.close\_all\_channels()
-799         self.keep\_running = \textcolor{keyword}{False}
-800         self.\_ensure\_closed()
-801 
-802 
-803 \textcolor{comment}{# TODO extract common functionality from the above and make both classes extend}
-804 \textcolor{comment}{# from the base}
+798     \textcolor{keyword}{def }shutdown(self):
+799         \textcolor{stringliteral}{"""}
+800 \textcolor{stringliteral}{        marks the socket manager as closing, shuts down all channels.}
+801 \textcolor{stringliteral}{        """}
+802         self.is\_shutdown = \textcolor{keyword}{True}
+803         self.close\_all\_channels()
+804         self.keep\_running = \textcolor{keyword}{False}
+805         self.\_ensure\_closed()
+806 
+807 
+808 \textcolor{comment}{# TODO extract common functionality from the above and make both classes extend}
+809 \textcolor{comment}{# from the base}
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a895934ce725c0770e94ff6ba0842078e}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a895934ce725c0770e94ff6ba0842078e}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!socket\+\_\+is\+\_\+open@{socket\+\_\+is\+\_\+open}}
@@ -539,27 +534,17 @@ Definition at line 793 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 742 of file socket\+\_\+manager.\+py.
+Definition at line 747 of file socket\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-742     \textcolor{keyword}{def }socket\_is\_open(self, connection\_id):
-743         \textcolor{keywordflow}{return} connection\_id \textcolor{keywordflow}{in} self.queues
-744 
+747     \textcolor{keyword}{def }socket\_is\_open(self, connection\_id):
+748         \textcolor{keywordflow}{return} connection\_id \textcolor{keywordflow}{in} self.queues
+749 
 \end{DoxyCode}
 
 
 \subsection{Member Data Documentation}
-\mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_ad170381c2941af2fc6273559402ff22f}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_ad170381c2941af2fc6273559402ff22f}} 
-\index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!A\+C\+K\+\_\+\+T\+I\+ME@{A\+C\+K\+\_\+\+T\+I\+ME}}
-\index{A\+C\+K\+\_\+\+T\+I\+ME@{A\+C\+K\+\_\+\+T\+I\+ME}!parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}}
-\subsubsection{\texorpdfstring{A\+C\+K\+\_\+\+T\+I\+ME}{ACK\_TIME}}
-{\footnotesize\ttfamily parlai.\+mturk.\+core.\+socket\+\_\+manager.\+Socket\+Manager.\+A\+C\+K\+\_\+\+T\+I\+ME\hspace{0.3cm}{\ttfamily [static]}}
-
-
-
-Definition at line 208 of file socket\+\_\+manager.\+py.
-
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a7d2578a166632f5e3f9a5902ad312342}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a7d2578a166632f5e3f9a5902ad312342}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!alive@{alive}}
 \index{alive@{alive}!parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}}
@@ -568,7 +553,7 @@ Definition at line 208 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 270 of file socket\+\_\+manager.\+py.
+Definition at line 275 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a0e6c8fe0d13788925cab5301d0abbab0}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a0e6c8fe0d13788925cab5301d0abbab0}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!alive\+\_\+callback@{alive\+\_\+callback}}
@@ -578,7 +563,7 @@ Definition at line 270 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 241 of file socket\+\_\+manager.\+py.
+Definition at line 246 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a9d7c09f922986128738354d826f13c18}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a9d7c09f922986128738354d826f13c18}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!blocking\+\_\+packets@{blocking\+\_\+packets}}
@@ -588,37 +573,27 @@ Definition at line 241 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 258 of file socket\+\_\+manager.\+py.
+Definition at line 263 of file socket\+\_\+manager.\+py.
 
-\mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_aa33dad44c7c32e6ed95a868c39dc727e}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_aa33dad44c7c32e6ed95a868c39dc727e}} 
-\index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!D\+E\+F\+\_\+\+D\+E\+A\+D\+\_\+\+T\+I\+ME@{D\+E\+F\+\_\+\+D\+E\+A\+D\+\_\+\+T\+I\+ME}}
-\index{D\+E\+F\+\_\+\+D\+E\+A\+D\+\_\+\+T\+I\+ME@{D\+E\+F\+\_\+\+D\+E\+A\+D\+\_\+\+T\+I\+ME}!parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}}
-\subsubsection{\texorpdfstring{D\+E\+F\+\_\+\+D\+E\+A\+D\+\_\+\+T\+I\+ME}{DEF\_DEAD\_TIME}}
-{\footnotesize\ttfamily parlai.\+mturk.\+core.\+socket\+\_\+manager.\+Socket\+Manager.\+D\+E\+F\+\_\+\+D\+E\+A\+D\+\_\+\+T\+I\+ME\hspace{0.3cm}{\ttfamily [static]}}
-
-
-
-Definition at line 213 of file socket\+\_\+manager.\+py.
-
-\mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a057fdcc6941e8aef40af1b12d7a24572}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a057fdcc6941e8aef40af1b12d7a24572}} 
-\index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!D\+E\+F\+\_\+\+M\+I\+S\+S\+E\+D\+\_\+\+P\+O\+N\+GS@{D\+E\+F\+\_\+\+M\+I\+S\+S\+E\+D\+\_\+\+P\+O\+N\+GS}}
-\index{D\+E\+F\+\_\+\+M\+I\+S\+S\+E\+D\+\_\+\+P\+O\+N\+GS@{D\+E\+F\+\_\+\+M\+I\+S\+S\+E\+D\+\_\+\+P\+O\+N\+GS}!parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}}
-\subsubsection{\texorpdfstring{D\+E\+F\+\_\+\+M\+I\+S\+S\+E\+D\+\_\+\+P\+O\+N\+GS}{DEF\_MISSED\_PONGS}}
-{\footnotesize\ttfamily parlai.\+mturk.\+core.\+socket\+\_\+manager.\+Socket\+Manager.\+D\+E\+F\+\_\+\+M\+I\+S\+S\+E\+D\+\_\+\+P\+O\+N\+GS\hspace{0.3cm}{\ttfamily [static]}}
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a4e9e1aac15e9b4e0143e508167c27fbe}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a4e9e1aac15e9b4e0143e508167c27fbe}} 
+\index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!float@{float}}
+\index{float@{float}!parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}}
+\subsubsection{\texorpdfstring{float}{float}}
+{\footnotesize\ttfamily parlai.\+mturk.\+core.\+socket\+\_\+manager.\+Socket\+Manager.\+float\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
-Definition at line 211 of file socket\+\_\+manager.\+py.
+Definition at line 217 of file socket\+\_\+manager.\+py.
 
-\mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a397c2f186e18af9a720f084047b66672}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a397c2f186e18af9a720f084047b66672}} 
-\index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!H\+E\+A\+R\+T\+B\+E\+A\+T\+\_\+\+R\+A\+TE@{H\+E\+A\+R\+T\+B\+E\+A\+T\+\_\+\+R\+A\+TE}}
-\index{H\+E\+A\+R\+T\+B\+E\+A\+T\+\_\+\+R\+A\+TE@{H\+E\+A\+R\+T\+B\+E\+A\+T\+\_\+\+R\+A\+TE}!parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}}
-\subsubsection{\texorpdfstring{H\+E\+A\+R\+T\+B\+E\+A\+T\+\_\+\+R\+A\+TE}{HEARTBEAT\_RATE}}
-{\footnotesize\ttfamily parlai.\+mturk.\+core.\+socket\+\_\+manager.\+Socket\+Manager.\+H\+E\+A\+R\+T\+B\+E\+A\+T\+\_\+\+R\+A\+TE\hspace{0.3cm}{\ttfamily [static]}}
+\mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a04445fa5e12057459d0f1edbe622cc90}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a04445fa5e12057459d0f1edbe622cc90}} 
+\index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!int@{int}}
+\index{int@{int}!parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}}
+\subsubsection{\texorpdfstring{int}{int}}
+{\footnotesize\ttfamily parlai.\+mturk.\+core.\+socket\+\_\+manager.\+Socket\+Manager.\+int\hspace{0.3cm}{\ttfamily [static]}}
 
 
 
-Definition at line 212 of file socket\+\_\+manager.\+py.
+Definition at line 216 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_abdac51ea8ab1c574d08a8c193f95a87f}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_abdac51ea8ab1c574d08a8c193f95a87f}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!is\+\_\+shutdown@{is\+\_\+shutdown}}
@@ -628,7 +603,7 @@ Definition at line 212 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 271 of file socket\+\_\+manager.\+py.
+Definition at line 276 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_afb7d10a292fc0a11924361fa850d58a1}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_afb7d10a292fc0a11924361fa850d58a1}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!keep\+\_\+running@{keep\+\_\+running}}
@@ -638,7 +613,7 @@ Definition at line 271 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 252 of file socket\+\_\+manager.\+py.
+Definition at line 257 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_aa94b912fc3574d0db1396b67a922bf27}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_aa94b912fc3574d0db1396b67a922bf27}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!last\+\_\+received\+\_\+heartbeat@{last\+\_\+received\+\_\+heartbeat}}
@@ -648,7 +623,7 @@ Definition at line 252 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 262 of file socket\+\_\+manager.\+py.
+Definition at line 267 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a993653c6e53133cda52848cba98ea8d3}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a993653c6e53133cda52848cba98ea8d3}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!last\+\_\+sent\+\_\+heartbeat\+\_\+time@{last\+\_\+sent\+\_\+heartbeat\+\_\+time}}
@@ -658,7 +633,7 @@ Definition at line 262 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 261 of file socket\+\_\+manager.\+py.
+Definition at line 266 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_aa0236524dd00906097bc2f3a1a654730}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_aa0236524dd00906097bc2f3a1a654730}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!listen\+\_\+thread@{listen\+\_\+thread}}
@@ -668,7 +643,7 @@ Definition at line 261 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 255 of file socket\+\_\+manager.\+py.
+Definition at line 260 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a109a500b9c4b30e5b20294cfb7890c28}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a109a500b9c4b30e5b20294cfb7890c28}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!message\+\_\+callback@{message\+\_\+callback}}
@@ -678,7 +653,7 @@ Definition at line 255 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 242 of file socket\+\_\+manager.\+py.
+Definition at line 247 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a8a5da45e8861ff72c788b70f1b028cf8}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a8a5da45e8861ff72c788b70f1b028cf8}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!missed\+\_\+pongs@{missed\+\_\+pongs}}
@@ -688,7 +663,7 @@ Definition at line 242 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 246 of file socket\+\_\+manager.\+py.
+Definition at line 251 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_af1d018bc78e0f48223e0c24a3e143646}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_af1d018bc78e0f48223e0c24a3e143646}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!packet\+\_\+map@{packet\+\_\+map}}
@@ -698,7 +673,7 @@ Definition at line 246 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 269 of file socket\+\_\+manager.\+py.
+Definition at line 274 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_ad791aec46cde432a30cedaaa66df0bd9}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_ad791aec46cde432a30cedaaa66df0bd9}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!packet\+\_\+map\+\_\+lock@{packet\+\_\+map\+\_\+lock}}
@@ -708,7 +683,7 @@ Definition at line 269 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 273 of file socket\+\_\+manager.\+py.
+Definition at line 278 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_aa65b3174e24e25817c450e4ca6ff65a4}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_aa65b3174e24e25817c450e4ca6ff65a4}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!pongs\+\_\+without\+\_\+heartbeat@{pongs\+\_\+without\+\_\+heartbeat}}
@@ -718,7 +693,7 @@ Definition at line 273 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 263 of file socket\+\_\+manager.\+py.
+Definition at line 268 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a727a2f8cf4ec178505b0c3969dbfdbd9}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a727a2f8cf4ec178505b0c3969dbfdbd9}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!port@{port}}
@@ -728,7 +703,7 @@ Definition at line 263 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 240 of file socket\+\_\+manager.\+py.
+Definition at line 245 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a5caa5c5113d477505f82ff3d970e8f57}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a5caa5c5113d477505f82ff3d970e8f57}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!processed\+\_\+packets@{processed\+\_\+packets}}
@@ -738,7 +713,7 @@ Definition at line 240 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 268 of file socket\+\_\+manager.\+py.
+Definition at line 273 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_aaef7ce806e2ae16234293d4c1ba99346}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_aaef7ce806e2ae16234293d4c1ba99346}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!queues@{queues}}
@@ -748,7 +723,7 @@ Definition at line 268 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 257 of file socket\+\_\+manager.\+py.
+Definition at line 262 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_aba446fa424239c0b11d19718294e2218}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_aba446fa424239c0b11d19718294e2218}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!run@{run}}
@@ -758,7 +733,7 @@ Definition at line 257 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 260 of file socket\+\_\+manager.\+py.
+Definition at line 265 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a5a6978486abd2356bc7992f5b02deaca}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a5a6978486abd2356bc7992f5b02deaca}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!send\+\_\+lock@{send\+\_\+lock}}
@@ -768,7 +743,7 @@ Definition at line 260 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 272 of file socket\+\_\+manager.\+py.
+Definition at line 277 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_aec9735766096eb9f29fe42434d613ffc}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_aec9735766096eb9f29fe42434d613ffc}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!send\+\_\+thread@{send\+\_\+thread}}
@@ -778,7 +753,7 @@ Definition at line 272 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 256 of file socket\+\_\+manager.\+py.
+Definition at line 261 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a13f30c6756085524cdde9706aedd2d2d}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a13f30c6756085524cdde9706aedd2d2d}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!server\+\_\+death\+\_\+callback@{server\+\_\+death\+\_\+callback}}
@@ -788,7 +763,7 @@ Definition at line 256 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 244 of file socket\+\_\+manager.\+py.
+Definition at line 249 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_abd4c4eb9e82e9b83858fb98882b0aa61}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_abd4c4eb9e82e9b83858fb98882b0aa61}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!server\+\_\+url@{server\+\_\+url}}
@@ -798,7 +773,7 @@ Definition at line 244 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 239 of file socket\+\_\+manager.\+py.
+Definition at line 244 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_ae081c99d290781a34bc5821b549c45f3}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_ae081c99d290781a34bc5821b549c45f3}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!socket\+\_\+dead\+\_\+callback@{socket\+\_\+dead\+\_\+callback}}
@@ -808,7 +783,7 @@ Definition at line 239 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 243 of file socket\+\_\+manager.\+py.
+Definition at line 248 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a7fd872477871c32fb7b4f2f0c51f4e88}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a7fd872477871c32fb7b4f2f0c51f4e88}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!task\+\_\+group\+\_\+id@{task\+\_\+group\+\_\+id}}
@@ -818,7 +793,7 @@ Definition at line 243 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 249 of file socket\+\_\+manager.\+py.
+Definition at line 254 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_aec23bfb776374f11222f0a3b0fc19879}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_aec23bfb776374f11222f0a3b0fc19879}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!thread\+\_\+shutdown\+\_\+lock@{thread\+\_\+shutdown\+\_\+lock}}
@@ -828,7 +803,7 @@ Definition at line 249 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 274 of file socket\+\_\+manager.\+py.
+Definition at line 279 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a531a94b9188c150a1c0fb486acdb88d0}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a531a94b9188c150a1c0fb486acdb88d0}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!threads@{threads}}
@@ -838,7 +813,7 @@ Definition at line 274 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 259 of file socket\+\_\+manager.\+py.
+Definition at line 264 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a73c0ecae39b965eb20d44b8e66bd6947}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a73c0ecae39b965eb20d44b8e66bd6947}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!use\+\_\+socket@{use\+\_\+socket}}
@@ -848,7 +823,7 @@ Definition at line 259 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 451 of file socket\+\_\+manager.\+py.
+Definition at line 456 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a12d9338e0893b0941d81365cf2a5cf1b}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a12d9338e0893b0941d81365cf2a5cf1b}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!worker\+\_\+assign\+\_\+ids@{worker\+\_\+assign\+\_\+ids}}
@@ -858,7 +833,7 @@ Definition at line 451 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 275 of file socket\+\_\+manager.\+py.
+Definition at line 280 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a84a1087ac11d617a7bc77abb8c6bee7c}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1SocketManager_a84a1087ac11d617a7bc77abb8c6bee7c}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Socket\+Manager}!ws@{ws}}
@@ -868,7 +843,7 @@ Definition at line 275 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 251 of file socket\+\_\+manager.\+py.
+Definition at line 256 of file socket\+\_\+manager.\+py.
 
 
 

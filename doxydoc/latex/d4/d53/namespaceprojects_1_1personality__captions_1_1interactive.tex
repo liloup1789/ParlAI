@@ -17,8 +17,6 @@ def \hyperlink{namespaceprojects_1_1personality__captions_1_1interactive_aa5144a
 \item 
 \hyperlink{namespaceprojects_1_1personality__captions_1_1interactive_aea2e29df65dc732ad104f5a244fea7a3}{P\+O\+RT}
 \item 
-\hyperlink{namespaceprojects_1_1personality__captions_1_1interactive_a39fae192ae72a7175a071c6f5fbe4eb8}{S\+H\+A\+R\+ED}
-\item 
 \hyperlink{namespaceprojects_1_1personality__captions_1_1interactive_a0cfa01e7e0553d70c9040b1ba3a5ab4c}{I\+M\+A\+G\+E\+\_\+\+L\+O\+A\+D\+ER}
 \item 
 \hyperlink{namespaceprojects_1_1personality__captions_1_1interactive_abfbad8eff0a52080f180b9d814910890}{S\+T\+Y\+L\+E\+\_\+\+S\+H\+E\+ET}
@@ -48,34 +46,34 @@ def \hyperlink{namespaceprojects_1_1personality__captions_1_1interactive_aa5144a
 \end{DoxyVerb}
  
 
-Definition at line 263 of file interactive.\+py.
+Definition at line 264 of file interactive.\+py.
 
 
 \begin{DoxyCode}
-263 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1personality__captions_1_1interactive_aa5144adf4092cfa1c2dc076d766226a1}{setup\_interactive}():
-264     \textcolor{stringliteral}{"""}
-265 \textcolor{stringliteral}{    Set up the interactive script.}
-266 \textcolor{stringliteral}{    """}
-267     parser = \hyperlink{namespaceprojects_1_1self__feeding_1_1interactive_a2ad3b874d9caef6e76ea41e029b933f0}{setup\_args}()
-268     opt = parser.parse\_args(print\_args=\textcolor{keyword}{True})
-269     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} opt.get(\textcolor{stringliteral}{'model\_file'}):
-270         \textcolor{keywordflow}{raise} RuntimeError(\textcolor{stringliteral}{'Please specify a model file'})
-271     \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'fixed\_cands\_path'}) \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-272         opt[\textcolor{stringliteral}{'fixed\_cands\_path'}] = os.path.join(
-273             \textcolor{stringliteral}{'/'}.join(opt.get(\textcolor{stringliteral}{'model\_file'}).split(\textcolor{stringliteral}{'/'})[:-1]), \textcolor{stringliteral}{'candidates.txt'}
-274         )
-275     opt[\textcolor{stringliteral}{'task'}] = \textcolor{stringliteral}{'parlai.agents.local\_human.local\_human:LocalHumanAgent'}
-276     opt[\textcolor{stringliteral}{'image\_mode'}] = \textcolor{stringliteral}{'resnet152'}
-277     opt[\textcolor{stringliteral}{'no\_cuda'}] = \textcolor{keyword}{True}
-278     opt[\textcolor{stringliteral}{'override'}][\textcolor{stringliteral}{'no\_cuda'}] = \textcolor{keyword}{True}
-279     SHARED[\textcolor{stringliteral}{'opt'}] = opt
-280     SHARED[\textcolor{stringliteral}{'image\_loader'}] = ImageLoader(opt)
-281 
-282     \textcolor{comment}{# Create model and assign it to the specified task}
-283     SHARED[\textcolor{stringliteral}{'agent'}] = \hyperlink{namespaceparlai_1_1core_1_1agents_ad0d54074d4bcc148bb415ab5515a53b5}{create\_agent}(opt, requireModelExists=\textcolor{keyword}{True})
-284     SHARED[\textcolor{stringliteral}{'world'}] = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(opt, SHARED[\textcolor{stringliteral}{'agent'}])
-285 
+264 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1personality__captions_1_1interactive_aa5144adf4092cfa1c2dc076d766226a1}{setup\_interactive}():
+265     \textcolor{stringliteral}{"""}
+266 \textcolor{stringliteral}{    Set up the interactive script.}
+267 \textcolor{stringliteral}{    """}
+268     parser = \hyperlink{namespaceprojects_1_1self__feeding_1_1interactive_a2ad3b874d9caef6e76ea41e029b933f0}{setup\_args}()
+269     opt = parser.parse\_args(print\_args=\textcolor{keyword}{True})
+270     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} opt.get(\textcolor{stringliteral}{'model\_file'}):
+271         \textcolor{keywordflow}{raise} RuntimeError(\textcolor{stringliteral}{'Please specify a model file'})
+272     \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'fixed\_cands\_path'}) \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+273         opt[\textcolor{stringliteral}{'fixed\_cands\_path'}] = os.path.join(
+274             \textcolor{stringliteral}{'/'}.join(opt.get(\textcolor{stringliteral}{'model\_file'}).split(\textcolor{stringliteral}{'/'})[:-1]), \textcolor{stringliteral}{'candidates.txt'}
+275         )
+276     opt[\textcolor{stringliteral}{'task'}] = \textcolor{stringliteral}{'parlai.agents.local\_human.local\_human:LocalHumanAgent'}
+277     opt[\textcolor{stringliteral}{'image\_mode'}] = \textcolor{stringliteral}{'resnet152'}
+278     opt[\textcolor{stringliteral}{'no\_cuda'}] = \textcolor{keyword}{True}
+279     opt[\textcolor{stringliteral}{'override'}][\textcolor{stringliteral}{'no\_cuda'}] = \textcolor{keyword}{True}
+280     SHARED[\textcolor{stringliteral}{'opt'}] = opt
+281     SHARED[\textcolor{stringliteral}{'image\_loader'}] = ImageLoader(opt)
+282 
+283     \textcolor{comment}{# Create model and assign it to the specified task}
+284     SHARED[\textcolor{stringliteral}{'agent'}] = \hyperlink{namespaceparlai_1_1core_1_1agents_a00d77a7e26fb89e8bd900f7b2a02982a}{create\_agent}(opt, requireModelExists=\textcolor{keyword}{True})
+285     SHARED[\textcolor{stringliteral}{'world'}] = \hyperlink{namespaceparlai_1_1core_1_1worlds_a79969c7ba76d4b3c500f5bb776444dc6}{create\_task}(opt, SHARED[\textcolor{stringliteral}{'agent'}])
 286 
+287 
 \end{DoxyCode}
 
 
@@ -88,7 +86,7 @@ Definition at line 263 of file interactive.\+py.
 
 
 
-Definition at line 29 of file interactive.\+py.
+Definition at line 30 of file interactive.\+py.
 
 \mbox{\Hypertarget{namespaceprojects_1_1personality__captions_1_1interactive_ae24fa5ef9665f775352eac9d6968713e}\label{namespaceprojects_1_1personality__captions_1_1interactive_ae24fa5ef9665f775352eac9d6968713e}} 
 \index{projects\+::personality\+\_\+captions\+::interactive@{projects\+::personality\+\_\+captions\+::interactive}!Handler@{Handler}}
@@ -98,7 +96,7 @@ Definition at line 29 of file interactive.\+py.
 
 
 
-Definition at line 290 of file interactive.\+py.
+Definition at line 291 of file interactive.\+py.
 
 \mbox{\Hypertarget{namespaceprojects_1_1personality__captions_1_1interactive_a9ced4af3bcb3aa0d1bc814cef710e6d9}\label{namespaceprojects_1_1personality__captions_1_1interactive_a9ced4af3bcb3aa0d1bc814cef710e6d9}} 
 \index{projects\+::personality\+\_\+captions\+::interactive@{projects\+::personality\+\_\+captions\+::interactive}!H\+O\+S\+T\+\_\+\+N\+A\+ME@{H\+O\+S\+T\+\_\+\+N\+A\+ME}}
@@ -108,7 +106,7 @@ Definition at line 290 of file interactive.\+py.
 
 
 
-Definition at line 24 of file interactive.\+py.
+Definition at line 25 of file interactive.\+py.
 
 \mbox{\Hypertarget{namespaceprojects_1_1personality__captions_1_1interactive_ae631e34db5e50d6236da3b5b85427076}\label{namespaceprojects_1_1personality__captions_1_1interactive_ae631e34db5e50d6236da3b5b85427076}} 
 \index{projects\+::personality\+\_\+captions\+::interactive@{projects\+::personality\+\_\+captions\+::interactive}!httpd@{httpd}}
@@ -118,7 +116,7 @@ Definition at line 24 of file interactive.\+py.
 
 
 
-Definition at line 292 of file interactive.\+py.
+Definition at line 293 of file interactive.\+py.
 
 \mbox{\Hypertarget{namespaceprojects_1_1personality__captions_1_1interactive_a0cfa01e7e0553d70c9040b1ba3a5ab4c}\label{namespaceprojects_1_1personality__captions_1_1interactive_a0cfa01e7e0553d70c9040b1ba3a5ab4c}} 
 \index{projects\+::personality\+\_\+captions\+::interactive@{projects\+::personality\+\_\+captions\+::interactive}!I\+M\+A\+G\+E\+\_\+\+L\+O\+A\+D\+ER@{I\+M\+A\+G\+E\+\_\+\+L\+O\+A\+D\+ER}}
@@ -128,7 +126,7 @@ Definition at line 292 of file interactive.\+py.
 
 
 
-Definition at line 27 of file interactive.\+py.
+Definition at line 28 of file interactive.\+py.
 
 \mbox{\Hypertarget{namespaceprojects_1_1personality__captions_1_1interactive_aea2e29df65dc732ad104f5a244fea7a3}\label{namespaceprojects_1_1personality__captions_1_1interactive_aea2e29df65dc732ad104f5a244fea7a3}} 
 \index{projects\+::personality\+\_\+captions\+::interactive@{projects\+::personality\+\_\+captions\+::interactive}!P\+O\+RT@{P\+O\+RT}}
@@ -138,7 +136,7 @@ Definition at line 27 of file interactive.\+py.
 
 
 
-Definition at line 25 of file interactive.\+py.
+Definition at line 26 of file interactive.\+py.
 
 \mbox{\Hypertarget{namespaceprojects_1_1personality__captions_1_1interactive_aa1635234971b329d90a80ccbf388c3c3}\label{namespaceprojects_1_1personality__captions_1_1interactive_aa1635234971b329d90a80ccbf388c3c3}} 
 \index{projects\+::personality\+\_\+captions\+::interactive@{projects\+::personality\+\_\+captions\+::interactive}!protocol\+\_\+version@{protocol\+\_\+version}}
@@ -148,7 +146,7 @@ Definition at line 25 of file interactive.\+py.
 
 
 
-Definition at line 291 of file interactive.\+py.
+Definition at line 292 of file interactive.\+py.
 
 \mbox{\Hypertarget{namespaceprojects_1_1personality__captions_1_1interactive_addcc3c9fe5ea6cea1c27b25747212851}\label{namespaceprojects_1_1personality__captions_1_1interactive_addcc3c9fe5ea6cea1c27b25747212851}} 
 \index{projects\+::personality\+\_\+captions\+::interactive@{projects\+::personality\+\_\+captions\+::interactive}!server\+\_\+class@{server\+\_\+class}}
@@ -158,17 +156,7 @@ Definition at line 291 of file interactive.\+py.
 
 
 
-Definition at line 289 of file interactive.\+py.
-
-\mbox{\Hypertarget{namespaceprojects_1_1personality__captions_1_1interactive_a39fae192ae72a7175a071c6f5fbe4eb8}\label{namespaceprojects_1_1personality__captions_1_1interactive_a39fae192ae72a7175a071c6f5fbe4eb8}} 
-\index{projects\+::personality\+\_\+captions\+::interactive@{projects\+::personality\+\_\+captions\+::interactive}!S\+H\+A\+R\+ED@{S\+H\+A\+R\+ED}}
-\index{S\+H\+A\+R\+ED@{S\+H\+A\+R\+ED}!projects\+::personality\+\_\+captions\+::interactive@{projects\+::personality\+\_\+captions\+::interactive}}
-\subsubsection{\texorpdfstring{S\+H\+A\+R\+ED}{SHARED}}
-{\footnotesize\ttfamily projects.\+personality\+\_\+captions.\+interactive.\+S\+H\+A\+R\+ED}
-
-
-
-Definition at line 26 of file interactive.\+py.
+Definition at line 290 of file interactive.\+py.
 
 \mbox{\Hypertarget{namespaceprojects_1_1personality__captions_1_1interactive_abfbad8eff0a52080f180b9d814910890}\label{namespaceprojects_1_1personality__captions_1_1interactive_abfbad8eff0a52080f180b9d814910890}} 
 \index{projects\+::personality\+\_\+captions\+::interactive@{projects\+::personality\+\_\+captions\+::interactive}!S\+T\+Y\+L\+E\+\_\+\+S\+H\+E\+ET@{S\+T\+Y\+L\+E\+\_\+\+S\+H\+E\+ET}}
@@ -178,7 +166,7 @@ Definition at line 26 of file interactive.\+py.
 
 
 
-Definition at line 28 of file interactive.\+py.
+Definition at line 29 of file interactive.\+py.
 
 \mbox{\Hypertarget{namespaceprojects_1_1personality__captions_1_1interactive_a7c3681f36fedf5261f17a50a4cf58b2d}\label{namespaceprojects_1_1personality__captions_1_1interactive_a7c3681f36fedf5261f17a50a4cf58b2d}} 
 \index{projects\+::personality\+\_\+captions\+::interactive@{projects\+::personality\+\_\+captions\+::interactive}!W\+E\+B\+\_\+\+H\+T\+ML@{W\+E\+B\+\_\+\+H\+T\+ML}}
@@ -188,5 +176,5 @@ Definition at line 28 of file interactive.\+py.
 
 
 
-Definition at line 30 of file interactive.\+py.
+Definition at line 31 of file interactive.\+py.
 

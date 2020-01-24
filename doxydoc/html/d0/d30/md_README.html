@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ParlAI: README</title>
+<title>ParlAI: Parlai tuto</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -59,26 +59,44 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">README </div>  </div>
+<div class="title">Parlai tuto </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><div class="image">
+<div class="textblock"><h2>Fonctionnement minimal :</h2>
+<h3>Créer une tâche -&gt; build.py pour télécharger le corpus et l'installer dans le répertoire /data. Si déjà présent, ne rien faire. -&gt; agents.py qui crée les teachers : ce sont eux qui parsent les données (en mode entraînement, ils stockent le text + les labels) et qui se mettent automatiquement en mode question-answering, ou dialogue. Ce sont eux qui vont jouer le rôle de l'utilisateur pour entraîner les agents. ParlAI fournit tout un tas de teachers, le nôtre est une classe fille de ParlAIDIalogTeacher, je te laisse regarder la doc.</h3>
+<h3>Utiliser ParlAI -&gt; dans le répertoire /examples il y'a tout un tas de scripts (relativement bourrins) qui servent à comprendre comment marche le système de monde. <a class="el" href="../../df/ddf/namespacedisplay__data.html">display_data</a> est un bon exemple :</h3>
+<ul>
+<li>** On crée un monde qui, par défaut, s'accorde avec nos données (class DialogueWorld (World)), cela implémente la méthode world.parlai() -&gt; agent1 ( le teacher).act() / agent2 (l'apprenant).observe() / agent2.act / agent1.observe.</li>
+<li>** les méthodes act et observe sont propres à chaque agent. Dans le cas du teacher, nous utilisons celles par défaut. Là où c'est intéressant c'est pour l'apprenant.</li>
+<li>** Pour charger un agent apprenant, ParlAI implémente un certain nombre de modèles d'agents. Nous utilisons pour <a class="el" href="../../df/ddf/namespacedisplay__data.html">display_data</a> l'agent ReapeatLabel Agent, qui lit ce que lui donne le teacher et le recrache tel un perroquet des îles. <h3>Dans le script train_data.py nous utilisons l'exemple MemNNAgent (aka memoryNetwork Agent) qui va se comporter d'une façon particulière par rapport à d'autres agents d'apprentissage. Les résultats de l'apprentissage sont sauvegardés dans un fichier de modèle.</h3>
+</li>
+</ul>
+<ul>
+<li>** dans le main, une boucle while not "EPOCH DONE" enveloppe world.parlai. Tant que tous les dialogues ne sont pas appris, cela continue.</li>
+<li>** Le framework derrière tous les agents d'apprentissage est PyTorch, il y'a d'ailleurs une classe TorchAgent dont la plupart des agents héritent. Dont le MemNN Agent.</li>
+</ul>
+<h3>Tu peux trouver les scripts que j'ai faits entièrement from scratch dans /parlai/tasks/cologne. les données sont dans /data/cologne</h3>
+<div class="image">
 <img src="../../docs/source/\_static/img/parlai.png" width="70%"/>
 </div>
 <p><a href="https://github.com/facebookresearch/ParlAI/blob/master/LICENSE"></a> <a href="https://circleci.com/gh/facebookresearch/ParlAI/tree/master"></a> https://github.com/facebookresearch/ParlAI/blob/master/CONTRIBUTING.md "![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)" <a href="https://twitter.com/parlai_parley"></a> </p><hr/>
 <p><a href="http://parl.ai">ParlAI</a> (pronounced “par-lay”) is a python framework for sharing, training and testing dialogue models, from open-domain chitchat to VQA (Visual Question Answering).</p>
 <p>Its goal is to provide researchers:</p>
 <ul>
-<li><b>70+ popular datasets available all in one place, with the same API</b>, among them <a href="https://rajpurkar.github.io/SQuAD-explorer/">SQuAD</a>, <a href="http://www.msmarco.org/">MS MARCO</a>, <a href="https://www.aclweb.org/anthology/D18-1241">QuAC</a>, <a href="https://hotpotqa.github.io/">HotpotQA</a>, <a href="https://arxiv.org/abs/1506.03340">QACNN &amp; QADailyMail</a>, <a href="https://arxiv.org/abs/1511.02301">CBT</a>, <a href="https://arxiv.org/abs/1610.00956">BookTest</a>, <a href="https://arxiv.org/abs/1605.07683">bAbI Dialogue tasks</a>, <a href="https://arxiv.org/abs/1506.08909">Ubuntu Dialogue</a>, <a href="https://arxiv.org/abs/1801.07243">PersonaChat</a>, <a href="http://opus.lingfil.uu.se/OpenSubtitles.php">OpenSubtitles</a>, <a href="https://openreview.net/forum?id=r1l73iRqKm">Wizard of Wikipedia</a>, <a href="http://visualqa.org/">VQA-COCO2014</a>, <a href="https://arxiv.org/abs/1611.08669">VisDial</a> and <a href="http://cs.stanford.edu/people/jcjohns/clevr/">CLEVR</a>. See the complete list <a href="https://github.com/facebookresearch/ParlAI/blob/master/parlai/tasks/task_list.py">here</a></li>
-<li>a wide set of <b>reference models</b> &ndash; from retrieval baselines to transformers.</li>
-<li>a large zoo of <b>pretrained models</b> ready to use off-the-shelf</li>
+<li><b>80+ popular datasets available all in one place, with the same API</b>, among them <a href="https://arxiv.org/abs/1801.07243">PersonaChat</a>, <a href="https://arxiv.org/abs/1710.03957">DailyDialog</a>, <a href="https://openreview.net/forum?id=r1l73iRqKm">Wizard of Wikipedia</a>, <a href="https://arxiv.org/abs/1811.00207">Empathetic Dialogues</a>, <a href="https://rajpurkar.github.io/SQuAD-explorer/">SQuAD</a>, <a href="http://www.msmarco.org/">MS MARCO</a>, <a href="https://www.aclweb.org/anthology/D18-1241">QuAC</a>, <a href="https://hotpotqa.github.io/">HotpotQA</a>, <a href="https://arxiv.org/abs/1506.03340">QACNN &amp; QADailyMail</a>, <a href="https://arxiv.org/abs/1511.02301">CBT</a>, <a href="https://arxiv.org/abs/1610.00956">BookTest</a>, <a href="https://arxiv.org/abs/1605.07683">bAbI Dialogue tasks</a>, <a href="https://arxiv.org/abs/1506.08909">Ubuntu Dialogue</a>, <a href="http://opus.lingfil.uu.se/OpenSubtitles.php">OpenSubtitles</a>, <a href="https://arxiv.org/abs/1811.00945">Image Chat</a>, <a href="http://visualqa.org/">VQA</a>, <a href="https://arxiv.org/abs/1611.08669">VisDial</a> and <a href="http://cs.stanford.edu/people/jcjohns/clevr/">CLEVR</a>. See the complete list <a href="https://github.com/facebookresearch/ParlAI/blob/master/parlai/tasks/task_list.py">here</a>.</li>
+<li>a wide set of <a href="https://www.parl.ai/docs/agents_list.html"><b>reference models</b></a> &ndash; from retrieval baselines to transformers.</li>
+<li>a large <a href="https://parl.ai/docs/zoo.html">zoo of <b>pretrained models</b></a> ready to use off-the-shelf</li>
 <li>seamless <b>integration of <a href="https://www.mturk.com/mturk/welcome">Amazon Mechanical Turk</a></b> for data collection and human evaluation</li>
 <li><b>integration with <a href="http://www.parl.ai/docs/tutorial_messenger.html">Facebook Messenger</a></b> to connect agents with humans in a chat interface</li>
 <li>a large range of <b>helpers to create your own agents</b> and train on several tasks with <b>multitasking</b></li>
 <li><b>multimodality</b>, some tasks use text and images</li>
 </ul>
-<p>ParlAI is described in the following paper: <a href="https://arxiv.org/abs/1705.06476">“ParlAI: A Dialog Research Software Platform", arXiv:1705.06476</a>.</p>
+<p>ParlAI is described in the following paper: <a href="https://arxiv.org/abs/1705.06476">“ParlAI: A Dialog Research Software Platform", arXiv:1705.06476&lt;/a&gt;
+or see these &lt;a href="https://drive.google.com/file/d/1JfUW4AVrjSp8X8Fp0_rTTRoLxUfW0aUm/view?usp=sharing"&gt;more up-to-date slides</a>.</p>
 <p>See the https://github.com/facebookresearch/ParlAI/blob/master/NEWS.md "news page" for the latest additions &amp; updates, and the website <a href="http://parl.ai">http://parl.ai</a> for further docs.</p>
+<div class="image">
+<img src="../../docs/source/_static/img/parlai_example.png" width="90%"/>
+</div>
 <h2>Installing ParlAI</h2>
 <p>ParlAI currently requires Python3 and <a href="https://pytorch.org">Pytorch</a> 1.1 or newer. Dependencies of the core modules are listed in <code>requirement.txt</code>. Some models included (in <code>parlai/agents</code>) have additional requirements.</p>
 <p>Run the following commands to clone the repository and install ParlAI:</p>
@@ -99,7 +117,7 @@ $(function() {
 </ul>
 <h2>Examples</h2>
 <p>A large set of examples can be found in <a href="../.././examples">this directory</a>. Here are a few of them. Note: If any of these examples fail, check the <a href="../../#requirements">requirements section</a> to see if you have missed something.</p>
-<p>Display 10 random examples from the SQuAD task </p><div class="fragment"><div class="line">python examples/display_data.py -t squad</div></div><!-- fragment --><p>Evaluate an IR baseline model on the validation set of the Personachat task: </p><div class="fragment"><div class="line">python examples/eval_model.py -m ir_baseline -t personachat -dt valid</div></div><!-- fragment --><p>Train a single layer transformer on personachat (requires pytorch and torchtext). Detail: embedding size 300, 4 attention heads, 2 epochs using batchsize 64, word vectors are initialized with fasttext and the other elements of the batch are used as negative during training. </p><div class="fragment"><div class="line">python examples/train_model.py -t personachat -m transformer/ranker -mf /tmp/model_tr6 --n-layers 1 --embedding-size 300 --ffn-size 600 --n-heads 4 --num-epochs 2 -veps 0.25 -bs 64 -lr 0.001 --dropout 0.1 --embedding-type fasttext_cc --candidates batch</div></div><!-- fragment --><h2>Code Organization</h2>
+<p>Display 10 random examples from the SQuAD task </p><div class="fragment"><div class="line">python examples/display_data.py -t squad</div></div><!-- fragment --><p>Evaluate an IR baseline model on the validation set of the Personachat task: </p><div class="fragment"><div class="line">python examples/eval_model.py -m ir_baseline -t personachat -dt valid</div></div><!-- fragment --><p>Train a single layer transformer on PersonaChat (requires pytorch and torchtext). Detail: embedding size 300, 4 attention heads, 2 epochs using batchsize 64, word vectors are initialized with fasttext and the other elements of the batch are used as negative during training. </p><div class="fragment"><div class="line">python examples/train_model.py -t personachat -m transformer/ranker -mf /tmp/model_tr6 --n-layers 1 --embedding-size 300 --ffn-size 600 --n-heads 4 --num-epochs 2 -veps 0.25 -bs 64 -lr 0.001 --dropout 0.1 --embedding-type fasttext_cc --candidates batch</div></div><!-- fragment --><h2>Code Organization</h2>
 <p>The code is set up into several main directories:</p>
 <ul>
 <li><a href="../.././parlai/core"><b>core</b></a>: contains the primary code for the framework</li>
@@ -113,7 +131,8 @@ $(function() {
 <h2>Support</h2>
 <p>If you have any questions, bug reports or feature requests, please don't hesitate to post on our <a href="https://github.com/facebookresearch/ParlAI/issues">Github Issues page</a>.</p>
 <h2>The Team</h2>
-<p>ParlAI is currently maintained by Emily Dinan, Alexander H. Miller, Stephen Roller, Kurt Shuster, Jack Urbanek and Jason Weston. A non-exhaustive list of other major contributors includes: Will Feng, Adam Fisch, Jiasen Lu, Antoine Bordes, Devi Parikh, Dhruv Batra, Filipe de Avila Belbute Peres and Chao Pan.</p>
+<p>ParlAI is currently maintained by Emily Dinan, Dexter Ju, Margaret Li, Spencer Poff, Pratik Ringshia, Stephen Roller, Kurt Shuster, Eric Michael Smith, Jack Urbanek, Jason Weston, and Mary Williamson.</p>
+<p>Former major contributors and maintainers include Alexander H. Miller, Will Feng, Adam Fisch, Jiasen Lu, Antoine Bordes, Devi Parikh, Dhruv Batra, Filipe de Avila Belbute Peres and Chao Pan.</p>
 <h2>Citation</h2>
 <p>Please cite the <a href="https://arxiv.org/abs/1705.06476">arXiv paper</a> if you use ParlAI in your work:</p>
 <div class="fragment"><div class="line">@article{miller2017parlai,</div><div class="line">  title={ParlAI: A Dialog Research Software Platform},</div><div class="line">  author={{Miller}, A.~H. and {Feng}, W. and {Fisch}, A. and {Lu}, J. and {Batra}, D. and {Bordes}, A. and {Parikh}, D. and {Weston}, J.},</div><div class="line">  journal={arXiv preprint arXiv:{1705.06476}},</div><div class="line">  year={2017}</div><div class="line">}</div></div><!-- fragment --><h2>License</h2>

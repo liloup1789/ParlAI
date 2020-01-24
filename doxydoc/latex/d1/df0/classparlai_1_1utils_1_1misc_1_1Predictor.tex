@@ -2,8 +2,7 @@
 \label{classparlai_1_1utils_1_1misc_1_1Predictor}\index{parlai.\+utils.\+misc.\+Predictor@{parlai.\+utils.\+misc.\+Predictor}}
 
 
-Inheritance diagram for parlai.\+utils.\+misc.\+Predictor\+:
-\nopagebreak
+Inheritance diagram for parlai.\+utils.\+misc.\+Predictor\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+utils.\+misc.\+Predictor\+:
 \end{figure}
 
 
-Collaboration diagram for parlai.\+utils.\+misc.\+Predictor\+:
-\nopagebreak
+Collaboration diagram for parlai.\+utils.\+misc.\+Predictor\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -47,7 +45,7 @@ model deployment.
 \end{DoxyVerb}
  
 
-Definition at line 262 of file misc.\+py.
+Definition at line 152 of file misc.\+py.
 
 
 
@@ -69,33 +67,33 @@ with hyphens, so 'dict_file=/tmp/dict.tsv' would be interpreted as
 \end{DoxyVerb}
  
 
-Definition at line 273 of file misc.\+py.
+Definition at line 163 of file misc.\+py.
 
 
 \begin{DoxyCode}
-273     \textcolor{keyword}{def }\_\_init\_\_(self, args=None, **kwargs):
-274         \textcolor{stringliteral}{"""}
-275 \textcolor{stringliteral}{        Initialize the predictor, setting up opt automatically if needed.}
-276 \textcolor{stringliteral}{}
-277 \textcolor{stringliteral}{        Args is expected to be in the same format as sys.argv: e.g. a list in}
-278 \textcolor{stringliteral}{        the form ['--model', 'seq2seq', '-hs', 128, '-lr', 0.5].}
-279 \textcolor{stringliteral}{}
-280 \textcolor{stringliteral}{        kwargs is interpreted by appending '--' to it and replacing underscores}
-281 \textcolor{stringliteral}{        with hyphens, so 'dict\_file=/tmp/dict.tsv' would be interpreted as}
-282 \textcolor{stringliteral}{        '--dict-file /tmp/dict.tsv'.}
-283 \textcolor{stringliteral}{        """}
-284         \textcolor{keyword}{from} \hyperlink{namespaceparlai_1_1core_1_1params}{parlai.core.params} \textcolor{keyword}{import} ParlaiParser
-285         \textcolor{keyword}{from} \hyperlink{namespaceparlai_1_1core_1_1agents}{parlai.core.agents} \textcolor{keyword}{import} create\_agent
-286 
-287         \textcolor{keywordflow}{if} args \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-288             args = []
-289         \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} kwargs.items():
-290             args.append(\textcolor{stringliteral}{'--'} + \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(k).replace(\textcolor{stringliteral}{'\_'}, \textcolor{stringliteral}{'-'}))
-291             args.append(\hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(v))
-292         parser = ParlaiParser(\textcolor{keyword}{True}, \textcolor{keyword}{True})
-293         self.opt = parser.parse\_args(args)
-294         self.agent = \hyperlink{namespaceparlai_1_1core_1_1agents_ad0d54074d4bcc148bb415ab5515a53b5}{create\_agent}(self.opt)
-295 
+163     \textcolor{keyword}{def }\_\_init\_\_(self, args=None, **kwargs):
+164         \textcolor{stringliteral}{"""}
+165 \textcolor{stringliteral}{        Initialize the predictor, setting up opt automatically if needed.}
+166 \textcolor{stringliteral}{}
+167 \textcolor{stringliteral}{        Args is expected to be in the same format as sys.argv: e.g. a list in}
+168 \textcolor{stringliteral}{        the form ['--model', 'seq2seq', '-hs', 128, '-lr', 0.5].}
+169 \textcolor{stringliteral}{}
+170 \textcolor{stringliteral}{        kwargs is interpreted by appending '--' to it and replacing underscores}
+171 \textcolor{stringliteral}{        with hyphens, so 'dict\_file=/tmp/dict.tsv' would be interpreted as}
+172 \textcolor{stringliteral}{        '--dict-file /tmp/dict.tsv'.}
+173 \textcolor{stringliteral}{        """}
+174         \textcolor{keyword}{from} \hyperlink{namespaceparlai_1_1core_1_1params}{parlai.core.params} \textcolor{keyword}{import} ParlaiParser
+175         \textcolor{keyword}{from} \hyperlink{namespaceparlai_1_1core_1_1agents}{parlai.core.agents} \textcolor{keyword}{import} create\_agent
+176 
+177         \textcolor{keywordflow}{if} args \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+178             args = []
+179         \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} kwargs.items():
+180             args.append(\textcolor{stringliteral}{'--'} + \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(k).replace(\textcolor{stringliteral}{'\_'}, \textcolor{stringliteral}{'-'}))
+181             args.append(\hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(v))
+182         parser = ParlaiParser(\textcolor{keyword}{True}, \textcolor{keyword}{True})
+183         self.opt = parser.parse\_args(args)
+184         self.agent = \hyperlink{namespaceparlai_1_1core_1_1agents_a00d77a7e26fb89e8bd900f7b2a02982a}{create\_agent}(self.opt)
+185 
 \end{DoxyCode}
 
 
@@ -110,21 +108,21 @@ Definition at line 273 of file misc.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 296 of file misc.\+py.
+Definition at line 186 of file misc.\+py.
 
 
 \begin{DoxyCode}
-296     \textcolor{keyword}{def }predict(self, observation):
-297         \textcolor{stringliteral}{"""}
-298 \textcolor{stringliteral}{        From a ParlAI-standard message dict, get model prediction.}
-299 \textcolor{stringliteral}{        """}
-300         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'episode\_done'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} observation:
-301             observation[\textcolor{stringliteral}{'episode\_done'}] = \textcolor{keyword}{True}
-302         self.agent.observe(observation)
-303         reply = self.agent.act()
-304         \textcolor{keywordflow}{return} reply
-305 
-306 
+186     \textcolor{keyword}{def }predict(self, observation):
+187         \textcolor{stringliteral}{"""}
+188 \textcolor{stringliteral}{        From a ParlAI-standard message dict, get model prediction.}
+189 \textcolor{stringliteral}{        """}
+190         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'episode\_done'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} observation:
+191             observation[\textcolor{stringliteral}{'episode\_done'}] = \textcolor{keyword}{True}
+192         self.agent.observe(observation)
+193         reply = self.agent.act()
+194         \textcolor{keywordflow}{return} reply
+195 
+196 
 \end{DoxyCode}
 
 
@@ -137,7 +135,7 @@ Definition at line 296 of file misc.\+py.
 
 
 
-Definition at line 294 of file misc.\+py.
+Definition at line 184 of file misc.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1Predictor_a608b3d7f6722389f3a7eeed0ec5772b7}\label{classparlai_1_1utils_1_1misc_1_1Predictor_a608b3d7f6722389f3a7eeed0ec5772b7}} 
 \index{parlai\+::utils\+::misc\+::\+Predictor@{parlai\+::utils\+::misc\+::\+Predictor}!opt@{opt}}
@@ -147,7 +145,7 @@ Definition at line 294 of file misc.\+py.
 
 
 
-Definition at line 293 of file misc.\+py.
+Definition at line 183 of file misc.\+py.
 
 
 

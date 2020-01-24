@@ -42,8 +42,8 @@ Definition at line 50 of file interactive.\+py.
 58         opt = opt.parse\_args()
 59     opt[\textcolor{stringliteral}{'task'}] = \textcolor{stringliteral}{'parlai.agents.local\_human.local\_human:LocalHumanAgent'}
 60     \textcolor{comment}{# Create model and assign it to the specified task}
-61     agent = \hyperlink{namespaceparlai_1_1core_1_1agents_ad0d54074d4bcc148bb415ab5515a53b5}{create\_agent}(opt, requireModelExists=\textcolor{keyword}{True})
-62     world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(opt, agent)
+61     agent = \hyperlink{namespaceparlai_1_1core_1_1agents_a00d77a7e26fb89e8bd900f7b2a02982a}{create\_agent}(opt, requireModelExists=\textcolor{keyword}{True})
+62     world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a79969c7ba76d4b3c500f5bb776444dc6}{create\_task}(opt, agent)
 63     \textcolor{keywordflow}{if} print\_parser:
 64         \textcolor{comment}{# Show arguments after loading model}
 65         print\_parser.opt = agent.opt
@@ -53,7 +53,7 @@ Definition at line 50 of file interactive.\+py.
 69     convai2\_opt = opt.copy()
 70     convai2\_opt[\textcolor{stringliteral}{'task'}] = \textcolor{stringliteral}{'convai2:both'}
 71     convai2\_agent = RepeatLabelAgent(convai2\_opt)
-72     convai2\_world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(convai2\_opt, convai2\_agent)
+72     convai2\_world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a79969c7ba76d4b3c500f5bb776444dc6}{create\_task}(convai2\_opt, convai2\_agent)
 73 
 74     \textcolor{keyword}{def }get\_new\_personas():
 75         \textcolor{comment}{# Find a new episode}
@@ -86,7 +86,7 @@ Definition at line 50 of file interactive.\+py.
 102         acts[0] = agents[0].act()
 103         \textcolor{comment}{# add the persona on to the first message}
 104         \textcolor{keywordflow}{if} cnt == 0:
-105             acts[0][\textcolor{stringliteral}{'text'}] = bot\_persona + acts[0].get(\textcolor{stringliteral}{'text'}, \textcolor{stringliteral}{'hi'})
+105             acts[0].force\_set(\textcolor{stringliteral}{'text'}, bot\_persona + acts[0].get(\textcolor{stringliteral}{'text'}, \textcolor{stringliteral}{'hi'}))
 106         agents[1].observe(acts[0])
 107         acts[1] = agents[1].act()
 108         agents[0].observe(acts[1])

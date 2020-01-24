@@ -23,42 +23,42 @@ def \hyperlink{namespaceparlai_1_1tasks_1_1convai2_1_1worlds_a61a758b7cb43183397
 
 
 
-Definition at line 16 of file worlds.\+py.
+Definition at line 17 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-16 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1convai2_1_1worlds_a61a758b7cb43183397d002f7f203f586}{load\_personas}(opt):
-17     print(\textcolor{stringliteral}{'[ loading personas.. ]'})
-18     \textcolor{comment}{# Create ConvAI2 data so we can assign personas.}
-19     convai2\_opt = opt.copy()
-20     convai2\_opt[\textcolor{stringliteral}{'task'}] = \textcolor{stringliteral}{'convai2:both'}
-21     \textcolor{keywordflow}{if} convai2\_opt[\textcolor{stringliteral}{'datatype'}].startswith(\textcolor{stringliteral}{'train'}):
-22         convai2\_opt[\textcolor{stringliteral}{'datatype'}] = \textcolor{stringliteral}{'train:evalmode'}
-23     convai2\_opt[\textcolor{stringliteral}{'interactive\_task'}] = \textcolor{keyword}{False}
-24     convai2\_agent = RepeatLabelAgent(convai2\_opt)
-25     convai2\_world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(convai2\_opt, convai2\_agent)
-26     personas = set()
-27     \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} convai2\_world.epoch\_done():
-28         convai2\_world.parley()
-29         msg = convai2\_world.get\_acts()[0]
-30         \textcolor{comment}{# Find a new episode}
-31         \textcolor{keywordflow}{if} msg.get(\textcolor{stringliteral}{'episode\_done'}, \textcolor{keyword}{False}) \textcolor{keywordflow}{and} \textcolor{keywordflow}{not} convai2\_world.epoch\_done():
-32             convai2\_world.parley()
-33             msg = convai2\_world.get\_acts()[0]
-34             txt = msg.get(\textcolor{stringliteral}{'text'}, \textcolor{stringliteral}{''}).split(\textcolor{stringliteral}{'\(\backslash\)n'})
-35             a1\_persona = \textcolor{stringliteral}{""}
-36             a2\_persona = \textcolor{stringliteral}{""}
-37             \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} txt:
-38                 \textcolor{keywordflow}{if} t.startswith(\textcolor{stringliteral}{"partner's persona:"}):
-39                     a1\_persona += (
-40                         t.replace(\textcolor{stringliteral}{"partner's persona:"}, \textcolor{stringliteral}{'your persona:'}) + \textcolor{stringliteral}{'\(\backslash\)n'}
-41                     )
-42                 \textcolor{keywordflow}{if} t.startswith(\textcolor{stringliteral}{'your persona:'}):
-43                     a2\_persona += t + \textcolor{stringliteral}{'\(\backslash\)n'}
-44             personas.add(a1\_persona)
-45             personas.add(a2\_persona)
-46     print(\textcolor{stringliteral}{'[ loaded '} + \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(len(personas)) + \textcolor{stringliteral}{' personas ]'})
-47     \textcolor{keywordflow}{return} list(personas)
-48 
+17 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1tasks_1_1convai2_1_1worlds_a61a758b7cb43183397d002f7f203f586}{load\_personas}(opt):
+18     print(\textcolor{stringliteral}{'[ loading personas.. ]'})
+19     \textcolor{comment}{# Create ConvAI2 data so we can assign personas.}
+20     convai2\_opt = opt.copy()
+21     convai2\_opt[\textcolor{stringliteral}{'task'}] = \textcolor{stringliteral}{'convai2:both'}
+22     \textcolor{keywordflow}{if} convai2\_opt[\textcolor{stringliteral}{'datatype'}].startswith(\textcolor{stringliteral}{'train'}):
+23         convai2\_opt[\textcolor{stringliteral}{'datatype'}] = \textcolor{stringliteral}{'train:evalmode'}
+24     convai2\_opt[\textcolor{stringliteral}{'interactive\_task'}] = \textcolor{keyword}{False}
+25     convai2\_agent = RepeatLabelAgent(convai2\_opt)
+26     convai2\_world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a79969c7ba76d4b3c500f5bb776444dc6}{create\_task}(convai2\_opt, convai2\_agent)
+27     personas = set()
+28     \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} convai2\_world.epoch\_done():
+29         convai2\_world.parley()
+30         msg = convai2\_world.get\_acts()[0]
+31         \textcolor{comment}{# Find a new episode}
+32         \textcolor{keywordflow}{if} msg.get(\textcolor{stringliteral}{'episode\_done'}, \textcolor{keyword}{False}) \textcolor{keywordflow}{and} \textcolor{keywordflow}{not} convai2\_world.epoch\_done():
+33             convai2\_world.parley()
+34             msg = convai2\_world.get\_acts()[0]
+35             txt = msg.get(\textcolor{stringliteral}{'text'}, \textcolor{stringliteral}{''}).split(\textcolor{stringliteral}{'\(\backslash\)n'})
+36             a1\_persona = \textcolor{stringliteral}{""}
+37             a2\_persona = \textcolor{stringliteral}{""}
+38             \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} txt:
+39                 \textcolor{keywordflow}{if} t.startswith(\textcolor{stringliteral}{"partner's persona:"}):
+40                     a1\_persona += (
+41                         t.replace(\textcolor{stringliteral}{"partner's persona:"}, \textcolor{stringliteral}{'your persona:'}) + \textcolor{stringliteral}{'\(\backslash\)n'}
+42                     )
+43                 \textcolor{keywordflow}{if} t.startswith(\textcolor{stringliteral}{'your persona:'}):
+44                     a2\_persona += t + \textcolor{stringliteral}{'\(\backslash\)n'}
+45             personas.add(a1\_persona)
+46             personas.add(a2\_persona)
+47     print(\textcolor{stringliteral}{'[ loaded '} + \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(len(personas)) + \textcolor{stringliteral}{' personas ]'})
+48     \textcolor{keywordflow}{return} list(personas)
 49 
+50 
 \end{DoxyCode}

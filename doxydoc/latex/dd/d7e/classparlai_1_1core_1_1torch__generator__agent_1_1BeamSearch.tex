@@ -2,8 +2,7 @@
 \label{classparlai_1_1core_1_1torch__generator__agent_1_1BeamSearch}\index{parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Beam\+Search@{parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Beam\+Search}}
 
 
-Inheritance diagram for parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Beam\+Search\+:
-\nopagebreak
+Inheritance diagram for parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Beam\+Search\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Beam\+
 \end{figure}
 
 
-Collaboration diagram for parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Beam\+Search\+:
-\nopagebreak
+Collaboration diagram for parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Beam\+Search\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -33,7 +31,7 @@ def \hyperlink{classparlai_1_1core_1_1torch__generator__agent_1_1BeamSearch_a3d6
 \end{DoxyVerb}
  
 
-Definition at line 1352 of file torch\+\_\+generator\+\_\+agent.\+py.
+Definition at line 1344 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 
@@ -48,32 +46,32 @@ Definition at line 1352 of file torch\+\_\+generator\+\_\+agent.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1357 of file torch\+\_\+generator\+\_\+agent.\+py.
+Definition at line 1349 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 \begin{DoxyCode}
-1357     \textcolor{keyword}{def }select\_paths(self, logprobs, prior\_scores):
-1358         \textcolor{stringliteral}{"""}
-1359 \textcolor{stringliteral}{        Select the next vocabulary item in these beams.}
-1360 \textcolor{stringliteral}{        """}
-1361         \textcolor{comment}{# if numel is 1, then this is the first time step, only one hyp is expanded}
-1362         \textcolor{keywordflow}{if} prior\_scores.numel() == 1:
-1363             logprobs = logprobs[0:1]
-1364 
-1365         \textcolor{comment}{# beam search actually looks over all hypotheses together so we flatten}
-1366         beam\_scores = logprobs + prior\_scores.unsqueeze(1).expand\_as(logprobs)
-1367         flat\_beam\_scores = beam\_scores.view(-1)
-1368         best\_scores, best\_idxs = torch.topk(flat\_beam\_scores, self.beam\_size, dim=-1)
-1369         voc\_size = logprobs.size(-1)
+1349     \textcolor{keyword}{def }select\_paths(self, logprobs, prior\_scores):
+1350         \textcolor{stringliteral}{"""}
+1351 \textcolor{stringliteral}{        Select the next vocabulary item in these beams.}
+1352 \textcolor{stringliteral}{        """}
+1353         \textcolor{comment}{# if numel is 1, then this is the first time step, only one hyp is expanded}
+1354         \textcolor{keywordflow}{if} prior\_scores.numel() == 1:
+1355             logprobs = logprobs[0:1]
+1356 
+1357         \textcolor{comment}{# beam search actually looks over all hypotheses together so we flatten}
+1358         beam\_scores = logprobs + prior\_scores.unsqueeze(1).expand\_as(logprobs)
+1359         flat\_beam\_scores = beam\_scores.view(-1)
+1360         best\_scores, best\_idxs = torch.topk(flat\_beam\_scores, self.beam\_size, dim=-1)
+1361         voc\_size = logprobs.size(-1)
+1362 
+1363         \textcolor{comment}{# get the backtracking hypothesis id as a multiple of full voc\_sizes}
+1364         hyp\_ids = best\_idxs / voc\_size
+1365         \textcolor{comment}{# get the actual word id from residual of the same division}
+1366         tok\_ids = best\_idxs % voc\_size
+1367 
+1368         \textcolor{keywordflow}{return} (hyp\_ids, tok\_ids, best\_scores)
+1369 
 1370 
-1371         \textcolor{comment}{# get the backtracking hypothesis id as a multiple of full voc\_sizes}
-1372         hyp\_ids = best\_idxs / voc\_size
-1373         \textcolor{comment}{# get the actual word id from residual of the same division}
-1374         tok\_ids = best\_idxs % voc\_size
-1375 
-1376         \textcolor{keywordflow}{return} (hyp\_ids, tok\_ids, best\_scores)
-1377 
-1378 
 \end{DoxyCode}
 
 

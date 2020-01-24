@@ -2,8 +2,7 @@
 \label{classparlai_1_1core_1_1worlds_1_1BatchWorld}\index{parlai.\+core.\+worlds.\+Batch\+World@{parlai.\+core.\+worlds.\+Batch\+World}}
 
 
-Inheritance diagram for parlai.\+core.\+worlds.\+Batch\+World\+:
-\nopagebreak
+Inheritance diagram for parlai.\+core.\+worlds.\+Batch\+World\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+core.\+worlds.\+Batch\+World\+:
 \end{figure}
 
 
-Collaboration diagram for parlai.\+core.\+worlds.\+Batch\+World\+:
-\nopagebreak
+Collaboration diagram for parlai.\+core.\+worlds.\+Batch\+World\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -23,7 +21,7 @@ Collaboration diagram for parlai.\+core.\+worlds.\+Batch\+World\+:
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-def \hyperlink{classparlai_1_1core_1_1worlds_1_1BatchWorld_ac479dd6a5843a2fcf30d8acc1accc6a6}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1core_1_1worlds_1_1BatchWorld_a75c0ed09cce56774c61c9f59b543ed88}{opt}, \hyperlink{classparlai_1_1core_1_1worlds_1_1BatchWorld_ad7d651ac0fb1ee9b52ba7f134602e98e}{world})
+def \hyperlink{classparlai_1_1core_1_1worlds_1_1BatchWorld_a5235cdc5489274463245e6033fdf085b}{\+\_\+\+\_\+init\+\_\+\+\_\+}
 \item 
 def \hyperlink{classparlai_1_1core_1_1worlds_1_1BatchWorld_a01faab842dc28b580dcaeacee491c5f5}{batch\+\_\+observe} (self, index, batch\+\_\+actions, index\+\_\+acting)
 \item 
@@ -68,8 +66,6 @@ def \hyperlink{classparlai_1_1core_1_1worlds_1_1BatchWorld_ad351080076e31498e147
 \item 
 \hyperlink{classparlai_1_1core_1_1worlds_1_1BatchWorld_ad7d651ac0fb1ee9b52ba7f134602e98e}{world}
 \item 
-\hyperlink{classparlai_1_1core_1_1worlds_1_1BatchWorld_ae1b967d3229b90064ff50c1a55dc2b96}{worlds}
-\item 
 \hyperlink{classparlai_1_1core_1_1worlds_1_1BatchWorld_a6f13286dedb14f257e043339b543cdeb}{batch\+\_\+observations}
 \item 
 \hyperlink{classparlai_1_1core_1_1worlds_1_1BatchWorld_a7cae7f1a21fbe52133bf9e75a4a3b673}{first\+\_\+batch}
@@ -90,44 +86,44 @@ The underlying world(s) it is batching can be either
 \end{DoxyVerb}
  
 
-Definition at line 750 of file worlds.\+py.
+Definition at line 757 of file worlds.\+py.
 
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1BatchWorld_ac479dd6a5843a2fcf30d8acc1accc6a6}\label{classparlai_1_1core_1_1worlds_1_1BatchWorld_ac479dd6a5843a2fcf30d8acc1accc6a6}} 
+\mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1BatchWorld_a5235cdc5489274463245e6033fdf085b}\label{classparlai_1_1core_1_1worlds_1_1BatchWorld_a5235cdc5489274463245e6033fdf085b}} 
 \index{parlai\+::core\+::worlds\+::\+Batch\+World@{parlai\+::core\+::worlds\+::\+Batch\+World}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
 \index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::core\+::worlds\+::\+Batch\+World@{parlai\+::core\+::worlds\+::\+Batch\+World}}
 \subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
-{\footnotesize\ttfamily def parlai.\+core.\+worlds.\+Batch\+World.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{world }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily def parlai.\+core.\+worlds.\+Batch\+World.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt }\end{DoxyParamCaption})}
 
 
 
-Definition at line 762 of file worlds.\+py.
+Definition at line 769 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-762     \textcolor{keyword}{def }\_\_init\_\_(self, opt, world):
-763         super().\_\_init\_\_(opt)
-764         self.opt = opt
-765         self.random = opt.get(\textcolor{stringliteral}{'datatype'}, \textcolor{keywordtype}{None}) == \textcolor{stringliteral}{'train'}
-766         self.world = world
-767         self.worlds = []
-768         \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(opt[\textcolor{stringliteral}{'batchsize'}]):
-769             \textcolor{comment}{# make sure that any opt dicts in shared have batchindex set to i}
-770             \textcolor{comment}{# this lets all shared agents know which batchindex they have,}
-771             \textcolor{comment}{# which is needed for ordered data (esp valid/test sets)}
-772             shared = world.share()
-773             shared[\textcolor{stringliteral}{'batchindex'}] = i
-774             \textcolor{keywordflow}{for} agent\_shared \textcolor{keywordflow}{in} shared.get(\textcolor{stringliteral}{'agents'}, \textcolor{stringliteral}{''}):
-775                 agent\_shared[\textcolor{stringliteral}{'batchindex'}] = i
-776             \textcolor{comment}{# TODO: deprecate override\_opts}
-777             \_override\_opts\_in\_shared(shared, \{\textcolor{stringliteral}{'batchindex'}: i\})
-778             self.worlds.append(shared[\textcolor{stringliteral}{'world\_class'}](opt, \textcolor{keywordtype}{None}, shared))
-779         self.batch\_observations = [\textcolor{keywordtype}{None}] * len(self.world.get\_agents())
-780         self.first\_batch = \textcolor{keywordtype}{None}
-781         self.acts = [\textcolor{keywordtype}{None}] * len(self.world.get\_agents())
-782 
+769     \textcolor{keyword}{def }\_\_init\_\_(self, opt: Opt, world):
+770         super().\_\_init\_\_(opt)
+771         self.opt = opt
+772         self.random = opt.get(\textcolor{stringliteral}{'datatype'}, \textcolor{keywordtype}{None}) == \textcolor{stringliteral}{'train'}
+773         self.world = world
+774         self.worlds: List[World] = []
+775         \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(opt[\textcolor{stringliteral}{'batchsize'}]):
+776             \textcolor{comment}{# make sure that any opt dicts in shared have batchindex set to i}
+777             \textcolor{comment}{# this lets all shared agents know which batchindex they have,}
+778             \textcolor{comment}{# which is needed for ordered data (esp valid/test sets)}
+779             shared = world.share()
+780             shared[\textcolor{stringliteral}{'batchindex'}] = i
+781             \textcolor{keywordflow}{for} agent\_shared \textcolor{keywordflow}{in} shared.get(\textcolor{stringliteral}{'agents'}, \textcolor{stringliteral}{''}):
+782                 agent\_shared[\textcolor{stringliteral}{'batchindex'}] = i
+783             \textcolor{comment}{# TODO: deprecate override\_opts}
+784             \_override\_opts\_in\_shared(shared, \{\textcolor{stringliteral}{'batchindex'}: i\})
+785             self.worlds.append(shared[\textcolor{stringliteral}{'world\_class'}](opt, \textcolor{keywordtype}{None}, shared))
+786         self.batch\_observations = [\textcolor{keywordtype}{None}] * len(self.world.get\_agents())
+787         self.first\_batch = \textcolor{keywordtype}{None}
+788         self.acts = [\textcolor{keywordtype}{None}] * len(self.world.get\_agents())
+789 
 \end{DoxyCode}
 
 
@@ -142,35 +138,36 @@ Definition at line 762 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 809 of file worlds.\+py.
+Definition at line 823 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-809     \textcolor{keyword}{def }batch\_act(self, agent\_idx, batch\_observation):
-810         \textcolor{stringliteral}{"""}
-811 \textcolor{stringliteral}{        Act in all subworlds.}
-812 \textcolor{stringliteral}{        """}
-813         \textcolor{comment}{# Given batch observation, do update for agents[index].}
-814         \textcolor{comment}{# Call update on agent}
-815         a = self.world.get\_agents()[agent\_idx]
-816         \textcolor{keywordflow}{if} hasattr(a, \textcolor{stringliteral}{'batch\_act'}) \textcolor{keywordflow}{and} \textcolor{keywordflow}{not} (
-817             hasattr(a, \textcolor{stringliteral}{'use\_batch\_act'}) \textcolor{keywordflow}{and} \textcolor{keywordflow}{not} a.use\_batch\_act
-818         ):
-819             batch\_actions = a.batch\_act(batch\_observation)
-820             \textcolor{comment}{# Store the actions locally in each world.}
-821             \textcolor{keywordflow}{for} i, w \textcolor{keywordflow}{in} enumerate(self.worlds):
-822                 acts = w.get\_acts()
-823                 acts[agent\_idx] = batch\_actions[i]
-824         \textcolor{keywordflow}{else}:
-825             \textcolor{comment}{# Reverts to running on each individually.}
-826             batch\_actions = []
-827             \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} self.worlds:
-828                 agents = w.get\_agents()
-829                 acts = w.get\_acts()
-830                 acts[agent\_idx] = agents[agent\_idx].act()
-831                 batch\_actions.append(acts[agent\_idx])
-832         \textcolor{keywordflow}{return} batch\_actions
-833 
+823     \textcolor{keyword}{def }batch\_act(self, agent\_idx, batch\_observation):
+824         \textcolor{stringliteral}{"""}
+825 \textcolor{stringliteral}{        Act in all subworlds.}
+826 \textcolor{stringliteral}{        """}
+827         \textcolor{comment}{# Given batch observation, do update for agents[index].}
+828         \textcolor{comment}{# Call update on agent}
+829         a = self.world.get\_agents()[agent\_idx]
+830         \textcolor{keywordflow}{if} hasattr(a, \textcolor{stringliteral}{'batch\_act'}) \textcolor{keywordflow}{and} \textcolor{keywordflow}{not} (
+831             hasattr(a, \textcolor{stringliteral}{'use\_batch\_act'})  \textcolor{comment}{# TODO: remove use\_batch\_act}
+832             \textcolor{keywordflow}{and} \textcolor{keywordflow}{not} a.use\_batch\_act
+833         ):
+834             batch\_actions = a.batch\_act(batch\_observation)
+835             \textcolor{comment}{# Store the actions locally in each world.}
+836             \textcolor{keywordflow}{for} i, w \textcolor{keywordflow}{in} enumerate(self.worlds):
+837                 acts = w.get\_acts()
+838                 acts[agent\_idx] = batch\_actions[i]
+839         \textcolor{keywordflow}{else}:
+840             \textcolor{comment}{# Reverts to running on each individually.}
+841             batch\_actions = []
+842             \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} self.worlds:
+843                 agents = w.get\_agents()
+844                 acts = w.get\_acts()
+845                 acts[agent\_idx] = agents[agent\_idx].act()
+846                 batch\_actions.append(acts[agent\_idx])
+847         \textcolor{keywordflow}{return} batch\_actions
+848 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1BatchWorld_a01faab842dc28b580dcaeacee491c5f5}\label{classparlai_1_1core_1_1worlds_1_1BatchWorld_a01faab842dc28b580dcaeacee491c5f5}} 
 \index{parlai\+::core\+::worlds\+::\+Batch\+World@{parlai\+::core\+::worlds\+::\+Batch\+World}!batch\+\_\+observe@{batch\+\_\+observe}}
@@ -182,36 +179,43 @@ Definition at line 809 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 783 of file worlds.\+py.
+Definition at line 790 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-783     \textcolor{keyword}{def }batch\_observe(self, index, batch\_actions, index\_acting):
-784         \textcolor{stringliteral}{"""}
-785 \textcolor{stringliteral}{        Observe corresponding actions in all subworlds.}
-786 \textcolor{stringliteral}{        """}
-787         batch\_observations = []
-788         \textcolor{keywordflow}{for} i, w \textcolor{keywordflow}{in} enumerate(self.worlds):
-789             agents = w.get\_agents()
-790             observation = \textcolor{keywordtype}{None}
-791             \textcolor{keywordflow}{if} batch\_actions[i] \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-792                 \textcolor{comment}{# shouldn't send None, should send empty observations}
-793                 batch\_actions[i] = [\{\}] * len(self.worlds)
-794             \textcolor{keywordflow}{if} hasattr(w, \textcolor{stringliteral}{'observe'}):
-795                 \textcolor{comment}{# The world has its own observe function, which the action}
-796                 \textcolor{comment}{# first goes through (agents receive messages via the world,}
-797                 \textcolor{comment}{# not from each other).}
-798                 observation = w.observe(agents[index], \hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(batch\_actions[i]))
-799             \textcolor{keywordflow}{else}:
-800                 \textcolor{keywordflow}{if} index == index\_acting:
-801                     \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}  \textcolor{comment}{# don't observe yourself talking}
-802                 observation = \hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(batch\_actions[i])
-803             observation = agents[index].observe(observation)
-804             \textcolor{keywordflow}{if} observation \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-805                 \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{'Agents should return what they observed.'})
-806             batch\_observations.append(observation)
-807         \textcolor{keywordflow}{return} batch\_observations
-808 
+790     \textcolor{keyword}{def }batch\_observe(self, index, batch\_actions, index\_acting):
+791         \textcolor{stringliteral}{"""}
+792 \textcolor{stringliteral}{        Observe corresponding actions in all subworlds.}
+793 \textcolor{stringliteral}{        """}
+794         batch\_observations = []
+795         \textcolor{keywordflow}{for} i, w \textcolor{keywordflow}{in} enumerate(self.worlds):
+796             agents = w.get\_agents()
+797             observation = \textcolor{keywordtype}{None}
+798             \textcolor{keywordflow}{if} batch\_actions[i] \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+799                 \textcolor{comment}{# shouldn't send None, should send empty observations}
+800                 batch\_actions[i] = [\{\}] * len(self.worlds)
+801 
+802             \textcolor{keywordflow}{if} hasattr(w, \textcolor{stringliteral}{'observe'}):
+803                 \textcolor{comment}{# The world has its own observe function, which the action}
+804                 \textcolor{comment}{# first goes through (agents receive messages via the world,}
+805                 \textcolor{comment}{# not from each other).}
+806                 observation = w.observe(agents[index], \hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(batch\_actions[i]))
+807             \textcolor{keywordflow}{else}:
+808                 observation = \hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(batch\_actions[i])
+809 
+810             \textcolor{keywordflow}{if} index == index\_acting:
+811                 \textcolor{comment}{# self\_observe is distinguished from a normal observe}
+812                 \textcolor{keywordflow}{if} hasattr(agents[index], \textcolor{stringliteral}{'self\_observe'}):
+813                     agents[index].self\_observe(observation)
+814             \textcolor{keywordflow}{else}:
+815                 observation = agents[index].observe(observation)
+816 
+817             \textcolor{comment}{# TODO: not so sure about this...}
+818             \textcolor{keywordflow}{if} observation \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+819                 \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{'Agents should return what they observed.'})
+820             batch\_observations.append(observation)
+821         \textcolor{keywordflow}{return} batch\_observations
+822 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1BatchWorld_a2b8dd323969084eedc03a7ab44647117}\label{classparlai_1_1core_1_1worlds_1_1BatchWorld_a2b8dd323969084eedc03a7ab44647117}} 
 \index{parlai\+::core\+::worlds\+::\+Batch\+World@{parlai\+::core\+::worlds\+::\+Batch\+World}!display@{display}}
@@ -223,21 +227,21 @@ Definition at line 783 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 864 of file worlds.\+py.
+Definition at line 879 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-864     \textcolor{keyword}{def }display(self):
-865         \textcolor{stringliteral}{"""}
-866 \textcolor{stringliteral}{        Display the full batch.}
-867 \textcolor{stringliteral}{        """}
-868         s = \textcolor{stringliteral}{"[--batchsize "} + \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(len(self.worlds)) + \textcolor{stringliteral}{"--]\(\backslash\)n"}
-869         \textcolor{keywordflow}{for} i, w \textcolor{keywordflow}{in} enumerate(self.worlds):
-870             s += \textcolor{stringliteral}{"[batch world "} + \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(i) + \textcolor{stringliteral}{":]\(\backslash\)n"}
-871             s += w.display() + \textcolor{stringliteral}{'\(\backslash\)n'}
-872         s += \textcolor{stringliteral}{"[--end of batch--]"}
-873         \textcolor{keywordflow}{return} s
-874 
+879     \textcolor{keyword}{def }display(self):
+880         \textcolor{stringliteral}{"""}
+881 \textcolor{stringliteral}{        Display the full batch.}
+882 \textcolor{stringliteral}{        """}
+883         s = \textcolor{stringliteral}{"[--batchsize "} + \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(len(self.worlds)) + \textcolor{stringliteral}{"--]\(\backslash\)n"}
+884         \textcolor{keywordflow}{for} i, w \textcolor{keywordflow}{in} enumerate(self.worlds):
+885             s += \textcolor{stringliteral}{"[batch world "} + \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(i) + \textcolor{stringliteral}{":]\(\backslash\)n"}
+886             s += w.display() + \textcolor{stringliteral}{'\(\backslash\)n'}
+887         s += \textcolor{stringliteral}{"[--end of batch--]"}
+888         \textcolor{keywordflow}{return} s
+889 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1BatchWorld_aa3ef1275372635073ba5cba7df0d1f5d}\label{classparlai_1_1core_1_1worlds_1_1BatchWorld_aa3ef1275372635073ba5cba7df0d1f5d}} 
 \index{parlai\+::core\+::worlds\+::\+Batch\+World@{parlai\+::core\+::worlds\+::\+Batch\+World}!episode\+\_\+done@{episode\+\_\+done}}
@@ -251,18 +255,18 @@ A batch world is never finished, so this always returns `False`.
 \end{DoxyVerb}
  
 
-Definition at line 911 of file worlds.\+py.
+Definition at line 926 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-911     \textcolor{keyword}{def }episode\_done(self):
-912         \textcolor{stringliteral}{"""}
-913 \textcolor{stringliteral}{        Return whether the episode is done.}
-914 \textcolor{stringliteral}{}
-915 \textcolor{stringliteral}{        A batch world is never finished, so this always returns `False`.}
-916 \textcolor{stringliteral}{        """}
-917         \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-918 
+926     \textcolor{keyword}{def }episode\_done(self):
+927         \textcolor{stringliteral}{"""}
+928 \textcolor{stringliteral}{        Return whether the episode is done.}
+929 \textcolor{stringliteral}{}
+930 \textcolor{stringliteral}{        A batch world is never finished, so this always returns `False`.}
+931 \textcolor{stringliteral}{        """}
+932         \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+933 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1BatchWorld_a006891b1446ef6e593edda1c91cab809}\label{classparlai_1_1core_1_1worlds_1_1BatchWorld_a006891b1446ef6e593edda1c91cab809}} 
 \index{parlai\+::core\+::worlds\+::\+Batch\+World@{parlai\+::core\+::worlds\+::\+Batch\+World}!epoch\+\_\+done@{epoch\+\_\+done}}
@@ -274,23 +278,23 @@ Definition at line 911 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 919 of file worlds.\+py.
+Definition at line 934 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-919     \textcolor{keyword}{def }epoch\_done(self):
-920         \textcolor{stringliteral}{"""}
-921 \textcolor{stringliteral}{        Return if the epoch is done in the root world.}
-922 \textcolor{stringliteral}{        """}
-923         \textcolor{comment}{# first check parent world: if it says it's done, we're done}
-924         \textcolor{keywordflow}{if} self.world.epoch\_done():
-925             \textcolor{keywordflow}{return} \textcolor{keyword}{True}
-926         \textcolor{comment}{# otherwise check if all shared worlds are done}
-927         \textcolor{keywordflow}{for} world \textcolor{keywordflow}{in} self.worlds:
-928             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} world.epoch\_done():
-929                 \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-930         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
-931 
+934     \textcolor{keyword}{def }epoch\_done(self):
+935         \textcolor{stringliteral}{"""}
+936 \textcolor{stringliteral}{        Return if the epoch is done in the root world.}
+937 \textcolor{stringliteral}{        """}
+938         \textcolor{comment}{# first check parent world: if it says it's done, we're done}
+939         \textcolor{keywordflow}{if} self.world.epoch\_done():
+940             \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+941         \textcolor{comment}{# otherwise check if all shared worlds are done}
+942         \textcolor{keywordflow}{for} world \textcolor{keywordflow}{in} self.worlds:
+943             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} world.epoch\_done():
+944                 \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+945         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+946 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1BatchWorld_a1fc7faff8ccc60606ccff891d36e6b86}\label{classparlai_1_1core_1_1worlds_1_1BatchWorld_a1fc7faff8ccc60606ccff891d36e6b86}} 
 \index{parlai\+::core\+::worlds\+::\+Batch\+World@{parlai\+::core\+::worlds\+::\+Batch\+World}!get\+\_\+agents@{get\+\_\+agents}}
@@ -302,16 +306,16 @@ Definition at line 919 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 899 of file worlds.\+py.
+Definition at line 914 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-899     \textcolor{keyword}{def }get\_agents(self):
-900         \textcolor{stringliteral}{"""}
-901 \textcolor{stringliteral}{        Return the agents of the root world.}
-902 \textcolor{stringliteral}{        """}
-903         \textcolor{keywordflow}{return} self.world.get\_agents()
-904 
+914     \textcolor{keyword}{def }get\_agents(self):
+915         \textcolor{stringliteral}{"""}
+916 \textcolor{stringliteral}{        Return the agents of the root world.}
+917 \textcolor{stringliteral}{        """}
+918         \textcolor{keywordflow}{return} self.world.get\_agents()
+919 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1BatchWorld_ab57e642368837b1a9ae79231ee213d46}\label{classparlai_1_1core_1_1worlds_1_1BatchWorld_ab57e642368837b1a9ae79231ee213d46}} 
 \index{parlai\+::core\+::worlds\+::\+Batch\+World@{parlai\+::core\+::worlds\+::\+Batch\+World}!get\+\_\+task\+\_\+agent@{get\+\_\+task\+\_\+agent}}
@@ -323,16 +327,16 @@ Definition at line 899 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 905 of file worlds.\+py.
+Definition at line 920 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-905     \textcolor{keyword}{def }get\_task\_agent(self):
-906         \textcolor{stringliteral}{"""}
-907 \textcolor{stringliteral}{        Return task agent of the root world.}
-908 \textcolor{stringliteral}{        """}
-909         \textcolor{keywordflow}{return} self.world.get\_task\_agent()
-910 
+920     \textcolor{keyword}{def }get\_task\_agent(self):
+921         \textcolor{stringliteral}{"""}
+922 \textcolor{stringliteral}{        Return task agent of the root world.}
+923 \textcolor{stringliteral}{        """}
+924         \textcolor{keywordflow}{return} self.world.get\_task\_agent()
+925 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1BatchWorld_ae9aec5868c6870316b6f1983a1e5e0ae}\label{classparlai_1_1core_1_1worlds_1_1BatchWorld_ae9aec5868c6870316b6f1983a1e5e0ae}} 
 \index{parlai\+::core\+::worlds\+::\+Batch\+World@{parlai\+::core\+::worlds\+::\+Batch\+World}!get\+\_\+total\+\_\+exs@{get\+\_\+total\+\_\+exs}}
@@ -344,16 +348,16 @@ Definition at line 905 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 887 of file worlds.\+py.
+Definition at line 902 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-887     \textcolor{keyword}{def }get\_total\_exs(self):
-888         \textcolor{stringliteral}{"""}
-889 \textcolor{stringliteral}{        Return the total number of processed episodes in the root world.}
-890 \textcolor{stringliteral}{        """}
-891         \textcolor{keywordflow}{return} self.world.get\_total\_exs()
-892 
+902     \textcolor{keyword}{def }get\_total\_exs(self):
+903         \textcolor{stringliteral}{"""}
+904 \textcolor{stringliteral}{        Return the total number of processed episodes in the root world.}
+905 \textcolor{stringliteral}{        """}
+906         \textcolor{keywordflow}{return} self.world.get\_total\_exs()
+907 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1BatchWorld_a995d9405ae22301e3ca46c43521b301a}\label{classparlai_1_1core_1_1worlds_1_1BatchWorld_a995d9405ae22301e3ca46c43521b301a}} 
 \index{parlai\+::core\+::worlds\+::\+Batch\+World@{parlai\+::core\+::worlds\+::\+Batch\+World}!get\+ID@{get\+ID}}
@@ -365,16 +369,16 @@ Definition at line 887 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 893 of file worlds.\+py.
+Definition at line 908 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-893     \textcolor{keyword}{def }getID(self):
-894         \textcolor{stringliteral}{"""}
-895 \textcolor{stringliteral}{        Return the ID of the root world.}
-896 \textcolor{stringliteral}{        """}
-897         \textcolor{keywordflow}{return} self.world.getID()
-898 
+908     \textcolor{keyword}{def }getID(self):
+909         \textcolor{stringliteral}{"""}
+910 \textcolor{stringliteral}{        Return the ID of the root world.}
+911 \textcolor{stringliteral}{        """}
+912         \textcolor{keywordflow}{return} self.world.getID()
+913 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1BatchWorld_ae3f96cd2de72eb0f333cb29bbf74177b}\label{classparlai_1_1core_1_1worlds_1_1BatchWorld_ae3f96cd2de72eb0f333cb29bbf74177b}} 
 \index{parlai\+::core\+::worlds\+::\+Batch\+World@{parlai\+::core\+::worlds\+::\+Batch\+World}!num\+\_\+episodes@{num\+\_\+episodes}}
@@ -386,16 +390,16 @@ Definition at line 893 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 881 of file worlds.\+py.
+Definition at line 896 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-881     \textcolor{keyword}{def }num\_episodes(self):
-882         \textcolor{stringliteral}{"""}
-883 \textcolor{stringliteral}{        Return the number of episodes for the root world.}
-884 \textcolor{stringliteral}{        """}
-885         \textcolor{keywordflow}{return} self.world.num\_episodes()
-886 
+896     \textcolor{keyword}{def }num\_episodes(self):
+897         \textcolor{stringliteral}{"""}
+898 \textcolor{stringliteral}{        Return the number of episodes for the root world.}
+899 \textcolor{stringliteral}{        """}
+900         \textcolor{keywordflow}{return} self.world.num\_episodes()
+901 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1BatchWorld_a047736ed3867bf7631af02f8eb0528d8}\label{classparlai_1_1core_1_1worlds_1_1BatchWorld_a047736ed3867bf7631af02f8eb0528d8}} 
 \index{parlai\+::core\+::worlds\+::\+Batch\+World@{parlai\+::core\+::worlds\+::\+Batch\+World}!num\+\_\+examples@{num\+\_\+examples}}
@@ -407,16 +411,16 @@ Definition at line 881 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 875 of file worlds.\+py.
+Definition at line 890 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-875     \textcolor{keyword}{def }num\_examples(self):
-876         \textcolor{stringliteral}{"""}
-877 \textcolor{stringliteral}{        Return the number of examples for the root world.}
-878 \textcolor{stringliteral}{        """}
-879         \textcolor{keywordflow}{return} self.world.num\_examples()
-880 
+890     \textcolor{keyword}{def }num\_examples(self):
+891         \textcolor{stringliteral}{"""}
+892 \textcolor{stringliteral}{        Return the number of examples for the root world.}
+893 \textcolor{stringliteral}{        """}
+894         \textcolor{keywordflow}{return} self.world.num\_examples()
+895 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1BatchWorld_a297ab42faba47581774cd9333c874905}\label{classparlai_1_1core_1_1worlds_1_1BatchWorld_a297ab42faba47581774cd9333c874905}} 
 \index{parlai\+::core\+::worlds\+::\+Batch\+World@{parlai\+::core\+::worlds\+::\+Batch\+World}!parley@{parley}}
@@ -430,40 +434,40 @@ Usually with ref:`batch_act` and ref:`batch_observe`.
 \end{DoxyVerb}
  
 
-Definition at line 834 of file worlds.\+py.
+Definition at line 849 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-834     \textcolor{keyword}{def }parley(self):
-835         \textcolor{stringliteral}{"""}
-836 \textcolor{stringliteral}{        Parley in all subworlds.}
-837 \textcolor{stringliteral}{}
-838 \textcolor{stringliteral}{        Usually with ref:`batch\_act` and ref:`batch\_observe`.}
-839 \textcolor{stringliteral}{        """}
-840         \textcolor{comment}{# Collect batch together for each agent, and do update.}
-841         \textcolor{comment}{# Assumes DialogPartnerWorld, MultiAgentWorld, or MultiWorlds of them.}
-842         num\_agents = len(self.world.get\_agents())
-843         batch\_observations = self.batch\_observations
-844 
-845         \textcolor{keywordflow}{if} hasattr(self.world, \textcolor{stringliteral}{'parley\_init'}):
-846             \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} self.worlds:
-847                 w.parley\_init()
-848 
-849         \textcolor{keywordflow}{for} agent\_idx \textcolor{keywordflow}{in} range(num\_agents):
-850             \textcolor{comment}{# The agent acts.}
-851             batch\_act = self.batch\_act(agent\_idx, batch\_observations[agent\_idx])
-852             self.acts[agent\_idx] = batch\_act
-853             \textcolor{comment}{# We possibly execute this action in the world.}
-854             \textcolor{keywordflow}{if} hasattr(self.world, \textcolor{stringliteral}{'execute'}):
-855                 \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} self.worlds:
-856                     w.execute(w.agents[agent\_idx], batch\_act[agent\_idx])
-857             \textcolor{comment}{# All agents (might) observe the results.}
-858             \textcolor{keywordflow}{for} other\_index \textcolor{keywordflow}{in} range(num\_agents):
-859                 obs = self.batch\_observe(other\_index, batch\_act, agent\_idx)
-860                 \textcolor{keywordflow}{if} obs \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-861                     batch\_observations[other\_index] = obs
-862         self.update\_counters()
+849     \textcolor{keyword}{def }parley(self):
+850         \textcolor{stringliteral}{"""}
+851 \textcolor{stringliteral}{        Parley in all subworlds.}
+852 \textcolor{stringliteral}{}
+853 \textcolor{stringliteral}{        Usually with ref:`batch\_act` and ref:`batch\_observe`.}
+854 \textcolor{stringliteral}{        """}
+855         \textcolor{comment}{# Collect batch together for each agent, and do update.}
+856         \textcolor{comment}{# Assumes DialogPartnerWorld, MultiAgentWorld, or MultiWorlds of them.}
+857         num\_agents = len(self.world.get\_agents())
+858         batch\_observations = self.batch\_observations
+859 
+860         \textcolor{keywordflow}{if} hasattr(self.world, \textcolor{stringliteral}{'parley\_init'}):
+861             \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} self.worlds:
+862                 w.parley\_init()
 863 
+864         \textcolor{keywordflow}{for} agent\_idx \textcolor{keywordflow}{in} range(num\_agents):
+865             \textcolor{comment}{# The agent acts.}
+866             batch\_act = self.batch\_act(agent\_idx, batch\_observations[agent\_idx])
+867             self.acts[agent\_idx] = batch\_act
+868             \textcolor{comment}{# We possibly execute this action in the world.}
+869             \textcolor{keywordflow}{if} hasattr(self.world, \textcolor{stringliteral}{'execute'}):
+870                 \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} self.worlds:
+871                     w.execute(w.agents[agent\_idx], batch\_act[agent\_idx])
+872             \textcolor{comment}{# All agents (might) observe the results.}
+873             \textcolor{keywordflow}{for} other\_index \textcolor{keywordflow}{in} range(num\_agents):
+874                 obs = self.batch\_observe(other\_index, batch\_act, agent\_idx)
+875                 \textcolor{keywordflow}{if} obs \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+876                     batch\_observations[other\_index] = obs
+877         self.update\_counters()
+878 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1BatchWorld_af6ca90db5542bf4a74a122ea04ba8bef}\label{classparlai_1_1core_1_1worlds_1_1BatchWorld_af6ca90db5542bf4a74a122ea04ba8bef}} 
 \index{parlai\+::core\+::worlds\+::\+Batch\+World@{parlai\+::core\+::worlds\+::\+Batch\+World}!report@{report}}
@@ -475,16 +479,16 @@ Definition at line 834 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 932 of file worlds.\+py.
+Definition at line 947 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-932     \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}(self):
-933         \textcolor{stringliteral}{"""}
-934 \textcolor{stringliteral}{        Report metrics for the root world.}
-935 \textcolor{stringliteral}{        """}
-936         \textcolor{keywordflow}{return} self.world.\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}()
-937 
+947     \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}(self):
+948         \textcolor{stringliteral}{"""}
+949 \textcolor{stringliteral}{        Report metrics for the root world.}
+950 \textcolor{stringliteral}{        """}
+951         \textcolor{keywordflow}{return} self.world.\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}()
+952 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1BatchWorld_a00ba541479129163a13a0377797504e1}\label{classparlai_1_1core_1_1worlds_1_1BatchWorld_a00ba541479129163a13a0377797504e1}} 
 \index{parlai\+::core\+::worlds\+::\+Batch\+World@{parlai\+::core\+::worlds\+::\+Batch\+World}!reset@{reset}}
@@ -496,18 +500,18 @@ Definition at line 932 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 938 of file worlds.\+py.
+Definition at line 953 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-938     \textcolor{keyword}{def }reset(self):
-939         \textcolor{stringliteral}{"""}
-940 \textcolor{stringliteral}{        Reset the root world, and all copies.}
-941 \textcolor{stringliteral}{        """}
-942         self.world.reset()
-943         \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} self.worlds:
-944             w.reset()
-945 
+953     \textcolor{keyword}{def }reset(self):
+954         \textcolor{stringliteral}{"""}
+955 \textcolor{stringliteral}{        Reset the root world, and all copies.}
+956 \textcolor{stringliteral}{        """}
+957         self.world.reset()
+958         \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} self.worlds:
+959             w.reset()
+960 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1BatchWorld_a16a31209d87f0f9bf27871110bd63aa6}\label{classparlai_1_1core_1_1worlds_1_1BatchWorld_a16a31209d87f0f9bf27871110bd63aa6}} 
 \index{parlai\+::core\+::worlds\+::\+Batch\+World@{parlai\+::core\+::worlds\+::\+Batch\+World}!reset\+\_\+metrics@{reset\+\_\+metrics}}
@@ -519,16 +523,16 @@ Definition at line 938 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 946 of file worlds.\+py.
+Definition at line 961 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-946     \textcolor{keyword}{def }reset\_metrics(self):
-947         \textcolor{stringliteral}{"""}
-948 \textcolor{stringliteral}{        Reset metrics in the root world.}
-949 \textcolor{stringliteral}{        """}
-950         self.world.reset\_metrics()
-951 
+961     \textcolor{keyword}{def }reset\_metrics(self):
+962         \textcolor{stringliteral}{"""}
+963 \textcolor{stringliteral}{        Reset metrics in the root world.}
+964 \textcolor{stringliteral}{        """}
+965         self.world.reset\_metrics()
+966 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1BatchWorld_a84ee0ac53e07cbfc9bdb8a978a8df7e1}\label{classparlai_1_1core_1_1worlds_1_1BatchWorld_a84ee0ac53e07cbfc9bdb8a978a8df7e1}} 
 \index{parlai\+::core\+::worlds\+::\+Batch\+World@{parlai\+::core\+::worlds\+::\+Batch\+World}!save\+\_\+agents@{save\+\_\+agents}}
@@ -540,18 +544,18 @@ Definition at line 946 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 952 of file worlds.\+py.
+Definition at line 967 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-952     \textcolor{keyword}{def }save\_agents(self):
-953         \textcolor{stringliteral}{"""}
-954 \textcolor{stringliteral}{        Save the agents in the root world.}
-955 \textcolor{stringliteral}{        """}
-956         \textcolor{comment}{# Because all worlds share the same parameters through sharing, saving}
-957         \textcolor{comment}{# one copy would suffice}
-958         self.world.save\_agents()
-959 
+967     \textcolor{keyword}{def }save\_agents(self):
+968         \textcolor{stringliteral}{"""}
+969 \textcolor{stringliteral}{        Save the agents in the root world.}
+970 \textcolor{stringliteral}{        """}
+971         \textcolor{comment}{# Because all worlds share the same parameters through sharing, saving}
+972         \textcolor{comment}{# one copy would suffice}
+973         self.world.save\_agents()
+974 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1BatchWorld_ad351080076e31498e14789beddf6fea6}\label{classparlai_1_1core_1_1worlds_1_1BatchWorld_ad351080076e31498e14789beddf6fea6}} 
 \index{parlai\+::core\+::worlds\+::\+Batch\+World@{parlai\+::core\+::worlds\+::\+Batch\+World}!shutdown@{shutdown}}
@@ -563,19 +567,19 @@ Definition at line 952 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 960 of file worlds.\+py.
+Definition at line 975 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-960     \textcolor{keyword}{def }shutdown(self):
-961         \textcolor{stringliteral}{"""}
-962 \textcolor{stringliteral}{        Shutdown each world.}
-963 \textcolor{stringliteral}{        """}
-964         \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} self.worlds:
-965             w.shutdown()
-966         self.world.shutdown()
-967 
-968 
+975     \textcolor{keyword}{def }shutdown(self):
+976         \textcolor{stringliteral}{"""}
+977 \textcolor{stringliteral}{        Shutdown each world.}
+978 \textcolor{stringliteral}{        """}
+979         \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} self.worlds:
+980             w.shutdown()
+981         self.world.shutdown()
+982 
+983 
 \end{DoxyCode}
 
 
@@ -588,7 +592,7 @@ Definition at line 960 of file worlds.\+py.
 
 
 
-Definition at line 781 of file worlds.\+py.
+Definition at line 788 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1BatchWorld_a6f13286dedb14f257e043339b543cdeb}\label{classparlai_1_1core_1_1worlds_1_1BatchWorld_a6f13286dedb14f257e043339b543cdeb}} 
 \index{parlai\+::core\+::worlds\+::\+Batch\+World@{parlai\+::core\+::worlds\+::\+Batch\+World}!batch\+\_\+observations@{batch\+\_\+observations}}
@@ -598,7 +602,7 @@ Definition at line 781 of file worlds.\+py.
 
 
 
-Definition at line 779 of file worlds.\+py.
+Definition at line 786 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1BatchWorld_a7cae7f1a21fbe52133bf9e75a4a3b673}\label{classparlai_1_1core_1_1worlds_1_1BatchWorld_a7cae7f1a21fbe52133bf9e75a4a3b673}} 
 \index{parlai\+::core\+::worlds\+::\+Batch\+World@{parlai\+::core\+::worlds\+::\+Batch\+World}!first\+\_\+batch@{first\+\_\+batch}}
@@ -608,7 +612,7 @@ Definition at line 779 of file worlds.\+py.
 
 
 
-Definition at line 780 of file worlds.\+py.
+Definition at line 787 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1BatchWorld_a75c0ed09cce56774c61c9f59b543ed88}\label{classparlai_1_1core_1_1worlds_1_1BatchWorld_a75c0ed09cce56774c61c9f59b543ed88}} 
 \index{parlai\+::core\+::worlds\+::\+Batch\+World@{parlai\+::core\+::worlds\+::\+Batch\+World}!opt@{opt}}
@@ -618,7 +622,7 @@ Definition at line 780 of file worlds.\+py.
 
 
 
-Definition at line 764 of file worlds.\+py.
+Definition at line 771 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1BatchWorld_a27b70249faa0bbe4bdff806a3f31ec13}\label{classparlai_1_1core_1_1worlds_1_1BatchWorld_a27b70249faa0bbe4bdff806a3f31ec13}} 
 \index{parlai\+::core\+::worlds\+::\+Batch\+World@{parlai\+::core\+::worlds\+::\+Batch\+World}!random@{random}}
@@ -628,7 +632,7 @@ Definition at line 764 of file worlds.\+py.
 
 
 
-Definition at line 765 of file worlds.\+py.
+Definition at line 772 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1BatchWorld_ad7d651ac0fb1ee9b52ba7f134602e98e}\label{classparlai_1_1core_1_1worlds_1_1BatchWorld_ad7d651ac0fb1ee9b52ba7f134602e98e}} 
 \index{parlai\+::core\+::worlds\+::\+Batch\+World@{parlai\+::core\+::worlds\+::\+Batch\+World}!world@{world}}
@@ -638,17 +642,7 @@ Definition at line 765 of file worlds.\+py.
 
 
 
-Definition at line 766 of file worlds.\+py.
-
-\mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1BatchWorld_ae1b967d3229b90064ff50c1a55dc2b96}\label{classparlai_1_1core_1_1worlds_1_1BatchWorld_ae1b967d3229b90064ff50c1a55dc2b96}} 
-\index{parlai\+::core\+::worlds\+::\+Batch\+World@{parlai\+::core\+::worlds\+::\+Batch\+World}!worlds@{worlds}}
-\index{worlds@{worlds}!parlai\+::core\+::worlds\+::\+Batch\+World@{parlai\+::core\+::worlds\+::\+Batch\+World}}
-\subsubsection{\texorpdfstring{worlds}{worlds}}
-{\footnotesize\ttfamily parlai.\+core.\+worlds.\+Batch\+World.\+worlds}
-
-
-
-Definition at line 767 of file worlds.\+py.
+Definition at line 773 of file worlds.\+py.
 
 
 

@@ -83,7 +83,7 @@ def \hyperlink{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_aa186d3
 \end{DoxyVerb}
  
 
-Definition at line 20 of file socket\+\_\+manager.\+py.
+Definition at line 22 of file socket\+\_\+manager.\+py.
 
 
 
@@ -116,45 +116,45 @@ ack_func:         Function to call upon successful ack of a packet
 \end{DoxyVerb}
  
 
-Definition at line 51 of file socket\+\_\+manager.\+py.
+Definition at line 53 of file socket\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-51     ):
-52         \textcolor{stringliteral}{"""}
-53 \textcolor{stringliteral}{        Create a packet to be used for holding information before it is}
-54 \textcolor{stringliteral}{        sent through the socket}
-55 \textcolor{stringliteral}{        id:               Unique ID to distinguish this packet from others}
-56 \textcolor{stringliteral}{        type:             TYPE of packet (ACK, ALIVE, MESSAGE, HEARTBEAT)}
-57 \textcolor{stringliteral}{        sender\_id:        Sender ID for this packet}
-58 \textcolor{stringliteral}{        receiver\_id:      Recipient ID for this packet}
-59 \textcolor{stringliteral}{        assignment\_id:    Assignment ID for this packet}
-60 \textcolor{stringliteral}{        data:             Contents of the packet}
-61 \textcolor{stringliteral}{        conversation\_id:  Packet metadata - what conversation this belongs to}
-62 \textcolor{stringliteral}{        requires\_ack:     Whether or not this packet needs to be acknowledged,}
-63 \textcolor{stringliteral}{                           determines if retry logic will be used until ack is}
-64 \textcolor{stringliteral}{                           recieved. Default for messages and alives is True,}
-65 \textcolor{stringliteral}{                           default for the rest is false.}
-66 \textcolor{stringliteral}{        blocking:         Whether or not this packet requires blocking to}
-67 \textcolor{stringliteral}{                           remain in order amongst other packets in the queue.}
-68 \textcolor{stringliteral}{                           Default is for messages and alives is True, default}
-69 \textcolor{stringliteral}{                           for the rest is false.}
-70 \textcolor{stringliteral}{        ack\_func:         Function to call upon successful ack of a packet}
-71 \textcolor{stringliteral}{                           Default calls no function on ack}
-72 \textcolor{stringliteral}{        """}
-73         self.id = id
-74         self.type = type
-75         self.sender\_id = sender\_id
-76         self.receiver\_id = receiver\_id
-77         self.assignment\_id = assignment\_id
-78         self.data = data
-79         self.conversation\_id = conversation\_id
-80         important = self.type \textcolor{keywordflow}{in} [self.TYPE\_ALIVE, self.TYPE\_MESSAGE]
-81         self.requires\_ack = important \textcolor{keywordflow}{if} requires\_ack \textcolor{keywordflow}{is} \textcolor{keywordtype}{None} \textcolor{keywordflow}{else} requires\_ack
-82         self.blocking = important \textcolor{keywordflow}{if} blocking \textcolor{keywordflow}{is} \textcolor{keywordtype}{None} \textcolor{keywordflow}{else} blocking
-83         self.ack\_func = ack\_func
-84         self.status = self.STATUS\_INIT
-85 
+53     ):
+54         \textcolor{stringliteral}{"""}
+55 \textcolor{stringliteral}{        Create a packet to be used for holding information before it is}
+56 \textcolor{stringliteral}{        sent through the socket}
+57 \textcolor{stringliteral}{        id:               Unique ID to distinguish this packet from others}
+58 \textcolor{stringliteral}{        type:             TYPE of packet (ACK, ALIVE, MESSAGE, HEARTBEAT)}
+59 \textcolor{stringliteral}{        sender\_id:        Sender ID for this packet}
+60 \textcolor{stringliteral}{        receiver\_id:      Recipient ID for this packet}
+61 \textcolor{stringliteral}{        assignment\_id:    Assignment ID for this packet}
+62 \textcolor{stringliteral}{        data:             Contents of the packet}
+63 \textcolor{stringliteral}{        conversation\_id:  Packet metadata - what conversation this belongs to}
+64 \textcolor{stringliteral}{        requires\_ack:     Whether or not this packet needs to be acknowledged,}
+65 \textcolor{stringliteral}{                           determines if retry logic will be used until ack is}
+66 \textcolor{stringliteral}{                           recieved. Default for messages and alives is True,}
+67 \textcolor{stringliteral}{                           default for the rest is false.}
+68 \textcolor{stringliteral}{        blocking:         Whether or not this packet requires blocking to}
+69 \textcolor{stringliteral}{                           remain in order amongst other packets in the queue.}
+70 \textcolor{stringliteral}{                           Default is for messages and alives is True, default}
+71 \textcolor{stringliteral}{                           for the rest is false.}
+72 \textcolor{stringliteral}{        ack\_func:         Function to call upon successful ack of a packet}
+73 \textcolor{stringliteral}{                           Default calls no function on ack}
+74 \textcolor{stringliteral}{        """}
+75         self.id = id
+76         self.type = type
+77         self.sender\_id = sender\_id
+78         self.receiver\_id = receiver\_id
+79         self.assignment\_id = assignment\_id
+80         self.data = data
+81         self.conversation\_id = conversation\_id
+82         important = self.type \textcolor{keywordflow}{in} [self.TYPE\_ALIVE, self.TYPE\_MESSAGE]
+83         self.requires\_ack = important \textcolor{keywordflow}{if} requires\_ack \textcolor{keywordflow}{is} \textcolor{keywordtype}{None} \textcolor{keywordflow}{else} requires\_ack
+84         self.blocking = important \textcolor{keywordflow}{if} blocking \textcolor{keywordflow}{is} \textcolor{keywordtype}{None} \textcolor{keywordflow}{else} blocking
+85         self.ack\_func = ack\_func
+86         self.status = self.STATUS\_INIT
+87 
 \end{DoxyCode}
 
 
@@ -167,13 +167,13 @@ Definition at line 51 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 174 of file socket\+\_\+manager.\+py.
+Definition at line 176 of file socket\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-174     \textcolor{keyword}{def }\_\_repr\_\_(self):
-175         \textcolor{keywordflow}{return} \textcolor{stringliteral}{'Packet <\{\}>'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.as\_dict())
-176 
+176     \textcolor{keyword}{def }\_\_repr\_\_(self):
+177         \textcolor{keywordflow}{return} \textcolor{stringliteral}{'Packet <\{\}>'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.as\_dict())
+178 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a805fbc99169620a4a3c37a7892b5fab3}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a805fbc99169620a4a3c37a7892b5fab3}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet}!as\+\_\+dict@{as\+\_\+dict}}
@@ -185,24 +185,24 @@ Definition at line 174 of file socket\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 121 of file socket\+\_\+manager.\+py.
+Definition at line 123 of file socket\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-121     \textcolor{keyword}{def }as\_dict(self):
-122         \textcolor{stringliteral}{"""}
-123 \textcolor{stringliteral}{        Convert a packet into a form that can be pushed over a socket.}
-124 \textcolor{stringliteral}{        """}
-125         \textcolor{keywordflow}{return} \{
-126             \textcolor{stringliteral}{'id'}: self.id,
-127             \textcolor{stringliteral}{'type'}: self.type,
-128             \textcolor{stringliteral}{'sender\_id'}: self.sender\_id,
-129             \textcolor{stringliteral}{'receiver\_id'}: self.receiver\_id,
-130             \textcolor{stringliteral}{'assignment\_id'}: self.assignment\_id,
-131             \textcolor{stringliteral}{'conversation\_id'}: self.conversation\_id,
-132             \textcolor{stringliteral}{'data'}: self.data,
-133         \}
-134 
+123     \textcolor{keyword}{def }as\_dict(self):
+124         \textcolor{stringliteral}{"""}
+125 \textcolor{stringliteral}{        Convert a packet into a form that can be pushed over a socket.}
+126 \textcolor{stringliteral}{        """}
+127         \textcolor{keywordflow}{return} \{
+128             \textcolor{stringliteral}{'id'}: self.id,
+129             \textcolor{stringliteral}{'type'}: self.type,
+130             \textcolor{stringliteral}{'sender\_id'}: self.sender\_id,
+131             \textcolor{stringliteral}{'receiver\_id'}: self.receiver\_id,
+132             \textcolor{stringliteral}{'assignment\_id'}: self.assignment\_id,
+133             \textcolor{stringliteral}{'conversation\_id'}: self.conversation\_id,
+134             \textcolor{stringliteral}{'data'}: self.data,
+135         \}
+136 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_aa186d3b3ba07b6c2eba5e241cbaf92f8}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_aa186d3b3ba07b6c2eba5e241cbaf92f8}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet}!from\+\_\+dict@{from\+\_\+dict}}
@@ -214,44 +214,44 @@ Definition at line 121 of file socket\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 87 of file socket\+\_\+manager.\+py.
+Definition at line 89 of file socket\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-87     \textcolor{keyword}{def }from\_dict(packet):
-88         \textcolor{stringliteral}{"""}
-89 \textcolor{stringliteral}{        Create a packet from the dictionary that would be recieved over a socket.}
-90 \textcolor{stringliteral}{        """}
-91         \textcolor{keywordflow}{try}:
-92             packet\_id = packet[\textcolor{stringliteral}{'id'}]
-93             packet\_type = packet[\textcolor{stringliteral}{'type'}]
-94             sender\_id = packet[\textcolor{stringliteral}{'sender\_id'}]
-95             receiver\_id = packet[\textcolor{stringliteral}{'receiver\_id'}]
-96             assignment\_id = packet[\textcolor{stringliteral}{'assignment\_id'}]
-97             data = \textcolor{keywordtype}{None}
-98             \textcolor{keywordflow}{if} \textcolor{stringliteral}{'data'} \textcolor{keywordflow}{in} packet:
-99                 data = packet[\textcolor{stringliteral}{'data'}]
-100             \textcolor{keywordflow}{else}:
-101                 data = \textcolor{stringliteral}{''}
-102             conversation\_id = packet[\textcolor{stringliteral}{'conversation\_id'}]
-103 
-104             \textcolor{keywordflow}{return} Packet(
-105                 packet\_id,
-106                 packet\_type,
-107                 sender\_id,
-108                 receiver\_id,
-109                 assignment\_id,
-110                 data,
-111                 conversation\_id,
-112             )
-113         \textcolor{keywordflow}{except} Exception:
-114             \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1test_1_1test__full__system_a5266aae537d9c5f37809ebaf7bcc3b49}{print\_and\_log}(
-115                 logging.WARN,
-116                 \textcolor{stringliteral}{'Could not create a valid packet out of the dictionary'}
-117                 \textcolor{stringliteral}{'provided: \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(packet),
-118             )
-119             \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}
-120 
+89     \textcolor{keyword}{def }from\_dict(packet):
+90         \textcolor{stringliteral}{"""}
+91 \textcolor{stringliteral}{        Create a packet from the dictionary that would be recieved over a socket.}
+92 \textcolor{stringliteral}{        """}
+93         \textcolor{keywordflow}{try}:
+94             packet\_id = packet[\textcolor{stringliteral}{'id'}]
+95             packet\_type = packet[\textcolor{stringliteral}{'type'}]
+96             sender\_id = packet[\textcolor{stringliteral}{'sender\_id'}]
+97             receiver\_id = packet[\textcolor{stringliteral}{'receiver\_id'}]
+98             assignment\_id = packet[\textcolor{stringliteral}{'assignment\_id'}]
+99             data = \textcolor{keywordtype}{None}
+100             \textcolor{keywordflow}{if} \textcolor{stringliteral}{'data'} \textcolor{keywordflow}{in} packet:
+101                 data = packet[\textcolor{stringliteral}{'data'}]
+102             \textcolor{keywordflow}{else}:
+103                 data = \textcolor{stringliteral}{''}
+104             conversation\_id = packet[\textcolor{stringliteral}{'conversation\_id'}]
+105 
+106             \textcolor{keywordflow}{return} Packet(
+107                 packet\_id,
+108                 packet\_type,
+109                 sender\_id,
+110                 receiver\_id,
+111                 assignment\_id,
+112                 data,
+113                 conversation\_id,
+114             )
+115         \textcolor{keywordflow}{except} Exception:
+116             \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1test_1_1test__full__system_a5266aae537d9c5f37809ebaf7bcc3b49}{print\_and\_log}(
+117                 logging.WARN,
+118                 \textcolor{stringliteral}{'Could not create a valid packet out of the dictionary'}
+119                 \textcolor{stringliteral}{'provided: \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(packet),
+120             )
+121             \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}
+122 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a92f4ae50a21d22ab63b041f23d210928}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a92f4ae50a21d22ab63b041f23d210928}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet}!get\+\_\+ack@{get\+\_\+ack}}
@@ -263,26 +263,26 @@ Definition at line 87 of file socket\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 147 of file socket\+\_\+manager.\+py.
+Definition at line 149 of file socket\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-147     \textcolor{keyword}{def }get\_ack(self):
-148         \textcolor{stringliteral}{"""}
-149 \textcolor{stringliteral}{        Return a new packet that can be used to acknowledge this packet.}
-150 \textcolor{stringliteral}{        """}
-151         \textcolor{keywordflow}{return} Packet(
-152             self.id,
-153             self.TYPE\_ACK,
-154             self.receiver\_id,
-155             self.sender\_id,
-156             self.assignment\_id,
-157             \textcolor{stringliteral}{''},
-158             self.conversation\_id,
-159             \textcolor{keyword}{False},
-160             \textcolor{keyword}{False},
-161         )
-162 
+149     \textcolor{keyword}{def }get\_ack(self):
+150         \textcolor{stringliteral}{"""}
+151 \textcolor{stringliteral}{        Return a new packet that can be used to acknowledge this packet.}
+152 \textcolor{stringliteral}{        """}
+153         \textcolor{keywordflow}{return} Packet(
+154             self.id,
+155             self.TYPE\_ACK,
+156             self.receiver\_id,
+157             self.sender\_id,
+158             self.assignment\_id,
+159             \textcolor{stringliteral}{''},
+160             self.conversation\_id,
+161             \textcolor{keyword}{False},
+162             \textcolor{keyword}{False},
+163         )
+164 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_af13faca81d70ad1768e6dd0089c8e082}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_af13faca81d70ad1768e6dd0089c8e082}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet}!get\+\_\+receiver\+\_\+connection\+\_\+id@{get\+\_\+receiver\+\_\+connection\+\_\+id}}
@@ -294,16 +294,16 @@ Definition at line 147 of file socket\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 141 of file socket\+\_\+manager.\+py.
+Definition at line 143 of file socket\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-141     \textcolor{keyword}{def }get\_receiver\_connection\_id(self):
-142         \textcolor{stringliteral}{"""}
-143 \textcolor{stringliteral}{        Get the connection\_id that this is going to.}
-144 \textcolor{stringliteral}{        """}
-145         \textcolor{keywordflow}{return} \textcolor{stringliteral}{'\{\}\_\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.receiver\_id, self.assignment\_id)
-146 
+143     \textcolor{keyword}{def }get\_receiver\_connection\_id(self):
+144         \textcolor{stringliteral}{"""}
+145 \textcolor{stringliteral}{        Get the connection\_id that this is going to.}
+146 \textcolor{stringliteral}{        """}
+147         \textcolor{keywordflow}{return} \textcolor{stringliteral}{'\{\}\_\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.receiver\_id, self.assignment\_id)
+148 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_ad472844f177969be64004bc0fd7031d9}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_ad472844f177969be64004bc0fd7031d9}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet}!get\+\_\+sender\+\_\+connection\+\_\+id@{get\+\_\+sender\+\_\+connection\+\_\+id}}
@@ -315,16 +315,16 @@ Definition at line 141 of file socket\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 135 of file socket\+\_\+manager.\+py.
+Definition at line 137 of file socket\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-135     \textcolor{keyword}{def }get\_sender\_connection\_id(self):
-136         \textcolor{stringliteral}{"""}
-137 \textcolor{stringliteral}{        Get the connection\_id that this packet came from.}
-138 \textcolor{stringliteral}{        """}
-139         \textcolor{keywordflow}{return} \textcolor{stringliteral}{'\{\}\_\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.sender\_id, self.assignment\_id)
-140 
+137     \textcolor{keyword}{def }get\_sender\_connection\_id(self):
+138         \textcolor{stringliteral}{"""}
+139 \textcolor{stringliteral}{        Get the connection\_id that this packet came from.}
+140 \textcolor{stringliteral}{        """}
+141         \textcolor{keywordflow}{return} \textcolor{stringliteral}{'\{\}\_\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.sender\_id, self.assignment\_id)
+142 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a308912fbfb5d9423d882100db5c79756}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a308912fbfb5d9423d882100db5c79756}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet}!new\+\_\+copy@{new\+\_\+copy}}
@@ -337,21 +337,21 @@ status.
 \end{DoxyVerb}
  
 
-Definition at line 163 of file socket\+\_\+manager.\+py.
+Definition at line 165 of file socket\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-163     \textcolor{keyword}{def }new\_copy(self):
-164         \textcolor{stringliteral}{"""}
-165 \textcolor{stringliteral}{        Return a new packet that is a copy of this packet with a new id and with a fresh}
-166 \textcolor{stringliteral}{        status.}
-167 \textcolor{stringliteral}{        """}
-168         packet = Packet.from\_dict(self.as\_dict())
-169         packet.id = shared\_utils.generate\_event\_id(self.receiver\_id)
-170         packet.blocking = self.blocking
-171         packet.requires\_ack = self.requires\_ack
-172         \textcolor{keywordflow}{return} packet
-173 
+165     \textcolor{keyword}{def }new\_copy(self):
+166         \textcolor{stringliteral}{"""}
+167 \textcolor{stringliteral}{        Return a new packet that is a copy of this packet with a new id and with a fresh}
+168 \textcolor{stringliteral}{        status.}
+169 \textcolor{stringliteral}{        """}
+170         packet = Packet.from\_dict(self.as\_dict())
+171         packet.id = shared\_utils.generate\_event\_id(self.receiver\_id)
+172         packet.blocking = self.blocking
+173         packet.requires\_ack = self.requires\_ack
+174         \textcolor{keywordflow}{return} packet
+175 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a739506a92dd4482116b64e2e2d4671f2}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a739506a92dd4482116b64e2e2d4671f2}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet}!set\+\_\+data@{set\+\_\+data}}
@@ -363,18 +363,18 @@ Definition at line 163 of file socket\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 191 of file socket\+\_\+manager.\+py.
+Definition at line 193 of file socket\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-191     \textcolor{keyword}{def }set\_data(self, new\_data):
-192         \textcolor{stringliteral}{"""}
-193 \textcolor{stringliteral}{        Updates the message data.}
-194 \textcolor{stringliteral}{        """}
-195         self.data = new\_data
-196         \textcolor{keywordflow}{return} self
-197 
-198 
+193     \textcolor{keyword}{def }set\_data(self, new\_data):
+194         \textcolor{stringliteral}{"""}
+195 \textcolor{stringliteral}{        Updates the message data.}
+196 \textcolor{stringliteral}{        """}
+197         self.data = new\_data
+198         \textcolor{keywordflow}{return} self
+199 
+200 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a1269876ae5939e52c10fe4526d50cde4}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a1269876ae5939e52c10fe4526d50cde4}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet}!set\+\_\+type@{set\+\_\+type}}
@@ -386,17 +386,17 @@ Definition at line 191 of file socket\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 184 of file socket\+\_\+manager.\+py.
+Definition at line 186 of file socket\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-184     \textcolor{keyword}{def }set\_type(self, new\_type):
-185         \textcolor{stringliteral}{"""}
-186 \textcolor{stringliteral}{        Updates the message type.}
-187 \textcolor{stringliteral}{        """}
-188         self.type = new\_type
-189         \textcolor{keywordflow}{return} self
-190 
+186     \textcolor{keyword}{def }set\_type(self, new\_type):
+187         \textcolor{stringliteral}{"""}
+188 \textcolor{stringliteral}{        Updates the message type.}
+189 \textcolor{stringliteral}{        """}
+190         self.type = new\_type
+191         \textcolor{keywordflow}{return} self
+192 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a369524e6a2a2628fe23d5277fb90a600}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a369524e6a2a2628fe23d5277fb90a600}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet}!swap\+\_\+sender@{swap\+\_\+sender}}
@@ -408,17 +408,17 @@ Definition at line 184 of file socket\+\_\+manager.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 177 of file socket\+\_\+manager.\+py.
+Definition at line 179 of file socket\+\_\+manager.\+py.
 
 
 \begin{DoxyCode}
-177     \textcolor{keyword}{def }swap\_sender(self):
-178         \textcolor{stringliteral}{"""}
-179 \textcolor{stringliteral}{        Swaps the sender\_id and receiver\_id.}
-180 \textcolor{stringliteral}{        """}
-181         self.sender\_id, self.receiver\_id = self.receiver\_id, self.sender\_id
-182         \textcolor{keywordflow}{return} self
-183 
+179     \textcolor{keyword}{def }swap\_sender(self):
+180         \textcolor{stringliteral}{"""}
+181 \textcolor{stringliteral}{        Swaps the sender\_id and receiver\_id.}
+182 \textcolor{stringliteral}{        """}
+183         self.sender\_id, self.receiver\_id = self.receiver\_id, self.sender\_id
+184         \textcolor{keywordflow}{return} self
+185 
 \end{DoxyCode}
 
 
@@ -431,7 +431,7 @@ Definition at line 177 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 83 of file socket\+\_\+manager.\+py.
+Definition at line 85 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a1638aa8fb2f521dcc47a3c70bb4629d0}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a1638aa8fb2f521dcc47a3c70bb4629d0}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet}!assignment\+\_\+id@{assignment\+\_\+id}}
@@ -441,7 +441,7 @@ Definition at line 83 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 77 of file socket\+\_\+manager.\+py.
+Definition at line 79 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_ace59fc70911f5349259a6e09541ef776}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_ace59fc70911f5349259a6e09541ef776}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet}!blocking@{blocking}}
@@ -451,7 +451,7 @@ Definition at line 77 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 82 of file socket\+\_\+manager.\+py.
+Definition at line 84 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a1131b2ba6f1534a3edd9f704ae5db107}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a1131b2ba6f1534a3edd9f704ae5db107}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet}!conversation\+\_\+id@{conversation\+\_\+id}}
@@ -461,7 +461,7 @@ Definition at line 82 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 79 of file socket\+\_\+manager.\+py.
+Definition at line 81 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a0da381513a2cef8db0a5cac7825aa8f4}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a0da381513a2cef8db0a5cac7825aa8f4}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet}!data@{data}}
@@ -471,7 +471,7 @@ Definition at line 79 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 78 of file socket\+\_\+manager.\+py.
+Definition at line 80 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_ad10710f49279e55b1011f585fd07bc22}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_ad10710f49279e55b1011f585fd07bc22}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet}!id@{id}}
@@ -481,7 +481,7 @@ Definition at line 78 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 73 of file socket\+\_\+manager.\+py.
+Definition at line 75 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_ab45007199f720f99765a49771df71c58}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_ab45007199f720f99765a49771df71c58}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet}!receiver\+\_\+id@{receiver\+\_\+id}}
@@ -491,7 +491,7 @@ Definition at line 73 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 76 of file socket\+\_\+manager.\+py.
+Definition at line 78 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_af0fd46eb878559d3ea82993aa4c2ad9a}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_af0fd46eb878559d3ea82993aa4c2ad9a}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet}!requires\+\_\+ack@{requires\+\_\+ack}}
@@ -501,7 +501,7 @@ Definition at line 76 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 81 of file socket\+\_\+manager.\+py.
+Definition at line 83 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_ae1bd1f29599a19fd8c64e2ef01ab77b4}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_ae1bd1f29599a19fd8c64e2ef01ab77b4}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet}!sender\+\_\+id@{sender\+\_\+id}}
@@ -511,7 +511,7 @@ Definition at line 81 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 75 of file socket\+\_\+manager.\+py.
+Definition at line 77 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_aeb61b559da8290c5f12c37dbf1fb08d2}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_aeb61b559da8290c5f12c37dbf1fb08d2}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet}!status@{status}}
@@ -521,7 +521,7 @@ Definition at line 75 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 84 of file socket\+\_\+manager.\+py.
+Definition at line 86 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a6743a9f6372bb8352f3b692621b3298a}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a6743a9f6372bb8352f3b692621b3298a}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet}!S\+T\+A\+T\+U\+S\+\_\+\+A\+CK@{S\+T\+A\+T\+U\+S\+\_\+\+A\+CK}}
@@ -531,7 +531,7 @@ Definition at line 84 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 29 of file socket\+\_\+manager.\+py.
+Definition at line 31 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a7cc699f5365aa9fcbc1a10c90aad95e4}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a7cc699f5365aa9fcbc1a10c90aad95e4}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet}!S\+T\+A\+T\+U\+S\+\_\+\+F\+A\+IL@{S\+T\+A\+T\+U\+S\+\_\+\+F\+A\+IL}}
@@ -541,7 +541,7 @@ Definition at line 29 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 30 of file socket\+\_\+manager.\+py.
+Definition at line 32 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_ac7a439a9aef3339f42558e27171f7061}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_ac7a439a9aef3339f42558e27171f7061}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet}!S\+T\+A\+T\+U\+S\+\_\+\+I\+N\+IT@{S\+T\+A\+T\+U\+S\+\_\+\+I\+N\+IT}}
@@ -551,7 +551,7 @@ Definition at line 30 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 27 of file socket\+\_\+manager.\+py.
+Definition at line 29 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a1237bf3d9cb9fef156dace9dd2de8f06}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a1237bf3d9cb9fef156dace9dd2de8f06}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet}!S\+T\+A\+T\+U\+S\+\_\+\+N\+O\+NE@{S\+T\+A\+T\+U\+S\+\_\+\+N\+O\+NE}}
@@ -561,7 +561,7 @@ Definition at line 27 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 26 of file socket\+\_\+manager.\+py.
+Definition at line 28 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_abfabd845764bfa00699af28d4deea584}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_abfabd845764bfa00699af28d4deea584}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet}!S\+T\+A\+T\+U\+S\+\_\+\+S\+E\+NT@{S\+T\+A\+T\+U\+S\+\_\+\+S\+E\+NT}}
@@ -571,7 +571,7 @@ Definition at line 26 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 28 of file socket\+\_\+manager.\+py.
+Definition at line 30 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a6fbd30031c46914f55a9ccdec5b0c8a3}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a6fbd30031c46914f55a9ccdec5b0c8a3}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet}!type@{type}}
@@ -581,7 +581,7 @@ Definition at line 28 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 74 of file socket\+\_\+manager.\+py.
+Definition at line 76 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a224c6c3112b56fe59dc3990fe85147c8}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a224c6c3112b56fe59dc3990fe85147c8}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet}!T\+Y\+P\+E\+\_\+\+A\+CK@{T\+Y\+P\+E\+\_\+\+A\+CK}}
@@ -591,7 +591,7 @@ Definition at line 74 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 33 of file socket\+\_\+manager.\+py.
+Definition at line 35 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a27bbf4383c9701a272d78915d7e31496}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a27bbf4383c9701a272d78915d7e31496}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet}!T\+Y\+P\+E\+\_\+\+A\+L\+I\+VE@{T\+Y\+P\+E\+\_\+\+A\+L\+I\+VE}}
@@ -601,7 +601,7 @@ Definition at line 33 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 34 of file socket\+\_\+manager.\+py.
+Definition at line 36 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_abc37bc685e6addbbe2e872af6ddf9fb2}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_abc37bc685e6addbbe2e872af6ddf9fb2}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet}!T\+Y\+P\+E\+\_\+\+H\+E\+A\+R\+T\+B\+E\+AT@{T\+Y\+P\+E\+\_\+\+H\+E\+A\+R\+T\+B\+E\+AT}}
@@ -611,7 +611,7 @@ Definition at line 34 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 36 of file socket\+\_\+manager.\+py.
+Definition at line 38 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a8580594048b1ff37a81fb09d49fda717}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_a8580594048b1ff37a81fb09d49fda717}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet}!T\+Y\+P\+E\+\_\+\+M\+E\+S\+S\+A\+GE@{T\+Y\+P\+E\+\_\+\+M\+E\+S\+S\+A\+GE}}
@@ -621,7 +621,7 @@ Definition at line 36 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 35 of file socket\+\_\+manager.\+py.
+Definition at line 37 of file socket\+\_\+manager.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_ab226c447695e66b324b03b6efa83be3d}\label{classparlai_1_1mturk_1_1core_1_1socket__manager_1_1Packet_ab226c447695e66b324b03b6efa83be3d}} 
 \index{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet@{parlai\+::mturk\+::core\+::socket\+\_\+manager\+::\+Packet}!T\+Y\+P\+E\+\_\+\+P\+O\+NG@{T\+Y\+P\+E\+\_\+\+P\+O\+NG}}
@@ -631,7 +631,7 @@ Definition at line 35 of file socket\+\_\+manager.\+py.
 
 
 
-Definition at line 37 of file socket\+\_\+manager.\+py.
+Definition at line 39 of file socket\+\_\+manager.\+py.
 
 
 

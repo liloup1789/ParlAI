@@ -2,8 +2,7 @@
 \label{classparlai_1_1core_1_1torch__generator__agent_1_1GreedySearch}\index{parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Greedy\+Search@{parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Greedy\+Search}}
 
 
-Inheritance diagram for parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Greedy\+Search\+:
-\nopagebreak
+Inheritance diagram for parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Greedy\+Search\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Greedy
 \end{figure}
 
 
-Collaboration diagram for parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Greedy\+Search\+:
-\nopagebreak
+Collaboration diagram for parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Greedy\+Search\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -38,7 +36,7 @@ Picks the highest probability utterance at each step.  Only works with
 \end{DoxyVerb}
  
 
-Definition at line 1332 of file torch\+\_\+generator\+\_\+agent.\+py.
+Definition at line 1324 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 
@@ -51,15 +49,15 @@ Definition at line 1332 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 
-Definition at line 1340 of file torch\+\_\+generator\+\_\+agent.\+py.
+Definition at line 1332 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 \begin{DoxyCode}
-1340     \textcolor{keyword}{def }\_\_init\_\_(self, *args, **kwargs):
-1341         super().\_\_init\_\_(*args, **kwargs)
-1342         \textcolor{keywordflow}{if} self.beam\_size != 1:
-1343             \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{'Greedy search can only be run with beam size 1.'})
-1344 
+1332     \textcolor{keyword}{def }\_\_init\_\_(self, *args, **kwargs):
+1333         super().\_\_init\_\_(*args, **kwargs)
+1334         \textcolor{keywordflow}{if} self.beam\_size != 1:
+1335             \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{'Greedy search can only be run with beam size 1.'})
+1336 
 \end{DoxyCode}
 
 
@@ -72,17 +70,17 @@ Definition at line 1340 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 
-Definition at line 1345 of file torch\+\_\+generator\+\_\+agent.\+py.
+Definition at line 1337 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 \begin{DoxyCode}
-1345     \textcolor{keyword}{def }select\_paths(self, logprobs, prior\_scores):
-1346         tok\_scores, tok\_ids = logprobs.max(1)
-1347         best\_scores = tok\_scores + prior\_scores
-1348         hyp\_ids = torch.arange(logprobs.size(0)).to(logprobs.device)
-1349         \textcolor{keywordflow}{return} (hyp\_ids, tok\_ids, best\_scores)
-1350 
-1351 
+1337     \textcolor{keyword}{def }select\_paths(self, logprobs, prior\_scores):
+1338         tok\_scores, tok\_ids = logprobs.max(1)
+1339         best\_scores = tok\_scores + prior\_scores
+1340         hyp\_ids = torch.arange(logprobs.size(0)).to(logprobs.device)
+1341         \textcolor{keywordflow}{return} (hyp\_ids, tok\_ids, best\_scores)
+1342 
+1343 
 \end{DoxyCode}
 
 

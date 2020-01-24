@@ -2,8 +2,7 @@
 \label{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset}\index{parlai.\+tasks.\+image\+\_\+chat.\+agents.\+Default\+Dataset@{parlai.\+tasks.\+image\+\_\+chat.\+agents.\+Default\+Dataset}}
 
 
-Inheritance diagram for parlai.\+tasks.\+image\+\_\+chat.\+agents.\+Default\+Dataset\+:
-\nopagebreak
+Inheritance diagram for parlai.\+tasks.\+image\+\_\+chat.\+agents.\+Default\+Dataset\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+tasks.\+image\+\_\+chat.\+agents.\+Default\+Dat
 \end{figure}
 
 
-Collaboration diagram for parlai.\+tasks.\+image\+\_\+chat.\+agents.\+Default\+Dataset\+:
-\nopagebreak
+Collaboration diagram for parlai.\+tasks.\+image\+\_\+chat.\+agents.\+Default\+Dataset\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -76,7 +74,7 @@ def \hyperlink{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_a
 \end{DoxyVerb}
  
 
-Definition at line 42 of file agents.\+py.
+Definition at line 43 of file agents.\+py.
 
 
 
@@ -89,23 +87,23 @@ Definition at line 42 of file agents.\+py.
 
 
 
-Definition at line 47 of file agents.\+py.
+Definition at line 48 of file agents.\+py.
 
 
 \begin{DoxyCode}
-47     \textcolor{keyword}{def }\_\_init\_\_(self, opt):
-48         self.opt = opt
-49         opt[\textcolor{stringliteral}{'image\_load\_task'}] = \textcolor{stringliteral}{'image\_chat'}
-50         self.image\_mode = opt.get(\textcolor{stringliteral}{'image\_mode'}, \textcolor{stringliteral}{'no\_image\_model'})
-51         self.datatype = self.opt.get(\textcolor{stringliteral}{'datatype'})
-52         self.training = self.datatype.startswith(\textcolor{stringliteral}{'train'})
-53         self.include\_image = opt.get(\textcolor{stringliteral}{'include\_image'})
-54         self.include\_personality = opt.get(\textcolor{stringliteral}{'include\_personality'})
-55         self.num\_cands = opt.get(\textcolor{stringliteral}{'num\_cands'})
-56         data\_path, personalities\_data\_path, self.image\_path = \_path(opt)
-57         self.image\_loader = ImageLoader(opt)
-58         self.\_setup\_data(data\_path, personalities\_data\_path)
-59 
+48     \textcolor{keyword}{def }\_\_init\_\_(self, opt):
+49         self.opt = opt
+50         opt[\textcolor{stringliteral}{'image\_load\_task'}] = \textcolor{stringliteral}{'image\_chat'}
+51         self.image\_mode = opt.get(\textcolor{stringliteral}{'image\_mode'}, \textcolor{stringliteral}{'no\_image\_model'})
+52         self.datatype = self.opt.get(\textcolor{stringliteral}{'datatype'})
+53         self.training = self.datatype.startswith(\textcolor{stringliteral}{'train'})
+54         self.include\_image = opt.get(\textcolor{stringliteral}{'include\_image'})
+55         self.include\_personality = opt.get(\textcolor{stringliteral}{'include\_personality'})
+56         self.num\_cands = opt.get(\textcolor{stringliteral}{'num\_cands'})
+57         data\_path, personalities\_data\_path, self.image\_path = \_path(opt)
+58         self.image\_loader = ImageLoader(opt)
+59         self.\_setup\_data(data\_path, personalities\_data\_path)
+60 
 \end{DoxyCode}
 
 
@@ -118,38 +116,38 @@ Definition at line 47 of file agents.\+py.
 
 
 
-Definition at line 71 of file agents.\+py.
+Definition at line 72 of file agents.\+py.
 
 
 \begin{DoxyCode}
-71     \textcolor{keyword}{def }\_\_getitem\_\_(self, index):
-72         data = self.data[index]
-73         dialog = data[\textcolor{stringliteral}{'dialog'}]
-74         personality = dialog[-1][0]
-75         text = \textcolor{stringliteral}{''}
-76         \textcolor{keywordflow}{if} len(dialog) > 1:
-77             text = \textcolor{stringliteral}{'\(\backslash\)n'}.join((dialog[0][1], dialog[1][1]))
-78         \textcolor{keywordflow}{if} self.include\_personality:
-79             text += personality
-80         label = dialog[-1][1]
-81         image = self.get\_image(data[\textcolor{stringliteral}{'image\_hash'}])
-82 
-83         ep = \{
-84             \textcolor{stringliteral}{'text'}: text,
-85             \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True},
-86             \textcolor{stringliteral}{'image'}: image \textcolor{keywordflow}{if} self.include\_image \textcolor{keywordflow}{else} \textcolor{keywordtype}{None},
-87         \}
-88 
-89         \textcolor{keywordflow}{if} self.opt.get(\textcolor{stringliteral}{'extract\_image'}, \textcolor{keyword}{False}):
-90             ep[\textcolor{stringliteral}{'image\_id'}] = data[\textcolor{stringliteral}{'image\_hash'}]
-91             \textcolor{keywordflow}{return} ep
-92         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.opt[\textcolor{stringliteral}{'datatype'}].startswith(\textcolor{stringliteral}{'test'}):
-93             ep[\textcolor{stringliteral}{'labels'}] = [label]
-94         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.training:
-95             ep[\textcolor{stringliteral}{'label\_candidates'}] = data[\textcolor{stringliteral}{'candidates'}][-1][self.num\_cands]
-96 
-97         \textcolor{keywordflow}{return} (index, ep)
-98 
+72     \textcolor{keyword}{def }\_\_getitem\_\_(self, index):
+73         data = self.data[index]
+74         dialog = data[\textcolor{stringliteral}{'dialog'}]
+75         personality = dialog[-1][0]
+76         text = \textcolor{stringliteral}{''}
+77         \textcolor{keywordflow}{if} len(dialog) > 1:
+78             text = \textcolor{stringliteral}{'\(\backslash\)n'}.join((dialog[0][1], dialog[1][1]))
+79         \textcolor{keywordflow}{if} self.include\_personality:
+80             text += personality
+81         label = dialog[-1][1]
+82         image = self.get\_image(data[\textcolor{stringliteral}{'image\_hash'}])
+83 
+84         ep = \{
+85             \textcolor{stringliteral}{'text'}: text,
+86             \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True},
+87             \textcolor{stringliteral}{'image'}: image \textcolor{keywordflow}{if} self.include\_image \textcolor{keywordflow}{else} \textcolor{keywordtype}{None},
+88         \}
+89 
+90         \textcolor{keywordflow}{if} self.opt.get(\textcolor{stringliteral}{'extract\_image'}, \textcolor{keyword}{False}):
+91             ep[\textcolor{stringliteral}{'image\_id'}] = data[\textcolor{stringliteral}{'image\_hash'}]
+92             \textcolor{keywordflow}{return} ep
+93         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.opt[\textcolor{stringliteral}{'datatype'}].startswith(\textcolor{stringliteral}{'test'}):
+94             ep[\textcolor{stringliteral}{'labels'}] = [label]
+95         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.training:
+96             ep[\textcolor{stringliteral}{'label\_candidates'}] = data[\textcolor{stringliteral}{'candidates'}][-1][self.num\_cands]
+97 
+98         \textcolor{keywordflow}{return} (index, ep)
+99 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_ae786128b555cabc38b32841f4569ee62}\label{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_ae786128b555cabc38b32841f4569ee62}} 
 \index{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset@{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset}!\+\_\+\+\_\+len\+\_\+\+\_\+@{\+\_\+\+\_\+len\+\_\+\+\_\+}}
@@ -159,13 +157,13 @@ Definition at line 71 of file agents.\+py.
 
 
 
-Definition at line 99 of file agents.\+py.
+Definition at line 100 of file agents.\+py.
 
 
 \begin{DoxyCode}
-99     \textcolor{keyword}{def }\_\_len\_\_(self):
-100         \textcolor{keywordflow}{return} self.num\_episodes()
-101 
+100     \textcolor{keyword}{def }\_\_len\_\_(self):
+101         \textcolor{keywordflow}{return} self.num\_episodes()
+102 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_ab2f0a95dcd1207f0a21ce0de5a7b767a}\label{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_ab2f0a95dcd1207f0a21ce0de5a7b767a}} 
 \index{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset@{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset}!add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}}
@@ -175,13 +173,13 @@ Definition at line 99 of file agents.\+py.
 
 
 
-Definition at line 61 of file agents.\+py.
+Definition at line 62 of file agents.\+py.
 
 
 \begin{DoxyCode}
-61     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(argparser):
-62         ImageChatTeacher.add\_cmdline\_args(argparser)
-63 
+62     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(argparser):
+63         ImageChatTeacher.add\_cmdline\_args(argparser)
+64 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_ad06939ed5ac1393185d8e4eb1cf1706e}\label{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_ad06939ed5ac1393185d8e4eb1cf1706e}} 
 \index{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset@{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset}!get\+\_\+image@{get\+\_\+image}}
@@ -191,14 +189,14 @@ Definition at line 61 of file agents.\+py.
 
 
 
-Definition at line 102 of file agents.\+py.
+Definition at line 103 of file agents.\+py.
 
 
 \begin{DoxyCode}
-102     \textcolor{keyword}{def }get\_image(self, image\_id):
-103         im\_path = os.path.join(self.image\_path, \textcolor{stringliteral}{'\{\}.jpg'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(image\_id))
-104         \textcolor{keywordflow}{return} self.image\_loader.load(im\_path)
-105 
+103     \textcolor{keyword}{def }get\_image(self, image\_id):
+104         im\_path = os.path.join(self.image\_path, \textcolor{stringliteral}{'\{\}.jpg'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(image\_id))
+105         \textcolor{keywordflow}{return} self.image\_loader.load(im\_path)
+106 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_afd35ea4ecd0e16f58eceb52317da429e}\label{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_afd35ea4ecd0e16f58eceb52317da429e}} 
 \index{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset@{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset}!num\+\_\+episodes@{num\+\_\+episodes}}
@@ -208,13 +206,13 @@ Definition at line 102 of file agents.\+py.
 
 
 
-Definition at line 106 of file agents.\+py.
+Definition at line 107 of file agents.\+py.
 
 
 \begin{DoxyCode}
-106     \textcolor{keyword}{def }num\_episodes(self):
-107         \textcolor{keywordflow}{return} len(self.data)
-108 
+107     \textcolor{keyword}{def }num\_episodes(self):
+108         \textcolor{keywordflow}{return} len(self.data)
+109 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_a50e9a914fa61e0070403b5806a9c392b}\label{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_a50e9a914fa61e0070403b5806a9c392b}} 
 \index{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset@{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset}!num\+\_\+examples@{num\+\_\+examples}}
@@ -224,13 +222,13 @@ Definition at line 106 of file agents.\+py.
 
 
 
-Definition at line 109 of file agents.\+py.
+Definition at line 110 of file agents.\+py.
 
 
 \begin{DoxyCode}
-109     \textcolor{keyword}{def }num\_examples(self):
-110         \textcolor{keywordflow}{return} self.num\_episodes()
-111 
+110     \textcolor{keyword}{def }num\_examples(self):
+111         \textcolor{keywordflow}{return} self.num\_episodes()
+112 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_aa926ef2ab5deb252b7ee8b6023c8ae7b}\label{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_aa926ef2ab5deb252b7ee8b6023c8ae7b}} 
 \index{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset@{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset}!num\+\_\+images@{num\+\_\+images}}
@@ -240,16 +238,16 @@ Definition at line 109 of file agents.\+py.
 
 
 
-Definition at line 112 of file agents.\+py.
+Definition at line 113 of file agents.\+py.
 
 
 \begin{DoxyCode}
-112     \textcolor{keyword}{def }num\_images(self):
-113         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} hasattr(self, \textcolor{stringliteral}{'num\_imgs'}):
-114             self.num\_imgs = len(\{d[\textcolor{stringliteral}{'image\_num'}] \textcolor{keywordflow}{for} d \textcolor{keywordflow}{in} self.data\})
-115         \textcolor{keywordflow}{return} self.num\_imgs
-116 
+113     \textcolor{keyword}{def }num\_images(self):
+114         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} hasattr(self, \textcolor{stringliteral}{'num\_imgs'}):
+115             self.num\_imgs = len(\{d[\textcolor{stringliteral}{'image\_num'}] \textcolor{keywordflow}{for} d \textcolor{keywordflow}{in} self.data\})
+116         \textcolor{keywordflow}{return} self.num\_imgs
 117 
+118 
 \end{DoxyCode}
 
 
@@ -262,7 +260,7 @@ Definition at line 112 of file agents.\+py.
 
 
 
-Definition at line 67 of file agents.\+py.
+Definition at line 68 of file agents.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_aaa468ef7ff87d1502be666ce690ab030}\label{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_aaa468ef7ff87d1502be666ce690ab030}} 
 \index{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset@{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset}!datatype@{datatype}}
@@ -272,7 +270,7 @@ Definition at line 67 of file agents.\+py.
 
 
 
-Definition at line 51 of file agents.\+py.
+Definition at line 52 of file agents.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_acd123d24d3b3517fb29b0623919be085}\label{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_acd123d24d3b3517fb29b0623919be085}} 
 \index{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset@{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset}!image\+\_\+loader@{image\+\_\+loader}}
@@ -282,7 +280,7 @@ Definition at line 51 of file agents.\+py.
 
 
 
-Definition at line 57 of file agents.\+py.
+Definition at line 58 of file agents.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_ae429b8f3c79618de545845c21e098e63}\label{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_ae429b8f3c79618de545845c21e098e63}} 
 \index{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset@{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset}!image\+\_\+mode@{image\+\_\+mode}}
@@ -292,7 +290,7 @@ Definition at line 57 of file agents.\+py.
 
 
 
-Definition at line 50 of file agents.\+py.
+Definition at line 51 of file agents.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_aedd4071dfb52d895e871da214dddb025}\label{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_aedd4071dfb52d895e871da214dddb025}} 
 \index{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset@{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset}!image\+\_\+path@{image\+\_\+path}}
@@ -302,7 +300,7 @@ Definition at line 50 of file agents.\+py.
 
 
 
-Definition at line 56 of file agents.\+py.
+Definition at line 57 of file agents.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_a3efeafee8792c6e993c00b2efd0e0105}\label{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_a3efeafee8792c6e993c00b2efd0e0105}} 
 \index{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset@{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset}!include\+\_\+image@{include\+\_\+image}}
@@ -312,7 +310,7 @@ Definition at line 56 of file agents.\+py.
 
 
 
-Definition at line 53 of file agents.\+py.
+Definition at line 54 of file agents.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_a0533c75ec1506750cb33452cdd9ce6ab}\label{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_a0533c75ec1506750cb33452cdd9ce6ab}} 
 \index{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset@{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset}!include\+\_\+personality@{include\+\_\+personality}}
@@ -322,7 +320,7 @@ Definition at line 53 of file agents.\+py.
 
 
 
-Definition at line 54 of file agents.\+py.
+Definition at line 55 of file agents.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_ac67c813f8e7d7136f9fdf7f5f5c2f149}\label{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_ac67c813f8e7d7136f9fdf7f5f5c2f149}} 
 \index{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset@{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset}!num\+\_\+cands@{num\+\_\+cands}}
@@ -332,7 +330,7 @@ Definition at line 54 of file agents.\+py.
 
 
 
-Definition at line 55 of file agents.\+py.
+Definition at line 56 of file agents.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_affc03098db06accb5c4efb0854e6cc42}\label{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_affc03098db06accb5c4efb0854e6cc42}} 
 \index{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset@{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset}!num\+\_\+imgs@{num\+\_\+imgs}}
@@ -342,7 +340,7 @@ Definition at line 55 of file agents.\+py.
 
 
 
-Definition at line 114 of file agents.\+py.
+Definition at line 115 of file agents.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_a14a912c6b7293b439de09f085fd8e34b}\label{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_a14a912c6b7293b439de09f085fd8e34b}} 
 \index{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset@{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset}!opt@{opt}}
@@ -352,7 +350,7 @@ Definition at line 114 of file agents.\+py.
 
 
 
-Definition at line 48 of file agents.\+py.
+Definition at line 49 of file agents.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_a823a0d9ee64ca85730374c1a944ed789}\label{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_a823a0d9ee64ca85730374c1a944ed789}} 
 \index{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset@{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset}!personalities@{personalities}}
@@ -362,7 +360,7 @@ Definition at line 48 of file agents.\+py.
 
 
 
-Definition at line 69 of file agents.\+py.
+Definition at line 70 of file agents.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_a2419786bfafc52743cd7a551a5bad7d1}\label{classparlai_1_1tasks_1_1image__chat_1_1agents_1_1DefaultDataset_a2419786bfafc52743cd7a551a5bad7d1}} 
 \index{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset@{parlai\+::tasks\+::image\+\_\+chat\+::agents\+::\+Default\+Dataset}!training@{training}}
@@ -372,7 +370,7 @@ Definition at line 69 of file agents.\+py.
 
 
 
-Definition at line 52 of file agents.\+py.
+Definition at line 53 of file agents.\+py.
 
 
 

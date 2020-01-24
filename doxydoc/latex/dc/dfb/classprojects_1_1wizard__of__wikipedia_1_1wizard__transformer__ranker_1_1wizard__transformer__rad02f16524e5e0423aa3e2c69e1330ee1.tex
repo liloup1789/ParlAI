@@ -2,8 +2,7 @@
 \label{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__transformer__rad02f16524e5e0423aa3e2c69e1330ee1}\index{projects.\+wizard\+\_\+of\+\_\+wikipedia.\+wizard\+\_\+transformer\+\_\+ranker.\+wizard\+\_\+transformer\+\_\+ranker.\+Wizard\+Transformer\+Ranker\+Agent@{projects.\+wizard\+\_\+of\+\_\+wikipedia.\+wizard\+\_\+transformer\+\_\+ranker.\+wizard\+\_\+transformer\+\_\+ranker.\+Wizard\+Transformer\+Ranker\+Agent}}
 
 
-Inheritance diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+wizard\+\_\+transformer\+\_\+ranker.\+wizard\+\_\+transformer\+\_\+ranker.\+Wizard\+Transformer\+Ranker\+Agent\+:
-\nopagebreak
+Inheritance diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+wizard\+\_\+transformer\+\_\+ranker.\+wizard\+\_\+transformer\+\_\+ranker.\+Wizard\+Transformer\+Ranker\+Agent\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -17,7 +16,7 @@ Collaboration diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+wizard\+\_\
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=318pt]{d6/d32/classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__transformer__ra5ca474d676e0832cca4857ef332d07fd}
+\includegraphics[width=286pt]{d6/d32/classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__transformer__ra5ca474d676e0832cca4857ef332d07fd}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -51,7 +50,7 @@ def \hyperlink{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ra
 \subsection{Detailed Description}
 
 
-Definition at line 15 of file wizard\+\_\+transformer\+\_\+ranker.\+py.
+Definition at line 16 of file wizard\+\_\+transformer\+\_\+ranker.\+py.
 
 
 
@@ -66,23 +65,23 @@ Definition at line 15 of file wizard\+\_\+transformer\+\_\+ranker.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 64 of file wizard\+\_\+transformer\+\_\+ranker.\+py.
+Definition at line 65 of file wizard\+\_\+transformer\+\_\+ranker.\+py.
 
 
 \begin{DoxyCode}
-64     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
-65         \textcolor{stringliteral}{"""}
-66 \textcolor{stringliteral}{        Set up model.}
-67 \textcolor{stringliteral}{        """}
-68 
-69         super().\_\_init\_\_(opt, shared)
-70         self.use\_knowledge = opt.get(\textcolor{stringliteral}{'use\_knowledge'}, \textcolor{keyword}{False})
-71         \textcolor{keywordflow}{if} self.use\_knowledge:
-72             self.opt[\textcolor{stringliteral}{'use\_memories'}] = \textcolor{keyword}{True}
-73         self.chosen\_sentence = opt.get(\textcolor{stringliteral}{'chosen\_sentence'}, \textcolor{keyword}{False}) \textcolor{keywordflow}{and} self.use\_knowledge
-74         self.knowledge\_dropout = opt.get(\textcolor{stringliteral}{'knowledge\_dropout'}, 0)
-75         self.knowledge\_truncate = opt.get(\textcolor{stringliteral}{'knowledge\_truncate'}, 50)
-76 
+65     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
+66         \textcolor{stringliteral}{"""}
+67 \textcolor{stringliteral}{        Set up model.}
+68 \textcolor{stringliteral}{        """}
+69 
+70         super().\_\_init\_\_(opt, shared)
+71         self.use\_knowledge = opt.get(\textcolor{stringliteral}{'use\_knowledge'}, \textcolor{keyword}{False})
+72         \textcolor{keywordflow}{if} self.use\_knowledge:
+73             self.opt[\textcolor{stringliteral}{'use\_memories'}] = \textcolor{keyword}{True}
+74         self.chosen\_sentence = opt.get(\textcolor{stringliteral}{'chosen\_sentence'}, \textcolor{keyword}{False}) \textcolor{keywordflow}{and} self.use\_knowledge
+75         self.knowledge\_dropout = opt.get(\textcolor{stringliteral}{'knowledge\_dropout'}, 0)
+76         self.knowledge\_truncate = opt.get(\textcolor{stringliteral}{'knowledge\_truncate'}, 50)
+77 
 \end{DoxyCode}
 
 
@@ -97,53 +96,53 @@ Definition at line 64 of file wizard\+\_\+transformer\+\_\+ranker.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 21 of file wizard\+\_\+transformer\+\_\+ranker.\+py.
+Definition at line 22 of file wizard\+\_\+transformer\+\_\+ranker.\+py.
 
 
 \begin{DoxyCode}
-21     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(cls, argparser):
-22         \textcolor{stringliteral}{"""}
-23 \textcolor{stringliteral}{        Add command-line arguments specifically for this agent.}
-24 \textcolor{stringliteral}{        """}
-25         super(WizardTransformerRankerAgent, cls).\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(argparser)
-26         agent = argparser.add\_argument\_group(\textcolor{stringliteral}{'Wizard Transformer Ranker Arguments'})
-27         agent.add\_argument(
-28             \textcolor{stringliteral}{'--use-knowledge'},
-29             type=\textcolor{stringliteral}{'bool'},
-30             default=\textcolor{keyword}{True},
-31             help=\textcolor{stringliteral}{'use knowledge field instead of personas'},
-32         )
-33         agent.add\_argument(
-34             \textcolor{stringliteral}{'--knowledge-dropout'},
-35             type=float,
-36             default=0.7,
-37             help=\textcolor{stringliteral}{'dropout some knowledge during training'},
-38         )
-39         agent.add\_argument(
-40             \textcolor{stringliteral}{'--chosen-sentence'},
-41             type=\textcolor{stringliteral}{'bool'},
-42             default=\textcolor{keyword}{False},
-43             help=\textcolor{stringliteral}{'instead of using all knowledge, use gold'}
-44             \textcolor{stringliteral}{'label, i.e. the chosen sentence'},
-45         )
-46         agent.add\_argument(
-47             \textcolor{stringliteral}{'--knowledge-truncate'},
-48             type=int,
-49             default=50,
-50             help=\textcolor{stringliteral}{'truncate knowledge to this length'},
-51         )
-52         agent.add\_argument(\textcolor{stringliteral}{'--legacy'}, type=\textcolor{stringliteral}{'bool'}, default=\textcolor{keyword}{False}, help=\textcolor{stringliteral}{'legacy model'})
-53         argparser.set\_defaults(
-54             learningrate=0.0008,
-55             eval\_candidates=\textcolor{stringliteral}{'inline'},
-56             candidates=\textcolor{stringliteral}{'batch'},
-57             lr\_factor=1,
-58             add\_p1\_after\_newln=\textcolor{keyword}{False},
-59             delimiter=\textcolor{stringliteral}{' '},
-60         )
-61 
-62         \textcolor{keywordflow}{return} agent
-63 
+22     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(cls, argparser):
+23         \textcolor{stringliteral}{"""}
+24 \textcolor{stringliteral}{        Add command-line arguments specifically for this agent.}
+25 \textcolor{stringliteral}{        """}
+26         super(WizardTransformerRankerAgent, cls).\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(argparser)
+27         agent = argparser.add\_argument\_group(\textcolor{stringliteral}{'Wizard Transformer Ranker Arguments'})
+28         agent.add\_argument(
+29             \textcolor{stringliteral}{'--use-knowledge'},
+30             type=\textcolor{stringliteral}{'bool'},
+31             default=\textcolor{keyword}{True},
+32             help=\textcolor{stringliteral}{'use knowledge field instead of personas'},
+33         )
+34         agent.add\_argument(
+35             \textcolor{stringliteral}{'--knowledge-dropout'},
+36             type=float,
+37             default=0.7,
+38             help=\textcolor{stringliteral}{'dropout some knowledge during training'},
+39         )
+40         agent.add\_argument(
+41             \textcolor{stringliteral}{'--chosen-sentence'},
+42             type=\textcolor{stringliteral}{'bool'},
+43             default=\textcolor{keyword}{False},
+44             help=\textcolor{stringliteral}{'instead of using all knowledge, use gold'}
+45             \textcolor{stringliteral}{'label, i.e. the chosen sentence'},
+46         )
+47         agent.add\_argument(
+48             \textcolor{stringliteral}{'--knowledge-truncate'},
+49             type=int,
+50             default=50,
+51             help=\textcolor{stringliteral}{'truncate knowledge to this length'},
+52         )
+53         agent.add\_argument(\textcolor{stringliteral}{'--legacy'}, type=\textcolor{stringliteral}{'bool'}, default=\textcolor{keyword}{False}, help=\textcolor{stringliteral}{'legacy model'})
+54         argparser.set\_defaults(
+55             learningrate=0.0008,
+56             eval\_candidates=\textcolor{stringliteral}{'inline'},
+57             candidates=\textcolor{stringliteral}{'batch'},
+58             lr\_factor=1,
+59             add\_p1\_after\_newln=\textcolor{keyword}{False},
+60             delimiter=\textcolor{stringliteral}{' '},
+61         )
+62 
+63         \textcolor{keywordflow}{return} agent
+64 
 \end{DoxyCode}
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__transformer__rad02f16524e5e0423aa3e2c69e1330ee1_a8e688fde0db811587679f5625ffdfb58}\label{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__transformer__rad02f16524e5e0423aa3e2c69e1330ee1_a8e688fde0db811587679f5625ffdfb58}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+transformer\+\_\+ranker\+::\+Wizard\+Transformer\+Ranker\+Agent@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+transformer\+\_\+ranker\+::\+Wizard\+Transformer\+Ranker\+Agent}!dictionary\+\_\+class@{dictionary\+\_\+class}}
@@ -153,13 +152,13 @@ Definition at line 21 of file wizard\+\_\+transformer\+\_\+ranker.\+py.
 
 
 
-Definition at line 17 of file wizard\+\_\+transformer\+\_\+ranker.\+py.
+Definition at line 18 of file wizard\+\_\+transformer\+\_\+ranker.\+py.
 
 
 \begin{DoxyCode}
-17     \textcolor{keyword}{def }dictionary\_class():
-18         \textcolor{keywordflow}{return} WizardDictAgent
-19 
+18     \textcolor{keyword}{def }dictionary\_class():
+19         \textcolor{keywordflow}{return} WizardDictAgent
+20 
 \end{DoxyCode}
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__transformer__rad02f16524e5e0423aa3e2c69e1330ee1_abc21f0fa56df7a5cd42a011b66eed02b}\label{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__transformer__rad02f16524e5e0423aa3e2c69e1330ee1_abc21f0fa56df7a5cd42a011b66eed02b}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+transformer\+\_\+ranker\+::\+Wizard\+Transformer\+Ranker\+Agent@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+transformer\+\_\+ranker\+::\+Wizard\+Transformer\+Ranker\+Agent}!load@{load}}
@@ -174,35 +173,35 @@ pre-trained models.
 \end{DoxyVerb}
  
 
-Definition at line 135 of file wizard\+\_\+transformer\+\_\+ranker.\+py.
+Definition at line 136 of file wizard\+\_\+transformer\+\_\+ranker.\+py.
 
 
 \begin{DoxyCode}
-135     \textcolor{keyword}{def }load(self, path):
-136         \textcolor{stringliteral}{"""}
-137 \textcolor{stringliteral}{        Return opt and model states.}
-138 \textcolor{stringliteral}{}
-139 \textcolor{stringliteral}{        Override this method from TorchAgent to allow us to load partial weights from}
-140 \textcolor{stringliteral}{        pre-trained models.}
-141 \textcolor{stringliteral}{        """}
-142         states = torch.load(path, map\_location=\textcolor{keyword}{lambda} cpu, \_: cpu)
-143 
-144         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'model'} \textcolor{keywordflow}{in} states:
-145             new\_state\_dict = states[\textcolor{stringliteral}{'model'}]
-146             \textcolor{comment}{# load params}
-147             current\_state = self.model.state\_dict()
-148             \textcolor{comment}{# filter out unnecessary params}
-149             pre\_trained\_state = \{
-150                 k: v \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} new\_state\_dict.items() \textcolor{keywordflow}{if} k \textcolor{keywordflow}{in} current\_state
-151             \}
-152             \textcolor{comment}{# upload pretrained state}
-153             current\_state.update(pre\_trained\_state)
-154             self.model.load\_state\_dict(current\_state)
-155 
-156         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'optimizer'} \textcolor{keywordflow}{in} states \textcolor{keywordflow}{and} hasattr(self, \textcolor{stringliteral}{'optimizer'}):
-157             self.optimizer.load\_state\_dict(states[\textcolor{stringliteral}{'optimizer'}])
-158         \textcolor{keywordflow}{return} states
-159 \end{DoxyCode}
+136     \textcolor{keyword}{def }load(self, path):
+137         \textcolor{stringliteral}{"""}
+138 \textcolor{stringliteral}{        Return opt and model states.}
+139 \textcolor{stringliteral}{}
+140 \textcolor{stringliteral}{        Override this method from TorchAgent to allow us to load partial weights from}
+141 \textcolor{stringliteral}{        pre-trained models.}
+142 \textcolor{stringliteral}{        """}
+143         states = torch.load(path, map\_location=\textcolor{keyword}{lambda} cpu, \_: cpu)
+144 
+145         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'model'} \textcolor{keywordflow}{in} states:
+146             new\_state\_dict = states[\textcolor{stringliteral}{'model'}]
+147             \textcolor{comment}{# load params}
+148             current\_state = self.model.state\_dict()
+149             \textcolor{comment}{# filter out unnecessary params}
+150             pre\_trained\_state = \{
+151                 k: v \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} new\_state\_dict.items() \textcolor{keywordflow}{if} k \textcolor{keywordflow}{in} current\_state
+152             \}
+153             \textcolor{comment}{# upload pretrained state}
+154             current\_state.update(pre\_trained\_state)
+155             self.model.load\_state\_dict(current\_state)
+156 
+157         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'optimizer'} \textcolor{keywordflow}{in} states \textcolor{keywordflow}{and} hasattr(self, \textcolor{stringliteral}{'optimizer'}):
+158             self.optimizer.load\_state\_dict(states[\textcolor{stringliteral}{'optimizer'}])
+159         \textcolor{keywordflow}{return} states
+160 \end{DoxyCode}
 
 
 \subsection{Member Data Documentation}
@@ -214,7 +213,7 @@ Definition at line 135 of file wizard\+\_\+transformer\+\_\+ranker.\+py.
 
 
 
-Definition at line 73 of file wizard\+\_\+transformer\+\_\+ranker.\+py.
+Definition at line 74 of file wizard\+\_\+transformer\+\_\+ranker.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__transformer__rad02f16524e5e0423aa3e2c69e1330ee1_ab5a2b64c750bc73f0aa8c39bc0ce1c28}\label{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__transformer__rad02f16524e5e0423aa3e2c69e1330ee1_ab5a2b64c750bc73f0aa8c39bc0ce1c28}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+transformer\+\_\+ranker\+::\+Wizard\+Transformer\+Ranker\+Agent@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+transformer\+\_\+ranker\+::\+Wizard\+Transformer\+Ranker\+Agent}!knowledge\+\_\+dropout@{knowledge\+\_\+dropout}}
@@ -224,7 +223,7 @@ Definition at line 73 of file wizard\+\_\+transformer\+\_\+ranker.\+py.
 
 
 
-Definition at line 74 of file wizard\+\_\+transformer\+\_\+ranker.\+py.
+Definition at line 75 of file wizard\+\_\+transformer\+\_\+ranker.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__transformer__rad02f16524e5e0423aa3e2c69e1330ee1_a90a27dc83c6dd64cd1f1548617117f8e}\label{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__transformer__rad02f16524e5e0423aa3e2c69e1330ee1_a90a27dc83c6dd64cd1f1548617117f8e}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+transformer\+\_\+ranker\+::\+Wizard\+Transformer\+Ranker\+Agent@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+transformer\+\_\+ranker\+::\+Wizard\+Transformer\+Ranker\+Agent}!knowledge\+\_\+truncate@{knowledge\+\_\+truncate}}
@@ -234,7 +233,7 @@ Definition at line 74 of file wizard\+\_\+transformer\+\_\+ranker.\+py.
 
 
 
-Definition at line 75 of file wizard\+\_\+transformer\+\_\+ranker.\+py.
+Definition at line 76 of file wizard\+\_\+transformer\+\_\+ranker.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__transformer__rad02f16524e5e0423aa3e2c69e1330ee1_a68ec02a7c1591b009ce87c0348fcad89}\label{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__transformer__rad02f16524e5e0423aa3e2c69e1330ee1_a68ec02a7c1591b009ce87c0348fcad89}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+transformer\+\_\+ranker\+::\+Wizard\+Transformer\+Ranker\+Agent@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+transformer\+\_\+ranker\+::\+Wizard\+Transformer\+Ranker\+Agent}!use\+\_\+knowledge@{use\+\_\+knowledge}}
@@ -244,7 +243,7 @@ Definition at line 75 of file wizard\+\_\+transformer\+\_\+ranker.\+py.
 
 
 
-Definition at line 70 of file wizard\+\_\+transformer\+\_\+ranker.\+py.
+Definition at line 71 of file wizard\+\_\+transformer\+\_\+ranker.\+py.
 
 
 

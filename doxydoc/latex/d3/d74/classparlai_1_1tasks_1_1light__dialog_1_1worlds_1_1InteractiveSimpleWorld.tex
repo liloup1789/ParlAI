@@ -2,8 +2,7 @@
 \label{classparlai_1_1tasks_1_1light__dialog_1_1worlds_1_1InteractiveSimpleWorld}\index{parlai.\+tasks.\+light\+\_\+dialog.\+worlds.\+Interactive\+Simple\+World@{parlai.\+tasks.\+light\+\_\+dialog.\+worlds.\+Interactive\+Simple\+World}}
 
 
-Inheritance diagram for parlai.\+tasks.\+light\+\_\+dialog.\+worlds.\+Interactive\+Simple\+World\+:
-\nopagebreak
+Inheritance diagram for parlai.\+tasks.\+light\+\_\+dialog.\+worlds.\+Interactive\+Simple\+World\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+tasks.\+light\+\_\+dialog.\+worlds.\+Interactiv
 \end{figure}
 
 
-Collaboration diagram for parlai.\+tasks.\+light\+\_\+dialog.\+worlds.\+Interactive\+Simple\+World\+:
-\nopagebreak
+Collaboration diagram for parlai.\+tasks.\+light\+\_\+dialog.\+worlds.\+Interactive\+Simple\+World\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -101,32 +99,35 @@ Definition at line 29 of file worlds.\+py.
 43             p[t.split(\textcolor{stringliteral}{' '})[0]] = t
 44 
 45         a1\_persona = (
-46             p[\textcolor{stringliteral}{'\_setting\_name'}]
-47             + \textcolor{stringliteral}{'\(\backslash\)n'}
-48             + p[\textcolor{stringliteral}{'\_setting\_desc'}]
-49             + \textcolor{stringliteral}{'\(\backslash\)n'}
-50             + p[\textcolor{stringliteral}{'\_self\_name'}].replace(\textcolor{stringliteral}{"\_self\_name"}, \textcolor{stringliteral}{'\_partner\_name'})
-51             + \textcolor{stringliteral}{'\(\backslash\)n'}
-52             + p[\textcolor{stringliteral}{'\_partner\_name'}].replace(\textcolor{stringliteral}{"\_partner\_name"}, \textcolor{stringliteral}{'\_self\_name'})
-53             + \textcolor{stringliteral}{'\(\backslash\)n'}
-54             + \textcolor{stringliteral}{'\_self\_persona I am a '}
-55             + \textcolor{stringliteral}{' '}.join(p[\textcolor{stringliteral}{'\_partner\_name'}].split(\textcolor{stringliteral}{' '})[1:])
-56             + \textcolor{stringliteral}{'.\(\backslash\)n'}
-57         )
-58 
-59         a2\_persona = (
-60             p[\textcolor{stringliteral}{'\_setting\_name'}]
-61             + \textcolor{stringliteral}{'\(\backslash\)n'}
-62             + p[\textcolor{stringliteral}{'\_setting\_desc'}]
-63             + p[\textcolor{stringliteral}{'\_partner\_name'}]
-64             + \textcolor{stringliteral}{'\(\backslash\)n'}
-65             + p[\textcolor{stringliteral}{'\_self\_name'}]
-66             + \textcolor{stringliteral}{'\(\backslash\)n'}
-67             + p[\textcolor{stringliteral}{'\_self\_persona'}]
-68             + \textcolor{stringliteral}{'\(\backslash\)n'}
-69         )
-70         \textcolor{keywordflow}{return} a1\_persona, a2\_persona
-71 
+46             \textcolor{stringliteral}{' \_task\_speech\(\backslash\)n'}
+47             + p[\textcolor{stringliteral}{'\_setting\_name'}]
+48             + \textcolor{stringliteral}{'\(\backslash\)n'}
+49             + p[\textcolor{stringliteral}{'\_setting\_desc'}]
+50             + \textcolor{stringliteral}{'\(\backslash\)n'}
+51             + p[\textcolor{stringliteral}{'\_self\_name'}].replace(\textcolor{stringliteral}{"\_self\_name"}, \textcolor{stringliteral}{'\_partner\_name'})
+52             + \textcolor{stringliteral}{'\(\backslash\)n'}
+53             + p[\textcolor{stringliteral}{'\_partner\_name'}].replace(\textcolor{stringliteral}{"\_partner\_name"}, \textcolor{stringliteral}{'\_self\_name'})
+54             + \textcolor{stringliteral}{'\(\backslash\)n'}
+55             + \textcolor{stringliteral}{'\_self\_persona I am a '}
+56             + \textcolor{stringliteral}{' '}.join(p[\textcolor{stringliteral}{'\_partner\_name'}].split(\textcolor{stringliteral}{' '})[1:])
+57             + \textcolor{stringliteral}{'.\(\backslash\)n'}
+58         )
+59 
+60         a2\_persona = (
+61             \textcolor{stringliteral}{' \_task\_speech\(\backslash\)n'}
+62             + p[\textcolor{stringliteral}{'\_setting\_name'}]
+63             + \textcolor{stringliteral}{'\(\backslash\)n'}
+64             + p[\textcolor{stringliteral}{'\_setting\_desc'}]
+65             + \textcolor{stringliteral}{'\(\backslash\)n'}
+66             + p[\textcolor{stringliteral}{'\_partner\_name'}]
+67             + \textcolor{stringliteral}{'\(\backslash\)n'}
+68             + p[\textcolor{stringliteral}{'\_self\_name'}]
+69             + \textcolor{stringliteral}{'\(\backslash\)n'}
+70             + p[\textcolor{stringliteral}{'\_self\_persona'}]
+71             + \textcolor{stringliteral}{'\(\backslash\)n'}
+72         )
+73         \textcolor{keywordflow}{return} a1\_persona, a2\_persona
+74 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1light__dialog_1_1worlds_1_1InteractiveSimpleWorld_a80912ce3904fd06850c824311c7d2731}\label{classparlai_1_1tasks_1_1light__dialog_1_1worlds_1_1InteractiveSimpleWorld_a80912ce3904fd06850c824311c7d2731}} 
 \index{parlai\+::tasks\+::light\+\_\+dialog\+::worlds\+::\+Interactive\+Simple\+World@{parlai\+::tasks\+::light\+\_\+dialog\+::worlds\+::\+Interactive\+Simple\+World}!load\+\_\+personas@{load\+\_\+personas}}
@@ -146,7 +147,7 @@ Definition at line 20 of file worlds.\+py.
 23         light\_opt[\textcolor{stringliteral}{'task'}] = \textcolor{stringliteral}{'light\_dialog'}
 24         light\_opt[\textcolor{stringliteral}{'interactive\_task'}] = \textcolor{keyword}{False}
 25         light\_agent = RepeatLabelAgent(light\_opt)
-26         self.light\_world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(light\_opt, light\_agent)
+26         self.light\_world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a79969c7ba76d4b3c500f5bb776444dc6}{create\_task}(light\_opt, light\_agent)
 27         self.cnt = 0
 28 
 \end{DoxyCode}
@@ -162,45 +163,46 @@ Alternate between the two agents.
 \end{DoxyVerb}
  
 
-Definition at line 72 of file worlds.\+py.
+Definition at line 75 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-72     \textcolor{keyword}{def }parley(self):
-73         \textcolor{stringliteral}{"""}
-74 \textcolor{stringliteral}{        Agent 0 goes first.}
-75 \textcolor{stringliteral}{}
-76 \textcolor{stringliteral}{        Alternate between the two agents.}
-77 \textcolor{stringliteral}{        """}
-78         \textcolor{keywordflow}{if} self.cnt == 0:
-79             self.p1, self.p2 = self.get\_new\_personas()
-80 
-81         acts = self.acts
-82         agents = self.agents
-83         \textcolor{keywordflow}{if} self.cnt == 0:
-84             \textcolor{comment}{# add the persona on to the first message to agent 0}
-85             act = \{\}
-86             act[\textcolor{stringliteral}{'text'}] = self.p1
-87             act[\textcolor{stringliteral}{'episode\_done'}] = \textcolor{keyword}{False}
-88             act[\textcolor{stringliteral}{'id'}] = \textcolor{stringliteral}{'persona'}
-89             agents[0].observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(act))
-90         act = deepcopy(agents[0].act())
-91         \textcolor{keywordflow}{if} self.cnt == 0:
-92             \textcolor{comment}{# add the persona on to the first message to agent 1}
-93             act.force\_set(\textcolor{stringliteral}{'text'}, self.p2 + act.get(\textcolor{stringliteral}{'text'}, \textcolor{stringliteral}{'hi'}))
-94             agents[1].observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(act))
-95         \textcolor{keywordflow}{else}:
-96             agents[1].observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(act))
-97         acts[1] = agents[1].act()
-98         agents[0].observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(acts[1]))
-99         self.update\_counters()
-100         self.cnt += 1
-101 
-102         \textcolor{keywordflow}{if} act[\textcolor{stringliteral}{'episode\_done'}]:
-103             print(\textcolor{stringliteral}{"CHAT DONE "})
-104             print(\textcolor{stringliteral}{"\(\backslash\)n... preparing new chat... \(\backslash\)n"})
-105             self.cnt = 0
-106 \end{DoxyCode}
+75     \textcolor{keyword}{def }parley(self):
+76         \textcolor{stringliteral}{"""}
+77 \textcolor{stringliteral}{        Agent 0 goes first.}
+78 \textcolor{stringliteral}{}
+79 \textcolor{stringliteral}{        Alternate between the two agents.}
+80 \textcolor{stringliteral}{        """}
+81         \textcolor{keywordflow}{if} self.cnt == 0:
+82             self.p1, self.p2 = self.get\_new\_personas()
+83 
+84         acts = self.acts
+85         agents = self.agents
+86         \textcolor{keywordflow}{if} self.cnt == 0:
+87             \textcolor{comment}{# add the persona on to the first message to agent 0}
+88             act = \{\}
+89             act[\textcolor{stringliteral}{'text'}] = self.p1
+90             act[\textcolor{stringliteral}{'episode\_done'}] = \textcolor{keyword}{False}
+91             act[\textcolor{stringliteral}{'id'}] = \textcolor{stringliteral}{'persona'}
+92             agents[0].observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(act))
+93         act = deepcopy(agents[0].act())
+94         acts[0] = act
+95         \textcolor{keywordflow}{if} self.cnt == 0:
+96             \textcolor{comment}{# add the persona on to the first message to agent 1}
+97             act.force\_set(\textcolor{stringliteral}{'text'}, self.p2 + act.get(\textcolor{stringliteral}{'text'}, \textcolor{stringliteral}{'hi'}))
+98             agents[1].observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(act))
+99         \textcolor{keywordflow}{else}:
+100             agents[1].observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(act))
+101         acts[1] = agents[1].act()
+102         agents[0].observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(acts[1]))
+103         self.update\_counters()
+104         self.cnt += 1
+105 
+106         \textcolor{keywordflow}{if} act[\textcolor{stringliteral}{'episode\_done'}]:
+107             print(\textcolor{stringliteral}{"CHAT DONE "})
+108             print(\textcolor{stringliteral}{"\(\backslash\)n... preparing new chat... \(\backslash\)n"})
+109             self.cnt = 0
+110 \end{DoxyCode}
 
 
 \subsection{Member Data Documentation}
@@ -232,7 +234,7 @@ Definition at line 26 of file worlds.\+py.
 
 
 
-Definition at line 79 of file worlds.\+py.
+Definition at line 82 of file worlds.\+py.
 
 
 
