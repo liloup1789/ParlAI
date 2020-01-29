@@ -13,16 +13,37 @@ import copy, os
 
 from .build import build
 
-def _path(opt, filtered):
+def _path(opt):
 # build the data if it does not exist
     build(opt)
-
-    # set up path to data (specific to each dataset)
+    prefix = os.path.join(opt['datapath'], 'cologne')
+    print("prefix = {}".format(prefix))
+# set up path to data (specific to each dataset)
     print(opt['datapath'])
+    suffix = ''
     dt = opt['datatype'].split(':')[0]
+    if dt == 'train':
+        suffix = 'trn'
+    elif dt == 'test':
+        suffix = 'tst'
+    elif dt == 'valid':
+        suffix = 'dev'
+    datafile = os.path.join(prefix,
+       'cologne-{type}.txt'.format( type=suffix)
+    )
+    print("datafile = {}".format(datafile))
     print(dt)
+    cands_datafile = os.path.join(prefix,'cologne-cands.txt')
+    print(cands_datafile)
     # print(os.path.join(opt['datapath'], 'cologne', 'pmctestparlai.txt'))
-    return os.path.join(opt['datapath'], 'cologne', 'pmctestparlai.txt')
+    return datafile, cands_datafile
+
+
+class TaskTeacher(FbDialogTeacher):
+    def __init__(self, opt, shared=None):
+        paths = _path(opt)
+        opt['datafile'], opt['cands_datafile'] = paths
+        super().__init__(opt, shared)
 
 class CologneTeacher(ParlAIDialogTeacher):
     """
@@ -47,11 +68,11 @@ class CologneTeacher(ParlAIDialogTeacher):
         # self.reset()
         print(self.id)
         
-class DefaultTeacher(CologneTeacher):
+class DefaultTeacher(TaskTeacher):
 
     def init(self, opt, shared=None):
         super().init(opt, shared)
         opt = copy.deepcopy(opt)
 
         # get datafile
-        opt['datafile'] = _path(opt, '')
+        opt['datafile'] = _path(opt)

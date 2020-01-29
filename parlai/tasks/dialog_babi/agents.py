@@ -19,9 +19,13 @@ tasks[6] = 'dialog-babi-task6-dstc2'
 
 
 def _path(task, opt):
+    print(task)
+    print(type(task))
     # Build the data if it doesn't exist.
     build(opt)
+    print(opt['task'])
     prefix = os.path.join(opt['datapath'], 'dialog-bAbI', 'dialog-bAbI-tasks')
+    print("prefix = {}".format(prefix))
     suffix = ''
     dt = opt['datatype'].split(':')[0]
     if dt == 'train':
@@ -33,7 +37,7 @@ def _path(task, opt):
     datafile = os.path.join(
         prefix, '{tsk}-{type}.txt'.format(tsk=tasks[int(task)], type=suffix)
     )
-
+    print("datafile = {}".format(datafile))
     if opt['task'].split(':')[2] != '6':
         cands_datafile = os.path.join(prefix, 'dialog-babi-candidates.txt')
     else:

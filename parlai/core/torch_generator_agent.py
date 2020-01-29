@@ -18,14 +18,11 @@ Contains the following utilities:
 """
 
 from abc import ABC, abstractmethod
-<<<<<<< HEAD
 from typing import TypeVar
 
 from typing import TypeVar
 
-=======
 from typing import TypeVar, List
->>>>>>> upstrea/master
 import math
 from operator import attrgetter
 
@@ -892,7 +889,6 @@ class TorchGeneratorAgent(TorchAgent, ABC):
         else:
             dev = batch.label_vec.device
 
-<<<<<<< HEAD
         bsz = len(batch.text_lengths)
         beams = [
             self._treesearch_factory(dev).set_context(ctx) for ctx in batch.text_vec
@@ -903,7 +899,7 @@ class TorchGeneratorAgent(TorchAgent, ABC):
         beams = [self._treesearch_factory(dev) for _ in range(bsz)]
 
         beams = [self._treesearch_factory(dev) for _ in range(bsz)]
-=======
+
         bsz = (
             len(batch.text_lengths)
             if batch.text_lengths is not None
@@ -915,7 +911,6 @@ class TorchGeneratorAgent(TorchAgent, ABC):
             ]
         else:
             beams = [self._treesearch_factory(dev) for _ in range(bsz)]
->>>>>>> upstrea/master
 
         # repeat encoder outputs and decoder inputs
         decoder_input = (
