@@ -74,15 +74,11 @@ $(function() {
 Inheritance diagram for image_chat_collection.worlds.PersonalityGenerator:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d7/d4e/classimage__chat__collection_1_1worlds_1_1PersonalityGenerator__inherit__graph.png" border="0" usemap="#image__chat__collection_8worlds_8PersonalityGenerator_inherit__map" alt="Inheritance graph"/></div>
-<map name="image__chat__collection_8worlds_8PersonalityGenerator_inherit__map" id="image__chat__collection_8worlds_8PersonalityGenerator_inherit__map">
-</map>
 <center><span class="legend">[<a href="../../graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for image_chat_collection.worlds.PersonalityGenerator:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../de/da9/classimage__chat__collection_1_1worlds_1_1PersonalityGenerator__coll__graph.png" border="0" usemap="#image__chat__collection_8worlds_8PersonalityGenerator_coll__map" alt="Collaboration graph"/></div>
-<map name="image__chat__collection_8worlds_8PersonalityGenerator_coll__map" id="image__chat__collection_8worlds_8PersonalityGenerator_coll__map">
-</map>
 <center><span class="legend">[<a href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -111,7 +107,7 @@ Public Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html#l00055">55</a> of file <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html">worlds.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html#l00056">56</a> of file <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html">worlds.py</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aea4fe82298d9fea4e7b20b3380a47c99"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aea4fe82298d9fea4e7b20b3380a47c99">&#9670;&nbsp;</a></span>__init__()</h2>
@@ -139,8 +135,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html#l00056">56</a> of file <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html">worlds.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">def </span>__init__(self, opt):</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        self.personalities_path = os.path.join(</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            opt[<span class="stringliteral">&#39;datapath&#39;</span>], <span class="stringliteral">&#39;personality_captions/personalities.json&#39;</span></div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        )</div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        self.personalities_idx_stack_path = os.path.join(</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            os.getcwd(), <span class="stringliteral">&#39;./personalities_idx_stack.pkl&#39;</span></div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        )</div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        self.personalities = []</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        with open(self.personalities_path) <span class="keyword">as</span> f:</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            p_dict = json.load(f)</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            self.personalities = [p <span class="keywordflow">for</span> p_type <span class="keywordflow">in</span> p_dict.values() <span class="keywordflow">for</span> p <span class="keywordflow">in</span> p_type]</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">if</span> os.path.exists(self.personalities_idx_stack_path):</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            with open(self.personalities_idx_stack_path, <span class="stringliteral">&#39;rb&#39;</span>) <span class="keyword">as</span> handle:</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                self.idx_stack = pickle.load(handle)</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">else</span>:</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            self.idx_stack = []</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            self.add_idx_stack()</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            self.save_idx_stack()</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div></div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html#l00057">57</a> of file <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html">worlds.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keyword">def </span>__init__(self, opt):</div><div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        self.personalities_path = os.path.join(</div><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            opt[<span class="stringliteral">&#39;datapath&#39;</span>], <span class="stringliteral">&#39;personality_captions/personalities.json&#39;</span></div><div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        )</div><div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        self.personalities_idx_stack_path = os.path.join(</div><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            os.getcwd(), <span class="stringliteral">&#39;./personalities_idx_stack.pkl&#39;</span></div><div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        )</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div><div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        self.personalities = []</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div><div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        with open(self.personalities_path) <span class="keyword">as</span> f:</div><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            p_dict = json.load(f)</div><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            self.personalities = [p <span class="keywordflow">for</span> p_type <span class="keywordflow">in</span> p_dict.values() <span class="keywordflow">for</span> p <span class="keywordflow">in</span> p_type]</div><div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">if</span> os.path.exists(self.personalities_idx_stack_path):</div><div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            with open(self.personalities_idx_stack_path, <span class="stringliteral">&#39;rb&#39;</span>) <span class="keyword">as</span> handle:</div><div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                self.idx_stack = pickle.load(handle)</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">else</span>:</div><div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            self.idx_stack = []</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            self.add_idx_stack()</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            self.save_idx_stack()</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -160,8 +156,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html#l00078">78</a> of file <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html">worlds.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">def </span>add_idx_stack(self):</div><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        stack = [i <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(len(self.personalities))]</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        random.seed()</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        random.shuffle(stack)</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        self.idx_stack = stack + self.idx_stack</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div></div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html#l00079">79</a> of file <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html">worlds.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keyword">def </span>add_idx_stack(self):</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        stack = [i <span class="keywordflow">for</span> i <span class="keywordflow">in</span> range(len(self.personalities))]</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        random.seed()</div><div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        random.shuffle(stack)</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        self.idx_stack = stack + self.idx_stack</div><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div></div><!-- fragment -->
 </div>
 </div>
 <a id="ad35601df7a905c1e043c6fb1117db74e"></a>
@@ -180,8 +176,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html#l00084">84</a> of file <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html">worlds.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keyword">def </span>pop_personality(self):</div><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">if</span> len(self.idx_stack) == 0:</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            self.add_idx_stack()</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        idx = self.idx_stack.pop()</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        data = self.personalities[idx]</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordflow">return</span> (idx, data)</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div></div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html#l00085">85</a> of file <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html">worlds.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keyword">def </span>pop_personality(self):</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">if</span> len(self.idx_stack) == 0:</div><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            self.add_idx_stack()</div><div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        idx = self.idx_stack.pop()</div><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        data = self.personalities[idx]</div><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">return</span> (idx, data)</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div></div><!-- fragment -->
 </div>
 </div>
 <a id="afbcf297c74564898b5c96d29c017c7b1"></a>
@@ -210,8 +206,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html#l00091">91</a> of file <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html">worlds.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keyword">def </span>push_personality(self, idx):</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        self.idx_stack.append(idx)</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div></div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html#l00092">92</a> of file <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html">worlds.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    <span class="keyword">def </span>push_personality(self, idx):</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        self.idx_stack.append(idx)</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a19645254b8da82832d6bcb0825119c65"></a>
@@ -230,8 +226,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html#l00094">94</a> of file <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html">worlds.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keyword">def </span>save_idx_stack(self):</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        with open(self.personalities_idx_stack_path, <span class="stringliteral">&#39;wb&#39;</span>) <span class="keyword">as</span> handle:</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            pickle.dump(self.idx_stack, handle)</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div></div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html#l00095">95</a> of file <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html">worlds.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keyword">def </span>save_idx_stack(self):</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        with open(self.personalities_idx_stack_path, <span class="stringliteral">&#39;wb&#39;</span>) <span class="keyword">as</span> handle:</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            pickle.dump(self.idx_stack, handle)</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -247,7 +243,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html#l00072">72</a> of file <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html">worlds.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html#l00073">73</a> of file <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html">worlds.py</a>.</p>
 
 </div>
 </div>
@@ -263,7 +259,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html#l00064">64</a> of file <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html">worlds.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html#l00065">65</a> of file <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html">worlds.py</a>.</p>
 
 </div>
 </div>
@@ -279,7 +275,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html#l00060">60</a> of file <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html">worlds.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html#l00061">61</a> of file <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html">worlds.py</a>.</p>
 
 </div>
 </div>
@@ -295,7 +291,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html#l00057">57</a> of file <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html">worlds.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html#l00058">58</a> of file <a class="el" href="../../d7/d7a/parlai_2mturk_2tasks_2image__chat_2image__chat__collection_2worlds_8py_source.html">worlds.py</a>.</p>
 
 </div>
 </div>

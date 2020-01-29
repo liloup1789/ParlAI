@@ -2,8 +2,8 @@ var searchData=
 [
   ['fakedict',['FakeDict',['../d0/d4a/classtests_1_1test__ta__inheritence_1_1FakeDict.html',1,'tests::test_ta_inheritence']]],
   ['fbdialogteacher',['FbDialogTeacher',['../de/dec/classparlai_1_1core_1_1teachers_1_1FbDialogTeacher.html',1,'parlai::core::teachers']]],
-  ['fbformat2teacher',['Fbformat2Teacher',['../db/dab/classparlai_1_1tasks_1_1fromfile_1_1agents_1_1Fbformat2Teacher.html',1,'parlai.tasks.fromfile.agents.Fbformat2Teacher'],['../db/db6/classparlai_1_1tasks_1_1cologne_1_1agents_1_1Fbformat2Teacher.html',1,'parlai.tasks.cologne.agents.Fbformat2Teacher']]],
-  ['fbformatteacher',['FbformatTeacher',['../dd/d9b/classparlai_1_1tasks_1_1fromfile_1_1agents_1_1FbformatTeacher.html',1,'parlai.tasks.fromfile.agents.FbformatTeacher'],['../db/d5d/classparlai_1_1tasks_1_1cologne_1_1agents_1_1FbformatTeacher.html',1,'parlai.tasks.cologne.agents.FbformatTeacher']]],
+  ['fbformat2teacher',['Fbformat2Teacher',['../db/dab/classparlai_1_1tasks_1_1fromfile_1_1agents_1_1Fbformat2Teacher.html',1,'parlai::tasks::fromfile::agents']]],
+  ['fbformatteacher',['FbformatTeacher',['../dd/d9b/classparlai_1_1tasks_1_1fromfile_1_1agents_1_1FbformatTeacher.html',1,'parlai::tasks::fromfile::agents']]],
   ['feedbackclassifierregex',['FeedbackClassifierRegex',['../d5/dba/classprojects_1_1self__feeding_1_1feedback__classifier_1_1feedback__classifier_1_1FeedbackClassifierRegex.html',1,'projects::self_feeding::feedback_classifier::feedback_classifier']]],
   ['feedbackteacher',['FeedbackTeacher',['../d9/d06/classparlai_1_1tasks_1_1self__feeding_1_1agents_1_1FeedbackTeacher.html',1,'parlai::tasks::self_feeding::agents']]],
   ['filteredteacher',['FilteredTeacher',['../d2/d33/classparlai_1_1tasks_1_1wikiqa_1_1agents_1_1FilteredTeacher.html',1,'parlai::tasks::wikiqa::agents']]],

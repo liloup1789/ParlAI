@@ -1,0 +1,104 @@
+\hypertarget{classtests_1_1test__examples_1_1TestExampleSeq2Seq}{}\section{tests.\+test\+\_\+examples.\+Test\+Example\+Seq2\+Seq Class Reference}
+\label{classtests_1_1test__examples_1_1TestExampleSeq2Seq}\index{tests.\+test\+\_\+examples.\+Test\+Example\+Seq2\+Seq@{tests.\+test\+\_\+examples.\+Test\+Example\+Seq2\+Seq}}
+
+
+Inheritance diagram for tests.\+test\+\_\+examples.\+Test\+Example\+Seq2\+Seq\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{da/dd4/classtests_1_1test__examples_1_1TestExampleSeq2Seq__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for tests.\+test\+\_\+examples.\+Test\+Example\+Seq2\+Seq\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{d9/d86/classtests_1_1test__examples_1_1TestExampleSeq2Seq__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classtests_1_1test__examples_1_1TestExampleSeq2Seq_a288b619db2ba3d957b8afff63143baba}{test\+\_\+generation} (self)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classtests_1_1test__examples_1_1TestExampleSeq2Seq_a4fab0cbc7ef41b880a229fcd895dd279}{ntries}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Checks that the example seq2seq generator model gives the expected ppl when trained
+on ConvAI2.
+\end{DoxyVerb}
+ 
+
+Definition at line 15 of file test\+\_\+examples.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtests_1_1test__examples_1_1TestExampleSeq2Seq_a288b619db2ba3d957b8afff63143baba}\label{classtests_1_1test__examples_1_1TestExampleSeq2Seq_a288b619db2ba3d957b8afff63143baba}} 
+\index{tests\+::test\+\_\+examples\+::\+Test\+Example\+Seq2\+Seq@{tests\+::test\+\_\+examples\+::\+Test\+Example\+Seq2\+Seq}!test\+\_\+generation@{test\+\_\+generation}}
+\index{test\+\_\+generation@{test\+\_\+generation}!tests\+::test\+\_\+examples\+::\+Test\+Example\+Seq2\+Seq@{tests\+::test\+\_\+examples\+::\+Test\+Example\+Seq2\+Seq}}
+\subsubsection{\texorpdfstring{test\+\_\+generation()}{test\_generation()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+examples.\+Test\+Example\+Seq2\+Seq.\+test\+\_\+generation (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 22 of file test\+\_\+examples.\+py.
+
+
+\begin{DoxyCode}
+22     \textcolor{keyword}{def }test\_generation(self):
+23         stdout, valid, test = testing\_utils.train\_model(
+24             dict(
+25                 task=\textcolor{stringliteral}{'integration\_tests:nocandidate'},
+26                 model=\textcolor{stringliteral}{'examples/seq2seq'},
+27                 learningrate=LR,
+28                 batchsize=BATCH\_SIZE,
+29                 num\_epochs=NUM\_EPOCHS,
+30                 numthreads=1,
+31                 no\_cuda=\textcolor{keyword}{True},
+32                 embeddingsize=16,
+33                 hiddensize=16,
+34                 gradient\_clip=1.0,
+35                 inference=\textcolor{stringliteral}{'beam'},
+36                 beam\_size=4,
+37             )
+38         )
+39 
+40         self.assertTrue(
+41             valid[\textcolor{stringliteral}{'token\_acc'}] > 0.9,
+42             \textcolor{stringliteral}{"valid token\_acc = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(valid[\textcolor{stringliteral}{'token\_acc'}], stdout),
+43         )
+44         self.assertTrue(
+45             test[\textcolor{stringliteral}{'token\_acc'}] > 0.9,
+46             \textcolor{stringliteral}{"test token\_acc = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(test[\textcolor{stringliteral}{'token\_acc'}], stdout),
+47         )
+48 
+49 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classtests_1_1test__examples_1_1TestExampleSeq2Seq_a4fab0cbc7ef41b880a229fcd895dd279}\label{classtests_1_1test__examples_1_1TestExampleSeq2Seq_a4fab0cbc7ef41b880a229fcd895dd279}} 
+\index{tests\+::test\+\_\+examples\+::\+Test\+Example\+Seq2\+Seq@{tests\+::test\+\_\+examples\+::\+Test\+Example\+Seq2\+Seq}!ntries@{ntries}}
+\index{ntries@{ntries}!tests\+::test\+\_\+examples\+::\+Test\+Example\+Seq2\+Seq@{tests\+::test\+\_\+examples\+::\+Test\+Example\+Seq2\+Seq}}
+\subsubsection{\texorpdfstring{ntries}{ntries}}
+{\footnotesize\ttfamily tests.\+test\+\_\+examples.\+Test\+Example\+Seq2\+Seq.\+ntries\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 21 of file test\+\_\+examples.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+tests/\hyperlink{test__examples_8py}{test\+\_\+examples.\+py}\end{DoxyCompactItemize}

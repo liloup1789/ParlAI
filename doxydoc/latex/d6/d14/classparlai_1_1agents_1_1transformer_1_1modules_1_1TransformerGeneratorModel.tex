@@ -2,8 +2,7 @@
 \label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerGeneratorModel}\index{parlai.\+agents.\+transformer.\+modules.\+Transformer\+Generator\+Model@{parlai.\+agents.\+transformer.\+modules.\+Transformer\+Generator\+Model}}
 
 
-Inheritance diagram for parlai.\+agents.\+transformer.\+modules.\+Transformer\+Generator\+Model\+:
-\nopagebreak
+Inheritance diagram for parlai.\+agents.\+transformer.\+modules.\+Transformer\+Generator\+Model\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+agents.\+transformer.\+modules.\+Transformer\+G
 \end{figure}
 
 
-Collaboration diagram for parlai.\+agents.\+transformer.\+modules.\+Transformer\+Generator\+Model\+:
-\nopagebreak
+Collaboration diagram for parlai.\+agents.\+transformer.\+modules.\+Transformer\+Generator\+Model\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -27,7 +25,7 @@ def \hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerGen
 \item 
 def \hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerGeneratorModel_a9b9261bca59f10692c15cbaaa3ffce65}{reorder\+\_\+encoder\+\_\+states} (self, encoder\+\_\+states, indices)
 \item 
-def \hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerGeneratorModel_a7ee3a87dd94d18353bca09990e8d5821}{reorder\+\_\+decoder\+\_\+incremental\+\_\+state} (self, incremental\+\_\+state, inds)
+def \hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerGeneratorModel_a3b03690f271b1a65764e3812b2417ba2}{reorder\+\_\+decoder\+\_\+incremental\+\_\+state}
 \item 
 def \hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerGeneratorModel_ae0f0d3d038cc12075501aae3a059c997}{output} (self, tensor)
 \end{DoxyCompactItemize}
@@ -53,7 +51,7 @@ def \hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerGen
 \end{DoxyVerb}
  
 
-Definition at line 806 of file modules.\+py.
+Definition at line 863 of file modules.\+py.
 
 
 
@@ -66,50 +64,50 @@ Definition at line 806 of file modules.\+py.
 
 
 
-Definition at line 811 of file modules.\+py.
+Definition at line 868 of file modules.\+py.
 
 
 \begin{DoxyCode}
-811     \textcolor{keyword}{def }\_\_init\_\_(self, opt, dictionary):
-812         self.pad\_idx = dictionary[dictionary.null\_token]
-813         self.start\_idx = dictionary[dictionary.start\_token]
-814         self.end\_idx = dictionary[dictionary.end\_token]
-815         super().\_\_init\_\_(self.pad\_idx, self.start\_idx, self.end\_idx)
-816         self.embeddings = \_create\_embeddings(
-817             dictionary, opt[\textcolor{stringliteral}{'embedding\_size'}], self.pad\_idx
-818         )
-819 
-820         \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'n\_positions'}):
-821             \textcolor{comment}{# if the number of positions is explicitly provided, use that}
-822             n\_positions = opt[\textcolor{stringliteral}{'n\_positions'}]
-823         \textcolor{keywordflow}{else}:
-824             \textcolor{comment}{# else, use the worst case from truncate}
-825             n\_positions = max(
-826                 opt.get(\textcolor{stringliteral}{'truncate'}) \textcolor{keywordflow}{or} 0,
-827                 opt.get(\textcolor{stringliteral}{'text\_truncate'}) \textcolor{keywordflow}{or} 0,
-828                 opt.get(\textcolor{stringliteral}{'label\_truncate'}) \textcolor{keywordflow}{or} 0,
-829             )
-830             \textcolor{keywordflow}{if} n\_positions == 0:
-831                 \textcolor{comment}{# default to 1024}
-832                 n\_positions = 1024
-833         n\_segments = opt.get(\textcolor{stringliteral}{'n\_segments'}, 0)
-834 
-835         \textcolor{keywordflow}{if} n\_positions < 0:
-836             \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{'n\_positions must be positive'})
-837 
-838         self.encoder = \_build\_encoder(
-839             opt,
-840             dictionary,
-841             self.embeddings,
-842             self.pad\_idx,
-843             reduction\_type=\textcolor{keywordtype}{None},
-844             n\_positions=n\_positions,
-845             n\_segments=n\_segments,
-846         )
-847         self.decoder = \_build\_decoder(
-848             opt, dictionary, self.embeddings, self.pad\_idx, n\_positions=n\_positions
-849         )
-850 
+868     \textcolor{keyword}{def }\_\_init\_\_(self, opt, dictionary):
+869         self.pad\_idx = dictionary[dictionary.null\_token]
+870         self.start\_idx = dictionary[dictionary.start\_token]
+871         self.end\_idx = dictionary[dictionary.end\_token]
+872         super().\_\_init\_\_(self.pad\_idx, self.start\_idx, self.end\_idx)
+873         self.embeddings = \_create\_embeddings(
+874             dictionary, opt[\textcolor{stringliteral}{'embedding\_size'}], self.pad\_idx
+875         )
+876 
+877         \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'n\_positions'}):
+878             \textcolor{comment}{# if the number of positions is explicitly provided, use that}
+879             n\_positions = opt[\textcolor{stringliteral}{'n\_positions'}]
+880         \textcolor{keywordflow}{else}:
+881             \textcolor{comment}{# else, use the worst case from truncate}
+882             n\_positions = max(
+883                 opt.get(\textcolor{stringliteral}{'truncate'}) \textcolor{keywordflow}{or} 0,
+884                 opt.get(\textcolor{stringliteral}{'text\_truncate'}) \textcolor{keywordflow}{or} 0,
+885                 opt.get(\textcolor{stringliteral}{'label\_truncate'}) \textcolor{keywordflow}{or} 0,
+886             )
+887             \textcolor{keywordflow}{if} n\_positions == 0:
+888                 \textcolor{comment}{# default to 1024}
+889                 n\_positions = 1024
+890         n\_segments = opt.get(\textcolor{stringliteral}{'n\_segments'}, 0)
+891 
+892         \textcolor{keywordflow}{if} n\_positions < 0:
+893             \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{'n\_positions must be positive'})
+894 
+895         self.encoder = \_build\_encoder(
+896             opt,
+897             dictionary,
+898             self.embeddings,
+899             self.pad\_idx,
+900             reduction\_type=\textcolor{keywordtype}{None},
+901             n\_positions=n\_positions,
+902             n\_segments=n\_segments,
+903         )
+904         self.decoder = \_build\_decoder(
+905             opt, dictionary, self.embeddings, self.pad\_idx, n\_positions=n\_positions
+906         )
+907 
 \end{DoxyCode}
 
 
@@ -124,45 +122,33 @@ Definition at line 811 of file modules.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 873 of file modules.\+py.
+Definition at line 937 of file modules.\+py.
 
 
 \begin{DoxyCode}
-873     \textcolor{keyword}{def }output(self, tensor):
-874         \textcolor{stringliteral}{"""}
-875 \textcolor{stringliteral}{        Compute output logits.}
-876 \textcolor{stringliteral}{        """}
-877         \textcolor{comment}{# project back to vocabulary}
-878         output = F.linear(tensor, self.embeddings.weight)
-879         \textcolor{keywordflow}{return} output
-880 
-881 
+937     \textcolor{keyword}{def }output(self, tensor):
+938         \textcolor{stringliteral}{"""}
+939 \textcolor{stringliteral}{        Compute output logits.}
+940 \textcolor{stringliteral}{        """}
+941         \textcolor{comment}{# project back to vocabulary}
+942         output = F.linear(tensor, self.embeddings.weight)
+943         \textcolor{keywordflow}{return} output
+944 
+945 
 \end{DoxyCode}
-\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerGeneratorModel_a7ee3a87dd94d18353bca09990e8d5821}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerGeneratorModel_a7ee3a87dd94d18353bca09990e8d5821}} 
+\mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerGeneratorModel_a3b03690f271b1a65764e3812b2417ba2}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerGeneratorModel_a3b03690f271b1a65764e3812b2417ba2}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Generator\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Generator\+Model}!reorder\+\_\+decoder\+\_\+incremental\+\_\+state@{reorder\+\_\+decoder\+\_\+incremental\+\_\+state}}
 \index{reorder\+\_\+decoder\+\_\+incremental\+\_\+state@{reorder\+\_\+decoder\+\_\+incremental\+\_\+state}!parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Generator\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Generator\+Model}}
 \subsubsection{\texorpdfstring{reorder\+\_\+decoder\+\_\+incremental\+\_\+state()}{reorder\_decoder\_incremental\_state()}}
-{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+modules.\+Transformer\+Generator\+Model.\+reorder\+\_\+decoder\+\_\+incremental\+\_\+state (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{incremental\+\_\+state,  }\item[{}]{inds }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily def parlai.\+agents.\+transformer.\+modules.\+Transformer\+Generator\+Model.\+reorder\+\_\+decoder\+\_\+incremental\+\_\+state (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{incremental\+\_\+state }\end{DoxyParamCaption})}
 
-\begin{DoxyVerb}Reorder the decoder incremental state.
 
-Not implemented in Transformers, since ``incremental_state`` is always None.
-\end{DoxyVerb}
- 
 
-Definition at line 864 of file modules.\+py.
+Definition at line 922 of file modules.\+py.
 
 
 \begin{DoxyCode}
-864     \textcolor{keyword}{def }reorder\_decoder\_incremental\_state(self, incremental\_state, inds):
-865         \textcolor{stringliteral}{"""}
-866 \textcolor{stringliteral}{        Reorder the decoder incremental state.}
-867 \textcolor{stringliteral}{}
-868 \textcolor{stringliteral}{        Not implemented in Transformers, since ``incremental\_state`` is always None.}
-869 \textcolor{stringliteral}{        """}
-870         \textcolor{comment}{# no support for incremental decoding at this time}
-871         \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}
-872 
+922         self, incremental\_state: Dict[int, dict], inds: torch.Tensor
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerGeneratorModel_a9b9261bca59f10692c15cbaaa3ffce65}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerGeneratorModel_a9b9261bca59f10692c15cbaaa3ffce65}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Generator\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Generator\+Model}!reorder\+\_\+encoder\+\_\+states@{reorder\+\_\+encoder\+\_\+states}}
@@ -176,23 +162,23 @@ See ``TorchGeneratorModel.reorder_encoder_states`` for a description.
 \end{DoxyVerb}
  
 
-Definition at line 851 of file modules.\+py.
+Definition at line 908 of file modules.\+py.
 
 
 \begin{DoxyCode}
-851     \textcolor{keyword}{def }reorder\_encoder\_states(self, encoder\_states, indices):
-852         \textcolor{stringliteral}{"""}
-853 \textcolor{stringliteral}{        Reorder the encoder states.}
-854 \textcolor{stringliteral}{}
-855 \textcolor{stringliteral}{        See ``TorchGeneratorModel.reorder\_encoder\_states`` for a description.}
-856 \textcolor{stringliteral}{        """}
-857         enc, mask = encoder\_states
-858         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} torch.is\_tensor(indices):
-859             indices = torch.LongTensor(indices).to(enc.device)
-860         enc = torch.index\_select(enc, 0, indices)
-861         mask = torch.index\_select(mask, 0, indices)
-862         \textcolor{keywordflow}{return} enc, mask
-863 
+908     \textcolor{keyword}{def }reorder\_encoder\_states(self, encoder\_states, indices):
+909         \textcolor{stringliteral}{"""}
+910 \textcolor{stringliteral}{        Reorder the encoder states.}
+911 \textcolor{stringliteral}{}
+912 \textcolor{stringliteral}{        See ``TorchGeneratorModel.reorder\_encoder\_states`` for a description.}
+913 \textcolor{stringliteral}{        """}
+914         enc, mask = encoder\_states
+915         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} torch.is\_tensor(indices):
+916             indices = torch.LongTensor(indices).to(enc.device)
+917         enc = torch.index\_select(enc, 0, indices)
+918         mask = torch.index\_select(mask, 0, indices)
+919         \textcolor{keywordflow}{return} enc, mask
+920 
 \end{DoxyCode}
 
 
@@ -205,7 +191,7 @@ Definition at line 851 of file modules.\+py.
 
 
 
-Definition at line 847 of file modules.\+py.
+Definition at line 904 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerGeneratorModel_a18411754103e8c8f4cd2e9338351b98d}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerGeneratorModel_a18411754103e8c8f4cd2e9338351b98d}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Generator\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Generator\+Model}!embeddings@{embeddings}}
@@ -215,7 +201,7 @@ Definition at line 847 of file modules.\+py.
 
 
 
-Definition at line 816 of file modules.\+py.
+Definition at line 873 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerGeneratorModel_af165b8ec1505f768c530aea02d68ae09}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerGeneratorModel_af165b8ec1505f768c530aea02d68ae09}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Generator\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Generator\+Model}!encoder@{encoder}}
@@ -225,7 +211,7 @@ Definition at line 816 of file modules.\+py.
 
 
 
-Definition at line 838 of file modules.\+py.
+Definition at line 895 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerGeneratorModel_ab2b8403205fcd407e47546dc56022d2f}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerGeneratorModel_ab2b8403205fcd407e47546dc56022d2f}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Generator\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Generator\+Model}!end\+\_\+idx@{end\+\_\+idx}}
@@ -235,7 +221,7 @@ Definition at line 838 of file modules.\+py.
 
 
 
-Definition at line 814 of file modules.\+py.
+Definition at line 871 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerGeneratorModel_aefac02b3630ef361bb008b4f7973c55b}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerGeneratorModel_aefac02b3630ef361bb008b4f7973c55b}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Generator\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Generator\+Model}!pad\+\_\+idx@{pad\+\_\+idx}}
@@ -245,7 +231,7 @@ Definition at line 814 of file modules.\+py.
 
 
 
-Definition at line 812 of file modules.\+py.
+Definition at line 869 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerGeneratorModel_a381b6d63e5aba194730c36d9fb93c6d6}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerGeneratorModel_a381b6d63e5aba194730c36d9fb93c6d6}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Generator\+Model@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Generator\+Model}!start\+\_\+idx@{start\+\_\+idx}}
@@ -255,7 +241,7 @@ Definition at line 812 of file modules.\+py.
 
 
 
-Definition at line 813 of file modules.\+py.
+Definition at line 870 of file modules.\+py.
 
 
 

@@ -2,8 +2,7 @@
 \label{classprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_1_1EndToEndModel}\index{projects.\+wizard\+\_\+of\+\_\+wikipedia.\+generator.\+modules.\+End\+To\+End\+Model@{projects.\+wizard\+\_\+of\+\_\+wikipedia.\+generator.\+modules.\+End\+To\+End\+Model}}
 
 
-Inheritance diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+generator.\+modules.\+End\+To\+End\+Model\+:
-\nopagebreak
+Inheritance diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+generator.\+modules.\+End\+To\+End\+Model\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+generator.\+m
 \end{figure}
 
 
-Collaboration diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+generator.\+modules.\+End\+To\+End\+Model\+:
-\nopagebreak
+Collaboration diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+generator.\+modules.\+End\+To\+End\+Model\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -26,6 +24,8 @@ Collaboration diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+generator.\
 def \hyperlink{classprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_1_1EndToEndModel_a247a986cf18f9711f93d2336d653779e}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, opt, dictionary)
 \item 
 def \hyperlink{classprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_1_1EndToEndModel_a619ee6377355376fd7fe43779dc54bea}{reorder\+\_\+encoder\+\_\+states} (self, encoder\+\_\+out, indices)
+\item 
+def \hyperlink{classprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_1_1EndToEndModel_a43e9de2e4b0239b9e9a13e5543793a21}{reorder\+\_\+decoder\+\_\+incremental\+\_\+state}
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -39,7 +39,7 @@ def \hyperlink{classprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_1_
 \subsection{Detailed Description}
 
 
-Definition at line 39 of file modules.\+py.
+Definition at line 41 of file modules.\+py.
 
 
 
@@ -52,19 +52,33 @@ Definition at line 39 of file modules.\+py.
 
 
 
-Definition at line 40 of file modules.\+py.
+Definition at line 42 of file modules.\+py.
 
 
 \begin{DoxyCode}
-40     \textcolor{keyword}{def }\_\_init\_\_(self, opt, dictionary):
-41         super().\_\_init\_\_(opt, dictionary)
-42         self.encoder = ContextKnowledgeEncoder(self.encoder)
-43         self.decoder = ContextKnowledgeDecoder(self.decoder)
-44 
+42     \textcolor{keyword}{def }\_\_init\_\_(self, opt, dictionary):
+43         super().\_\_init\_\_(opt, dictionary)
+44         self.encoder = ContextKnowledgeEncoder(self.encoder)
+45         self.decoder = ContextKnowledgeDecoder(self.decoder)
+46 
 \end{DoxyCode}
 
 
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_1_1EndToEndModel_a43e9de2e4b0239b9e9a13e5543793a21}\label{classprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_1_1EndToEndModel_a43e9de2e4b0239b9e9a13e5543793a21}} 
+\index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::generator\+::modules\+::\+End\+To\+End\+Model@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::generator\+::modules\+::\+End\+To\+End\+Model}!reorder\+\_\+decoder\+\_\+incremental\+\_\+state@{reorder\+\_\+decoder\+\_\+incremental\+\_\+state}}
+\index{reorder\+\_\+decoder\+\_\+incremental\+\_\+state@{reorder\+\_\+decoder\+\_\+incremental\+\_\+state}!projects\+::wizard\+\_\+of\+\_\+wikipedia\+::generator\+::modules\+::\+End\+To\+End\+Model@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::generator\+::modules\+::\+End\+To\+End\+Model}}
+\subsubsection{\texorpdfstring{reorder\+\_\+decoder\+\_\+incremental\+\_\+state()}{reorder\_decoder\_incremental\_state()}}
+{\footnotesize\ttfamily def projects.\+wizard\+\_\+of\+\_\+wikipedia.\+generator.\+modules.\+End\+To\+End\+Model.\+reorder\+\_\+decoder\+\_\+incremental\+\_\+state (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{incremental\+\_\+state }\end{DoxyParamCaption})}
+
+
+
+Definition at line 57 of file modules.\+py.
+
+
+\begin{DoxyCode}
+57         self, incremental\_state: Dict[int, dict], inds: th.Tensor
+\end{DoxyCode}
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_1_1EndToEndModel_a619ee6377355376fd7fe43779dc54bea}\label{classprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_1_1EndToEndModel_a619ee6377355376fd7fe43779dc54bea}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::generator\+::modules\+::\+End\+To\+End\+Model@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::generator\+::modules\+::\+End\+To\+End\+Model}!reorder\+\_\+encoder\+\_\+states@{reorder\+\_\+encoder\+\_\+states}}
 \index{reorder\+\_\+encoder\+\_\+states@{reorder\+\_\+encoder\+\_\+states}!projects\+::wizard\+\_\+of\+\_\+wikipedia\+::generator\+::modules\+::\+End\+To\+End\+Model@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::generator\+::modules\+::\+End\+To\+End\+Model}}
@@ -73,20 +87,19 @@ Definition at line 40 of file modules.\+py.
 
 
 
-Definition at line 45 of file modules.\+py.
+Definition at line 47 of file modules.\+py.
 
 
 \begin{DoxyCode}
-45     \textcolor{keyword}{def }reorder\_encoder\_states(self, encoder\_out, indices):
-46         enc, mask, ckattn = encoder\_out
-47         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} th.is\_tensor(indices):
-48             indices = th.LongTensor(indices).to(enc.device)
-49         enc = th.index\_select(enc, 0, indices)
-50         mask = th.index\_select(mask, 0, indices)
-51         ckattn = th.index\_select(ckattn, 0, indices)
-52         \textcolor{keywordflow}{return} enc, mask, ckattn
-53 
-54 
+47     \textcolor{keyword}{def }reorder\_encoder\_states(self, encoder\_out, indices):
+48         enc, mask, ckattn = encoder\_out
+49         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} th.is\_tensor(indices):
+50             indices = th.LongTensor(indices).to(enc.device)
+51         enc = th.index\_select(enc, 0, indices)
+52         mask = th.index\_select(mask, 0, indices)
+53         ckattn = th.index\_select(ckattn, 0, indices)
+54         \textcolor{keywordflow}{return} enc, mask, ckattn
+55 
 \end{DoxyCode}
 
 
@@ -99,7 +112,7 @@ Definition at line 45 of file modules.\+py.
 
 
 
-Definition at line 43 of file modules.\+py.
+Definition at line 45 of file modules.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_1_1EndToEndModel_a4d6ecf9a0df55b1124ffd4eec6bfb018}\label{classprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_1_1EndToEndModel_a4d6ecf9a0df55b1124ffd4eec6bfb018}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::generator\+::modules\+::\+End\+To\+End\+Model@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::generator\+::modules\+::\+End\+To\+End\+Model}!encoder@{encoder}}
@@ -109,7 +122,7 @@ Definition at line 43 of file modules.\+py.
 
 
 
-Definition at line 42 of file modules.\+py.
+Definition at line 44 of file modules.\+py.
 
 
 

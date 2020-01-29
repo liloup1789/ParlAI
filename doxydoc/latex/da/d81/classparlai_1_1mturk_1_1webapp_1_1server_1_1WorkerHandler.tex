@@ -2,8 +2,7 @@
 \label{classparlai_1_1mturk_1_1webapp_1_1server_1_1WorkerHandler}\index{parlai.\+mturk.\+webapp.\+server.\+Worker\+Handler@{parlai.\+mturk.\+webapp.\+server.\+Worker\+Handler}}
 
 
-Inheritance diagram for parlai.\+mturk.\+webapp.\+server.\+Worker\+Handler\+:
-\nopagebreak
+Inheritance diagram for parlai.\+mturk.\+webapp.\+server.\+Worker\+Handler\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+mturk.\+webapp.\+server.\+Worker\+Handler\+:
 \end{figure}
 
 
-Collaboration diagram for parlai.\+mturk.\+webapp.\+server.\+Worker\+Handler\+:
-\nopagebreak
+Collaboration diagram for parlai.\+mturk.\+webapp.\+server.\+Worker\+Handler\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -45,7 +43,7 @@ def \hyperlink{classparlai_1_1mturk_1_1webapp_1_1server_1_1WorkerHandler_ae2d5a8
 \subsection{Detailed Description}
 
 
-Definition at line 366 of file server.\+py.
+Definition at line 371 of file server.\+py.
 
 
 
@@ -58,22 +56,22 @@ Definition at line 366 of file server.\+py.
 
 
 
-Definition at line 374 of file server.\+py.
+Definition at line 379 of file server.\+py.
 
 
 \begin{DoxyCode}
-374     \textcolor{keyword}{def }get(self, worker\_target):
-375         assignments = self.data\_handler.get\_all\_assignments\_for\_worker(worker\_target)
-376         pairings = self.data\_handler.get\_all\_pairings\_for\_worker(worker\_target)
-377         processed\_assignments = \hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_abe6ddbf97d0e5c26315fa927ed076489}{merge\_assignments\_with\_pairings}(
-378             assignments, pairings, \textcolor{stringliteral}{'task \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(worker\_target)
-379         )
-380         worker\_details = \hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a92be47964fa33a4b6a14d4069d091c7d}{row\_to\_dict}(self.data\_handler.get\_worker\_data(worker\_target))
-381         data = \{\textcolor{stringliteral}{'worker\_details'}: worker\_details, \textcolor{stringliteral}{'assignments'}: processed\_assignments\}
-382 
-383         self.write(json.dumps(data))
-384 
-385 
+379     \textcolor{keyword}{def }get(self, worker\_target):
+380         assignments = self.data\_handler.get\_all\_assignments\_for\_worker(worker\_target)
+381         pairings = self.data\_handler.get\_all\_pairings\_for\_worker(worker\_target)
+382         processed\_assignments = \hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_abe6ddbf97d0e5c26315fa927ed076489}{merge\_assignments\_with\_pairings}(
+383             assignments, pairings, \textcolor{stringliteral}{'task \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(worker\_target)
+384         )
+385         worker\_details = \hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a92be47964fa33a4b6a14d4069d091c7d}{row\_to\_dict}(self.data\_handler.get\_worker\_data(worker\_target))
+386         data = \{\textcolor{stringliteral}{'worker\_details'}: worker\_details, \textcolor{stringliteral}{'assignments'}: processed\_assignments\}
+387 
+388         self.write(json.dumps(data))
+389 
+390 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1WorkerHandler_a6e358648dc6628021fe6384d2741c2cc}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1WorkerHandler_a6e358648dc6628021fe6384d2741c2cc}} 
 \index{parlai\+::mturk\+::webapp\+::server\+::\+Worker\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Worker\+Handler}!initialize@{initialize}}
@@ -83,17 +81,17 @@ Definition at line 374 of file server.\+py.
 
 
 
-Definition at line 367 of file server.\+py.
+Definition at line 372 of file server.\+py.
 
 
 \begin{DoxyCode}
-367     \textcolor{keyword}{def }initialize(self, app):
-368         self.state = app.state
-369         self.subs = app.subs
-370         self.sources = app.sources
-371         self.port = app.port
-372         self.data\_handler = app.data\_handler
-373 
+372     \textcolor{keyword}{def }initialize(self, app):
+373         self.state = app.state
+374         self.subs = app.subs
+375         self.sources = app.sources
+376         self.port = app.port
+377         self.data\_handler = app.data\_handler
+378 
 \end{DoxyCode}
 
 
@@ -106,7 +104,7 @@ Definition at line 367 of file server.\+py.
 
 
 
-Definition at line 372 of file server.\+py.
+Definition at line 377 of file server.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1WorkerHandler_aee8590b08e1a2011424d0145473f849e}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1WorkerHandler_aee8590b08e1a2011424d0145473f849e}} 
 \index{parlai\+::mturk\+::webapp\+::server\+::\+Worker\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Worker\+Handler}!port@{port}}
@@ -116,7 +114,7 @@ Definition at line 372 of file server.\+py.
 
 
 
-Definition at line 371 of file server.\+py.
+Definition at line 376 of file server.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1WorkerHandler_a1ea89751b206df02f704b20ec39458ca}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1WorkerHandler_a1ea89751b206df02f704b20ec39458ca}} 
 \index{parlai\+::mturk\+::webapp\+::server\+::\+Worker\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Worker\+Handler}!sources@{sources}}
@@ -126,7 +124,7 @@ Definition at line 371 of file server.\+py.
 
 
 
-Definition at line 370 of file server.\+py.
+Definition at line 375 of file server.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1WorkerHandler_af6f56f70aa5d37190629bb460f76f5bf}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1WorkerHandler_af6f56f70aa5d37190629bb460f76f5bf}} 
 \index{parlai\+::mturk\+::webapp\+::server\+::\+Worker\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Worker\+Handler}!state@{state}}
@@ -136,7 +134,7 @@ Definition at line 370 of file server.\+py.
 
 
 
-Definition at line 368 of file server.\+py.
+Definition at line 373 of file server.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1WorkerHandler_a688a67d4e6ea07a81ac7b122bd1c2c25}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1WorkerHandler_a688a67d4e6ea07a81ac7b122bd1c2c25}} 
 \index{parlai\+::mturk\+::webapp\+::server\+::\+Worker\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Worker\+Handler}!subs@{subs}}
@@ -146,7 +144,7 @@ Definition at line 368 of file server.\+py.
 
 
 
-Definition at line 369 of file server.\+py.
+Definition at line 374 of file server.\+py.
 
 
 

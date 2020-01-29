@@ -1,6 +1,8 @@
 var searchData=
 [
+  ['test_20agents',['Test Agents',['../df/d6b/md_parlai_agents_test_agents_README.html',1,'']]],
   ['tfidf_20retriever',['TFIDF Retriever',['../d9/dd2/md_parlai_agents_tfidf_retriever_README.html',1,'']]],
+  ['transformer',['Transformer',['../db/da2/md_parlai_agents_transformer_README.html',1,'']]],
   ['terminal_20chat',['Terminal Chat',['../dd/d6d/md_parlai_chat_service_services_terminal_chat_README.html',1,'']]],
   ['task_3a_20aqua',['Task: AQuA',['../d0/d03/md_parlai_tasks_aqua_README.html',1,'']]],
   ['task_3a_20babi_201k',['Task: bAbI 1k',['../dc/dd2/md_parlai_tasks_babi_README.html',1,'']]],
@@ -43,6 +45,7 @@ var searchData=
   ['task_3a_20mwsc_20pronoun_20resolution',['Task: MWSC pronoun resolution',['../d3/d96/md_parlai_tasks_mwsc_README.html',1,'']]],
   ['task_3a_20narrativeqa',['Task: NarrativeQA',['../d3/d01/md_parlai_tasks_narrative_qa_README.html',1,'']]],
   ['task_3a_20nlvr',['Task: nlvr',['../dd/d6c/md_parlai_tasks_nlvr_README.html',1,'']]],
+  ['task_3a_20one_20common',['Task: One Common',['../de/d5e/md_parlai_tasks_onecommon_README.html',1,'']]],
   ['task_3a_20open_20subtitles',['Task: Open Subtitles',['../dd/d3c/md_parlai_tasks_opensubtitles_README.html',1,'']]],
   ['task_3a_20persona_2dchat',['Task: Persona-Chat',['../df/dc0/md_parlai_tasks_personachat_README.html',1,'']]],
   ['task_3a_20personality_5fcaptions',['Task: Personality_Captions',['../d8/dc7/md_parlai_tasks_personality_captions_README.html',1,'']]],

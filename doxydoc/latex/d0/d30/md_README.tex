@@ -1,3 +1,24 @@
+\subsection*{Fonctionnement minimal \+:}
+
+\subsubsection*{Créer une tâche -\/$>$ build.\+py pour télécharger le corpus et l\textquotesingle{}installer dans le répertoire /data. Si déjà présent, ne rien faire. -\/$>$ agents.\+py qui crée les teachers \+: ce sont eux qui parsent les données (en mode entraînement, ils stockent le text + les labels) et qui se mettent automatiquement en mode question-\/answering, ou dialogue. Ce sont eux qui vont jouer le rôle de l\textquotesingle{}utilisateur pour entraîner les agents. Parl\+AI fournit tout un tas de teachers, le nôtre est une classe fille de Parl\+A\+I\+D\+Ialog\+Teacher, je te laisse regarder la doc.}
+
+\subsubsection*{Utiliser Parl\+AI -\/$>$ dans le répertoire /examples il y\textquotesingle{}a tout un tas de scripts (relativement bourrins) qui servent à comprendre comment marche le système de monde. \hyperlink{namespacedisplay__data}{display\+\_\+data} est un bon exemple \+:}
+
+
+\begin{DoxyItemize}
+\item $\ast$$\ast$ On crée un monde qui, par défaut, s\textquotesingle{}accorde avec nos données (class Dialogue\+World (World)), cela implémente la méthode world.\+parlai() -\/$>$ agent1 ( le teacher).act() / agent2 (l\textquotesingle{}apprenant).observe() / agent2.\+act / agent1.\+observe.
+\item $\ast$$\ast$ les méthodes act et observe sont propres à chaque agent. Dans le cas du teacher, nous utilisons celles par défaut. Là où c\textquotesingle{}est intéressant c\textquotesingle{}est pour l\textquotesingle{}apprenant.
+\item $\ast$$\ast$ Pour charger un agent apprenant, Parl\+AI implémente un certain nombre de modèles d\textquotesingle{}agents. Nous utilisons pour \hyperlink{namespacedisplay__data}{display\+\_\+data} l\textquotesingle{}agent Reapeat\+Label Agent, qui lit ce que lui donne le teacher et le recrache tel un perroquet des îles. \subsubsection*{Dans le script train\+\_\+data.\+py nous utilisons l\textquotesingle{}exemple Mem\+N\+N\+Agent (aka memory\+Network Agent) qui va se comporter d\textquotesingle{}une façon particulière par rapport à d\textquotesingle{}autres agents d\textquotesingle{}apprentissage. Les résultats de l\textquotesingle{}apprentissage sont sauvegardés dans un fichier de modèle.}
+\end{DoxyItemize}
+
+
+\begin{DoxyItemize}
+\item $\ast$$\ast$ dans le main, une boucle while not \char`\"{}\+E\+P\+O\+C\+H D\+O\+N\+E\char`\"{} enveloppe world.\+parlai. Tant que tous les dialogues ne sont pas appris, cela continue.
+\item $\ast$$\ast$ Le framework derrière tous les agents d\textquotesingle{}apprentissage est Py\+Torch, il y\textquotesingle{}a d\textquotesingle{}ailleurs une classe Torch\+Agent dont la plupart des agents héritent. Dont le Mem\+NN Agent.
+\end{DoxyItemize}
+
+\subsubsection*{Tu peux trouver les scripts que j\textquotesingle{}ai faits entièrement from scratch dans /parlai/tasks/cologne. les données sont dans /data/cologne}
+
 
 
 \href{https://github.com/facebookresearch/ParlAI/blob/master/LICENSE}{\tt } \href{https://circleci.com/gh/facebookresearch/ParlAI/tree/master}{\tt } https\+://github.com/facebookresearch/\+Parl\+A\+I/blob/master/\+C\+O\+N\+T\+R\+I\+B\+U\+T\+I\+N\+G.\+md \char`\"{}!\mbox{[}\+P\+Rs Welcome\mbox{]}(https\+://img.\+shields.\+io/badge/\+P\+Rs-\/welcome-\/brightgreen.\+svg)\char`\"{} \href{https://twitter.com/parlai_parley}{\tt } 
@@ -10,18 +31,21 @@ Its goal is to provide researchers\+:
 
 
 \begin{DoxyItemize}
-\item {\bfseries 70+ popular datasets available all in one place, with the same A\+PI}, among them \href{https://rajpurkar.github.io/SQuAD-explorer/}{\tt S\+Qu\+AD}, \href{http://www.msmarco.org/}{\tt MS M\+A\+R\+CO}, \href{https://www.aclweb.org/anthology/D18-1241}{\tt Qu\+AC}, \href{https://hotpotqa.github.io/}{\tt Hotpot\+QA}, \href{https://arxiv.org/abs/1506.03340}{\tt Q\+A\+C\+NN \& Q\+A\+Daily\+Mail}, \href{https://arxiv.org/abs/1511.02301}{\tt C\+BT}, \href{https://arxiv.org/abs/1610.00956}{\tt Book\+Test}, \href{https://arxiv.org/abs/1605.07683}{\tt b\+AbI Dialogue tasks}, \href{https://arxiv.org/abs/1506.08909}{\tt Ubuntu Dialogue}, \href{https://arxiv.org/abs/1801.07243}{\tt Persona\+Chat}, \href{http://opus.lingfil.uu.se/OpenSubtitles.php}{\tt Open\+Subtitles}, \href{https://openreview.net/forum?id=r1l73iRqKm}{\tt Wizard of Wikipedia}, \href{http://visualqa.org/}{\tt V\+Q\+A-\/\+C\+O\+C\+O2014}, \href{https://arxiv.org/abs/1611.08669}{\tt Vis\+Dial} and \href{http://cs.stanford.edu/people/jcjohns/clevr/}{\tt C\+L\+E\+VR}. See the complete list \href{https://github.com/facebookresearch/ParlAI/blob/master/parlai/tasks/task_list.py}{\tt here}
-\item a wide set of {\bfseries reference models} -- from retrieval baselines to transformers.
-\item a large zoo of {\bfseries pretrained models} ready to use off-\/the-\/shelf
+\item {\bfseries 80+ popular datasets available all in one place, with the same A\+PI}, among them \href{https://arxiv.org/abs/1801.07243}{\tt Persona\+Chat}, \href{https://arxiv.org/abs/1710.03957}{\tt Daily\+Dialog}, \href{https://openreview.net/forum?id=r1l73iRqKm}{\tt Wizard of Wikipedia}, \href{https://arxiv.org/abs/1811.00207}{\tt Empathetic Dialogues}, \href{https://rajpurkar.github.io/SQuAD-explorer/}{\tt S\+Qu\+AD}, \href{http://www.msmarco.org/}{\tt MS M\+A\+R\+CO}, \href{https://www.aclweb.org/anthology/D18-1241}{\tt Qu\+AC}, \href{https://hotpotqa.github.io/}{\tt Hotpot\+QA}, \href{https://arxiv.org/abs/1506.03340}{\tt Q\+A\+C\+NN \& Q\+A\+Daily\+Mail}, \href{https://arxiv.org/abs/1511.02301}{\tt C\+BT}, \href{https://arxiv.org/abs/1610.00956}{\tt Book\+Test}, \href{https://arxiv.org/abs/1605.07683}{\tt b\+AbI Dialogue tasks}, \href{https://arxiv.org/abs/1506.08909}{\tt Ubuntu Dialogue}, \href{http://opus.lingfil.uu.se/OpenSubtitles.php}{\tt Open\+Subtitles}, \href{https://arxiv.org/abs/1811.00945}{\tt Image Chat}, \href{http://visualqa.org/}{\tt V\+QA}, \href{https://arxiv.org/abs/1611.08669}{\tt Vis\+Dial} and \href{http://cs.stanford.edu/people/jcjohns/clevr/}{\tt C\+L\+E\+VR}. See the complete list \href{https://github.com/facebookresearch/ParlAI/blob/master/parlai/tasks/task_list.py}{\tt here}.
+\item a wide set of \href{https://www.parl.ai/docs/agents_list.html}{\tt {\bfseries reference models}} -- from retrieval baselines to transformers.
+\item a large \href{https://parl.ai/docs/zoo.html}{\tt zoo of {\bfseries pretrained models}} ready to use off-\/the-\/shelf
 \item seamless {\bfseries integration of \href{https://www.mturk.com/mturk/welcome}{\tt Amazon Mechanical Turk}} for data collection and human evaluation
 \item {\bfseries integration with \href{http://www.parl.ai/docs/tutorial_messenger.html}{\tt Facebook Messenger}} to connect agents with humans in a chat interface
 \item a large range of {\bfseries helpers to create your own agents} and train on several tasks with {\bfseries multitasking}
 \item {\bfseries multimodality}, some tasks use text and images
 \end{DoxyItemize}
 
-Parl\+AI is described in the following paper\+: \href{https://arxiv.org/abs/1705.06476}{\tt “\+Parl\+A\+I\+: A Dialog Research Software Platform", ar\+Xiv\+:1705.\+06476}.
+Parl\+AI is described in the following paper\+: \href{https://arxiv.org/abs/1705.06476}{\tt “\+Parl\+A\+I\+: A Dialog Research Software Platform\char`\"{}, ar\+Xiv\+:1705.\+06476$<$/a$>$
+or see these $<$a href=\char`\"{}https\+://drive.\+google.\+com/file/d/1\+Jf\+U\+W4\+A\+Vrj\+Sp8\+X8\+Fp0\+\_\+r\+T\+T\+Ro\+Lx\+Uf\+W0a\+Um/view?usp=sharing"$>$more up-\/to-\/date slides}.
 
 See the https\+://github.com/facebookresearch/\+Parl\+A\+I/blob/master/\+N\+E\+W\+S.\+md \char`\"{}news page\char`\"{} for the latest additions \& updates, and the website \href{http://parl.ai}{\tt http\+://parl.\+ai} for further docs.
+
+
 
 \subsection*{Installing Parl\+AI}
 
@@ -73,7 +97,7 @@ python examples/eval\_model.py -m ir\_baseline -t personachat -dt valid
 \end{DoxyCode}
 
 
-Train a single layer transformer on personachat (requires pytorch and torchtext). Detail\+: embedding size 300, 4 attention heads, 2 epochs using batchsize 64, word vectors are initialized with fasttext and the other elements of the batch are used as negative during training. 
+Train a single layer transformer on Persona\+Chat (requires pytorch and torchtext). Detail\+: embedding size 300, 4 attention heads, 2 epochs using batchsize 64, word vectors are initialized with fasttext and the other elements of the batch are used as negative during training. 
 \begin{DoxyCode}
 python examples/train\_model.py -t personachat -m transformer/ranker -mf /tmp/model\_tr6 --n-layers 1
        --embedding-size 300 --ffn-size 600 --n-heads 4 --num-epochs 2 -veps 0.25 -bs 64 -lr 0.001 --dropout 0.1
@@ -102,7 +126,9 @@ If you have any questions, bug reports or feature requests, please don\textquote
 
 \subsection*{The Team}
 
-Parl\+AI is currently maintained by Emily Dinan, Alexander H. Miller, Stephen Roller, Kurt Shuster, Jack Urbanek and Jason Weston. A non-\/exhaustive list of other major contributors includes\+: Will Feng, Adam Fisch, Jiasen Lu, Antoine Bordes, Devi Parikh, Dhruv Batra, Filipe de Avila Belbute Peres and Chao Pan.
+Parl\+AI is currently maintained by Emily Dinan, Dexter Ju, Margaret Li, Spencer Poff, Pratik Ringshia, Stephen Roller, Kurt Shuster, Eric Michael Smith, Jack Urbanek, Jason Weston, and Mary Williamson.
+
+Former major contributors and maintainers include Alexander H. Miller, Will Feng, Adam Fisch, Jiasen Lu, Antoine Bordes, Devi Parikh, Dhruv Batra, Filipe de Avila Belbute Peres and Chao Pan.
 
 \subsection*{Citation}
 

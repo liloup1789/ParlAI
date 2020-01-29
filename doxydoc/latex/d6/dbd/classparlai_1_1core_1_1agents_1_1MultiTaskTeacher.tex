@@ -2,8 +2,7 @@
 \label{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher}\index{parlai.\+core.\+agents.\+Multi\+Task\+Teacher@{parlai.\+core.\+agents.\+Multi\+Task\+Teacher}}
 
 
-Inheritance diagram for parlai.\+core.\+agents.\+Multi\+Task\+Teacher\+:
-\nopagebreak
+Inheritance diagram for parlai.\+core.\+agents.\+Multi\+Task\+Teacher\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+core.\+agents.\+Multi\+Task\+Teacher\+:
 \end{figure}
 
 
-Collaboration diagram for parlai.\+core.\+agents.\+Multi\+Task\+Teacher\+:
-\nopagebreak
+Collaboration diagram for parlai.\+core.\+agents.\+Multi\+Task\+Teacher\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -23,7 +21,7 @@ Collaboration diagram for parlai.\+core.\+agents.\+Multi\+Task\+Teacher\+:
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-def \hyperlink{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a986db56e2967759e65b3c1bdb975057d}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a116b724be9c512d36f1d43cb9be86b78}{opt}, shared=None)
+def \hyperlink{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a6f2172c82decdf5b4cad871c654c5e2f}{\+\_\+\+\_\+init\+\_\+\+\_\+}
 \item 
 def \hyperlink{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a21fa6d0565bd35e54a74806ecca62e34}{num\+\_\+examples} (self)
 \item 
@@ -50,11 +48,11 @@ def \hyperlink{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a259dd3bec3f246
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a5d284137aebeea42719984d60d3d72f6}{tasks}
-\item 
 \hyperlink{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a116b724be9c512d36f1d43cb9be86b78}{opt}
 \item 
 \hyperlink{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a875d7474eb3fcb0ff1b302db284ebf7b}{id}
+\item 
+\hyperlink{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a5d284137aebeea42719984d60d3d72f6}{tasks}
 \item 
 \hyperlink{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_aff3455bc2af79f632214a4de2bad3d11}{task\+\_\+idx}
 \item 
@@ -85,55 +83,55 @@ function above.
 \end{DoxyVerb}
  
 
-Definition at line 275 of file agents.\+py.
+Definition at line 277 of file agents.\+py.
 
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a986db56e2967759e65b3c1bdb975057d}\label{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a986db56e2967759e65b3c1bdb975057d}} 
+\mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a6f2172c82decdf5b4cad871c654c5e2f}\label{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a6f2172c82decdf5b4cad871c654c5e2f}} 
 \index{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher@{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
 \index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher@{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher}}
 \subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
-{\footnotesize\ttfamily def parlai.\+core.\+agents.\+Multi\+Task\+Teacher.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{shared = {\ttfamily None} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily def parlai.\+core.\+agents.\+Multi\+Task\+Teacher.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt }\end{DoxyParamCaption})}
 
 
 
-Definition at line 288 of file agents.\+py.
+Definition at line 290 of file agents.\+py.
 
 
 \begin{DoxyCode}
-288     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
-289         self.tasks = []
-290         self.opt = opt
-291 
-292         self.id = opt[\textcolor{stringliteral}{'task'}]
-293         \textcolor{keywordflow}{if} shared \textcolor{keywordflow}{and} \textcolor{stringliteral}{'tasks'} \textcolor{keywordflow}{in} shared:
-294             self.tasks = [\hyperlink{namespaceparlai_1_1core_1_1agents_aa5af5dd1d2f9da491b60348d479b849f}{create\_agent\_from\_shared}(t) \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} shared[\textcolor{stringliteral}{'tasks'}]]
-295         \textcolor{keywordflow}{else}:
-296             tasks = opt[\textcolor{stringliteral}{'task'}].split(\textcolor{stringliteral}{','})
-297             \textcolor{keywordflow}{for} k \textcolor{keywordflow}{in} tasks:
-298                 k = k.strip()
-299                 \textcolor{keywordflow}{if} k:
-300                     opt\_singletask = copy.deepcopy(opt)
-301                     opt\_singletask[\textcolor{stringliteral}{'task'}] = k
-302                     self.tasks.extend(\hyperlink{namespaceparlai_1_1core_1_1agents_ab4473fa54af02b5ab385b41b51dacd10}{create\_task\_agent\_from\_taskname}(
+290     \textcolor{keyword}{def }\_\_init\_\_(self, opt: Opt, shared=\textcolor{keywordtype}{None}):
+291         self.tasks: List[Agent] = []
+292         self.opt = opt
+293 
+294         self.id = opt[\textcolor{stringliteral}{'task'}]
+295         \textcolor{keywordflow}{if} shared \textcolor{keywordflow}{and} \textcolor{stringliteral}{'tasks'} \textcolor{keywordflow}{in} shared:
+296             self.tasks = [\hyperlink{namespaceparlai_1_1core_1_1agents_aa5af5dd1d2f9da491b60348d479b849f}{create\_agent\_from\_shared}(t) \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} shared[\textcolor{stringliteral}{'tasks'}]]
+297         \textcolor{keywordflow}{else}:
+298             tasks = opt[\textcolor{stringliteral}{'task'}].split(\textcolor{stringliteral}{','})
+299             \textcolor{keywordflow}{for} k \textcolor{keywordflow}{in} tasks:
+300                 k = k.strip()
+301                 \textcolor{keywordflow}{if} k:
+302                     opt\_singletask = copy.deepcopy(opt)
+303                     opt\_singletask[\textcolor{stringliteral}{'task'}] = k
+304                     self.tasks.extend(\hyperlink{namespaceparlai_1_1core_1_1agents_a76269fb567532a8fb7f29edcc20a6e47}{create\_task\_agent\_from\_taskname}(
       opt\_singletask))
-303         self.task\_idx = -1
-304         self.new\_task = \textcolor{keyword}{True}
-305         self.random = opt.get(\textcolor{stringliteral}{'datatype'}) == \textcolor{stringliteral}{'train'}
-306         \textcolor{comment}{# Make multi-task task probabilities.}
-307         self.cum\_task\_weights = [1] * len(self.tasks)
-308         self.task\_choices = range(len(self.tasks))
-309         weights = self.opt.get(\textcolor{stringliteral}{'multitask\_weights'}, [1])
-310         sum = 0
-311         \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} self.task\_choices:
-312             \textcolor{keywordflow}{if} len(weights) > i:
-313                 weight = weights[i]
-314             \textcolor{keywordflow}{else}:
-315                 weight = 1
-316             self.cum\_task\_weights[i] = weight + sum
-317             sum += weight
-318 
+305         self.task\_idx = -1
+306         self.new\_task = \textcolor{keyword}{True}
+307         self.random = opt.get(\textcolor{stringliteral}{'datatype'}) == \textcolor{stringliteral}{'train'}
+308         \textcolor{comment}{# Make multi-task task probabilities.}
+309         self.cum\_task\_weights = [1] * len(self.tasks)
+310         self.task\_choices = range(len(self.tasks))
+311         weights = self.opt.get(\textcolor{stringliteral}{'multitask\_weights'}, [1])
+312         sum = 0
+313         \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} self.task\_choices:
+314             \textcolor{keywordflow}{if} len(weights) > i:
+315                 weight = weights[i]
+316             \textcolor{keywordflow}{else}:
+317                 weight = 1
+318             self.cum\_task\_weights[i] = weight + sum
+319             sum += weight
+320 
 \end{DoxyCode}
 
 
@@ -148,36 +146,36 @@ Definition at line 288 of file agents.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 351 of file agents.\+py.
+Definition at line 353 of file agents.\+py.
 
 
 \begin{DoxyCode}
-351     \textcolor{keyword}{def }act(self):
-352         \textcolor{stringliteral}{"""}
-353 \textcolor{stringliteral}{        Act on the previous observation.}
-354 \textcolor{stringliteral}{        """}
-355         \textcolor{keywordflow}{if} self.new\_task:
-356             self.new\_task = \textcolor{keyword}{False}
-357             \textcolor{keywordflow}{if} self.random:
-358                 \textcolor{comment}{# select random teacher}
-359                 self.task\_idx = random.choices(
-360                     self.task\_choices, cum\_weights=self.cum\_task\_weights
-361                 )[0]
-362             \textcolor{keywordflow}{else}:
-363                 \textcolor{comment}{# do at most one full loop looking for unfinished task}
-364                 \textcolor{keywordflow}{for} \_ \textcolor{keywordflow}{in} range(len(self.tasks)):
-365                     self.task\_idx = (self.task\_idx + 1) % len(self.tasks)
-366                     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.tasks[self.task\_idx].epoch\_done():
-367                         \textcolor{comment}{# if this task has examples ready, break}
-368                         \textcolor{keywordflow}{break}
-369                 \textcolor{keywordflow}{if} self.tasks[self.task\_idx].epoch\_done():
-370                     \textcolor{comment}{# all tasks are done, so return empty action table}
-371                     \textcolor{keywordflow}{return} \{\textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}
-372         t = self.tasks[self.task\_idx].act()
-373         \textcolor{keywordflow}{if} t[\textcolor{stringliteral}{'episode\_done'}]:
-374             self.new\_task = \textcolor{keyword}{True}
-375         \textcolor{keywordflow}{return} t
-376 
+353     \textcolor{keyword}{def }act(self):
+354         \textcolor{stringliteral}{"""}
+355 \textcolor{stringliteral}{        Act on the previous observation.}
+356 \textcolor{stringliteral}{        """}
+357         \textcolor{keywordflow}{if} self.new\_task:
+358             self.new\_task = \textcolor{keyword}{False}
+359             \textcolor{keywordflow}{if} self.random:
+360                 \textcolor{comment}{# select random teacher}
+361                 self.task\_idx = random.choices(
+362                     self.task\_choices, cum\_weights=self.cum\_task\_weights
+363                 )[0]
+364             \textcolor{keywordflow}{else}:
+365                 \textcolor{comment}{# do at most one full loop looking for unfinished task}
+366                 \textcolor{keywordflow}{for} \_ \textcolor{keywordflow}{in} range(len(self.tasks)):
+367                     self.task\_idx = (self.task\_idx + 1) % len(self.tasks)
+368                     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.tasks[self.task\_idx].epoch\_done():
+369                         \textcolor{comment}{# if this task has examples ready, break}
+370                         \textcolor{keywordflow}{break}
+371                 \textcolor{keywordflow}{if} self.tasks[self.task\_idx].epoch\_done():
+372                     \textcolor{comment}{# all tasks are done, so return empty action table}
+373                     \textcolor{keywordflow}{return} \{\textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}
+374         t = self.tasks[self.task\_idx].act()
+375         \textcolor{keywordflow}{if} t[\textcolor{stringliteral}{'episode\_done'}]:
+376             self.new\_task = \textcolor{keyword}{True}
+377         \textcolor{keywordflow}{return} t
+378 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a17444e342ab19c23cee28bba08a64df9}\label{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a17444e342ab19c23cee28bba08a64df9}} 
 \index{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher@{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher}!epoch\+\_\+done@{epoch\+\_\+done}}
@@ -189,19 +187,19 @@ Definition at line 351 of file agents.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 377 of file agents.\+py.
+Definition at line 379 of file agents.\+py.
 
 
 \begin{DoxyCode}
-377     \textcolor{keyword}{def }epoch\_done(self):
-378         \textcolor{stringliteral}{"""}
-379 \textcolor{stringliteral}{        Return whether all subtasks are completed.}
-380 \textcolor{stringliteral}{        """}
-381         \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} self.tasks:
-382             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} t.epoch\_done():
-383                 \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-384         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
-385 
+379     \textcolor{keyword}{def }epoch\_done(self):
+380         \textcolor{stringliteral}{"""}
+381 \textcolor{stringliteral}{        Return whether all subtasks are completed.}
+382 \textcolor{stringliteral}{        """}
+383         \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} self.tasks:
+384             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} t.epoch\_done():
+385                 \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+386         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+387 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_ac292d1cb86a3769c352e2d3658f324d2}\label{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_ac292d1cb86a3769c352e2d3658f324d2}} 
 \index{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher@{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher}!num\+\_\+episodes@{num\+\_\+episodes}}
@@ -213,23 +211,23 @@ Definition at line 377 of file agents.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 332 of file agents.\+py.
+Definition at line 334 of file agents.\+py.
 
 
 \begin{DoxyCode}
-332     \textcolor{keyword}{def }num\_episodes(self):
-333         \textcolor{stringliteral}{"""}
-334 \textcolor{stringliteral}{        Return the number of episodes.}
-335 \textcolor{stringliteral}{        """}
-336         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} hasattr(self, \textcolor{stringliteral}{'num\_eps'}):
-337             \textcolor{comment}{# num\_episodes is sum of all num\_episodes in all tasks}
-338             tasks\_num\_eps = [t.num\_episodes() \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} self.tasks]
-339             \textcolor{keywordflow}{if} any(num \textcolor{keywordflow}{is} \textcolor{keywordtype}{None} \textcolor{keywordflow}{for} num \textcolor{keywordflow}{in} tasks\_num\_eps):
-340                 self.num\_eps = \textcolor{keywordtype}{None}
-341             \textcolor{keywordflow}{else}:
-342                 self.num\_eps = sum(tasks\_num\_eps)
-343         \textcolor{keywordflow}{return} self.num\_eps
-344 
+334     \textcolor{keyword}{def }num\_episodes(self):
+335         \textcolor{stringliteral}{"""}
+336 \textcolor{stringliteral}{        Return the number of episodes.}
+337 \textcolor{stringliteral}{        """}
+338         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} hasattr(self, \textcolor{stringliteral}{'num\_eps'}):
+339             \textcolor{comment}{# num\_episodes is sum of all num\_episodes in all tasks}
+340             tasks\_num\_eps = [t.num\_episodes() \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} self.tasks]
+341             \textcolor{keywordflow}{if} any(num \textcolor{keywordflow}{is} \textcolor{keywordtype}{None} \textcolor{keywordflow}{for} num \textcolor{keywordflow}{in} tasks\_num\_eps):
+342                 self.num\_eps = \textcolor{keywordtype}{None}
+343             \textcolor{keywordflow}{else}:
+344                 self.num\_eps = sum(tasks\_num\_eps)
+345         \textcolor{keywordflow}{return} self.num\_eps
+346 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a21fa6d0565bd35e54a74806ecca62e34}\label{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a21fa6d0565bd35e54a74806ecca62e34}} 
 \index{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher@{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher}!num\+\_\+examples@{num\+\_\+examples}}
@@ -241,23 +239,23 @@ Definition at line 332 of file agents.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 319 of file agents.\+py.
+Definition at line 321 of file agents.\+py.
 
 
 \begin{DoxyCode}
-319     \textcolor{keyword}{def }num\_examples(self):
-320         \textcolor{stringliteral}{"""}
-321 \textcolor{stringliteral}{        Return the number of examples.}
-322 \textcolor{stringliteral}{        """}
-323         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} hasattr(self, \textcolor{stringliteral}{'num\_exs'}):
-324             \textcolor{comment}{# num\_examples is sum of all examples in all tasks}
-325             tasks\_num\_exs = [t.num\_examples() \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} self.tasks]
-326             \textcolor{keywordflow}{if} any(num \textcolor{keywordflow}{is} \textcolor{keywordtype}{None} \textcolor{keywordflow}{for} num \textcolor{keywordflow}{in} tasks\_num\_exs):
-327                 self.num\_exs = \textcolor{keywordtype}{None}
-328             \textcolor{keywordflow}{else}:
-329                 self.num\_exs = sum(tasks\_num\_exs)
-330         \textcolor{keywordflow}{return} self.num\_exs
-331 
+321     \textcolor{keyword}{def }num\_examples(self):
+322         \textcolor{stringliteral}{"""}
+323 \textcolor{stringliteral}{        Return the number of examples.}
+324 \textcolor{stringliteral}{        """}
+325         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} hasattr(self, \textcolor{stringliteral}{'num\_exs'}):
+326             \textcolor{comment}{# num\_examples is sum of all examples in all tasks}
+327             tasks\_num\_exs = [t.num\_examples() \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} self.tasks]
+328             \textcolor{keywordflow}{if} any(num \textcolor{keywordflow}{is} \textcolor{keywordtype}{None} \textcolor{keywordflow}{for} num \textcolor{keywordflow}{in} tasks\_num\_exs):
+329                 self.num\_exs = \textcolor{keywordtype}{None}
+330             \textcolor{keywordflow}{else}:
+331                 self.num\_exs = sum(tasks\_num\_exs)
+332         \textcolor{keywordflow}{return} self.num\_exs
+333 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a42290221cabd0f1ca21cb87a2228af10}\label{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a42290221cabd0f1ca21cb87a2228af10}} 
 \index{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher@{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher}!observe@{observe}}
@@ -269,16 +267,16 @@ Definition at line 319 of file agents.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 345 of file agents.\+py.
+Definition at line 347 of file agents.\+py.
 
 
 \begin{DoxyCode}
-345     \textcolor{keyword}{def }observe(self, observation):
-346         \textcolor{stringliteral}{"""}
-347 \textcolor{stringliteral}{        Make an observation.}
-348 \textcolor{stringliteral}{        """}
-349         \textcolor{keywordflow}{return} self.tasks[self.task\_idx].observe(observation)
-350 
+347     \textcolor{keyword}{def }observe(self, observation):
+348         \textcolor{stringliteral}{"""}
+349 \textcolor{stringliteral}{        Make an observation.}
+350 \textcolor{stringliteral}{        """}
+351         \textcolor{keywordflow}{return} self.tasks[self.task\_idx].observe(observation)
+352 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_ac93a499c6438ee1b57d0ad6a702851ae}\label{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_ac93a499c6438ee1b57d0ad6a702851ae}} 
 \index{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher@{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher}!report@{report}}
@@ -290,16 +288,16 @@ Definition at line 345 of file agents.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 387 of file agents.\+py.
+Definition at line 389 of file agents.\+py.
 
 
 \begin{DoxyCode}
-387     \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}(self):
-388         \textcolor{stringliteral}{"""}
-389 \textcolor{stringliteral}{        Report aggregated metrics across all subtasks.}
-390 \textcolor{stringliteral}{        """}
-391         \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1core_1_1metrics_aa4ed5491962e06684b235fffe1b20fec}{aggregate\_metrics}(self.tasks)
-392 
+389     \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}(self):
+390         \textcolor{stringliteral}{"""}
+391 \textcolor{stringliteral}{        Report aggregated metrics across all subtasks.}
+392 \textcolor{stringliteral}{        """}
+393         \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1core_1_1metrics_aa4ed5491962e06684b235fffe1b20fec}{aggregate\_metrics}(self.tasks)
+394 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_ae4eeda38c4164498018ee6515050ae43}\label{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_ae4eeda38c4164498018ee6515050ae43}} 
 \index{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher@{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher}!reset@{reset}}
@@ -311,17 +309,17 @@ Definition at line 387 of file agents.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 393 of file agents.\+py.
+Definition at line 395 of file agents.\+py.
 
 
 \begin{DoxyCode}
-393     \textcolor{keyword}{def }reset(self):
-394         \textcolor{stringliteral}{"""}
-395 \textcolor{stringliteral}{        Reset all subtasks.}
-396 \textcolor{stringliteral}{        """}
-397         \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} self.tasks:
-398             t.reset()
-399 
+395     \textcolor{keyword}{def }reset(self):
+396         \textcolor{stringliteral}{"""}
+397 \textcolor{stringliteral}{        Reset all subtasks.}
+398 \textcolor{stringliteral}{        """}
+399         \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} self.tasks:
+400             t.reset()
+401 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a78eb3c163a158deda3bb6bd9000fcee2}\label{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a78eb3c163a158deda3bb6bd9000fcee2}} 
 \index{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher@{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher}!reset\+\_\+metrics@{reset\+\_\+metrics}}
@@ -333,17 +331,17 @@ Definition at line 393 of file agents.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 400 of file agents.\+py.
+Definition at line 402 of file agents.\+py.
 
 
 \begin{DoxyCode}
-400     \textcolor{keyword}{def }reset\_metrics(self):
-401         \textcolor{stringliteral}{"""}
-402 \textcolor{stringliteral}{        Reset metrics for each subtask.}
-403 \textcolor{stringliteral}{        """}
-404         \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} self.tasks:
-405             t.reset\_metrics()
-406 
+402     \textcolor{keyword}{def }reset\_metrics(self):
+403         \textcolor{stringliteral}{"""}
+404 \textcolor{stringliteral}{        Reset metrics for each subtask.}
+405 \textcolor{stringliteral}{        """}
+406         \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} self.tasks:
+407             t.reset\_metrics()
+408 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_abb082dd4c5be92b7ce7683b16d0abd2c}\label{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_abb082dd4c5be92b7ce7683b16d0abd2c}} 
 \index{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher@{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher}!save@{save}}
@@ -355,17 +353,17 @@ Definition at line 400 of file agents.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 407 of file agents.\+py.
+Definition at line 409 of file agents.\+py.
 
 
 \begin{DoxyCode}
-407     \textcolor{keyword}{def }save(self):
-408         \textcolor{stringliteral}{"""}
-409 \textcolor{stringliteral}{        Save each subtask.}
-410 \textcolor{stringliteral}{        """}
-411         \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} self.tasks:
-412             t.save()
-413 
+409     \textcolor{keyword}{def }save(self):
+410         \textcolor{stringliteral}{"""}
+411 \textcolor{stringliteral}{        Save each subtask.}
+412 \textcolor{stringliteral}{        """}
+413         \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} self.tasks:
+414             t.save()
+415 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_adbd1854cad9eb58ba1c7736b44bf5e96}\label{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_adbd1854cad9eb58ba1c7736b44bf5e96}} 
 \index{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher@{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher}!share@{share}}
@@ -377,20 +375,20 @@ Definition at line 407 of file agents.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 414 of file agents.\+py.
+Definition at line 416 of file agents.\+py.
 
 
 \begin{DoxyCode}
-414     \textcolor{keyword}{def }share(self):
-415         \textcolor{stringliteral}{"""}
-416 \textcolor{stringliteral}{        Shares this teacher by sharing each subtask.}
-417 \textcolor{stringliteral}{        """}
-418         shared = \{\}
-419         shared[\textcolor{stringliteral}{'class'}] = \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(self)
-420         shared[\textcolor{stringliteral}{'opt'}] = self.opt
-421         shared[\textcolor{stringliteral}{'tasks'}] = [t.share() \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} self.tasks]
-422         \textcolor{keywordflow}{return} shared
-423 
+416     \textcolor{keyword}{def }share(self):
+417         \textcolor{stringliteral}{"""}
+418 \textcolor{stringliteral}{        Shares this teacher by sharing each subtask.}
+419 \textcolor{stringliteral}{        """}
+420         shared = \{\}
+421         shared[\textcolor{stringliteral}{'class'}] = \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(self)
+422         shared[\textcolor{stringliteral}{'opt'}] = self.opt
+423         shared[\textcolor{stringliteral}{'tasks'}] = [t.share() \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} self.tasks]
+424         \textcolor{keywordflow}{return} shared
+425 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a259dd3bec3f24669e835d8fbac657c3b}\label{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a259dd3bec3f24669e835d8fbac657c3b}} 
 \index{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher@{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher}!shutdown@{shutdown}}
@@ -402,18 +400,18 @@ Definition at line 414 of file agents.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 424 of file agents.\+py.
+Definition at line 426 of file agents.\+py.
 
 
 \begin{DoxyCode}
-424     \textcolor{keyword}{def }shutdown(self):
-425         \textcolor{stringliteral}{"""}
-426 \textcolor{stringliteral}{        Shutdown each agent.}
-427 \textcolor{stringliteral}{        """}
-428         \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} self.tasks:
-429             t.shutdown()
-430 
-431 
+426     \textcolor{keyword}{def }shutdown(self):
+427         \textcolor{stringliteral}{"""}
+428 \textcolor{stringliteral}{        Shutdown each agent.}
+429 \textcolor{stringliteral}{        """}
+430         \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} self.tasks:
+431             t.shutdown()
+432 
+433 
 \end{DoxyCode}
 
 
@@ -426,7 +424,7 @@ Definition at line 424 of file agents.\+py.
 
 
 
-Definition at line 307 of file agents.\+py.
+Definition at line 309 of file agents.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a875d7474eb3fcb0ff1b302db284ebf7b}\label{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a875d7474eb3fcb0ff1b302db284ebf7b}} 
 \index{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher@{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher}!id@{id}}
@@ -436,7 +434,7 @@ Definition at line 307 of file agents.\+py.
 
 
 
-Definition at line 292 of file agents.\+py.
+Definition at line 294 of file agents.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a3a4f918f0ae0014eaae5cd2c6b14bc2e}\label{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a3a4f918f0ae0014eaae5cd2c6b14bc2e}} 
 \index{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher@{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher}!new\+\_\+task@{new\+\_\+task}}
@@ -446,7 +444,7 @@ Definition at line 292 of file agents.\+py.
 
 
 
-Definition at line 304 of file agents.\+py.
+Definition at line 306 of file agents.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_ad3cdb9945ee238eff22fcbf5be5dfb16}\label{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_ad3cdb9945ee238eff22fcbf5be5dfb16}} 
 \index{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher@{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher}!num\+\_\+eps@{num\+\_\+eps}}
@@ -456,7 +454,7 @@ Definition at line 304 of file agents.\+py.
 
 
 
-Definition at line 340 of file agents.\+py.
+Definition at line 342 of file agents.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_ac4287538dada130117c19347765ac654}\label{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_ac4287538dada130117c19347765ac654}} 
 \index{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher@{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher}!num\+\_\+exs@{num\+\_\+exs}}
@@ -466,7 +464,7 @@ Definition at line 340 of file agents.\+py.
 
 
 
-Definition at line 327 of file agents.\+py.
+Definition at line 329 of file agents.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a116b724be9c512d36f1d43cb9be86b78}\label{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a116b724be9c512d36f1d43cb9be86b78}} 
 \index{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher@{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher}!opt@{opt}}
@@ -476,7 +474,7 @@ Definition at line 327 of file agents.\+py.
 
 
 
-Definition at line 290 of file agents.\+py.
+Definition at line 292 of file agents.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a4bf83cc6d6e942b257ac249745bae007}\label{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a4bf83cc6d6e942b257ac249745bae007}} 
 \index{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher@{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher}!random@{random}}
@@ -486,7 +484,7 @@ Definition at line 290 of file agents.\+py.
 
 
 
-Definition at line 305 of file agents.\+py.
+Definition at line 307 of file agents.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_ae142e91e45c96fabf73d73639db3ab18}\label{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_ae142e91e45c96fabf73d73639db3ab18}} 
 \index{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher@{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher}!task\+\_\+choices@{task\+\_\+choices}}
@@ -496,7 +494,7 @@ Definition at line 305 of file agents.\+py.
 
 
 
-Definition at line 308 of file agents.\+py.
+Definition at line 310 of file agents.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_aff3455bc2af79f632214a4de2bad3d11}\label{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_aff3455bc2af79f632214a4de2bad3d11}} 
 \index{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher@{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher}!task\+\_\+idx@{task\+\_\+idx}}
@@ -506,7 +504,7 @@ Definition at line 308 of file agents.\+py.
 
 
 
-Definition at line 303 of file agents.\+py.
+Definition at line 305 of file agents.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a5d284137aebeea42719984d60d3d72f6}\label{classparlai_1_1core_1_1agents_1_1MultiTaskTeacher_a5d284137aebeea42719984d60d3d72f6}} 
 \index{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher@{parlai\+::core\+::agents\+::\+Multi\+Task\+Teacher}!tasks@{tasks}}
@@ -516,7 +514,7 @@ Definition at line 303 of file agents.\+py.
 
 
 
-Definition at line 289 of file agents.\+py.
+Definition at line 296 of file agents.\+py.
 
 
 

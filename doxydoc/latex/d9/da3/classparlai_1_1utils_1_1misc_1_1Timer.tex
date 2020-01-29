@@ -2,8 +2,7 @@
 \label{classparlai_1_1utils_1_1misc_1_1Timer}\index{parlai.\+utils.\+misc.\+Timer@{parlai.\+utils.\+misc.\+Timer}}
 
 
-Inheritance diagram for parlai.\+utils.\+misc.\+Timer\+:
-\nopagebreak
+Inheritance diagram for parlai.\+utils.\+misc.\+Timer\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+utils.\+misc.\+Timer\+:
 \end{figure}
 
 
-Collaboration diagram for parlai.\+utils.\+misc.\+Timer\+:
-\nopagebreak
+Collaboration diagram for parlai.\+utils.\+misc.\+Timer\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -49,7 +47,7 @@ def \hyperlink{classparlai_1_1utils_1_1misc_1_1Timer_a37214d0006ae44a19081c21a5a
 \end{DoxyVerb}
  
 
-Definition at line 307 of file misc.\+py.
+Definition at line 197 of file misc.\+py.
 
 
 
@@ -64,18 +62,18 @@ Definition at line 307 of file misc.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 312 of file misc.\+py.
+Definition at line 202 of file misc.\+py.
 
 
 \begin{DoxyCode}
-312     \textcolor{keyword}{def }\_\_init\_\_(self):
-313         \textcolor{stringliteral}{"""}
-314 \textcolor{stringliteral}{        Initialize timer.}
-315 \textcolor{stringliteral}{        """}
-316         self.running = \textcolor{keyword}{True}
-317         self.total = 0
-318         self.start = time.time()
-319 
+202     \textcolor{keyword}{def }\_\_init\_\_(self):
+203         \textcolor{stringliteral}{"""}
+204 \textcolor{stringliteral}{        Initialize timer.}
+205 \textcolor{stringliteral}{        """}
+206         self.running = \textcolor{keyword}{True}
+207         self.total = 0
+208         self.start = time.time()
+209 
 \end{DoxyCode}
 
 
@@ -90,19 +88,19 @@ Definition at line 312 of file misc.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 320 of file misc.\+py.
+Definition at line 210 of file misc.\+py.
 
 
 \begin{DoxyCode}
-320     \textcolor{keyword}{def }reset(self):
-321         \textcolor{stringliteral}{"""}
-322 \textcolor{stringliteral}{        Reset timer to zero.}
-323 \textcolor{stringliteral}{        """}
-324         self.running = \textcolor{keyword}{True}
-325         self.total = 0
-326         self.start = time.time()
-327         \textcolor{keywordflow}{return} self
-328 
+210     \textcolor{keyword}{def }reset(self):
+211         \textcolor{stringliteral}{"""}
+212 \textcolor{stringliteral}{        Reset timer to zero.}
+213 \textcolor{stringliteral}{        """}
+214         self.running = \textcolor{keyword}{True}
+215         self.total = 0
+216         self.start = time.time()
+217         \textcolor{keywordflow}{return} self
+218 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1Timer_a855f1e8a3ba03fe16712fd7ae49dab46}\label{classparlai_1_1utils_1_1misc_1_1Timer_a855f1e8a3ba03fe16712fd7ae49dab46}} 
 \index{parlai\+::utils\+::misc\+::\+Timer@{parlai\+::utils\+::misc\+::\+Timer}!resume@{resume}}
@@ -114,19 +112,19 @@ Definition at line 320 of file misc.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 329 of file misc.\+py.
+Definition at line 219 of file misc.\+py.
 
 
 \begin{DoxyCode}
-329     \textcolor{keyword}{def }resume(self):
-330         \textcolor{stringliteral}{"""}
-331 \textcolor{stringliteral}{        Resume timer.}
-332 \textcolor{stringliteral}{        """}
-333         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.running:
-334             self.running = \textcolor{keyword}{True}
-335             self.start = time.time()
-336         \textcolor{keywordflow}{return} self
-337 
+219     \textcolor{keyword}{def }resume(self):
+220         \textcolor{stringliteral}{"""}
+221 \textcolor{stringliteral}{        Resume timer.}
+222 \textcolor{stringliteral}{        """}
+223         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.running:
+224             self.running = \textcolor{keyword}{True}
+225             self.start = time.time()
+226         \textcolor{keywordflow}{return} self
+227 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1Timer_a5a7a90c124ef1b1b92a550606a3c93b9}\label{classparlai_1_1utils_1_1misc_1_1Timer_a5a7a90c124ef1b1b92a550606a3c93b9}} 
 \index{parlai\+::utils\+::misc\+::\+Timer@{parlai\+::utils\+::misc\+::\+Timer}!stop@{stop}}
@@ -138,19 +136,19 @@ Definition at line 329 of file misc.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 338 of file misc.\+py.
+Definition at line 228 of file misc.\+py.
 
 
 \begin{DoxyCode}
-338     \textcolor{keyword}{def }stop(self):
-339         \textcolor{stringliteral}{"""}
-340 \textcolor{stringliteral}{        Pause timer.}
-341 \textcolor{stringliteral}{        """}
-342         \textcolor{keywordflow}{if} self.running:
-343             self.running = \textcolor{keyword}{False}
-344             self.total += time.time() - self.start
-345         \textcolor{keywordflow}{return} self
-346 
+228     \textcolor{keyword}{def }stop(self):
+229         \textcolor{stringliteral}{"""}
+230 \textcolor{stringliteral}{        Pause timer.}
+231 \textcolor{stringliteral}{        """}
+232         \textcolor{keywordflow}{if} self.running:
+233             self.running = \textcolor{keyword}{False}
+234             self.total += time.time() - self.start
+235         \textcolor{keywordflow}{return} self
+236 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1Timer_a37214d0006ae44a19081c21a5a699ffb}\label{classparlai_1_1utils_1_1misc_1_1Timer_a37214d0006ae44a19081c21a5a699ffb}} 
 \index{parlai\+::utils\+::misc\+::\+Timer@{parlai\+::utils\+::misc\+::\+Timer}!time@{time}}
@@ -162,19 +160,19 @@ Definition at line 338 of file misc.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 347 of file misc.\+py.
+Definition at line 237 of file misc.\+py.
 
 
 \begin{DoxyCode}
-347     \textcolor{keyword}{def }time(self):
-348         \textcolor{stringliteral}{"""}
-349 \textcolor{stringliteral}{        Get current timer time.}
-350 \textcolor{stringliteral}{        """}
-351         \textcolor{keywordflow}{if} self.running:
-352             \textcolor{keywordflow}{return} self.total + time.time() - self.start
-353         \textcolor{keywordflow}{return} self.total
-354 
-355 
+237     \textcolor{keyword}{def }time(self):
+238         \textcolor{stringliteral}{"""}
+239 \textcolor{stringliteral}{        Get current timer time.}
+240 \textcolor{stringliteral}{        """}
+241         \textcolor{keywordflow}{if} self.running:
+242             \textcolor{keywordflow}{return} self.total + time.time() - self.start
+243         \textcolor{keywordflow}{return} self.total
+244 
+245 
 \end{DoxyCode}
 
 
@@ -187,7 +185,7 @@ Definition at line 347 of file misc.\+py.
 
 
 
-Definition at line 316 of file misc.\+py.
+Definition at line 206 of file misc.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1Timer_a1c32e2a8785377c980bc4b125fe6db0d}\label{classparlai_1_1utils_1_1misc_1_1Timer_a1c32e2a8785377c980bc4b125fe6db0d}} 
 \index{parlai\+::utils\+::misc\+::\+Timer@{parlai\+::utils\+::misc\+::\+Timer}!start@{start}}
@@ -197,7 +195,7 @@ Definition at line 316 of file misc.\+py.
 
 
 
-Definition at line 318 of file misc.\+py.
+Definition at line 208 of file misc.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1Timer_a37214900a663640b33bdce9e6b3053dd}\label{classparlai_1_1utils_1_1misc_1_1Timer_a37214900a663640b33bdce9e6b3053dd}} 
 \index{parlai\+::utils\+::misc\+::\+Timer@{parlai\+::utils\+::misc\+::\+Timer}!total@{total}}
@@ -207,7 +205,7 @@ Definition at line 318 of file misc.\+py.
 
 
 
-Definition at line 317 of file misc.\+py.
+Definition at line 207 of file misc.\+py.
 
 
 

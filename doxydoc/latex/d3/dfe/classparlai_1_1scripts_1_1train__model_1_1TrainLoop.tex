@@ -67,7 +67,7 @@ def \hyperlink{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_a8c15c0d44908
 \end{DoxyVerb}
  
 
-Definition at line 328 of file train\+\_\+model.\+py.
+Definition at line 329 of file train\+\_\+model.\+py.
 
 
 
@@ -80,118 +80,118 @@ Definition at line 328 of file train\+\_\+model.\+py.
 
 
 
-Definition at line 333 of file train\+\_\+model.\+py.
+Definition at line 334 of file train\+\_\+model.\+py.
 
 
 \begin{DoxyCode}
-333     \textcolor{keyword}{def }\_\_init\_\_(self, opt):
-334         \textcolor{comment}{# if python is called from a non-interactive shell, like a bash script,}
-335         \textcolor{comment}{# it will by-default ignore SIGINTs, and KeyboardInterrupt exceptions are}
-336         \textcolor{comment}{# not produced. This line brings them back}
-337         signal.signal(signal.SIGINT, signal.default\_int\_handler)
-338 
-339         \textcolor{keywordflow}{if} isinstance(opt, ParlaiParser):
-340             print(\textcolor{stringliteral}{'[ Deprecated Warning: TrainLoop should be passed opt not Parser ]'})
-341             opt = opt.parse\_args()
-342         \textcolor{comment}{# Possibly load from checkpoint}
-343         trainstats\_suffix = \textcolor{stringliteral}{'.trainstats'}  \textcolor{comment}{# we might load training statistics from here}
-344         \textcolor{keywordflow}{if} (
-345             opt[\textcolor{stringliteral}{'load\_from\_checkpoint'}]
-346             \textcolor{keywordflow}{and} opt.get(\textcolor{stringliteral}{'model\_file'})
-347             \textcolor{keywordflow}{and} os.path.isfile(opt[\textcolor{stringliteral}{'model\_file'}] + \textcolor{stringliteral}{'.checkpoint'})
-348         ):
-349             opt[\textcolor{stringliteral}{'init\_model'}] = opt[\textcolor{stringliteral}{'model\_file'}] + \textcolor{stringliteral}{'.checkpoint'}
-350             trainstats\_suffix = \textcolor{stringliteral}{'.checkpoint.trainstats'}
-351         \textcolor{comment}{# Possibly build a dictionary (not all models do this).}
-352         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} (opt.get(\textcolor{stringliteral}{'dict\_file'}) \textcolor{keywordflow}{or} opt.get(\textcolor{stringliteral}{'model\_file'})):
-353             \textcolor{keywordflow}{raise} RuntimeError(
-354                 \textcolor{stringliteral}{'WARNING: For train\_model, please specify either a '}
-355                 \textcolor{stringliteral}{'model\_file or dict\_file.'}
-356             )
-357         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'dict\_file'} \textcolor{keywordflow}{in} opt:
-358             \textcolor{comment}{# If data built via pytorch data teacher, we need to load prebuilt dict}
-359             \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'pytorch\_teacher\_task'}):
-360                 opt[\textcolor{stringliteral}{'dict\_file'}] = \hyperlink{namespaceparlai_1_1scripts_1_1build__pytorch__data_a6ec85a5842150af78f5178d75075b0cc}{get\_pyt\_dict\_file}(opt)
-361             \textcolor{keywordflow}{elif} opt[\textcolor{stringliteral}{'dict\_file'}] \textcolor{keywordflow}{is} \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} opt.get(\textcolor{stringliteral}{'model\_file'}):
-362                 opt[\textcolor{stringliteral}{'dict\_file'}] = opt[\textcolor{stringliteral}{'model\_file'}] + \textcolor{stringliteral}{'.dict'}
-363             print(\textcolor{stringliteral}{"[ building dictionary first... ]"})
-364             \hyperlink{namespacebuild__dict}{build\_dict}(opt, skip\_if\_built=\textcolor{keyword}{True})
-365         \textcolor{comment}{# Create model and assign it to the specified task}
-366         self.agent = \hyperlink{namespaceparlai_1_1core_1_1agents_ad0d54074d4bcc148bb415ab5515a53b5}{create\_agent}(opt)
-367         print(self.agent)
-368         self.world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(opt, self.agent)
-369         \textcolor{comment}{# print(self.world)}
-370         print(self.world.get\_agents())
-371         \textcolor{comment}{# sys.exit()}
-372         \textcolor{comment}{# set up timers}
-373         self.train\_time = Timer()
-374         self.validate\_time = Timer()
-375         self.log\_time = Timer()
-376         self.save\_time = Timer()
-377         print(\textcolor{stringliteral}{'[ training... ]'})
-378         self.parleys = 0
-379         self.max\_num\_epochs = (
-380             opt[\textcolor{stringliteral}{'num\_epochs'}] \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'num\_epochs'}] > 0 \textcolor{keywordflow}{else} \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(\textcolor{stringliteral}{'inf'})
-381         )
-382         self.max\_train\_time = (
-383             opt[\textcolor{stringliteral}{'max\_train\_time'}] \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'max\_train\_time'}] > 0 \textcolor{keywordflow}{else} \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(\textcolor{stringliteral}{'inf'})
-384         )
-385         self.log\_every\_n\_secs = (
-386             opt[\textcolor{stringliteral}{'log\_every\_n\_secs'}] \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'log\_every\_n\_secs'}] > 0 \textcolor{keywordflow}{else} \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(\textcolor{stringliteral}{'inf'})
-387         )
-388         self.val\_every\_n\_secs = (
-389             opt[\textcolor{stringliteral}{'validation\_every\_n\_secs'}]
-390             \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'validation\_every\_n\_secs'}] > 0
-391             \textcolor{keywordflow}{else} \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(\textcolor{stringliteral}{'inf'})
-392         )
-393         self.save\_every\_n\_secs = (
-394             opt[\textcolor{stringliteral}{'save\_every\_n\_secs'}] \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'save\_every\_n\_secs'}] > 0 \textcolor{keywordflow}{else} \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(\textcolor{stringliteral}{'inf'})
-395         )
-396         self.val\_every\_n\_epochs = (
-397             opt[\textcolor{stringliteral}{'validation\_every\_n\_epochs'}]
-398             \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'validation\_every\_n\_epochs'}] > 0
-399             \textcolor{keywordflow}{else} \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(\textcolor{stringliteral}{'inf'})
-400         )
-401 
-402         \textcolor{comment}{# smart defaults for --validation-metric-mode}
-403         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'validation\_metric'}] \textcolor{keywordflow}{in} \{\textcolor{stringliteral}{'loss'}, \textcolor{stringliteral}{'ppl'}, \textcolor{stringliteral}{'mean\_rank'}\}:
-404             opt[\textcolor{stringliteral}{'validation\_metric\_mode'}] = \textcolor{stringliteral}{'min'}
-405         \textcolor{keywordflow}{elif} opt[\textcolor{stringliteral}{'validation\_metric'}] \textcolor{keywordflow}{in} \{\textcolor{stringliteral}{'accuracy'}, \textcolor{stringliteral}{'hits@1'}, \textcolor{stringliteral}{'hits@5'}, \textcolor{stringliteral}{'f1'}, \textcolor{stringliteral}{'bleu'}\}:
-406             opt[\textcolor{stringliteral}{'validation\_metric\_mode'}] = \textcolor{stringliteral}{'max'}
-407         \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'validation\_metric\_mode'}) \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-408             opt[\textcolor{stringliteral}{'validation\_metric\_mode'}] = \textcolor{stringliteral}{'max'}
-409 
-410         self.last\_valid\_epoch = 0
-411         self.valid\_optim = 1 \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'validation\_metric\_mode'}] == \textcolor{stringliteral}{'max'} \textcolor{keywordflow}{else} -1
-412         self.valid\_reports = []
-413         self.best\_valid = \textcolor{keywordtype}{None}
-414         \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'model\_file'}) \textcolor{keywordflow}{and} os.path.isfile(opt[\textcolor{stringliteral}{'model\_file'}] + \textcolor{stringliteral}{'.best\_valid'}):
-415             with open(opt[\textcolor{stringliteral}{'model\_file'}] + \textcolor{stringliteral}{".best\_valid"}, \textcolor{stringliteral}{'r') as f:}
-416 \textcolor{stringliteral}{                x = f.readline()}
-417 \textcolor{stringliteral}{                self.best\_valid = \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(x)}
-418 \textcolor{stringliteral}{                f.close()}
-419 \textcolor{stringliteral}{        self.impatience = 0}
-420 \textcolor{stringliteral}{        self.saved = }\textcolor{keyword}{False}
-421         self.valid\_worlds = \textcolor{keywordtype}{None}
-422         self.opt = opt
-423 
-424         \textcolor{comment}{# we may have been preempted, make sure we note that amount}
-425         self.\_preempted\_epochs = 0.0
-426         \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'model\_file'}) \textcolor{keywordflow}{and} os.path.isfile(
-427             opt[\textcolor{stringliteral}{'model\_file'}] + trainstats\_suffix
-428         ):
-429             \textcolor{comment}{# looks like we were preempted. make sure we load up our total}
-430             \textcolor{comment}{# training stats, etc}
-431             with open(opt[\textcolor{stringliteral}{'model\_file'}] + trainstats\_suffix) \textcolor{keyword}{as} ts:
-432                 obj = json.load(ts)
-433                 self.\_preempted\_epochs = obj.get(\textcolor{stringliteral}{'total\_epochs'}, 0)
-434                 self.train\_time.total = obj.get(\textcolor{stringliteral}{'train\_time'}, 0)
-435                 self.impatience = obj.get(\textcolor{stringliteral}{'impatience'}, 0)
-436                 self.valid\_reports = obj.get(\textcolor{stringliteral}{'valid\_reports'}, [])
-437 
-438         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'tensorboard\_log'}] \textcolor{keywordflow}{and} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a9bb1dac198180590ef8c6b6c6f9fc2c4}{is\_primary\_worker}():
-439             self.tb\_logger = TensorboardLogger(opt)
-440 
+334     \textcolor{keyword}{def }\_\_init\_\_(self, opt):
+335         \textcolor{comment}{# if python is called from a non-interactive shell, like a bash script,}
+336         \textcolor{comment}{# it will by-default ignore SIGINTs, and KeyboardInterrupt exceptions are}
+337         \textcolor{comment}{# not produced. This line brings them back}
+338         signal.signal(signal.SIGINT, signal.default\_int\_handler)
+339 
+340         \textcolor{keywordflow}{if} isinstance(opt, ParlaiParser):
+341             print(\textcolor{stringliteral}{'[ Deprecated Warning: TrainLoop should be passed opt not Parser ]'})
+342             opt = opt.parse\_args()
+343         \textcolor{comment}{# Possibly load from checkpoint}
+344         trainstats\_suffix = \textcolor{stringliteral}{'.trainstats'}  \textcolor{comment}{# we might load training statistics from here}
+345         \textcolor{keywordflow}{if} (
+346             opt[\textcolor{stringliteral}{'load\_from\_checkpoint'}]
+347             \textcolor{keywordflow}{and} opt.get(\textcolor{stringliteral}{'model\_file'})
+348             \textcolor{keywordflow}{and} os.path.isfile(opt[\textcolor{stringliteral}{'model\_file'}] + \textcolor{stringliteral}{'.checkpoint'})
+349         ):
+350             opt[\textcolor{stringliteral}{'init\_model'}] = opt[\textcolor{stringliteral}{'model\_file'}] + \textcolor{stringliteral}{'.checkpoint'}
+351             trainstats\_suffix = \textcolor{stringliteral}{'.checkpoint.trainstats'}
+352         \textcolor{comment}{# Possibly build a dictionary (not all models do this).}
+353         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} (opt.get(\textcolor{stringliteral}{'dict\_file'}) \textcolor{keywordflow}{or} opt.get(\textcolor{stringliteral}{'model\_file'})):
+354             \textcolor{keywordflow}{raise} RuntimeError(
+355                 \textcolor{stringliteral}{'WARNING: For train\_model, please specify either a '}
+356                 \textcolor{stringliteral}{'model\_file or dict\_file.'}
+357             )
+358         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'dict\_file'} \textcolor{keywordflow}{in} opt:
+359             \textcolor{comment}{# If data built via pytorch data teacher, we need to load prebuilt dict}
+360             \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'pytorch\_teacher\_task'}):
+361                 opt[\textcolor{stringliteral}{'dict\_file'}] = \hyperlink{namespaceparlai_1_1scripts_1_1build__pytorch__data_a6ec85a5842150af78f5178d75075b0cc}{get\_pyt\_dict\_file}(opt)
+362             \textcolor{keywordflow}{elif} opt[\textcolor{stringliteral}{'dict\_file'}] \textcolor{keywordflow}{is} \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} opt.get(\textcolor{stringliteral}{'model\_file'}):
+363                 opt[\textcolor{stringliteral}{'dict\_file'}] = opt[\textcolor{stringliteral}{'model\_file'}] + \textcolor{stringliteral}{'.dict'}
+364             print(\textcolor{stringliteral}{"[ building dictionary first... ]"})
+365             \hyperlink{namespacebuild__dict}{build\_dict}(opt, skip\_if\_built=\textcolor{keyword}{True})
+366         \textcolor{comment}{# Create model and assign it to the specified task}
+367         self.agent = \hyperlink{namespaceparlai_1_1core_1_1agents_a00d77a7e26fb89e8bd900f7b2a02982a}{create\_agent}(opt)
+368         print(self.agent)
+369         self.world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a79969c7ba76d4b3c500f5bb776444dc6}{create\_task}(opt, self.agent)
+370         \textcolor{comment}{# print(self.world)}
+371         print(self.world.get\_agents())
+372         \textcolor{comment}{# sys.exit()}
+373         \textcolor{comment}{# set up timers}
+374         self.train\_time = Timer()
+375         self.validate\_time = Timer()
+376         self.log\_time = Timer()
+377         self.save\_time = Timer()
+378         print(\textcolor{stringliteral}{'[ training... ]'})
+379         self.parleys = 0
+380         self.max\_num\_epochs = (
+381             opt[\textcolor{stringliteral}{'num\_epochs'}] \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'num\_epochs'}] > 0 \textcolor{keywordflow}{else} \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(\textcolor{stringliteral}{'inf'})
+382         )
+383         self.max\_train\_time = (
+384             opt[\textcolor{stringliteral}{'max\_train\_time'}] \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'max\_train\_time'}] > 0 \textcolor{keywordflow}{else} \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(\textcolor{stringliteral}{'inf'})
+385         )
+386         self.log\_every\_n\_secs = (
+387             opt[\textcolor{stringliteral}{'log\_every\_n\_secs'}] \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'log\_every\_n\_secs'}] > 0 \textcolor{keywordflow}{else} \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(\textcolor{stringliteral}{'inf'})
+388         )
+389         self.val\_every\_n\_secs = (
+390             opt[\textcolor{stringliteral}{'validation\_every\_n\_secs'}]
+391             \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'validation\_every\_n\_secs'}] > 0
+392             \textcolor{keywordflow}{else} \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(\textcolor{stringliteral}{'inf'})
+393         )
+394         self.save\_every\_n\_secs = (
+395             opt[\textcolor{stringliteral}{'save\_every\_n\_secs'}] \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'save\_every\_n\_secs'}] > 0 \textcolor{keywordflow}{else} \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(\textcolor{stringliteral}{'inf'})
+396         )
+397         self.val\_every\_n\_epochs = (
+398             opt[\textcolor{stringliteral}{'validation\_every\_n\_epochs'}]
+399             \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'validation\_every\_n\_epochs'}] > 0
+400             \textcolor{keywordflow}{else} \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(\textcolor{stringliteral}{'inf'})
+401         )
+402 
+403         \textcolor{comment}{# smart defaults for --validation-metric-mode}
+404         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'validation\_metric'}] \textcolor{keywordflow}{in} \{\textcolor{stringliteral}{'loss'}, \textcolor{stringliteral}{'ppl'}, \textcolor{stringliteral}{'mean\_rank'}\}:
+405             opt[\textcolor{stringliteral}{'validation\_metric\_mode'}] = \textcolor{stringliteral}{'min'}
+406         \textcolor{keywordflow}{elif} opt[\textcolor{stringliteral}{'validation\_metric'}] \textcolor{keywordflow}{in} \{\textcolor{stringliteral}{'accuracy'}, \textcolor{stringliteral}{'hits@1'}, \textcolor{stringliteral}{'hits@5'}, \textcolor{stringliteral}{'f1'}, \textcolor{stringliteral}{'bleu'}\}:
+407             opt[\textcolor{stringliteral}{'validation\_metric\_mode'}] = \textcolor{stringliteral}{'max'}
+408         \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'validation\_metric\_mode'}) \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+409             opt[\textcolor{stringliteral}{'validation\_metric\_mode'}] = \textcolor{stringliteral}{'max'}
+410 
+411         self.last\_valid\_epoch = 0
+412         self.valid\_optim = 1 \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'validation\_metric\_mode'}] == \textcolor{stringliteral}{'max'} \textcolor{keywordflow}{else} -1
+413         self.valid\_reports = []
+414         self.best\_valid = \textcolor{keywordtype}{None}
+415         \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'model\_file'}) \textcolor{keywordflow}{and} os.path.isfile(opt[\textcolor{stringliteral}{'model\_file'}] + \textcolor{stringliteral}{'.best\_valid'}):
+416             with open(opt[\textcolor{stringliteral}{'model\_file'}] + \textcolor{stringliteral}{".best\_valid"}, \textcolor{stringliteral}{'r') as f:}
+417 \textcolor{stringliteral}{                x = f.readline()}
+418 \textcolor{stringliteral}{                self.best\_valid = \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(x)}
+419 \textcolor{stringliteral}{                f.close()}
+420 \textcolor{stringliteral}{        self.impatience = 0}
+421 \textcolor{stringliteral}{        self.saved = }\textcolor{keyword}{False}
+422         self.valid\_worlds = \textcolor{keywordtype}{None}
+423         self.opt = opt
+424 
+425         \textcolor{comment}{# we may have been preempted, make sure we note that amount}
+426         self.\_preempted\_epochs = 0.0
+427         \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'model\_file'}) \textcolor{keywordflow}{and} os.path.isfile(
+428             opt[\textcolor{stringliteral}{'model\_file'}] + trainstats\_suffix
+429         ):
+430             \textcolor{comment}{# looks like we were preempted. make sure we load up our total}
+431             \textcolor{comment}{# training stats, etc}
+432             with open(opt[\textcolor{stringliteral}{'model\_file'}] + trainstats\_suffix) \textcolor{keyword}{as} ts:
+433                 obj = json.load(ts)
+434                 self.\_preempted\_epochs = obj.get(\textcolor{stringliteral}{'total\_epochs'}, 0)
+435                 self.train\_time.total = obj.get(\textcolor{stringliteral}{'train\_time'}, 0)
+436                 self.impatience = obj.get(\textcolor{stringliteral}{'impatience'}, 0)
+437                 self.valid\_reports = obj.get(\textcolor{stringliteral}{'valid\_reports'}, [])
+438 
+439         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'tensorboard\_log'}] \textcolor{keywordflow}{and} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a9bb1dac198180590ef8c6b6c6f9fc2c4}{is\_primary\_worker}():
+440             self.tb\_logger = TensorboardLogger(opt)
+441 
 \end{DoxyCode}
 
 
@@ -206,43 +206,43 @@ Definition at line 333 of file train\+\_\+model.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 668 of file train\+\_\+model.\+py.
+Definition at line 669 of file train\+\_\+model.\+py.
 
 
 \begin{DoxyCode}
-668     \textcolor{keyword}{def }log(self):
-669         \textcolor{stringliteral}{"""}
-670 \textcolor{stringliteral}{        Output a training log entry.}
-671 \textcolor{stringliteral}{        """}
-672         opt = self.opt
-673         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'display\_examples'}]:
-674             print(self.world.display() + \textcolor{stringliteral}{'\(\backslash\)n~~'})
-675         logs = []
-676         \textcolor{comment}{# get report}
-677         train\_report = self.world.\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}()
-678         self.\_cleanup\_inaccurate\_metrics(train\_report)
-679         train\_report = self.\_sync\_training\_metrics(train\_report)
-680         self.world.reset\_metrics()
-681 
-682         \textcolor{comment}{# time elapsed}
-683         logs.append(\textcolor{stringliteral}{'time:\{\}s'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(np.floor(self.train\_time.time())))
-684         logs.append(\textcolor{stringliteral}{'total\_exs:\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.\_total\_exs))
-685 
-686         \textcolor{keywordflow}{if} self.\_total\_epochs >= 0:
-687             \textcolor{comment}{# only if it's unbounded}
-688             logs.append(\textcolor{stringliteral}{'epochs:\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(round(self.\_total\_epochs, 2)))
-689 
-690         time\_left = self.\_compute\_eta(self.\_total\_epochs, self.train\_time.time())
-691         \textcolor{keywordflow}{if} time\_left \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-692             logs.append(\textcolor{stringliteral}{'time\_left:\{\}s'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(max(0, np.ceil(time\_left))))
-693 
-694         log = \textcolor{stringliteral}{'[ \{\} ] \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(\textcolor{stringliteral}{' '}.join(logs), self.\_nice\_format(train\_report))
-695         print(log)
-696         self.log\_time.reset()
-697 
-698         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'tensorboard\_log'}] \textcolor{keywordflow}{and} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a9bb1dac198180590ef8c6b6c6f9fc2c4}{is\_primary\_worker}():
-699             self.tb\_logger.log\_metrics(\textcolor{stringliteral}{'train'}, self.parleys, train\_report)
-700 
+669     \textcolor{keyword}{def }log(self):
+670         \textcolor{stringliteral}{"""}
+671 \textcolor{stringliteral}{        Output a training log entry.}
+672 \textcolor{stringliteral}{        """}
+673         opt = self.opt
+674         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'display\_examples'}]:
+675             print(self.world.display() + \textcolor{stringliteral}{'\(\backslash\)n~~'})
+676         logs = []
+677         \textcolor{comment}{# get report}
+678         train\_report = self.world.\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}()
+679         self.\_cleanup\_inaccurate\_metrics(train\_report)
+680         train\_report = self.\_sync\_training\_metrics(train\_report)
+681         self.world.reset\_metrics()
+682 
+683         \textcolor{comment}{# time elapsed}
+684         logs.append(\textcolor{stringliteral}{'time:\{\}s'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(np.floor(self.train\_time.time())))
+685         logs.append(\textcolor{stringliteral}{'total\_exs:\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.\_total\_exs))
+686 
+687         \textcolor{keywordflow}{if} self.\_total\_epochs >= 0:
+688             \textcolor{comment}{# only if it's unbounded}
+689             logs.append(\textcolor{stringliteral}{'epochs:\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(round(self.\_total\_epochs, 2)))
+690 
+691         time\_left = self.\_compute\_eta(self.\_total\_epochs, self.train\_time.time())
+692         \textcolor{keywordflow}{if} time\_left \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+693             logs.append(\textcolor{stringliteral}{'time\_left:\{\}s'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(max(0, np.ceil(time\_left))))
+694 
+695         log = \textcolor{stringliteral}{'[ \{\} ] \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(\textcolor{stringliteral}{' '}.join(logs), self.\_nice\_format(train\_report))
+696         print(log)
+697         self.log\_time.reset()
+698 
+699         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'tensorboard\_log'}] \textcolor{keywordflow}{and} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a9bb1dac198180590ef8c6b6c6f9fc2c4}{is\_primary\_worker}():
+700             self.tb\_logger.log\_metrics(\textcolor{stringliteral}{'train'}, self.parleys, train\_report)
+701 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_a352f759a644e87251c37931bf276309a}\label{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_a352f759a644e87251c37931bf276309a}} 
 \index{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop@{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop}!save\+\_\+model@{save\+\_\+model}}
@@ -254,33 +254,33 @@ Definition at line 668 of file train\+\_\+model.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 441 of file train\+\_\+model.\+py.
+Definition at line 442 of file train\+\_\+model.\+py.
 
 
 \begin{DoxyCode}
-441     \textcolor{keyword}{def }save\_model(self, suffix=None):
-442         \textcolor{stringliteral}{"""}
-443 \textcolor{stringliteral}{        Save the model to disk, possibly with a suffix.}
-444 \textcolor{stringliteral}{        """}
-445         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a9bb1dac198180590ef8c6b6c6f9fc2c4}{is\_primary\_worker}():
-446             \textcolor{comment}{# never do IO as a non-primary worker}
-447             \textcolor{keywordflow}{return}
-448         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.opt.get(\textcolor{stringliteral}{'model\_file'}):
-449             \textcolor{comment}{# nothing to save to, just exit}
-450             \textcolor{keywordflow}{return}
-451 
-452         fn = self.opt[\textcolor{stringliteral}{'model\_file'}]
-453         \textcolor{keywordflow}{if} suffix:
-454             fn += suffix
-455         \textcolor{keywordflow}{while} \textcolor{keyword}{True}:
-456             \textcolor{comment}{# don't ever let a ctrl-c interrupt saving}
-457             \textcolor{keywordflow}{try}:
-458                 self.agent.save(fn)
-459                 self.\_save\_train\_stats(suffix)
-460                 \textcolor{keywordflow}{break}
-461             \textcolor{keywordflow}{except} KeyboardInterrupt:
-462                 \textcolor{keywordflow}{pass}
-463 
+442     \textcolor{keyword}{def }save\_model(self, suffix=None):
+443         \textcolor{stringliteral}{"""}
+444 \textcolor{stringliteral}{        Save the model to disk, possibly with a suffix.}
+445 \textcolor{stringliteral}{        """}
+446         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a9bb1dac198180590ef8c6b6c6f9fc2c4}{is\_primary\_worker}():
+447             \textcolor{comment}{# never do IO as a non-primary worker}
+448             \textcolor{keywordflow}{return}
+449         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.opt.get(\textcolor{stringliteral}{'model\_file'}):
+450             \textcolor{comment}{# nothing to save to, just exit}
+451             \textcolor{keywordflow}{return}
+452 
+453         fn = self.opt[\textcolor{stringliteral}{'model\_file'}]
+454         \textcolor{keywordflow}{if} suffix:
+455             fn += suffix
+456         \textcolor{keywordflow}{while} \textcolor{keyword}{True}:
+457             \textcolor{comment}{# don't ever let a ctrl-c interrupt saving}
+458             \textcolor{keywordflow}{try}:
+459                 self.agent.save(fn)
+460                 self.\_save\_train\_stats(suffix)
+461                 \textcolor{keywordflow}{break}
+462             \textcolor{keywordflow}{except} KeyboardInterrupt:
+463                 \textcolor{keywordflow}{pass}
+464 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_a8c15c0d4490891fd3e61e57501474e40}\label{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_a8c15c0d4490891fd3e61e57501474e40}} 
 \index{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop@{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop}!train@{train}}
@@ -294,142 +294,134 @@ Definition at line 441 of file train\+\_\+model.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 701 of file train\+\_\+model.\+py.
+Definition at line 702 of file train\+\_\+model.\+py.
 
 
 \begin{DoxyCode}
-701     \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1mastering__the__dungeon_1_1mturk_1_1tasks_1_1MTD_1_1run_a36a5f4f6f9df0611a6818610518d2cf0}{train}(self):
-702         \textcolor{stringliteral}{"""}
-703 \textcolor{stringliteral}{        Perform a training run.}
-704 \textcolor{stringliteral}{}
-705 \textcolor{stringliteral}{        :return: tuple of reports (validation\_report, test\_report)}
-706 \textcolor{stringliteral}{        """}
-707         \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a023acb5e3b66e1f27e21247c35661279}{is\_distributed}():
-708             \hyperlink{namespaceparlai_1_1utils_1_1misc_acf146e70ea7f6867969a7c2b545d4b4b}{warn\_once}(
-709                 \textcolor{stringliteral}{"Distributed training outputs average-per-worker metrics during "}
-710                 \textcolor{stringliteral}{"training, and may be slightly distorted. Validation/test are "}
-711                 \textcolor{stringliteral}{"unadulterated."}
-712             )
-713         opt = self.opt
-714         world = self.world
-715         print(world)
-716         print(self.max\_num\_epochs)
-717         \textcolor{comment}{# sys.exit()}
-718         with world:
-719             \textcolor{keywordflow}{while} \textcolor{keyword}{True}:
-720                 \textcolor{comment}{# do one example / batch of examples}
-721 <<<<<<< HEAD
-722 <<<<<<< HEAD
+702     \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1mastering__the__dungeon_1_1mturk_1_1tasks_1_1MTD_1_1run_a36a5f4f6f9df0611a6818610518d2cf0}{train}(self):
+703         \textcolor{stringliteral}{"""}
+704 \textcolor{stringliteral}{        Perform a training run.}
+705 \textcolor{stringliteral}{}
+706 \textcolor{stringliteral}{        :return: tuple of reports (validation\_report, test\_report)}
+707 \textcolor{stringliteral}{        """}
+708         \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a023acb5e3b66e1f27e21247c35661279}{is\_distributed}():
+709             \hyperlink{namespaceparlai_1_1utils_1_1misc_a884a3aefa90581f53bc592fa6a78dc43}{warn\_once}(
+710                 \textcolor{stringliteral}{"Distributed training outputs average-per-worker metrics during "}
+711                 \textcolor{stringliteral}{"training, and may be slightly distorted. Validation/test are "}
+712                 \textcolor{stringliteral}{"unadulterated."}
+713             )
+714         opt = self.opt
+715         world = self.world
+716         print(world)
+717         print(self.max\_num\_epochs)
+718         \textcolor{comment}{# sys.exit()}
+719         with world:
+720             \textcolor{keywordflow}{while} \textcolor{keyword}{True}:
+721                 \textcolor{comment}{# do one example / batch of examples}
+722 
 723                 world.parley()
 724                 print(world.get\_agents()[0].\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}())
-725 =======
-726 =======
-727 >>>>>>> b07432242bd002b5d071b241b8ed36ca355dda6f
-728                 \textcolor{keywordflow}{try}:
-729                     world.parley()
-730                 \textcolor{keywordflow}{except} StopTrainException:
-731                     \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a023acb5e3b66e1f27e21247c35661279}{is\_distributed}():
-732                         \textcolor{keywordflow}{raise} RuntimeError(
-733                             \textcolor{stringliteral}{"StopTrainException not supported for "} \textcolor{stringliteral}{"distributed mode"}
-734                         )
-735                     \textcolor{keywordflow}{break}
-736 
-737 <<<<<<< HEAD
-738 >>>>>>> upstream/master
-739 =======
-740 =======
-741                 world.parley()
-742                 print(world.get\_agents()[0].\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}())
-743 >>>>>>> c650b784d0b3dc391ab5c3b144f5db669ae728cf
-744 >>>>>>> b07432242bd002b5d071b241b8ed36ca355dda6f
-745                 self.parleys += 1
-746                 \textcolor{keywordflow}{break}
-747 
-748                 \textcolor{comment}{# get the total training examples done, compute epochs}
-749                 self.\_total\_epochs = (
-750                     self.\_preempted\_epochs
-751                     + \hyperlink{namespaceparlai_1_1utils_1_1distributed_a99b61b4756577c6542039c238d670dba}{num\_workers}() * self.world.get\_total\_epochs()
-752                 )
-753                 exs\_per\_epoch = self.world.num\_examples()
-754                 self.\_total\_exs = \hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(np.round(self.\_total\_epochs * exs\_per\_epoch))
-755 
-756                 \textcolor{comment}{# and use the primary worker's timings for everything}
-757                 train\_time, log\_time, validate\_time = \hyperlink{namespaceparlai_1_1utils_1_1distributed_a269d3c7284127d9b287b9b61e9161de6}{sync\_object}(
-758                     (
-759                         self.train\_time.time(),
-760                         self.log\_time.time(),
-761                         self.validate\_time.time(),
-762                     )
-763                 )
-764 
-765                 \textcolor{comment}{# check counters and timers}
-766                 \textcolor{keywordflow}{if} self.\_total\_epochs >= self.max\_num\_epochs:
-767                     self.log()
-768                     print(
-769                         \textcolor{stringliteral}{'[ num\_epochs completed:\{\} time elapsed:\{\}s ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
-770                             self.max\_num\_epochs, train\_time
-771                         )
-772                     )
-773                     \textcolor{keywordflow}{break}
-774                 \textcolor{keywordflow}{if} train\_time > self.max\_train\_time:
-775                     print(\textcolor{stringliteral}{'[ max\_train\_time elapsed:\{\}s ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(train\_time))
-776                     \textcolor{keywordflow}{break}
-777                 \textcolor{keywordflow}{if} log\_time > self.log\_every\_n\_secs:
-778                     self.log()
-779                 \textcolor{keywordflow}{if} (
-780                     validate\_time > self.val\_every\_n\_secs
-781                     \textcolor{keywordflow}{or} self.\_total\_epochs - self.last\_valid\_epoch
-782                     >= self.val\_every\_n\_epochs
-783                 ):
-784                     \textcolor{keywordflow}{try}:
-785                         stop\_training = self.validate()
-786                     \textcolor{keywordflow}{except} StopTrainException:
-787                         \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a023acb5e3b66e1f27e21247c35661279}{is\_distributed}():
-788                             \textcolor{keywordflow}{raise} RuntimeError(
-789                                 \textcolor{stringliteral}{"StopTrainException not "}
-790                                 \textcolor{stringliteral}{"supported for distributed mode"}
-791                             )
-792                         \textcolor{keywordflow}{break}
-793                     self.last\_valid\_epoch = self.\_total\_epochs
-794                     \textcolor{keywordflow}{if} stop\_training:
-795                         \textcolor{keywordflow}{break}
-796                 \textcolor{keywordflow}{if} (
-797                     self.save\_time.time() > self.save\_every\_n\_secs
-798                     \textcolor{keywordflow}{and} opt.get(\textcolor{stringliteral}{'model\_file'})
-799                     \textcolor{keywordflow}{and} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a9bb1dac198180590ef8c6b6c6f9fc2c4}{is\_primary\_worker}()
-800                 ):
-801                     print(
-802                         \textcolor{stringliteral}{"[ saving model checkpoint: \{\}.checkpoint"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
-803                             opt[\textcolor{stringliteral}{'model\_file'}]
-804                         )
-805                     )
-806                     self.save\_model(\textcolor{stringliteral}{'.checkpoint'})
-807                     self.save\_time.reset()
+725 
+726                 \textcolor{keywordflow}{try}:
+727                     world.parley()
+728                 \textcolor{keywordflow}{except} StopTrainException:
+729                     \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a023acb5e3b66e1f27e21247c35661279}{is\_distributed}():
+730                         \textcolor{keywordflow}{raise} RuntimeError(
+731                             \textcolor{stringliteral}{"StopTrainException not supported for "} \textcolor{stringliteral}{"distributed mode"}
+732                         )
+733                     \textcolor{keywordflow}{break}
+734 
+735 
+736                 world.parley()
+737                 print(world.get\_agents()[0].\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}())
+738                 self.parleys += 1
+739                 \textcolor{keywordflow}{break}
+740 
+741                 \textcolor{comment}{# get the total training examples done, compute epochs}
+742                 self.\_total\_epochs = (
+743                     self.\_preempted\_epochs
+744                     + \hyperlink{namespaceparlai_1_1utils_1_1distributed_a99b61b4756577c6542039c238d670dba}{num\_workers}() * self.world.get\_total\_epochs()
+745                 )
+746                 exs\_per\_epoch = self.world.num\_examples()
+747                 self.\_total\_exs = \hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(np.round(self.\_total\_epochs * exs\_per\_epoch))
+748 
+749                 \textcolor{comment}{# and use the primary worker's timings for everything}
+750                 train\_time, log\_time, validate\_time = \hyperlink{namespaceparlai_1_1utils_1_1distributed_a269d3c7284127d9b287b9b61e9161de6}{sync\_object}(
+751                     (
+752                         self.train\_time.time(),
+753                         self.log\_time.time(),
+754                         self.validate\_time.time(),
+755                     )
+756                 )
+757 
+758                 \textcolor{comment}{# check counters and timers}
+759                 \textcolor{keywordflow}{if} self.\_total\_epochs >= self.max\_num\_epochs:
+760                     self.log()
+761                     print(
+762                         \textcolor{stringliteral}{'[ num\_epochs completed:\{\} time elapsed:\{\}s ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+763                             self.max\_num\_epochs, train\_time
+764                         )
+765                     )
+766                     \textcolor{keywordflow}{break}
+767                 \textcolor{keywordflow}{if} train\_time > self.max\_train\_time:
+768                     print(\textcolor{stringliteral}{'[ max\_train\_time elapsed:\{\}s ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(train\_time))
+769                     \textcolor{keywordflow}{break}
+770                 \textcolor{keywordflow}{if} log\_time > self.log\_every\_n\_secs:
+771                     self.log()
+772                 \textcolor{keywordflow}{if} (
+773                     validate\_time > self.val\_every\_n\_secs
+774                     \textcolor{keywordflow}{or} self.\_total\_epochs - self.last\_valid\_epoch
+775                     >= self.val\_every\_n\_epochs
+776                 ):
+777                     \textcolor{keywordflow}{try}:
+778                         stop\_training = self.validate()
+779                     \textcolor{keywordflow}{except} StopTrainException:
+780                         \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a023acb5e3b66e1f27e21247c35661279}{is\_distributed}():
+781                             \textcolor{keywordflow}{raise} RuntimeError(
+782                                 \textcolor{stringliteral}{"StopTrainException not "}
+783                                 \textcolor{stringliteral}{"supported for distributed mode"}
+784                             )
+785                         \textcolor{keywordflow}{break}
+786                     self.last\_valid\_epoch = self.\_total\_epochs
+787                     \textcolor{keywordflow}{if} stop\_training:
+788                         \textcolor{keywordflow}{break}
+789                 \textcolor{keywordflow}{if} (
+790                     self.save\_time.time() > self.save\_every\_n\_secs
+791                     \textcolor{keywordflow}{and} opt.get(\textcolor{stringliteral}{'model\_file'})
+792                     \textcolor{keywordflow}{and} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a9bb1dac198180590ef8c6b6c6f9fc2c4}{is\_primary\_worker}()
+793                 ):
+794                     print(
+795                         \textcolor{stringliteral}{"[ saving model checkpoint: \{\}.checkpoint"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+796                             opt[\textcolor{stringliteral}{'model\_file'}]
+797                         )
+798                     )
+799                     self.save\_model(\textcolor{stringliteral}{'.checkpoint'})
+800                     self.save\_time.reset()
+801 
+802         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.saved \textcolor{keywordflow}{and} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a9bb1dac198180590ef8c6b6c6f9fc2c4}{is\_primary\_worker}():
+803             \textcolor{comment}{# save agent}
+804             self.save\_model()
+805         \textcolor{keywordflow}{elif} opt.get(\textcolor{stringliteral}{'model\_file'}):
+806             \textcolor{comment}{# reload best validation model}
+807             self.agent = \hyperlink{namespaceparlai_1_1core_1_1agents_a00d77a7e26fb89e8bd900f7b2a02982a}{create\_agent}(opt)
 808 
-809         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.saved \textcolor{keywordflow}{and} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a9bb1dac198180590ef8c6b6c6f9fc2c4}{is\_primary\_worker}():
-810             \textcolor{comment}{# save agent}
-811             self.save\_model()
-812         \textcolor{keywordflow}{elif} opt.get(\textcolor{stringliteral}{'model\_file'}):
-813             \textcolor{comment}{# reload best validation model}
-814             self.agent = \hyperlink{namespaceparlai_1_1core_1_1agents_ad0d54074d4bcc148bb415ab5515a53b5}{create\_agent}(opt)
-815 
-816         valid\_worlds = \_maybe\_load\_eval\_worlds(self.agent, opt, \textcolor{stringliteral}{'valid'})
-817         max\_exs = opt[\textcolor{stringliteral}{'validation\_max\_exs'}] \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'short\_final\_eval'}) \textcolor{keywordflow}{else} -1
-818         v\_report = \hyperlink{namespaceparlai_1_1scripts_1_1train__model_a496dfe3bf04da9b55d261b4c8d6229a7}{run\_eval}(valid\_worlds, opt, \textcolor{stringliteral}{'valid'}, max\_exs, write\_log=\textcolor{keyword}{True})
-819         test\_worlds = \_maybe\_load\_eval\_worlds(self.agent, opt, \textcolor{stringliteral}{'test'})
-820         t\_report = \hyperlink{namespaceparlai_1_1scripts_1_1train__model_a496dfe3bf04da9b55d261b4c8d6229a7}{run\_eval}(test\_worlds, opt, \textcolor{stringliteral}{'test'}, max\_exs, write\_log=\textcolor{keyword}{True})
-821         \textcolor{keywordflow}{if} valid\_worlds:
-822             \textcolor{keywordflow}{for} valid\_world \textcolor{keywordflow}{in} valid\_worlds:
-823                 valid\_world.shutdown()
-824         \textcolor{keywordflow}{if} test\_worlds:
-825             \textcolor{keywordflow}{for} test\_world \textcolor{keywordflow}{in} test\_worlds:
-826                 test\_world.shutdown()
-827 
-828         \hyperlink{namespaceparlai_1_1core_1_1params_afd1a47c94990168ea9e70d894a79bd2c}{print\_announcements}(opt)
-829 
-830         \textcolor{keywordflow}{return} v\_report, t\_report
-831 
-832 
+809         valid\_worlds = \_maybe\_load\_eval\_worlds(self.agent, opt, \textcolor{stringliteral}{'valid'})
+810         max\_exs = opt[\textcolor{stringliteral}{'validation\_max\_exs'}] \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'short\_final\_eval'}) \textcolor{keywordflow}{else} -1
+811         v\_report = \hyperlink{namespaceparlai_1_1scripts_1_1train__model_a496dfe3bf04da9b55d261b4c8d6229a7}{run\_eval}(valid\_worlds, opt, \textcolor{stringliteral}{'valid'}, max\_exs, write\_log=\textcolor{keyword}{True})
+812         test\_worlds = \_maybe\_load\_eval\_worlds(self.agent, opt, \textcolor{stringliteral}{'test'})
+813         t\_report = \hyperlink{namespaceparlai_1_1scripts_1_1train__model_a496dfe3bf04da9b55d261b4c8d6229a7}{run\_eval}(test\_worlds, opt, \textcolor{stringliteral}{'test'}, max\_exs, write\_log=\textcolor{keyword}{True})
+814         \textcolor{keywordflow}{if} valid\_worlds:
+815             \textcolor{keywordflow}{for} valid\_world \textcolor{keywordflow}{in} valid\_worlds:
+816                 valid\_world.shutdown()
+817         \textcolor{keywordflow}{if} test\_worlds:
+818             \textcolor{keywordflow}{for} test\_world \textcolor{keywordflow}{in} test\_worlds:
+819                 test\_world.shutdown()
+820 
+821         \hyperlink{namespaceparlai_1_1core_1_1params_afd1a47c94990168ea9e70d894a79bd2c}{print\_announcements}(opt)
+822 
+823         \textcolor{keywordflow}{return} v\_report, t\_report
+824 
+825 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_a707bb03792ef7427f5ddbb66184a9756}\label{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_a707bb03792ef7427f5ddbb66184a9756}} 
 \index{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop@{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop}!validate@{validate}}
@@ -444,105 +436,105 @@ Definition at line 701 of file train\+\_\+model.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 483 of file train\+\_\+model.\+py.
+Definition at line 484 of file train\+\_\+model.\+py.
 
 
 \begin{DoxyCode}
-483     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(self):
-484         \textcolor{stringliteral}{"""}
-485 \textcolor{stringliteral}{        Perform a validation run, checking whether we should stop training.}
-486 \textcolor{stringliteral}{}
-487 \textcolor{stringliteral}{        :return: boolean indicating whether training should stop}
-488 \textcolor{stringliteral}{        :rtype: bool}
-489 \textcolor{stringliteral}{        """}
-490         opt = self.opt
-491 
-492         \textcolor{keywordflow}{if} self.valid\_worlds \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-493             \textcolor{comment}{# we need to load the world now}
-494             self.valid\_worlds = \_maybe\_load\_eval\_worlds(self.agent, opt, \textcolor{stringliteral}{'valid'})
-495 
-496         \textcolor{comment}{# run evaluation on valid set}
-497         valid\_report = \hyperlink{namespaceparlai_1_1utils_1_1distributed_a269d3c7284127d9b287b9b61e9161de6}{sync\_object}(
-498             \hyperlink{namespaceparlai_1_1scripts_1_1train__model_a496dfe3bf04da9b55d261b4c8d6229a7}{run\_eval}(self.valid\_worlds, opt, \textcolor{stringliteral}{'valid'}, opt[\textcolor{stringliteral}{'validation\_max\_exs'}])
-499         )
-500         v = valid\_report.copy()
-501         v[\textcolor{stringliteral}{'train\_time'}] = self.train\_time.time()
-502         self.valid\_reports.append(v)
-503         \textcolor{comment}{# logging}
-504         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'tensorboard\_log'}] \textcolor{keywordflow}{and} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a9bb1dac198180590ef8c6b6c6f9fc2c4}{is\_primary\_worker}():
-505             self.tb\_logger.log\_metrics(\textcolor{stringliteral}{'valid'}, self.parleys, valid\_report)
-506         \textcolor{comment}{# saving}
-507         \textcolor{keywordflow}{if} (
-508             opt.get(\textcolor{stringliteral}{'model\_file'})
-509             \textcolor{keywordflow}{and} opt.get(\textcolor{stringliteral}{'save\_after\_valid'})
-510             \textcolor{keywordflow}{and} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a9bb1dac198180590ef8c6b6c6f9fc2c4}{is\_primary\_worker}()
-511         ):
-512             print(\textcolor{stringliteral}{"[ saving model checkpoint: "} + opt[\textcolor{stringliteral}{'model\_file'}] + \textcolor{stringliteral}{".checkpoint ]"})
-513             self.save\_model(\textcolor{stringliteral}{'.checkpoint'})
-514 
-515         \textcolor{comment}{# send valid metrics to agent if the agent wants them}
-516         \textcolor{keywordflow}{if} hasattr(self.agent, \textcolor{stringliteral}{'receive\_metrics'}):
-517             self.agent.receive\_metrics(valid\_report)
-518 
-519         \textcolor{comment}{# check which metric to look at}
-520         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'tasks'} \textcolor{keywordflow}{in} valid\_report \textcolor{keywordflow}{and} \textcolor{stringliteral}{'/'} \textcolor{keywordflow}{in} opt[\textcolor{stringliteral}{'validation\_metric'}]:
-521             \textcolor{comment}{# if you are multitasking and want your validation metric to be}
-522             \textcolor{comment}{# a metric specific to a subtask, specify your validation metric}
-523             \textcolor{comment}{# as -vmt subtask/metric}
-524             subtask = opt[\textcolor{stringliteral}{'validation\_metric'}].split(\textcolor{stringliteral}{'/'})[0]
-525             validation\_metric = opt[\textcolor{stringliteral}{'validation\_metric'}].split(\textcolor{stringliteral}{'/'})[1]
-526             new\_valid = valid\_report[\textcolor{stringliteral}{'tasks'}][subtask][validation\_metric]
-527         \textcolor{keywordflow}{else}:
-528             new\_valid = valid\_report[opt[\textcolor{stringliteral}{'validation\_metric'}]]
-529 
-530         \textcolor{comment}{# check if this is the best validation so far}
-531         \textcolor{keywordflow}{if} (
-532             self.best\_valid \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}
-533             \textcolor{keywordflow}{or} self.valid\_optim * new\_valid > self.valid\_optim * self.best\_valid
-534         ):
-535             print(
-536                 \textcolor{stringliteral}{'[ new best \{\}: \{\}\{\} ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
-537                     opt[\textcolor{stringliteral}{'validation\_metric'}],
-538                     new\_valid,
-539                     \textcolor{stringliteral}{' (previous best was \{\})'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.best\_valid)
-540                     \textcolor{keywordflow}{if} self.best\_valid \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}
-541                     \textcolor{keywordflow}{else} \textcolor{stringliteral}{''},
-542                 )
-543             )
-544             self.best\_valid = new\_valid
-545             self.impatience = 0
-546             \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'model\_file'}) \textcolor{keywordflow}{and} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a9bb1dac198180590ef8c6b6c6f9fc2c4}{is\_primary\_worker}():
-547                 print(\textcolor{stringliteral}{"[ saving best valid model: "} + opt[\textcolor{stringliteral}{'model\_file'}] + \textcolor{stringliteral}{" ]"})
-548                 self.save\_model()
-549                 print(
-550                     \textcolor{stringliteral}{"[ saving best valid metric: "} + opt[\textcolor{stringliteral}{'model\_file'}] + \textcolor{stringliteral}{".best\_valid ]"}
-551                 )
-552                 \_save\_best\_valid(opt[\textcolor{stringliteral}{'model\_file'}], self.best\_valid)
-553                 self.saved = \textcolor{keyword}{True}
-554             \textcolor{keywordflow}{if} (
-555                 opt[\textcolor{stringliteral}{'validation\_metric'}] == \textcolor{stringliteral}{'accuracy'}
-556                 \textcolor{keywordflow}{and} self.best\_valid >= opt[\textcolor{stringliteral}{'validation\_cutoff'}]
-557             ):
-558                 print(\textcolor{stringliteral}{'[ task solved! stopping. ]'})
-559                 \textcolor{keywordflow}{return} \textcolor{keyword}{True}
-560         \textcolor{keywordflow}{else}:
-561             self.impatience += 1
-562             print(
-563                 \textcolor{stringliteral}{'[ did not beat best \{\}: \{\} impatience: \{\} ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
-564                     opt[\textcolor{stringliteral}{'validation\_metric'}], round(self.best\_valid, 4), self.impatience
-565                 )
-566             )
-567         self.validate\_time.reset()
-568 
-569         \textcolor{comment}{# check if we are out of patience}
-570         \textcolor{keywordflow}{if} (
-571             opt[\textcolor{stringliteral}{'validation\_patience'}] > 0
-572             \textcolor{keywordflow}{and} self.impatience >= opt[\textcolor{stringliteral}{'validation\_patience'}]
-573         ):
-574             print(\textcolor{stringliteral}{'[ ran out of patience! stopping training. ]'})
-575             \textcolor{keywordflow}{return} \textcolor{keyword}{True}
-576         \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-577 
+484     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(self):
+485         \textcolor{stringliteral}{"""}
+486 \textcolor{stringliteral}{        Perform a validation run, checking whether we should stop training.}
+487 \textcolor{stringliteral}{}
+488 \textcolor{stringliteral}{        :return: boolean indicating whether training should stop}
+489 \textcolor{stringliteral}{        :rtype: bool}
+490 \textcolor{stringliteral}{        """}
+491         opt = self.opt
+492 
+493         \textcolor{keywordflow}{if} self.valid\_worlds \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+494             \textcolor{comment}{# we need to load the world now}
+495             self.valid\_worlds = \_maybe\_load\_eval\_worlds(self.agent, opt, \textcolor{stringliteral}{'valid'})
+496 
+497         \textcolor{comment}{# run evaluation on valid set}
+498         valid\_report = \hyperlink{namespaceparlai_1_1utils_1_1distributed_a269d3c7284127d9b287b9b61e9161de6}{sync\_object}(
+499             \hyperlink{namespaceparlai_1_1scripts_1_1train__model_a496dfe3bf04da9b55d261b4c8d6229a7}{run\_eval}(self.valid\_worlds, opt, \textcolor{stringliteral}{'valid'}, opt[\textcolor{stringliteral}{'validation\_max\_exs'}])
+500         )
+501         v = valid\_report.copy()
+502         v[\textcolor{stringliteral}{'train\_time'}] = self.train\_time.time()
+503         self.valid\_reports.append(v)
+504         \textcolor{comment}{# logging}
+505         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'tensorboard\_log'}] \textcolor{keywordflow}{and} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a9bb1dac198180590ef8c6b6c6f9fc2c4}{is\_primary\_worker}():
+506             self.tb\_logger.log\_metrics(\textcolor{stringliteral}{'valid'}, self.parleys, valid\_report)
+507         \textcolor{comment}{# saving}
+508         \textcolor{keywordflow}{if} (
+509             opt.get(\textcolor{stringliteral}{'model\_file'})
+510             \textcolor{keywordflow}{and} opt.get(\textcolor{stringliteral}{'save\_after\_valid'})
+511             \textcolor{keywordflow}{and} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a9bb1dac198180590ef8c6b6c6f9fc2c4}{is\_primary\_worker}()
+512         ):
+513             print(\textcolor{stringliteral}{"[ saving model checkpoint: "} + opt[\textcolor{stringliteral}{'model\_file'}] + \textcolor{stringliteral}{".checkpoint ]"})
+514             self.save\_model(\textcolor{stringliteral}{'.checkpoint'})
+515 
+516         \textcolor{comment}{# send valid metrics to agent if the agent wants them}
+517         \textcolor{keywordflow}{if} hasattr(self.agent, \textcolor{stringliteral}{'receive\_metrics'}):
+518             self.agent.receive\_metrics(valid\_report)
+519 
+520         \textcolor{comment}{# check which metric to look at}
+521         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'tasks'} \textcolor{keywordflow}{in} valid\_report \textcolor{keywordflow}{and} \textcolor{stringliteral}{'/'} \textcolor{keywordflow}{in} opt[\textcolor{stringliteral}{'validation\_metric'}]:
+522             \textcolor{comment}{# if you are multitasking and want your validation metric to be}
+523             \textcolor{comment}{# a metric specific to a subtask, specify your validation metric}
+524             \textcolor{comment}{# as -vmt subtask/metric}
+525             subtask = opt[\textcolor{stringliteral}{'validation\_metric'}].split(\textcolor{stringliteral}{'/'})[0]
+526             validation\_metric = opt[\textcolor{stringliteral}{'validation\_metric'}].split(\textcolor{stringliteral}{'/'})[1]
+527             new\_valid = valid\_report[\textcolor{stringliteral}{'tasks'}][subtask][validation\_metric]
+528         \textcolor{keywordflow}{else}:
+529             new\_valid = valid\_report[opt[\textcolor{stringliteral}{'validation\_metric'}]]
+530 
+531         \textcolor{comment}{# check if this is the best validation so far}
+532         \textcolor{keywordflow}{if} (
+533             self.best\_valid \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}
+534             \textcolor{keywordflow}{or} self.valid\_optim * new\_valid > self.valid\_optim * self.best\_valid
+535         ):
+536             print(
+537                 \textcolor{stringliteral}{'[ new best \{\}: \{\}\{\} ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+538                     opt[\textcolor{stringliteral}{'validation\_metric'}],
+539                     new\_valid,
+540                     \textcolor{stringliteral}{' (previous best was \{\})'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.best\_valid)
+541                     \textcolor{keywordflow}{if} self.best\_valid \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}
+542                     \textcolor{keywordflow}{else} \textcolor{stringliteral}{''},
+543                 )
+544             )
+545             self.best\_valid = new\_valid
+546             self.impatience = 0
+547             \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'model\_file'}) \textcolor{keywordflow}{and} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a9bb1dac198180590ef8c6b6c6f9fc2c4}{is\_primary\_worker}():
+548                 print(\textcolor{stringliteral}{"[ saving best valid model: "} + opt[\textcolor{stringliteral}{'model\_file'}] + \textcolor{stringliteral}{" ]"})
+549                 self.save\_model()
+550                 print(
+551                     \textcolor{stringliteral}{"[ saving best valid metric: "} + opt[\textcolor{stringliteral}{'model\_file'}] + \textcolor{stringliteral}{".best\_valid ]"}
+552                 )
+553                 \_save\_best\_valid(opt[\textcolor{stringliteral}{'model\_file'}], self.best\_valid)
+554                 self.saved = \textcolor{keyword}{True}
+555             \textcolor{keywordflow}{if} (
+556                 opt[\textcolor{stringliteral}{'validation\_metric'}] == \textcolor{stringliteral}{'accuracy'}
+557                 \textcolor{keywordflow}{and} self.best\_valid >= opt[\textcolor{stringliteral}{'validation\_cutoff'}]
+558             ):
+559                 print(\textcolor{stringliteral}{'[ task solved! stopping. ]'})
+560                 \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+561         \textcolor{keywordflow}{else}:
+562             self.impatience += 1
+563             print(
+564                 \textcolor{stringliteral}{'[ did not beat best \{\}: \{\} impatience: \{\} ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+565                     opt[\textcolor{stringliteral}{'validation\_metric'}], round(self.best\_valid, 4), self.impatience
+566                 )
+567             )
+568         self.validate\_time.reset()
+569 
+570         \textcolor{comment}{# check if we are out of patience}
+571         \textcolor{keywordflow}{if} (
+572             opt[\textcolor{stringliteral}{'validation\_patience'}] > 0
+573             \textcolor{keywordflow}{and} self.impatience >= opt[\textcolor{stringliteral}{'validation\_patience'}]
+574         ):
+575             print(\textcolor{stringliteral}{'[ ran out of patience! stopping training. ]'})
+576             \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+577         \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+578 
 \end{DoxyCode}
 
 
@@ -555,7 +547,7 @@ Definition at line 483 of file train\+\_\+model.\+py.
 
 
 
-Definition at line 366 of file train\+\_\+model.\+py.
+Definition at line 367 of file train\+\_\+model.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_a48a44b00d7b814ff20d0599803e92411}\label{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_a48a44b00d7b814ff20d0599803e92411}} 
 \index{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop@{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop}!best\+\_\+valid@{best\+\_\+valid}}
@@ -565,7 +557,7 @@ Definition at line 366 of file train\+\_\+model.\+py.
 
 
 
-Definition at line 413 of file train\+\_\+model.\+py.
+Definition at line 414 of file train\+\_\+model.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_aeb16930507dc585a10096e2b235e2745}\label{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_aeb16930507dc585a10096e2b235e2745}} 
 \index{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop@{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop}!impatience@{impatience}}
@@ -575,7 +567,7 @@ Definition at line 413 of file train\+\_\+model.\+py.
 
 
 
-Definition at line 419 of file train\+\_\+model.\+py.
+Definition at line 420 of file train\+\_\+model.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_a46ffd685b324d61beb0428afba352664}\label{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_a46ffd685b324d61beb0428afba352664}} 
 \index{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop@{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop}!last\+\_\+valid\+\_\+epoch@{last\+\_\+valid\+\_\+epoch}}
@@ -585,7 +577,7 @@ Definition at line 419 of file train\+\_\+model.\+py.
 
 
 
-Definition at line 410 of file train\+\_\+model.\+py.
+Definition at line 411 of file train\+\_\+model.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_a21dfaed0d552564c081077d9f2476a7a}\label{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_a21dfaed0d552564c081077d9f2476a7a}} 
 \index{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop@{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop}!log\+\_\+every\+\_\+n\+\_\+secs@{log\+\_\+every\+\_\+n\+\_\+secs}}
@@ -595,7 +587,7 @@ Definition at line 410 of file train\+\_\+model.\+py.
 
 
 
-Definition at line 385 of file train\+\_\+model.\+py.
+Definition at line 386 of file train\+\_\+model.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_a171257163a989d07a30e0a7077b85f13}\label{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_a171257163a989d07a30e0a7077b85f13}} 
 \index{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop@{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop}!log\+\_\+time@{log\+\_\+time}}
@@ -605,7 +597,7 @@ Definition at line 385 of file train\+\_\+model.\+py.
 
 
 
-Definition at line 375 of file train\+\_\+model.\+py.
+Definition at line 376 of file train\+\_\+model.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_a48187974c2f14dcb5c7416709cf750b3}\label{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_a48187974c2f14dcb5c7416709cf750b3}} 
 \index{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop@{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop}!max\+\_\+num\+\_\+epochs@{max\+\_\+num\+\_\+epochs}}
@@ -615,7 +607,7 @@ Definition at line 375 of file train\+\_\+model.\+py.
 
 
 
-Definition at line 379 of file train\+\_\+model.\+py.
+Definition at line 380 of file train\+\_\+model.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_af83e63de91a310e6be11b7570442b191}\label{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_af83e63de91a310e6be11b7570442b191}} 
 \index{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop@{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop}!max\+\_\+train\+\_\+time@{max\+\_\+train\+\_\+time}}
@@ -625,7 +617,7 @@ Definition at line 379 of file train\+\_\+model.\+py.
 
 
 
-Definition at line 382 of file train\+\_\+model.\+py.
+Definition at line 383 of file train\+\_\+model.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_a3f9cd4c0c08f457b3ecfd1e494ccf58c}\label{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_a3f9cd4c0c08f457b3ecfd1e494ccf58c}} 
 \index{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop@{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop}!opt@{opt}}
@@ -635,7 +627,7 @@ Definition at line 382 of file train\+\_\+model.\+py.
 
 
 
-Definition at line 422 of file train\+\_\+model.\+py.
+Definition at line 423 of file train\+\_\+model.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_abd0cf79ef34f6ef8f028f7fa44eae971}\label{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_abd0cf79ef34f6ef8f028f7fa44eae971}} 
 \index{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop@{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop}!parleys@{parleys}}
@@ -645,7 +637,7 @@ Definition at line 422 of file train\+\_\+model.\+py.
 
 
 
-Definition at line 378 of file train\+\_\+model.\+py.
+Definition at line 379 of file train\+\_\+model.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_a1b0c1444a2a2d2550e4f6eea53a435d2}\label{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_a1b0c1444a2a2d2550e4f6eea53a435d2}} 
 \index{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop@{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop}!save\+\_\+every\+\_\+n\+\_\+secs@{save\+\_\+every\+\_\+n\+\_\+secs}}
@@ -655,7 +647,7 @@ Definition at line 378 of file train\+\_\+model.\+py.
 
 
 
-Definition at line 393 of file train\+\_\+model.\+py.
+Definition at line 394 of file train\+\_\+model.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_abed9a13e3ff9dcdf4b4c1711c0554531}\label{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_abed9a13e3ff9dcdf4b4c1711c0554531}} 
 \index{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop@{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop}!save\+\_\+time@{save\+\_\+time}}
@@ -665,7 +657,7 @@ Definition at line 393 of file train\+\_\+model.\+py.
 
 
 
-Definition at line 376 of file train\+\_\+model.\+py.
+Definition at line 377 of file train\+\_\+model.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_a22cd642f6665fabdc49cdd294e257643}\label{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_a22cd642f6665fabdc49cdd294e257643}} 
 \index{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop@{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop}!saved@{saved}}
@@ -675,7 +667,7 @@ Definition at line 376 of file train\+\_\+model.\+py.
 
 
 
-Definition at line 420 of file train\+\_\+model.\+py.
+Definition at line 421 of file train\+\_\+model.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_af6636a1279a3fb33f57ba1af500d049b}\label{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_af6636a1279a3fb33f57ba1af500d049b}} 
 \index{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop@{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop}!tb\+\_\+logger@{tb\+\_\+logger}}
@@ -685,7 +677,7 @@ Definition at line 420 of file train\+\_\+model.\+py.
 
 
 
-Definition at line 439 of file train\+\_\+model.\+py.
+Definition at line 440 of file train\+\_\+model.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_a47cce17f07df89709cb9c6579b653920}\label{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_a47cce17f07df89709cb9c6579b653920}} 
 \index{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop@{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop}!train\+\_\+time@{train\+\_\+time}}
@@ -695,7 +687,7 @@ Definition at line 439 of file train\+\_\+model.\+py.
 
 
 
-Definition at line 373 of file train\+\_\+model.\+py.
+Definition at line 374 of file train\+\_\+model.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_a4600c4ed3161598de0be5de12e220625}\label{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_a4600c4ed3161598de0be5de12e220625}} 
 \index{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop@{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop}!val\+\_\+every\+\_\+n\+\_\+epochs@{val\+\_\+every\+\_\+n\+\_\+epochs}}
@@ -705,7 +697,7 @@ Definition at line 373 of file train\+\_\+model.\+py.
 
 
 
-Definition at line 396 of file train\+\_\+model.\+py.
+Definition at line 397 of file train\+\_\+model.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_af1b6a637b6bfbc2f47f688b739a9b38d}\label{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_af1b6a637b6bfbc2f47f688b739a9b38d}} 
 \index{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop@{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop}!val\+\_\+every\+\_\+n\+\_\+secs@{val\+\_\+every\+\_\+n\+\_\+secs}}
@@ -715,7 +707,7 @@ Definition at line 396 of file train\+\_\+model.\+py.
 
 
 
-Definition at line 388 of file train\+\_\+model.\+py.
+Definition at line 389 of file train\+\_\+model.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_abe8e421aafd3a42103c794f3e3a1bcc6}\label{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_abe8e421aafd3a42103c794f3e3a1bcc6}} 
 \index{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop@{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop}!valid\+\_\+optim@{valid\+\_\+optim}}
@@ -725,7 +717,7 @@ Definition at line 388 of file train\+\_\+model.\+py.
 
 
 
-Definition at line 411 of file train\+\_\+model.\+py.
+Definition at line 412 of file train\+\_\+model.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_abceaa403716b5def408e2fedca6c651d}\label{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_abceaa403716b5def408e2fedca6c651d}} 
 \index{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop@{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop}!valid\+\_\+reports@{valid\+\_\+reports}}
@@ -735,7 +727,7 @@ Definition at line 411 of file train\+\_\+model.\+py.
 
 
 
-Definition at line 412 of file train\+\_\+model.\+py.
+Definition at line 413 of file train\+\_\+model.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_a45643d393057a2a47e8a6e74acdc7515}\label{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_a45643d393057a2a47e8a6e74acdc7515}} 
 \index{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop@{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop}!valid\+\_\+worlds@{valid\+\_\+worlds}}
@@ -745,7 +737,7 @@ Definition at line 412 of file train\+\_\+model.\+py.
 
 
 
-Definition at line 421 of file train\+\_\+model.\+py.
+Definition at line 422 of file train\+\_\+model.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_ac7752245b67836fbcf9469a6247a14a2}\label{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_ac7752245b67836fbcf9469a6247a14a2}} 
 \index{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop@{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop}!validate\+\_\+time@{validate\+\_\+time}}
@@ -755,7 +747,7 @@ Definition at line 421 of file train\+\_\+model.\+py.
 
 
 
-Definition at line 374 of file train\+\_\+model.\+py.
+Definition at line 375 of file train\+\_\+model.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_aa22c430edd5956591bd0d266f0984ebb}\label{classparlai_1_1scripts_1_1train__model_1_1TrainLoop_aa22c430edd5956591bd0d266f0984ebb}} 
 \index{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop@{parlai\+::scripts\+::train\+\_\+model\+::\+Train\+Loop}!world@{world}}
@@ -765,7 +757,7 @@ Definition at line 374 of file train\+\_\+model.\+py.
 
 
 
-Definition at line 368 of file train\+\_\+model.\+py.
+Definition at line 369 of file train\+\_\+model.\+py.
 
 
 

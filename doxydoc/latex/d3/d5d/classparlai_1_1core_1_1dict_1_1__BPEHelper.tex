@@ -2,8 +2,7 @@
 \label{classparlai_1_1core_1_1dict_1_1__BPEHelper}\index{parlai.\+core.\+dict.\+\_\+\+B\+P\+E\+Helper@{parlai.\+core.\+dict.\+\_\+\+B\+P\+E\+Helper}}
 
 
-Inheritance diagram for parlai.\+core.\+dict.\+\_\+\+B\+P\+E\+Helper\+:
-\nopagebreak
+Inheritance diagram for parlai.\+core.\+dict.\+\_\+\+B\+P\+E\+Helper\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+core.\+dict.\+\_\+\+B\+P\+E\+Helper\+:
 \end{figure}
 
 
-Collaboration diagram for parlai.\+core.\+dict.\+\_\+\+B\+P\+E\+Helper\+:
-\nopagebreak
+Collaboration diagram for parlai.\+core.\+dict.\+\_\+\+B\+P\+E\+Helper\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -54,7 +52,7 @@ in a second pass, calling tokenize() again to get processed output.
 \end{DoxyVerb}
  
 
-Definition at line 815 of file dict.\+py.
+Definition at line 816 of file dict.\+py.
 
 
 
@@ -75,32 +73,32 @@ If it does not, codecs will be saved there after a call to `finalize()`.
 \end{DoxyVerb}
  
 
-Definition at line 827 of file dict.\+py.
+Definition at line 828 of file dict.\+py.
 
 
 \begin{DoxyCode}
-827     \textcolor{keyword}{def }\_\_init\_\_(self, codecs\_filename):
-828         \textcolor{stringliteral}{"""}
-829 \textcolor{stringliteral}{        Initialize the BPE module.}
-830 \textcolor{stringliteral}{}
-831 \textcolor{stringliteral}{        If `codecs\_filename` already exists, loads the pretrained codecs.}
-832 \textcolor{stringliteral}{        If it does not, codecs will be saved there after a call to `finalize()`.}
-833 \textcolor{stringliteral}{}
-834 \textcolor{stringliteral}{        :param codecs\_filename:}
-835 \textcolor{stringliteral}{            place to save/load codecs.}
-836 \textcolor{stringliteral}{        """}
-837         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} BPE\_INSTALLED:
-838             \textcolor{keywordflow}{raise} RuntimeError(
-839                 \textcolor{stringliteral}{"Please run \(\backslash\)"pip install 'git+https://github.com/rsennrich"}
-840                 \textcolor{stringliteral}{"/subword-nmt.git#egg=subword-nmt'\(\backslash\)""}
-841             )
-842 
-843         self.splitter = re.compile(\textcolor{stringliteral}{r'\(\backslash\)w+|[^\(\backslash\)w\(\backslash\)s]'}, re.UNICODE)
-844 
-845         self.codecs = codecs\_filename
-846         \textcolor{keywordflow}{if} os.path.exists(self.codecs):
-847             self.\_load\_from\_codecs()
-848 
+828     \textcolor{keyword}{def }\_\_init\_\_(self, codecs\_filename):
+829         \textcolor{stringliteral}{"""}
+830 \textcolor{stringliteral}{        Initialize the BPE module.}
+831 \textcolor{stringliteral}{}
+832 \textcolor{stringliteral}{        If `codecs\_filename` already exists, loads the pretrained codecs.}
+833 \textcolor{stringliteral}{        If it does not, codecs will be saved there after a call to `finalize()`.}
+834 \textcolor{stringliteral}{}
+835 \textcolor{stringliteral}{        :param codecs\_filename:}
+836 \textcolor{stringliteral}{            place to save/load codecs.}
+837 \textcolor{stringliteral}{        """}
+838         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} BPE\_INSTALLED:
+839             \textcolor{keywordflow}{raise} RuntimeError(
+840                 \textcolor{stringliteral}{"Please run \(\backslash\)"pip install 'git+https://github.com/rsennrich"}
+841                 \textcolor{stringliteral}{"/subword-nmt.git#egg=subword-nmt'\(\backslash\)""}
+842             )
+843 
+844         self.splitter = re.compile(\textcolor{stringliteral}{r'\(\backslash\)w+|[^\(\backslash\)w\(\backslash\)s]'}, re.UNICODE)
+845 
+846         self.codecs = codecs\_filename
+847         \textcolor{keywordflow}{if} os.path.exists(self.codecs):
+848             self.\_load\_from\_codecs()
+849 
 \end{DoxyCode}
 
 
@@ -115,19 +113,19 @@ Definition at line 827 of file dict.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 910 of file dict.\+py.
+Definition at line 911 of file dict.\+py.
 
 
 \begin{DoxyCode}
-910     \textcolor{keyword}{def }copy\_codecs\_file(self, target\_file):
-911         \textcolor{stringliteral}{"""}
-912 \textcolor{stringliteral}{        Copy the codecs file to a new location.}
-913 \textcolor{stringliteral}{        """}
-914         with open(target\_file, \textcolor{stringliteral}{'w'}, encoding=\textcolor{stringliteral}{'utf-8'}) \textcolor{keyword}{as} wfile:
-915             with open(self.codecs, encoding=\textcolor{stringliteral}{'utf-8'}) \textcolor{keyword}{as} rfile:
-916                 \textcolor{keywordflow}{for} line \textcolor{keywordflow}{in} rfile:
-917                     wfile.write(line)
-918 \end{DoxyCode}
+911     \textcolor{keyword}{def }copy\_codecs\_file(self, target\_file):
+912         \textcolor{stringliteral}{"""}
+913 \textcolor{stringliteral}{        Copy the codecs file to a new location.}
+914 \textcolor{stringliteral}{        """}
+915         with open(target\_file, \textcolor{stringliteral}{'w'}, encoding=\textcolor{stringliteral}{'utf-8'}) \textcolor{keyword}{as} wfile:
+916             with open(self.codecs, encoding=\textcolor{stringliteral}{'utf-8'}) \textcolor{keyword}{as} rfile:
+917                 \textcolor{keywordflow}{for} line \textcolor{keywordflow}{in} rfile:
+918                     wfile.write(line)
+919 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1dict_1_1__BPEHelper_ae93cf51522695ac3f45fc19eee94f64c}\label{classparlai_1_1core_1_1dict_1_1__BPEHelper_ae93cf51522695ac3f45fc19eee94f64c}} 
 \index{parlai\+::core\+::dict\+::\+\_\+\+B\+P\+E\+Helper@{parlai\+::core\+::dict\+::\+\_\+\+B\+P\+E\+Helper}!finalize@{finalize}}
 \index{finalize@{finalize}!parlai\+::core\+::dict\+::\+\_\+\+B\+P\+E\+Helper@{parlai\+::core\+::dict\+::\+\_\+\+B\+P\+E\+Helper}}
@@ -147,50 +145,50 @@ Definition at line 910 of file dict.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 870 of file dict.\+py.
+Definition at line 871 of file dict.\+py.
 
 
 \begin{DoxyCode}
-870     \textcolor{keyword}{def }finalize(self, frequencies, num\_symbols=30000, minfreq=2):
-871         \textcolor{stringliteral}{"""}
-872 \textcolor{stringliteral}{        Build the codecs.}
-873 \textcolor{stringliteral}{}
-874 \textcolor{stringliteral}{        :param frequencies:}
-875 \textcolor{stringliteral}{            dictionary of (token: frequency) pairs}
-876 \textcolor{stringliteral}{        :param num\_symbols:}
-877 \textcolor{stringliteral}{            Number of BPE symbols. Recommend 30000-40000.  If <= 0, default}
-878 \textcolor{stringliteral}{            30000 will be used.}
-879 \textcolor{stringliteral}{        :param minfreq:}
-880 \textcolor{stringliteral}{            Minimum frequency of a token before forced BPE decomposition. If <=}
-881 \textcolor{stringliteral}{            0 will use subword-nmt default of 2.}
-882 \textcolor{stringliteral}{        """}
-883         \textcolor{keywordflow}{if} hasattr(self, \textcolor{stringliteral}{'bpe'}):
-884             \textcolor{comment}{# we already finalized the codecs}
-885             \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-886 
-887         print(\textcolor{stringliteral}{'Dictionary: saving bpe codecs to \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.codecs))
-888 
-889         dictionary = (\textcolor{stringliteral}{"\{\} \{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(k, v) \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} frequencies.items())
-890 
-891         \textcolor{keywordflow}{if} num\_symbols <= 0:
-892             num\_symbols = 30000
-893         \textcolor{keywordflow}{if} minfreq <= 0:
-894             minfreq = 2
-895 
-896         codec\_dir, \_ = os.path.split(self.codecs)
-897         os.makedirs(codec\_dir, exist\_ok=\textcolor{keyword}{True})
-898         with open(self.codecs, \textcolor{stringliteral}{'w'}, encoding=\textcolor{stringliteral}{'utf-8'}) \textcolor{keyword}{as} outstream:
-899             learn\_bpe.learn\_bpe(
-900                 dictionary,
-901                 outstream,
-902                 num\_symbols=num\_symbols,
-903                 min\_frequency=minfreq,
-904                 is\_dict=\textcolor{keyword}{True},
-905             )
-906 
-907         self.\_load\_from\_codecs()
-908         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
-909 
+871     \textcolor{keyword}{def }finalize(self, frequencies, num\_symbols=30000, minfreq=2):
+872         \textcolor{stringliteral}{"""}
+873 \textcolor{stringliteral}{        Build the codecs.}
+874 \textcolor{stringliteral}{}
+875 \textcolor{stringliteral}{        :param frequencies:}
+876 \textcolor{stringliteral}{            dictionary of (token: frequency) pairs}
+877 \textcolor{stringliteral}{        :param num\_symbols:}
+878 \textcolor{stringliteral}{            Number of BPE symbols. Recommend 30000-40000.  If <= 0, default}
+879 \textcolor{stringliteral}{            30000 will be used.}
+880 \textcolor{stringliteral}{        :param minfreq:}
+881 \textcolor{stringliteral}{            Minimum frequency of a token before forced BPE decomposition. If <=}
+882 \textcolor{stringliteral}{            0 will use subword-nmt default of 2.}
+883 \textcolor{stringliteral}{        """}
+884         \textcolor{keywordflow}{if} hasattr(self, \textcolor{stringliteral}{'bpe'}):
+885             \textcolor{comment}{# we already finalized the codecs}
+886             \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+887 
+888         print(\textcolor{stringliteral}{'Dictionary: saving bpe codecs to \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.codecs))
+889 
+890         dictionary = (\textcolor{stringliteral}{"\{\} \{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(k, v) \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} frequencies.items())
+891 
+892         \textcolor{keywordflow}{if} num\_symbols <= 0:
+893             num\_symbols = 30000
+894         \textcolor{keywordflow}{if} minfreq <= 0:
+895             minfreq = 2
+896 
+897         codec\_dir, \_ = os.path.split(self.codecs)
+898         os.makedirs(codec\_dir, exist\_ok=\textcolor{keyword}{True})
+899         with open(self.codecs, \textcolor{stringliteral}{'w'}, encoding=\textcolor{stringliteral}{'utf-8'}) \textcolor{keyword}{as} outstream:
+900             learn\_bpe.learn\_bpe(
+901                 dictionary,
+902                 outstream,
+903                 num\_symbols=num\_symbols,
+904                 min\_frequency=minfreq,
+905                 is\_dict=\textcolor{keyword}{True},
+906             )
+907 
+908         self.\_load\_from\_codecs()
+909         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+910 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1dict_1_1__BPEHelper_a1492c4bca01a00536eef0e3cc15f134b}\label{classparlai_1_1core_1_1dict_1_1__BPEHelper_a1492c4bca01a00536eef0e3cc15f134b}} 
 \index{parlai\+::core\+::dict\+::\+\_\+\+B\+P\+E\+Helper@{parlai\+::core\+::dict\+::\+\_\+\+B\+P\+E\+Helper}!tokenize@{tokenize}}
@@ -207,27 +205,27 @@ Otherwise, returns the regularly split tokens that will train the bpe.
 \end{DoxyVerb}
  
 
-Definition at line 853 of file dict.\+py.
+Definition at line 854 of file dict.\+py.
 
 
 \begin{DoxyCode}
-853     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_a1fdb457e98eb4e4c26047e229686a616}{tokenize}(self, text):
-854         \textcolor{stringliteral}{"""}
-855 \textcolor{stringliteral}{        Tokenize the text with bpe if codecs are already finalized.}
-856 \textcolor{stringliteral}{}
-857 \textcolor{stringliteral}{        Otherwise, returns the regularly split tokens that will train the bpe.}
-858 \textcolor{stringliteral}{}
-859 \textcolor{stringliteral}{        :param text: str. Raw text to tokenize.}
-860 \textcolor{stringliteral}{        :return: a list of tokens. Will use BPE once finalized.}
-861 \textcolor{stringliteral}{        """}
-862         text = text.replace(\textcolor{stringliteral}{'\(\backslash\)n'}, \textcolor{stringliteral}{' \_\_newln\_\_ '})
-863         tokens = self.splitter.findall(text)
-864 
-865         \textcolor{keywordflow}{if} hasattr(self, \textcolor{stringliteral}{'bpe'}):
-866             \textcolor{keywordflow}{return} self.bpe.segment\_tokens(tokens)
-867         \textcolor{keywordflow}{else}:
-868             \textcolor{keywordflow}{return} tokens
-869 
+854     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_a1fdb457e98eb4e4c26047e229686a616}{tokenize}(self, text):
+855         \textcolor{stringliteral}{"""}
+856 \textcolor{stringliteral}{        Tokenize the text with bpe if codecs are already finalized.}
+857 \textcolor{stringliteral}{}
+858 \textcolor{stringliteral}{        Otherwise, returns the regularly split tokens that will train the bpe.}
+859 \textcolor{stringliteral}{}
+860 \textcolor{stringliteral}{        :param text: str. Raw text to tokenize.}
+861 \textcolor{stringliteral}{        :return: a list of tokens. Will use BPE once finalized.}
+862 \textcolor{stringliteral}{        """}
+863         text = text.replace(\textcolor{stringliteral}{'\(\backslash\)n'}, \textcolor{stringliteral}{' \_\_newln\_\_ '})
+864         tokens = self.splitter.findall(text)
+865 
+866         \textcolor{keywordflow}{if} hasattr(self, \textcolor{stringliteral}{'bpe'}):
+867             \textcolor{keywordflow}{return} self.bpe.segment\_tokens(tokens)
+868         \textcolor{keywordflow}{else}:
+869             \textcolor{keywordflow}{return} tokens
+870 
 \end{DoxyCode}
 
 
@@ -240,7 +238,7 @@ Definition at line 853 of file dict.\+py.
 
 
 
-Definition at line 851 of file dict.\+py.
+Definition at line 852 of file dict.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1dict_1_1__BPEHelper_a03ab8d245394a2916d8d73cfe521aebe}\label{classparlai_1_1core_1_1dict_1_1__BPEHelper_a03ab8d245394a2916d8d73cfe521aebe}} 
 \index{parlai\+::core\+::dict\+::\+\_\+\+B\+P\+E\+Helper@{parlai\+::core\+::dict\+::\+\_\+\+B\+P\+E\+Helper}!codecs@{codecs}}
@@ -250,7 +248,7 @@ Definition at line 851 of file dict.\+py.
 
 
 
-Definition at line 845 of file dict.\+py.
+Definition at line 846 of file dict.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1dict_1_1__BPEHelper_a4982da2af63c5f2e4ca0e17b1693659c}\label{classparlai_1_1core_1_1dict_1_1__BPEHelper_a4982da2af63c5f2e4ca0e17b1693659c}} 
 \index{parlai\+::core\+::dict\+::\+\_\+\+B\+P\+E\+Helper@{parlai\+::core\+::dict\+::\+\_\+\+B\+P\+E\+Helper}!splitter@{splitter}}
@@ -260,7 +258,7 @@ Definition at line 845 of file dict.\+py.
 
 
 
-Definition at line 843 of file dict.\+py.
+Definition at line 844 of file dict.\+py.
 
 
 

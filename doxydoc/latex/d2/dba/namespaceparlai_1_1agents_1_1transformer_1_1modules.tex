@@ -37,7 +37,7 @@ def \hyperlink{namespaceparlai_1_1agents_1_1transformer_1_1modules_a0b86437e6e96
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-int \hyperlink{namespaceparlai_1_1agents_1_1transformer_1_1modules_afb85e0862dd867aee20a92e26aa29f58}{L\+A\+Y\+E\+R\+\_\+\+N\+O\+R\+M\+\_\+\+E\+PS} = 1e-\/5
+\hyperlink{namespaceparlai_1_1agents_1_1transformer_1_1modules_a05d7fdb12d6d53f201ad11c3a487bd18}{L\+A\+Y\+E\+R\+\_\+\+N\+O\+R\+M\+\_\+\+E\+PS}
 \end{DoxyCompactItemize}
 
 
@@ -52,27 +52,27 @@ int \hyperlink{namespaceparlai_1_1agents_1_1transformer_1_1modules_afb85e0862dd8
 \end{DoxyVerb}
  
 
-Definition at line 284 of file modules.\+py.
+Definition at line 286 of file modules.\+py.
 
 
 \begin{DoxyCode}
-284 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1transformer_1_1modules_a0b86437e6e9682fa3100e9cadcaae259}{create\_position\_codes}(n\_pos, dim, out):
-285     \textcolor{stringliteral}{"""}
-286 \textcolor{stringliteral}{    Create positional codes and store them in ``out``.}
-287 \textcolor{stringliteral}{    """}
-288     position\_enc = np.array(
-289         [
-290             [pos / np.power(10000, 2 * j / dim) \textcolor{keywordflow}{for} j \textcolor{keywordflow}{in} range(dim // 2)]
-291             \textcolor{keywordflow}{for} pos \textcolor{keywordflow}{in} range(n\_pos)
-292         ]
-293     )
-294 
-295     out[:, 0::2] = torch.FloatTensor(np.sin(position\_enc)).type\_as(out)
-296     out[:, 1::2] = torch.FloatTensor(np.cos(position\_enc)).type\_as(out)
-297     out.detach\_()
-298     out.requires\_grad = \textcolor{keyword}{False}
-299 
-300 
+286 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1transformer_1_1modules_a0b86437e6e9682fa3100e9cadcaae259}{create\_position\_codes}(n\_pos, dim, out):
+287     \textcolor{stringliteral}{"""}
+288 \textcolor{stringliteral}{    Create positional codes and store them in ``out``.}
+289 \textcolor{stringliteral}{    """}
+290     position\_enc = np.array(
+291         [
+292             [pos / np.power(10000, 2 * j / dim) \textcolor{keywordflow}{for} j \textcolor{keywordflow}{in} range(dim // 2)]
+293             \textcolor{keywordflow}{for} pos \textcolor{keywordflow}{in} range(n\_pos)
+294         ]
+295     )
+296 
+297     out[:, 0::2] = torch.FloatTensor(np.sin(position\_enc)).type\_as(out)
+298     out[:, 1::2] = torch.FloatTensor(np.cos(position\_enc)).type\_as(out)
+299     out.detach\_()
+300     out.requires\_grad = \textcolor{keyword}{False}
+301 
+302 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespaceparlai_1_1agents_1_1transformer_1_1modules_ad93916b8d2188c35733089e1581c44f8}\label{namespaceparlai_1_1agents_1_1transformer_1_1modules_ad93916b8d2188c35733089e1581c44f8}} 
 \index{parlai\+::agents\+::transformer\+::modules@{parlai\+::agents\+::transformer\+::modules}!gelu@{gelu}}
@@ -86,19 +86,19 @@ c.f. https://arxiv.org/abs/1606.08415
 \end{DoxyVerb}
  
 
-Definition at line 110 of file modules.\+py.
+Definition at line 112 of file modules.\+py.
 
 
 \begin{DoxyCode}
-110 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1transformer_1_1modules_ad93916b8d2188c35733089e1581c44f8}{gelu}(tensor):
-111     \textcolor{stringliteral}{"""}
-112 \textcolor{stringliteral}{    Compute gelu function.}
-113 \textcolor{stringliteral}{}
-114 \textcolor{stringliteral}{    c.f. https://arxiv.org/abs/1606.08415}
-115 \textcolor{stringliteral}{    """}
-116     \textcolor{keywordflow}{return} 0.5 * tensor * (1.0 + torch.erf(tensor / math.sqrt(2.0)))
-117 
-118 
+112 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1transformer_1_1modules_ad93916b8d2188c35733089e1581c44f8}{gelu}(tensor):
+113     \textcolor{stringliteral}{"""}
+114 \textcolor{stringliteral}{    Compute gelu function.}
+115 \textcolor{stringliteral}{}
+116 \textcolor{stringliteral}{    c.f. https://arxiv.org/abs/1606.08415}
+117 \textcolor{stringliteral}{    """}
+118     \textcolor{keywordflow}{return} 0.5 * tensor * (1.0 + torch.erf(tensor / math.sqrt(2.0)))
+119 
+120 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespaceparlai_1_1agents_1_1transformer_1_1modules_ab67607512c597ddd54f2b60a1a1eaf4c}\label{namespaceparlai_1_1agents_1_1transformer_1_1modules_ab67607512c597ddd54f2b60a1a1eaf4c}} 
 \index{parlai\+::agents\+::transformer\+::modules@{parlai\+::agents\+::transformer\+::modules}!get\+\_\+n\+\_\+positions\+\_\+from\+\_\+options@{get\+\_\+n\+\_\+positions\+\_\+from\+\_\+options}}
@@ -110,40 +110,40 @@ Definition at line 110 of file modules.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 119 of file modules.\+py.
+Definition at line 121 of file modules.\+py.
 
 
 \begin{DoxyCode}
-119 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1transformer_1_1modules_ab67607512c597ddd54f2b60a1a1eaf4c}{get\_n\_positions\_from\_options}(opt):
-120     \textcolor{stringliteral}{"""}
-121 \textcolor{stringliteral}{    Determine n\_positions from options dict.}
-122 \textcolor{stringliteral}{    """}
-123     \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'n\_positions'}):
-124         \textcolor{comment}{# if the number of positions is explicitly provided, use that}
-125         n\_positions = opt[\textcolor{stringliteral}{'n\_positions'}]
-126     \textcolor{keywordflow}{else}:
-127         \textcolor{comment}{# else, use the worst case from truncate}
-128         n\_positions = max(
-129             opt.get(\textcolor{stringliteral}{'truncate'}) \textcolor{keywordflow}{or} 0,
-130             opt.get(\textcolor{stringliteral}{'text\_truncate'}) \textcolor{keywordflow}{or} 0,
-131             opt.get(\textcolor{stringliteral}{'label\_truncate'}) \textcolor{keywordflow}{or} 0,
-132         )
-133         \textcolor{keywordflow}{if} n\_positions == 0:
-134             n\_positions = 1024
-135     \textcolor{keywordflow}{return} n\_positions
-136 
-137 
+121 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1transformer_1_1modules_ab67607512c597ddd54f2b60a1a1eaf4c}{get\_n\_positions\_from\_options}(opt):
+122     \textcolor{stringliteral}{"""}
+123 \textcolor{stringliteral}{    Determine n\_positions from options dict.}
+124 \textcolor{stringliteral}{    """}
+125     \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'n\_positions'}):
+126         \textcolor{comment}{# if the number of positions is explicitly provided, use that}
+127         n\_positions = opt[\textcolor{stringliteral}{'n\_positions'}]
+128     \textcolor{keywordflow}{else}:
+129         \textcolor{comment}{# else, use the worst case from truncate}
+130         n\_positions = max(
+131             opt.get(\textcolor{stringliteral}{'truncate'}) \textcolor{keywordflow}{or} 0,
+132             opt.get(\textcolor{stringliteral}{'text\_truncate'}) \textcolor{keywordflow}{or} 0,
+133             opt.get(\textcolor{stringliteral}{'label\_truncate'}) \textcolor{keywordflow}{or} 0,
+134         )
+135         \textcolor{keywordflow}{if} n\_positions == 0:
+136             n\_positions = 1024
+137     \textcolor{keywordflow}{return} n\_positions
+138 
+139 
 \end{DoxyCode}
 
 
 \subsection{Variable Documentation}
-\mbox{\Hypertarget{namespaceparlai_1_1agents_1_1transformer_1_1modules_afb85e0862dd867aee20a92e26aa29f58}\label{namespaceparlai_1_1agents_1_1transformer_1_1modules_afb85e0862dd867aee20a92e26aa29f58}} 
+\mbox{\Hypertarget{namespaceparlai_1_1agents_1_1transformer_1_1modules_a05d7fdb12d6d53f201ad11c3a487bd18}\label{namespaceparlai_1_1agents_1_1transformer_1_1modules_a05d7fdb12d6d53f201ad11c3a487bd18}} 
 \index{parlai\+::agents\+::transformer\+::modules@{parlai\+::agents\+::transformer\+::modules}!L\+A\+Y\+E\+R\+\_\+\+N\+O\+R\+M\+\_\+\+E\+PS@{L\+A\+Y\+E\+R\+\_\+\+N\+O\+R\+M\+\_\+\+E\+PS}}
 \index{L\+A\+Y\+E\+R\+\_\+\+N\+O\+R\+M\+\_\+\+E\+PS@{L\+A\+Y\+E\+R\+\_\+\+N\+O\+R\+M\+\_\+\+E\+PS}!parlai\+::agents\+::transformer\+::modules@{parlai\+::agents\+::transformer\+::modules}}
 \subsubsection{\texorpdfstring{L\+A\+Y\+E\+R\+\_\+\+N\+O\+R\+M\+\_\+\+E\+PS}{LAYER\_NORM\_EPS}}
-{\footnotesize\ttfamily int parlai.\+agents.\+transformer.\+modules.\+L\+A\+Y\+E\+R\+\_\+\+N\+O\+R\+M\+\_\+\+E\+PS = 1e-\/5}
+{\footnotesize\ttfamily parlai.\+agents.\+transformer.\+modules.\+L\+A\+Y\+E\+R\+\_\+\+N\+O\+R\+M\+\_\+\+E\+PS}
 
 
 
-Definition at line 35 of file modules.\+py.
+Definition at line 37 of file modules.\+py.
 

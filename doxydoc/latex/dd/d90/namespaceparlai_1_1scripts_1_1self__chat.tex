@@ -3,14 +3,16 @@
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-def \hyperlink{namespaceparlai_1_1scripts_1_1self__chat_a0899a6bf4e3d48c81a2c1b97f9696714}{setup\+\_\+args} (\hyperlink{namespaceparlai_1_1scripts_1_1self__chat_aa318de0dcf8e4474b9cc89fb2ed28a80}{parser}=None)
+def \hyperlink{namespaceparlai_1_1scripts_1_1self__chat_a0899a6bf4e3d48c81a2c1b97f9696714}{setup\+\_\+args} (\hyperlink{namespaceparlai_1_1scripts_1_1self__chat_af9db75a43048606dded47ed0003b9014}{parser}=None)
 \item 
 def \hyperlink{namespaceparlai_1_1scripts_1_1self__chat_a3b20ced8dd92830f75efb0dc18269794}{self\+\_\+chat} (opt, \hyperlink{namespaceparlai_1_1scripts_1_1self__chat_a41f7dd601db93d7b7f5edfa0da0ab336}{print\+\_\+parser}=None)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-def \hyperlink{namespaceparlai_1_1scripts_1_1self__chat_aa318de0dcf8e4474b9cc89fb2ed28a80}{parser} = \hyperlink{namespaceparlai_1_1scripts_1_1self__chat_a0899a6bf4e3d48c81a2c1b97f9696714}{setup\+\_\+args}()
+\hyperlink{namespaceparlai_1_1scripts_1_1self__chat_af9db75a43048606dded47ed0003b9014}{parser}
+\item 
+\hyperlink{namespaceparlai_1_1scripts_1_1self__chat_abd2d21a5ab8bcf97f9c1f42a6b93c7e2}{print\+\_\+args}
 \item 
 \hyperlink{namespaceparlai_1_1scripts_1_1self__chat_a41f7dd601db93d7b7f5edfa0da0ab336}{print\+\_\+parser}
 \end{DoxyCompactItemize}
@@ -41,12 +43,12 @@ Definition at line 52 of file self\+\_\+chat.\+py.
 61 
 62     random.seed(opt[\textcolor{stringliteral}{'seed'}])
 63     \textcolor{comment}{# Create models}
-64     agent1 = \hyperlink{namespaceparlai_1_1core_1_1agents_ad0d54074d4bcc148bb415ab5515a53b5}{create\_agent}(opt, requireModelExists=\textcolor{keyword}{True})
+64     agent1 = \hyperlink{namespaceparlai_1_1core_1_1agents_a00d77a7e26fb89e8bd900f7b2a02982a}{create\_agent}(opt, requireModelExists=\textcolor{keyword}{True})
 65     agent2 = agent1.clone()
 66     \textcolor{keywordflow}{if} hasattr(agent2, \textcolor{stringliteral}{'id'}):
 67         agent2.id = agent2.id + \textcolor{stringliteral}{"2"}
 68 
-69     world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a11923c10b545c7ecc1b08fe2242d9c2c}{create\_task}(opt, [agent1, agent2])
+69     world = \hyperlink{namespaceparlai_1_1core_1_1worlds_a79969c7ba76d4b3c500f5bb776444dc6}{create\_task}(opt, [agent1, agent2])
 70 
 71     \textcolor{keywordflow}{if} print\_parser:
 72         \textcolor{comment}{# Show arguments after loading model}
@@ -156,15 +158,25 @@ Definition at line 18 of file self\+\_\+chat.\+py.
 
 
 \subsection{Variable Documentation}
-\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1self__chat_aa318de0dcf8e4474b9cc89fb2ed28a80}\label{namespaceparlai_1_1scripts_1_1self__chat_aa318de0dcf8e4474b9cc89fb2ed28a80}} 
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1self__chat_af9db75a43048606dded47ed0003b9014}\label{namespaceparlai_1_1scripts_1_1self__chat_af9db75a43048606dded47ed0003b9014}} 
 \index{parlai\+::scripts\+::self\+\_\+chat@{parlai\+::scripts\+::self\+\_\+chat}!parser@{parser}}
 \index{parser@{parser}!parlai\+::scripts\+::self\+\_\+chat@{parlai\+::scripts\+::self\+\_\+chat}}
 \subsubsection{\texorpdfstring{parser}{parser}}
-{\footnotesize\ttfamily def parlai.\+scripts.\+self\+\_\+chat.\+parser = \hyperlink{namespaceparlai_1_1scripts_1_1self__chat_a0899a6bf4e3d48c81a2c1b97f9696714}{setup\+\_\+args}()}
+{\footnotesize\ttfamily parlai.\+scripts.\+self\+\_\+chat.\+parser}
 
 
 
 Definition at line 129 of file self\+\_\+chat.\+py.
+
+\mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1self__chat_abd2d21a5ab8bcf97f9c1f42a6b93c7e2}\label{namespaceparlai_1_1scripts_1_1self__chat_abd2d21a5ab8bcf97f9c1f42a6b93c7e2}} 
+\index{parlai\+::scripts\+::self\+\_\+chat@{parlai\+::scripts\+::self\+\_\+chat}!print\+\_\+args@{print\+\_\+args}}
+\index{print\+\_\+args@{print\+\_\+args}!parlai\+::scripts\+::self\+\_\+chat@{parlai\+::scripts\+::self\+\_\+chat}}
+\subsubsection{\texorpdfstring{print\+\_\+args}{print\_args}}
+{\footnotesize\ttfamily parlai.\+scripts.\+self\+\_\+chat.\+print\+\_\+args}
+
+
+
+Definition at line 130 of file self\+\_\+chat.\+py.
 
 \mbox{\Hypertarget{namespaceparlai_1_1scripts_1_1self__chat_a41f7dd601db93d7b7f5edfa0da0ab336}\label{namespaceparlai_1_1scripts_1_1self__chat_a41f7dd601db93d7b7f5edfa0da0ab336}} 
 \index{parlai\+::scripts\+::self\+\_\+chat@{parlai\+::scripts\+::self\+\_\+chat}!print\+\_\+parser@{print\+\_\+parser}}

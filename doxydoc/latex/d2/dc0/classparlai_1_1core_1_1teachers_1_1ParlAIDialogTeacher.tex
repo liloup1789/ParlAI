@@ -42,7 +42,6 @@ def \hyperlink{classparlai_1_1core_1_1teachers_1_1ParlAIDialogTeacher_a0ef5a3bba
 \item 
 \hyperlink{classparlai_1_1core_1_1teachers_1_1ParlAIDialogTeacher_a07870e07e8e6f708974ac9f51600e4fa}{id}
 \end{DoxyCompactItemize}
-\subsection*{Additional Inherited Members}
 
 
 \subsection{Detailed Description}
@@ -103,7 +102,7 @@ reverse direction ("Oh cool!" is a response to "Oh me too!" above).
 \end{DoxyVerb}
  
 
-Definition at line 1209 of file teachers.\+py.
+Definition at line 1205 of file teachers.\+py.
 
 
 
@@ -116,23 +115,23 @@ Definition at line 1209 of file teachers.\+py.
 
 
 
-Definition at line 1267 of file teachers.\+py.
+Definition at line 1263 of file teachers.\+py.
 
 
 \begin{DoxyCode}
-1267     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
-1268         super().\_\_init\_\_(opt, shared)
-1269         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} shared:
-1270             self.episodes = []
-1271             self.num\_exs = 0
-1272             \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'parlaidialogteacher\_datafile'}) \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-1273                 self.\_setup\_data(opt.get(\textcolor{stringliteral}{'parlaidialogteacher\_datafile'}))
-1274         \textcolor{keywordflow}{else}:
-1275             self.episodes = shared[\textcolor{stringliteral}{'episodes'}]
-1276             self.num\_exs = sum(len(e) \textcolor{keywordflow}{for} e \textcolor{keywordflow}{in} self.episodes)
-1277         self.id = opt.get(\textcolor{stringliteral}{'parlaidialogteacher\_datafile'}, \textcolor{stringliteral}{'teacher'})
-1278         self.reset()
-1279 
+1263     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
+1264         super().\_\_init\_\_(opt, shared)
+1265         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} shared:
+1266             self.episodes = []
+1267             self.num\_exs = 0
+1268             \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'parlaidialogteacher\_datafile'}) \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+1269                 self.\_setup\_data(opt.get(\textcolor{stringliteral}{'parlaidialogteacher\_datafile'}))
+1270         \textcolor{keywordflow}{else}:
+1271             self.episodes = shared[\textcolor{stringliteral}{'episodes'}]
+1272             self.num\_exs = sum(len(e) \textcolor{keywordflow}{for} e \textcolor{keywordflow}{in} self.episodes)
+1273         self.id = opt.get(\textcolor{stringliteral}{'parlaidialogteacher\_datafile'}, \textcolor{stringliteral}{'teacher'})
+1274         self.reset()
+1275 
 \end{DoxyCode}
 
 
@@ -147,16 +146,16 @@ Definition at line 1267 of file teachers.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1300 of file teachers.\+py.
+Definition at line 1296 of file teachers.\+py.
 
 
 \begin{DoxyCode}
-1300     \textcolor{keyword}{def }get(self, episode\_idx, entry\_idx=None):
-1301         \textcolor{stringliteral}{"""}
-1302 \textcolor{stringliteral}{        Get a specific example from the dataset.}
-1303 \textcolor{stringliteral}{        """}
-1304         \textcolor{keywordflow}{return} self.episodes[episode\_idx][entry\_idx]
-1305 
+1296     \textcolor{keyword}{def }get(self, episode\_idx, entry\_idx=None):
+1297         \textcolor{stringliteral}{"""}
+1298 \textcolor{stringliteral}{        Get a specific example from the dataset.}
+1299 \textcolor{stringliteral}{        """}
+1300         \textcolor{keywordflow}{return} self.episodes[episode\_idx][entry\_idx]
+1301 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1ParlAIDialogTeacher_aee1494d5dd0610530b4b93e56010e6f8}\label{classparlai_1_1core_1_1teachers_1_1ParlAIDialogTeacher_aee1494d5dd0610530b4b93e56010e6f8}} 
 \index{parlai\+::core\+::teachers\+::\+Parl\+A\+I\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Parl\+A\+I\+Dialog\+Teacher}!num\+\_\+episodes@{num\+\_\+episodes}}
@@ -168,16 +167,16 @@ Definition at line 1300 of file teachers.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1294 of file teachers.\+py.
+Definition at line 1290 of file teachers.\+py.
 
 
 \begin{DoxyCode}
-1294     \textcolor{keyword}{def }num\_episodes(self):
-1295         \textcolor{stringliteral}{"""}
-1296 \textcolor{stringliteral}{        Return the number of episodes from the data.}
-1297 \textcolor{stringliteral}{        """}
-1298         \textcolor{keywordflow}{return} len(self.episodes)
-1299 
+1290     \textcolor{keyword}{def }num\_episodes(self):
+1291         \textcolor{stringliteral}{"""}
+1292 \textcolor{stringliteral}{        Return the number of episodes from the data.}
+1293 \textcolor{stringliteral}{        """}
+1294         \textcolor{keywordflow}{return} len(self.episodes)
+1295 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1ParlAIDialogTeacher_a37c1c62c52860da9c63d9f6ed23ae6ae}\label{classparlai_1_1core_1_1teachers_1_1ParlAIDialogTeacher_a37c1c62c52860da9c63d9f6ed23ae6ae}} 
 \index{parlai\+::core\+::teachers\+::\+Parl\+A\+I\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Parl\+A\+I\+Dialog\+Teacher}!num\+\_\+examples@{num\+\_\+examples}}
@@ -189,16 +188,16 @@ Definition at line 1294 of file teachers.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1288 of file teachers.\+py.
+Definition at line 1284 of file teachers.\+py.
 
 
 \begin{DoxyCode}
-1288     \textcolor{keyword}{def }num\_examples(self):
-1289         \textcolor{stringliteral}{"""}
-1290 \textcolor{stringliteral}{        Return the number of examples from the data.}
-1291 \textcolor{stringliteral}{        """}
-1292         \textcolor{keywordflow}{return} self.num\_exs
-1293 
+1284     \textcolor{keyword}{def }num\_examples(self):
+1285         \textcolor{stringliteral}{"""}
+1286 \textcolor{stringliteral}{        Return the number of examples from the data.}
+1287 \textcolor{stringliteral}{        """}
+1288         \textcolor{keywordflow}{return} self.num\_exs
+1289 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1ParlAIDialogTeacher_a9e2eabf923a38b53865705786e07f461}\label{classparlai_1_1core_1_1teachers_1_1ParlAIDialogTeacher_a9e2eabf923a38b53865705786e07f461}} 
 \index{parlai\+::core\+::teachers\+::\+Parl\+A\+I\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Parl\+A\+I\+Dialog\+Teacher}!share@{share}}
@@ -210,18 +209,18 @@ Definition at line 1288 of file teachers.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1280 of file teachers.\+py.
+Definition at line 1276 of file teachers.\+py.
 
 
 \begin{DoxyCode}
-1280     \textcolor{keyword}{def }share(self):
-1281         \textcolor{stringliteral}{"""}
-1282 \textcolor{stringliteral}{        Share the episodes.}
-1283 \textcolor{stringliteral}{        """}
-1284         shared = super().share()
-1285         shared[\textcolor{stringliteral}{'episodes'}] = self.episodes
-1286         \textcolor{keywordflow}{return} shared
-1287 
+1276     \textcolor{keyword}{def }share(self):
+1277         \textcolor{stringliteral}{"""}
+1278 \textcolor{stringliteral}{        Share the episodes.}
+1279 \textcolor{stringliteral}{        """}
+1280         shared = super().share()
+1281         shared[\textcolor{stringliteral}{'episodes'}] = self.episodes
+1282         \textcolor{keywordflow}{return} shared
+1283 
 \end{DoxyCode}
 
 
@@ -234,7 +233,7 @@ Definition at line 1280 of file teachers.\+py.
 
 
 
-Definition at line 1270 of file teachers.\+py.
+Definition at line 1266 of file teachers.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1ParlAIDialogTeacher_a07870e07e8e6f708974ac9f51600e4fa}\label{classparlai_1_1core_1_1teachers_1_1ParlAIDialogTeacher_a07870e07e8e6f708974ac9f51600e4fa}} 
 \index{parlai\+::core\+::teachers\+::\+Parl\+A\+I\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Parl\+A\+I\+Dialog\+Teacher}!id@{id}}
@@ -244,7 +243,7 @@ Definition at line 1270 of file teachers.\+py.
 
 
 
-Definition at line 1277 of file teachers.\+py.
+Definition at line 1273 of file teachers.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1ParlAIDialogTeacher_accef414b3b1e708e7dd71a3e1871261f}\label{classparlai_1_1core_1_1teachers_1_1ParlAIDialogTeacher_accef414b3b1e708e7dd71a3e1871261f}} 
 \index{parlai\+::core\+::teachers\+::\+Parl\+A\+I\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Parl\+A\+I\+Dialog\+Teacher}!num\+\_\+exs@{num\+\_\+exs}}
@@ -254,7 +253,7 @@ Definition at line 1277 of file teachers.\+py.
 
 
 
-Definition at line 1271 of file teachers.\+py.
+Definition at line 1267 of file teachers.\+py.
 
 
 

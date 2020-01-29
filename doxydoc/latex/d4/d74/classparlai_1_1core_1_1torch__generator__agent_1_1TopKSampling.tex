@@ -2,8 +2,7 @@
 \label{classparlai_1_1core_1_1torch__generator__agent_1_1TopKSampling}\index{parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Top\+K\+Sampling@{parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Top\+K\+Sampling}}
 
 
-Inheritance diagram for parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Top\+K\+Sampling\+:
-\nopagebreak
+Inheritance diagram for parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Top\+K\+Sampling\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Top\+K
 \end{figure}
 
 
-Collaboration diagram for parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Top\+K\+Sampling\+:
-\nopagebreak
+Collaboration diagram for parlai.\+core.\+torch\+\_\+generator\+\_\+agent.\+Top\+K\+Sampling\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -47,7 +45,7 @@ See https://arxiv.org/abs/1805.04833 for details.
 \end{DoxyVerb}
  
 
-Definition at line 1379 of file torch\+\_\+generator\+\_\+agent.\+py.
+Definition at line 1371 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 
@@ -60,14 +58,14 @@ Definition at line 1379 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 
-Definition at line 1391 of file torch\+\_\+generator\+\_\+agent.\+py.
+Definition at line 1383 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 \begin{DoxyCode}
-1391     \textcolor{keyword}{def }\_\_init\_\_(self, k, *args, **kwargs):
-1392         super().\_\_init\_\_(*args, **kwargs)
-1393         self.k = k
-1394 
+1383     \textcolor{keyword}{def }\_\_init\_\_(self, k, *args, **kwargs):
+1384         super().\_\_init\_\_(*args, **kwargs)
+1385         self.k = k
+1386 
 \end{DoxyCode}
 
 
@@ -80,21 +78,21 @@ Definition at line 1391 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 
-Definition at line 1395 of file torch\+\_\+generator\+\_\+agent.\+py.
+Definition at line 1387 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 \begin{DoxyCode}
-1395     \textcolor{keyword}{def }select\_paths(self, logprobs, prior\_scores):
-1396         values, indices = logprobs.topk(self.k, dim=-1)
-1397         probs = torch.softmax(values, dim=-1)
-1398         choices = torch.multinomial(probs, 1)[:, 0]
-1399         hyp\_ids = torch.arange(logprobs.size(0)).to(logprobs.device)
-1400         tok\_ids = indices[hyp\_ids, choices]
-1401         scores = values[hyp\_ids, choices]
-1402         best\_scores = prior\_scores.expand\_as(scores) + scores
-1403         \textcolor{keywordflow}{return} (hyp\_ids, tok\_ids, best\_scores)
-1404 
-1405 
+1387     \textcolor{keyword}{def }select\_paths(self, logprobs, prior\_scores):
+1388         values, indices = logprobs.topk(self.k, dim=-1)
+1389         probs = torch.softmax(values, dim=-1)
+1390         choices = torch.multinomial(probs, 1)[:, 0]
+1391         hyp\_ids = torch.arange(logprobs.size(0)).to(logprobs.device)
+1392         tok\_ids = indices[hyp\_ids, choices]
+1393         scores = values[hyp\_ids, choices]
+1394         best\_scores = prior\_scores.expand\_as(scores) + scores
+1395         \textcolor{keywordflow}{return} (hyp\_ids, tok\_ids, best\_scores)
+1396 
+1397 
 \end{DoxyCode}
 
 
@@ -107,7 +105,7 @@ Definition at line 1395 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 
-Definition at line 1393 of file torch\+\_\+generator\+\_\+agent.\+py.
+Definition at line 1385 of file torch\+\_\+generator\+\_\+agent.\+py.
 
 
 

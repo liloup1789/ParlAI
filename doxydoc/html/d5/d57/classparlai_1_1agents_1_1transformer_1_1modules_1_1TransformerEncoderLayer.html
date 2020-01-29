@@ -74,15 +74,11 @@ $(function() {
 Inheritance diagram for parlai.agents.transformer.modules.TransformerEncoderLayer:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d6/d58/classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoderLayer__inherit__graph.png" border="0" usemap="#parlai_8agents_8transformer_8modules_8TransformerEncoderLayer_inherit__map" alt="Inheritance graph"/></div>
-<map name="parlai_8agents_8transformer_8modules_8TransformerEncoderLayer_inherit__map" id="parlai_8agents_8transformer_8modules_8TransformerEncoderLayer_inherit__map">
-</map>
 <center><span class="legend">[<a href="../../graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for parlai.agents.transformer.modules.TransformerEncoderLayer:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d1/d6c/classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoderLayer__coll__graph.png" border="0" usemap="#parlai_8agents_8transformer_8modules_8TransformerEncoderLayer_coll__map" alt="Collaboration graph"/></div>
-<map name="parlai_8agents_8transformer_8modules_8TransformerEncoderLayer_coll__map" id="parlai_8agents_8transformer_8modules_8TransformerEncoderLayer_coll__map">
-</map>
 <center><span class="legend">[<a href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -116,7 +112,7 @@ Public Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><pre class="fragment">Implements a single Transformer encoder layer.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00544">544</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00546">546</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a68caa3f119bfb946e34b7cf3c8bd9e48"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a68caa3f119bfb946e34b7cf3c8bd9e48">&#9670;&nbsp;</a></span>__init__()</h2>
@@ -186,8 +182,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00559">559</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;    ):</div><div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;        super().__init__()</div><div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;        self.dim = embedding_size</div><div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;        self.ffn_dim = ffn_size</div><div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;        self.activation = activation</div><div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;        self.variant = variant</div><div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;        self.attention = MultiHeadAttention(</div><div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;            n_heads, embedding_size, dropout=attention_dropout  <span class="comment"># --attention-dropout</span></div><div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;        )</div><div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;        self.norm1 = LayerNorm(embedding_size, eps=LAYER_NORM_EPS)</div><div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;        self.ffn = TransformerFFN(</div><div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;            embedding_size,</div><div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;            ffn_size,</div><div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;            relu_dropout=relu_dropout,</div><div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;            activation=self.activation,</div><div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;        )</div><div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;        self.norm2 = LayerNorm(embedding_size, eps=LAYER_NORM_EPS)</div><div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;        self.dropout = nn.Dropout(p=dropout)</div><div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;</div></div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00561">561</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;    ):</div><div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;        super().__init__()</div><div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;        self.dim = embedding_size</div><div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;        self.ffn_dim = ffn_size</div><div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;        self.activation = activation</div><div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;        self.variant = variant</div><div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;        self.attention = MultiHeadAttention(</div><div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;            n_heads, embedding_size, dropout=attention_dropout  <span class="comment"># --attention-dropout</span></div><div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;        )</div><div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;        self.norm1 = LayerNorm(embedding_size, eps=LAYER_NORM_EPS)</div><div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;        self.ffn = TransformerFFN(</div><div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;            embedding_size,</div><div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;            ffn_size,</div><div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;            relu_dropout=relu_dropout,</div><div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;            activation=self.activation,</div><div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;        )</div><div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;        self.norm2 = LayerNorm(embedding_size, eps=LAYER_NORM_EPS)</div><div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;        self.dropout = nn.Dropout(p=dropout)</div><div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -224,8 +220,8 @@ Public Attributes</h2></td></tr>
 </div><div class="memdoc">
 <pre class="fragment">Forward pass.
 </pre> 
-<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00578">578</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;    <span class="keyword">def </span>forward(self, tensor, mask):</div><div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;<span class="stringliteral">        Forward pass.</span></div><div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;<span class="stringliteral">        &quot;&quot;&quot;</span></div><div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;        tensor = tensor + self.dropout(self.attention(tensor, mask=mask))</div><div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;        tensor = _normalize(tensor, self.norm1)</div><div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;        tensor = tensor + self.dropout(self.ffn(tensor))</div><div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;        tensor = _normalize(tensor, self.norm2)</div><div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;        tensor *= mask.unsqueeze(-1).type_as(tensor)</div><div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;        <span class="keywordflow">return</span> tensor</div><div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;</div><div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;</div></div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00580">580</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;    <span class="keyword">def </span>forward(self, tensor, mask):</div><div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;        <span class="stringliteral">&quot;&quot;&quot;</span></div><div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;<span class="stringliteral">        Forward pass.</span></div><div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;<span class="stringliteral">        &quot;&quot;&quot;</span></div><div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;        attended_tensor, _ = self.attention(tensor, mask=mask)</div><div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;        tensor = tensor + self.dropout(attended_tensor)</div><div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;        tensor = _normalize(tensor, self.norm1)</div><div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;        tensor = tensor + self.dropout(self.ffn(tensor))</div><div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;        tensor = _normalize(tensor, self.norm2)</div><div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;        tensor *= mask.unsqueeze(-1).type_as(tensor)</div><div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;        <span class="keywordflow">return</span> tensor</div><div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;</div><div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -241,7 +237,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00563">563</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00565">565</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
 
 </div>
 </div>
@@ -257,7 +253,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00565">565</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00567">567</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
 
 </div>
 </div>
@@ -273,7 +269,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00561">561</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00563">563</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
 
 </div>
 </div>
@@ -289,7 +285,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00576">576</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00578">578</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
 
 </div>
 </div>
@@ -305,7 +301,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00569">569</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00571">571</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
 
 </div>
 </div>
@@ -321,7 +317,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00562">562</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00564">564</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
 
 </div>
 </div>
@@ -337,7 +333,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00568">568</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00570">570</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
 
 </div>
 </div>
@@ -353,7 +349,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00575">575</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00577">577</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
 
 </div>
 </div>
@@ -369,7 +365,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00564">564</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html#l00566">566</a> of file <a class="el" href="../../d6/df1/parlai_2agents_2transformer_2modules_8py_source.html">modules.py</a>.</p>
 
 </div>
 </div>

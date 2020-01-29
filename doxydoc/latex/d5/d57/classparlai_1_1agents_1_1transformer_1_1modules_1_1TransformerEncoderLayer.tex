@@ -2,8 +2,7 @@
 \label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoderLayer}\index{parlai.\+agents.\+transformer.\+modules.\+Transformer\+Encoder\+Layer@{parlai.\+agents.\+transformer.\+modules.\+Transformer\+Encoder\+Layer}}
 
 
-Inheritance diagram for parlai.\+agents.\+transformer.\+modules.\+Transformer\+Encoder\+Layer\+:
-\nopagebreak
+Inheritance diagram for parlai.\+agents.\+transformer.\+modules.\+Transformer\+Encoder\+Layer\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+agents.\+transformer.\+modules.\+Transformer\+E
 \end{figure}
 
 
-Collaboration diagram for parlai.\+agents.\+transformer.\+modules.\+Transformer\+Encoder\+Layer\+:
-\nopagebreak
+Collaboration diagram for parlai.\+agents.\+transformer.\+modules.\+Transformer\+Encoder\+Layer\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -55,7 +53,7 @@ def \hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEnc
 \end{DoxyVerb}
  
 
-Definition at line 544 of file modules.\+py.
+Definition at line 546 of file modules.\+py.
 
 
 
@@ -68,29 +66,29 @@ Definition at line 544 of file modules.\+py.
 
 
 
-Definition at line 559 of file modules.\+py.
+Definition at line 561 of file modules.\+py.
 
 
 \begin{DoxyCode}
-559     ):
-560         super().\_\_init\_\_()
-561         self.dim = embedding\_size
-562         self.ffn\_dim = ffn\_size
-563         self.activation = activation
-564         self.variant = variant
-565         self.attention = MultiHeadAttention(
-566             n\_heads, embedding\_size, dropout=attention\_dropout  \textcolor{comment}{# --attention-dropout}
-567         )
-568         self.norm1 = LayerNorm(embedding\_size, eps=LAYER\_NORM\_EPS)
-569         self.ffn = TransformerFFN(
-570             embedding\_size,
-571             ffn\_size,
-572             relu\_dropout=relu\_dropout,
-573             activation=self.activation,
-574         )
-575         self.norm2 = LayerNorm(embedding\_size, eps=LAYER\_NORM\_EPS)
-576         self.dropout = nn.Dropout(p=dropout)
-577 
+561     ):
+562         super().\_\_init\_\_()
+563         self.dim = embedding\_size
+564         self.ffn\_dim = ffn\_size
+565         self.activation = activation
+566         self.variant = variant
+567         self.attention = MultiHeadAttention(
+568             n\_heads, embedding\_size, dropout=attention\_dropout  \textcolor{comment}{# --attention-dropout}
+569         )
+570         self.norm1 = LayerNorm(embedding\_size, eps=LAYER\_NORM\_EPS)
+571         self.ffn = TransformerFFN(
+572             embedding\_size,
+573             ffn\_size,
+574             relu\_dropout=relu\_dropout,
+575             activation=self.activation,
+576         )
+577         self.norm2 = LayerNorm(embedding\_size, eps=LAYER\_NORM\_EPS)
+578         self.dropout = nn.Dropout(p=dropout)
+579 
 \end{DoxyCode}
 
 
@@ -105,22 +103,23 @@ Definition at line 559 of file modules.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 578 of file modules.\+py.
+Definition at line 580 of file modules.\+py.
 
 
 \begin{DoxyCode}
-578     \textcolor{keyword}{def }forward(self, tensor, mask):
-579         \textcolor{stringliteral}{"""}
-580 \textcolor{stringliteral}{        Forward pass.}
-581 \textcolor{stringliteral}{        """}
-582         tensor = tensor + self.dropout(self.attention(tensor, mask=mask))
-583         tensor = \_normalize(tensor, self.norm1)
-584         tensor = tensor + self.dropout(self.ffn(tensor))
-585         tensor = \_normalize(tensor, self.norm2)
-586         tensor *= mask.unsqueeze(-1).type\_as(tensor)
-587         \textcolor{keywordflow}{return} tensor
-588 
-589 
+580     \textcolor{keyword}{def }forward(self, tensor, mask):
+581         \textcolor{stringliteral}{"""}
+582 \textcolor{stringliteral}{        Forward pass.}
+583 \textcolor{stringliteral}{        """}
+584         attended\_tensor, \_ = self.attention(tensor, mask=mask)
+585         tensor = tensor + self.dropout(attended\_tensor)
+586         tensor = \_normalize(tensor, self.norm1)
+587         tensor = tensor + self.dropout(self.ffn(tensor))
+588         tensor = \_normalize(tensor, self.norm2)
+589         tensor *= mask.unsqueeze(-1).type\_as(tensor)
+590         \textcolor{keywordflow}{return} tensor
+591 
+592 
 \end{DoxyCode}
 
 
@@ -133,7 +132,7 @@ Definition at line 578 of file modules.\+py.
 
 
 
-Definition at line 563 of file modules.\+py.
+Definition at line 565 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoderLayer_ad8b0a3b903ca2595e72dd54f82f4dd9f}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoderLayer_ad8b0a3b903ca2595e72dd54f82f4dd9f}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder\+Layer}!attention@{attention}}
@@ -143,7 +142,7 @@ Definition at line 563 of file modules.\+py.
 
 
 
-Definition at line 565 of file modules.\+py.
+Definition at line 567 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoderLayer_ae0f31a52dac8d678fdf6ba573201e7d7}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoderLayer_ae0f31a52dac8d678fdf6ba573201e7d7}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder\+Layer}!dim@{dim}}
@@ -153,7 +152,7 @@ Definition at line 565 of file modules.\+py.
 
 
 
-Definition at line 561 of file modules.\+py.
+Definition at line 563 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoderLayer_a3bcd00a8073a48b6a1626fccb87be143}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoderLayer_a3bcd00a8073a48b6a1626fccb87be143}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder\+Layer}!dropout@{dropout}}
@@ -163,7 +162,7 @@ Definition at line 561 of file modules.\+py.
 
 
 
-Definition at line 576 of file modules.\+py.
+Definition at line 578 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoderLayer_a2f40ac67a332293a3f51eb11647e2ec1}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoderLayer_a2f40ac67a332293a3f51eb11647e2ec1}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder\+Layer}!ffn@{ffn}}
@@ -173,7 +172,7 @@ Definition at line 576 of file modules.\+py.
 
 
 
-Definition at line 569 of file modules.\+py.
+Definition at line 571 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoderLayer_abcdb8b9abb049afacdd132d2a811faff}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoderLayer_abcdb8b9abb049afacdd132d2a811faff}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder\+Layer}!ffn\+\_\+dim@{ffn\+\_\+dim}}
@@ -183,7 +182,7 @@ Definition at line 569 of file modules.\+py.
 
 
 
-Definition at line 562 of file modules.\+py.
+Definition at line 564 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoderLayer_a74730602aaea5afd4564d0f35c84af15}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoderLayer_a74730602aaea5afd4564d0f35c84af15}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder\+Layer}!norm1@{norm1}}
@@ -193,7 +192,7 @@ Definition at line 562 of file modules.\+py.
 
 
 
-Definition at line 568 of file modules.\+py.
+Definition at line 570 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoderLayer_acc0beb3a5c95f3ab45b13dff322e4225}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoderLayer_acc0beb3a5c95f3ab45b13dff322e4225}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder\+Layer}!norm2@{norm2}}
@@ -203,7 +202,7 @@ Definition at line 568 of file modules.\+py.
 
 
 
-Definition at line 575 of file modules.\+py.
+Definition at line 577 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoderLayer_a33ff5864b155499ecf8d31383b33e8d8}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoderLayer_a33ff5864b155499ecf8d31383b33e8d8}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder\+Layer@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder\+Layer}!variant@{variant}}
@@ -213,7 +212,7 @@ Definition at line 575 of file modules.\+py.
 
 
 
-Definition at line 564 of file modules.\+py.
+Definition at line 566 of file modules.\+py.
 
 
 

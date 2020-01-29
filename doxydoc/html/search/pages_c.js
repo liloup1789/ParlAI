@@ -15,6 +15,5 @@ var searchData=
   ['readme',['README',['../d9/de9/md_parlai_zoo_README.html',1,'']]],
   ['readme',['README',['../da/d13/md_projects_personachat_README.html',1,'']]],
   ['readme',['README',['../dd/de7/md_projects_wizard_of_wikipedia_mturk_evaluation_task_README.html',1,'']]],
-  ['readme',['README',['../d0/d30/md_README.html',1,'']]],
   ['readme',['README',['../d9/d0f/md_website_README.html',1,'']]]
 ];

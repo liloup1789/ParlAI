@@ -1,0 +1,188 @@
+\hypertarget{classparlai_1_1tasks_1_1amazon__qa_1_1agents_1_1DefaultTeacher}{}\section{parlai.\+tasks.\+amazon\+\_\+qa.\+agents.\+Default\+Teacher Class Reference}
+\label{classparlai_1_1tasks_1_1amazon__qa_1_1agents_1_1DefaultTeacher}\index{parlai.\+tasks.\+amazon\+\_\+qa.\+agents.\+Default\+Teacher@{parlai.\+tasks.\+amazon\+\_\+qa.\+agents.\+Default\+Teacher}}
+
+
+Inheritance diagram for parlai.\+tasks.\+amazon\+\_\+qa.\+agents.\+Default\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{d9/d02/classparlai_1_1tasks_1_1amazon__qa_1_1agents_1_1DefaultTeacher__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+tasks.\+amazon\+\_\+qa.\+agents.\+Default\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{dc/dc0/classparlai_1_1tasks_1_1amazon__qa_1_1agents_1_1DefaultTeacher__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1amazon__qa_1_1agents_1_1DefaultTeacher_a6fd5b4e1c7ac8e4572c46873b6f0b9b4}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1core_1_1agents_1_1Teacher_a3ce6243860ce978a897922863ed32fa4}{opt}, shared=None)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1amazon__qa_1_1agents_1_1DefaultTeacher_a3a1a2ff47ab734ec74022502502b7f79}{num\+\_\+episodes} (self)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1amazon__qa_1_1agents_1_1DefaultTeacher_a7500d021a66a77b200b43d910afcb6e4}{num\+\_\+examples} (self)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1amazon__qa_1_1agents_1_1DefaultTeacher_ab7d01dd226a50cf520bd7de7a523f3e0}{get} (self, \hyperlink{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_afd4ebab8063eb42d182d30a1a41f133e}{episode\+\_\+idx}, \hyperlink{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_ae3201b15f3c3b46a2f3511bad9b43e7d}{entry\+\_\+idx}=0)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1amazon__qa_1_1agents_1_1DefaultTeacher_ada0d98ee271a27425e64ce82b9700aa4}{share} (self)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1amazon__qa_1_1agents_1_1DefaultTeacher_a0ab774418f9f5f77d354150198212d4e}{data}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1amazon__qa_1_1agents_1_1DefaultTeacher_a7d3a8cac76a5dcbdc7aecc9376f79bc9}{existing\+\_\+keys}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 13 of file agents.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1amazon__qa_1_1agents_1_1DefaultTeacher_a6fd5b4e1c7ac8e4572c46873b6f0b9b4}\label{classparlai_1_1tasks_1_1amazon__qa_1_1agents_1_1DefaultTeacher_a6fd5b4e1c7ac8e4572c46873b6f0b9b4}} 
+\index{parlai\+::tasks\+::amazon\+\_\+qa\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::amazon\+\_\+qa\+::agents\+::\+Default\+Teacher}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::tasks\+::amazon\+\_\+qa\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::amazon\+\_\+qa\+::agents\+::\+Default\+Teacher}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+amazon\+\_\+qa.\+agents.\+Default\+Teacher.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{shared = {\ttfamily None} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 14 of file agents.\+py.
+
+
+\begin{DoxyCode}
+14     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
+15         \textcolor{comment}{# store datatype}
+16         super().\_\_init\_\_(opt, shared)
+17 
+18         dt = opt[\textcolor{stringliteral}{'datatype'}].split(\textcolor{stringliteral}{':'})[0]
+19         \textcolor{keywordflow}{if} dt != \textcolor{stringliteral}{'train'}:
+20             \textcolor{keywordflow}{raise} RuntimeError(\textcolor{stringliteral}{'Not valid datatype (only train).'})
+21 
+22         \textcolor{keywordflow}{if} shared:
+23             self.data = shared[\textcolor{stringliteral}{'data'}]
+24         \textcolor{keywordflow}{else}:
+25             \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1talkthewalk_1_1download_a8c0fbb9b6dfe127cb8c1bd6e7c4e33fd}{build}(opt)
+26             self.\_setup\_data()
+27         self.reset()
+28 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1amazon__qa_1_1agents_1_1DefaultTeacher_ab7d01dd226a50cf520bd7de7a523f3e0}\label{classparlai_1_1tasks_1_1amazon__qa_1_1agents_1_1DefaultTeacher_ab7d01dd226a50cf520bd7de7a523f3e0}} 
+\index{parlai\+::tasks\+::amazon\+\_\+qa\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::amazon\+\_\+qa\+::agents\+::\+Default\+Teacher}!get@{get}}
+\index{get@{get}!parlai\+::tasks\+::amazon\+\_\+qa\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::amazon\+\_\+qa\+::agents\+::\+Default\+Teacher}}
+\subsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+amazon\+\_\+qa.\+agents.\+Default\+Teacher.\+get (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{episode\+\_\+idx,  }\item[{}]{entry\+\_\+idx = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 97 of file agents.\+py.
+
+
+\begin{DoxyCode}
+97     \textcolor{keyword}{def }get(self, episode\_idx, entry\_idx=0):
+98         ep = self.data[episode\_idx]
+99         entry = ep[entry\_idx]
+100         action = dict()
+101         action[\textcolor{stringliteral}{'id'}] = episode\_idx
+102         \textcolor{keywordflow}{for} i, key \textcolor{keywordflow}{in} enumerate(self.existing\_keys):
+103             \textcolor{keywordflow}{if} i < 2:
+104                 \textcolor{keywordflow}{continue}
+105             action[key] = entry[i]
+106         action[\textcolor{stringliteral}{'episode\_done'}] = \textcolor{keyword}{True}
+107         action[\textcolor{stringliteral}{'text'}] = entry[0]
+108         action[\textcolor{stringliteral}{'labels'}] = [entry[1]]
+109 
+110         \textcolor{keywordflow}{return} action
+111 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1amazon__qa_1_1agents_1_1DefaultTeacher_a3a1a2ff47ab734ec74022502502b7f79}\label{classparlai_1_1tasks_1_1amazon__qa_1_1agents_1_1DefaultTeacher_a3a1a2ff47ab734ec74022502502b7f79}} 
+\index{parlai\+::tasks\+::amazon\+\_\+qa\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::amazon\+\_\+qa\+::agents\+::\+Default\+Teacher}!num\+\_\+episodes@{num\+\_\+episodes}}
+\index{num\+\_\+episodes@{num\+\_\+episodes}!parlai\+::tasks\+::amazon\+\_\+qa\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::amazon\+\_\+qa\+::agents\+::\+Default\+Teacher}}
+\subsubsection{\texorpdfstring{num\+\_\+episodes()}{num\_episodes()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+amazon\+\_\+qa.\+agents.\+Default\+Teacher.\+num\+\_\+episodes (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 29 of file agents.\+py.
+
+
+\begin{DoxyCode}
+29     \textcolor{keyword}{def }num\_episodes(self):
+30         \textcolor{keywordflow}{return} len(self.data)
+31 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1amazon__qa_1_1agents_1_1DefaultTeacher_a7500d021a66a77b200b43d910afcb6e4}\label{classparlai_1_1tasks_1_1amazon__qa_1_1agents_1_1DefaultTeacher_a7500d021a66a77b200b43d910afcb6e4}} 
+\index{parlai\+::tasks\+::amazon\+\_\+qa\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::amazon\+\_\+qa\+::agents\+::\+Default\+Teacher}!num\+\_\+examples@{num\+\_\+examples}}
+\index{num\+\_\+examples@{num\+\_\+examples}!parlai\+::tasks\+::amazon\+\_\+qa\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::amazon\+\_\+qa\+::agents\+::\+Default\+Teacher}}
+\subsubsection{\texorpdfstring{num\+\_\+examples()}{num\_examples()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+amazon\+\_\+qa.\+agents.\+Default\+Teacher.\+num\+\_\+examples (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 32 of file agents.\+py.
+
+
+\begin{DoxyCode}
+32     \textcolor{keyword}{def }num\_examples(self):
+33         \textcolor{keywordflow}{return} sum([len(x) \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} self.data])
+34 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1amazon__qa_1_1agents_1_1DefaultTeacher_ada0d98ee271a27425e64ce82b9700aa4}\label{classparlai_1_1tasks_1_1amazon__qa_1_1agents_1_1DefaultTeacher_ada0d98ee271a27425e64ce82b9700aa4}} 
+\index{parlai\+::tasks\+::amazon\+\_\+qa\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::amazon\+\_\+qa\+::agents\+::\+Default\+Teacher}!share@{share}}
+\index{share@{share}!parlai\+::tasks\+::amazon\+\_\+qa\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::amazon\+\_\+qa\+::agents\+::\+Default\+Teacher}}
+\subsubsection{\texorpdfstring{share()}{share()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+amazon\+\_\+qa.\+agents.\+Default\+Teacher.\+share (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 112 of file agents.\+py.
+
+
+\begin{DoxyCode}
+112     \textcolor{keyword}{def }share(self):
+113         shared = super().share()
+114         shared[\textcolor{stringliteral}{'data'}] = self.data
+115         \textcolor{keywordflow}{return} shared
+116 \end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1amazon__qa_1_1agents_1_1DefaultTeacher_a0ab774418f9f5f77d354150198212d4e}\label{classparlai_1_1tasks_1_1amazon__qa_1_1agents_1_1DefaultTeacher_a0ab774418f9f5f77d354150198212d4e}} 
+\index{parlai\+::tasks\+::amazon\+\_\+qa\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::amazon\+\_\+qa\+::agents\+::\+Default\+Teacher}!data@{data}}
+\index{data@{data}!parlai\+::tasks\+::amazon\+\_\+qa\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::amazon\+\_\+qa\+::agents\+::\+Default\+Teacher}}
+\subsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily parlai.\+tasks.\+amazon\+\_\+qa.\+agents.\+Default\+Teacher.\+data}
+
+
+
+Definition at line 23 of file agents.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1amazon__qa_1_1agents_1_1DefaultTeacher_a7d3a8cac76a5dcbdc7aecc9376f79bc9}\label{classparlai_1_1tasks_1_1amazon__qa_1_1agents_1_1DefaultTeacher_a7d3a8cac76a5dcbdc7aecc9376f79bc9}} 
+\index{parlai\+::tasks\+::amazon\+\_\+qa\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::amazon\+\_\+qa\+::agents\+::\+Default\+Teacher}!existing\+\_\+keys@{existing\+\_\+keys}}
+\index{existing\+\_\+keys@{existing\+\_\+keys}!parlai\+::tasks\+::amazon\+\_\+qa\+::agents\+::\+Default\+Teacher@{parlai\+::tasks\+::amazon\+\_\+qa\+::agents\+::\+Default\+Teacher}}
+\subsubsection{\texorpdfstring{existing\+\_\+keys}{existing\_keys}}
+{\footnotesize\ttfamily parlai.\+tasks.\+amazon\+\_\+qa.\+agents.\+Default\+Teacher.\+existing\+\_\+keys}
+
+
+
+Definition at line 36 of file agents.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/tasks/amazon\+\_\+qa/\hyperlink{parlai_2tasks_2amazon__qa_2agents_8py}{agents.\+py}\end{DoxyCompactItemize}

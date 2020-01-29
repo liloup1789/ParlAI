@@ -65,18 +65,18 @@ Definition at line 11 of file bonus\+\_\+workers.\+py.
 48     client = mturk\_utils.get\_mturk\_client(sandbox)
 49 
 50     \textcolor{keywordflow}{while} \textcolor{keyword}{True}:
-51         worker\_id = \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1test_1_1test__full__system_a1e1817cd65688fb90f827834d1fb4567}{input}(\textcolor{stringliteral}{"Enter worker id: "})
+51         worker\_id = input(\textcolor{stringliteral}{"Enter worker id: "})
 52         \textcolor{keywordflow}{if} len(worker\_id) == 0:
 53             \textcolor{keywordflow}{break}
-54         bonus\_amount = \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1test_1_1test__full__system_a1e1817cd65688fb90f827834d1fb4567}{input}(\textcolor{stringliteral}{"Enter bonus amount: "})
+54         bonus\_amount = input(\textcolor{stringliteral}{"Enter bonus amount: "})
 55         \textcolor{keywordflow}{if} opt.use\_hit\_id:
-56             hit\_id = \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1test_1_1test__full__system_a1e1817cd65688fb90f827834d1fb4567}{input}(\textcolor{stringliteral}{"Enter HIT id: "})
+56             hit\_id = input(\textcolor{stringliteral}{"Enter HIT id: "})
 57             listed = client.list\_assignments\_for\_hit(HITId=hit\_id)
 58             assignment\_id = listed[\textcolor{stringliteral}{'Assignments'}][0][\textcolor{stringliteral}{'AssignmentId'}]
 59         \textcolor{keywordflow}{else}:
-60             assignment\_id = \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1test_1_1test__full__system_a1e1817cd65688fb90f827834d1fb4567}{input}(\textcolor{stringliteral}{"Enter assignment id: "})
-61         reason = \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1test_1_1test__full__system_a1e1817cd65688fb90f827834d1fb4567}{input}(\textcolor{stringliteral}{"Enter reason: "})
-62         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1dev_1_1test_1_1test__full__system_a1e1817cd65688fb90f827834d1fb4567}{input}(
+60             assignment\_id = input(\textcolor{stringliteral}{"Enter assignment id: "})
+61         reason = input(\textcolor{stringliteral}{"Enter reason: "})
+62         input(
 63             \textcolor{stringliteral}{"Press enter to bonus \{\} to worker \{\} for reason '\{\}' on "}
 64             \textcolor{stringliteral}{"assignment \{\}."}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(bonus\_amount, worker\_id, reason, assignment\_id)
 65         )

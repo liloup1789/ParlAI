@@ -1,0 +1,23 @@
+The {\bfseries Image+\+Seq2\+Seq} agent is a model that incorporates image features with a sequence to sequence transformer generator. A core component of the \href{https://parl.ai/projects/dodecadialogue/}{\tt dodeca\+Dialogue} task.
+
+\subsection*{Basic Examples}
+
+Train an {\bfseries Image+\+Seq2\+Seq} model on an image captioning task\+: 
+\begin{DoxyCode}
+python parlai/scripts/train\_model.py -m image\_seq2seq -t flickr30k --image-mode resnext101\_32x48d\_wsl -mf
+       /tmp/model
+\end{DoxyCode}
+
+
+Train an {\bfseries Image+\+Seq2\+Seq} model on a dialogue task\+: 
+\begin{DoxyCode}
+python parlai/scripts/train\_model.py -m image\_seq2seq -t convai2 -mf /tmp/model
+\end{DoxyCode}
+
+
+Multi-\/task train an {\bfseries Image+\+Seq2\+Seq} model on a dialogue and captioning task\+: 
+\begin{DoxyCode}
+python parlai/scripts/train\_model.py -m image\_seq2seq -t flickr30k,convai2 -mf /tmp/model --image-mode
+       resnext101\_32x48d\_wsl
+\end{DoxyCode}
+ 

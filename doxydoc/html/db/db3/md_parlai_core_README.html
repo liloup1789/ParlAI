@@ -76,18 +76,33 @@ $(function() {
 <li>DictionaryAgent: agent which tracks the index and frequency of words in a dictionary, and can parse a sentence into indices into its dictionary or back</li>
 </ul>
 </li>
+<li><b><a class="el" href="../../da/d1e/gpt2__helper_8py.html">gpt2_helper.py</a></b>: byte pair encoding utilities from GPT-2</li>
+<li><b><a class="el" href="../../da/d35/image__featurizers_8py.html">image_featurizers.py</a></b>: provides functionality for loading images</li>
+<li><b><a class="el" href="../../d4/de3/loader_8py.html">loader.py</a></b>: functions for loading world, agents, tasks, and teacher modules</li>
+<li><b>logs</b>: utilities for logging metrics to tensorboard</li>
+<li><b>message</b>: contains message object<ul>
+<li>**_Message_**: class for objects and observations in ParlAI</li>
+</ul>
+</li>
 <li><b><a class="el" href="../../df/d68/metrics_8py.html">metrics.py</a></b>: computes evaluation metrics, e.g. ranking metrics, etc.</li>
 <li><b><a class="el" href="../../d9/d1a/params_8py.html">params.py</a></b>: uses argparse to interpret command line arguments for ParlAI</li>
+<li><b>pytorch_data_teacher</b>: teacher that uses the PyTorch data loader</li>
 <li><b><a class="el" href="../../dd/d6a/teachers_8py.html">teachers.py</a></b>: contains teachers that deal with dialogue-based tasks, as well as data classes for storing data<ul>
 <li>**_FixedDialogTeacher_**: base class for a teacher that utilizes fixed data</li>
 <li>**_DialogTeacher_**: base class for a teacher doing dialogue with fixed chat logs</li>
 <li>**_ParlAIDialogTeacher_**: a teacher that implements a simple standard text format for many tasks (non-visual tasks only)</li>
 </ul>
 </li>
-<li><b>thread_utils.py</b>: utility classes/functions for use in Hogwild multithreading (multiprocessing)<ul>
-<li>SharedTable: provides a lock-protected, shared-memory, dictionary-like interface for keeping track of metrics</li>
+<li><b>torch_agent</b>: utility code for building PyTorch-based agents in ParlAI<ul>
+<li>**_TorchAgent_**: class which serves as a useful parent class for other model agents</li>
+<li>**_Batch_**: namedtuple which is the input type of the main abstract methods of the TorchAgent class</li>
+<li>**_Output_**: namedtuple which is the expected output type of the main abstract methods of the TorchAgent class</li>
+<li>**_History_**: class which handles tracking the dialogue state over the course of an episode.</li>
 </ul>
 </li>
+<li><b>torch_classifier_agent</b>: abstract agent which extends TorchAgent and contains useful utilities for classification models</li>
+<li><b>torch_generator_agent</b>: abstract agent which extends TorchAgent and contains useful utilities for generation models</li>
+<li><b>torch_ranker_agent</b>: abstract agent which extends TorchAgent and contains useful utilities for ranking models</li>
 <li><b>worlds.py</b>: contains a set of basic worlds for tasks to take place inside<ul>
 <li>**_World_**: base class for all other worlds, implements <code>parley</code>, <code>shutdown</code>, <code>__enter__</code>, and <code>__exit__</code></li>
 <li>**_DialogPartnerWorld_**: default world for turn-based two-agent communication</li>

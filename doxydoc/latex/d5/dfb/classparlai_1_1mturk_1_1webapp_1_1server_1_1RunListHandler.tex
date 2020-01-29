@@ -2,8 +2,7 @@
 \label{classparlai_1_1mturk_1_1webapp_1_1server_1_1RunListHandler}\index{parlai.\+mturk.\+webapp.\+server.\+Run\+List\+Handler@{parlai.\+mturk.\+webapp.\+server.\+Run\+List\+Handler}}
 
 
-Inheritance diagram for parlai.\+mturk.\+webapp.\+server.\+Run\+List\+Handler\+:
-\nopagebreak
+Inheritance diagram for parlai.\+mturk.\+webapp.\+server.\+Run\+List\+Handler\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+mturk.\+webapp.\+server.\+Run\+List\+Handler\+:
 \end{figure}
 
 
-Collaboration diagram for parlai.\+mturk.\+webapp.\+server.\+Run\+List\+Handler\+:
-\nopagebreak
+Collaboration diagram for parlai.\+mturk.\+webapp.\+server.\+Run\+List\+Handler\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -47,7 +45,7 @@ def \hyperlink{classparlai_1_1mturk_1_1webapp_1_1server_1_1RunListHandler_a66e2a
 \subsection{Detailed Description}
 
 
-Definition at line 217 of file server.\+py.
+Definition at line 222 of file server.\+py.
 
 
 
@@ -60,22 +58,22 @@ Definition at line 217 of file server.\+py.
 
 
 
-Definition at line 231 of file server.\+py.
+Definition at line 236 of file server.\+py.
 
 
 \begin{DoxyCode}
-231     \textcolor{keyword}{def }get(self):
-232         results = self.data\_handler.get\_all\_run\_data()
-233         processed\_results = []
-234         \textcolor{keywordflow}{for} res \textcolor{keywordflow}{in} results:
-235             processed\_results.append(\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a92be47964fa33a4b6a14d4069d091c7d}{row\_to\_dict}(res))
-236         \textcolor{keywordflow}{for} result \textcolor{keywordflow}{in} processed\_results:
-237             \textcolor{comment}{# TODO implemenent}
-238             result[\textcolor{stringliteral}{'run\_status'}] = \textcolor{stringliteral}{'unimplemented'}
-239 
-240         self.write(json.dumps(processed\_results))
-241 
-242 
+236     \textcolor{keyword}{def }get(self):
+237         results = self.data\_handler.get\_all\_run\_data()
+238         processed\_results = []
+239         \textcolor{keywordflow}{for} res \textcolor{keywordflow}{in} results:
+240             processed\_results.append(\hyperlink{namespaceparlai_1_1mturk_1_1webapp_1_1server_a92be47964fa33a4b6a14d4069d091c7d}{row\_to\_dict}(res))
+241         \textcolor{keywordflow}{for} result \textcolor{keywordflow}{in} processed\_results:
+242             \textcolor{comment}{# TODO implemenent}
+243             result[\textcolor{stringliteral}{'run\_status'}] = \textcolor{stringliteral}{'unimplemented'}
+244 
+245         self.write(json.dumps(processed\_results))
+246 
+247 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1RunListHandler_aea5350b7ea1536cacfc3dfff4ffe1f32}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1RunListHandler_aea5350b7ea1536cacfc3dfff4ffe1f32}} 
 \index{parlai\+::mturk\+::webapp\+::server\+::\+Run\+List\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Run\+List\+Handler}!initialize@{initialize}}
@@ -85,17 +83,17 @@ Definition at line 231 of file server.\+py.
 
 
 
-Definition at line 218 of file server.\+py.
+Definition at line 223 of file server.\+py.
 
 
 \begin{DoxyCode}
-218     \textcolor{keyword}{def }initialize(self, app):
-219         self.state = app.state
-220         self.subs = app.subs
-221         self.sources = app.sources
-222         self.port = app.port
-223         self.data\_handler = app.data\_handler
-224 
+223     \textcolor{keyword}{def }initialize(self, app):
+224         self.state = app.state
+225         self.subs = app.subs
+226         self.sources = app.sources
+227         self.port = app.port
+228         self.data\_handler = app.data\_handler
+229 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1RunListHandler_a7ecee21fd9a47687af7466e502bba574}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1RunListHandler_a7ecee21fd9a47687af7466e502bba574}} 
 \index{parlai\+::mturk\+::webapp\+::server\+::\+Run\+List\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Run\+List\+Handler}!post@{post}}
@@ -105,16 +103,16 @@ Definition at line 218 of file server.\+py.
 
 
 
-Definition at line 225 of file server.\+py.
+Definition at line 230 of file server.\+py.
 
 
 \begin{DoxyCode}
-225     \textcolor{keyword}{def }post(self):
-226         req = tornado.escape.json\_decode(
-227             tornado.escape.to\_basestring(self.request.body)
-228         )
-229         self.write(json.dumps(\{\textcolor{stringliteral}{'t'}: \textcolor{stringliteral}{'testing!'}, \textcolor{stringliteral}{'req'}: req\}))
-230 
+230     \textcolor{keyword}{def }post(self):
+231         req = tornado.escape.json\_decode(
+232             tornado.escape.to\_basestring(self.request.body)
+233         )
+234         self.write(json.dumps(\{\textcolor{stringliteral}{'t'}: \textcolor{stringliteral}{'testing!'}, \textcolor{stringliteral}{'req'}: req\}))
+235 
 \end{DoxyCode}
 
 
@@ -127,7 +125,7 @@ Definition at line 225 of file server.\+py.
 
 
 
-Definition at line 223 of file server.\+py.
+Definition at line 228 of file server.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1RunListHandler_a31542b109794f0748607b209c07f1a61}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1RunListHandler_a31542b109794f0748607b209c07f1a61}} 
 \index{parlai\+::mturk\+::webapp\+::server\+::\+Run\+List\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Run\+List\+Handler}!port@{port}}
@@ -137,7 +135,7 @@ Definition at line 223 of file server.\+py.
 
 
 
-Definition at line 222 of file server.\+py.
+Definition at line 227 of file server.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1RunListHandler_a5cc19eca1f894c97d99c01ff02a18e02}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1RunListHandler_a5cc19eca1f894c97d99c01ff02a18e02}} 
 \index{parlai\+::mturk\+::webapp\+::server\+::\+Run\+List\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Run\+List\+Handler}!sources@{sources}}
@@ -147,7 +145,7 @@ Definition at line 222 of file server.\+py.
 
 
 
-Definition at line 221 of file server.\+py.
+Definition at line 226 of file server.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1RunListHandler_a69b59cd4194adf73ffdc4feae1409df3}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1RunListHandler_a69b59cd4194adf73ffdc4feae1409df3}} 
 \index{parlai\+::mturk\+::webapp\+::server\+::\+Run\+List\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Run\+List\+Handler}!state@{state}}
@@ -157,7 +155,7 @@ Definition at line 221 of file server.\+py.
 
 
 
-Definition at line 219 of file server.\+py.
+Definition at line 224 of file server.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1RunListHandler_ae6ca04b925262123737c06bb6ce2bc4a}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1RunListHandler_ae6ca04b925262123737c06bb6ce2bc4a}} 
 \index{parlai\+::mturk\+::webapp\+::server\+::\+Run\+List\+Handler@{parlai\+::mturk\+::webapp\+::server\+::\+Run\+List\+Handler}!subs@{subs}}
@@ -167,7 +165,7 @@ Definition at line 219 of file server.\+py.
 
 
 
-Definition at line 220 of file server.\+py.
+Definition at line 225 of file server.\+py.
 
 
 

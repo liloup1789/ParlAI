@@ -2,8 +2,7 @@
 \label{classprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1worlds_1_1TopicChooseWorld}\index{projects.\+wizard\+\_\+of\+\_\+wikipedia.\+mturk\+\_\+evaluation\+\_\+task.\+worlds.\+Topic\+Choose\+World@{projects.\+wizard\+\_\+of\+\_\+wikipedia.\+mturk\+\_\+evaluation\+\_\+task.\+worlds.\+Topic\+Choose\+World}}
 
 
-Inheritance diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+mturk\+\_\+evaluation\+\_\+task.\+worlds.\+Topic\+Choose\+World\+:
-\nopagebreak
+Inheritance diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+mturk\+\_\+evaluation\+\_\+task.\+worlds.\+Topic\+Choose\+World\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+mturk\+\_\+ev
 \end{figure}
 
 
-Collaboration diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+mturk\+\_\+evaluation\+\_\+task.\+worlds.\+Topic\+Choose\+World\+:
-\nopagebreak
+Collaboration diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+mturk\+\_\+evaluation\+\_\+task.\+worlds.\+Topic\+Choose\+World\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -45,7 +43,7 @@ def \hyperlink{classprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task
 \end{DoxyVerb}
  
 
-Definition at line 92 of file worlds.\+py.
+Definition at line 96 of file worlds.\+py.
 
 
 
@@ -58,16 +56,16 @@ Definition at line 92 of file worlds.\+py.
 
 
 
-Definition at line 97 of file worlds.\+py.
+Definition at line 101 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-97     \textcolor{keyword}{def }\_\_init\_\_(self, opt, mturk\_agent, role='PERSON\_1'):
-98         self.role = role
-99         self.task\_type = \textcolor{stringliteral}{'sandbox'} \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'is\_sandbox'}] \textcolor{keywordflow}{else} \textcolor{stringliteral}{'live'}
-100         self.max\_choice\_time = opt[\textcolor{stringliteral}{'max\_choice\_time'}]
-101         super().\_\_init\_\_(opt, mturk\_agent)
-102 
+101     \textcolor{keyword}{def }\_\_init\_\_(self, opt, mturk\_agent, role='PERSON\_1'):
+102         self.role = role
+103         self.task\_type = \textcolor{stringliteral}{'sandbox'} \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'is\_sandbox'}] \textcolor{keywordflow}{else} \textcolor{stringliteral}{'live'}
+104         self.max\_choice\_time = opt[\textcolor{stringliteral}{'max\_choice\_time'}]
+105         super().\_\_init\_\_(opt, mturk\_agent)
+106 
 \end{DoxyCode}
 
 
@@ -80,21 +78,21 @@ Definition at line 97 of file worlds.\+py.
 
 
 
-Definition at line 129 of file worlds.\+py.
+Definition at line 133 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-129     \textcolor{keyword}{def }check\_timeout(self, act):
-130         \textcolor{keywordflow}{if} (
-131             (act[\textcolor{stringliteral}{'text'}] == \textcolor{stringliteral}{'[TIMEOUT]'})
-132             \textcolor{keywordflow}{or} (act[\textcolor{stringliteral}{'text'}] == \textcolor{stringliteral}{'[RETURNED]'})
-133             \textcolor{keywordflow}{or} (act[\textcolor{stringliteral}{'text'}] == \textcolor{stringliteral}{'[DISCONNECT]'})
-134         ):
-135             \textcolor{keywordflow}{return} \textcolor{keyword}{True}
-136         \textcolor{keywordflow}{else}:
-137             \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-138 
-139 
+133     \textcolor{keyword}{def }check\_timeout(self, act):
+134         \textcolor{keywordflow}{if} (
+135             (act[\textcolor{stringliteral}{'text'}] == \textcolor{stringliteral}{'[TIMEOUT]'})
+136             \textcolor{keywordflow}{or} (act[\textcolor{stringliteral}{'text'}] == \textcolor{stringliteral}{'[RETURNED]'})
+137             \textcolor{keywordflow}{or} (act[\textcolor{stringliteral}{'text'}] == \textcolor{stringliteral}{'[DISCONNECT]'})
+138         ):
+139             \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+140         \textcolor{keywordflow}{else}:
+141             \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+142 
+143 
 \end{DoxyCode}
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1worlds_1_1TopicChooseWorld_a1ede8a9a810cffefa36645ae3a3929bc}\label{classprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1worlds_1_1TopicChooseWorld_a1ede8a9a810cffefa36645ae3a3929bc}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::mturk\+\_\+evaluation\+\_\+task\+::worlds\+::\+Topic\+Choose\+World@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::mturk\+\_\+evaluation\+\_\+task\+::worlds\+::\+Topic\+Choose\+World}!parley@{parley}}
@@ -104,36 +102,36 @@ Definition at line 129 of file worlds.\+py.
 
 
 
-Definition at line 103 of file worlds.\+py.
+Definition at line 107 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-103     \textcolor{keyword}{def }parley(self):
-104         \textcolor{comment}{# only pick topic if your ID is PERSON\_1}
-105         \textcolor{keywordflow}{if} self.role == \textcolor{stringliteral}{'PERSON\_1'}:
-106             seen = random.choice([\textcolor{keyword}{True}, \textcolor{keyword}{False}])
-107             num = random.choice([2, 3])
-108             topics = self.mturk\_agent.topics\_generator.get\_topics(seen=seen, num=num)
-109             self.mturk\_agent.observe(
-110                 \hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(
-111                     \{\textcolor{stringliteral}{'id'}: \textcolor{stringliteral}{'SYSTEM'}, \textcolor{stringliteral}{'text'}: PICK\_TOPIC\_MSG, \textcolor{stringliteral}{'relevant\_topics'}: topics\}
-112                 )
-113             )
-114 
-115             topic\_act = self.mturk\_agent.act(timeout=self.max\_choice\_time)
-116             timed\_out = self.check\_timeout(topic\_act)
-117             \textcolor{keywordflow}{if} timed\_out:
-118                 \textcolor{keywordflow}{return}
-119             pick\_msg = AFTER\_PICK\_TOPIC\_MSG
-120             self.mturk\_agent.observe(\{\textcolor{stringliteral}{'id'}: \textcolor{stringliteral}{'SYSTEM'}, \textcolor{stringliteral}{'text'}: pick\_msg\})
-121             self.mturk\_agent.chosen\_topic = topic\_act[\textcolor{stringliteral}{'text'}]
-122             self.mturk\_agent.topic\_choices = topics
-123             self.mturk\_agent.seen = seen
-124             self.mturk\_agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(\{\textcolor{stringliteral}{'id'}: \textcolor{stringliteral}{'SYSTEM'}, \textcolor{stringliteral}{'wait\_msg'}: \textcolor{keyword}{True}\}))
-125         \textcolor{keywordflow}{else}:
-126             self.mturk\_agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(\{\textcolor{stringliteral}{'id'}: \textcolor{stringliteral}{'SYSTEM'}, \textcolor{stringliteral}{'wait\_msg'}: \textcolor{keyword}{True}\}))
-127         \textcolor{keywordflow}{return}
-128 
+107     \textcolor{keyword}{def }parley(self):
+108         \textcolor{comment}{# only pick topic if your ID is PERSON\_1}
+109         \textcolor{keywordflow}{if} self.role == \textcolor{stringliteral}{'PERSON\_1'}:
+110             seen = random.choice([\textcolor{keyword}{True}, \textcolor{keyword}{False}])
+111             num = random.choice([2, 3])
+112             topics = self.mturk\_agent.topics\_generator.get\_topics(seen=seen, num=num)
+113             self.mturk\_agent.observe(
+114                 \hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(
+115                     \{\textcolor{stringliteral}{'id'}: \textcolor{stringliteral}{'SYSTEM'}, \textcolor{stringliteral}{'text'}: PICK\_TOPIC\_MSG, \textcolor{stringliteral}{'relevant\_topics'}: topics\}
+116                 )
+117             )
+118 
+119             topic\_act = self.mturk\_agent.act(timeout=self.max\_choice\_time)
+120             timed\_out = self.check\_timeout(topic\_act)
+121             \textcolor{keywordflow}{if} timed\_out:
+122                 \textcolor{keywordflow}{return}
+123             pick\_msg = AFTER\_PICK\_TOPIC\_MSG
+124             self.mturk\_agent.observe(\{\textcolor{stringliteral}{'id'}: \textcolor{stringliteral}{'SYSTEM'}, \textcolor{stringliteral}{'text'}: pick\_msg\})
+125             self.mturk\_agent.chosen\_topic = topic\_act[\textcolor{stringliteral}{'text'}]
+126             self.mturk\_agent.topic\_choices = topics
+127             self.mturk\_agent.seen = seen
+128             self.mturk\_agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(\{\textcolor{stringliteral}{'id'}: \textcolor{stringliteral}{'SYSTEM'}, \textcolor{stringliteral}{'wait\_msg'}: \textcolor{keyword}{True}\}))
+129         \textcolor{keywordflow}{else}:
+130             self.mturk\_agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(\{\textcolor{stringliteral}{'id'}: \textcolor{stringliteral}{'SYSTEM'}, \textcolor{stringliteral}{'wait\_msg'}: \textcolor{keyword}{True}\}))
+131         \textcolor{keywordflow}{return}
+132 
 \end{DoxyCode}
 
 
@@ -146,7 +144,7 @@ Definition at line 103 of file worlds.\+py.
 
 
 
-Definition at line 100 of file worlds.\+py.
+Definition at line 104 of file worlds.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1worlds_1_1TopicChooseWorld_a2eb6c10647cb8207bfa083ef0a493d13}\label{classprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1worlds_1_1TopicChooseWorld_a2eb6c10647cb8207bfa083ef0a493d13}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::mturk\+\_\+evaluation\+\_\+task\+::worlds\+::\+Topic\+Choose\+World@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::mturk\+\_\+evaluation\+\_\+task\+::worlds\+::\+Topic\+Choose\+World}!role@{role}}
@@ -156,7 +154,7 @@ Definition at line 100 of file worlds.\+py.
 
 
 
-Definition at line 98 of file worlds.\+py.
+Definition at line 102 of file worlds.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1worlds_1_1TopicChooseWorld_a71ae18a662941ea82999f48817e1c784}\label{classprojects_1_1wizard__of__wikipedia_1_1mturk__evaluation__task_1_1worlds_1_1TopicChooseWorld_a71ae18a662941ea82999f48817e1c784}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::mturk\+\_\+evaluation\+\_\+task\+::worlds\+::\+Topic\+Choose\+World@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::mturk\+\_\+evaluation\+\_\+task\+::worlds\+::\+Topic\+Choose\+World}!task\+\_\+type@{task\+\_\+type}}
@@ -166,7 +164,7 @@ Definition at line 98 of file worlds.\+py.
 
 
 
-Definition at line 99 of file worlds.\+py.
+Definition at line 103 of file worlds.\+py.
 
 
 

@@ -2,8 +2,7 @@
 \label{classigc__evals_1_1worlds_1_1RoleOnboardWorld}\index{igc\+\_\+evals.\+worlds.\+Role\+Onboard\+World@{igc\+\_\+evals.\+worlds.\+Role\+Onboard\+World}}
 
 
-Inheritance diagram for igc\+\_\+evals.\+worlds.\+Role\+Onboard\+World\+:
-\nopagebreak
+Inheritance diagram for igc\+\_\+evals.\+worlds.\+Role\+Onboard\+World\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for igc\+\_\+evals.\+worlds.\+Role\+Onboard\+World\+:
 \end{figure}
 
 
-Collaboration diagram for igc\+\_\+evals.\+worlds.\+Role\+Onboard\+World\+:
-\nopagebreak
+Collaboration diagram for igc\+\_\+evals.\+worlds.\+Role\+Onboard\+World\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -45,7 +43,7 @@ def \hyperlink{classigc__evals_1_1worlds_1_1RoleOnboardWorld_a84185551f87f342eb5
 \end{DoxyVerb}
  
 
-Definition at line 102 of file worlds.\+py.
+Definition at line 103 of file worlds.\+py.
 
 
 
@@ -58,16 +56,16 @@ Definition at line 102 of file worlds.\+py.
 
 
 
-Definition at line 107 of file worlds.\+py.
+Definition at line 108 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-107     \textcolor{keyword}{def }\_\_init\_\_(self, opt, mturk\_agent):
-108         self.task\_type = \textcolor{stringliteral}{'sandbox'} \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'is\_sandbox'}] \textcolor{keywordflow}{else} \textcolor{stringliteral}{'live'}
-109         self.max\_onboard\_time = opt[\textcolor{stringliteral}{'max\_onboard\_time'}]
-110         self.round = opt[\textcolor{stringliteral}{'dialog\_round'}]
-111         super().\_\_init\_\_(opt, mturk\_agent)
-112 
+108     \textcolor{keyword}{def }\_\_init\_\_(self, opt, mturk\_agent):
+109         self.task\_type = \textcolor{stringliteral}{'sandbox'} \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'is\_sandbox'}] \textcolor{keywordflow}{else} \textcolor{stringliteral}{'live'}
+110         self.max\_onboard\_time = opt[\textcolor{stringliteral}{'max\_onboard\_time'}]
+111         self.round = opt[\textcolor{stringliteral}{'dialog\_round'}]
+112         super().\_\_init\_\_(opt, mturk\_agent)
+113 
 \end{DoxyCode}
 
 
@@ -80,33 +78,33 @@ Definition at line 107 of file worlds.\+py.
 
 
 
-Definition at line 113 of file worlds.\+py.
+Definition at line 114 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-113     \textcolor{keyword}{def }parley(self):
-114         onboard\_msg = \{\textcolor{stringliteral}{'id'}: \textcolor{stringliteral}{'SYSTEM'}, \textcolor{stringliteral}{'text'}: ONBOARD\_MSG\}
-115 
-116         \textcolor{keywordflow}{if} self.round == \textcolor{stringliteral}{'questions'}:
-117             onboard\_msg[\textcolor{stringliteral}{'task\_description'}] = config\_questions[\textcolor{stringliteral}{'task\_description'}]
-118         \textcolor{keywordflow}{else}:
-119             onboard\_msg[\textcolor{stringliteral}{'task\_description'}] = config\_responses[\textcolor{stringliteral}{'task\_description'}]
-120 
-121         self.mturk\_agent.observe(onboard\_msg)
-122 
-123         act = self.mturk\_agent.act(timeout=self.max\_onboard\_time)
-124 
-125         \textcolor{comment}{# timeout}
-126         \textcolor{keywordflow}{if} act[\textcolor{stringliteral}{'episode\_done'}] \textcolor{keywordflow}{or} ((\textcolor{stringliteral}{'text'} \textcolor{keywordflow}{in} act \textcolor{keywordflow}{and} act[\textcolor{stringliteral}{'text'}] == TIMEOUT\_MESSAGE)):
-127             self.episodeDone = \textcolor{keyword}{True}
-128             \textcolor{keywordflow}{return}
-129 
-130         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'text'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} act:
-131             control\_msg = \{\textcolor{stringliteral}{'id'}: \textcolor{stringliteral}{'SYSTEM'}, \textcolor{stringliteral}{'text'}: WAITING\_MSG\}
-132             self.mturk\_agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
-133             self.episodeDone = \textcolor{keyword}{True}
-134 
+114     \textcolor{keyword}{def }parley(self):
+115         onboard\_msg = \{\textcolor{stringliteral}{'id'}: \textcolor{stringliteral}{'SYSTEM'}, \textcolor{stringliteral}{'text'}: ONBOARD\_MSG\}
+116 
+117         \textcolor{keywordflow}{if} self.round == \textcolor{stringliteral}{'questions'}:
+118             onboard\_msg[\textcolor{stringliteral}{'task\_description'}] = config\_questions[\textcolor{stringliteral}{'task\_description'}]
+119         \textcolor{keywordflow}{else}:
+120             onboard\_msg[\textcolor{stringliteral}{'task\_description'}] = config\_responses[\textcolor{stringliteral}{'task\_description'}]
+121 
+122         self.mturk\_agent.observe(onboard\_msg)
+123 
+124         act = self.mturk\_agent.act(timeout=self.max\_onboard\_time)
+125 
+126         \textcolor{comment}{# timeout}
+127         \textcolor{keywordflow}{if} act[\textcolor{stringliteral}{'episode\_done'}] \textcolor{keywordflow}{or} ((\textcolor{stringliteral}{'text'} \textcolor{keywordflow}{in} act \textcolor{keywordflow}{and} act[\textcolor{stringliteral}{'text'}] == TIMEOUT\_MESSAGE)):
+128             self.episodeDone = \textcolor{keyword}{True}
+129             \textcolor{keywordflow}{return}
+130 
+131         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'text'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} act:
+132             control\_msg = \{\textcolor{stringliteral}{'id'}: \textcolor{stringliteral}{'SYSTEM'}, \textcolor{stringliteral}{'text'}: WAITING\_MSG\}
+133             self.mturk\_agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
+134             self.episodeDone = \textcolor{keyword}{True}
 135 
+136 
 \end{DoxyCode}
 
 
@@ -119,7 +117,7 @@ Definition at line 113 of file worlds.\+py.
 
 
 
-Definition at line 127 of file worlds.\+py.
+Definition at line 128 of file worlds.\+py.
 
 \mbox{\Hypertarget{classigc__evals_1_1worlds_1_1RoleOnboardWorld_ac1d2cbbaa66cf111ba39cbd112448b99}\label{classigc__evals_1_1worlds_1_1RoleOnboardWorld_ac1d2cbbaa66cf111ba39cbd112448b99}} 
 \index{igc\+\_\+evals\+::worlds\+::\+Role\+Onboard\+World@{igc\+\_\+evals\+::worlds\+::\+Role\+Onboard\+World}!max\+\_\+onboard\+\_\+time@{max\+\_\+onboard\+\_\+time}}
@@ -129,7 +127,7 @@ Definition at line 127 of file worlds.\+py.
 
 
 
-Definition at line 109 of file worlds.\+py.
+Definition at line 110 of file worlds.\+py.
 
 \mbox{\Hypertarget{classigc__evals_1_1worlds_1_1RoleOnboardWorld_ae6b8b37395e2430f1d533b6fc4cee64e}\label{classigc__evals_1_1worlds_1_1RoleOnboardWorld_ae6b8b37395e2430f1d533b6fc4cee64e}} 
 \index{igc\+\_\+evals\+::worlds\+::\+Role\+Onboard\+World@{igc\+\_\+evals\+::worlds\+::\+Role\+Onboard\+World}!round@{round}}
@@ -139,7 +137,7 @@ Definition at line 109 of file worlds.\+py.
 
 
 
-Definition at line 110 of file worlds.\+py.
+Definition at line 111 of file worlds.\+py.
 
 \mbox{\Hypertarget{classigc__evals_1_1worlds_1_1RoleOnboardWorld_aa4474e6170fb62445d09455a09377b1c}\label{classigc__evals_1_1worlds_1_1RoleOnboardWorld_aa4474e6170fb62445d09455a09377b1c}} 
 \index{igc\+\_\+evals\+::worlds\+::\+Role\+Onboard\+World@{igc\+\_\+evals\+::worlds\+::\+Role\+Onboard\+World}!task\+\_\+type@{task\+\_\+type}}
@@ -149,7 +147,7 @@ Definition at line 110 of file worlds.\+py.
 
 
 
-Definition at line 108 of file worlds.\+py.
+Definition at line 109 of file worlds.\+py.
 
 
 

@@ -2,8 +2,7 @@
 \label{classprojects_1_1wizard__of__wikipedia_1_1generator_1_1agents_1_1__GenericWizardAgent}\index{projects.\+wizard\+\_\+of\+\_\+wikipedia.\+generator.\+agents.\+\_\+\+Generic\+Wizard\+Agent@{projects.\+wizard\+\_\+of\+\_\+wikipedia.\+generator.\+agents.\+\_\+\+Generic\+Wizard\+Agent}}
 
 
-Inheritance diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+generator.\+agents.\+\_\+\+Generic\+Wizard\+Agent\+:
-\nopagebreak
+Inheritance diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+generator.\+agents.\+\_\+\+Generic\+Wizard\+Agent\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -17,7 +16,7 @@ Collaboration diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+generator.\
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=318pt]{dc/d24/classprojects_1_1wizard__of__wikipedia_1_1generator_1_1agents_1_1__GenericWizardAgent__coll__graph}
+\includegraphics[width=280pt]{dc/d24/classprojects_1_1wizard__of__wikipedia_1_1generator_1_1agents_1_1__GenericWizardAgent__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -33,7 +32,7 @@ def \hyperlink{classprojects_1_1wizard__of__wikipedia_1_1generator_1_1agents_1_1
 \subsection{Detailed Description}
 
 
-Definition at line 43 of file agents.\+py.
+Definition at line 45 of file agents.\+py.
 
 
 
@@ -46,14 +45,14 @@ Definition at line 43 of file agents.\+py.
 
 
 
-Definition at line 45 of file agents.\+py.
+Definition at line 47 of file agents.\+py.
 
 
 \begin{DoxyCode}
-45     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(cls, argparser):
-46         argparser.set\_defaults(**DEFAULT\_OPTS)
-47         super(\_GenericWizardAgent, cls).\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(argparser)
-48 
+47     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(cls, argparser):
+48         argparser.set\_defaults(**DEFAULT\_OPTS)
+49         super(\_GenericWizardAgent, cls).\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(argparser)
+50 
 \end{DoxyCode}
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1generator_1_1agents_1_1__GenericWizardAgent_a898b6da1e93aa458966616f0208681fc}\label{classprojects_1_1wizard__of__wikipedia_1_1generator_1_1agents_1_1__GenericWizardAgent_a898b6da1e93aa458966616f0208681fc}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::generator\+::agents\+::\+\_\+\+Generic\+Wizard\+Agent@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::generator\+::agents\+::\+\_\+\+Generic\+Wizard\+Agent}!batchify@{batchify}}
@@ -63,26 +62,26 @@ Definition at line 45 of file agents.\+py.
 
 
 
-Definition at line 49 of file agents.\+py.
+Definition at line 51 of file agents.\+py.
 
 
 \begin{DoxyCode}
-49     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_aca22dd97c5b6dcda2a7479c1cb22ef1e}{batchify}(self, obs\_batch):
-50         batch = super().\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_aca22dd97c5b6dcda2a7479c1cb22ef1e}{batchify}(obs\_batch)
-51         reordered\_observations = [obs\_batch[i] \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} batch.valid\_indices]
-52 
-53         checked\_sentences = []
-54         \textcolor{keywordflow}{for} obs \textcolor{keywordflow}{in} reordered\_observations:
-55             checked\_sentence = \textcolor{stringliteral}{'\{\} \{\} \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
-56                 obs.get(\textcolor{stringliteral}{'title'}, \textcolor{stringliteral}{''}), TOKEN\_KNOWLEDGE, obs.get(\textcolor{stringliteral}{'checked\_sentence'}, \textcolor{stringliteral}{''})
-57             )
-58             checked\_sentences.append(checked\_sentence)
-59 
-60         batch[\textcolor{stringliteral}{'checked\_sentence'}] = checked\_sentences
+51     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_aca22dd97c5b6dcda2a7479c1cb22ef1e}{batchify}(self, obs\_batch):
+52         batch = super().\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_aca22dd97c5b6dcda2a7479c1cb22ef1e}{batchify}(obs\_batch)
+53         reordered\_observations = [obs\_batch[i] \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} batch.valid\_indices]
+54 
+55         checked\_sentences = []
+56         \textcolor{keywordflow}{for} obs \textcolor{keywordflow}{in} reordered\_observations:
+57             checked\_sentence = \textcolor{stringliteral}{'\{\} \{\} \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+58                 obs.get(\textcolor{stringliteral}{'title'}, \textcolor{stringliteral}{''}), TOKEN\_KNOWLEDGE, obs.get(\textcolor{stringliteral}{'checked\_sentence'}, \textcolor{stringliteral}{''})
+59             )
+60             checked\_sentences.append(checked\_sentence)
 61 
-62         \textcolor{keywordflow}{return} batch
+62         batch[\textcolor{stringliteral}{'checked\_sentence'}] = checked\_sentences
 63 
-64 
+64         \textcolor{keywordflow}{return} batch
+65 
+66 
 \end{DoxyCode}
 
 

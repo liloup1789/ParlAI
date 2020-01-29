@@ -2,8 +2,7 @@
 \label{classparlai_1_1mturk_1_1webapp_1_1server_1_1Application}\index{parlai.\+mturk.\+webapp.\+server.\+Application@{parlai.\+mturk.\+webapp.\+server.\+Application}}
 
 
-Inheritance diagram for parlai.\+mturk.\+webapp.\+server.\+Application\+:
-\nopagebreak
+Inheritance diagram for parlai.\+mturk.\+webapp.\+server.\+Application\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+mturk.\+webapp.\+server.\+Application\+:
 \end{figure}
 
 
-Collaboration diagram for parlai.\+mturk.\+webapp.\+server.\+Application\+:
-\nopagebreak
+Collaboration diagram for parlai.\+mturk.\+webapp.\+server.\+Application\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -49,7 +47,7 @@ def \hyperlink{classparlai_1_1mturk_1_1webapp_1_1server_1_1Application_a0c8d2d2d
 \subsection{Detailed Description}
 
 
-Definition at line 120 of file server.\+py.
+Definition at line 125 of file server.\+py.
 
 
 
@@ -62,44 +60,44 @@ Definition at line 120 of file server.\+py.
 
 
 
-Definition at line 121 of file server.\+py.
+Definition at line 126 of file server.\+py.
 
 
 \begin{DoxyCode}
-121     \textcolor{keyword}{def }\_\_init\_\_(self, port=DEFAULT\_PORT, db\_file=DEFAULT\_DB\_FILE, is\_sandbox=False):
-122         self.state = \{\textcolor{stringliteral}{'is\_sandbox'}: is\_sandbox\}
-123         self.subs = \{\}
-124         self.sources = \{\}
-125         self.port = port
-126         self.data\_handler = MTurkDataHandler(file\_name=db\_file)
-127         self.manager = \textcolor{keywordtype}{None}  \textcolor{comment}{# MTurk manager for demo tasks}
-128         self.mturk\_manager = MTurkManager.make\_taskless\_instance(is\_sandbox)
-129         self.mturk\_manager.db\_logger = self.data\_handler
-130         self.task\_manager = \textcolor{keywordtype}{None}  \textcolor{comment}{# This is the task mturk manager}
-131 
-132         \textcolor{comment}{# TODO load some state from DB}
-133 
-134         handlers = [
-135             (\textcolor{stringliteral}{r"/app/(.*)"}, AppHandler, \{\textcolor{stringliteral}{'app'}: self\}),
-136             (\textcolor{stringliteral}{r"/run\_list"}, RunListHandler, \{\textcolor{stringliteral}{'app'}: self\}),
-137             (\textcolor{stringliteral}{r"/task\_list"}, TaskListHandler, \{\textcolor{stringliteral}{'app'}: self\}),
-138             (\textcolor{stringliteral}{r"/run\_task/(.*)"}, TaskRunHandler, \{\textcolor{stringliteral}{'app'}: self\}),
-139             (\textcolor{stringliteral}{r"/workers"}, WorkerListHandler, \{\textcolor{stringliteral}{'app'}: self\}),
-140             (\textcolor{stringliteral}{r"/runs/(.*)"}, RunHandler, \{\textcolor{stringliteral}{'app'}: self\}),
-141             (\textcolor{stringliteral}{r"/workers/(.*)"}, WorkerHandler, \{\textcolor{stringliteral}{'app'}: self\}),
-142             (\textcolor{stringliteral}{r"/assignments/(.*)"}, AssignmentHandler, \{\textcolor{stringliteral}{'app'}: self\}),
-143             (\textcolor{stringliteral}{r"/approve/(.*)"}, ApprovalHandler, \{\textcolor{stringliteral}{'app'}: self\}),
-144             (\textcolor{stringliteral}{r"/reject/(.*)"}, RejectionHandler, \{\textcolor{stringliteral}{'app'}: self\}),
-145             (\textcolor{stringliteral}{r"/reverse\_rejection/(.*)"}, ReverseHandler, \{\textcolor{stringliteral}{'app'}: self\}),
-146             (\textcolor{stringliteral}{r"/block/(.*)"}, BlockHandler, \{\textcolor{stringliteral}{'app'}: self\}),
-147             (\textcolor{stringliteral}{r"/bonus/(.*)"}, BonusHandler, \{\textcolor{stringliteral}{'app'}: self\}),
-148             (\textcolor{stringliteral}{r"/error/(.*)"}, ErrorHandler, \{\textcolor{stringliteral}{'app'}: self\}),
-149             (\textcolor{stringliteral}{r"/socket"}, TaskSocketHandler, \{\textcolor{stringliteral}{'app'}: self\}),
-150             (\textcolor{stringliteral}{r"/"}, RedirectHandler),
-151         ]
-152         super(Application, self).\_\_init\_\_(handlers, **tornado\_settings)
-153 
-154 
+126     \textcolor{keyword}{def }\_\_init\_\_(self, port=DEFAULT\_PORT, db\_file=DEFAULT\_DB\_FILE, is\_sandbox=False):
+127         self.state = \{\textcolor{stringliteral}{'is\_sandbox'}: is\_sandbox\}
+128         self.subs = \{\}
+129         self.sources = \{\}
+130         self.port = port
+131         self.data\_handler = MTurkDataHandler(file\_name=db\_file)
+132         self.manager = \textcolor{keywordtype}{None}  \textcolor{comment}{# MTurk manager for demo tasks}
+133         self.mturk\_manager = MTurkManager.make\_taskless\_instance(is\_sandbox)
+134         self.mturk\_manager.db\_logger = self.data\_handler
+135         self.task\_manager = \textcolor{keywordtype}{None}  \textcolor{comment}{# This is the task mturk manager}
+136 
+137         \textcolor{comment}{# TODO load some state from DB}
+138 
+139         handlers = [
+140             (\textcolor{stringliteral}{r"/app/(.*)"}, AppHandler, \{\textcolor{stringliteral}{'app'}: self\}),
+141             (\textcolor{stringliteral}{r"/run\_list"}, RunListHandler, \{\textcolor{stringliteral}{'app'}: self\}),
+142             (\textcolor{stringliteral}{r"/task\_list"}, TaskListHandler, \{\textcolor{stringliteral}{'app'}: self\}),
+143             (\textcolor{stringliteral}{r"/run\_task/(.*)"}, TaskRunHandler, \{\textcolor{stringliteral}{'app'}: self\}),
+144             (\textcolor{stringliteral}{r"/workers"}, WorkerListHandler, \{\textcolor{stringliteral}{'app'}: self\}),
+145             (\textcolor{stringliteral}{r"/runs/(.*)"}, RunHandler, \{\textcolor{stringliteral}{'app'}: self\}),
+146             (\textcolor{stringliteral}{r"/workers/(.*)"}, WorkerHandler, \{\textcolor{stringliteral}{'app'}: self\}),
+147             (\textcolor{stringliteral}{r"/assignments/(.*)"}, AssignmentHandler, \{\textcolor{stringliteral}{'app'}: self\}),
+148             (\textcolor{stringliteral}{r"/approve/(.*)"}, ApprovalHandler, \{\textcolor{stringliteral}{'app'}: self\}),
+149             (\textcolor{stringliteral}{r"/reject/(.*)"}, RejectionHandler, \{\textcolor{stringliteral}{'app'}: self\}),
+150             (\textcolor{stringliteral}{r"/reverse\_rejection/(.*)"}, ReverseHandler, \{\textcolor{stringliteral}{'app'}: self\}),
+151             (\textcolor{stringliteral}{r"/block/(.*)"}, BlockHandler, \{\textcolor{stringliteral}{'app'}: self\}),
+152             (\textcolor{stringliteral}{r"/bonus/(.*)"}, BonusHandler, \{\textcolor{stringliteral}{'app'}: self\}),
+153             (\textcolor{stringliteral}{r"/error/(.*)"}, ErrorHandler, \{\textcolor{stringliteral}{'app'}: self\}),
+154             (\textcolor{stringliteral}{r"/socket"}, TaskSocketHandler, \{\textcolor{stringliteral}{'app'}: self\}),
+155             (\textcolor{stringliteral}{r"/"}, RedirectHandler),
+156         ]
+157         super(Application, self).\_\_init\_\_(handlers, **tornado\_settings)
+158 
+159 
 \end{DoxyCode}
 
 
@@ -112,7 +110,7 @@ Definition at line 121 of file server.\+py.
 
 
 
-Definition at line 126 of file server.\+py.
+Definition at line 131 of file server.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1Application_ae55f819d9aa679ede302ea8931b35642}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1Application_ae55f819d9aa679ede302ea8931b35642}} 
 \index{parlai\+::mturk\+::webapp\+::server\+::\+Application@{parlai\+::mturk\+::webapp\+::server\+::\+Application}!manager@{manager}}
@@ -122,7 +120,7 @@ Definition at line 126 of file server.\+py.
 
 
 
-Definition at line 127 of file server.\+py.
+Definition at line 132 of file server.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1Application_afef729389279805c83048d79d5de7d9f}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1Application_afef729389279805c83048d79d5de7d9f}} 
 \index{parlai\+::mturk\+::webapp\+::server\+::\+Application@{parlai\+::mturk\+::webapp\+::server\+::\+Application}!mturk\+\_\+manager@{mturk\+\_\+manager}}
@@ -132,7 +130,7 @@ Definition at line 127 of file server.\+py.
 
 
 
-Definition at line 128 of file server.\+py.
+Definition at line 133 of file server.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1Application_a206b0e1b1cea8274f21a0ce980d76dfb}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1Application_a206b0e1b1cea8274f21a0ce980d76dfb}} 
 \index{parlai\+::mturk\+::webapp\+::server\+::\+Application@{parlai\+::mturk\+::webapp\+::server\+::\+Application}!port@{port}}
@@ -142,7 +140,7 @@ Definition at line 128 of file server.\+py.
 
 
 
-Definition at line 125 of file server.\+py.
+Definition at line 130 of file server.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1Application_afb5154a1ef04c2c2efd4e9b710b9b848}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1Application_afb5154a1ef04c2c2efd4e9b710b9b848}} 
 \index{parlai\+::mturk\+::webapp\+::server\+::\+Application@{parlai\+::mturk\+::webapp\+::server\+::\+Application}!sources@{sources}}
@@ -152,7 +150,7 @@ Definition at line 125 of file server.\+py.
 
 
 
-Definition at line 124 of file server.\+py.
+Definition at line 129 of file server.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1Application_a9280c9b9e3b934c9da7381a2bc04c867}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1Application_a9280c9b9e3b934c9da7381a2bc04c867}} 
 \index{parlai\+::mturk\+::webapp\+::server\+::\+Application@{parlai\+::mturk\+::webapp\+::server\+::\+Application}!state@{state}}
@@ -162,7 +160,7 @@ Definition at line 124 of file server.\+py.
 
 
 
-Definition at line 122 of file server.\+py.
+Definition at line 127 of file server.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1Application_a093ceb0dda80a2cf6695111161e112b2}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1Application_a093ceb0dda80a2cf6695111161e112b2}} 
 \index{parlai\+::mturk\+::webapp\+::server\+::\+Application@{parlai\+::mturk\+::webapp\+::server\+::\+Application}!subs@{subs}}
@@ -172,7 +170,7 @@ Definition at line 122 of file server.\+py.
 
 
 
-Definition at line 123 of file server.\+py.
+Definition at line 128 of file server.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1webapp_1_1server_1_1Application_a7ad5b113a0889b6dfef99e168cb0b69f}\label{classparlai_1_1mturk_1_1webapp_1_1server_1_1Application_a7ad5b113a0889b6dfef99e168cb0b69f}} 
 \index{parlai\+::mturk\+::webapp\+::server\+::\+Application@{parlai\+::mturk\+::webapp\+::server\+::\+Application}!task\+\_\+manager@{task\+\_\+manager}}
@@ -182,7 +180,7 @@ Definition at line 123 of file server.\+py.
 
 
 
-Definition at line 130 of file server.\+py.
+Definition at line 135 of file server.\+py.
 
 
 

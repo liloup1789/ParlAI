@@ -1,0 +1,193 @@
+\hypertarget{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCOneSideTeacher}{}\section{parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+One\+Side\+Teacher Class Reference}
+\label{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCOneSideTeacher}\index{parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+One\+Side\+Teacher@{parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+One\+Side\+Teacher}}
+
+
+Inheritance diagram for parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+One\+Side\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/db7/classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCOneSideTeacher__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+One\+Side\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=266pt]{d8/dab/classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCOneSideTeacher__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCOneSideTeacher_ad57d48cb961ce41f24845361ca12cac7}{add\+\_\+cmdline\+\_\+args} (cls, argparser)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCOneSideTeacher_acd2f7b3686dfb0223b513f5fbf5d59db}{num\+\_\+episodes} (self)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCOneSideTeacher_a39b29631ff931751e6aa35119a09e399}{num\+\_\+examples} (self)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCOneSideTeacher_aa2f9cd182fb837af0babaf21c64b0617}{get\+\_\+label\+\_\+key} (self)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCOneSideTeacher_aa237039dbe3c14c4210f5806f2aa9c5c}{get\+\_\+text} (self, \hyperlink{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a23adac78cbb7a5761f66fea8809bcee4}{data})
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCOneSideTeacher_a90c812fb4446f6752e6917246aeee93a}{get}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Override to only return one side of the conversation.
+\end{DoxyVerb}
+ 
+
+Definition at line 250 of file agents.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCOneSideTeacher_ad57d48cb961ce41f24845361ca12cac7}\label{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCOneSideTeacher_ad57d48cb961ce41f24845361ca12cac7}} 
+\index{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+One\+Side\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+One\+Side\+Teacher}!add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}}
+\index{add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}!parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+One\+Side\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+One\+Side\+Teacher}}
+\subsubsection{\texorpdfstring{add\+\_\+cmdline\+\_\+args()}{add\_cmdline\_args()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+One\+Side\+Teacher.\+add\+\_\+cmdline\+\_\+args (\begin{DoxyParamCaption}\item[{}]{cls,  }\item[{}]{argparser }\end{DoxyParamCaption})}
+
+
+
+Definition at line 256 of file agents.\+py.
+
+
+\begin{DoxyCode}
+256     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(cls, argparser):
+257         super().\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(argparser)
+258         agent = argparser.add\_argument\_group(\textcolor{stringliteral}{'IGCResponseOnly Arguments'})
+259         agent.add\_argument(
+260             \textcolor{stringliteral}{'--igc-multi-ref'},
+261             type=\textcolor{stringliteral}{'bool'},
+262             default=\textcolor{keyword}{False},
+263             help=\textcolor{stringliteral}{'specify true to evaluate on multi-reference labels'},
+264         )
+265 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCOneSideTeacher_a90c812fb4446f6752e6917246aeee93a}\label{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCOneSideTeacher_a90c812fb4446f6752e6917246aeee93a}} 
+\index{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+One\+Side\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+One\+Side\+Teacher}!get@{get}}
+\index{get@{get}!parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+One\+Side\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+One\+Side\+Teacher}}
+\subsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+One\+Side\+Teacher.\+get (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{episode\+\_\+idx }\end{DoxyParamCaption})}
+
+
+
+Definition at line 286 of file agents.\+py.
+
+
+\begin{DoxyCode}
+286     \textcolor{keyword}{def }get(self, episode\_idx: int, entry\_idx: int = 0) -> Dict[str, Any]:
+287         \textcolor{stringliteral}{"""}
+288 \textcolor{stringliteral}{        Override to handle one-sided conversation.}
+289 \textcolor{stringliteral}{        """}
+290         data = self.data[episode\_idx]
+291 
+292         image\_id = data[self.image\_id\_key]
+293         \textcolor{keywordflow}{if} data[self.image\_id\_key] \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.valid\_image\_ids:
+294             data[self.image\_id\_key] = self.blank\_image\_id
+295         image\_features = self.get\_image\_features(data)
+296 
+297         labels = [data[self.get\_label\_key()]]
+298         \textcolor{keywordflow}{if} self.multi\_ref:
+299             labels = data[f\textcolor{stringliteral}{'multiref\_\{self.get\_label\_key()\}s'}].split(\textcolor{stringliteral}{'***'})
+300 
+301         text = self.get\_text(data)
+302 
+303         action = \{
+304             \textcolor{stringliteral}{'text'}: text,
+305             \textcolor{stringliteral}{'image\_id'}: image\_id,
+306             \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True},
+307             \textcolor{stringliteral}{'image'}: image\_features,
+308             \textcolor{stringliteral}{'labels'}: labels,
+309         \}
+310 
+311         \textcolor{keywordflow}{return} action
+312 
+313 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCOneSideTeacher_aa2f9cd182fb837af0babaf21c64b0617}\label{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCOneSideTeacher_aa2f9cd182fb837af0babaf21c64b0617}} 
+\index{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+One\+Side\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+One\+Side\+Teacher}!get\+\_\+label\+\_\+key@{get\+\_\+label\+\_\+key}}
+\index{get\+\_\+label\+\_\+key@{get\+\_\+label\+\_\+key}!parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+One\+Side\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+One\+Side\+Teacher}}
+\subsubsection{\texorpdfstring{get\+\_\+label\+\_\+key()}{get\_label\_key()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+One\+Side\+Teacher.\+get\+\_\+label\+\_\+key (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{str }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Return key into data dictionary for the label.
+\end{DoxyVerb}
+ 
+
+Definition at line 273 of file agents.\+py.
+
+
+\begin{DoxyCode}
+273     \textcolor{keyword}{def }get\_label\_key(self) -> str:
+274         \textcolor{stringliteral}{"""}
+275 \textcolor{stringliteral}{        Return key into data dictionary for the label.}
+276 \textcolor{stringliteral}{        """}
+277         \textcolor{keywordflow}{pass}
+278 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCOneSideTeacher_aa237039dbe3c14c4210f5806f2aa9c5c}\label{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCOneSideTeacher_aa237039dbe3c14c4210f5806f2aa9c5c}} 
+\index{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+One\+Side\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+One\+Side\+Teacher}!get\+\_\+text@{get\+\_\+text}}
+\index{get\+\_\+text@{get\+\_\+text}!parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+One\+Side\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+One\+Side\+Teacher}}
+\subsubsection{\texorpdfstring{get\+\_\+text()}{get\_text()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+One\+Side\+Teacher.\+get\+\_\+text (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{data,  }\item[{}]{str }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Return text for an example.
+\end{DoxyVerb}
+ 
+
+Definition at line 280 of file agents.\+py.
+
+
+\begin{DoxyCode}
+280     \textcolor{keyword}{def }get\_text(self, data) -> str:
+281         \textcolor{stringliteral}{"""}
+282 \textcolor{stringliteral}{        Return text for an example.}
+283 \textcolor{stringliteral}{        """}
+284         \textcolor{keywordflow}{pass}
+285 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCOneSideTeacher_acd2f7b3686dfb0223b513f5fbf5d59db}\label{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCOneSideTeacher_acd2f7b3686dfb0223b513f5fbf5d59db}} 
+\index{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+One\+Side\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+One\+Side\+Teacher}!num\+\_\+episodes@{num\+\_\+episodes}}
+\index{num\+\_\+episodes@{num\+\_\+episodes}!parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+One\+Side\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+One\+Side\+Teacher}}
+\subsubsection{\texorpdfstring{num\+\_\+episodes()}{num\_episodes()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+One\+Side\+Teacher.\+num\+\_\+episodes (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{int }\end{DoxyParamCaption})}
+
+
+
+Definition at line 266 of file agents.\+py.
+
+
+\begin{DoxyCode}
+266     \textcolor{keyword}{def }num\_episodes(self) -> int:
+267         \textcolor{keywordflow}{return} len(self.data)
+268 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCOneSideTeacher_a39b29631ff931751e6aa35119a09e399}\label{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCOneSideTeacher_a39b29631ff931751e6aa35119a09e399}} 
+\index{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+One\+Side\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+One\+Side\+Teacher}!num\+\_\+examples@{num\+\_\+examples}}
+\index{num\+\_\+examples@{num\+\_\+examples}!parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+One\+Side\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+One\+Side\+Teacher}}
+\subsubsection{\texorpdfstring{num\+\_\+examples()}{num\_examples()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+One\+Side\+Teacher.\+num\+\_\+examples (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{int }\end{DoxyParamCaption})}
+
+
+
+Definition at line 269 of file agents.\+py.
+
+
+\begin{DoxyCode}
+269     \textcolor{keyword}{def }num\_examples(self) -> int:
+270         \textcolor{keywordflow}{return} len(self.data)
+271 
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/tasks/igc/\hyperlink{parlai_2tasks_2igc_2agents_8py}{agents.\+py}\end{DoxyCompactItemize}

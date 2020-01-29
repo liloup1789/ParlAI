@@ -2,8 +2,7 @@
 \label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder}\index{parlai.\+agents.\+transformer.\+modules.\+Transformer\+Encoder@{parlai.\+agents.\+transformer.\+modules.\+Transformer\+Encoder}}
 
 
-Inheritance diagram for parlai.\+agents.\+transformer.\+modules.\+Transformer\+Encoder\+:
-\nopagebreak
+Inheritance diagram for parlai.\+agents.\+transformer.\+modules.\+Transformer\+Encoder\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+agents.\+transformer.\+modules.\+Transformer\+E
 \end{figure}
 
 
-Collaboration diagram for parlai.\+agents.\+transformer.\+modules.\+Transformer\+Encoder\+:
-\nopagebreak
+Collaboration diagram for parlai.\+agents.\+transformer.\+modules.\+Transformer\+Encoder\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -107,7 +105,7 @@ def \hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEnc
 \end{DoxyVerb}
  
 
-Definition at line 346 of file modules.\+py.
+Definition at line 348 of file modules.\+py.
 
 
 
@@ -120,87 +118,87 @@ Definition at line 346 of file modules.\+py.
 
 
 
-Definition at line 403 of file modules.\+py.
+Definition at line 405 of file modules.\+py.
 
 
 \begin{DoxyCode}
-403     ):
-404         super(TransformerEncoder, self).\_\_init\_\_()
-405 
-406         self.embedding\_size = embedding\_size
-407         self.ffn\_size = ffn\_size
-408         self.n\_layers = n\_layers
-409         self.n\_heads = n\_heads
-410         self.dim = embedding\_size
-411         self.embeddings\_scale = embeddings\_scale
-412         self.reduction\_type = reduction\_type
-413         self.padding\_idx = padding\_idx
-414         \textcolor{comment}{# this is --dropout, not --relu-dropout or --attention-dropout}
-415         self.dropout = nn.Dropout(p=dropout)
-416         self.variant = variant
-417         self.n\_segments = n\_segments
-418 
-419         self.n\_positions = n\_positions
-420         self.out\_dim = embedding\_size
-421         \textcolor{keyword}{assert} (
-422             embedding\_size % n\_heads == 0
-423         ), \textcolor{stringliteral}{'Transformer embedding size must be a multiple of n\_heads'}
-424 
-425         \textcolor{comment}{# check input formats:}
-426         \textcolor{keywordflow}{if} embedding \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-427             \textcolor{keyword}{assert} (
-428                 embedding\_size \textcolor{keywordflow}{is} \textcolor{keywordtype}{None} \textcolor{keywordflow}{or} embedding\_size == embedding.weight.shape[1]
-429             ), \textcolor{stringliteral}{"Embedding dim must match the embedding size."}
-430 
-431         \textcolor{keywordflow}{if} embedding \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-432             self.embeddings = embedding
-433         \textcolor{keywordflow}{else}:
-434             \textcolor{keywordflow}{raise} AssertionError(
-435                 \textcolor{stringliteral}{"This code should not execute. Left here in case we want to enable it."}
-436             )
-437             \textcolor{keyword}{assert} padding\_idx \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}
-438             self.embeddings = nn.Embedding(
-439                 vocabulary\_size, embedding\_size, padding\_idx=padding\_idx
-440             )
-441             nn.init.normal\_(self.embeddings.weight, 0, embedding\_size ** -0.5)
-442 
-443         \textcolor{comment}{# create the positional embeddings}
-444         self.position\_embeddings = nn.Embedding(n\_positions, embedding\_size)
-445         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} learn\_positional\_embeddings:
-446             \hyperlink{namespaceparlai_1_1agents_1_1transformer_1_1modules_a0b86437e6e9682fa3100e9cadcaae259}{create\_position\_codes}(
-447                 n\_positions, embedding\_size, out=self.position\_embeddings.weight
-448             )
-449         \textcolor{keywordflow}{else}:
-450             nn.init.normal\_(self.position\_embeddings.weight, 0, embedding\_size ** -0.5)
-451 
-452         \textcolor{comment}{# embedding normalization}
-453         \textcolor{keywordflow}{if} self.variant == \textcolor{stringliteral}{'xlm'}:
-454             self.norm\_embeddings = LayerNorm(self.dim, eps=LAYER\_NORM\_EPS)
-455         \textcolor{keywordflow}{elif} self.variant == \textcolor{stringliteral}{'aiayn'}:
-456             \textcolor{keywordflow}{pass}
-457         \textcolor{keywordflow}{else}:
-458             \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{"Can't handle --variant \{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.variant))
-459 
-460         \textcolor{keywordflow}{if} self.n\_segments >= 1:
-461             self.segment\_embeddings = nn.Embedding(self.n\_segments, self.dim)
-462 
-463         \textcolor{comment}{# build the model}
-464         self.layers = nn.ModuleList()
-465         \textcolor{keywordflow}{for} \_ \textcolor{keywordflow}{in} range(self.n\_layers):
-466             self.layers.append(
-467                 TransformerEncoderLayer(
-468                     n\_heads,
-469                     embedding\_size,
-470                     ffn\_size,
-471                     attention\_dropout=attention\_dropout,
-472                     relu\_dropout=relu\_dropout,
-473                     dropout=dropout,
-474                     variant=variant,
-475                     activation=activation,
-476                 )
-477             )
-478         self.output\_scaling = output\_scaling
-479 
+405     ):
+406         super(TransformerEncoder, self).\_\_init\_\_()
+407 
+408         self.embedding\_size = embedding\_size
+409         self.ffn\_size = ffn\_size
+410         self.n\_layers = n\_layers
+411         self.n\_heads = n\_heads
+412         self.dim = embedding\_size
+413         self.embeddings\_scale = embeddings\_scale
+414         self.reduction\_type = reduction\_type
+415         self.padding\_idx = padding\_idx
+416         \textcolor{comment}{# this is --dropout, not --relu-dropout or --attention-dropout}
+417         self.dropout = nn.Dropout(p=dropout)
+418         self.variant = variant
+419         self.n\_segments = n\_segments
+420 
+421         self.n\_positions = n\_positions
+422         self.out\_dim = embedding\_size
+423         \textcolor{keyword}{assert} (
+424             embedding\_size % n\_heads == 0
+425         ), \textcolor{stringliteral}{'Transformer embedding size must be a multiple of n\_heads'}
+426 
+427         \textcolor{comment}{# check input formats:}
+428         \textcolor{keywordflow}{if} embedding \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+429             \textcolor{keyword}{assert} (
+430                 embedding\_size \textcolor{keywordflow}{is} \textcolor{keywordtype}{None} \textcolor{keywordflow}{or} embedding\_size == embedding.weight.shape[1]
+431             ), \textcolor{stringliteral}{"Embedding dim must match the embedding size."}
+432 
+433         \textcolor{keywordflow}{if} embedding \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+434             self.embeddings = embedding
+435         \textcolor{keywordflow}{else}:
+436             \textcolor{keywordflow}{raise} AssertionError(
+437                 \textcolor{stringliteral}{"This code should not execute. Left here in case we want to enable it."}
+438             )
+439             \textcolor{keyword}{assert} padding\_idx \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}
+440             self.embeddings = nn.Embedding(
+441                 vocabulary\_size, embedding\_size, padding\_idx=padding\_idx
+442             )
+443             nn.init.normal\_(self.embeddings.weight, 0, embedding\_size ** -0.5)
+444 
+445         \textcolor{comment}{# create the positional embeddings}
+446         self.position\_embeddings = nn.Embedding(n\_positions, embedding\_size)
+447         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} learn\_positional\_embeddings:
+448             \hyperlink{namespaceparlai_1_1agents_1_1transformer_1_1modules_a0b86437e6e9682fa3100e9cadcaae259}{create\_position\_codes}(
+449                 n\_positions, embedding\_size, out=self.position\_embeddings.weight
+450             )
+451         \textcolor{keywordflow}{else}:
+452             nn.init.normal\_(self.position\_embeddings.weight, 0, embedding\_size ** -0.5)
+453 
+454         \textcolor{comment}{# embedding normalization}
+455         \textcolor{keywordflow}{if} self.variant == \textcolor{stringliteral}{'xlm'}:
+456             self.norm\_embeddings = LayerNorm(self.dim, eps=LAYER\_NORM\_EPS)
+457         \textcolor{keywordflow}{elif} self.variant == \textcolor{stringliteral}{'aiayn'}:
+458             \textcolor{keywordflow}{pass}
+459         \textcolor{keywordflow}{else}:
+460             \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{"Can't handle --variant \{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.variant))
+461 
+462         \textcolor{keywordflow}{if} self.n\_segments >= 1:
+463             self.segment\_embeddings = nn.Embedding(self.n\_segments, self.dim)
+464 
+465         \textcolor{comment}{# build the model}
+466         self.layers = nn.ModuleList()
+467         \textcolor{keywordflow}{for} \_ \textcolor{keywordflow}{in} range(self.n\_layers):
+468             self.layers.append(
+469                 TransformerEncoderLayer(
+470                     n\_heads,
+471                     embedding\_size,
+472                     ffn\_size,
+473                     attention\_dropout=attention\_dropout,
+474                     relu\_dropout=relu\_dropout,
+475                     dropout=dropout,
+476                     variant=variant,
+477                     activation=activation,
+478                 )
+479             )
+480         self.output\_scaling = output\_scaling
+481 
 \end{DoxyCode}
 
 
@@ -222,75 +220,75 @@ Definition at line 403 of file modules.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 480 of file modules.\+py.
+Definition at line 482 of file modules.\+py.
 
 
 \begin{DoxyCode}
-480     \textcolor{keyword}{def }forward(self, input, positions=None, segments=None):
-481         \textcolor{stringliteral}{"""}
-482 \textcolor{stringliteral}{        Forward pass.}
-483 \textcolor{stringliteral}{}
-484 \textcolor{stringliteral}{        :param LongTensor[batch,seqlen] input:}
-485 \textcolor{stringliteral}{            The input IDs}
-486 \textcolor{stringliteral}{        :param BoolTensor[batch,seqlen] mask:}
-487 \textcolor{stringliteral}{            The attention mask; 1 means attend, 0 means ignore.}
-488 \textcolor{stringliteral}{        :param LongTensor[batch,seqlen]:}
-489 \textcolor{stringliteral}{            If provided, additionally adds ``segments`` as extra embedding features.}
-490 \textcolor{stringliteral}{        """}
-491         mask = input != self.padding\_idx
-492         \textcolor{keywordflow}{if} positions \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-493             positions = (mask.cumsum(dim=1, dtype=torch.int64) - 1).clamp\_(min=0)
-494         tensor = self.embeddings(input)
-495         \textcolor{keywordflow}{if} self.embeddings\_scale:
-496             tensor = tensor * np.sqrt(self.dim)
-497 
-498         \textcolor{keywordflow}{if} positions.max().item() > self.n\_positions:
-499             \hyperlink{namespaceparlai_1_1utils_1_1misc_acf146e70ea7f6867969a7c2b545d4b4b}{warn\_once}(
-500                 \textcolor{stringliteral}{'You are inputting a sequence of \{x\} length, but only have '}
-501                 \textcolor{stringliteral}{'--n-positions \{y\}. Set --truncate or increase --n-positions'}.
+482     \textcolor{keyword}{def }forward(self, input, positions=None, segments=None):
+483         \textcolor{stringliteral}{"""}
+484 \textcolor{stringliteral}{        Forward pass.}
+485 \textcolor{stringliteral}{}
+486 \textcolor{stringliteral}{        :param LongTensor[batch,seqlen] input:}
+487 \textcolor{stringliteral}{            The input IDs}
+488 \textcolor{stringliteral}{        :param BoolTensor[batch,seqlen] mask:}
+489 \textcolor{stringliteral}{            The attention mask; 1 means attend, 0 means ignore.}
+490 \textcolor{stringliteral}{        :param LongTensor[batch,seqlen]:}
+491 \textcolor{stringliteral}{            If provided, additionally adds ``segments`` as extra embedding features.}
+492 \textcolor{stringliteral}{        """}
+493         mask = input != self.padding\_idx
+494         \textcolor{keywordflow}{if} positions \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+495             positions = (mask.cumsum(dim=1, dtype=torch.int64) - 1).clamp\_(min=0)
+496         tensor = self.embeddings(input)
+497         \textcolor{keywordflow}{if} self.embeddings\_scale:
+498             tensor = tensor * np.sqrt(self.dim)
+499 
+500         \textcolor{keywordflow}{if} positions.max().item() > self.n\_positions:
+501             \hyperlink{namespaceparlai_1_1utils_1_1misc_a884a3aefa90581f53bc592fa6a78dc43}{warn\_once}(
+502                 \textcolor{stringliteral}{'You are inputting a sequence of \{x\} length, but only have '}
+503                 \textcolor{stringliteral}{'--n-positions \{y\}. Set --truncate or increase --n-positions'}.
       \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
-502                     x=positions.max().item(), y=self.n\_positions
-503                 )
-504             )
-505         position\_embs = self.position\_embeddings(positions).expand\_as(tensor)
-506         tensor = tensor + position\_embs
-507 
-508         \textcolor{keywordflow}{if} self.n\_segments >= 1:
-509             \textcolor{keywordflow}{if} segments \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-510                 segments = torch.zeros\_like(input)
-511             tensor = tensor + self.segment\_embeddings(segments)
-512 
-513         \textcolor{keywordflow}{if} self.variant == \textcolor{stringliteral}{'xlm'}:
-514             tensor = \_normalize(tensor, self.norm\_embeddings)
-515 
-516         \textcolor{comment}{# --dropout on the embeddings}
-517         tensor = self.dropout(tensor)
-518 
-519         tensor *= mask.unsqueeze(-1).type\_as(tensor)
-520         \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(self.n\_layers):
-521             tensor = self.layers[i](tensor, mask)
-522 
-523         tensor *= self.output\_scaling
-524         \textcolor{keywordflow}{if} self.reduction\_type == \textcolor{stringliteral}{'first'}:
-525             \textcolor{keywordflow}{return} tensor[:, 0, :]
-526         \textcolor{keywordflow}{elif} self.reduction\_type == \textcolor{stringliteral}{'max'}:
-527             \textcolor{keywordflow}{return} tensor.max(dim=1)[0]
-528         \textcolor{keywordflow}{elif} self.reduction\_type == \textcolor{stringliteral}{'mean'}:
-529             divisor = mask.float().sum(dim=1).unsqueeze(-1).clamp(min=1).type\_as(tensor)
-530             output = tensor.sum(dim=1) / divisor
-531             \textcolor{keywordflow}{return} output
-532         \textcolor{keywordflow}{elif} self.reduction\_type \textcolor{keywordflow}{is} \textcolor{keywordtype}{None} \textcolor{keywordflow}{or} \textcolor{stringliteral}{'none'} \textcolor{keywordflow}{in} self.reduction\_type:
-533             output = tensor
-534             ret = (output, mask)
-535             \textcolor{keywordflow}{if} self.reduction\_type == \textcolor{stringliteral}{'none\_with\_pos\_embs'}:
-536                 ret = (output, mask, position\_embs)
-537             \textcolor{keywordflow}{return} ret
-538         \textcolor{keywordflow}{else}:
-539             \textcolor{keywordflow}{raise} ValueError(
-540                 \textcolor{stringliteral}{"Can't handle --reduction-type \{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.reduction\_type)
-541             )
-542 
-543 
+504                     x=positions.max().item(), y=self.n\_positions
+505                 )
+506             )
+507         position\_embs = self.position\_embeddings(positions).expand\_as(tensor)
+508         tensor = tensor + position\_embs
+509 
+510         \textcolor{keywordflow}{if} self.n\_segments >= 1:
+511             \textcolor{keywordflow}{if} segments \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+512                 segments = torch.zeros\_like(input)
+513             tensor = tensor + self.segment\_embeddings(segments)
+514 
+515         \textcolor{keywordflow}{if} self.variant == \textcolor{stringliteral}{'xlm'}:
+516             tensor = \_normalize(tensor, self.norm\_embeddings)
+517 
+518         \textcolor{comment}{# --dropout on the embeddings}
+519         tensor = self.dropout(tensor)
+520 
+521         tensor *= mask.unsqueeze(-1).type\_as(tensor)
+522         \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(self.n\_layers):
+523             tensor = self.layers[i](tensor, mask)
+524 
+525         tensor *= self.output\_scaling
+526         \textcolor{keywordflow}{if} self.reduction\_type == \textcolor{stringliteral}{'first'}:
+527             \textcolor{keywordflow}{return} tensor[:, 0, :]
+528         \textcolor{keywordflow}{elif} self.reduction\_type == \textcolor{stringliteral}{'max'}:
+529             \textcolor{keywordflow}{return} tensor.max(dim=1)[0]
+530         \textcolor{keywordflow}{elif} self.reduction\_type == \textcolor{stringliteral}{'mean'}:
+531             divisor = mask.float().sum(dim=1).unsqueeze(-1).clamp(min=1).type\_as(tensor)
+532             output = tensor.sum(dim=1) / divisor
+533             \textcolor{keywordflow}{return} output
+534         \textcolor{keywordflow}{elif} self.reduction\_type \textcolor{keywordflow}{is} \textcolor{keywordtype}{None} \textcolor{keywordflow}{or} \textcolor{stringliteral}{'none'} \textcolor{keywordflow}{in} self.reduction\_type:
+535             output = tensor
+536             ret = (output, mask)
+537             \textcolor{keywordflow}{if} self.reduction\_type == \textcolor{stringliteral}{'none\_with\_pos\_embs'}:
+538                 ret = (output, mask, position\_embs)
+539             \textcolor{keywordflow}{return} ret
+540         \textcolor{keywordflow}{else}:
+541             \textcolor{keywordflow}{raise} ValueError(
+542                 \textcolor{stringliteral}{"Can't handle --reduction-type \{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.reduction\_type)
+543             )
+544 
+545 
 \end{DoxyCode}
 
 
@@ -303,7 +301,7 @@ Definition at line 480 of file modules.\+py.
 
 
 
-Definition at line 410 of file modules.\+py.
+Definition at line 412 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_af28dbf5c6c0f70c1a032a3bbb5359661}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_af28dbf5c6c0f70c1a032a3bbb5359661}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder}!dropout@{dropout}}
@@ -313,7 +311,7 @@ Definition at line 410 of file modules.\+py.
 
 
 
-Definition at line 415 of file modules.\+py.
+Definition at line 417 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_a57f137ae98789edeae26de90118efdd6}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_a57f137ae98789edeae26de90118efdd6}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder}!embedding\+\_\+size@{embedding\+\_\+size}}
@@ -323,7 +321,7 @@ Definition at line 415 of file modules.\+py.
 
 
 
-Definition at line 406 of file modules.\+py.
+Definition at line 408 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_a179492c3f7ebaf6ba8fb3a7f912e93ce}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_a179492c3f7ebaf6ba8fb3a7f912e93ce}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder}!embeddings@{embeddings}}
@@ -333,7 +331,7 @@ Definition at line 406 of file modules.\+py.
 
 
 
-Definition at line 432 of file modules.\+py.
+Definition at line 434 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_a80122462ebd32da923d7b4479053ab01}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_a80122462ebd32da923d7b4479053ab01}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder}!embeddings\+\_\+scale@{embeddings\+\_\+scale}}
@@ -343,7 +341,7 @@ Definition at line 432 of file modules.\+py.
 
 
 
-Definition at line 411 of file modules.\+py.
+Definition at line 413 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_afadc86cb37af464565167dc169447057}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_afadc86cb37af464565167dc169447057}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder}!ffn\+\_\+size@{ffn\+\_\+size}}
@@ -353,7 +351,7 @@ Definition at line 411 of file modules.\+py.
 
 
 
-Definition at line 407 of file modules.\+py.
+Definition at line 409 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_acbeff4ac94daff4e1627b6d93cd37424}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_acbeff4ac94daff4e1627b6d93cd37424}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder}!layers@{layers}}
@@ -363,7 +361,7 @@ Definition at line 407 of file modules.\+py.
 
 
 
-Definition at line 464 of file modules.\+py.
+Definition at line 466 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_ab6830a5aa0850e50549c159586c17515}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_ab6830a5aa0850e50549c159586c17515}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder}!n\+\_\+heads@{n\+\_\+heads}}
@@ -373,7 +371,7 @@ Definition at line 464 of file modules.\+py.
 
 
 
-Definition at line 409 of file modules.\+py.
+Definition at line 411 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_a1fac9c2d34c4d2268f50fc90b1e74e04}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_a1fac9c2d34c4d2268f50fc90b1e74e04}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder}!n\+\_\+layers@{n\+\_\+layers}}
@@ -383,7 +381,7 @@ Definition at line 409 of file modules.\+py.
 
 
 
-Definition at line 408 of file modules.\+py.
+Definition at line 410 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_ab885dd6b80284dbd2837ecaf75f96cb0}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_ab885dd6b80284dbd2837ecaf75f96cb0}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder}!n\+\_\+positions@{n\+\_\+positions}}
@@ -393,7 +391,7 @@ Definition at line 408 of file modules.\+py.
 
 
 
-Definition at line 419 of file modules.\+py.
+Definition at line 421 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_ab5ec60adca3ce418f73e409187a82625}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_ab5ec60adca3ce418f73e409187a82625}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder}!n\+\_\+segments@{n\+\_\+segments}}
@@ -403,7 +401,7 @@ Definition at line 419 of file modules.\+py.
 
 
 
-Definition at line 417 of file modules.\+py.
+Definition at line 419 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_ae8676d5d506949c00d35c34ac41b9fff}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_ae8676d5d506949c00d35c34ac41b9fff}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder}!norm\+\_\+embeddings@{norm\+\_\+embeddings}}
@@ -413,7 +411,7 @@ Definition at line 417 of file modules.\+py.
 
 
 
-Definition at line 454 of file modules.\+py.
+Definition at line 456 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_afd4ec22c3a8b8611a4a1caa85225b426}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_afd4ec22c3a8b8611a4a1caa85225b426}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder}!out\+\_\+dim@{out\+\_\+dim}}
@@ -423,7 +421,7 @@ Definition at line 454 of file modules.\+py.
 
 
 
-Definition at line 420 of file modules.\+py.
+Definition at line 422 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_ad904c0d06a4f6851b38fbbc0cab224f9}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_ad904c0d06a4f6851b38fbbc0cab224f9}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder}!output\+\_\+scaling@{output\+\_\+scaling}}
@@ -433,7 +431,7 @@ Definition at line 420 of file modules.\+py.
 
 
 
-Definition at line 478 of file modules.\+py.
+Definition at line 480 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_a74702a13d7e41afc3e77c94bb60bd119}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_a74702a13d7e41afc3e77c94bb60bd119}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder}!padding\+\_\+idx@{padding\+\_\+idx}}
@@ -443,7 +441,7 @@ Definition at line 478 of file modules.\+py.
 
 
 
-Definition at line 413 of file modules.\+py.
+Definition at line 415 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_ad2dd819e6d66d17f69e8bfa5026d192a}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_ad2dd819e6d66d17f69e8bfa5026d192a}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder}!position\+\_\+embeddings@{position\+\_\+embeddings}}
@@ -453,7 +451,7 @@ Definition at line 413 of file modules.\+py.
 
 
 
-Definition at line 444 of file modules.\+py.
+Definition at line 446 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_a2703f337fd44344ccd93743e57be554e}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_a2703f337fd44344ccd93743e57be554e}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder}!reduction\+\_\+type@{reduction\+\_\+type}}
@@ -463,7 +461,7 @@ Definition at line 444 of file modules.\+py.
 
 
 
-Definition at line 412 of file modules.\+py.
+Definition at line 414 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_acbc50af3764335ae22ef2ba06a65c4a7}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_acbc50af3764335ae22ef2ba06a65c4a7}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder}!segment\+\_\+embeddings@{segment\+\_\+embeddings}}
@@ -473,7 +471,7 @@ Definition at line 412 of file modules.\+py.
 
 
 
-Definition at line 461 of file modules.\+py.
+Definition at line 463 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_a6ea46aeb8ca865c97ec8e99746bedd7b}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerEncoder_a6ea46aeb8ca865c97ec8e99746bedd7b}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Encoder}!variant@{variant}}
@@ -483,7 +481,7 @@ Definition at line 461 of file modules.\+py.
 
 
 
-Definition at line 416 of file modules.\+py.
+Definition at line 418 of file modules.\+py.
 
 
 

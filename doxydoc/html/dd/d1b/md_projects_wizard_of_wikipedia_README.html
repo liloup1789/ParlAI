@@ -121,10 +121,10 @@ $(function() {
     -bs 64 -t wizard_of_wikipedia:generator:topic_split \
     -mf models:wizard_of_wikipedia/end2end_generator/model
 </pre><p>This will produce: </p><pre class="fragment">{'f1': 0.1498, 'ppl': 103.1, 'know_acc': 0.1123, 'know_chance': 0.02496}
-</pre><p>You can also interact with the model with: </p><pre class="fragment">python examples/interactive.py -m projects:wizard_of_wikipedia:interactive_end2end -t wizard_of_wikipedia
+</pre><p>You can also interact with the model with: </p><pre class="fragment">python examples/interactive.py -mf models:wizard_of_wikipedia/end2end_generator/model -t wizard_of_wikipedia
 </pre><h2>Retrieval Model</h2>
 <p>You can evaluate a retrieval model on the full dialogue task by running the following script: </p><pre class="fragment">python projects/wizard_of_wikipedia/scripts/eval_retrieval_model.py
-</pre><p>You can run an interactive session with the model with: </p><pre class="fragment">python examples/interactive.py -m projects:wizard_of_wikipedia:interactive_retrieval -t wizard_of_wikipedia
+</pre><p>You can run an interactive session with the model with: </p><pre class="fragment">python projects/wizard_of_wikipedia/scripts/interactive_retrieval_model.py
 </pre><p>Check back later for more pretrained models soon!</p>
 <h2>Citation</h2>
 <p>If you use the dataset or models in your own work, please cite with the following BibTex entry: </p><pre class="fragment">@inproceedings{dinan2019wizard,

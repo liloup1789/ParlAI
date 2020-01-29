@@ -13,6 +13,8 @@ def \hyperlink{namespacetests_1_1check__copyright_a9fcf3c755e0bf8e93320f2f09bd7c
 \hyperlink{namespacetests_1_1check__copyright_af4202011da6a1540735f6cf9f7a30c61}{W\+H\+I\+T\+E\+L\+I\+S\+T\+\_\+\+P\+H\+R\+A\+S\+ES}
 \item 
 \hyperlink{namespacetests_1_1check__copyright_a2aae78d9a278ab846941cce2c4c4c469}{C\+O\+P\+Y\+R\+I\+G\+HT}
+\item 
+\hyperlink{namespacetests_1_1check__copyright_a9dbdfa97d33aee4ae178b7b514e644bf}{P\+Y\+T\+H\+O\+N\+\_\+\+S\+H\+E\+B\+A\+NG}
 \end{DoxyCompactItemize}
 
 
@@ -25,41 +27,45 @@ def \hyperlink{namespacetests_1_1check__copyright_a9fcf3c755e0bf8e93320f2f09bd7c
 
 
 
-Definition at line 20 of file check\+\_\+copyright.\+py.
+Definition at line 21 of file check\+\_\+copyright.\+py.
 
 
 \begin{DoxyCode}
-20 \textcolor{keyword}{def }\hyperlink{namespacetests_1_1check__copyright_a9fcf3c755e0bf8e93320f2f09bd7ce04}{main}():
-21     allgood = \textcolor{keyword}{True}
-22     \textcolor{keywordflow}{for} fn \textcolor{keywordflow}{in} testing\_utils.git\_ls\_files():
-23         \textcolor{comment}{# only check source files}
-24         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} re.match(FILENAME\_EXTENSIONS, fn):
-25             \textcolor{keywordflow}{continue}
-26 
-27         with open(fn, \textcolor{stringliteral}{'r') as f:}
-28 \textcolor{stringliteral}{            src = f.read(512)  }\textcolor{comment}{# only need the beginning}
-29 
-30         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} src.strip():
-31             \textcolor{comment}{# skip empty files}
-32             \textcolor{keywordflow}{continue}
-33 
-34         \textcolor{keywordflow}{if} any(wl \textcolor{keywordflow}{in} src \textcolor{keywordflow}{for} wl \textcolor{keywordflow}{in} WHITELIST\_PHRASES):
-35             \textcolor{comment}{# skip a few things we don't have the copyright on}
-36             \textcolor{keywordflow}{continue}
-37 
-38         \textcolor{keywordflow}{for} i, msg \textcolor{keywordflow}{in} enumerate(COPYRIGHT):
-39             \textcolor{keywordflow}{if} \textcolor{stringliteral}{"mlb\_vqa"} \textcolor{keywordflow}{in} fn \textcolor{keywordflow}{and} i < 2:
-40                 \textcolor{comment}{# very special exception for mlb\_vqa}
-41                 \textcolor{keywordflow}{continue}
-42 
-43             \textcolor{keywordflow}{if} msg \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} src:
-44                 print(\textcolor{stringliteral}{'\{\} missing copyright "\{\}"'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(fn, msg))
-45                 allgood = \textcolor{keyword}{False}
-46 
-47     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} allgood:
-48         sys.exit(1)
-49 
-50 
+21 \textcolor{keyword}{def }\hyperlink{namespacetests_1_1check__copyright_a9fcf3c755e0bf8e93320f2f09bd7ce04}{main}():
+22     allgood = \textcolor{keyword}{True}
+23     \textcolor{keywordflow}{for} fn \textcolor{keywordflow}{in} testing\_utils.git\_ls\_files():
+24         \textcolor{comment}{# only check source files}
+25         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} re.match(FILENAME\_EXTENSIONS, fn):
+26             \textcolor{keywordflow}{continue}
+27 
+28         with open(fn, \textcolor{stringliteral}{'r') as f:}
+29 \textcolor{stringliteral}{            src = f.read(512)  }\textcolor{comment}{# only need the beginning}
+30 
+31         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} src.strip():
+32             \textcolor{comment}{# skip empty files}
+33             \textcolor{keywordflow}{continue}
+34 
+35         \textcolor{keywordflow}{if} any(wl \textcolor{keywordflow}{in} src \textcolor{keywordflow}{for} wl \textcolor{keywordflow}{in} WHITELIST\_PHRASES):
+36             \textcolor{comment}{# skip a few things we don't have the copyright on}
+37             \textcolor{keywordflow}{continue}
+38 
+39         \textcolor{keywordflow}{for} i, msg \textcolor{keywordflow}{in} enumerate(COPYRIGHT, 1):
+40             \textcolor{keywordflow}{if} \textcolor{stringliteral}{"mlb\_vqa"} \textcolor{keywordflow}{in} fn \textcolor{keywordflow}{and} i < 3:
+41                 \textcolor{comment}{# very special exception for mlb\_vqa}
+42                 \textcolor{keywordflow}{continue}
+43 
+44             \textcolor{keywordflow}{if} msg \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} src:
+45                 print(f\textcolor{stringliteral}{'\{fn\}:\{i\}: Missing copyright "\{msg\}"'})
+46                 allgood = \textcolor{keyword}{False}
+47 
+48         \textcolor{keywordflow}{if} fn.endswith(\textcolor{stringliteral}{'.py'}) \textcolor{keywordflow}{and} \textcolor{keywordflow}{not} src.startswith(PYTHON\_SHEBANG):
+49             print(f\textcolor{stringliteral}{'\{fn\}:1: Bad python3 shebang, use "\{PYTHON\_SHEBANG\}"'})
+50             allgood = \textcolor{keyword}{False}
+51 
+52     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} allgood:
+53         sys.exit(1)
+54 
+55 
 \end{DoxyCode}
 
 
@@ -83,6 +89,16 @@ Definition at line 13 of file check\+\_\+copyright.\+py.
 
 
 Definition at line 11 of file check\+\_\+copyright.\+py.
+
+\mbox{\Hypertarget{namespacetests_1_1check__copyright_a9dbdfa97d33aee4ae178b7b514e644bf}\label{namespacetests_1_1check__copyright_a9dbdfa97d33aee4ae178b7b514e644bf}} 
+\index{tests\+::check\+\_\+copyright@{tests\+::check\+\_\+copyright}!P\+Y\+T\+H\+O\+N\+\_\+\+S\+H\+E\+B\+A\+NG@{P\+Y\+T\+H\+O\+N\+\_\+\+S\+H\+E\+B\+A\+NG}}
+\index{P\+Y\+T\+H\+O\+N\+\_\+\+S\+H\+E\+B\+A\+NG@{P\+Y\+T\+H\+O\+N\+\_\+\+S\+H\+E\+B\+A\+NG}!tests\+::check\+\_\+copyright@{tests\+::check\+\_\+copyright}}
+\subsubsection{\texorpdfstring{P\+Y\+T\+H\+O\+N\+\_\+\+S\+H\+E\+B\+A\+NG}{PYTHON\_SHEBANG}}
+{\footnotesize\ttfamily tests.\+check\+\_\+copyright.\+P\+Y\+T\+H\+O\+N\+\_\+\+S\+H\+E\+B\+A\+NG}
+
+
+
+Definition at line 18 of file check\+\_\+copyright.\+py.
 
 \mbox{\Hypertarget{namespacetests_1_1check__copyright_af4202011da6a1540735f6cf9f7a30c61}\label{namespacetests_1_1check__copyright_af4202011da6a1540735f6cf9f7a30c61}} 
 \index{tests\+::check\+\_\+copyright@{tests\+::check\+\_\+copyright}!W\+H\+I\+T\+E\+L\+I\+S\+T\+\_\+\+P\+H\+R\+A\+S\+ES@{W\+H\+I\+T\+E\+L\+I\+S\+T\+\_\+\+P\+H\+R\+A\+S\+ES}}

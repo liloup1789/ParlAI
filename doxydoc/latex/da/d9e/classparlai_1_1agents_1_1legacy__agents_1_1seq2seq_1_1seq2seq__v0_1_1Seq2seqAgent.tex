@@ -2,8 +2,7 @@
 \label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent}\index{parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+seq2seq\+\_\+v0.\+Seq2seq\+Agent@{parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+seq2seq\+\_\+v0.\+Seq2seq\+Agent}}
 
 
-Inheritance diagram for parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+seq2seq\+\_\+v0.\+Seq2seq\+Agent\+:
-\nopagebreak
+Inheritance diagram for parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+seq2seq\+\_\+v0.\+Seq2seq\+Agent\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+seq2seq
 \end{figure}
 
 
-Collaboration diagram for parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+seq2seq\+\_\+v0.\+Seq2seq\+Agent\+:
-\nopagebreak
+Collaboration diagram for parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+seq2seq\+\_\+v0.\+Seq2seq\+Agent\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -126,7 +124,7 @@ def \hyperlink{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0
 \subsection*{Static Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-dictionary \hyperlink{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a83374019847ffa0c1cc43bf0b24120e9}{O\+P\+T\+I\+M\+\_\+\+O\+P\+TS}
+\hyperlink{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a82630ee9be1d6e9828ffdd24049a8de3}{O\+P\+T\+I\+M\+\_\+\+O\+P\+TS}
 \end{DoxyCompactItemize}
 
 
@@ -296,91 +294,92 @@ Definition at line 357 of file seq2seq\+\_\+v0.\+py.
 482 
 483                 \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'embeddingsize'}] != pretrained\_dim:
 484                     rp = torch.Tensor(pretrained\_dim, opt[\textcolor{stringliteral}{'embeddingsize'}]).normal\_()
-485                     t = \textcolor{keyword}{lambda} x: torch.mm(x.unsqueeze(0), rp)
-486                 \textcolor{keywordflow}{else}:
-487                     t = \textcolor{keyword}{lambda} x: x
-488                 cnt = 0
-489                 \textcolor{keywordflow}{for} w, i \textcolor{keywordflow}{in} self.dict.tok2ind.items():
-490                     \textcolor{keywordflow}{if} w \textcolor{keywordflow}{in} embs.stoi:
-491                         vec = t(embs.vectors[embs.stoi[w]])
-492                         self.model.decoder.lt.weight.data[i] = vec
-493                         cnt += 1
-494                         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'lookuptable'}] \textcolor{keywordflow}{in} [\textcolor{stringliteral}{'unique'}, \textcolor{stringliteral}{'dec\_out'}]:
-495                             \textcolor{comment}{# also set encoder lt, since it's not shared}
-496                             self.model.encoder.lt.weight.data[i] = vec
-497                 print(
-498                     \textcolor{stringliteral}{'Seq2seq: initialized embeddings for \{\} tokens from \{\}.'}
-499                     \textcolor{stringliteral}{''}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(cnt, init)
-500                 )
-501 
-502             \textcolor{keywordflow}{if} states:
-503                 \textcolor{comment}{# set loaded states if applicable}
-504                 self.model.load\_state\_dict(states[\textcolor{stringliteral}{'model'}])
-505 
-506             \textcolor{keywordflow}{if} self.use\_cuda:
-507                 self.model.cuda()
-508 
-509         \textcolor{comment}{# set up criteria}
-510         \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'numsoftmax'}, 1) > 1:
-511             self.criterion = nn.NLLLoss(ignore\_index=self.NULL\_IDX, size\_average=\textcolor{keyword}{False})
-512         \textcolor{keywordflow}{else}:
-513             self.criterion = nn.CrossEntropyLoss(
-514                 ignore\_index=self.NULL\_IDX, size\_average=\textcolor{keyword}{False}
-515             )
-516 
-517         \textcolor{keywordflow}{if} self.use\_cuda:
-518             self.criterion.cuda()
-519 
-520         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'train'} \textcolor{keywordflow}{in} opt.get(\textcolor{stringliteral}{'datatype'}, \textcolor{stringliteral}{''}):
-521             \textcolor{comment}{# we only set up optimizers when training}
-522             \textcolor{comment}{# we only set this up for the original instance or hogwild ones}
-523             self.clip = opt.get(\textcolor{stringliteral}{'gradient\_clip'}, -1)
-524 
-525             \textcolor{comment}{# set up optimizer}
-526             lr = opt[\textcolor{stringliteral}{'learningrate'}]
-527             optim\_class = Seq2seqAgent.OPTIM\_OPTS[opt[\textcolor{stringliteral}{'optimizer'}]]
-528             kwargs = \{\textcolor{stringliteral}{'lr'}: lr\}
-529             \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'momentum'}) > 0 \textcolor{keywordflow}{and} opt[\textcolor{stringliteral}{'optimizer'}] \textcolor{keywordflow}{in} [\textcolor{stringliteral}{'sgd'}, \textcolor{stringliteral}{'rmsprop'}]:
-530                 kwargs[\textcolor{stringliteral}{'momentum'}] = opt[\textcolor{stringliteral}{'momentum'}]
-531                 \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'optimizer'}] == \textcolor{stringliteral}{'sgd'}:
-532                     kwargs[\textcolor{stringliteral}{'nesterov'}] = \textcolor{keyword}{True}
-533             \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'optimizer'}] == \textcolor{stringliteral}{'adam'}:
-534                 \textcolor{comment}{# https://openreview.net/forum?id=ryQu7f-RZ}
-535                 kwargs[\textcolor{stringliteral}{'amsgrad'}] = \textcolor{keyword}{True}
-536 
-537             \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'embedding\_type'}].endswith(\textcolor{stringliteral}{'fixed'}):
-538                 print(\textcolor{stringliteral}{'Seq2seq: fixing embedding weights.'})
-539                 self.model.decoder.lt.weight.requires\_grad = \textcolor{keyword}{False}
-540                 self.model.encoder.lt.weight.requires\_grad = \textcolor{keyword}{False}
-541                 \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'lookuptable'}] \textcolor{keywordflow}{in} [\textcolor{stringliteral}{'dec\_out'}, \textcolor{stringliteral}{'all'}]:
-542                     self.model.decoder.e2s.weight.requires\_grad = \textcolor{keyword}{False}
-543             self.optimizer = optim\_class(
-544                 [p \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} self.model.parameters() \textcolor{keywordflow}{if} p.requires\_grad], **kwargs
-545             )
-546             \textcolor{keywordflow}{if} states.get(\textcolor{stringliteral}{'optimizer'}):
-547                 \textcolor{keywordflow}{if} states[\textcolor{stringliteral}{'optimizer\_type'}] != opt[\textcolor{stringliteral}{'optimizer'}]:
-548                     print(
-549                         \textcolor{stringliteral}{'WARNING: not loading optim state since optim class '} \textcolor{stringliteral}{'changed.'}
-550                     )
-551                 \textcolor{keywordflow}{else}:
-552                     \textcolor{keywordflow}{try}:
-553                         self.optimizer.load\_state\_dict(states[\textcolor{stringliteral}{'optimizer'}])
-554                     \textcolor{keywordflow}{except} ValueError:
-555                         print(
-556                             \textcolor{stringliteral}{'WARNING: not loading optim state since model '}
-557                             \textcolor{stringliteral}{'params changed.'}
-558                         )
-559                     \textcolor{keywordflow}{if} self.use\_cuda:
-560                         \textcolor{keywordflow}{for} state \textcolor{keywordflow}{in} self.optimizer.state.values():
-561                             \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} state.items():
-562                                 \textcolor{keywordflow}{if} isinstance(v, torch.Tensor):
-563                                     state[k] = v.cuda()
-564             self.scheduler = optim.lr\_scheduler.ReduceLROnPlateau(
-565                 self.optimizer, \textcolor{stringliteral}{'min'}, factor=0.5, patience=3, verbose=\textcolor{keyword}{True}
-566             )
-567 
-568         self.reset()
-569 
+485                 \textcolor{keywordflow}{else}:
+486                     rp = \textcolor{keywordtype}{None}
+487                 cnt = 0
+488                 \textcolor{keywordflow}{for} w, i \textcolor{keywordflow}{in} self.dict.tok2ind.items():
+489                     \textcolor{keywordflow}{if} w \textcolor{keywordflow}{in} embs.stoi:
+490                         vec = embs.vectors[embs.stoi[w]]
+491                         \textcolor{keywordflow}{if} rp \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+492                             vec = torch.mm(vec.unsqueeze(0), rp)
+493                         self.model.decoder.lt.weight.data[i] = vec
+494                         cnt += 1
+495                         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'lookuptable'}] \textcolor{keywordflow}{in} [\textcolor{stringliteral}{'unique'}, \textcolor{stringliteral}{'dec\_out'}]:
+496                             \textcolor{comment}{# also set encoder lt, since it's not shared}
+497                             self.model.encoder.lt.weight.data[i] = vec
+498                 print(
+499                     \textcolor{stringliteral}{'Seq2seq: initialized embeddings for \{\} tokens from \{\}.'}
+500                     \textcolor{stringliteral}{''}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(cnt, init)
+501                 )
+502 
+503             \textcolor{keywordflow}{if} states:
+504                 \textcolor{comment}{# set loaded states if applicable}
+505                 self.model.load\_state\_dict(states[\textcolor{stringliteral}{'model'}])
+506 
+507             \textcolor{keywordflow}{if} self.use\_cuda:
+508                 self.model.cuda()
+509 
+510         \textcolor{comment}{# set up criteria}
+511         \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'numsoftmax'}, 1) > 1:
+512             self.criterion = nn.NLLLoss(ignore\_index=self.NULL\_IDX, size\_average=\textcolor{keyword}{False})
+513         \textcolor{keywordflow}{else}:
+514             self.criterion = nn.CrossEntropyLoss(
+515                 ignore\_index=self.NULL\_IDX, size\_average=\textcolor{keyword}{False}
+516             )
+517 
+518         \textcolor{keywordflow}{if} self.use\_cuda:
+519             self.criterion.cuda()
+520 
+521         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'train'} \textcolor{keywordflow}{in} opt.get(\textcolor{stringliteral}{'datatype'}, \textcolor{stringliteral}{''}):
+522             \textcolor{comment}{# we only set up optimizers when training}
+523             \textcolor{comment}{# we only set this up for the original instance or hogwild ones}
+524             self.clip = opt.get(\textcolor{stringliteral}{'gradient\_clip'}, -1)
+525 
+526             \textcolor{comment}{# set up optimizer}
+527             lr = opt[\textcolor{stringliteral}{'learningrate'}]
+528             optim\_class = Seq2seqAgent.OPTIM\_OPTS[opt[\textcolor{stringliteral}{'optimizer'}]]
+529             kwargs = \{\textcolor{stringliteral}{'lr'}: lr\}
+530             \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'momentum'}) > 0 \textcolor{keywordflow}{and} opt[\textcolor{stringliteral}{'optimizer'}] \textcolor{keywordflow}{in} [\textcolor{stringliteral}{'sgd'}, \textcolor{stringliteral}{'rmsprop'}]:
+531                 kwargs[\textcolor{stringliteral}{'momentum'}] = opt[\textcolor{stringliteral}{'momentum'}]
+532                 \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'optimizer'}] == \textcolor{stringliteral}{'sgd'}:
+533                     kwargs[\textcolor{stringliteral}{'nesterov'}] = \textcolor{keyword}{True}
+534             \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'optimizer'}] == \textcolor{stringliteral}{'adam'}:
+535                 \textcolor{comment}{# https://openreview.net/forum?id=ryQu7f-RZ}
+536                 kwargs[\textcolor{stringliteral}{'amsgrad'}] = \textcolor{keyword}{True}
+537 
+538             \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'embedding\_type'}].endswith(\textcolor{stringliteral}{'fixed'}):
+539                 print(\textcolor{stringliteral}{'Seq2seq: fixing embedding weights.'})
+540                 self.model.decoder.lt.weight.requires\_grad = \textcolor{keyword}{False}
+541                 self.model.encoder.lt.weight.requires\_grad = \textcolor{keyword}{False}
+542                 \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'lookuptable'}] \textcolor{keywordflow}{in} [\textcolor{stringliteral}{'dec\_out'}, \textcolor{stringliteral}{'all'}]:
+543                     self.model.decoder.e2s.weight.requires\_grad = \textcolor{keyword}{False}
+544             self.optimizer = optim\_class(
+545                 [p \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} self.model.parameters() \textcolor{keywordflow}{if} p.requires\_grad], **kwargs
+546             )
+547             \textcolor{keywordflow}{if} states.get(\textcolor{stringliteral}{'optimizer'}):
+548                 \textcolor{keywordflow}{if} states[\textcolor{stringliteral}{'optimizer\_type'}] != opt[\textcolor{stringliteral}{'optimizer'}]:
+549                     print(
+550                         \textcolor{stringliteral}{'WARNING: not loading optim state since optim class '} \textcolor{stringliteral}{'changed.'}
+551                     )
+552                 \textcolor{keywordflow}{else}:
+553                     \textcolor{keywordflow}{try}:
+554                         self.optimizer.load\_state\_dict(states[\textcolor{stringliteral}{'optimizer'}])
+555                     \textcolor{keywordflow}{except} ValueError:
+556                         print(
+557                             \textcolor{stringliteral}{'WARNING: not loading optim state since model '}
+558                             \textcolor{stringliteral}{'params changed.'}
+559                         )
+560                     \textcolor{keywordflow}{if} self.use\_cuda:
+561                         \textcolor{keywordflow}{for} state \textcolor{keywordflow}{in} self.optimizer.state.values():
+562                             \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} state.items():
+563                                 \textcolor{keywordflow}{if} isinstance(v, torch.Tensor):
+564                                     state[k] = v.cuda()
+565             self.scheduler = optim.lr\_scheduler.ReduceLROnPlateau(
+566                 self.optimizer, \textcolor{stringliteral}{'min'}, factor=0.5, patience=3, verbose=\textcolor{keyword}{True}
+567             )
+568 
+569         self.reset()
+570 
 \end{DoxyCode}
 
 
@@ -393,14 +392,14 @@ Definition at line 357 of file seq2seq\+\_\+v0.\+py.
 
 
 
-Definition at line 924 of file seq2seq\+\_\+v0.\+py.
+Definition at line 925 of file seq2seq\+\_\+v0.\+py.
 
 
 \begin{DoxyCode}
-924     \textcolor{keyword}{def }act(self):
-925         \textcolor{comment}{# call batch\_act with this batch of one}
-926         \textcolor{keywordflow}{return} self.batch\_act([self.observation])[0]
-927 
+925     \textcolor{keyword}{def }act(self):
+926         \textcolor{comment}{# call batch\_act with this batch of one}
+927         \textcolor{keywordflow}{return} self.batch\_act([self.observation])[0]
+928 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_ac00637641bf7d8f23614c53ec8a1c610}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_ac00637641bf7d8f23614c53ec8a1c610}} 
 \index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent}!add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}}
@@ -652,63 +651,63 @@ Definition at line 131 of file seq2seq\+\_\+v0.\+py.
 
 
 
-Definition at line 871 of file seq2seq\+\_\+v0.\+py.
+Definition at line 872 of file seq2seq\+\_\+v0.\+py.
 
 
 \begin{DoxyCode}
-871     \textcolor{keyword}{def }batch\_act(self, observations):
-872         batchsize = len(observations)
-873         self.init\_cuda\_buffer(batchsize)
-874         \textcolor{comment}{# initialize a table of replies with this agent's id}
-875         batch\_reply = [\{\textcolor{stringliteral}{'id'}: self.getID()\} \textcolor{keywordflow}{for} \_ \textcolor{keywordflow}{in} range(batchsize)]
-876 
-877         \textcolor{comment}{# convert the observations into batches of inputs and targets}
-878         \textcolor{comment}{# valid\_inds tells us the indices of all valid examples}
-879         \textcolor{comment}{# e.g. for input [\{\}, \{'text': 'hello'\}, \{\}, \{\}], valid\_inds is [1]}
-880         \textcolor{comment}{# since the other three elements had no 'text' field}
-881         xs, ys, labels, valid\_inds, cands, valid\_cands, is\_training = self.vectorize(
-882             observations
-883         )
-884 
-885         \textcolor{keywordflow}{if} xs \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-886             \textcolor{comment}{# no valid examples, just return empty responses}
-887             \textcolor{keywordflow}{return} batch\_reply
-888 
-889         \textcolor{comment}{# produce predictions, train on targets if availables}
-890         cand\_inds = [i[0] \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} valid\_cands] \textcolor{keywordflow}{if} valid\_cands \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{else} \textcolor{keywordtype}{None}
-891         predictions, cand\_preds = self.predict(xs, ys, cands, cand\_inds, is\_training)
-892 
-893         \textcolor{keywordflow}{if} is\_training:
-894             report\_freq = 0
-895         \textcolor{keywordflow}{else}:
-896             report\_freq = self.report\_freq
-897         \textcolor{keywordflow}{if} predictions \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-898             PaddingUtils.map\_predictions(
-899                 predictions,
-900                 valid\_inds,
-901                 batch\_reply,
-902                 observations,
-903                 self.dict,
-904                 self.END\_IDX,
-905                 report\_freq=report\_freq,
-906                 labels=labels,
-907                 answers=self.answers,
-908                 ys=ys.data \textcolor{keywordflow}{if} ys \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{else} \textcolor{keywordtype}{None},
-909             )
-910 
-911         \textcolor{keywordflow}{if} cand\_preds \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-912             \textcolor{keywordflow}{if} valid\_cands \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-913                 valid\_cands = [(\textcolor{keywordtype}{None}, i, labels) \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} valid\_inds]
-914             \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(valid\_cands)):
-915                 order = cand\_preds[i]
-916                 \_, batch\_idx, curr\_cands = valid\_cands[i]
-917                 curr = batch\_reply[batch\_idx]
-918                 curr[\textcolor{stringliteral}{'text\_candidates'}] = [
-919                     curr\_cands[idx] \textcolor{keywordflow}{for} idx \textcolor{keywordflow}{in} order \textcolor{keywordflow}{if} idx < len(curr\_cands)
-920                 ]
-921 
-922         \textcolor{keywordflow}{return} batch\_reply
-923 
+872     \textcolor{keyword}{def }batch\_act(self, observations):
+873         batchsize = len(observations)
+874         self.init\_cuda\_buffer(batchsize)
+875         \textcolor{comment}{# initialize a table of replies with this agent's id}
+876         batch\_reply = [\{\textcolor{stringliteral}{'id'}: self.getID()\} \textcolor{keywordflow}{for} \_ \textcolor{keywordflow}{in} range(batchsize)]
+877 
+878         \textcolor{comment}{# convert the observations into batches of inputs and targets}
+879         \textcolor{comment}{# valid\_inds tells us the indices of all valid examples}
+880         \textcolor{comment}{# e.g. for input [\{\}, \{'text': 'hello'\}, \{\}, \{\}], valid\_inds is [1]}
+881         \textcolor{comment}{# since the other three elements had no 'text' field}
+882         xs, ys, labels, valid\_inds, cands, valid\_cands, is\_training = self.vectorize(
+883             observations
+884         )
+885 
+886         \textcolor{keywordflow}{if} xs \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+887             \textcolor{comment}{# no valid examples, just return empty responses}
+888             \textcolor{keywordflow}{return} batch\_reply
+889 
+890         \textcolor{comment}{# produce predictions, train on targets if availables}
+891         cand\_inds = [i[0] \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} valid\_cands] \textcolor{keywordflow}{if} valid\_cands \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{else} \textcolor{keywordtype}{None}
+892         predictions, cand\_preds = self.predict(xs, ys, cands, cand\_inds, is\_training)
+893 
+894         \textcolor{keywordflow}{if} is\_training:
+895             report\_freq = 0
+896         \textcolor{keywordflow}{else}:
+897             report\_freq = self.report\_freq
+898         \textcolor{keywordflow}{if} predictions \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+899             PaddingUtils.map\_predictions(
+900                 predictions,
+901                 valid\_inds,
+902                 batch\_reply,
+903                 observations,
+904                 self.dict,
+905                 self.END\_IDX,
+906                 report\_freq=report\_freq,
+907                 labels=labels,
+908                 answers=self.answers,
+909                 ys=ys.data \textcolor{keywordflow}{if} ys \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{else} \textcolor{keywordtype}{None},
+910             )
+911 
+912         \textcolor{keywordflow}{if} cand\_preds \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+913             \textcolor{keywordflow}{if} valid\_cands \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+914                 valid\_cands = [(\textcolor{keywordtype}{None}, i, labels) \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} valid\_inds]
+915             \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(valid\_cands)):
+916                 order = cand\_preds[i]
+917                 \_, batch\_idx, curr\_cands = valid\_cands[i]
+918                 curr = batch\_reply[batch\_idx]
+919                 curr[\textcolor{stringliteral}{'text\_candidates'}] = [
+920                     curr\_cands[idx] \textcolor{keywordflow}{for} idx \textcolor{keywordflow}{in} order \textcolor{keywordflow}{if} idx < len(curr\_cands)
+921                 ]
+922 
+923         \textcolor{keywordflow}{return} batch\_reply
+924 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a05552a2714cd8d15d754a62258727c98}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a05552a2714cd8d15d754a62258727c98}} 
 \index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent}!dictionary\+\_\+class@{dictionary\+\_\+class}}
@@ -734,31 +733,31 @@ Definition at line 127 of file seq2seq\+\_\+v0.\+py.
 
 
 
-Definition at line 850 of file seq2seq\+\_\+v0.\+py.
+Definition at line 851 of file seq2seq\+\_\+v0.\+py.
 
 
 \begin{DoxyCode}
-850     \textcolor{keyword}{def }init\_cuda\_buffer(self, batchsize):
-851         \textcolor{keywordflow}{if} self.use\_cuda \textcolor{keywordflow}{and} \textcolor{keywordflow}{not} hasattr(self, \textcolor{stringliteral}{'buffer\_initialized'}):
-852             \textcolor{keywordflow}{try}:
-853                 print(\textcolor{stringliteral}{'preinitializing pytorch cuda buffer'})
-854                 bsz = self.opt.get(\textcolor{stringliteral}{'batchsize'}, batchsize)
-855                 maxlen = self.truncate \textcolor{keywordflow}{or} 180
-856                 dummy = torch.ones(bsz, maxlen).long().cuda()
-857                 sc = self.model(dummy, dummy)[1]
-858                 loss = self.criterion(sc.view(-1, sc.size(-1)), dummy.view(-1))
-859                 loss.backward()
-860                 self.buffer\_initialized = \textcolor{keyword}{True}
-861             \textcolor{keywordflow}{except} RuntimeError \textcolor{keyword}{as} e:
-862                 \textcolor{keywordflow}{if} \textcolor{stringliteral}{'out of memory'} \textcolor{keywordflow}{in} \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(e):
-863                     m = (
-864                         \textcolor{stringliteral}{'CUDA OOM: Lower batch size (-bs) from \{\} or lower max'}
-865                         \textcolor{stringliteral}{' sequence length (-tr) from \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(bsz, maxlen)
-866                     )
-867                     \textcolor{keywordflow}{raise} RuntimeError(m)
-868                 \textcolor{keywordflow}{else}:
-869                     \textcolor{keywordflow}{raise} e
-870 
+851     \textcolor{keyword}{def }init\_cuda\_buffer(self, batchsize):
+852         \textcolor{keywordflow}{if} self.use\_cuda \textcolor{keywordflow}{and} \textcolor{keywordflow}{not} hasattr(self, \textcolor{stringliteral}{'buffer\_initialized'}):
+853             \textcolor{keywordflow}{try}:
+854                 print(\textcolor{stringliteral}{'preinitializing pytorch cuda buffer'})
+855                 bsz = self.opt.get(\textcolor{stringliteral}{'batchsize'}, batchsize)
+856                 maxlen = self.truncate \textcolor{keywordflow}{or} 180
+857                 dummy = torch.ones(bsz, maxlen).long().cuda()
+858                 sc = self.model(dummy, dummy)[1]
+859                 loss = self.criterion(sc.view(-1, sc.size(-1)), dummy.view(-1))
+860                 loss.backward()
+861                 self.buffer\_initialized = \textcolor{keyword}{True}
+862             \textcolor{keywordflow}{except} RuntimeError \textcolor{keyword}{as} e:
+863                 \textcolor{keywordflow}{if} \textcolor{stringliteral}{'out of memory'} \textcolor{keywordflow}{in} \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(e):
+864                     m = (
+865                         \textcolor{stringliteral}{'CUDA OOM: Lower batch size (-bs) from \{\} or lower max'}
+866                         \textcolor{stringliteral}{' sequence length (-tr) from \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(bsz, maxlen)
+867                     )
+868                     \textcolor{keywordflow}{raise} RuntimeError(m)
+869                 \textcolor{keywordflow}{else}:
+870                     \textcolor{keywordflow}{raise} e
+871 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a2aabe1e56b7b94f46875ae7f704f681f}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a2aabe1e56b7b94f46875ae7f704f681f}} 
 \index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent}!load@{load}}
@@ -770,17 +769,17 @@ Definition at line 850 of file seq2seq\+\_\+v0.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 957 of file seq2seq\+\_\+v0.\+py.
+Definition at line 958 of file seq2seq\+\_\+v0.\+py.
 
 
 \begin{DoxyCode}
-957     \textcolor{keyword}{def }load(self, path):
-958         \textcolor{stringliteral}{"""}
-959 \textcolor{stringliteral}{        Return opt and model states.}
-960 \textcolor{stringliteral}{        """}
-961         states = torch.load(path, map\_location=\textcolor{keyword}{lambda} cpu, \_: cpu)
-962         \textcolor{keywordflow}{return} states
-963 
+958     \textcolor{keyword}{def }load(self, path):
+959         \textcolor{stringliteral}{"""}
+960 \textcolor{stringliteral}{        Return opt and model states.}
+961 \textcolor{stringliteral}{        """}
+962         states = torch.load(path, map\_location=\textcolor{keyword}{lambda} cpu, \_: cpu)
+963         \textcolor{keywordflow}{return} states
+964 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a8419a9652b14a16cedff86206a7bb613}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a8419a9652b14a16cedff86206a7bb613}} 
 \index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent}!observe@{observe}}
@@ -794,35 +793,35 @@ If multiple observations are from the same episode, concatenate them.
 \end{DoxyVerb}
  
 
-Definition at line 708 of file seq2seq\+\_\+v0.\+py.
+Definition at line 709 of file seq2seq\+\_\+v0.\+py.
 
 
 \begin{DoxyCode}
-708     \textcolor{keyword}{def }observe(self, observation):
-709         \textcolor{stringliteral}{"""}
-710 \textcolor{stringliteral}{        Save observation for act.}
-711 \textcolor{stringliteral}{}
-712 \textcolor{stringliteral}{        If multiple observations are from the same episode, concatenate them.}
-713 \textcolor{stringliteral}{        """}
-714         \textcolor{comment}{# shallow copy observation (deep copy can be expensive)}
-715         obs = observation.copy()
-716 
-717         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} obs.get(\textcolor{stringliteral}{'preprocessed'}, \textcolor{keyword}{False}) \textcolor{keywordflow}{or} \textcolor{stringliteral}{'text2vec'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} obs:
-718             obs[\textcolor{stringliteral}{'text2vec'}] = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_ac7cb3ffae208474d6e67f37ecfe07f64}{maintain\_dialog\_history}(
-719                 self.history,
-720                 obs,
-721                 reply=self.answers[self.batch\_idx],
-722                 historyLength=self.truncate,
-723                 useReplies=self.opt.get(\textcolor{stringliteral}{'history\_replies'}),
-724                 dict=self.dict,
-725                 useStartEndIndices=self.use\_person\_tokens,
-726             )
-727         \textcolor{keywordflow}{else}:
-728             obs[\textcolor{stringliteral}{'text2vec'}] = deque(obs[\textcolor{stringliteral}{'text2vec'}], maxlen=self.truncate)
-729         self.observation = obs
-730         self.answers[self.batch\_idx] = \textcolor{keywordtype}{None}
-731         \textcolor{keywordflow}{return} obs
-732 
+709     \textcolor{keyword}{def }observe(self, observation):
+710         \textcolor{stringliteral}{"""}
+711 \textcolor{stringliteral}{        Save observation for act.}
+712 \textcolor{stringliteral}{}
+713 \textcolor{stringliteral}{        If multiple observations are from the same episode, concatenate them.}
+714 \textcolor{stringliteral}{        """}
+715         \textcolor{comment}{# shallow copy observation (deep copy can be expensive)}
+716         obs = observation.copy()
+717 
+718         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} obs.get(\textcolor{stringliteral}{'preprocessed'}, \textcolor{keyword}{False}) \textcolor{keywordflow}{or} \textcolor{stringliteral}{'text2vec'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} obs:
+719             obs[\textcolor{stringliteral}{'text2vec'}] = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_ac7cb3ffae208474d6e67f37ecfe07f64}{maintain\_dialog\_history}(
+720                 self.history,
+721                 obs,
+722                 reply=self.answers[self.batch\_idx],
+723                 historyLength=self.truncate,
+724                 useReplies=self.opt.get(\textcolor{stringliteral}{'history\_replies'}),
+725                 dict=self.dict,
+726                 useStartEndIndices=self.use\_person\_tokens,
+727             )
+728         \textcolor{keywordflow}{else}:
+729             obs[\textcolor{stringliteral}{'text2vec'}] = deque(obs[\textcolor{stringliteral}{'text2vec'}], maxlen=self.truncate)
+730         self.observation = obs
+731         self.answers[self.batch\_idx] = \textcolor{keywordtype}{None}
+732         \textcolor{keywordflow}{return} obs
+733 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_ad40d38a1cc2cafe32c43477740b4a164}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_ad40d38a1cc2cafe32c43477740b4a164}} 
 \index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent}!override\+\_\+opt@{override\+\_\+opt}}
@@ -837,50 +836,50 @@ the model.
 \end{DoxyVerb}
  
 
-Definition at line 570 of file seq2seq\+\_\+v0.\+py.
+Definition at line 571 of file seq2seq\+\_\+v0.\+py.
 
 
 \begin{DoxyCode}
-570     \textcolor{keyword}{def }override\_opt(self, new\_opt):
-571         \textcolor{stringliteral}{"""}
-572 \textcolor{stringliteral}{        Set overridable opts from loaded opt file.}
-573 \textcolor{stringliteral}{}
-574 \textcolor{stringliteral}{        Print out each added key and each overriden key. Only override args specific to}
-575 \textcolor{stringliteral}{        the model.}
-576 \textcolor{stringliteral}{        """}
-577         model\_args = \{
-578             \textcolor{stringliteral}{'hiddensize'},
-579             \textcolor{stringliteral}{'embeddingsize'},
-580             \textcolor{stringliteral}{'numlayers'},
-581             \textcolor{stringliteral}{'optimizer'},
-582             \textcolor{stringliteral}{'encoder'},
-583             \textcolor{stringliteral}{'decoder'},
-584             \textcolor{stringliteral}{'lookuptable'},
-585             \textcolor{stringliteral}{'attention'},
-586             \textcolor{stringliteral}{'attention\_length'},
-587             \textcolor{stringliteral}{'rnn\_class'},
-588         \}
-589         \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} new\_opt.items():
-590             \textcolor{keywordflow}{if} k \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} model\_args:
-591                 \textcolor{comment}{# skip non-model args}
-592                 \textcolor{keywordflow}{continue}
-593             \textcolor{keywordflow}{if} k \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.opt:
-594                 print(\textcolor{stringliteral}{'[ Adding new option: | \{k\}: \{v\} | ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(k=k, v=v))
-595             \textcolor{keywordflow}{elif} self.opt[k] != v:
-596                 print(
-597                     \textcolor{stringliteral}{'[ Overriding option: | \{k\}: \{old\} => \{v\} | ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
-598                         k=k, old=self.opt[k], v=v
-599                     )
-600                 )
-601             self.opt[k] = v
-602         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'dict\_file'} \textcolor{keywordflow}{in} new\_opt \textcolor{keywordflow}{and} \textcolor{keywordflow}{not} self.opt.get(\textcolor{stringliteral}{'dict\_file'}):
-603             print(
-604                 \textcolor{stringliteral}{'[ No dictionary path detected, trying to load previous '}
-605                 \textcolor{stringliteral}{'path \{\} ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(new\_opt[\textcolor{stringliteral}{'dict\_file'}])
-606             )
-607             self.opt[\textcolor{stringliteral}{'dict\_file'}] = new\_opt[\textcolor{stringliteral}{'dict\_file'}]
-608         \textcolor{keywordflow}{return} self.opt
-609 
+571     \textcolor{keyword}{def }override\_opt(self, new\_opt):
+572         \textcolor{stringliteral}{"""}
+573 \textcolor{stringliteral}{        Set overridable opts from loaded opt file.}
+574 \textcolor{stringliteral}{}
+575 \textcolor{stringliteral}{        Print out each added key and each overriden key. Only override args specific to}
+576 \textcolor{stringliteral}{        the model.}
+577 \textcolor{stringliteral}{        """}
+578         model\_args = \{
+579             \textcolor{stringliteral}{'hiddensize'},
+580             \textcolor{stringliteral}{'embeddingsize'},
+581             \textcolor{stringliteral}{'numlayers'},
+582             \textcolor{stringliteral}{'optimizer'},
+583             \textcolor{stringliteral}{'encoder'},
+584             \textcolor{stringliteral}{'decoder'},
+585             \textcolor{stringliteral}{'lookuptable'},
+586             \textcolor{stringliteral}{'attention'},
+587             \textcolor{stringliteral}{'attention\_length'},
+588             \textcolor{stringliteral}{'rnn\_class'},
+589         \}
+590         \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} new\_opt.items():
+591             \textcolor{keywordflow}{if} k \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} model\_args:
+592                 \textcolor{comment}{# skip non-model args}
+593                 \textcolor{keywordflow}{continue}
+594             \textcolor{keywordflow}{if} k \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.opt:
+595                 print(\textcolor{stringliteral}{'[ Adding new option: | \{k\}: \{v\} | ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(k=k, v=v))
+596             \textcolor{keywordflow}{elif} self.opt[k] != v:
+597                 print(
+598                     \textcolor{stringliteral}{'[ Overriding option: | \{k\}: \{old\} => \{v\} | ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+599                         k=k, old=self.opt[k], v=v
+600                     )
+601                 )
+602             self.opt[k] = v
+603         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'dict\_file'} \textcolor{keywordflow}{in} new\_opt \textcolor{keywordflow}{and} \textcolor{keywordflow}{not} self.opt.get(\textcolor{stringliteral}{'dict\_file'}):
+604             print(
+605                 \textcolor{stringliteral}{'[ No dictionary path detected, trying to load previous '}
+606                 \textcolor{stringliteral}{'path \{\} ]'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(new\_opt[\textcolor{stringliteral}{'dict\_file'}])
+607             )
+608             self.opt[\textcolor{stringliteral}{'dict\_file'}] = new\_opt[\textcolor{stringliteral}{'dict\_file'}]
+609         \textcolor{keywordflow}{return} self.opt
+610 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a073830870e283f88ee45a95c0ae8ad2f}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a073830870e283f88ee45a95c0ae8ad2f}} 
 \index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent}!parse@{parse}}
@@ -892,16 +891,16 @@ Definition at line 570 of file seq2seq\+\_\+v0.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 610 of file seq2seq\+\_\+v0.\+py.
+Definition at line 611 of file seq2seq\+\_\+v0.\+py.
 
 
 \begin{DoxyCode}
-610     \textcolor{keyword}{def }parse(self, text):
-611         \textcolor{stringliteral}{"""}
-612 \textcolor{stringliteral}{        Convert string to token indices.}
-613 \textcolor{stringliteral}{        """}
-614         \textcolor{keywordflow}{return} self.dict.txt2vec(text)
-615 
+611     \textcolor{keyword}{def }parse(self, text):
+612         \textcolor{stringliteral}{"""}
+613 \textcolor{stringliteral}{        Convert string to token indices.}
+614 \textcolor{stringliteral}{        """}
+615         \textcolor{keywordflow}{return} self.dict.txt2vec(text)
+616 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_aadec879f7d8daa6451076e4fb358715b}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_aadec879f7d8daa6451076e4fb358715b}} 
 \index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent}!predict@{predict}}
@@ -916,76 +915,76 @@ well if they are available and param is set.
 \end{DoxyVerb}
  
 
-Definition at line 733 of file seq2seq\+\_\+v0.\+py.
+Definition at line 734 of file seq2seq\+\_\+v0.\+py.
 
 
 \begin{DoxyCode}
-733     \textcolor{keyword}{def }predict(self, xs, ys=None, cands=None, valid\_cands=None, is\_training=False):
-734         \textcolor{stringliteral}{"""}
-735 \textcolor{stringliteral}{        Produce a prediction from our model.}
-736 \textcolor{stringliteral}{}
-737 \textcolor{stringliteral}{        Update the model using the targets if available, otherwise rank candidates as}
-738 \textcolor{stringliteral}{        well if they are available and param is set.}
-739 \textcolor{stringliteral}{        """}
-740         predictions, cand\_preds = \textcolor{keywordtype}{None}, \textcolor{keywordtype}{None}
-741         \textcolor{keywordflow}{if} is\_training:
-742             self.model.\hyperlink{namespaceprojects_1_1mastering__the__dungeon_1_1mturk_1_1tasks_1_1MTD_1_1run_a36a5f4f6f9df0611a6818610518d2cf0}{train}()
-743             self.zero\_grad()
-744             out = \textcolor{keywordtype}{None}
-745             \textcolor{keywordflow}{try}:
-746                 out = self.model(xs, ys, rank\_during\_training=cands \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None})
-747                 \textcolor{comment}{# generated response}
-748                 \_preds, scores, cand\_preds = out[0], out[1], out[2]
-749 
-750                 score\_view = scores.view(-1, scores.size(-1))
-751                 loss = self.criterion(score\_view, ys.view(-1))
-752                 \textcolor{comment}{# save loss to metrics}
-753                 y\_ne = ys.ne(self.NULL\_IDX)
-754                 target\_tokens = y\_ne.long().sum().item()
-755                 correct = ((ys == \_preds) * y\_ne).sum().item()
-756                 self.metrics[\textcolor{stringliteral}{'correct\_tokens'}] += correct
-757                 self.metrics[\textcolor{stringliteral}{'loss'}] += loss.item()
-758                 self.metrics[\textcolor{stringliteral}{'num\_tokens'}] += target\_tokens
-759                 loss /= target\_tokens  \textcolor{comment}{# average loss per token}
-760                 loss.backward()
-761             \textcolor{keywordflow}{except} RuntimeError \textcolor{keyword}{as} e:
-762                 \textcolor{comment}{# catch out of memory exceptions during fwd/bck (skip batch)}
-763                 \textcolor{keywordflow}{if} \textcolor{stringliteral}{'out of memory'} \textcolor{keywordflow}{in} \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(e):
-764                     print(
-765                         \textcolor{stringliteral}{'| WARNING: ran out of memory, skipping batch. '}
-766                         \textcolor{stringliteral}{'if this happens frequently, decrease batchsize or '}
-767                         \textcolor{stringliteral}{'truncate the inputs to the model.'}
-768                     )
-769                     self.metrics[\textcolor{stringliteral}{'total\_skipped\_batches'}] += 1
-770                     \textcolor{keywordflow}{return} predictions, cand\_preds
-771                 \textcolor{keywordflow}{else}:
-772                     \textcolor{keywordflow}{raise} e
-773             self.update\_params()
-774         \textcolor{keywordflow}{else}:
-775             self.model.eval()
-776             out = self.model(
-777                 xs,
-778                 ys=\textcolor{keywordtype}{None},
-779                 cands=cands,
-780                 valid\_cands=valid\_cands,
-781                 beam\_size=self.beam\_size,
-782                 topk=self.topk,
-783             )
-784             predictions, cand\_preds = out[0], out[2]
-785 
-786             \textcolor{keywordflow}{if} ys \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-787                 \textcolor{comment}{# calculate loss on targets}
-788                 out = self.model(xs, ys)
-789                 scores = out[1]
-790                 score\_view = scores.view(-1, scores.size(-1))
-791                 loss = self.criterion(score\_view, ys.view(-1))
-792                 \textcolor{comment}{# save loss to metrics}
-793                 target\_tokens = ys.ne(self.NULL\_IDX).long().sum().item()
-794                 self.metrics[\textcolor{stringliteral}{'loss'}] += loss.item()
-795                 self.metrics[\textcolor{stringliteral}{'num\_tokens'}] += target\_tokens
-796 
-797         \textcolor{keywordflow}{return} predictions, cand\_preds
-798 
+734     \textcolor{keyword}{def }predict(self, xs, ys=None, cands=None, valid\_cands=None, is\_training=False):
+735         \textcolor{stringliteral}{"""}
+736 \textcolor{stringliteral}{        Produce a prediction from our model.}
+737 \textcolor{stringliteral}{}
+738 \textcolor{stringliteral}{        Update the model using the targets if available, otherwise rank candidates as}
+739 \textcolor{stringliteral}{        well if they are available and param is set.}
+740 \textcolor{stringliteral}{        """}
+741         predictions, cand\_preds = \textcolor{keywordtype}{None}, \textcolor{keywordtype}{None}
+742         \textcolor{keywordflow}{if} is\_training:
+743             self.model.\hyperlink{namespaceprojects_1_1mastering__the__dungeon_1_1mturk_1_1tasks_1_1MTD_1_1run_a36a5f4f6f9df0611a6818610518d2cf0}{train}()
+744             self.zero\_grad()
+745             out = \textcolor{keywordtype}{None}
+746             \textcolor{keywordflow}{try}:
+747                 out = self.model(xs, ys, rank\_during\_training=cands \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None})
+748                 \textcolor{comment}{# generated response}
+749                 \_preds, scores, cand\_preds = out[0], out[1], out[2]
+750 
+751                 score\_view = scores.view(-1, scores.size(-1))
+752                 loss = self.criterion(score\_view, ys.view(-1))
+753                 \textcolor{comment}{# save loss to metrics}
+754                 y\_ne = ys.ne(self.NULL\_IDX)
+755                 target\_tokens = y\_ne.long().sum().item()
+756                 correct = ((ys == \_preds) * y\_ne).sum().item()
+757                 self.metrics[\textcolor{stringliteral}{'correct\_tokens'}] += correct
+758                 self.metrics[\textcolor{stringliteral}{'loss'}] += loss.item()
+759                 self.metrics[\textcolor{stringliteral}{'num\_tokens'}] += target\_tokens
+760                 loss /= target\_tokens  \textcolor{comment}{# average loss per token}
+761                 loss.backward()
+762             \textcolor{keywordflow}{except} RuntimeError \textcolor{keyword}{as} e:
+763                 \textcolor{comment}{# catch out of memory exceptions during fwd/bck (skip batch)}
+764                 \textcolor{keywordflow}{if} \textcolor{stringliteral}{'out of memory'} \textcolor{keywordflow}{in} \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(e):
+765                     print(
+766                         \textcolor{stringliteral}{'| WARNING: ran out of memory, skipping batch. '}
+767                         \textcolor{stringliteral}{'if this happens frequently, decrease batchsize or '}
+768                         \textcolor{stringliteral}{'truncate the inputs to the model.'}
+769                     )
+770                     self.metrics[\textcolor{stringliteral}{'total\_skipped\_batches'}] += 1
+771                     \textcolor{keywordflow}{return} predictions, cand\_preds
+772                 \textcolor{keywordflow}{else}:
+773                     \textcolor{keywordflow}{raise} e
+774             self.update\_params()
+775         \textcolor{keywordflow}{else}:
+776             self.model.eval()
+777             out = self.model(
+778                 xs,
+779                 ys=\textcolor{keywordtype}{None},
+780                 cands=cands,
+781                 valid\_cands=valid\_cands,
+782                 beam\_size=self.beam\_size,
+783                 topk=self.topk,
+784             )
+785             predictions, cand\_preds = out[0], out[2]
+786 
+787             \textcolor{keywordflow}{if} ys \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+788                 \textcolor{comment}{# calculate loss on targets}
+789                 out = self.model(xs, ys)
+790                 scores = out[1]
+791                 score\_view = scores.view(-1, scores.size(-1))
+792                 loss = self.criterion(score\_view, ys.view(-1))
+793                 \textcolor{comment}{# save loss to metrics}
+794                 target\_tokens = ys.ne(self.NULL\_IDX).long().sum().item()
+795                 self.metrics[\textcolor{stringliteral}{'loss'}] += loss.item()
+796                 self.metrics[\textcolor{stringliteral}{'num\_tokens'}] += target\_tokens
+797 
+798         \textcolor{keywordflow}{return} predictions, cand\_preds
+799 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a584d45d729817694d615d2d545532af2}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a584d45d729817694d615d2d545532af2}} 
 \index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent}!receive\+\_\+metrics@{receive\+\_\+metrics}}
@@ -997,18 +996,18 @@ Definition at line 733 of file seq2seq\+\_\+v0.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 964 of file seq2seq\+\_\+v0.\+py.
+Definition at line 965 of file seq2seq\+\_\+v0.\+py.
 
 
 \begin{DoxyCode}
-964     \textcolor{keyword}{def }receive\_metrics(self, metrics\_dict):
-965         \textcolor{stringliteral}{"""}
-966 \textcolor{stringliteral}{        Use the metrics to decide when to adjust LR schedule.}
-967 \textcolor{stringliteral}{        """}
-968         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'loss'} \textcolor{keywordflow}{in} metrics\_dict:
-969             self.scheduler.step(metrics\_dict[\textcolor{stringliteral}{'loss'}])
-970 
+965     \textcolor{keyword}{def }receive\_metrics(self, metrics\_dict):
+966         \textcolor{stringliteral}{"""}
+967 \textcolor{stringliteral}{        Use the metrics to decide when to adjust LR schedule.}
+968 \textcolor{stringliteral}{        """}
+969         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'loss'} \textcolor{keywordflow}{in} metrics\_dict:
+970             self.scheduler.step(metrics\_dict[\textcolor{stringliteral}{'loss'}])
 971 
+972 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a83a444ecb418dfb4381147f23653dd7b}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a83a444ecb418dfb4381147f23653dd7b}} 
 \index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent}!report@{report}}
@@ -1023,34 +1022,34 @@ from a truly independent measurement.
 \end{DoxyVerb}
  
 
-Definition at line 660 of file seq2seq\+\_\+v0.\+py.
+Definition at line 661 of file seq2seq\+\_\+v0.\+py.
 
 
 \begin{DoxyCode}
-660     \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}(self):
-661         \textcolor{stringliteral}{"""}
-662 \textcolor{stringliteral}{        Report loss and perplexity from model's perspective.}
-663 \textcolor{stringliteral}{}
-664 \textcolor{stringliteral}{        Note that this includes predicting \_\_END\_\_ and \_\_UNK\_\_ tokens and may differ}
-665 \textcolor{stringliteral}{        from a truly independent measurement.}
-666 \textcolor{stringliteral}{        """}
-667         m = \{\}
-668         num\_tok = self.metrics[\textcolor{stringliteral}{'num\_tokens'}]
-669         \textcolor{keywordflow}{if} num\_tok > 0:
-670             \textcolor{keywordflow}{if} self.metrics[\textcolor{stringliteral}{'correct\_tokens'}] > 0:
-671                 m[\textcolor{stringliteral}{'token\_acc'}] = self.metrics[\textcolor{stringliteral}{'correct\_tokens'}] / num\_tok
-672             m[\textcolor{stringliteral}{'loss'}] = self.metrics[\textcolor{stringliteral}{'loss'}] / num\_tok
-673             \textcolor{keywordflow}{try}:
-674                 m[\textcolor{stringliteral}{'ppl'}] = math.exp(m[\textcolor{stringliteral}{'loss'}])
-675             \textcolor{keywordflow}{except} OverflowError:
-676                 m[\textcolor{stringliteral}{'ppl'}] = \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(\textcolor{stringliteral}{'inf'})
-677         \textcolor{keywordflow}{if} self.metrics[\textcolor{stringliteral}{'total\_skipped\_batches'}] > 0:
-678             m[\textcolor{stringliteral}{'total\_skipped\_batches'}] = self.metrics[\textcolor{stringliteral}{'total\_skipped\_batches'}]
-679         \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} m.items():
-680             \textcolor{comment}{# clean up: rounds to sigfigs and converts tensors to floats}
-681             m[k] = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_af377ec61bfc0423461e7b409ffc883b9}{round\_sigfigs}(v, 4)
-682         \textcolor{keywordflow}{return} m
-683 
+661     \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}(self):
+662         \textcolor{stringliteral}{"""}
+663 \textcolor{stringliteral}{        Report loss and perplexity from model's perspective.}
+664 \textcolor{stringliteral}{}
+665 \textcolor{stringliteral}{        Note that this includes predicting \_\_END\_\_ and \_\_UNK\_\_ tokens and may differ}
+666 \textcolor{stringliteral}{        from a truly independent measurement.}
+667 \textcolor{stringliteral}{        """}
+668         m = \{\}
+669         num\_tok = self.metrics[\textcolor{stringliteral}{'num\_tokens'}]
+670         \textcolor{keywordflow}{if} num\_tok > 0:
+671             \textcolor{keywordflow}{if} self.metrics[\textcolor{stringliteral}{'correct\_tokens'}] > 0:
+672                 m[\textcolor{stringliteral}{'token\_acc'}] = self.metrics[\textcolor{stringliteral}{'correct\_tokens'}] / num\_tok
+673             m[\textcolor{stringliteral}{'loss'}] = self.metrics[\textcolor{stringliteral}{'loss'}] / num\_tok
+674             \textcolor{keywordflow}{try}:
+675                 m[\textcolor{stringliteral}{'ppl'}] = math.exp(m[\textcolor{stringliteral}{'loss'}])
+676             \textcolor{keywordflow}{except} OverflowError:
+677                 m[\textcolor{stringliteral}{'ppl'}] = \hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}(\textcolor{stringliteral}{'inf'})
+678         \textcolor{keywordflow}{if} self.metrics[\textcolor{stringliteral}{'total\_skipped\_batches'}] > 0:
+679             m[\textcolor{stringliteral}{'total\_skipped\_batches'}] = self.metrics[\textcolor{stringliteral}{'total\_skipped\_batches'}]
+680         \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} m.items():
+681             \textcolor{comment}{# clean up: rounds to sigfigs and converts tensors to floats}
+682             m[k] = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_af377ec61bfc0423461e7b409ffc883b9}{round\_sigfigs}(v, 4)
+683         \textcolor{keywordflow}{return} m
+684 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a56d246fd8b6bcf41726181c17cdc2762}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a56d246fd8b6bcf41726181c17cdc2762}} 
 \index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent}!reset@{reset}}
@@ -1062,20 +1061,20 @@ Definition at line 660 of file seq2seq\+\_\+v0.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 642 of file seq2seq\+\_\+v0.\+py.
+Definition at line 643 of file seq2seq\+\_\+v0.\+py.
 
 
 \begin{DoxyCode}
-642     \textcolor{keyword}{def }reset(self):
-643         \textcolor{stringliteral}{"""}
-644 \textcolor{stringliteral}{        Reset observation and episode\_done.}
-645 \textcolor{stringliteral}{        """}
-646         self.observation = \textcolor{keywordtype}{None}
-647         self.history.clear()
-648         \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(self.answers)):
-649             self.answers[i] = \textcolor{keywordtype}{None}
-650         self.reset\_metrics()
-651 
+643     \textcolor{keyword}{def }reset(self):
+644         \textcolor{stringliteral}{"""}
+645 \textcolor{stringliteral}{        Reset observation and episode\_done.}
+646 \textcolor{stringliteral}{        """}
+647         self.observation = \textcolor{keywordtype}{None}
+648         self.history.clear()
+649         \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(self.answers)):
+650             self.answers[i] = \textcolor{keywordtype}{None}
+651         self.reset\_metrics()
+652 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_ae76435bf7acee9501188de47c0ba6991}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_ae76435bf7acee9501188de47c0ba6991}} 
 \index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent}!reset\+\_\+metrics@{reset\+\_\+metrics}}
@@ -1087,18 +1086,18 @@ Definition at line 642 of file seq2seq\+\_\+v0.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 652 of file seq2seq\+\_\+v0.\+py.
+Definition at line 653 of file seq2seq\+\_\+v0.\+py.
 
 
 \begin{DoxyCode}
-652     \textcolor{keyword}{def }reset\_metrics(self):
-653         \textcolor{stringliteral}{"""}
-654 \textcolor{stringliteral}{        Reset metrics for reporting loss and perplexity.}
-655 \textcolor{stringliteral}{        """}
-656         self.metrics[\textcolor{stringliteral}{'loss'}] = 0.0
-657         self.metrics[\textcolor{stringliteral}{'num\_tokens'}] = 0
-658         self.metrics[\textcolor{stringliteral}{'correct\_tokens'}] = 0
-659 
+653     \textcolor{keyword}{def }reset\_metrics(self):
+654         \textcolor{stringliteral}{"""}
+655 \textcolor{stringliteral}{        Reset metrics for reporting loss and perplexity.}
+656 \textcolor{stringliteral}{        """}
+657         self.metrics[\textcolor{stringliteral}{'loss'}] = 0.0
+658         self.metrics[\textcolor{stringliteral}{'num\_tokens'}] = 0
+659         self.metrics[\textcolor{stringliteral}{'correct\_tokens'}] = 0
+660 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a31c017cd07b01834a5d467fadfddd7cd}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a31c017cd07b01834a5d467fadfddd7cd}} 
 \index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent}!save@{save}}
@@ -1110,30 +1109,30 @@ Definition at line 652 of file seq2seq\+\_\+v0.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 928 of file seq2seq\+\_\+v0.\+py.
+Definition at line 929 of file seq2seq\+\_\+v0.\+py.
 
 
 \begin{DoxyCode}
-928     \textcolor{keyword}{def }save(self, path=None):
-929         \textcolor{stringliteral}{"""}
-930 \textcolor{stringliteral}{        Save model parameters if model\_file is set.}
-931 \textcolor{stringliteral}{        """}
-932         path = self.opt.get(\textcolor{stringliteral}{'model\_file'}, \textcolor{keywordtype}{None}) \textcolor{keywordflow}{if} path \textcolor{keywordflow}{is} \textcolor{keywordtype}{None} \textcolor{keywordflow}{else} path
-933 
-934         \textcolor{keywordflow}{if} path \textcolor{keywordflow}{and} hasattr(self, \textcolor{stringliteral}{'model'}):
-935             model = \{\}
-936             model[\textcolor{stringliteral}{'model'}] = self.model.state\_dict()
-937             model[\textcolor{stringliteral}{'longest\_label'}] = self.model.longest\_label
-938             model[\textcolor{stringliteral}{'optimizer'}] = self.optimizer.state\_dict()
-939             model[\textcolor{stringliteral}{'optimizer\_type'}] = self.opt[\textcolor{stringliteral}{'optimizer'}]
-940 
-941             with open(path, \textcolor{stringliteral}{'wb'}) \textcolor{keyword}{as} write:
-942                 torch.save(model, write)
-943 
-944             \textcolor{comment}{# save opt file}
-945             with open(path + \textcolor{stringliteral}{".opt"}, \textcolor{stringliteral}{'wb'}) \textcolor{keyword}{as} handle:
-946                 pickle.dump(self.opt, handle, protocol=pickle.HIGHEST\_PROTOCOL)
-947 
+929     \textcolor{keyword}{def }save(self, path=None):
+930         \textcolor{stringliteral}{"""}
+931 \textcolor{stringliteral}{        Save model parameters if model\_file is set.}
+932 \textcolor{stringliteral}{        """}
+933         path = self.opt.get(\textcolor{stringliteral}{'model\_file'}, \textcolor{keywordtype}{None}) \textcolor{keywordflow}{if} path \textcolor{keywordflow}{is} \textcolor{keywordtype}{None} \textcolor{keywordflow}{else} path
+934 
+935         \textcolor{keywordflow}{if} path \textcolor{keywordflow}{and} hasattr(self, \textcolor{stringliteral}{'model'}):
+936             model = \{\}
+937             model[\textcolor{stringliteral}{'model'}] = self.model.state\_dict()
+938             model[\textcolor{stringliteral}{'longest\_label'}] = self.model.longest\_label
+939             model[\textcolor{stringliteral}{'optimizer'}] = self.optimizer.state\_dict()
+940             model[\textcolor{stringliteral}{'optimizer\_type'}] = self.opt[\textcolor{stringliteral}{'optimizer'}]
+941 
+942             with open(path, \textcolor{stringliteral}{'wb'}) \textcolor{keyword}{as} write:
+943                 torch.save(model, write)
+944 
+945             \textcolor{comment}{# save opt file}
+946             with open(path + \textcolor{stringliteral}{".opt"}, \textcolor{stringliteral}{'wb'}) \textcolor{keyword}{as} handle:
+947                 pickle.dump(self.opt, handle, protocol=pickle.HIGHEST\_PROTOCOL)
+948 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_ac050147b69c47182730e92866f64156a}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_ac050147b69c47182730e92866f64156a}} 
 \index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent}!share@{share}}
@@ -1145,34 +1144,34 @@ Definition at line 928 of file seq2seq\+\_\+v0.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 684 of file seq2seq\+\_\+v0.\+py.
+Definition at line 685 of file seq2seq\+\_\+v0.\+py.
 
 
 \begin{DoxyCode}
-684     \textcolor{keyword}{def }share(self):
-685         \textcolor{stringliteral}{"""}
-686 \textcolor{stringliteral}{        Share internal states between parent and child instances.}
-687 \textcolor{stringliteral}{        """}
-688         shared = super().share()
-689         shared[\textcolor{stringliteral}{'opt'}] = self.opt
-690         shared[\textcolor{stringliteral}{'answers'}] = self.answers
-691         shared[\textcolor{stringliteral}{'dict'}] = self.dict
-692         shared[\textcolor{stringliteral}{'START\_IDX'}] = self.START\_IDX
-693         shared[\textcolor{stringliteral}{'END\_IDX'}] = self.END\_IDX
-694         shared[\textcolor{stringliteral}{'NULL\_IDX'}] = self.NULL\_IDX
-695         shared[\textcolor{stringliteral}{'model'}] = self.model
-696         \textcolor{keywordflow}{if} self.opt.get(\textcolor{stringliteral}{'numthreads'}, 1) > 1:
-697             \textcolor{comment}{# we're doing hogwild so share the model too}
-698             \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(self.metrics) == dict:
-699                 \textcolor{comment}{# move metrics and model to shared memory}
-700                 self.metrics = SharedTable(self.metrics)
-701                 self.model.share\_memory()
-702             shared[\textcolor{stringliteral}{'states'}] = \{  \textcolor{comment}{# don't share optimizer states}
-703                 \textcolor{stringliteral}{'optimizer\_type'}: self.opt[\textcolor{stringliteral}{'optimizer'}]
-704             \}
-705         shared[\textcolor{stringliteral}{'metrics'}] = self.metrics  \textcolor{comment}{# do after numthreads check}
-706         \textcolor{keywordflow}{return} shared
-707 
+685     \textcolor{keyword}{def }share(self):
+686         \textcolor{stringliteral}{"""}
+687 \textcolor{stringliteral}{        Share internal states between parent and child instances.}
+688 \textcolor{stringliteral}{        """}
+689         shared = super().share()
+690         shared[\textcolor{stringliteral}{'opt'}] = self.opt
+691         shared[\textcolor{stringliteral}{'answers'}] = self.answers
+692         shared[\textcolor{stringliteral}{'dict'}] = self.dict
+693         shared[\textcolor{stringliteral}{'START\_IDX'}] = self.START\_IDX
+694         shared[\textcolor{stringliteral}{'END\_IDX'}] = self.END\_IDX
+695         shared[\textcolor{stringliteral}{'NULL\_IDX'}] = self.NULL\_IDX
+696         shared[\textcolor{stringliteral}{'model'}] = self.model
+697         \textcolor{keywordflow}{if} self.opt.get(\textcolor{stringliteral}{'numthreads'}, 1) > 1:
+698             \textcolor{comment}{# we're doing hogwild so share the model too}
+699             \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(self.metrics) == dict:
+700                 \textcolor{comment}{# move metrics and model to shared memory}
+701                 self.metrics = SharedTable(self.metrics)
+702                 self.model.share\_memory()
+703             shared[\textcolor{stringliteral}{'states'}] = \{  \textcolor{comment}{# don't share optimizer states}
+704                 \textcolor{stringliteral}{'optimizer\_type'}: self.opt[\textcolor{stringliteral}{'optimizer'}]
+705             \}
+706         shared[\textcolor{stringliteral}{'metrics'}] = self.metrics  \textcolor{comment}{# do after numthreads check}
+707         \textcolor{keywordflow}{return} shared
+708 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a86c41e705170f0b2e56a5bbc378aead9}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a86c41e705170f0b2e56a5bbc378aead9}} 
 \index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent}!shutdown@{shutdown}}
@@ -1184,19 +1183,19 @@ Definition at line 684 of file seq2seq\+\_\+v0.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 948 of file seq2seq\+\_\+v0.\+py.
+Definition at line 949 of file seq2seq\+\_\+v0.\+py.
 
 
 \begin{DoxyCode}
-948     \textcolor{keyword}{def }shutdown(self):
-949         \textcolor{stringliteral}{"""}
-950 \textcolor{stringliteral}{        Save the state of the model when shutdown.}
-951 \textcolor{stringliteral}{        """}
-952         path = self.opt.get(\textcolor{stringliteral}{'model\_file'}, \textcolor{keywordtype}{None})
-953         \textcolor{keywordflow}{if} path \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} hasattr(self, \textcolor{stringliteral}{'optimizer'}):
-954             self.save(path + \textcolor{stringliteral}{'.shutdown\_state'})
-955         super().shutdown()
-956 
+949     \textcolor{keyword}{def }shutdown(self):
+950         \textcolor{stringliteral}{"""}
+951 \textcolor{stringliteral}{        Save the state of the model when shutdown.}
+952 \textcolor{stringliteral}{        """}
+953         path = self.opt.get(\textcolor{stringliteral}{'model\_file'}, \textcolor{keywordtype}{None})
+954         \textcolor{keywordflow}{if} path \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} hasattr(self, \textcolor{stringliteral}{'optimizer'}):
+955             self.save(path + \textcolor{stringliteral}{'.shutdown\_state'})
+956         super().shutdown()
+957 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a3933d4fdc5e603b1a168d92e7da77151}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a3933d4fdc5e603b1a168d92e7da77151}} 
 \index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent}!update\+\_\+params@{update\+\_\+params}}
@@ -1208,18 +1207,18 @@ Definition at line 948 of file seq2seq\+\_\+v0.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 634 of file seq2seq\+\_\+v0.\+py.
+Definition at line 635 of file seq2seq\+\_\+v0.\+py.
 
 
 \begin{DoxyCode}
-634     \textcolor{keyword}{def }update\_params(self):
-635         \textcolor{stringliteral}{"""}
-636 \textcolor{stringliteral}{        Do one optimization step.}
-637 \textcolor{stringliteral}{        """}
-638         \textcolor{keywordflow}{if} self.clip > 0:
-639             torch.nn.utils.clip\_grad\_norm\_(self.model.parameters(), self.clip)
-640         self.optimizer.step()
-641 
+635     \textcolor{keyword}{def }update\_params(self):
+636         \textcolor{stringliteral}{"""}
+637 \textcolor{stringliteral}{        Do one optimization step.}
+638 \textcolor{stringliteral}{        """}
+639         \textcolor{keywordflow}{if} self.clip > 0:
+640             torch.nn.utils.clip\_grad\_norm\_(self.model.parameters(), self.clip)
+641         self.optimizer.step()
+642 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a8f6de929b475d3915c159c48165b4575}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a8f6de929b475d3915c159c48165b4575}} 
 \index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent}!v2t@{v2t}}
@@ -1231,22 +1230,22 @@ Definition at line 634 of file seq2seq\+\_\+v0.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 616 of file seq2seq\+\_\+v0.\+py.
+Definition at line 617 of file seq2seq\+\_\+v0.\+py.
 
 
 \begin{DoxyCode}
-616     \textcolor{keyword}{def }v2t(self, vec):
-617         \textcolor{stringliteral}{"""}
-618 \textcolor{stringliteral}{        Convert token indices to string of tokens.}
-619 \textcolor{stringliteral}{        """}
-620         new\_vec = []
-621         \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} vec:
-622             \textcolor{keywordflow}{if} i == self.END\_IDX:
-623                 \textcolor{keywordflow}{break}
-624             \textcolor{keywordflow}{elif} i != self.START\_IDX:
-625                 new\_vec.append(i)
-626         \textcolor{keywordflow}{return} self.dict.vec2txt(new\_vec)
-627 
+617     \textcolor{keyword}{def }v2t(self, vec):
+618         \textcolor{stringliteral}{"""}
+619 \textcolor{stringliteral}{        Convert token indices to string of tokens.}
+620 \textcolor{stringliteral}{        """}
+621         new\_vec = []
+622         \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} vec:
+623             \textcolor{keywordflow}{if} i == self.END\_IDX:
+624                 \textcolor{keywordflow}{break}
+625             \textcolor{keywordflow}{elif} i != self.START\_IDX:
+626                 new\_vec.append(i)
+627         \textcolor{keywordflow}{return} self.dict.vec2txt(new\_vec)
+628 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a83e2433e00bff6162ebad3b818771b59}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a83e2433e00bff6162ebad3b818771b59}} 
 \index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent}!vectorize@{vectorize}}
@@ -1258,61 +1257,61 @@ Definition at line 616 of file seq2seq\+\_\+v0.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 799 of file seq2seq\+\_\+v0.\+py.
+Definition at line 800 of file seq2seq\+\_\+v0.\+py.
 
 
 \begin{DoxyCode}
-799     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_a5c76cc39e3014c7bcf9199d566dbdc0f}{vectorize}(self, observations):
-800         \textcolor{stringliteral}{"""}
-801 \textcolor{stringliteral}{        Convert a list of observations into input & target tensors.}
-802 \textcolor{stringliteral}{        """}
-803         is\_training = any([\textcolor{stringliteral}{'labels'} \textcolor{keywordflow}{in} obs \textcolor{keywordflow}{for} obs \textcolor{keywordflow}{in} observations])
-804         xs, ys, labels, valid\_inds, \_, \_ = PaddingUtils.pad\_text(
-805             observations,
-806             self.dict,
-807             end\_idx=self.END\_IDX,
-808             null\_idx=self.NULL\_IDX,
-809             dq=\textcolor{keyword}{True},
-810             eval\_labels=\textcolor{keyword}{True},
-811             truncate=self.truncate,
-812         )
-813 
-814         \textcolor{keywordflow}{if} xs \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-815             \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}, \textcolor{keywordtype}{None}, \textcolor{keywordtype}{None}, \textcolor{keywordtype}{None}, \textcolor{keywordtype}{None}, \textcolor{keywordtype}{None}, \textcolor{keywordtype}{None}
-816         xs = torch.LongTensor(xs)
-817         \textcolor{keywordflow}{if} ys \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-818             ys = torch.LongTensor(ys)
-819         \textcolor{keywordflow}{if} self.use\_cuda:
-820             \textcolor{comment}{# copy to gpu}
-821             xs = xs.cuda()
-822             \textcolor{keywordflow}{if} ys \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-823                 ys = ys.cuda()
-824 
-825         cands = \textcolor{keywordtype}{None}
-826         valid\_cands = \textcolor{keywordtype}{None}
-827         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} is\_training \textcolor{keywordflow}{and} self.rank:
-828             \textcolor{comment}{# set up candidates}
-829             cands = []
-830             valid\_cands = []
-831             \textcolor{keywordflow}{for} i, v \textcolor{keywordflow}{in} enumerate(valid\_inds):
-832                 \textcolor{keywordflow}{if} \textcolor{stringliteral}{'label\_candidates'} \textcolor{keywordflow}{in} observations[v]:
-833                     curr\_lcs = list(observations[v][\textcolor{stringliteral}{'label\_candidates'}])
-834                     curr\_cands = [\{\textcolor{stringliteral}{'text'}: c\} \textcolor{keywordflow}{for} c \textcolor{keywordflow}{in} curr\_lcs]
-835                     cs, \_, \_, valid\_c\_inds, *\_ = PaddingUtils.pad\_text(
-836                         curr\_cands,
-837                         self.dict,
-838                         null\_idx=self.NULL\_IDX,
-839                         dq=\textcolor{keyword}{True},
-840                         truncate=self.truncate,
-841                     )
-842                     valid\_cands.append((i, v, [curr\_lcs[j] \textcolor{keywordflow}{for} j \textcolor{keywordflow}{in} valid\_c\_inds]))
-843                     cs = torch.LongTensor(cs)
-844                     \textcolor{keywordflow}{if} self.use\_cuda:
-845                         cs = cs.cuda()
-846                     cands.append(cs)
-847 
-848         \textcolor{keywordflow}{return} xs, ys, labels, valid\_inds, cands, valid\_cands, is\_training
-849 
+800     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_a5c76cc39e3014c7bcf9199d566dbdc0f}{vectorize}(self, observations):
+801         \textcolor{stringliteral}{"""}
+802 \textcolor{stringliteral}{        Convert a list of observations into input & target tensors.}
+803 \textcolor{stringliteral}{        """}
+804         is\_training = any([\textcolor{stringliteral}{'labels'} \textcolor{keywordflow}{in} obs \textcolor{keywordflow}{for} obs \textcolor{keywordflow}{in} observations])
+805         xs, ys, labels, valid\_inds, \_, \_ = PaddingUtils.pad\_text(
+806             observations,
+807             self.dict,
+808             end\_idx=self.END\_IDX,
+809             null\_idx=self.NULL\_IDX,
+810             dq=\textcolor{keyword}{True},
+811             eval\_labels=\textcolor{keyword}{True},
+812             truncate=self.truncate,
+813         )
+814 
+815         \textcolor{keywordflow}{if} xs \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+816             \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}, \textcolor{keywordtype}{None}, \textcolor{keywordtype}{None}, \textcolor{keywordtype}{None}, \textcolor{keywordtype}{None}, \textcolor{keywordtype}{None}, \textcolor{keywordtype}{None}
+817         xs = torch.LongTensor(xs)
+818         \textcolor{keywordflow}{if} ys \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+819             ys = torch.LongTensor(ys)
+820         \textcolor{keywordflow}{if} self.use\_cuda:
+821             \textcolor{comment}{# copy to gpu}
+822             xs = xs.cuda()
+823             \textcolor{keywordflow}{if} ys \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+824                 ys = ys.cuda()
+825 
+826         cands = \textcolor{keywordtype}{None}
+827         valid\_cands = \textcolor{keywordtype}{None}
+828         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} is\_training \textcolor{keywordflow}{and} self.rank:
+829             \textcolor{comment}{# set up candidates}
+830             cands = []
+831             valid\_cands = []
+832             \textcolor{keywordflow}{for} i, v \textcolor{keywordflow}{in} enumerate(valid\_inds):
+833                 \textcolor{keywordflow}{if} \textcolor{stringliteral}{'label\_candidates'} \textcolor{keywordflow}{in} observations[v]:
+834                     curr\_lcs = list(observations[v][\textcolor{stringliteral}{'label\_candidates'}])
+835                     curr\_cands = [\{\textcolor{stringliteral}{'text'}: c\} \textcolor{keywordflow}{for} c \textcolor{keywordflow}{in} curr\_lcs]
+836                     cs, \_, \_, valid\_c\_inds, *\_ = PaddingUtils.pad\_text(
+837                         curr\_cands,
+838                         self.dict,
+839                         null\_idx=self.NULL\_IDX,
+840                         dq=\textcolor{keyword}{True},
+841                         truncate=self.truncate,
+842                     )
+843                     valid\_cands.append((i, v, [curr\_lcs[j] \textcolor{keywordflow}{for} j \textcolor{keywordflow}{in} valid\_c\_inds]))
+844                     cs = torch.LongTensor(cs)
+845                     \textcolor{keywordflow}{if} self.use\_cuda:
+846                         cs = cs.cuda()
+847                     cands.append(cs)
+848 
+849         \textcolor{keywordflow}{return} xs, ys, labels, valid\_inds, cands, valid\_cands, is\_training
+850 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a0be9f1e378a403284d8afac5648fbf4d}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a0be9f1e378a403284d8afac5648fbf4d}} 
 \index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent}!zero\+\_\+grad@{zero\+\_\+grad}}
@@ -1324,16 +1323,16 @@ Definition at line 799 of file seq2seq\+\_\+v0.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 628 of file seq2seq\+\_\+v0.\+py.
+Definition at line 629 of file seq2seq\+\_\+v0.\+py.
 
 
 \begin{DoxyCode}
-628     \textcolor{keyword}{def }zero\_grad(self):
-629         \textcolor{stringliteral}{"""}
-630 \textcolor{stringliteral}{        Zero out optimizer.}
-631 \textcolor{stringliteral}{        """}
-632         self.optimizer.zero\_grad()
-633 
+629     \textcolor{keyword}{def }zero\_grad(self):
+630         \textcolor{stringliteral}{"""}
+631 \textcolor{stringliteral}{        Zero out optimizer.}
+632 \textcolor{stringliteral}{        """}
+633         self.optimizer.zero\_grad()
+634 
 \end{DoxyCode}
 
 
@@ -1376,7 +1375,7 @@ Definition at line 377 of file seq2seq\+\_\+v0.\+py.
 
 
 
-Definition at line 860 of file seq2seq\+\_\+v0.\+py.
+Definition at line 861 of file seq2seq\+\_\+v0.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a4896d5dc3fd7a0f876a654f0bc942b6a}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a4896d5dc3fd7a0f876a654f0bc942b6a}} 
 \index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent}!clip@{clip}}
@@ -1386,7 +1385,7 @@ Definition at line 860 of file seq2seq\+\_\+v0.\+py.
 
 
 
-Definition at line 523 of file seq2seq\+\_\+v0.\+py.
+Definition at line 524 of file seq2seq\+\_\+v0.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_ad336994a64a83591ba1388aef3f1d5de}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_ad336994a64a83591ba1388aef3f1d5de}} 
 \index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent}!criterion@{criterion}}
@@ -1396,7 +1395,7 @@ Definition at line 523 of file seq2seq\+\_\+v0.\+py.
 
 
 
-Definition at line 511 of file seq2seq\+\_\+v0.\+py.
+Definition at line 512 of file seq2seq\+\_\+v0.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_ad5ff9534948d32ca9b387fe1189174e6}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_ad5ff9534948d32ca9b387fe1189174e6}} 
 \index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent}!dict@{dict}}
@@ -1486,7 +1485,7 @@ Definition at line 393 of file seq2seq\+\_\+v0.\+py.
 
 
 
-Definition at line 646 of file seq2seq\+\_\+v0.\+py.
+Definition at line 647 of file seq2seq\+\_\+v0.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a8e4926c0c0da6bd7d530c44aa5416731}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a8e4926c0c0da6bd7d530c44aa5416731}} 
 \index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent}!opt@{opt}}
@@ -1498,26 +1497,12 @@ Definition at line 646 of file seq2seq\+\_\+v0.\+py.
 
 Definition at line 388 of file seq2seq\+\_\+v0.\+py.
 
-\mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a83374019847ffa0c1cc43bf0b24120e9}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a83374019847ffa0c1cc43bf0b24120e9}} 
+\mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a82630ee9be1d6e9828ffdd24049a8de3}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a82630ee9be1d6e9828ffdd24049a8de3}} 
 \index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent}!O\+P\+T\+I\+M\+\_\+\+O\+P\+TS@{O\+P\+T\+I\+M\+\_\+\+O\+P\+TS}}
 \index{O\+P\+T\+I\+M\+\_\+\+O\+P\+TS@{O\+P\+T\+I\+M\+\_\+\+O\+P\+TS}!parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent}}
 \subsubsection{\texorpdfstring{O\+P\+T\+I\+M\+\_\+\+O\+P\+TS}{OPTIM\_OPTS}}
-{\footnotesize\ttfamily dictionary parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+seq2seq\+\_\+v0.\+Seq2seq\+Agent.\+O\+P\+T\+I\+M\+\_\+\+O\+P\+TS\hspace{0.3cm}{\ttfamily [static]}}
+{\footnotesize\ttfamily parlai.\+agents.\+legacy\+\_\+agents.\+seq2seq.\+seq2seq\+\_\+v0.\+Seq2seq\+Agent.\+O\+P\+T\+I\+M\+\_\+\+O\+P\+TS\hspace{0.3cm}{\ttfamily [static]}}
 
-{\bfseries Initial value\+:}
-\begin{DoxyCode}
-=  \{
-        \textcolor{stringliteral}{'adadelta'}: optim.Adadelta,
-        \textcolor{stringliteral}{'adagrad'}: optim.Adagrad,
-        \textcolor{stringliteral}{'adam'}: optim.Adam,
-        \textcolor{stringliteral}{'adamax'}: optim.Adamax,
-        \textcolor{stringliteral}{'asgd'}: optim.ASGD,
-        \textcolor{stringliteral}{'lbfgs'}: optim.LBFGS,
-        \textcolor{stringliteral}{'rmsprop'}: optim.RMSprop,
-        \textcolor{stringliteral}{'rprop'}: optim.Rprop,
-        \textcolor{stringliteral}{'sgd'}: optim.SGD,
-    \}
-\end{DoxyCode}
 
 
 Definition at line 114 of file seq2seq\+\_\+v0.\+py.
@@ -1530,7 +1515,7 @@ Definition at line 114 of file seq2seq\+\_\+v0.\+py.
 
 
 
-Definition at line 543 of file seq2seq\+\_\+v0.\+py.
+Definition at line 544 of file seq2seq\+\_\+v0.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a07995ff61edb2c4699aa766122878e94}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a07995ff61edb2c4699aa766122878e94}} 
 \index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent}!rank@{rank}}
@@ -1560,7 +1545,7 @@ Definition at line 373 of file seq2seq\+\_\+v0.\+py.
 
 
 
-Definition at line 564 of file seq2seq\+\_\+v0.\+py.
+Definition at line 565 of file seq2seq\+\_\+v0.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a044b5f18e6d9f0207b947769f06bcc6b}\label{classparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1seq2seq__v0_1_1Seq2seqAgent_a044b5f18e6d9f0207b947769f06bcc6b}} 
 \index{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent@{parlai\+::agents\+::legacy\+\_\+agents\+::seq2seq\+::seq2seq\+\_\+v0\+::\+Seq2seq\+Agent}!S\+T\+A\+R\+T\+\_\+\+I\+DX@{S\+T\+A\+R\+T\+\_\+\+I\+DX}}

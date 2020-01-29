@@ -5,6 +5,8 @@
 \item 
 def \hyperlink{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceWorldRunner_a01462412e195b5788e5cfd3a769f0c0d}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceWorldRunner_aa4e0d4e5b87f4c136b0750cea2c339be}{opt}, world\+\_\+path, max\+\_\+workers, \hyperlink{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceWorldRunner_aebacdd9b5d3ab6a093945f22e0fe0a83}{manager}, is\+\_\+debug=False)
 \item 
+def \hyperlink{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceWorldRunner_a11f91dae76ebb8da127a09b4837d2da1}{is\+\_\+initialized} (self)
+\item 
 def \hyperlink{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceWorldRunner_a5bf689cb8ff9889da98990ad770fd9a3}{shutdown} (self)
 \item 
 def \hyperlink{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceWorldRunner_ac6b8bd46cafa3ce7a5a74f4c1c35b8a8}{launch\+\_\+task\+\_\+world} (self, task\+\_\+name, world\+\_\+name, agents)
@@ -25,6 +27,10 @@ def \hyperlink{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatSer
 \hyperlink{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceWorldRunner_aa4e0d4e5b87f4c136b0750cea2c339be}{opt}
 \item 
 \hyperlink{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceWorldRunner_a09f6b502ea55829cd883a8ef4e9ac6d4}{tasks}
+\item 
+\hyperlink{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceWorldRunner_ab7df2acb8fc34308b4cb274244d199b7}{initialized}
+\item 
+\hyperlink{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceWorldRunner_ab801d33992381060a8925ec977457d99}{init\+\_\+fut}
 \end{DoxyCompactItemize}
 
 
@@ -62,11 +68,50 @@ Definition at line 186 of file manager\+\_\+utils.\+py.
 193         self.system\_done = \textcolor{keyword}{False}
 194         self.opt = opt
 195         self.tasks = \{\}  \textcolor{comment}{# task ID to task}
-196 
+196         self.initialized = \textcolor{keyword}{False}
+197 
+198         \textcolor{keyword}{def }\_is\_done\_initializing(fut):
+199             e = fut.exception()
+200             \textcolor{keywordflow}{if} e \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+201                 self.\_log(\textcolor{stringliteral}{'`module\_initialize` returned with error \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(repr(e)))
+202                 \textcolor{keywordflow}{if} self.debug:
+203                     \textcolor{keywordflow}{raise} e
+204             \textcolor{keywordflow}{if} fut.result():
+205                 print(fut.result())
+206             \textcolor{keywordflow}{if} self.debug:
+207                 print(\textcolor{stringliteral}{"DEBUG: Call to `module\_initialize` has completed..."})
+208             self.initialized = \textcolor{keyword}{True}
+209 
+210         \textcolor{keywordflow}{if} hasattr(self.\_world\_module, \textcolor{stringliteral}{"module\_initialize"}):
+211             self.\_log(\textcolor{stringliteral}{"Initializing world module..."})
+212             \textcolor{comment}{# perform any module intialization steps}
+213             init\_fn = self.\_world\_module.module\_initialize
+214             self.init\_fut = self.executor.submit(init\_fn, opt, manager)
+215             self.init\_fut.add\_done\_callback(\_is\_done\_initializing)
+216         \textcolor{keywordflow}{else}:
+217             self.\_log(\textcolor{stringliteral}{"World module does not have `module initialize` function"})
+218             self.initialized = \textcolor{keyword}{True}
+219 
 \end{DoxyCode}
 
 
 \subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceWorldRunner_a11f91dae76ebb8da127a09b4837d2da1}\label{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceWorldRunner_a11f91dae76ebb8da127a09b4837d2da1}} 
+\index{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+World\+Runner@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+World\+Runner}!is\+\_\+initialized@{is\+\_\+initialized}}
+\index{is\+\_\+initialized@{is\+\_\+initialized}!parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+World\+Runner@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+World\+Runner}}
+\subsubsection{\texorpdfstring{is\+\_\+initialized()}{is\_initialized()}}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+core.\+manager\+\_\+utils.\+Chat\+Service\+World\+Runner.\+is\+\_\+initialized (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 225 of file manager\+\_\+utils.\+py.
+
+
+\begin{DoxyCode}
+225     \textcolor{keyword}{def }is\_initialized(self):
+226         \textcolor{keywordflow}{return} self.initialized
+227 
+\end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceWorldRunner_a3333ef43d6fb9f0ffcc79b8e639967b0}\label{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceWorldRunner_a3333ef43d6fb9f0ffcc79b8e639967b0}} 
 \index{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+World\+Runner@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+World\+Runner}!launch\+\_\+overworld@{launch\+\_\+overworld}}
 \index{launch\+\_\+overworld@{launch\+\_\+overworld}!parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+World\+Runner@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+World\+Runner}}
@@ -92,73 +137,74 @@ Return the job's future
 \end{DoxyVerb}
  
 
-Definition at line 271 of file manager\+\_\+utils.\+py.
+Definition at line 297 of file manager\+\_\+utils.\+py.
 
 
 \begin{DoxyCode}
-271     \textcolor{keyword}{def }launch\_overworld(self, task\_name, overworld\_name, onboard\_map, overworld\_agent):
-272         \textcolor{stringliteral}{"""}
-273 \textcolor{stringliteral}{        Launch an overworld and a subsequent onboarding world.}
-274 \textcolor{stringliteral}{}
-275 \textcolor{stringliteral}{        Return the job's future}
-276 \textcolor{stringliteral}{}
-277 \textcolor{stringliteral}{        :param task\_name:}
-278 \textcolor{stringliteral}{            string. the name of the job thread}
-279 \textcolor{stringliteral}{        :param overworld\_name:}
-280 \textcolor{stringliteral}{            string. the name of the overworld in the module file}
-281 \textcolor{stringliteral}{        :param onboard\_map:}
-282 \textcolor{stringliteral}{            map. a mapping of overworld return values to the names}
-283 \textcolor{stringliteral}{            of onboarding worlds in the module file.}
-284 \textcolor{stringliteral}{        :param overworld\_agent:}
-285 \textcolor{stringliteral}{            The agent to run the overworld with}
-286 \textcolor{stringliteral}{}
-287 \textcolor{stringliteral}{        :return:}
-288 \textcolor{stringliteral}{            the Futures object corresponding to running the overworld}
-289 \textcolor{stringliteral}{        """}
-290         task = utils.TaskState(
-291             task\_name,
-292             overworld\_name,
-293             [overworld\_agent],
-294             is\_overworld=\textcolor{keyword}{True},
-295             world\_type=\textcolor{keywordtype}{None},
-296         )
-297         self.tasks[task\_name] = task
-298         agent\_state = self.manager.get\_agent\_state(overworld\_agent.id)
-299 
-300         \textcolor{keyword}{def }\_world\_function():
-301             world\_generator = utils.get\_world\_fn\_attr(
-302                 self.\_world\_module, overworld\_name, \textcolor{stringliteral}{"generate\_world"}
-303             )
-304             overworld = world\_generator(self.opt, [overworld\_agent])
-305             \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} self.system\_done:
-306                 world\_type = overworld.parley()
-307                 \textcolor{keywordflow}{if} world\_type \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-308                     time.sleep(0.5)
-309                     \textcolor{keywordflow}{continue}
-310 
-311                 \textcolor{comment}{# perform onboarding}
-312                 onboard\_type = onboard\_map.get(world\_type)
-313                 \textcolor{keywordflow}{if} onboard\_type:
-314                     onboard\_id = \textcolor{stringliteral}{'onboard-\{\}-\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(overworld\_agent.id, time.time())
-315                     agent = self.manager.\_create\_agent(onboard\_id, overworld\_agent.id)
-316                     agent\_state.set\_active\_agent(agent)
-317                     agent\_state.assign\_agent\_to\_task(agent, onboard\_id)
-318                     \_, onboard\_data = self.\_run\_world(task, onboard\_type, [agent])
-319                     agent\_state.onboard\_data = onboard\_data
-320                 self.manager.add\_agent\_to\_pool(agent\_state, world\_type)
-321                 utils.print\_and\_log(logging.INFO, \textcolor{stringliteral}{'onboarding/overworld complete'})
-322                 time.sleep(5)
-323 
-324                 \textcolor{comment}{# sleep until agent returns from task world}
-325                 \textcolor{keywordflow}{while} agent\_state.get\_active\_agent() != overworld\_agent:
-326                     time.sleep(2)
-327                 overworld.return\_overworld()
-328             \textcolor{keywordflow}{return} world\_type
-329 
-330         fut = self.executor.submit(\_world\_function)
-331         task.future = fut
-332         \textcolor{keywordflow}{return} fut
-333 \end{DoxyCode}
+297     \textcolor{keyword}{def }launch\_overworld(self, task\_name, overworld\_name, onboard\_map, overworld\_agent):
+298         \textcolor{stringliteral}{"""}
+299 \textcolor{stringliteral}{        Launch an overworld and a subsequent onboarding world.}
+300 \textcolor{stringliteral}{}
+301 \textcolor{stringliteral}{        Return the job's future}
+302 \textcolor{stringliteral}{}
+303 \textcolor{stringliteral}{        :param task\_name:}
+304 \textcolor{stringliteral}{            string. the name of the job thread}
+305 \textcolor{stringliteral}{        :param overworld\_name:}
+306 \textcolor{stringliteral}{            string. the name of the overworld in the module file}
+307 \textcolor{stringliteral}{        :param onboard\_map:}
+308 \textcolor{stringliteral}{            map. a mapping of overworld return values to the names}
+309 \textcolor{stringliteral}{            of onboarding worlds in the module file.}
+310 \textcolor{stringliteral}{        :param overworld\_agent:}
+311 \textcolor{stringliteral}{            The agent to run the overworld with}
+312 \textcolor{stringliteral}{}
+313 \textcolor{stringliteral}{        :return:}
+314 \textcolor{stringliteral}{            the Futures object corresponding to running the overworld}
+315 \textcolor{stringliteral}{        """}
+316         task = utils.TaskState(
+317             task\_name,
+318             overworld\_name,
+319             [overworld\_agent],
+320             is\_overworld=\textcolor{keyword}{True},
+321             world\_type=\textcolor{keywordtype}{None},
+322         )
+323         self.tasks[task\_name] = task
+324         agent\_state = self.manager.get\_agent\_state(overworld\_agent.id)
+325 
+326         \textcolor{keyword}{def }\_world\_function():
+327             world\_generator = utils.get\_world\_fn\_attr(
+328                 self.\_world\_module, overworld\_name, \textcolor{stringliteral}{"generate\_world"}
+329             )
+330             overworld = world\_generator(self.opt, [overworld\_agent])
+331             \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} overworld.episode\_done() \textcolor{keywordflow}{and} \textcolor{keywordflow}{not} self.system\_done:
+332                 world\_type = overworld.parley()
+333                 \textcolor{keywordflow}{if} world\_type \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+334                     time.sleep(0.5)
+335                     \textcolor{keywordflow}{continue}
+336 
+337                 \textcolor{comment}{# perform onboarding}
+338                 onboard\_type = onboard\_map.get(world\_type)
+339                 \textcolor{keywordflow}{if} onboard\_type:
+340                     onboard\_id = \textcolor{stringliteral}{'onboard-\{\}-\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(overworld\_agent.id, time.time())
+341                     agent = self.manager.\_create\_agent(onboard\_id, overworld\_agent.id)
+342                     agent\_state.set\_active\_agent(agent)
+343                     agent\_state.assign\_agent\_to\_task(agent, onboard\_id)
+344                     \_, onboard\_data = self.\_run\_world(task, onboard\_type, [agent])
+345                     agent\_state.onboard\_data = onboard\_data
+346                 self.manager.add\_agent\_to\_pool(agent\_state, world\_type)
+347                 utils.print\_and\_log(logging.INFO, \textcolor{stringliteral}{'onboarding/overworld complete'})
+348                 time.sleep(5)
+349 
+350                 \textcolor{comment}{# sleep until agent returns from task world}
+351                 \textcolor{keywordflow}{while} agent\_state.get\_active\_agent() != overworld\_agent:
+352                     time.sleep(2)
+353                 overworld.return\_overworld()
+354             utils.print\_and\_log(logging.INFO, \textcolor{stringliteral}{'exiting overworld'})
+355             \textcolor{keywordflow}{return} world\_type
+356 
+357         fut = self.executor.submit(\_world\_function)
+358         task.future = fut
+359         \textcolor{keywordflow}{return} fut
+360 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceWorldRunner_ac6b8bd46cafa3ce7a5a74f4c1c35b8a8}\label{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceWorldRunner_ac6b8bd46cafa3ce7a5a74f4c1c35b8a8}} 
 \index{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+World\+Runner@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+World\+Runner}!launch\+\_\+task\+\_\+world@{launch\+\_\+task\+\_\+world}}
 \index{launch\+\_\+task\+\_\+world@{launch\+\_\+task\+\_\+world}!parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+World\+Runner@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+World\+Runner}}
@@ -181,37 +227,37 @@ Return the job's future.
 \end{DoxyVerb}
  
 
-Definition at line 244 of file manager\+\_\+utils.\+py.
+Definition at line 270 of file manager\+\_\+utils.\+py.
 
 
 \begin{DoxyCode}
-244     \textcolor{keyword}{def }launch\_task\_world(self, task\_name, world\_name, agents):
-245         \textcolor{stringliteral}{"""}
-246 \textcolor{stringliteral}{        Launch a task world.}
-247 \textcolor{stringliteral}{}
-248 \textcolor{stringliteral}{        Return the job's future.}
-249 \textcolor{stringliteral}{}
-250 \textcolor{stringliteral}{        :param task\_name:}
-251 \textcolor{stringliteral}{            string. the name of the job thread}
-252 \textcolor{stringliteral}{        :param world\_name:}
-253 \textcolor{stringliteral}{            string. the name of the task world in the module file}
-254 \textcolor{stringliteral}{        :param agents:}
-255 \textcolor{stringliteral}{            list. the list of agents to install in the world}
-256 \textcolor{stringliteral}{}
-257 \textcolor{stringliteral}{        :return:}
-258 \textcolor{stringliteral}{            the Futures object corresponding to this launched task}
-259 \textcolor{stringliteral}{        """}
-260         task = utils.TaskState(task\_name, world\_name, agents)
-261         self.tasks[task\_name] = task
-262 
-263         \textcolor{keyword}{def }\_world\_fn():
-264             utils.print\_and\_log(logging.INFO, \textcolor{stringliteral}{'Starting task \{\}...'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(task\_name))
-265             \textcolor{keywordflow}{return} self.\_run\_world(task, world\_name, agents)
-266 
-267         fut = self.executor.submit(\_world\_fn)
-268         task.future = fut
-269         \textcolor{keywordflow}{return} fut
-270 
+270     \textcolor{keyword}{def }launch\_task\_world(self, task\_name, world\_name, agents):
+271         \textcolor{stringliteral}{"""}
+272 \textcolor{stringliteral}{        Launch a task world.}
+273 \textcolor{stringliteral}{}
+274 \textcolor{stringliteral}{        Return the job's future.}
+275 \textcolor{stringliteral}{}
+276 \textcolor{stringliteral}{        :param task\_name:}
+277 \textcolor{stringliteral}{            string. the name of the job thread}
+278 \textcolor{stringliteral}{        :param world\_name:}
+279 \textcolor{stringliteral}{            string. the name of the task world in the module file}
+280 \textcolor{stringliteral}{        :param agents:}
+281 \textcolor{stringliteral}{            list. the list of agents to install in the world}
+282 \textcolor{stringliteral}{}
+283 \textcolor{stringliteral}{        :return:}
+284 \textcolor{stringliteral}{            the Futures object corresponding to this launched task}
+285 \textcolor{stringliteral}{        """}
+286         task = utils.TaskState(task\_name, world\_name, agents)
+287         self.tasks[task\_name] = task
+288 
+289         \textcolor{keyword}{def }\_world\_fn():
+290             utils.print\_and\_log(logging.INFO, \textcolor{stringliteral}{'Starting task \{\}...'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(task\_name))
+291             \textcolor{keywordflow}{return} self.\_run\_world(task, world\_name, agents)
+292 
+293         fut = self.executor.submit(\_world\_fn)
+294         task.future = fut
+295         \textcolor{keywordflow}{return} fut
+296 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceWorldRunner_a5bf689cb8ff9889da98990ad770fd9a3}\label{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceWorldRunner_a5bf689cb8ff9889da98990ad770fd9a3}} 
 \index{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+World\+Runner@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+World\+Runner}!shutdown@{shutdown}}
@@ -223,23 +269,23 @@ Definition at line 244 of file manager\+\_\+utils.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 202 of file manager\+\_\+utils.\+py.
+Definition at line 228 of file manager\+\_\+utils.\+py.
 
 
 \begin{DoxyCode}
-202     \textcolor{keyword}{def }shutdown(self):
-203         \textcolor{stringliteral}{"""}
-204 \textcolor{stringliteral}{        Shutdown the world runner.}
-205 \textcolor{stringliteral}{        """}
-206         \textcolor{keywordflow}{for} \_, task \textcolor{keywordflow}{in} self.tasks.items():
-207             \textcolor{keywordflow}{if} task.world \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-208                 task.world.shutdown()
-209 
-210         self.system\_done = \textcolor{keyword}{True}  \textcolor{comment}{# this forces worlds to stop executing parley}
-211         self.\_log(\textcolor{stringliteral}{"Executor shutting down."})
-212         self.executor.shutdown()
-213         self.\_log(\textcolor{stringliteral}{"Shutdown complete."})
-214 
+228     \textcolor{keyword}{def }shutdown(self):
+229         \textcolor{stringliteral}{"""}
+230 \textcolor{stringliteral}{        Shutdown the world runner.}
+231 \textcolor{stringliteral}{        """}
+232         \textcolor{keywordflow}{for} \_, task \textcolor{keywordflow}{in} self.tasks.items():
+233             \textcolor{keywordflow}{if} task.world \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+234                 task.world.shutdown()
+235 
+236         self.system\_done = \textcolor{keyword}{True}  \textcolor{comment}{# this forces worlds to stop executing parley}
+237         self.\_log(\textcolor{stringliteral}{"Executor shutting down."})
+238         self.executor.shutdown()
+239         self.\_log(\textcolor{stringliteral}{"Shutdown complete."})
+240 
 \end{DoxyCode}
 
 
@@ -263,6 +309,26 @@ Definition at line 189 of file manager\+\_\+utils.\+py.
 
 
 Definition at line 188 of file manager\+\_\+utils.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceWorldRunner_ab801d33992381060a8925ec977457d99}\label{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceWorldRunner_ab801d33992381060a8925ec977457d99}} 
+\index{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+World\+Runner@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+World\+Runner}!init\+\_\+fut@{init\+\_\+fut}}
+\index{init\+\_\+fut@{init\+\_\+fut}!parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+World\+Runner@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+World\+Runner}}
+\subsubsection{\texorpdfstring{init\+\_\+fut}{init\_fut}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+core.\+manager\+\_\+utils.\+Chat\+Service\+World\+Runner.\+init\+\_\+fut}
+
+
+
+Definition at line 214 of file manager\+\_\+utils.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceWorldRunner_ab7df2acb8fc34308b4cb274244d199b7}\label{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceWorldRunner_ab7df2acb8fc34308b4cb274244d199b7}} 
+\index{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+World\+Runner@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+World\+Runner}!initialized@{initialized}}
+\index{initialized@{initialized}!parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+World\+Runner@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+World\+Runner}}
+\subsubsection{\texorpdfstring{initialized}{initialized}}
+{\footnotesize\ttfamily parlai.\+chat\+\_\+service.\+core.\+manager\+\_\+utils.\+Chat\+Service\+World\+Runner.\+initialized}
+
+
+
+Definition at line 196 of file manager\+\_\+utils.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceWorldRunner_aebacdd9b5d3ab6a093945f22e0fe0a83}\label{classparlai_1_1chat__service_1_1core_1_1manager__utils_1_1ChatServiceWorldRunner_aebacdd9b5d3ab6a093945f22e0fe0a83}} 
 \index{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+World\+Runner@{parlai\+::chat\+\_\+service\+::core\+::manager\+\_\+utils\+::\+Chat\+Service\+World\+Runner}!manager@{manager}}

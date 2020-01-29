@@ -2,8 +2,7 @@
 \label{classimage__chat__collection_1_1worlds_1_1ExampleGenerator}\index{image\+\_\+chat\+\_\+collection.\+worlds.\+Example\+Generator@{image\+\_\+chat\+\_\+collection.\+worlds.\+Example\+Generator}}
 
 
-Inheritance diagram for image\+\_\+chat\+\_\+collection.\+worlds.\+Example\+Generator\+:
-\nopagebreak
+Inheritance diagram for image\+\_\+chat\+\_\+collection.\+worlds.\+Example\+Generator\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for image\+\_\+chat\+\_\+collection.\+worlds.\+Example\+Gene
 \end{figure}
 
 
-Collaboration diagram for image\+\_\+chat\+\_\+collection.\+worlds.\+Example\+Generator\+:
-\nopagebreak
+Collaboration diagram for image\+\_\+chat\+\_\+collection.\+worlds.\+Example\+Generator\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -55,7 +53,7 @@ def \hyperlink{classimage__chat__collection_1_1worlds_1_1ExampleGenerator_ad5021
 \end{DoxyVerb}
  
 
-Definition at line 99 of file worlds.\+py.
+Definition at line 100 of file worlds.\+py.
 
 
 
@@ -68,43 +66,43 @@ Definition at line 99 of file worlds.\+py.
 
 
 
-Definition at line 104 of file worlds.\+py.
+Definition at line 105 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-104     \textcolor{keyword}{def }\_\_init\_\_(self, opt):
-105         self.second\_resp = opt.get(\textcolor{stringliteral}{'second\_response'})
-106         self.examples\_idx\_stack\_path = os.path.join(
-107             os.getcwd(),
-108             \textcolor{stringliteral}{'./\{\}\_examples\_stack\{\}.pkl'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
-109                 \textcolor{stringliteral}{'second\_response'} \textcolor{keywordflow}{if} self.second\_resp \textcolor{keywordflow}{else} \textcolor{stringliteral}{'first\_response'},
-110                 \textcolor{stringliteral}{'\_sandbox'} \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'is\_sandbox'}] \textcolor{keywordflow}{else} \textcolor{stringliteral}{''},
-111             ),
-112         )
-113         self.OLD = OffensiveStringMatcher()
-114         self.opt = opt
-115         build\_pc(opt)
-116         build\_ic(opt)
-117         df = \textcolor{stringliteral}{'personality\_captions'} \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.second\_resp \textcolor{keywordflow}{else} \textcolor{stringliteral}{'image\_chat'}
-118         data\_path = os.path.join(self.opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'\{\}/\{\}.json'})
-119         self.data = []
-120         \textcolor{keywordflow}{for} dt \textcolor{keywordflow}{in} [\textcolor{stringliteral}{'train'}, \textcolor{stringliteral}{'val'}, \textcolor{stringliteral}{'test'}]:
-121             \textcolor{keywordflow}{if} self.second\_resp \textcolor{keywordflow}{and} dt == \textcolor{stringliteral}{'val'}:
-122                 dt = \textcolor{stringliteral}{'valid'}
-123             with open(data\_path.format(df, dt)) \textcolor{keyword}{as} f:
-124                 self.data += json.load(f)
-125 
-126         \textcolor{keywordflow}{if} self.second\_resp:
-127             self.data = [d \textcolor{keywordflow}{for} d \textcolor{keywordflow}{in} self.data \textcolor{keywordflow}{if} len(d[\textcolor{stringliteral}{'dialog'}]) > 1]
-128 
-129         \textcolor{keywordflow}{if} os.path.exists(self.examples\_idx\_stack\_path):
-130             with open(self.examples\_idx\_stack\_path, \textcolor{stringliteral}{'rb'}) \textcolor{keyword}{as} handle:
-131                 self.idx\_stack = pickle.load(handle)
-132         \textcolor{keywordflow}{else}:
-133             self.idx\_stack = []
-134             self.add\_idx\_stack()
-135             self.save\_idx\_stack()
-136 
+105     \textcolor{keyword}{def }\_\_init\_\_(self, opt):
+106         self.second\_resp = opt.get(\textcolor{stringliteral}{'second\_response'})
+107         self.examples\_idx\_stack\_path = os.path.join(
+108             os.getcwd(),
+109             \textcolor{stringliteral}{'./\{\}\_examples\_stack\{\}.pkl'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+110                 \textcolor{stringliteral}{'second\_response'} \textcolor{keywordflow}{if} self.second\_resp \textcolor{keywordflow}{else} \textcolor{stringliteral}{'first\_response'},
+111                 \textcolor{stringliteral}{'\_sandbox'} \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'is\_sandbox'}] \textcolor{keywordflow}{else} \textcolor{stringliteral}{''},
+112             ),
+113         )
+114         self.OLD = OffensiveStringMatcher()
+115         self.opt = opt
+116         build\_pc(opt)
+117         build\_ic(opt)
+118         df = \textcolor{stringliteral}{'personality\_captions'} \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.second\_resp \textcolor{keywordflow}{else} \textcolor{stringliteral}{'image\_chat'}
+119         data\_path = os.path.join(self.opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'\{\}/\{\}.json'})
+120         self.data = []
+121         \textcolor{keywordflow}{for} dt \textcolor{keywordflow}{in} [\textcolor{stringliteral}{'train'}, \textcolor{stringliteral}{'val'}, \textcolor{stringliteral}{'test'}]:
+122             \textcolor{keywordflow}{if} self.second\_resp \textcolor{keywordflow}{and} dt == \textcolor{stringliteral}{'val'}:
+123                 dt = \textcolor{stringliteral}{'valid'}
+124             with open(data\_path.format(df, dt)) \textcolor{keyword}{as} f:
+125                 self.data += json.load(f)
+126 
+127         \textcolor{keywordflow}{if} self.second\_resp:
+128             self.data = [d \textcolor{keywordflow}{for} d \textcolor{keywordflow}{in} self.data \textcolor{keywordflow}{if} len(d[\textcolor{stringliteral}{'dialog'}]) > 1]
+129 
+130         \textcolor{keywordflow}{if} os.path.exists(self.examples\_idx\_stack\_path):
+131             with open(self.examples\_idx\_stack\_path, \textcolor{stringliteral}{'rb'}) \textcolor{keyword}{as} handle:
+132                 self.idx\_stack = pickle.load(handle)
+133         \textcolor{keywordflow}{else}:
+134             self.idx\_stack = []
+135             self.add\_idx\_stack()
+136             self.save\_idx\_stack()
+137 
 \end{DoxyCode}
 
 
@@ -117,16 +115,16 @@ Definition at line 104 of file worlds.\+py.
 
 
 
-Definition at line 137 of file worlds.\+py.
+Definition at line 138 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-137     \textcolor{keyword}{def }add\_idx\_stack(self):
-138         stack = list(range(len(self.data)))
-139         random.seed()
-140         random.shuffle(stack)
-141         self.idx\_stack = stack + self.idx\_stack
-142 
+138     \textcolor{keyword}{def }add\_idx\_stack(self):
+139         stack = list(range(len(self.data)))
+140         random.seed()
+141         random.shuffle(stack)
+142         self.idx\_stack = stack + self.idx\_stack
+143 
 \end{DoxyCode}
 \mbox{\Hypertarget{classimage__chat__collection_1_1worlds_1_1ExampleGenerator_a483f70c4d3d3643b180f4a37b204f586}\label{classimage__chat__collection_1_1worlds_1_1ExampleGenerator_a483f70c4d3d3643b180f4a37b204f586}} 
 \index{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Example\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Example\+Generator}!pop\+\_\+example@{pop\+\_\+example}}
@@ -136,17 +134,17 @@ Definition at line 137 of file worlds.\+py.
 
 
 
-Definition at line 143 of file worlds.\+py.
+Definition at line 144 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-143     \textcolor{keyword}{def }pop\_example(self):
-144         \textcolor{keywordflow}{if} len(self.idx\_stack) == 0:
-145             self.add\_idx\_stack()
-146         idx = self.idx\_stack.pop()
-147         ex = self.data[idx]
-148         \textcolor{keywordflow}{return} (idx, ex)
-149 
+144     \textcolor{keyword}{def }pop\_example(self):
+145         \textcolor{keywordflow}{if} len(self.idx\_stack) == 0:
+146             self.add\_idx\_stack()
+147         idx = self.idx\_stack.pop()
+148         ex = self.data[idx]
+149         \textcolor{keywordflow}{return} (idx, ex)
+150 
 \end{DoxyCode}
 \mbox{\Hypertarget{classimage__chat__collection_1_1worlds_1_1ExampleGenerator_a417989f9fbc86367d9e4d1a52486db80}\label{classimage__chat__collection_1_1worlds_1_1ExampleGenerator_a417989f9fbc86367d9e4d1a52486db80}} 
 \index{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Example\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Example\+Generator}!push\+\_\+example@{push\+\_\+example}}
@@ -156,13 +154,13 @@ Definition at line 143 of file worlds.\+py.
 
 
 
-Definition at line 150 of file worlds.\+py.
+Definition at line 151 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-150     \textcolor{keyword}{def }push\_example(self, idx):
-151         self.idx\_stack.append(idx)
-152 
+151     \textcolor{keyword}{def }push\_example(self, idx):
+152         self.idx\_stack.append(idx)
+153 
 \end{DoxyCode}
 \mbox{\Hypertarget{classimage__chat__collection_1_1worlds_1_1ExampleGenerator_ad50213021a72919682cbca2a274d0c4c}\label{classimage__chat__collection_1_1worlds_1_1ExampleGenerator_ad50213021a72919682cbca2a274d0c4c}} 
 \index{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Example\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Example\+Generator}!save\+\_\+idx\+\_\+stack@{save\+\_\+idx\+\_\+stack}}
@@ -172,15 +170,15 @@ Definition at line 150 of file worlds.\+py.
 
 
 
-Definition at line 153 of file worlds.\+py.
+Definition at line 154 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-153     \textcolor{keyword}{def }save\_idx\_stack(self):
-154         with open(self.examples\_idx\_stack\_path, \textcolor{stringliteral}{'wb'}) \textcolor{keyword}{as} handle:
-155             pickle.dump(self.idx\_stack, handle)
-156 
+154     \textcolor{keyword}{def }save\_idx\_stack(self):
+155         with open(self.examples\_idx\_stack\_path, \textcolor{stringliteral}{'wb'}) \textcolor{keyword}{as} handle:
+156             pickle.dump(self.idx\_stack, handle)
 157 
+158 
 \end{DoxyCode}
 
 
@@ -193,7 +191,7 @@ Definition at line 153 of file worlds.\+py.
 
 
 
-Definition at line 119 of file worlds.\+py.
+Definition at line 120 of file worlds.\+py.
 
 \mbox{\Hypertarget{classimage__chat__collection_1_1worlds_1_1ExampleGenerator_ae72fb9efc3997a261057fad00bc3848c}\label{classimage__chat__collection_1_1worlds_1_1ExampleGenerator_ae72fb9efc3997a261057fad00bc3848c}} 
 \index{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Example\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Example\+Generator}!examples\+\_\+idx\+\_\+stack\+\_\+path@{examples\+\_\+idx\+\_\+stack\+\_\+path}}
@@ -203,7 +201,7 @@ Definition at line 119 of file worlds.\+py.
 
 
 
-Definition at line 106 of file worlds.\+py.
+Definition at line 107 of file worlds.\+py.
 
 \mbox{\Hypertarget{classimage__chat__collection_1_1worlds_1_1ExampleGenerator_af50982bf2fe045e42d6d17374300c557}\label{classimage__chat__collection_1_1worlds_1_1ExampleGenerator_af50982bf2fe045e42d6d17374300c557}} 
 \index{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Example\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Example\+Generator}!idx\+\_\+stack@{idx\+\_\+stack}}
@@ -213,7 +211,7 @@ Definition at line 106 of file worlds.\+py.
 
 
 
-Definition at line 131 of file worlds.\+py.
+Definition at line 132 of file worlds.\+py.
 
 \mbox{\Hypertarget{classimage__chat__collection_1_1worlds_1_1ExampleGenerator_a900a30f201c1cb5b76cbfbd4de169c1b}\label{classimage__chat__collection_1_1worlds_1_1ExampleGenerator_a900a30f201c1cb5b76cbfbd4de169c1b}} 
 \index{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Example\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Example\+Generator}!O\+LD@{O\+LD}}
@@ -223,7 +221,7 @@ Definition at line 131 of file worlds.\+py.
 
 
 
-Definition at line 113 of file worlds.\+py.
+Definition at line 114 of file worlds.\+py.
 
 \mbox{\Hypertarget{classimage__chat__collection_1_1worlds_1_1ExampleGenerator_af81b2df2aa075818decf714b0194d908}\label{classimage__chat__collection_1_1worlds_1_1ExampleGenerator_af81b2df2aa075818decf714b0194d908}} 
 \index{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Example\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Example\+Generator}!opt@{opt}}
@@ -233,7 +231,7 @@ Definition at line 113 of file worlds.\+py.
 
 
 
-Definition at line 114 of file worlds.\+py.
+Definition at line 115 of file worlds.\+py.
 
 \mbox{\Hypertarget{classimage__chat__collection_1_1worlds_1_1ExampleGenerator_a1567fe5f2514d3ca587135876f662c91}\label{classimage__chat__collection_1_1worlds_1_1ExampleGenerator_a1567fe5f2514d3ca587135876f662c91}} 
 \index{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Example\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Example\+Generator}!second\+\_\+resp@{second\+\_\+resp}}
@@ -243,7 +241,7 @@ Definition at line 114 of file worlds.\+py.
 
 
 
-Definition at line 105 of file worlds.\+py.
+Definition at line 106 of file worlds.\+py.
 
 
 

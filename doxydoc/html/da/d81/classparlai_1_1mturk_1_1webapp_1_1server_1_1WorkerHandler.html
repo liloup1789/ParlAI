@@ -117,7 +117,7 @@ Public Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="../../d3/d95/server_8py_source.html#l00366">366</a> of file <a class="el" href="../../d3/d95/server_8py_source.html">server.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d95/server_8py_source.html#l00371">371</a> of file <a class="el" href="../../d3/d95/server_8py_source.html">server.py</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="ae2d5a8e9e7a62c96f5dd4b4c7cc3190e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae2d5a8e9e7a62c96f5dd4b4c7cc3190e">&#9670;&nbsp;</a></span>get()</h2>
@@ -145,10 +145,10 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d95/server_8py_source.html#l00374">374</a> of file <a class="el" href="../../d3/d95/server_8py_source.html">server.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    <span class="keyword">def </span>get(self, worker_target):</div><div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        assignments = self.data_handler.get_all_assignments_for_worker(worker_target)</div><div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        pairings = self.data_handler.get_all_pairings_for_worker(worker_target)</div><div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        processed_assignments = <a class="code" href="../../d8/d0d/namespaceparlai_1_1mturk_1_1webapp_1_1server.html#abe6ddbf97d0e5c26315fa927ed076489">merge_assignments_with_pairings</a>(</div><div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;            assignments, pairings, <span class="stringliteral">&#39;task {}&#39;</span>.<a class="code" href="../../d4/d94/namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils.html#a32e2e2022b824fbaf80c747160b52a76">format</a>(worker_target)</div><div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;        )</div><div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        worker_details = <a class="code" href="../../d8/d0d/namespaceparlai_1_1mturk_1_1webapp_1_1server.html#a92be47964fa33a4b6a14d4069d091c7d">row_to_dict</a>(self.data_handler.get_worker_data(worker_target))</div><div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        data = {<span class="stringliteral">&#39;worker_details&#39;</span>: worker_details, <span class="stringliteral">&#39;assignments&#39;</span>: processed_assignments}</div><div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;</div><div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;        self.write(json.dumps(data))</div><div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;</div><div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;</div><div class="ttc" id="namespaceparlai_1_1mturk_1_1webapp_1_1server_html_abe6ddbf97d0e5c26315fa927ed076489"><div class="ttname"><a href="../../d8/d0d/namespaceparlai_1_1mturk_1_1webapp_1_1server.html#abe6ddbf97d0e5c26315fa927ed076489">parlai.mturk.webapp.server.merge_assignments_with_pairings</a></div><div class="ttdeci">def merge_assignments_with_pairings(assignments, pairings, log_id)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d95/server_8py_source.html#l00277">server.py:277</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../d3/d95/server_8py_source.html#l00379">379</a> of file <a class="el" href="../../d3/d95/server_8py_source.html">server.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    <span class="keyword">def </span>get(self, worker_target):</div><div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        assignments = self.data_handler.get_all_assignments_for_worker(worker_target)</div><div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        pairings = self.data_handler.get_all_pairings_for_worker(worker_target)</div><div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        processed_assignments = <a class="code" href="../../d8/d0d/namespaceparlai_1_1mturk_1_1webapp_1_1server.html#abe6ddbf97d0e5c26315fa927ed076489">merge_assignments_with_pairings</a>(</div><div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;            assignments, pairings, <span class="stringliteral">&#39;task {}&#39;</span>.<a class="code" href="../../d4/d94/namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils.html#a32e2e2022b824fbaf80c747160b52a76">format</a>(worker_target)</div><div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;        )</div><div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        worker_details = <a class="code" href="../../d8/d0d/namespaceparlai_1_1mturk_1_1webapp_1_1server.html#a92be47964fa33a4b6a14d4069d091c7d">row_to_dict</a>(self.data_handler.get_worker_data(worker_target))</div><div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        data = {<span class="stringliteral">&#39;worker_details&#39;</span>: worker_details, <span class="stringliteral">&#39;assignments&#39;</span>: processed_assignments}</div><div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;</div><div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;        self.write(json.dumps(data))</div><div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;</div><div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;</div><div class="ttc" id="namespaceparlai_1_1mturk_1_1webapp_1_1server_html_abe6ddbf97d0e5c26315fa927ed076489"><div class="ttname"><a href="../../d8/d0d/namespaceparlai_1_1mturk_1_1webapp_1_1server.html#abe6ddbf97d0e5c26315fa927ed076489">parlai.mturk.webapp.server.merge_assignments_with_pairings</a></div><div class="ttdeci">def merge_assignments_with_pairings(assignments, pairings, log_id)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d95/server_8py_source.html#l00282">server.py:282</a></div></div>
 <div class="ttc" id="namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_html_a32e2e2022b824fbaf80c747160b52a76"><div class="ttname"><a href="../../d4/d94/namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils.html#a32e2e2022b824fbaf80c747160b52a76">parlai.chat_service.services.messenger.shared_utils.format</a></div><div class="ttdeci">format</div><div class="ttdef"><b>Definition:</b> <a href="../../d6/da3/chat__service_2services_2messenger_2shared__utils_8py_source.html#l00029">shared_utils.py:29</a></div></div>
-<div class="ttc" id="namespaceparlai_1_1mturk_1_1webapp_1_1server_html_a92be47964fa33a4b6a14d4069d091c7d"><div class="ttname"><a href="../../d8/d0d/namespaceparlai_1_1mturk_1_1webapp_1_1server.html#a92be47964fa33a4b6a14d4069d091c7d">parlai.mturk.webapp.server.row_to_dict</a></div><div class="ttdeci">def row_to_dict(row)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d95/server_8py_source.html#l00061">server.py:61</a></div></div>
+<div class="ttc" id="namespaceparlai_1_1mturk_1_1webapp_1_1server_html_a92be47964fa33a4b6a14d4069d091c7d"><div class="ttname"><a href="../../d8/d0d/namespaceparlai_1_1mturk_1_1webapp_1_1server.html#a92be47964fa33a4b6a14d4069d091c7d">parlai.mturk.webapp.server.row_to_dict</a></div><div class="ttdeci">def row_to_dict(row)</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/d95/server_8py_source.html#l00066">server.py:66</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -178,8 +178,8 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d95/server_8py_source.html#l00367">367</a> of file <a class="el" href="../../d3/d95/server_8py_source.html">server.py</a>.</p>
-<div class="fragment"><div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    <span class="keyword">def </span>initialize(self, app):</div><div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;        self.state = app.state</div><div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;        self.subs = app.subs</div><div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;        self.sources = app.sources</div><div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;        self.port = app.port</div><div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;        self.data_handler = app.data_handler</div><div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;</div></div><!-- fragment -->
+<p class="definition">Definition at line <a class="el" href="../../d3/d95/server_8py_source.html#l00372">372</a> of file <a class="el" href="../../d3/d95/server_8py_source.html">server.py</a>.</p>
+<div class="fragment"><div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;    <span class="keyword">def </span>initialize(self, app):</div><div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;        self.state = app.state</div><div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;        self.subs = app.subs</div><div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;        self.sources = app.sources</div><div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;        self.port = app.port</div><div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;        self.data_handler = app.data_handler</div><div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;</div></div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -195,7 +195,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d95/server_8py_source.html#l00372">372</a> of file <a class="el" href="../../d3/d95/server_8py_source.html">server.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d95/server_8py_source.html#l00377">377</a> of file <a class="el" href="../../d3/d95/server_8py_source.html">server.py</a>.</p>
 
 </div>
 </div>
@@ -211,7 +211,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d95/server_8py_source.html#l00371">371</a> of file <a class="el" href="../../d3/d95/server_8py_source.html">server.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d95/server_8py_source.html#l00376">376</a> of file <a class="el" href="../../d3/d95/server_8py_source.html">server.py</a>.</p>
 
 </div>
 </div>
@@ -227,7 +227,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d95/server_8py_source.html#l00370">370</a> of file <a class="el" href="../../d3/d95/server_8py_source.html">server.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d95/server_8py_source.html#l00375">375</a> of file <a class="el" href="../../d3/d95/server_8py_source.html">server.py</a>.</p>
 
 </div>
 </div>
@@ -243,7 +243,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d95/server_8py_source.html#l00368">368</a> of file <a class="el" href="../../d3/d95/server_8py_source.html">server.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d95/server_8py_source.html#l00373">373</a> of file <a class="el" href="../../d3/d95/server_8py_source.html">server.py</a>.</p>
 
 </div>
 </div>
@@ -259,7 +259,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/d95/server_8py_source.html#l00369">369</a> of file <a class="el" href="../../d3/d95/server_8py_source.html">server.py</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/d95/server_8py_source.html#l00374">374</a> of file <a class="el" href="../../d3/d95/server_8py_source.html">server.py</a>.</p>
 
 </div>
 </div>

@@ -2,8 +2,7 @@
 \label{classparlai_1_1tasks_1_1personality__captions_1_1agents_1_1PersonalityCaptionsTestTeacher}\index{parlai.\+tasks.\+personality\+\_\+captions.\+agents.\+Personality\+Captions\+Test\+Teacher@{parlai.\+tasks.\+personality\+\_\+captions.\+agents.\+Personality\+Captions\+Test\+Teacher}}
 
 
-Inheritance diagram for parlai.\+tasks.\+personality\+\_\+captions.\+agents.\+Personality\+Captions\+Test\+Teacher\+:
-\nopagebreak
+Inheritance diagram for parlai.\+tasks.\+personality\+\_\+captions.\+agents.\+Personality\+Captions\+Test\+Teacher\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+tasks.\+personality\+\_\+captions.\+agents.\+Pe
 \end{figure}
 
 
-Collaboration diagram for parlai.\+tasks.\+personality\+\_\+captions.\+agents.\+Personality\+Captions\+Test\+Teacher\+:
-\nopagebreak
+Collaboration diagram for parlai.\+tasks.\+personality\+\_\+captions.\+agents.\+Personality\+Captions\+Test\+Teacher\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -48,7 +46,7 @@ def \hyperlink{classparlai_1_1tasks_1_1personality__captions_1_1agents_1_1Person
 \end{DoxyVerb}
  
 
-Definition at line 306 of file agents.\+py.
+Definition at line 307 of file agents.\+py.
 
 
 
@@ -71,42 +69,42 @@ Definition at line 306 of file agents.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 343 of file agents.\+py.
+Definition at line 344 of file agents.\+py.
 
 
 \begin{DoxyCode}
-343     \textcolor{keyword}{def }get(self, episode\_idx, entry\_idx=0):
-344         \textcolor{stringliteral}{"""}
-345 \textcolor{stringliteral}{        Get an example.}
-346 \textcolor{stringliteral}{}
-347 \textcolor{stringliteral}{        :param episode\_idx:}
-348 \textcolor{stringliteral}{            index of episode in self.data}
-349 \textcolor{stringliteral}{        :param entry\_idx:}
-350 \textcolor{stringliteral}{            optional, which entry in the episode to get}
-351 \textcolor{stringliteral}{}
-352 \textcolor{stringliteral}{        :return:}
-353 \textcolor{stringliteral}{            an example}
-354 \textcolor{stringliteral}{        """}
-355         data = self.data[episode\_idx]
-356 
-357         action = \{
-358             \textcolor{stringliteral}{'text'}: data[\textcolor{stringliteral}{'personality'}] \textcolor{keywordflow}{if} self.include\_personality \textcolor{keywordflow}{else} \textcolor{stringliteral}{''},
-359             \textcolor{stringliteral}{'image'}: self.image\_features[data[\textcolor{stringliteral}{'image\_hash'}]],
-360             \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True},
-361             \textcolor{stringliteral}{'labels'}: [data[\textcolor{stringliteral}{'comment'}]],
-362         \}
-363         \textcolor{keywordflow}{if} self.num\_test\_labels == 5 \textcolor{keywordflow}{and} \textcolor{stringliteral}{'test'} \textcolor{keywordflow}{in} self.datatype:
-364             action[\textcolor{stringliteral}{'labels'}] += data[\textcolor{stringliteral}{'additional\_comments'}]
-365 
-366         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'candidates'} \textcolor{keywordflow}{in} data:
-367             \textcolor{keywordflow}{if} self.num\_test\_labels == 5 \textcolor{keywordflow}{and} \textcolor{stringliteral}{'test'} \textcolor{keywordflow}{in} self.datatype:
-368                 action[\textcolor{stringliteral}{'label\_candidates'}] = data[\textcolor{stringliteral}{'500\_candidates'}]
-369             \textcolor{keywordflow}{else}:
-370                 action[\textcolor{stringliteral}{'label\_candidates'}] = data[\textcolor{stringliteral}{'candidates'}]
-371 
-372         \textcolor{keywordflow}{return} action
-373 
+344     \textcolor{keyword}{def }get(self, episode\_idx, entry\_idx=0):
+345         \textcolor{stringliteral}{"""}
+346 \textcolor{stringliteral}{        Get an example.}
+347 \textcolor{stringliteral}{}
+348 \textcolor{stringliteral}{        :param episode\_idx:}
+349 \textcolor{stringliteral}{            index of episode in self.data}
+350 \textcolor{stringliteral}{        :param entry\_idx:}
+351 \textcolor{stringliteral}{            optional, which entry in the episode to get}
+352 \textcolor{stringliteral}{}
+353 \textcolor{stringliteral}{        :return:}
+354 \textcolor{stringliteral}{            an example}
+355 \textcolor{stringliteral}{        """}
+356         data = self.data[episode\_idx]
+357 
+358         action = \{
+359             \textcolor{stringliteral}{'text'}: data[\textcolor{stringliteral}{'personality'}] \textcolor{keywordflow}{if} self.include\_personality \textcolor{keywordflow}{else} \textcolor{stringliteral}{''},
+360             \textcolor{stringliteral}{'image'}: self.image\_features[data[\textcolor{stringliteral}{'image\_hash'}]],
+361             \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True},
+362             \textcolor{stringliteral}{'labels'}: [data[\textcolor{stringliteral}{'comment'}]],
+363         \}
+364         \textcolor{keywordflow}{if} self.num\_test\_labels == 5 \textcolor{keywordflow}{and} \textcolor{stringliteral}{'test'} \textcolor{keywordflow}{in} self.datatype:
+365             action[\textcolor{stringliteral}{'labels'}] += data[\textcolor{stringliteral}{'additional\_comments'}]
+366 
+367         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'candidates'} \textcolor{keywordflow}{in} data:
+368             \textcolor{keywordflow}{if} self.num\_test\_labels == 5 \textcolor{keywordflow}{and} \textcolor{stringliteral}{'test'} \textcolor{keywordflow}{in} self.datatype:
+369                 action[\textcolor{stringliteral}{'label\_candidates'}] = data[\textcolor{stringliteral}{'500\_candidates'}]
+370             \textcolor{keywordflow}{else}:
+371                 action[\textcolor{stringliteral}{'label\_candidates'}] = data[\textcolor{stringliteral}{'candidates'}]
+372 
+373         \textcolor{keywordflow}{return} action
 374 
+375 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1personality__captions_1_1agents_1_1PersonalityCaptionsTestTeacher_abd4a7d0a0310ae93861f1e3e70e02260}\label{classparlai_1_1tasks_1_1personality__captions_1_1agents_1_1PersonalityCaptionsTestTeacher_abd4a7d0a0310ae93861f1e3e70e02260}} 
 \index{parlai\+::tasks\+::personality\+\_\+captions\+::agents\+::\+Personality\+Captions\+Test\+Teacher@{parlai\+::tasks\+::personality\+\_\+captions\+::agents\+::\+Personality\+Captions\+Test\+Teacher}!num\+\_\+episodes@{num\+\_\+episodes}}
@@ -118,16 +116,16 @@ Definition at line 343 of file agents.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 331 of file agents.\+py.
+Definition at line 332 of file agents.\+py.
 
 
 \begin{DoxyCode}
-331     \textcolor{keyword}{def }num\_episodes(self):
-332         \textcolor{stringliteral}{"""}
-333 \textcolor{stringliteral}{        Return number of episodes.}
-334 \textcolor{stringliteral}{        """}
-335         \textcolor{keywordflow}{return} len(self.image\_features)
-336 
+332     \textcolor{keyword}{def }num\_episodes(self):
+333         \textcolor{stringliteral}{"""}
+334 \textcolor{stringliteral}{        Return number of episodes.}
+335 \textcolor{stringliteral}{        """}
+336         \textcolor{keywordflow}{return} len(self.image\_features)
+337 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1personality__captions_1_1agents_1_1PersonalityCaptionsTestTeacher_aa3c10b49dc8d2510f8d28846194ac2a6}\label{classparlai_1_1tasks_1_1personality__captions_1_1agents_1_1PersonalityCaptionsTestTeacher_aa3c10b49dc8d2510f8d28846194ac2a6}} 
 \index{parlai\+::tasks\+::personality\+\_\+captions\+::agents\+::\+Personality\+Captions\+Test\+Teacher@{parlai\+::tasks\+::personality\+\_\+captions\+::agents\+::\+Personality\+Captions\+Test\+Teacher}!num\+\_\+examples@{num\+\_\+examples}}
@@ -139,16 +137,16 @@ Definition at line 331 of file agents.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 337 of file agents.\+py.
+Definition at line 338 of file agents.\+py.
 
 
 \begin{DoxyCode}
-337     \textcolor{keyword}{def }num\_examples(self):
-338         \textcolor{stringliteral}{"""}
-339 \textcolor{stringliteral}{        Return number of examples.}
-340 \textcolor{stringliteral}{        """}
-341         \textcolor{keywordflow}{return} len(self.image\_features)
-342 
+338     \textcolor{keyword}{def }num\_examples(self):
+339         \textcolor{stringliteral}{"""}
+340 \textcolor{stringliteral}{        Return number of examples.}
+341 \textcolor{stringliteral}{        """}
+342         \textcolor{keywordflow}{return} len(self.image\_features)
+343 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1personality__captions_1_1agents_1_1PersonalityCaptionsTestTeacher_acb0270ac7c4e00d2e9067082599d4c16}\label{classparlai_1_1tasks_1_1personality__captions_1_1agents_1_1PersonalityCaptionsTestTeacher_acb0270ac7c4e00d2e9067082599d4c16}} 
 \index{parlai\+::tasks\+::personality\+\_\+captions\+::agents\+::\+Personality\+Captions\+Test\+Teacher@{parlai\+::tasks\+::personality\+\_\+captions\+::agents\+::\+Personality\+Captions\+Test\+Teacher}!reset@{reset}}
@@ -160,17 +158,17 @@ Definition at line 337 of file agents.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 324 of file agents.\+py.
+Definition at line 325 of file agents.\+py.
 
 
 \begin{DoxyCode}
-324     \textcolor{keyword}{def }reset(self):
-325         \textcolor{stringliteral}{"""}
-326 \textcolor{stringliteral}{        Reset teacher.}
-327 \textcolor{stringliteral}{        """}
-328         super().reset()
-329         self.example = \textcolor{keywordtype}{None}
-330 
+325     \textcolor{keyword}{def }reset(self):
+326         \textcolor{stringliteral}{"""}
+327 \textcolor{stringliteral}{        Reset teacher.}
+328 \textcolor{stringliteral}{        """}
+329         super().reset()
+330         self.example = \textcolor{keywordtype}{None}
+331 
 \end{DoxyCode}
 
 
@@ -183,7 +181,7 @@ Definition at line 324 of file agents.\+py.
 
 
 
-Definition at line 329 of file agents.\+py.
+Definition at line 330 of file agents.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1personality__captions_1_1agents_1_1PersonalityCaptionsTestTeacher_a3b99c22797205aaf11f652bd28c314c3}\label{classparlai_1_1tasks_1_1personality__captions_1_1agents_1_1PersonalityCaptionsTestTeacher_a3b99c22797205aaf11f652bd28c314c3}} 
 \index{parlai\+::tasks\+::personality\+\_\+captions\+::agents\+::\+Personality\+Captions\+Test\+Teacher@{parlai\+::tasks\+::personality\+\_\+captions\+::agents\+::\+Personality\+Captions\+Test\+Teacher}!image\+\_\+features@{image\+\_\+features}}
@@ -193,7 +191,7 @@ Definition at line 329 of file agents.\+py.
 
 
 
-Definition at line 322 of file agents.\+py.
+Definition at line 323 of file agents.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1personality__captions_1_1agents_1_1PersonalityCaptionsTestTeacher_aa2232ceb48d0dd2f67e8f15ac0a549e0}\label{classparlai_1_1tasks_1_1personality__captions_1_1agents_1_1PersonalityCaptionsTestTeacher_aa2232ceb48d0dd2f67e8f15ac0a549e0}} 
 \index{parlai\+::tasks\+::personality\+\_\+captions\+::agents\+::\+Personality\+Captions\+Test\+Teacher@{parlai\+::tasks\+::personality\+\_\+captions\+::agents\+::\+Personality\+Captions\+Test\+Teacher}!num\+\_\+test\+\_\+labels@{num\+\_\+test\+\_\+labels}}
@@ -203,7 +201,7 @@ Definition at line 322 of file agents.\+py.
 
 
 
-Definition at line 363 of file agents.\+py.
+Definition at line 364 of file agents.\+py.
 
 
 

@@ -1,0 +1,13 @@
+We offer a variety of agent implementations whose core model is the transformer, a self-\/attention based encoding mechanism first described in \href{https://arxiv.org/abs/1706.03762}{\tt Vaswani et al 2017}.
+
+\subsection*{Agent Variations}
+
+
+\begin{DoxyItemize}
+\item {\ttfamily transformer/biencoder} -\/ A retrieval-\/based agent that encodes a context sequence and a candidate sequence with separate \href{https://arxiv.org/abs/1810.04805}{\tt B\+E\+R\+T-\/based} Transformers. A candidate is chosen via the highest dot-\/product score between the context and candidate encodings. See \href{https://arxiv.org/pdf/1905.01969.pdf}{\tt Humeau et al 2019} for more details.
+\item {\ttfamily transformer/classifier} -\/ A classifier agent with a Transformer as the model.
+\item {\ttfamily transformer/crossencoder} -\/ A retrieval-\/based agent that jointly encodes a context and candidate sequence in a single \href{https://arxiv.org/abs/1810.04805}{\tt B\+E\+R\+T-\/based} Transformer, with a final linear layer used to compute a score. A candidate is chosen via the highest scoring encoding. See \href{https://arxiv.org/pdf/1905.01969.pdf}{\tt Humeau et al 2019} for more details.
+\item {\ttfamily transformer/generator} -\/ A generative-\/based agent that performs \hyperlink{namespaceseq2seq}{seq2seq} encoding/decoding with transformer encoders/decoders.
+\item {\ttfamily transformer/polyencoder} -\/ A retrieval-\/based agent that, similar to the bi-\/encoder agent, encodes context and candidate sequences with separate \href{https://arxiv.org/abs/1810.04805}{\tt B\+E\+R\+T-\/based} Transformers. However, to compute a final score, the agent performs an additional layer of attention using global context vectors before computing the final dot product, thus incorporating the candidate encoding into the context encoding prior to producing a dot-\/product score. See \href{https://arxiv.org/pdf/1905.01969.pdf}{\tt Humeau et al 2019} for more details.
+\item {\ttfamily transformer/ranker} -\/ A retrieval-\/based agent that encodes a context sequence and a candidate sequence with separate Transformers, before computing a dot-\/product to obtain a score for a candidate encoding. 
+\end{DoxyItemize}

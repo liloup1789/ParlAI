@@ -1,0 +1,41 @@
+\hypertarget{namespaceparlai_1_1core_1_1opt}{}\section{parlai.\+core.\+opt Namespace Reference}
+\label{namespaceparlai_1_1core_1_1opt}\index{parlai.\+core.\+opt@{parlai.\+core.\+opt}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classparlai_1_1core_1_1opt_1_1Opt}{Opt}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespaceparlai_1_1core_1_1opt_a37f4d5498e9174737b7dab37a786c04f}{load\+\_\+opt\+\_\+file}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1opt_a37f4d5498e9174737b7dab37a786c04f}\label{namespaceparlai_1_1core_1_1opt_a37f4d5498e9174737b7dab37a786c04f}} 
+\index{parlai\+::core\+::opt@{parlai\+::core\+::opt}!load\+\_\+opt\+\_\+file@{load\+\_\+opt\+\_\+file}}
+\index{load\+\_\+opt\+\_\+file@{load\+\_\+opt\+\_\+file}!parlai\+::core\+::opt@{parlai\+::core\+::opt}}
+\subsubsection{\texorpdfstring{load\+\_\+opt\+\_\+file()}{load\_opt\_file()}}
+{\footnotesize\ttfamily def parlai.\+core.\+opt.\+load\+\_\+opt\+\_\+file (\begin{DoxyParamCaption}\item[{}]{optfile }\end{DoxyParamCaption})}
+
+
+
+Definition at line 89 of file opt.\+py.
+
+
+\begin{DoxyCode}
+89 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1opt_a37f4d5498e9174737b7dab37a786c04f}{load\_opt\_file}(optfile: str) -> Opt:
+90     \textcolor{stringliteral}{"""}
+91 \textcolor{stringliteral}{    Load an Opt from disk.}
+92 \textcolor{stringliteral}{    """}
+93     \textcolor{keywordflow}{try}:
+94         \textcolor{comment}{# try json first}
+95         with open(optfile, \textcolor{stringliteral}{'r') as t\_handle:}
+96 \textcolor{stringliteral}{            opt = json.load(t\_handle)}
+97 \textcolor{stringliteral}{    }\textcolor{keywordflow}{except} UnicodeDecodeError:
+98         \textcolor{comment}{# oops it's pickled}
+99         with open(optfile, \textcolor{stringliteral}{'rb'}) \textcolor{keyword}{as} b\_handle:
+100             opt = pickle.load(b\_handle)
+101     \textcolor{keywordflow}{return} Opt(opt)
+102 \end{DoxyCode}

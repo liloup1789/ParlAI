@@ -2,8 +2,7 @@
 \label{classparlai_1_1utils_1_1thread_1_1SharedTable}\index{parlai.\+utils.\+thread.\+Shared\+Table@{parlai.\+utils.\+thread.\+Shared\+Table}}
 
 
-Inheritance diagram for parlai.\+utils.\+thread.\+Shared\+Table\+:
-\nopagebreak
+Inheritance diagram for parlai.\+utils.\+thread.\+Shared\+Table\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+utils.\+thread.\+Shared\+Table\+:
 \end{figure}
 
 
-Collaboration diagram for parlai.\+utils.\+thread.\+Shared\+Table\+:
-\nopagebreak
+Collaboration diagram for parlai.\+utils.\+thread.\+Shared\+Table\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -77,7 +75,7 @@ Use this class as follows:
 \end{DoxyVerb}
  
 
-Definition at line 18 of file thread.\+py.
+Definition at line 19 of file thread.\+py.
 
 
 
@@ -99,62 +97,62 @@ appropriate array as well as the type of value stored for that key.
 \end{DoxyVerb}
  
 
-Definition at line 36 of file thread.\+py.
+Definition at line 37 of file thread.\+py.
 
 
 \begin{DoxyCode}
-36     \textcolor{keyword}{def }\_\_init\_\_(self, init\_dict=None):
-37         \textcolor{stringliteral}{"""}
-38 \textcolor{stringliteral}{        Create a shared memory version of each element of the initial dictionary.}
-39 \textcolor{stringliteral}{}
-40 \textcolor{stringliteral}{        Creates an empty array otherwise, which will extend}
-41 \textcolor{stringliteral}{        automatically when keys are added.}
-42 \textcolor{stringliteral}{}
-43 \textcolor{stringliteral}{        Each different type (all supported types listed in the ``types`` array}
-44 \textcolor{stringliteral}{        above) has its own array. For each key we store an index into the}
-45 \textcolor{stringliteral}{        appropriate array as well as the type of value stored for that key.}
-46 \textcolor{stringliteral}{        """}
-47         \textcolor{comment}{# idx is dict of \{key: (array\_idx, value\_type)\}}
-48         self.idx = \{\}
-49         \textcolor{comment}{# arrays is dict of \{value\_type: array\_of\_ctype\}}
-50         self.arrays = \{\}
-51         self.tensors = \{\}
-52 
-53         \textcolor{keywordflow}{if} init\_dict:
-54             sizes = \{typ: 0 \textcolor{keywordflow}{for} typ \textcolor{keywordflow}{in} self.types.keys()\}
-55             \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} init\_dict.items():
-56                 \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1utils_1_1thread_ad2b01da95ecdc33d8dce76a79f48137f}{is\_tensor}(v):
-57                     \textcolor{comment}{# add tensor to tensor dict--don't try to put in rawarray}
-58                     self.tensors[k] = v
-59                     \textcolor{keywordflow}{continue}
-60                 \textcolor{keywordflow}{elif} \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(v) \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} sizes:
-61                     \textcolor{keywordflow}{raise} TypeError(
-62                         \textcolor{stringliteral}{'SharedTable does not support values of '}
-63                         + \textcolor{stringliteral}{'type '}
-64                         + \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(v))
-65                     )
-66                 sizes[\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(v)] += 1
-67             \textcolor{comment}{# pop tensors from init\_dict}
-68             \textcolor{keywordflow}{for} k \textcolor{keywordflow}{in} self.tensors.keys():
-69                 init\_dict.pop(k)
-70             \textcolor{comment}{# create raw arrays for each type}
-71             \textcolor{keywordflow}{for} typ, sz \textcolor{keywordflow}{in} sizes.items():
-72                 self.arrays[typ] = RawArray(self.types[typ], sz)
-73             \textcolor{comment}{# track indices for each key, assign them to their typed rawarray}
-74             idxs = \{typ: 0 \textcolor{keywordflow}{for} typ \textcolor{keywordflow}{in} self.types.keys()\}
-75             \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} init\_dict.items():
-76                 val\_type = \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(v)
-77                 self.idx[k] = (idxs[val\_type], val\_type)
-78                 \textcolor{keywordflow}{if} val\_type == str:
-79                     v = sys.intern(v)
-80                 self.arrays[val\_type][idxs[val\_type]] = v
-81                 idxs[val\_type] += 1
-82         \textcolor{comment}{# initialize any needed empty arrays}
-83         \textcolor{keywordflow}{for} typ, ctyp \textcolor{keywordflow}{in} self.types.items():
-84             \textcolor{keywordflow}{if} typ \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.arrays:
-85                 self.arrays[typ] = RawArray(ctyp, 0)
-86         self.lock = Lock()
-87 
+37     \textcolor{keyword}{def }\_\_init\_\_(self, init\_dict=None):
+38         \textcolor{stringliteral}{"""}
+39 \textcolor{stringliteral}{        Create a shared memory version of each element of the initial dictionary.}
+40 \textcolor{stringliteral}{}
+41 \textcolor{stringliteral}{        Creates an empty array otherwise, which will extend}
+42 \textcolor{stringliteral}{        automatically when keys are added.}
+43 \textcolor{stringliteral}{}
+44 \textcolor{stringliteral}{        Each different type (all supported types listed in the ``types`` array}
+45 \textcolor{stringliteral}{        above) has its own array. For each key we store an index into the}
+46 \textcolor{stringliteral}{        appropriate array as well as the type of value stored for that key.}
+47 \textcolor{stringliteral}{        """}
+48         \textcolor{comment}{# idx is dict of \{key: (array\_idx, value\_type)\}}
+49         self.idx = \{\}
+50         \textcolor{comment}{# arrays is dict of \{value\_type: array\_of\_ctype\}}
+51         self.arrays = \{\}
+52         self.tensors = \{\}
+53 
+54         \textcolor{keywordflow}{if} init\_dict:
+55             sizes = \{typ: 0 \textcolor{keywordflow}{for} typ \textcolor{keywordflow}{in} self.types.keys()\}
+56             \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} init\_dict.items():
+57                 \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1utils_1_1thread_ad2b01da95ecdc33d8dce76a79f48137f}{is\_tensor}(v):
+58                     \textcolor{comment}{# add tensor to tensor dict--don't try to put in rawarray}
+59                     self.tensors[k] = v
+60                     \textcolor{keywordflow}{continue}
+61                 \textcolor{keywordflow}{elif} \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(v) \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} sizes:
+62                     \textcolor{keywordflow}{raise} TypeError(
+63                         \textcolor{stringliteral}{'SharedTable does not support values of '}
+64                         + \textcolor{stringliteral}{'type '}
+65                         + \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(v))
+66                     )
+67                 sizes[\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(v)] += 1
+68             \textcolor{comment}{# pop tensors from init\_dict}
+69             \textcolor{keywordflow}{for} k \textcolor{keywordflow}{in} self.tensors.keys():
+70                 init\_dict.pop(k)
+71             \textcolor{comment}{# create raw arrays for each type}
+72             \textcolor{keywordflow}{for} typ, sz \textcolor{keywordflow}{in} sizes.items():
+73                 self.arrays[typ] = RawArray(self.types[typ], sz)
+74             \textcolor{comment}{# track indices for each key, assign them to their typed rawarray}
+75             idxs = \{typ: 0 \textcolor{keywordflow}{for} typ \textcolor{keywordflow}{in} self.types.keys()\}
+76             \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} init\_dict.items():
+77                 val\_type = \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(v)
+78                 self.idx[k] = (idxs[val\_type], val\_type)
+79                 \textcolor{keywordflow}{if} val\_type == str:
+80                     v = sys.intern(v)
+81                 self.arrays[val\_type][idxs[val\_type]] = v
+82                 idxs[val\_type] += 1
+83         \textcolor{comment}{# initialize any needed empty arrays}
+84         \textcolor{keywordflow}{for} typ, ctyp \textcolor{keywordflow}{in} self.types.items():
+85             \textcolor{keywordflow}{if} typ \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.arrays:
+86                 self.arrays[typ] = RawArray(ctyp, 0)
+87         self.lock = Lock()
+88 
 \end{DoxyCode}
 
 
@@ -167,13 +165,13 @@ Definition at line 36 of file thread.\+py.
 
 
 
-Definition at line 94 of file thread.\+py.
+Definition at line 95 of file thread.\+py.
 
 
 \begin{DoxyCode}
-94     \textcolor{keyword}{def }\_\_contains\_\_(self, key):
-95         \textcolor{keywordflow}{return} key \textcolor{keywordflow}{in} self.idx \textcolor{keywordflow}{or} key \textcolor{keywordflow}{in} self.tensors
-96 
+95     \textcolor{keyword}{def }\_\_contains\_\_(self, key):
+96         \textcolor{keywordflow}{return} key \textcolor{keywordflow}{in} self.idx \textcolor{keywordflow}{or} key \textcolor{keywordflow}{in} self.tensors
+97 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1utils_1_1thread_1_1SharedTable_a567947ad20bdc1ad18815fc1883ea247}\label{classparlai_1_1utils_1_1thread_1_1SharedTable_a567947ad20bdc1ad18815fc1883ea247}} 
 \index{parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}!\+\_\+\+\_\+delitem\+\_\+\+\_\+@{\+\_\+\+\_\+delitem\+\_\+\+\_\+}}
@@ -183,18 +181,18 @@ Definition at line 94 of file thread.\+py.
 
 
 
-Definition at line 145 of file thread.\+py.
+Definition at line 146 of file thread.\+py.
 
 
 \begin{DoxyCode}
-145     \textcolor{keyword}{def }\_\_delitem\_\_(self, key):
-146         \textcolor{keywordflow}{if} key \textcolor{keywordflow}{in} self.tensors:
-147             del self.tensors[key]
-148         \textcolor{keywordflow}{elif} key \textcolor{keywordflow}{in} self.idx:
-149             del self.idx[key]
-150         \textcolor{keywordflow}{else}:
-151             \textcolor{keywordflow}{raise} KeyError(\textcolor{stringliteral}{'Key "\{\}" not found in SharedTable'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(key))
-152 
+146     \textcolor{keyword}{def }\_\_delitem\_\_(self, key):
+147         \textcolor{keywordflow}{if} key \textcolor{keywordflow}{in} self.tensors:
+148             del self.tensors[key]
+149         \textcolor{keywordflow}{elif} key \textcolor{keywordflow}{in} self.idx:
+150             del self.idx[key]
+151         \textcolor{keywordflow}{else}:
+152             \textcolor{keywordflow}{raise} KeyError(\textcolor{stringliteral}{'Key "\{\}" not found in SharedTable'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(key))
+153 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1utils_1_1thread_1_1SharedTable_a624b898ff3294a8be69ad796640cc7ee}\label{classparlai_1_1utils_1_1thread_1_1SharedTable_a624b898ff3294a8be69ad796640cc7ee}} 
 \index{parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}!\+\_\+\+\_\+getitem\+\_\+\+\_\+@{\+\_\+\+\_\+getitem\+\_\+\+\_\+}}
@@ -206,22 +204,22 @@ Definition at line 145 of file thread.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 97 of file thread.\+py.
+Definition at line 98 of file thread.\+py.
 
 
 \begin{DoxyCode}
-97     \textcolor{keyword}{def }\_\_getitem\_\_(self, key):
-98         \textcolor{stringliteral}{"""}
-99 \textcolor{stringliteral}{        Return shared value if key is available.}
-100 \textcolor{stringliteral}{        """}
-101         \textcolor{keywordflow}{if} key \textcolor{keywordflow}{in} self.tensors:
-102             \textcolor{keywordflow}{return} self.tensors[key]
-103         \textcolor{keywordflow}{elif} key \textcolor{keywordflow}{in} self.idx:
-104             idx, typ = self.idx[key]
-105             \textcolor{keywordflow}{return} self.arrays[typ][idx]
-106         \textcolor{keywordflow}{else}:
-107             \textcolor{keywordflow}{raise} KeyError(\textcolor{stringliteral}{'Key "\{\}" not found in SharedTable'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(key))
-108 
+98     \textcolor{keyword}{def }\_\_getitem\_\_(self, key):
+99         \textcolor{stringliteral}{"""}
+100 \textcolor{stringliteral}{        Return shared value if key is available.}
+101 \textcolor{stringliteral}{        """}
+102         \textcolor{keywordflow}{if} key \textcolor{keywordflow}{in} self.tensors:
+103             \textcolor{keywordflow}{return} self.tensors[key]
+104         \textcolor{keywordflow}{elif} key \textcolor{keywordflow}{in} self.idx:
+105             idx, typ = self.idx[key]
+106             \textcolor{keywordflow}{return} self.arrays[typ][idx]
+107         \textcolor{keywordflow}{else}:
+108             \textcolor{keywordflow}{raise} KeyError(\textcolor{stringliteral}{'Key "\{\}" not found in SharedTable'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(key))
+109 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1utils_1_1thread_1_1SharedTable_a6c386b5fba3bd7ff0715c808decbaa54}\label{classparlai_1_1utils_1_1thread_1_1SharedTable_a6c386b5fba3bd7ff0715c808decbaa54}} 
 \index{parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}!\+\_\+\+\_\+iter\+\_\+\+\_\+@{\+\_\+\+\_\+iter\+\_\+\+\_\+}}
@@ -231,13 +229,13 @@ Definition at line 97 of file thread.\+py.
 
 
 
-Definition at line 91 of file thread.\+py.
+Definition at line 92 of file thread.\+py.
 
 
 \begin{DoxyCode}
-91     \textcolor{keyword}{def }\_\_iter\_\_(self):
-92         \textcolor{keywordflow}{return} iter([k \textcolor{keywordflow}{for} k \textcolor{keywordflow}{in} self.idx] + [k \textcolor{keywordflow}{for} k \textcolor{keywordflow}{in} self.tensors])
-93 
+92     \textcolor{keyword}{def }\_\_iter\_\_(self):
+93         \textcolor{keywordflow}{return} iter([k \textcolor{keywordflow}{for} k \textcolor{keywordflow}{in} self.idx] + [k \textcolor{keywordflow}{for} k \textcolor{keywordflow}{in} self.tensors])
+94 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1utils_1_1thread_1_1SharedTable_a6b6c4f7fb5887de4e2c82b0c11b6d680}\label{classparlai_1_1utils_1_1thread_1_1SharedTable_a6b6c4f7fb5887de4e2c82b0c11b6d680}} 
 \index{parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}!\+\_\+\+\_\+len\+\_\+\+\_\+@{\+\_\+\+\_\+len\+\_\+\+\_\+}}
@@ -247,13 +245,13 @@ Definition at line 91 of file thread.\+py.
 
 
 
-Definition at line 88 of file thread.\+py.
+Definition at line 89 of file thread.\+py.
 
 
 \begin{DoxyCode}
-88     \textcolor{keyword}{def }\_\_len\_\_(self):
-89         \textcolor{keywordflow}{return} len(self.idx) + len(self.tensors)
-90 
+89     \textcolor{keyword}{def }\_\_len\_\_(self):
+90         \textcolor{keywordflow}{return} len(self.idx) + len(self.tensors)
+91 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1utils_1_1thread_1_1SharedTable_af4577c8c954666ac3905a6215835bbd0}\label{classparlai_1_1utils_1_1thread_1_1SharedTable_af4577c8c954666ac3905a6215835bbd0}} 
 \index{parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}!\+\_\+\+\_\+repr\+\_\+\+\_\+@{\+\_\+\+\_\+repr\+\_\+\+\_\+}}
@@ -265,17 +263,17 @@ Definition at line 88 of file thread.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 164 of file thread.\+py.
+Definition at line 165 of file thread.\+py.
 
 
 \begin{DoxyCode}
-164     \textcolor{keyword}{def }\_\_repr\_\_(self):
-165         \textcolor{stringliteral}{"""}
-166 \textcolor{stringliteral}{        Return the object type and memory location with the mapping.}
-167 \textcolor{stringliteral}{        """}
-168         representation = super().\_\_repr\_\_()
-169         \textcolor{keywordflow}{return} representation.replace(\textcolor{stringliteral}{'>'}, \textcolor{stringliteral}{': \{\}>'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(\hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(self)))
-170 
+165     \textcolor{keyword}{def }\_\_repr\_\_(self):
+166         \textcolor{stringliteral}{"""}
+167 \textcolor{stringliteral}{        Return the object type and memory location with the mapping.}
+168 \textcolor{stringliteral}{        """}
+169         representation = super().\_\_repr\_\_()
+170         \textcolor{keywordflow}{return} representation.replace(\textcolor{stringliteral}{'>'}, \textcolor{stringliteral}{': \{\}>'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(\hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(self)))
+171 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1utils_1_1thread_1_1SharedTable_a43bc2c55c2125ce9c4848933fadeef5c}\label{classparlai_1_1utils_1_1thread_1_1SharedTable_a43bc2c55c2125ce9c4848933fadeef5c}} 
 \index{parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}!\+\_\+\+\_\+setitem\+\_\+\+\_\+@{\+\_\+\+\_\+setitem\+\_\+\+\_\+}}
@@ -294,46 +292,46 @@ that key -- if you need to do this, you must delete the key first.
 \end{DoxyVerb}
  
 
-Definition at line 109 of file thread.\+py.
+Definition at line 110 of file thread.\+py.
 
 
 \begin{DoxyCode}
-109     \textcolor{keyword}{def }\_\_setitem\_\_(self, key, value):
-110         \textcolor{stringliteral}{"""}
-111 \textcolor{stringliteral}{        If key is in table, update it. Otherwise, extend the array to make room.}
-112 \textcolor{stringliteral}{}
-113 \textcolor{stringliteral}{        This uses additive resizing not multiplicative, since the number}
-114 \textcolor{stringliteral}{        of keys is not likely to change frequently during a run, so do not}
-115 \textcolor{stringliteral}{        abuse it.}
-116 \textcolor{stringliteral}{}
-117 \textcolor{stringliteral}{        Raises an error if you try to change the type of the value stored for}
-118 \textcolor{stringliteral}{        that key -- if you need to do this, you must delete the key first.}
-119 \textcolor{stringliteral}{        """}
-120         val\_type = \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(value)
-121         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'Tensor'} \textcolor{keywordflow}{in} \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(val\_type):
-122             self.tensors[key] = value
-123             \textcolor{keywordflow}{return}
-124         \textcolor{keywordflow}{if} val\_type \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.types:
-125             \textcolor{keywordflow}{raise} TypeError(\textcolor{stringliteral}{'SharedTable does not support type '} + \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(value)))
-126         \textcolor{keywordflow}{if} val\_type == str:
-127             value = sys.intern(value)
-128         \textcolor{keywordflow}{if} key \textcolor{keywordflow}{in} self.idx:
-129             idx, typ = self.idx[key]
-130             \textcolor{keywordflow}{if} typ != val\_type:
-131                 \textcolor{keywordflow}{raise} TypeError(
-132                     (
-133                         \textcolor{stringliteral}{'Cannot change stored type for \{key\} from '}
-134                         + \textcolor{stringliteral}{'\{v1\} to \{v2\}. You need to del the key first'}
-135                         + \textcolor{stringliteral}{' if you need to change value types.'}
-136                     ).\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(key=key, v1=typ, v2=val\_type)
-137                 )
-138             self.arrays[typ][idx] = value
-139         \textcolor{keywordflow}{else}:
-140             \textcolor{keywordflow}{raise} KeyError(
-141                 \textcolor{stringliteral}{'Cannot add more keys to the shared table as '}
-142                 \textcolor{stringliteral}{'they will not be synced across processes.'}
-143             )
-144 
+110     \textcolor{keyword}{def }\_\_setitem\_\_(self, key, value):
+111         \textcolor{stringliteral}{"""}
+112 \textcolor{stringliteral}{        If key is in table, update it. Otherwise, extend the array to make room.}
+113 \textcolor{stringliteral}{}
+114 \textcolor{stringliteral}{        This uses additive resizing not multiplicative, since the number}
+115 \textcolor{stringliteral}{        of keys is not likely to change frequently during a run, so do not}
+116 \textcolor{stringliteral}{        abuse it.}
+117 \textcolor{stringliteral}{}
+118 \textcolor{stringliteral}{        Raises an error if you try to change the type of the value stored for}
+119 \textcolor{stringliteral}{        that key -- if you need to do this, you must delete the key first.}
+120 \textcolor{stringliteral}{        """}
+121         val\_type = \hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(value)
+122         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'Tensor'} \textcolor{keywordflow}{in} \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(val\_type):
+123             self.tensors[key] = value
+124             \textcolor{keywordflow}{return}
+125         \textcolor{keywordflow}{if} val\_type \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.types:
+126             \textcolor{keywordflow}{raise} TypeError(\textcolor{stringliteral}{'SharedTable does not support type '} + \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_ad5dfae268e23f506da084a9efb72f619}{type}(value)))
+127         \textcolor{keywordflow}{if} val\_type == str:
+128             value = sys.intern(value)
+129         \textcolor{keywordflow}{if} key \textcolor{keywordflow}{in} self.idx:
+130             idx, typ = self.idx[key]
+131             \textcolor{keywordflow}{if} typ != val\_type:
+132                 \textcolor{keywordflow}{raise} TypeError(
+133                     (
+134                         \textcolor{stringliteral}{'Cannot change stored type for \{key\} from '}
+135                         + \textcolor{stringliteral}{'\{v1\} to \{v2\}. You need to del the key first'}
+136                         + \textcolor{stringliteral}{' if you need to change value types.'}
+137                     ).\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(key=key, v1=typ, v2=val\_type)
+138                 )
+139             self.arrays[typ][idx] = value
+140         \textcolor{keywordflow}{else}:
+141             \textcolor{keywordflow}{raise} KeyError(
+142                 \textcolor{stringliteral}{'Cannot add more keys to the shared table as '}
+143                 \textcolor{stringliteral}{'they will not be synced across processes.'}
+144             )
+145 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1utils_1_1thread_1_1SharedTable_aa18f723bbdfce0ab50d9c36b20cec2c7}\label{classparlai_1_1utils_1_1thread_1_1SharedTable_aa18f723bbdfce0ab50d9c36b20cec2c7}} 
 \index{parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}!\+\_\+\+\_\+str\+\_\+\+\_\+@{\+\_\+\+\_\+str\+\_\+\+\_\+}}
@@ -345,21 +343,21 @@ Definition at line 109 of file thread.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 153 of file thread.\+py.
+Definition at line 154 of file thread.\+py.
 
 
 \begin{DoxyCode}
-153     \textcolor{keyword}{def }\_\_str\_\_(self):
-154         \textcolor{stringliteral}{"""}
-155 \textcolor{stringliteral}{        Return simple dict representation of the mapping.}
-156 \textcolor{stringliteral}{        """}
-157         lhs = [
-158             \textcolor{stringliteral}{'\{k\}: \{v\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(k=key, v=self.arrays[typ][idx])
-159             \textcolor{keywordflow}{for} key, (idx, typ) \textcolor{keywordflow}{in} self.idx.items()
-160         ]
-161         rhs = [\textcolor{stringliteral}{'\{k\}: \{v\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(k=k, v=v) \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} self.tensors.items()]
-162         \textcolor{keywordflow}{return} \textcolor{stringliteral}{'\{\{\{\}\}\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(\textcolor{stringliteral}{', '}.join(lhs + rhs))
-163 
+154     \textcolor{keyword}{def }\_\_str\_\_(self):
+155         \textcolor{stringliteral}{"""}
+156 \textcolor{stringliteral}{        Return simple dict representation of the mapping.}
+157 \textcolor{stringliteral}{        """}
+158         lhs = [
+159             \textcolor{stringliteral}{'\{k\}: \{v\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(k=key, v=self.arrays[typ][idx])
+160             \textcolor{keywordflow}{for} key, (idx, typ) \textcolor{keywordflow}{in} self.idx.items()
+161         ]
+162         rhs = [\textcolor{stringliteral}{'\{k\}: \{v\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(k=k, v=v) \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} self.tensors.items()]
+163         \textcolor{keywordflow}{return} \textcolor{stringliteral}{'\{\{\{\}\}\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(\textcolor{stringliteral}{', '}.join(lhs + rhs))
+164 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1utils_1_1thread_1_1SharedTable_ab9acef58b28d0c992c841a4cc11a5df2}\label{classparlai_1_1utils_1_1thread_1_1SharedTable_ab9acef58b28d0c992c841a4cc11a5df2}} 
 \index{parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}!get\+\_\+lock@{get\+\_\+lock}}
@@ -371,17 +369,17 @@ Definition at line 153 of file thread.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 171 of file thread.\+py.
+Definition at line 172 of file thread.\+py.
 
 
 \begin{DoxyCode}
-171     \textcolor{keyword}{def }get\_lock(self):
-172         \textcolor{stringliteral}{"""}
-173 \textcolor{stringliteral}{        Return the lock.}
-174 \textcolor{stringliteral}{        """}
-175         \textcolor{keywordflow}{return} self.lock
-176 
+172     \textcolor{keyword}{def }get\_lock(self):
+173         \textcolor{stringliteral}{"""}
+174 \textcolor{stringliteral}{        Return the lock.}
+175 \textcolor{stringliteral}{        """}
+176         \textcolor{keywordflow}{return} self.lock
 177 
+178 
 \end{DoxyCode}
 
 
@@ -394,7 +392,7 @@ Definition at line 171 of file thread.\+py.
 
 
 
-Definition at line 50 of file thread.\+py.
+Definition at line 51 of file thread.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1utils_1_1thread_1_1SharedTable_aec0fa85ca2544dd6220db34c7da01a08}\label{classparlai_1_1utils_1_1thread_1_1SharedTable_aec0fa85ca2544dd6220db34c7da01a08}} 
 \index{parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}!idx@{idx}}
@@ -404,7 +402,7 @@ Definition at line 50 of file thread.\+py.
 
 
 
-Definition at line 48 of file thread.\+py.
+Definition at line 49 of file thread.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1utils_1_1thread_1_1SharedTable_aa9c342b24e24a93c40950671a326d014}\label{classparlai_1_1utils_1_1thread_1_1SharedTable_aa9c342b24e24a93c40950671a326d014}} 
 \index{parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}!lock@{lock}}
@@ -414,7 +412,7 @@ Definition at line 48 of file thread.\+py.
 
 
 
-Definition at line 86 of file thread.\+py.
+Definition at line 87 of file thread.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1utils_1_1thread_1_1SharedTable_ad1a6839c09b909c73c7b57ece300d4d4}\label{classparlai_1_1utils_1_1thread_1_1SharedTable_ad1a6839c09b909c73c7b57ece300d4d4}} 
 \index{parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}!tensors@{tensors}}
@@ -424,7 +422,7 @@ Definition at line 86 of file thread.\+py.
 
 
 
-Definition at line 51 of file thread.\+py.
+Definition at line 52 of file thread.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1utils_1_1thread_1_1SharedTable_afd2aec148b1e66d0496f137749862e58}\label{classparlai_1_1utils_1_1thread_1_1SharedTable_afd2aec148b1e66d0496f137749862e58}} 
 \index{parlai\+::utils\+::thread\+::\+Shared\+Table@{parlai\+::utils\+::thread\+::\+Shared\+Table}!types@{types}}
@@ -434,7 +432,7 @@ Definition at line 51 of file thread.\+py.
 
 
 
-Definition at line 34 of file thread.\+py.
+Definition at line 35 of file thread.\+py.
 
 
 

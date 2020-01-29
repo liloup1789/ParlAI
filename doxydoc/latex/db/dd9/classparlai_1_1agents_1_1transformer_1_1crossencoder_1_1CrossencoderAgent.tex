@@ -2,8 +2,7 @@
 \label{classparlai_1_1agents_1_1transformer_1_1crossencoder_1_1CrossencoderAgent}\index{parlai.\+agents.\+transformer.\+crossencoder.\+Crossencoder\+Agent@{parlai.\+agents.\+transformer.\+crossencoder.\+Crossencoder\+Agent}}
 
 
-Inheritance diagram for parlai.\+agents.\+transformer.\+crossencoder.\+Crossencoder\+Agent\+:
-\nopagebreak
+Inheritance diagram for parlai.\+agents.\+transformer.\+crossencoder.\+Crossencoder\+Agent\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -17,7 +16,7 @@ Collaboration diagram for parlai.\+agents.\+transformer.\+crossencoder.\+Crossen
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=318pt]{da/db5/classparlai_1_1agents_1_1transformer_1_1crossencoder_1_1CrossencoderAgent__coll__graph}
+\includegraphics[width=285pt]{da/db5/classparlai_1_1agents_1_1transformer_1_1crossencoder_1_1CrossencoderAgent__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -49,7 +48,7 @@ def \hyperlink{classparlai_1_1agents_1_1transformer_1_1crossencoder_1_1Crossenco
 \end{DoxyVerb}
  
 
-Definition at line 14 of file crossencoder.\+py.
+Definition at line 15 of file crossencoder.\+py.
 
 
 
@@ -62,21 +61,21 @@ Definition at line 14 of file crossencoder.\+py.
 
 
 
-Definition at line 20 of file crossencoder.\+py.
+Definition at line 21 of file crossencoder.\+py.
 
 
 \begin{DoxyCode}
-20     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
-21         super().\_\_init\_\_(opt, shared)
-22         self.data\_parallel = opt.get(\textcolor{stringliteral}{'data\_parallel'}) \textcolor{keywordflow}{and} self.use\_cuda
-23         \textcolor{keywordflow}{if} self.data\_parallel:
-24             \textcolor{keyword}{from} \hyperlink{namespaceparlai_1_1utils_1_1distributed}{parlai.utils.distributed} \textcolor{keyword}{import} is\_distributed
-25 
-26             \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a023acb5e3b66e1f27e21247c35661279}{is\_distributed}():
-27                 \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{'Cannot combine --data-parallel and distributed mode'})
-28             \textcolor{keywordflow}{if} shared \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-29                 self.model = torch.nn.DataParallel(self.model)
-30 
+21     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
+22         super().\_\_init\_\_(opt, shared)
+23         self.data\_parallel = opt.get(\textcolor{stringliteral}{'data\_parallel'}) \textcolor{keywordflow}{and} self.use\_cuda
+24         \textcolor{keywordflow}{if} self.data\_parallel:
+25             \textcolor{keyword}{from} \hyperlink{namespaceparlai_1_1utils_1_1distributed}{parlai.utils.distributed} \textcolor{keyword}{import} is\_distributed
+26 
+27             \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a023acb5e3b66e1f27e21247c35661279}{is\_distributed}():
+28                 \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{'Cannot combine --data-parallel and distributed mode'})
+29             \textcolor{keywordflow}{if} shared \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+30                 self.model = torch.nn.DataParallel(self.model)
+31 
 \end{DoxyCode}
 
 
@@ -91,18 +90,18 @@ Definition at line 20 of file crossencoder.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 32 of file crossencoder.\+py.
+Definition at line 33 of file crossencoder.\+py.
 
 
 \begin{DoxyCode}
-32     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(cls, argparser):
-33         \textcolor{stringliteral}{"""}
-34 \textcolor{stringliteral}{        Add command-line arguments specifically for this agent.}
-35 \textcolor{stringliteral}{        """}
-36         TransformerRankerAgent.add\_cmdline\_args(argparser)
-37         argparser.set\_defaults(encode\_candidate\_vecs=\textcolor{keyword}{False})
-38         \textcolor{keywordflow}{return} argparser
-39 
+33     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(cls, argparser):
+34         \textcolor{stringliteral}{"""}
+35 \textcolor{stringliteral}{        Add command-line arguments specifically for this agent.}
+36 \textcolor{stringliteral}{        """}
+37         TransformerRankerAgent.add\_cmdline\_args(argparser)
+38         argparser.set\_defaults(encode\_candidate\_vecs=\textcolor{keyword}{False})
+39         \textcolor{keywordflow}{return} argparser
+40 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1crossencoder_1_1CrossencoderAgent_af63326f1f4d295e7a1a7fad4b07e077d}\label{classparlai_1_1agents_1_1transformer_1_1crossencoder_1_1CrossencoderAgent_af63326f1f4d295e7a1a7fad4b07e077d}} 
 \index{parlai\+::agents\+::transformer\+::crossencoder\+::\+Crossencoder\+Agent@{parlai\+::agents\+::transformer\+::crossencoder\+::\+Crossencoder\+Agent}!build\+\_\+model@{build\+\_\+model}}
@@ -112,13 +111,13 @@ Definition at line 32 of file crossencoder.\+py.
 
 
 
-Definition at line 40 of file crossencoder.\+py.
+Definition at line 41 of file crossencoder.\+py.
 
 
 \begin{DoxyCode}
-40     \textcolor{keyword}{def }build\_model(self, states=None):
-41         \textcolor{keywordflow}{return} CrossEncoderModule(self.opt, self.dict, self.NULL\_IDX)
-42 
+41     \textcolor{keyword}{def }build\_model(self, states=None):
+42         \textcolor{keywordflow}{return} CrossEncoderModule(self.opt, self.dict, self.NULL\_IDX)
+43 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1crossencoder_1_1CrossencoderAgent_a5c286ce0bc163e443e73182f95d6e0c6}\label{classparlai_1_1agents_1_1transformer_1_1crossencoder_1_1CrossencoderAgent_a5c286ce0bc163e443e73182f95d6e0c6}} 
 \index{parlai\+::agents\+::transformer\+::crossencoder\+::\+Crossencoder\+Agent@{parlai\+::agents\+::transformer\+::crossencoder\+::\+Crossencoder\+Agent}!score\+\_\+candidates@{score\+\_\+candidates}}
@@ -128,32 +127,32 @@ Definition at line 40 of file crossencoder.\+py.
 
 
 
-Definition at line 64 of file crossencoder.\+py.
+Definition at line 65 of file crossencoder.\+py.
 
 
 \begin{DoxyCode}
-64     \textcolor{keyword}{def }score\_candidates(self, batch, cand\_vecs, cand\_encs=None):
-65         \textcolor{keywordflow}{if} cand\_encs \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-66             \textcolor{keywordflow}{raise} Exception(
-67                 \textcolor{stringliteral}{'Candidate pre-computation is impossible on the '} \textcolor{stringliteral}{'crossencoder'}
-68             )
-69         num\_cands\_per\_sample = cand\_vecs.size(1)
-70         bsz = cand\_vecs.size(0)
-71         text\_idx = (
-72             batch.text\_vec.unsqueeze(1)
-73             .expand(-1, num\_cands\_per\_sample, -1)
-74             .contiguous()
-75             .view(num\_cands\_per\_sample * bsz, -1)
-76         )
-77         cand\_idx = cand\_vecs.view(num\_cands\_per\_sample * bsz, -1)
-78         tokens, segments = \hyperlink{namespaceparlai_1_1agents_1_1bert__ranker_1_1cross__encoder__ranker_a3914765cd62574f6f077c6e2e0070ab4}{concat\_without\_padding}(
-79             text\_idx, cand\_idx, self.use\_cuda, self.NULL\_IDX
-80         )
-81         scores = self.model(tokens, segments)
-82         scores = scores.view(bsz, num\_cands\_per\_sample)
-83         \textcolor{keywordflow}{return} scores
-84 
+65     \textcolor{keyword}{def }score\_candidates(self, batch, cand\_vecs, cand\_encs=None):
+66         \textcolor{keywordflow}{if} cand\_encs \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+67             \textcolor{keywordflow}{raise} Exception(
+68                 \textcolor{stringliteral}{'Candidate pre-computation is impossible on the '} \textcolor{stringliteral}{'crossencoder'}
+69             )
+70         num\_cands\_per\_sample = cand\_vecs.size(1)
+71         bsz = cand\_vecs.size(0)
+72         text\_idx = (
+73             batch.text\_vec.unsqueeze(1)
+74             .expand(-1, num\_cands\_per\_sample, -1)
+75             .contiguous()
+76             .view(num\_cands\_per\_sample * bsz, -1)
+77         )
+78         cand\_idx = cand\_vecs.view(num\_cands\_per\_sample * bsz, -1)
+79         tokens, segments = \hyperlink{namespaceparlai_1_1agents_1_1bert__ranker_1_1cross__encoder__ranker_a3914765cd62574f6f077c6e2e0070ab4}{concat\_without\_padding}(
+80             text\_idx, cand\_idx, self.use\_cuda, self.NULL\_IDX
+81         )
+82         scores = self.model(tokens, segments)
+83         scores = scores.view(bsz, num\_cands\_per\_sample)
+84         \textcolor{keywordflow}{return} scores
 85 
+86 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1crossencoder_1_1CrossencoderAgent_a736057f000f0d4cdb5d006e10c4291db}\label{classparlai_1_1agents_1_1transformer_1_1crossencoder_1_1CrossencoderAgent_a736057f000f0d4cdb5d006e10c4291db}} 
 \index{parlai\+::agents\+::transformer\+::crossencoder\+::\+Crossencoder\+Agent@{parlai\+::agents\+::transformer\+::crossencoder\+::\+Crossencoder\+Agent}!vectorize@{vectorize}}
@@ -165,19 +164,19 @@ Definition at line 64 of file crossencoder.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 43 of file crossencoder.\+py.
+Definition at line 44 of file crossencoder.\+py.
 
 
 \begin{DoxyCode}
-43     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_a5c76cc39e3014c7bcf9199d566dbdc0f}{vectorize}(self, *args, **kwargs):
-44         \textcolor{stringliteral}{"""}
-45 \textcolor{stringliteral}{        Add the start and end token to the text.}
-46 \textcolor{stringliteral}{        """}
-47         kwargs[\textcolor{stringliteral}{'add\_start'}] = \textcolor{keyword}{True}
-48         kwargs[\textcolor{stringliteral}{'add\_end'}] = \textcolor{keyword}{True}
-49         obs = super().\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_a5c76cc39e3014c7bcf9199d566dbdc0f}{vectorize}(*args, **kwargs)
-50         \textcolor{keywordflow}{return} obs
-51 
+44     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_a5c76cc39e3014c7bcf9199d566dbdc0f}{vectorize}(self, *args, **kwargs):
+45         \textcolor{stringliteral}{"""}
+46 \textcolor{stringliteral}{        Add the start and end token to the text.}
+47 \textcolor{stringliteral}{        """}
+48         kwargs[\textcolor{stringliteral}{'add\_start'}] = \textcolor{keyword}{True}
+49         kwargs[\textcolor{stringliteral}{'add\_end'}] = \textcolor{keyword}{True}
+50         obs = super().\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1utils_a5c76cc39e3014c7bcf9199d566dbdc0f}{vectorize}(*args, **kwargs)
+51         \textcolor{keywordflow}{return} obs
+52 
 \end{DoxyCode}
 
 
@@ -190,7 +189,7 @@ Definition at line 43 of file crossencoder.\+py.
 
 
 
-Definition at line 22 of file crossencoder.\+py.
+Definition at line 23 of file crossencoder.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1crossencoder_1_1CrossencoderAgent_a53447e9640405f06d1458eec65db5525}\label{classparlai_1_1agents_1_1transformer_1_1crossencoder_1_1CrossencoderAgent_a53447e9640405f06d1458eec65db5525}} 
 \index{parlai\+::agents\+::transformer\+::crossencoder\+::\+Crossencoder\+Agent@{parlai\+::agents\+::transformer\+::crossencoder\+::\+Crossencoder\+Agent}!model@{model}}
@@ -200,7 +199,7 @@ Definition at line 22 of file crossencoder.\+py.
 
 
 
-Definition at line 29 of file crossencoder.\+py.
+Definition at line 30 of file crossencoder.\+py.
 
 
 

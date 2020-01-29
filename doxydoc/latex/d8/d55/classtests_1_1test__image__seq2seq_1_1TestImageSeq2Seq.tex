@@ -1,0 +1,183 @@
+\hypertarget{classtests_1_1test__image__seq2seq_1_1TestImageSeq2Seq}{}\section{tests.\+test\+\_\+image\+\_\+seq2seq.\+Test\+Image\+Seq2\+Seq Class Reference}
+\label{classtests_1_1test__image__seq2seq_1_1TestImageSeq2Seq}\index{tests.\+test\+\_\+image\+\_\+seq2seq.\+Test\+Image\+Seq2\+Seq@{tests.\+test\+\_\+image\+\_\+seq2seq.\+Test\+Image\+Seq2\+Seq}}
+
+
+Inheritance diagram for tests.\+test\+\_\+image\+\_\+seq2seq.\+Test\+Image\+Seq2\+Seq\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{dc/de4/classtests_1_1test__image__seq2seq_1_1TestImageSeq2Seq__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for tests.\+test\+\_\+image\+\_\+seq2seq.\+Test\+Image\+Seq2\+Seq\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{d8/d99/classtests_1_1test__image__seq2seq_1_1TestImageSeq2Seq__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classtests_1_1test__image__seq2seq_1_1TestImageSeq2Seq_a1cf523643d9304f97566768912456f46}{test\+\_\+text\+\_\+task} (self)
+\item 
+def \hyperlink{classtests_1_1test__image__seq2seq_1_1TestImageSeq2Seq_ad1c4737a9b40a1d788c01defbef1f99c}{test\+\_\+image\+\_\+task} (self)
+\item 
+def \hyperlink{classtests_1_1test__image__seq2seq_1_1TestImageSeq2Seq_aa38e563849001e35ebc02d83bc3f12d6}{test\+\_\+multitask} (self)
+\item 
+def \hyperlink{classtests_1_1test__image__seq2seq_1_1TestImageSeq2Seq_aa53e884798c27b54eb1acc20b38309b8}{test\+\_\+compute\+\_\+tokenized\+\_\+bleu} (self)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classtests_1_1test__image__seq2seq_1_1TestImageSeq2Seq_aecd5dc0103c55c932f753360772de6f7}{ntries}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Unit tests for the ImageSeq2Seq Agent.
+
+Mostly testing that the agent cooperates with tasks accordingly.
+\end{DoxyVerb}
+ 
+
+Definition at line 65 of file test\+\_\+image\+\_\+seq2seq.\+py.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classtests_1_1test__image__seq2seq_1_1TestImageSeq2Seq_aa53e884798c27b54eb1acc20b38309b8}\label{classtests_1_1test__image__seq2seq_1_1TestImageSeq2Seq_aa53e884798c27b54eb1acc20b38309b8}} 
+\index{tests\+::test\+\_\+image\+\_\+seq2seq\+::\+Test\+Image\+Seq2\+Seq@{tests\+::test\+\_\+image\+\_\+seq2seq\+::\+Test\+Image\+Seq2\+Seq}!test\+\_\+compute\+\_\+tokenized\+\_\+bleu@{test\+\_\+compute\+\_\+tokenized\+\_\+bleu}}
+\index{test\+\_\+compute\+\_\+tokenized\+\_\+bleu@{test\+\_\+compute\+\_\+tokenized\+\_\+bleu}!tests\+::test\+\_\+image\+\_\+seq2seq\+::\+Test\+Image\+Seq2\+Seq@{tests\+::test\+\_\+image\+\_\+seq2seq\+::\+Test\+Image\+Seq2\+Seq}}
+\subsubsection{\texorpdfstring{test\+\_\+compute\+\_\+tokenized\+\_\+bleu()}{test\_compute\_tokenized\_bleu()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+image\+\_\+seq2seq.\+Test\+Image\+Seq2\+Seq.\+test\+\_\+compute\+\_\+tokenized\+\_\+bleu (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Test that the model outputs self-computed bleu correctly.
+\end{DoxyVerb}
+ 
+
+Definition at line 118 of file test\+\_\+image\+\_\+seq2seq.\+py.
+
+
+\begin{DoxyCode}
+118     \textcolor{keyword}{def }test\_compute\_tokenized\_bleu(self):
+119         \textcolor{stringliteral}{"""}
+120 \textcolor{stringliteral}{        Test that the model outputs self-computed bleu correctly.}
+121 \textcolor{stringliteral}{        """}
+122         args = BASE\_ARGS.copy()
+123         args.update(EVAL\_ARGS)
+124 
+125         stdout, valid, \_ = testing\_utils.eval\_model(args, skip\_test=\textcolor{keyword}{True})
+126         self.assertIn(\textcolor{stringliteral}{'fairseq\_bleu'}, valid)
+127         self.assertIn(\textcolor{stringliteral}{'nltk\_bleu\_unnormalized'}, valid)
+128 
+129 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__image__seq2seq_1_1TestImageSeq2Seq_ad1c4737a9b40a1d788c01defbef1f99c}\label{classtests_1_1test__image__seq2seq_1_1TestImageSeq2Seq_ad1c4737a9b40a1d788c01defbef1f99c}} 
+\index{tests\+::test\+\_\+image\+\_\+seq2seq\+::\+Test\+Image\+Seq2\+Seq@{tests\+::test\+\_\+image\+\_\+seq2seq\+::\+Test\+Image\+Seq2\+Seq}!test\+\_\+image\+\_\+task@{test\+\_\+image\+\_\+task}}
+\index{test\+\_\+image\+\_\+task@{test\+\_\+image\+\_\+task}!tests\+::test\+\_\+image\+\_\+seq2seq\+::\+Test\+Image\+Seq2\+Seq@{tests\+::test\+\_\+image\+\_\+seq2seq\+::\+Test\+Image\+Seq2\+Seq}}
+\subsubsection{\texorpdfstring{test\+\_\+image\+\_\+task()}{test\_image\_task()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+image\+\_\+seq2seq.\+Test\+Image\+Seq2\+Seq.\+test\+\_\+image\+\_\+task (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Test that model correctly handles image task.
+
+No training, only eval
+\end{DoxyVerb}
+ 
+
+Definition at line 87 of file test\+\_\+image\+\_\+seq2seq.\+py.
+
+
+\begin{DoxyCode}
+87     \textcolor{keyword}{def }test\_image\_task(self):
+88         \textcolor{stringliteral}{"""}
+89 \textcolor{stringliteral}{        Test that model correctly handles image task.}
+90 \textcolor{stringliteral}{}
+91 \textcolor{stringliteral}{        No training, only eval}
+92 \textcolor{stringliteral}{        """}
+93         args = BASE\_ARGS.copy()
+94         args.update(IMAGE\_ARGS)
+95 
+96         stdout, valid, test = testing\_utils.train\_model(args)
+97         self.assertLessEqual(
+98             valid[\textcolor{stringliteral}{'ppl'}], 6.6, f\textcolor{stringliteral}{'failed to train image\_seq2seq on image task: \{stdout\}'}
+99         )
+100 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__image__seq2seq_1_1TestImageSeq2Seq_aa38e563849001e35ebc02d83bc3f12d6}\label{classtests_1_1test__image__seq2seq_1_1TestImageSeq2Seq_aa38e563849001e35ebc02d83bc3f12d6}} 
+\index{tests\+::test\+\_\+image\+\_\+seq2seq\+::\+Test\+Image\+Seq2\+Seq@{tests\+::test\+\_\+image\+\_\+seq2seq\+::\+Test\+Image\+Seq2\+Seq}!test\+\_\+multitask@{test\+\_\+multitask}}
+\index{test\+\_\+multitask@{test\+\_\+multitask}!tests\+::test\+\_\+image\+\_\+seq2seq\+::\+Test\+Image\+Seq2\+Seq@{tests\+::test\+\_\+image\+\_\+seq2seq\+::\+Test\+Image\+Seq2\+Seq}}
+\subsubsection{\texorpdfstring{test\+\_\+multitask()}{test\_multitask()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+image\+\_\+seq2seq.\+Test\+Image\+Seq2\+Seq.\+test\+\_\+multitask (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Test that model can handle multiple inputs.
+\end{DoxyVerb}
+ 
+
+Definition at line 104 of file test\+\_\+image\+\_\+seq2seq.\+py.
+
+
+\begin{DoxyCode}
+104     \textcolor{keyword}{def }test\_multitask(self):
+105         \textcolor{stringliteral}{"""}
+106 \textcolor{stringliteral}{        Test that model can handle multiple inputs.}
+107 \textcolor{stringliteral}{        """}
+108         args = BASE\_ARGS.copy()
+109         args.update(MULTITASK\_ARGS)
+110 
+111         stdout, valid, test = testing\_utils.train\_model(args)
+112         self.assertLessEqual(
+113             valid[\textcolor{stringliteral}{'ppl'}],
+114             5.0,
+115             f\textcolor{stringliteral}{'failed to train image\_seq2seq on image+text task: \{stdout\}'},
+116         )
+117 
+\end{DoxyCode}
+\mbox{\Hypertarget{classtests_1_1test__image__seq2seq_1_1TestImageSeq2Seq_a1cf523643d9304f97566768912456f46}\label{classtests_1_1test__image__seq2seq_1_1TestImageSeq2Seq_a1cf523643d9304f97566768912456f46}} 
+\index{tests\+::test\+\_\+image\+\_\+seq2seq\+::\+Test\+Image\+Seq2\+Seq@{tests\+::test\+\_\+image\+\_\+seq2seq\+::\+Test\+Image\+Seq2\+Seq}!test\+\_\+text\+\_\+task@{test\+\_\+text\+\_\+task}}
+\index{test\+\_\+text\+\_\+task@{test\+\_\+text\+\_\+task}!tests\+::test\+\_\+image\+\_\+seq2seq\+::\+Test\+Image\+Seq2\+Seq@{tests\+::test\+\_\+image\+\_\+seq2seq\+::\+Test\+Image\+Seq2\+Seq}}
+\subsubsection{\texorpdfstring{test\+\_\+text\+\_\+task()}{test\_text\_task()}}
+{\footnotesize\ttfamily def tests.\+test\+\_\+image\+\_\+seq2seq.\+Test\+Image\+Seq2\+Seq.\+test\+\_\+text\+\_\+task (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Test that model correctly handles text task.
+\end{DoxyVerb}
+ 
+
+Definition at line 73 of file test\+\_\+image\+\_\+seq2seq.\+py.
+
+
+\begin{DoxyCode}
+73     \textcolor{keyword}{def }test\_text\_task(self):
+74         \textcolor{stringliteral}{"""}
+75 \textcolor{stringliteral}{        Test that model correctly handles text task.}
+76 \textcolor{stringliteral}{        """}
+77         args = BASE\_ARGS.copy()
+78         args.update(TEXT\_ARGS)
+79         stdout, valid, test = testing\_utils.train\_model(args)
+80         self.assertLessEqual(
+81             valid[\textcolor{stringliteral}{'ppl'}], 1.5, f\textcolor{stringliteral}{'failed to train image\_seq2seq on text task: \{stdout\}'}
+82         )
+83 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classtests_1_1test__image__seq2seq_1_1TestImageSeq2Seq_aecd5dc0103c55c932f753360772de6f7}\label{classtests_1_1test__image__seq2seq_1_1TestImageSeq2Seq_aecd5dc0103c55c932f753360772de6f7}} 
+\index{tests\+::test\+\_\+image\+\_\+seq2seq\+::\+Test\+Image\+Seq2\+Seq@{tests\+::test\+\_\+image\+\_\+seq2seq\+::\+Test\+Image\+Seq2\+Seq}!ntries@{ntries}}
+\index{ntries@{ntries}!tests\+::test\+\_\+image\+\_\+seq2seq\+::\+Test\+Image\+Seq2\+Seq@{tests\+::test\+\_\+image\+\_\+seq2seq\+::\+Test\+Image\+Seq2\+Seq}}
+\subsubsection{\texorpdfstring{ntries}{ntries}}
+{\footnotesize\ttfamily tests.\+test\+\_\+image\+\_\+seq2seq.\+Test\+Image\+Seq2\+Seq.\+ntries\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line 72 of file test\+\_\+image\+\_\+seq2seq.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+tests/\hyperlink{test__image__seq2seq_8py}{test\+\_\+image\+\_\+seq2seq.\+py}\end{DoxyCompactItemize}

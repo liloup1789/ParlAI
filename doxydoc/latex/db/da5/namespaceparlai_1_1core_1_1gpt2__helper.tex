@@ -15,9 +15,9 @@ def \hyperlink{namespaceparlai_1_1core_1_1gpt2__helper_ac5bffa2aece99e43444185ba
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-string \hyperlink{namespaceparlai_1_1core_1_1gpt2__helper_aeb53e5722eee3791e6921df0a571263c}{D\+E\+F\+A\+U\+L\+T\+\_\+\+E\+N\+C\+O\+D\+E\+R\+\_\+\+J\+S\+ON} = \textquotesingle{}https\+://dl.\+fbaipublicfiles.\+com/fairseq/gpt2\+\_\+bpe/encoder.\+json\textquotesingle{}
+\hyperlink{namespaceparlai_1_1core_1_1gpt2__helper_a39eb998ed915bcd1c86bafac1953a409}{D\+E\+F\+A\+U\+L\+T\+\_\+\+E\+N\+C\+O\+D\+E\+R\+\_\+\+J\+S\+ON}
 \item 
-string \hyperlink{namespaceparlai_1_1core_1_1gpt2__helper_a45a1fe95a0d4df46ca148fef2a20ebd1}{D\+E\+F\+A\+U\+L\+T\+\_\+\+V\+O\+C\+A\+B\+\_\+\+B\+PE} = \textquotesingle{}https\+://dl.\+fbaipublicfiles.\+com/fairseq/gpt2\+\_\+bpe/vocab.\+bpe\textquotesingle{}
+\hyperlink{namespaceparlai_1_1core_1_1gpt2__helper_a7a40e1f5234a69039bc1a9765a50e048}{D\+E\+F\+A\+U\+L\+T\+\_\+\+V\+O\+C\+A\+B\+\_\+\+B\+PE}
 \end{DoxyCompactItemize}
 
 
@@ -39,37 +39,37 @@ whitespace/control characters the bpe code barfs on.
 \end{DoxyVerb}
  
 
-Definition at line 25 of file gpt2\+\_\+helper.\+py.
+Definition at line 27 of file gpt2\+\_\+helper.\+py.
 
 
 \begin{DoxyCode}
-25 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1gpt2__helper_ae992d8ce81708900b1b1bb81bc7a816d}{bytes\_to\_unicode}():
-26     \textcolor{stringliteral}{"""}
-27 \textcolor{stringliteral}{    Returns list of utf-8 byte and a corresponding list of unicode strings.}
-28 \textcolor{stringliteral}{}
-29 \textcolor{stringliteral}{    The reversible bpe codes work on unicode strings. This means you need a large # of}
-30 \textcolor{stringliteral}{    unicode characters in your vocab if you want to avoid UNKs. When you're at something}
-31 \textcolor{stringliteral}{    like a 10B token dataset you end up needing around 5K for decent coverage. This is a}
-32 \textcolor{stringliteral}{    signficant percentage of your normal, say, 32K bpe vocab. To avoid that, we want}
-33 \textcolor{stringliteral}{    lookup tables between utf-8 bytes and unicode strings. And avoids mapping to}
-34 \textcolor{stringliteral}{    whitespace/control characters the bpe code barfs on.}
-35 \textcolor{stringliteral}{    """}
-36     bs = (
-37         list(range(ord(\textcolor{stringliteral}{"!"}), ord(\textcolor{stringliteral}{"~"}) + 1))
-38         + list(range(ord(\textcolor{stringliteral}{"¡"}), ord(\textcolor{stringliteral}{"¬"}) + 1))
-39         + list(range(ord(\textcolor{stringliteral}{"®"}), ord(\textcolor{stringliteral}{"ÿ"}) + 1))
-40     )
-41     cs = bs[:]
-42     n = 0
-43     \textcolor{keywordflow}{for} b \textcolor{keywordflow}{in} range(2 ** 8):
-44         \textcolor{keywordflow}{if} b \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} bs:
-45             bs.append(b)
-46             cs.append(2 ** 8 + n)
-47             n += 1
-48     cs = [chr(n) \textcolor{keywordflow}{for} n \textcolor{keywordflow}{in} cs]
-49     \textcolor{keywordflow}{return} dict(zip(bs, cs))
-50 
-51 
+27 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1gpt2__helper_ae992d8ce81708900b1b1bb81bc7a816d}{bytes\_to\_unicode}():
+28     \textcolor{stringliteral}{"""}
+29 \textcolor{stringliteral}{    Returns list of utf-8 byte and a corresponding list of unicode strings.}
+30 \textcolor{stringliteral}{}
+31 \textcolor{stringliteral}{    The reversible bpe codes work on unicode strings. This means you need a large # of}
+32 \textcolor{stringliteral}{    unicode characters in your vocab if you want to avoid UNKs. When you're at something}
+33 \textcolor{stringliteral}{    like a 10B token dataset you end up needing around 5K for decent coverage. This is a}
+34 \textcolor{stringliteral}{    signficant percentage of your normal, say, 32K bpe vocab. To avoid that, we want}
+35 \textcolor{stringliteral}{    lookup tables between utf-8 bytes and unicode strings. And avoids mapping to}
+36 \textcolor{stringliteral}{    whitespace/control characters the bpe code barfs on.}
+37 \textcolor{stringliteral}{    """}
+38     bs = (
+39         list(range(ord(\textcolor{stringliteral}{"!"}), ord(\textcolor{stringliteral}{"~"}) + 1))
+40         + list(range(ord(\textcolor{stringliteral}{"¡"}), ord(\textcolor{stringliteral}{"¬"}) + 1))
+41         + list(range(ord(\textcolor{stringliteral}{"®"}), ord(\textcolor{stringliteral}{"ÿ"}) + 1))
+42     )
+43     cs = bs[:]
+44     n = 0
+45     \textcolor{keywordflow}{for} b \textcolor{keywordflow}{in} range(2 ** 8):
+46         \textcolor{keywordflow}{if} b \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} bs:
+47             bs.append(b)
+48             cs.append(2 ** 8 + n)
+49             n += 1
+50     cs = [chr(n) \textcolor{keywordflow}{for} n \textcolor{keywordflow}{in} cs]
+51     \textcolor{keywordflow}{return} dict(zip(bs, cs))
+52 
+53 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespaceparlai_1_1core_1_1gpt2__helper_ac5bffa2aece99e43444185ba85dff425}\label{namespaceparlai_1_1core_1_1gpt2__helper_ac5bffa2aece99e43444185ba85dff425}} 
 \index{parlai\+::core\+::gpt2\+\_\+helper@{parlai\+::core\+::gpt2\+\_\+helper}!get\+\_\+pairs@{get\+\_\+pairs}}
@@ -83,45 +83,45 @@ Word is represented as tuple of symbols (symbols being variable-length strings).
 \end{DoxyVerb}
  
 
-Definition at line 52 of file gpt2\+\_\+helper.\+py.
+Definition at line 54 of file gpt2\+\_\+helper.\+py.
 
 
 \begin{DoxyCode}
-52 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1gpt2__helper_ac5bffa2aece99e43444185ba85dff425}{get\_pairs}(word):
-53     \textcolor{stringliteral}{"""}
-54 \textcolor{stringliteral}{    Return set of symbol pairs in a word.}
-55 \textcolor{stringliteral}{}
-56 \textcolor{stringliteral}{    Word is represented as tuple of symbols (symbols being variable-length strings).}
-57 \textcolor{stringliteral}{    """}
-58     pairs = set()
-59     prev\_char = word[0]
-60     \textcolor{keywordflow}{for} char \textcolor{keywordflow}{in} word[1:]:
-61         pairs.add((prev\_char, char))
-62         prev\_char = char
-63     \textcolor{keywordflow}{return} pairs
-64 
-65 
+54 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1gpt2__helper_ac5bffa2aece99e43444185ba85dff425}{get\_pairs}(word):
+55     \textcolor{stringliteral}{"""}
+56 \textcolor{stringliteral}{    Return set of symbol pairs in a word.}
+57 \textcolor{stringliteral}{}
+58 \textcolor{stringliteral}{    Word is represented as tuple of symbols (symbols being variable-length strings).}
+59 \textcolor{stringliteral}{    """}
+60     pairs = set()
+61     prev\_char = word[0]
+62     \textcolor{keywordflow}{for} char \textcolor{keywordflow}{in} word[1:]:
+63         pairs.add((prev\_char, char))
+64         prev\_char = char
+65     \textcolor{keywordflow}{return} pairs
+66 
+67 
 \end{DoxyCode}
 
 
 \subsection{Variable Documentation}
-\mbox{\Hypertarget{namespaceparlai_1_1core_1_1gpt2__helper_aeb53e5722eee3791e6921df0a571263c}\label{namespaceparlai_1_1core_1_1gpt2__helper_aeb53e5722eee3791e6921df0a571263c}} 
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1gpt2__helper_a39eb998ed915bcd1c86bafac1953a409}\label{namespaceparlai_1_1core_1_1gpt2__helper_a39eb998ed915bcd1c86bafac1953a409}} 
 \index{parlai\+::core\+::gpt2\+\_\+helper@{parlai\+::core\+::gpt2\+\_\+helper}!D\+E\+F\+A\+U\+L\+T\+\_\+\+E\+N\+C\+O\+D\+E\+R\+\_\+\+J\+S\+ON@{D\+E\+F\+A\+U\+L\+T\+\_\+\+E\+N\+C\+O\+D\+E\+R\+\_\+\+J\+S\+ON}}
 \index{D\+E\+F\+A\+U\+L\+T\+\_\+\+E\+N\+C\+O\+D\+E\+R\+\_\+\+J\+S\+ON@{D\+E\+F\+A\+U\+L\+T\+\_\+\+E\+N\+C\+O\+D\+E\+R\+\_\+\+J\+S\+ON}!parlai\+::core\+::gpt2\+\_\+helper@{parlai\+::core\+::gpt2\+\_\+helper}}
 \subsubsection{\texorpdfstring{D\+E\+F\+A\+U\+L\+T\+\_\+\+E\+N\+C\+O\+D\+E\+R\+\_\+\+J\+S\+ON}{DEFAULT\_ENCODER\_JSON}}
-{\footnotesize\ttfamily string parlai.\+core.\+gpt2\+\_\+helper.\+D\+E\+F\+A\+U\+L\+T\+\_\+\+E\+N\+C\+O\+D\+E\+R\+\_\+\+J\+S\+ON = \textquotesingle{}https\+://dl.\+fbaipublicfiles.\+com/fairseq/gpt2\+\_\+bpe/encoder.\+json\textquotesingle{}}
+{\footnotesize\ttfamily parlai.\+core.\+gpt2\+\_\+helper.\+D\+E\+F\+A\+U\+L\+T\+\_\+\+E\+N\+C\+O\+D\+E\+R\+\_\+\+J\+S\+ON}
 
 
 
-Definition at line 20 of file gpt2\+\_\+helper.\+py.
+Definition at line 22 of file gpt2\+\_\+helper.\+py.
 
-\mbox{\Hypertarget{namespaceparlai_1_1core_1_1gpt2__helper_a45a1fe95a0d4df46ca148fef2a20ebd1}\label{namespaceparlai_1_1core_1_1gpt2__helper_a45a1fe95a0d4df46ca148fef2a20ebd1}} 
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1gpt2__helper_a7a40e1f5234a69039bc1a9765a50e048}\label{namespaceparlai_1_1core_1_1gpt2__helper_a7a40e1f5234a69039bc1a9765a50e048}} 
 \index{parlai\+::core\+::gpt2\+\_\+helper@{parlai\+::core\+::gpt2\+\_\+helper}!D\+E\+F\+A\+U\+L\+T\+\_\+\+V\+O\+C\+A\+B\+\_\+\+B\+PE@{D\+E\+F\+A\+U\+L\+T\+\_\+\+V\+O\+C\+A\+B\+\_\+\+B\+PE}}
 \index{D\+E\+F\+A\+U\+L\+T\+\_\+\+V\+O\+C\+A\+B\+\_\+\+B\+PE@{D\+E\+F\+A\+U\+L\+T\+\_\+\+V\+O\+C\+A\+B\+\_\+\+B\+PE}!parlai\+::core\+::gpt2\+\_\+helper@{parlai\+::core\+::gpt2\+\_\+helper}}
 \subsubsection{\texorpdfstring{D\+E\+F\+A\+U\+L\+T\+\_\+\+V\+O\+C\+A\+B\+\_\+\+B\+PE}{DEFAULT\_VOCAB\_BPE}}
-{\footnotesize\ttfamily string parlai.\+core.\+gpt2\+\_\+helper.\+D\+E\+F\+A\+U\+L\+T\+\_\+\+V\+O\+C\+A\+B\+\_\+\+B\+PE = \textquotesingle{}https\+://dl.\+fbaipublicfiles.\+com/fairseq/gpt2\+\_\+bpe/vocab.\+bpe\textquotesingle{}}
+{\footnotesize\ttfamily parlai.\+core.\+gpt2\+\_\+helper.\+D\+E\+F\+A\+U\+L\+T\+\_\+\+V\+O\+C\+A\+B\+\_\+\+B\+PE}
 
 
 
-Definition at line 21 of file gpt2\+\_\+helper.\+py.
+Definition at line 23 of file gpt2\+\_\+helper.\+py.
 

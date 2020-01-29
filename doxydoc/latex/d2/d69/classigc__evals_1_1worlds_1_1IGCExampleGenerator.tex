@@ -2,8 +2,7 @@
 \label{classigc__evals_1_1worlds_1_1IGCExampleGenerator}\index{igc\+\_\+evals.\+worlds.\+I\+G\+C\+Example\+Generator@{igc\+\_\+evals.\+worlds.\+I\+G\+C\+Example\+Generator}}
 
 
-Inheritance diagram for igc\+\_\+evals.\+worlds.\+I\+G\+C\+Example\+Generator\+:
-\nopagebreak
+Inheritance diagram for igc\+\_\+evals.\+worlds.\+I\+G\+C\+Example\+Generator\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for igc\+\_\+evals.\+worlds.\+I\+G\+C\+Example\+Generator\+:
 \end{figure}
 
 
-Collaboration diagram for igc\+\_\+evals.\+worlds.\+I\+G\+C\+Example\+Generator\+:
-\nopagebreak
+Collaboration diagram for igc\+\_\+evals.\+worlds.\+I\+G\+C\+Example\+Generator\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -49,7 +47,7 @@ def \hyperlink{classigc__evals_1_1worlds_1_1IGCExampleGenerator_a3f787da040d9b83
 \end{DoxyVerb}
  
 
-Definition at line 56 of file worlds.\+py.
+Definition at line 57 of file worlds.\+py.
 
 
 
@@ -62,30 +60,30 @@ Definition at line 56 of file worlds.\+py.
 
 
 
-Definition at line 61 of file worlds.\+py.
+Definition at line 62 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-61     \textcolor{keyword}{def }\_\_init\_\_(self, opt):
-62         handle = \textcolor{stringliteral}{'./examples\_stack\{\}\{\}.pkl'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
-63             \textcolor{stringliteral}{'\_sandbox'} \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'is\_sandbox'}] \textcolor{keywordflow}{else} \textcolor{stringliteral}{'\_'}, opt[\textcolor{stringliteral}{'dialog\_round'}]
-64         )
-65         self.examples\_idx\_stack\_path = os.path.join(os.getcwd(), handle)
-66         data\_path = opt.get(\textcolor{stringliteral}{'eval\_data\_path'})
-67         \textcolor{keywordflow}{if} data\_path != \textcolor{stringliteral}{''}:
-68             with open(data\_path) \textcolor{keyword}{as} f:
-69                 self.data = json.load(f)
-70         \textcolor{keywordflow}{else}:
-71             self.data = \{123: demo\_example\}
-72 
-73         \textcolor{keywordflow}{if} os.path.exists(self.examples\_idx\_stack\_path):
-74             with open(self.examples\_idx\_stack\_path, \textcolor{stringliteral}{'rb'}) \textcolor{keyword}{as} handle:
-75                 self.idx\_stack = pickle.load(handle)
-76         \textcolor{keywordflow}{else}:
-77             self.idx\_stack = []
-78             self.add\_idx\_stack()
-79             self.save\_idx\_stack()
-80 
+62     \textcolor{keyword}{def }\_\_init\_\_(self, opt):
+63         handle = \textcolor{stringliteral}{'./examples\_stack\{\}\{\}.pkl'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+64             \textcolor{stringliteral}{'\_sandbox'} \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'is\_sandbox'}] \textcolor{keywordflow}{else} \textcolor{stringliteral}{'\_'}, opt[\textcolor{stringliteral}{'dialog\_round'}]
+65         )
+66         self.examples\_idx\_stack\_path = os.path.join(os.getcwd(), handle)
+67         data\_path = opt.get(\textcolor{stringliteral}{'eval\_data\_path'})
+68         \textcolor{keywordflow}{if} data\_path != \textcolor{stringliteral}{''}:
+69             with open(data\_path) \textcolor{keyword}{as} f:
+70                 self.data = json.load(f)
+71         \textcolor{keywordflow}{else}:
+72             self.data = \{123: demo\_example\}
+73 
+74         \textcolor{keywordflow}{if} os.path.exists(self.examples\_idx\_stack\_path):
+75             with open(self.examples\_idx\_stack\_path, \textcolor{stringliteral}{'rb'}) \textcolor{keyword}{as} handle:
+76                 self.idx\_stack = pickle.load(handle)
+77         \textcolor{keywordflow}{else}:
+78             self.idx\_stack = []
+79             self.add\_idx\_stack()
+80             self.save\_idx\_stack()
+81 
 \end{DoxyCode}
 
 
@@ -98,16 +96,16 @@ Definition at line 61 of file worlds.\+py.
 
 
 
-Definition at line 81 of file worlds.\+py.
+Definition at line 82 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-81     \textcolor{keyword}{def }add\_idx\_stack(self):
-82         stack = list(self.data.keys())
-83         random.seed()
-84         random.shuffle(stack)
-85         self.idx\_stack = stack + self.idx\_stack
-86 
+82     \textcolor{keyword}{def }add\_idx\_stack(self):
+83         stack = list(self.data.keys())
+84         random.seed()
+85         random.shuffle(stack)
+86         self.idx\_stack = stack + self.idx\_stack
+87 
 \end{DoxyCode}
 \mbox{\Hypertarget{classigc__evals_1_1worlds_1_1IGCExampleGenerator_a68420b6b80ae5d3a8825302359371ed5}\label{classigc__evals_1_1worlds_1_1IGCExampleGenerator_a68420b6b80ae5d3a8825302359371ed5}} 
 \index{igc\+\_\+evals\+::worlds\+::\+I\+G\+C\+Example\+Generator@{igc\+\_\+evals\+::worlds\+::\+I\+G\+C\+Example\+Generator}!pop\+\_\+example@{pop\+\_\+example}}
@@ -117,17 +115,17 @@ Definition at line 81 of file worlds.\+py.
 
 
 
-Definition at line 87 of file worlds.\+py.
+Definition at line 88 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-87     \textcolor{keyword}{def }pop\_example(self):
-88         \textcolor{keywordflow}{if} len(self.idx\_stack) == 0:
-89             self.add\_idx\_stack()
-90         idx = self.idx\_stack.pop()
-91         ex = self.data[idx]
-92         \textcolor{keywordflow}{return} (idx, ex)
-93 
+88     \textcolor{keyword}{def }pop\_example(self):
+89         \textcolor{keywordflow}{if} len(self.idx\_stack) == 0:
+90             self.add\_idx\_stack()
+91         idx = self.idx\_stack.pop()
+92         ex = self.data[idx]
+93         \textcolor{keywordflow}{return} (idx, ex)
+94 
 \end{DoxyCode}
 \mbox{\Hypertarget{classigc__evals_1_1worlds_1_1IGCExampleGenerator_a34dc6ef46a9ba8a1c72c8b674ff444b9}\label{classigc__evals_1_1worlds_1_1IGCExampleGenerator_a34dc6ef46a9ba8a1c72c8b674ff444b9}} 
 \index{igc\+\_\+evals\+::worlds\+::\+I\+G\+C\+Example\+Generator@{igc\+\_\+evals\+::worlds\+::\+I\+G\+C\+Example\+Generator}!push\+\_\+example@{push\+\_\+example}}
@@ -137,13 +135,13 @@ Definition at line 87 of file worlds.\+py.
 
 
 
-Definition at line 94 of file worlds.\+py.
+Definition at line 95 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-94     \textcolor{keyword}{def }push\_example(self, idx):
-95         self.idx\_stack.append(idx)
-96 
+95     \textcolor{keyword}{def }push\_example(self, idx):
+96         self.idx\_stack.append(idx)
+97 
 \end{DoxyCode}
 \mbox{\Hypertarget{classigc__evals_1_1worlds_1_1IGCExampleGenerator_a3f787da040d9b83d9c857b8ef65d36eb}\label{classigc__evals_1_1worlds_1_1IGCExampleGenerator_a3f787da040d9b83d9c857b8ef65d36eb}} 
 \index{igc\+\_\+evals\+::worlds\+::\+I\+G\+C\+Example\+Generator@{igc\+\_\+evals\+::worlds\+::\+I\+G\+C\+Example\+Generator}!save\+\_\+idx\+\_\+stack@{save\+\_\+idx\+\_\+stack}}
@@ -153,15 +151,15 @@ Definition at line 94 of file worlds.\+py.
 
 
 
-Definition at line 97 of file worlds.\+py.
+Definition at line 98 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-97     \textcolor{keyword}{def }save\_idx\_stack(self):
-98         with open(self.examples\_idx\_stack\_path, \textcolor{stringliteral}{'wb'}) \textcolor{keyword}{as} handle:
-99             pickle.dump(self.idx\_stack, handle)
-100 
+98     \textcolor{keyword}{def }save\_idx\_stack(self):
+99         with open(self.examples\_idx\_stack\_path, \textcolor{stringliteral}{'wb'}) \textcolor{keyword}{as} handle:
+100             pickle.dump(self.idx\_stack, handle)
 101 
+102 
 \end{DoxyCode}
 
 
@@ -174,7 +172,7 @@ Definition at line 97 of file worlds.\+py.
 
 
 
-Definition at line 69 of file worlds.\+py.
+Definition at line 70 of file worlds.\+py.
 
 \mbox{\Hypertarget{classigc__evals_1_1worlds_1_1IGCExampleGenerator_aa309ee59a607d747c0f9868951ecba0a}\label{classigc__evals_1_1worlds_1_1IGCExampleGenerator_aa309ee59a607d747c0f9868951ecba0a}} 
 \index{igc\+\_\+evals\+::worlds\+::\+I\+G\+C\+Example\+Generator@{igc\+\_\+evals\+::worlds\+::\+I\+G\+C\+Example\+Generator}!examples\+\_\+idx\+\_\+stack\+\_\+path@{examples\+\_\+idx\+\_\+stack\+\_\+path}}
@@ -184,7 +182,7 @@ Definition at line 69 of file worlds.\+py.
 
 
 
-Definition at line 65 of file worlds.\+py.
+Definition at line 66 of file worlds.\+py.
 
 \mbox{\Hypertarget{classigc__evals_1_1worlds_1_1IGCExampleGenerator_ac091cb764c64196d922d65d030f6ec57}\label{classigc__evals_1_1worlds_1_1IGCExampleGenerator_ac091cb764c64196d922d65d030f6ec57}} 
 \index{igc\+\_\+evals\+::worlds\+::\+I\+G\+C\+Example\+Generator@{igc\+\_\+evals\+::worlds\+::\+I\+G\+C\+Example\+Generator}!idx\+\_\+stack@{idx\+\_\+stack}}
@@ -194,7 +192,7 @@ Definition at line 65 of file worlds.\+py.
 
 
 
-Definition at line 75 of file worlds.\+py.
+Definition at line 76 of file worlds.\+py.
 
 
 

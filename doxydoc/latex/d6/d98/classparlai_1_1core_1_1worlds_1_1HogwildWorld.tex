@@ -2,8 +2,7 @@
 \label{classparlai_1_1core_1_1worlds_1_1HogwildWorld}\index{parlai.\+core.\+worlds.\+Hogwild\+World@{parlai.\+core.\+worlds.\+Hogwild\+World}}
 
 
-Inheritance diagram for parlai.\+core.\+worlds.\+Hogwild\+World\+:
-\nopagebreak
+Inheritance diagram for parlai.\+core.\+worlds.\+Hogwild\+World\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+core.\+worlds.\+Hogwild\+World\+:
 \end{figure}
 
 
-Collaboration diagram for parlai.\+core.\+worlds.\+Hogwild\+World\+:
-\nopagebreak
+Collaboration diagram for parlai.\+core.\+worlds.\+Hogwild\+World\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -23,7 +21,7 @@ Collaboration diagram for parlai.\+core.\+worlds.\+Hogwild\+World\+:
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-def \hyperlink{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a99acf6286bf07b0967979dd134768cd8}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1core_1_1worlds_1_1World_a3640d92718acd3e6942a28c1ab3678bd}{opt}, world)
+def \hyperlink{classparlai_1_1core_1_1worlds_1_1HogwildWorld_abc9321ac2153a0368c84354f1a89f836}{\+\_\+\+\_\+init\+\_\+\+\_\+}
 \item 
 def \hyperlink{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a1b7aed0a7b56712f22ee8b04c65d7c00}{display} (self)
 \item 
@@ -62,10 +60,6 @@ def \hyperlink{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a3960deb08a179884b1
 \item 
 \hyperlink{classparlai_1_1core_1_1worlds_1_1HogwildWorld_adce46f602b3dbfb1b2aaaf2abfd502d6}{numthreads}
 \item 
-\hyperlink{classparlai_1_1core_1_1worlds_1_1HogwildWorld_abe0b40ea70c93221f9f2541cb6089c60}{sync}
-\item 
-\hyperlink{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a16d58ef1f8d81bae98e7f99e268ef9b4}{threads}
-\item 
 \hyperlink{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a0224a6c9e173d699a7da6ebe1451f3a6}{max\+\_\+exs}
 \end{DoxyCompactItemize}
 \subsection*{Static Public Attributes}
@@ -95,56 +89,56 @@ Maintains a few shared objects to keep track of state:
 \end{DoxyVerb}
  
 
-Definition at line 1043 of file worlds.\+py.
+Definition at line 1058 of file worlds.\+py.
 
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a99acf6286bf07b0967979dd134768cd8}\label{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a99acf6286bf07b0967979dd134768cd8}} 
+\mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1HogwildWorld_abc9321ac2153a0368c84354f1a89f836}\label{classparlai_1_1core_1_1worlds_1_1HogwildWorld_abc9321ac2153a0368c84354f1a89f836}} 
 \index{parlai\+::core\+::worlds\+::\+Hogwild\+World@{parlai\+::core\+::worlds\+::\+Hogwild\+World}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
 \index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::core\+::worlds\+::\+Hogwild\+World@{parlai\+::core\+::worlds\+::\+Hogwild\+World}}
 \subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
-{\footnotesize\ttfamily def parlai.\+core.\+worlds.\+Hogwild\+World.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{world }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily def parlai.\+core.\+worlds.\+Hogwild\+World.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt }\end{DoxyParamCaption})}
 
 
 
-Definition at line 1063 of file worlds.\+py.
+Definition at line 1078 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-1063     \textcolor{keyword}{def }\_\_init\_\_(self, opt, world):
-1064         super().\_\_init\_\_(opt)
-1065         self.inner\_world = world
-1066         self.numthreads = opt[\textcolor{stringliteral}{'numthreads'}]
-1067 
-1068         self.sync = \{  \textcolor{comment}{# syncronization primitives}
-1069             \textcolor{comment}{# semaphores for counting queued examples}
-1070             \textcolor{stringliteral}{'queued\_sem'}: Semaphore(0),  \textcolor{comment}{# counts num exs to be processed}
-1071             \textcolor{stringliteral}{'threads\_sem'}: Semaphore(0),  \textcolor{comment}{# counts threads}
-1072             \textcolor{stringliteral}{'reset\_sem'}: Semaphore(0),  \textcolor{comment}{# allows threads to reset}
-1073             \textcolor{comment}{# flags for communicating with threads}
-1074             \textcolor{stringliteral}{'reset\_flag'}: Value(\textcolor{stringliteral}{'b'}, \textcolor{keyword}{False}),  \textcolor{comment}{# threads should reset}
-1075             \textcolor{stringliteral}{'term\_flag'}: Value(\textcolor{stringliteral}{'b'}, \textcolor{keyword}{False}),  \textcolor{comment}{# threads should terminate}
-1076             \textcolor{comment}{# counters}
-1077             \textcolor{stringliteral}{'epoch\_done\_ctr'}: Value(\textcolor{stringliteral}{'i'}, 0),  \textcolor{comment}{# number of done threads}
-1078             \textcolor{stringliteral}{'total\_parleys'}: Value(\textcolor{stringliteral}{'l'}, 0),  \textcolor{comment}{# number of parleys in threads}
-1079         \}
-1080 
-1081         self.threads = []
-1082         \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(self.numthreads):
-1083             self.threads.append(HogwildProcess(i, opt, world.share(), self.sync))
-1084             time.sleep(0.05)  \textcolor{comment}{# delay can help prevent deadlock in thread launches}
-1085         \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} self.threads:
-1086             t.start()
-1087 
-1088         \textcolor{keywordflow}{for} \_ \textcolor{keywordflow}{in} self.threads:
-1089             \textcolor{comment}{# wait for threads to launch}
-1090             \textcolor{comment}{# this makes sure that no threads get examples before all are set up}
-1091             \textcolor{comment}{# otherwise they might reset one another after processing some exs}
-1092             self.sync[\textcolor{stringliteral}{'threads\_sem'}].acquire()
-1093 
-1094         print(f\textcolor{stringliteral}{'[ \{self.numthreads\} threads initialized ]'})
+1078     \textcolor{keyword}{def }\_\_init\_\_(self, opt: Opt, world):
+1079         super().\_\_init\_\_(opt)
+1080         self.inner\_world = world
+1081         self.numthreads = opt[\textcolor{stringliteral}{'numthreads'}]
+1082 
+1083         self.sync: Dict[str, Any] = \{  \textcolor{comment}{# syncronization primitives}
+1084             \textcolor{comment}{# semaphores for counting queued examples}
+1085             \textcolor{stringliteral}{'queued\_sem'}: Semaphore(0),  \textcolor{comment}{# counts num exs to be processed}
+1086             \textcolor{stringliteral}{'threads\_sem'}: Semaphore(0),  \textcolor{comment}{# counts threads}
+1087             \textcolor{stringliteral}{'reset\_sem'}: Semaphore(0),  \textcolor{comment}{# allows threads to reset}
+1088             \textcolor{comment}{# flags for communicating with threads}
+1089             \textcolor{stringliteral}{'reset\_flag'}: Value(\textcolor{stringliteral}{'b'}, \textcolor{keyword}{False}),  \textcolor{comment}{# threads should reset}
+1090             \textcolor{stringliteral}{'term\_flag'}: Value(\textcolor{stringliteral}{'b'}, \textcolor{keyword}{False}),  \textcolor{comment}{# threads should terminate}
+1091             \textcolor{comment}{# counters}
+1092             \textcolor{stringliteral}{'epoch\_done\_ctr'}: Value(\textcolor{stringliteral}{'i'}, 0),  \textcolor{comment}{# number of done threads}
+1093             \textcolor{stringliteral}{'total\_parleys'}: Value(\textcolor{stringliteral}{'l'}, 0),  \textcolor{comment}{# number of parleys in threads}
+1094         \}
 1095 
+1096         self.threads: List[HogwildProcess] = []
+1097         \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(self.numthreads):
+1098             self.threads.append(HogwildProcess(i, opt, world.share(), self.sync))
+1099             time.sleep(0.05)  \textcolor{comment}{# delay can help prevent deadlock in thread launches}
+1100         \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} self.threads:
+1101             t.start()
+1102 
+1103         \textcolor{keywordflow}{for} \_ \textcolor{keywordflow}{in} self.threads:
+1104             \textcolor{comment}{# wait for threads to launch}
+1105             \textcolor{comment}{# this makes sure that no threads get examples before all are set up}
+1106             \textcolor{comment}{# otherwise they might reset one another after processing some exs}
+1107             self.sync[\textcolor{stringliteral}{'threads\_sem'}].acquire()  \textcolor{comment}{# type: ignore}
+1108 
+1109         print(f\textcolor{stringliteral}{'[ \{self.numthreads\} threads initialized ]'})
+1110 
 \end{DoxyCode}
 
 
@@ -161,22 +155,22 @@ Raises a `NotImplementedError`.
 \end{DoxyVerb}
  
 
-Definition at line 1096 of file worlds.\+py.
+Definition at line 1111 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-1096     \textcolor{keyword}{def }display(self):
-1097         \textcolor{stringliteral}{"""}
-1098 \textcolor{stringliteral}{        Unsupported operation.}
-1099 \textcolor{stringliteral}{}
-1100 \textcolor{stringliteral}{        Raises a `NotImplementedError`.}
-1101 \textcolor{stringliteral}{        """}
-1102         self.shutdown()
-1103         \textcolor{keywordflow}{raise} NotImplementedError(
-1104             \textcolor{stringliteral}{'Hogwild does not support displaying in-run'}
-1105             \textcolor{stringliteral}{' task data. Use `--numthreads 1`.'}
-1106         )
-1107 
+1111     \textcolor{keyword}{def }display(self):
+1112         \textcolor{stringliteral}{"""}
+1113 \textcolor{stringliteral}{        Unsupported operation.}
+1114 \textcolor{stringliteral}{}
+1115 \textcolor{stringliteral}{        Raises a `NotImplementedError`.}
+1116 \textcolor{stringliteral}{        """}
+1117         self.shutdown()
+1118         \textcolor{keywordflow}{raise} NotImplementedError(
+1119             \textcolor{stringliteral}{'Hogwild does not support displaying in-run'}
+1120             \textcolor{stringliteral}{' task data. Use `--numthreads 1`.'}
+1121         )
+1122 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a0425099fbc33cb97d6fbe67dbd2e8a1f}\label{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a0425099fbc33cb97d6fbe67dbd2e8a1f}} 
 \index{parlai\+::core\+::worlds\+::\+Hogwild\+World@{parlai\+::core\+::worlds\+::\+Hogwild\+World}!episode\+\_\+done@{episode\+\_\+done}}
@@ -190,19 +184,19 @@ Raises a `RuntimeError`.
 \end{DoxyVerb}
  
 
-Definition at line 1108 of file worlds.\+py.
+Definition at line 1123 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-1108     \textcolor{keyword}{def }episode\_done(self):
-1109         \textcolor{stringliteral}{"""}
-1110 \textcolor{stringliteral}{        Unsupported operation.}
-1111 \textcolor{stringliteral}{}
-1112 \textcolor{stringliteral}{        Raises a `RuntimeError`.}
-1113 \textcolor{stringliteral}{        """}
-1114         self.shutdown()
-1115         \textcolor{keywordflow}{raise} RuntimeError(\textcolor{stringliteral}{'episode\_done() undefined for hogwild'})
-1116 
+1123     \textcolor{keyword}{def }episode\_done(self):
+1124         \textcolor{stringliteral}{"""}
+1125 \textcolor{stringliteral}{        Unsupported operation.}
+1126 \textcolor{stringliteral}{}
+1127 \textcolor{stringliteral}{        Raises a `RuntimeError`.}
+1128 \textcolor{stringliteral}{        """}
+1129         self.shutdown()
+1130         \textcolor{keywordflow}{raise} RuntimeError(\textcolor{stringliteral}{'episode\_done() undefined for hogwild'})
+1131 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1HogwildWorld_ae80d3f592818ac39b9cf8802270d8d8a}\label{classparlai_1_1core_1_1worlds_1_1HogwildWorld_ae80d3f592818ac39b9cf8802270d8d8a}} 
 \index{parlai\+::core\+::worlds\+::\+Hogwild\+World@{parlai\+::core\+::worlds\+::\+Hogwild\+World}!epoch\+\_\+done@{epoch\+\_\+done}}
@@ -214,16 +208,16 @@ Definition at line 1108 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1117 of file worlds.\+py.
+Definition at line 1132 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-1117     \textcolor{keyword}{def }epoch\_done(self):
-1118         \textcolor{stringliteral}{"""}
-1119 \textcolor{stringliteral}{        Return whether the epoch is finished.}
-1120 \textcolor{stringliteral}{        """}
-1121         \textcolor{keywordflow}{return} self.sync[\textcolor{stringliteral}{'epoch\_done\_ctr'}].value == self.numthreads
-1122 
+1132     \textcolor{keyword}{def }epoch\_done(self):
+1133         \textcolor{stringliteral}{"""}
+1134 \textcolor{stringliteral}{        Return whether the epoch is finished.}
+1135 \textcolor{stringliteral}{        """}
+1136         \textcolor{keywordflow}{return} self.sync[\textcolor{stringliteral}{'epoch\_done\_ctr'}].value == self.numthreads
+1137 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a7dfc60f5229da37574c31479a0b2ce3a}\label{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a7dfc60f5229da37574c31479a0b2ce3a}} 
 \index{parlai\+::core\+::worlds\+::\+Hogwild\+World@{parlai\+::core\+::worlds\+::\+Hogwild\+World}!get\+\_\+task\+\_\+agent@{get\+\_\+task\+\_\+agent}}
@@ -235,16 +229,16 @@ Definition at line 1117 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1153 of file worlds.\+py.
+Definition at line 1168 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-1153     \textcolor{keyword}{def }get\_task\_agent(self):
-1154         \textcolor{stringliteral}{"""}
-1155 \textcolor{stringliteral}{        Return task agent of inner world.}
-1156 \textcolor{stringliteral}{        """}
-1157         \textcolor{keywordflow}{return} self.inner\_world.get\_task\_agent()
-1158 
+1168     \textcolor{keyword}{def }get\_task\_agent(self):
+1169         \textcolor{stringliteral}{"""}
+1170 \textcolor{stringliteral}{        Return task agent of inner world.}
+1171 \textcolor{stringliteral}{        """}
+1172         \textcolor{keywordflow}{return} self.inner\_world.get\_task\_agent()
+1173 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a6bc364b91906b14d792957c8eeed5206}\label{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a6bc364b91906b14d792957c8eeed5206}} 
 \index{parlai\+::core\+::worlds\+::\+Hogwild\+World@{parlai\+::core\+::worlds\+::\+Hogwild\+World}!get\+\_\+total\+\_\+epochs@{get\+\_\+total\+\_\+epochs}}
@@ -256,31 +250,31 @@ Definition at line 1153 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1165 of file worlds.\+py.
+Definition at line 1180 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-1165     \textcolor{keyword}{def }get\_total\_epochs(self):
-1166         \textcolor{stringliteral}{"""}
-1167 \textcolor{stringliteral}{        Return total amount of epochs on which the world has trained.}
-1168 \textcolor{stringliteral}{        """}
-1169         \textcolor{keywordflow}{if} self.max\_exs \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-1170             \textcolor{keywordflow}{if} \textcolor{stringliteral}{'num\_epochs'} \textcolor{keywordflow}{in} self.opt \textcolor{keywordflow}{and} self.opt[\textcolor{stringliteral}{'num\_epochs'}] > 0:
-1171                 \textcolor{keywordflow}{if} self.num\_examples():
-1172                     self.max\_exs = self.num\_examples() * self.opt[\textcolor{stringliteral}{'num\_epochs'}]
-1173                 \textcolor{keywordflow}{else}:
-1174                     self.max\_exs = -1
-1175             \textcolor{keywordflow}{else}:
-1176                 self.max\_exs = -1
-1177         \textcolor{keywordflow}{if} self.max\_exs > 0:
-1178             \textcolor{keywordflow}{return} (
-1179                 self.sync[\textcolor{stringliteral}{'total\_parleys'}].value
-1180                 * self.opt.get(\textcolor{stringliteral}{'batchsize'}, 1)
-1181                 / self.num\_examples()
-1182             )
-1183         \textcolor{keywordflow}{else}:
-1184             \textcolor{keywordflow}{return} self.total\_epochs
-1185 
+1180     \textcolor{keyword}{def }get\_total\_epochs(self):
+1181         \textcolor{stringliteral}{"""}
+1182 \textcolor{stringliteral}{        Return total amount of epochs on which the world has trained.}
+1183 \textcolor{stringliteral}{        """}
+1184         \textcolor{keywordflow}{if} self.max\_exs \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+1185             \textcolor{keywordflow}{if} \textcolor{stringliteral}{'num\_epochs'} \textcolor{keywordflow}{in} self.opt \textcolor{keywordflow}{and} self.opt[\textcolor{stringliteral}{'num\_epochs'}] > 0:
+1186                 \textcolor{keywordflow}{if} self.num\_examples():
+1187                     self.max\_exs = self.num\_examples() * self.opt[\textcolor{stringliteral}{'num\_epochs'}]
+1188                 \textcolor{keywordflow}{else}:
+1189                     self.max\_exs = -1
+1190             \textcolor{keywordflow}{else}:
+1191                 self.max\_exs = -1
+1192         \textcolor{keywordflow}{if} self.max\_exs > 0:
+1193             \textcolor{keywordflow}{return} (
+1194                 self.sync[\textcolor{stringliteral}{'total\_parleys'}].value
+1195                 * self.opt.get(\textcolor{stringliteral}{'batchsize'}, 1)
+1196                 / self.num\_examples()
+1197             )
+1198         \textcolor{keywordflow}{else}:
+1199             \textcolor{keywordflow}{return} self.total\_epochs
+1200 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a0e26cfad1c63628cb43f554c470426b9}\label{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a0e26cfad1c63628cb43f554c470426b9}} 
 \index{parlai\+::core\+::worlds\+::\+Hogwild\+World@{parlai\+::core\+::worlds\+::\+Hogwild\+World}!get\+\_\+total\+\_\+exs@{get\+\_\+total\+\_\+exs}}
@@ -292,16 +286,16 @@ Definition at line 1165 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1159 of file worlds.\+py.
+Definition at line 1174 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-1159     \textcolor{keyword}{def }get\_total\_exs(self):
-1160         \textcolor{stringliteral}{"""}
-1161 \textcolor{stringliteral}{        Return the number of processed examples.}
-1162 \textcolor{stringliteral}{        """}
-1163         \textcolor{keywordflow}{return} self.inner\_world.get\_total\_exs()
-1164 
+1174     \textcolor{keyword}{def }get\_total\_exs(self):
+1175         \textcolor{stringliteral}{"""}
+1176 \textcolor{stringliteral}{        Return the number of processed examples.}
+1177 \textcolor{stringliteral}{        """}
+1178         \textcolor{keywordflow}{return} self.inner\_world.get\_total\_exs()
+1179 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a67379773119cebd6ac70fce2abcb19a9}\label{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a67379773119cebd6ac70fce2abcb19a9}} 
 \index{parlai\+::core\+::worlds\+::\+Hogwild\+World@{parlai\+::core\+::worlds\+::\+Hogwild\+World}!get\+ID@{get\+ID}}
@@ -313,16 +307,16 @@ Definition at line 1159 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1134 of file worlds.\+py.
+Definition at line 1149 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-1134     \textcolor{keyword}{def }getID(self):
-1135         \textcolor{stringliteral}{"""}
-1136 \textcolor{stringliteral}{        Return the inner world's ID.}
-1137 \textcolor{stringliteral}{        """}
-1138         \textcolor{keywordflow}{return} self.inner\_world.getID()
-1139 
+1149     \textcolor{keyword}{def }getID(self):
+1150         \textcolor{stringliteral}{"""}
+1151 \textcolor{stringliteral}{        Return the inner world's ID.}
+1152 \textcolor{stringliteral}{        """}
+1153         \textcolor{keywordflow}{return} self.inner\_world.getID()
+1154 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1HogwildWorld_ae0b4dc3d2bb4d1dbda7970da03da1a6e}\label{classparlai_1_1core_1_1worlds_1_1HogwildWorld_ae0b4dc3d2bb4d1dbda7970da03da1a6e}} 
 \index{parlai\+::core\+::worlds\+::\+Hogwild\+World@{parlai\+::core\+::worlds\+::\+Hogwild\+World}!num\+\_\+episodes@{num\+\_\+episodes}}
@@ -334,16 +328,16 @@ Definition at line 1134 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1147 of file worlds.\+py.
+Definition at line 1162 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-1147     \textcolor{keyword}{def }num\_episodes(self):
-1148         \textcolor{stringliteral}{"""}
-1149 \textcolor{stringliteral}{        Return the number of episodes.}
-1150 \textcolor{stringliteral}{        """}
-1151         \textcolor{keywordflow}{return} self.inner\_world.num\_episodes()
-1152 
+1162     \textcolor{keyword}{def }num\_episodes(self):
+1163         \textcolor{stringliteral}{"""}
+1164 \textcolor{stringliteral}{        Return the number of episodes.}
+1165 \textcolor{stringliteral}{        """}
+1166         \textcolor{keywordflow}{return} self.inner\_world.num\_episodes()
+1167 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1HogwildWorld_ae488971481ec6c8ba803b2404ad70e56}\label{classparlai_1_1core_1_1worlds_1_1HogwildWorld_ae488971481ec6c8ba803b2404ad70e56}} 
 \index{parlai\+::core\+::worlds\+::\+Hogwild\+World@{parlai\+::core\+::worlds\+::\+Hogwild\+World}!num\+\_\+examples@{num\+\_\+examples}}
@@ -355,16 +349,16 @@ Definition at line 1147 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1141 of file worlds.\+py.
+Definition at line 1156 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-1141     \textcolor{keyword}{def }num\_examples(self):
-1142         \textcolor{stringliteral}{"""}
-1143 \textcolor{stringliteral}{        Return the number of examples.}
-1144 \textcolor{stringliteral}{        """}
-1145         \textcolor{keywordflow}{return} self.inner\_world.num\_examples()
-1146 
+1156     \textcolor{keyword}{def }num\_examples(self):
+1157         \textcolor{stringliteral}{"""}
+1158 \textcolor{stringliteral}{        Return the number of examples.}
+1159 \textcolor{stringliteral}{        """}
+1160         \textcolor{keywordflow}{return} self.inner\_world.num\_examples()
+1161 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a9853e25a58444d4516c3f6da8c44d9c2}\label{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a9853e25a58444d4516c3f6da8c44d9c2}} 
 \index{parlai\+::core\+::worlds\+::\+Hogwild\+World@{parlai\+::core\+::worlds\+::\+Hogwild\+World}!parley@{parley}}
@@ -376,21 +370,21 @@ Definition at line 1141 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1123 of file worlds.\+py.
+Definition at line 1138 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-1123     \textcolor{keyword}{def }parley(self):
-1124         \textcolor{stringliteral}{"""}
-1125 \textcolor{stringliteral}{        Queue one item to be processed.}
-1126 \textcolor{stringliteral}{        """}
-1127         \textcolor{comment}{# schedule an example}
-1128         self.sync[\textcolor{stringliteral}{'queued\_sem'}].\hyperlink{namespaceconf_a325dc746d8bf05c54d26351c35a21d90}{release}()
-1129         \textcolor{comment}{# keep main process from getting too far ahead of the threads}
-1130         \textcolor{comment}{# this way it can only queue up to numthreads unprocessed examples}
-1131         self.sync[\textcolor{stringliteral}{'threads\_sem'}].acquire()
-1132         self.update\_counters()
-1133 
+1138     \textcolor{keyword}{def }parley(self):
+1139         \textcolor{stringliteral}{"""}
+1140 \textcolor{stringliteral}{        Queue one item to be processed.}
+1141 \textcolor{stringliteral}{        """}
+1142         \textcolor{comment}{# schedule an example}
+1143         self.sync[\textcolor{stringliteral}{'queued\_sem'}].\hyperlink{namespaceconf_a325dc746d8bf05c54d26351c35a21d90}{release}()
+1144         \textcolor{comment}{# keep main process from getting too far ahead of the threads}
+1145         \textcolor{comment}{# this way it can only queue up to numthreads unprocessed examples}
+1146         self.sync[\textcolor{stringliteral}{'threads\_sem'}].acquire()
+1147         self.update\_counters()
+1148 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a11c6831feb2a54a0d9513b4a514d4097}\label{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a11c6831feb2a54a0d9513b4a514d4097}} 
 \index{parlai\+::core\+::worlds\+::\+Hogwild\+World@{parlai\+::core\+::worlds\+::\+Hogwild\+World}!report@{report}}
@@ -402,16 +396,16 @@ Definition at line 1123 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1186 of file worlds.\+py.
+Definition at line 1201 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-1186     \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}(self):
-1187         \textcolor{stringliteral}{"""}
-1188 \textcolor{stringliteral}{        Report the inner world's metrics.}
-1189 \textcolor{stringliteral}{        """}
-1190         \textcolor{keywordflow}{return} self.inner\_world.\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}()
-1191 
+1201     \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}(self):
+1202         \textcolor{stringliteral}{"""}
+1203 \textcolor{stringliteral}{        Report the inner world's metrics.}
+1204 \textcolor{stringliteral}{        """}
+1205         \textcolor{keywordflow}{return} self.inner\_world.\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}()
+1206 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1HogwildWorld_ae72983e6af34391880979491ced1dde6}\label{classparlai_1_1core_1_1worlds_1_1HogwildWorld_ae72983e6af34391880979491ced1dde6}} 
 \index{parlai\+::core\+::worlds\+::\+Hogwild\+World@{parlai\+::core\+::worlds\+::\+Hogwild\+World}!reset@{reset}}
@@ -423,23 +417,23 @@ Definition at line 1186 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1198 of file worlds.\+py.
+Definition at line 1213 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-1198     \textcolor{keyword}{def }reset(self):
-1199         \textcolor{stringliteral}{"""}
-1200 \textcolor{stringliteral}{        Reset the inner world.}
-1201 \textcolor{stringliteral}{        """}
-1202         \textcolor{comment}{# set epoch done counter negative so all threads know to reset}
-1203         with self.sync[\textcolor{stringliteral}{'epoch\_done\_ctr'}].get\_lock():
-1204             threads\_asleep = self.sync[\textcolor{stringliteral}{'epoch\_done\_ctr'}].value > 0
-1205             self.sync[\textcolor{stringliteral}{'epoch\_done\_ctr'}].value = -len(self.threads)
-1206         \textcolor{keywordflow}{if} threads\_asleep:
-1207             \textcolor{comment}{# release reset semaphore only if threads had reached epoch\_done}
-1208             \textcolor{keywordflow}{for} \_ \textcolor{keywordflow}{in} self.threads:
-1209                 self.sync[\textcolor{stringliteral}{'reset\_sem'}].\hyperlink{namespaceconf_a325dc746d8bf05c54d26351c35a21d90}{release}()
-1210 
+1213     \textcolor{keyword}{def }reset(self):
+1214         \textcolor{stringliteral}{"""}
+1215 \textcolor{stringliteral}{        Reset the inner world.}
+1216 \textcolor{stringliteral}{        """}
+1217         \textcolor{comment}{# set epoch done counter negative so all threads know to reset}
+1218         with self.sync[\textcolor{stringliteral}{'epoch\_done\_ctr'}].get\_lock():
+1219             threads\_asleep = self.sync[\textcolor{stringliteral}{'epoch\_done\_ctr'}].value > 0
+1220             self.sync[\textcolor{stringliteral}{'epoch\_done\_ctr'}].value = -len(self.threads)
+1221         \textcolor{keywordflow}{if} threads\_asleep:
+1222             \textcolor{comment}{# release reset semaphore only if threads had reached epoch\_done}
+1223             \textcolor{keywordflow}{for} \_ \textcolor{keywordflow}{in} self.threads:
+1224                 self.sync[\textcolor{stringliteral}{'reset\_sem'}].\hyperlink{namespaceconf_a325dc746d8bf05c54d26351c35a21d90}{release}()
+1225 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1HogwildWorld_ae57e2b90771c0feaa0496cb2885eae6d}\label{classparlai_1_1core_1_1worlds_1_1HogwildWorld_ae57e2b90771c0feaa0496cb2885eae6d}} 
 \index{parlai\+::core\+::worlds\+::\+Hogwild\+World@{parlai\+::core\+::worlds\+::\+Hogwild\+World}!reset\+\_\+metrics@{reset\+\_\+metrics}}
@@ -451,16 +445,16 @@ Definition at line 1198 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1211 of file worlds.\+py.
+Definition at line 1226 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-1211     \textcolor{keyword}{def }reset\_metrics(self):
-1212         \textcolor{stringliteral}{"""}
-1213 \textcolor{stringliteral}{        Reset metrics for the inner world.}
-1214 \textcolor{stringliteral}{        """}
-1215         self.inner\_world.reset\_metrics()
-1216 
+1226     \textcolor{keyword}{def }reset\_metrics(self):
+1227         \textcolor{stringliteral}{"""}
+1228 \textcolor{stringliteral}{        Reset metrics for the inner world.}
+1229 \textcolor{stringliteral}{        """}
+1230         self.inner\_world.reset\_metrics()
+1231 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a1f7e4c566078aebdb5e837c6fed62b17}\label{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a1f7e4c566078aebdb5e837c6fed62b17}} 
 \index{parlai\+::core\+::worlds\+::\+Hogwild\+World@{parlai\+::core\+::worlds\+::\+Hogwild\+World}!save\+\_\+agents@{save\+\_\+agents}}
@@ -472,16 +466,16 @@ Definition at line 1211 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1192 of file worlds.\+py.
+Definition at line 1207 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-1192     \textcolor{keyword}{def }save\_agents(self):
-1193         \textcolor{stringliteral}{"""}
-1194 \textcolor{stringliteral}{        Save the inner world's agents.}
-1195 \textcolor{stringliteral}{        """}
-1196         self.inner\_world.save\_agents()
-1197 
+1207     \textcolor{keyword}{def }save\_agents(self):
+1208         \textcolor{stringliteral}{"""}
+1209 \textcolor{stringliteral}{        Save the inner world's agents.}
+1210 \textcolor{stringliteral}{        """}
+1211         self.inner\_world.save\_agents()
+1212 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a3960deb08a179884b1eea2e423437db2}\label{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a3960deb08a179884b1eea2e423437db2}} 
 \index{parlai\+::core\+::worlds\+::\+Hogwild\+World@{parlai\+::core\+::worlds\+::\+Hogwild\+World}!shutdown@{shutdown}}
@@ -493,33 +487,33 @@ Definition at line 1192 of file worlds.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 1217 of file worlds.\+py.
+Definition at line 1232 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-1217     \textcolor{keyword}{def }shutdown(self):
-1218         \textcolor{stringliteral}{"""}
-1219 \textcolor{stringliteral}{        Set shutdown flag and wake threads up to close themselves.}
-1220 \textcolor{stringliteral}{        """}
-1221         \textcolor{comment}{# set shutdown flag}
-1222         with self.sync[\textcolor{stringliteral}{'term\_flag'}].get\_lock():
-1223             self.sync[\textcolor{stringliteral}{'term\_flag'}].value = \textcolor{keyword}{True}
-1224 
-1225         \textcolor{comment}{# wake up each thread by queueing fake examples or setting reset flag}
-1226         \textcolor{keywordflow}{for} \_ \textcolor{keywordflow}{in} self.threads:
-1227             self.sync[\textcolor{stringliteral}{'queued\_sem'}].\hyperlink{namespaceconf_a325dc746d8bf05c54d26351c35a21d90}{release}()
-1228             self.sync[\textcolor{stringliteral}{'reset\_sem'}].\hyperlink{namespaceconf_a325dc746d8bf05c54d26351c35a21d90}{release}()
-1229 
-1230         \textcolor{comment}{# make sure epoch counter is reset so threads aren't waiting for it}
-1231         with self.sync[\textcolor{stringliteral}{'epoch\_done\_ctr'}].get\_lock():
-1232             self.sync[\textcolor{stringliteral}{'epoch\_done\_ctr'}].value = 0
-1233 
-1234         \textcolor{comment}{# wait for threads to close}
-1235         \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} self.threads:
-1236             t.join()
-1237         self.inner\_world.shutdown()
-1238 
+1232     \textcolor{keyword}{def }shutdown(self):
+1233         \textcolor{stringliteral}{"""}
+1234 \textcolor{stringliteral}{        Set shutdown flag and wake threads up to close themselves.}
+1235 \textcolor{stringliteral}{        """}
+1236         \textcolor{comment}{# set shutdown flag}
+1237         with self.sync[\textcolor{stringliteral}{'term\_flag'}].get\_lock():
+1238             self.sync[\textcolor{stringliteral}{'term\_flag'}].value = \textcolor{keyword}{True}
 1239 
+1240         \textcolor{comment}{# wake up each thread by queueing fake examples or setting reset flag}
+1241         \textcolor{keywordflow}{for} \_ \textcolor{keywordflow}{in} self.threads:
+1242             self.sync[\textcolor{stringliteral}{'queued\_sem'}].\hyperlink{namespaceconf_a325dc746d8bf05c54d26351c35a21d90}{release}()
+1243             self.sync[\textcolor{stringliteral}{'reset\_sem'}].\hyperlink{namespaceconf_a325dc746d8bf05c54d26351c35a21d90}{release}()
+1244 
+1245         \textcolor{comment}{# make sure epoch counter is reset so threads aren't waiting for it}
+1246         with self.sync[\textcolor{stringliteral}{'epoch\_done\_ctr'}].get\_lock():
+1247             self.sync[\textcolor{stringliteral}{'epoch\_done\_ctr'}].value = 0
+1248 
+1249         \textcolor{comment}{# wait for threads to close}
+1250         \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} self.threads:
+1251             t.join()
+1252         self.inner\_world.shutdown()
+1253 
+1254 
 \end{DoxyCode}
 
 
@@ -532,7 +526,7 @@ Definition at line 1217 of file worlds.\+py.
 
 
 
-Definition at line 1065 of file worlds.\+py.
+Definition at line 1080 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a0224a6c9e173d699a7da6ebe1451f3a6}\label{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a0224a6c9e173d699a7da6ebe1451f3a6}} 
 \index{parlai\+::core\+::worlds\+::\+Hogwild\+World@{parlai\+::core\+::worlds\+::\+Hogwild\+World}!max\+\_\+exs@{max\+\_\+exs}}
@@ -542,7 +536,7 @@ Definition at line 1065 of file worlds.\+py.
 
 
 
-Definition at line 1172 of file worlds.\+py.
+Definition at line 1187 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a5465066ad260dd6f8aeb648bb3088cd5}\label{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a5465066ad260dd6f8aeb648bb3088cd5}} 
 \index{parlai\+::core\+::worlds\+::\+Hogwild\+World@{parlai\+::core\+::worlds\+::\+Hogwild\+World}!maxsize@{maxsize}}
@@ -552,33 +546,13 @@ Definition at line 1172 of file worlds.\+py.
 
 
 
-Definition at line 1140 of file worlds.\+py.
+Definition at line 1155 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1HogwildWorld_adce46f602b3dbfb1b2aaaf2abfd502d6}\label{classparlai_1_1core_1_1worlds_1_1HogwildWorld_adce46f602b3dbfb1b2aaaf2abfd502d6}} 
 \index{parlai\+::core\+::worlds\+::\+Hogwild\+World@{parlai\+::core\+::worlds\+::\+Hogwild\+World}!numthreads@{numthreads}}
 \index{numthreads@{numthreads}!parlai\+::core\+::worlds\+::\+Hogwild\+World@{parlai\+::core\+::worlds\+::\+Hogwild\+World}}
 \subsubsection{\texorpdfstring{numthreads}{numthreads}}
 {\footnotesize\ttfamily parlai.\+core.\+worlds.\+Hogwild\+World.\+numthreads}
-
-
-
-Definition at line 1066 of file worlds.\+py.
-
-\mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1HogwildWorld_abe0b40ea70c93221f9f2541cb6089c60}\label{classparlai_1_1core_1_1worlds_1_1HogwildWorld_abe0b40ea70c93221f9f2541cb6089c60}} 
-\index{parlai\+::core\+::worlds\+::\+Hogwild\+World@{parlai\+::core\+::worlds\+::\+Hogwild\+World}!sync@{sync}}
-\index{sync@{sync}!parlai\+::core\+::worlds\+::\+Hogwild\+World@{parlai\+::core\+::worlds\+::\+Hogwild\+World}}
-\subsubsection{\texorpdfstring{sync}{sync}}
-{\footnotesize\ttfamily parlai.\+core.\+worlds.\+Hogwild\+World.\+sync}
-
-
-
-Definition at line 1068 of file worlds.\+py.
-
-\mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a16d58ef1f8d81bae98e7f99e268ef9b4}\label{classparlai_1_1core_1_1worlds_1_1HogwildWorld_a16d58ef1f8d81bae98e7f99e268ef9b4}} 
-\index{parlai\+::core\+::worlds\+::\+Hogwild\+World@{parlai\+::core\+::worlds\+::\+Hogwild\+World}!threads@{threads}}
-\index{threads@{threads}!parlai\+::core\+::worlds\+::\+Hogwild\+World@{parlai\+::core\+::worlds\+::\+Hogwild\+World}}
-\subsubsection{\texorpdfstring{threads}{threads}}
-{\footnotesize\ttfamily parlai.\+core.\+worlds.\+Hogwild\+World.\+threads}
 
 
 

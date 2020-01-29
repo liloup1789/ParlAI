@@ -2,8 +2,7 @@
 \label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld}\index{parlai.\+mturk.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+worlds.\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai.\+mturk.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+worlds.\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}}
 
 
-Inheritance diagram for parlai.\+mturk.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+worlds.\+M\+Turk\+Wizard\+Of\+Wikipedia\+World\+:
-\nopagebreak
+Inheritance diagram for parlai.\+mturk.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+worlds.\+M\+Turk\+Wizard\+Of\+Wikipedia\+World\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+mturk.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\
 \end{figure}
 
 
-Collaboration diagram for parlai.\+mturk.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+worlds.\+M\+Turk\+Wizard\+Of\+Wikipedia\+World\+:
-\nopagebreak
+Collaboration diagram for parlai.\+mturk.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+worlds.\+M\+Turk\+Wizard\+Of\+Wikipedia\+World\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -111,7 +109,7 @@ persona, while the other is the 'wizard', who bases his/her responses on documen
 \end{DoxyVerb}
  
 
-Definition at line 169 of file worlds.\+py.
+Definition at line 170 of file worlds.\+py.
 
 
 
@@ -124,48 +122,48 @@ Definition at line 169 of file worlds.\+py.
 
 
 
-Definition at line 185 of file worlds.\+py.
+Definition at line 186 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-185     ):
-186         self.turn\_idx = 0
-187         self.min\_turns = opt[\textcolor{stringliteral}{'min\_turns'}]
-188         self.max\_turns = opt[\textcolor{stringliteral}{'max\_turns'}]
-189         self.num\_turns = np.random.randint(self.min\_turns, self.max\_turns) + 1
-190         self.dialog = []
-191         self.wizard\_eval = 0
-192         self.task\_type = \textcolor{stringliteral}{'sandbox'} \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'is\_sandbox'}] \textcolor{keywordflow}{else} \textcolor{stringliteral}{'live'}
-193         self.chat\_done = \textcolor{keyword}{False}
-194         self.world\_tag = world\_tag
-195         self.max\_resp\_time = opt[\textcolor{stringliteral}{'max\_resp\_time'}]  \textcolor{comment}{# in secs}
-196         self.num\_passages\_to\_retrieve = opt[\textcolor{stringliteral}{'num\_passages\_retrieved'}]
-197         super().\_\_init\_\_(opt, agents, shared)
-198         self.agents = sorted(agents, key=\textcolor{keyword}{lambda} x: x.id, reverse=random.random() <= 0.5)
-199         \textcolor{comment}{#  Personas and retriever}
-200         self.persona\_generator = self.agents[0].persona\_generator
-201         self.relevant\_topics = []
-202         \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} self.relevant\_topics:
-203             self.persona\_to\_topics = \{\}
-204             self.persona\_idx, persona\_data = self.persona\_generator.pop\_persona()
-205             \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} persona\_data:
-206                 \textcolor{keywordflow}{if} p[0] == \textcolor{stringliteral}{' '}:
-207                     p = p[1:]
-208                 \textcolor{keywordflow}{if} p \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.persona\_to\_topics:
-209                     self.persona\_to\_topics[p] = []
-210                     topics = set(self.persona\_generator.get\_topics(p))
-211                     \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} topics:
-212                         self.relevant\_topics.append(t + \textcolor{stringliteral}{' (\{\})'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(p))
-213                         self.persona\_to\_topics[p].append(t)
-214 
-215         self.ir\_agent = ir\_agent
-216         self.setup\_tokenizer(opt)
-217         self.chosen\_topic = \textcolor{stringliteral}{''}
-218         self.chosen\_topic\_passage = \{\}
-219         self.OLD = OffensiveStringMatcher()
-220         \textcolor{comment}{# Load the title to passage dictionary}
-221         self.wiki\_title\_to\_passage = wiki\_title\_to\_passage
-222 
+186     ):
+187         self.turn\_idx = 0
+188         self.min\_turns = opt[\textcolor{stringliteral}{'min\_turns'}]
+189         self.max\_turns = opt[\textcolor{stringliteral}{'max\_turns'}]
+190         self.num\_turns = np.random.randint(self.min\_turns, self.max\_turns) + 1
+191         self.dialog = []
+192         self.wizard\_eval = 0
+193         self.task\_type = \textcolor{stringliteral}{'sandbox'} \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'is\_sandbox'}] \textcolor{keywordflow}{else} \textcolor{stringliteral}{'live'}
+194         self.chat\_done = \textcolor{keyword}{False}
+195         self.world\_tag = world\_tag
+196         self.max\_resp\_time = opt[\textcolor{stringliteral}{'max\_resp\_time'}]  \textcolor{comment}{# in secs}
+197         self.num\_passages\_to\_retrieve = opt[\textcolor{stringliteral}{'num\_passages\_retrieved'}]
+198         super().\_\_init\_\_(opt, agents, shared)
+199         self.agents = sorted(agents, key=\textcolor{keyword}{lambda} x: x.id, reverse=random.random() <= 0.5)
+200         \textcolor{comment}{#  Personas and retriever}
+201         self.persona\_generator = self.agents[0].persona\_generator
+202         self.relevant\_topics = []
+203         \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} self.relevant\_topics:
+204             self.persona\_to\_topics = \{\}
+205             self.persona\_idx, persona\_data = self.persona\_generator.pop\_persona()
+206             \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} persona\_data:
+207                 \textcolor{keywordflow}{if} p[0] == \textcolor{stringliteral}{' '}:
+208                     p = p[1:]
+209                 \textcolor{keywordflow}{if} p \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.persona\_to\_topics:
+210                     self.persona\_to\_topics[p] = []
+211                     topics = set(self.persona\_generator.get\_topics(p))
+212                     \textcolor{keywordflow}{for} t \textcolor{keywordflow}{in} topics:
+213                         self.relevant\_topics.append(t + \textcolor{stringliteral}{' (\{\})'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(p))
+214                         self.persona\_to\_topics[p].append(t)
+215 
+216         self.ir\_agent = ir\_agent
+217         self.setup\_tokenizer(opt)
+218         self.chosen\_topic = \textcolor{stringliteral}{''}
+219         self.chosen\_topic\_passage = \{\}
+220         self.OLD = OffensiveStringMatcher()
+221         \textcolor{comment}{# Load the title to passage dictionary}
+222         self.wiki\_title\_to\_passage = wiki\_title\_to\_passage
+223 
 \end{DoxyCode}
 
 
@@ -178,23 +176,23 @@ Definition at line 185 of file worlds.\+py.
 
 
 
-Definition at line 481 of file worlds.\+py.
+Definition at line 482 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-481     \textcolor{keyword}{def }check\_timeout(self, act):
-482         \textcolor{keywordflow}{if} act[\textcolor{stringliteral}{'text'}] == \textcolor{stringliteral}{'[TIMEOUT]'} \textcolor{keywordflow}{and} act[\textcolor{stringliteral}{'episode\_done'}]:
-483             control\_msg = \{\textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}
-484             control\_msg[\textcolor{stringliteral}{'id'}] = \textcolor{stringliteral}{'SYSTEM'}
-485             control\_msg[\textcolor{stringliteral}{'text'}] = self.get\_instruction(tag=\textcolor{stringliteral}{'timeout'})
-486             \textcolor{keywordflow}{for} ag \textcolor{keywordflow}{in} self.agents:
-487                 \textcolor{keywordflow}{if} ag.id != act[\textcolor{stringliteral}{'id'}]:
-488                     ag.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
-489             self.chat\_done = \textcolor{keyword}{True}
-490             \textcolor{keywordflow}{return} \textcolor{keyword}{True}
-491         \textcolor{keywordflow}{else}:
-492             \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-493 
+482     \textcolor{keyword}{def }check\_timeout(self, act):
+483         \textcolor{keywordflow}{if} act[\textcolor{stringliteral}{'text'}] == \textcolor{stringliteral}{'[TIMEOUT]'} \textcolor{keywordflow}{and} act[\textcolor{stringliteral}{'episode\_done'}]:
+484             control\_msg = \{\textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}
+485             control\_msg[\textcolor{stringliteral}{'id'}] = \textcolor{stringliteral}{'SYSTEM'}
+486             control\_msg[\textcolor{stringliteral}{'text'}] = self.get\_instruction(tag=\textcolor{stringliteral}{'timeout'})
+487             \textcolor{keywordflow}{for} ag \textcolor{keywordflow}{in} self.agents:
+488                 \textcolor{keywordflow}{if} ag.id != act[\textcolor{stringliteral}{'id'}]:
+489                     ag.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
+490             self.chat\_done = \textcolor{keyword}{True}
+491             \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+492         \textcolor{keywordflow}{else}:
+493             \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+494 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a7667ae6daa0c1befc1c4f815f0daccfd}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a7667ae6daa0c1befc1c4f815f0daccfd}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!check\+\_\+wizard\+\_\+quality@{check\+\_\+wizard\+\_\+quality}}
@@ -207,38 +205,38 @@ conversation finishes Returns True if the Wizard is good.
 \end{DoxyVerb}
  
 
-Definition at line 559 of file worlds.\+py.
+Definition at line 560 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-559     \textcolor{keyword}{def }check\_wizard\_quality(self):
-560         \textcolor{stringliteral}{"""}
-561 \textcolor{stringliteral}{        Determines whether to soft-block this turker or not Only called if the}
-562 \textcolor{stringliteral}{        conversation finishes Returns True if the Wizard is good.}
-563 \textcolor{stringliteral}{        """}
-564         num\_good\_sents = len(
-565             list(
-566                 filter(
-567                     \textcolor{keyword}{lambda} info: \textcolor{stringliteral}{'good\_message'} \textcolor{keywordflow}{in} info \textcolor{keywordflow}{and} info[\textcolor{stringliteral}{'good\_message'}],
-568                     self.dialog,
-569                 )
-570             )
-571         )
-572         wizard\_worker = [w \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} self.agents \textcolor{keywordflow}{if} w.id == WIZARD][0].worker\_id
-573         data\_path = self.opt[\textcolor{stringliteral}{'current\_working\_dir'}]
-574         bad\_wizards = os.path.join(data\_path, \textcolor{stringliteral}{'bad\_wizards.txt'})
-575         good\_wizards = os.path.join(data\_path, \textcolor{stringliteral}{'good\_wizards.txt'})
-576         \textcolor{keywordflow}{if} num\_good\_sents < self.opt[\textcolor{stringliteral}{'num\_good\_sentence\_threshold'}]:
-577             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.opt[\textcolor{stringliteral}{'is\_sandbox'}]:
-578                 with open(bad\_wizards, \textcolor{stringliteral}{'a'}) \textcolor{keyword}{as} f:
-579                     f.write(wizard\_worker + \textcolor{stringliteral}{'\(\backslash\)n'})
-580             \textcolor{keywordflow}{return} \textcolor{keyword}{False}, wizard\_worker
-581         \textcolor{keywordflow}{else}:
-582             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.opt[\textcolor{stringliteral}{'is\_sandbox'}]:
-583                 with open(good\_wizards, \textcolor{stringliteral}{'a'}) \textcolor{keyword}{as} f:
-584                     f.write(wizard\_worker + \textcolor{stringliteral}{'\(\backslash\)n'})
-585             \textcolor{keywordflow}{return} \textcolor{keyword}{True}, wizard\_worker
-586 
+560     \textcolor{keyword}{def }check\_wizard\_quality(self):
+561         \textcolor{stringliteral}{"""}
+562 \textcolor{stringliteral}{        Determines whether to soft-block this turker or not Only called if the}
+563 \textcolor{stringliteral}{        conversation finishes Returns True if the Wizard is good.}
+564 \textcolor{stringliteral}{        """}
+565         num\_good\_sents = len(
+566             list(
+567                 filter(
+568                     \textcolor{keyword}{lambda} info: \textcolor{stringliteral}{'good\_message'} \textcolor{keywordflow}{in} info \textcolor{keywordflow}{and} info[\textcolor{stringliteral}{'good\_message'}],
+569                     self.dialog,
+570                 )
+571             )
+572         )
+573         wizard\_worker = [w \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} self.agents \textcolor{keywordflow}{if} w.id == WIZARD][0].worker\_id
+574         data\_path = self.opt[\textcolor{stringliteral}{'current\_working\_dir'}]
+575         bad\_wizards = os.path.join(data\_path, \textcolor{stringliteral}{'bad\_wizards.txt'})
+576         good\_wizards = os.path.join(data\_path, \textcolor{stringliteral}{'good\_wizards.txt'})
+577         \textcolor{keywordflow}{if} num\_good\_sents < self.opt[\textcolor{stringliteral}{'num\_good\_sentence\_threshold'}]:
+578             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.opt[\textcolor{stringliteral}{'is\_sandbox'}]:
+579                 with open(bad\_wizards, \textcolor{stringliteral}{'a'}) \textcolor{keyword}{as} f:
+580                     f.write(wizard\_worker + \textcolor{stringliteral}{'\(\backslash\)n'})
+581             \textcolor{keywordflow}{return} \textcolor{keyword}{False}, wizard\_worker
+582         \textcolor{keywordflow}{else}:
+583             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.opt[\textcolor{stringliteral}{'is\_sandbox'}]:
+584                 with open(good\_wizards, \textcolor{stringliteral}{'a'}) \textcolor{keyword}{as} f:
+585                     f.write(wizard\_worker + \textcolor{stringliteral}{'\(\backslash\)n'})
+586             \textcolor{keywordflow}{return} \textcolor{keyword}{True}, wizard\_worker
+587 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a23df3f443cac50eb830f196136310fa9}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a23df3f443cac50eb830f196136310fa9}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!episode\+\_\+done@{episode\+\_\+done}}
@@ -248,13 +246,13 @@ Definition at line 559 of file worlds.\+py.
 
 
 
-Definition at line 223 of file worlds.\+py.
+Definition at line 224 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-223     \textcolor{keyword}{def }episode\_done(self):
-224         \textcolor{keywordflow}{return} self.chat\_done
-225 
+224     \textcolor{keyword}{def }episode\_done(self):
+225         \textcolor{keywordflow}{return} self.chat\_done
+226 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_af958525c324060fbbe27d614c49a1dfc}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_af958525c324060fbbe27d614c49a1dfc}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!format\+\_\+passages@{format\+\_\+passages}}
@@ -264,29 +262,29 @@ Definition at line 223 of file worlds.\+py.
 
 
 
-Definition at line 445 of file worlds.\+py.
+Definition at line 446 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-445     \textcolor{keyword}{def }format\_passages(self, ir\_passages, max\_length=MAX\_DOC\_LEN):
-446         passages = []
-447         \textcolor{keywordflow}{if} len(ir\_passages) == 1:  \textcolor{comment}{# Didn't receive any passages}
-448             passages.append([\textcolor{stringliteral}{'No Passages Retrieved'}, []])
-449         \textcolor{keywordflow}{else}:
-450             \textcolor{keywordflow}{for} passage \textcolor{keywordflow}{in} ir\_passages:
-451                 split = passage.split(\textcolor{stringliteral}{'\(\backslash\)n'})
-452                 title = split[0]
-453                 split = self.sent\_tok.\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_a1fdb457e98eb4e4c26047e229686a616}{tokenize}(\textcolor{stringliteral}{" "}.join(split[1:]))
-454                 split[0] = split[0][1:]
-455                 sentences = []
-456                 \textcolor{keywordflow}{for} sent \textcolor{keywordflow}{in} split:
-457                     \textcolor{keywordflow}{if} len(sent) > 1:
-458                         sentences.append(sent)
-459                         \textcolor{keywordflow}{if} len(\textcolor{stringliteral}{" "}.join(sentences)) > max\_length:
-460                             \textcolor{keywordflow}{break}
-461                 passages.append([title, sentences])
-462         \textcolor{keywordflow}{return} passages
-463 
+446     \textcolor{keyword}{def }format\_passages(self, ir\_passages, max\_length=MAX\_DOC\_LEN):
+447         passages = []
+448         \textcolor{keywordflow}{if} len(ir\_passages) == 1:  \textcolor{comment}{# Didn't receive any passages}
+449             passages.append([\textcolor{stringliteral}{'No Passages Retrieved'}, []])
+450         \textcolor{keywordflow}{else}:
+451             \textcolor{keywordflow}{for} passage \textcolor{keywordflow}{in} ir\_passages:
+452                 split = passage.split(\textcolor{stringliteral}{'\(\backslash\)n'})
+453                 title = split[0]
+454                 split = self.sent\_tok.\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_a1fdb457e98eb4e4c26047e229686a616}{tokenize}(\textcolor{stringliteral}{" "}.join(split[1:]))
+455                 split[0] = split[0][1:]
+456                 sentences = []
+457                 \textcolor{keywordflow}{for} sent \textcolor{keywordflow}{in} split:
+458                     \textcolor{keywordflow}{if} len(sent) > 1:
+459                         sentences.append(sent)
+460                         \textcolor{keywordflow}{if} len(\textcolor{stringliteral}{" "}.join(sentences)) > max\_length:
+461                             \textcolor{keywordflow}{break}
+462                 passages.append([title, sentences])
+463         \textcolor{keywordflow}{return} passages
+464 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a81fac69dc89399e21b1ad9847b62adea}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a81fac69dc89399e21b1ad9847b62adea}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!get\+\_\+instruction@{get\+\_\+instruction}}
@@ -296,19 +294,19 @@ Definition at line 445 of file worlds.\+py.
 
 
 
-Definition at line 472 of file worlds.\+py.
+Definition at line 473 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-472     \textcolor{keyword}{def }get\_instruction(self, agent\_id=None, tag='first'):
-473         \textcolor{keywordflow}{if} tag == \textcolor{stringliteral}{'start'}:
-474             start\_msg = WIZARD\_START\_MSG \textcolor{keywordflow}{if} agent\_id == WIZARD \textcolor{keywordflow}{else} APPRENTICE\_START\_MSG
-475             \textcolor{keywordflow}{return} start\_msg.format(self.num\_turns)
-476         \textcolor{keywordflow}{if} tag == \textcolor{stringliteral}{'timeout'}:
-477             \textcolor{keywordflow}{return} TIMEOUT\_MSG
-478         \textcolor{keywordflow}{if} tag == \textcolor{stringliteral}{'exceed\_min\_turns'}:
-479             \textcolor{keywordflow}{return} EXCEED\_MIN\_TURNS\_MSG.format(self.num\_turns)
-480 
+473     \textcolor{keyword}{def }get\_instruction(self, agent\_id=None, tag='first'):
+474         \textcolor{keywordflow}{if} tag == \textcolor{stringliteral}{'start'}:
+475             start\_msg = WIZARD\_START\_MSG \textcolor{keywordflow}{if} agent\_id == WIZARD \textcolor{keywordflow}{else} APPRENTICE\_START\_MSG
+476             \textcolor{keywordflow}{return} start\_msg.format(self.num\_turns)
+477         \textcolor{keywordflow}{if} tag == \textcolor{stringliteral}{'timeout'}:
+478             \textcolor{keywordflow}{return} TIMEOUT\_MSG
+479         \textcolor{keywordflow}{if} tag == \textcolor{stringliteral}{'exceed\_min\_turns'}:
+480             \textcolor{keywordflow}{return} EXCEED\_MIN\_TURNS\_MSG.format(self.num\_turns)
+481 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a3b3cf41071bac1da0053627118f61d58}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a3b3cf41071bac1da0053627118f61d58}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!parley@{parley}}
@@ -321,204 +319,204 @@ retrieved documents based on the text response.
 \end{DoxyVerb}
  
 
-Definition at line 251 of file worlds.\+py.
+Definition at line 252 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-251     \textcolor{keyword}{def }parley(self):
-252         \textcolor{stringliteral}{"""}
-253 \textcolor{stringliteral}{        Each agent acts; when the APPRENTICE says something, the WIZARD is given}
-254 \textcolor{stringliteral}{        retrieved documents based on the text response.}
-255 \textcolor{stringliteral}{        """}
-256         self.turn\_idx += 1
-257 
-258         \textcolor{comment}{# Initial Message Value}
-259         control\_msg = \{\textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{False}\}
-260         control\_msg[\textcolor{stringliteral}{'id'}] = \textcolor{stringliteral}{'SYSTEM'}
-261 
-262         print(self.world\_tag + \textcolor{stringliteral}{' is at turn \{\}...'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.turn\_idx))
-263 
-264         \textcolor{stringliteral}{'''First Turn: We give the first agent the list of topics to choose from}
-265 \textcolor{stringliteral}{        '''}
-266         \textcolor{keywordflow}{if} self.turn\_idx == 1:
-267             \textcolor{keywordflow}{for} idx, agent \textcolor{keywordflow}{in} enumerate(self.agents):
-268                 \textcolor{stringliteral}{"""}
-269 \textcolor{stringliteral}{                If we are giving the persona, do that :)}
-270 \textcolor{stringliteral}{                """}
-271                 control\_msg[\textcolor{stringliteral}{'text'}] = self.get\_instruction(
-272                     tag=\textcolor{stringliteral}{'start'}, agent\_id=agent.id
-273                 )
-274                 \textcolor{keywordflow}{if} agent.id == WIZARD:
-275                     control\_msg[\textcolor{stringliteral}{'description'}] = config[\textcolor{stringliteral}{'wizard\_onboarding'}]
-276                 \textcolor{keywordflow}{else}:
-277                     control\_msg[\textcolor{stringliteral}{'description'}] = config[\textcolor{stringliteral}{'apprentice\_onboarding'}]
-278                 agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
-279                 \textcolor{keywordflow}{if} idx == 0:
-280                     time.sleep(3)
-281 
-282             \textcolor{stringliteral}{'''Send First Person the list of relevant topics'''}
-283             self.agents[0].observe(
-284                 \hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(
-285                     \{
-286                         \textcolor{stringliteral}{'id'}: \textcolor{stringliteral}{'SYSTEM'},
-287                         \textcolor{stringliteral}{'text'}: PICK\_TOPIC\_MSG,
-288                         \textcolor{stringliteral}{'relevant\_topics'}: self.relevant\_topics,
-289                     \}
-290                 )
-291             )
-292 
-293             topic\_act = self.agents[0].act(timeout=self.max\_resp\_time)
-294             timed\_out = self.check\_timeout(topic\_act)
-295             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} timed\_out:
-296                 \textcolor{keywordflow}{if} self.agents[0].id == APPRENTICE:
-297                     pick\_msg = AFTER\_PICK\_TOPIC\_MSG
-298                 \textcolor{keywordflow}{else}:
-299                     pick\_msg = AFTER\_PICK\_TOPIC\_WIZARD\_MSG
-300                 self.agents[0].observe(\{\textcolor{stringliteral}{'id'}: \textcolor{stringliteral}{'SYSTEM'}, \textcolor{stringliteral}{'text'}: pick\_msg\})
-301             self.chosen\_topic = topic\_act[\textcolor{stringliteral}{'text'}]
-302 
-303             \textcolor{stringliteral}{'''Now, send the wiki page for the chosen topic to the wizard'''}
-304             \textcolor{keywordflow}{for} idx, agent \textcolor{keywordflow}{in} enumerate(self.agents):
-305                 \textcolor{keywordflow}{if} agent.id == WIZARD:
-306                     passage = self.wiki\_title\_to\_passage.get(self.chosen\_topic, \textcolor{stringliteral}{''})
-307                     \textcolor{keywordflow}{if} passage == \textcolor{stringliteral}{''}:
-308                         \textcolor{keywordflow}{break}
-309                     split = passage.split(\textcolor{stringliteral}{'\(\backslash\)n'})
-310                     title = split[0]
-311                     split = self.sent\_tok.\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_a1fdb457e98eb4e4c26047e229686a616}{tokenize}(\textcolor{stringliteral}{" "}.join(split[1:]))
-312                     split[0] = split[0][1:]
-313                     sentences = []
-314                     \textcolor{keywordflow}{for} sent \textcolor{keywordflow}{in} split:
-315                         \textcolor{keywordflow}{if} len(sent) > 1:
-316                             sentences.append(sent)
-317                             \textcolor{keywordflow}{if} len(\textcolor{stringliteral}{" "}.join(sentences)) > MAX\_DOC\_LEN * 2:
-318                                 \textcolor{keywordflow}{break}
-319                     msg\_text = AFTER\_PARTNER\_PICK\_TOPIC\_WIZARD\_MSG \textcolor{keywordflow}{if} idx == 1 \textcolor{keywordflow}{else} \textcolor{stringliteral}{""}
-320                     control\_msg[\textcolor{stringliteral}{'text'}] = msg\_text
-321                     control\_msg[\textcolor{stringliteral}{'chosen\_topic\_passages'}] = [[title, sentences]]
-322                     agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
-323                     self.chosen\_topic\_passage = \{
-324                         \textcolor{stringliteral}{'topic'}: self.chosen\_topic,
-325                         \textcolor{stringliteral}{'full\_passage'}: passage,
-326                         \textcolor{stringliteral}{'shown\_passage'}: sentences,
-327                     \}
-328 
-329         \textcolor{stringliteral}{'''If we get to the min turns, inform turker that they can end if they}
-330 \textcolor{stringliteral}{           want}
-331 \textcolor{stringliteral}{        '''}
-332         \textcolor{keywordflow}{if} self.turn\_idx == self.num\_turns + 1:
-333             \textcolor{keywordflow}{for} agent \textcolor{keywordflow}{in} self.agents:
-334                 control\_msg[\textcolor{stringliteral}{'text'}] = self.get\_instruction(tag=\textcolor{stringliteral}{'exceed\_min\_turns'})
-335                 control\_msg[\textcolor{stringliteral}{'exceed\_min\_turns'}] = \textcolor{keyword}{True}
-336                 agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
-337 
-338         \textcolor{stringliteral}{'''Otherwise, we proceed accordingly'''}
-339         acts = self.acts
-340         \textcolor{keywordflow}{for} idx, agent \textcolor{keywordflow}{in} enumerate(self.agents):
-341             \textcolor{comment}{# Increase response time for wizard}
-342             max\_response\_time = self.max\_resp\_time * (
-343                 1 \textcolor{keywordflow}{if} agent.id == APPRENTICE \textcolor{keywordflow}{else} 1.5
-344             )
-345             acts[idx] = agent.act(timeout=max\_response\_time)
-346             self.check\_timeout(acts[idx])
-347 
-348             \textcolor{comment}{# If chat ends}
-349             \textcolor{keywordflow}{if} acts[idx][\textcolor{stringliteral}{'episode\_done'}]:
-350                 self.chat\_done = \textcolor{keyword}{True}
-351                 \textcolor{keywordflow}{for} ag \textcolor{keywordflow}{in} self.agents:
-352                     \textcolor{keywordflow}{if} ag != agent \textcolor{keywordflow}{and} ag.some\_agent\_disconnected:
-353                         control\_msg[\textcolor{stringliteral}{'text'}] = UNEXPECTED\_DISCONNECTION\_MSG
-354                         ag.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
-355                         \textcolor{keywordflow}{return}
-356                 \textcolor{keywordflow}{if} self.turn\_idx > self.num\_turns:
-357                     \textcolor{keywordflow}{for} ag \textcolor{keywordflow}{in} self.agents:
-358                         ag.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(acts[idx]))
-359                         \textcolor{stringliteral}{'''Have Apprentice Agent Eval Wizard Agent'''}
-360                         \textcolor{keywordflow}{if} ag.id == APPRENTICE:
-361                             control\_msg[\textcolor{stringliteral}{'text'}] = EVAL\_WIZARD\_MSG
-362                             control\_msg[\textcolor{stringliteral}{'wizard\_eval'}] = \textcolor{keyword}{True}
-363                             ag.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
-364                             act = ag.act(timeout=self.max\_resp\_time)
-365                             self.check\_timeout(act)
-366                             \textcolor{keywordflow}{try}:
-367                                 w\_ev = \hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(act[\textcolor{stringliteral}{'text'}])
-368                                 w\_ev = max(w\_ev, 1) \textcolor{keywordflow}{if} w\_ev <= 0 \textcolor{keywordflow}{else} min(w\_ev, 5)
-369                             \textcolor{keywordflow}{except} ValueError:  \textcolor{comment}{# If there is a disconnect here}
-370                                 w\_ev = -1
-371                             self.wizard\_eval = w\_ev
-372                         control\_msg[\textcolor{stringliteral}{'text'}] = CHAT\_ENDED\_MSG
-373                         ag.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
-374                 \textcolor{keywordflow}{return}
-375 
-376             \textcolor{stringliteral}{'''Set up msg info dict to save in dialog'''}
-377             msg\_info = \{
-378                 \textcolor{stringliteral}{'speaker'}: \textcolor{stringliteral}{'\{\}\_\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(idx, agent.id),
-379                 \textcolor{stringliteral}{'text'}: acts[idx][\textcolor{stringliteral}{'text'}],
-380                 \textcolor{stringliteral}{'turn'}: self.turn\_idx,
-381                 \textcolor{stringliteral}{'time'}: time.time(),
-382                 \textcolor{stringliteral}{'offensive'}: self.OLD.contains\_offensive\_language(acts[idx][\textcolor{stringliteral}{'text'}]),
-383             \}
-384 
-385             \textcolor{stringliteral}{'''Get clicked passages and checked sentences from Wizard'''}
-386             \textcolor{keywordflow}{if} \textcolor{stringliteral}{'clicked\_passages'} \textcolor{keywordflow}{in} acts[idx]:
-387                 msg\_info[\textcolor{stringliteral}{'clicked\_passages'}] = acts[idx][\textcolor{stringliteral}{'clicked\_passages'}]
-388                 checked\_sents = \{\}
-389                 \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} acts[idx][\textcolor{stringliteral}{'checked\_sentences'}].items():
-390                     \textcolor{keywordflow}{if} k == \textcolor{stringliteral}{'no\_passages\_used'}:
-391                         checked\_sents[k] = v
-392                     \textcolor{keywordflow}{else}:
-393                         split = k.split(\textcolor{stringliteral}{'\_'})
-394                         person = split[0]
-395                         topic\_idx = split[1]
-396                         sent\_idx = split[2]
-397                         \textcolor{keywordflow}{if} person == \textcolor{stringliteral}{'partner'}:
-398                             sub\_passages = [
-399                                 p.split(\textcolor{stringliteral}{'\(\backslash\)n'})[0]
-400                                 \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} self.dialog[-1][\textcolor{stringliteral}{'full\_passages'}]
-401                             ]
-402                             topic = sub\_passages[\hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(topic\_idx)]
-403                         \textcolor{keywordflow}{elif} person == \textcolor{stringliteral}{'self'}:
-404                             sub\_passages = [
-405                                 p.split(\textcolor{stringliteral}{'\(\backslash\)n'})[0]
-406                                 \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} self.dialog[-2][\textcolor{stringliteral}{'full\_passages'}]
-407                             ]
-408                             topic = sub\_passages[\hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(topic\_idx)]
-409                         \textcolor{keywordflow}{else}:
-410                             topic = self.chosen\_topic
-411                         cs\_key = \textcolor{stringliteral}{'\_'}.join(
-412                             [person, \textcolor{stringliteral}{'\_'}.join(topic.split(\textcolor{stringliteral}{' '})), sent\_idx]
-413                         )
-414                         checked\_sents[cs\_key] = v
-415                 msg\_info[\textcolor{stringliteral}{'checked\_sentence'}] = checked\_sents
-416                 msg\_info[\textcolor{stringliteral}{'checked\_passage'}] = acts[idx][\textcolor{stringliteral}{'checked\_passages'}]
-417                 msg\_info[\textcolor{stringliteral}{'good\_message'}] = self.sufficient\_overlap(
-418                     msg\_info[\textcolor{stringliteral}{'text'}], msg\_info[\textcolor{stringliteral}{'checked\_sentence'}]
-419                 )
-420 
-421             \textcolor{stringliteral}{'''Retrieve Passages'''}
-422             ir\_passages = self.retrieve\_passages(copy.deepcopy(acts[idx]))
-423             passages = self.format\_passages(ir\_passages)
-424             msg\_info[\textcolor{stringliteral}{'full\_passages'}] = ir\_passages
-425             msg\_info[\textcolor{stringliteral}{'shown\_passages'}] = passages
-426 
-427             \textcolor{keywordflow}{if} agent.id == WIZARD:
-428                 \textcolor{stringliteral}{"""}
-429 \textcolor{stringliteral}{                Give Wizard the Relevant Passages.}
-430 \textcolor{stringliteral}{                """}
-431                 control\_msg[\textcolor{stringliteral}{'text'}] = \textcolor{stringliteral}{''}
-432                 control\_msg[\textcolor{stringliteral}{'self\_retrieved\_passages'}] = passages
-433                 agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
-434 
-435             self.dialog.append(msg\_info)
-436 
-437             \textcolor{keywordflow}{for} other\_agent \textcolor{keywordflow}{in} self.agents:
-438                 \textcolor{keywordflow}{if} other\_agent != agent:
-439                     other\_agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(acts[idx]))
-440                     \textcolor{keywordflow}{if} other\_agent.id == WIZARD:
-441                         control\_msg[\textcolor{stringliteral}{'text'}] = PARTNER\_RETRIEVED\_PASSAGES\_INST\_MSG
-442                         control\_msg[\textcolor{stringliteral}{'partner\_retrieved\_passages'}] = passages
-443                         other\_agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
-444 
+252     \textcolor{keyword}{def }parley(self):
+253         \textcolor{stringliteral}{"""}
+254 \textcolor{stringliteral}{        Each agent acts; when the APPRENTICE says something, the WIZARD is given}
+255 \textcolor{stringliteral}{        retrieved documents based on the text response.}
+256 \textcolor{stringliteral}{        """}
+257         self.turn\_idx += 1
+258 
+259         \textcolor{comment}{# Initial Message Value}
+260         control\_msg = \{\textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{False}\}
+261         control\_msg[\textcolor{stringliteral}{'id'}] = \textcolor{stringliteral}{'SYSTEM'}
+262 
+263         print(self.world\_tag + \textcolor{stringliteral}{' is at turn \{\}...'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.turn\_idx))
+264 
+265         \textcolor{stringliteral}{'''First Turn: We give the first agent the list of topics to choose from}
+266 \textcolor{stringliteral}{        '''}
+267         \textcolor{keywordflow}{if} self.turn\_idx == 1:
+268             \textcolor{keywordflow}{for} idx, agent \textcolor{keywordflow}{in} enumerate(self.agents):
+269                 \textcolor{stringliteral}{"""}
+270 \textcolor{stringliteral}{                If we are giving the persona, do that :)}
+271 \textcolor{stringliteral}{                """}
+272                 control\_msg[\textcolor{stringliteral}{'text'}] = self.get\_instruction(
+273                     tag=\textcolor{stringliteral}{'start'}, agent\_id=agent.id
+274                 )
+275                 \textcolor{keywordflow}{if} agent.id == WIZARD:
+276                     control\_msg[\textcolor{stringliteral}{'description'}] = config[\textcolor{stringliteral}{'wizard\_onboarding'}]
+277                 \textcolor{keywordflow}{else}:
+278                     control\_msg[\textcolor{stringliteral}{'description'}] = config[\textcolor{stringliteral}{'apprentice\_onboarding'}]
+279                 agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
+280                 \textcolor{keywordflow}{if} idx == 0:
+281                     time.sleep(3)
+282 
+283             \textcolor{stringliteral}{'''Send First Person the list of relevant topics'''}
+284             self.agents[0].observe(
+285                 \hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(
+286                     \{
+287                         \textcolor{stringliteral}{'id'}: \textcolor{stringliteral}{'SYSTEM'},
+288                         \textcolor{stringliteral}{'text'}: PICK\_TOPIC\_MSG,
+289                         \textcolor{stringliteral}{'relevant\_topics'}: self.relevant\_topics,
+290                     \}
+291                 )
+292             )
+293 
+294             topic\_act = self.agents[0].act(timeout=self.max\_resp\_time)
+295             timed\_out = self.check\_timeout(topic\_act)
+296             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} timed\_out:
+297                 \textcolor{keywordflow}{if} self.agents[0].id == APPRENTICE:
+298                     pick\_msg = AFTER\_PICK\_TOPIC\_MSG
+299                 \textcolor{keywordflow}{else}:
+300                     pick\_msg = AFTER\_PICK\_TOPIC\_WIZARD\_MSG
+301                 self.agents[0].observe(\{\textcolor{stringliteral}{'id'}: \textcolor{stringliteral}{'SYSTEM'}, \textcolor{stringliteral}{'text'}: pick\_msg\})
+302             self.chosen\_topic = topic\_act[\textcolor{stringliteral}{'text'}]
+303 
+304             \textcolor{stringliteral}{'''Now, send the wiki page for the chosen topic to the wizard'''}
+305             \textcolor{keywordflow}{for} idx, agent \textcolor{keywordflow}{in} enumerate(self.agents):
+306                 \textcolor{keywordflow}{if} agent.id == WIZARD:
+307                     passage = self.wiki\_title\_to\_passage.get(self.chosen\_topic, \textcolor{stringliteral}{''})
+308                     \textcolor{keywordflow}{if} passage == \textcolor{stringliteral}{''}:
+309                         \textcolor{keywordflow}{break}
+310                     split = passage.split(\textcolor{stringliteral}{'\(\backslash\)n'})
+311                     title = split[0]
+312                     split = self.sent\_tok.\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_a1fdb457e98eb4e4c26047e229686a616}{tokenize}(\textcolor{stringliteral}{" "}.join(split[1:]))
+313                     split[0] = split[0][1:]
+314                     sentences = []
+315                     \textcolor{keywordflow}{for} sent \textcolor{keywordflow}{in} split:
+316                         \textcolor{keywordflow}{if} len(sent) > 1:
+317                             sentences.append(sent)
+318                             \textcolor{keywordflow}{if} len(\textcolor{stringliteral}{" "}.join(sentences)) > MAX\_DOC\_LEN * 2:
+319                                 \textcolor{keywordflow}{break}
+320                     msg\_text = AFTER\_PARTNER\_PICK\_TOPIC\_WIZARD\_MSG \textcolor{keywordflow}{if} idx == 1 \textcolor{keywordflow}{else} \textcolor{stringliteral}{""}
+321                     control\_msg[\textcolor{stringliteral}{'text'}] = msg\_text
+322                     control\_msg[\textcolor{stringliteral}{'chosen\_topic\_passages'}] = [[title, sentences]]
+323                     agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
+324                     self.chosen\_topic\_passage = \{
+325                         \textcolor{stringliteral}{'topic'}: self.chosen\_topic,
+326                         \textcolor{stringliteral}{'full\_passage'}: passage,
+327                         \textcolor{stringliteral}{'shown\_passage'}: sentences,
+328                     \}
+329 
+330         \textcolor{stringliteral}{'''If we get to the min turns, inform turker that they can end if they}
+331 \textcolor{stringliteral}{           want}
+332 \textcolor{stringliteral}{        '''}
+333         \textcolor{keywordflow}{if} self.turn\_idx == self.num\_turns + 1:
+334             \textcolor{keywordflow}{for} agent \textcolor{keywordflow}{in} self.agents:
+335                 control\_msg[\textcolor{stringliteral}{'text'}] = self.get\_instruction(tag=\textcolor{stringliteral}{'exceed\_min\_turns'})
+336                 control\_msg[\textcolor{stringliteral}{'exceed\_min\_turns'}] = \textcolor{keyword}{True}
+337                 agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
+338 
+339         \textcolor{stringliteral}{'''Otherwise, we proceed accordingly'''}
+340         acts = self.acts
+341         \textcolor{keywordflow}{for} idx, agent \textcolor{keywordflow}{in} enumerate(self.agents):
+342             \textcolor{comment}{# Increase response time for wizard}
+343             max\_response\_time = self.max\_resp\_time * (
+344                 1 \textcolor{keywordflow}{if} agent.id == APPRENTICE \textcolor{keywordflow}{else} 1.5
+345             )
+346             acts[idx] = agent.act(timeout=max\_response\_time)
+347             self.check\_timeout(acts[idx])
+348 
+349             \textcolor{comment}{# If chat ends}
+350             \textcolor{keywordflow}{if} acts[idx][\textcolor{stringliteral}{'episode\_done'}]:
+351                 self.chat\_done = \textcolor{keyword}{True}
+352                 \textcolor{keywordflow}{for} ag \textcolor{keywordflow}{in} self.agents:
+353                     \textcolor{keywordflow}{if} ag != agent \textcolor{keywordflow}{and} ag.some\_agent\_disconnected:
+354                         control\_msg[\textcolor{stringliteral}{'text'}] = UNEXPECTED\_DISCONNECTION\_MSG
+355                         ag.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
+356                         \textcolor{keywordflow}{return}
+357                 \textcolor{keywordflow}{if} self.turn\_idx > self.num\_turns:
+358                     \textcolor{keywordflow}{for} ag \textcolor{keywordflow}{in} self.agents:
+359                         ag.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(acts[idx]))
+360                         \textcolor{stringliteral}{'''Have Apprentice Agent Eval Wizard Agent'''}
+361                         \textcolor{keywordflow}{if} ag.id == APPRENTICE:
+362                             control\_msg[\textcolor{stringliteral}{'text'}] = EVAL\_WIZARD\_MSG
+363                             control\_msg[\textcolor{stringliteral}{'wizard\_eval'}] = \textcolor{keyword}{True}
+364                             ag.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
+365                             act = ag.act(timeout=self.max\_resp\_time)
+366                             self.check\_timeout(act)
+367                             \textcolor{keywordflow}{try}:
+368                                 w\_ev = \hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(act[\textcolor{stringliteral}{'text'}])
+369                                 w\_ev = max(w\_ev, 1) \textcolor{keywordflow}{if} w\_ev <= 0 \textcolor{keywordflow}{else} min(w\_ev, 5)
+370                             \textcolor{keywordflow}{except} ValueError:  \textcolor{comment}{# If there is a disconnect here}
+371                                 w\_ev = -1
+372                             self.wizard\_eval = w\_ev
+373                         control\_msg[\textcolor{stringliteral}{'text'}] = CHAT\_ENDED\_MSG
+374                         ag.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
+375                 \textcolor{keywordflow}{return}
+376 
+377             \textcolor{stringliteral}{'''Set up msg info dict to save in dialog'''}
+378             msg\_info = \{
+379                 \textcolor{stringliteral}{'speaker'}: \textcolor{stringliteral}{'\{\}\_\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(idx, agent.id),
+380                 \textcolor{stringliteral}{'text'}: acts[idx][\textcolor{stringliteral}{'text'}],
+381                 \textcolor{stringliteral}{'turn'}: self.turn\_idx,
+382                 \textcolor{stringliteral}{'time'}: time.time(),
+383                 \textcolor{stringliteral}{'offensive'}: self.OLD.contains\_offensive\_language(acts[idx][\textcolor{stringliteral}{'text'}]),
+384             \}
+385 
+386             \textcolor{stringliteral}{'''Get clicked passages and checked sentences from Wizard'''}
+387             \textcolor{keywordflow}{if} \textcolor{stringliteral}{'clicked\_passages'} \textcolor{keywordflow}{in} acts[idx]:
+388                 msg\_info[\textcolor{stringliteral}{'clicked\_passages'}] = acts[idx][\textcolor{stringliteral}{'clicked\_passages'}]
+389                 checked\_sents = \{\}
+390                 \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} acts[idx][\textcolor{stringliteral}{'checked\_sentences'}].items():
+391                     \textcolor{keywordflow}{if} k == \textcolor{stringliteral}{'no\_passages\_used'}:
+392                         checked\_sents[k] = v
+393                     \textcolor{keywordflow}{else}:
+394                         split = k.split(\textcolor{stringliteral}{'\_'})
+395                         person = split[0]
+396                         topic\_idx = split[1]
+397                         sent\_idx = split[2]
+398                         \textcolor{keywordflow}{if} person == \textcolor{stringliteral}{'partner'}:
+399                             sub\_passages = [
+400                                 p.split(\textcolor{stringliteral}{'\(\backslash\)n'})[0]
+401                                 \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} self.dialog[-1][\textcolor{stringliteral}{'full\_passages'}]
+402                             ]
+403                             topic = sub\_passages[\hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(topic\_idx)]
+404                         \textcolor{keywordflow}{elif} person == \textcolor{stringliteral}{'self'}:
+405                             sub\_passages = [
+406                                 p.split(\textcolor{stringliteral}{'\(\backslash\)n'})[0]
+407                                 \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} self.dialog[-2][\textcolor{stringliteral}{'full\_passages'}]
+408                             ]
+409                             topic = sub\_passages[\hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(topic\_idx)]
+410                         \textcolor{keywordflow}{else}:
+411                             topic = self.chosen\_topic
+412                         cs\_key = \textcolor{stringliteral}{'\_'}.join(
+413                             [person, \textcolor{stringliteral}{'\_'}.join(topic.split(\textcolor{stringliteral}{' '})), sent\_idx]
+414                         )
+415                         checked\_sents[cs\_key] = v
+416                 msg\_info[\textcolor{stringliteral}{'checked\_sentence'}] = checked\_sents
+417                 msg\_info[\textcolor{stringliteral}{'checked\_passage'}] = acts[idx][\textcolor{stringliteral}{'checked\_passages'}]
+418                 msg\_info[\textcolor{stringliteral}{'good\_message'}] = self.sufficient\_overlap(
+419                     msg\_info[\textcolor{stringliteral}{'text'}], msg\_info[\textcolor{stringliteral}{'checked\_sentence'}]
+420                 )
+421 
+422             \textcolor{stringliteral}{'''Retrieve Passages'''}
+423             ir\_passages = self.retrieve\_passages(copy.deepcopy(acts[idx]))
+424             passages = self.format\_passages(ir\_passages)
+425             msg\_info[\textcolor{stringliteral}{'full\_passages'}] = ir\_passages
+426             msg\_info[\textcolor{stringliteral}{'shown\_passages'}] = passages
+427 
+428             \textcolor{keywordflow}{if} agent.id == WIZARD:
+429                 \textcolor{stringliteral}{"""}
+430 \textcolor{stringliteral}{                Give Wizard the Relevant Passages.}
+431 \textcolor{stringliteral}{                """}
+432                 control\_msg[\textcolor{stringliteral}{'text'}] = \textcolor{stringliteral}{''}
+433                 control\_msg[\textcolor{stringliteral}{'self\_retrieved\_passages'}] = passages
+434                 agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
+435 
+436             self.dialog.append(msg\_info)
+437 
+438             \textcolor{keywordflow}{for} other\_agent \textcolor{keywordflow}{in} self.agents:
+439                 \textcolor{keywordflow}{if} other\_agent != agent:
+440                     other\_agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(acts[idx]))
+441                     \textcolor{keywordflow}{if} other\_agent.id == WIZARD:
+442                         control\_msg[\textcolor{stringliteral}{'text'}] = PARTNER\_RETRIEVED\_PASSAGES\_INST\_MSG
+443                         control\_msg[\textcolor{stringliteral}{'partner\_retrieved\_passages'}] = passages
+444                         other\_agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
+445 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a37a32397375c7ac7dfae52bca1ba2f6e}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a37a32397375c7ac7dfae52bca1ba2f6e}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!reset\+\_\+random@{reset\+\_\+random}}
@@ -528,13 +526,13 @@ Definition at line 251 of file worlds.\+py.
 
 
 
-Definition at line 494 of file worlds.\+py.
+Definition at line 495 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-494     \textcolor{keyword}{def }reset\_random(self):
-495         self.num\_turns = np.random.randint(self.min\_turns, self.max\_turns) + 1
-496 
+495     \textcolor{keyword}{def }reset\_random(self):
+496         self.num\_turns = np.random.randint(self.min\_turns, self.max\_turns) + 1
+497 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_ac615c171965876c3e092b02c94f1fe3e}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_ac615c171965876c3e092b02c94f1fe3e}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!retrieve\+\_\+passages@{retrieve\+\_\+passages}}
@@ -544,18 +542,18 @@ Definition at line 494 of file worlds.\+py.
 
 
 
-Definition at line 464 of file worlds.\+py.
+Definition at line 465 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-464     \textcolor{keyword}{def }retrieve\_passages(self, act, num\_passages=None):
-465         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} num\_passages:
-466             num\_passages = self.num\_passages\_to\_retrieve
-467         self.ir\_agent.observe(act)
-468         action = self.ir\_agent.act()
-469         passages = action.get(\textcolor{stringliteral}{'text\_candidates'}, [action.get(\textcolor{stringliteral}{'text'}, \textcolor{stringliteral}{""})])
-470         \textcolor{keywordflow}{return} passages[: min(len(passages), num\_passages)]
-471 
+465     \textcolor{keyword}{def }retrieve\_passages(self, act, num\_passages=None):
+466         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} num\_passages:
+467             num\_passages = self.num\_passages\_to\_retrieve
+468         self.ir\_agent.observe(act)
+469         action = self.ir\_agent.act()
+470         passages = action.get(\textcolor{stringliteral}{'text\_candidates'}, [action.get(\textcolor{stringliteral}{'text'}, \textcolor{stringliteral}{""})])
+471         \textcolor{keywordflow}{return} passages[: min(len(passages), num\_passages)]
+472 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_adf9ddc1cbe8f2abc7f42995d621904bf}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_adf9ddc1cbe8f2abc7f42995d621904bf}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!review\+\_\+work@{review\+\_\+work}}
@@ -565,28 +563,28 @@ Definition at line 464 of file worlds.\+py.
 
 
 
-Definition at line 587 of file worlds.\+py.
+Definition at line 588 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-587     \textcolor{keyword}{def }review\_work(self):
-588         \textcolor{keyword}{global} review\_agent
-589 
-590         \textcolor{keyword}{def }review\_agent(ag):
-591             role = ag.id
-592             \textcolor{keywordflow}{for} d \textcolor{keywordflow}{in} self.dialog:
-593                 \textcolor{keywordflow}{if} role \textcolor{keywordflow}{in} d[\textcolor{stringliteral}{'speaker'}]:
-594                     \textcolor{keywordflow}{if} d[\textcolor{stringliteral}{'offensive'}]:
-595                         ag.reject\_work(
-596                             reason=\textcolor{stringliteral}{'Your HIT has been rejected '}
-597                             \textcolor{stringliteral}{'because we detected offensive '}
-598                             \textcolor{stringliteral}{'language in your submission.'}
-599                         )
-600 
-601         Parallel(n\_jobs=len(self.agents), backend=\textcolor{stringliteral}{'threading'})(
-602             delayed(review\_agent)(agent) \textcolor{keywordflow}{for} agent \textcolor{keywordflow}{in} self.agents
-603         )
-604 
+588     \textcolor{keyword}{def }review\_work(self):
+589         \textcolor{keyword}{global} review\_agent
+590 
+591         \textcolor{keyword}{def }review\_agent(ag):
+592             role = ag.id
+593             \textcolor{keywordflow}{for} d \textcolor{keywordflow}{in} self.dialog:
+594                 \textcolor{keywordflow}{if} role \textcolor{keywordflow}{in} d[\textcolor{stringliteral}{'speaker'}]:
+595                     \textcolor{keywordflow}{if} d[\textcolor{stringliteral}{'offensive'}]:
+596                         ag.reject\_work(
+597                             reason=\textcolor{stringliteral}{'Your HIT has been rejected '}
+598                             \textcolor{stringliteral}{'because we detected offensive '}
+599                             \textcolor{stringliteral}{'language in your submission.'}
+600                         )
+601 
+602         Parallel(n\_jobs=len(self.agents), backend=\textcolor{stringliteral}{'threading'})(
+603             delayed(review\_agent)(agent) \textcolor{keywordflow}{for} agent \textcolor{keywordflow}{in} self.agents
+604         )
+605 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a2cc512e7aab47494715260bebda33ca8}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a2cc512e7aab47494715260bebda33ca8}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!save\+\_\+data@{save\+\_\+data}}
@@ -596,72 +594,72 @@ Definition at line 587 of file worlds.\+py.
 
 
 
-Definition at line 497 of file worlds.\+py.
+Definition at line 498 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-497     \textcolor{keyword}{def }save\_data(self):
-498         \textcolor{comment}{# save persona\_idx\_stack}
-499         convo\_finished = self.turn\_idx >= self.num\_turns + 1
-500         \textcolor{keywordflow}{for} ag \textcolor{keywordflow}{in} self.agents:
-501             \textcolor{keywordflow}{if} (
-502                 ag.hit\_is\_abandoned
-503                 \textcolor{keywordflow}{or} ag.hit\_is\_returned
-504                 \textcolor{keywordflow}{or} ag.disconnected
-505                 \textcolor{keywordflow}{or} ag.hit\_is\_expired
-506             ):
-507                 convo\_finished = \textcolor{keyword}{False}
-508         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} convo\_finished:
-509             self.persona\_generator.push\_persona(self.persona\_idx)
-510             print(\textcolor{stringliteral}{"\(\backslash\)n**Push persona \{\} back to stack. **\(\backslash\)n"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.persona\_idx))
-511         self.agents[0].persona\_generator.save\_idx\_stack()
-512 
-513         data\_path = self.opt[\textcolor{stringliteral}{'data\_path'}]
-514         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.exists(data\_path):
-515             os.makedirs(data\_path)
-516         self.convo\_finished = convo\_finished
-517         self.wizard\_worker = \textcolor{stringliteral}{''}
-518         \textcolor{keywordflow}{if} convo\_finished:
-519             filename = os.path.join(
-520                 data\_path,
-521                 \textcolor{stringliteral}{'\{\}\_\{\}\_\{\}.pkl'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
-522                     time.strftime(\textcolor{stringliteral}{"%Y%m%d-%H%M%S"}),
-523                     np.random.randint(0, 1000),
-524                     self.task\_type,
-525                 ),
-526             )
-527             self.good\_wiz, self.wizard\_worker = self.check\_wizard\_quality()
-528         \textcolor{keywordflow}{else}:
-529             filename = os.path.join(
-530                 data\_path,
-531                 \textcolor{stringliteral}{'\{\}\_\{\}\_\{\}\_incomplete.pkl'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
-532                     time.strftime(\textcolor{stringliteral}{"%Y%m%d-%H%M%S"}),
-533                     np.random.randint(0, 1000),
-534                     self.task\_type,
-535                 ),
-536             )
-537             self.good\_wiz = \textcolor{keyword}{True}
-538         pickle.dump(
-539             \{
-540                 \textcolor{stringliteral}{'persona'}: self.persona\_to\_topics,
-541                 \textcolor{stringliteral}{'relevant\_topics'}: self.relevant\_topics,
-542                 \textcolor{stringliteral}{'chosen\_topic\_passage'}: self.chosen\_topic\_passage,
-543                 \textcolor{stringliteral}{'dialog'}: self.dialog,
-544                 \textcolor{stringliteral}{'speaker\_with\_persona'}: self.agents[0].worker\_id,
-545                 \textcolor{stringliteral}{'workers'}: [ag.worker\_id \textcolor{keywordflow}{for} ag \textcolor{keywordflow}{in} self.agents],
-546                 \textcolor{stringliteral}{'n\_turn'}: self.num\_turns,
-547                 \textcolor{stringliteral}{'hit\_ids'}: [ag.hit\_id \textcolor{keywordflow}{for} ag \textcolor{keywordflow}{in} self.agents],
-548                 \textcolor{stringliteral}{'assignment\_ids'}: [ag.assignment\_id \textcolor{keywordflow}{for} ag \textcolor{keywordflow}{in} self.agents],
-549                 \textcolor{stringliteral}{'wizard\_eval'}: self.wizard\_eval,
-550                 \textcolor{stringliteral}{'chosen\_topic'}: self.chosen\_topic,
-551                 \textcolor{stringliteral}{'wizard\_good'}: convo\_finished \textcolor{keywordflow}{and} self.good\_wiz,
-552                 \textcolor{stringliteral}{'good\_wizard\_worker'}: self.wizard\_worker \textcolor{keywordflow}{if} self.good\_wiz \textcolor{keywordflow}{else} \textcolor{stringliteral}{''},
-553                 \textcolor{stringliteral}{'bad\_wizard\_worker'}: self.wizard\_worker \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.good\_wiz \textcolor{keywordflow}{else} \textcolor{stringliteral}{''},
-554             \},
-555             open(filename, \textcolor{stringliteral}{'wb'}),
-556         )
-557         print(\textcolor{stringliteral}{'\{\}: Data successfully saved at \{\}.'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.world\_tag, filename))
-558 
+498     \textcolor{keyword}{def }save\_data(self):
+499         \textcolor{comment}{# save persona\_idx\_stack}
+500         convo\_finished = self.turn\_idx >= self.num\_turns + 1
+501         \textcolor{keywordflow}{for} ag \textcolor{keywordflow}{in} self.agents:
+502             \textcolor{keywordflow}{if} (
+503                 ag.hit\_is\_abandoned
+504                 \textcolor{keywordflow}{or} ag.hit\_is\_returned
+505                 \textcolor{keywordflow}{or} ag.disconnected
+506                 \textcolor{keywordflow}{or} ag.hit\_is\_expired
+507             ):
+508                 convo\_finished = \textcolor{keyword}{False}
+509         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} convo\_finished:
+510             self.persona\_generator.push\_persona(self.persona\_idx)
+511             print(\textcolor{stringliteral}{"\(\backslash\)n**Push persona \{\} back to stack. **\(\backslash\)n"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.persona\_idx))
+512         self.agents[0].persona\_generator.save\_idx\_stack()
+513 
+514         data\_path = self.opt[\textcolor{stringliteral}{'data\_path'}]
+515         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.exists(data\_path):
+516             os.makedirs(data\_path)
+517         self.convo\_finished = convo\_finished
+518         self.wizard\_worker = \textcolor{stringliteral}{''}
+519         \textcolor{keywordflow}{if} convo\_finished:
+520             filename = os.path.join(
+521                 data\_path,
+522                 \textcolor{stringliteral}{'\{\}\_\{\}\_\{\}.pkl'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+523                     time.strftime(\textcolor{stringliteral}{"%Y%m%d-%H%M%S"}),
+524                     np.random.randint(0, 1000),
+525                     self.task\_type,
+526                 ),
+527             )
+528             self.good\_wiz, self.wizard\_worker = self.check\_wizard\_quality()
+529         \textcolor{keywordflow}{else}:
+530             filename = os.path.join(
+531                 data\_path,
+532                 \textcolor{stringliteral}{'\{\}\_\{\}\_\{\}\_incomplete.pkl'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+533                     time.strftime(\textcolor{stringliteral}{"%Y%m%d-%H%M%S"}),
+534                     np.random.randint(0, 1000),
+535                     self.task\_type,
+536                 ),
+537             )
+538             self.good\_wiz = \textcolor{keyword}{True}
+539         pickle.dump(
+540             \{
+541                 \textcolor{stringliteral}{'persona'}: self.persona\_to\_topics,
+542                 \textcolor{stringliteral}{'relevant\_topics'}: self.relevant\_topics,
+543                 \textcolor{stringliteral}{'chosen\_topic\_passage'}: self.chosen\_topic\_passage,
+544                 \textcolor{stringliteral}{'dialog'}: self.dialog,
+545                 \textcolor{stringliteral}{'speaker\_with\_persona'}: self.agents[0].worker\_id,
+546                 \textcolor{stringliteral}{'workers'}: [ag.worker\_id \textcolor{keywordflow}{for} ag \textcolor{keywordflow}{in} self.agents],
+547                 \textcolor{stringliteral}{'n\_turn'}: self.num\_turns,
+548                 \textcolor{stringliteral}{'hit\_ids'}: [ag.hit\_id \textcolor{keywordflow}{for} ag \textcolor{keywordflow}{in} self.agents],
+549                 \textcolor{stringliteral}{'assignment\_ids'}: [ag.assignment\_id \textcolor{keywordflow}{for} ag \textcolor{keywordflow}{in} self.agents],
+550                 \textcolor{stringliteral}{'wizard\_eval'}: self.wizard\_eval,
+551                 \textcolor{stringliteral}{'chosen\_topic'}: self.chosen\_topic,
+552                 \textcolor{stringliteral}{'wizard\_good'}: convo\_finished \textcolor{keywordflow}{and} self.good\_wiz,
+553                 \textcolor{stringliteral}{'good\_wizard\_worker'}: self.wizard\_worker \textcolor{keywordflow}{if} self.good\_wiz \textcolor{keywordflow}{else} \textcolor{stringliteral}{''},
+554                 \textcolor{stringliteral}{'bad\_wizard\_worker'}: self.wizard\_worker \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.good\_wiz \textcolor{keywordflow}{else} \textcolor{stringliteral}{''},
+555             \},
+556             open(filename, \textcolor{stringliteral}{'wb'}),
+557         )
+558         print(\textcolor{stringliteral}{'\{\}: Data successfully saved at \{\}.'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.world\_tag, filename))
+559 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_aa6d7a37b43c8485c33a1c62801f41a5f}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_aa6d7a37b43c8485c33a1c62801f41a5f}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!setup\+\_\+tokenizer@{setup\+\_\+tokenizer}}
@@ -671,23 +669,23 @@ Definition at line 497 of file worlds.\+py.
 
 
 
-Definition at line 226 of file worlds.\+py.
+Definition at line 227 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-226     \textcolor{keyword}{def }setup\_tokenizer(self, opt):
-227         \textcolor{keywordflow}{try}:
-228             \textcolor{keyword}{import} nltk
-229         \textcolor{keywordflow}{except} ImportError:
-230             \textcolor{keywordflow}{raise} ImportError(\textcolor{stringliteral}{'Please install nltk (e.g. pip install nltk).'})
-231         \textcolor{comment}{# nltk-specific setup}
-232         st\_path = \textcolor{stringliteral}{'tokenizers/punkt/\{0\}.pickle'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(opt[\textcolor{stringliteral}{'dict\_language'}])
-233         \textcolor{keywordflow}{try}:
-234             self.sent\_tok = nltk.data.load(st\_path)
-235         \textcolor{keywordflow}{except} LookupError:
-236             nltk.download(\textcolor{stringliteral}{'punkt'})
-237             self.sent\_tok = nltk.data.load(st\_path)
-238 
+227     \textcolor{keyword}{def }setup\_tokenizer(self, opt):
+228         \textcolor{keywordflow}{try}:
+229             \textcolor{keyword}{import} nltk
+230         \textcolor{keywordflow}{except} ImportError:
+231             \textcolor{keywordflow}{raise} ImportError(\textcolor{stringliteral}{'Please install nltk (e.g. pip install nltk).'})
+232         \textcolor{comment}{# nltk-specific setup}
+233         st\_path = \textcolor{stringliteral}{'tokenizers/punkt/\{0\}.pickle'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(opt[\textcolor{stringliteral}{'dict\_language'}])
+234         \textcolor{keywordflow}{try}:
+235             self.sent\_tok = nltk.data.load(st\_path)
+236         \textcolor{keywordflow}{except} LookupError:
+237             nltk.download(\textcolor{stringliteral}{'punkt'})
+238             self.sent\_tok = nltk.data.load(st\_path)
+239 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_ae83f8e16372c0d18ceda5a2de734d146}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_ae83f8e16372c0d18ceda5a2de734d146}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!shutdown@{shutdown}}
@@ -700,24 +698,24 @@ disconnected then it could prevent other mturk agents from completing.
 \end{DoxyVerb}
  
 
-Definition at line 605 of file worlds.\+py.
+Definition at line 606 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-605     \textcolor{keyword}{def }shutdown(self):
-606         \textcolor{stringliteral}{"""}
-607 \textcolor{stringliteral}{        Shutdown all mturk agents in parallel, otherwise if one mturk agent is}
-608 \textcolor{stringliteral}{        disconnected then it could prevent other mturk agents from completing.}
-609 \textcolor{stringliteral}{        """}
-610         \textcolor{keyword}{global} shutdown\_agent
-611 
-612         \textcolor{keyword}{def }shutdown\_agent(agent):
-613             agent.shutdown()
-614 
-615         Parallel(n\_jobs=len(self.agents), backend=\textcolor{stringliteral}{'threading'})(
-616             delayed(shutdown\_agent)(agent) \textcolor{keywordflow}{for} agent \textcolor{keywordflow}{in} self.agents
-617         )
-618 \end{DoxyCode}
+606     \textcolor{keyword}{def }shutdown(self):
+607         \textcolor{stringliteral}{"""}
+608 \textcolor{stringliteral}{        Shutdown all mturk agents in parallel, otherwise if one mturk agent is}
+609 \textcolor{stringliteral}{        disconnected then it could prevent other mturk agents from completing.}
+610 \textcolor{stringliteral}{        """}
+611         \textcolor{keyword}{global} shutdown\_agent
+612 
+613         \textcolor{keyword}{def }shutdown\_agent(agent):
+614             agent.shutdown()
+615 
+616         Parallel(n\_jobs=len(self.agents), backend=\textcolor{stringliteral}{'threading'})(
+617             delayed(shutdown\_agent)(agent) \textcolor{keywordflow}{for} agent \textcolor{keywordflow}{in} self.agents
+618         )
+619 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_ac5774d235722eef3721845e5cc4ad588}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_ac5774d235722eef3721845e5cc4ad588}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!sufficient\+\_\+overlap@{sufficient\+\_\+overlap}}
 \index{sufficient\+\_\+overlap@{sufficient\+\_\+overlap}!parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}}
@@ -726,22 +724,22 @@ Definition at line 605 of file worlds.\+py.
 
 
 
-Definition at line 239 of file worlds.\+py.
+Definition at line 240 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-239     \textcolor{keyword}{def }sufficient\_overlap(self, text, sent\_dict):
-240         text\_list = [w[:4] \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_a040aaf5ecfbddec14f321279454f85a8}{split\_tokenize}(text.lower()) \textcolor{keywordflow}{if} w \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} STOPWORDS]
-241         \textcolor{keywordflow}{for} \_, sentence \textcolor{keywordflow}{in} sent\_dict.items():
-242             sentence\_list = [
-243                 w[:4] \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_a040aaf5ecfbddec14f321279454f85a8}{split\_tokenize}(sentence.lower()) \textcolor{keywordflow}{if} w \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} STOPWORDS
-244             ]
-245             \textcolor{keywordflow}{if} len(set(text\_list).intersection(set(sentence\_list))) >= self.opt.get(
-246                 \textcolor{stringliteral}{'word\_overlap\_threshold'}, 2
-247             ):
-248                 \textcolor{keywordflow}{return} \textcolor{keyword}{True}
-249         \textcolor{keywordflow}{return} \textcolor{keyword}{False}
-250 
+240     \textcolor{keyword}{def }sufficient\_overlap(self, text, sent\_dict):
+241         text\_list = [w[:4] \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_a040aaf5ecfbddec14f321279454f85a8}{split\_tokenize}(text.lower()) \textcolor{keywordflow}{if} w \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} STOPWORDS]
+242         \textcolor{keywordflow}{for} \_, sentence \textcolor{keywordflow}{in} sent\_dict.items():
+243             sentence\_list = [
+244                 w[:4] \textcolor{keywordflow}{for} w \textcolor{keywordflow}{in} \hyperlink{namespaceparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_a040aaf5ecfbddec14f321279454f85a8}{split\_tokenize}(sentence.lower()) \textcolor{keywordflow}{if} w \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} STOPWORDS
+245             ]
+246             \textcolor{keywordflow}{if} len(set(text\_list).intersection(set(sentence\_list))) >= self.opt.get(
+247                 \textcolor{stringliteral}{'word\_overlap\_threshold'}, 2
+248             ):
+249                 \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+250         \textcolor{keywordflow}{return} \textcolor{keyword}{False}
+251 
 \end{DoxyCode}
 
 
@@ -754,7 +752,7 @@ Definition at line 239 of file worlds.\+py.
 
 
 
-Definition at line 198 of file worlds.\+py.
+Definition at line 199 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a4f81e7bd4301f6cf6d719353cdd0a700}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a4f81e7bd4301f6cf6d719353cdd0a700}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!chat\+\_\+done@{chat\+\_\+done}}
@@ -764,7 +762,7 @@ Definition at line 198 of file worlds.\+py.
 
 
 
-Definition at line 193 of file worlds.\+py.
+Definition at line 194 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a9b6c90713122078ed7c9f551ef4ec89a}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a9b6c90713122078ed7c9f551ef4ec89a}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!chosen\+\_\+topic@{chosen\+\_\+topic}}
@@ -774,7 +772,7 @@ Definition at line 193 of file worlds.\+py.
 
 
 
-Definition at line 217 of file worlds.\+py.
+Definition at line 218 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_af0d73e2573eed2c60d1594613b082d0a}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_af0d73e2573eed2c60d1594613b082d0a}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!chosen\+\_\+topic\+\_\+passage@{chosen\+\_\+topic\+\_\+passage}}
@@ -784,7 +782,7 @@ Definition at line 217 of file worlds.\+py.
 
 
 
-Definition at line 218 of file worlds.\+py.
+Definition at line 219 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_aac576523ba4c6273c29279ea97458877}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_aac576523ba4c6273c29279ea97458877}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!convo\+\_\+finished@{convo\+\_\+finished}}
@@ -794,7 +792,7 @@ Definition at line 218 of file worlds.\+py.
 
 
 
-Definition at line 516 of file worlds.\+py.
+Definition at line 517 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_aba5baf47f44a51c7e864f102ed56e94e}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_aba5baf47f44a51c7e864f102ed56e94e}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!dialog@{dialog}}
@@ -804,7 +802,7 @@ Definition at line 516 of file worlds.\+py.
 
 
 
-Definition at line 190 of file worlds.\+py.
+Definition at line 191 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a0db5df37b6360ce7d9ec2f471f131bc9}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a0db5df37b6360ce7d9ec2f471f131bc9}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!good\+\_\+wiz@{good\+\_\+wiz}}
@@ -814,7 +812,7 @@ Definition at line 190 of file worlds.\+py.
 
 
 
-Definition at line 537 of file worlds.\+py.
+Definition at line 538 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_ac96038e69b3b922033d73ebeb0db5b5f}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_ac96038e69b3b922033d73ebeb0db5b5f}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!ir\+\_\+agent@{ir\+\_\+agent}}
@@ -824,7 +822,7 @@ Definition at line 537 of file worlds.\+py.
 
 
 
-Definition at line 215 of file worlds.\+py.
+Definition at line 216 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_abc75558bf58aaad68b6e15209c8ac59f}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_abc75558bf58aaad68b6e15209c8ac59f}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!max\+\_\+resp\+\_\+time@{max\+\_\+resp\+\_\+time}}
@@ -834,7 +832,7 @@ Definition at line 215 of file worlds.\+py.
 
 
 
-Definition at line 195 of file worlds.\+py.
+Definition at line 196 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a8bc5d92a9797d40d8c2b4a2be23cf62d}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a8bc5d92a9797d40d8c2b4a2be23cf62d}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!max\+\_\+turns@{max\+\_\+turns}}
@@ -844,7 +842,7 @@ Definition at line 195 of file worlds.\+py.
 
 
 
-Definition at line 188 of file worlds.\+py.
+Definition at line 189 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a51031cb77591f1f9a49fa8b0ea718427}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a51031cb77591f1f9a49fa8b0ea718427}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!min\+\_\+turns@{min\+\_\+turns}}
@@ -854,7 +852,7 @@ Definition at line 188 of file worlds.\+py.
 
 
 
-Definition at line 187 of file worlds.\+py.
+Definition at line 188 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a9b32d0c2ee9549b26537af877f1e31d8}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a9b32d0c2ee9549b26537af877f1e31d8}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!num\+\_\+passages\+\_\+to\+\_\+retrieve@{num\+\_\+passages\+\_\+to\+\_\+retrieve}}
@@ -864,7 +862,7 @@ Definition at line 187 of file worlds.\+py.
 
 
 
-Definition at line 196 of file worlds.\+py.
+Definition at line 197 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a461c861fc08b6ceb7308bf06d4d9bb74}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a461c861fc08b6ceb7308bf06d4d9bb74}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!num\+\_\+turns@{num\+\_\+turns}}
@@ -874,7 +872,7 @@ Definition at line 196 of file worlds.\+py.
 
 
 
-Definition at line 189 of file worlds.\+py.
+Definition at line 190 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a3a30788ef26355fa19f338da713e7107}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a3a30788ef26355fa19f338da713e7107}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!O\+LD@{O\+LD}}
@@ -884,7 +882,7 @@ Definition at line 189 of file worlds.\+py.
 
 
 
-Definition at line 219 of file worlds.\+py.
+Definition at line 220 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a02368e5068f57025537331910ed611e4}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a02368e5068f57025537331910ed611e4}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!persona\+\_\+generator@{persona\+\_\+generator}}
@@ -894,7 +892,7 @@ Definition at line 219 of file worlds.\+py.
 
 
 
-Definition at line 200 of file worlds.\+py.
+Definition at line 201 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_ae71cb55c86df9f081d8506e9e3833544}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_ae71cb55c86df9f081d8506e9e3833544}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!persona\+\_\+to\+\_\+topics@{persona\+\_\+to\+\_\+topics}}
@@ -904,7 +902,7 @@ Definition at line 200 of file worlds.\+py.
 
 
 
-Definition at line 203 of file worlds.\+py.
+Definition at line 204 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_aa5f47ea9eb1fc0e517e9c375e90fb283}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_aa5f47ea9eb1fc0e517e9c375e90fb283}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!relevant\+\_\+topics@{relevant\+\_\+topics}}
@@ -914,7 +912,7 @@ Definition at line 203 of file worlds.\+py.
 
 
 
-Definition at line 201 of file worlds.\+py.
+Definition at line 202 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a6af1b3a1af7487a6b7b495f9f7b1fe7a}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a6af1b3a1af7487a6b7b495f9f7b1fe7a}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!sent\+\_\+tok@{sent\+\_\+tok}}
@@ -924,7 +922,7 @@ Definition at line 201 of file worlds.\+py.
 
 
 
-Definition at line 234 of file worlds.\+py.
+Definition at line 235 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_abe98ff9492e9cbcb08c66724458748c1}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_abe98ff9492e9cbcb08c66724458748c1}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!task\+\_\+type@{task\+\_\+type}}
@@ -934,7 +932,7 @@ Definition at line 234 of file worlds.\+py.
 
 
 
-Definition at line 192 of file worlds.\+py.
+Definition at line 193 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_ab9bb998eaa47418a44df3a129d06948f}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_ab9bb998eaa47418a44df3a129d06948f}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!turn\+\_\+idx@{turn\+\_\+idx}}
@@ -944,7 +942,7 @@ Definition at line 192 of file worlds.\+py.
 
 
 
-Definition at line 186 of file worlds.\+py.
+Definition at line 187 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a21df7304f22e93830b5e92f43c2ac734}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_a21df7304f22e93830b5e92f43c2ac734}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!wiki\+\_\+title\+\_\+to\+\_\+passage@{wiki\+\_\+title\+\_\+to\+\_\+passage}}
@@ -954,7 +952,7 @@ Definition at line 186 of file worlds.\+py.
 
 
 
-Definition at line 221 of file worlds.\+py.
+Definition at line 222 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_aa312fc8c5c5cc32fe9cb260d37b17cd7}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_aa312fc8c5c5cc32fe9cb260d37b17cd7}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!wizard\+\_\+eval@{wizard\+\_\+eval}}
@@ -964,7 +962,7 @@ Definition at line 221 of file worlds.\+py.
 
 
 
-Definition at line 191 of file worlds.\+py.
+Definition at line 192 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_ad2649145f873a6de923eb2f2e6ab4031}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_ad2649145f873a6de923eb2f2e6ab4031}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!wizard\+\_\+worker@{wizard\+\_\+worker}}
@@ -974,7 +972,7 @@ Definition at line 191 of file worlds.\+py.
 
 
 
-Definition at line 517 of file worlds.\+py.
+Definition at line 518 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_ae3c5ecb7dfbcfd5ede55035fa23d3722}\label{classparlai_1_1mturk_1_1tasks_1_1wizard__of__wikipedia_1_1worlds_1_1MTurkWizardOfWikipediaWorld_ae3c5ecb7dfbcfd5ede55035fa23d3722}} 
 \index{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World@{parlai\+::mturk\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::worlds\+::\+M\+Turk\+Wizard\+Of\+Wikipedia\+World}!world\+\_\+tag@{world\+\_\+tag}}
@@ -984,7 +982,7 @@ Definition at line 517 of file worlds.\+py.
 
 
 
-Definition at line 194 of file worlds.\+py.
+Definition at line 195 of file worlds.\+py.
 
 
 

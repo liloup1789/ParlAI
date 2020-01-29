@@ -2,8 +2,7 @@
 \label{classparlai_1_1core_1_1worlds_1_1HogwildProcess}\index{parlai.\+core.\+worlds.\+Hogwild\+Process@{parlai.\+core.\+worlds.\+Hogwild\+Process}}
 
 
-Inheritance diagram for parlai.\+core.\+worlds.\+Hogwild\+Process\+:
-\nopagebreak
+Inheritance diagram for parlai.\+core.\+worlds.\+Hogwild\+Process\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+core.\+worlds.\+Hogwild\+Process\+:
 \end{figure}
 
 
-Collaboration diagram for parlai.\+core.\+worlds.\+Hogwild\+Process\+:
-\nopagebreak
+Collaboration diagram for parlai.\+core.\+worlds.\+Hogwild\+Process\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -23,7 +21,7 @@ Collaboration diagram for parlai.\+core.\+worlds.\+Hogwild\+Process\+:
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-def \hyperlink{classparlai_1_1core_1_1worlds_1_1HogwildProcess_a8356a8de17d41e86e4da0262fc5d36d7}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, tid, \hyperlink{classparlai_1_1core_1_1worlds_1_1HogwildProcess_a640d8da3bcea07a0748b8973f390f125}{opt}, \hyperlink{classparlai_1_1core_1_1worlds_1_1HogwildProcess_a614b61613d85c80764b8b68697697e13}{shared}, \hyperlink{classparlai_1_1core_1_1worlds_1_1HogwildProcess_a7bf5f7806e93a6b1ecb02fd12fa4a01f}{sync})
+def \hyperlink{classparlai_1_1core_1_1worlds_1_1HogwildProcess_a23dbb2d3afb25e1a7d71c8618e5dd7ec}{\+\_\+\+\_\+init\+\_\+\+\_\+}
 \item 
 def \hyperlink{classparlai_1_1core_1_1worlds_1_1HogwildProcess_a749caf3085cb7b373db66b6f92567290}{run} (self)
 \end{DoxyCompactItemize}
@@ -47,36 +45,36 @@ Each ``HogwildProcess`` contain its own unique ``World``.
 \end{DoxyVerb}
  
 
-Definition at line 969 of file worlds.\+py.
+Definition at line 984 of file worlds.\+py.
 
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1HogwildProcess_a8356a8de17d41e86e4da0262fc5d36d7}\label{classparlai_1_1core_1_1worlds_1_1HogwildProcess_a8356a8de17d41e86e4da0262fc5d36d7}} 
+\mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1HogwildProcess_a23dbb2d3afb25e1a7d71c8618e5dd7ec}\label{classparlai_1_1core_1_1worlds_1_1HogwildProcess_a23dbb2d3afb25e1a7d71c8618e5dd7ec}} 
 \index{parlai\+::core\+::worlds\+::\+Hogwild\+Process@{parlai\+::core\+::worlds\+::\+Hogwild\+Process}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
 \index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::core\+::worlds\+::\+Hogwild\+Process@{parlai\+::core\+::worlds\+::\+Hogwild\+Process}}
 \subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
-{\footnotesize\ttfamily def parlai.\+core.\+worlds.\+Hogwild\+Process.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{tid,  }\item[{}]{opt,  }\item[{}]{shared,  }\item[{}]{sync }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily def parlai.\+core.\+worlds.\+Hogwild\+Process.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{tid,  }\item[{}]{opt }\end{DoxyParamCaption})}
 
 
 
-Definition at line 976 of file worlds.\+py.
+Definition at line 991 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-976     \textcolor{keyword}{def }\_\_init\_\_(self, tid, opt, shared, sync):
-977         self.numthreads = opt[\textcolor{stringliteral}{'numthreads'}]
-978         opt = copy.deepcopy(opt)
-979         opt[\textcolor{stringliteral}{'numthreads'}] = 1  \textcolor{comment}{# don't let threads create more threads!}
-980         self.opt = opt
-981         self.shared = shared
-982         self.shared[\textcolor{stringliteral}{'threadindex'}] = tid
-983         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'agents'} \textcolor{keywordflow}{in} self.shared:
-984             \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} self.shared[\textcolor{stringliteral}{'agents'}]:
-985                 a[\textcolor{stringliteral}{'threadindex'}] = tid
-986         self.sync = sync
-987         super().\_\_init\_\_(daemon=\textcolor{keyword}{True})
-988 
+991     \textcolor{keyword}{def }\_\_init\_\_(self, tid, opt: Opt, shared, sync):
+992         self.numthreads = opt[\textcolor{stringliteral}{'numthreads'}]
+993         opt = copy.deepcopy(opt)
+994         opt[\textcolor{stringliteral}{'numthreads'}] = 1  \textcolor{comment}{# don't let threads create more threads!}
+995         self.opt = opt
+996         self.shared = shared
+997         self.shared[\textcolor{stringliteral}{'threadindex'}] = tid
+998         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'agents'} \textcolor{keywordflow}{in} self.shared:
+999             \textcolor{keywordflow}{for} a \textcolor{keywordflow}{in} self.shared[\textcolor{stringliteral}{'agents'}]:
+1000                 a[\textcolor{stringliteral}{'threadindex'}] = tid
+1001         self.sync = sync
+1002         super().\_\_init\_\_(daemon=\textcolor{keyword}{True})
+1003 
 \end{DoxyCode}
 
 
@@ -94,64 +92,64 @@ the semaphore ``queued_sem``.
 \end{DoxyVerb}
  
 
-Definition at line 989 of file worlds.\+py.
+Definition at line 1004 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-989     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_a0d8cca9dbdf0fa23d25e81ec2a96b347}{run}(self):
-990         \textcolor{stringliteral}{"""}
-991 \textcolor{stringliteral}{        Run a parley loop.}
-992 \textcolor{stringliteral}{}
-993 \textcolor{stringliteral}{        Runs normal parley loop for as many examples as this thread can get ahold of via}
-994 \textcolor{stringliteral}{        the semaphore ``queued\_sem``.}
-995 \textcolor{stringliteral}{        """}
-996         world = self.shared[\textcolor{stringliteral}{'world\_class'}](self.opt, \textcolor{keywordtype}{None}, self.shared)
-997         \textcolor{keywordflow}{if} self.opt.get(\textcolor{stringliteral}{'batchsize'}, 1) > 1:
-998             world = BatchWorld(self.opt, world)
-999         self.sync[\textcolor{stringliteral}{'threads\_sem'}].\hyperlink{namespaceconf_a325dc746d8bf05c54d26351c35a21d90}{release}()
-1000         with world:
-1001             \textcolor{keywordflow}{while} \textcolor{keyword}{True}:
-1002                 \textcolor{keywordflow}{if} self.sync[\textcolor{stringliteral}{'term\_flag'}].value:
-1003                     \textcolor{keywordflow}{break}  \textcolor{comment}{# time to close}
-1004                 self.sync[\textcolor{stringliteral}{'queued\_sem'}].acquire()
-1005                 self.sync[\textcolor{stringliteral}{'threads\_sem'}].\hyperlink{namespaceconf_a325dc746d8bf05c54d26351c35a21d90}{release}()
-1006 
-1007                 \textcolor{comment}{# check if you need to reset before moving on}
-1008                 \textcolor{keywordflow}{if} self.sync[\textcolor{stringliteral}{'epoch\_done\_ctr'}].value < 0:
-1009                     with self.sync[\textcolor{stringliteral}{'epoch\_done\_ctr'}].get\_lock():
-1010                         \textcolor{comment}{# increment the number of finished threads}
-1011                         self.sync[\textcolor{stringliteral}{'epoch\_done\_ctr'}].value += 1
-1012                         \textcolor{keywordflow}{if} self.sync[\textcolor{stringliteral}{'epoch\_done\_ctr'}].value == 0:
-1013                             \textcolor{comment}{# make sure reset sem is clean}
-1014                             \textcolor{keywordflow}{for} \_ \textcolor{keywordflow}{in} range(self.numthreads):
-1015                                 self.sync[\textcolor{stringliteral}{'reset\_sem'}].acquire(block=\textcolor{keyword}{False})
-1016                         world.reset()  \textcolor{comment}{# keep lock for this!}
-1017 
-1018                 \textcolor{keywordflow}{while} self.sync[\textcolor{stringliteral}{'epoch\_done\_ctr'}].value < 0:
-1019                     \textcolor{comment}{# only move forward once other threads have finished reset}
-1020                     time.sleep(0.1)
+1004     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_a0d8cca9dbdf0fa23d25e81ec2a96b347}{run}(self):
+1005         \textcolor{stringliteral}{"""}
+1006 \textcolor{stringliteral}{        Run a parley loop.}
+1007 \textcolor{stringliteral}{}
+1008 \textcolor{stringliteral}{        Runs normal parley loop for as many examples as this thread can get ahold of via}
+1009 \textcolor{stringliteral}{        the semaphore ``queued\_sem``.}
+1010 \textcolor{stringliteral}{        """}
+1011         world = self.shared[\textcolor{stringliteral}{'world\_class'}](self.opt, \textcolor{keywordtype}{None}, self.shared)
+1012         \textcolor{keywordflow}{if} self.opt.get(\textcolor{stringliteral}{'batchsize'}, 1) > 1:
+1013             world = BatchWorld(self.opt, world)
+1014         self.sync[\textcolor{stringliteral}{'threads\_sem'}].\hyperlink{namespaceconf_a325dc746d8bf05c54d26351c35a21d90}{release}()
+1015         with world:
+1016             \textcolor{keywordflow}{while} \textcolor{keyword}{True}:
+1017                 \textcolor{keywordflow}{if} self.sync[\textcolor{stringliteral}{'term\_flag'}].value:
+1018                     \textcolor{keywordflow}{break}  \textcolor{comment}{# time to close}
+1019                 self.sync[\textcolor{stringliteral}{'queued\_sem'}].acquire()
+1020                 self.sync[\textcolor{stringliteral}{'threads\_sem'}].\hyperlink{namespaceconf_a325dc746d8bf05c54d26351c35a21d90}{release}()
 1021 
-1022                 \textcolor{comment}{# process an example or wait for reset}
-1023                 \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} world.epoch\_done() \textcolor{keywordflow}{or} self.opt.get(\textcolor{stringliteral}{'datatype'}).startswith(
-1024                     \textcolor{stringliteral}{'train'}, \textcolor{keyword}{False}
-1025                 ):
-1026                     \textcolor{comment}{# do one example if any available}
-1027                     world.parley()
-1028                     with self.sync[\textcolor{stringliteral}{'total\_parleys'}].get\_lock():
-1029                         self.sync[\textcolor{stringliteral}{'total\_parleys'}].value += 1
-1030                 \textcolor{keywordflow}{else}:
-1031                     \textcolor{comment}{# during valid/test, we stop parleying once at end of epoch}
-1032                     with self.sync[\textcolor{stringliteral}{'epoch\_done\_ctr'}].get\_lock():
-1033                         \textcolor{comment}{# increment the number of finished threads}
-1034                         self.sync[\textcolor{stringliteral}{'epoch\_done\_ctr'}].value += 1
-1035                     \textcolor{comment}{# send control back to main thread}
-1036                     self.sync[\textcolor{stringliteral}{'threads\_sem'}].\hyperlink{namespaceconf_a325dc746d8bf05c54d26351c35a21d90}{release}()
-1037                     \textcolor{comment}{# we didn't process anything}
-1038                     self.sync[\textcolor{stringliteral}{'queued\_sem'}].\hyperlink{namespaceconf_a325dc746d8bf05c54d26351c35a21d90}{release}()
-1039                     \textcolor{comment}{# wait for reset signal}
-1040                     self.sync[\textcolor{stringliteral}{'reset\_sem'}].acquire()
-1041 
-1042 
+1022                 \textcolor{comment}{# check if you need to reset before moving on}
+1023                 \textcolor{keywordflow}{if} self.sync[\textcolor{stringliteral}{'epoch\_done\_ctr'}].value < 0:
+1024                     with self.sync[\textcolor{stringliteral}{'epoch\_done\_ctr'}].get\_lock():
+1025                         \textcolor{comment}{# increment the number of finished threads}
+1026                         self.sync[\textcolor{stringliteral}{'epoch\_done\_ctr'}].value += 1
+1027                         \textcolor{keywordflow}{if} self.sync[\textcolor{stringliteral}{'epoch\_done\_ctr'}].value == 0:
+1028                             \textcolor{comment}{# make sure reset sem is clean}
+1029                             \textcolor{keywordflow}{for} \_ \textcolor{keywordflow}{in} range(self.numthreads):
+1030                                 self.sync[\textcolor{stringliteral}{'reset\_sem'}].acquire(block=\textcolor{keyword}{False})
+1031                         world.reset()  \textcolor{comment}{# keep lock for this!}
+1032 
+1033                 \textcolor{keywordflow}{while} self.sync[\textcolor{stringliteral}{'epoch\_done\_ctr'}].value < 0:
+1034                     \textcolor{comment}{# only move forward once other threads have finished reset}
+1035                     time.sleep(0.1)
+1036 
+1037                 \textcolor{comment}{# process an example or wait for reset}
+1038                 \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} world.epoch\_done() \textcolor{keywordflow}{or} self.opt.get(\textcolor{stringliteral}{'datatype'}).startswith(
+1039                     \textcolor{stringliteral}{'train'}, \textcolor{keyword}{False}
+1040                 ):
+1041                     \textcolor{comment}{# do one example if any available}
+1042                     world.parley()
+1043                     with self.sync[\textcolor{stringliteral}{'total\_parleys'}].get\_lock():
+1044                         self.sync[\textcolor{stringliteral}{'total\_parleys'}].value += 1
+1045                 \textcolor{keywordflow}{else}:
+1046                     \textcolor{comment}{# during valid/test, we stop parleying once at end of epoch}
+1047                     with self.sync[\textcolor{stringliteral}{'epoch\_done\_ctr'}].get\_lock():
+1048                         \textcolor{comment}{# increment the number of finished threads}
+1049                         self.sync[\textcolor{stringliteral}{'epoch\_done\_ctr'}].value += 1
+1050                     \textcolor{comment}{# send control back to main thread}
+1051                     self.sync[\textcolor{stringliteral}{'threads\_sem'}].\hyperlink{namespaceconf_a325dc746d8bf05c54d26351c35a21d90}{release}()
+1052                     \textcolor{comment}{# we didn't process anything}
+1053                     self.sync[\textcolor{stringliteral}{'queued\_sem'}].\hyperlink{namespaceconf_a325dc746d8bf05c54d26351c35a21d90}{release}()
+1054                     \textcolor{comment}{# wait for reset signal}
+1055                     self.sync[\textcolor{stringliteral}{'reset\_sem'}].acquire()
+1056 
+1057 
 \end{DoxyCode}
 
 
@@ -164,7 +162,7 @@ Definition at line 989 of file worlds.\+py.
 
 
 
-Definition at line 977 of file worlds.\+py.
+Definition at line 992 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1HogwildProcess_a640d8da3bcea07a0748b8973f390f125}\label{classparlai_1_1core_1_1worlds_1_1HogwildProcess_a640d8da3bcea07a0748b8973f390f125}} 
 \index{parlai\+::core\+::worlds\+::\+Hogwild\+Process@{parlai\+::core\+::worlds\+::\+Hogwild\+Process}!opt@{opt}}
@@ -174,7 +172,7 @@ Definition at line 977 of file worlds.\+py.
 
 
 
-Definition at line 980 of file worlds.\+py.
+Definition at line 995 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1HogwildProcess_a614b61613d85c80764b8b68697697e13}\label{classparlai_1_1core_1_1worlds_1_1HogwildProcess_a614b61613d85c80764b8b68697697e13}} 
 \index{parlai\+::core\+::worlds\+::\+Hogwild\+Process@{parlai\+::core\+::worlds\+::\+Hogwild\+Process}!shared@{shared}}
@@ -184,7 +182,7 @@ Definition at line 980 of file worlds.\+py.
 
 
 
-Definition at line 981 of file worlds.\+py.
+Definition at line 996 of file worlds.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1worlds_1_1HogwildProcess_a7bf5f7806e93a6b1ecb02fd12fa4a01f}\label{classparlai_1_1core_1_1worlds_1_1HogwildProcess_a7bf5f7806e93a6b1ecb02fd12fa4a01f}} 
 \index{parlai\+::core\+::worlds\+::\+Hogwild\+Process@{parlai\+::core\+::worlds\+::\+Hogwild\+Process}!sync@{sync}}
@@ -194,7 +192,7 @@ Definition at line 981 of file worlds.\+py.
 
 
 
-Definition at line 986 of file worlds.\+py.
+Definition at line 1001 of file worlds.\+py.
 
 
 

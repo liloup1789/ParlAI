@@ -2,8 +2,7 @@
 \label{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyBasicAttention}\index{parlai.\+agents.\+transformer.\+polyencoder.\+Poly\+Basic\+Attention@{parlai.\+agents.\+transformer.\+polyencoder.\+Poly\+Basic\+Attention}}
 
 
-Inheritance diagram for parlai.\+agents.\+transformer.\+polyencoder.\+Poly\+Basic\+Attention\+:
-\nopagebreak
+Inheritance diagram for parlai.\+agents.\+transformer.\+polyencoder.\+Poly\+Basic\+Attention\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+agents.\+transformer.\+polyencoder.\+Poly\+Basi
 \end{figure}
 
 
-Collaboration diagram for parlai.\+agents.\+transformer.\+polyencoder.\+Poly\+Basic\+Attention\+:
-\nopagebreak
+Collaboration diagram for parlai.\+agents.\+transformer.\+polyencoder.\+Poly\+Basic\+Attention\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -41,7 +39,7 @@ def \hyperlink{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyBasicA
 \end{DoxyVerb}
  
 
-Definition at line 469 of file polyencoder.\+py.
+Definition at line 470 of file polyencoder.\+py.
 
 
 
@@ -54,15 +52,15 @@ Definition at line 469 of file polyencoder.\+py.
 
 
 
-Definition at line 474 of file polyencoder.\+py.
+Definition at line 475 of file polyencoder.\+py.
 
 
 \begin{DoxyCode}
-474     \textcolor{keyword}{def }\_\_init\_\_(self, poly\_type, n\_codes, *args, **kwargs):
-475         super().\_\_init\_\_(*args, **kwargs)
-476         self.poly\_type = poly\_type
-477         self.n\_codes = n\_codes
-478 
+475     \textcolor{keyword}{def }\_\_init\_\_(self, poly\_type, n\_codes, *args, **kwargs):
+476         super().\_\_init\_\_(*args, **kwargs)
+477         self.poly\_type = poly\_type
+478         self.n\_codes = n\_codes
+479 
 \end{DoxyCode}
 
 
@@ -80,23 +78,23 @@ polyencoder type is 'codes'
 \end{DoxyVerb}
  
 
-Definition at line 479 of file polyencoder.\+py.
+Definition at line 480 of file polyencoder.\+py.
 
 
 \begin{DoxyCode}
-479     \textcolor{keyword}{def }forward(self, *args, **kwargs):
-480         \textcolor{stringliteral}{"""}
-481 \textcolor{stringliteral}{        Forward pass.}
-482 \textcolor{stringliteral}{}
-483 \textcolor{stringliteral}{        Account for accidental dimensionality reduction when num\_codes is 1 and the}
-484 \textcolor{stringliteral}{        polyencoder type is 'codes'}
-485 \textcolor{stringliteral}{        """}
-486         lhs\_emb = super().forward(*args, **kwargs)
-487         \textcolor{keywordflow}{if} self.poly\_type == \textcolor{stringliteral}{'codes'} \textcolor{keywordflow}{and} self.n\_codes == 1 \textcolor{keywordflow}{and} len(lhs\_emb.shape) == 2:
-488             lhs\_emb = lhs\_emb.unsqueeze(self.dim - 1)
-489         \textcolor{keywordflow}{return} lhs\_emb
-490 
+480     \textcolor{keyword}{def }forward(self, *args, **kwargs):
+481         \textcolor{stringliteral}{"""}
+482 \textcolor{stringliteral}{        Forward pass.}
+483 \textcolor{stringliteral}{}
+484 \textcolor{stringliteral}{        Account for accidental dimensionality reduction when num\_codes is 1 and the}
+485 \textcolor{stringliteral}{        polyencoder type is 'codes'}
+486 \textcolor{stringliteral}{        """}
+487         lhs\_emb = super().forward(*args, **kwargs)
+488         \textcolor{keywordflow}{if} self.poly\_type == \textcolor{stringliteral}{'codes'} \textcolor{keywordflow}{and} self.n\_codes == 1 \textcolor{keywordflow}{and} len(lhs\_emb.shape) == 2:
+489             lhs\_emb = lhs\_emb.unsqueeze(self.dim - 1)
+490         \textcolor{keywordflow}{return} lhs\_emb
 491 
+492 
 \end{DoxyCode}
 
 
@@ -109,7 +107,7 @@ Definition at line 479 of file polyencoder.\+py.
 
 
 
-Definition at line 477 of file polyencoder.\+py.
+Definition at line 478 of file polyencoder.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyBasicAttention_aa82d4585cb9a4f671353565fcc0785ab}\label{classparlai_1_1agents_1_1transformer_1_1polyencoder_1_1PolyBasicAttention_aa82d4585cb9a4f671353565fcc0785ab}} 
 \index{parlai\+::agents\+::transformer\+::polyencoder\+::\+Poly\+Basic\+Attention@{parlai\+::agents\+::transformer\+::polyencoder\+::\+Poly\+Basic\+Attention}!poly\+\_\+type@{poly\+\_\+type}}
@@ -119,7 +117,7 @@ Definition at line 477 of file polyencoder.\+py.
 
 
 
-Definition at line 476 of file polyencoder.\+py.
+Definition at line 477 of file polyencoder.\+py.
 
 
 

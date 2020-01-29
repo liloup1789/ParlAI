@@ -54,11 +54,6 @@ def \hyperlink{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a738c4571db2fee7
 \item 
 \hyperlink{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a9e2cd457217253ef6d3aa0b23418739b}{epoch\+Done}
 \end{DoxyCompactItemize}
-\subsection*{Static Public Attributes}
-\begin{DoxyCompactItemize}
-\item 
-\hyperlink{classparlai_1_1core_1_1teachers_1_1DialogTeacher_aa0637cf3392baf2e9c965de7ffc812ac}{maxsize}
-\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -78,7 +73,7 @@ your class (or subclass another class which does, like
 \end{DoxyVerb}
  
 
-Definition at line 438 of file teachers.\+py.
+Definition at line 432 of file teachers.\+py.
 
 
 
@@ -91,43 +86,43 @@ Definition at line 438 of file teachers.\+py.
 
 
 
-Definition at line 455 of file teachers.\+py.
+Definition at line 449 of file teachers.\+py.
 
 
 \begin{DoxyCode}
-455     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
-456         \textcolor{comment}{# Check for setup\_data}
-457         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} hasattr(self, \textcolor{stringliteral}{'setup\_data'}):
-458             \textcolor{keywordflow}{raise} RuntimeError(
-459                 \textcolor{stringliteral}{'Must implement setup\_data or subclass a class '}
-460                 \textcolor{stringliteral}{'which implements it (e.g. FbDialogTeacher) '}
-461                 \textcolor{stringliteral}{'in order to use this class.'}
-462             )
-463         super().\_\_init\_\_(opt, shared)
-464 
-465         self.startTime = time.time()
-466         self.datatype = opt[\textcolor{stringliteral}{'datatype'}]
-467         self.training = (
-468             self.datatype.startswith(\textcolor{stringliteral}{'train'}) \textcolor{keywordflow}{and} \textcolor{stringliteral}{'evalmode'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.datatype
-469         )
-470         self.stream = \textcolor{stringliteral}{'stream'} \textcolor{keywordflow}{in} self.datatype.split(\textcolor{stringliteral}{':'})
-471 
-472         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.use\_batch\_act:
-473             \textcolor{comment}{# first initialize any shared objects}
-474             data\_class = StreamDialogData \textcolor{keywordflow}{if} self.stream \textcolor{keywordflow}{else} DialogData
-475             kwargs = \{\textcolor{stringliteral}{'cycle'}: self.training\} \textcolor{keywordflow}{if} self.stream \textcolor{keywordflow}{else} \{\}
-476             \textcolor{keywordflow}{if} shared \textcolor{keywordflow}{and} shared.get(\textcolor{stringliteral}{'data'}):
-477                 self.data = data\_class(opt, shared=shared[\textcolor{stringliteral}{'data'}], **kwargs)
-478             \textcolor{keywordflow}{else}:
-479                 self.data = data\_class(
-480                     opt,
-481                     data\_loader=self.setup\_data,
-482                     cands=self.label\_candidates(),
-483                     **kwargs,
-484                 )
-485 
-486         self.reset()
-487 
+449     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
+450         \textcolor{comment}{# Check for setup\_data}
+451         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} hasattr(self, \textcolor{stringliteral}{'setup\_data'}):
+452             \textcolor{keywordflow}{raise} RuntimeError(
+453                 \textcolor{stringliteral}{'Must implement setup\_data or subclass a class '}
+454                 \textcolor{stringliteral}{'which implements it (e.g. FbDialogTeacher) '}
+455                 \textcolor{stringliteral}{'in order to use this class.'}
+456             )
+457         super().\_\_init\_\_(opt, shared)
+458 
+459         self.startTime = time.time()
+460         self.datatype = opt[\textcolor{stringliteral}{'datatype'}]
+461         self.training = (
+462             self.datatype.startswith(\textcolor{stringliteral}{'train'}) \textcolor{keywordflow}{and} \textcolor{stringliteral}{'evalmode'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.datatype
+463         )
+464         self.stream = \textcolor{stringliteral}{'stream'} \textcolor{keywordflow}{in} self.datatype.split(\textcolor{stringliteral}{':'})
+465 
+466         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.use\_batch\_act:
+467             \textcolor{comment}{# first initialize any shared objects}
+468             data\_class = StreamDialogData \textcolor{keywordflow}{if} self.stream \textcolor{keywordflow}{else} DialogData
+469             kwargs = \{\textcolor{stringliteral}{'cycle'}: self.training\} \textcolor{keywordflow}{if} self.stream \textcolor{keywordflow}{else} \{\}
+470             \textcolor{keywordflow}{if} shared \textcolor{keywordflow}{and} shared.get(\textcolor{stringliteral}{'data'}):
+471                 self.data = data\_class(opt, shared=shared[\textcolor{stringliteral}{'data'}], **kwargs)
+472             \textcolor{keywordflow}{else}:
+473                 self.data = data\_class(
+474                     opt,
+475                     data\_loader=self.setup\_data,
+476                     cands=self.label\_candidates(),
+477                     **kwargs,
+478                 )
+479 
+480         self.reset()
+481 
 \end{DoxyCode}
 
 
@@ -142,16 +137,16 @@ Definition at line 455 of file teachers.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 538 of file teachers.\+py.
+Definition at line 534 of file teachers.\+py.
 
 
 \begin{DoxyCode}
-538     \textcolor{keyword}{def }get(self, episode\_idx, entry\_idx=0):
-539         \textcolor{stringliteral}{"""}
-540 \textcolor{stringliteral}{        Get a specific example.}
-541 \textcolor{stringliteral}{        """}
-542         \textcolor{keywordflow}{return} self.data.get(episode\_idx, entry\_idx)[0]
-543 
+534     \textcolor{keyword}{def }get(self, episode\_idx, entry\_idx=0):
+535         \textcolor{stringliteral}{"""}
+536 \textcolor{stringliteral}{        Get a specific example.}
+537 \textcolor{stringliteral}{        """}
+538         \textcolor{keywordflow}{return} self.data.get(episode\_idx, entry\_idx)[0]
+539 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a50649105cc9d00bcaa860290d804eac9}\label{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a50649105cc9d00bcaa860290d804eac9}} 
 \index{parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}!label\+\_\+candidates@{label\+\_\+candidates}}
@@ -166,23 +161,23 @@ provide candidates in all areas. See ``FbDialogueTeacher``.
 \end{DoxyVerb}
  
 
-Definition at line 506 of file teachers.\+py.
+Definition at line 500 of file teachers.\+py.
 
 
 \begin{DoxyCode}
-506     \textcolor{keyword}{def }label\_candidates(self):
-507         \textcolor{stringliteral}{"""}
-508 \textcolor{stringliteral}{        Provide consistent label candidates for all examples.}
-509 \textcolor{stringliteral}{}
-510 \textcolor{stringliteral}{        Default implementation returns ``None`` always, but this may be overriden to}
-511 \textcolor{stringliteral}{        provide candidates in all areas. See ``FbDialogueTeacher``.}
-512 \textcolor{stringliteral}{        """}
-513         \textcolor{comment}{# TODO DEPRECATIONDAY: FbiDialogueTeacher is being deprecated, should we}
-514         \textcolor{comment}{# remove this?}
-515 
-516         \textcolor{comment}{# TODO: mark as optionally abstract?}
-517         \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}
-518 
+500     \textcolor{keyword}{def }label\_candidates(self):
+501         \textcolor{stringliteral}{"""}
+502 \textcolor{stringliteral}{        Provide consistent label candidates for all examples.}
+503 \textcolor{stringliteral}{}
+504 \textcolor{stringliteral}{        Default implementation returns ``None`` always, but this may be overriden to}
+505 \textcolor{stringliteral}{        provide candidates in all areas. See ``FbDialogueTeacher``.}
+506 \textcolor{stringliteral}{        """}
+507         \textcolor{comment}{# TODO DEPRECATIONDAY: FbiDialogueTeacher is being deprecated, should we}
+508         \textcolor{comment}{# remove this?}
+509 
+510         \textcolor{comment}{# TODO: mark as optionally abstract?}
+511         \textcolor{keywordflow}{return} \textcolor{keywordtype}{None}
+512 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a738c4571db2fee7ce3ab01072f10ed49}\label{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a738c4571db2fee7ce3ab01072f10ed49}} 
 \index{parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}!next\+\_\+example@{next\+\_\+example}}
@@ -194,69 +189,72 @@ Definition at line 506 of file teachers.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 544 of file teachers.\+py.
+Definition at line 540 of file teachers.\+py.
 
 
 \begin{DoxyCode}
-544     \textcolor{keyword}{def }next\_example(self):
-545         \textcolor{stringliteral}{"""}
-546 \textcolor{stringliteral}{        Get the next example.}
-547 \textcolor{stringliteral}{        """}
-548         \textcolor{keywordflow}{if} self.stream:
-549             action, epoch\_done = self.data.get()
-550         \textcolor{keywordflow}{else}:
-551             action, epoch\_done = super().next\_example()
-552         \textcolor{keywordflow}{return} action, epoch\_done
-553 
-554 
+540     \textcolor{keyword}{def }next\_example(self):
+541         \textcolor{stringliteral}{"""}
+542 \textcolor{stringliteral}{        Get the next example.}
+543 \textcolor{stringliteral}{        """}
+544         \textcolor{keywordflow}{if} self.stream:
+545             action, epoch\_done = self.data.get()
+546         \textcolor{keywordflow}{else}:
+547             action, epoch\_done = super().next\_example()
+548         \textcolor{keywordflow}{return} action, epoch\_done
+549 
+550 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogTeacher_af1e90a07058dc489c45280f0982e21be}\label{classparlai_1_1core_1_1teachers_1_1DialogTeacher_af1e90a07058dc489c45280f0982e21be}} 
 \index{parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}!num\+\_\+episodes@{num\+\_\+episodes}}
 \index{num\+\_\+episodes@{num\+\_\+episodes}!parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}}
 \subsubsection{\texorpdfstring{num\+\_\+episodes()}{num\_episodes()}}
-{\footnotesize\ttfamily def parlai.\+core.\+teachers.\+Dialog\+Teacher.\+num\+\_\+episodes (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily def parlai.\+core.\+teachers.\+Dialog\+Teacher.\+num\+\_\+episodes (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{int }\end{DoxyParamCaption})}
 
 \begin{DoxyVerb}Return the number of episodes in the data.
 \end{DoxyVerb}
  
 
-Definition at line 519 of file teachers.\+py.
+Definition at line 513 of file teachers.\+py.
 
 
 \begin{DoxyCode}
-519     \textcolor{keyword}{def }num\_episodes(self):
-520         \textcolor{stringliteral}{"""}
-521 \textcolor{stringliteral}{        Return the number of episodes in the data.}
-522 \textcolor{stringliteral}{        """}
-523         \textcolor{keywordflow}{try}:
-524             \textcolor{keywordflow}{return} self.data.num\_episodes()
-525         \textcolor{keywordflow}{except} AttributeError:
-526             \textcolor{keywordflow}{return} super().num\_episodes()
-527 
+513     \textcolor{keyword}{def }num\_episodes(self) -> int:
+514         \textcolor{stringliteral}{"""}
+515 \textcolor{stringliteral}{        Return the number of episodes in the data.}
+516 \textcolor{stringliteral}{        """}
+517         \textcolor{keywordflow}{try}:
+518             \textcolor{keywordflow}{return} self.data.num\_episodes()
+519         \textcolor{keywordflow}{except} AttributeError:
+520             \textcolor{keywordflow}{return} super().num\_episodes()
+521 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogTeacher_ad90c8cac27f2db22db77e29828b94dfe}\label{classparlai_1_1core_1_1teachers_1_1DialogTeacher_ad90c8cac27f2db22db77e29828b94dfe}} 
 \index{parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}!num\+\_\+examples@{num\+\_\+examples}}
 \index{num\+\_\+examples@{num\+\_\+examples}!parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}}
 \subsubsection{\texorpdfstring{num\+\_\+examples()}{num\_examples()}}
-{\footnotesize\ttfamily def parlai.\+core.\+teachers.\+Dialog\+Teacher.\+num\+\_\+examples (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily def parlai.\+core.\+teachers.\+Dialog\+Teacher.\+num\+\_\+examples (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{int }\end{DoxyParamCaption})}
 
 \begin{DoxyVerb}Return the number of examples in the data.
 \end{DoxyVerb}
  
 
-Definition at line 529 of file teachers.\+py.
+Definition at line 522 of file teachers.\+py.
 
 
 \begin{DoxyCode}
-529     \textcolor{keyword}{def }num\_examples(self):
-530         \textcolor{stringliteral}{"""}
-531 \textcolor{stringliteral}{        Return the number of examples in the data.}
-532 \textcolor{stringliteral}{        """}
-533         \textcolor{keywordflow}{try}:
-534             \textcolor{keywordflow}{return} self.data.num\_examples()
-535         \textcolor{keywordflow}{except} AttributeError:
-536             \textcolor{keywordflow}{return} super().num\_examples()
-537 
+522     \textcolor{keyword}{def }num\_examples(self) -> int:
+523         \textcolor{stringliteral}{"""}
+524 \textcolor{stringliteral}{        Return the number of examples in the data.}
+525 \textcolor{stringliteral}{        """}
+526         \textcolor{keywordflow}{if} hasattr(self, \textcolor{stringliteral}{'\_num\_examples\_cache'}):
+527             \textcolor{keywordflow}{return} self.\_num\_examples\_cache
+528         \textcolor{keywordflow}{try}:
+529             self.\_num\_examples\_cache: int = self.data.num\_examples()
+530         \textcolor{keywordflow}{except} AttributeError:
+531             self.\_num\_examples\_cache = super().num\_examples()
+532         \textcolor{keywordflow}{return} self.\_num\_examples\_cache
+533 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a393f94ea28e1733f575a9f36a0b43c18}\label{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a393f94ea28e1733f575a9f36a0b43c18}} 
 \index{parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}!reset@{reset}}
@@ -268,19 +266,19 @@ Definition at line 529 of file teachers.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 488 of file teachers.\+py.
+Definition at line 482 of file teachers.\+py.
 
 
 \begin{DoxyCode}
-488     \textcolor{keyword}{def }reset(self):
-489         \textcolor{stringliteral}{"""}
-490 \textcolor{stringliteral}{        Reset the dialog to the start of the epoch, reset all metrics.}
-491 \textcolor{stringliteral}{        """}
-492         super().reset()
-493         \textcolor{keywordflow}{if} self.stream:
-494             self.data.reset()
-495             self.epochDone = \textcolor{keyword}{False}
-496 
+482     \textcolor{keyword}{def }reset(self):
+483         \textcolor{stringliteral}{"""}
+484 \textcolor{stringliteral}{        Reset the dialog to the start of the epoch, reset all metrics.}
+485 \textcolor{stringliteral}{        """}
+486         super().reset()
+487         \textcolor{keywordflow}{if} self.stream:
+488             self.data.reset()
+489             self.epochDone = \textcolor{keyword}{False}
+490 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a55fc9dead757489e127ec1a872849376}\label{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a55fc9dead757489e127ec1a872849376}} 
 \index{parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}!share@{share}}
@@ -292,19 +290,19 @@ Definition at line 488 of file teachers.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 497 of file teachers.\+py.
+Definition at line 491 of file teachers.\+py.
 
 
 \begin{DoxyCode}
-497     \textcolor{keyword}{def }share(self):
-498         \textcolor{stringliteral}{"""}
-499 \textcolor{stringliteral}{        Share the data.}
-500 \textcolor{stringliteral}{        """}
-501         shared = super().share()
-502         \textcolor{keywordflow}{if} hasattr(self, \textcolor{stringliteral}{'data'}):
-503             shared[\textcolor{stringliteral}{'data'}] = self.data.share()
-504         \textcolor{keywordflow}{return} shared
-505 
+491     \textcolor{keyword}{def }share(self):
+492         \textcolor{stringliteral}{"""}
+493 \textcolor{stringliteral}{        Share the data.}
+494 \textcolor{stringliteral}{        """}
+495         shared = super().share()
+496         \textcolor{keywordflow}{if} hasattr(self, \textcolor{stringliteral}{'data'}):
+497             shared[\textcolor{stringliteral}{'data'}] = self.data.share()
+498         \textcolor{keywordflow}{return} shared
+499 
 \end{DoxyCode}
 
 
@@ -317,7 +315,7 @@ Definition at line 497 of file teachers.\+py.
 
 
 
-Definition at line 477 of file teachers.\+py.
+Definition at line 471 of file teachers.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a4bd247f78e23331700e150991d0afdba}\label{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a4bd247f78e23331700e150991d0afdba}} 
 \index{parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}!datatype@{datatype}}
@@ -327,7 +325,7 @@ Definition at line 477 of file teachers.\+py.
 
 
 
-Definition at line 466 of file teachers.\+py.
+Definition at line 460 of file teachers.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a9e2cd457217253ef6d3aa0b23418739b}\label{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a9e2cd457217253ef6d3aa0b23418739b}} 
 \index{parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}!epoch\+Done@{epoch\+Done}}
@@ -337,17 +335,7 @@ Definition at line 466 of file teachers.\+py.
 
 
 
-Definition at line 495 of file teachers.\+py.
-
-\mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogTeacher_aa0637cf3392baf2e9c965de7ffc812ac}\label{classparlai_1_1core_1_1teachers_1_1DialogTeacher_aa0637cf3392baf2e9c965de7ffc812ac}} 
-\index{parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}!maxsize@{maxsize}}
-\index{maxsize@{maxsize}!parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}}
-\subsubsection{\texorpdfstring{maxsize}{maxsize}}
-{\footnotesize\ttfamily parlai.\+core.\+teachers.\+Dialog\+Teacher.\+maxsize\hspace{0.3cm}{\ttfamily [static]}}
-
-
-
-Definition at line 528 of file teachers.\+py.
+Definition at line 489 of file teachers.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a8dc7153ce190442ad5d35b255389bf5a}\label{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a8dc7153ce190442ad5d35b255389bf5a}} 
 \index{parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}!start\+Time@{start\+Time}}
@@ -357,7 +345,7 @@ Definition at line 528 of file teachers.\+py.
 
 
 
-Definition at line 465 of file teachers.\+py.
+Definition at line 459 of file teachers.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a82fa5b519a14c4301ce82f6c59c8867a}\label{classparlai_1_1core_1_1teachers_1_1DialogTeacher_a82fa5b519a14c4301ce82f6c59c8867a}} 
 \index{parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}!stream@{stream}}
@@ -367,7 +355,7 @@ Definition at line 465 of file teachers.\+py.
 
 
 
-Definition at line 470 of file teachers.\+py.
+Definition at line 464 of file teachers.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1DialogTeacher_aaca26d863c30e54b4612539843f20b49}\label{classparlai_1_1core_1_1teachers_1_1DialogTeacher_aaca26d863c30e54b4612539843f20b49}} 
 \index{parlai\+::core\+::teachers\+::\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Dialog\+Teacher}!training@{training}}
@@ -377,7 +365,7 @@ Definition at line 470 of file teachers.\+py.
 
 
 
-Definition at line 467 of file teachers.\+py.
+Definition at line 461 of file teachers.\+py.
 
 
 

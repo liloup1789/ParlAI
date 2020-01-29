@@ -36,32 +36,32 @@ This is really just sum / sqrt(len).
 \end{DoxyVerb}
  
 
-Definition at line 15 of file modules.\+py.
+Definition at line 17 of file modules.\+py.
 
 
 \begin{DoxyCode}
-15 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_aa0e28a2592caa75f5c687c6200d2a68d}{universal\_sentence\_embedding}(sentences, mask, sqrt=True):
-16     \textcolor{stringliteral}{"""}
-17 \textcolor{stringliteral}{    Perform Universal Sentence Encoder averaging (https://arxiv.org/abs/1803.11175).}
-18 \textcolor{stringliteral}{}
-19 \textcolor{stringliteral}{    This is really just sum / sqrt(len).}
+17 \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_aa0e28a2592caa75f5c687c6200d2a68d}{universal\_sentence\_embedding}(sentences, mask, sqrt=True):
+18     \textcolor{stringliteral}{"""}
+19 \textcolor{stringliteral}{    Perform Universal Sentence Encoder averaging (https://arxiv.org/abs/1803.11175).}
 20 \textcolor{stringliteral}{}
-21 \textcolor{stringliteral}{    :param Tensor sentences: an N x T x D of Transformer outputs. Note this is}
-22 \textcolor{stringliteral}{        the exact output of TransformerEncoder, but has the time axis first}
-23 \textcolor{stringliteral}{    :param ByteTensor: an N x T binary matrix of paddings}
-24 \textcolor{stringliteral}{}
-25 \textcolor{stringliteral}{    :return: an N x D matrix of sentence embeddings}
-26 \textcolor{stringliteral}{    :rtype Tensor:}
-27 \textcolor{stringliteral}{    """}
-28     \textcolor{comment}{# need to mask out the padded chars}
-29     sentence\_sums = th.bmm(
-30         sentences.permute(0, 2, 1), mask.float().unsqueeze(-1)
-31     ).squeeze(-1)
-32     divisor = mask.sum(dim=1).view(-1, 1).\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}()
-33     \textcolor{keywordflow}{if} sqrt:
-34         divisor = divisor.sqrt()
-35     sentence\_sums /= divisor
-36     \textcolor{keywordflow}{return} sentence\_sums
-37 
-38 
+21 \textcolor{stringliteral}{    This is really just sum / sqrt(len).}
+22 \textcolor{stringliteral}{}
+23 \textcolor{stringliteral}{    :param Tensor sentences: an N x T x D of Transformer outputs. Note this is}
+24 \textcolor{stringliteral}{        the exact output of TransformerEncoder, but has the time axis first}
+25 \textcolor{stringliteral}{    :param ByteTensor: an N x T binary matrix of paddings}
+26 \textcolor{stringliteral}{}
+27 \textcolor{stringliteral}{    :return: an N x D matrix of sentence embeddings}
+28 \textcolor{stringliteral}{    :rtype Tensor:}
+29 \textcolor{stringliteral}{    """}
+30     \textcolor{comment}{# need to mask out the padded chars}
+31     sentence\_sums = th.bmm(
+32         sentences.permute(0, 2, 1), mask.float().unsqueeze(-1)
+33     ).squeeze(-1)
+34     divisor = mask.sum(dim=1).view(-1, 1).\hyperlink{namespaceprojects_1_1controllable__dialogue_1_1make__control__dataset_aa2b7207688c641dbc094ab44eca27113}{float}()
+35     \textcolor{keywordflow}{if} sqrt:
+36         divisor = divisor.sqrt()
+37     sentence\_sums /= divisor
+38     \textcolor{keywordflow}{return} sentence\_sums
+39 
+40 
 \end{DoxyCode}

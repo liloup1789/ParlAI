@@ -2,8 +2,7 @@
 \label{classtest__wizard_1_1TestWizardModel}\index{test\+\_\+wizard.\+Test\+Wizard\+Model@{test\+\_\+wizard.\+Test\+Wizard\+Model}}
 
 
-Inheritance diagram for test\+\_\+wizard.\+Test\+Wizard\+Model\+:
-\nopagebreak
+Inheritance diagram for test\+\_\+wizard.\+Test\+Wizard\+Model\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for test\+\_\+wizard.\+Test\+Wizard\+Model\+:
 \end{figure}
 
 
-Collaboration diagram for test\+\_\+wizard.\+Test\+Wizard\+Model\+:
-\nopagebreak
+Collaboration diagram for test\+\_\+wizard.\+Test\+Wizard\+Model\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -36,7 +34,7 @@ def \hyperlink{classtest__wizard_1_1TestWizardModel_a31b902bf6fff3ccfc8fe52228c2
 \end{DoxyVerb}
  
 
-Definition at line 36 of file test\+\_\+wizard.\+py.
+Definition at line 41 of file test\+\_\+wizard.\+py.
 
 
 
@@ -49,19 +47,19 @@ Definition at line 36 of file test\+\_\+wizard.\+py.
 
 
 
-Definition at line 42 of file test\+\_\+wizard.\+py.
+Definition at line 47 of file test\+\_\+wizard.\+py.
 
 
 \begin{DoxyCode}
-42     \textcolor{keyword}{def }setUpClass(cls):
-43         \textcolor{comment}{# go ahead and download things here}
-44         with testing\_utils.capture\_output():
-45             parser = display\_data.setup\_args()
-46             parser.set\_defaults(**END2END\_OPTIONS)
-47             opt = parser.parse\_args(print\_args=\textcolor{keyword}{False})
-48             opt[\textcolor{stringliteral}{'num\_examples'}] = 1
-49             display\_data.display\_data(opt)
-50 
+47     \textcolor{keyword}{def }setUpClass(cls):
+48         \textcolor{comment}{# go ahead and download things here}
+49         with testing\_utils.capture\_output():
+50             parser = display\_data.setup\_args()
+51             parser.set\_defaults(**END2END\_OPTIONS)
+52             opt = parser.parse\_args(print\_args=\textcolor{keyword}{False})
+53             opt[\textcolor{stringliteral}{'num\_examples'}] = 1
+54             display\_data.display\_data(opt)
+55 
 \end{DoxyCode}
 \mbox{\Hypertarget{classtest__wizard_1_1TestWizardModel_a25fdc3cdc736bc273eaeed0019dfaf5b}\label{classtest__wizard_1_1TestWizardModel_a25fdc3cdc736bc273eaeed0019dfaf5b}} 
 \index{test\+\_\+wizard\+::\+Test\+Wizard\+Model@{test\+\_\+wizard\+::\+Test\+Wizard\+Model}!test\+\_\+end2end@{test\+\_\+end2end}}
@@ -71,24 +69,24 @@ Definition at line 42 of file test\+\_\+wizard.\+py.
 
 
 
-Definition at line 51 of file test\+\_\+wizard.\+py.
+Definition at line 56 of file test\+\_\+wizard.\+py.
 
 
 \begin{DoxyCode}
-51     \textcolor{keyword}{def }test\_end2end(self):
-52         stdout, valid, \_ = testing\_utils.eval\_model(END2END\_OPTIONS)
-53         self.assertEqual(
-54             valid[\textcolor{stringliteral}{'ppl'}], 61.21, \textcolor{stringliteral}{'valid ppl = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(valid[\textcolor{stringliteral}{'ppl'}], stdout)
-55         )
-56         self.assertEqual(
-57             valid[\textcolor{stringliteral}{'f1'}], 0.1717, \textcolor{stringliteral}{'valid f1 = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(valid[\textcolor{stringliteral}{'f1'}], stdout)
-58         )
-59         self.assertGreaterEqual(
-60             valid[\textcolor{stringliteral}{'know\_acc'}],
-61             0.2201,
-62             \textcolor{stringliteral}{'valid know\_acc = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(valid[\textcolor{stringliteral}{'know\_acc'}], stdout),
+56     \textcolor{keyword}{def }test\_end2end(self):
+57         stdout, valid, \_ = testing\_utils.eval\_model(END2END\_OPTIONS)
+58         self.assertEqual(
+59             valid[\textcolor{stringliteral}{'ppl'}], 61.21, \textcolor{stringliteral}{'valid ppl = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(valid[\textcolor{stringliteral}{'ppl'}], stdout)
+60         )
+61         self.assertEqual(
+62             valid[\textcolor{stringliteral}{'f1'}], 0.1717, \textcolor{stringliteral}{'valid f1 = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(valid[\textcolor{stringliteral}{'f1'}], stdout)
 63         )
-64 
+64         self.assertGreaterEqual(
+65             valid[\textcolor{stringliteral}{'know\_acc'}],
+66             0.2201,
+67             \textcolor{stringliteral}{'valid know\_acc = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(valid[\textcolor{stringliteral}{'know\_acc'}], stdout),
+68         )
+69 
 \end{DoxyCode}
 \mbox{\Hypertarget{classtest__wizard_1_1TestWizardModel_a31b902bf6fff3ccfc8fe52228c2fc20f}\label{classtest__wizard_1_1TestWizardModel_a31b902bf6fff3ccfc8fe52228c2fc20f}} 
 \index{test\+\_\+wizard\+::\+Test\+Wizard\+Model@{test\+\_\+wizard\+::\+Test\+Wizard\+Model}!test\+\_\+retrieval@{test\+\_\+retrieval}}
@@ -98,29 +96,29 @@ Definition at line 51 of file test\+\_\+wizard.\+py.
 
 
 
-Definition at line 65 of file test\+\_\+wizard.\+py.
+Definition at line 70 of file test\+\_\+wizard.\+py.
 
 
 \begin{DoxyCode}
-65     \textcolor{keyword}{def }test\_retrieval(self):
-66         stdout, \_, test = testing\_utils.eval\_model(RETRIEVAL\_OPTIONS)
-67         self.assertGreaterEqual(
-68             test[\textcolor{stringliteral}{'accuracy'}],
-69             0.86,
-70             \textcolor{stringliteral}{'test acc = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(test[\textcolor{stringliteral}{'accuracy'}], stdout),
-71         )
+70     \textcolor{keyword}{def }test\_retrieval(self):
+71         stdout, \_, test = testing\_utils.eval\_model(RETRIEVAL\_OPTIONS)
 72         self.assertGreaterEqual(
-73             test[\textcolor{stringliteral}{'hits@5'}],
-74             0.98,
-75             \textcolor{stringliteral}{'test hits@5 = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(test[\textcolor{stringliteral}{'hits@5'}], stdout),
+73             test[\textcolor{stringliteral}{'accuracy'}],
+74             0.86,
+75             \textcolor{stringliteral}{'test acc = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(test[\textcolor{stringliteral}{'accuracy'}], stdout),
 76         )
 77         self.assertGreaterEqual(
-78             test[\textcolor{stringliteral}{'hits@10'}],
-79             0.99,
-80             \textcolor{stringliteral}{'test hits@10 = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(test[\textcolor{stringliteral}{'hits@10'}], stdout),
+78             test[\textcolor{stringliteral}{'hits@5'}],
+79             0.98,
+80             \textcolor{stringliteral}{'test hits@5 = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(test[\textcolor{stringliteral}{'hits@5'}], stdout),
 81         )
-82 
-83 
+82         self.assertGreaterEqual(
+83             test[\textcolor{stringliteral}{'hits@10'}],
+84             0.99,
+85             \textcolor{stringliteral}{'test hits@10 = \{\}\(\backslash\)nLOG:\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(test[\textcolor{stringliteral}{'hits@10'}], stdout),
+86         )
+87 
+88 
 \end{DoxyCode}
 
 

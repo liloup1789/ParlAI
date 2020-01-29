@@ -1,0 +1,443 @@
+\hypertarget{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher}{}\section{parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+Teacher Class Reference}
+\label{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher}\index{parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+Teacher@{parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+Teacher}}
+
+
+Inheritance diagram for parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/dd4/classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+Teacher\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=222pt]{dd/dc1/classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a56ba9c5769024cd49924309006c86c5a}{\+\_\+\+\_\+init\+\_\+\+\_\+}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_ac035ed9d99a20a3e9d17870c777f178c}{add\+\_\+cmdline\+\_\+args} (cls, argparser)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_ac694aa2497060d57b33163868d0874d2}{image\+\_\+id\+\_\+to\+\_\+image\+\_\+path}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a0b521361c618914b791a79dda5e81c41}{get\+\_\+data\+\_\+path}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a0cbe8d58cdb4a4ad174cd5cdfe16b9e3}{get\+\_\+image\+\_\+features\+\_\+path} (self, \hyperlink{classparlai_1_1core_1_1teachers_1_1AbstractImageTeacher_a78dca77e43183d22d75140ca113d821c}{task}, image\+\_\+model\+\_\+name, dt)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a17c1b4fa67edfa3f138e596822298823}{num\+\_\+episodes} (self)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a3039139bd8c026b410abf1852f847935}{num\+\_\+examples} (self)
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a96b554e753849931b6b45502f26cc39e}{get}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_acf14f2bf20b4954bb44b77d8feaadaea}{load\+\_\+data}
+\item 
+def \hyperlink{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a9e0f104aaf5a36d0990893450c0ac135}{share} (self)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a588193db220eb043d8b2dcb085323a14}{blank\+\_\+image\+\_\+id}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a1c8d19fc62c1a444c3c07b5b0ee49cc1}{valid\+\_\+image\+\_\+ids}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_aff125a4d2f66e6a8cf282253913850d4}{multi\+\_\+ref}
+\item 
+\hyperlink{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a23adac78cbb7a5761f66fea8809bcee4}{data}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVerb}Teacher for Image Grounded Conversations (IGC) Task.
+
+See https://arxiv.org/abs/1701.08251 for more details
+\end{DoxyVerb}
+ 
+
+Definition at line 33 of file agents.\+py.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a56ba9c5769024cd49924309006c86c5a}\label{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a56ba9c5769024cd49924309006c86c5a}} 
+\index{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher}}
+\subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+Teacher.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 40 of file agents.\+py.
+
+
+\begin{DoxyCode}
+40     \textcolor{keyword}{def }\_\_init\_\_(self, opt: Opt, shared: PT.TShared = \textcolor{keywordtype}{None}):
+41         self.blank\_image\_id = \textcolor{stringliteral}{'0000'}
+42         super().\_\_init\_\_(opt, shared)
+43         \textcolor{keywordflow}{if} shared \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+44             self.valid\_image\_ids = shared[\textcolor{stringliteral}{'valid\_image\_ids'}]
+45         \textcolor{keywordflow}{if} self.image\_features\_dict \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+46             self.image\_features\_dict[self.blank\_image\_id] = self.blank\_image\_features
+47         self.multi\_ref = opt.get(\textcolor{stringliteral}{'igc\_multi\_ref'}, \textcolor{keyword}{False})
+48 
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_ac035ed9d99a20a3e9d17870c777f178c}\label{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_ac035ed9d99a20a3e9d17870c777f178c}} 
+\index{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher}!add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}}
+\index{add\+\_\+cmdline\+\_\+args@{add\+\_\+cmdline\+\_\+args}!parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher}}
+\subsubsection{\texorpdfstring{add\+\_\+cmdline\+\_\+args()}{add\_cmdline\_args()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+Teacher.\+add\+\_\+cmdline\+\_\+args (\begin{DoxyParamCaption}\item[{}]{cls,  }\item[{}]{argparser }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Include arg.
+
+for multi-reference labels.
+\end{DoxyVerb}
+ 
+
+Definition at line 50 of file agents.\+py.
+
+
+\begin{DoxyCode}
+50     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(cls, argparser):
+51         \textcolor{stringliteral}{"""}
+52 \textcolor{stringliteral}{        Include arg.}
+53 \textcolor{stringliteral}{}
+54 \textcolor{stringliteral}{        for multi-reference labels.}
+55 \textcolor{stringliteral}{        """}
+56         super().\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(argparser)
+57         agent = argparser.add\_argument\_group(\textcolor{stringliteral}{'IGC Arguments'})
+58         agent.add\_argument(
+59             \textcolor{stringliteral}{'--igc-multi-ref'},
+60             type=\textcolor{stringliteral}{'bool'},
+61             default=\textcolor{keyword}{False},
+62             help=\textcolor{stringliteral}{'specify to evaluate on multi-reference labels'},
+63         )
+64 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a96b554e753849931b6b45502f26cc39e}\label{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a96b554e753849931b6b45502f26cc39e}} 
+\index{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher}!get@{get}}
+\index{get@{get}!parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher}}
+\subsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+Teacher.\+get (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{episode\+\_\+idx }\end{DoxyParamCaption})}
+
+
+
+Definition at line 127 of file agents.\+py.
+
+
+\begin{DoxyCode}
+127     \textcolor{keyword}{def }get(self, episode\_idx: int, entry\_idx: int = 0) -> dict:
+128         \textcolor{stringliteral}{"""}
+129 \textcolor{stringliteral}{        Override to handle corrupt images and multi-reference labels.}
+130 \textcolor{stringliteral}{        """}
+131         entry\_idx *= 2
+132 
+133         \textcolor{keywordflow}{if} episode\_idx >= len(self.data):
+134             data = self.data[episode\_idx % len(self.data)]
+135             entry\_idx += 1
+136         \textcolor{keywordflow}{else}:
+137             data = self.data[episode\_idx]
+138         image\_id = data[self.image\_id\_key]
+139         \textcolor{keywordflow}{if} data[self.image\_id\_key] \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.valid\_image\_ids:
+140             data[self.image\_id\_key] = self.blank\_image\_id
+141         image\_features = self.get\_image\_features(data)
+142 
+143         conversation = [data[\textcolor{stringliteral}{'context'}], data[\textcolor{stringliteral}{'question'}], data[\textcolor{stringliteral}{'response'}]]
+144         labels = [conversation[entry\_idx]]
+145         \textcolor{keywordflow}{if} self.multi\_ref \textcolor{keywordflow}{and} entry\_idx != 0:
+146             key = \textcolor{stringliteral}{'questions'} \textcolor{keywordflow}{if} entry\_idx == 1 \textcolor{keywordflow}{else} \textcolor{stringliteral}{'responses'}
+147             labels = data[f\textcolor{stringliteral}{'multiref\_\{key\}'}].split(\textcolor{stringliteral}{'***'})
+148         text = \textcolor{stringliteral}{''} \textcolor{keywordflow}{if} entry\_idx == 0 \textcolor{keywordflow}{else} conversation[entry\_idx - 1]
+149         episode\_done = entry\_idx >= len(conversation) - 2
+150 
+151         action = \{
+152             \textcolor{stringliteral}{'text'}: text,
+153             \textcolor{stringliteral}{'image\_id'}: image\_id,
+154             \textcolor{stringliteral}{'episode\_done'}: episode\_done,
+155             \textcolor{stringliteral}{'image'}: image\_features,
+156             \textcolor{stringliteral}{'labels'}: labels,
+157         \}
+158 
+159         \textcolor{keywordflow}{return} action
+160 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a0b521361c618914b791a79dda5e81c41}\label{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a0b521361c618914b791a79dda5e81c41}} 
+\index{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher}!get\+\_\+data\+\_\+path@{get\+\_\+data\+\_\+path}}
+\index{get\+\_\+data\+\_\+path@{get\+\_\+data\+\_\+path}!parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher}}
+\subsubsection{\texorpdfstring{get\+\_\+data\+\_\+path()}{get\_data\_path()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+Teacher.\+get\+\_\+data\+\_\+path (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt }\end{DoxyParamCaption})}
+
+
+
+Definition at line 81 of file agents.\+py.
+
+
+\begin{DoxyCode}
+81     \textcolor{keyword}{def }get\_data\_path(self, opt: Opt) -> str:
+82         \textcolor{stringliteral}{"""}
+83 \textcolor{stringliteral}{        Determines path to the data file.}
+84 \textcolor{stringliteral}{}
+85 \textcolor{stringliteral}{        :param opt:}
+86 \textcolor{stringliteral}{            Opt with all options}
+87 \textcolor{stringliteral}{}
+88 \textcolor{stringliteral}{        :return:}
+89 \textcolor{stringliteral}{            the path to the dataset}
+90 \textcolor{stringliteral}{        """}
+91         data\_path = os.path.join(opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'igc'})
+92         \textcolor{keywordflow}{return} data\_path
+93 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a0cbe8d58cdb4a4ad174cd5cdfe16b9e3}\label{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a0cbe8d58cdb4a4ad174cd5cdfe16b9e3}} 
+\index{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher}!get\+\_\+image\+\_\+features\+\_\+path@{get\+\_\+image\+\_\+features\+\_\+path}}
+\index{get\+\_\+image\+\_\+features\+\_\+path@{get\+\_\+image\+\_\+features\+\_\+path}!parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher}}
+\subsubsection{\texorpdfstring{get\+\_\+image\+\_\+features\+\_\+path()}{get\_image\_features\_path()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+Teacher.\+get\+\_\+image\+\_\+features\+\_\+path (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{task,  }\item[{}]{image\+\_\+model\+\_\+name,  }\item[{}]{dt }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Override so that subclasses can see same image features.
+\end{DoxyVerb}
+ 
+
+Definition at line 94 of file agents.\+py.
+
+
+\begin{DoxyCode}
+94     \textcolor{keyword}{def }get\_image\_features\_path(self, task, image\_model\_name, dt):
+95         \textcolor{stringliteral}{"""}
+96 \textcolor{stringliteral}{        Override so that subclasses can see same image features.}
+97 \textcolor{stringliteral}{        """}
+98         \textcolor{comment}{# In default implementation, self.data\_path already has task name added}
+99         image\_features\_path = os.path.join(self.data\_path, \textcolor{stringliteral}{'image\_features'})
+100 
+101         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.isdir(image\_features\_path):
+102             os.makedirs(image\_features\_path)
+103 
+104         \textcolor{keywordflow}{return} os.path.join(
+105             image\_features\_path, f\textcolor{stringliteral}{'\{image\_model\_name\}\_\{dt\}\_features\_dict'}
+106         )
+107 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_ac694aa2497060d57b33163868d0874d2}\label{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_ac694aa2497060d57b33163868d0874d2}} 
+\index{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher}!image\+\_\+id\+\_\+to\+\_\+image\+\_\+path@{image\+\_\+id\+\_\+to\+\_\+image\+\_\+path}}
+\index{image\+\_\+id\+\_\+to\+\_\+image\+\_\+path@{image\+\_\+id\+\_\+to\+\_\+image\+\_\+path}!parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher}}
+\subsubsection{\texorpdfstring{image\+\_\+id\+\_\+to\+\_\+image\+\_\+path()}{image\_id\_to\_image\_path()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+Teacher.\+image\+\_\+id\+\_\+to\+\_\+image\+\_\+path (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{image\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Definition at line 65 of file agents.\+py.
+
+
+\begin{DoxyCode}
+65     \textcolor{keyword}{def }image\_id\_to\_image\_path(self, image\_id: str) -> str:
+66         \textcolor{stringliteral}{"""}
+67 \textcolor{stringliteral}{        Return image path given image id.}
+68 \textcolor{stringliteral}{}
+69 \textcolor{stringliteral}{        As this function is used in building the image features, and some of the}
+70 \textcolor{stringliteral}{}
+71 \textcolor{stringliteral}{        :param image\_id:}
+72 \textcolor{stringliteral}{            image\_id key, for IGC this is a str}
+73 \textcolor{stringliteral}{}
+74 \textcolor{stringliteral}{        :return:}
+75 \textcolor{stringliteral}{            the image path associated with the given image key}
+76 \textcolor{stringliteral}{        """}
+77         \textcolor{keywordflow}{if} image\_id \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.valid\_image\_ids:
+78             image\_id = self.blank\_image\_id
+79         \textcolor{keywordflow}{return} os.path.join(self.get\_image\_path(self.opt), image\_id)
+80 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_acf14f2bf20b4954bb44b77d8feaadaea}\label{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_acf14f2bf20b4954bb44b77d8feaadaea}} 
+\index{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher}!load\+\_\+data@{load\+\_\+data}}
+\index{load\+\_\+data@{load\+\_\+data}!parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher}}
+\subsubsection{\texorpdfstring{load\+\_\+data()}{load\_data()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+Teacher.\+load\+\_\+data (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{data\+\_\+path }\end{DoxyParamCaption})}
+
+
+
+Definition at line 161 of file agents.\+py.
+
+
+\begin{DoxyCode}
+161     \textcolor{keyword}{def }load\_data(self, data\_path: str, opt: Opt) -> List[Dict[str, Any]]:
+162         \textcolor{stringliteral}{"""}
+163 \textcolor{stringliteral}{        Override to load CSV files.}
+164 \textcolor{stringliteral}{        """}
+165 
+166         dt = opt[\textcolor{stringliteral}{'datatype'}].split(\textcolor{stringliteral}{':'})[0]
+167         dt\_str = \textcolor{stringliteral}{'test'} \textcolor{keywordflow}{if} dt == \textcolor{stringliteral}{'test'} \textcolor{keywordflow}{else} \textcolor{stringliteral}{'val'}
+168         dp = os.path.join(self.get\_data\_path(opt), f\textcolor{stringliteral}{'IGC\_crowd\_\{dt\_str\}.csv'})
+169         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.exists(dp):
+170             \textcolor{keywordflow}{raise} RuntimeError(
+171                 \textcolor{stringliteral}{'Please download the IGC Dataset from '}
+172                 \textcolor{stringliteral}{'https://www.microsoft.com/en-us/download/details.aspx?id=55324. '}
+173                 \textcolor{stringliteral}{'Then, make sure to put the two .csv files in \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+174                     self.get\_data\_path(opt)
+175                 )
+176             )
+177         \textcolor{keywordflow}{if} (
+178             \textcolor{keywordflow}{not} os.path.exists(self.get\_image\_path(opt))
+179             \textcolor{keywordflow}{or} len(os.listdir(self.get\_image\_path(opt))) <= 1
+180         ):
+181             self.\_download\_images(opt)
+182 
+183         self.data = []
+184         with open(dp, newline=\textcolor{stringliteral}{'\(\backslash\)n'}) \textcolor{keyword}{as} csv\_file:
+185             reader = csv.reader(csv\_file, delimiter=\textcolor{stringliteral}{','})
+186             fields = []
+187             \textcolor{keywordflow}{for} i, row \textcolor{keywordflow}{in} enumerate(reader):
+188                 \textcolor{keywordflow}{if} i == 0:
+189                     fields = row
+190                 \textcolor{keywordflow}{else}:
+191                     ep = dict(zip(fields, row))
+192                     ep[\textcolor{stringliteral}{'image\_id'}] = f\textcolor{stringliteral}{'\{ep["id"]\}'}
+193                     self.data.append(ep)
+194 
+195         \textcolor{keywordflow}{if} dt == \textcolor{stringliteral}{'train'}:
+196             \textcolor{comment}{# Take first 90% of valid set as train}
+197             self.data = self.data[: \hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(len(self.data) * 0.9)]
+198         \textcolor{keywordflow}{elif} dt == \textcolor{stringliteral}{'valid'}:
+199             self.data = self.data[\hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(len(self.data) * 0.9) :]
+200 
+201         self.valid\_image\_ids = []
+202         \textcolor{keywordflow}{for} d \textcolor{keywordflow}{in} self.data:
+203             img\_path = os.path.join(self.get\_image\_path(opt), d[\textcolor{stringliteral}{'image\_id'}])
+204             \textcolor{keywordflow}{if} os.path.isfile(img\_path):
+205                 self.valid\_image\_ids.append(d[\textcolor{stringliteral}{'image\_id'}])
+206 
+207         self.valid\_image\_ids = set(self.valid\_image\_ids)
+208         \textcolor{keywordflow}{return} self.data
+209 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a17c1b4fa67edfa3f138e596822298823}\label{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a17c1b4fa67edfa3f138e596822298823}} 
+\index{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher}!num\+\_\+episodes@{num\+\_\+episodes}}
+\index{num\+\_\+episodes@{num\+\_\+episodes}!parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher}}
+\subsubsection{\texorpdfstring{num\+\_\+episodes()}{num\_episodes()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+Teacher.\+num\+\_\+episodes (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{int }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Number of episodes.
+
+Iterate through each episode twice, playing each side of the conversation once.
+\end{DoxyVerb}
+ 
+
+Definition at line 108 of file agents.\+py.
+
+
+\begin{DoxyCode}
+108     \textcolor{keyword}{def }num\_episodes(self) -> int:
+109         \textcolor{stringliteral}{"""}
+110 \textcolor{stringliteral}{        Number of episodes.}
+111 \textcolor{stringliteral}{}
+112 \textcolor{stringliteral}{        Iterate through each episode twice, playing each side of the conversation once.}
+113 \textcolor{stringliteral}{        """}
+114         \textcolor{keywordflow}{return} 2 * len(self.data)
+115 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a3039139bd8c026b410abf1852f847935}\label{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a3039139bd8c026b410abf1852f847935}} 
+\index{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher}!num\+\_\+examples@{num\+\_\+examples}}
+\index{num\+\_\+examples@{num\+\_\+examples}!parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher}}
+\subsubsection{\texorpdfstring{num\+\_\+examples()}{num\_examples()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+Teacher.\+num\+\_\+examples (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{int }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Number of examples.
+
+There are three turns of dialogue in the IGC task -
+Context, Question, Response.
+
+Thus, return 3 * number of data examples.
+\end{DoxyVerb}
+ 
+
+Definition at line 116 of file agents.\+py.
+
+
+\begin{DoxyCode}
+116     \textcolor{keyword}{def }num\_examples(self) -> int:
+117         \textcolor{stringliteral}{"""}
+118 \textcolor{stringliteral}{        Number of examples.}
+119 \textcolor{stringliteral}{}
+120 \textcolor{stringliteral}{        There are three turns of dialogue in the IGC task -}
+121 \textcolor{stringliteral}{        Context, Question, Response.}
+122 \textcolor{stringliteral}{}
+123 \textcolor{stringliteral}{        Thus, return 3 * number of data examples.}
+124 \textcolor{stringliteral}{        """}
+125         \textcolor{keywordflow}{return} 3 * len(self.data)
+126 
+\end{DoxyCode}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a9e0f104aaf5a36d0990893450c0ac135}\label{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a9e0f104aaf5a36d0990893450c0ac135}} 
+\index{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher}!share@{share}}
+\index{share@{share}!parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher}}
+\subsubsection{\texorpdfstring{share()}{share()}}
+{\footnotesize\ttfamily def parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+Teacher.\+share (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{PT,  }\item[{}]{T\+Shared }\end{DoxyParamCaption})}
+
+
+
+Definition at line 244 of file agents.\+py.
+
+
+\begin{DoxyCode}
+244     \textcolor{keyword}{def }share(self) -> PT.TShared:
+245         shared = super().share()
+246         shared[\textcolor{stringliteral}{'valid\_image\_ids'}] = self.valid\_image\_ids
+247         \textcolor{keywordflow}{return} shared
+248 
+249 
+\end{DoxyCode}
+
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a588193db220eb043d8b2dcb085323a14}\label{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a588193db220eb043d8b2dcb085323a14}} 
+\index{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher}!blank\+\_\+image\+\_\+id@{blank\+\_\+image\+\_\+id}}
+\index{blank\+\_\+image\+\_\+id@{blank\+\_\+image\+\_\+id}!parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher}}
+\subsubsection{\texorpdfstring{blank\+\_\+image\+\_\+id}{blank\_image\_id}}
+{\footnotesize\ttfamily parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+Teacher.\+blank\+\_\+image\+\_\+id}
+
+
+
+Definition at line 41 of file agents.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a23adac78cbb7a5761f66fea8809bcee4}\label{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a23adac78cbb7a5761f66fea8809bcee4}} 
+\index{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher}!data@{data}}
+\index{data@{data}!parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher}}
+\subsubsection{\texorpdfstring{data}{data}}
+{\footnotesize\ttfamily parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+Teacher.\+data}
+
+
+
+Definition at line 183 of file agents.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_aff125a4d2f66e6a8cf282253913850d4}\label{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_aff125a4d2f66e6a8cf282253913850d4}} 
+\index{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher}!multi\+\_\+ref@{multi\+\_\+ref}}
+\index{multi\+\_\+ref@{multi\+\_\+ref}!parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher}}
+\subsubsection{\texorpdfstring{multi\+\_\+ref}{multi\_ref}}
+{\footnotesize\ttfamily parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+Teacher.\+multi\+\_\+ref}
+
+
+
+Definition at line 47 of file agents.\+py.
+
+\mbox{\Hypertarget{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a1c8d19fc62c1a444c3c07b5b0ee49cc1}\label{classparlai_1_1tasks_1_1igc_1_1agents_1_1IGCTeacher_a1c8d19fc62c1a444c3c07b5b0ee49cc1}} 
+\index{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher}!valid\+\_\+image\+\_\+ids@{valid\+\_\+image\+\_\+ids}}
+\index{valid\+\_\+image\+\_\+ids@{valid\+\_\+image\+\_\+ids}!parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher@{parlai\+::tasks\+::igc\+::agents\+::\+I\+G\+C\+Teacher}}
+\subsubsection{\texorpdfstring{valid\+\_\+image\+\_\+ids}{valid\_image\_ids}}
+{\footnotesize\ttfamily parlai.\+tasks.\+igc.\+agents.\+I\+G\+C\+Teacher.\+valid\+\_\+image\+\_\+ids}
+
+
+
+Definition at line 44 of file agents.\+py.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+parlai/tasks/igc/\hyperlink{parlai_2tasks_2igc_2agents_8py}{agents.\+py}\end{DoxyCompactItemize}

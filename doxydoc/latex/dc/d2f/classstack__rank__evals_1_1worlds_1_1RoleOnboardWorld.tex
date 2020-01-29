@@ -2,8 +2,7 @@
 \label{classstack__rank__evals_1_1worlds_1_1RoleOnboardWorld}\index{stack\+\_\+rank\+\_\+evals.\+worlds.\+Role\+Onboard\+World@{stack\+\_\+rank\+\_\+evals.\+worlds.\+Role\+Onboard\+World}}
 
 
-Inheritance diagram for stack\+\_\+rank\+\_\+evals.\+worlds.\+Role\+Onboard\+World\+:
-\nopagebreak
+Inheritance diagram for stack\+\_\+rank\+\_\+evals.\+worlds.\+Role\+Onboard\+World\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for stack\+\_\+rank\+\_\+evals.\+worlds.\+Role\+Onboard\+Wor
 \end{figure}
 
 
-Collaboration diagram for stack\+\_\+rank\+\_\+evals.\+worlds.\+Role\+Onboard\+World\+:
-\nopagebreak
+Collaboration diagram for stack\+\_\+rank\+\_\+evals.\+worlds.\+Role\+Onboard\+World\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -49,7 +47,7 @@ def \hyperlink{classstack__rank__evals_1_1worlds_1_1RoleOnboardWorld_ad01c1064fd
 \end{DoxyVerb}
  
 
-Definition at line 88 of file worlds.\+py.
+Definition at line 89 of file worlds.\+py.
 
 
 
@@ -62,16 +60,16 @@ Definition at line 88 of file worlds.\+py.
 
 
 
-Definition at line 93 of file worlds.\+py.
+Definition at line 94 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-93     \textcolor{keyword}{def }\_\_init\_\_(self, opt, mturk\_agent):
-94         self.task\_type = \textcolor{stringliteral}{'sandbox'} \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'is\_sandbox'}] \textcolor{keywordflow}{else} \textcolor{stringliteral}{'live'}
-95         self.max\_onboard\_time = opt[\textcolor{stringliteral}{'max\_onboard\_time'}]
-96         self.opt = opt
-97         super().\_\_init\_\_(opt, mturk\_agent)
-98 
+94     \textcolor{keyword}{def }\_\_init\_\_(self, opt, mturk\_agent):
+95         self.task\_type = \textcolor{stringliteral}{'sandbox'} \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'is\_sandbox'}] \textcolor{keywordflow}{else} \textcolor{stringliteral}{'live'}
+96         self.max\_onboard\_time = opt[\textcolor{stringliteral}{'max\_onboard\_time'}]
+97         self.opt = opt
+98         super().\_\_init\_\_(opt, mturk\_agent)
+99 
 \end{DoxyCode}
 \mbox{\Hypertarget{classstack__rank__evals_1_1worlds_1_1RoleOnboardWorld_a93c85daae3056c33bc77b6159ce43b57}\label{classstack__rank__evals_1_1worlds_1_1RoleOnboardWorld_a93c85daae3056c33bc77b6159ce43b57}} 
 \index{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+Role\+Onboard\+World@{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+Role\+Onboard\+World}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
@@ -81,15 +79,15 @@ Definition at line 93 of file worlds.\+py.
 
 
 
-Definition at line 96 of file worlds.\+py.
+Definition at line 97 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-96     \textcolor{keyword}{def }\_\_init\_\_(self, opt, mturk\_agent):
-97         self.task\_type = \textcolor{stringliteral}{'sandbox'} \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'is\_sandbox'}] \textcolor{keywordflow}{else} \textcolor{stringliteral}{'live'}
-98         self.max\_onboard\_time = opt[\textcolor{stringliteral}{'max\_onboard\_time'}]
-99         super().\_\_init\_\_(opt, mturk\_agent)
-100 
+97     \textcolor{keyword}{def }\_\_init\_\_(self, opt, mturk\_agent):
+98         self.task\_type = \textcolor{stringliteral}{'sandbox'} \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'is\_sandbox'}] \textcolor{keywordflow}{else} \textcolor{stringliteral}{'live'}
+99         self.max\_onboard\_time = opt[\textcolor{stringliteral}{'max\_onboard\_time'}]
+100         super().\_\_init\_\_(opt, mturk\_agent)
+101 
 \end{DoxyCode}
 
 
@@ -102,49 +100,17 @@ Definition at line 96 of file worlds.\+py.
 
 
 
-Definition at line 99 of file worlds.\+py.
+Definition at line 100 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-99     \textcolor{keyword}{def }parley(self):
-100         onboard\_msg = \{\textcolor{stringliteral}{'id'}: \textcolor{stringliteral}{'SYSTEM'}, \textcolor{stringliteral}{'text'}: ONBOARD\_MSG\}
-101         \textcolor{keywordflow}{if} self.opt[\textcolor{stringliteral}{'dialog\_round'}] == \textcolor{stringliteral}{'first\_response'}:
-102             onboard\_msg[\textcolor{stringliteral}{'task\_description'}] = config\_first[\textcolor{stringliteral}{'task\_description'}]
-103         \textcolor{keywordflow}{else}:
-104             onboard\_msg[\textcolor{stringliteral}{'task\_description'}] = config\_second[\textcolor{stringliteral}{'task\_description'}]
-105         self.mturk\_agent.observe(onboard\_msg)
-106         act = self.mturk\_agent.act(timeout=self.max\_onboard\_time)
-107 
-108         \textcolor{comment}{# timeout}
-109         \textcolor{keywordflow}{if} act[\textcolor{stringliteral}{'episode\_done'}] \textcolor{keywordflow}{or} ((\textcolor{stringliteral}{'text'} \textcolor{keywordflow}{in} act \textcolor{keywordflow}{and} act[\textcolor{stringliteral}{'text'}] == TIMEOUT\_MESSAGE)):
-110             self.episodeDone = \textcolor{keyword}{True}
-111             \textcolor{keywordflow}{return}
-112 
-113         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'text'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} act:
-114             control\_msg = \{\textcolor{stringliteral}{'id'}: \textcolor{stringliteral}{'SYSTEM'}, \textcolor{stringliteral}{'text'}: WAITING\_MSG\}
-115             self.mturk\_agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
-116             self.episodeDone = \textcolor{keyword}{True}
-117 
-118 
-\end{DoxyCode}
-\mbox{\Hypertarget{classstack__rank__evals_1_1worlds_1_1RoleOnboardWorld_ad01c1064fd3c5f1ac4746d043f47bfbc}\label{classstack__rank__evals_1_1worlds_1_1RoleOnboardWorld_ad01c1064fd3c5f1ac4746d043f47bfbc}} 
-\index{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+Role\+Onboard\+World@{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+Role\+Onboard\+World}!parley@{parley}}
-\index{parley@{parley}!stack\+\_\+rank\+\_\+evals\+::worlds\+::\+Role\+Onboard\+World@{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+Role\+Onboard\+World}}
-\subsubsection{\texorpdfstring{parley()}{parley()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily def stack\+\_\+rank\+\_\+evals.\+worlds.\+Role\+Onboard\+World.\+parley (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
-
-
-
-Definition at line 101 of file worlds.\+py.
-
-
-\begin{DoxyCode}
-101     \textcolor{keyword}{def }parley(self):
-102         onboard\_msg = \{\textcolor{stringliteral}{'id'}: \textcolor{stringliteral}{'SYSTEM'}, \textcolor{stringliteral}{'text'}: ONBOARD\_MSG\}
-103 
-104         onboard\_msg[\textcolor{stringliteral}{'task\_description'}] = config[\textcolor{stringliteral}{'task\_description'}]
-105         self.mturk\_agent.observe(onboard\_msg)
-106 
+100     \textcolor{keyword}{def }parley(self):
+101         onboard\_msg = \{\textcolor{stringliteral}{'id'}: \textcolor{stringliteral}{'SYSTEM'}, \textcolor{stringliteral}{'text'}: ONBOARD\_MSG\}
+102         \textcolor{keywordflow}{if} self.opt[\textcolor{stringliteral}{'dialog\_round'}] == \textcolor{stringliteral}{'first\_response'}:
+103             onboard\_msg[\textcolor{stringliteral}{'task\_description'}] = config\_first[\textcolor{stringliteral}{'task\_description'}]
+104         \textcolor{keywordflow}{else}:
+105             onboard\_msg[\textcolor{stringliteral}{'task\_description'}] = config\_second[\textcolor{stringliteral}{'task\_description'}]
+106         self.mturk\_agent.observe(onboard\_msg)
 107         act = self.mturk\_agent.act(timeout=self.max\_onboard\_time)
 108 
 109         \textcolor{comment}{# timeout}
@@ -159,6 +125,38 @@ Definition at line 101 of file worlds.\+py.
 118 
 119 
 \end{DoxyCode}
+\mbox{\Hypertarget{classstack__rank__evals_1_1worlds_1_1RoleOnboardWorld_ad01c1064fd3c5f1ac4746d043f47bfbc}\label{classstack__rank__evals_1_1worlds_1_1RoleOnboardWorld_ad01c1064fd3c5f1ac4746d043f47bfbc}} 
+\index{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+Role\+Onboard\+World@{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+Role\+Onboard\+World}!parley@{parley}}
+\index{parley@{parley}!stack\+\_\+rank\+\_\+evals\+::worlds\+::\+Role\+Onboard\+World@{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+Role\+Onboard\+World}}
+\subsubsection{\texorpdfstring{parley()}{parley()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily def stack\+\_\+rank\+\_\+evals.\+worlds.\+Role\+Onboard\+World.\+parley (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+
+
+
+Definition at line 102 of file worlds.\+py.
+
+
+\begin{DoxyCode}
+102     \textcolor{keyword}{def }parley(self):
+103         onboard\_msg = \{\textcolor{stringliteral}{'id'}: \textcolor{stringliteral}{'SYSTEM'}, \textcolor{stringliteral}{'text'}: ONBOARD\_MSG\}
+104 
+105         onboard\_msg[\textcolor{stringliteral}{'task\_description'}] = config[\textcolor{stringliteral}{'task\_description'}]
+106         self.mturk\_agent.observe(onboard\_msg)
+107 
+108         act = self.mturk\_agent.act(timeout=self.max\_onboard\_time)
+109 
+110         \textcolor{comment}{# timeout}
+111         \textcolor{keywordflow}{if} act[\textcolor{stringliteral}{'episode\_done'}] \textcolor{keywordflow}{or} ((\textcolor{stringliteral}{'text'} \textcolor{keywordflow}{in} act \textcolor{keywordflow}{and} act[\textcolor{stringliteral}{'text'}] == TIMEOUT\_MESSAGE)):
+112             self.episodeDone = \textcolor{keyword}{True}
+113             \textcolor{keywordflow}{return}
+114 
+115         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'text'} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} act:
+116             control\_msg = \{\textcolor{stringliteral}{'id'}: \textcolor{stringliteral}{'SYSTEM'}, \textcolor{stringliteral}{'text'}: WAITING\_MSG\}
+117             self.mturk\_agent.observe(\hyperlink{namespaceparlai_1_1core_1_1worlds_afc3fad603b7bce41dbdc9cdc04a9c794}{validate}(control\_msg))
+118             self.episodeDone = \textcolor{keyword}{True}
+119 
+120 
+\end{DoxyCode}
 
 
 \subsection{Member Data Documentation}
@@ -170,7 +168,7 @@ Definition at line 101 of file worlds.\+py.
 
 
 
-Definition at line 110 of file worlds.\+py.
+Definition at line 111 of file worlds.\+py.
 
 \mbox{\Hypertarget{classstack__rank__evals_1_1worlds_1_1RoleOnboardWorld_a66d9e43741be6eee3262e5ffc47fb147}\label{classstack__rank__evals_1_1worlds_1_1RoleOnboardWorld_a66d9e43741be6eee3262e5ffc47fb147}} 
 \index{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+Role\+Onboard\+World@{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+Role\+Onboard\+World}!max\+\_\+onboard\+\_\+time@{max\+\_\+onboard\+\_\+time}}
@@ -180,7 +178,7 @@ Definition at line 110 of file worlds.\+py.
 
 
 
-Definition at line 95 of file worlds.\+py.
+Definition at line 96 of file worlds.\+py.
 
 \mbox{\Hypertarget{classstack__rank__evals_1_1worlds_1_1RoleOnboardWorld_a986c8464db53b9d32da815609b44392d}\label{classstack__rank__evals_1_1worlds_1_1RoleOnboardWorld_a986c8464db53b9d32da815609b44392d}} 
 \index{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+Role\+Onboard\+World@{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+Role\+Onboard\+World}!opt@{opt}}
@@ -190,7 +188,7 @@ Definition at line 95 of file worlds.\+py.
 
 
 
-Definition at line 96 of file worlds.\+py.
+Definition at line 97 of file worlds.\+py.
 
 \mbox{\Hypertarget{classstack__rank__evals_1_1worlds_1_1RoleOnboardWorld_af8109c2ced237355a055ad67e7436a65}\label{classstack__rank__evals_1_1worlds_1_1RoleOnboardWorld_af8109c2ced237355a055ad67e7436a65}} 
 \index{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+Role\+Onboard\+World@{stack\+\_\+rank\+\_\+evals\+::worlds\+::\+Role\+Onboard\+World}!task\+\_\+type@{task\+\_\+type}}
@@ -200,7 +198,7 @@ Definition at line 96 of file worlds.\+py.
 
 
 
-Definition at line 94 of file worlds.\+py.
+Definition at line 95 of file worlds.\+py.
 
 
 

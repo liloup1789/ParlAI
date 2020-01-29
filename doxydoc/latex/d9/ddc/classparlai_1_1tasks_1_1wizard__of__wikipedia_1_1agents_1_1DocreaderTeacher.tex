@@ -2,8 +2,7 @@
 \label{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1DocreaderTeacher}\index{parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+agents.\+Docreader\+Teacher@{parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+agents.\+Docreader\+Teacher}}
 
 
-Inheritance diagram for parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+agents.\+Docreader\+Teacher\+:
-\nopagebreak
+Inheritance diagram for parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+agents.\+Docreader\+Teacher\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+agents.
 \end{figure}
 
 
-Collaboration diagram for parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+agents.\+Docreader\+Teacher\+:
-\nopagebreak
+Collaboration diagram for parlai.\+tasks.\+wizard\+\_\+of\+\_\+wikipedia.\+agents.\+Docreader\+Teacher\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -59,7 +57,6 @@ def \hyperlink{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1Docrea
 \item 
 \hyperlink{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1DocreaderTeacher_a4582a196ca5c413be227f84c48afb4b5}{teacher\+\_\+type}
 \end{DoxyCompactItemize}
-\subsection*{Additional Inherited Members}
 
 
 \subsection{Detailed Description}
@@ -278,41 +275,41 @@ Definition at line 691 of file agents.\+py.
 
 
 
-Definition at line 828 of file agents.\+py.
+Definition at line 831 of file agents.\+py.
 
 
 \begin{DoxyCode}
-828     \textcolor{keyword}{def }extract\_passage\_and\_text(self, data, idx):
-829         passage\_key = \_first\_key(data[\textcolor{stringliteral}{'dialog'}][idx][\textcolor{stringliteral}{'checked\_sentence'}])
-830         dialog\_entry = data[\textcolor{stringliteral}{'dialog'}][idx]
-831         text = passage = \textcolor{keywordtype}{None}
-832         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'chosen'} \textcolor{keywordflow}{in} passage\_key:
-833             \textcolor{comment}{# from chosen topic}
-834             passage = \textcolor{stringliteral}{' '}.join(data[\textcolor{stringliteral}{'chosen\_topic\_passage'}])
-835             text = data[\textcolor{stringliteral}{'chosen\_topic'}]
-836         \textcolor{keywordflow}{elif} \textcolor{stringliteral}{'self'} \textcolor{keywordflow}{in} passage\_key:
-837             \textcolor{comment}{# from last thing wizard said}
-838             passages = data[\textcolor{stringliteral}{'dialog'}][idx - 2][\textcolor{stringliteral}{'retrieved\_passages'}]
-839             passage = \textcolor{keywordtype}{None}
-840             key = \_first\_val(dialog\_entry[\textcolor{stringliteral}{'checked\_passage'}])
-841             \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} passages:
-842                 \textcolor{keywordflow}{if} key \textcolor{keywordflow}{in} p:
-843                     passage = \textcolor{stringliteral}{' '}.join(p[key])
-844                     \textcolor{keywordflow}{break}
-845             text = data[\textcolor{stringliteral}{'dialog'}][idx - 2][\textcolor{stringliteral}{'text'}]
-846         \textcolor{keywordflow}{elif} \textcolor{stringliteral}{'partner'} \textcolor{keywordflow}{in} passage\_key:
-847             \textcolor{comment}{# from last thing partner said}
-848             passages = data[\textcolor{stringliteral}{'dialog'}][idx - 1][\textcolor{stringliteral}{'retrieved\_passages'}]
-849             passage = \textcolor{keywordtype}{None}
-850             key = \_first\_val(dialog\_entry[\textcolor{stringliteral}{'checked\_passage'}])
-851             \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} passages:
-852                 \textcolor{keywordflow}{if} key \textcolor{keywordflow}{in} p:
-853                     passage = \textcolor{stringliteral}{' '}.join(p[key])
-854                     \textcolor{keywordflow}{break}
-855             text = data[\textcolor{stringliteral}{'dialog'}][idx - 1][\textcolor{stringliteral}{'text'}]
-856 
-857         \textcolor{keywordflow}{return} passage, text
-858 
+831     \textcolor{keyword}{def }extract\_passage\_and\_text(self, data, idx):
+832         passage\_key = \_first\_key(data[\textcolor{stringliteral}{'dialog'}][idx][\textcolor{stringliteral}{'checked\_sentence'}])
+833         dialog\_entry = data[\textcolor{stringliteral}{'dialog'}][idx]
+834         text = passage = \textcolor{keywordtype}{None}
+835         \textcolor{keywordflow}{if} \textcolor{stringliteral}{'chosen'} \textcolor{keywordflow}{in} passage\_key:
+836             \textcolor{comment}{# from chosen topic}
+837             passage = \textcolor{stringliteral}{' '}.join(data[\textcolor{stringliteral}{'chosen\_topic\_passage'}])
+838             text = data[\textcolor{stringliteral}{'chosen\_topic'}]
+839         \textcolor{keywordflow}{elif} \textcolor{stringliteral}{'self'} \textcolor{keywordflow}{in} passage\_key:
+840             \textcolor{comment}{# from last thing wizard said}
+841             passages = data[\textcolor{stringliteral}{'dialog'}][idx - 2][\textcolor{stringliteral}{'retrieved\_passages'}]
+842             passage = \textcolor{keywordtype}{None}
+843             key = \_first\_val(dialog\_entry[\textcolor{stringliteral}{'checked\_passage'}])
+844             \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} passages:
+845                 \textcolor{keywordflow}{if} key \textcolor{keywordflow}{in} p:
+846                     passage = \textcolor{stringliteral}{' '}.join(p[key])
+847                     \textcolor{keywordflow}{break}
+848             text = data[\textcolor{stringliteral}{'dialog'}][idx - 2][\textcolor{stringliteral}{'text'}]
+849         \textcolor{keywordflow}{elif} \textcolor{stringliteral}{'partner'} \textcolor{keywordflow}{in} passage\_key:
+850             \textcolor{comment}{# from last thing partner said}
+851             passages = data[\textcolor{stringliteral}{'dialog'}][idx - 1][\textcolor{stringliteral}{'retrieved\_passages'}]
+852             passage = \textcolor{keywordtype}{None}
+853             key = \_first\_val(dialog\_entry[\textcolor{stringliteral}{'checked\_passage'}])
+854             \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} passages:
+855                 \textcolor{keywordflow}{if} key \textcolor{keywordflow}{in} p:
+856                     passage = \textcolor{stringliteral}{' '}.join(p[key])
+857                     \textcolor{keywordflow}{break}
+858             text = data[\textcolor{stringliteral}{'dialog'}][idx - 1][\textcolor{stringliteral}{'text'}]
+859 
+860         \textcolor{keywordflow}{return} passage, text
+861 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1DocreaderTeacher_a6ffe825efcf1e3db66262312f6a6dead}\label{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1DocreaderTeacher_a6ffe825efcf1e3db66262312f6a6dead}} 
 \index{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Docreader\+Teacher@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Docreader\+Teacher}!extract\+\_\+passages\+\_\+and\+\_\+texts@{extract\+\_\+passages\+\_\+and\+\_\+texts}}
@@ -322,55 +319,55 @@ Definition at line 828 of file agents.\+py.
 
 
 
-Definition at line 859 of file agents.\+py.
+Definition at line 862 of file agents.\+py.
 
 
 \begin{DoxyCode}
-859     \textcolor{keyword}{def }extract\_passages\_and\_texts(self, d, idx):
-860         \textcolor{comment}{# get chosen topic passages and text}
-861         chosen\_passages = \textcolor{stringliteral}{' '}.join(d[\textcolor{stringliteral}{'chosen\_topic\_passage'}])
-862         chosen\_text = d[\textcolor{stringliteral}{'chosen\_topic'}]
-863 
-864         \textcolor{comment}{# get apprentice passages and text}
-865         \textcolor{keywordflow}{if} (idx - 1) >= 0:
-866             appr\_passages = d[\textcolor{stringliteral}{'dialog'}][idx - 1][\textcolor{stringliteral}{'retrieved\_passages'}]
-867             appr\_text = d[\textcolor{stringliteral}{'dialog'}][idx - 1][\textcolor{stringliteral}{'text'}]
-868             appr\_list = []
-869             \textcolor{keywordflow}{for} passage \textcolor{keywordflow}{in} appr\_passages:
-870                 \textcolor{keywordflow}{for} v \textcolor{keywordflow}{in} passage.values():
-871                     temp = \textcolor{stringliteral}{' '}.join(v)
-872                     appr\_list.append(temp)
-873             appr = \textcolor{stringliteral}{'\(\backslash\)n'}.join(appr\_list)
-874         \textcolor{keywordflow}{else}:
-875             appr\_passages = \textcolor{stringliteral}{''}
-876             appr\_text = \textcolor{stringliteral}{''}
-877 
-878         \textcolor{comment}{# get wizard passages and text}
-879         \textcolor{keywordflow}{if} (idx - 2) >= 0:
-880             wizard\_passages = d[\textcolor{stringliteral}{'dialog'}][idx - 2][\textcolor{stringliteral}{'retrieved\_passages'}]
-881             wizard\_text = d[\textcolor{stringliteral}{'dialog'}][idx - 2][\textcolor{stringliteral}{'text'}]
-882             wizard\_list = []
-883             \textcolor{keywordflow}{for} passage \textcolor{keywordflow}{in} wizard\_passages:
-884                 \textcolor{keywordflow}{for} v \textcolor{keywordflow}{in} passage.values():
-885                     temp = \textcolor{stringliteral}{' '}.join(v)
-886                     wizard\_list.append(temp)
-887             wizard = \textcolor{stringliteral}{'\(\backslash\)n'}.join(wizard\_list)
-888         \textcolor{keywordflow}{else}:
-889             wizard\_passages = \textcolor{stringliteral}{''}
-890             wizard\_text = \textcolor{stringliteral}{''}
-891 
-892         \textcolor{keywordflow}{if} (idx - 2) >= 0:
-893             passages = \textcolor{stringliteral}{'\(\backslash\)n'}.join([chosen\_passages, wizard, appr])
-894             texts = \textcolor{stringliteral}{' '}.join([chosen\_text, wizard\_text, appr\_text])
-895         \textcolor{keywordflow}{elif} (idx - 1) >= 0:
-896             passages = \textcolor{stringliteral}{'\(\backslash\)n'}.join([chosen\_passages, appr])
-897             texts = \textcolor{stringliteral}{' '}.join([chosen\_text, appr\_text])
-898         \textcolor{keywordflow}{else}:
-899             passages = chosen\_passages
-900             texts = chosen\_text
-901 
-902         \textcolor{keywordflow}{return} passages, texts
-903 
+862     \textcolor{keyword}{def }extract\_passages\_and\_texts(self, d, idx):
+863         \textcolor{comment}{# get chosen topic passages and text}
+864         chosen\_passages = \textcolor{stringliteral}{' '}.join(d[\textcolor{stringliteral}{'chosen\_topic\_passage'}])
+865         chosen\_text = d[\textcolor{stringliteral}{'chosen\_topic'}]
+866 
+867         \textcolor{comment}{# get apprentice passages and text}
+868         \textcolor{keywordflow}{if} (idx - 1) >= 0:
+869             appr\_passages = d[\textcolor{stringliteral}{'dialog'}][idx - 1][\textcolor{stringliteral}{'retrieved\_passages'}]
+870             appr\_text = d[\textcolor{stringliteral}{'dialog'}][idx - 1][\textcolor{stringliteral}{'text'}]
+871             appr\_list = []
+872             \textcolor{keywordflow}{for} passage \textcolor{keywordflow}{in} appr\_passages:
+873                 \textcolor{keywordflow}{for} v \textcolor{keywordflow}{in} passage.values():
+874                     temp = \textcolor{stringliteral}{' '}.join(v)
+875                     appr\_list.append(temp)
+876             appr = \textcolor{stringliteral}{'\(\backslash\)n'}.join(appr\_list)
+877         \textcolor{keywordflow}{else}:
+878             appr\_passages = \textcolor{stringliteral}{''}
+879             appr\_text = \textcolor{stringliteral}{''}
+880 
+881         \textcolor{comment}{# get wizard passages and text}
+882         \textcolor{keywordflow}{if} (idx - 2) >= 0:
+883             wizard\_passages = d[\textcolor{stringliteral}{'dialog'}][idx - 2][\textcolor{stringliteral}{'retrieved\_passages'}]
+884             wizard\_text = d[\textcolor{stringliteral}{'dialog'}][idx - 2][\textcolor{stringliteral}{'text'}]
+885             wizard\_list = []
+886             \textcolor{keywordflow}{for} passage \textcolor{keywordflow}{in} wizard\_passages:
+887                 \textcolor{keywordflow}{for} v \textcolor{keywordflow}{in} passage.values():
+888                     temp = \textcolor{stringliteral}{' '}.join(v)
+889                     wizard\_list.append(temp)
+890             wizard = \textcolor{stringliteral}{'\(\backslash\)n'}.join(wizard\_list)
+891         \textcolor{keywordflow}{else}:
+892             wizard\_passages = \textcolor{stringliteral}{''}
+893             wizard\_text = \textcolor{stringliteral}{''}
+894 
+895         \textcolor{keywordflow}{if} (idx - 2) >= 0:
+896             passages = \textcolor{stringliteral}{'\(\backslash\)n'}.join([chosen\_passages, wizard, appr])
+897             texts = \textcolor{stringliteral}{' '}.join([chosen\_text, wizard\_text, appr\_text])
+898         \textcolor{keywordflow}{elif} (idx - 1) >= 0:
+899             passages = \textcolor{stringliteral}{'\(\backslash\)n'}.join([chosen\_passages, appr])
+900             texts = \textcolor{stringliteral}{' '}.join([chosen\_text, appr\_text])
+901         \textcolor{keywordflow}{else}:
+902             passages = chosen\_passages
+903             texts = chosen\_text
+904 
+905         \textcolor{keywordflow}{return} passages, texts
+906 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1DocreaderTeacher_a759c5a19439387e69d272bb719c568c3}\label{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1DocreaderTeacher_a759c5a19439387e69d272bb719c568c3}} 
 \index{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Docreader\+Teacher@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Docreader\+Teacher}!get@{get}}
@@ -420,12 +417,15 @@ Definition at line 786 of file agents.\+py.
 819         \textcolor{keywordflow}{elif} self.teacher\_type == \textcolor{stringliteral}{'more\_docs\_sentence'}:
 820             action[\textcolor{stringliteral}{'text'}] = texts
 821             action[\textcolor{stringliteral}{'label\_candidates'}] = self.sent\_tok.\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_a1fdb457e98eb4e4c26047e229686a616}{tokenize}(passages)
-822         \textcolor{keywordflow}{elif} self.teacher\_type == \textcolor{stringliteral}{'span'}:
-823             action[\textcolor{stringliteral}{'text'}] = \textcolor{stringliteral}{'\{\}\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(passages, texts)
-824             action[\textcolor{stringliteral}{'labels'}] = [span\_label]
-825 
-826         \textcolor{keywordflow}{return} action
-827 
+822             label = action[\textcolor{stringliteral}{'labels'}][0]
+823             \textcolor{keywordflow}{if} label \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} action[\textcolor{stringliteral}{'label\_candidates'}]:
+824                 action[\textcolor{stringliteral}{'label\_candidates'}].append(label)
+825         \textcolor{keywordflow}{elif} self.teacher\_type == \textcolor{stringliteral}{'span'}:
+826             action[\textcolor{stringliteral}{'text'}] = \textcolor{stringliteral}{'\{\}\(\backslash\)n\{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(passages, texts)
+827             action[\textcolor{stringliteral}{'labels'}] = [span\_label]
+828 
+829         \textcolor{keywordflow}{return} action
+830 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1DocreaderTeacher_a5dba8f178a059e0daae7fec42bfc4330}\label{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1DocreaderTeacher_a5dba8f178a059e0daae7fec42bfc4330}} 
 \index{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Docreader\+Teacher@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Docreader\+Teacher}!get\+\_\+min\+\_\+stopwords@{get\+\_\+min\+\_\+stopwords}}
@@ -503,23 +503,23 @@ Definition at line 738 of file agents.\+py.
 
 
 
-Definition at line 904 of file agents.\+py.
+Definition at line 907 of file agents.\+py.
 
 
 \begin{DoxyCode}
-904     \textcolor{keyword}{def }get\_span\_label(self, data, idx):
-905         dialog\_entry = data[\textcolor{stringliteral}{'dialog'}][idx]
-906         said = dialog\_entry[\textcolor{stringliteral}{'text'}]
-907         sentence = \_first\_val(dialog\_entry[\textcolor{stringliteral}{'checked\_sentence'}])
-908         overlap = self.get\_span(said, sentence)
-909         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} overlap \textcolor{keywordflow}{or} overlap \textcolor{keywordflow}{in} self.stop\_words:
-910             label = sentence
-911         \textcolor{keywordflow}{else}:
-912             label = overlap
-913 
-914         \textcolor{keywordflow}{return} label
-915 
+907     \textcolor{keyword}{def }get\_span\_label(self, data, idx):
+908         dialog\_entry = data[\textcolor{stringliteral}{'dialog'}][idx]
+909         said = dialog\_entry[\textcolor{stringliteral}{'text'}]
+910         sentence = \_first\_val(dialog\_entry[\textcolor{stringliteral}{'checked\_sentence'}])
+911         overlap = self.get\_span(said, sentence)
+912         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} overlap \textcolor{keywordflow}{or} overlap \textcolor{keywordflow}{in} self.stop\_words:
+913             label = sentence
+914         \textcolor{keywordflow}{else}:
+915             label = overlap
 916 
+917         \textcolor{keywordflow}{return} label
+918 
+919 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1DocreaderTeacher_a1cb75f751dfa0b36d0f5c641c82be6c5}\label{classparlai_1_1tasks_1_1wizard__of__wikipedia_1_1agents_1_1DocreaderTeacher_a1cb75f751dfa0b36d0f5c641c82be6c5}} 
 \index{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Docreader\+Teacher@{parlai\+::tasks\+::wizard\+\_\+of\+\_\+wikipedia\+::agents\+::\+Docreader\+Teacher}!length\+\_\+episode@{length\+\_\+episode}}

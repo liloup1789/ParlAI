@@ -2,8 +2,9 @@ var searchData=
 [
   ['chat_5fservice_5fmanager_2epy',['chat_service_manager.py',['../dc/de8/chat__service__manager_8py.html',1,'']]],
   ['check_5fcopyright_2epy',['check_copyright.py',['../df/dba/check__copyright_8py.html',1,'']]],
+  ['classifier_2epy',['classifier.py',['../d1/d7b/classifier_8py.html',1,'']]],
   ['cli_5fusage_2einc',['cli_usage.inc',['../d5/d6c/cli__usage_8inc.html',1,'']]],
-  ['client_2epy',['client.py',['../d1/d38/client_8py.html',1,'']]],
+  ['client_2epy',['client.py',['../df/d28/browser__chat_2client_8py.html',1,'(Global Namespace)'],['../d9/d44/terminal__chat_2client_8py.html',1,'(Global Namespace)']]],
   ['code_5fof_5fconduct_2emd',['CODE_OF_CONDUCT.md',['../df/dc5/CODE__OF__CONDUCT_8md.html',1,'']]],
   ['cologne2fb_2epy',['cologne2FB.py',['../d0/dca/core_2cologne2FB_8py.html',1,'(Global Namespace)'],['../d7/d0f/scripts_2cologne2FB_8py.html',1,'(Global Namespace)'],['../da/dd4/Cologne2fb_8py.html',1,'(Global Namespace)']]],
   ['conf_2epy',['conf.py',['../d1/d3e/conf_8py.html',1,'']]],

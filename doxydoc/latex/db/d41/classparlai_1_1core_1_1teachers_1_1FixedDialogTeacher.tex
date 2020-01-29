@@ -88,11 +88,6 @@ def \hyperlink{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_a759b2dcb34
 \item 
 \hyperlink{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_ae3201b15f3c3b46a2f3511bad9b43e7d}{entry\+\_\+idx}
 \end{DoxyCompactItemize}
-\subsection*{Static Public Attributes}
-\begin{DoxyCompactItemize}
-\item 
-\hyperlink{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_a428d3fb5cc710cea78e9cf5a4887aa06}{maxsize}
-\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -208,40 +203,40 @@ Definition at line 147 of file teachers.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 408 of file teachers.\+py.
+Definition at line 402 of file teachers.\+py.
 
 
 \begin{DoxyCode}
-408     \textcolor{keyword}{def }act(self):
-409         \textcolor{stringliteral}{"""}
-410 \textcolor{stringliteral}{        Send new dialog message.}
-411 \textcolor{stringliteral}{        """}
-412         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} hasattr(self, \textcolor{stringliteral}{'epochDone'}):
-413             \textcolor{comment}{# reset if haven't yet}
-414             self.reset()
-415 
-416         \textcolor{comment}{# get next example, action is episode\_done dict if already out of exs}
-417         action, self.epochDone = self.next\_example()
-418         \textcolor{comment}{# TODO: all teachers should eventually create messages}
-419         \textcolor{comment}{# while setting up the data, so this won't be necessary}
-420         action = Message(action)
-421         action.force\_set(\textcolor{stringliteral}{'id'}, self.getID())
-422 
-423         \textcolor{comment}{# remember correct answer if available}
-424         self.lastY = action.get(\textcolor{stringliteral}{'labels'}, action.get(\textcolor{stringliteral}{'eval\_labels'}, \textcolor{keywordtype}{None}))
-425         \textcolor{keywordflow}{if} (
-426             \textcolor{keywordflow}{not} self.datatype.startswith(\textcolor{stringliteral}{'train'}) \textcolor{keywordflow}{or} \textcolor{stringliteral}{'evalmode'} \textcolor{keywordflow}{in} self.datatype
-427         ) \textcolor{keywordflow}{and} \textcolor{stringliteral}{'labels'} \textcolor{keywordflow}{in} action:
-428             \textcolor{comment}{# move labels to eval field so not used for training}
-429             \textcolor{comment}{# but this way the model can use the labels for perplexity or loss}
-430             action = action.copy()
-431             labels = action.pop(\textcolor{stringliteral}{'labels'})
-432             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.opt.get(\textcolor{stringliteral}{'hide\_labels'}, \textcolor{keyword}{False}):
-433                 action[\textcolor{stringliteral}{'eval\_labels'}] = labels
-434 
-435         \textcolor{keywordflow}{return} action
-436 
-437 
+402     \textcolor{keyword}{def }act(self):
+403         \textcolor{stringliteral}{"""}
+404 \textcolor{stringliteral}{        Send new dialog message.}
+405 \textcolor{stringliteral}{        """}
+406         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} hasattr(self, \textcolor{stringliteral}{'epochDone'}):
+407             \textcolor{comment}{# reset if haven't yet}
+408             self.reset()
+409 
+410         \textcolor{comment}{# get next example, action is episode\_done dict if already out of exs}
+411         action, self.epochDone = self.next\_example()
+412         \textcolor{comment}{# TODO: all teachers should eventually create messages}
+413         \textcolor{comment}{# while setting up the data, so this won't be necessary}
+414         action = Message(action)
+415         action.force\_set(\textcolor{stringliteral}{'id'}, self.getID())
+416 
+417         \textcolor{comment}{# remember correct answer if available}
+418         self.lastY = action.get(\textcolor{stringliteral}{'labels'}, action.get(\textcolor{stringliteral}{'eval\_labels'}, \textcolor{keywordtype}{None}))
+419         \textcolor{keywordflow}{if} (
+420             \textcolor{keywordflow}{not} self.datatype.startswith(\textcolor{stringliteral}{'train'}) \textcolor{keywordflow}{or} \textcolor{stringliteral}{'evalmode'} \textcolor{keywordflow}{in} self.datatype
+421         ) \textcolor{keywordflow}{and} \textcolor{stringliteral}{'labels'} \textcolor{keywordflow}{in} action:
+422             \textcolor{comment}{# move labels to eval field so not used for training}
+423             \textcolor{comment}{# but this way the model can use the labels for perplexity or loss}
+424             action = action.copy()
+425             labels = action.pop(\textcolor{stringliteral}{'labels'})
+426             \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.opt.get(\textcolor{stringliteral}{'hide\_labels'}, \textcolor{keyword}{False}):
+427                 action[\textcolor{stringliteral}{'eval\_labels'}] = labels
+428 
+429         \textcolor{keywordflow}{return} action
+430 
+431 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_afa75426a7578e8aad5b74964219345be}\label{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_afa75426a7578e8aad5b74964219345be}} 
 \index{parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher}!batch\+\_\+act@{batch\+\_\+act}}
@@ -255,43 +250,43 @@ Note: Currently used by PytorchDataTeacher.
 \end{DoxyVerb}
  
 
-Definition at line 375 of file teachers.\+py.
+Definition at line 369 of file teachers.\+py.
 
 
 \begin{DoxyCode}
-375     \textcolor{keyword}{def }batch\_act(self, observations):
-376         \textcolor{stringliteral}{"""}
-377 \textcolor{stringliteral}{        Return an entire batch of examples.}
-378 \textcolor{stringliteral}{}
-379 \textcolor{stringliteral}{        Note: Currently used by PytorchDataTeacher.}
-380 \textcolor{stringliteral}{        """}
-381         \textcolor{comment}{# DEPRECATEDAY: looks like this isn't used anymore}
-382         \textcolor{comment}{# we ignore observations}
-383         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} hasattr(self, \textcolor{stringliteral}{'epochDone'}):
-384             \textcolor{comment}{# reset if haven't yet}
-385             self.reset()
-386 
-387         batch = self.next\_batch()
-388         \textcolor{comment}{# pad batch}
-389         \textcolor{keywordflow}{if} len(batch) < self.bsz:
-390             batch += [\{\textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}, \textcolor{stringliteral}{'id'}: self.getID()\}] * (
-391                 self.bsz - len(batch)
-392             )
-393 
-394         \textcolor{comment}{# remember correct answer if available (for padding, None)}
-395         \textcolor{keywordflow}{for} i, ex \textcolor{keywordflow}{in} enumerate(batch):
-396             \textcolor{keywordflow}{if} \textcolor{stringliteral}{'labels'} \textcolor{keywordflow}{in} ex:
-397                 labels = ex[\textcolor{stringliteral}{'labels'}]
-398                 self.lastYs[i] = labels
-399                 \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.datatype.startswith(\textcolor{stringliteral}{'train'}) \textcolor{keywordflow}{or} \textcolor{stringliteral}{'evalmode'} \textcolor{keywordflow}{in} self.datatype:
-400                     del ex[\textcolor{stringliteral}{'labels'}]
-401                     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.opt.get(\textcolor{stringliteral}{'hide\_labels'}, \textcolor{keyword}{False}):
-402                         ex[\textcolor{stringliteral}{'eval\_labels'}] = labels
-403             \textcolor{keywordflow}{else}:
-404                 self.lastYs[i] = ex.get(\textcolor{stringliteral}{'eval\_labels'}, \textcolor{keywordtype}{None})
-405 
-406         \textcolor{keywordflow}{return} batch
-407 
+369     \textcolor{keyword}{def }batch\_act(self, observations):
+370         \textcolor{stringliteral}{"""}
+371 \textcolor{stringliteral}{        Return an entire batch of examples.}
+372 \textcolor{stringliteral}{}
+373 \textcolor{stringliteral}{        Note: Currently used by PytorchDataTeacher.}
+374 \textcolor{stringliteral}{        """}
+375         \textcolor{comment}{# DEPRECATEDAY: looks like this isn't used anymore}
+376         \textcolor{comment}{# we ignore observations}
+377         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} hasattr(self, \textcolor{stringliteral}{'epochDone'}):
+378             \textcolor{comment}{# reset if haven't yet}
+379             self.reset()
+380 
+381         batch = self.next\_batch()
+382         \textcolor{comment}{# pad batch}
+383         \textcolor{keywordflow}{if} len(batch) < self.bsz:
+384             batch += [\{\textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}, \textcolor{stringliteral}{'id'}: self.getID()\}] * (
+385                 self.bsz - len(batch)
+386             )
+387 
+388         \textcolor{comment}{# remember correct answer if available (for padding, None)}
+389         \textcolor{keywordflow}{for} i, ex \textcolor{keywordflow}{in} enumerate(batch):
+390             \textcolor{keywordflow}{if} \textcolor{stringliteral}{'labels'} \textcolor{keywordflow}{in} ex:
+391                 labels = ex[\textcolor{stringliteral}{'labels'}]
+392                 self.lastYs[i] = labels
+393                 \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.datatype.startswith(\textcolor{stringliteral}{'train'}) \textcolor{keywordflow}{or} \textcolor{stringliteral}{'evalmode'} \textcolor{keywordflow}{in} self.datatype:
+394                     del ex[\textcolor{stringliteral}{'labels'}]
+395                     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} self.opt.get(\textcolor{stringliteral}{'hide\_labels'}, \textcolor{keyword}{False}):
+396                         ex[\textcolor{stringliteral}{'eval\_labels'}] = labels
+397             \textcolor{keywordflow}{else}:
+398                 self.lastYs[i] = ex.get(\textcolor{stringliteral}{'eval\_labels'}, \textcolor{keywordtype}{None})
+399 
+400         \textcolor{keywordflow}{return} batch
+401 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_a7c4cbfbe5cf6e9dbdf8c00d140ef4e7e}\label{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_a7c4cbfbe5cf6e9dbdf8c00d140ef4e7e}} 
 \index{parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher}!get@{get}}
@@ -312,26 +307,26 @@ Children must override this method in order to inherit the
 \end{DoxyVerb}
  
 
-Definition at line 346 of file teachers.\+py.
+Definition at line 340 of file teachers.\+py.
 
 
 \begin{DoxyCode}
-346     \textcolor{keyword}{def }get(self, episode\_idx, entry\_idx=0):
-347         \textcolor{stringliteral}{"""}
-348 \textcolor{stringliteral}{        Get the specified episode and the specified entry in that episode.}
-349 \textcolor{stringliteral}{}
-350 \textcolor{stringliteral}{        Children must override this method in order to inherit the}
-351 \textcolor{stringliteral}{        `next\_example` method.}
-352 \textcolor{stringliteral}{}
-353 \textcolor{stringliteral}{        :param episode\_idx:}
-354 \textcolor{stringliteral}{            which episode to return examples from}
-355 \textcolor{stringliteral}{        :param entry\_idx:}
-356 \textcolor{stringliteral}{            which example to return from the episode.  Many datasets have only}
-357 \textcolor{stringliteral}{            single-entry episodes, so this defaults to zero.}
-358 \textcolor{stringliteral}{        """}
-359         \textcolor{comment}{# TODO: mark as abstract, get rid of runtime error.}
-360         \textcolor{keywordflow}{raise} RuntimeError(\textcolor{stringliteral}{'"Get" method must be overriden by children.'})
-361 
+340     \textcolor{keyword}{def }get(self, episode\_idx, entry\_idx=0):
+341         \textcolor{stringliteral}{"""}
+342 \textcolor{stringliteral}{        Get the specified episode and the specified entry in that episode.}
+343 \textcolor{stringliteral}{}
+344 \textcolor{stringliteral}{        Children must override this method in order to inherit the}
+345 \textcolor{stringliteral}{        `next\_example` method.}
+346 \textcolor{stringliteral}{}
+347 \textcolor{stringliteral}{        :param episode\_idx:}
+348 \textcolor{stringliteral}{            which episode to return examples from}
+349 \textcolor{stringliteral}{        :param entry\_idx:}
+350 \textcolor{stringliteral}{            which example to return from the episode.  Many datasets have only}
+351 \textcolor{stringliteral}{            single-entry episodes, so this defaults to zero.}
+352 \textcolor{stringliteral}{        """}
+353         \textcolor{comment}{# TODO: mark as abstract, get rid of runtime error.}
+354         \textcolor{keywordflow}{raise} RuntimeError(\textcolor{stringliteral}{'"Get" method must be overriden by children.'})
+355 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_a49100faf9af79c6e24ddac9e36151d54}\label{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_a49100faf9af79c6e24ddac9e36151d54}} 
 \index{parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher}!next\+\_\+batch@{next\+\_\+batch}}
@@ -343,33 +338,33 @@ Definition at line 346 of file teachers.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 304 of file teachers.\+py.
+Definition at line 305 of file teachers.\+py.
 
 
 \begin{DoxyCode}
-304     \textcolor{keyword}{def }next\_batch(self):
-305         \textcolor{stringliteral}{"""}
-306 \textcolor{stringliteral}{        Return the next batch of examples.}
-307 \textcolor{stringliteral}{        """}
-308         \textcolor{comment}{# get next batch}
-309         with self.\_lock():
-310             self.index.value += 1
-311             \textcolor{keywordflow}{if} self.training:
-312                 self.index.value %= len(self.batches)
-313             batch\_idx = self.index.value
-314 
-315             \textcolor{keywordflow}{if} batch\_idx + 1 >= len(self.batches):
-316                 \textcolor{keywordflow}{if} self.random:
-317                     random.shuffle(self.batches)
-318                 self.epochDone = \textcolor{keyword}{True}
-319             \textcolor{keywordflow}{else}:
-320                 self.epochDone = \textcolor{keyword}{False}
-321 
-322         \textcolor{keywordflow}{if} batch\_idx >= len(self.batches):
-323             \textcolor{keywordflow}{return} [\{\textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}, \textcolor{stringliteral}{'id'}: self.getID()\}] * self.bsz
-324 
-325         \textcolor{keywordflow}{return} self.batches[batch\_idx]
-326 
+305     \textcolor{keyword}{def }next\_batch(self):
+306         \textcolor{stringliteral}{"""}
+307 \textcolor{stringliteral}{        Return the next batch of examples.}
+308 \textcolor{stringliteral}{        """}
+309         \textcolor{comment}{# get next batch}
+310         with self.\_lock():
+311             self.index.value += 1
+312             \textcolor{keywordflow}{if} self.training:
+313                 self.index.value %= len(self.batches)
+314             batch\_idx = self.index.value
+315 
+316             \textcolor{keywordflow}{if} batch\_idx + 1 >= len(self.batches):
+317                 \textcolor{keywordflow}{if} self.random:
+318                     random.shuffle(self.batches)
+319                 self.epochDone = \textcolor{keyword}{True}
+320             \textcolor{keywordflow}{else}:
+321                 self.epochDone = \textcolor{keyword}{False}
+322 
+323         \textcolor{keywordflow}{if} batch\_idx >= len(self.batches):
+324             \textcolor{keywordflow}{return} [\{\textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}, \textcolor{stringliteral}{'id'}: self.getID()\}] * self.bsz
+325 
+326         \textcolor{keywordflow}{return} self.batches[batch\_idx]
+327 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_a7fccfc09aef3510f8bb9834398eff8e9}\label{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_a7fccfc09aef3510f8bb9834398eff8e9}} 
 \index{parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher}!next\+\_\+episode\+\_\+idx@{next\+\_\+episode\+\_\+idx}}
@@ -401,18 +396,19 @@ Definition at line 250 of file teachers.\+py.
 258 \textcolor{stringliteral}{        """}
 259         \textcolor{keywordflow}{if} num\_eps \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
 260             num\_eps = self.num\_episodes()
-261         \textcolor{keywordflow}{if} loop \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-262             loop = self.training
-263         \textcolor{keywordflow}{if} self.random:
-264             new\_idx = random.randrange(num\_eps)
-265         \textcolor{keywordflow}{else}:
-266             with self.\_lock():
-267                 self.index.value += 1
-268                 \textcolor{keywordflow}{if} loop:
-269                     self.index.value %= num\_eps
-270                 new\_idx = self.index.value
-271         \textcolor{keywordflow}{return} new\_idx
-272 
+261             print(num\_eps)
+262         \textcolor{keywordflow}{if} loop \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+263             loop = self.training
+264         \textcolor{keywordflow}{if} self.random:
+265             new\_idx = random.randrange(num\_eps)
+266         \textcolor{keywordflow}{else}:
+267             with self.\_lock():
+268                 self.index.value += 1
+269                 \textcolor{keywordflow}{if} loop:
+270                     self.index.value %= num\_eps
+271                 new\_idx = self.index.value
+272         \textcolor{keywordflow}{return} new\_idx
+273 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_aa6782a610b00aa0675522aa58b03f20c}\label{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_aa6782a610b00aa0675522aa58b03f20c}} 
 \index{parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher}!next\+\_\+example@{next\+\_\+example}}
@@ -428,89 +424,83 @@ example of that episode.
 \end{DoxyVerb}
  
 
-Definition at line 273 of file teachers.\+py.
+Definition at line 274 of file teachers.\+py.
 
 
 \begin{DoxyCode}
-273     \textcolor{keyword}{def }next\_example(self):
-274         \textcolor{stringliteral}{"""}
-275 \textcolor{stringliteral}{        Return the next example.}
-276 \textcolor{stringliteral}{}
-277 \textcolor{stringliteral}{        If there are multiple examples in the same episode, returns the next one in that}
-278 \textcolor{stringliteral}{        episode. If that episode is over, gets a new episode index and returns the first}
-279 \textcolor{stringliteral}{        example of that episode.}
-280 \textcolor{stringliteral}{        """}
-281         \textcolor{keywordflow}{if} self.episode\_done:
-282             self.episode\_idx = self.next\_episode\_idx()
-283             self.entry\_idx = 0
-284         \textcolor{keywordflow}{else}:
-285             self.entry\_idx += 1
-286 
-287         \textcolor{keywordflow}{if} self.episode\_idx >= self.num\_episodes():
-288             \textcolor{keywordflow}{return} \{\textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}, \textcolor{keyword}{True}
-289 
-290         ex = self.get(self.episode\_idx, self.entry\_idx)
-291         self.episode\_done = ex.get(\textcolor{stringliteral}{'episode\_done'}, \textcolor{keyword}{False})
-292 
-293         \textcolor{keywordflow}{if} (
-294             \textcolor{keywordflow}{not} self.random
-295             \textcolor{keywordflow}{and} self.episode\_done
-296             \textcolor{keywordflow}{and} self.episode\_idx + self.opt.get(\textcolor{stringliteral}{"batchsize"}, 1) >= self.num\_episodes()
-297         ):
-298             epoch\_done = \textcolor{keyword}{True}
-299         \textcolor{keywordflow}{else}:
-300             epoch\_done = \textcolor{keyword}{False}
-301 
-302         \textcolor{keywordflow}{return} ex, epoch\_done
-303 
+274     \textcolor{keyword}{def }next\_example(self):
+275         \textcolor{stringliteral}{"""}
+276 \textcolor{stringliteral}{        Return the next example.}
+277 \textcolor{stringliteral}{}
+278 \textcolor{stringliteral}{        If there are multiple examples in the same episode, returns the next one in that}
+279 \textcolor{stringliteral}{        episode. If that episode is over, gets a new episode index and returns the first}
+280 \textcolor{stringliteral}{        example of that episode.}
+281 \textcolor{stringliteral}{        """}
+282         \textcolor{keywordflow}{if} self.episode\_done:
+283             self.episode\_idx = self.next\_episode\_idx()
+284             self.entry\_idx = 0
+285         \textcolor{keywordflow}{else}:
+286             self.entry\_idx += 1
+287 
+288         \textcolor{keywordflow}{if} self.episode\_idx >= self.num\_episodes():
+289             \textcolor{keywordflow}{return} \{\textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{True}\}, \textcolor{keyword}{True}
+290 
+291         ex = self.get(self.episode\_idx, self.entry\_idx)
+292         self.episode\_done = ex.get(\textcolor{stringliteral}{'episode\_done'}, \textcolor{keyword}{False})
+293 
+294         \textcolor{keywordflow}{if} (
+295             \textcolor{keywordflow}{not} self.random
+296             \textcolor{keywordflow}{and} self.episode\_done
+297             \textcolor{keywordflow}{and} self.episode\_idx + self.opt.get(\textcolor{stringliteral}{"batchsize"}, 1) >= self.num\_episodes()
+298         ):
+299             epoch\_done = \textcolor{keyword}{True}
+300         \textcolor{keywordflow}{else}:
+301             epoch\_done = \textcolor{keyword}{False}
+302 
+303         \textcolor{keywordflow}{return} ex, epoch\_done
+304 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_a51e3463e7b7b44a6ea8b43fc82aacb75}\label{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_a51e3463e7b7b44a6ea8b43fc82aacb75}} 
 \index{parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher}!num\+\_\+episodes@{num\+\_\+episodes}}
 \index{num\+\_\+episodes@{num\+\_\+episodes}!parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher}}
 \subsubsection{\texorpdfstring{num\+\_\+episodes()}{num\_episodes()}}
-{\footnotesize\ttfamily def parlai.\+core.\+teachers.\+Fixed\+Dialog\+Teacher.\+num\+\_\+episodes (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily def parlai.\+core.\+teachers.\+Fixed\+Dialog\+Teacher.\+num\+\_\+episodes (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{int }\end{DoxyParamCaption})}
 
 \begin{DoxyVerb}Get the number of episodes in this dataset.
 \end{DoxyVerb}
  
 
-Definition at line 327 of file teachers.\+py.
+Definition at line 328 of file teachers.\+py.
 
 
 \begin{DoxyCode}
-327     \textcolor{keyword}{def }num\_episodes(self):
-328         \textcolor{stringliteral}{"""}
-329 \textcolor{stringliteral}{        Get the number of episodes in this dataset.}
-330 \textcolor{stringliteral}{        """}
-331         \textcolor{keywordflow}{if} self.use\_batch\_act:
-332             \textcolor{comment}{# when using batch\_act, this is length of sorted data}
-333             \textcolor{keywordflow}{return} len(self.sorted\_data)
-334         \textcolor{keywordflow}{raise} RuntimeError(\textcolor{stringliteral}{'"num\_episodes" must be overriden by children.'})
-335 
+328     \textcolor{keyword}{def }num\_episodes(self) -> int:
+329         \textcolor{stringliteral}{"""}
+330 \textcolor{stringliteral}{        Get the number of episodes in this dataset.}
+331 \textcolor{stringliteral}{        """}
+332         \textcolor{keywordflow}{raise} RuntimeError(\textcolor{stringliteral}{'"num\_episodes" must be overriden by children.'})
+333 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_a38bd0d5c98506c45eb87d6db32d1c0bf}\label{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_a38bd0d5c98506c45eb87d6db32d1c0bf}} 
 \index{parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher}!num\+\_\+examples@{num\+\_\+examples}}
 \index{num\+\_\+examples@{num\+\_\+examples}!parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher}}
 \subsubsection{\texorpdfstring{num\+\_\+examples()}{num\_examples()}}
-{\footnotesize\ttfamily def parlai.\+core.\+teachers.\+Fixed\+Dialog\+Teacher.\+num\+\_\+examples (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily def parlai.\+core.\+teachers.\+Fixed\+Dialog\+Teacher.\+num\+\_\+examples (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{int }\end{DoxyParamCaption})}
 
 \begin{DoxyVerb}Get the total number of examples in this dataset.
 \end{DoxyVerb}
  
 
-Definition at line 337 of file teachers.\+py.
+Definition at line 334 of file teachers.\+py.
 
 
 \begin{DoxyCode}
-337     \textcolor{keyword}{def }num\_examples(self):
-338         \textcolor{stringliteral}{"""}
-339 \textcolor{stringliteral}{        Get the total number of examples in this dataset.}
-340 \textcolor{stringliteral}{        """}
-341         \textcolor{keywordflow}{if} self.use\_batch\_act:
-342             \textcolor{comment}{# when using batch\_act, this is length of sorted data}
-343             \textcolor{keywordflow}{return} len(self.sorted\_data)
-344         \textcolor{keywordflow}{raise} RuntimeError(\textcolor{stringliteral}{'"num\_examples" must be overriden by children.'})
-345 
+334     \textcolor{keyword}{def }num\_examples(self) -> int:
+335         \textcolor{stringliteral}{"""}
+336 \textcolor{stringliteral}{        Get the total number of examples in this dataset.}
+337 \textcolor{stringliteral}{        """}
+338         \textcolor{keywordflow}{raise} RuntimeError(\textcolor{stringliteral}{'"num\_examples" must be overriden by children.'})
+339 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_a32febe29909f7523b0d7b5ee7335fd05}\label{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_a32febe29909f7523b0d7b5ee7335fd05}} 
 \index{parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher}!observe@{observe}}
@@ -522,23 +512,23 @@ Definition at line 337 of file teachers.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 362 of file teachers.\+py.
+Definition at line 356 of file teachers.\+py.
 
 
 \begin{DoxyCode}
-362     \textcolor{keyword}{def }observe(self, observation):
-363         \textcolor{stringliteral}{"""}
-364 \textcolor{stringliteral}{        Process observation for metrics.}
-365 \textcolor{stringliteral}{        """}
-366         \textcolor{keywordflow}{if} self.use\_batch\_act:
-367             self.lastY = self.lastYs[self.batchindex]
-368             self.lastYs[self.batchindex] = \textcolor{keywordtype}{None}
-369 
-370         \textcolor{keywordflow}{if} hasattr(self, \textcolor{stringliteral}{'lastY'}) \textcolor{keywordflow}{and} self.lastY \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-371             self.metrics.update(observation, self.lastY)
-372             self.lastY = \textcolor{keywordtype}{None}
-373         \textcolor{keywordflow}{return} observation
-374 
+356     \textcolor{keyword}{def }observe(self, observation):
+357         \textcolor{stringliteral}{"""}
+358 \textcolor{stringliteral}{        Process observation for metrics.}
+359 \textcolor{stringliteral}{        """}
+360         \textcolor{keywordflow}{if} self.use\_batch\_act:
+361             self.lastY = self.lastYs[self.batchindex]
+362             self.lastYs[self.batchindex] = \textcolor{keywordtype}{None}
+363 
+364         \textcolor{keywordflow}{if} hasattr(self, \textcolor{stringliteral}{'lastY'}) \textcolor{keywordflow}{and} self.lastY \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+365             self.metrics.update(observation, self.lastY)
+366             self.lastY = \textcolor{keywordtype}{None}
+367         \textcolor{keywordflow}{return} observation
+368 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_a001ed7924490d0e291588c54d383384a}\label{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_a001ed7924490d0e291588c54d383384a}} 
 \index{parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher}!receive\+\_\+data@{receive\+\_\+data}}
@@ -741,7 +731,7 @@ Definition at line 151 of file teachers.\+py.
 
 
 
-Definition at line 283 of file teachers.\+py.
+Definition at line 284 of file teachers.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_a86428affae9471df880dd5e8dc4b90ed}\label{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_a86428affae9471df880dd5e8dc4b90ed}} 
 \index{parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher}!episode\+\_\+done@{episode\+\_\+done}}
@@ -802,16 +792,6 @@ Definition at line 163 of file teachers.\+py.
 
 
 Definition at line 194 of file teachers.\+py.
-
-\mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_a428d3fb5cc710cea78e9cf5a4887aa06}\label{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_a428d3fb5cc710cea78e9cf5a4887aa06}} 
-\index{parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher}!maxsize@{maxsize}}
-\index{maxsize@{maxsize}!parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher}}
-\subsubsection{\texorpdfstring{maxsize}{maxsize}}
-{\footnotesize\ttfamily parlai.\+core.\+teachers.\+Fixed\+Dialog\+Teacher.\+maxsize\hspace{0.3cm}{\ttfamily [static]}}
-
-
-
-Definition at line 336 of file teachers.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_a7e5054e18ce919c0eb04188c801ddef1}\label{classparlai_1_1core_1_1teachers_1_1FixedDialogTeacher_a7e5054e18ce919c0eb04188c801ddef1}} 
 \index{parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher@{parlai\+::core\+::teachers\+::\+Fixed\+Dialog\+Teacher}!random@{random}}

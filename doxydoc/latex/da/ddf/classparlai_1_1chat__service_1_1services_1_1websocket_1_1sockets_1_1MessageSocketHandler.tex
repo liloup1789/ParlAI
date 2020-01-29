@@ -2,8 +2,7 @@
 \label{classparlai_1_1chat__service_1_1services_1_1websocket_1_1sockets_1_1MessageSocketHandler}\index{parlai.\+chat\+\_\+service.\+services.\+websocket.\+sockets.\+Message\+Socket\+Handler@{parlai.\+chat\+\_\+service.\+services.\+websocket.\+sockets.\+Message\+Socket\+Handler}}
 
 
-Inheritance diagram for parlai.\+chat\+\_\+service.\+services.\+websocket.\+sockets.\+Message\+Socket\+Handler\+:
-\nopagebreak
+Inheritance diagram for parlai.\+chat\+\_\+service.\+services.\+websocket.\+sockets.\+Message\+Socket\+Handler\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+chat\+\_\+service.\+services.\+websocket.\+sock
 \end{figure}
 
 
-Collaboration diagram for parlai.\+chat\+\_\+service.\+services.\+websocket.\+sockets.\+Message\+Socket\+Handler\+:
-\nopagebreak
+Collaboration diagram for parlai.\+chat\+\_\+service.\+services.\+websocket.\+sockets.\+Message\+Socket\+Handler\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -23,7 +21,7 @@ Collaboration diagram for parlai.\+chat\+\_\+service.\+services.\+websocket.\+so
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-def \hyperlink{classparlai_1_1chat__service_1_1services_1_1websocket_1_1sockets_1_1MessageSocketHandler_a68a930a675ce483852fc323e0f302381}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, args, kwargs)
+def \hyperlink{classparlai_1_1chat__service_1_1services_1_1websocket_1_1sockets_1_1MessageSocketHandler_afae9fa75381c0bdd28fe19765bba5ede}{\+\_\+\+\_\+init\+\_\+\+\_\+}
 \item 
 def \hyperlink{classparlai_1_1chat__service_1_1services_1_1websocket_1_1sockets_1_1MessageSocketHandler_a3b5c9e9fc500c312e1895c6220d52ca7}{open} (self)
 \item 
@@ -40,41 +38,38 @@ def \hyperlink{classparlai_1_1chat__service_1_1services_1_1websocket_1_1sockets_
 \item 
 \hyperlink{classparlai_1_1chat__service_1_1services_1_1websocket_1_1sockets_1_1MessageSocketHandler_a5e574f1ab05ba9d4749f4d4c2fe6e6d2}{sid}
 \end{DoxyCompactItemize}
-\subsection*{Static Public Attributes}
-\begin{DoxyCompactItemize}
-\item 
-dictionary \hyperlink{classparlai_1_1chat__service_1_1services_1_1websocket_1_1sockets_1_1MessageSocketHandler_a9a7875987a4e46a7526c8c230c52c00f}{subs} = \{\}
-\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 
 
-Definition at line 17 of file sockets.\+py.
+Definition at line 21 of file sockets.\+py.
 
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classparlai_1_1chat__service_1_1services_1_1websocket_1_1sockets_1_1MessageSocketHandler_a68a930a675ce483852fc323e0f302381}\label{classparlai_1_1chat__service_1_1services_1_1websocket_1_1sockets_1_1MessageSocketHandler_a68a930a675ce483852fc323e0f302381}} 
+\mbox{\Hypertarget{classparlai_1_1chat__service_1_1services_1_1websocket_1_1sockets_1_1MessageSocketHandler_afae9fa75381c0bdd28fe19765bba5ede}\label{classparlai_1_1chat__service_1_1services_1_1websocket_1_1sockets_1_1MessageSocketHandler_afae9fa75381c0bdd28fe19765bba5ede}} 
 \index{parlai\+::chat\+\_\+service\+::services\+::websocket\+::sockets\+::\+Message\+Socket\+Handler@{parlai\+::chat\+\_\+service\+::services\+::websocket\+::sockets\+::\+Message\+Socket\+Handler}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
 \index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::chat\+\_\+service\+::services\+::websocket\+::sockets\+::\+Message\+Socket\+Handler@{parlai\+::chat\+\_\+service\+::services\+::websocket\+::sockets\+::\+Message\+Socket\+Handler}}
 \subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
-{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+websocket.\+sockets.\+Message\+Socket\+Handler.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{args,  }\item[{}]{kwargs }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily def parlai.\+chat\+\_\+service.\+services.\+websocket.\+sockets.\+Message\+Socket\+Handler.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self }\end{DoxyParamCaption})}
 
 
 
-Definition at line 20 of file sockets.\+py.
+Definition at line 22 of file sockets.\+py.
 
 
 \begin{DoxyCode}
-20     \textcolor{keyword}{def }\_\_init\_\_(self, *args, **kwargs):
-21         \textcolor{keyword}{def }\_default\_callback(message, socketID):
-22             logging.warn(f\textcolor{stringliteral}{"No callback defined for new WebSocket messages."})
-23 
-24         self.message\_callback = kwargs.pop(\textcolor{stringliteral}{'message\_callback'}, \_default\_callback)
-25         self.sid = \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1websocket_1_1sockets_a474be2aef9361e19eacf308fbce1e802}{get\_rand\_id}()
-26         super().\_\_init\_\_(*args, **kwargs)
+22     \textcolor{keyword}{def }\_\_init\_\_(self: T, *args, **kwargs):
+23         self.subs: Dict[int, T] = \{\}
+24 
+25         \textcolor{keyword}{def }\_default\_callback(message, socketID):
+26             logging.warn(f\textcolor{stringliteral}{"No callback defined for new WebSocket messages."})
 27 
+28         self.message\_callback = kwargs.pop(\textcolor{stringliteral}{'message\_callback'}, \_default\_callback)
+29         self.sid = \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1websocket_1_1sockets_a474be2aef9361e19eacf308fbce1e802}{get\_rand\_id}()
+30         super().\_\_init\_\_(*args, **kwargs)
+31 
 \end{DoxyCode}
 
 
@@ -87,13 +82,13 @@ Definition at line 20 of file sockets.\+py.
 
 
 
-Definition at line 65 of file sockets.\+py.
+Definition at line 69 of file sockets.\+py.
 
 
 \begin{DoxyCode}
-65     \textcolor{keyword}{def }check\_origin(self, origin):
-66         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
-67 \end{DoxyCode}
+69     \textcolor{keyword}{def }check\_origin(self, origin):
+70         \textcolor{keywordflow}{return} \textcolor{keyword}{True}
+71 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1services_1_1websocket_1_1sockets_1_1MessageSocketHandler_ac86fc08a0abf8acabaab0949d579ffb1}\label{classparlai_1_1chat__service_1_1services_1_1websocket_1_1sockets_1_1MessageSocketHandler_ac86fc08a0abf8acabaab0949d579ffb1}} 
 \index{parlai\+::chat\+\_\+service\+::services\+::websocket\+::sockets\+::\+Message\+Socket\+Handler@{parlai\+::chat\+\_\+service\+::services\+::websocket\+::sockets\+::\+Message\+Socket\+Handler}!on\+\_\+close@{on\+\_\+close}}
 \index{on\+\_\+close@{on\+\_\+close}!parlai\+::chat\+\_\+service\+::services\+::websocket\+::sockets\+::\+Message\+Socket\+Handler@{parlai\+::chat\+\_\+service\+::services\+::websocket\+::sockets\+::\+Message\+Socket\+Handler}}
@@ -104,16 +99,16 @@ Definition at line 65 of file sockets.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 38 of file sockets.\+py.
+Definition at line 42 of file sockets.\+py.
 
 
 \begin{DoxyCode}
-38     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1terminal__chat_1_1client_a02c04f40cfa11defbf5c83bbe46aba00}{on\_close}(self):
-39         \textcolor{stringliteral}{"""}
-40 \textcolor{stringliteral}{        Runs when a socket is closed.}
-41 \textcolor{stringliteral}{        """}
-42         del self.subs[self.sid]
-43 
+42     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1browser__chat_1_1client_add94040308bad4454cbcf4c8010d0c51}{on\_close}(self):
+43         \textcolor{stringliteral}{"""}
+44 \textcolor{stringliteral}{        Runs when a socket is closed.}
+45 \textcolor{stringliteral}{        """}
+46         del self.subs[self.sid]
+47 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1services_1_1websocket_1_1sockets_1_1MessageSocketHandler_a6e45176bf280b1c9b90b93f933af5e00}\label{classparlai_1_1chat__service_1_1services_1_1websocket_1_1sockets_1_1MessageSocketHandler_a6e45176bf280b1c9b90b93f933af5e00}} 
 \index{parlai\+::chat\+\_\+service\+::services\+::websocket\+::sockets\+::\+Message\+Socket\+Handler@{parlai\+::chat\+\_\+service\+::services\+::websocket\+::sockets\+::\+Message\+Socket\+Handler}!on\+\_\+message@{on\+\_\+message}}
@@ -132,31 +127,31 @@ attachment dict structure.
 \end{DoxyVerb}
  
 
-Definition at line 44 of file sockets.\+py.
+Definition at line 48 of file sockets.\+py.
 
 
 \begin{DoxyCode}
-44     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1terminal__chat_1_1client_a0ef2bb2bd3b966dcdd8402a92b999708}{on\_message}(self, message\_text):
-45         \textcolor{stringliteral}{"""}
-46 \textcolor{stringliteral}{        Callback that runs when a new message is received from a client See the}
-47 \textcolor{stringliteral}{        chat\_service README for the resultant message structure.}
-48 \textcolor{stringliteral}{}
-49 \textcolor{stringliteral}{        Args:}
-50 \textcolor{stringliteral}{            message\_text: A stringified JSON object with a text or attachment key.}
-51 \textcolor{stringliteral}{                `text` should contain a string message and `attachment` is a dict.}
-52 \textcolor{stringliteral}{                See `WebsocketAgent.put\_data` for more information about the}
-53 \textcolor{stringliteral}{                attachment dict structure.}
-54 \textcolor{stringliteral}{        """}
-55         logging.info(\textcolor{stringliteral}{'websocket message from client: \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(message\_text))
-56         message = json.loads(message\_text)
-57         message = \{
-58             \textcolor{stringliteral}{'text'}: message.get(\textcolor{stringliteral}{'text'}, \textcolor{stringliteral}{''}),
-59             \textcolor{stringliteral}{'payload'}: message.get(\textcolor{stringliteral}{'payload'}),
-60             \textcolor{stringliteral}{'sender'}: \{\textcolor{stringliteral}{'id'}: self.sid\},
-61             \textcolor{stringliteral}{'recipient'}: \{\textcolor{stringliteral}{'id'}: 0\},
-62         \}
-63         self.message\_callback(message)
-64 
+48     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1browser__chat_1_1client_a01c1536b48e2f5badd2fe58ea02b9a5c}{on\_message}(self, message\_text):
+49         \textcolor{stringliteral}{"""}
+50 \textcolor{stringliteral}{        Callback that runs when a new message is received from a client See the}
+51 \textcolor{stringliteral}{        chat\_service README for the resultant message structure.}
+52 \textcolor{stringliteral}{}
+53 \textcolor{stringliteral}{        Args:}
+54 \textcolor{stringliteral}{            message\_text: A stringified JSON object with a text or attachment key.}
+55 \textcolor{stringliteral}{                `text` should contain a string message and `attachment` is a dict.}
+56 \textcolor{stringliteral}{                See `WebsocketAgent.put\_data` for more information about the}
+57 \textcolor{stringliteral}{                attachment dict structure.}
+58 \textcolor{stringliteral}{        """}
+59         logging.info(\textcolor{stringliteral}{'websocket message from client: \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(message\_text))
+60         message = json.loads(message\_text)
+61         message = \{
+62             \textcolor{stringliteral}{'text'}: message.get(\textcolor{stringliteral}{'text'}, \textcolor{stringliteral}{''}),
+63             \textcolor{stringliteral}{'payload'}: message.get(\textcolor{stringliteral}{'payload'}),
+64             \textcolor{stringliteral}{'sender'}: \{\textcolor{stringliteral}{'id'}: self.sid\},
+65             \textcolor{stringliteral}{'recipient'}: \{\textcolor{stringliteral}{'id'}: 0\},
+66         \}
+67         self.message\_callback(message)
+68 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1services_1_1websocket_1_1sockets_1_1MessageSocketHandler_a3b5c9e9fc500c312e1895c6220d52ca7}\label{classparlai_1_1chat__service_1_1services_1_1websocket_1_1sockets_1_1MessageSocketHandler_a3b5c9e9fc500c312e1895c6220d52ca7}} 
 \index{parlai\+::chat\+\_\+service\+::services\+::websocket\+::sockets\+::\+Message\+Socket\+Handler@{parlai\+::chat\+\_\+service\+::services\+::websocket\+::sockets\+::\+Message\+Socket\+Handler}!open@{open}}
@@ -169,20 +164,20 @@ Definition at line 44 of file sockets.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 28 of file sockets.\+py.
+Definition at line 32 of file sockets.\+py.
 
 
 \begin{DoxyCode}
-28     \textcolor{keyword}{def }open(self):
-29         \textcolor{stringliteral}{"""}
-30 \textcolor{stringliteral}{        Opens a websocket and assigns a random UUID that is stored in the class-level}
-31 \textcolor{stringliteral}{        `subs` variable.}
-32 \textcolor{stringliteral}{        """}
-33         \textcolor{keywordflow}{if} self.sid \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.subs.values():
-34             self.subs[self.sid] = self
-35             logging.info(f\textcolor{stringliteral}{"Opened new socket from ip: \{self.request.remote\_ip\}"})
-36             logging.info(f\textcolor{stringliteral}{"Current subscribers: \{self.subs\}"})
-37 
+32     \textcolor{keyword}{def }open(self):
+33         \textcolor{stringliteral}{"""}
+34 \textcolor{stringliteral}{        Opens a websocket and assigns a random UUID that is stored in the class-level}
+35 \textcolor{stringliteral}{        `subs` variable.}
+36 \textcolor{stringliteral}{        """}
+37         \textcolor{keywordflow}{if} self.sid \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.subs.values():
+38             self.subs[self.sid] = self
+39             logging.info(f\textcolor{stringliteral}{"Opened new socket from ip: \{self.request.remote\_ip\}"})
+40             logging.info(f\textcolor{stringliteral}{"Current subscribers: \{self.subs\}"})
+41 
 \end{DoxyCode}
 
 
@@ -195,7 +190,7 @@ Definition at line 28 of file sockets.\+py.
 
 
 
-Definition at line 24 of file sockets.\+py.
+Definition at line 28 of file sockets.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1chat__service_1_1services_1_1websocket_1_1sockets_1_1MessageSocketHandler_a5e574f1ab05ba9d4749f4d4c2fe6e6d2}\label{classparlai_1_1chat__service_1_1services_1_1websocket_1_1sockets_1_1MessageSocketHandler_a5e574f1ab05ba9d4749f4d4c2fe6e6d2}} 
 \index{parlai\+::chat\+\_\+service\+::services\+::websocket\+::sockets\+::\+Message\+Socket\+Handler@{parlai\+::chat\+\_\+service\+::services\+::websocket\+::sockets\+::\+Message\+Socket\+Handler}!sid@{sid}}
@@ -205,17 +200,7 @@ Definition at line 24 of file sockets.\+py.
 
 
 
-Definition at line 25 of file sockets.\+py.
-
-\mbox{\Hypertarget{classparlai_1_1chat__service_1_1services_1_1websocket_1_1sockets_1_1MessageSocketHandler_a9a7875987a4e46a7526c8c230c52c00f}\label{classparlai_1_1chat__service_1_1services_1_1websocket_1_1sockets_1_1MessageSocketHandler_a9a7875987a4e46a7526c8c230c52c00f}} 
-\index{parlai\+::chat\+\_\+service\+::services\+::websocket\+::sockets\+::\+Message\+Socket\+Handler@{parlai\+::chat\+\_\+service\+::services\+::websocket\+::sockets\+::\+Message\+Socket\+Handler}!subs@{subs}}
-\index{subs@{subs}!parlai\+::chat\+\_\+service\+::services\+::websocket\+::sockets\+::\+Message\+Socket\+Handler@{parlai\+::chat\+\_\+service\+::services\+::websocket\+::sockets\+::\+Message\+Socket\+Handler}}
-\subsubsection{\texorpdfstring{subs}{subs}}
-{\footnotesize\ttfamily dictionary parlai.\+chat\+\_\+service.\+services.\+websocket.\+sockets.\+Message\+Socket\+Handler.\+subs = \{\}\hspace{0.3cm}{\ttfamily [static]}}
-
-
-
-Definition at line 18 of file sockets.\+py.
+Definition at line 29 of file sockets.\+py.
 
 
 

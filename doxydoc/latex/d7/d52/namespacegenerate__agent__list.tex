@@ -1,0 +1,168 @@
+\hypertarget{namespacegenerate__agent__list}{}\section{generate\+\_\+agent\+\_\+list Namespace Reference}
+\label{namespacegenerate__agent__list}\index{generate\+\_\+agent\+\_\+list@{generate\+\_\+agent\+\_\+list}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespacegenerate__agent__list_a321a9312fef0cf377ee0e8a870ee0741}{prepare\+\_\+agent\+\_\+readme} (agent)
+\item 
+def \hyperlink{namespacegenerate__agent__list_aa2e399b6d39f8bb4e2f2ef644f082ac7}{write\+\_\+agent} (fout, agent\+\_\+readme)
+\item 
+def \hyperlink{namespacegenerate__agent__list_a27877babb0738c546513fb040748be63}{write\+\_\+all\+\_\+agents} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{namespacegenerate__agent__list_a321a9312fef0cf377ee0e8a870ee0741}\label{namespacegenerate__agent__list_a321a9312fef0cf377ee0e8a870ee0741}} 
+\index{generate\+\_\+agent\+\_\+list@{generate\+\_\+agent\+\_\+list}!prepare\+\_\+agent\+\_\+readme@{prepare\+\_\+agent\+\_\+readme}}
+\index{prepare\+\_\+agent\+\_\+readme@{prepare\+\_\+agent\+\_\+readme}!generate\+\_\+agent\+\_\+list@{generate\+\_\+agent\+\_\+list}}
+\subsubsection{\texorpdfstring{prepare\+\_\+agent\+\_\+readme()}{prepare\_agent\_readme()}}
+{\footnotesize\ttfamily def generate\+\_\+agent\+\_\+list.\+prepare\+\_\+agent\+\_\+readme (\begin{DoxyParamCaption}\item[{}]{agent }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Load agent readme, add title if necessary.
+
+:param agent:
+    string indicating agent module
+
+:return:
+    agent's readme
+\end{DoxyVerb}
+ 
+
+Definition at line 12 of file generate\+\_\+agent\+\_\+list.\+py.
+
+
+\begin{DoxyCode}
+12 \textcolor{keyword}{def }\hyperlink{namespacegenerate__agent__list_a321a9312fef0cf377ee0e8a870ee0741}{prepare\_agent\_readme}(agent):
+13     \textcolor{stringliteral}{"""}
+14 \textcolor{stringliteral}{    Load agent readme, add title if necessary.}
+15 \textcolor{stringliteral}{}
+16 \textcolor{stringliteral}{    :param agent:}
+17 \textcolor{stringliteral}{        string indicating agent module}
+18 \textcolor{stringliteral}{}
+19 \textcolor{stringliteral}{    :return:}
+20 \textcolor{stringliteral}{        agent's readme}
+21 \textcolor{stringliteral}{    """}
+22     readme\_path = f\textcolor{stringliteral}{'\{os.path.join(parlai.agents.\_\_path\_\_[0], agent)\}/README.md'}
+23     \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} os.path.exists(readme\_path):
+24         \textcolor{keywordflow}{raise} RuntimeError(f\textcolor{stringliteral}{'Agent \{agent\} must have README.md'})
+25     with open(readme\_path) \textcolor{keyword}{as} f:
+26         readme = f.readlines()
+27 
+28     \textcolor{keywordflow}{if} \textcolor{stringliteral}{'# '} \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} readme[0]:
+29         readme[0] = f\textcolor{stringliteral}{'# \{agent\}'}
+30 
+31     \textcolor{keywordflow}{return} readme
+32 
+33 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespacegenerate__agent__list_aa2e399b6d39f8bb4e2f2ef644f082ac7}\label{namespacegenerate__agent__list_aa2e399b6d39f8bb4e2f2ef644f082ac7}} 
+\index{generate\+\_\+agent\+\_\+list@{generate\+\_\+agent\+\_\+list}!write\+\_\+agent@{write\+\_\+agent}}
+\index{write\+\_\+agent@{write\+\_\+agent}!generate\+\_\+agent\+\_\+list@{generate\+\_\+agent\+\_\+list}}
+\subsubsection{\texorpdfstring{write\+\_\+agent()}{write\_agent()}}
+{\footnotesize\ttfamily def generate\+\_\+agent\+\_\+list.\+write\+\_\+agent (\begin{DoxyParamCaption}\item[{}]{fout,  }\item[{}]{agent\+\_\+readme }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Write agent README to file.
+
+Handle a few special cases:
+- Attempt to convert section headings in MD to RST
+- Attempt to convert MD bash blocks to RST bash blocks
+
+:param fout:
+    file object
+:param agent_readme:
+    string to write
+\end{DoxyVerb}
+ 
+
+Definition at line 34 of file generate\+\_\+agent\+\_\+list.\+py.
+
+
+\begin{DoxyCode}
+34 \textcolor{keyword}{def }\hyperlink{namespacegenerate__agent__list_aa2e399b6d39f8bb4e2f2ef644f082ac7}{write\_agent}(fout, agent\_readme):
+35     \textcolor{stringliteral}{"""}
+36 \textcolor{stringliteral}{    Write agent README to file.}
+37 \textcolor{stringliteral}{}
+38 \textcolor{stringliteral}{    Handle a few special cases:}
+39 \textcolor{stringliteral}{    - Attempt to convert section headings in MD to RST}
+40 \textcolor{stringliteral}{    - Attempt to convert MD bash blocks to RST bash blocks}
+41 \textcolor{stringliteral}{}
+42 \textcolor{stringliteral}{    :param fout:}
+43 \textcolor{stringliteral}{        file object}
+44 \textcolor{stringliteral}{    :param agent\_readme:}
+45 \textcolor{stringliteral}{        string to write}
+46 \textcolor{stringliteral}{    """}
+47     i = 0
+48     \textcolor{keywordflow}{while} i < len(agent\_readme):
+49         line = agent\_readme[i]
+50         split = line.split()
+51         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} split:
+52             fout.write(\textcolor{stringliteral}{'\(\backslash\)n'})
+53             i += 1
+54             \textcolor{keywordflow}{continue}
+55         header = \textcolor{stringliteral}{''}
+56         is\_header = split[0].\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_a7fc352c82f4a875b23fec3b046027039}{count}(\textcolor{stringliteral}{'#'}) > 0
+57         \textcolor{keywordflow}{if} i == 0 \textcolor{keywordflow}{and} is\_header:
+58             header = \textcolor{stringliteral}{'*'}  \textcolor{comment}{# title}
+59         \textcolor{keywordflow}{elif} is\_header:
+60             header = \textcolor{stringliteral}{'-'}
+61         \textcolor{keywordflow}{if} header:  \textcolor{comment}{# Format Headings}
+62             title = \textcolor{stringliteral}{' '}.join(split[1:])
+63             fout.write(f\textcolor{stringliteral}{'\{title\}\(\backslash\)n'})
+64             fout.write(f\textcolor{stringliteral}{'\{header * len(title)\}\(\backslash\)n'})
+65             i += 1
+66         \textcolor{keywordflow}{elif} \textcolor{stringliteral}{'```bash'} \textcolor{keywordflow}{in} line:  \textcolor{comment}{# Format Bash Commands}
+67             line = \textcolor{stringliteral}{'\(\backslash\)n\(\backslash\)n.. code-block:: bash\(\backslash\)n'}
+68             fout.write(line)
+69             agent\_readme[i + 1] = f\textcolor{stringliteral}{'\(\backslash\)n  \{agent\_readme[i+1]\}'}
+70             i += 1
+71         \textcolor{keywordflow}{elif} \textcolor{stringliteral}{'```'} \textcolor{keywordflow}{in} line:
+72             fout.write(\textcolor{stringliteral}{'\(\backslash\)n'})
+73             i += 1
+74             \textcolor{keywordflow}{continue}
+75         \textcolor{keywordflow}{else}:
+76             fout.write(line)
+77             i += 1
+78 
+79     fout.write(\textcolor{stringliteral}{'\(\backslash\)n\(\backslash\)n'})
+80 
+81 
+\end{DoxyCode}
+\mbox{\Hypertarget{namespacegenerate__agent__list_a27877babb0738c546513fb040748be63}\label{namespacegenerate__agent__list_a27877babb0738c546513fb040748be63}} 
+\index{generate\+\_\+agent\+\_\+list@{generate\+\_\+agent\+\_\+list}!write\+\_\+all\+\_\+agents@{write\+\_\+all\+\_\+agents}}
+\index{write\+\_\+all\+\_\+agents@{write\+\_\+all\+\_\+agents}!generate\+\_\+agent\+\_\+list@{generate\+\_\+agent\+\_\+list}}
+\subsubsection{\texorpdfstring{write\+\_\+all\+\_\+agents()}{write\_all\_agents()}}
+{\footnotesize\ttfamily def generate\+\_\+agent\+\_\+list.\+write\+\_\+all\+\_\+agents (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Write list of agents to fout.
+
+:param fout:
+    file object to write to
+\end{DoxyVerb}
+ 
+
+Definition at line 82 of file generate\+\_\+agent\+\_\+list.\+py.
+
+
+\begin{DoxyCode}
+82 \textcolor{keyword}{def }\hyperlink{namespacegenerate__agent__list_a27877babb0738c546513fb040748be63}{write\_all\_agents}():
+83     \textcolor{stringliteral}{"""}
+84 \textcolor{stringliteral}{    Write list of agents to fout.}
+85 \textcolor{stringliteral}{}
+86 \textcolor{stringliteral}{    :param fout:}
+87 \textcolor{stringliteral}{        file object to write to}
+88 \textcolor{stringliteral}{    """}
+89     os.makedirs(\textcolor{stringliteral}{'agent\_refs'}, exist\_ok=\textcolor{keyword}{True})
+90     agents = [
+91         name
+92         \textcolor{keywordflow}{for} \_, name, \_ \textcolor{keywordflow}{in} pkgutil.iter\_modules(
+93             [os.path.dirname(parlai.agents.\_\_file\_\_)]
+94         )
+95     ]
+96     \textcolor{keywordflow}{for} agent \textcolor{keywordflow}{in} agents:
+97         with open(f\textcolor{stringliteral}{'agent\_refs/\{agent\}.rst'}, \textcolor{stringliteral}{'w'}) \textcolor{keyword}{as} fout:
+98             \hyperlink{namespacegenerate__agent__list_aa2e399b6d39f8bb4e2f2ef644f082ac7}{write\_agent}(fout, \hyperlink{namespacegenerate__agent__list_a321a9312fef0cf377ee0e8a870ee0741}{prepare\_agent\_readme}(agent))
+99 
+100 
+101 \textcolor{comment}{# Write the agents!}
+102 \hyperlink{namespacegenerate__agent__list_a27877babb0738c546513fb040748be63}{write\_all\_agents}()
+103 \end{DoxyCode}

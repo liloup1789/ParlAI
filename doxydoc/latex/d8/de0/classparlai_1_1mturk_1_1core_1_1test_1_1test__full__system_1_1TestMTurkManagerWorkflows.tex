@@ -2,8 +2,7 @@
 \label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows}\index{parlai.\+mturk.\+core.\+test.\+test\+\_\+full\+\_\+system.\+Test\+M\+Turk\+Manager\+Workflows@{parlai.\+mturk.\+core.\+test.\+test\+\_\+full\+\_\+system.\+Test\+M\+Turk\+Manager\+Workflows}}
 
 
-Inheritance diagram for parlai.\+mturk.\+core.\+test.\+test\+\_\+full\+\_\+system.\+Test\+M\+Turk\+Manager\+Workflows\+:
-\nopagebreak
+Inheritance diagram for parlai.\+mturk.\+core.\+test.\+test\+\_\+full\+\_\+system.\+Test\+M\+Turk\+Manager\+Workflows\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+mturk.\+core.\+test.\+test\+\_\+full\+\_\+syste
 \end{figure}
 
 
-Collaboration diagram for parlai.\+mturk.\+core.\+test.\+test\+\_\+full\+\_\+system.\+Test\+M\+Turk\+Manager\+Workflows\+:
-\nopagebreak
+Collaboration diagram for parlai.\+mturk.\+core.\+test.\+test\+\_\+full\+\_\+system.\+Test\+M\+Turk\+Manager\+Workflows\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -83,7 +81,7 @@ def \hyperlink{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1Tes
 \end{DoxyVerb}
  
 
-Definition at line 332 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 331 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
@@ -96,15 +94,15 @@ Definition at line 332 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 451 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 453 of file test\+\_\+full\+\_\+system.\+py.
 
 
 \begin{DoxyCode}
-451     \textcolor{keyword}{def }alive\_agent(self, agent):
-452         agent.register\_to\_socket(self.fake\_socket)
-453         agent.wait\_for\_alive()
-454         agent.send\_heartbeat()
-455 
+453     \textcolor{keyword}{def }alive\_agent(self, agent):
+454         agent.register\_to\_socket(self.fake\_socket)
+455         agent.wait\_for\_alive()
+456         agent.send\_heartbeat()
+457 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_af9628e722f66ef40f006b2f79428c0f8}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_af9628e722f66ef40f006b2f79428c0f8}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows}!onboard\+\_\+agent@{onboard\+\_\+agent}}
@@ -114,18 +112,18 @@ Definition at line 451 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 434 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 436 of file test\+\_\+full\+\_\+system.\+py.
 
 
 \begin{DoxyCode}
-434     \textcolor{keyword}{def }onboard\_agent(self, worker):
-435         self.onboarding\_agents[worker.worker\_id] = \textcolor{keyword}{False}
-436         \textcolor{keywordflow}{while} (worker.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents) \textcolor{keywordflow}{and} (
-437             self.onboarding\_agents[worker.worker\_id] \textcolor{keywordflow}{is} \textcolor{keyword}{False}
-438         ):
-439             time.sleep(0.05)
-440         \textcolor{keywordflow}{return}
-441 
+436     \textcolor{keyword}{def }onboard\_agent(self, worker):
+437         self.onboarding\_agents[worker.worker\_id] = \textcolor{keyword}{False}
+438         \textcolor{keywordflow}{while} (worker.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents) \textcolor{keywordflow}{and} (
+439             self.onboarding\_agents[worker.worker\_id] \textcolor{keywordflow}{is} \textcolor{keyword}{False}
+440         ):
+441             time.sleep(0.05)
+442         \textcolor{keywordflow}{return}
+443 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_abe32bc53e3e76d2db1bf52045fa15707}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_abe32bc53e3e76d2db1bf52045fa15707}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows}!run\+\_\+conversation@{run\+\_\+conversation}}
@@ -135,19 +133,19 @@ Definition at line 434 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 442 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 444 of file test\+\_\+full\+\_\+system.\+py.
 
 
 \begin{DoxyCode}
-442     \textcolor{keyword}{def }run\_conversation(self, mturk\_manager, opt, workers):
-443         \textcolor{keywordflow}{for} worker \textcolor{keywordflow}{in} workers:
-444             self.worlds\_agents[worker.worker\_id] = \textcolor{keyword}{False}
+444     \textcolor{keyword}{def }run\_conversation(self, mturk\_manager, opt, workers):
 445         \textcolor{keywordflow}{for} worker \textcolor{keywordflow}{in} workers:
-446             \textcolor{keywordflow}{while} self.worlds\_agents[worker.worker\_id] \textcolor{keywordflow}{is} \textcolor{keyword}{False}:
-447                 time.sleep(0.05)
-448         \textcolor{keywordflow}{for} worker \textcolor{keywordflow}{in} workers:
-449             worker.shutdown(timeout=-1)
-450 
+446             self.worlds\_agents[worker.worker\_id] = \textcolor{keyword}{False}
+447         \textcolor{keywordflow}{for} worker \textcolor{keywordflow}{in} workers:
+448             \textcolor{keywordflow}{while} self.worlds\_agents[worker.worker\_id] \textcolor{keywordflow}{is} \textcolor{keyword}{False}:
+449                 time.sleep(0.05)
+450         \textcolor{keywordflow}{for} worker \textcolor{keywordflow}{in} workers:
+451             worker.shutdown(timeout=-1)
+452 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_a62baf9564be3f57380e5ac503c1ccd3c}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_a62baf9564be3f57380e5ac503c1ccd3c}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows}!set\+Up@{set\+Up}}
@@ -157,98 +155,101 @@ Definition at line 442 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 337 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 336 of file test\+\_\+full\+\_\+system.\+py.
 
 
 \begin{DoxyCode}
-337     \textcolor{keyword}{def }setUp(self):
-338         \textcolor{comment}{# Mock functions that hit external APIs and such}
-339         self.server\_utils = MTurkManagerFile.server\_utils
-340         self.mturk\_utils = MTurkManagerFile.mturk\_utils
-341         self.server\_utils.setup\_server = mock.MagicMock(
-342             return\_value=\textcolor{stringliteral}{'https://127.0.0.1'}
-343         )
-344         self.server\_utils.setup\_legacy\_server = mock.MagicMock(
-345             return\_value=\textcolor{stringliteral}{'https://127.0.0.1'}
-346         )
-347         self.server\_utils.delete\_server = mock.MagicMock()
-348         self.mturk\_utils.setup\_aws\_credentials = mock.MagicMock()
-349         self.mturk\_utils.calculate\_mturk\_cost = mock.MagicMock(return\_value=1)
-350         self.mturk\_utils.check\_mturk\_balance = mock.MagicMock(return\_value=\textcolor{keyword}{True})
-351         self.mturk\_utils.create\_hit\_config = mock.MagicMock()
-352         self.mturk\_utils.setup\_sns\_topic = mock.MagicMock(return\_value=TOPIC\_ARN)
-353         self.mturk\_utils.delete\_sns\_topic = mock.MagicMock()
-354         self.mturk\_utils.delete\_qualification = mock.MagicMock()
-355         self.mturk\_utils.find\_or\_create\_qualification = mock.MagicMock(
-356             return\_value=QUALIFICATION\_ID
-357         )
-358         self.mturk\_utils.find\_qualification = mock.MagicMock(
-359             return\_value=QUALIFICATION\_ID
-360         )
-361         self.mturk\_utils.give\_worker\_qualification = mock.MagicMock()
-362         self.mturk\_utils.remove\_worker\_qualification = mock.MagicMock()
-363         self.mturk\_utils.create\_hit\_type = mock.MagicMock(return\_value=HIT\_TYPE\_ID)
-364         self.mturk\_utils.subscribe\_to\_hits = mock.MagicMock()
-365         self.mturk\_utils.create\_hit\_with\_hit\_type = mock.MagicMock(
-366             return\_value=(MTURK\_PAGE\_URL, FAKE\_HIT\_ID, \textcolor{stringliteral}{'MTURK\_HIT\_DATA'})
-367         )
-368         self.mturk\_utils.get\_mturk\_client = mock.MagicMock(
-369             return\_value=mock.MagicMock()
-370         )
-371 
-372         self.onboarding\_agents = \{\}
-373         self.worlds\_agents = \{\}
-374 
-375         \textcolor{comment}{# Set up an MTurk Manager and get it ready for accepting workers}
-376         self.fake\_socket = MockSocket()
-377         time.sleep(0.1)
-378         argparser = ParlaiParser(\textcolor{keyword}{False}, \textcolor{keyword}{False})
-379         argparser.add\_parlai\_data\_path()
-380         argparser.add\_mturk\_args()
-381         self.opt = argparser.parse\_args(print\_args=\textcolor{keyword}{False})
-382         self.opt[\textcolor{stringliteral}{'task'}] = \textcolor{stringliteral}{'unittest'}
-383         self.opt[\textcolor{stringliteral}{'assignment\_duration\_in\_seconds'}] = 1
-384         self.opt[\textcolor{stringliteral}{'hit\_title'}] = \textcolor{stringliteral}{'test\_hit\_title'}
-385         self.opt[\textcolor{stringliteral}{'hit\_description'}] = \textcolor{stringliteral}{'test\_hit\_description'}
-386         self.opt[\textcolor{stringliteral}{'task\_description'}] = \textcolor{stringliteral}{'test\_task\_description'}
-387         self.opt[\textcolor{stringliteral}{'hit\_keywords'}] = \textcolor{stringliteral}{'test\_hit\_keywords'}
-388         self.opt[\textcolor{stringliteral}{'reward'}] = 0.1
-389         self.opt[\textcolor{stringliteral}{'is\_debug'}] = \textcolor{keyword}{True}
-390         self.opt[\textcolor{stringliteral}{'log\_level'}] = 0
-391         self.opt[\textcolor{stringliteral}{'num\_conversations'}] = 1
-392         self.mturk\_agent\_ids = [\textcolor{stringliteral}{'mturk\_agent\_1'}, \textcolor{stringliteral}{'mturk\_agent\_2'}]
-393         self.mturk\_manager = MTurkManager(
-394             opt=self.opt, mturk\_agent\_ids=self.mturk\_agent\_ids, is\_test=\textcolor{keyword}{True}
-395         )
-396         self.mturk\_manager.port = self.fake\_socket.port
-397         self.mturk\_manager.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_afb56b04206cd0f42384438f1ac6d9cda}{setup\_server}()
-398         self.mturk\_manager.start\_new\_run()
-399         self.mturk\_manager.ready\_to\_accept\_workers()
-400         self.mturk\_manager.set\_onboard\_function(self.onboard\_agent)
-401         self.mturk\_manager.create\_hits()
-402 
-403         \textcolor{keyword}{def }assign\_worker\_roles(workers):
-404             workers[0].id = \textcolor{stringliteral}{'mturk\_agent\_1'}
-405             workers[1].id = \textcolor{stringliteral}{'mturk\_agent\_2'}
-406 
-407         \textcolor{keyword}{def }run\_task\_wait():
-408             self.mturk\_manager.start\_task(
-409                 \textcolor{keyword}{lambda} w: \textcolor{keyword}{True}, assign\_worker\_roles, self.run\_conversation
-410             )
-411 
-412         self.task\_thread = threading.Thread(target=run\_task\_wait)
-413         self.task\_thread.start()
-414 
-415         self.agent\_1 = MockAgent(
-416             TEST\_HIT\_ID\_1, TEST\_ASSIGNMENT\_ID\_1, TEST\_WORKER\_ID\_1, TASK\_GROUP\_ID\_1
-417         )
-418         self.agent\_1\_2 = MockAgent(
-419             TEST\_HIT\_ID\_1, TEST\_ASSIGNMENT\_ID\_3, TEST\_WORKER\_ID\_1, TASK\_GROUP\_ID\_1
-420         )
-421         self.agent\_2 = MockAgent(
-422             TEST\_HIT\_ID\_2, TEST\_ASSIGNMENT\_ID\_2, TEST\_WORKER\_ID\_2, TASK\_GROUP\_ID\_1
-423         )
-424 
+336     \textcolor{keyword}{def }setUp(self):
+337         patcher = mock.patch(\textcolor{stringliteral}{'builtins.input'}, return\_value=\textcolor{stringliteral}{'y'})
+338         self.addCleanup(patcher.stop)
+339         patcher.start()
+340         \textcolor{comment}{# Mock functions that hit external APIs and such}
+341         self.server\_utils = MTurkManagerFile.server\_utils
+342         self.mturk\_utils = MTurkManagerFile.mturk\_utils
+343         self.server\_utils.setup\_server = mock.MagicMock(
+344             return\_value=\textcolor{stringliteral}{'https://127.0.0.1'}
+345         )
+346         self.server\_utils.setup\_legacy\_server = mock.MagicMock(
+347             return\_value=\textcolor{stringliteral}{'https://127.0.0.1'}
+348         )
+349         self.server\_utils.delete\_server = mock.MagicMock()
+350         self.mturk\_utils.setup\_aws\_credentials = mock.MagicMock()
+351         self.mturk\_utils.calculate\_mturk\_cost = mock.MagicMock(return\_value=1)
+352         self.mturk\_utils.check\_mturk\_balance = mock.MagicMock(return\_value=\textcolor{keyword}{True})
+353         self.mturk\_utils.create\_hit\_config = mock.MagicMock()
+354         self.mturk\_utils.setup\_sns\_topic = mock.MagicMock(return\_value=TOPIC\_ARN)
+355         self.mturk\_utils.delete\_sns\_topic = mock.MagicMock()
+356         self.mturk\_utils.delete\_qualification = mock.MagicMock()
+357         self.mturk\_utils.find\_or\_create\_qualification = mock.MagicMock(
+358             return\_value=QUALIFICATION\_ID
+359         )
+360         self.mturk\_utils.find\_qualification = mock.MagicMock(
+361             return\_value=QUALIFICATION\_ID
+362         )
+363         self.mturk\_utils.give\_worker\_qualification = mock.MagicMock()
+364         self.mturk\_utils.remove\_worker\_qualification = mock.MagicMock()
+365         self.mturk\_utils.create\_hit\_type = mock.MagicMock(return\_value=HIT\_TYPE\_ID)
+366         self.mturk\_utils.subscribe\_to\_hits = mock.MagicMock()
+367         self.mturk\_utils.create\_hit\_with\_hit\_type = mock.MagicMock(
+368             return\_value=(MTURK\_PAGE\_URL, FAKE\_HIT\_ID, \textcolor{stringliteral}{'MTURK\_HIT\_DATA'})
+369         )
+370         self.mturk\_utils.get\_mturk\_client = mock.MagicMock(
+371             return\_value=mock.MagicMock()
+372         )
+373 
+374         self.onboarding\_agents = \{\}
+375         self.worlds\_agents = \{\}
+376 
+377         \textcolor{comment}{# Set up an MTurk Manager and get it ready for accepting workers}
+378         self.fake\_socket = MockSocket()
+379         time.sleep(0.1)
+380         argparser = ParlaiParser(\textcolor{keyword}{False}, \textcolor{keyword}{False})
+381         argparser.add\_parlai\_data\_path()
+382         argparser.add\_mturk\_args()
+383         self.opt = argparser.parse\_args(print\_args=\textcolor{keyword}{False})
+384         self.opt[\textcolor{stringliteral}{'task'}] = \textcolor{stringliteral}{'unittest'}
+385         self.opt[\textcolor{stringliteral}{'assignment\_duration\_in\_seconds'}] = 1
+386         self.opt[\textcolor{stringliteral}{'hit\_title'}] = \textcolor{stringliteral}{'test\_hit\_title'}
+387         self.opt[\textcolor{stringliteral}{'hit\_description'}] = \textcolor{stringliteral}{'test\_hit\_description'}
+388         self.opt[\textcolor{stringliteral}{'task\_description'}] = \textcolor{stringliteral}{'test\_task\_description'}
+389         self.opt[\textcolor{stringliteral}{'hit\_keywords'}] = \textcolor{stringliteral}{'test\_hit\_keywords'}
+390         self.opt[\textcolor{stringliteral}{'reward'}] = 0.1
+391         self.opt[\textcolor{stringliteral}{'is\_debug'}] = \textcolor{keyword}{True}
+392         self.opt[\textcolor{stringliteral}{'log\_level'}] = 0
+393         self.opt[\textcolor{stringliteral}{'num\_conversations'}] = 1
+394         self.mturk\_agent\_ids = [\textcolor{stringliteral}{'mturk\_agent\_1'}, \textcolor{stringliteral}{'mturk\_agent\_2'}]
+395         self.mturk\_manager = MTurkManager(
+396             opt=self.opt, mturk\_agent\_ids=self.mturk\_agent\_ids, is\_test=\textcolor{keyword}{True}
+397         )
+398         self.mturk\_manager.port = self.fake\_socket.port
+399         self.mturk\_manager.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1server__utils_afb56b04206cd0f42384438f1ac6d9cda}{setup\_server}()
+400         self.mturk\_manager.start\_new\_run()
+401         self.mturk\_manager.ready\_to\_accept\_workers()
+402         self.mturk\_manager.set\_onboard\_function(self.onboard\_agent)
+403         self.mturk\_manager.create\_hits()
+404 
+405         \textcolor{keyword}{def }assign\_worker\_roles(workers):
+406             workers[0].id = \textcolor{stringliteral}{'mturk\_agent\_1'}
+407             workers[1].id = \textcolor{stringliteral}{'mturk\_agent\_2'}
+408 
+409         \textcolor{keyword}{def }run\_task\_wait():
+410             self.mturk\_manager.start\_task(
+411                 \textcolor{keyword}{lambda} w: \textcolor{keyword}{True}, assign\_worker\_roles, self.run\_conversation
+412             )
+413 
+414         self.task\_thread = threading.Thread(target=run\_task\_wait)
+415         self.task\_thread.start()
+416 
+417         self.agent\_1 = MockAgent(
+418             TEST\_HIT\_ID\_1, TEST\_ASSIGNMENT\_ID\_1, TEST\_WORKER\_ID\_1, TASK\_GROUP\_ID\_1
+419         )
+420         self.agent\_1\_2 = MockAgent(
+421             TEST\_HIT\_ID\_1, TEST\_ASSIGNMENT\_ID\_3, TEST\_WORKER\_ID\_1, TASK\_GROUP\_ID\_1
+422         )
+423         self.agent\_2 = MockAgent(
+424             TEST\_HIT\_ID\_2, TEST\_ASSIGNMENT\_ID\_2, TEST\_WORKER\_ID\_2, TASK\_GROUP\_ID\_1
+425         )
+426 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_ac71286659999bc57bb05ff2977579800}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_ac71286659999bc57bb05ff2977579800}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows}!tear\+Down@{tear\+Down}}
@@ -258,19 +259,19 @@ Definition at line 337 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 425 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 427 of file test\+\_\+full\+\_\+system.\+py.
 
 
 \begin{DoxyCode}
-425     \textcolor{keyword}{def }tearDown(self):
-426         self.agent\_1.always\_beat = \textcolor{keyword}{False}
-427         self.agent\_2.always\_beat = \textcolor{keyword}{False}
-428         \textcolor{keywordflow}{for} key \textcolor{keywordflow}{in} self.worlds\_agents.keys():
-429             self.worlds\_agents[key] = \textcolor{keyword}{True}
-430         self.mturk\_manager.shutdown()
-431         self.fake\_socket.close()
-432         self.task\_thread.join()
-433 
+427     \textcolor{keyword}{def }tearDown(self):
+428         self.agent\_1.always\_beat = \textcolor{keyword}{False}
+429         self.agent\_2.always\_beat = \textcolor{keyword}{False}
+430         \textcolor{keywordflow}{for} key \textcolor{keywordflow}{in} self.worlds\_agents.keys():
+431             self.worlds\_agents[key] = \textcolor{keyword}{True}
+432         self.mturk\_manager.shutdown()
+433         self.fake\_socket.close()
+434         self.task\_thread.join()
+435 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_a54846533d6b063b399b5c889f2fe520b}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_a54846533d6b063b399b5c889f2fe520b}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows}!test\+\_\+attempt\+\_\+break\+\_\+unique@{test\+\_\+attempt\+\_\+break\+\_\+unique}}
@@ -280,121 +281,121 @@ Definition at line 425 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 726 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 728 of file test\+\_\+full\+\_\+system.\+py.
 
 
 \begin{DoxyCode}
-726     \textcolor{keyword}{def }test\_attempt\_break\_unique(self):
-727         manager = self.mturk\_manager
-728         unique\_worker\_qual = \textcolor{stringliteral}{'is\_unique\_qual'}
-729         manager.is\_unique = \textcolor{keyword}{True}
-730         manager.opt[\textcolor{stringliteral}{'unique\_qual\_name'}] = unique\_worker\_qual
-731         manager.unique\_qual\_name = unique\_worker\_qual
-732 
-733         \textcolor{comment}{# Alive first agent}
-734         agent\_1 = self.agent\_1
-735         self.alive\_agent(agent\_1)
-736         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_1.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 2)
-737         agent\_1\_object = manager.worker\_manager.get\_agent\_for\_assignment(
-738             agent\_1.assignment\_id
-739         )
-740         self.assertFalse(self.onboarding\_agents[agent\_1.worker\_id])
-741         self.assertEqual(agent\_1\_object.get\_status(), AssignState.STATUS\_ONBOARDING)
-742         self.onboarding\_agents[agent\_1.worker\_id] = \textcolor{keyword}{True}
-743         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_1\_object.get\_status, AssignState.STATUS\_WAITING, 2)
-744 
-745         \textcolor{comment}{# Alive second agent}
-746         agent\_2 = self.agent\_2
-747         self.alive\_agent(agent\_2)
-748         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_2.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 2)
-749         agent\_2\_object = manager.worker\_manager.get\_agent\_for\_assignment(
-750             agent\_2.assignment\_id
-751         )
-752         self.assertFalse(self.onboarding\_agents[agent\_2.worker\_id])
-753         self.assertEqual(agent\_2\_object.get\_status(), AssignState.STATUS\_ONBOARDING)
-754         self.onboarding\_agents[agent\_2.worker\_id] = \textcolor{keyword}{True}
-755         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_WAITING, 2)
-756 
-757         \textcolor{comment}{# Assert agents move to task}
-758         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_IN\_TASK, 2)
-759         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_2.worker\_id \textcolor{keywordflow}{in} self.worlds\_agents, \textcolor{keyword}{True}, 2)
-760         self.assertIn(agent\_1.worker\_id, self.worlds\_agents)
-761 
-762         \textcolor{comment}{# Complete agents}
-763         self.worlds\_agents[agent\_1.worker\_id] = \textcolor{keyword}{True}
-764         self.worlds\_agents[agent\_2.worker\_id] = \textcolor{keyword}{True}
-765         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_1\_object.get\_status, AssignState.STATUS\_DONE, 2)
-766         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_DONE, 2)
-767 
-768         \textcolor{comment}{# Assert conversation is complete for manager and agents}
-769         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: manager.completed\_conversations, 1, 2)
-770         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
-771             \textcolor{keyword}{lambda}: len(
-772                 [
-773                     p
-774                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_1.message\_packet
-775                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_SHOW\_DONE\_BUTTON
-776                 ]
-777             ),
-778             1,
-779             2,
-780         )
-781         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
-782             \textcolor{keyword}{lambda}: len(
-783                 [
-784                     p
-785                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_2.message\_packet
-786                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_SHOW\_DONE\_BUTTON
-787                 ]
-788             ),
-789             1,
-790             2,
-791         )
-792 
-793         \textcolor{comment}{# Assert sockets are closed}
-794         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
-795             \textcolor{keyword}{lambda}: len([x \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} manager.socket\_manager.run.values() \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} x]), 2, 2
-796         )
-797 
-798         \textcolor{comment}{# ensure qualification was 'granted'}
-799         self.mturk\_utils.find\_qualification.assert\_called\_with(
-800             unique\_worker\_qual, manager.is\_sandbox
-801         )
-802         self.mturk\_utils.give\_worker\_qualification.assert\_any\_call(
-803             agent\_1.worker\_id, QUALIFICATION\_ID, \textcolor{keywordtype}{None}, manager.is\_sandbox
-804         )
-805         self.mturk\_utils.give\_worker\_qualification.assert\_any\_call(
-806             agent\_2.worker\_id, QUALIFICATION\_ID, \textcolor{keywordtype}{None}, manager.is\_sandbox
-807         )
-808 
-809         \textcolor{comment}{# Try to alive with the first agent a second time}
-810         agent\_1\_2 = self.agent\_1\_2
-811         self.alive\_agent(agent\_1\_2)
-812         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_1\_2.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 2)
-813         agent\_1\_2\_object = manager.worker\_manager.get\_agent\_for\_assignment(
-814             agent\_1\_2.assignment\_id
-815         )
-816 
-817         \textcolor{comment}{# No worker should be created for a unique task}
-818         self.assertIsNone(agent\_1\_2\_object)
-819 
-820         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
-821             \textcolor{keyword}{lambda}: len(
-822                 [
-823                     p
-824                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_1\_2.message\_packet
-825                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_EXPIRE\_HIT
-826                 ]
-827             ),
-828             1,
-829             2,
-830         )
-831 
-832         \textcolor{comment}{# Assert sockets are closed}
-833         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
-834             \textcolor{keyword}{lambda}: len([x \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} manager.socket\_manager.run.values() \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} x]), 3, 2
-835         )
-836 
+728     \textcolor{keyword}{def }test\_attempt\_break\_unique(self):
+729         manager = self.mturk\_manager
+730         unique\_worker\_qual = \textcolor{stringliteral}{'is\_unique\_qual'}
+731         manager.is\_unique = \textcolor{keyword}{True}
+732         manager.opt[\textcolor{stringliteral}{'unique\_qual\_name'}] = unique\_worker\_qual
+733         manager.unique\_qual\_name = unique\_worker\_qual
+734 
+735         \textcolor{comment}{# Alive first agent}
+736         agent\_1 = self.agent\_1
+737         self.alive\_agent(agent\_1)
+738         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_1.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 2)
+739         agent\_1\_object = manager.worker\_manager.get\_agent\_for\_assignment(
+740             agent\_1.assignment\_id
+741         )
+742         self.assertFalse(self.onboarding\_agents[agent\_1.worker\_id])
+743         self.assertEqual(agent\_1\_object.get\_status(), AssignState.STATUS\_ONBOARDING)
+744         self.onboarding\_agents[agent\_1.worker\_id] = \textcolor{keyword}{True}
+745         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_1\_object.get\_status, AssignState.STATUS\_WAITING, 2)
+746 
+747         \textcolor{comment}{# Alive second agent}
+748         agent\_2 = self.agent\_2
+749         self.alive\_agent(agent\_2)
+750         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_2.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 2)
+751         agent\_2\_object = manager.worker\_manager.get\_agent\_for\_assignment(
+752             agent\_2.assignment\_id
+753         )
+754         self.assertFalse(self.onboarding\_agents[agent\_2.worker\_id])
+755         self.assertEqual(agent\_2\_object.get\_status(), AssignState.STATUS\_ONBOARDING)
+756         self.onboarding\_agents[agent\_2.worker\_id] = \textcolor{keyword}{True}
+757         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_WAITING, 2)
+758 
+759         \textcolor{comment}{# Assert agents move to task}
+760         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_IN\_TASK, 2)
+761         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_2.worker\_id \textcolor{keywordflow}{in} self.worlds\_agents, \textcolor{keyword}{True}, 2)
+762         self.assertIn(agent\_1.worker\_id, self.worlds\_agents)
+763 
+764         \textcolor{comment}{# Complete agents}
+765         self.worlds\_agents[agent\_1.worker\_id] = \textcolor{keyword}{True}
+766         self.worlds\_agents[agent\_2.worker\_id] = \textcolor{keyword}{True}
+767         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_1\_object.get\_status, AssignState.STATUS\_DONE, 2)
+768         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_DONE, 2)
+769 
+770         \textcolor{comment}{# Assert conversation is complete for manager and agents}
+771         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: manager.completed\_conversations, 1, 2)
+772         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
+773             \textcolor{keyword}{lambda}: len(
+774                 [
+775                     p
+776                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_1.message\_packet
+777                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_SHOW\_DONE\_BUTTON
+778                 ]
+779             ),
+780             1,
+781             2,
+782         )
+783         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
+784             \textcolor{keyword}{lambda}: len(
+785                 [
+786                     p
+787                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_2.message\_packet
+788                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_SHOW\_DONE\_BUTTON
+789                 ]
+790             ),
+791             1,
+792             2,
+793         )
+794 
+795         \textcolor{comment}{# Assert sockets are closed}
+796         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
+797             \textcolor{keyword}{lambda}: len([x \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} manager.socket\_manager.run.values() \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} x]), 2, 2
+798         )
+799 
+800         \textcolor{comment}{# ensure qualification was 'granted'}
+801         self.mturk\_utils.find\_qualification.assert\_called\_with(
+802             unique\_worker\_qual, manager.is\_sandbox
+803         )
+804         self.mturk\_utils.give\_worker\_qualification.assert\_any\_call(
+805             agent\_1.worker\_id, QUALIFICATION\_ID, \textcolor{keywordtype}{None}, manager.is\_sandbox
+806         )
+807         self.mturk\_utils.give\_worker\_qualification.assert\_any\_call(
+808             agent\_2.worker\_id, QUALIFICATION\_ID, \textcolor{keywordtype}{None}, manager.is\_sandbox
+809         )
+810 
+811         \textcolor{comment}{# Try to alive with the first agent a second time}
+812         agent\_1\_2 = self.agent\_1\_2
+813         self.alive\_agent(agent\_1\_2)
+814         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_1\_2.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 2)
+815         agent\_1\_2\_object = manager.worker\_manager.get\_agent\_for\_assignment(
+816             agent\_1\_2.assignment\_id
+817         )
+818 
+819         \textcolor{comment}{# No worker should be created for a unique task}
+820         self.assertIsNone(agent\_1\_2\_object)
+821 
+822         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
+823             \textcolor{keyword}{lambda}: len(
+824                 [
+825                     p
+826                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_1\_2.message\_packet
+827                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_EXPIRE\_HIT
+828                 ]
+829             ),
+830             1,
+831             2,
+832         )
+833 
+834         \textcolor{comment}{# Assert sockets are closed}
+835         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
+836             \textcolor{keyword}{lambda}: len([x \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} manager.socket\_manager.run.values() \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} x]), 3, 2
+837         )
+838 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_add66c07d44176ab04d777af94f8f046a}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_add66c07d44176ab04d777af94f8f046a}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows}!test\+\_\+break\+\_\+multi\+\_\+convo@{test\+\_\+break\+\_\+multi\+\_\+convo}}
@@ -404,107 +405,107 @@ Definition at line 726 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 837 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 839 of file test\+\_\+full\+\_\+system.\+py.
 
 
 \begin{DoxyCode}
-837     \textcolor{keyword}{def }test\_break\_multi\_convo(self):
-838         manager = self.mturk\_manager
-839         manager.opt[\textcolor{stringliteral}{'allowed\_conversations'}] = 1
-840 
-841         \textcolor{comment}{# Alive first agent}
-842         agent\_1 = self.agent\_1
-843         self.alive\_agent(agent\_1)
-844         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_1.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 2)
-845         agent\_1\_object = manager.worker\_manager.get\_agent\_for\_assignment(
-846             agent\_1.assignment\_id
-847         )
-848         self.assertFalse(self.onboarding\_agents[agent\_1.worker\_id])
-849         self.assertEqual(agent\_1\_object.get\_status(), AssignState.STATUS\_ONBOARDING)
-850         self.onboarding\_agents[agent\_1.worker\_id] = \textcolor{keyword}{True}
-851         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_1\_object.get\_status, AssignState.STATUS\_WAITING, 2)
-852 
-853         \textcolor{comment}{# Alive second agent}
-854         agent\_2 = self.agent\_2
-855         self.alive\_agent(agent\_2)
-856         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_2.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 2)
-857         agent\_2\_object = manager.worker\_manager.get\_agent\_for\_assignment(
-858             agent\_2.assignment\_id
-859         )
-860         self.assertFalse(self.onboarding\_agents[agent\_2.worker\_id])
-861         self.assertEqual(agent\_2\_object.get\_status(), AssignState.STATUS\_ONBOARDING)
-862         self.onboarding\_agents[agent\_2.worker\_id] = \textcolor{keyword}{True}
-863         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_WAITING, 2)
-864 
-865         \textcolor{comment}{# Assert agents move to task}
-866         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_IN\_TASK, 2)
-867         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_2.worker\_id \textcolor{keywordflow}{in} self.worlds\_agents, \textcolor{keyword}{True}, 2)
-868         self.assertIn(agent\_1.worker\_id, self.worlds\_agents)
-869 
-870         \textcolor{comment}{# Attempt to start a new conversation with duplicate worker 1}
-871         agent\_1\_2 = self.agent\_1\_2
-872         self.alive\_agent(agent\_1\_2)
-873         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_1\_2.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 2)
-874         agent\_1\_2\_object = manager.worker\_manager.get\_agent\_for\_assignment(
-875             agent\_1\_2.assignment\_id
-876         )
-877 
-878         \textcolor{comment}{# No worker should be created for a unique task}
-879         self.assertIsNone(agent\_1\_2\_object)
-880 
-881         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
-882             \textcolor{keyword}{lambda}: len(
-883                 [
-884                     p
-885                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_1\_2.message\_packet
-886                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_EXPIRE\_HIT
-887                 ]
-888             ),
-889             1,
-890             2,
-891         )
-892 
-893         \textcolor{comment}{# Assert sockets are closed}
-894         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
-895             \textcolor{keyword}{lambda}: len([x \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} manager.socket\_manager.run.values() \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} x]), 1, 2
-896         )
-897 
-898         \textcolor{comment}{# Complete agents}
-899         self.worlds\_agents[agent\_1.worker\_id] = \textcolor{keyword}{True}
-900         self.worlds\_agents[agent\_2.worker\_id] = \textcolor{keyword}{True}
-901         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_1\_object.get\_status, AssignState.STATUS\_DONE, 2)
-902         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_DONE, 2)
-903 
-904         \textcolor{comment}{# Assert conversation is complete for manager and agents}
-905         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
-906             \textcolor{keyword}{lambda}: len(
-907                 [
-908                     p
-909                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_1.message\_packet
-910                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_SHOW\_DONE\_BUTTON
-911                 ]
-912             ),
-913             1,
-914             2,
-915         )
-916         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
-917             \textcolor{keyword}{lambda}: len(
-918                 [
-919                     p
-920                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_2.message\_packet
-921                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_SHOW\_DONE\_BUTTON
-922                 ]
-923             ),
-924             1,
-925             2,
-926         )
-927         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: manager.completed\_conversations, 1, 2)
-928 
-929         \textcolor{comment}{# Assert sockets are closed}
-930         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
-931             \textcolor{keyword}{lambda}: len([x \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} manager.socket\_manager.run.values() \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} x]), 3, 2
-932         )
-933 
+839     \textcolor{keyword}{def }test\_break\_multi\_convo(self):
+840         manager = self.mturk\_manager
+841         manager.opt[\textcolor{stringliteral}{'allowed\_conversations'}] = 1
+842 
+843         \textcolor{comment}{# Alive first agent}
+844         agent\_1 = self.agent\_1
+845         self.alive\_agent(agent\_1)
+846         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_1.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 2)
+847         agent\_1\_object = manager.worker\_manager.get\_agent\_for\_assignment(
+848             agent\_1.assignment\_id
+849         )
+850         self.assertFalse(self.onboarding\_agents[agent\_1.worker\_id])
+851         self.assertEqual(agent\_1\_object.get\_status(), AssignState.STATUS\_ONBOARDING)
+852         self.onboarding\_agents[agent\_1.worker\_id] = \textcolor{keyword}{True}
+853         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_1\_object.get\_status, AssignState.STATUS\_WAITING, 2)
+854 
+855         \textcolor{comment}{# Alive second agent}
+856         agent\_2 = self.agent\_2
+857         self.alive\_agent(agent\_2)
+858         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_2.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 2)
+859         agent\_2\_object = manager.worker\_manager.get\_agent\_for\_assignment(
+860             agent\_2.assignment\_id
+861         )
+862         self.assertFalse(self.onboarding\_agents[agent\_2.worker\_id])
+863         self.assertEqual(agent\_2\_object.get\_status(), AssignState.STATUS\_ONBOARDING)
+864         self.onboarding\_agents[agent\_2.worker\_id] = \textcolor{keyword}{True}
+865         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_WAITING, 2)
+866 
+867         \textcolor{comment}{# Assert agents move to task}
+868         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_IN\_TASK, 2)
+869         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_2.worker\_id \textcolor{keywordflow}{in} self.worlds\_agents, \textcolor{keyword}{True}, 2)
+870         self.assertIn(agent\_1.worker\_id, self.worlds\_agents)
+871 
+872         \textcolor{comment}{# Attempt to start a new conversation with duplicate worker 1}
+873         agent\_1\_2 = self.agent\_1\_2
+874         self.alive\_agent(agent\_1\_2)
+875         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_1\_2.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 2)
+876         agent\_1\_2\_object = manager.worker\_manager.get\_agent\_for\_assignment(
+877             agent\_1\_2.assignment\_id
+878         )
+879 
+880         \textcolor{comment}{# No worker should be created for a unique task}
+881         self.assertIsNone(agent\_1\_2\_object)
+882 
+883         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
+884             \textcolor{keyword}{lambda}: len(
+885                 [
+886                     p
+887                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_1\_2.message\_packet
+888                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_EXPIRE\_HIT
+889                 ]
+890             ),
+891             1,
+892             2,
+893         )
+894 
+895         \textcolor{comment}{# Assert sockets are closed}
+896         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
+897             \textcolor{keyword}{lambda}: len([x \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} manager.socket\_manager.run.values() \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} x]), 1, 2
+898         )
+899 
+900         \textcolor{comment}{# Complete agents}
+901         self.worlds\_agents[agent\_1.worker\_id] = \textcolor{keyword}{True}
+902         self.worlds\_agents[agent\_2.worker\_id] = \textcolor{keyword}{True}
+903         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_1\_object.get\_status, AssignState.STATUS\_DONE, 2)
+904         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_DONE, 2)
+905 
+906         \textcolor{comment}{# Assert conversation is complete for manager and agents}
+907         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
+908             \textcolor{keyword}{lambda}: len(
+909                 [
+910                     p
+911                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_1.message\_packet
+912                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_SHOW\_DONE\_BUTTON
+913                 ]
+914             ),
+915             1,
+916             2,
+917         )
+918         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
+919             \textcolor{keyword}{lambda}: len(
+920                 [
+921                     p
+922                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_2.message\_packet
+923                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_SHOW\_DONE\_BUTTON
+924                 ]
+925             ),
+926             1,
+927             2,
+928         )
+929         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: manager.completed\_conversations, 1, 2)
+930 
+931         \textcolor{comment}{# Assert sockets are closed}
+932         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
+933             \textcolor{keyword}{lambda}: len([x \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} manager.socket\_manager.run.values() \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} x]), 3, 2
+934         )
+935 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_a8af4ec1e17ef7dc37903d839ff4882f0}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_a8af4ec1e17ef7dc37903d839ff4882f0}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows}!test\+\_\+disconnect\+\_\+end@{test\+\_\+disconnect\+\_\+end}}
@@ -514,85 +515,85 @@ Definition at line 837 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 524 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 526 of file test\+\_\+full\+\_\+system.\+py.
 
 
 \begin{DoxyCode}
-524     \textcolor{keyword}{def }test\_disconnect\_end(self):
-525         manager = self.mturk\_manager
-526 
-527         \textcolor{comment}{# Alive first agent}
-528         agent\_1 = self.agent\_1
-529         self.alive\_agent(agent\_1)
-530         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_1.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 2)
-531         agent\_1\_object = manager.worker\_manager.get\_agent\_for\_assignment(
-532             agent\_1.assignment\_id
-533         )
-534         self.assertFalse(self.onboarding\_agents[agent\_1.worker\_id])
-535         self.assertEqual(agent\_1\_object.get\_status(), AssignState.STATUS\_ONBOARDING)
-536         self.onboarding\_agents[agent\_1.worker\_id] = \textcolor{keyword}{True}
-537         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_1\_object.get\_status, AssignState.STATUS\_WAITING, 2)
-538 
-539         \textcolor{comment}{# Alive second agent}
-540         agent\_2 = self.agent\_2
-541         self.alive\_agent(agent\_2)
-542         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_2.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 2)
-543         agent\_2\_object = manager.worker\_manager.get\_agent\_for\_assignment(
-544             agent\_2.assignment\_id
-545         )
-546         self.assertFalse(self.onboarding\_agents[agent\_2.worker\_id])
-547         self.assertEqual(agent\_2\_object.get\_status(), AssignState.STATUS\_ONBOARDING)
-548         self.onboarding\_agents[agent\_2.worker\_id] = \textcolor{keyword}{True}
-549         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_WAITING, 2)
-550 
-551         \textcolor{comment}{# Assert agents move to task}
-552         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_IN\_TASK, 2)
-553         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_2.worker\_id \textcolor{keywordflow}{in} self.worlds\_agents, \textcolor{keyword}{True}, 2)
-554         self.assertIn(agent\_1.worker\_id, self.worlds\_agents)
-555 
-556         \textcolor{comment}{# Disconnect agent}
-557         agent\_2.always\_beat = \textcolor{keyword}{False}
-558         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
-559             agent\_1\_object.get\_status, AssignState.STATUS\_PARTNER\_DISCONNECT, 3
-560         )
-561         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_DISCONNECT, 3)
-562         self.worlds\_agents[agent\_1.worker\_id] = \textcolor{keyword}{True}
-563         self.worlds\_agents[agent\_2.worker\_id] = \textcolor{keyword}{True}
-564         agent\_2.always\_beat = \textcolor{keyword}{True}
-565         agent\_2.send\_alive()
-566 
-567         \textcolor{comment}{# Assert workers get the correct command}
-568         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
-569             \textcolor{keyword}{lambda}: len(
-570                 [
-571                     p
-572                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_1.message\_packet
-573                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_INACTIVE\_DONE
-574                 ]
-575             ),
-576             1,
-577             2,
-578         )
-579         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
-580             \textcolor{keyword}{lambda}: len(
-581                 [
-582                     p
-583                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_2.message\_packet
-584                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_INACTIVE\_HIT
-585                 ]
-586             ),
-587             1,
-588             2,
-589         )
-590 
-591         \textcolor{comment}{# assert conversation not marked as complete}
-592         self.assertEqual(manager.completed\_conversations, 0)
-593 
-594         \textcolor{comment}{# Assert sockets are closed}
-595         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
-596             \textcolor{keyword}{lambda}: len([x \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} manager.socket\_manager.run.values() \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} x]), 2, 2
-597         )
-598 
+526     \textcolor{keyword}{def }test\_disconnect\_end(self):
+527         manager = self.mturk\_manager
+528 
+529         \textcolor{comment}{# Alive first agent}
+530         agent\_1 = self.agent\_1
+531         self.alive\_agent(agent\_1)
+532         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_1.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 2)
+533         agent\_1\_object = manager.worker\_manager.get\_agent\_for\_assignment(
+534             agent\_1.assignment\_id
+535         )
+536         self.assertFalse(self.onboarding\_agents[agent\_1.worker\_id])
+537         self.assertEqual(agent\_1\_object.get\_status(), AssignState.STATUS\_ONBOARDING)
+538         self.onboarding\_agents[agent\_1.worker\_id] = \textcolor{keyword}{True}
+539         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_1\_object.get\_status, AssignState.STATUS\_WAITING, 2)
+540 
+541         \textcolor{comment}{# Alive second agent}
+542         agent\_2 = self.agent\_2
+543         self.alive\_agent(agent\_2)
+544         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_2.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 2)
+545         agent\_2\_object = manager.worker\_manager.get\_agent\_for\_assignment(
+546             agent\_2.assignment\_id
+547         )
+548         self.assertFalse(self.onboarding\_agents[agent\_2.worker\_id])
+549         self.assertEqual(agent\_2\_object.get\_status(), AssignState.STATUS\_ONBOARDING)
+550         self.onboarding\_agents[agent\_2.worker\_id] = \textcolor{keyword}{True}
+551         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_WAITING, 2)
+552 
+553         \textcolor{comment}{# Assert agents move to task}
+554         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_IN\_TASK, 2)
+555         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_2.worker\_id \textcolor{keywordflow}{in} self.worlds\_agents, \textcolor{keyword}{True}, 2)
+556         self.assertIn(agent\_1.worker\_id, self.worlds\_agents)
+557 
+558         \textcolor{comment}{# Disconnect agent}
+559         agent\_2.always\_beat = \textcolor{keyword}{False}
+560         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
+561             agent\_1\_object.get\_status, AssignState.STATUS\_PARTNER\_DISCONNECT, 3
+562         )
+563         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_DISCONNECT, 3)
+564         self.worlds\_agents[agent\_1.worker\_id] = \textcolor{keyword}{True}
+565         self.worlds\_agents[agent\_2.worker\_id] = \textcolor{keyword}{True}
+566         agent\_2.always\_beat = \textcolor{keyword}{True}
+567         agent\_2.send\_alive()
+568 
+569         \textcolor{comment}{# Assert workers get the correct command}
+570         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
+571             \textcolor{keyword}{lambda}: len(
+572                 [
+573                     p
+574                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_1.message\_packet
+575                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_INACTIVE\_DONE
+576                 ]
+577             ),
+578             1,
+579             2,
+580         )
+581         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
+582             \textcolor{keyword}{lambda}: len(
+583                 [
+584                     p
+585                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_2.message\_packet
+586                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_INACTIVE\_HIT
+587                 ]
+588             ),
+589             1,
+590             2,
+591         )
+592 
+593         \textcolor{comment}{# assert conversation not marked as complete}
+594         self.assertEqual(manager.completed\_conversations, 0)
+595 
+596         \textcolor{comment}{# Assert sockets are closed}
+597         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
+598             \textcolor{keyword}{lambda}: len([x \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} manager.socket\_manager.run.values() \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} x]), 2, 2
+599         )
+600 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_ae9266603acec90b5458980c06d971f42}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_ae9266603acec90b5458980c06d971f42}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows}!test\+\_\+expire\+\_\+onboarding@{test\+\_\+expire\+\_\+onboarding}}
@@ -602,48 +603,48 @@ Definition at line 524 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 599 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 601 of file test\+\_\+full\+\_\+system.\+py.
 
 
 \begin{DoxyCode}
-599     \textcolor{keyword}{def }test\_expire\_onboarding(self):
-600         manager = self.mturk\_manager
-601 
-602         \textcolor{comment}{# Alive first agent}
-603         agent\_1 = self.agent\_1
-604         self.alive\_agent(agent\_1)
-605         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_1.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 10)
-606         agent\_1\_object = manager.worker\_manager.get\_agent\_for\_assignment(
-607             agent\_1.assignment\_id
-608         )
-609         self.assertFalse(self.onboarding\_agents[agent\_1.worker\_id])
-610         self.assertEqual(agent\_1\_object.get\_status(), AssignState.STATUS\_ONBOARDING)
-611 
-612         manager.\_expire\_onboarding\_pool()
+601     \textcolor{keyword}{def }test\_expire\_onboarding(self):
+602         manager = self.mturk\_manager
+603 
+604         \textcolor{comment}{# Alive first agent}
+605         agent\_1 = self.agent\_1
+606         self.alive\_agent(agent\_1)
+607         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_1.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 10)
+608         agent\_1\_object = manager.worker\_manager.get\_agent\_for\_assignment(
+609             agent\_1.assignment\_id
+610         )
+611         self.assertFalse(self.onboarding\_agents[agent\_1.worker\_id])
+612         self.assertEqual(agent\_1\_object.get\_status(), AssignState.STATUS\_ONBOARDING)
 613 
-614         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
-615             \textcolor{keyword}{lambda}: len(
-616                 [
-617                     p
-618                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_1.message\_packet
-619                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_EXPIRE\_HIT
-620                 ]
-621             ),
-622             1,
-623             10,
-624         )
-625 
-626         self.onboarding\_agents[agent\_1.worker\_id] = \textcolor{keyword}{True}
+614         manager.\_expire\_onboarding\_pool()
+615 
+616         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
+617             \textcolor{keyword}{lambda}: len(
+618                 [
+619                     p
+620                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_1.message\_packet
+621                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_EXPIRE\_HIT
+622                 ]
+623             ),
+624             1,
+625             10,
+626         )
 627 
-628         self.assertEqual(agent\_1\_object.get\_status(), AssignState.STATUS\_EXPIRED)
+628         self.onboarding\_agents[agent\_1.worker\_id] = \textcolor{keyword}{True}
 629 
-630         \textcolor{comment}{# Assert sockets are closed}
-631         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
-632             \textcolor{keyword}{lambda}: len([x \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} manager.socket\_manager.run.values() \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} x]),
-633             1,
-634             10,
-635         )
-636 
+630         self.assertEqual(agent\_1\_object.get\_status(), AssignState.STATUS\_EXPIRED)
+631 
+632         \textcolor{comment}{# Assert sockets are closed}
+633         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
+634             \textcolor{keyword}{lambda}: len([x \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} manager.socket\_manager.run.values() \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} x]),
+635             1,
+636             10,
+637         )
+638 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_a65ea28ad81308473c22580178fa57a90}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_a65ea28ad81308473c22580178fa57a90}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows}!test\+\_\+no\+\_\+onboard\+\_\+expire\+\_\+waiting@{test\+\_\+no\+\_\+onboard\+\_\+expire\+\_\+waiting}}
@@ -653,41 +654,41 @@ Definition at line 599 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 934 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 936 of file test\+\_\+full\+\_\+system.\+py.
 
 
 \begin{DoxyCode}
-934     \textcolor{keyword}{def }test\_no\_onboard\_expire\_waiting(self):
-935         manager = self.mturk\_manager
-936         manager.set\_onboard\_function(\textcolor{keywordtype}{None})
-937 
-938         \textcolor{comment}{# Alive first agent}
-939         agent\_1 = self.agent\_1
-940         self.alive\_agent(agent\_1)
-941         agent\_1\_object = manager.worker\_manager.get\_agent\_for\_assignment(
-942             agent\_1.assignment\_id
-943         )
-944         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_1\_object.get\_status, AssignState.STATUS\_WAITING, 2)
-945 
-946         manager.\_expire\_agent\_pool()
+936     \textcolor{keyword}{def }test\_no\_onboard\_expire\_waiting(self):
+937         manager = self.mturk\_manager
+938         manager.set\_onboard\_function(\textcolor{keywordtype}{None})
+939 
+940         \textcolor{comment}{# Alive first agent}
+941         agent\_1 = self.agent\_1
+942         self.alive\_agent(agent\_1)
+943         agent\_1\_object = manager.worker\_manager.get\_agent\_for\_assignment(
+944             agent\_1.assignment\_id
+945         )
+946         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_1\_object.get\_status, AssignState.STATUS\_WAITING, 2)
 947 
-948         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
-949             \textcolor{keyword}{lambda}: len(
-950                 [
-951                     p
-952                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_1.message\_packet
-953                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_EXPIRE\_HIT
-954                 ]
-955             ),
-956             1,
-957             2,
-958         )
-959 
-960         \textcolor{comment}{# Assert sockets are closed}
-961         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
-962             \textcolor{keyword}{lambda}: len([x \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} manager.socket\_manager.run.values() \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} x]), 1, 2
-963         )
-964 
+948         manager.\_expire\_agent\_pool()
+949 
+950         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
+951             \textcolor{keyword}{lambda}: len(
+952                 [
+953                     p
+954                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_1.message\_packet
+955                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_EXPIRE\_HIT
+956                 ]
+957             ),
+958             1,
+959             2,
+960         )
+961 
+962         \textcolor{comment}{# Assert sockets are closed}
+963         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
+964             \textcolor{keyword}{lambda}: len([x \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} manager.socket\_manager.run.values() \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} x]), 1, 2
+965         )
+966 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_a97548a1e73c03aafa7cef8a8076a5dd7}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_a97548a1e73c03aafa7cef8a8076a5dd7}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows}!test\+\_\+reconnect\+\_\+complete@{test\+\_\+reconnect\+\_\+complete}}
@@ -697,99 +698,99 @@ Definition at line 934 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 637 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 639 of file test\+\_\+full\+\_\+system.\+py.
 
 
 \begin{DoxyCode}
-637     \textcolor{keyword}{def }test\_reconnect\_complete(self):
-638         manager = self.mturk\_manager
-639 
-640         \textcolor{comment}{# Alive first agent}
-641         agent\_1 = self.agent\_1
-642         self.alive\_agent(agent\_1)
-643         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_1.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 2)
-644         agent\_1\_object = manager.worker\_manager.get\_agent\_for\_assignment(
-645             agent\_1.assignment\_id
-646         )
-647         self.assertFalse(self.onboarding\_agents[agent\_1.worker\_id])
-648         self.assertEqual(agent\_1\_object.get\_status(), AssignState.STATUS\_ONBOARDING)
-649         self.onboarding\_agents[agent\_1.worker\_id] = \textcolor{keyword}{True}
-650         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_1\_object.get\_status, AssignState.STATUS\_WAITING, 2)
-651 
-652         \textcolor{comment}{# Alive second agent}
-653         agent\_2 = self.agent\_2
-654         self.alive\_agent(agent\_2)
-655         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_2.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 2)
-656         agent\_2\_object = manager.worker\_manager.get\_agent\_for\_assignment(
-657             agent\_2.assignment\_id
-658         )
-659         self.assertFalse(self.onboarding\_agents[agent\_2.worker\_id])
-660         self.assertEqual(agent\_2\_object.get\_status(), AssignState.STATUS\_ONBOARDING)
-661         self.onboarding\_agents[agent\_2.worker\_id] = \textcolor{keyword}{True}
-662         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_WAITING, 2)
-663 
-664         \textcolor{comment}{# Assert agents move to task}
-665         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_IN\_TASK, 2)
-666         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_2.worker\_id \textcolor{keywordflow}{in} self.worlds\_agents, \textcolor{keyword}{True}, 2)
-667         self.assertIn(agent\_1.worker\_id, self.worlds\_agents)
-668 
-669         \textcolor{comment}{# Simulate reconnect to task}
-670         stored\_conv\_id = agent\_2.conversation\_id
-671         stored\_agent\_id = agent\_2.id
-672         agent\_2.conversation\_id = \textcolor{keywordtype}{None}
-673         agent\_2.id = \textcolor{keywordtype}{None}
-674         agent\_2.send\_alive()
-675 
-676         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
-677             \textcolor{keyword}{lambda}: len(
-678                 [
-679                     p
-680                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_2.message\_packet
-681                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_RESTORE\_STATE
-682                 ]
-683             ),
-684             1,
-685             4,
-686         )
-687         self.assertEqual(agent\_2.id, stored\_agent\_id)
-688         self.assertEqual(agent\_2.conversation\_id, stored\_conv\_id)
-689 
-690         \textcolor{comment}{# Complete agents}
-691         self.worlds\_agents[agent\_1.worker\_id] = \textcolor{keyword}{True}
-692         self.worlds\_agents[agent\_2.worker\_id] = \textcolor{keyword}{True}
-693         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_1\_object.get\_status, AssignState.STATUS\_DONE, 2)
-694         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_DONE, 2)
-695 
-696         \textcolor{comment}{# Assert conversation is complete for manager and agents}
-697         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: manager.completed\_conversations, 1, 2)
-698         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
-699             \textcolor{keyword}{lambda}: len(
-700                 [
-701                     p
-702                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_1.message\_packet
-703                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_SHOW\_DONE\_BUTTON
-704                 ]
-705             ),
-706             1,
-707             2,
-708         )
-709         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
-710             \textcolor{keyword}{lambda}: len(
-711                 [
-712                     p
-713                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_2.message\_packet
-714                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_SHOW\_DONE\_BUTTON
-715                 ]
-716             ),
-717             1,
-718             2,
-719         )
-720 
-721         \textcolor{comment}{# Assert sockets are closed}
-722         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
-723             \textcolor{keyword}{lambda}: len([x \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} manager.socket\_manager.run.values() \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} x]), 2, 2
-724         )
-725 
+639     \textcolor{keyword}{def }test\_reconnect\_complete(self):
+640         manager = self.mturk\_manager
+641 
+642         \textcolor{comment}{# Alive first agent}
+643         agent\_1 = self.agent\_1
+644         self.alive\_agent(agent\_1)
+645         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_1.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 2)
+646         agent\_1\_object = manager.worker\_manager.get\_agent\_for\_assignment(
+647             agent\_1.assignment\_id
+648         )
+649         self.assertFalse(self.onboarding\_agents[agent\_1.worker\_id])
+650         self.assertEqual(agent\_1\_object.get\_status(), AssignState.STATUS\_ONBOARDING)
+651         self.onboarding\_agents[agent\_1.worker\_id] = \textcolor{keyword}{True}
+652         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_1\_object.get\_status, AssignState.STATUS\_WAITING, 2)
+653 
+654         \textcolor{comment}{# Alive second agent}
+655         agent\_2 = self.agent\_2
+656         self.alive\_agent(agent\_2)
+657         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_2.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 2)
+658         agent\_2\_object = manager.worker\_manager.get\_agent\_for\_assignment(
+659             agent\_2.assignment\_id
+660         )
+661         self.assertFalse(self.onboarding\_agents[agent\_2.worker\_id])
+662         self.assertEqual(agent\_2\_object.get\_status(), AssignState.STATUS\_ONBOARDING)
+663         self.onboarding\_agents[agent\_2.worker\_id] = \textcolor{keyword}{True}
+664         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_WAITING, 2)
+665 
+666         \textcolor{comment}{# Assert agents move to task}
+667         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_IN\_TASK, 2)
+668         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_2.worker\_id \textcolor{keywordflow}{in} self.worlds\_agents, \textcolor{keyword}{True}, 2)
+669         self.assertIn(agent\_1.worker\_id, self.worlds\_agents)
+670 
+671         \textcolor{comment}{# Simulate reconnect to task}
+672         stored\_conv\_id = agent\_2.conversation\_id
+673         stored\_agent\_id = agent\_2.id
+674         agent\_2.conversation\_id = \textcolor{keywordtype}{None}
+675         agent\_2.id = \textcolor{keywordtype}{None}
+676         agent\_2.send\_alive()
+677 
+678         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
+679             \textcolor{keyword}{lambda}: len(
+680                 [
+681                     p
+682                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_2.message\_packet
+683                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_RESTORE\_STATE
+684                 ]
+685             ),
+686             1,
+687             4,
+688         )
+689         self.assertEqual(agent\_2.id, stored\_agent\_id)
+690         self.assertEqual(agent\_2.conversation\_id, stored\_conv\_id)
+691 
+692         \textcolor{comment}{# Complete agents}
+693         self.worlds\_agents[agent\_1.worker\_id] = \textcolor{keyword}{True}
+694         self.worlds\_agents[agent\_2.worker\_id] = \textcolor{keyword}{True}
+695         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_1\_object.get\_status, AssignState.STATUS\_DONE, 2)
+696         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_DONE, 2)
+697 
+698         \textcolor{comment}{# Assert conversation is complete for manager and agents}
+699         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: manager.completed\_conversations, 1, 2)
+700         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
+701             \textcolor{keyword}{lambda}: len(
+702                 [
+703                     p
+704                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_1.message\_packet
+705                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_SHOW\_DONE\_BUTTON
+706                 ]
+707             ),
+708             1,
+709             2,
+710         )
+711         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
+712             \textcolor{keyword}{lambda}: len(
+713                 [
+714                     p
+715                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_2.message\_packet
+716                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_SHOW\_DONE\_BUTTON
+717                 ]
+718             ),
+719             1,
+720             2,
+721         )
+722 
+723         \textcolor{comment}{# Assert sockets are closed}
+724         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
+725             \textcolor{keyword}{lambda}: len([x \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} manager.socket\_manager.run.values() \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} x]), 2, 2
+726         )
+727 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_a1c8e8bb8eca161157b7b5dc154b687f6}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_a1c8e8bb8eca161157b7b5dc154b687f6}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows}!test\+\_\+return\+\_\+to\+\_\+waiting\+\_\+on\+\_\+world\+\_\+start@{test\+\_\+return\+\_\+to\+\_\+waiting\+\_\+on\+\_\+world\+\_\+start}}
@@ -799,60 +800,60 @@ Definition at line 637 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 965 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 967 of file test\+\_\+full\+\_\+system.\+py.
 
 
 \begin{DoxyCode}
-965     \textcolor{keyword}{def }test\_return\_to\_waiting\_on\_world\_start(self):
-966         manager = self.mturk\_manager
-967 
-968         \textcolor{comment}{# Alive first agent}
-969         agent\_1 = self.agent\_1
-970         self.alive\_agent(agent\_1)
-971         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_1.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 2)
-972         agent\_1\_object = manager.worker\_manager.get\_agent\_for\_assignment(
-973             agent\_1.assignment\_id
-974         )
-975         self.assertFalse(self.onboarding\_agents[agent\_1.worker\_id])
-976         self.assertEqual(agent\_1\_object.get\_status(), AssignState.STATUS\_ONBOARDING)
-977         self.onboarding\_agents[agent\_1.worker\_id] = \textcolor{keyword}{True}
-978         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_1\_object.get\_status, AssignState.STATUS\_WAITING, 2)
-979 
-980         \textcolor{comment}{# Make agent\_1 no longer respond to change\_conversation\_requests}
-981         \textcolor{keyword}{def }replace\_on\_msg(packet):
-982             agent\_1.message\_packet.append(packet)
-983 
-984         agent\_1.on\_msg = replace\_on\_msg
+967     \textcolor{keyword}{def }test\_return\_to\_waiting\_on\_world\_start(self):
+968         manager = self.mturk\_manager
+969 
+970         \textcolor{comment}{# Alive first agent}
+971         agent\_1 = self.agent\_1
+972         self.alive\_agent(agent\_1)
+973         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_1.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 2)
+974         agent\_1\_object = manager.worker\_manager.get\_agent\_for\_assignment(
+975             agent\_1.assignment\_id
+976         )
+977         self.assertFalse(self.onboarding\_agents[agent\_1.worker\_id])
+978         self.assertEqual(agent\_1\_object.get\_status(), AssignState.STATUS\_ONBOARDING)
+979         self.onboarding\_agents[agent\_1.worker\_id] = \textcolor{keyword}{True}
+980         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_1\_object.get\_status, AssignState.STATUS\_WAITING, 2)
+981 
+982         \textcolor{comment}{# Make agent\_1 no longer respond to change\_conversation\_requests}
+983         \textcolor{keyword}{def }replace\_on\_msg(packet):
+984             agent\_1.message\_packet.append(packet)
 985 
-986         \textcolor{comment}{# Alive second agent}
-987         agent\_2 = self.agent\_2
-988         self.alive\_agent(agent\_2)
-989         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_2.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 2)
-990         agent\_2\_object = manager.worker\_manager.get\_agent\_for\_assignment(
-991             agent\_2.assignment\_id
-992         )
-993         self.assertFalse(self.onboarding\_agents[agent\_2.worker\_id])
-994         self.assertEqual(agent\_2\_object.get\_status(), AssignState.STATUS\_ONBOARDING)
-995         self.onboarding\_agents[agent\_2.worker\_id] = \textcolor{keyword}{True}
-996         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_WAITING, 2)
-997 
-998         \textcolor{comment}{# Assert agents attempt to move to task, but then move back to waiting}
-999         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_IN\_TASK, 2)
-1000         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_WAITING, 3)
-1001         agent\_1.always\_beat = \textcolor{keyword}{False}
-1002 
-1003         \textcolor{comment}{# Assert no world ever started}
-1004         self.assertNotIn(agent\_2.worker\_id, self.worlds\_agents)
-1005 
-1006         \textcolor{comment}{# Expire everything}
-1007         manager.shutdown()
-1008 
-1009         \textcolor{comment}{# Assert sockets are closed}
-1010         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
-1011             \textcolor{keyword}{lambda}: len([x \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} manager.socket\_manager.run.values() \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} x]), 2, 2
-1012         )
-1013 
-1014 
+986         agent\_1.on\_msg = replace\_on\_msg
+987 
+988         \textcolor{comment}{# Alive second agent}
+989         agent\_2 = self.agent\_2
+990         self.alive\_agent(agent\_2)
+991         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_2.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 2)
+992         agent\_2\_object = manager.worker\_manager.get\_agent\_for\_assignment(
+993             agent\_2.assignment\_id
+994         )
+995         self.assertFalse(self.onboarding\_agents[agent\_2.worker\_id])
+996         self.assertEqual(agent\_2\_object.get\_status(), AssignState.STATUS\_ONBOARDING)
+997         self.onboarding\_agents[agent\_2.worker\_id] = \textcolor{keyword}{True}
+998         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_WAITING, 2)
+999 
+1000         \textcolor{comment}{# Assert agents attempt to move to task, but then move back to waiting}
+1001         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_IN\_TASK, 2)
+1002         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_WAITING, 3)
+1003         agent\_1.always\_beat = \textcolor{keyword}{False}
+1004 
+1005         \textcolor{comment}{# Assert no world ever started}
+1006         self.assertNotIn(agent\_2.worker\_id, self.worlds\_agents)
+1007 
+1008         \textcolor{comment}{# Expire everything}
+1009         manager.shutdown()
+1010 
+1011         \textcolor{comment}{# Assert sockets are closed}
+1012         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
+1013             \textcolor{keyword}{lambda}: len([x \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} manager.socket\_manager.run.values() \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} x]), 2, 2
+1014         )
+1015 
+1016 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_a57d2c60bcdf0e907cb6c67873d2c4b24}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_a57d2c60bcdf0e907cb6c67873d2c4b24}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows}!test\+\_\+successful\+\_\+convo@{test\+\_\+successful\+\_\+convo}}
@@ -862,78 +863,78 @@ Definition at line 965 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 456 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 458 of file test\+\_\+full\+\_\+system.\+py.
 
 
 \begin{DoxyCode}
-456     \textcolor{keyword}{def }test\_successful\_convo(self):
-457         manager = self.mturk\_manager
-458 
-459         \textcolor{comment}{# Alive first agent}
-460         agent\_1 = self.agent\_1
-461         self.alive\_agent(agent\_1)
-462         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_1.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 2)
-463         agent\_1\_object = manager.worker\_manager.get\_agent\_for\_assignment(
-464             agent\_1.assignment\_id
-465         )
-466         self.assertFalse(self.onboarding\_agents[agent\_1.worker\_id])
-467         self.assertEqual(agent\_1\_object.get\_status(), AssignState.STATUS\_ONBOARDING)
-468         self.onboarding\_agents[agent\_1.worker\_id] = \textcolor{keyword}{True}
-469         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_1\_object.get\_status, AssignState.STATUS\_WAITING, 2)
-470 
-471         \textcolor{comment}{# Alive second agent}
-472         agent\_2 = self.agent\_2
-473         self.alive\_agent(agent\_2)
-474         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_2.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 2)
-475         agent\_2\_object = manager.worker\_manager.get\_agent\_for\_assignment(
-476             agent\_2.assignment\_id
-477         )
-478         self.assertFalse(self.onboarding\_agents[agent\_2.worker\_id])
-479         self.assertEqual(agent\_2\_object.get\_status(), AssignState.STATUS\_ONBOARDING)
-480         self.onboarding\_agents[agent\_2.worker\_id] = \textcolor{keyword}{True}
-481         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_WAITING, 2)
-482 
-483         \textcolor{comment}{# Assert agents move to task}
-484         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_IN\_TASK, 2)
-485         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_2.worker\_id \textcolor{keywordflow}{in} self.worlds\_agents, \textcolor{keyword}{True}, 2)
-486         self.assertIn(agent\_1.worker\_id, self.worlds\_agents)
-487 
-488         \textcolor{comment}{# Complete agents}
-489         self.worlds\_agents[agent\_1.worker\_id] = \textcolor{keyword}{True}
-490         self.worlds\_agents[agent\_2.worker\_id] = \textcolor{keyword}{True}
-491         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_1\_object.get\_status, AssignState.STATUS\_DONE, 2)
-492         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_DONE, 2)
-493 
-494         \textcolor{comment}{# Assert conversation is complete for manager and agents}
-495         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: manager.completed\_conversations, 1, 2)
-496         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
-497             \textcolor{keyword}{lambda}: len(
-498                 [
-499                     p
-500                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_1.message\_packet
-501                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_SHOW\_DONE\_BUTTON
-502                 ]
-503             ),
-504             1,
-505             2,
-506         )
-507         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
-508             \textcolor{keyword}{lambda}: len(
-509                 [
-510                     p
-511                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_2.message\_packet
-512                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_SHOW\_DONE\_BUTTON
-513                 ]
-514             ),
-515             1,
-516             2,
-517         )
-518 
-519         \textcolor{comment}{# Assert sockets are closed}
-520         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
-521             \textcolor{keyword}{lambda}: len([x \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} manager.socket\_manager.run.values() \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} x]), 2, 2
-522         )
-523 
+458     \textcolor{keyword}{def }test\_successful\_convo(self):
+459         manager = self.mturk\_manager
+460 
+461         \textcolor{comment}{# Alive first agent}
+462         agent\_1 = self.agent\_1
+463         self.alive\_agent(agent\_1)
+464         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_1.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 2)
+465         agent\_1\_object = manager.worker\_manager.get\_agent\_for\_assignment(
+466             agent\_1.assignment\_id
+467         )
+468         self.assertFalse(self.onboarding\_agents[agent\_1.worker\_id])
+469         self.assertEqual(agent\_1\_object.get\_status(), AssignState.STATUS\_ONBOARDING)
+470         self.onboarding\_agents[agent\_1.worker\_id] = \textcolor{keyword}{True}
+471         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_1\_object.get\_status, AssignState.STATUS\_WAITING, 2)
+472 
+473         \textcolor{comment}{# Alive second agent}
+474         agent\_2 = self.agent\_2
+475         self.alive\_agent(agent\_2)
+476         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_2.worker\_id \textcolor{keywordflow}{in} self.onboarding\_agents, \textcolor{keyword}{True}, 2)
+477         agent\_2\_object = manager.worker\_manager.get\_agent\_for\_assignment(
+478             agent\_2.assignment\_id
+479         )
+480         self.assertFalse(self.onboarding\_agents[agent\_2.worker\_id])
+481         self.assertEqual(agent\_2\_object.get\_status(), AssignState.STATUS\_ONBOARDING)
+482         self.onboarding\_agents[agent\_2.worker\_id] = \textcolor{keyword}{True}
+483         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_WAITING, 2)
+484 
+485         \textcolor{comment}{# Assert agents move to task}
+486         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_IN\_TASK, 2)
+487         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: agent\_2.worker\_id \textcolor{keywordflow}{in} self.worlds\_agents, \textcolor{keyword}{True}, 2)
+488         self.assertIn(agent\_1.worker\_id, self.worlds\_agents)
+489 
+490         \textcolor{comment}{# Complete agents}
+491         self.worlds\_agents[agent\_1.worker\_id] = \textcolor{keyword}{True}
+492         self.worlds\_agents[agent\_2.worker\_id] = \textcolor{keyword}{True}
+493         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_1\_object.get\_status, AssignState.STATUS\_DONE, 2)
+494         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(agent\_2\_object.get\_status, AssignState.STATUS\_DONE, 2)
+495 
+496         \textcolor{comment}{# Assert conversation is complete for manager and agents}
+497         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(\textcolor{keyword}{lambda}: manager.completed\_conversations, 1, 2)
+498         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
+499             \textcolor{keyword}{lambda}: len(
+500                 [
+501                     p
+502                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_1.message\_packet
+503                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_SHOW\_DONE\_BUTTON
+504                 ]
+505             ),
+506             1,
+507             2,
+508         )
+509         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
+510             \textcolor{keyword}{lambda}: len(
+511                 [
+512                     p
+513                     \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} agent\_2.message\_packet
+514                     \textcolor{keywordflow}{if} p.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_SHOW\_DONE\_BUTTON
+515                 ]
+516             ),
+517             1,
+518             2,
+519         )
+520 
+521         \textcolor{comment}{# Assert sockets are closed}
+522         \hyperlink{namespaceparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_a0b463246d35658a2e422010f13dcf819}{assert\_equal\_by}(
+523             \textcolor{keyword}{lambda}: len([x \textcolor{keywordflow}{for} x \textcolor{keywordflow}{in} manager.socket\_manager.run.values() \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} x]), 2, 2
+524         )
+525 
 \end{DoxyCode}
 
 
@@ -946,7 +947,7 @@ Definition at line 456 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 415 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 417 of file test\+\_\+full\+\_\+system.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_a02b3f38074cfbe02ac90168f5010dd67}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_a02b3f38074cfbe02ac90168f5010dd67}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows}!agent\+\_\+1\+\_\+2@{agent\+\_\+1\+\_\+2}}
@@ -956,7 +957,7 @@ Definition at line 415 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 418 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 420 of file test\+\_\+full\+\_\+system.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_a5993b5a9f57d34ea6f577d670fdadd9a}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_a5993b5a9f57d34ea6f577d670fdadd9a}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows}!agent\+\_\+2@{agent\+\_\+2}}
@@ -966,7 +967,7 @@ Definition at line 418 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 421 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 423 of file test\+\_\+full\+\_\+system.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_a8218c6c57f225e897da3596ca9888bc4}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_a8218c6c57f225e897da3596ca9888bc4}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows}!fake\+\_\+socket@{fake\+\_\+socket}}
@@ -976,7 +977,7 @@ Definition at line 421 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 376 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 378 of file test\+\_\+full\+\_\+system.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_a877e71e7eed80c56b447ecacf5c97224}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_a877e71e7eed80c56b447ecacf5c97224}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows}!mturk\+\_\+agent\+\_\+ids@{mturk\+\_\+agent\+\_\+ids}}
@@ -986,7 +987,7 @@ Definition at line 376 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 392 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 394 of file test\+\_\+full\+\_\+system.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_a93e0d9b889cf71ac938b0c6bd0b92f56}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_a93e0d9b889cf71ac938b0c6bd0b92f56}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows}!mturk\+\_\+manager@{mturk\+\_\+manager}}
@@ -996,7 +997,7 @@ Definition at line 392 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 393 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 395 of file test\+\_\+full\+\_\+system.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_afed3c36508990d5ab2eab8d811bced2d}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_afed3c36508990d5ab2eab8d811bced2d}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows}!mturk\+\_\+utils@{mturk\+\_\+utils}}
@@ -1006,7 +1007,7 @@ Definition at line 393 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 340 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 342 of file test\+\_\+full\+\_\+system.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_a32f07af709d256073c518e6b23c4456f}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_a32f07af709d256073c518e6b23c4456f}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows}!onboarding\+\_\+agents@{onboarding\+\_\+agents}}
@@ -1016,7 +1017,7 @@ Definition at line 340 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 372 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 374 of file test\+\_\+full\+\_\+system.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_af2d2b236e15533fb486ec5cc3c674622}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_af2d2b236e15533fb486ec5cc3c674622}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows}!opt@{opt}}
@@ -1026,7 +1027,7 @@ Definition at line 372 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 381 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 383 of file test\+\_\+full\+\_\+system.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_afa078bb56be8ac4d01aa38fc0861b687}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_afa078bb56be8ac4d01aa38fc0861b687}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows}!server\+\_\+utils@{server\+\_\+utils}}
@@ -1036,7 +1037,7 @@ Definition at line 381 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 339 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 341 of file test\+\_\+full\+\_\+system.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_ae239124c6259a94b9ce9d139df9a1046}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_ae239124c6259a94b9ce9d139df9a1046}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows}!task\+\_\+thread@{task\+\_\+thread}}
@@ -1046,7 +1047,7 @@ Definition at line 339 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 412 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 414 of file test\+\_\+full\+\_\+system.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_a6cf257dadd71b7c7a6b559bb3402a713}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1TestMTurkManagerWorkflows_a6cf257dadd71b7c7a6b559bb3402a713}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Test\+M\+Turk\+Manager\+Workflows}!worlds\+\_\+agents@{worlds\+\_\+agents}}
@@ -1056,7 +1057,7 @@ Definition at line 412 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 373 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 375 of file test\+\_\+full\+\_\+system.\+py.
 
 
 

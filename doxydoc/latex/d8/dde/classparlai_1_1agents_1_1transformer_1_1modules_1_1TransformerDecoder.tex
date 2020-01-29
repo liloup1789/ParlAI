@@ -2,8 +2,7 @@
 \label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoder}\index{parlai.\+agents.\+transformer.\+modules.\+Transformer\+Decoder@{parlai.\+agents.\+transformer.\+modules.\+Transformer\+Decoder}}
 
 
-Inheritance diagram for parlai.\+agents.\+transformer.\+modules.\+Transformer\+Decoder\+:
-\nopagebreak
+Inheritance diagram for parlai.\+agents.\+transformer.\+modules.\+Transformer\+Decoder\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+agents.\+transformer.\+modules.\+Transformer\+D
 \end{figure}
 
 
-Collaboration diagram for parlai.\+agents.\+transformer.\+modules.\+Transformer\+Decoder\+:
-\nopagebreak
+Collaboration diagram for parlai.\+agents.\+transformer.\+modules.\+Transformer\+Decoder\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -87,7 +85,7 @@ def \hyperlink{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDec
 \end{DoxyVerb}
  
 
-Definition at line 590 of file modules.\+py.
+Definition at line 593 of file modules.\+py.
 
 
 
@@ -100,62 +98,62 @@ Definition at line 590 of file modules.\+py.
 
 
 
-Definition at line 633 of file modules.\+py.
+Definition at line 636 of file modules.\+py.
 
 
 \begin{DoxyCode}
-633     ):
-634         super().\_\_init\_\_()
-635         self.embedding\_size = embedding\_size
-636         self.ffn\_size = ffn\_size
-637         self.n\_layers = n\_layers
-638         self.n\_heads = n\_heads
-639         self.dim = embedding\_size
-640         self.activation = activation
-641         self.variant = variant
-642         self.embeddings\_scale = embeddings\_scale
-643         self.dropout = nn.Dropout(p=dropout)  \textcolor{comment}{# --dropout}
-644 
-645         self.n\_positions = n\_positions
-646         self.out\_dim = embedding\_size
-647         \textcolor{keyword}{assert} (
-648             embedding\_size % n\_heads == 0
-649         ), \textcolor{stringliteral}{'Transformer embedding size must be a multiple of n\_heads'}
-650 
-651         self.embeddings = embedding
-652 
-653         \textcolor{keywordflow}{if} self.variant == \textcolor{stringliteral}{'xlm'}:
-654             self.norm\_embeddings = LayerNorm(self.dim, eps=LAYER\_NORM\_EPS)
-655         \textcolor{keywordflow}{elif} self.variant == \textcolor{stringliteral}{'aiayn'}:
-656             \textcolor{keywordflow}{pass}
-657         \textcolor{keywordflow}{else}:
-658             \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{"Can't handle --variant \{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.variant))
-659 
-660         \textcolor{comment}{# create the positional embeddings}
-661         self.position\_embeddings = nn.Embedding(n\_positions, embedding\_size)
-662         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} learn\_positional\_embeddings:
-663             \hyperlink{namespaceparlai_1_1agents_1_1transformer_1_1modules_a0b86437e6e9682fa3100e9cadcaae259}{create\_position\_codes}(
-664                 n\_positions, embedding\_size, out=self.position\_embeddings.weight
-665             )
-666         \textcolor{keywordflow}{else}:
-667             nn.init.normal\_(self.position\_embeddings.weight, 0, embedding\_size ** -0.5)
-668 
-669         \textcolor{comment}{# build the model}
-670         self.layers = nn.ModuleList()
-671         \textcolor{keywordflow}{for} \_ \textcolor{keywordflow}{in} range(self.n\_layers):
-672             self.layers.append(
-673                 TransformerDecoderLayer(
-674                     n\_heads,
-675                     embedding\_size,
-676                     ffn\_size,
-677                     attention\_dropout=attention\_dropout,
-678                     relu\_dropout=relu\_dropout,
-679                     dropout=dropout,
-680                     activation=activation,
-681                     variant=variant,
-682                 )
-683             )
-684 
+636     ):
+637         super().\_\_init\_\_()
+638         self.embedding\_size = embedding\_size
+639         self.ffn\_size = ffn\_size
+640         self.n\_layers = n\_layers
+641         self.n\_heads = n\_heads
+642         self.dim = embedding\_size
+643         self.activation = activation
+644         self.variant = variant
+645         self.embeddings\_scale = embeddings\_scale
+646         self.dropout = nn.Dropout(p=dropout)  \textcolor{comment}{# --dropout}
+647 
+648         self.n\_positions = n\_positions
+649         self.out\_dim = embedding\_size
+650         \textcolor{keyword}{assert} (
+651             embedding\_size % n\_heads == 0
+652         ), \textcolor{stringliteral}{'Transformer embedding size must be a multiple of n\_heads'}
+653 
+654         self.embeddings = embedding
+655 
+656         \textcolor{keywordflow}{if} self.variant == \textcolor{stringliteral}{'xlm'}:
+657             self.norm\_embeddings = LayerNorm(self.dim, eps=LAYER\_NORM\_EPS)
+658         \textcolor{keywordflow}{elif} self.variant == \textcolor{stringliteral}{'aiayn'}:
+659             \textcolor{keywordflow}{pass}
+660         \textcolor{keywordflow}{else}:
+661             \textcolor{keywordflow}{raise} ValueError(\textcolor{stringliteral}{"Can't handle --variant \{\}"}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.variant))
+662 
+663         \textcolor{comment}{# create the positional embeddings}
+664         self.position\_embeddings = nn.Embedding(n\_positions, embedding\_size)
+665         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} learn\_positional\_embeddings:
+666             \hyperlink{namespaceparlai_1_1agents_1_1transformer_1_1modules_a0b86437e6e9682fa3100e9cadcaae259}{create\_position\_codes}(
+667                 n\_positions, embedding\_size, out=self.position\_embeddings.weight
+668             )
+669         \textcolor{keywordflow}{else}:
+670             nn.init.normal\_(self.position\_embeddings.weight, 0, embedding\_size ** -0.5)
+671 
+672         \textcolor{comment}{# build the model}
+673         self.layers = nn.ModuleList()
+674         \textcolor{keywordflow}{for} \_ \textcolor{keywordflow}{in} range(self.n\_layers):
+675             self.layers.append(
+676                 TransformerDecoderLayer(
+677                     n\_heads,
+678                     embedding\_size,
+679                     ffn\_size,
+680                     attention\_dropout=attention\_dropout,
+681                     relu\_dropout=relu\_dropout,
+682                     dropout=dropout,
+683                     activation=activation,
+684                     variant=variant,
+685                 )
+686             )
+687 
 \end{DoxyCode}
 
 
@@ -173,52 +171,69 @@ Definition at line 633 of file modules.\+py.
 :param encoder_state:
     Output from the encoder module forward pass.
 :param incr_state:
-    Ignored. Should always be ``None`` in this version.
+    The incremental state: a dictionary whose keys index the layers and whose
+    values contain the incremental state for each layer.
 \end{DoxyVerb}
  
 
-Definition at line 685 of file modules.\+py.
+Definition at line 688 of file modules.\+py.
 
 
 \begin{DoxyCode}
-685     \textcolor{keyword}{def }forward(self, input, encoder\_state, incr\_state=None):
-686         \textcolor{stringliteral}{"""}
-687 \textcolor{stringliteral}{        Forward pass.}
-688 \textcolor{stringliteral}{}
-689 \textcolor{stringliteral}{        :param LongTensor[batch,seqlen] input:}
-690 \textcolor{stringliteral}{            The decoder inputs (partial or full decoded token IDs).}
-691 \textcolor{stringliteral}{        :param encoder\_state:}
-692 \textcolor{stringliteral}{            Output from the encoder module forward pass.}
-693 \textcolor{stringliteral}{        :param incr\_state:}
-694 \textcolor{stringliteral}{            Ignored. Should always be ``None`` in this version.}
-695 \textcolor{stringliteral}{        """}
-696         encoder\_output, encoder\_mask = encoder\_state
-697 
-698         seq\_len = input.size(1)
-699         positions = input.new(seq\_len).long()
-700         positions = torch.arange(seq\_len, out=positions).unsqueeze(0)
-701         tensor = self.embeddings(input)
-702         \textcolor{keywordflow}{if} self.embeddings\_scale:
-703             tensor = tensor * np.sqrt(self.dim)
-704         \textcolor{keywordflow}{if} self.variant == \textcolor{stringliteral}{'xlm'}:
-705             tensor = \_normalize(tensor, self.norm\_embeddings)
-706         \textcolor{keywordflow}{if} positions.max().item() > self.n\_positions:
-707             \hyperlink{namespaceparlai_1_1utils_1_1misc_acf146e70ea7f6867969a7c2b545d4b4b}{warn\_once}(
-708                 \textcolor{stringliteral}{'You are inputting a sequence of \{x\} length, but only have '}
-709                 \textcolor{stringliteral}{'--n-positions \{y\}. Set --truncate or increase --n-positions'}.
+688     \textcolor{keyword}{def }forward(self, input, encoder\_state, incr\_state=None):
+689         \textcolor{stringliteral}{"""}
+690 \textcolor{stringliteral}{        Forward pass.}
+691 \textcolor{stringliteral}{}
+692 \textcolor{stringliteral}{        :param LongTensor[batch,seqlen] input:}
+693 \textcolor{stringliteral}{            The decoder inputs (partial or full decoded token IDs).}
+694 \textcolor{stringliteral}{        :param encoder\_state:}
+695 \textcolor{stringliteral}{            Output from the encoder module forward pass.}
+696 \textcolor{stringliteral}{        :param incr\_state:}
+697 \textcolor{stringliteral}{            The incremental state: a dictionary whose keys index the layers and whose}
+698 \textcolor{stringliteral}{            values contain the incremental state for each layer.}
+699 \textcolor{stringliteral}{        """}
+700         encoder\_output, encoder\_mask = encoder\_state
+701 
+702         seq\_len = input.size(1)
+703         positions = input.new(seq\_len).long()
+704         positions = torch.arange(seq\_len, out=positions).unsqueeze(0)
+705 
+706         \textcolor{keywordflow}{if} incr\_state \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+707             \textcolor{comment}{# We're doing incremental decoding, so select only the most recent position}
+708             input = input[:, -1:]
+709             \textcolor{keywordflow}{if} positions \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+710                 positions = positions[:, -1:]
+711         \textcolor{keywordflow}{else}:
+712             incr\_state = \{idx: \{\} \textcolor{keywordflow}{for} idx \textcolor{keywordflow}{in} range(len(self.layers))\}
+713 
+714         tensor = self.embeddings(input)
+715         \textcolor{keywordflow}{if} self.embeddings\_scale:
+716             tensor = tensor * np.sqrt(self.dim)
+717         \textcolor{keywordflow}{if} self.variant == \textcolor{stringliteral}{'xlm'}:
+718             tensor = \_normalize(tensor, self.norm\_embeddings)
+719         \textcolor{keywordflow}{if} positions.max().item() > self.n\_positions:
+720             \hyperlink{namespaceparlai_1_1utils_1_1misc_a884a3aefa90581f53bc592fa6a78dc43}{warn\_once}(
+721                 \textcolor{stringliteral}{'You are inputting a sequence of \{x\} length, but only have '}
+722                 \textcolor{stringliteral}{'--n-positions \{y\}. Set --truncate or increase --n-positions'}.
       \hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
-710                     x=positions.max().item(), y=self.n\_positions
-711                 )
-712             )
-713         tensor = tensor + self.position\_embeddings(positions).expand\_as(tensor)
-714         tensor = self.dropout(tensor)  \textcolor{comment}{# --dropout}
-715 
-716         \textcolor{keywordflow}{for} layer \textcolor{keywordflow}{in} self.layers:
-717             tensor = layer(tensor, encoder\_output, encoder\_mask)
-718 
-719         \textcolor{keywordflow}{return} tensor, \textcolor{keywordtype}{None}
-720 
-721 
+723                     x=positions.max().item(), y=self.n\_positions
+724                 )
+725             )
+726         tensor = tensor + self.position\_embeddings(positions).expand\_as(tensor)
+727         tensor = self.dropout(tensor)  \textcolor{comment}{# --dropout}
+728 
+729         new\_incr\_state = \{\}
+730         \textcolor{keywordflow}{for} idx, layer \textcolor{keywordflow}{in} enumerate(self.layers):
+731             tensor, new\_incr\_state[idx] = layer(
+732                 x=tensor,
+733                 encoder\_output=encoder\_output,
+734                 encoder\_mask=encoder\_mask,
+735                 incr\_state=incr\_state[idx],
+736             )
+737 
+738         \textcolor{keywordflow}{return} tensor, new\_incr\_state
+739 
+740 
 \end{DoxyCode}
 
 
@@ -231,7 +246,7 @@ Definition at line 685 of file modules.\+py.
 
 
 
-Definition at line 640 of file modules.\+py.
+Definition at line 643 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoder_ab29b2b4f3a44d3069d208c61ddba6f21}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoder_ab29b2b4f3a44d3069d208c61ddba6f21}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder}!dim@{dim}}
@@ -241,7 +256,7 @@ Definition at line 640 of file modules.\+py.
 
 
 
-Definition at line 639 of file modules.\+py.
+Definition at line 642 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoder_a0d41303200949e8406daf8426ce7cbb3}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoder_a0d41303200949e8406daf8426ce7cbb3}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder}!dropout@{dropout}}
@@ -251,7 +266,7 @@ Definition at line 639 of file modules.\+py.
 
 
 
-Definition at line 643 of file modules.\+py.
+Definition at line 646 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoder_abb275df1d00ad62deb2424266f1563d6}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoder_abb275df1d00ad62deb2424266f1563d6}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder}!embedding\+\_\+size@{embedding\+\_\+size}}
@@ -261,7 +276,7 @@ Definition at line 643 of file modules.\+py.
 
 
 
-Definition at line 635 of file modules.\+py.
+Definition at line 638 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoder_aa6d97e0eeed7b3cc11e4b60fb4a86167}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoder_aa6d97e0eeed7b3cc11e4b60fb4a86167}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder}!embeddings@{embeddings}}
@@ -271,7 +286,7 @@ Definition at line 635 of file modules.\+py.
 
 
 
-Definition at line 651 of file modules.\+py.
+Definition at line 654 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoder_a45a356a825e02ed79cdc43cf7f5dc8af}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoder_a45a356a825e02ed79cdc43cf7f5dc8af}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder}!embeddings\+\_\+scale@{embeddings\+\_\+scale}}
@@ -281,7 +296,7 @@ Definition at line 651 of file modules.\+py.
 
 
 
-Definition at line 642 of file modules.\+py.
+Definition at line 645 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoder_a90c40d660300194a42a18dc38f7e9fb2}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoder_a90c40d660300194a42a18dc38f7e9fb2}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder}!ffn\+\_\+size@{ffn\+\_\+size}}
@@ -291,7 +306,7 @@ Definition at line 642 of file modules.\+py.
 
 
 
-Definition at line 636 of file modules.\+py.
+Definition at line 639 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoder_a5007810b22cdfddf768bdd94c233f87e}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoder_a5007810b22cdfddf768bdd94c233f87e}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder}!layers@{layers}}
@@ -301,7 +316,7 @@ Definition at line 636 of file modules.\+py.
 
 
 
-Definition at line 670 of file modules.\+py.
+Definition at line 673 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoder_af83edca868bacf80329be8606ffc7efb}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoder_af83edca868bacf80329be8606ffc7efb}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder}!n\+\_\+heads@{n\+\_\+heads}}
@@ -311,7 +326,7 @@ Definition at line 670 of file modules.\+py.
 
 
 
-Definition at line 638 of file modules.\+py.
+Definition at line 641 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoder_a20983026d2ed3edd48698ed08d666287}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoder_a20983026d2ed3edd48698ed08d666287}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder}!n\+\_\+layers@{n\+\_\+layers}}
@@ -321,7 +336,7 @@ Definition at line 638 of file modules.\+py.
 
 
 
-Definition at line 637 of file modules.\+py.
+Definition at line 640 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoder_a91210271cf67a77c0ab81f03f29bf70d}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoder_a91210271cf67a77c0ab81f03f29bf70d}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder}!n\+\_\+positions@{n\+\_\+positions}}
@@ -331,7 +346,7 @@ Definition at line 637 of file modules.\+py.
 
 
 
-Definition at line 645 of file modules.\+py.
+Definition at line 648 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoder_a4a930028ffdff0380897228bc156fe74}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoder_a4a930028ffdff0380897228bc156fe74}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder}!norm\+\_\+embeddings@{norm\+\_\+embeddings}}
@@ -341,7 +356,7 @@ Definition at line 645 of file modules.\+py.
 
 
 
-Definition at line 654 of file modules.\+py.
+Definition at line 657 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoder_a18e16e542264d07a8c70f0c5b0d2e5ce}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoder_a18e16e542264d07a8c70f0c5b0d2e5ce}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder}!out\+\_\+dim@{out\+\_\+dim}}
@@ -351,7 +366,7 @@ Definition at line 654 of file modules.\+py.
 
 
 
-Definition at line 646 of file modules.\+py.
+Definition at line 649 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoder_a253da75d3014b859206169b2d692ab07}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoder_a253da75d3014b859206169b2d692ab07}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder}!position\+\_\+embeddings@{position\+\_\+embeddings}}
@@ -361,7 +376,7 @@ Definition at line 646 of file modules.\+py.
 
 
 
-Definition at line 661 of file modules.\+py.
+Definition at line 664 of file modules.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoder_a84349da2592ce07a34257a3995dd2254}\label{classparlai_1_1agents_1_1transformer_1_1modules_1_1TransformerDecoder_a84349da2592ce07a34257a3995dd2254}} 
 \index{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder@{parlai\+::agents\+::transformer\+::modules\+::\+Transformer\+Decoder}!variant@{variant}}
@@ -371,7 +386,7 @@ Definition at line 661 of file modules.\+py.
 
 
 
-Definition at line 641 of file modules.\+py.
+Definition at line 644 of file modules.\+py.
 
 
 

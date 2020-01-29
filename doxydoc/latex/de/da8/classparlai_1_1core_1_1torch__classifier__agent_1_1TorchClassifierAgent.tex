@@ -17,13 +17,13 @@ Collaboration diagram for parlai.\+core.\+torch\+\_\+classifier\+\_\+agent.\+Tor
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=318pt]{d7/d70/classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent__coll__graph}
+\includegraphics[width=260pt]{d7/d70/classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-def \hyperlink{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_af9f194b4566a43f0840286a39ee0032a}{\+\_\+\+\_\+init\+\_\+\+\_\+} (self, \hyperlink{classparlai_1_1core_1_1torch__agent_1_1TorchAgent_a785bb920cf8c8afc3e9bf6a8b77e335a}{opt}, shared=None)
+def \hyperlink{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_a086eb865c3a6586372671ec1254f0d66}{\+\_\+\+\_\+init\+\_\+\+\_\+}
 \item 
 def \hyperlink{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_adeab756c0b58667aaf417575c23d1dfb}{build\+\_\+criterion} (self)
 \item 
@@ -76,104 +76,104 @@ model.
 \end{DoxyVerb}
  
 
-Definition at line 21 of file torch\+\_\+classifier\+\_\+agent.\+py.
+Definition at line 22 of file torch\+\_\+classifier\+\_\+agent.\+py.
 
 
 
 \subsection{Constructor \& Destructor Documentation}
-\mbox{\Hypertarget{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_af9f194b4566a43f0840286a39ee0032a}\label{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_af9f194b4566a43f0840286a39ee0032a}} 
+\mbox{\Hypertarget{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_a086eb865c3a6586372671ec1254f0d66}\label{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_a086eb865c3a6586372671ec1254f0d66}} 
 \index{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent@{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent}!\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}}
 \index{\+\_\+\+\_\+init\+\_\+\+\_\+@{\+\_\+\+\_\+init\+\_\+\+\_\+}!parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent@{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent}}
 \subsubsection{\texorpdfstring{\+\_\+\+\_\+init\+\_\+\+\_\+()}{\_\_init\_\_()}}
-{\footnotesize\ttfamily def parlai.\+core.\+torch\+\_\+classifier\+\_\+agent.\+Torch\+Classifier\+Agent.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt,  }\item[{}]{shared = {\ttfamily None} }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily def parlai.\+core.\+torch\+\_\+classifier\+\_\+agent.\+Torch\+Classifier\+Agent.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self,  }\item[{}]{opt }\end{DoxyParamCaption})}
 
 
 
-Definition at line 95 of file torch\+\_\+classifier\+\_\+agent.\+py.
+Definition at line 96 of file torch\+\_\+classifier\+\_\+agent.\+py.
 
 
 \begin{DoxyCode}
-95     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
-96         init\_model, self.is\_finetune = self.\_get\_init\_model(opt, shared)
-97         super().\_\_init\_\_(opt, shared)
-98 
-99         \textcolor{comment}{# set up classes}
-100         \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'classes'}) \textcolor{keywordflow}{is} \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} opt.get(\textcolor{stringliteral}{'classes\_from\_file'}) \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-101             \textcolor{keywordflow}{raise} RuntimeError(
-102                 \textcolor{stringliteral}{'Must specify --classes or --classes-from-file argument.'}
-103             )
-104         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} shared:
-105             \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'classes\_from\_file'}] \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-106                 with open(opt[\textcolor{stringliteral}{'classes\_from\_file'}]) \textcolor{keyword}{as} f:
-107                     self.class\_list = f.read().splitlines()
-108             \textcolor{keywordflow}{else}:
-109                 self.class\_list = opt[\textcolor{stringliteral}{'classes'}]
-110             self.class\_dict = \{val: i \textcolor{keywordflow}{for} i, val \textcolor{keywordflow}{in} enumerate(self.class\_list)\}
-111             \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'class\_weights'}, \textcolor{keywordtype}{None}) \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
-112                 self.class\_weights = opt[\textcolor{stringliteral}{'class\_weights'}]
-113             \textcolor{keywordflow}{else}:
-114                 self.class\_weights = [1.0 \textcolor{keywordflow}{for} c \textcolor{keywordflow}{in} self.class\_list]
-115             self.reset\_metrics()
-116         \textcolor{keywordflow}{else}:
-117             self.class\_list = shared[\textcolor{stringliteral}{'class\_list'}]
-118             self.class\_dict = shared[\textcolor{stringliteral}{'class\_dict'}]
-119             self.class\_weights = shared[\textcolor{stringliteral}{'class\_weights'}]
-120 
-121         \textcolor{comment}{# get reference class; if opt['get\_all\_metrics'] is False, this is}
-122         \textcolor{comment}{# used to compute metrics}
-123         \textcolor{comment}{# in binary classfication, opt['threshold'] applies to ref class}
-124         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'ref\_class'}] \textcolor{keywordflow}{is} \textcolor{keywordtype}{None} \textcolor{keywordflow}{or} opt[\textcolor{stringliteral}{'ref\_class'}] \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.class\_dict:
-125             self.ref\_class = self.class\_list[0]
-126         \textcolor{keywordflow}{else}:
-127             self.ref\_class = opt[\textcolor{stringliteral}{'ref\_class'}]
-128             ref\_class\_id = self.class\_list.index(self.ref\_class)
-129             \textcolor{keywordflow}{if} ref\_class\_id != 0:
-130                 \textcolor{comment}{# move to the front of the class list}
-131                 self.class\_list.insert(0, self.class\_list.pop(ref\_class\_id))
-132         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} opt[\textcolor{stringliteral}{'get\_all\_metrics'}]:
-133             \hyperlink{namespaceparlai_1_1utils_1_1misc_acf146e70ea7f6867969a7c2b545d4b4b}{warn\_once}(
-134                 \textcolor{stringliteral}{'Using %s as the class for computing P, R, and F1'} % self.ref\_class
-135             )
-136 
-137         \textcolor{comment}{# set up threshold, only used in binary classification}
-138         \textcolor{keywordflow}{if} len(self.class\_list) == 2 \textcolor{keywordflow}{and} opt.get(\textcolor{stringliteral}{'threshold'}, 0.5) != 0.5:
-139             self.threshold = opt[\textcolor{stringliteral}{'threshold'}]
-140         \textcolor{keywordflow}{else}:
-141             self.threshold = \textcolor{keywordtype}{None}
-142 
-143         \textcolor{comment}{# set up model and optimizers}
-144 
-145         \textcolor{keywordflow}{if} shared:
-146             self.model = shared[\textcolor{stringliteral}{'model'}]
-147         \textcolor{keywordflow}{else}:
-148             self.model = self.build\_model()
-149             self.criterion = self.build\_criterion()
-150             \textcolor{keywordflow}{if} self.model \textcolor{keywordflow}{is} \textcolor{keywordtype}{None} \textcolor{keywordflow}{or} self.criterion \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-151                 \textcolor{keywordflow}{raise} AttributeError(
-152                     \textcolor{stringliteral}{'build\_model() and build\_criterion() need to return the model or criterion'}
-153                 )
-154             \textcolor{keywordflow}{if} self.use\_cuda:
-155                 self.model.cuda()
-156                 self.criterion.cuda()
-157             \textcolor{keywordflow}{if} init\_model:
-158                 print(\textcolor{stringliteral}{'Loading existing model parameters from '} + init\_model)
-159                 self.load(init\_model)
-160             \textcolor{keywordflow}{if} self.use\_cuda:
-161                 \textcolor{keywordflow}{if} self.opt[\textcolor{stringliteral}{'data\_parallel'}]:
-162                     \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a023acb5e3b66e1f27e21247c35661279}{is\_distributed}():
-163                         \textcolor{keywordflow}{raise} ValueError(
-164                             \textcolor{stringliteral}{'Cannot combine --data-parallel and distributed mode'}
-165                         )
-166                     self.model = torch.nn.DataParallel(self.model)
-167         \textcolor{keywordflow}{if} shared:
-168             \textcolor{comment}{# We don't use get here because hasattr is used on optimizer later.}
-169             \textcolor{keywordflow}{if} \textcolor{stringliteral}{'optimizer'} \textcolor{keywordflow}{in} shared:
-170                 self.optimizer = shared[\textcolor{stringliteral}{'optimizer'}]
-171         \textcolor{keywordflow}{else}:
-172             optim\_params = [p \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} self.model.parameters() \textcolor{keywordflow}{if} p.requires\_grad]
-173             self.init\_optim(optim\_params)
-174             self.build\_lr\_scheduler()
-175 
+96     \textcolor{keyword}{def }\_\_init\_\_(self, opt: Opt, shared=\textcolor{keywordtype}{None}):
+97         init\_model, self.is\_finetune = self.\_get\_init\_model(opt, shared)
+98         super().\_\_init\_\_(opt, shared)
+99 
+100         \textcolor{comment}{# set up classes}
+101         \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'classes'}) \textcolor{keywordflow}{is} \textcolor{keywordtype}{None} \textcolor{keywordflow}{and} opt.get(\textcolor{stringliteral}{'classes\_from\_file'}) \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+102             \textcolor{keywordflow}{raise} RuntimeError(
+103                 \textcolor{stringliteral}{'Must specify --classes or --classes-from-file argument.'}
+104             )
+105         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} shared:
+106             \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'classes\_from\_file'}] \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+107                 with open(opt[\textcolor{stringliteral}{'classes\_from\_file'}]) \textcolor{keyword}{as} f:
+108                     self.class\_list = f.read().splitlines()
+109             \textcolor{keywordflow}{else}:
+110                 self.class\_list = opt[\textcolor{stringliteral}{'classes'}]
+111             self.class\_dict = \{val: i \textcolor{keywordflow}{for} i, val \textcolor{keywordflow}{in} enumerate(self.class\_list)\}
+112             \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'class\_weights'}, \textcolor{keywordtype}{None}) \textcolor{keywordflow}{is} \textcolor{keywordflow}{not} \textcolor{keywordtype}{None}:
+113                 self.class\_weights = opt[\textcolor{stringliteral}{'class\_weights'}]
+114             \textcolor{keywordflow}{else}:
+115                 self.class\_weights = [1.0 \textcolor{keywordflow}{for} c \textcolor{keywordflow}{in} self.class\_list]
+116             self.reset\_metrics()
+117         \textcolor{keywordflow}{else}:
+118             self.class\_list = shared[\textcolor{stringliteral}{'class\_list'}]
+119             self.class\_dict = shared[\textcolor{stringliteral}{'class\_dict'}]
+120             self.class\_weights = shared[\textcolor{stringliteral}{'class\_weights'}]
+121 
+122         \textcolor{comment}{# get reference class; if opt['get\_all\_metrics'] is False, this is}
+123         \textcolor{comment}{# used to compute metrics}
+124         \textcolor{comment}{# in binary classfication, opt['threshold'] applies to ref class}
+125         \textcolor{keywordflow}{if} opt[\textcolor{stringliteral}{'ref\_class'}] \textcolor{keywordflow}{is} \textcolor{keywordtype}{None} \textcolor{keywordflow}{or} opt[\textcolor{stringliteral}{'ref\_class'}] \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} self.class\_dict:
+126             self.ref\_class = self.class\_list[0]
+127         \textcolor{keywordflow}{else}:
+128             self.ref\_class = opt[\textcolor{stringliteral}{'ref\_class'}]
+129             ref\_class\_id = self.class\_list.index(self.ref\_class)
+130             \textcolor{keywordflow}{if} ref\_class\_id != 0:
+131                 \textcolor{comment}{# move to the front of the class list}
+132                 self.class\_list.insert(0, self.class\_list.pop(ref\_class\_id))
+133         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} opt[\textcolor{stringliteral}{'get\_all\_metrics'}]:
+134             \hyperlink{namespaceparlai_1_1utils_1_1misc_a884a3aefa90581f53bc592fa6a78dc43}{warn\_once}(
+135                 \textcolor{stringliteral}{'Using %s as the class for computing P, R, and F1'} % self.ref\_class
+136             )
+137 
+138         \textcolor{comment}{# set up threshold, only used in binary classification}
+139         \textcolor{keywordflow}{if} len(self.class\_list) == 2 \textcolor{keywordflow}{and} opt.get(\textcolor{stringliteral}{'threshold'}, 0.5) != 0.5:
+140             self.threshold = opt[\textcolor{stringliteral}{'threshold'}]
+141         \textcolor{keywordflow}{else}:
+142             self.threshold = \textcolor{keywordtype}{None}
+143 
+144         \textcolor{comment}{# set up model and optimizers}
+145 
+146         \textcolor{keywordflow}{if} shared:
+147             self.model = shared[\textcolor{stringliteral}{'model'}]
+148         \textcolor{keywordflow}{else}:
+149             self.model = self.build\_model()
+150             self.criterion = self.build\_criterion()
+151             \textcolor{keywordflow}{if} self.model \textcolor{keywordflow}{is} \textcolor{keywordtype}{None} \textcolor{keywordflow}{or} self.criterion \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+152                 \textcolor{keywordflow}{raise} AttributeError(
+153                     \textcolor{stringliteral}{'build\_model() and build\_criterion() need to return the model or criterion'}
+154                 )
+155             \textcolor{keywordflow}{if} self.use\_cuda:
+156                 self.model.cuda()
+157                 self.criterion.cuda()
+158             \textcolor{keywordflow}{if} init\_model:
+159                 print(\textcolor{stringliteral}{'Loading existing model parameters from '} + init\_model)
+160                 self.load(init\_model)
+161             \textcolor{keywordflow}{if} self.use\_cuda:
+162                 \textcolor{keywordflow}{if} self.opt[\textcolor{stringliteral}{'data\_parallel'}]:
+163                     \textcolor{keywordflow}{if} \hyperlink{namespaceparlai_1_1utils_1_1distributed_a023acb5e3b66e1f27e21247c35661279}{is\_distributed}():
+164                         \textcolor{keywordflow}{raise} ValueError(
+165                             \textcolor{stringliteral}{'Cannot combine --data-parallel and distributed mode'}
+166                         )
+167                     self.model = torch.nn.DataParallel(self.model)
+168         \textcolor{keywordflow}{if} shared:
+169             \textcolor{comment}{# We don't use get here because hasattr is used on optimizer later.}
+170             \textcolor{keywordflow}{if} \textcolor{stringliteral}{'optimizer'} \textcolor{keywordflow}{in} shared:
+171                 self.optimizer = shared[\textcolor{stringliteral}{'optimizer'}]
+172         \textcolor{keywordflow}{else}:
+173             optim\_params = [p \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} self.model.parameters() \textcolor{keywordflow}{if} p.requires\_grad]
+174             self.init\_optim(optim\_params)
+175             self.build\_lr\_scheduler()
+176 
 \end{DoxyCode}
 
 
@@ -188,75 +188,75 @@ Definition at line 95 of file torch\+\_\+classifier\+\_\+agent.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 30 of file torch\+\_\+classifier\+\_\+agent.\+py.
+Definition at line 31 of file torch\+\_\+classifier\+\_\+agent.\+py.
 
 
 \begin{DoxyCode}
-30     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(parser):
-31         \textcolor{stringliteral}{"""}
-32 \textcolor{stringliteral}{        Add CLI args.}
-33 \textcolor{stringliteral}{        """}
-34         TorchAgent.add\_cmdline\_args(parser)
-35         parser = parser.add\_argument\_group(\textcolor{stringliteral}{'Torch Classifier Arguments'})
-36         \textcolor{comment}{# class arguments}
-37         parser.add\_argument(
-38             \textcolor{stringliteral}{'--classes'},
-39             type=str,
-40             nargs=\textcolor{stringliteral}{'*'},
-41             default=\textcolor{keywordtype}{None},
-42             help=\textcolor{stringliteral}{'the name of the classes.'},
-43         )
-44         parser.add\_argument(
-45             \textcolor{stringliteral}{'--class-weights'},
-46             type=float,
-47             nargs=\textcolor{stringliteral}{'*'},
-48             default=\textcolor{keywordtype}{None},
-49             help=\textcolor{stringliteral}{'weight of each of the classes for the softmax'},
-50         )
-51         parser.add\_argument(
-52             \textcolor{stringliteral}{'--ref-class'},
-53             type=str,
-54             default=\textcolor{keywordtype}{None},
-55             hidden=\textcolor{keyword}{True},
-56             help=\textcolor{stringliteral}{'the class that will be used to compute '}
-57             \textcolor{stringliteral}{'precision and recall. By default the first '}
-58             \textcolor{stringliteral}{'class.'},
-59         )
-60         parser.add\_argument(
-61             \textcolor{stringliteral}{'--threshold'},
-62             type=float,
-63             default=0.5,
-64             help=\textcolor{stringliteral}{'during evaluation, threshold for choosing '}
-65             \textcolor{stringliteral}{'ref class; only applies to binary '}
-66             \textcolor{stringliteral}{'classification'},
-67         )
-68         \textcolor{comment}{# interactive mode}
-69         parser.add\_argument(
-70             \textcolor{stringliteral}{'--print-scores'},
-71             type=\textcolor{stringliteral}{'bool'},
-72             default=\textcolor{keyword}{False},
-73             help=\textcolor{stringliteral}{'print probability of chosen class during '} \textcolor{stringliteral}{'interactive mode'},
-74         )
-75         \textcolor{comment}{# miscellaneous arguments}
-76         parser.add\_argument(
-77             \textcolor{stringliteral}{'--data-parallel'},
-78             type=\textcolor{stringliteral}{'bool'},
-79             default=\textcolor{keyword}{False},
-80             help=\textcolor{stringliteral}{'uses nn.DataParallel for multi GPU'},
-81         )
-82         parser.add\_argument(
-83             \textcolor{stringliteral}{'--get-all-metrics'},
-84             type=\textcolor{stringliteral}{'bool'},
-85             default=\textcolor{keyword}{True},
-86             help=\textcolor{stringliteral}{'give prec/recall metrics for all classes'},
-87         )
-88         parser.add\_argument(
-89             \textcolor{stringliteral}{'--classes-from-file'},
-90             type=str,
-91             default=\textcolor{keywordtype}{None},
-92             help=\textcolor{stringliteral}{'loads the list of classes from a file'},
-93         )
-94 
+31     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1drqa_1_1config_a62fdd5554f1da6be0cba185271058320}{add\_cmdline\_args}(parser):
+32         \textcolor{stringliteral}{"""}
+33 \textcolor{stringliteral}{        Add CLI args.}
+34 \textcolor{stringliteral}{        """}
+35         TorchAgent.add\_cmdline\_args(parser)
+36         parser = parser.add\_argument\_group(\textcolor{stringliteral}{'Torch Classifier Arguments'})
+37         \textcolor{comment}{# class arguments}
+38         parser.add\_argument(
+39             \textcolor{stringliteral}{'--classes'},
+40             type=str,
+41             nargs=\textcolor{stringliteral}{'*'},
+42             default=\textcolor{keywordtype}{None},
+43             help=\textcolor{stringliteral}{'the name of the classes.'},
+44         )
+45         parser.add\_argument(
+46             \textcolor{stringliteral}{'--class-weights'},
+47             type=float,
+48             nargs=\textcolor{stringliteral}{'*'},
+49             default=\textcolor{keywordtype}{None},
+50             help=\textcolor{stringliteral}{'weight of each of the classes for the softmax'},
+51         )
+52         parser.add\_argument(
+53             \textcolor{stringliteral}{'--ref-class'},
+54             type=str,
+55             default=\textcolor{keywordtype}{None},
+56             hidden=\textcolor{keyword}{True},
+57             help=\textcolor{stringliteral}{'the class that will be used to compute '}
+58             \textcolor{stringliteral}{'precision and recall. By default the first '}
+59             \textcolor{stringliteral}{'class.'},
+60         )
+61         parser.add\_argument(
+62             \textcolor{stringliteral}{'--threshold'},
+63             type=float,
+64             default=0.5,
+65             help=\textcolor{stringliteral}{'during evaluation, threshold for choosing '}
+66             \textcolor{stringliteral}{'ref class; only applies to binary '}
+67             \textcolor{stringliteral}{'classification'},
+68         )
+69         \textcolor{comment}{# interactive mode}
+70         parser.add\_argument(
+71             \textcolor{stringliteral}{'--print-scores'},
+72             type=\textcolor{stringliteral}{'bool'},
+73             default=\textcolor{keyword}{False},
+74             help=\textcolor{stringliteral}{'print probability of chosen class during '} \textcolor{stringliteral}{'interactive mode'},
+75         )
+76         \textcolor{comment}{# miscellaneous arguments}
+77         parser.add\_argument(
+78             \textcolor{stringliteral}{'--data-parallel'},
+79             type=\textcolor{stringliteral}{'bool'},
+80             default=\textcolor{keyword}{False},
+81             help=\textcolor{stringliteral}{'uses nn.DataParallel for multi GPU'},
+82         )
+83         parser.add\_argument(
+84             \textcolor{stringliteral}{'--get-all-metrics'},
+85             type=\textcolor{stringliteral}{'bool'},
+86             default=\textcolor{keyword}{True},
+87             help=\textcolor{stringliteral}{'give prec/recall metrics for all classes'},
+88         )
+89         parser.add\_argument(
+90             \textcolor{stringliteral}{'--classes-from-file'},
+91             type=str,
+92             default=\textcolor{keywordtype}{None},
+93             help=\textcolor{stringliteral}{'loads the list of classes from a file'},
+94         )
+95 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_adeab756c0b58667aaf417575c23d1dfb}\label{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_adeab756c0b58667aaf417575c23d1dfb}} 
 \index{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent@{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent}!build\+\_\+criterion@{build\+\_\+criterion}}
@@ -266,14 +266,14 @@ Definition at line 30 of file torch\+\_\+classifier\+\_\+agent.\+py.
 
 
 
-Definition at line 176 of file torch\+\_\+classifier\+\_\+agent.\+py.
+Definition at line 177 of file torch\+\_\+classifier\+\_\+agent.\+py.
 
 
 \begin{DoxyCode}
-176     \textcolor{keyword}{def }build\_criterion(self):
-177         weight\_tensor = torch.FloatTensor(self.class\_weights)
-178         \textcolor{keywordflow}{return} torch.nn.CrossEntropyLoss(weight\_tensor)
-179 
+177     \textcolor{keyword}{def }build\_criterion(self):
+178         weight\_tensor = torch.FloatTensor(self.class\_weights)
+179         \textcolor{keywordflow}{return} torch.nn.CrossEntropyLoss(weight\_tensor)
+180 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_a5d456df843180fb32ca574dc2a33cc80}\label{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_a5d456df843180fb32ca574dc2a33cc80}} 
 \index{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent@{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent}!eval\+\_\+step@{eval\+\_\+step}}
@@ -285,41 +285,41 @@ Definition at line 176 of file torch\+\_\+classifier\+\_\+agent.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 263 of file torch\+\_\+classifier\+\_\+agent.\+py.
+Definition at line 264 of file torch\+\_\+classifier\+\_\+agent.\+py.
 
 
 \begin{DoxyCode}
-263     \textcolor{keyword}{def }eval\_step(self, batch):
-264         \textcolor{stringliteral}{"""}
-265 \textcolor{stringliteral}{        Train on a single batch of examples.}
-266 \textcolor{stringliteral}{        """}
-267         \textcolor{keywordflow}{if} batch.text\_vec \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-268             \textcolor{keywordflow}{return}
-269 
-270         self.model.eval()
-271         scores = self.score(batch)
-272         probs = F.softmax(scores, dim=1)
-273         \textcolor{keywordflow}{if} self.threshold \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-274             \_, prediction\_id = torch.max(probs.cpu(), 1)
-275         \textcolor{keywordflow}{else}:
-276             ref\_prob = probs.cpu()[:, 0]
-277             \textcolor{comment}{# choose ref class if Prob(ref class) > threshold}
-278             prediction\_id = ref\_prob <= self.threshold
-279         preds = [self.class\_list[idx] \textcolor{keywordflow}{for} idx \textcolor{keywordflow}{in} prediction\_id]
-280 
-281         \textcolor{keywordflow}{if} batch.labels \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-282             \textcolor{comment}{# interactive mode}
-283             \textcolor{keywordflow}{if} self.opt.get(\textcolor{stringliteral}{'print\_scores'}, \textcolor{keyword}{False}):
-284                 preds = self.\_format\_interactive\_output(probs, prediction\_id)
-285         \textcolor{keywordflow}{else}:
-286             labels = self.\_get\_labels(batch)
-287             loss = self.criterion(scores, labels)
-288             self.metrics[\textcolor{stringliteral}{'loss'}] += loss.item()
-289             self.metrics[\textcolor{stringliteral}{'examples'}] += len(batch.text\_vec)
-290             self.\_update\_confusion\_matrix(batch, preds)
-291 
-292         \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1torch__agent__v1_a2689006ea97d09413fb242f984bd8016}{Output}(preds)
-293 
+264     \textcolor{keyword}{def }eval\_step(self, batch):
+265         \textcolor{stringliteral}{"""}
+266 \textcolor{stringliteral}{        Train on a single batch of examples.}
+267 \textcolor{stringliteral}{        """}
+268         \textcolor{keywordflow}{if} batch.text\_vec \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+269             \textcolor{keywordflow}{return}
+270 
+271         self.model.eval()
+272         scores = self.score(batch)
+273         probs = F.softmax(scores, dim=1)
+274         \textcolor{keywordflow}{if} self.threshold \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+275             \_, prediction\_id = torch.max(probs.cpu(), 1)
+276         \textcolor{keywordflow}{else}:
+277             ref\_prob = probs.cpu()[:, 0]
+278             \textcolor{comment}{# choose ref class if Prob(ref class) > threshold}
+279             prediction\_id = ref\_prob <= self.threshold
+280         preds = [self.class\_list[idx] \textcolor{keywordflow}{for} idx \textcolor{keywordflow}{in} prediction\_id]
+281 
+282         \textcolor{keywordflow}{if} batch.labels \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+283             \textcolor{comment}{# interactive mode}
+284             \textcolor{keywordflow}{if} self.opt.get(\textcolor{stringliteral}{'print\_scores'}, \textcolor{keyword}{False}):
+285                 preds = self.\_format\_interactive\_output(probs, prediction\_id)
+286         \textcolor{keywordflow}{else}:
+287             labels = self.\_get\_labels(batch)
+288             loss = self.criterion(scores, labels)
+289             self.metrics[\textcolor{stringliteral}{'loss'}] += loss.item()
+290             self.metrics[\textcolor{stringliteral}{'examples'}] += len(batch.text\_vec)
+291             self.\_update\_confusion\_matrix(batch, preds)
+292 
+293         \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1torch__agent__v1_a2689006ea97d09413fb242f984bd8016}{Output}(preds)
+294 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_acf3aabdf7a98e434614c4da20c599df2}\label{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_acf3aabdf7a98e434614c4da20c599df2}} 
 \index{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent@{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent}!report@{report}}
@@ -331,48 +331,48 @@ Definition at line 263 of file torch\+\_\+classifier\+\_\+agent.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 340 of file torch\+\_\+classifier\+\_\+agent.\+py.
+Definition at line 341 of file torch\+\_\+classifier\+\_\+agent.\+py.
 
 
 \begin{DoxyCode}
-340     \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}(self):
-341         \textcolor{stringliteral}{"""}
-342 \textcolor{stringliteral}{        Report loss as well as precision, recall, and F1 metrics.}
-343 \textcolor{stringliteral}{        """}
-344         m = super().\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}()
-345         examples = self.metrics[\textcolor{stringliteral}{'examples'}]
-346         \textcolor{keywordflow}{if} examples > 0:
-347             m[\textcolor{stringliteral}{'examples'}] = examples
-348             m[\textcolor{stringliteral}{'mean\_loss'}] = self.metrics[\textcolor{stringliteral}{'loss'}] / examples
-349 
-350             \textcolor{comment}{# get prec/recall metrics}
-351             confmat = self.metrics[\textcolor{stringliteral}{'confusion\_matrix'}]
-352             \textcolor{keywordflow}{if} self.opt.get(\textcolor{stringliteral}{'get\_all\_metrics'}):
-353                 metrics\_list = self.class\_list
-354             \textcolor{keywordflow}{else}:
-355                 \textcolor{comment}{# only give prec/recall metrics for ref class}
-356                 metrics\_list = [self.ref\_class]
-357 
-358             examples\_per\_class = []
-359             \textcolor{keywordflow}{for} class\_i \textcolor{keywordflow}{in} metrics\_list:
-360                 class\_total = self.\_report\_prec\_recall\_metrics(confmat, class\_i, m)
-361                 examples\_per\_class.append(class\_total)
-362 
-363             \textcolor{keywordflow}{if} len(examples\_per\_class) > 1:
-364                 \textcolor{comment}{# get weighted f1}
-365                 f1 = 0
-366                 total\_exs = sum(examples\_per\_class)
-367                 \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(self.class\_list)):
-368                     f1 += (examples\_per\_class[i] / total\_exs) * m[
-369                         \textcolor{stringliteral}{'class\_\{\}\_f1'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.class\_list[i])
-370                     ]
-371                 m[\textcolor{stringliteral}{'weighted\_f1'}] = f1
-372 
-373         \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} m.items():
-374             m[k] = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_af377ec61bfc0423461e7b409ffc883b9}{round\_sigfigs}(v, 4)
-375 
-376         \textcolor{keywordflow}{return} m
-377 
+341     \textcolor{keyword}{def }\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}(self):
+342         \textcolor{stringliteral}{"""}
+343 \textcolor{stringliteral}{        Report loss as well as precision, recall, and F1 metrics.}
+344 \textcolor{stringliteral}{        """}
+345         m = super().\hyperlink{namespaceprojects_1_1convai2_1_1eval__f1_a01a47b9c08dad189837a51f085defc45}{report}()
+346         examples = self.metrics[\textcolor{stringliteral}{'examples'}]
+347         \textcolor{keywordflow}{if} examples > 0:
+348             m[\textcolor{stringliteral}{'examples'}] = examples
+349             m[\textcolor{stringliteral}{'mean\_loss'}] = self.metrics[\textcolor{stringliteral}{'loss'}] / examples
+350 
+351             \textcolor{comment}{# get prec/recall metrics}
+352             confmat = self.metrics[\textcolor{stringliteral}{'confusion\_matrix'}]
+353             \textcolor{keywordflow}{if} self.opt.get(\textcolor{stringliteral}{'get\_all\_metrics'}):
+354                 metrics\_list = self.class\_list
+355             \textcolor{keywordflow}{else}:
+356                 \textcolor{comment}{# only give prec/recall metrics for ref class}
+357                 metrics\_list = [self.ref\_class]
+358 
+359             examples\_per\_class = []
+360             \textcolor{keywordflow}{for} class\_i \textcolor{keywordflow}{in} metrics\_list:
+361                 class\_total = self.\_report\_prec\_recall\_metrics(confmat, class\_i, m)
+362                 examples\_per\_class.append(class\_total)
+363 
+364             \textcolor{keywordflow}{if} len(examples\_per\_class) > 1:
+365                 \textcolor{comment}{# get weighted f1}
+366                 f1 = 0
+367                 total\_exs = sum(examples\_per\_class)
+368                 \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(self.class\_list)):
+369                     f1 += (examples\_per\_class[i] / total\_exs) * m[
+370                         \textcolor{stringliteral}{'class\_\{\}\_f1'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(self.class\_list[i])
+371                     ]
+372                 m[\textcolor{stringliteral}{'weighted\_f1'}] = f1
+373 
+374         \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} m.items():
+375             m[k] = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_af377ec61bfc0423461e7b409ffc883b9}{round\_sigfigs}(v, 4)
+376 
+377         \textcolor{keywordflow}{return} m
+378 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_ac96e55ac13019eace0641a7efcf6dc44}\label{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_ac96e55ac13019eace0641a7efcf6dc44}} 
 \index{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent@{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent}!reset\+\_\+metrics@{reset\+\_\+metrics}}
@@ -384,19 +384,19 @@ Definition at line 340 of file torch\+\_\+classifier\+\_\+agent.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 294 of file torch\+\_\+classifier\+\_\+agent.\+py.
+Definition at line 295 of file torch\+\_\+classifier\+\_\+agent.\+py.
 
 
 \begin{DoxyCode}
-294     \textcolor{keyword}{def }reset\_metrics(self):
-295         \textcolor{stringliteral}{"""}
-296 \textcolor{stringliteral}{        Reset metrics.}
-297 \textcolor{stringliteral}{        """}
-298         super().reset\_metrics()
-299         self.metrics[\textcolor{stringliteral}{'confusion\_matrix'}] = defaultdict(int)
-300         self.metrics[\textcolor{stringliteral}{'examples'}] = 0
-301         self.metrics[\textcolor{stringliteral}{'loss'}] = 0.0
-302 
+295     \textcolor{keyword}{def }reset\_metrics(self):
+296         \textcolor{stringliteral}{"""}
+297 \textcolor{stringliteral}{        Reset metrics.}
+298 \textcolor{stringliteral}{        """}
+299         super().reset\_metrics()
+300         self.metrics[\textcolor{stringliteral}{'confusion\_matrix'}] = defaultdict(int)
+301         self.metrics[\textcolor{stringliteral}{'examples'}] = 0
+302         self.metrics[\textcolor{stringliteral}{'loss'}] = 0.0
+303 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_a04e97e79ef7e497c0927c10b31e42337}\label{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_a04e97e79ef7e497c0927c10b31e42337}} 
 \index{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent@{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent}!score@{score}}
@@ -414,22 +414,22 @@ Definition at line 294 of file torch\+\_\+classifier\+\_\+agent.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 378 of file torch\+\_\+classifier\+\_\+agent.\+py.
+Definition at line 379 of file torch\+\_\+classifier\+\_\+agent.\+py.
 
 
 \begin{DoxyCode}
-378     \textcolor{keyword}{def }score(self, batch):
-379         \textcolor{stringliteral}{"""}
-380 \textcolor{stringliteral}{        Given a batch and labels, returns the scores.}
-381 \textcolor{stringliteral}{}
-382 \textcolor{stringliteral}{        :param batch:}
-383 \textcolor{stringliteral}{            a Batch object (defined in torch\_agent.py)}
-384 \textcolor{stringliteral}{        :return:}
-385 \textcolor{stringliteral}{            a [bsz, num\_classes] FloatTensor containing the score of each}
-386 \textcolor{stringliteral}{            class.}
-387 \textcolor{stringliteral}{        """}
-388         \textcolor{keywordflow}{raise} NotImplementedError(\textcolor{stringliteral}{'Abstract class: user must implement score()'})
-389 \end{DoxyCode}
+379     \textcolor{keyword}{def }score(self, batch):
+380         \textcolor{stringliteral}{"""}
+381 \textcolor{stringliteral}{        Given a batch and labels, returns the scores.}
+382 \textcolor{stringliteral}{}
+383 \textcolor{stringliteral}{        :param batch:}
+384 \textcolor{stringliteral}{            a Batch object (defined in torch\_agent.py)}
+385 \textcolor{stringliteral}{        :return:}
+386 \textcolor{stringliteral}{            a [bsz, num\_classes] FloatTensor containing the score of each}
+387 \textcolor{stringliteral}{            class.}
+388 \textcolor{stringliteral}{        """}
+389         \textcolor{keywordflow}{raise} NotImplementedError(\textcolor{stringliteral}{'Abstract class: user must implement score()'})
+390 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_a33e56566ee5e81b257b049bd6a3c1cd6}\label{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_a33e56566ee5e81b257b049bd6a3c1cd6}} 
 \index{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent@{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent}!share@{share}}
 \index{share@{share}!parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent@{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent}}
@@ -440,22 +440,22 @@ Definition at line 378 of file torch\+\_\+classifier\+\_\+agent.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 180 of file torch\+\_\+classifier\+\_\+agent.\+py.
+Definition at line 181 of file torch\+\_\+classifier\+\_\+agent.\+py.
 
 
 \begin{DoxyCode}
-180     \textcolor{keyword}{def }share(self):
-181         \textcolor{stringliteral}{"""}
-182 \textcolor{stringliteral}{        Share model parameters.}
-183 \textcolor{stringliteral}{        """}
-184         shared = super().share()
-185         shared[\textcolor{stringliteral}{'class\_dict'}] = self.class\_dict
-186         shared[\textcolor{stringliteral}{'class\_list'}] = self.class\_list
-187         shared[\textcolor{stringliteral}{'class\_weights'}] = self.class\_weights
-188         shared[\textcolor{stringliteral}{'model'}] = self.model
-189         shared[\textcolor{stringliteral}{'optimizer'}] = self.optimizer
-190         \textcolor{keywordflow}{return} shared
-191 
+181     \textcolor{keyword}{def }share(self):
+182         \textcolor{stringliteral}{"""}
+183 \textcolor{stringliteral}{        Share model parameters.}
+184 \textcolor{stringliteral}{        """}
+185         shared = super().share()
+186         shared[\textcolor{stringliteral}{'class\_dict'}] = self.class\_dict
+187         shared[\textcolor{stringliteral}{'class\_list'}] = self.class\_list
+188         shared[\textcolor{stringliteral}{'class\_weights'}] = self.class\_weights
+189         shared[\textcolor{stringliteral}{'model'}] = self.model
+190         shared[\textcolor{stringliteral}{'optimizer'}] = self.optimizer
+191         \textcolor{keywordflow}{return} shared
+192 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_a3baacdb005c5f5a6367c45c93d21d398}\label{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_a3baacdb005c5f5a6367c45c93d21d398}} 
 \index{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent@{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent}!train\+\_\+step@{train\+\_\+step}}
@@ -467,37 +467,37 @@ Definition at line 180 of file torch\+\_\+classifier\+\_\+agent.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 236 of file torch\+\_\+classifier\+\_\+agent.\+py.
+Definition at line 237 of file torch\+\_\+classifier\+\_\+agent.\+py.
 
 
 \begin{DoxyCode}
-236     \textcolor{keyword}{def }train\_step(self, batch):
-237         \textcolor{stringliteral}{"""}
-238 \textcolor{stringliteral}{        Train on a single batch of examples.}
-239 \textcolor{stringliteral}{        """}
-240         \textcolor{keywordflow}{if} batch.text\_vec \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
-241             \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1torch__agent__v1_a2689006ea97d09413fb242f984bd8016}{Output}()
-242         self.model.\hyperlink{namespaceprojects_1_1mastering__the__dungeon_1_1mturk_1_1tasks_1_1MTD_1_1run_a36a5f4f6f9df0611a6818610518d2cf0}{train}()
-243         self.optimizer.zero\_grad()
-244 
-245         \textcolor{comment}{# calculate loss}
-246         labels = self.\_get\_labels(batch)
-247         scores = self.score(batch)
-248         loss = self.criterion(scores, labels)
-249         loss.backward()
-250         self.update\_params()
-251 
-252         \textcolor{comment}{# update metrics}
-253         self.metrics[\textcolor{stringliteral}{'loss'}] += loss.item()
-254         self.metrics[\textcolor{stringliteral}{'examples'}] += len(batch.text\_vec)
-255 
-256         \textcolor{comment}{# get predictions}
-257         \_, prediction\_id = torch.max(scores.cpu(), 1)
-258         preds = [self.class\_list[idx] \textcolor{keywordflow}{for} idx \textcolor{keywordflow}{in} prediction\_id]
-259         self.\_update\_confusion\_matrix(batch, preds)
-260 
-261         \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1torch__agent__v1_a2689006ea97d09413fb242f984bd8016}{Output}(preds)
-262 
+237     \textcolor{keyword}{def }train\_step(self, batch):
+238         \textcolor{stringliteral}{"""}
+239 \textcolor{stringliteral}{        Train on a single batch of examples.}
+240 \textcolor{stringliteral}{        """}
+241         \textcolor{keywordflow}{if} batch.text\_vec \textcolor{keywordflow}{is} \textcolor{keywordtype}{None}:
+242             \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1torch__agent__v1_a2689006ea97d09413fb242f984bd8016}{Output}()
+243         self.model.\hyperlink{namespaceprojects_1_1mastering__the__dungeon_1_1mturk_1_1tasks_1_1MTD_1_1run_a36a5f4f6f9df0611a6818610518d2cf0}{train}()
+244         self.optimizer.zero\_grad()
+245 
+246         \textcolor{comment}{# calculate loss}
+247         labels = self.\_get\_labels(batch)
+248         scores = self.score(batch)
+249         loss = self.criterion(scores, labels)
+250         loss.backward()
+251         self.update\_params()
+252 
+253         \textcolor{comment}{# update metrics}
+254         self.metrics[\textcolor{stringliteral}{'loss'}] += loss.item()
+255         self.metrics[\textcolor{stringliteral}{'examples'}] += len(batch.text\_vec)
+256 
+257         \textcolor{comment}{# get predictions}
+258         \_, prediction\_id = torch.max(scores.cpu(), 1)
+259         preds = [self.class\_list[idx] \textcolor{keywordflow}{for} idx \textcolor{keywordflow}{in} prediction\_id]
+260         self.\_update\_confusion\_matrix(batch, preds)
+261 
+262         \textcolor{keywordflow}{return} \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1torch__agent__v1_a2689006ea97d09413fb242f984bd8016}{Output}(preds)
+263 
 \end{DoxyCode}
 
 
@@ -510,7 +510,7 @@ Definition at line 236 of file torch\+\_\+classifier\+\_\+agent.\+py.
 
 
 
-Definition at line 110 of file torch\+\_\+classifier\+\_\+agent.\+py.
+Definition at line 111 of file torch\+\_\+classifier\+\_\+agent.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_a98e1aad7d454f0ef1a971b60db1bcd18}\label{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_a98e1aad7d454f0ef1a971b60db1bcd18}} 
 \index{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent@{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent}!class\+\_\+list@{class\+\_\+list}}
@@ -520,7 +520,7 @@ Definition at line 110 of file torch\+\_\+classifier\+\_\+agent.\+py.
 
 
 
-Definition at line 107 of file torch\+\_\+classifier\+\_\+agent.\+py.
+Definition at line 108 of file torch\+\_\+classifier\+\_\+agent.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_ac4c098a9fe13fcbb279cb388059fbdb7}\label{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_ac4c098a9fe13fcbb279cb388059fbdb7}} 
 \index{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent@{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent}!class\+\_\+weights@{class\+\_\+weights}}
@@ -530,7 +530,7 @@ Definition at line 107 of file torch\+\_\+classifier\+\_\+agent.\+py.
 
 
 
-Definition at line 112 of file torch\+\_\+classifier\+\_\+agent.\+py.
+Definition at line 113 of file torch\+\_\+classifier\+\_\+agent.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_aa59eee6c442bfb02846661fba0904a3d}\label{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_aa59eee6c442bfb02846661fba0904a3d}} 
 \index{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent@{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent}!criterion@{criterion}}
@@ -540,7 +540,7 @@ Definition at line 112 of file torch\+\_\+classifier\+\_\+agent.\+py.
 
 
 
-Definition at line 149 of file torch\+\_\+classifier\+\_\+agent.\+py.
+Definition at line 150 of file torch\+\_\+classifier\+\_\+agent.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_a9d5bac9fe43ddf4129d486e3061a7a69}\label{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_a9d5bac9fe43ddf4129d486e3061a7a69}} 
 \index{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent@{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent}!is\+\_\+finetune@{is\+\_\+finetune}}
@@ -550,7 +550,7 @@ Definition at line 149 of file torch\+\_\+classifier\+\_\+agent.\+py.
 
 
 
-Definition at line 96 of file torch\+\_\+classifier\+\_\+agent.\+py.
+Definition at line 97 of file torch\+\_\+classifier\+\_\+agent.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_acf08c5622edd3627fbe993730f16baa4}\label{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_acf08c5622edd3627fbe993730f16baa4}} 
 \index{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent@{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent}!model@{model}}
@@ -560,7 +560,7 @@ Definition at line 96 of file torch\+\_\+classifier\+\_\+agent.\+py.
 
 
 
-Definition at line 146 of file torch\+\_\+classifier\+\_\+agent.\+py.
+Definition at line 147 of file torch\+\_\+classifier\+\_\+agent.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_af7bc3e7b011e16ae3e75617c4773a1a4}\label{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_af7bc3e7b011e16ae3e75617c4773a1a4}} 
 \index{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent@{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent}!optimizer@{optimizer}}
@@ -570,7 +570,7 @@ Definition at line 146 of file torch\+\_\+classifier\+\_\+agent.\+py.
 
 
 
-Definition at line 170 of file torch\+\_\+classifier\+\_\+agent.\+py.
+Definition at line 171 of file torch\+\_\+classifier\+\_\+agent.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_a830ed9662779e824cc9596695b04e985}\label{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_a830ed9662779e824cc9596695b04e985}} 
 \index{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent@{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent}!ref\+\_\+class@{ref\+\_\+class}}
@@ -580,7 +580,7 @@ Definition at line 170 of file torch\+\_\+classifier\+\_\+agent.\+py.
 
 
 
-Definition at line 125 of file torch\+\_\+classifier\+\_\+agent.\+py.
+Definition at line 126 of file torch\+\_\+classifier\+\_\+agent.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_aba6e1d0ef53762f5930c271c3ae8d63a}\label{classparlai_1_1core_1_1torch__classifier__agent_1_1TorchClassifierAgent_aba6e1d0ef53762f5930c271c3ae8d63a}} 
 \index{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent@{parlai\+::core\+::torch\+\_\+classifier\+\_\+agent\+::\+Torch\+Classifier\+Agent}!threshold@{threshold}}
@@ -590,7 +590,7 @@ Definition at line 125 of file torch\+\_\+classifier\+\_\+agent.\+py.
 
 
 
-Definition at line 139 of file torch\+\_\+classifier\+\_\+agent.\+py.
+Definition at line 140 of file torch\+\_\+classifier\+\_\+agent.\+py.
 
 
 

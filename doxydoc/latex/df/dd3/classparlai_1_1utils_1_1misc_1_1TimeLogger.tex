@@ -25,7 +25,7 @@ def \hyperlink{classparlai_1_1utils_1_1misc_1_1TimeLogger_a52458d882781ad6a6cbce
 \end{DoxyVerb}
  
 
-Definition at line 356 of file misc.\+py.
+Definition at line 246 of file misc.\+py.
 
 
 
@@ -40,17 +40,17 @@ Definition at line 356 of file misc.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 361 of file misc.\+py.
+Definition at line 251 of file misc.\+py.
 
 
 \begin{DoxyCode}
-361     \textcolor{keyword}{def }\_\_init\_\_(self):
-362         \textcolor{stringliteral}{"""}
-363 \textcolor{stringliteral}{        Set up timer.}
-364 \textcolor{stringliteral}{        """}
-365         self.timer = Timer()
-366         self.tot\_time = 0
-367 
+251     \textcolor{keyword}{def }\_\_init\_\_(self):
+252         \textcolor{stringliteral}{"""}
+253 \textcolor{stringliteral}{        Set up timer.}
+254 \textcolor{stringliteral}{        """}
+255         self.timer = Timer()
+256         self.tot\_time = 0
+257 
 \end{DoxyCode}
 
 
@@ -76,44 +76,44 @@ Definition at line 361 of file misc.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 380 of file misc.\+py.
+Definition at line 270 of file misc.\+py.
 
 
 \begin{DoxyCode}
-380     \textcolor{keyword}{def }log(self, done, total, report=None):
-381         \textcolor{stringliteral}{"""}
-382 \textcolor{stringliteral}{        Log report, time elapsed, and percentage progress towards goal.}
-383 \textcolor{stringliteral}{}
-384 \textcolor{stringliteral}{        :param done: number of examples completed so far}
-385 \textcolor{stringliteral}{        :param total: total number of elements to be completed. if total > 0,}
-386 \textcolor{stringliteral}{                      calculates the time remaining and percentage complete.}
-387 \textcolor{stringliteral}{        :param report: dict of pairs to log}
-388 \textcolor{stringliteral}{}
-389 \textcolor{stringliteral}{        :returns: tuple log string, log dict}
-390 \textcolor{stringliteral}{            log string contains time elapsed and string representation of}
-391 \textcolor{stringliteral}{            the log dict}
-392 \textcolor{stringliteral}{            log dict contains pairs of all items to log, which includes}
-393 \textcolor{stringliteral}{            percentage complete and projected time left if total > 0}
-394 \textcolor{stringliteral}{        """}
-395         self.tot\_time += self.timer.time()
-396         self.timer.reset()
-397         log = \{\}
-398         log[\textcolor{stringliteral}{'exs'}] = done
-399         \textcolor{keywordflow}{if} total > 0:
-400             log[\textcolor{stringliteral}{'%done'}] = done / total
-401             \textcolor{keywordflow}{if} log[\textcolor{stringliteral}{"%done"}] > 0:
-402                 time\_left = self.tot\_time / log[\textcolor{stringliteral}{'%done'}] - self.tot\_time
-403                 log[\textcolor{stringliteral}{'time\_left'}] = \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(\hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(time\_left)) + \textcolor{stringliteral}{'s'}
-404             z = \textcolor{stringliteral}{'%.2f'} % (100 * log[\textcolor{stringliteral}{'%done'}])
-405             log[\textcolor{stringliteral}{'%done'}] = \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(z) + \textcolor{stringliteral}{'%'}
-406         \textcolor{keywordflow}{if} report:
-407             \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} report.items():
-408                 \textcolor{keywordflow}{if} k \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} log:
-409                     log[k] = v
-410         text = \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(\hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(self.tot\_time)) + \textcolor{stringliteral}{"s elapsed: "} + \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(log).replace(\textcolor{stringliteral}{'\(\backslash\)\(\backslash\)n'}, \textcolor{stringliteral}{'\(\backslash\)n'})
-411         \textcolor{keywordflow}{return} text, log
-412 
-413 
+270     \textcolor{keyword}{def }log(self, done, total, report=None):
+271         \textcolor{stringliteral}{"""}
+272 \textcolor{stringliteral}{        Log report, time elapsed, and percentage progress towards goal.}
+273 \textcolor{stringliteral}{}
+274 \textcolor{stringliteral}{        :param done: number of examples completed so far}
+275 \textcolor{stringliteral}{        :param total: total number of elements to be completed. if total > 0,}
+276 \textcolor{stringliteral}{                      calculates the time remaining and percentage complete.}
+277 \textcolor{stringliteral}{        :param report: dict of pairs to log}
+278 \textcolor{stringliteral}{}
+279 \textcolor{stringliteral}{        :returns: tuple log string, log dict}
+280 \textcolor{stringliteral}{            log string contains time elapsed and string representation of}
+281 \textcolor{stringliteral}{            the log dict}
+282 \textcolor{stringliteral}{            log dict contains pairs of all items to log, which includes}
+283 \textcolor{stringliteral}{            percentage complete and projected time left if total > 0}
+284 \textcolor{stringliteral}{        """}
+285         self.tot\_time += self.timer.time()
+286         self.timer.reset()
+287         log = \{\}
+288         log[\textcolor{stringliteral}{'exs'}] = done
+289         \textcolor{keywordflow}{if} total > 0:
+290             log[\textcolor{stringliteral}{'%done'}] = done / total
+291             \textcolor{keywordflow}{if} log[\textcolor{stringliteral}{"%done"}] > 0:
+292                 time\_left = self.tot\_time / log[\textcolor{stringliteral}{'%done'}] - self.tot\_time
+293                 log[\textcolor{stringliteral}{'time\_left'}] = \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(\hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(time\_left)) + \textcolor{stringliteral}{'s'}
+294             z = \textcolor{stringliteral}{'%.2f'} % (100 * log[\textcolor{stringliteral}{'%done'}])
+295             log[\textcolor{stringliteral}{'%done'}] = \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(z) + \textcolor{stringliteral}{'%'}
+296         \textcolor{keywordflow}{if} report:
+297             \textcolor{keywordflow}{for} k, v \textcolor{keywordflow}{in} report.items():
+298                 \textcolor{keywordflow}{if} k \textcolor{keywordflow}{not} \textcolor{keywordflow}{in} log:
+299                     log[k] = v
+300         text = \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(\hyperlink{namespacelanguage__model_1_1eval__ppl_a7d12ee00479673c5c8d1f6d01faa272a}{int}(self.tot\_time)) + \textcolor{stringliteral}{"s elapsed: "} + \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(log).replace(\textcolor{stringliteral}{'\(\backslash\)\(\backslash\)n'}, \textcolor{stringliteral}{'\(\backslash\)n'})
+301         \textcolor{keywordflow}{return} text, log
+302 
+303 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1TimeLogger_aa8e859dc10c12159501bbf545ca62a51}\label{classparlai_1_1utils_1_1misc_1_1TimeLogger_aa8e859dc10c12159501bbf545ca62a51}} 
 \index{parlai\+::utils\+::misc\+::\+Time\+Logger@{parlai\+::utils\+::misc\+::\+Time\+Logger}!time@{time}}
@@ -125,16 +125,16 @@ Definition at line 380 of file misc.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 374 of file misc.\+py.
+Definition at line 264 of file misc.\+py.
 
 
 \begin{DoxyCode}
-374     \textcolor{keyword}{def }time(self):
-375         \textcolor{stringliteral}{"""}
-376 \textcolor{stringliteral}{        Return current timer time.}
-377 \textcolor{stringliteral}{        """}
-378         \textcolor{keywordflow}{return} self.timer.time()
-379 
+264     \textcolor{keyword}{def }time(self):
+265         \textcolor{stringliteral}{"""}
+266 \textcolor{stringliteral}{        Return current timer time.}
+267 \textcolor{stringliteral}{        """}
+268         \textcolor{keywordflow}{return} self.timer.time()
+269 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1TimeLogger_a18d3faec4442ed5b313c88d566f43b2d}\label{classparlai_1_1utils_1_1misc_1_1TimeLogger_a18d3faec4442ed5b313c88d566f43b2d}} 
 \index{parlai\+::utils\+::misc\+::\+Time\+Logger@{parlai\+::utils\+::misc\+::\+Time\+Logger}!total\+\_\+time@{total\+\_\+time}}
@@ -146,16 +146,16 @@ Definition at line 374 of file misc.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 368 of file misc.\+py.
+Definition at line 258 of file misc.\+py.
 
 
 \begin{DoxyCode}
-368     \textcolor{keyword}{def }total\_time(self):
-369         \textcolor{stringliteral}{"""}
-370 \textcolor{stringliteral}{        Return time elapsed at last log call.}
-371 \textcolor{stringliteral}{        """}
-372         \textcolor{keywordflow}{return} self.tot\_time
-373 
+258     \textcolor{keyword}{def }total\_time(self):
+259         \textcolor{stringliteral}{"""}
+260 \textcolor{stringliteral}{        Return time elapsed at last log call.}
+261 \textcolor{stringliteral}{        """}
+262         \textcolor{keywordflow}{return} self.tot\_time
+263 
 \end{DoxyCode}
 
 
@@ -168,7 +168,7 @@ Definition at line 368 of file misc.\+py.
 
 
 
-Definition at line 365 of file misc.\+py.
+Definition at line 255 of file misc.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1utils_1_1misc_1_1TimeLogger_a831849f16f6779f8b77289c3caa65689}\label{classparlai_1_1utils_1_1misc_1_1TimeLogger_a831849f16f6779f8b77289c3caa65689}} 
 \index{parlai\+::utils\+::misc\+::\+Time\+Logger@{parlai\+::utils\+::misc\+::\+Time\+Logger}!tot\+\_\+time@{tot\+\_\+time}}
@@ -178,7 +178,7 @@ Definition at line 365 of file misc.\+py.
 
 
 
-Definition at line 366 of file misc.\+py.
+Definition at line 256 of file misc.\+py.
 
 
 

@@ -7,5 +7,6 @@ var searchData=
   ['qazreteacher',['QAZRETeacher',['../d9/d25/classparlai_1_1tasks_1_1qazre_1_1agents_1_1QAZRETeacher.html',1,'parlai.tasks.qazre.agents.QAZRETeacher'],['../d3/d27/classparlai_1_1tasks_1_1decanlp_1_1agents_1_1QazreTeacher.html',1,'parlai.tasks.decanlp.agents.QazreTeacher']]],
   ['qualificationflowonboardworld',['QualificationFlowOnboardWorld',['../da/da7/classparlai_1_1mturk_1_1tasks_1_1qualification__flow__example_1_1worlds_1_1QualificationFlowOnboardWorld.html',1,'parlai::mturk::tasks::qualification_flow_example::worlds']]],
   ['qualificationflowsoloworld',['QualificationFlowSoloWorld',['../d8/dbf/classparlai_1_1mturk_1_1tasks_1_1qualification__flow__example_1_1worlds_1_1QualificationFlowSoloWorld.html',1,'parlai::mturk::tasks::qualification_flow_example::worlds']]],
-  ['questioneragent',['QuestionerAgent',['../dc/de0/classprojects_1_1taskntalk_1_1coopgame__agent_1_1QuestionerAgent.html',1,'projects::taskntalk::coopgame_agent']]]
+  ['questioneragent',['QuestionerAgent',['../dc/de0/classprojects_1_1taskntalk_1_1coopgame__agent_1_1QuestionerAgent.html',1,'projects::taskntalk::coopgame_agent']]],
+  ['questiononlyteacher',['QuestionOnlyTeacher',['../d7/d41/classparlai_1_1tasks_1_1igc_1_1agents_1_1QuestionOnlyTeacher.html',1,'parlai::tasks::igc::agents']]]
 ];

@@ -2,8 +2,7 @@
 \label{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator}\index{image\+\_\+chat\+\_\+collection.\+worlds.\+Personality\+Generator@{image\+\_\+chat\+\_\+collection.\+worlds.\+Personality\+Generator}}
 
 
-Inheritance diagram for image\+\_\+chat\+\_\+collection.\+worlds.\+Personality\+Generator\+:
-\nopagebreak
+Inheritance diagram for image\+\_\+chat\+\_\+collection.\+worlds.\+Personality\+Generator\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for image\+\_\+chat\+\_\+collection.\+worlds.\+Personality\+
 \end{figure}
 
 
-Collaboration diagram for image\+\_\+chat\+\_\+collection.\+worlds.\+Personality\+Generator\+:
-\nopagebreak
+Collaboration diagram for image\+\_\+chat\+\_\+collection.\+worlds.\+Personality\+Generator\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -49,7 +47,7 @@ def \hyperlink{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_a1
 \subsection{Detailed Description}
 
 
-Definition at line 55 of file worlds.\+py.
+Definition at line 56 of file worlds.\+py.
 
 
 
@@ -62,32 +60,32 @@ Definition at line 55 of file worlds.\+py.
 
 
 
-Definition at line 56 of file worlds.\+py.
+Definition at line 57 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-56     \textcolor{keyword}{def }\_\_init\_\_(self, opt):
-57         self.personalities\_path = os.path.join(
-58             opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'personality\_captions/personalities.json'}
-59         )
-60         self.personalities\_idx\_stack\_path = os.path.join(
-61             os.getcwd(), \textcolor{stringliteral}{'./personalities\_idx\_stack.pkl'}
-62         )
-63 
-64         self.personalities = []
-65 
-66         with open(self.personalities\_path) \textcolor{keyword}{as} f:
-67             p\_dict = json.load(f)
-68             self.personalities = [p \textcolor{keywordflow}{for} p\_type \textcolor{keywordflow}{in} p\_dict.values() \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} p\_type]
-69 
-70         \textcolor{keywordflow}{if} os.path.exists(self.personalities\_idx\_stack\_path):
-71             with open(self.personalities\_idx\_stack\_path, \textcolor{stringliteral}{'rb'}) \textcolor{keyword}{as} handle:
-72                 self.idx\_stack = pickle.load(handle)
-73         \textcolor{keywordflow}{else}:
-74             self.idx\_stack = []
-75             self.add\_idx\_stack()
-76             self.save\_idx\_stack()
-77 
+57     \textcolor{keyword}{def }\_\_init\_\_(self, opt):
+58         self.personalities\_path = os.path.join(
+59             opt[\textcolor{stringliteral}{'datapath'}], \textcolor{stringliteral}{'personality\_captions/personalities.json'}
+60         )
+61         self.personalities\_idx\_stack\_path = os.path.join(
+62             os.getcwd(), \textcolor{stringliteral}{'./personalities\_idx\_stack.pkl'}
+63         )
+64 
+65         self.personalities = []
+66 
+67         with open(self.personalities\_path) \textcolor{keyword}{as} f:
+68             p\_dict = json.load(f)
+69             self.personalities = [p \textcolor{keywordflow}{for} p\_type \textcolor{keywordflow}{in} p\_dict.values() \textcolor{keywordflow}{for} p \textcolor{keywordflow}{in} p\_type]
+70 
+71         \textcolor{keywordflow}{if} os.path.exists(self.personalities\_idx\_stack\_path):
+72             with open(self.personalities\_idx\_stack\_path, \textcolor{stringliteral}{'rb'}) \textcolor{keyword}{as} handle:
+73                 self.idx\_stack = pickle.load(handle)
+74         \textcolor{keywordflow}{else}:
+75             self.idx\_stack = []
+76             self.add\_idx\_stack()
+77             self.save\_idx\_stack()
+78 
 \end{DoxyCode}
 
 
@@ -100,16 +98,16 @@ Definition at line 56 of file worlds.\+py.
 
 
 
-Definition at line 78 of file worlds.\+py.
+Definition at line 79 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-78     \textcolor{keyword}{def }add\_idx\_stack(self):
-79         stack = [i \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(self.personalities))]
-80         random.seed()
-81         random.shuffle(stack)
-82         self.idx\_stack = stack + self.idx\_stack
-83 
+79     \textcolor{keyword}{def }add\_idx\_stack(self):
+80         stack = [i \textcolor{keywordflow}{for} i \textcolor{keywordflow}{in} range(len(self.personalities))]
+81         random.seed()
+82         random.shuffle(stack)
+83         self.idx\_stack = stack + self.idx\_stack
+84 
 \end{DoxyCode}
 \mbox{\Hypertarget{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_ad35601df7a905c1e043c6fb1117db74e}\label{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_ad35601df7a905c1e043c6fb1117db74e}} 
 \index{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator}!pop\+\_\+personality@{pop\+\_\+personality}}
@@ -119,17 +117,17 @@ Definition at line 78 of file worlds.\+py.
 
 
 
-Definition at line 84 of file worlds.\+py.
+Definition at line 85 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-84     \textcolor{keyword}{def }pop\_personality(self):
-85         \textcolor{keywordflow}{if} len(self.idx\_stack) == 0:
-86             self.add\_idx\_stack()
-87         idx = self.idx\_stack.pop()
-88         data = self.personalities[idx]
-89         \textcolor{keywordflow}{return} (idx, data)
-90 
+85     \textcolor{keyword}{def }pop\_personality(self):
+86         \textcolor{keywordflow}{if} len(self.idx\_stack) == 0:
+87             self.add\_idx\_stack()
+88         idx = self.idx\_stack.pop()
+89         data = self.personalities[idx]
+90         \textcolor{keywordflow}{return} (idx, data)
+91 
 \end{DoxyCode}
 \mbox{\Hypertarget{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_afbcf297c74564898b5c96d29c017c7b1}\label{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_afbcf297c74564898b5c96d29c017c7b1}} 
 \index{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator}!push\+\_\+personality@{push\+\_\+personality}}
@@ -139,13 +137,13 @@ Definition at line 84 of file worlds.\+py.
 
 
 
-Definition at line 91 of file worlds.\+py.
+Definition at line 92 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-91     \textcolor{keyword}{def }push\_personality(self, idx):
-92         self.idx\_stack.append(idx)
-93 
+92     \textcolor{keyword}{def }push\_personality(self, idx):
+93         self.idx\_stack.append(idx)
+94 
 \end{DoxyCode}
 \mbox{\Hypertarget{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_a19645254b8da82832d6bcb0825119c65}\label{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_a19645254b8da82832d6bcb0825119c65}} 
 \index{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator}!save\+\_\+idx\+\_\+stack@{save\+\_\+idx\+\_\+stack}}
@@ -155,15 +153,15 @@ Definition at line 91 of file worlds.\+py.
 
 
 
-Definition at line 94 of file worlds.\+py.
+Definition at line 95 of file worlds.\+py.
 
 
 \begin{DoxyCode}
-94     \textcolor{keyword}{def }save\_idx\_stack(self):
-95         with open(self.personalities\_idx\_stack\_path, \textcolor{stringliteral}{'wb'}) \textcolor{keyword}{as} handle:
-96             pickle.dump(self.idx\_stack, handle)
-97 
+95     \textcolor{keyword}{def }save\_idx\_stack(self):
+96         with open(self.personalities\_idx\_stack\_path, \textcolor{stringliteral}{'wb'}) \textcolor{keyword}{as} handle:
+97             pickle.dump(self.idx\_stack, handle)
 98 
+99 
 \end{DoxyCode}
 
 
@@ -176,7 +174,7 @@ Definition at line 94 of file worlds.\+py.
 
 
 
-Definition at line 72 of file worlds.\+py.
+Definition at line 73 of file worlds.\+py.
 
 \mbox{\Hypertarget{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_ad34d454740fa68cf23f3d35121fc92c6}\label{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_ad34d454740fa68cf23f3d35121fc92c6}} 
 \index{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator}!personalities@{personalities}}
@@ -186,7 +184,7 @@ Definition at line 72 of file worlds.\+py.
 
 
 
-Definition at line 64 of file worlds.\+py.
+Definition at line 65 of file worlds.\+py.
 
 \mbox{\Hypertarget{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_a7d2134cba68716b4483d31741497c85e}\label{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_a7d2134cba68716b4483d31741497c85e}} 
 \index{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator}!personalities\+\_\+idx\+\_\+stack\+\_\+path@{personalities\+\_\+idx\+\_\+stack\+\_\+path}}
@@ -196,7 +194,7 @@ Definition at line 64 of file worlds.\+py.
 
 
 
-Definition at line 60 of file worlds.\+py.
+Definition at line 61 of file worlds.\+py.
 
 \mbox{\Hypertarget{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_a1d40759bb3feb63f32181b1b623437d2}\label{classimage__chat__collection_1_1worlds_1_1PersonalityGenerator_a1d40759bb3feb63f32181b1b623437d2}} 
 \index{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator@{image\+\_\+chat\+\_\+collection\+::worlds\+::\+Personality\+Generator}!personalities\+\_\+path@{personalities\+\_\+path}}
@@ -206,7 +204,7 @@ Definition at line 60 of file worlds.\+py.
 
 
 
-Definition at line 57 of file worlds.\+py.
+Definition at line 58 of file worlds.\+py.
 
 
 

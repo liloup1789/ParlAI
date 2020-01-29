@@ -19,9 +19,9 @@ def \hyperlink{namespaceparlai_1_1core_1_1dict_a5e9eb43b6c0dce0b3aab7f3ea3717de6
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-bool \hyperlink{namespaceparlai_1_1core_1_1dict_a9adf6ecd08289a0b0faa90fd2a507e91}{B\+P\+E\+\_\+\+I\+N\+S\+T\+A\+L\+L\+ED} = True
+\hyperlink{namespaceparlai_1_1core_1_1dict_a55194215927ea8786279b5089781ce64}{B\+P\+E\+\_\+\+I\+N\+S\+T\+A\+L\+L\+ED}
 \item 
-\hyperlink{namespaceparlai_1_1core_1_1dict_acc80030514561837c1010293fd1010f4}{R\+E\+T\+OK} = re.\+compile(r\textquotesingle{}\textbackslash{}w+$\vert$\mbox{[}$^\wedge$\textbackslash{}w\textbackslash{}s\mbox{]}$\vert$\textbackslash{}n\textquotesingle{}, re.\+U\+N\+I\+C\+O\+DE)
+\hyperlink{namespaceparlai_1_1core_1_1dict_acc80030514561837c1010293fd1010f4}{R\+E\+T\+OK}
 \end{DoxyCompactItemize}
 
 
@@ -41,22 +41,22 @@ For example, \n => \\n and \t => \\t
 \end{DoxyVerb}
  
 
-Definition at line 33 of file dict.\+py.
+Definition at line 34 of file dict.\+py.
 
 
 \begin{DoxyCode}
-33 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1dict_ae44fe4a2be005a4023a758a58f656495}{escape}(s):
-34     \textcolor{stringliteral}{r"""}
-35 \textcolor{stringliteral}{    Replace potential special characters with escaped version.}
-36 \textcolor{stringliteral}{}
-37 \textcolor{stringliteral}{    For example, \(\backslash\)n => \(\backslash\)\(\backslash\)n and \(\backslash\)t => \(\backslash\)\(\backslash\)t}
-38 \textcolor{stringliteral}{}
-39 \textcolor{stringliteral}{    :param s:}
-40 \textcolor{stringliteral}{        string to escape}
-41 \textcolor{stringliteral}{    """}
-42     \textcolor{keywordflow}{return} s.replace(\textcolor{stringliteral}{'\(\backslash\)n'}, \textcolor{stringliteral}{'\(\backslash\)\(\backslash\)n'}).replace(\textcolor{stringliteral}{'\(\backslash\)t'}, \textcolor{stringliteral}{'\(\backslash\)\(\backslash\)t'}).replace(\textcolor{stringliteral}{'\(\backslash\)r'}, \textcolor{stringliteral}{'\(\backslash\)\(\backslash\)r')}
-43 \textcolor{stringliteral}{}
+34 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1dict_ae44fe4a2be005a4023a758a58f656495}{escape}(s):
+35     \textcolor{stringliteral}{r"""}
+36 \textcolor{stringliteral}{    Replace potential special characters with escaped version.}
+37 \textcolor{stringliteral}{}
+38 \textcolor{stringliteral}{    For example, \(\backslash\)n => \(\backslash\)\(\backslash\)n and \(\backslash\)t => \(\backslash\)\(\backslash\)t}
+39 \textcolor{stringliteral}{}
+40 \textcolor{stringliteral}{    :param s:}
+41 \textcolor{stringliteral}{        string to escape}
+42 \textcolor{stringliteral}{    """}
+43     \textcolor{keywordflow}{return} s.replace(\textcolor{stringliteral}{'\(\backslash\)n'}, \textcolor{stringliteral}{'\(\backslash\)\(\backslash\)n'}).replace(\textcolor{stringliteral}{'\(\backslash\)t'}, \textcolor{stringliteral}{'\(\backslash\)\(\backslash\)t'}).replace(\textcolor{stringliteral}{'\(\backslash\)r'}, \textcolor{stringliteral}{'\(\backslash\)\(\backslash\)r')}
 44 \textcolor{stringliteral}{}
+45 \textcolor{stringliteral}{}
 \textcolor{stringliteral}{\end{DoxyCode}
 \mbox{\Hypertarget{namespaceparlai_1_1core_1_1dict_a5e9eb43b6c0dce0b3aab7f3ea3717de6}\label{namespaceparlai_1_1core_1_1dict_a5e9eb43b6c0dce0b3aab7f3ea3717de6}} 
 \index{parlai\+::core\+::dict@{parlai\+::core\+::dict}!find\+\_\+ngrams@{find\+\_\+ngrams}}
@@ -75,49 +75,49 @@ Definition at line 33 of file dict.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 57 of file dict.\+py.
+Definition at line 58 of file dict.\+py.
 
 
 \begin{DoxyCode}
-57 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1dict_a5e9eb43b6c0dce0b3aab7f3ea3717de6}{find\_ngrams}(token\_dict, text, n):
-58     \textcolor{stringliteral}{"""}
-59 \textcolor{stringliteral}{    Break text into ngrams that appear in ``token\_dict``.}
-60 \textcolor{stringliteral}{}
-61 \textcolor{stringliteral}{    :param token\_dict:}
-62 \textcolor{stringliteral}{        ``dict`` to check for ngrams}
-63 \textcolor{stringliteral}{    :param text:}
-64 \textcolor{stringliteral}{        ``str`` to look for ngrams in}
-65 \textcolor{stringliteral}{    :param n:}
-66 \textcolor{stringliteral}{        ``int`` max size of ngrams}
-67 \textcolor{stringliteral}{    """}
-68     \textcolor{comment}{# base case}
-69     \textcolor{keywordflow}{if} n <= 1:
-70         \textcolor{keywordflow}{return} text
-71     \textcolor{comment}{# tokens committed to output}
-72     saved\_tokens = []
-73     \textcolor{comment}{# tokens remaining to be searched in sentence}
-74     search\_tokens = text[:]
-75     \textcolor{comment}{# tokens stored until next ngram found}
-76     next\_search = []
-77     \textcolor{keywordflow}{while} len(search\_tokens) >= n:
-78         ngram = \textcolor{stringliteral}{' '}.join(search\_tokens[:n])
-79         \textcolor{keywordflow}{if} ngram \textcolor{keywordflow}{in} token\_dict:
-80             \textcolor{comment}{# first, search previous unmatched words for smaller ngrams}
-81             sub\_n = min(len(next\_search), n - 1)
-82             saved\_tokens.extend(\hyperlink{namespaceparlai_1_1core_1_1dict_a5e9eb43b6c0dce0b3aab7f3ea3717de6}{find\_ngrams}(token\_dict, next\_search, sub\_n))
-83             next\_search.clear()
-84             \textcolor{comment}{# then add this ngram}
-85             saved\_tokens.append(ngram)
-86             \textcolor{comment}{# then pop this ngram from the remaining words to search}
-87             search\_tokens = search\_tokens[n:]
-88         \textcolor{keywordflow}{else}:
-89             next\_search.append(search\_tokens.pop(0))
-90     remainder = next\_search + search\_tokens
-91     sub\_n = min(len(remainder), n - 1)
-92     saved\_tokens.extend(\hyperlink{namespaceparlai_1_1core_1_1dict_a5e9eb43b6c0dce0b3aab7f3ea3717de6}{find\_ngrams}(token\_dict, remainder, sub\_n))
-93     \textcolor{keywordflow}{return} saved\_tokens
-94 
+58 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1dict_a5e9eb43b6c0dce0b3aab7f3ea3717de6}{find\_ngrams}(token\_dict, text, n):
+59     \textcolor{stringliteral}{"""}
+60 \textcolor{stringliteral}{    Break text into ngrams that appear in ``token\_dict``.}
+61 \textcolor{stringliteral}{}
+62 \textcolor{stringliteral}{    :param token\_dict:}
+63 \textcolor{stringliteral}{        ``dict`` to check for ngrams}
+64 \textcolor{stringliteral}{    :param text:}
+65 \textcolor{stringliteral}{        ``str`` to look for ngrams in}
+66 \textcolor{stringliteral}{    :param n:}
+67 \textcolor{stringliteral}{        ``int`` max size of ngrams}
+68 \textcolor{stringliteral}{    """}
+69     \textcolor{comment}{# base case}
+70     \textcolor{keywordflow}{if} n <= 1:
+71         \textcolor{keywordflow}{return} text
+72     \textcolor{comment}{# tokens committed to output}
+73     saved\_tokens = []
+74     \textcolor{comment}{# tokens remaining to be searched in sentence}
+75     search\_tokens = text[:]
+76     \textcolor{comment}{# tokens stored until next ngram found}
+77     next\_search = []
+78     \textcolor{keywordflow}{while} len(search\_tokens) >= n:
+79         ngram = \textcolor{stringliteral}{' '}.join(search\_tokens[:n])
+80         \textcolor{keywordflow}{if} ngram \textcolor{keywordflow}{in} token\_dict:
+81             \textcolor{comment}{# first, search previous unmatched words for smaller ngrams}
+82             sub\_n = min(len(next\_search), n - 1)
+83             saved\_tokens.extend(\hyperlink{namespaceparlai_1_1core_1_1dict_a5e9eb43b6c0dce0b3aab7f3ea3717de6}{find\_ngrams}(token\_dict, next\_search, sub\_n))
+84             next\_search.clear()
+85             \textcolor{comment}{# then add this ngram}
+86             saved\_tokens.append(ngram)
+87             \textcolor{comment}{# then pop this ngram from the remaining words to search}
+88             search\_tokens = search\_tokens[n:]
+89         \textcolor{keywordflow}{else}:
+90             next\_search.append(search\_tokens.pop(0))
+91     remainder = next\_search + search\_tokens
+92     sub\_n = min(len(remainder), n - 1)
+93     saved\_tokens.extend(\hyperlink{namespaceparlai_1_1core_1_1dict_a5e9eb43b6c0dce0b3aab7f3ea3717de6}{find\_ngrams}(token\_dict, remainder, sub\_n))
+94     \textcolor{keywordflow}{return} saved\_tokens
 95 
+96 
 \end{DoxyCode}
 \mbox{\Hypertarget{namespaceparlai_1_1core_1_1dict_a4d8952ff127b540967c707a58e8ebb48}\label{namespaceparlai_1_1core_1_1dict_a4d8952ff127b540967c707a58e8ebb48}} 
 \index{parlai\+::core\+::dict@{parlai\+::core\+::dict}!unescape@{unescape}}
@@ -134,43 +134,43 @@ For example, \\n => \n and \\t => \t
 \end{DoxyVerb}
  
 
-Definition at line 45 of file dict.\+py.
+Definition at line 46 of file dict.\+py.
 
 
 \begin{DoxyCode}
-45 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1dict_a4d8952ff127b540967c707a58e8ebb48}{unescape}(s):
-46     \textcolor{stringliteral}{r"""}
-47 \textcolor{stringliteral}{    Revert escaped characters back to their special version.}
-48 \textcolor{stringliteral}{}
-49 \textcolor{stringliteral}{    For example, \(\backslash\)\(\backslash\)n => \(\backslash\)n and \(\backslash\)\(\backslash\)t => \(\backslash\)t}
-50 \textcolor{stringliteral}{}
-51 \textcolor{stringliteral}{    :param s:}
-52 \textcolor{stringliteral}{        string to unescape}
-53 \textcolor{stringliteral}{    """}
-54     \textcolor{keywordflow}{return} s.replace(\textcolor{stringliteral}{'\(\backslash\)\(\backslash\)n'}, \textcolor{stringliteral}{'\(\backslash\)n'}).replace(\textcolor{stringliteral}{'\(\backslash\)\(\backslash\)t'}, \textcolor{stringliteral}{'\(\backslash\)t'}).replace(\textcolor{stringliteral}{'\(\backslash\)\(\backslash\)r', '}\(\backslash\)r')
-55 
+46 \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1core_1_1dict_a4d8952ff127b540967c707a58e8ebb48}{unescape}(s):
+47     \textcolor{stringliteral}{r"""}
+48 \textcolor{stringliteral}{    Revert escaped characters back to their special version.}
+49 \textcolor{stringliteral}{}
+50 \textcolor{stringliteral}{    For example, \(\backslash\)\(\backslash\)n => \(\backslash\)n and \(\backslash\)\(\backslash\)t => \(\backslash\)t}
+51 \textcolor{stringliteral}{}
+52 \textcolor{stringliteral}{    :param s:}
+53 \textcolor{stringliteral}{        string to unescape}
+54 \textcolor{stringliteral}{    """}
+55     \textcolor{keywordflow}{return} s.replace(\textcolor{stringliteral}{'\(\backslash\)\(\backslash\)n'}, \textcolor{stringliteral}{'\(\backslash\)n'}).replace(\textcolor{stringliteral}{'\(\backslash\)\(\backslash\)t'}, \textcolor{stringliteral}{'\(\backslash\)t'}).replace(\textcolor{stringliteral}{'\(\backslash\)\(\backslash\)r', '}\(\backslash\)r')
 56 
+57 
 \end{DoxyCode}
 
 
 \subsection{Variable Documentation}
-\mbox{\Hypertarget{namespaceparlai_1_1core_1_1dict_a9adf6ecd08289a0b0faa90fd2a507e91}\label{namespaceparlai_1_1core_1_1dict_a9adf6ecd08289a0b0faa90fd2a507e91}} 
+\mbox{\Hypertarget{namespaceparlai_1_1core_1_1dict_a55194215927ea8786279b5089781ce64}\label{namespaceparlai_1_1core_1_1dict_a55194215927ea8786279b5089781ce64}} 
 \index{parlai\+::core\+::dict@{parlai\+::core\+::dict}!B\+P\+E\+\_\+\+I\+N\+S\+T\+A\+L\+L\+ED@{B\+P\+E\+\_\+\+I\+N\+S\+T\+A\+L\+L\+ED}}
 \index{B\+P\+E\+\_\+\+I\+N\+S\+T\+A\+L\+L\+ED@{B\+P\+E\+\_\+\+I\+N\+S\+T\+A\+L\+L\+ED}!parlai\+::core\+::dict@{parlai\+::core\+::dict}}
 \subsubsection{\texorpdfstring{B\+P\+E\+\_\+\+I\+N\+S\+T\+A\+L\+L\+ED}{BPE\_INSTALLED}}
-{\footnotesize\ttfamily bool parlai.\+core.\+dict.\+B\+P\+E\+\_\+\+I\+N\+S\+T\+A\+L\+L\+ED = True}
+{\footnotesize\ttfamily parlai.\+core.\+dict.\+B\+P\+E\+\_\+\+I\+N\+S\+T\+A\+L\+L\+ED}
 
 
 
-Definition at line 26 of file dict.\+py.
+Definition at line 27 of file dict.\+py.
 
 \mbox{\Hypertarget{namespaceparlai_1_1core_1_1dict_acc80030514561837c1010293fd1010f4}\label{namespaceparlai_1_1core_1_1dict_acc80030514561837c1010293fd1010f4}} 
 \index{parlai\+::core\+::dict@{parlai\+::core\+::dict}!R\+E\+T\+OK@{R\+E\+T\+OK}}
 \index{R\+E\+T\+OK@{R\+E\+T\+OK}!parlai\+::core\+::dict@{parlai\+::core\+::dict}}
 \subsubsection{\texorpdfstring{R\+E\+T\+OK}{RETOK}}
-{\footnotesize\ttfamily parlai.\+core.\+dict.\+R\+E\+T\+OK = re.\+compile(r\textquotesingle{}\textbackslash{}w+$\vert$\mbox{[}$^\wedge$\textbackslash{}w\textbackslash{}s\mbox{]}$\vert$\textbackslash{}n\textquotesingle{}, re.\+U\+N\+I\+C\+O\+DE)}
+{\footnotesize\ttfamily parlai.\+core.\+dict.\+R\+E\+T\+OK}
 
 
 
-Definition at line 30 of file dict.\+py.
+Definition at line 31 of file dict.\+py.
 

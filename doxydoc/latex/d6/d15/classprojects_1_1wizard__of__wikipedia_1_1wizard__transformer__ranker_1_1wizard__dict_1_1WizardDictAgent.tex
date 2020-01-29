@@ -2,8 +2,7 @@
 \label{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent}\index{projects.\+wizard\+\_\+of\+\_\+wikipedia.\+wizard\+\_\+transformer\+\_\+ranker.\+wizard\+\_\+dict.\+Wizard\+Dict\+Agent@{projects.\+wizard\+\_\+of\+\_\+wikipedia.\+wizard\+\_\+transformer\+\_\+ranker.\+wizard\+\_\+dict.\+Wizard\+Dict\+Agent}}
 
 
-Inheritance diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+wizard\+\_\+transformer\+\_\+ranker.\+wizard\+\_\+dict.\+Wizard\+Dict\+Agent\+:
-\nopagebreak
+Inheritance diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+wizard\+\_\+transformer\+\_\+ranker.\+wizard\+\_\+dict.\+Wizard\+Dict\+Agent\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -17,7 +16,7 @@ Collaboration diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+wizard\+\_\
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=305pt]{da/d4e/classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent__coll__graph}
+\includegraphics[width=259pt]{da/d4e/classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Public Member Functions}
@@ -66,7 +65,7 @@ def \hyperlink{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ra
 \subsection{Detailed Description}
 
 
-Definition at line 17 of file wizard\+\_\+dict.\+py.
+Definition at line 18 of file wizard\+\_\+dict.\+py.
 
 
 
@@ -79,53 +78,53 @@ Definition at line 17 of file wizard\+\_\+dict.\+py.
 
 
 
-Definition at line 18 of file wizard\+\_\+dict.\+py.
+Definition at line 19 of file wizard\+\_\+dict.\+py.
 
 
 \begin{DoxyCode}
-18     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
-19         \textcolor{comment}{# initialize fields}
-20         self.opt = copy.deepcopy(opt)
-21         self.minfreq = opt.get(\textcolor{stringliteral}{'dict\_minfreq'}, DictionaryAgent.default\_minfreq)
-22         self.null\_token = \textcolor{stringliteral}{'\_\_PAD\_\_'}
-23         self.end\_token = \textcolor{stringliteral}{'\_\_SOC\_\_'}
-24         self.unk\_token = \textcolor{stringliteral}{'\_\_UNK\_\_'}
-25         self.start\_token = \textcolor{stringliteral}{'\_\_SOC\_\_'}
-26         self.tokenizer = opt.get(\textcolor{stringliteral}{'dict\_tokenizer'}, \textcolor{stringliteral}{'whitespace'})
-27         self.lower = opt.get(\textcolor{stringliteral}{'dict\_lower'}, DictionaryAgent.default\_lower)
-28         self.maxtokens = opt.get(\textcolor{stringliteral}{'dict\_maxtokens'}, DictionaryAgent.default\_maxtokens)
-29         self.textfields = opt.get(
-30             \textcolor{stringliteral}{'dict\_textfields'}, DictionaryAgent.default\_textfields
-31         ).split(\textcolor{stringliteral}{","})
-32 
-33         \textcolor{keywordflow}{if} shared:
-34             self.freq = shared.get(\textcolor{stringliteral}{'freq'}, \{\})
-35             self.tok2ind = shared.get(\textcolor{stringliteral}{'tok2ind'}, \{\})
-36             self.ind2tok = shared.get(\textcolor{stringliteral}{'ind2tok'}, \{\})
-37         \textcolor{keywordflow}{else}:
-38             self.freq = defaultdict(int)
-39             self.tok2ind = \{\}
-40             self.ind2tok = \{\}
-41 
-42             \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'dict\_file'}) \textcolor{keywordflow}{and} os.path.isfile(opt[\textcolor{stringliteral}{'dict\_file'}]):
-43                 \textcolor{comment}{# load pre-existing dictionary}
-44                 self.load(opt[\textcolor{stringliteral}{'dict\_file'}])
-45             \textcolor{keywordflow}{elif} opt.get(\textcolor{stringliteral}{'dict\_initpath'}):
-46                 \textcolor{comment}{# load seed dictionary}
-47                 opt[\textcolor{stringliteral}{'dict\_initpath'}] = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_a5fbd3301b67f00d6d146fb01c7cd7626}{modelzoo\_path}(
-48                     opt.get(\textcolor{stringliteral}{'datapath'}), opt[\textcolor{stringliteral}{'dict\_initpath'}]
-49                 )
-50                 self.load(opt[\textcolor{stringliteral}{'dict\_initpath'}])
-51 
-52             self.add\_token(self.null\_token)
-53             self.add\_token(self.start\_token)
-54             self.add\_token(self.end\_token)
-55             self.add\_token(self.unk\_token)
-56 
-57         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} shared:
-58             \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'dict\_file'}):
-59                 self.save\_path = opt[\textcolor{stringliteral}{'dict\_file'}]
-60 
+19     \textcolor{keyword}{def }\_\_init\_\_(self, opt, shared=None):
+20         \textcolor{comment}{# initialize fields}
+21         self.opt = copy.deepcopy(opt)
+22         self.minfreq = opt.get(\textcolor{stringliteral}{'dict\_minfreq'}, DictionaryAgent.default\_minfreq)
+23         self.null\_token = \textcolor{stringliteral}{'\_\_PAD\_\_'}
+24         self.end\_token = \textcolor{stringliteral}{'\_\_SOC\_\_'}
+25         self.unk\_token = \textcolor{stringliteral}{'\_\_UNK\_\_'}
+26         self.start\_token = \textcolor{stringliteral}{'\_\_SOC\_\_'}
+27         self.tokenizer = opt.get(\textcolor{stringliteral}{'dict\_tokenizer'}, \textcolor{stringliteral}{'whitespace'})
+28         self.lower = opt.get(\textcolor{stringliteral}{'dict\_lower'}, DictionaryAgent.default\_lower)
+29         self.maxtokens = opt.get(\textcolor{stringliteral}{'dict\_maxtokens'}, DictionaryAgent.default\_maxtokens)
+30         self.textfields = opt.get(
+31             \textcolor{stringliteral}{'dict\_textfields'}, DictionaryAgent.default\_textfields
+32         ).split(\textcolor{stringliteral}{","})
+33 
+34         \textcolor{keywordflow}{if} shared:
+35             self.freq = shared.get(\textcolor{stringliteral}{'freq'}, \{\})
+36             self.tok2ind = shared.get(\textcolor{stringliteral}{'tok2ind'}, \{\})
+37             self.ind2tok = shared.get(\textcolor{stringliteral}{'ind2tok'}, \{\})
+38         \textcolor{keywordflow}{else}:
+39             self.freq = defaultdict(int)
+40             self.tok2ind = \{\}
+41             self.ind2tok = \{\}
+42 
+43             \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'dict\_file'}) \textcolor{keywordflow}{and} os.path.isfile(opt[\textcolor{stringliteral}{'dict\_file'}]):
+44                 \textcolor{comment}{# load pre-existing dictionary}
+45                 self.load(opt[\textcolor{stringliteral}{'dict\_file'}])
+46             \textcolor{keywordflow}{elif} opt.get(\textcolor{stringliteral}{'dict\_initpath'}):
+47                 \textcolor{comment}{# load seed dictionary}
+48                 opt[\textcolor{stringliteral}{'dict\_initpath'}] = \hyperlink{namespaceparlai_1_1agents_1_1legacy__agents_1_1seq2seq_1_1utils__v0_a5fbd3301b67f00d6d146fb01c7cd7626}{modelzoo\_path}(
+49                     opt.get(\textcolor{stringliteral}{'datapath'}), opt[\textcolor{stringliteral}{'dict\_initpath'}]
+50                 )
+51                 self.load(opt[\textcolor{stringliteral}{'dict\_initpath'}])
+52 
+53             self.add\_token(self.null\_token)
+54             self.add\_token(self.start\_token)
+55             self.add\_token(self.end\_token)
+56             self.add\_token(self.unk\_token)
+57 
+58         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} shared:
+59             \textcolor{keywordflow}{if} opt.get(\textcolor{stringliteral}{'dict\_file'}):
+60                 self.save\_path = opt[\textcolor{stringliteral}{'dict\_file'}]
+61 
 \end{DoxyCode}
 
 
@@ -141,17 +140,17 @@ the returned list.
 \end{DoxyVerb}
  
 
-Definition at line 90 of file wizard\+\_\+dict.\+py.
+Definition at line 91 of file wizard\+\_\+dict.\+py.
 
 
 \begin{DoxyCode}
-90     \textcolor{keyword}{def }re\_tokenize(self, text):
-91         \textcolor{stringliteral}{"""}
-92 \textcolor{stringliteral}{        This splits along whitespace and punctuation and keeps the newline as a token in}
-93 \textcolor{stringliteral}{        the returned list.}
-94 \textcolor{stringliteral}{        """}
-95         \textcolor{keywordflow}{return} RETOK.findall(text)
-96 \end{DoxyCode}
+91     \textcolor{keyword}{def }re\_tokenize(self, text):
+92         \textcolor{stringliteral}{"""}
+93 \textcolor{stringliteral}{        This splits along whitespace and punctuation and keeps the newline as a token in}
+94 \textcolor{stringliteral}{        the returned list.}
+95 \textcolor{stringliteral}{        """}
+96         \textcolor{keywordflow}{return} RETOK.findall(text)
+97 \end{DoxyCode}
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent_a314852ee65380b494e078d51d73c0767}\label{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent_a314852ee65380b494e078d51d73c0767}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent}!tokenize@{tokenize}}
 \index{tokenize@{tokenize}!projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent}}
@@ -162,39 +161,39 @@ Definition at line 90 of file wizard\+\_\+dict.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 61 of file wizard\+\_\+dict.\+py.
+Definition at line 62 of file wizard\+\_\+dict.\+py.
 
 
 \begin{DoxyCode}
-61     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_a1fdb457e98eb4e4c26047e229686a616}{tokenize}(self, text, building=False):
-62         \textcolor{stringliteral}{"""}
-63 \textcolor{stringliteral}{        Returns a sequence of tokens from the iterable.}
-64 \textcolor{stringliteral}{        """}
-65         \textcolor{keywordflow}{if} self.lower:
-66             text = text.lower()
-67 
-68         \textcolor{keywordflow}{if} self.tokenizer == \textcolor{stringliteral}{'re'}:
-69             \textcolor{keywordflow}{return} self.re\_tokenize(text)
-70 
-71         \textcolor{keywordflow}{elif} self.tokenizer == \textcolor{stringliteral}{'whitespace'}:
-72             \textcolor{keywordflow}{return} text.split(\textcolor{stringliteral}{' '})
-73 
-74         word\_tokens = (
-75             text.replace(\textcolor{stringliteral}{'.'}, \textcolor{stringliteral}{' . '})
-76             .replace(\textcolor{stringliteral}{'. . .'}, \textcolor{stringliteral}{'...'})
-77             .replace(\textcolor{stringliteral}{','}, \textcolor{stringliteral}{' , '})
-78             .replace(\textcolor{stringliteral}{';'}, \textcolor{stringliteral}{' ; '})
-79             .replace(\textcolor{stringliteral}{':'}, \textcolor{stringliteral}{' : '})
-80             .replace(\textcolor{stringliteral}{'!'}, \textcolor{stringliteral}{' ! '})
-81             .replace(\textcolor{stringliteral}{'?'}, \textcolor{stringliteral}{' ? '})
-82             .replace(\textcolor{stringliteral}{'  '}, \textcolor{stringliteral}{' '})
+62     \textcolor{keyword}{def }\hyperlink{namespaceparlai_1_1agents_1_1tfidf__retriever_1_1build__tfidf_a1fdb457e98eb4e4c26047e229686a616}{tokenize}(self, text, building=False):
+63         \textcolor{stringliteral}{"""}
+64 \textcolor{stringliteral}{        Returns a sequence of tokens from the iterable.}
+65 \textcolor{stringliteral}{        """}
+66         \textcolor{keywordflow}{if} self.lower:
+67             text = text.lower()
+68 
+69         \textcolor{keywordflow}{if} self.tokenizer == \textcolor{stringliteral}{'re'}:
+70             \textcolor{keywordflow}{return} self.re\_tokenize(text)
+71 
+72         \textcolor{keywordflow}{elif} self.tokenizer == \textcolor{stringliteral}{'whitespace'}:
+73             \textcolor{keywordflow}{return} text.split(\textcolor{stringliteral}{' '})
+74 
+75         word\_tokens = (
+76             text.replace(\textcolor{stringliteral}{'.'}, \textcolor{stringliteral}{' . '})
+77             .replace(\textcolor{stringliteral}{'. . .'}, \textcolor{stringliteral}{'...'})
+78             .replace(\textcolor{stringliteral}{','}, \textcolor{stringliteral}{' , '})
+79             .replace(\textcolor{stringliteral}{';'}, \textcolor{stringliteral}{' ; '})
+80             .replace(\textcolor{stringliteral}{':'}, \textcolor{stringliteral}{' : '})
+81             .replace(\textcolor{stringliteral}{'!'}, \textcolor{stringliteral}{' ! '})
+82             .replace(\textcolor{stringliteral}{'?'}, \textcolor{stringliteral}{' ? '})
 83             .replace(\textcolor{stringliteral}{'  '}, \textcolor{stringliteral}{' '})
-84             .strip()
-85             .split(\textcolor{stringliteral}{" "})
-86         )
-87 
-88         \textcolor{keywordflow}{return} word\_tokens
-89 
+84             .replace(\textcolor{stringliteral}{'  '}, \textcolor{stringliteral}{' '})
+85             .strip()
+86             .split(\textcolor{stringliteral}{" "})
+87         )
+88 
+89         \textcolor{keywordflow}{return} word\_tokens
+90 
 \end{DoxyCode}
 
 
@@ -207,7 +206,7 @@ Definition at line 61 of file wizard\+\_\+dict.\+py.
 
 
 
-Definition at line 23 of file wizard\+\_\+dict.\+py.
+Definition at line 24 of file wizard\+\_\+dict.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent_a022040da2100545d9fbc6bbc89f5d49f}\label{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent_a022040da2100545d9fbc6bbc89f5d49f}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent}!freq@{freq}}
@@ -217,7 +216,7 @@ Definition at line 23 of file wizard\+\_\+dict.\+py.
 
 
 
-Definition at line 34 of file wizard\+\_\+dict.\+py.
+Definition at line 35 of file wizard\+\_\+dict.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent_ae2f2a2a99a04c946dfb2ec015548a039}\label{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent_ae2f2a2a99a04c946dfb2ec015548a039}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent}!ind2tok@{ind2tok}}
@@ -227,7 +226,7 @@ Definition at line 34 of file wizard\+\_\+dict.\+py.
 
 
 
-Definition at line 36 of file wizard\+\_\+dict.\+py.
+Definition at line 37 of file wizard\+\_\+dict.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent_ab62e728ac8efbece4e0fe71a46321ca9}\label{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent_ab62e728ac8efbece4e0fe71a46321ca9}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent}!lower@{lower}}
@@ -237,7 +236,7 @@ Definition at line 36 of file wizard\+\_\+dict.\+py.
 
 
 
-Definition at line 27 of file wizard\+\_\+dict.\+py.
+Definition at line 28 of file wizard\+\_\+dict.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent_a12f335703ed1f7297cb35fbf0a9e5d2b}\label{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent_a12f335703ed1f7297cb35fbf0a9e5d2b}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent}!maxtokens@{maxtokens}}
@@ -247,7 +246,7 @@ Definition at line 27 of file wizard\+\_\+dict.\+py.
 
 
 
-Definition at line 28 of file wizard\+\_\+dict.\+py.
+Definition at line 29 of file wizard\+\_\+dict.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent_ab47aa24ef160f7fdf90c271537e61e1f}\label{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent_ab47aa24ef160f7fdf90c271537e61e1f}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent}!minfreq@{minfreq}}
@@ -257,7 +256,7 @@ Definition at line 28 of file wizard\+\_\+dict.\+py.
 
 
 
-Definition at line 21 of file wizard\+\_\+dict.\+py.
+Definition at line 22 of file wizard\+\_\+dict.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent_afe87335393b6e0205fd214ea147fe571}\label{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent_afe87335393b6e0205fd214ea147fe571}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent}!null\+\_\+token@{null\+\_\+token}}
@@ -267,7 +266,7 @@ Definition at line 21 of file wizard\+\_\+dict.\+py.
 
 
 
-Definition at line 22 of file wizard\+\_\+dict.\+py.
+Definition at line 23 of file wizard\+\_\+dict.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent_a831fb6427bb524c6ffdb0ceb287f53ae}\label{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent_a831fb6427bb524c6ffdb0ceb287f53ae}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent}!opt@{opt}}
@@ -277,7 +276,7 @@ Definition at line 22 of file wizard\+\_\+dict.\+py.
 
 
 
-Definition at line 20 of file wizard\+\_\+dict.\+py.
+Definition at line 21 of file wizard\+\_\+dict.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent_a8a986cc69f509a67dd8ad58bd0c7c249}\label{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent_a8a986cc69f509a67dd8ad58bd0c7c249}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent}!save\+\_\+path@{save\+\_\+path}}
@@ -287,7 +286,7 @@ Definition at line 20 of file wizard\+\_\+dict.\+py.
 
 
 
-Definition at line 59 of file wizard\+\_\+dict.\+py.
+Definition at line 60 of file wizard\+\_\+dict.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent_a3ae9c878781a2aa1e902237855959761}\label{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent_a3ae9c878781a2aa1e902237855959761}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent}!start\+\_\+token@{start\+\_\+token}}
@@ -297,7 +296,7 @@ Definition at line 59 of file wizard\+\_\+dict.\+py.
 
 
 
-Definition at line 25 of file wizard\+\_\+dict.\+py.
+Definition at line 26 of file wizard\+\_\+dict.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent_a48b3751a63050a1d95f788b276308775}\label{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent_a48b3751a63050a1d95f788b276308775}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent}!textfields@{textfields}}
@@ -307,7 +306,7 @@ Definition at line 25 of file wizard\+\_\+dict.\+py.
 
 
 
-Definition at line 29 of file wizard\+\_\+dict.\+py.
+Definition at line 30 of file wizard\+\_\+dict.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent_ad4790ec494e3885199eaff3adfeb99c1}\label{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent_ad4790ec494e3885199eaff3adfeb99c1}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent}!tok2ind@{tok2ind}}
@@ -317,7 +316,7 @@ Definition at line 29 of file wizard\+\_\+dict.\+py.
 
 
 
-Definition at line 35 of file wizard\+\_\+dict.\+py.
+Definition at line 36 of file wizard\+\_\+dict.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent_a8ad5d7d3abb55972c6377706f1b6eb62}\label{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent_a8ad5d7d3abb55972c6377706f1b6eb62}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent}!tokenizer@{tokenizer}}
@@ -327,7 +326,7 @@ Definition at line 35 of file wizard\+\_\+dict.\+py.
 
 
 
-Definition at line 26 of file wizard\+\_\+dict.\+py.
+Definition at line 27 of file wizard\+\_\+dict.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent_a4952dc69f060271785e35c1aa44ff9ca}\label{classprojects_1_1wizard__of__wikipedia_1_1wizard__transformer__ranker_1_1wizard__dict_1_1WizardDictAgent_a4952dc69f060271785e35c1aa44ff9ca}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::wizard\+\_\+transformer\+\_\+ranker\+::wizard\+\_\+dict\+::\+Wizard\+Dict\+Agent}!unk\+\_\+token@{unk\+\_\+token}}
@@ -337,7 +336,7 @@ Definition at line 26 of file wizard\+\_\+dict.\+py.
 
 
 
-Definition at line 24 of file wizard\+\_\+dict.\+py.
+Definition at line 25 of file wizard\+\_\+dict.\+py.
 
 
 

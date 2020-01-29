@@ -2,8 +2,7 @@
 \label{classprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_1_1ContextKnowledgeEncoder}\index{projects.\+wizard\+\_\+of\+\_\+wikipedia.\+generator.\+modules.\+Context\+Knowledge\+Encoder@{projects.\+wizard\+\_\+of\+\_\+wikipedia.\+generator.\+modules.\+Context\+Knowledge\+Encoder}}
 
 
-Inheritance diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+generator.\+modules.\+Context\+Knowledge\+Encoder\+:
-\nopagebreak
+Inheritance diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+generator.\+modules.\+Context\+Knowledge\+Encoder\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+generator.\+m
 \end{figure}
 
 
-Collaboration diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+generator.\+modules.\+Context\+Knowledge\+Encoder\+:
-\nopagebreak
+Collaboration diagram for projects.\+wizard\+\_\+of\+\_\+wikipedia.\+generator.\+modules.\+Context\+Knowledge\+Encoder\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -41,7 +39,7 @@ def \hyperlink{classprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_1_
 \subsection{Detailed Description}
 
 
-Definition at line 55 of file modules.\+py.
+Definition at line 73 of file modules.\+py.
 
 
 
@@ -54,18 +52,18 @@ Definition at line 55 of file modules.\+py.
 
 
 
-Definition at line 56 of file modules.\+py.
+Definition at line 74 of file modules.\+py.
 
 
 \begin{DoxyCode}
-56     \textcolor{keyword}{def }\_\_init\_\_(self, transformer):
-57         super().\_\_init\_\_()
-58         \textcolor{comment}{# The transformer takes care of most of the work, but other modules}
-59         \textcolor{comment}{# expect us to have an embeddings available}
-60         self.embeddings = transformer.embeddings
-61         self.embed\_dim = transformer.embeddings.embedding\_dim
-62         self.transformer = transformer
-63 
+74     \textcolor{keyword}{def }\_\_init\_\_(self, transformer):
+75         super().\_\_init\_\_()
+76         \textcolor{comment}{# The transformer takes care of most of the work, but other modules}
+77         \textcolor{comment}{# expect us to have an embeddings available}
+78         self.embeddings = transformer.embeddings
+79         self.embed\_dim = transformer.embeddings.embedding\_dim
+80         self.transformer = transformer
+81 
 \end{DoxyCode}
 
 
@@ -78,56 +76,56 @@ Definition at line 56 of file modules.\+py.
 
 
 
-Definition at line 64 of file modules.\+py.
+Definition at line 82 of file modules.\+py.
 
 
 \begin{DoxyCode}
-64     \textcolor{keyword}{def }forward(self, src\_tokens, know\_tokens, ck\_mask, cs\_ids, use\_cs\_ids):
-65         \textcolor{comment}{# encode the context, pretty basic}
-66         context\_encoded, context\_mask = self.transformer(src\_tokens)
-67 
-68         \textcolor{comment}{# make all the knowledge into a 2D matrix to encode}
-69         N, K, Tk = know\_tokens.size()
-70         know\_flat = know\_tokens.reshape(-1, Tk)
-71         know\_encoded, know\_mask = self.transformer(know\_flat)
-72 
-73         \textcolor{comment}{# compute our sentence embeddings for context and knowledge}
-74         context\_use = \hyperlink{namespaceprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_aa0e28a2592caa75f5c687c6200d2a68d}{universal\_sentence\_embedding}(context\_encoded, 
-      context\_mask)
-75         know\_use = \hyperlink{namespaceprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_aa0e28a2592caa75f5c687c6200d2a68d}{universal\_sentence\_embedding}(know\_encoded, know\_mask)
-76 
-77         \textcolor{comment}{# remash it back into the shape we need}
-78         know\_use = know\_use.reshape(N, know\_tokens.size(1), self.embed\_dim)
-79         context\_use /= np.sqrt(self.embed\_dim)
-80         know\_use /= np.sqrt(self.embed\_dim)
-81 
-82         ck\_attn = th.bmm(know\_use, context\_use.unsqueeze(-1)).squeeze(-1)
-83         \textcolor{comment}{# fill with near -inf}
-84         ck\_attn.masked\_fill\_(~ck\_mask, \hyperlink{namespaceparlai_1_1utils_1_1misc_a68c44ca571de7149b683539db659c330}{neginf}(context\_encoded.dtype))
+82     \textcolor{keyword}{def }forward(self, src\_tokens, know\_tokens, ck\_mask, cs\_ids, use\_cs\_ids):
+83         \textcolor{comment}{# encode the context, pretty basic}
+84         context\_encoded, context\_mask = self.transformer(src\_tokens)
 85 
-86         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} use\_cs\_ids:
-87             \textcolor{comment}{# if we're not given the true chosen\_sentence (test time), pick our}
-88             \textcolor{comment}{# best guess}
-89             \_, cs\_ids = ck\_attn.max(1)
+86         \textcolor{comment}{# make all the knowledge into a 2D matrix to encode}
+87         N, K, Tk = know\_tokens.size()
+88         know\_flat = know\_tokens.reshape(-1, Tk)
+89         know\_encoded, know\_mask = self.transformer(know\_flat)
 90 
-91         \textcolor{comment}{# pick the true chosen sentence. remember that TransformerEncoder outputs}
-92         \textcolor{comment}{#   (batch, time, embed)}
-93         \textcolor{comment}{# but because know\_encoded is a flattened, it's really}
-94         \textcolor{comment}{#   (N * K, T, D)}
-95         \textcolor{comment}{# We need to compute the offsets of the chosen\_sentences}
-96         cs\_offsets = th.arange(N, device=cs\_ids.device) * K + cs\_ids
-97         cs\_encoded = know\_encoded[cs\_offsets]
-98         \textcolor{comment}{# but padding is (N * K, T)}
-99         cs\_mask = know\_mask[cs\_offsets]
-100 
-101         \textcolor{comment}{# finally, concatenate it all}
-102         full\_enc = th.cat([cs\_encoded, context\_encoded], dim=1)
-103         full\_mask = th.cat([cs\_mask, context\_mask], dim=1)
-104 
-105         \textcolor{comment}{# also return the knowledge selection mask for the loss}
-106         \textcolor{keywordflow}{return} full\_enc, full\_mask, ck\_attn
-107 
+91         \textcolor{comment}{# compute our sentence embeddings for context and knowledge}
+92         context\_use = \hyperlink{namespaceprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_aa0e28a2592caa75f5c687c6200d2a68d}{universal\_sentence\_embedding}(context\_encoded, 
+      context\_mask)
+93         know\_use = \hyperlink{namespaceprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_aa0e28a2592caa75f5c687c6200d2a68d}{universal\_sentence\_embedding}(know\_encoded, know\_mask)
+94 
+95         \textcolor{comment}{# remash it back into the shape we need}
+96         know\_use = know\_use.reshape(N, know\_tokens.size(1), self.embed\_dim)
+97         context\_use /= np.sqrt(self.embed\_dim)
+98         know\_use /= np.sqrt(self.embed\_dim)
+99 
+100         ck\_attn = th.bmm(know\_use, context\_use.unsqueeze(-1)).squeeze(-1)
+101         \textcolor{comment}{# fill with near -inf}
+102         ck\_attn.masked\_fill\_(~ck\_mask, \hyperlink{namespaceparlai_1_1utils_1_1torch_a6c6e25115353dba479cd72dc31dc76ae}{neginf}(context\_encoded.dtype))
+103 
+104         \textcolor{keywordflow}{if} \textcolor{keywordflow}{not} use\_cs\_ids:
+105             \textcolor{comment}{# if we're not given the true chosen\_sentence (test time), pick our}
+106             \textcolor{comment}{# best guess}
+107             \_, cs\_ids = ck\_attn.max(1)
 108 
+109         \textcolor{comment}{# pick the true chosen sentence. remember that TransformerEncoder outputs}
+110         \textcolor{comment}{#   (batch, time, embed)}
+111         \textcolor{comment}{# but because know\_encoded is a flattened, it's really}
+112         \textcolor{comment}{#   (N * K, T, D)}
+113         \textcolor{comment}{# We need to compute the offsets of the chosen\_sentences}
+114         cs\_offsets = th.arange(N, device=cs\_ids.device) * K + cs\_ids
+115         cs\_encoded = know\_encoded[cs\_offsets]
+116         \textcolor{comment}{# but padding is (N * K, T)}
+117         cs\_mask = know\_mask[cs\_offsets]
+118 
+119         \textcolor{comment}{# finally, concatenate it all}
+120         full\_enc = th.cat([cs\_encoded, context\_encoded], dim=1)
+121         full\_mask = th.cat([cs\_mask, context\_mask], dim=1)
+122 
+123         \textcolor{comment}{# also return the knowledge selection mask for the loss}
+124         \textcolor{keywordflow}{return} full\_enc, full\_mask, ck\_attn
+125 
+126 
 \end{DoxyCode}
 
 
@@ -140,7 +138,7 @@ Definition at line 64 of file modules.\+py.
 
 
 
-Definition at line 61 of file modules.\+py.
+Definition at line 79 of file modules.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_1_1ContextKnowledgeEncoder_aa1c8bdeb31ac36e8ce13856fb6c47006}\label{classprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_1_1ContextKnowledgeEncoder_aa1c8bdeb31ac36e8ce13856fb6c47006}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::generator\+::modules\+::\+Context\+Knowledge\+Encoder@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::generator\+::modules\+::\+Context\+Knowledge\+Encoder}!embeddings@{embeddings}}
@@ -150,7 +148,7 @@ Definition at line 61 of file modules.\+py.
 
 
 
-Definition at line 60 of file modules.\+py.
+Definition at line 78 of file modules.\+py.
 
 \mbox{\Hypertarget{classprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_1_1ContextKnowledgeEncoder_aaf8e62c67b68634bd0e3ea1be88b7a6c}\label{classprojects_1_1wizard__of__wikipedia_1_1generator_1_1modules_1_1ContextKnowledgeEncoder_aaf8e62c67b68634bd0e3ea1be88b7a6c}} 
 \index{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::generator\+::modules\+::\+Context\+Knowledge\+Encoder@{projects\+::wizard\+\_\+of\+\_\+wikipedia\+::generator\+::modules\+::\+Context\+Knowledge\+Encoder}!transformer@{transformer}}
@@ -160,7 +158,7 @@ Definition at line 60 of file modules.\+py.
 
 
 
-Definition at line 62 of file modules.\+py.
+Definition at line 80 of file modules.\+py.
 
 
 

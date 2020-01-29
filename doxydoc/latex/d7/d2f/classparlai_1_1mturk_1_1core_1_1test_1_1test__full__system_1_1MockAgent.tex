@@ -2,8 +2,7 @@
 \label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent}\index{parlai.\+mturk.\+core.\+test.\+test\+\_\+full\+\_\+system.\+Mock\+Agent@{parlai.\+mturk.\+core.\+test.\+test\+\_\+full\+\_\+system.\+Mock\+Agent}}
 
 
-Inheritance diagram for parlai.\+mturk.\+core.\+test.\+test\+\_\+full\+\_\+system.\+Mock\+Agent\+:
-\nopagebreak
+Inheritance diagram for parlai.\+mturk.\+core.\+test.\+test\+\_\+full\+\_\+system.\+Mock\+Agent\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Inheritance diagram for parlai.\+mturk.\+core.\+test.\+test\+\_\+full\+\_\+syste
 \end{figure}
 
 
-Collaboration diagram for parlai.\+mturk.\+core.\+test.\+test\+\_\+full\+\_\+system.\+Mock\+Agent\+:
-\nopagebreak
+Collaboration diagram for parlai.\+mturk.\+core.\+test.\+test\+\_\+full\+\_\+system.\+Mock\+Agent\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -88,7 +86,7 @@ Exposes methods to use for testing and checking status
 \end{DoxyVerb}
  
 
-Definition at line 185 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 184 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
@@ -101,28 +99,28 @@ Definition at line 185 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 193 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 192 of file test\+\_\+full\+\_\+system.\+py.
 
 
 \begin{DoxyCode}
-193     \textcolor{keyword}{def }\_\_init\_\_(self, hit\_id, assignment\_id, worker\_id, task\_group\_id):
-194         self.conversation\_id = \textcolor{keywordtype}{None}
-195         self.id = \textcolor{keywordtype}{None}
-196         self.assignment\_id = assignment\_id
-197         self.hit\_id = hit\_id
-198         self.worker\_id = worker\_id
-199         self.some\_agent\_disconnected = \textcolor{keyword}{False}
-200         self.disconnected = \textcolor{keyword}{False}
-201         self.task\_group\_id = task\_group\_id
-202         self.ws = \textcolor{keywordtype}{None}
-203         self.always\_beat = \textcolor{keyword}{True}
-204         self.send\_acks = \textcolor{keyword}{True}
-205         self.ready = \textcolor{keyword}{False}
-206         self.wants\_to\_send = \textcolor{keyword}{False}
-207         self.acked\_packet = []
-208         self.incoming\_hb = []
-209         self.message\_packet = []
-210 
+192     \textcolor{keyword}{def }\_\_init\_\_(self, hit\_id, assignment\_id, worker\_id, task\_group\_id):
+193         self.conversation\_id = \textcolor{keywordtype}{None}
+194         self.id = \textcolor{keywordtype}{None}
+195         self.assignment\_id = assignment\_id
+196         self.hit\_id = hit\_id
+197         self.worker\_id = worker\_id
+198         self.some\_agent\_disconnected = \textcolor{keyword}{False}
+199         self.disconnected = \textcolor{keyword}{False}
+200         self.task\_group\_id = task\_group\_id
+201         self.ws = \textcolor{keywordtype}{None}
+202         self.always\_beat = \textcolor{keyword}{True}
+203         self.send\_acks = \textcolor{keyword}{True}
+204         self.ready = \textcolor{keyword}{False}
+205         self.wants\_to\_send = \textcolor{keyword}{False}
+206         self.acked\_packet = []
+207         self.incoming\_hb = []
+208         self.message\_packet = []
+209 
 \end{DoxyCode}
 
 
@@ -135,27 +133,27 @@ Definition at line 193 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 266 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 265 of file test\+\_\+full\+\_\+system.\+py.
 
 
 \begin{DoxyCode}
-266     \textcolor{keyword}{def }build\_and\_send\_packet(self, packet\_type, data):
-267         msg = \{
-268             \textcolor{stringliteral}{'id'}: \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(uuid.uuid4()),
-269             \textcolor{stringliteral}{'type'}: packet\_type,
-270             \textcolor{stringliteral}{'sender\_id'}: self.worker\_id,
-271             \textcolor{stringliteral}{'assignment\_id'}: self.assignment\_id,
-272             \textcolor{stringliteral}{'conversation\_id'}: self.conversation\_id,
-273             \textcolor{stringliteral}{'receiver\_id'}: \textcolor{stringliteral}{'[World\_'} + self.task\_group\_id + \textcolor{stringliteral}{']'},
-274             \textcolor{stringliteral}{'data'}: data,
-275         \}
-276 
-277         event\_name = data\_model.SOCKET\_ROUTE\_PACKET\_STRING
-278         \textcolor{keywordflow}{if} packet\_type == Packet.TYPE\_ALIVE:
-279             event\_name = data\_model.SOCKET\_AGENT\_ALIVE\_STRING
-280         self.ws.send(json.dumps(\{\textcolor{stringliteral}{'type'}: event\_name, \textcolor{stringliteral}{'content'}: msg\}))
-281         \textcolor{keywordflow}{return} msg[\textcolor{stringliteral}{'id'}]
-282 
+265     \textcolor{keyword}{def }build\_and\_send\_packet(self, packet\_type, data):
+266         msg = \{
+267             \textcolor{stringliteral}{'id'}: \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(uuid.uuid4()),
+268             \textcolor{stringliteral}{'type'}: packet\_type,
+269             \textcolor{stringliteral}{'sender\_id'}: self.worker\_id,
+270             \textcolor{stringliteral}{'assignment\_id'}: self.assignment\_id,
+271             \textcolor{stringliteral}{'conversation\_id'}: self.conversation\_id,
+272             \textcolor{stringliteral}{'receiver\_id'}: \textcolor{stringliteral}{'[World\_'} + self.task\_group\_id + \textcolor{stringliteral}{']'},
+273             \textcolor{stringliteral}{'data'}: data,
+274         \}
+275 
+276         event\_name = data\_model.SOCKET\_ROUTE\_PACKET\_STRING
+277         \textcolor{keywordflow}{if} packet\_type == Packet.TYPE\_ALIVE:
+278             event\_name = data\_model.SOCKET\_AGENT\_ALIVE\_STRING
+279         self.ws.send(json.dumps(\{\textcolor{stringliteral}{'type'}: event\_name, \textcolor{stringliteral}{'content'}: msg\}))
+280         \textcolor{keywordflow}{return} msg[\textcolor{stringliteral}{'id'}]
+281 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a872f69350ed59fcccfa5819f2bd65337}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a872f69350ed59fcccfa5819f2bd65337}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent}!make\+\_\+packet\+\_\+handler@{make\+\_\+packet\+\_\+handler}}
@@ -167,45 +165,45 @@ Definition at line 266 of file test\+\_\+full\+\_\+system.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 231 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 230 of file test\+\_\+full\+\_\+system.\+py.
 
 
 \begin{DoxyCode}
-231     \textcolor{keyword}{def }make\_packet\_handler(self):
-232         \textcolor{stringliteral}{"""}
-233 \textcolor{stringliteral}{        A packet handler that properly sends heartbeats.}
-234 \textcolor{stringliteral}{        """}
-235 
-236         \textcolor{keyword}{def }on\_ack(*args):
-237             self.acked\_packet.append(args[0])
-238 
-239         \textcolor{keyword}{def }on\_hb(*args):
-240             self.incoming\_hb.append(args[0])
-241 
-242         \textcolor{keyword}{def }handler\_mock(pkt):
-243             \textcolor{keywordflow}{if} pkt[\textcolor{stringliteral}{'type'}] == Packet.TYPE\_ACK:
-244                 self.ready = \textcolor{keyword}{True}
-245                 packet = Packet.from\_dict(pkt)
-246                 on\_ack(packet)
-247             \textcolor{keywordflow}{elif} pkt[\textcolor{stringliteral}{'type'}] == Packet.TYPE\_HEARTBEAT:
-248                 packet = Packet.from\_dict(pkt)
-249                 on\_hb(packet)
-250                 \textcolor{keywordflow}{if} self.always\_beat:
-251                     self.send\_heartbeat()
-252             \textcolor{keywordflow}{elif} pkt[\textcolor{stringliteral}{'type'}] == Packet.TYPE\_MESSAGE:
-253                 packet = Packet.from\_dict(pkt)
-254                 \textcolor{keywordflow}{if} self.send\_acks:
-255                     self.send\_packet(packet.get\_ack())
-256                 self.on\_msg(packet)
-257             \textcolor{keywordflow}{elif} pkt[\textcolor{stringliteral}{'type'}] == Packet.TYPE\_ALIVE:
-258                 \textcolor{keywordflow}{raise} Exception(\textcolor{stringliteral}{'Invalid alive packet \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(pkt))
-259             \textcolor{keywordflow}{else}:
-260                 \textcolor{keywordflow}{raise} Exception(
-261                     \textcolor{stringliteral}{'Invalid Packet type \{\} received in \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(pkt[\textcolor{stringliteral}{'type'}], pkt)
-262                 )
-263 
-264         \textcolor{keywordflow}{return} handler\_mock
-265 
+230     \textcolor{keyword}{def }make\_packet\_handler(self):
+231         \textcolor{stringliteral}{"""}
+232 \textcolor{stringliteral}{        A packet handler that properly sends heartbeats.}
+233 \textcolor{stringliteral}{        """}
+234 
+235         \textcolor{keyword}{def }on\_ack(*args):
+236             self.acked\_packet.append(args[0])
+237 
+238         \textcolor{keyword}{def }on\_hb(*args):
+239             self.incoming\_hb.append(args[0])
+240 
+241         \textcolor{keyword}{def }handler\_mock(pkt):
+242             \textcolor{keywordflow}{if} pkt[\textcolor{stringliteral}{'type'}] == Packet.TYPE\_ACK:
+243                 self.ready = \textcolor{keyword}{True}
+244                 packet = Packet.from\_dict(pkt)
+245                 on\_ack(packet)
+246             \textcolor{keywordflow}{elif} pkt[\textcolor{stringliteral}{'type'}] == Packet.TYPE\_HEARTBEAT:
+247                 packet = Packet.from\_dict(pkt)
+248                 on\_hb(packet)
+249                 \textcolor{keywordflow}{if} self.always\_beat:
+250                     self.send\_heartbeat()
+251             \textcolor{keywordflow}{elif} pkt[\textcolor{stringliteral}{'type'}] == Packet.TYPE\_MESSAGE:
+252                 packet = Packet.from\_dict(pkt)
+253                 \textcolor{keywordflow}{if} self.send\_acks:
+254                     self.send\_packet(packet.get\_ack())
+255                 self.on\_msg(packet)
+256             \textcolor{keywordflow}{elif} pkt[\textcolor{stringliteral}{'type'}] == Packet.TYPE\_ALIVE:
+257                 \textcolor{keywordflow}{raise} Exception(\textcolor{stringliteral}{'Invalid alive packet \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(pkt))
+258             \textcolor{keywordflow}{else}:
+259                 \textcolor{keywordflow}{raise} Exception(
+260                     \textcolor{stringliteral}{'Invalid Packet type \{\} received in \{\}'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(pkt[\textcolor{stringliteral}{'type'}], pkt)
+261                 )
+262 
+263         \textcolor{keywordflow}{return} handler\_mock
+264 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a2186b39ea12603dd9c80ca0fca2e6892}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a2186b39ea12603dd9c80ca0fca2e6892}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent}!on\+\_\+msg@{on\+\_\+msg}}
@@ -215,18 +213,18 @@ Definition at line 231 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 223 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 222 of file test\+\_\+full\+\_\+system.\+py.
 
 
 \begin{DoxyCode}
-223     \textcolor{keyword}{def }on\_msg(self, packet):
-224         self.message\_packet.append(packet)
-225         \textcolor{keywordflow}{if} packet.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_CHANGE\_CONVERSATION:
-226             self.ready = \textcolor{keyword}{False}
-227             self.conversation\_id = packet.data[\textcolor{stringliteral}{'conversation\_id'}]
-228             self.id = packet.data[\textcolor{stringliteral}{'agent\_id'}]
-229             self.send\_alive()
-230 
+222     \textcolor{keyword}{def }on\_msg(self, packet):
+223         self.message\_packet.append(packet)
+224         \textcolor{keywordflow}{if} packet.data[\textcolor{stringliteral}{'text'}] == data\_model.COMMAND\_CHANGE\_CONVERSATION:
+225             self.ready = \textcolor{keyword}{False}
+226             self.conversation\_id = packet.data[\textcolor{stringliteral}{'conversation\_id'}]
+227             self.id = packet.data[\textcolor{stringliteral}{'agent\_id'}]
+228             self.send\_alive()
+229 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_aa3aaa3fa10d7f1ca6a135bcd28e18be4}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_aa3aaa3fa10d7f1ca6a135bcd28e18be4}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent}!register\+\_\+to\+\_\+socket@{register\+\_\+to\+\_\+socket}}
@@ -236,15 +234,15 @@ Definition at line 223 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 218 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 217 of file test\+\_\+full\+\_\+system.\+py.
 
 
 \begin{DoxyCode}
-218     \textcolor{keyword}{def }register\_to\_socket(self, ws):
-219         handler = self.make\_packet\_handler()
-220         self.ws = ws
-221         self.ws.handlers[self.worker\_id + self.assignment\_id] = handler
-222 
+217     \textcolor{keyword}{def }register\_to\_socket(self, ws):
+218         handler = self.make\_packet\_handler()
+219         self.ws = ws
+220         self.ws.handlers[self.worker\_id + self.assignment\_id] = handler
+221 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a7a0ba09a58ea21ac86db4b501c392a33}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a7a0ba09a58ea21ac86db4b501c392a33}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent}!send\+\_\+alive@{send\+\_\+alive}}
@@ -254,19 +252,19 @@ Definition at line 218 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 294 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 293 of file test\+\_\+full\+\_\+system.\+py.
 
 
 \begin{DoxyCode}
-294     \textcolor{keyword}{def }send\_alive(self):
-295         data = \{
-296             \textcolor{stringliteral}{'hit\_id'}: self.hit\_id,
-297             \textcolor{stringliteral}{'assignment\_id'}: self.assignment\_id,
-298             \textcolor{stringliteral}{'worker\_id'}: self.worker\_id,
-299             \textcolor{stringliteral}{'conversation\_id'}: self.conversation\_id,
-300         \}
-301         \textcolor{keywordflow}{return} self.build\_and\_send\_packet(Packet.TYPE\_ALIVE, data)
-302 
+293     \textcolor{keyword}{def }send\_alive(self):
+294         data = \{
+295             \textcolor{stringliteral}{'hit\_id'}: self.hit\_id,
+296             \textcolor{stringliteral}{'assignment\_id'}: self.assignment\_id,
+297             \textcolor{stringliteral}{'worker\_id'}: self.worker\_id,
+298             \textcolor{stringliteral}{'conversation\_id'}: self.conversation\_id,
+299         \}
+300         \textcolor{keywordflow}{return} self.build\_and\_send\_packet(Packet.TYPE\_ALIVE, data)
+301 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a42f7589517cdf4c6a10b9a80e9afea1a}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a42f7589517cdf4c6a10b9a80e9afea1a}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent}!send\+\_\+heartbeat@{send\+\_\+heartbeat}}
@@ -278,27 +276,27 @@ Definition at line 294 of file test\+\_\+full\+\_\+system.\+py.
 \end{DoxyVerb}
  
 
-Definition at line 303 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 302 of file test\+\_\+full\+\_\+system.\+py.
 
 
 \begin{DoxyCode}
-303     \textcolor{keyword}{def }send\_heartbeat(self):
-304         \textcolor{stringliteral}{"""}
-305 \textcolor{stringliteral}{        Sends a heartbeat to the world.}
-306 \textcolor{stringliteral}{        """}
-307         hb = \{
-308             \textcolor{stringliteral}{'id'}: \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(uuid.uuid4()),
-309             \textcolor{stringliteral}{'receiver\_id'}: \textcolor{stringliteral}{'[World\_'} + self.task\_group\_id + \textcolor{stringliteral}{']'},
-310             \textcolor{stringliteral}{'assignment\_id'}: self.assignment\_id,
-311             \textcolor{stringliteral}{'sender\_id'}: self.worker\_id,
-312             \textcolor{stringliteral}{'conversation\_id'}: self.conversation\_id,
-313             \textcolor{stringliteral}{'type'}: Packet.TYPE\_HEARTBEAT,
-314             \textcolor{stringliteral}{'data'}: \textcolor{keywordtype}{None},
-315         \}
-316         self.ws.send(
-317             json.dumps(\{\textcolor{stringliteral}{'type'}: data\_model.SOCKET\_ROUTE\_PACKET\_STRING, \textcolor{stringliteral}{'content'}: hb\})
-318         )
-319 
+302     \textcolor{keyword}{def }send\_heartbeat(self):
+303         \textcolor{stringliteral}{"""}
+304 \textcolor{stringliteral}{        Sends a heartbeat to the world.}
+305 \textcolor{stringliteral}{        """}
+306         hb = \{
+307             \textcolor{stringliteral}{'id'}: \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(uuid.uuid4()),
+308             \textcolor{stringliteral}{'receiver\_id'}: \textcolor{stringliteral}{'[World\_'} + self.task\_group\_id + \textcolor{stringliteral}{']'},
+309             \textcolor{stringliteral}{'assignment\_id'}: self.assignment\_id,
+310             \textcolor{stringliteral}{'sender\_id'}: self.worker\_id,
+311             \textcolor{stringliteral}{'conversation\_id'}: self.conversation\_id,
+312             \textcolor{stringliteral}{'type'}: Packet.TYPE\_HEARTBEAT,
+313             \textcolor{stringliteral}{'data'}: \textcolor{keywordtype}{None},
+314         \}
+315         self.ws.send(
+316             json.dumps(\{\textcolor{stringliteral}{'type'}: data\_model.SOCKET\_ROUTE\_PACKET\_STRING, \textcolor{stringliteral}{'content'}: hb\})
+317         )
+318 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a6eaaac34d4b7644c88bab53eeb12ebb1}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a6eaaac34d4b7644c88bab53eeb12ebb1}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent}!send\+\_\+message@{send\+\_\+message}}
@@ -308,21 +306,21 @@ Definition at line 303 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 283 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 282 of file test\+\_\+full\+\_\+system.\+py.
 
 
 \begin{DoxyCode}
-283     \textcolor{keyword}{def }send\_message(self, text):
-284         data = \{
-285             \textcolor{stringliteral}{'text'}: text,
-286             \textcolor{stringliteral}{'id'}: self.id,
-287             \textcolor{stringliteral}{'message\_id'}: \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(uuid.uuid4()),
-288             \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{False},
-289         \}
-290 
-291         self.wants\_to\_send = \textcolor{keyword}{False}
-292         \textcolor{keywordflow}{return} self.build\_and\_send\_packet(Packet.TYPE\_MESSAGE, data)
-293 
+282     \textcolor{keyword}{def }send\_message(self, text):
+283         data = \{
+284             \textcolor{stringliteral}{'text'}: text,
+285             \textcolor{stringliteral}{'id'}: self.id,
+286             \textcolor{stringliteral}{'message\_id'}: \hyperlink{namespacegenerate__task__READMEs_a5b88452ffb87b78c8c85ececebafc09f}{str}(uuid.uuid4()),
+287             \textcolor{stringliteral}{'episode\_done'}: \textcolor{keyword}{False},
+288         \}
+289 
+290         self.wants\_to\_send = \textcolor{keyword}{False}
+291         \textcolor{keywordflow}{return} self.build\_and\_send\_packet(Packet.TYPE\_MESSAGE, data)
+292 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a0a286b82f9e0758cdfabf9b7fb51e6b6}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a0a286b82f9e0758cdfabf9b7fb51e6b6}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent}!send\+\_\+packet@{send\+\_\+packet}}
@@ -332,17 +330,17 @@ Definition at line 283 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 211 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 210 of file test\+\_\+full\+\_\+system.\+py.
 
 
 \begin{DoxyCode}
-211     \textcolor{keyword}{def }send\_packet(self, packet):
-212         \textcolor{keyword}{def }callback(*args):
-213             \textcolor{keywordflow}{pass}
-214 
-215         event\_name = data\_model.SOCKET\_ROUTE\_PACKET\_STRING
-216         self.ws.send(json.dumps(\{\textcolor{stringliteral}{'type'}: event\_name, \textcolor{stringliteral}{'content'}: packet.as\_dict()\}))
-217 
+210     \textcolor{keyword}{def }send\_packet(self, packet):
+211         \textcolor{keyword}{def }callback(*args):
+212             \textcolor{keywordflow}{pass}
+213 
+214         event\_name = data\_model.SOCKET\_ROUTE\_PACKET\_STRING
+215         self.ws.send(json.dumps(\{\textcolor{stringliteral}{'type'}: event\_name, \textcolor{stringliteral}{'content'}: packet.as\_dict()\}))
+216 
 \end{DoxyCode}
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a92e5fffe32ac3011adeedbdc34b5506c}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a92e5fffe32ac3011adeedbdc34b5506c}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent}!wait\+\_\+for\+\_\+alive@{wait\+\_\+for\+\_\+alive}}
@@ -352,22 +350,22 @@ Definition at line 211 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 320 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 319 of file test\+\_\+full\+\_\+system.\+py.
 
 
 \begin{DoxyCode}
-320     \textcolor{keyword}{def }wait\_for\_alive(self):
-321         last\_time = time.time()
-322         \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} self.ready:
-323             self.send\_alive()
-324             time.sleep(0.5)
-325             \textcolor{keyword}{assert} (
-326                 time.time() - last\_time < 10
-327             ), \textcolor{stringliteral}{'Timed out wating for server to acknowledge \{\} alive'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
-328                 self.worker\_id
-329             )
+319     \textcolor{keyword}{def }wait\_for\_alive(self):
+320         last\_time = time.time()
+321         \textcolor{keywordflow}{while} \textcolor{keywordflow}{not} self.ready:
+322             self.send\_alive()
+323             time.sleep(0.5)
+324             \textcolor{keyword}{assert} (
+325                 time.time() - last\_time < 10
+326             ), \textcolor{stringliteral}{'Timed out wating for server to acknowledge \{\} alive'}.\hyperlink{namespaceparlai_1_1chat__service_1_1services_1_1messenger_1_1shared__utils_a32e2e2022b824fbaf80c747160b52a76}{format}(
+327                 self.worker\_id
+328             )
+329 
 330 
-331 
 \end{DoxyCode}
 
 
@@ -380,7 +378,7 @@ Definition at line 320 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 207 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 206 of file test\+\_\+full\+\_\+system.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_afe68c8ff0b37df18844ce3149c367b5c}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_afe68c8ff0b37df18844ce3149c367b5c}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent}!always\+\_\+beat@{always\+\_\+beat}}
@@ -390,7 +388,7 @@ Definition at line 207 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 203 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 202 of file test\+\_\+full\+\_\+system.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a1e12e948ec83c4f9c58fa91dc34f5286}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a1e12e948ec83c4f9c58fa91dc34f5286}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent}!assignment\+\_\+id@{assignment\+\_\+id}}
@@ -400,7 +398,7 @@ Definition at line 203 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 196 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 195 of file test\+\_\+full\+\_\+system.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a605ad989fece57d50544d825cfad726e}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a605ad989fece57d50544d825cfad726e}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent}!conversation\+\_\+id@{conversation\+\_\+id}}
@@ -410,7 +408,7 @@ Definition at line 196 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 194 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 193 of file test\+\_\+full\+\_\+system.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a86db9ac0d564369516c5421f20a8348c}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a86db9ac0d564369516c5421f20a8348c}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent}!disconnected@{disconnected}}
@@ -420,7 +418,7 @@ Definition at line 194 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 200 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 199 of file test\+\_\+full\+\_\+system.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a5666933fe3bc64ea6c62f5858a49dc4c}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a5666933fe3bc64ea6c62f5858a49dc4c}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent}!hit\+\_\+id@{hit\+\_\+id}}
@@ -430,7 +428,7 @@ Definition at line 200 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 197 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 196 of file test\+\_\+full\+\_\+system.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a3f514f133aab70ac679cfb11b7751808}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a3f514f133aab70ac679cfb11b7751808}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent}!id@{id}}
@@ -440,7 +438,7 @@ Definition at line 197 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 195 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 194 of file test\+\_\+full\+\_\+system.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a7a5a26a17a00c83a819133def2a222b9}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a7a5a26a17a00c83a819133def2a222b9}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent}!incoming\+\_\+hb@{incoming\+\_\+hb}}
@@ -450,7 +448,7 @@ Definition at line 195 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 208 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 207 of file test\+\_\+full\+\_\+system.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a790fb90d1d2e687571ad3f47a27eccd0}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a790fb90d1d2e687571ad3f47a27eccd0}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent}!message\+\_\+packet@{message\+\_\+packet}}
@@ -460,7 +458,7 @@ Definition at line 208 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 209 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 208 of file test\+\_\+full\+\_\+system.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a57036d23635f6e1e5d040758d26f6058}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a57036d23635f6e1e5d040758d26f6058}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent}!ready@{ready}}
@@ -470,7 +468,7 @@ Definition at line 209 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 205 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 204 of file test\+\_\+full\+\_\+system.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a894f00f018a262ba55d6961f3ee44eb4}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a894f00f018a262ba55d6961f3ee44eb4}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent}!send\+\_\+acks@{send\+\_\+acks}}
@@ -480,7 +478,7 @@ Definition at line 205 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 204 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 203 of file test\+\_\+full\+\_\+system.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a5e1017a713966af69826599f435318e9}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a5e1017a713966af69826599f435318e9}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent}!some\+\_\+agent\+\_\+disconnected@{some\+\_\+agent\+\_\+disconnected}}
@@ -490,7 +488,7 @@ Definition at line 204 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 199 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 198 of file test\+\_\+full\+\_\+system.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a4eb37280153b115ffd6c412a7b1d8973}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a4eb37280153b115ffd6c412a7b1d8973}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent}!task\+\_\+group\+\_\+id@{task\+\_\+group\+\_\+id}}
@@ -500,7 +498,7 @@ Definition at line 199 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 201 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 200 of file test\+\_\+full\+\_\+system.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a20ac02f60cd5c9ad0d65922e0ba6ceb3}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a20ac02f60cd5c9ad0d65922e0ba6ceb3}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent}!wants\+\_\+to\+\_\+send@{wants\+\_\+to\+\_\+send}}
@@ -510,7 +508,7 @@ Definition at line 201 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 206 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 205 of file test\+\_\+full\+\_\+system.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a13e0be9e86b661e6a03f80feb8025816}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a13e0be9e86b661e6a03f80feb8025816}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent}!worker\+\_\+id@{worker\+\_\+id}}
@@ -520,7 +518,7 @@ Definition at line 206 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 198 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 197 of file test\+\_\+full\+\_\+system.\+py.
 
 \mbox{\Hypertarget{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a2870f5b01b6d901d44d2dae99ff6a263}\label{classparlai_1_1mturk_1_1core_1_1test_1_1test__full__system_1_1MockAgent_a2870f5b01b6d901d44d2dae99ff6a263}} 
 \index{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent@{parlai\+::mturk\+::core\+::test\+::test\+\_\+full\+\_\+system\+::\+Mock\+Agent}!ws@{ws}}
@@ -530,7 +528,7 @@ Definition at line 198 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
-Definition at line 202 of file test\+\_\+full\+\_\+system.\+py.
+Definition at line 201 of file test\+\_\+full\+\_\+system.\+py.
 
 
 
