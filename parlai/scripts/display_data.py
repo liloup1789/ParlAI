@@ -22,7 +22,7 @@ from parlai.core.params import ParlaiParser
 from parlai.agents.repeat_label.repeat_label import RepeatLabelAgent
 from parlai.core.worlds import create_task
 
-import random
+import random,sys
 
 
 def setup_args(parser=None):
@@ -49,7 +49,7 @@ def display_data(opt):
         # NOTE: If you want to look at the data from here rather than calling
         # world.display() you could access world.acts[0] directly
         print(world.display() + '\n~~')
-
+        # sys.exit()
         if world.epoch_done():
             print('EPOCH DONE')
             break

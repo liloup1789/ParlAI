@@ -20,6 +20,6 @@ def build(opt):
             build_data.remove_dir(dpath)
         build_data.make_dir(dpath)
 
-        copyfile("/home/schaub/Documents/Akio/dev_parlai/parlai/data/PMC/pmctestparlai.txt","/home/schaub/Documents/Akio/dev_parlai/parlai/data/cologne/pmctestparlai.txt")
+        copyfile("/home/tf/Documents/Leon/projekt/PMC/data/colognebistrain.txt","/home/tf/Documents/Leon/parlai/ParlAI/data/cologne/colognetrain.txt")
         # mark the data as built
         build_data.mark_done(dpath, version_string=version)

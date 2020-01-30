@@ -328,9 +328,9 @@ class DialogPartnerWorld(World):
         agents = self.agents
         # sys.exit()
         acts[0] = agents[0].act()
-        print("Teachers action : \n*********************\n {}\n **********************\n\n".format(acts[0]))
+        # print("Teachers action : \n*********************\n {}\n **********************\n\n".format(acts[0]))
         agents[1].observe(validate(acts[0]))
-        print("Memory agent's observation : \n===================\n {} \n ========================\n\n".format(agents[1].observation))
+        # print("Memory agent's observation : \n===================\n {} \n ========================\n\n".format(agents[1].observation))
         acts[1] = agents[1].act()
         agents[0].observe(validate(acts[1]))
         # print("teachers obs "+ str(agents[0].tasks[agents[0].task_idx].observation))

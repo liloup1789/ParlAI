@@ -23,7 +23,8 @@ class Converter(object):
         self.conversation = self.cologne.speakingTurns
         self.user = self.cologne.getUser()
         self.agent = self.cologne.getAgent()
-
+        self.starting = self.conversation[0].getSpeaking()
+        self.conversation = self.conversation[1:]
 
     def state_0(self,conv, conversation):
         #print('state 0 conv= ' + conv + ' converstion= ' + str(conversation))
@@ -33,10 +34,8 @@ class Converter(object):
             speaker = current_turn.getSpeaker()
             if len(speaking) > 0:
                 current_speaker = speaker
-                print(current_speaker)
-                print(self.agent)
-                print(self.user)
                 if (current_speaker == self.user or self.user == 'userX') and current_speaker != self.agent:
+                    print("Normal process : User + Agent")
                     return Converter.state_1(self,conv[1:], conversation + [speaking])
                 else:
                     assert (current_speaker == self.agent)
@@ -57,9 +56,6 @@ class Converter(object):
             speaker = current_turn.getSpeaker()
             if len(speaking) > 0:
                 current_speaker = speaker
-                print(current_speaker)
-                print(self.agent)
-                print(self.user)
                 if (current_speaker == self.user or self.user == 'userX') and current_speaker != self.agent:
                     return Converter.state_1(self,conv[1:], conversation + [Converter.silence_bot] + [speaking])
                 else:
@@ -81,9 +77,6 @@ class Converter(object):
             speaker = current_turn.getSpeaker()
             if len(speaking) > 0:
                 current_speaker = speaker
-                print(current_speaker)
-                print(self.agent)
-                print(self.user)
                 if (current_speaker == self.user or self.user == 'userX') and current_speaker != self.agent:
                     return Converter.state_1(self,conv[1:], conversation + [speaking])
                 else:
@@ -117,6 +110,7 @@ class Converter(object):
                 x += 1
                 full += str(x)+" "+"\t".join(current)+'\n'
                 current = []
+        print(full)
         return full
 
     def writer(full,out):
@@ -141,15 +135,15 @@ class Converter(object):
 # print( converter( conv ))
 
 if __name__ == '__main__':
-    CONVER_DIR  = "/home/tf/Documents/Leon/dev_gil/PMC/data/"
-    CLEAN = CONVER_DIR+"raw/"
+    CONVER_DIR  = "/home/tf/Documents/Leon/projekt/PMC/data/"
+    CLEAN = CONVER_DIR+"clean/"
     FB = CONVER_DIR+"fbFormat/"
     for fic in glob(CLEAN+'*') :
         print(fic)
         co = Converter(fic)
-        if co == 1 :
-            continue
-        if len(co.conversation) < 3 :
+        # if co == 1 :
+        #     continue
+        if len(co.conversation) < 4 :
             continue
         converted = co.converter()
         full = Converter.printer(converted)
